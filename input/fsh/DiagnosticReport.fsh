@@ -44,10 +44,8 @@ DiagnosticReport based on
 * performer contains
   organisation 1..1 and operator 0..*
 
-* performer[organisation] only Reference(Organization)
 * performer[organisation].identifier only OrganisationCode
 
-* performer[operator] only Reference(Practitioner)
 * performer[operator].identifier only GeneralMedicalPractitionerCode or GeneralMedicalCouncilReferenceNumber
 * performer[operator].extension[performerFunction].valueCodeableConcept.coding = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#SPRF
 
@@ -68,8 +66,6 @@ DiagnosticReport based on
   secondaryReporter 0..*
 
 * resultsInterpreter[primaryReporter].extension[performerFunction].valueCodeableConcept.coding = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PPRF
-* resultsInterpreter[primaryReporter] only Reference(Practitioner)
 * resultsInterpreter[primaryReporter].identifier only GeneralMedicalPractitionerCode or GeneralMedicalCouncilReferenceNumber
 * resultsInterpreter[secondaryReporter].extension[performerFunction].valueCodeableConcept.coding = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#SPRF
-* resultsInterpreter[secondaryReporter] only Reference(Practitioner)
 * resultsInterpreter[secondaryReporter].identifier only GeneralMedicalPractitionerCode or GeneralMedicalCouncilReferenceNumber
