@@ -28,7 +28,6 @@ DiagnosticReport based on
 
 * subject 1..1
 * subject.identifier 1..1
-* subject only Reference(Patient)
 
 * performer.identifier 1..1
 * performer.identifier.system 1..1
