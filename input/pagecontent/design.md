@@ -1,5 +1,5 @@
 
-## Genomic Orders
+### Genomic Orders
 
 <figure>
 {%include orders.svg%}
@@ -9,7 +9,7 @@
 
 Note: The use of FHIR Message may be required for HL7 v2.x ORM conversion, this involves the addition of a FHIR MessageHeader to the FHIR Bundle 
 
-## Genomic Reports
+### Genomic Reports
 
 <figure>
 {%include reports.svg%}
