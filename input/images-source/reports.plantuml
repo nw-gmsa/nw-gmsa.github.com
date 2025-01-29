@@ -1,0 +1,46 @@
+@startuml
+
+title "Genomics Report Options"
+
+interface "Genomics\nReport In" as GenomicsReportIn
+component "GLH TIE" as GLHTIE
+interface "Genomics Report or\nReport Notification\nOut" as GenomicsReportOut
+
+interface "Report Query\nAPI" as MHD
+component "Report Repository" as DocumentRepository
+
+GenomicsReportIn -r-> GLHTIE
+GLHTIE -r-> GenomicsReportOut
+
+MHD -r-> DocumentRepository
+
+GLHTIE -d[hidden]- DocumentRepository
+
+note left of GenomicsReportIn
+**GLH LIMS**
+
+Opt 1, 2 and 3
+- HL7 HL7 v2.x ORU
+Opt 4 and 5
+- Multicast Notification Service
+end note
+
+
+note right of GenomicsReportOut
+**Alder Hey, MFT and Christie**
+
+Opt 1
+- Email
+Opt 2
+- HL7 HL7 v2.x ORU
+Option 3, 4 and 5
+- Multicast Notification Service
+end note
+
+note left of MHD
+**Alder Hey, MFT and Christie**
+
+For use with Opt 3, 4 and 5
+end note
+
+@enduml

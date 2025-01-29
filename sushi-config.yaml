@@ -69,9 +69,12 @@ pages:
   index.md:
     title: Home
     generation: markdown
-
+  design.md:
+    title: Design
+    generation: markdown
 menu:
   Home: index.html
+  Design: design.html
   Artefacts: artifacts.html
 
 
