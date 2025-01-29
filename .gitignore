@@ -1,0 +1,9 @@
+/input-cache/
+/output/
+/temp/
+/template/
+/fsh-generated/
+/_gencontinuous.bat
+/_gencontinuous.sh
+/_genonce.bat
+/_genonce.sh
