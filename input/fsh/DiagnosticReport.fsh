@@ -19,7 +19,6 @@ DiagnosticReport based on
 * basedOn contains
   accessionNumber 0..1 MS
 
-* basedOn[accessionNumber] only Reference(ServiceRequest)
 * basedOn[accessionNumber] ^short = "Created by Imaging Test Order Workflow"
 * basedOn[accessionNumber].type 1..1 MS
 * basedOn[accessionNumber].type = "ServiceRequest"
