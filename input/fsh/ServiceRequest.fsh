@@ -1,5 +1,5 @@
 Profile:        ServiceRequest
-Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-ServiceRequest
+Parent:         https://fhir.nhs.uk/StructureDefinition/NHSDigital-ServiceRequest-Genomics
 Id:             ServiceRequest
 Title:          "ServiceRequest"
 Description:    "TODO just a collection of notes."

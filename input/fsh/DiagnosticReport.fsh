@@ -1,5 +1,5 @@
 Profile:        DiagnosticReport
-Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-DiagnosticReport
+Parent:         https://fhir.nhs.uk/StructureDefinition/NHSDigital-DiagnosticReport-Genomics
 Id:             DiagnosticReport
 Title:          "Diagnostic Report"
 Description:    """
