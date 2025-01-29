@@ -1,7 +1,7 @@
 Profile:        ServiceRequest
 Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-ServiceRequest
-Id:             ServiceRequest-Genomics
-Title:          "Genomics ServiceRequest"
+Id:             ServiceRequest
+Title:          "ServiceRequest"
 Description:    "TODO just a collection of notes."
 
 * code ^short = "TODO"
