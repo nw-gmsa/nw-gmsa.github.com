@@ -1,5 +1,6 @@
 {
   "resourceType": "StructureDefinition",
+  "id": "RelatedPerson-Genomics",
   "url": "https://fhir.nhs.uk/StructureDefinition/NHSDigital-RelatedPerson-Genomics",
   "version": "0.1.0",
   "name": "NHSDigital_RelatedPerson_Genomics",
