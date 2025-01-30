@@ -3,7 +3,7 @@
 title "Genomic Test Report"
 
 frame Message {
-entity "Genomics Report (FHIR Bundle (messaage))" as oru  <<aggregate>>
+entity "Genomics Report (FHIR Bundle (messaage))" as oru
 
 entity "MessageHeader" as MSH
 
