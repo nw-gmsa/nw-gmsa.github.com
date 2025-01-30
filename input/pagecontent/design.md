@@ -58,7 +58,7 @@ Detailed Mapping can be here [Message ORU_R01 to Bundle Map (Experimental)](http
 |                              |             | [ServiceRequest](StructureDefinition-ServiceRequest.html)     | [ORC[ServiceRequest]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-orc-to-servicerequest.html)     |
 | OBR - Observations Request   |             | [DiagnosticReport](StructureDefinition-DiagnosticReport.html) | [OBR[DiagnosticReport]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obr-to-diagnosticreport.html) |
 | NTE - Notes and Comments     |             | Observation.note?                                             |                                                                                                                   |
-| OBX - Observation/Result     |             | Observation or Attachment (part of DiagnosticReport)          | [OBX[Observation]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-observation.html)                                                                                                              |
+| OBX - Observation/Result     |             | Observation or Attachment (part of DiagnosticReport)          | [OBX[Observation]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-observation.html)           |                                                                                                          |
 
 #### Entity Model
 
