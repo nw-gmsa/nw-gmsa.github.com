@@ -20,10 +20,11 @@ Title: "First draf=t based on Royal College of Radiologists HL7 v2 ORU converted
 * code.coding[+] = https://nicip.nhs.uk#MAULR "MRA Upper limb Rt"
 * code.coding[+] = $sct#418062002 "MRA upper limb artery"
 
+* subject = Reference(Patient-JackDawkins-9912003888) "Jack DAWKINS"
 * subject.identifier
   * system = "https://fhir.nhs.uk/Id/nhs-number"
   * value = "9912003888"
-* subject.display = "Jack DAWKINS"
+
 
 * issued = "2023-09-07T11:45:41+11:00"
 
