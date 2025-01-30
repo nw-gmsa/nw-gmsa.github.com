@@ -7,7 +7,7 @@ component "GLH TIE" as GLHTIE
 interface "Genomics Report or\nReport Notification\nOut" as GenomicsReportOut
 
 interface "Report Query\nAPI" as MHD
-component "Report Repository" as DocumentRepository
+component "Document Registry" as DocumentRepository
 
 GenomicsReportIn -r-> GLHTIE
 GLHTIE -r-> GenomicsReportOut

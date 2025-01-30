@@ -7,7 +7,9 @@
 </figure>
 <br clear="all">
 
-Note: The use of FHIR Message may be required for HL7 v2.x ORM conversion, this involves the addition of a FHIR MessageHeader to the FHIR Bundle 
+Note: 
+- The use of FHIR Message may be required for HL7 v2.x ORM conversion, this involves the addition of a FHIR MessageHeader to the FHIR Bundle 
+- The actor `Document Registry` is defined in [IHE MHDS Actors and Transactions](https://profiles.ihe.net/ITI/MHDS/volume-1.html#1501-mhds-actors-transactions-and-content-modules). This use case can be solved by IHE XDS or Electronic Document Management System (EDMS).
 
 #### Overview Mapping 
 
