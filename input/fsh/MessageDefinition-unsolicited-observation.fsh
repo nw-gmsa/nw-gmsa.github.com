@@ -1,6 +1,6 @@
-Instance:  UnsolicitedObservationMessageDefinition
+Instance:  MessageDefinition-unsolicited-observation
 InstanceOf: MessageDefinition
-Title:   "Unsolicited Observation Message Definition"
+Title:   "Message Definition - Unsolicited Observation"
 Usage:  #definition
 
 * status = #draft

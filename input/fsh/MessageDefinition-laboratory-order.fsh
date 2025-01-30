@@ -1,6 +1,6 @@
-Instance:  LaboratoryOrderMessageDefinition
+Instance:  MessageDefinition-laboratory-order
 InstanceOf: MessageDefinition
-Title:   "Laboratory Order Message Definition"
+Title:   "Message Definition - Laboratory Order"
 Usage:  #definition
 
 * status = #draft
