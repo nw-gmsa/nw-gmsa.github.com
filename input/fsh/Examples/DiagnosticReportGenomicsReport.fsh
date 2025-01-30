@@ -15,10 +15,9 @@ Title: "First draf=t based on Royal College of Radiologists HL7 v2 ORU converted
   * identifier.assigner.identifier.value = "R0A"
 
 * status = #final
-* category = $sct#16310003 "Ultrasound"
+* category = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
 
-* code.coding[+] = https://nicip.nhs.uk#MAULR "MRA Upper limb Rt"
-* code.coding[+] = $sct#418062002 "MRA upper limb artery"
+* code.coding[+] = $sct#1054161000000101 "Genetic report"
 
 * subject = Reference(Patient-JackDawkins-9912003888) "Jack DAWKINS"
 * subject.identifier
@@ -44,3 +43,11 @@ Title: "First draf=t based on Royal College of Radiologists HL7 v2 ORU converted
   * display = "FICTITIOUS, Ralph"
 
 * conclusion = "Normal - no action"
+
+* presentedForm[+]
+  * contentType = #application/pdf
+  * language = #en-GB
+  * url = "https://o719on.axshare.com/?id=8aol33&p=introduction&g=1"
+  * size = 43272
+  * title = "Genomic Report for Anita Lamberts"
+  * creation = "2023-11-24"
