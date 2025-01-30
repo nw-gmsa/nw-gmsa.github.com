@@ -22,7 +22,7 @@ This is an initial (incomplete) map and will change to match exact requirement o
 | PID - Patient Identification | 0..1        | Patient                  | [PID[Patient]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pid-to-patient.html)               |                                                                                          |
 | NK1 -	Next of Kin/Associated Parties | 0..* | RelatedPerson or Patient | [NK1[RelatedPerson]](NK1[RelatedPerson]) or [NK1[Patient]](NK1[Patient])                                      |
 | PV1 - Patient visit          | 0..1        | Encounter                | [PV1[Encounter]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pv1-to-encounter.html)           | 
-| ORC - Common Order           | 1..*        | ServiceRequest           | [ORC[ServiceRequest]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-orc-to-servicerequest.html) |
+| ORC - Common Order           | 1..*        | [ServiceRequest](StructureDefinition-ServiceRequest.html)       | [ORC[ServiceRequest]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-orc-to-servicerequest.html) |
 | DG1 - Diagnosis              | 0..*        | Condition                | [DG1[Condition]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-dg1-to-condition.html)           |
 | SPM - Specimen               | 0..*        | Specimen                 | [SPM[Specimen]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-spm-to-specimen.html)             |                                                                                                         |
 
