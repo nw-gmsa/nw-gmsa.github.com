@@ -5,7 +5,6 @@ title "Genomic Test Request"
 frame Message {
 entity "Genomics Order (FHIR Bundle (messaage))" as oml  <<aggregate>>
 
-
 entity "MessageHeader" as MSH
 
   frame Composition {

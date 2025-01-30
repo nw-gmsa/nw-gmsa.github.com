@@ -26,6 +26,14 @@ This is an initial (incomplete) map and will change to match exact requirement o
 | DG1 - Diagnosis              | 0..*        | Condition                | [DG1[Condition]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-dg1-to-condition.html)           |
 | SPM - Specimen               | 0..*        | Specimen                 | [SPM[Specimen]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-spm-to-specimen.html)             |                                                                                                         |
 
+#### Entity Model
+
+<figure>
+{%include orders-model.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">Genomics Test Request Model</p>
+</figure>
+<br clear="all">
+
 
 ### Genomic Reports
 
@@ -34,3 +42,21 @@ This is an initial (incomplete) map and will change to match exact requirement o
 <p id="fX.X.X.X-X" class="figureTitle">Genomics Report Options</p>
 </figure>
 <br clear="all">
+
+#### Overview Mapping 
+
+Detailed Mapping can be here [Message ORU_R01 to Bundle Map (Experimental)](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-message-oru-r01-to-bundle.html)
+
+| HL7 v2 ORU Segment           | Cardinality | FHIR Resource                                                 | Map                                                                                                               | 
+|------------------------------|-------------|---------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
+| MSH - Message Header         | 1..1        | MessageHeader                                                 | [MSH[MessageHeader]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-msh-to-messageheader.html)       |
+| PID - Patient Identification | 0..1        | Patient                                                       | [PID[Patient]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pid-to-patient.html)                   |    
+| PV1 - Patient visit          | 0..1        | Encounter                                                     | [PV1[Encounter]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pv1-to-encounter.html)               | 
+| ORC - Common Order           | 1..*        | [DiagnosticReport](StructureDefinition-DiagnosticReport.html) | [ORC[DiagnosticReport]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-orc-to-diagnosticreport.html) |
+|                              |             | [ServiceRequest](StructureDefinition-ServiceRequest.html)     | [ORC[ServiceRequest]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-orc-to-servicerequest.html)     |
+| OBR - Observations Request   |             | [DiagnosticReport](StructureDefinition-DiagnosticReport.html) | [OBR[DiagnosticReport]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obr-to-diagnosticreport.html) |
+| NTE - Notes and Comments     |             | Observation.note?                                             |                                                                                                                   |
+| OBX - Observation/Result     |             |                                                               |                                                                                                                   |
+
+#### Entity Model
+
