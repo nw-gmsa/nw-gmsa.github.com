@@ -1,6 +1,6 @@
-Instance:  EventNotificationDefinition
+Instance:  UnsolicitedObservationMessageDefinition
 InstanceOf: MessageDefinition
-Title:   "Unsolicited Observation"
+Title:   "Unsolicited Observation Message Definition"
 Usage:  #definition
 
 * status = #draft
@@ -16,6 +16,6 @@ Event Notification
   * code = #DiagnosticReport
   * profile = Canonical(DiagnosticReport)
   * min = 1
-  * max = "1"
+  * max = "*"
 
 
