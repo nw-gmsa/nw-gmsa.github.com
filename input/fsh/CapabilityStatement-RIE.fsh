@@ -20,11 +20,13 @@ Is based on [FHIR Messaging](https://hl7.org/fhir/R4/messaging.html) to handle t
     * description = "Recommend [ATNA/NHS England Audits](subdomain-audits.html), encouraged [IHE-IUA](https://profiles.ihe.net/ITI/IUA/index.html)"
 
 * rest.operation[+]
-  * name = "process-message"
+  * name = "$process-message"
   * definition = Canonical(ProcessMessage)
 
 * messaging[0]
-  * supportedMessage[0]
+  * supportedMessage[+]
     * mode = #receiver
     * definition = Canonical(MessageDefinition-laboratory-order)
-
+  * supportedMessage[+]
+    * mode = #sender
+    * definition = Canonical(MessageDefinition-unsolicited-observation)
