@@ -19,7 +19,8 @@ Title: "First draf=t based on Royal College of Radiologists HL7 v2 ORU converted
 
 * code.coding[+] = $sct#1054161000000101 "Genetic report"
 
-* subject = Reference(Patient-JackDawkins-9912003888) "Jack DAWKINS"
+* subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
+* subject.display = "Jack DAWKINS"
 * subject.identifier
   * system = "https://fhir.nhs.uk/Id/nhs-number"
   * value = "9912003888"
