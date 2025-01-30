@@ -23,7 +23,6 @@ Title: "First draf=t based on Royal College of Radiologists HL7 v2 ORU converted
 * subject.identifier
   * system = "https://fhir.nhs.uk/Id/nhs-number"
   * value = "9912003888"
-* subject.reference = "Patient-JackDawkins-9912003888"
 * subject.display = "Jack DAWKINS"
 
 * issued = "2023-09-07T11:45:41+11:00"
