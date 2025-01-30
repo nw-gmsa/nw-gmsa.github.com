@@ -3,7 +3,7 @@ InstanceOf: MessageHeader
 Title: "Message Header - Genomic Report"
 Usage: #example
 
-* eventCoding = http://terminology.hl7.org/CodeSystem/v2-0003#O21
+* eventCoding = http://terminology.hl7.org/CodeSystem/v2-0003#R01
 
 * sender.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
 * sender.identifier.value = "R0A"

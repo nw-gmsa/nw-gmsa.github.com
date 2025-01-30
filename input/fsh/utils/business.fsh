@@ -408,39 +408,29 @@ RuleSet: DailyCalories(patient, patientName, performer, performerName, effective
 * code = $loinc#41979-6 "Calories burned in 24 hour Calculated"
 * valueQuantity = {value} 'kcal/d' "kilokalories per day"
 
+// Bundle RuleSets
+RuleSet: DocumentBundle(uuid, documentdate)
+* type = #document
+* identifier.system = "urn:oid:2.16.724.4.8.10.200.10"
+* identifier.value = {uuid}
+* timestamp = {documentdate}
 
-Profile:        ReferenceRest
-Parent:         Reference
-Id:             reference-rest
-Title:          "Reference - RESTful"
-Description:    "A Reference data type where the referenced resource is expected to be resolvable RESTfully."
-* reference 1..1 MS
-* display MS
+RuleSet: EntryDocument(uuid, resourceId)
+* entry[+]
+  * fullUrl = {uuid}
+  * resource = {resourceId}
 
-Profile:       ReferenceRestOrLogical
-Parent:        Reference
-Id:            reference-rest-or-logical
-Title:         "Reference - RESTful or Logical"
-Description:   "A Reference data type where the referenced resource could be resolvable RESTfully or pointed to logically."
-* obeys PA-ident-1 and PA-ident-2
-* reference MS
-  * ^condition[+] = PA-ident-1
-  * ^condition[+] = PA-ident-2
-* identifier MS
-  * ^condition[+] = PA-ident-1
-  * system = "http://hl7.org/fhir/sid/us-npi"
-  * value 1..1 MS
-* display MS
-  * ^condition[+] = PA-ident-2
+RuleSet: EntryTransaction(type, uuid, resourceId)
+* entry[+]
+  * fullUrl = {uuid}
+  * resource = {resourceId}
+  * request.method = #POST
+  * request.url = {type}
 
-Invariant:   PA-ident-1
-Description: "reference or identifier must be present"
-Expression:  "reference.exists() or identifier.exists()"
-Severity:    #error
-XPath:       "exists(f:reference) or exists(f:identifier)"
+// Bundle RuleSets
+RuleSet: MessageBundle(uuid, documentdate)
+* type = #message
+* identifier.system = "https://tools.ietf.org/html/rfc4122"
+* identifier.value = {uuid}
+* timestamp = {documentdate}
 
-Invariant:   PA-ident-2
-Description: "If reference is not present, display must be present"
-Expression:  "reference.exists().not() implies display.exists()"
-Severity:    #error
-XPath:       "exists(f:reference) or exists(f:display)"
