@@ -1,0 +1,38 @@
+@startuml
+
+title "Genomic Test Request"
+
+frame Message {
+entity "Genomics Order (FHIR Bundle (messaage))" as oml  <<aggregate>>
+
+
+entity "MessageHeader" as MSH
+
+  frame Composition {
+    entity "Patient \n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Patient Patient]] or [[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Fetus Fetus]])" as PID
+
+    entity "Encounter" as PV1
+
+    entity "ServiceRequest \n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Test-Request Test Request]])" as ORC <<aggregate>>
+
+    entity "Specimen \n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Primary-Sample Primary Sample]])" as SPM
+
+    entity "Condition \n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Patient-Clinical-Information Patient Clinical Information]])" as DG1
+
+    entity "DiagnosticReport \n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Relevant-Clinical-Report Relevant Clinical Report]] \nand [[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Previous-Genomic-Report Previous Genomic Report]])" as OBX
+
+    entity "RelatedPerson" as NK1
+  }
+}
+
+oml *-- "1" MSH
+oml *-- "1" ORC
+ORC *-- "0" SPM
+ORC *-- "1" PID
+ORC *-- "0" PV1
+ORC *-- "0" DG1
+ORC *-- "0" OBX
+NK1 -- PID : To link Mother and Fetus
+PID -- NK1
+
+@enduml

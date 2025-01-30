@@ -1,6 +1,6 @@
 @startuml
 
-title "Genomics Order Options"
+title "Genomics Test Request Options"
 
 interface "Genomics Order In" as GenomicsOrderIn
 component "GLH TIE" as GLHTIE
