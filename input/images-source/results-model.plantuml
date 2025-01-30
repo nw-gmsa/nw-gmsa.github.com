@@ -27,9 +27,9 @@ entity "MessageHeader" as MSH
 }
 
 oru *-- "1" MSH
-oru *-- "1" OBR
+oru *-- "*" OBR
 OBR *-- "0" SPM
-OBR *-- "1" ORC : accensionNumber
+OBR "*" *--  ORC : accensionNumber
 OBR *-- "1" PID
 OBR *-- "0" PV1
 OBR *-- "*" OBX : results
