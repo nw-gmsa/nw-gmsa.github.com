@@ -25,7 +25,7 @@ Usage: #example
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Genetics Report</li></ul></div>"
   * code = http://loinc.org#18776-5
 
-Instance: FHIRDocumentEOLCCarePlanBundle
+Instance: FHIRDocumentGeneticReportBundle
 InstanceOf: Bundle
 Title:       "Bundle `Document` - Genetic Report"
 Description:  "FHIR Document Genetic Report for Jack Dawkins"
