@@ -71,12 +71,17 @@ pages:
   index.md:
     title: Home
     generation: markdown
-  design.md:
-    title: Design
+  orders.md:
+    title: Genomics Test Orders
+    generation: markdown
+  reports.md:
+    title: Genomics Reports
     generation: markdown
 menu:
   Home: index.html
-  Design: design.html
+  Design:
+    Genomics Test Orders: orders.html
+    Genomics Reports: reports.html
   Artefacts: artifacts.html
 
 
