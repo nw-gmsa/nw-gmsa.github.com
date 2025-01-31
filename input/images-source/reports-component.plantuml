@@ -38,7 +38,7 @@ HL7_ORU2 -d-> EPR
 TIE -d-> MHD105 : Option EDMS
 MHD105 -d-> EDMS
 
-TIE -d-> Transaction : External EPR/EDMS\n(from internal LIMS only)
+TIE -d-> Transaction : **Electronic Forwarding**\nExternal EPR/EDMS\n(from internal LIMS only)
 Transaction -d-> GOMS
 GOMS -d-> IPA2
 
