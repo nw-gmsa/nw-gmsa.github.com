@@ -2,28 +2,35 @@
 
 title "Genomic Report Component Model"
 
-component "Laboratory Information\nManagmenet System (LIMS)" as LIMS
+component "Genomic Laboratory Hub (GLH or LIMS)" as LIMS
+component "External Genomic Laboratory Hubs (GLH or LIMS)" as xLIMS
 
 component "Electronic Patient\nRecord (EPR)" as EPR
 
-component "Electronic Document\nManagement Systems (EDMS)" as EDMS
+component "Electronic Document\nManagement Systems (EDMS)\n(via NHS England Genomic Order Management Service)" as EDMS
 
-component "Trust Integration Engine (TIE)" as TIE
+component "Genomics Regional Integration Engine (TIE)" as TIE
 component "NHS England Genomic Order Management Service" as GOMS
 
 interface "HL7 v2.x ORU\n(or FHIR Message)" as HL7_ORU1
 interface "HL7 v2.x ORU\n(or FHIR Message)" as HL7_ORU2
-interface "FHIR Transaction" as Transaction
+interface "Multicast Notification Service" as MNS
+interface "FHIR Transaction\n(FHIR Workflow)" as Transaction
 interface "IHE XDS ITI-41/MHD ITI-105\n(pdf or FHIR Document)" as MHD105
 interface "HL7 IPA\n(FHIR RESTful)" as IPA
 interface "IHE XDS ITI-18 & 43\nor MHD ITI-67 & 68\n(pdf or FHIR Document)" as MHD67
 
 interface "HL7 IPA\n(FHIR RESTful)" as IPA2
 
+interface "IHE DSUBm" as DSUBm
+
 component "User Application" as user
 
 LIMS -d-> HL7_ORU1
 HL7_ORU1 -d-> TIE
+
+xLIMS -d-> MNS
+MNS -d-> TIE
 
 TIE -d-> HL7_ORU2 : Option EPR
 HL7_ORU2 -d-> EPR
@@ -31,7 +38,7 @@ HL7_ORU2 -d-> EPR
 TIE -d-> MHD105 : Option EDMS
 MHD105 -d-> EDMS
 
-TIE -d-> Transaction : External EPR/EDMS
+TIE -d-> Transaction : External EPR/EDMS\n(from internal LIMS only)
 Transaction -d-> GOMS
 GOMS -d-> IPA2
 
@@ -41,6 +48,9 @@ EPR -d-> IPA
 IPA -d-> user
 MHD67 -d-> user
 IPA2 -d-> user
+
+EDMS --> DSUBm : Optional Document Notifications
+DSUBm --> EPR
 
 note right of TIE
 Transforms between different formats

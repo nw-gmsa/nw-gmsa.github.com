@@ -34,7 +34,7 @@ This guide focuses on the regional adoption of Genomics and will conform to the 
     - [EPIC FHIR](https://fhir.epic.com/)
 - IHE [XDS](https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html) ITI-18 & 43/[MHD](https://profiles.ihe.net/ITI/MHD/index.html) ITI-67 and 68
 - [NHS England - Genomic Order Management Service FHIR API](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) which is a centralised workflow broker service for managing Genomics Order
-
+- IHE [DSUBm](https://profiles.ihe.net/ITI/DSUBm/index.html) ITI-112
 
 ## Dependencies
 
