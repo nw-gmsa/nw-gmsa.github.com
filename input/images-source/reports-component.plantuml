@@ -3,11 +3,11 @@
 title "Genomic Report Component Model"
 
 component "Genomic Laboratory Hub (GLH or LIMS)" as LIMS
-component "External Genomic Laboratory Hubs (GLH or LIMS)" as xLIMS
+component "External Genomic Laboratory Hubs (GLH or LIMS)\n(via NHS England Genomic Order Management Service)" as xLIMS
 
 component "Electronic Patient\nRecord (EPR)" as EPR
 
-component "Electronic Document\nManagement Systems (EDMS)\n(via NHS England Genomic Order Management Service)" as EDMS
+component "Electronic Document\nManagement Systems (EDMS)" as EDMS
 
 component "Genomics Regional Integration Engine (TIE)" as TIE
 component "NHS England Genomic Order Management Service" as GOMS
