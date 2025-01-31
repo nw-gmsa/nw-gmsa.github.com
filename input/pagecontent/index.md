@@ -15,7 +15,7 @@ This guide focuses on the regional adoption of Genomics and will conform to the 
 ## Reporting Component Model
 
 <figure>
-{%include results-component.svg%}
+{%include reports-component.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Genomics Test Report Component Model</p>
 </figure>
 <br clear="all"

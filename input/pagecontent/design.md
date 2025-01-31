@@ -63,7 +63,7 @@ Detailed Mapping can be here [Message ORU_R01 to Bundle Map (Experimental)](http
 #### Entity Model
 
 <figure>
-{%include results-model.svg%}
+{%include reports-model.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Genomics Test Report Model</p>
 </figure>
 <br clear="all">
