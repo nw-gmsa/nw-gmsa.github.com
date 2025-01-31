@@ -6,8 +6,8 @@ id: nhs.mft.fhir
 canonical: https://hl7.mft.nhs.uk
 version: 0.0.1-current
 name: MFT_Genomics
-title: "MFT Genomics"
-description: Implementation Guide for MFT Genomics
+title: "North West Genomics HL7 IG"
+description: Implementation Guide for North West Genomics
 releaseLabel: ci-build
 
 status: draft
