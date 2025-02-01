@@ -1,0 +1,154 @@
+{
+  "resourceType": "Questionnaire",
+  "title": "NW Genomics Test Order",
+  "status": "draft",
+  "description": "High level documentation of iGene Data Entry form.",
+  "item": [
+    {
+      "type": "string",
+      "linkId": "938689922587",
+      "text": "What Type of Referral Do You Require"
+    },
+    {
+      "type": "string",
+      "linkId": "672319792158",
+      "text": "Please Select Clinical Indication(s)"
+    },
+    {
+      "type": "boolean",
+      "linkId": "144657579345",
+      "text": "High Infection Risk"
+    },
+    {
+      "type": "string",
+      "linkId": "479252319113",
+      "text": "Test Type"
+    },
+    {
+      "type": "boolean",
+      "linkId": "248981018761",
+      "text": "Does This Test Relate to a Pregnancy"
+    },
+    {
+      "type": "choice",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                "code": "drop-down",
+                "display": "Drop down"
+              }
+            ]
+          }
+        }
+      ],
+      "linkId": "964047404592",
+      "text": "Please Select R240 Test(s)",
+      "item": [
+        {
+          "linkId": "964047404592_helpText",
+          "type": "display",
+          "text": "See https://www.england.nhs.uk/wp-content/uploads/2018/08/rare-and-inherited-disease-eligibility-criteria-v2.pdf for details",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "help",
+                    "display": "Help-Button"
+                  }
+                ],
+                "text": "Help-Button"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "string",
+      "linkId": "900113558081",
+      "text": "Please Select R242 Test(s)",
+      "item": [
+        {
+          "linkId": "900113558081_helpText",
+          "type": "display",
+          "text": "See https://www.england.nhs.uk/wp-content/uploads/2018/08/rare-and-inherited-disease-eligibility-criteria-v2.pdf for details",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "help",
+                    "display": "Help-Button"
+                  }
+                ],
+                "text": "Help-Button"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "string",
+      "linkId": "147418579281",
+      "text": "Email Addresses of Non-MFT Clinicians for Result"
+    },
+    {
+      "type": "string",
+      "linkId": "582898557739",
+      "text": "Confirmation of Consent for Testing - MANDATORY Testing will not be performed without completed confirmation of consent"
+    },
+    {
+      "type": "string",
+      "linkId": "727478796798",
+      "text": "Please Acknowledge That a DNA Sample Will be Stored in the Laboratory on Completion of Testing"
+    },
+    {
+      "type": "string",
+      "linkId": "660581884262",
+      "text": "Is the Person Ordering the Test the Referring Clinician"
+    },
+    {
+      "type": "string",
+      "linkId": "377873034801",
+      "text": "Name of Supervising Clinician"
+    },
+    {
+      "type": "group",
+      "linkId": "535819841358",
+      "text": "Specimen(s)",
+      "repeats": true,
+      "item": [
+        {
+          "type": "string",
+          "linkId": "809551649477",
+          "text": "Specimen ID"
+        },
+        {
+          "type": "string",
+          "linkId": "199995486839",
+          "text": "Code"
+        },
+        {
+          "type": "dateTime",
+          "linkId": "410857845223",
+          "text": "Collected"
+        },
+        {
+          "type": "dateTime",
+          "linkId": "254359729122",
+          "text": "Received"
+        }
+      ]
+    }
+  ]
+}

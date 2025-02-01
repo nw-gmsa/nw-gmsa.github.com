@@ -2,9 +2,10 @@ Profile:        ServiceRequest
 Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-ServiceRequest
 Id:             ServiceRequest
 Title:          "ServiceRequest"
-Description:    "TODO just a collection of notes."
+Description:    "Initial elaboration"
 
-* code ^short = "TODO"
+* code ^short = "ISSUE. See [National Genomic Test Directory](https://www.england.nhs.uk/wp-content/uploads/2018/08/rare-and-inherited-disease-eligibility-criteria-v2.pdf)."
+* code 1..* MS
 
 * identifier 1..* MS
 * identifier ^slicing.discriminator.type = #pattern
@@ -16,3 +17,6 @@ Description:    "TODO just a collection of notes."
   accessionNumber 1..1 MS
 
 * identifier[accessionNumber] only AccessionNumber
+
+* category ^short = "ISSUE. Additionally should include high level category either SCT 108252007 Laboratory procedure or child code 116148004 Molecular genetics procedure"
+
