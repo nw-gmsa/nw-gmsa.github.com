@@ -9,20 +9,36 @@ component "Electronic Patient\nRecord (EPR)" as EPR
 
 component "Electronic Document\nManagement Systems (EDMS)" as EDMS
 
-component "Genomics Regional Integration Engine (TIE)" as TIE
+component "NW GLH Regional Integration Engine (TIE)" as TIE
 component "NHS England Genomic Order Management Service" as GOMS
 
-interface "HL7 v2.x ORU\n(or FHIR Message)" as HL7_ORU1
-interface "HL7 v2.x ORU\n(or FHIR Message)" as HL7_ORU2
-interface "Multicast Notification Service" as MNS
-interface "FHIR Transaction\n(FHIR Workflow)" as Transaction
-interface "IHE XDS ITI-41/MHD ITI-105\n(pdf or FHIR Document)" as MHD105
-interface "HL7 IPA\n(FHIR RESTful)" as IPA
-interface "IHE XDS ITI-18 & 43\nor MHD ITI-67 & 68\n(pdf or FHIR Document)" as MHD67
-
-interface "HL7 IPA\n(FHIR RESTful)" as IPA2
-
+frame "Document/Report Event Notification (to RIE)" as xNofify1 {
+ interface "Multicast Notification Service" as MNS
+}
+frame "Document/Report Event Notification (from XDS)" as xNofify2 {
 interface "IHE DSUBm" as DSUBm
+}
+
+frame "Document/Report Message Exchange (from RIE)" as xChange1 {
+ interface "HL7 v2.x ORU\n(or FHIR Message)" as HL7_ORU1
+}
+
+frame "Document/Report Message Exchange (from RIE)" as xChange2 {
+
+ interface "HL7 v2.x ORU\n(or FHIR Message)" as HL7_ORU2
+ interface "IHE XDS ITI-41/MHD ITI-105\n(pdf or FHIR Document)" as MHD105
+ interface "FHIR Transaction\n(FHIR Workflow)" as Transaction
+}
+
+
+frame "Document/Report Sharing" as xShare {
+  interface "HL7 IPA\n(FHIR RESTful)" as IPA
+  interface "IHE XDS ITI-18 & 43\nor MHD ITI-67 & 68\n(pdf or FHIR Document)" as MHD67
+  interface "HL7 IPA\n(FHIR RESTful)" as IPA2
+}
+
+
+
 
 component "User Application" as user
 
