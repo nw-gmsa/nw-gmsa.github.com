@@ -4,7 +4,5 @@ Id:             Specimen
 Title:          "Specimen"
 Description:    "Initial elaboration"
 
-* code ^short = "TODO"
-
 * identifier 1..* MS
 * accessionIdentifier 1..1 MS

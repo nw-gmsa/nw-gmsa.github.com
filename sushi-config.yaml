@@ -69,6 +69,7 @@ parameters:
 instanceOptions:
   setMetaProfile: never
 
+
 pages:
   index.md:
     title: Home
@@ -79,6 +80,13 @@ pages:
   reports.md:
     title: Genomics Reports
     generation: markdown
+
+resources:
+  Questionnaire/NW-Genomics-Test-Order:
+    name: NW Genomics Test Order Form
+    description: NW Genomics Test Order Form
+    exampleBoolean: false
+
 menu:
   Home: index.html
   Design:

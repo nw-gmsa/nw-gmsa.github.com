@@ -5,7 +5,7 @@ Title:          "ServiceRequest"
 Description:    "Initial elaboration"
 
 * code ^short = "ISSUE. See [National Genomic Test Directory](https://www.england.nhs.uk/wp-content/uploads/2018/08/rare-and-inherited-disease-eligibility-criteria-v2.pdf)."
-* code 1..* MS
+* code 1..1 MS
 
 * identifier 1..* MS
 * identifier ^slicing.discriminator.type = #pattern

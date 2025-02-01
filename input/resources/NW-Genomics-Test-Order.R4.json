@@ -1,5 +1,6 @@
 {
   "resourceType": "Questionnaire",
+  "id": "NW-Genomics-Test-Order",
   "title": "NW Genomics Test Order",
   "status": "draft",
   "description": "High level documentation of iGene Data Entry form.",
@@ -47,6 +48,15 @@
       ],
       "linkId": "964047404592",
       "text": "Please Select R240 Test(s)",
+      "answerOption": [
+        {
+          "valueCoding": {
+            "system": "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory",
+            "code": "R67.2",
+            "display": "Monogenic hearing loss"
+          }
+        }
+      ],
       "item": [
         {
           "linkId": "964047404592_helpText",
@@ -71,7 +81,21 @@
       ]
     },
     {
-      "type": "string",
+      "type": "choice",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                "code": "drop-down",
+                "display": "Drop down"
+              }
+            ]
+          }
+        }
+      ],
       "linkId": "900113558081",
       "text": "Please Select R242 Test(s)",
       "item": [
@@ -123,10 +147,6 @@
       "text": "Name of Supervising Clinician"
     },
     {
-      "type": "group",
-      "linkId": "535819841358",
-      "text": "Specimen(s)",
-      "repeats": true,
       "item": [
         {
           "type": "string",
@@ -148,7 +168,11 @@
           "linkId": "254359729122",
           "text": "Received"
         }
-      ]
+      ],
+      "type": "group",
+      "linkId": "535819841358",
+      "text": "Specimen(s)",
+      "repeats": true
     }
   ]
 }
