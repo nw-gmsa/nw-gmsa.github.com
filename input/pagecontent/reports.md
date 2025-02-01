@@ -12,10 +12,10 @@
 - **Document/Report Message Exchange**
     - HL7 v2.x ORU -
         - [HL7 Version 2.5.1 Implementation Guide: Lab Results Interface (LRI), Release 1 from May 2017](https://confluence.hl7.org/download/attachments/25559919/2018%2004%2003%20-%20V2%20LRI%20-%20Ch.%205%20CG%20and%20Code%20System%20Tables.pdf?api=v2) includes **Data Standards**
-        - [HL7 Version 2 to FHIR](https://build.fhir.org/ig/HL7/v2-to-fhir/) conversion of HL7 v2 Messages to [FHIR Messages](https://hl7.org/fhir/R4/messaging.html). (Note: NHS England Genomics is intending to use [FHIR Transactions](https://hl7.org/fhir/R4/http.html#transaction))
+          - [HL7 Version 2 to FHIR](https://build.fhir.org/ig/HL7/v2-to-fhir/) conversion of HL7 v2 Messages to [FHIR Messages](https://hl7.org/fhir/R4/messaging.html). (Note: NHS England Genomics is intending to use [FHIR Transactions](https://hl7.org/fhir/R4/http.html#transaction))
         - Supplier specifications
-            - iGene TO FOLLOW (LIMS to TIE)
-            - [EPIC HL7 v2](https://open.epic.com/Interface/HL7v2) See Discrete Genomic Results (TIE to EPIC EPR)
+            - iGene TO FOLLOW (LIMS to RIE)
+            - [EPIC HL7 v2](https://open.epic.com/Interface/HL7v2) See **Discrete Genomic Results** (RIE to EPIC EPR)
     - IHE [XDS](https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html) ITI-41/[MHD](https://profiles.ihe.net/ITI/MHD/index.html) ITI-105 - The document in the payload can be pdf or a FHIR Document (informatics description: composition). [NHS England - National Record Locator](https://digital.nhs.uk/developer/api-catalogue/national-record-locator-fhir) is also an option here.
         - [HL7 EU Laboratory Report](https://build.fhir.org/ig/hl7-eu/laboratory/) - This a [FHIR Document](https://hl7.org/fhir/R4/documents.html) version of the HL7 v2 ORU (and any FHIR Message equivalent).
 - **Document/Report Sharing**
