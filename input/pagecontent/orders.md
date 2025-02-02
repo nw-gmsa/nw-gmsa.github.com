@@ -1,4 +1,24 @@
 
+## Actors and Transactions
+
+| Actor                | Definition                                                                                                                                       |
+|----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| Order Placer         | Most commonly the Electronic Patient Record (EPR) System                                                                                         |
+| Order Filler         | Also known as a Genomic Laboratory Hub (GLH)                                                                                                     |
+| Automation Manager   | This is the function of [Genomic Order Management Service](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) |
+| Order Result Tracker | This is the function of [Genomic Order Management Service](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) |
+
+See [IHE Pathology and Laboratory Medicine (PaLM) Technical Framework - Volume 1](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol1.pdf) for detailed description of actors.
+
+<figure>
+{%include ihe-palm-component.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">IHE LTW Actor Diagram</p>
+</figure>
+<br clear="all">
+
+At present only the IHE `LAB-1` is in focus and this is using HL7 v2.x ORM as described below.
+Later stages will include modernised versions of `LAB-4` and `LAB-5` via the [Genomic Order Management Service](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir), this will also include a HL7 FHIR version of `LAB-1`
+
 ## Reporting Component Model
 
 <figure>

@@ -1,0 +1,17 @@
+@startuml
+
+title "IHE LTW Actor Diagram"
+
+agent "Order Placer" as Placer
+agent "Order Filler" as Filler
+agent "Automation Manager" as Manager
+agent "Order Result Tracker" as Tracker
+
+Placer -r-> Filler: Placer Order Management [LAB-1]
+Filler -l-> Placer: Filler Order Management [LAB-2]
+
+Filler -u-> Tracker: Order Results Management [LAB-3]
+Filler -d-> Manager: Work Order Management [LAB-4]
+Manager -u-> Filler: Test Results Management [LAB-5]
+
+@enduml
