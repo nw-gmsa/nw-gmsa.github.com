@@ -11,11 +11,11 @@ frame "Data Capture" as sdc {
   component "Order Entry\nUser Application" as user
 }
 
-frame "Order Message Exchange (to GLH RIE)" as xChange1 {
+frame "Placer Order Management [LAB-1] (to GLH RIE)" as xChange1 {
  interface "HL7 v2.x ORM\n(or FHIR Message)" as HL7_ORM1
 }
 
-frame "Order Message Exchange (from GLH RIE)" as xChange2 {
+frame "Placer Order Management [LAB-1] (from GLH RIE)" as xChange2 {
  interface "HL7 v2.x ORM/OML?" as HL7_ORM2
  interface "FHIR Transaction\n(FHIR Workflow)" as Transaction
 }
