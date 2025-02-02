@@ -1,6 +1,6 @@
 @startuml
 
-title "Genomic Test Request"
+title "Genomic Test Request (National)"
 
 frame Message {
 entity "Genomics Order (FHIR Bundle (messaage))" as oml

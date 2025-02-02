@@ -1,0 +1,19 @@
+@startuml
+
+start
+
+:Capture and record Order in EHR;
+:Send Order (Communication Format ORM_O01);
+if (Local GLH order?) then (yes)
+label sp_lab2
+:Send to local GLH (LIMS);
+else (no)
+:Transform to FHIR;
+:Send to national system
+(Communication Format: FHIR Transaction);
+:Send to other GLH (LIMS);
+endif
+
+stop
+
+@enduml

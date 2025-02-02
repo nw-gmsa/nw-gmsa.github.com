@@ -77,8 +77,19 @@ This is an initial (incomplete) map and will change to match exact requirement o
 
 ### Entity Model
 
+#### Local
+
+<figure>
+{%include orders-model-local.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">Local - Genomics Test Request Model</p>
+</figure>
+<br clear="all">
+
+
+#### National
+
 <figure>
 {%include orders-model.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">Genomics Test Request Model</p>
+<p id="fX.X.X.X-X" class="figureTitle">National - Genomics Test Request Model</p>
 </figure>
 <br clear="all">
