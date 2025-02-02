@@ -1,5 +1,7 @@
 @startuml
 
+skinparam svgDimensionStyle false
+
 title "Genomic Test Request (National)"
 
 frame Message {
