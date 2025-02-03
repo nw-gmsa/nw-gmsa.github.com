@@ -10,7 +10,7 @@ Title: "First draft based on Royal College of Radiologists HL7 v2 ORU converted 
   * type = "ServiceRequest"
   * identifier.type = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN
   * identifier.system = "https://fhir.leedsth.nhs.uk/Id/AccessionNumber"
-  * identifier.value = "123456789"
+  * identifier.value = "1601737"
   * identifier.assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
   * identifier.assigner.identifier.value = "R0A"
 
