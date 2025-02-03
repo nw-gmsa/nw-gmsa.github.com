@@ -92,7 +92,7 @@ resources:
 
 menu:
   Home: index.html
-  Analysis (Volumen 1) :
+  Analysis (Volume 1) :
     Genomics Test Workflow: orders-workflow.html
   Interfaces (Volume 2):
     Placer Order Management [LAB-1]: orders-LAB-1.html
