@@ -20,3 +20,21 @@ Description:    "Initial elaboration"
 
 * category ^short = "ISSUE. Additionally should include high level category either SCT 108252007 Laboratory procedure or child code 116148004 Molecular genetics procedure"
 
+* requester 1..1 MS
+* authoredOn 1..1 MS
+
+* basedOn 0..* MS
+* basedOn ^short = "SHALL reference a parent request where this ServiceRequest is based on a previous request, e.g. in the case of reanalysis and cascade testing, or Germline Late tests in the Tumour First/Germline Late scenario"
+* note MS
+
+* supportingInfo ^short = "ISSUE. National programme is not suporting panels, this may result in transformation issues."
+* supportingInfo 1..* MS
+* supportingInfo ^slicing.discriminator.type = #pattern
+* supportingInfo ^slicing.discriminator.path = "type"
+* supportingInfo ^slicing.rules = #open
+* supportingInfo ^slicing.description = "Slice based on the type"
+* supportingInfo ^slicing.ordered = false
+* supportingInfo contains
+  TestOrderForm 1..1 MS
+
+* supportingInfo[TestOrderForm] only Reference(ObservationPanel)

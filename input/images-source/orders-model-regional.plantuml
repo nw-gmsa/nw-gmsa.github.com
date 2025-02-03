@@ -3,7 +3,7 @@
 title "Genomic Test Request (Local)"
 
 
-frame "Order\n(HL7 v2 ORM_O01)"  as Order {
+frame "Order\n(HL7 v2 OML_O21)"  as Order {
 
   entity "Patient \n(HL7 v2 PID)" as PID
 
@@ -37,13 +37,15 @@ end note
 
     note right of QR
     MFT (EPIC and LIMS) [[Questionnaire-NW-Genomics-Test-Order.html Genonics Order Entry Form]]
-    (this can be defined as a FHIR Questionnaire)
-    openEHR ??
+    (this can be defined as a FHIR Questionnaire
+    or openEHR Template?)
+
+    HL7 FHIR [[StructureDefinition-Observation-Panel.html Observation Panel]]
+    or HL7 FHIR [[StructureDefinition-QuestionnaireResponse.html QuestionnaireResponse]]
     end note
 
     note right of OBX
     HL7 FHIR [[StructureDefinition-Observation.html Observation]]
-    or collectively as HL7 FHIR [[StructureDefinition-QuestionnaireResponse.html QuestionnaireResponse]]
     end note
   }
 }
