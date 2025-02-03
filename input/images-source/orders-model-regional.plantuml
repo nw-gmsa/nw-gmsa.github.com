@@ -18,13 +18,14 @@ frame "Order\n(HL7 v2 OML_O21)"  as Order {
   entity "Specimen \n(HL7 v2 SPM)" as SPM
 
   note bottom of SPM
-  openEHR [[https://ckm.openehr.org/ckm/archetypes/1013.1.331 Specimen]]
   HL7 FHIR [[StructureDefinition-Specimen.html Specimen]]
+  openEHR [[https://ckm.openehr.org/ckm/archetypes/1013.1.331 Specimen]]
+
   end note
 
   note right of ORC
-openEHR [[https://ckm.openehr.org/ckm/archetypes/1013.1.614 Service request]]
 HL7 FHIR [[StructureDefinition-ServiceRequest.html ServiceRequest]]
+openEHR [[https://ckm.openehr.org/ckm/archetypes/1013.1.614 Service request]]
 end note
 
   frame OrderEntryForm {
@@ -51,11 +52,10 @@ end note
 }
 
 
-ORC *-- "0..*" SPM
-ORC *-- "1..1" PID
-ORC *-- "0..1" PV1
+ORC *-- "0..*" SPM : specimen
+ORC *-- "1..1" PID : subject
+ORC *-- "0..1" PV1 : encounter
 ORC *-- "1..1" QR : supportingInfo
-QR *-- "1..*" OBX
-
+QR *-- "1..*" OBX: hasMember
 
 @enduml
