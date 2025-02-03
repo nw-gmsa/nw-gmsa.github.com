@@ -74,6 +74,9 @@ pages:
   index.md:
     title: Home
     generation: markdown
+  orders-workflow.md:
+    title: Genomics Test Workflow
+    generation: markdown
   orders.md:
     title: Genomics Test Orders
     generation: markdown
@@ -89,6 +92,8 @@ resources:
 
 menu:
   Home: index.html
+  Analysis:
+    Genomics Test Workflow: orders-workflow.html
   Design:
     Genomics Test Orders: orders.html
     Genomics Reports: reports.html
