@@ -3,12 +3,12 @@
 
 | Actor                | Definition                                                                                                                                       |
 |----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
-| Order Placer         | Most commonly the Electronic Patient Record (EPR) System                                                                                         |
+| Order Placer         | Commonly the Electronic Patient Record (EPR) System                                                                                              |
 | Order Filler         | Also known as a Genomic Laboratory Hub (GLH)                                                                                                     |
 | Automation Manager   | This is the function of [Genomic Order Management Service](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) |
 | Order Result Tracker | This is the function of [Genomic Order Management Service](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) |
 
-See [IHE Pathology and Laboratory Medicine (PaLM) Technical Framework - Volume 1](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol1.pdf) for detailed description of actors.
+See `Section 3 Laboratory Testing Workflow (LTW) Profile` [IHE Pathology and Laboratory Medicine (PaLM) Technical Framework - Volume 1](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol1.pdf) for detailed description of actors.
 
 <figure>
 {%include ihe-palm-component.svg%}
@@ -38,7 +38,7 @@ Later stages will include modernised versions of `LAB-4` and `LAB-5` via the [Ge
 - **Data Capture**
   - See [NW Genomics Test Order Form](Questionnaire-NW-Genomics-Test-Order.html) and [Questionnaire Viewer](https://project-wildfyre.github.io/questionnaire-viewer/?q=https://fhir-mft.github.io/FHIRGenomics/Questionnaire-NW-Genomics-Test-Order.json)
 
-#### EPIC ORM_O21 Example
+#### EPIC ORM_O01 Example
 
 ```
 MSH|^~\&|EpicCare|MFT|TIE|SMHGEN|20250129103733|GNTCO|ORM^O01|527178290|T|2.4|||AL|NE
