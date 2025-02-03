@@ -20,10 +20,11 @@ See also Ref A `Section 3 Laboratory Testing Workflow (LTW) Profile` for detaile
 </figure>
 <br clear="all">
 
-At present only the IHE `LAB-1` is in focus and this is using HL7 v2.x ORM as described below.
-Later stages will include modernised versions of `LAB-4` and `LAB-5` via the [Genomic Order Management Service](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir), this will also include a HL7 FHIR version of `LAB-1`
+Initially only the IHE `LAB-1` is in focus and this is probably using HL7 v2.x ORM_O01/OML_O21 as described below.
+This will be followed by IHE `LAB-1` probably using HL7 v2.x ORU_R01
+Later stages will include the use of [Genomic Order Management Service](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir), using HL7 FHIR.
 
-### Entity Model
+### Order Entity Model
 
 #### Regional
 
@@ -42,7 +43,7 @@ Later stages will include modernised versions of `LAB-4` and `LAB-5` via the [Ge
 </figure>
 <br clear="all">
 
-### Overview Mapping 
+### Order Overview HL7 Mapping 
 
 Detailed Mapping can be here [Message OML_O21 to Bundle Map (Experimental)](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-message-oml-o21-to-bundle.html)
 Further details on genomic specific mapping can be found on [NHS England FHIR Genomics Implementation Guide - Clincial Headings](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings)

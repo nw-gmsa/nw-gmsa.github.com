@@ -80,8 +80,8 @@ pages:
   orders-LAB-1.md:
     title: Placer Order Management [LAB-1]
     generation: markdown
-  reports.md:
-    title: Genomics Reports
+  reports-LAB-3.md:
+    title: Order Results Management [LAB-3]
     generation: markdown
 
 resources:
@@ -96,7 +96,7 @@ menu:
     Genomics Test Workflow: orders-workflow.html
   Interfaces (Volume 2):
     Placer Order Management [LAB-1]: orders-LAB-1.html
-    Genomics Reports: reports.html
+    Order Results Management [LAB-3]: reports.html
   Artefacts: artifacts.html
 
 
