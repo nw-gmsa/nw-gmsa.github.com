@@ -1,4 +1,8 @@
 
+## References 
+
+A. [IHE Pathology and Laboratory Medicine (PaLM) Technical Framework - Volume 1](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol1.pdf) 
+
 ## Actors and Transactions
 
 | Actor                | Definition                                                                                                                                       |
@@ -8,7 +12,7 @@
 | Automation Manager   | This is the function of [Genomic Order Management Service](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) |
 | Order Result Tracker | This is the function of [Genomic Order Management Service](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) |
 
-See `Section 3 Laboratory Testing Workflow (LTW) Profile` [IHE Pathology and Laboratory Medicine (PaLM) Technical Framework - Volume 1](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol1.pdf) for detailed description of actors.
+See also Ref A `Section 3 Laboratory Testing Workflow (LTW) Profile` for detailed description of actors.
 
 <figure>
 {%include ihe-palm-component.svg%}

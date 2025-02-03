@@ -77,8 +77,8 @@ pages:
   orders-workflow.md:
     title: Genomics Test Workflow
     generation: markdown
-  orders.md:
-    title: Genomics Test Orders
+  orders-LAB-1.md:
+    title: Placer Order Management [LAB-1]
     generation: markdown
   reports.md:
     title: Genomics Reports
@@ -95,7 +95,7 @@ menu:
   Analysis:
     Genomics Test Workflow: orders-workflow.html
   Design:
-    Genomics Test Orders: orders.html
+    Placer Order Management [LAB-1]: orders-LAB-1.html
     Genomics Reports: reports.html
   Artefacts: artifacts.html
 
