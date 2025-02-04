@@ -21,3 +21,5 @@ DRAFT Extension of UKCore Practitioner which includes elements from:
   EnglandPractitionerIdentifier 1..1 MS
 
 * identifier[EnglandPractitionerIdentifier] only EnglandPractitionerIdentifier
+
+* name 0..1 MS
