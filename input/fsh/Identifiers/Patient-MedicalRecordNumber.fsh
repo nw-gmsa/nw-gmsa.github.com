@@ -18,7 +18,7 @@ Only use in References if the NHS Number is not known or unverified.
 
 """
 
-* type = http://terminology.hl7.org/CodeSystem/v2-0203#MR
+* type = $v2-0203#MR (exactly)
 * system 0..1
 * system ^short = "Should indicate the assigning authority/provider of the MRN. This is defined by the assigning authority."
 * value 1..1

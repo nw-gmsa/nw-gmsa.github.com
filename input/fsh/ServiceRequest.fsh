@@ -8,7 +8,7 @@ Description:    "Initial elaboration"
 * code 1..1 MS
 
 * identifier 1..* MS
-* identifier ^slicing.discriminator.type = #pattern
+* identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "type"
 * identifier ^slicing.rules = #open
 * identifier ^slicing.description = "Slice based on the type"

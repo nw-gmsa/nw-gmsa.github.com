@@ -44,7 +44,7 @@ DiagnosticReport based on
 
 * performer[organisation].identifier only OrganisationCode
 
-* performer[operator].identifier only GeneralMedicalPractitionerCode or GeneralMedicalCouncilReferenceNumber
+* performer[operator].identifier only EnglandPractitionerIdentifier
 * performer[operator].extension[performerFunction].valueCodeableConcept.coding = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#SPRF
 
 * resultsInterpreter.identifier 1..1
@@ -54,7 +54,7 @@ DiagnosticReport based on
 * resultsInterpreter.extension contains
       http://hl7.org/fhir/StructureDefinition/event-performerFunction named performerFunction 0..1
 
-* resultsInterpreter ^slicing.discriminator.type = #pattern
+* resultsInterpreter ^slicing.discriminator.type = #value
 * resultsInterpreter ^slicing.discriminator.path = "extension[performerFunction].valueCodeableConcept.coding.code"
 * resultsInterpreter ^slicing.rules = #open
 * resultsInterpreter ^slicing.description = "Slice based on the type"
@@ -64,6 +64,6 @@ DiagnosticReport based on
   secondaryReporter 0..*
 
 * resultsInterpreter[primaryReporter].extension[performerFunction].valueCodeableConcept.coding = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PPRF
-* resultsInterpreter[primaryReporter].identifier only GeneralMedicalPractitionerCode or GeneralMedicalCouncilReferenceNumber
+* resultsInterpreter[primaryReporter].identifier only EnglandPractitionerIdentifier
 * resultsInterpreter[secondaryReporter].extension[performerFunction].valueCodeableConcept.coding = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#SPRF
-* resultsInterpreter[secondaryReporter].identifier only GeneralMedicalPractitionerCode or GeneralMedicalCouncilReferenceNumber
+* resultsInterpreter[secondaryReporter].identifier only EnglandPractitionerIdentifier
