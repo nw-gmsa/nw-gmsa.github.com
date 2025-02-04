@@ -74,7 +74,7 @@ pages:
   index.md:
     title: Home
     generation: markdown
-  orders-workflow.md:
+  orders-LTW.md:
     title: Genomics Test Workflow
     generation: markdown
   orders-LAB-1.md:

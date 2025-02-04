@@ -2,42 +2,45 @@
 
 title "Genomic Order Component Model"
 
-component "NW Genomic Laboratory Hub (LIMS)" as LIMS
-component "Electronic Patient\nRecord (EPR)" as EPR
-component "NW GLH Regional Integration Engine (RIE)" as TIE
-component "NHS England Genomic Order Management Service" as GOMS
+frame "Regional Placer Order Management [LAB-1]" as LAB1 {
+  component "**Order Filler**\n\nNW Genomic Laboratory Hub (LIMS)" as LIMS
+  component "**Order Placer**\nRegional" as EPR
+  component "North West GLH Regional Integration Engine (RIE)" as TIE
 
-frame "Data Capture" as sdc {
-  component "Order Entry\nUser Application" as user
+ interface "HL7 FHIR Message **Laboratory Order O21**" as HL7_ORM1
+
+ interface "HL7 v2.x **OML_O21/(ORM_O01)**" as HL7_ORM2
+
+  note right of TIE
+  Transforms between different formats
+  Can provide code conversions
+  Routes orders
+  end note
 }
 
-frame "Placer Order Management [LAB-1] (to GLH RIE)" as xChange1 {
- interface "HL7 v2.x ORM\n(or FHIR Message)" as HL7_ORM1
-}
+frame "National Service" as future {
+ component "**Order Placer**\nNational" as EPRE
+ component "NHS England Genomic Order Management Service" as GOMSp
+ component "**Order Filler**\n\nOther Regional Genomic Laboratory Hub (LIMS)" as LIMSE
+ component "NHS England Genomic Order Management Service" as GOMS
+ interface "Order Notification and Retrieval" as notify
+ interface "HL7 FHIR Transaction\n(FHIR Workflow)" as Transaction
 
-frame "Placer Order Management [LAB-1] (from GLH RIE)" as xChange2 {
- interface "HL7 v2.x ORM/OML?" as HL7_ORM2
- interface "FHIR Transaction\n(FHIR Workflow)" as Transaction
+
+ EPRE -d-> GOMSp
+ GOMSp <-d-> notify
+ notify <-d-> TIE
 }
 
 EPR -d-> HL7_ORM1
 HL7_ORM1 -d-> TIE
 TIE -d-> HL7_ORM2
-TIE -d-> Transaction: External orders
+TIE -d-> Transaction: Forwarded or Copy\nof Order
 Transaction -d-> GOMS
+GOMS -d-> LIMSE
 
 HL7_ORM2 -d-> LIMS
-user -d-> LIMS : Manual Order Upload
 
-note left of user
-This needs converting to a HL7 interface
-to allow orders to flow via the GLH RIE
-end note
 
-note right of TIE
-Transforms between different formats
-Can provide code conversions
-Routes orders
-end note
 
 @enduml

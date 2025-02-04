@@ -2,6 +2,16 @@
 ## References
 
 - A. [IHE Pathology and Laboratory Medicine (PaLM) Technical Framework - Volume 2a (PaLM TF-2a) Transactions](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol2a.pdf)
+- B. **Placer Order Management [LAB-1]**
+  - HL7 v2.x OML_021
+    - [HL7 Version 2 to FHIR - Message OML_O21 to Bundle Map](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-message-oml-o21-to-bundle.html)
+  - HL7 v2.x ORM_O01
+    - [HL7 Version 2 to FHIR - Message ORM_O01 to Bundle Map](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-message-orm-o01-to-bundle.html) conversion of HL7 v2 ORM Messages to [FHIR Messages](https://hl7.org/fhir/R4/messaging.html). (Note: NHS England Genomics is intending to use [FHIR Transactions](https://hl7.org/fhir/R4/http.html#transaction))
+    - Supplier Specifications
+      - [EPIC HL7 v2](https://open.epic.com/Interface/HL7v2) See **Outgoing Ancillary Orders**  (RIE to EPIC EPR)
+      - iGene TO FOLLOW (LIMS to RIE)
+- C. **Data Capture**
+  - See [NW Genomics Test Order Form](Questionnaire-NW-Genomics-Test-Order.html) and [Questionnaire Viewer](https://project-wildfyre.github.io/questionnaire-viewer/?q=https://fhir-mft.github.io/FHIRGenomics/Questionnaire-NW-Genomics-Test-Order.json)
 
 ## Ordering Component Model
 
@@ -13,16 +23,34 @@
 
 ### Interface Standards
 
-- **Placer Order Management [LAB-1]**
-  - HL7 v2.x OML_021
-    - [HL7 Version 2 to FHIR - Message OML_O21 to Bundle Map](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-message-oml-o21-to-bundle.html)
-  - HL7 v2.x ORM_O01
-    - [HL7 Version 2 to FHIR - Message ORM_O01 to Bundle Map](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-message-orm-o01-to-bundle.html) conversion of HL7 v2 ORM Messages to [FHIR Messages](https://hl7.org/fhir/R4/messaging.html). (Note: NHS England Genomics is intending to use [FHIR Transactions](https://hl7.org/fhir/R4/http.html#transaction))
-    - Supplier Specifications
-      - [EPIC HL7 v2](https://open.epic.com/Interface/HL7v2) See **Outgoing Ancillary Orders**  (RIE to EPIC EPR)
-      - iGene TO FOLLOW (LIMS to RIE)
-- **Data Capture**
-  - See [NW Genomics Test Order Form](Questionnaire-NW-Genomics-Test-Order.html) and [Questionnaire Viewer](https://project-wildfyre.github.io/questionnaire-viewer/?q=https://fhir-mft.github.io/FHIRGenomics/Questionnaire-NW-Genomics-Test-Order.json)
+Is based on a HL7 FHIR [laboratory order (O21)](MessageDefinition-MessageDefinition-laboratory-order.html) Message which is backwards compatible with HL7 v2 OML_O21 (or ORM_O01) Message.
+
+
+#### HL7 v2 Mapping 
+
+Detailed Mapping can be here [Message OML_O21 to Bundle Map (Experimental)](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-message-oml-o21-to-bundle.html)
+Further details on genomic specific mapping can be found on [NHS England FHIR Genomics Implementation Guide - Clincial Headings](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings)
+
+This is an initial (incomplete) map and will change to match exact requirement of GLH LIMS <- This is currently OML, not ORM (EPIC).
+
+| HL7 v2 OML Segment                 | Cardinality | FHIR Resource                                             | Map                                                                                                                                            | 
+|------------------------------------|-------------|-----------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| MSH Message Header                 | 1..1        | MessageHeader                                             | [MSH[MessageHeader]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-msh-to-messageheader.html)                                    |
+| PID Patient Identification         | 0..1        | Patient                                                   | [PID[Patient]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pid-to-patient.html) via ServiceRequest.subject                     |                                                                                          |
+| NK1 Next of Kin/Associated Parties | 0..*        | RelatedPerson or Patient                                  | [NK1[RelatedPerson]](NK1[RelatedPerson]) or [NK1[Patient]](NK1[Patient])                                                                       |
+| PV1 Patient visit                  | 0..1        | Encounter                                                 | [PV1[Encounter]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pv1-to-encounter.html) via ServiceRequest.encounter               | 
+| **ORDER**                          | 1..*        |                                                           |                                                                                                                                                |
+| - ORC Common Order                 | 1..*        | [ServiceRequest](StructureDefinition-ServiceRequest.html) | [ORC[ServiceRequest]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-orc-to-servicerequest.html)                                  |
+| - **OBSERVATION REQUEST**          | 0..*        |                                                           |                                                                                                                                                |
+| -- OBR Observation Request         | 1..*        | [ServiceRequest](StructureDefinition-ServiceRequest.html) | [OBR[ServiceRequest]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obr-to-servicerequest.html)                                  
+| -- NTE Notes and Comments          |             | [ServiceRequest](StructureDefinition-ServiceRequest.html) | [NTE[ServiceRequest]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-nte-to-servicerequest.html)                                  |
+| -- PRT Participation               |             | PractitionerRole                                          | [PRT[PractitionerRole]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-prt-to-practitionerrole.html) via Specimen.collection      |
+| -- OBX Observation/Result          | *..*        | [Observation](StructureDefinition-ServiceRequest.html)    | [OBX[Observation-Component]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-component-to-observation.html) via ServiceRequest.supportingInfo                    
+| -- DG1 Diagnosis                   | 0..*        | Condition                                                 | [DG1[Condition]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-dg1-to-condition.html) via ServiceRequest.resason[Reference/Code] |
+| -- SPM Specimen                    | 1..*        | [Specimen](StructureDefinition-Specimen.html)             | [SPM[Specimen]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-spm-to-specimen.html) via ServiceRequest.specimen                  |                                                                                                         |
+
+
+### Examples
 
 #### EPIC ORM_O01 Example
 
