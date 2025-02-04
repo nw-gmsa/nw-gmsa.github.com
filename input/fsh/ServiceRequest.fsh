@@ -21,7 +21,9 @@ Description:    "Initial elaboration"
 * category ^short = "ISSUE. Additionally should include high level category either SCT 108252007 Laboratory procedure or child code 116148004 Molecular genetics procedure"
 
 * requester 1..1 MS
+* requester ^short = "ISSUE. If using national identifier, the reference could be omitted."
 * requester only Reference(Practitioner)
+* requester.identifier only EnglandPractitionerIdentifier
 
 * authoredOn 1..1 MS
 
