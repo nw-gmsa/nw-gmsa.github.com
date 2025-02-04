@@ -93,7 +93,7 @@ resources:
 menu:
   Home: index.html
   Analysis (Volume 1) :
-    Genomics Test Workflow [LTW]: orders-workflow.html
+    Genomics Test Workflow [LTW]: orders-LTW.html
   Interfaces (Volume 2):
     Placer Order Management [LAB-1]: orders-LAB-1.html
     Order Results Management [LAB-3]: reports-LAB-3.html
