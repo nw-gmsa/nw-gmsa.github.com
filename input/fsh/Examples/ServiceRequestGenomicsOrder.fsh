@@ -1,6 +1,6 @@
 Instance: ServiceRequestGenomicsOrder
 InstanceOf: ServiceRequest
-Title: "TODO"
+Title: "ServiceRequest Example"
 
 * meta.versionId = "1.0"
 
