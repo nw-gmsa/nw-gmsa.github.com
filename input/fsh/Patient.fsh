@@ -13,7 +13,10 @@ DRAFT Extension of UKCore-Patient which includes constraints from:
 
 * identifier[nhsNumber] only NHSNumber
 * identifier[nhsNumber] ^short = "UK National Health Identifiers"
+* identifier[nhsNumber].extension[nhsNumberVerificationStatus] ^short = "NOT REQUIRED. As all NHS Numbers **MUST** be *01 Number present and verified*, this status will be assumed."
 * identifier[MedicalRecordNumber] only MedicalRecordNumber
 * identifier[MedicalRecordNumber] ^short = "Medical Record Number"
 
-* name 1..*
+* name 1..* MS
+* gender 0..1 MS
+* birthDate 0..1 MS
