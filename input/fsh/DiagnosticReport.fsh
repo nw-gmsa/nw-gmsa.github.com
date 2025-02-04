@@ -3,8 +3,7 @@ Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-DiagnosticRep
 Id:             DiagnosticReport
 Title:          "Diagnostic Report"
 Description:    """
-NW Genomics extension of [UK Core DiagnosticReport](https://simplifier.net/hl7fhirukcorer4/ukcore-diagnosticreport)
-
+DRAFT Extension of [UK Core DiagnosticReport](https://simplifier.net/hl7fhirukcorer4/ukcore-diagnosticreport)
 """
 
 * identifier 1..* MS
