@@ -52,7 +52,9 @@ This is an initial (incomplete) map and will change to match exact requirement o
 
 ### Examples
 
-#### EPIC ORM_O01 Example
+#### EPIC Example
+
+##### HL7 v2.4 ORM_O01
 
 ```
 MSH|^~\&|EpicCare|MFT|TIE|SMHGEN|20250129103733|GNTCO|ORM^O01|527178290|T|2.4|||AL|NE
@@ -79,16 +81,4 @@ OBX|11|ST|230039^Is the Person Ordering the Test the Referring Clinician^IGENE||
 OBX|12|ST|^Name of Supervising Clinician||DESHPANDE, CHARULATA||||||F|||20250129103726|||||||||||||||QST
 SPM|1|^25GEN-029GN00001&Beaker||Blood^Blood|||||||||||||20250129103726|20250129103727||Y|||||||||||||||S
 ```
-
-## North West Genomics Order Message Exchange Options
-
-<figure>
-{%include orders.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">Genomics Order Options</p>
-</figure>
-<br clear="all">
-
-Note: 
-- The use of FHIR Message may be required for HL7 v2.x ORM conversion, this involves the addition of a FHIR MessageHeader to the FHIR Bundle 
-- The actor `Document Registry` is defined in [IHE MHDS Actors and Transactions](https://profiles.ihe.net/ITI/MHDS/volume-1.html#1501-mhds-actors-transactions-and-content-modules). This use case can be solved by IHE XDS or Electronic Document Management System (EDMS).
 
