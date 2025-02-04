@@ -21,7 +21,11 @@ Description:    "Initial elaboration"
 * category ^short = "ISSUE. Additionally should include high level category either SCT 108252007 Laboratory procedure or child code 116148004 Molecular genetics procedure"
 
 * requester 1..1 MS
+* requester only Reference(Practitioner)
+
 * authoredOn 1..1 MS
+
+* subject only Reference(Patient)
 
 * basedOn 0..* MS
 * basedOn ^short = "SHALL reference a parent request where this ServiceRequest is based on a previous request, e.g. in the case of reanalysis and cascade testing, or Germline Late tests in the Tumour First/Germline Late scenario"

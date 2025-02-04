@@ -27,6 +27,7 @@ DiagnosticReport based on
 
 * subject 1..1
 * subject.identifier 1..1
+* subject only Reference(Patient)
 
 * performer.identifier 1..1
 * performer.identifier.system 1..1
@@ -34,6 +35,8 @@ DiagnosticReport based on
 * performer.type 1..1
 * performer.extension contains
       http://hl7.org/fhir/StructureDefinition/event-performerFunction named performerFunction 0..1
+* performer only Reference(Practitioner)
+
 * performer ^slicing.discriminator.type = #pattern
 * performer ^slicing.discriminator.path = "type"
 * performer ^slicing.rules = #open
@@ -53,6 +56,7 @@ DiagnosticReport based on
 * resultsInterpreter.type 1..1
 * resultsInterpreter.extension contains
       http://hl7.org/fhir/StructureDefinition/event-performerFunction named performerFunction 0..1
+* resultsInterpreter only Reference(Practitioner)
 
 * resultsInterpreter ^slicing.discriminator.type = #value
 * resultsInterpreter ^slicing.discriminator.path = "extension[performerFunction].valueCodeableConcept.coding.code"

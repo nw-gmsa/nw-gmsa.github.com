@@ -92,9 +92,9 @@ resources:
 
 menu:
   Home: index.html
-  Analysis (Volume 1) :
+  Analysis and Design (Vol 1) :
     Genomics Test Workflow [LTW]: orders-LTW.html
-  Interfaces (Volume 2):
+  Interfaces (Vol 2):
     Placer Order Management [LAB-1]: orders-LAB-1.html
     Order Results Management [LAB-3]: reports-LAB-3.html
   Artefacts: artifacts.html
