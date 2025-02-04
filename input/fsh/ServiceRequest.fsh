@@ -20,6 +20,8 @@ Description:    "Extension of UKCore-ServiceRequest"
 
 * category ^short = "ISSUE. Additionally should include high level category either SCT 108252007 Laboratory procedure or child code 116148004 Molecular genetics procedure"
 
+* encounter only Reference(Encounter)
+
 * requester 1..1 MS
 * requester ^short = "ISSUE. If using national identifier, the reference could be omitted."
 * requester only Reference(Practitioner)
