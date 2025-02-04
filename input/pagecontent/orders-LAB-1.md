@@ -46,7 +46,7 @@ This is an initial (incomplete) map and will change to match exact requirement o
 | -- NTE Notes and Comments          |             | [ServiceRequest](StructureDefinition-ServiceRequest.html) | [NTE[ServiceRequest]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-nte-to-servicerequest.html)                                  |
 | -- PRT Participation               |             | PractitionerRole                                          | [PRT[PractitionerRole]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-prt-to-practitionerrole.html) via Specimen.collection      |
 | -- OBX Observation/Result          | *..*        | [Observation](StructureDefinition-ServiceRequest.html)    | [OBX[Observation-Component]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-component-to-observation.html) via ServiceRequest.supportingInfo                    
-| -- DG1 Diagnosis                   | 0..*        | Condition                                                 | [DG1[Condition]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-dg1-to-condition.html) via ServiceRequest.resason[Reference/Code] |
+| -- DG1 Diagnosis                   | 0..*        | [Condition](StructureDefinition-Condition.html)           | [DG1[Condition]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-dg1-to-condition.html) via ServiceRequest.resason[Reference/Code] |
 | -- SPM Specimen                    | 1..*        | [Specimen](StructureDefinition-Specimen.html)             | [SPM[Specimen]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-spm-to-specimen.html) via ServiceRequest.specimen                  |                                                                                                         |
 
 
