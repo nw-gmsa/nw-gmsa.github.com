@@ -14,9 +14,10 @@ Description:    "DRAFT Extension of UKCore-ServiceRequest"
 * identifier ^slicing.description = "Slice based on the type"
 * identifier ^slicing.ordered = false
 * identifier contains
-  accessionNumber 1..1 MS
+  accessionNumber 0..1 MS
 
 * identifier[accessionNumber] only AccessionNumber
+* identifier[accessionNumber] ^short = "Identifier assigned by the lab, HL7 v2 ORC-3 Order Filler Number"
 
 * category ^short = "ISSUE. Additionally should include high level category either SCT 108252007 Laboratory procedure or child code 116148004 Molecular genetics procedure"
 

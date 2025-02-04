@@ -8,7 +8,7 @@ DRAFT Extension of [UK Core DiagnosticReport](https://simplifier.net/hl7fhirukco
 
 * identifier 1..* MS
 
-* basedOn ^slicing.discriminator.type = #pattern
+* basedOn ^slicing.discriminator.type = #value
 * basedOn ^slicing.discriminator.path = "type"
 * basedOn ^slicing.rules = #open
 * basedOn ^slicing.description = "Slice based on the type"
@@ -16,7 +16,7 @@ DRAFT Extension of [UK Core DiagnosticReport](https://simplifier.net/hl7fhirukco
 * basedOn contains
   accessionNumber 0..1 MS
 
-* basedOn[accessionNumber] ^short = "Created by Imaging Test Order Workflow"
+* basedOn[accessionNumber] ^short = "Identifier assigned by the lab, HL7 v2 ORC-3 Order Filler Number"
 * basedOn[accessionNumber].type 1..1 MS
 * basedOn[accessionNumber].type = "ServiceRequest"
 * basedOn[accessionNumber].identifier 1..1
