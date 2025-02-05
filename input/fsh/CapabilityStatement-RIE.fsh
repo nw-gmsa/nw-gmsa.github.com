@@ -17,7 +17,7 @@ Is based on [FHIR Messaging](https://hl7.org/fhir/R4/messaging.html) to handle t
   * mode = #server
   * security
     * service = http://terminology.hl7.org/CodeSystem/restful-security-service#OAuth
-    * description = "Recommend [ATNA/NHS England Audits](subdomain-audits.html), encouraged [IHE-IUA](https://profiles.ihe.net/ITI/IUA/index.html)"
+    * description = "Recommend [IHE-IUA](https://profiles.ihe.net/ITI/IUA/index.html)"
 
 * rest.operation[+]
   * name = "$process-message"

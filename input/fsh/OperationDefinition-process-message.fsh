@@ -11,7 +11,7 @@ Usage:  #definition
 * type = false
 * instance = false
 * description = """
-This is documentation on the version of [HL7 FHIR process-message](process-message) to be used for regional FHIR Messaging, this HL7 FHIR definition **SHALL** be followed.
+This is documentation on the version of [HL7 FHIR process-message](https://hl7.org/fhir/R4/messageheader-operation-process-message.html) to be used for regional FHIR Messaging, this HL7 FHIR definition **SHALL** be followed.
 """
 
 * comment = """
