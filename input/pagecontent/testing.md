@@ -10,14 +10,18 @@ Due to API security requirements of the NHS England Ontology Service, this can n
 
 The FHIR Validator will work with FHIR Bundles, see **Validating a single resource in a bundle** on the link above.
 
-### laboratory-order O21
+#### Download Package
+
+Link: [package.tgz](package.tgz)
+
+#### laboratory-order O21 Validation Example
 
 ```aiignore
- java -jar validator_cli.jar c:\temp\bundle.json -version 4.0.1 -ig nhs.mft.fhir#0.0.1 -bundle ServiceRequest:0 https://hl7.mft.nhs.uk/StructureDefinition/ServiceRequest
+ java -jar validator_cli.jar c:\temp\bundle.json -version 4.0.1 -ig package.tgz -bundle ServiceRequest:0 https://hl7.mft.nhs.uk/StructureDefinition/ServiceRequest
 ```
 
-### Unsolicited Observation R01
+#### Unsolicited Observation R01 Validation Example
 
 ```aiignore
- java -jar validator_cli.jar c:\temp\bundle.json -version 4.0.1 -ig nhs.mft.fhir#0.0.1 -bundle DiagnosticReport:0 https://hl7.mft.nhs.uk/StructureDefinition/DiagnosticReport
+ java -jar validator_cli.jar c:\temp\bundle.json -version 4.0.1 -ig package.tgz -bundle DiagnosticReport:0 https://hl7.mft.nhs.uk/StructureDefinition/DiagnosticReport
 ```
