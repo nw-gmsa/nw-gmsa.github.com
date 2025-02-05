@@ -13,11 +13,11 @@ The FHIR Validator will work with FHIR Bundles, see **Validating a single resour
 ### laboratory-order O21
 
 ```aiignore
- java -jar validator_cli.jar c:\temp\bundle.json -version 4.0.1 -ig nhs.mft.fhir#0.0.1-current -bundle ServiceRequest:0 https://hl7.mft.nhs.uk/StructureDefinition/ServiceRequest
+ java -jar validator_cli.jar c:\temp\bundle.json -version 4.0.1 -ig nhs.mft.fhir#0.0.1 -bundle ServiceRequest:0 https://hl7.mft.nhs.uk/StructureDefinition/ServiceRequest
 ```
 
 ### Unsolicited Observation R01
 
 ```aiignore
- java -jar validator_cli.jar c:\temp\bundle.json -version 4.0.1 -ig nhs.mft.fhir#0.0.1-current -bundle DiagnosticReport:0 https://hl7.mft.nhs.uk/StructureDefinition/DiagnosticReport
+ java -jar validator_cli.jar c:\temp\bundle.json -version 4.0.1 -ig nhs.mft.fhir#0.0.1 -bundle DiagnosticReport:0 https://hl7.mft.nhs.uk/StructureDefinition/DiagnosticReport
 ```
