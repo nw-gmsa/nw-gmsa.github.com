@@ -1,4 +1,4 @@
-Instance: CapabilityStatement-RIE
+Instance: CapabilityStatementRIE
 InstanceOf: CapabilityStatement
 Title: "CapabilityStatement for MFT Regional Integration Engine for Genomics"
 Usage: #definition
