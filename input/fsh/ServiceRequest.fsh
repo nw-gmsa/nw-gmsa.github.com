@@ -41,9 +41,8 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * encounter only Reference(Encounter)
 
 * requester 1..1 MS
-* requester ^short = "ISSUE: If using national identifier, the reference could be omitted (see comments in Practitioner. \nISSUE: NHS England GOMS is requiring a PractitionerRole, HL7 v2 is saying Practitioner"
-* requester only Reference(Practitioner)
-* requester.identifier only EnglandPractitionerIdentifier
+* requester ^short = "ISSUE: If using national identifier, the reference could be omitted (see comments in Practitioner. \nISSUE: NHS England GOMS is requiring a PractitionerRole (combination of ORC-12 and ORC-21, HL7 v2 mapping is saying Practitioner"
+* requester only Reference(PractitionerRole)
 
 * performer only Reference(Organization)
 * performer.identifier only OrganisationCode
