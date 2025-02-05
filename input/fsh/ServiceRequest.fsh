@@ -2,7 +2,11 @@ Profile:        ServiceRequest
 Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-ServiceRequest
 Id:             ServiceRequest
 Title:          "ServiceRequest"
-Description:    "DRAFT Extension of UKCore-ServiceRequest"
+Description:    """
+DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
+- [NHS England Genomics ServiceRequest](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/FHIRAssets/Profiles/All-Profiles/UKCore-ServiceRequest) use text descriptions only, not the rendered profile.
+
+"""
 
 * code ^short = "ISSUE. See [National Genomic Test Directory](https://www.england.nhs.uk/wp-content/uploads/2018/08/rare-and-inherited-disease-eligibility-criteria-v2.pdf)."
 * code 1..1 MS

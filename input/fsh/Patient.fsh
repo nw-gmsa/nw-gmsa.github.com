@@ -3,6 +3,7 @@ Parent: https://fhir.hl7.org.uk/StructureDefinition/UKCore-Patient
 Id: Patient
 Description: """
 DRAFT Extension of UKCore-Patient which includes constraints from:
+- [NHS England Genomics Patient](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/FHIRAssets/Profiles/All-Profiles/UKCore-Patient) use text descriptions only, not the rendered profile.
 - HL7 PID segment definitions from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws)
 """
 
