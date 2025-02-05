@@ -27,13 +27,13 @@ Title: "Diagnostic Repoort Example. First draft is based on Royal College of Rad
 
 * issued = "2023-09-07T11:45:41+11:00"
 
-* performer[+]
+* performer[organisation]
   * identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
   * identifier.value = "R0A"
   * type = #Organization
   * display = "MANCHESTER UNIVERSITY NHS FOUNDATION TRUST"
 
-* resultsInterpreter[primaryReporter]
+* resultsInterpreter[+]
   * type = "Practitioner"
   * identifier.system = "https://fhir.hl7.org.uk/Id/gmc-number"
   * identifier.value = "C1234567"

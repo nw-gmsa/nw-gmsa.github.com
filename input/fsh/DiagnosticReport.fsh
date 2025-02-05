@@ -33,7 +33,7 @@ DRAFT Extension of [UK Core DiagnosticReport](https://simplifier.net/hl7fhirukco
 * performer.type 1..1
 * performer.extension contains
       http://hl7.org/fhir/StructureDefinition/event-performerFunction named performerFunction 0..1
-* performer only Reference(Practitioner and Organization)
+* performer only Reference(Practitioner or Organization)
 
 * performer ^slicing.discriminator.type = #pattern
 * performer ^slicing.discriminator.path = "type"
