@@ -19,7 +19,7 @@ Only use in References if the NHS Number is not known or unverified.
 """
 
 * type = $v2-0203#MR (exactly)
-* system 0..1
+* system = "https://fhir.nhs.uk/Id/medical-record-number"
 * system ^short = "Should indicate the assigning authority/provider of the MRN. This is defined by the assigning authority."
 * value 1..1
 * assigner ^short = "Assigning Facility"
