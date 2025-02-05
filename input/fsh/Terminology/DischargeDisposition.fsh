@@ -8,5 +8,5 @@ UKCore contradicts NHS England HL7 v2 ADT mapped to FHIR using [HL7 Version 2 to
 - [UKCoreDischargeMethod](https://simplifier.net/hl7fhirukcorer4/valueset-ukcore-dischargemethod)
 
 """
-
+* ^experimental  = false
 

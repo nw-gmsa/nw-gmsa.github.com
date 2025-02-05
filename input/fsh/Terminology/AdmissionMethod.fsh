@@ -4,3 +4,4 @@ Title: "Admission Method"
 Description: """
 - [ADMISSION METHOD](https://www.datadictionary.nhs.uk/attributes/admission_method.html)
 """
+* ^experimental  = false

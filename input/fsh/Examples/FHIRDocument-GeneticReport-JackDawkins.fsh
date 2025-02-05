@@ -24,6 +24,7 @@ Usage: #example
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Genetics Report</li></ul></div>"
   * code = http://loinc.org#18776-5
+  * entry[+].reference = "urn:uuid:c64139e7-f02d-409c-bf34-75e8bf23bc80"
 
 Instance: FHIRDocumentGeneticReportBundle
 InstanceOf: Bundle

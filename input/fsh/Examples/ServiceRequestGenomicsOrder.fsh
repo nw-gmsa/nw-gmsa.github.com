@@ -29,4 +29,4 @@ Title: "ServiceRequest Example"
   * system = "https://fhir.nhs.uk/Id/nhs-number"
   * value = "9912003888"
 
-* supportingInfo[+] = Reference(QuestionnaireResponseOrderEntryExample)
+* supportingInfo[+] = Reference(urn:uuid:d1aa0f3e-f1b6-46fe-8271-d8353b582ddd)

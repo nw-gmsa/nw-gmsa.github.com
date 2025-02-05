@@ -8,7 +8,7 @@ Usage: #example
 
 * active = true
 * identifier[0].use = #official
-* identifier[0].type = http://terminology.hl7.org/CodeSystem/v2-0203#JHN
+* identifier[0].type = http://terminology.hl7.org/CodeSystem/v2-0203#NH
 * identifier[0].system = $nhs-number
 * identifier[0].value = "9912003888"
 * identifier[0].assigner.identifier.value = "X24"
