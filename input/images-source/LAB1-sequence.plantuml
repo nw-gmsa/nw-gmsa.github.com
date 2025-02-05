@@ -9,16 +9,16 @@ participant "Regional Integration Engine (RIE)" as TIE
 participant "Order Filler" as LIMS
 
 EPR -> EPR: Complete Order Entry Form
-EPR -> TIE: HL7 FHIR Message\n**Laboratory Order O21**
+EPR -> TIE: Send HL7 FHIR Message\n**Laboratory Order O21**
 TIE -> TIE: Validate Message
 
 alt Successful validation
-TIE -> TIE : Transform Message to HL7 v2
-TIE -> LIMS: HL7 v2.x\n**OML_O21/(ORM_O01)**
-LIMS --> TIE: HL7 v2.x\n**ORL_O22?**
-TIE --> EPR: HL7 FHIR Message\n**General acknowledgment message ACK**
+TIE -> TIE : Transform FHIR to HL7 v2 Message
+TIE -> LIMS: Send HL7 v2 Message\n**OML_O21/(ORM_O01)**
+LIMS --> TIE: Response HL7 v2 Message\n**ORL_O22?**
+TIE --> EPR: Response HL7 FHIR Message\n**General acknowledgment message ACK**
 else Unsuccessful validation
-TIE --> EPR: HL7 FHIR Message\n**General acknowledgment message ACK**
+TIE --> EPR: Response HL7 FHIR Message\n**General acknowledgment message ACK**
 end
 
 @enduml

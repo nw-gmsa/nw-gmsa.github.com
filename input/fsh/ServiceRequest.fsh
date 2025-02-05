@@ -24,7 +24,7 @@ Description:    "DRAFT Extension of UKCore-ServiceRequest"
 * encounter only Reference(Encounter)
 
 * requester 1..1 MS
-* requester ^short = "ISSUE. If using national identifier, the reference could be omitted."
+* requester ^short = "ISSUE: If using national identifier, the reference could be omitted (see comments in Practitioner. \nISSUE: NHS England GOMS is requiring a PractitionerRole, HL7 v2 is saying Practitioner"
 * requester only Reference(Practitioner)
 * requester.identifier only EnglandPractitionerIdentifier
 
