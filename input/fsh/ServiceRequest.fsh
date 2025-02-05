@@ -23,6 +23,18 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * code.coding[GenomicTestDirectory] from GenomicTestDirectory (required)
 * code.coding[GenomicTestDirectory].system = "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory"
 
+
+* category 1..* MS
+* category ^slicing.discriminator.type = #value
+* category ^slicing.discriminator.path = "coding.system"
+* category ^slicing.rules = #open
+* category ^slicing.description = "Slice based on the coding.system"
+* category ^slicing.ordered = false
+*  contains
+  GenomicProcedure 1..1 MS
+
+* category[GenomicProcedure].coding = $sct#116148004
+
 * identifier 1..* MS
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "type"

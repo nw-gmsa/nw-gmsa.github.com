@@ -20,7 +20,7 @@ Link: [package.tgz](package.tgz)
  java -jar validator_cli.jar c:\temp\bundle.json -version 4.0.1 -ig package.tgz -bundle ServiceRequest:0 https://hl7.mft.nhs.uk/StructureDefinition/ServiceRequest
 ```
 
-#### Unsolicited Observation R01 Validation Example
+#### unsolicited-observation R01 Validation Example
 
 ```aiignore
  java -jar validator_cli.jar c:\temp\bundle.json -version 4.0.1 -ig package.tgz -bundle DiagnosticReport:0 https://hl7.mft.nhs.uk/StructureDefinition/DiagnosticReport
