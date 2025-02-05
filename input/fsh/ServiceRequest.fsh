@@ -14,10 +14,12 @@ Description:    "DRAFT Extension of UKCore-ServiceRequest"
 * identifier ^slicing.description = "Slice based on the type"
 * identifier ^slicing.ordered = false
 * identifier contains
-  accessionNumber 0..1 MS
+  accessionNumber 0..1 MS and placerOrderNumber 0..1
 
+* identifier[placerOrderNumber].type = http://terminology.hl7.org/CodeSystem/v2-0203#PLAC
+* identifier[placerOrderNumber] ^short = "Identifier assigned by the Order Filler, HL7 v2 ORC-2 Order Placer Number. Mandatory for Order Placer"
 * identifier[accessionNumber] only AccessionNumber
-* identifier[accessionNumber] ^short = "Identifier assigned by the lab, HL7 v2 ORC-3 Order Filler Number"
+* identifier[accessionNumber] ^short = "Identifier assigned by the lab, HL7 v2 ORC-3 Order Filler Number. Mandatory for Order Placer"
 
 * category ^short = "ISSUE. Additionally should include high level category either SCT 108252007 Laboratory procedure or child code 116148004 Molecular genetics procedure"
 

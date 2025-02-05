@@ -30,12 +30,60 @@
 </figure>
 <br clear="all">
 
+#### Complete Order Entry Form
+
+In many Order Placer applications (i.e. the EPR or Order Comms) the order is captured via a form. This form may be defined in a standard way using FHIR Questionnaire or openEHR Archetype/Template, for example [NW Genomics Test Order](Questionnaire-NW-Genomics-Test-Order.html). These definitions may be used to define the content of the `laboratory order` (TODO Needs expanding to describe [FHIR Structured Data Capture](https://build.fhir.org/ig/HL7/sdc/) which may be provided by NHS England)
+
+#### Send HL7 FHIR Message Laboratory Order
+
+The  [laboratory order (O21)](MessageDefinition-MessageDefinition-laboratory-order.html) is sent to the RIA via the [$process-message](OperationDefinition-ProcessMessage.html) API
+
+```
+POST /$process-messsage
+```
+
+Example payload [Bundle 'Message' - Genomics Order](Bundle-GenomicsOrderMessage.html) 
+
+#### Validate Message and Transform FHIR to HL7 v2 Message 
+
+The incoming order is checked for validity, this may include [FHIR Validation](https://hl7.org/fhir/R4/validation.html) against this Implementation Guide. If the message is accepted it is then transformed to a HL7 v2 Message, else a [Response HL7 FHIR Message](#response-hl7-fhir-message) is returned listing the issues in a [FHIR OperationOutcome](StructureDefinition-OperationOutcome.html) resource.
+
+#### Send HL7 v2 Message and Response HL7 v2 Message
+
+The RIE then sends the converted HL7 v2 Message to the Order Filler (LIMS) which responds back with a ORL_O22? message. Depending on the capabilty of the LIMS system this may include a ORC with an accession number (Filler Order Number) and a PID with updated/new identifiers, these can then be converted to a FHIR ServiceRequest and Patient respectively. 
+
+#### Response HL7 FHIR Message
+
+The response (asssumed synchronous at present and so subject to change) is returned to the order placer. For sucessful messages the MessageHeader will have `response` will look like 
+
+```
+"response" : {
+  "identifier" : "9612365d-52a4-4fab-87e7-8a09d753f095",
+  "code" : "ok"
+}
+```
+where the identifier refers to the Bundle.identifier in the orignial message. The Bundle may also include modified FHIR Patient or ServiceRequest resources with updated and new identifiers.
+
+A unsuccessful acknowledgement would look like: 
+
+```
+"response" : {
+  "identifier" : "9612365d-52a4-4fab-87e7-8a09d753f095",
+  "code" : "fatal-error",
+  "details" :{
+    "reference" : "OperationOutcome/TODO"
+  }
+}
+```
+
+where the details section contains a reference to an included OperationOutcome listing details of the failure.
+
 ### Interface Standards
 
 Is based on a HL7 FHIR [laboratory order (O21)](MessageDefinition-MessageDefinition-laboratory-order.html) Message which is backwards compatible with HL7 v2 OML_O21 (or ORM_O01) Message.
 
 
-#### HL7 v2 Mapping 
+### HL7 v2 Mapping 
 
 Detailed Mapping can be here [Message OML_O21 to Bundle Map (Experimental)](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-message-oml-o21-to-bundle.html)
 Further details on genomic specific mapping can be found on [NHS England FHIR Genomics Implementation Guide - Clincial Headings](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings)

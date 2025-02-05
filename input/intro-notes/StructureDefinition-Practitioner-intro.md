@@ -1,7 +1,7 @@
 
 ## Practitioner (Resource) or Reference by Practitioner Identity
 
-In message paradigms, especially HL7 v2 `laboratory order (OML_O21/ORM_O01)` and `unsolicitied observations (ORU_R01)` it was common to use the XCN (Extended Composite Id Number And Name For Persons. The FHIR equivalent to this datatype is FHIR [Reference](https://hl7.org/fhir/R4/references.html)
+In message paradigms, especially HL7 v2 `laboratory order (OML_O21/ORM_O01)` and `unsolicitied observations (ORU_R01)` it is common to use the XCN (Extended Composite Id Number And Name For Persons). The FHIR equivalent to this datatype is FHIR [Reference](https://hl7.org/fhir/R4/references.html)
 
 For example:
 
@@ -15,7 +15,7 @@ C3456789^Darwin^Samuel^^^Dr^^^GMC
 
 ```json
 {
-    "reference" : "Practitioner/1234"
+    "reference" : "Practitioner/1234",
     "type" : "Practitioner",
     "identifier" : {
       "system" : "https://fhir.hl7.org.uk/Id/gmc-number",
@@ -30,3 +30,9 @@ FHIR Reference introduces a `reference` to a detailed version of Practitioner wh
 It is not clear in Enterprise/Regional use of FHIR which approach *Resource* or *Reference* should be taken, both HL7 v2 and FHIR support `Reference aggregate or entities by identity` from Dommain Driven Design (DDD) and this appears to also be followed by IHE XDS and DICOM.
 In addition, [NHS England Data Dictionary](https://www.datadictionary.nhs.uk/) and *NHS England HL7 v2 ADT Message Specification* favour *Reference*
 NHS England FHIR STU3/R4 specifications around Messaging, tend to favour *Resource*.
+
+It is likely that the `reference` may be able to point to `Care Service Directory` services provided by [NHS England Healthcare Worker - FHIR API](https://digital.nhs.uk/developer/api-catalogue/healthcare-fhir-ap) in the near future,(or alternatively downloaded from [NHS England Organisation Data Service - CSV Downloads](https://digital.nhs.uk/services/organisation-data-service/data-search-and-export/csv-downloads). Therefore: it is proposed:
+
+**Reference by Practitioner Identity only** 
+
+and so continuing conventions used in HL7 v2, i.e. no Practitioner resources will be present in FHIR Messaging.

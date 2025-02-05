@@ -4,7 +4,8 @@ Id:             Practitioner
 Title:          "Practitioner"
 Description:    """
 DRAFT Extension of UKCore Practitioner which includes elements from:
-- HL7 v2 XCN – `Extended Composite ID Number and Name for Persons` definition from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws)
+- [HL7 v2 XCN Extended Composite ID Number and Name for Persons](https://hl7-definition.caristix.com/v2/HL7v2.5.1/DataTypes/XCN)
+- XCN definition from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws)
 - [IHE Mobile Care Services Discovery (mCSD)](https://profiles.ihe.net/ITI/mCSD/volume-1.html)
 
 """
