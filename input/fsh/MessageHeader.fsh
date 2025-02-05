@@ -14,3 +14,7 @@ Description:    "DRAFT"
 * sender.identifier 1..1 MS
 * sender.identifier only OrganisationCode
 
+* response 0..1 MS
+* response ^short = "Mandatory for message acknowledgements."
+* response.identifier 1..1 MS
+* response.code 1..1 MS
