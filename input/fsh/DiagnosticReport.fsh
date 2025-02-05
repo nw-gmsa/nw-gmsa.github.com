@@ -33,7 +33,7 @@ DRAFT Extension of [UK Core DiagnosticReport](https://simplifier.net/hl7fhirukco
 * performer.type 1..1
 * performer.extension contains
       http://hl7.org/fhir/StructureDefinition/event-performerFunction named performerFunction 0..1
-* performer only Reference(Practitioner)
+* performer only Reference(Practitioner and Organization)
 
 * performer ^slicing.discriminator.type = #pattern
 * performer ^slicing.discriminator.path = "type"
@@ -44,9 +44,11 @@ DRAFT Extension of [UK Core DiagnosticReport](https://simplifier.net/hl7fhirukco
   organisation 1..1 and operator 0..*
 
 * performer[organisation].identifier only OrganisationCode
+* performer[organisation].type = #Organization
 
 * performer[operator].identifier only EnglandPractitionerIdentifier
 * performer[operator].extension[performerFunction].valueCodeableConcept.coding = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#SPRF
+* performer[operator].type = #Practitioner
 
 * resultsInterpreter.identifier 1..1
 * resultsInterpreter.identifier.system 1..1
@@ -60,8 +62,7 @@ DRAFT Extension of [UK Core DiagnosticReport](https://simplifier.net/hl7fhirukco
 * resultsInterpreter ^slicing.description = "Slice based on the type"
 * resultsInterpreter ^slicing.ordered = false
 * resultsInterpreter contains
-  primaryReporter 0..* and
-  secondaryReporter 0..*
+  primaryReporter 0..*
 
 * resultsInterpreter[primaryReporter].identifier only EnglandPractitionerIdentifier
-* resultsInterpreter[secondaryReporter].identifier only EnglandPractitionerIdentifier
+* resultsInterpreter[primaryReporter].type = #Practitioner
