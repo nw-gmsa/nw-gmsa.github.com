@@ -9,6 +9,8 @@ DRAFT Extension of UKCore-Patient which includes constraints from:
 
 * identifier 1..* MS
 
+* identifier ^slicing.discriminator.path = "type"
+
 * identifier contains
   MedicalRecordNumber 0..*
 
