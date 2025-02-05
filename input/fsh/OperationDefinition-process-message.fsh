@@ -11,10 +11,9 @@ Usage:  #definition
 * type = false
 * instance = false
 * description = """
-
 This is documentation on the version of [HL7 FHIR process-message](process-message) to be used for regional FHIR Messaging, this HL7 FHIR definition **SHALL** be followed.
-
 """
+
 * comment = """
 
 This `event message` differs from traditional NHS England definitions of this operation is that this operation is designed to be an interface to a mix of broker and event consumer actors, and so other standards they suport.
