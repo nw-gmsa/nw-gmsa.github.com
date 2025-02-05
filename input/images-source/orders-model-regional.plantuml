@@ -31,7 +31,7 @@ end note
   frame OrderEntryForm {
     entity "Genomic Order Entry Form" as QR <<aggregate>>
 
-    entity "Items\n(Hl7 v2 OBX)" as OBX {
+    class "Items\n(Hl7 v2 OBX)" as OBX {
       question
       answer
     }

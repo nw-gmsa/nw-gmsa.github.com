@@ -1,0 +1,27 @@
+@startuml
+
+title "Genomic Order Component Model"
+
+frame "Regional Placer Order Management [LAB-1]" as LAB1 {
+  component "**Order Filler**\n\nNW Genomic Laboratory Hub (LIMS)" as LIMS
+  component "**Order Placer**\nRegional" as EPR
+  component "North West GLH Regional Integration Engine (RIE)" as TIE
+
+ interface "LAB-1 HL7 FHIR Message\n**Laboratory Order O21**" as HL7_ORM1
+
+ interface "LAB-1 HL7 v2.x\n**OML_O21/(ORM_O01)**" as HL7_ORM2
+
+
+
+  EPR -d-> HL7_ORM1
+  HL7_ORM1 -d-> TIE
+  TIE -d-> HL7_ORM2
+}
+
+
+
+HL7_ORM2 -d-> LIMS
+
+
+
+@enduml

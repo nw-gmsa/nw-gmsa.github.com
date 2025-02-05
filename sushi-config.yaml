@@ -77,12 +77,16 @@ pages:
   orders-LTW.md:
     title: Genomics Test Workflow [LTW]
     generation: markdown
-  orders-LAB-1.md:
+  LAB-1.md:
     title: Placer Order Management [LAB-1]
     generation: markdown
-  reports-LAB-3.md:
+  LAB-3.md:
     title: Order Results Management [LAB-3]
     generation: markdown
+  LAB-4.md:
+    title: Work Order Management [LAB-4]
+    generation: markdown
+
 
 resources:
   Questionnaire/NW-Genomics-Test-Order:
@@ -93,10 +97,11 @@ resources:
 menu:
   Home: index.html
   Analysis and Design (Vol 1) :
-    Genomics Test Workflow [LTW]: orders-LTW.html
+    Genomics Test Workflow [LTW]: LTW.html
   Interfaces (Vol 2):
-    Placer Order Management [LAB-1]: orders-LAB-1.html
-    Order Results Management [LAB-3]: reports-LAB-3.html
+    Placer Order Management [LAB-1]: LAB-1.html
+    Order Results Management [LAB-3]: LAB-3.html
+    Work Order Management [LAB-4]: LAB-1.html
   Artefacts: artifacts.html
 
 

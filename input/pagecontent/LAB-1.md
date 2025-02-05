@@ -17,8 +17,8 @@
 ## Ordering Component Model
 
 <figure>
-{%include orders-component.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">Genomics Test Order Component Model</p>
+{%include orders-LAB1-component.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">Genomics Test Order Component Model - LAB-1</p>
 </figure>
 <br clear="all">
 
