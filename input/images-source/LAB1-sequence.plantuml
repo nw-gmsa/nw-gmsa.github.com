@@ -10,7 +10,7 @@ participant "Order Filler" as LIMS
 
 EPR -> EPR: Complete Order Entry Form
 EPR -> TIE: LAB-1 HL7 FHIR Message\n**Laboratory Order O21**
-TIE -> TIE: Validate Message
+TIE -> TIE: Validate/Test Message
 
 alt Successful validation
 TIE -> TIE : Transform Message to HL7 v2
