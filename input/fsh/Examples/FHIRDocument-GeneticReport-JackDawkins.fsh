@@ -1,5 +1,5 @@
 Instance: Composition-GenomicsReport-JackDawkins
-InstanceOf: http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse
+InstanceOf: http://hl7.org/fhir/StructureDefinition/Composition
 Title: "Composition - Genomics Report Jack Dawkins"
 Description: "Composition - Genomics Report Jack Dawkins"
 Usage: #example
