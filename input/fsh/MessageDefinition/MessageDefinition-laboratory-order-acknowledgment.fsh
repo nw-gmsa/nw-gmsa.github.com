@@ -19,6 +19,8 @@ At present it is not intended to support Patient and ServiceRequest resources
   * profile = Canonical(Patient)
   * min = 0
   * max = "1"
+
+* focus[+]
 * focus[=]
   * code = #ServiceRequest
   * profile = Canonical(ServiceRequest)
