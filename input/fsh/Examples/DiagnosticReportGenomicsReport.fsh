@@ -25,7 +25,6 @@ Title: "Diagnostic Repoort Example. First draft is based on Royal College of Rad
   * system = "https://fhir.nhs.uk/Id/nhs-number"
   * value = "9912003888"
 
-
 * issued = "2023-09-07T11:45:41+11:00"
 
 * performer[+]
@@ -35,9 +34,6 @@ Title: "Diagnostic Repoort Example. First draft is based on Royal College of Rad
   * display = "MANCHESTER UNIVERSITY NHS FOUNDATION TRUST"
 
 * resultsInterpreter[primaryReporter]
-  * extension[performerFunction]
-    * url = "http://hl7.org/fhir/StructureDefinition/event-performerFunction"
-    * valueCodeableConcept = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PPRF "primary performer"
   * type = "Practitioner"
   * identifier.system = "https://fhir.hl7.org.uk/Id/gmc-number"
   * identifier.value = "C1234567"

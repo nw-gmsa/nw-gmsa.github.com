@@ -21,6 +21,7 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
   GenomicTestDirectory 1..1 MS
 
 * code.coding[GenomicTestDirectory] from GenomicTestDirectory (required)
+* code.coding[GenomicTestDirectory].system = "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory"
 
 * identifier 1..* MS
 * identifier ^slicing.discriminator.type = #value
