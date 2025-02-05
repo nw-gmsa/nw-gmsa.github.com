@@ -5,6 +5,7 @@ Title: "ServiceRequest Example"
 * meta.versionId = "1.0"
 
 
+
 * identifier[accessionNumber].type = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN
 * identifier[accessionNumber].system = "https://fhir.leedsth.nhs.uk/Id/AccessionNumber"
 * identifier[accessionNumber].value = "1601737"
