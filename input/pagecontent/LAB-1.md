@@ -14,11 +14,19 @@
 - C. **Data Capture**
   - See [NW Genomics Test Order Form](Questionnaire-NW-Genomics-Test-Order.html) and [Questionnaire Viewer](https://project-wildfyre.github.io/questionnaire-viewer/?q=https://fhir-mft.github.io/FHIRGenomics/Questionnaire-NW-Genomics-Test-Order.json)
 
-## Ordering Component Model
+## Component Model
 
 <figure>
-{%include orders-LAB1-component.svg%}
+{%include LAB1-component.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Genomics Test Order Component Model - LAB-1</p>
+</figure>
+<br clear="all">
+
+## Sequence Diagram
+
+<figure>
+{%include LAB1-sequence.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">Genomics Test Order Sequence Diagram - LAB-1</p>
 </figure>
 <br clear="all">
 

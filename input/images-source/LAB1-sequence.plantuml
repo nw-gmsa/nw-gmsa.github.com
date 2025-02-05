@@ -1,0 +1,24 @@
+@startuml
+
+title "Genomic Order Sequence Diagram - LAB-1"
+
+hide footbox
+
+participant "Order Placer" as EPR
+participant "Regional Integration Engine (RIE)" as TIE
+participant "Order Filler" as LIMS
+
+EPR -> EPR: Complete Order Entry Form
+EPR -> TIE: LAB-1 HL7 FHIR Message\n**Laboratory Order O21**
+TIE -> TIE: Validate Message
+
+alt Successful validation
+TIE -> TIE : Transform Message to HL7 v2
+TIE -> LIMS: LAB-1 HL7 v2.x\n**OML_O21/(ORM_O01)**
+LIMS --> TIE: LAB-1 HL7 v2.x\n**ORL_O22?**
+TIE --> EPR: LAB-1 HL7 FHIR Message\n**General acknowledgment message ACK**
+else Unsuccessful validation
+TIE --> EPR: LAB-1 HL7 FHIR Message\n**General acknowledgment message ACK**
+end
+
+@enduml
