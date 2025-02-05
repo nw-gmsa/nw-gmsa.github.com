@@ -59,7 +59,7 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 
 * supportingInfo ^short = "ISSUE. National programme is not suporting panels, this may result in transformation issues."
 * supportingInfo 1..* MS
-* supportingInfo ^slicing.discriminator.type = #pattern
+* supportingInfo ^slicing.discriminator.type = #value
 * supportingInfo ^slicing.discriminator.path = "type"
 * supportingInfo ^slicing.rules = #open
 * supportingInfo ^slicing.description = "Slice based on the type"
@@ -68,3 +68,4 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
   TestOrderForm 1..1 MS
 
 * supportingInfo[TestOrderForm] only Reference(ObservationPanel)
+  * type = "QuestionnaireResponse"

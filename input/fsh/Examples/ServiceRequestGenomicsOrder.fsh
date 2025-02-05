@@ -30,3 +30,5 @@ Title: "ServiceRequest Example"
   * value = "9912003888"
 
 * supportingInfo[+] = Reference(urn:uuid:d1aa0f3e-f1b6-46fe-8271-d8353b582ddd)
+* supportingInfo[=]
+  * type = ""
