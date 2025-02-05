@@ -2,7 +2,10 @@ Profile:        Specimen
 Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-Specimen
 Id:             Specimen
 Title:          "Specimen"
-Description:    "DRAFT Extension of UKCore-Specimen"
+Description:    """
+DRAFT Extension of UKCore-Specimen which includes constraints from:
+- [NHS England Genomics Specimen](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/FHIRAssets/Profiles/All-Profiles/UKCore-Specimen) use text descriptions only, not the rendered profile.
+"""
 
 * identifier 1..* MS
 * accessionIdentifier 0..1 MS
