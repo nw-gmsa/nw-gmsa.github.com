@@ -30,7 +30,7 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * category ^slicing.rules = #open
 * category ^slicing.description = "Slice based on the coding.system"
 * category ^slicing.ordered = false
-*  contains
+* category contains
   GenomicProcedure 1..1 MS
 
 * category[GenomicProcedure].coding = $sct#116148004
