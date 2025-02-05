@@ -61,6 +61,7 @@ parameters:
   generate:
     - xml
     - json
+  path-expansion-params: '../resources/Parameters-exp-params.json'
 
 
 #resources:
@@ -86,7 +87,9 @@ pages:
   LAB-4.md:
     title: Work Order Management [LAB-4]
     generation: markdown
-
+  testing.md:
+    title: Testing
+    generation: markdown
 
 resources:
   Questionnaire/NW-Genomics-Test-Order:
@@ -103,5 +106,6 @@ menu:
     Order Results Management [LAB-3]: LAB-3.html
     Work Order Management [LAB-4]: LAB-1.html
   Artefacts: artifacts.html
+  Testing: testing.html
 
 

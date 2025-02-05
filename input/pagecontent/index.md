@@ -13,6 +13,10 @@ This guide focuses on the regional adoption of Genomics and will conform to the 
   - v2.5.1 is the version for HL7 v2 used in this IG, to match [Digital Health and Care Wales - HL7 ORU_R01 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
 - Enable use of FHIR Testing tools such as [Command Line FHIR Validation](https://confluence.hl7.org/display/FHIR/Using+the+FHIR+Validator) and [Online FHIR Validation](https://validator.fhir.org/)
 
+## SNOMED CT
+
+UK edition of SNOMED (83821000000107)
+
 ## Dependencies
 
 {% include dependency-table.xhtml %}
