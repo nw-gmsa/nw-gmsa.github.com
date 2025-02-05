@@ -11,6 +11,17 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * code ^short = "ISSUE. See [National Genomic Test Directory](https://www.england.nhs.uk/wp-content/uploads/2018/08/rare-and-inherited-disease-eligibility-criteria-v2.pdf)."
 * code 1..1 MS
 
+* code.coding 1..* MS
+* code.coding ^slicing.discriminator.type = #value
+* code.coding ^slicing.discriminator.path = "system"
+* code.coding ^slicing.rules = #open
+* code.coding ^slicing.description = "Slice based on the system"
+* code.coding ^slicing.ordered = false
+* code.coding contains
+  GenomicTestDirectory 1..1 MS
+
+* code.coding[GenomicTestDirectory] from GenomicTestDirectory (required)
+
 * identifier 1..* MS
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "type"
@@ -34,7 +45,12 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * requester only Reference(Practitioner)
 * requester.identifier only EnglandPractitionerIdentifier
 
+* performer only Reference(Organization)
+* performer.identifier only OrganisationCode
+
 * authoredOn 1..1 MS
+
+* occurrenceDateTime 0..1 MS
 
 * subject only Reference(Patient)
 
