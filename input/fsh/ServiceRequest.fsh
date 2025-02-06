@@ -78,10 +78,10 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * supportingInfo ^slicing.description = "Slice based on the type"
 * supportingInfo ^slicing.ordered = false
 * supportingInfo contains
-  TestOrderForm 0..1 MS and ObservationPanel 0..* MS
+  Condition 0..1 MS and Observation 0..* MS
 
-* supportingInfo[TestOrderForm] only Reference(QuestionnaireResponse)
-  * type = "QuestionnaireResponse"
+* supportingInfo[Condition] only Reference(Condition)
+  * type = "Condition"
 
-* supportingInfo[ObservationPanel] only Reference(ObservationPanel)
+* supportingInfo[Observation] only Reference(ObservationPanel or Observation)
   * type = "Observation"

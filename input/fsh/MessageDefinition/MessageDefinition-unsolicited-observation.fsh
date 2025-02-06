@@ -1,4 +1,4 @@
-Instance:  MessageDefinition-unsolicited-observation
+Instance:  unsolicited-observation
 InstanceOf: MessageDefinition
 Title:   "Message Definition - Unsolicited Observation"
 Usage:  #definition

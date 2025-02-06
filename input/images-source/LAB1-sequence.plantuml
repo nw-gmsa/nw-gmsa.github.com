@@ -16,9 +16,9 @@ alt Successful validation
 TIE -> TIE : Transform FHIR to HL7 v2 Message
 TIE -> LIMS: Send HL7 v2 Message\n**OML_O21/(ORM_O01)**
 LIMS --> TIE: Response HL7 v2 Message\n**ORL_O22?**
-TIE --> EPR: Response HL7 FHIR Message\n**General acknowledgment message ACK**
+TIE --> EPR: Response HL7 FHIR Message\n**Laboratory Order Acknowledgment O22)**
 else Unsuccessful validation
-TIE --> EPR: Response HL7 FHIR Message\n**General acknowledgment message ACK**
+TIE --> EPR: Response HL7 FHIR Message\n**Laboratory Order Acknowledgment O22**
 end
 
 @enduml

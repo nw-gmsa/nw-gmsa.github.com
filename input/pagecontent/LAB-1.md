@@ -37,7 +37,7 @@ In many Order Placer applications (i.e. the EPR or Order Comms) the order is cap
 
 #### Send HL7 FHIR Message Laboratory Order
 
-The  [laboratory order (O21)](MessageDefinition-MessageDefinition-laboratory-order.html) is sent to the RIA via the [$process-message](OperationDefinition-ProcessMessage.html) API
+The  [laboratory order (O21)](MessageDefinition-laboratory-order.html) is sent to the RIA via the [$process-message](OperationDefinition-ProcessMessage.html) API
 
 ```
 POST /$process-messsage
@@ -55,7 +55,7 @@ The RIE then sends the converted HL7 v2 Message to the Order Filler (LIMS) which
 
 #### Response HL7 FHIR Message
 
-The response (asssumed synchronous at present and so subject to change) is returned to the order placer. For sucessful messages the MessageHeader will have `response` will look like 
+The response [laboratory-order-acknowledgement (O22)](MessageDefinition-laboratory-order-acknowledgement.html) (asssumed synchronous at present and so subject to change) is returned to the order placer. For sucessful messages the MessageHeader will have `response` will look like 
 
 ```
 "response" : {
@@ -81,7 +81,7 @@ where the details section contains a reference to an included OperationOutcome l
 
 ### Interface Standards
 
-Is based on a HL7 FHIR [laboratory order (O21)](MessageDefinition-MessageDefinition-laboratory-order.html) Message which is backwards compatible with HL7 v2 OML_O21 (or ORM_O01) Message.
+Is based on a HL7 FHIR [laboratory order (O21)](MessageDefinition-laboratory-order.html) Message which is backwards compatible with HL7 v2 OML_O21 (or ORM_O01) Message.
 
 
 ### HL7 v2 Mapping 

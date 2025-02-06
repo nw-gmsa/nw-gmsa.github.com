@@ -26,7 +26,10 @@ Is based on [FHIR Messaging](https://hl7.org/fhir/R4/messaging.html) to handle t
 * messaging[0]
   * supportedMessage[+]
     * mode = #receiver
-    * definition = Canonical(MessageDefinition-laboratory-order)
+    * definition = Canonical(laboratory-order)
   * supportedMessage[+]
     * mode = #sender
-    * definition = Canonical(MessageDefinition-unsolicited-observation)
+    * definition = Canonical(unsolicited-observation)
+  * supportedMessage[+]
+    * mode = #sender
+    * definition = Canonical(laboratory-order-acknowledgement)

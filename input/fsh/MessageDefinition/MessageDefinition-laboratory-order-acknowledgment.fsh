@@ -1,4 +1,4 @@
-Instance:  MessageDefinition-laboratory-order-acknowledgement
+Instance:  laboratory-order-acknowledgement
 InstanceOf: MessageDefinition
 Title:   "Message Definition - Laboratory Order Acknowledgement"
 Usage:  #definition
