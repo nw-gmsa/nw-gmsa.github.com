@@ -30,6 +30,9 @@ DRAFT Extension of [UK Core DiagnosticReport](https://simplifier.net/hl7fhirukco
 * subject.identifier 1..1
 * subject only Reference(Patient)
 
+* effectiveDateTime 0..1 MS
+* issued 0..1
+
 * performer.identifier 1..1
 * performer.identifier.system 1..1
 * performer.identifier.value 1..1
@@ -69,3 +72,7 @@ DRAFT Extension of [UK Core DiagnosticReport](https://simplifier.net/hl7fhirukco
 
 * resultsInterpreter[primaryReporter].identifier only EnglandPractitionerIdentifier
 * resultsInterpreter[primaryReporter].type = #Practitioner
+
+* specimen 0..* MS
+
+* presentedForm 0..* MS
