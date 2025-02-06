@@ -20,7 +20,7 @@ Only use in References if the NHS Number is not known or unverified.
 
 * type = $v2-0203#MR (exactly)
 * system = "https://fhir.nhs.uk/Id/medical-record-number"
-* system ^short = "Should indicate the assigning authority/provider of the MRN. This is defined by the assigning authority."
+* system ^short = "Generic system to represent MRN in NHS Trusts. Can be replaced with a system specified by NHS Trust, e.g. https://fhir.alderhey.nhs.uk/Id/medical-record-number"
 * value 1..1
 * assigner ^short = "Assigning Facility"
 * assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
