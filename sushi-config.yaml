@@ -85,8 +85,14 @@ pages:
   LAB-4.md:
     title: Work Order Management [LAB-4]
     generation: markdown
+  vol4-order.md:
+    title: Order Entry Model
+    generation: markdown
   testing.md:
     title: Testing
+    generation: markdown
+  support.md:
+    title: Support
     generation: markdown
 
 resources:
@@ -103,7 +109,11 @@ menu:
     Placer Order Management [LAB-1]: LAB-1.html
     Order Results Management [LAB-3]: LAB-3.html
     Work Order Management [LAB-4]: LAB-1.html
+  Data Models (Vol 3):
+    Order Entry Model: vol4-order.html
   Artefacts: artifacts.html
-  Testing: testing.html
+  Development:
+    Testing: testing.html
+    Support: support.html
 
 
