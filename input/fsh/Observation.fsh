@@ -6,4 +6,4 @@ Description:    "DRAFT Extension of UKCore-Observation"
 
 * extension[triggeredByR5] 0..0
 
-* subject 1,,1 MS
+* subject 1..1 MS
