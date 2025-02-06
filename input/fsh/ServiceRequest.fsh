@@ -71,17 +71,23 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * note MS
 
 * supportingInfo ^short = "ISSUE. National programme is not suporting panels, this may result in transformation issues."
-* supportingInfo 1..* MS
+* supportingInfo 0..* MS
 * supportingInfo ^slicing.discriminator.type = #value
 * supportingInfo ^slicing.discriminator.path = "type"
 * supportingInfo ^slicing.rules = #open
 * supportingInfo ^slicing.description = "Slice based on the type"
 * supportingInfo ^slicing.ordered = false
 * supportingInfo contains
-  Condition 0..1 MS and Observation 0..* MS
+  Condition 0..1 MS and Observation 0..* MS and FamilyMemberHistory 0..* MS and Procedure 0..* MS
 
 * supportingInfo[Condition] only Reference(Condition)
   * type = "Condition"
 
 * supportingInfo[Observation] only Reference(ObservationPanel or Observation)
   * type = "Observation"
+
+* supportingInfo[FamilyMemberHistory] only Reference(FamilyMemberHistory)
+  * type = "FamilyMemberHistory"
+
+* supportingInfo[Procedure] only Reference(Procedure)
+  * type = "Procedure"
