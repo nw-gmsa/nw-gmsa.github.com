@@ -4,7 +4,10 @@ Title: "Diagnostic Repoort Example. First draft is based on Royal College of Rad
 
 * meta.versionId = "1.0"
 
-* identifier[+].value = "25edee2b-add8-4522-9fa2-1ee8f229bd75"
+* identifier[+]
+  * value = "25edee2b-add8-4522-9fa2-1ee8f229bd75"
+  * assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
+  * assigner.identifier.value = "699X0"
 
 * basedOn[accessionNumber]
   * type = "ServiceRequest"
@@ -28,9 +31,9 @@ Title: "Diagnostic Repoort Example. First draft is based on Royal College of Rad
 
 * performer[organisation]
   * identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
-  * identifier.value = "R0A"
+  * identifier.value = "699X0"
   * type = #Organization
-  * display = "MANCHESTER UNIVERSITY NHS FOUNDATION TRUST"
+  * display = "NW GLH"
 
 * resultsInterpreter[+]
   * type = "Practitioner"

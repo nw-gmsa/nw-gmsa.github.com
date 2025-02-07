@@ -10,7 +10,10 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 
 
 * identifier 1..* MS
-
+* identifier.assigner 1..1 MS
+* identifier.assigner.identifier 1..1 MS
+* identifier.assigner.identifier.value 1..1 MS
+* identifier.assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
 
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "identifier.type"
