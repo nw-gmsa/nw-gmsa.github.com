@@ -21,7 +21,7 @@ While the order is being fulfilled, patient demographics may change and systems 
 </figure>
 <br clear="all">
 
-- The `Patient Identity Source` sends a HL7 v2 A31 (or FHIR) event to the RIE 
+- The `Patient Identity Source` sends a IHE ITI-8/HL7 v2 A31 (or [ITI-104](https://profiles.ihe.net/ITI/PIXm/ITI-104.html)/FHIR PUT (upsert)) event to the RIE 
 - The RIE forwards this event to the local `Order Filler`
 - For external orders (how do we know this?), the RIE to NHS England's `Automation Manager` Genomic Order Management System. At present this is:
   - Lookup up existing Patient via supplied identifiers (MRN or NHS Number) via a [FHIR RESTful Search](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir#get-/FHIR/R4/Patient). 

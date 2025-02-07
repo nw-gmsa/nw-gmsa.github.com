@@ -79,6 +79,9 @@ pages:
   PIX.md:
     title: Patient Identifier Cross-referencing (PIX)
     generation: markdown
+  MDM.md:
+    title: Care Directory Service Management
+    generation: markdown
   LAB-1.md:
     title: Placer Order Management [LAB-1]
     generation: markdown
@@ -109,6 +112,7 @@ menu:
   Analysis and Design (Vol 1) :
     Genomics Test Workflow (LTW): LTW.html
     Patient Identifier Cross-referencing (PIX): PIX.html
+    Care Directory Service Management: MDM.html
   Interfaces (Vol 2):
     Placer Order Management [LAB-1]: LAB-1.html
     Order Results Management [LAB-3]: LAB-3.html

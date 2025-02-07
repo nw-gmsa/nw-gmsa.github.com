@@ -1,0 +1,30 @@
+@startuml
+
+title "Care Service Directory Management"
+
+frame "PractionrRole Event Feed" as PIX {
+
+  component "**Care Services Update Consumer**\nNW Genomic Laboratory Hub (LIMS)" as LIMS
+  component "**Care Services Update Source**" as EPR
+  component "North West GLH Regional Integration Engine (RIE)" as TIE
+  component "**Care Services Update Consumer**\nNHS England Genomic\nOrder Management System (GOMS)" as GOMS
+
+ interface "HL7 v2 MFN_M02" as HL7_ORM1
+
+ interface "HL7 v2 MFN_M02" as HL7_ORM2
+ interface "GOMS Adapter" as REST
+
+  TIE -d-> REST
+  REST <-d-> GOMS : FHIR RESTful\nPractitionerRole Search and Update\n(DDD: Open Host Service)
+  EPR -d-> HL7_ORM1
+  HL7_ORM1 -d-> TIE
+  TIE -d-> HL7_ORM2
+}
+
+
+
+HL7_ORM2 -d-> LIMS
+
+
+
+@enduml
