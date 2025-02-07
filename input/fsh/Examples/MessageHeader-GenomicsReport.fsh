@@ -18,5 +18,5 @@ Usage: #example
 * source.software = "MFT TIE"
 
 * focus[+]
-  * reference = "urn:uuid:54b526e9-60a7-4602-9cb3-50ab3be7b564"
+  * reference = "urn:uuid:233ff41a-5067-46c4-b6aa-5d6f87719f5f"
   * type = #DiagnosticReport
