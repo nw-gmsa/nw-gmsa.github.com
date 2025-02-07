@@ -4,8 +4,8 @@
 - B. [IHE Mobile Care Services Discovery (mCSD)](https://profiles.ihe.net/ITI/mCSD/index.html)
 
 <figure>
-{%include MDM-component.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">MDM Actor Diagram</p>
+{%include HPD-component.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">HPD Actor Diagram</p>
 </figure>
 <br clear="all">
 
