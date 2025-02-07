@@ -51,9 +51,9 @@ parameters:
   apply-jurisdiction: 'true'
   apply-publisher: 'true'
   apply-version: 'true'
+  excludexml: 'false'
   excludettl: 'true'
   excludemap: 'true'
-  excludeexample: 'false'
   generate:
     - xml
     - json
