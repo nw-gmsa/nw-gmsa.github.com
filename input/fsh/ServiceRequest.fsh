@@ -46,14 +46,14 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 
 * identifier[placerOrderNumber].type = http://terminology.hl7.org/CodeSystem/v2-0203#PLAC
 * identifier[placerOrderNumber] ^short = "Identifier assigned by the Order Filler, HL7 v2 ORC-2 Order Placer Number. Mandatory for Order Placer"
-* identifier[accessionNumber] insert Obligation(#SHALL:handle, https://hl7.mft.nhs.uk/ActorDefinition/OrderFiller)
-* identifier[accessionNumber] insert Obligation(#SHALL:populate-if-known, https://hl7.mft.nhs.uk/ActorDefinition/OrderPlacer)
-* identifier[accessionNumber] insert Obligation(#SHALL:handle, https://hl7.mft.nhs.uk/ActorDefinition/AutomationManager)
+* identifier[placerOrderNumber] insert Obligation(#SHALL:persist, https://hl7.mft.nhs.uk/ActorDefinition/OrderFiller)
+* identifier[placerOrderNumber] insert Obligation(#SHALL:populate, https://hl7.mft.nhs.uk/ActorDefinition/OrderPlacer)
+* identifier[placerOrderNumber] insert Obligation(#SHALL:persist, https://hl7.mft.nhs.uk/ActorDefinition/AutomationManager)
 * identifier[accessionNumber] only AccessionNumber
 * identifier[accessionNumber] ^short = "Identifier assigned by the lab, HL7 v2 ORC-3 Order Filler Number. Mandatory for Order Placer"
-* identifier[accessionNumber] insert Obligation(#SHALL:populate-if-known, https://hl7.mft.nhs.uk/ActorDefinition/OrderFiller)
-* identifier[accessionNumber] insert Obligation(#SHALL:handle, https://hl7.mft.nhs.uk/ActorDefinition/OrderPlacer)
-* identifier[accessionNumber] insert Obligation(#SHALL:handle, https://hl7.mft.nhs.uk/ActorDefinition/AutomationManager)
+* identifier[accessionNumber] insert Obligation(#SHALL:populate, https://hl7.mft.nhs.uk/ActorDefinition/OrderFiller)
+* identifier[accessionNumber] insert Obligation(#SHOULD:persist, https://hl7.mft.nhs.uk/ActorDefinition/OrderPlacer)
+* identifier[accessionNumber] insert Obligation(#SHALL:persist, https://hl7.mft.nhs.uk/ActorDefinition/AutomationManager)
 
 * category ^short = "ISSUE. Additionally should include high level category either SCT 108252007 Laboratory procedure or child code 116148004 Molecular genetics procedure"
 
@@ -77,22 +77,4 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * note MS
 
 * supportingInfo 0..* MS
-* supportingInfo ^slicing.discriminator.type = #value
-* supportingInfo ^slicing.discriminator.path = "type"
-* supportingInfo ^slicing.rules = #open
-* supportingInfo ^slicing.description = "Slice based on the type"
-* supportingInfo ^slicing.ordered = false
-* supportingInfo contains
-  Condition 0..1 MS and Observation 0..* MS and FamilyMemberHistory 0..* MS and Procedure 0..* MS
-
-* supportingInfo[Condition] only Reference(Condition)
-  * type = "Condition"
-
-* supportingInfo[Observation] only Reference(ObservationPanel or Observation)
-  * type = "Observation"
-
-* supportingInfo[FamilyMemberHistory] only Reference(FamilyMemberHistory)
-  * type = "FamilyMemberHistory"
-
-* supportingInfo[Procedure] only Reference(Procedure)
-  * type = "Procedure"
+* supportingInfor only Reference(ObservationPanel or Observation or Condition or FamilyMemberHistory or Procedure)
