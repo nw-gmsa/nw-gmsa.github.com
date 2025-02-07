@@ -13,7 +13,7 @@ DRAFT Extension of [UK Core DiagnosticReport](https://simplifier.net/hl7fhirukco
 * identifier 1..* MS
 
 * basedOn ^slicing.discriminator.type = #value
-* basedOn ^slicing.discriminator.path = "type"
+* basedOn ^slicing.discriminator.path = "identifier.type"
 * basedOn ^slicing.rules = #open
 * basedOn ^slicing.description = "Slice based on the type"
 * basedOn ^slicing.ordered = false

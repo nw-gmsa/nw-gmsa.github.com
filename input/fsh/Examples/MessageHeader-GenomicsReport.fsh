@@ -6,8 +6,8 @@ Usage: #example
 * eventCoding = http://terminology.hl7.org/CodeSystem/v2-0003#R01
 
 * sender.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
-* sender.identifier.value = "R0A"
-* sender.display = "MANCHESTER UNIVERSITY NHS FOUNDATION TRUST"
+* sender.identifier.value = "699X0"
+* sender.display = "NORTH WEST GLH"
 
 * destination.receiver.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
 * destination.receiver.identifier.value = "RBS"

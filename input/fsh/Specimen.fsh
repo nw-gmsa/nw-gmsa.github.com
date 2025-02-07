@@ -10,3 +10,7 @@ DRAFT Extension of UKCore-Specimen which includes constraints from:
 * identifier 1..* MS
 * accessionIdentifier 0..1 MS
 * accessionIdentifier ^short = "Identifier assigned by the lab, HL7 v2 ORC-3 Order Filler Number"
+
+
+* subject 1..1 MS
+* subject only Reference(Patient)

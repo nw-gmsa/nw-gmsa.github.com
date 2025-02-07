@@ -13,7 +13,7 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 
 
 * identifier ^slicing.discriminator.type = #value
-* identifier ^slicing.discriminator.path = "type"
+* identifier ^slicing.discriminator.path = "identifier.type"
 * identifier ^slicing.rules = #open
 * identifier ^slicing.description = "Slice based on the type"
 * identifier ^slicing.ordered = false

@@ -17,6 +17,5 @@ Also known as Filler Order Number (ORC-3)
 """
 
 * type = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN
-* system 1..1
 * system ^short = "uri should be defined and unique supplying organisation."
 * value 1..1

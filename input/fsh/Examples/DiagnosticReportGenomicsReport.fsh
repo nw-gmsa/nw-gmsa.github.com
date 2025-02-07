@@ -9,10 +9,9 @@ Title: "Diagnostic Repoort Example. First draft is based on Royal College of Rad
 * basedOn[accessionNumber]
   * type = "ServiceRequest"
   * identifier.type = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN
-  * identifier.system = "https://fhir.leedsth.nhs.uk/Id/AccessionNumber"
-  * identifier.value = "1601737"
+  * identifier.value = "1001166717"
   * identifier.assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
-  * identifier.assigner.identifier.value = "R0A"
+  * identifier.assigner.identifier.value = "699X0"
 
 * status = #final
 * category = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"

@@ -4,13 +4,15 @@ Title: "ServiceRequest Example"
 
 * meta.versionId = "1.0"
 
-
+* identifier[placerOrderNumber].type = http://terminology.hl7.org/CodeSystem/v2-0203#PLAC
+* identifier[placerOrderNumber].value = "1601737"
+* identifier[placerOrderNumber].assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
+* identifier[placerOrderNumber].assigner.identifier.value = "R0A"
 
 * identifier[accessionNumber].type = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN
-* identifier[accessionNumber].system = "https://fhir.leedsth.nhs.uk/Id/AccessionNumber"
-* identifier[accessionNumber].value = "1601737"
+* identifier[accessionNumber].value = "1001166717"
 * identifier[accessionNumber].assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
-* identifier[accessionNumber].assigner.identifier.value = "R0A"
+* identifier[accessionNumber].assigner.identifier.value = "699X0"
 
 * status = #active
 * intent = #order
