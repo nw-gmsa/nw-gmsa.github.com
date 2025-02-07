@@ -10,11 +10,7 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 
 
 * identifier 1..* MS
-* identifier.assigner 1..1 MS
-* identifier.assigner.identifier 1..1 MS
-* identifier.assigner.identifier.value 1..1 MS
-* identifier.assigner ^short = "Assigning Facility"
-* identifier.assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
+
 
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "type"
@@ -22,7 +18,7 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * identifier ^slicing.description = "Slice based on the type"
 * identifier ^slicing.ordered = false
 * identifier contains
-  accessionNumber 0..1 MS and placerOrderNumber 0..1c MS
+  accessionNumber 0..1 MS and placerOrderNumber 0..1 MS
 
 * identifier[placerOrderNumber] only OrderPlacerNumber
 * identifier[placerOrderNumber] ^short = "Identifier assigned by the Order Filler, HL7 v2 ORC-2 Order Placer Number. Mandatory for Order Placer"
@@ -61,7 +57,7 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * category contains
   GenomicProcedure 1..1 MS
 
-* category[GenomicProcedure].coding.value = #116148004
+* category[GenomicProcedure].coding.code = #116148004
 * category[GenomicProcedure].coding.system = $sct
 
 * category[genomicsWholeCaseSequencing] MS

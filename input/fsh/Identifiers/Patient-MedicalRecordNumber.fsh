@@ -24,3 +24,8 @@ Only use in References if the NHS Number is not known or unverified.
 * value 1..1
 * assigner ^short = "Assigning Facility"
 * assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
+
+* assigner 1..1 MS
+* assigner.identifier 1..1 MS
+* assigner.identifier.value 1..1 MS
+
