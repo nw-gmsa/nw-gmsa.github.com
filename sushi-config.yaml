@@ -51,8 +51,6 @@ parameters:
   apply-jurisdiction: 'true'
   apply-publisher: 'true'
   apply-version: 'true'
-  excludexml: 'false'
-  excludejsn: 'false'
   excludettl: 'true'
   excludemap: 'true'
   excludeexample: 'false'
