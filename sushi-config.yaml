@@ -72,7 +72,7 @@ pages:
     title: Home
     generation: markdown
   LTW.md:
-    title: Genomics Test Workflow (LTW)
+    title: Genomics Testing Workflow (LTW)
     generation: markdown
   PIX.md:
     title: Patient Identifier Cross-referencing (PIX)
@@ -108,7 +108,7 @@ resources:
 menu:
   Home: index.html
   Analysis and Design (Vol 1) :
-    Genomics Test Workflow (LTW): LTW.html
+    Genomics Testing Workflow (LTW): LTW.html
     Patient Identifier Cross-referencing (PIX): PIX.html
     Healthcare Provider Directory (HPD): HPD.html
   Interfaces (Vol 2):
