@@ -74,7 +74,10 @@ pages:
     title: Home
     generation: markdown
   LTW.md:
-    title: Genomics Test Workflow [LTW]
+    title: Genomics Test Workflow (LTW)
+    generation: markdown
+  PIX.md:
+    title: Patient Identifier Cross-referencing (PIX)
     generation: markdown
   LAB-1.md:
     title: Placer Order Management [LAB-1]
@@ -104,7 +107,8 @@ resources:
 menu:
   Home: index.html
   Analysis and Design (Vol 1) :
-    Genomics Test Workflow [LTW]: LTW.html
+    Genomics Test Workflow (LTW): LTW.html
+    Patient Identifier Cross-referencing (PIX): PIX.html
   Interfaces (Vol 2):
     Placer Order Management [LAB-1]: LAB-1.html
     Order Results Management [LAB-3]: LAB-3.html
