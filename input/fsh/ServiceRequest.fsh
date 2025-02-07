@@ -18,11 +18,11 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * code.coding ^slicing.description = "Slice based on the system"
 * code.coding ^slicing.ordered = false
 * code.coding contains
-  GenomicTestDirectory 1..1 MS and genomicsWholeCaseSequencing 0..1
+  GenomicTestDirectory 1..1 MS
 
 * code.coding[GenomicTestDirectory] from GenomicTestDirectory (required)
 * code.coding[GenomicTestDirectory].system = "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory"
-* code.coding[genomicsWholeCaseSequencing].system = "https://fhir.hl7.org.uk/CodeSystem/UKCore-GenomeSequencingCategory"
+
 
 * category 1..* MS
 * category ^slicing.discriminator.type = #value
@@ -31,9 +31,10 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * category ^slicing.description = "Slice based on the coding.system"
 * category ^slicing.ordered = false
 * category contains
-  GenomicProcedure 1..1 MS
+  GenomicProcedure 1..1 MS and genomicsWholeCaseSequencing 0..1
 
 * category[GenomicProcedure].coding = $sct#116148004
+* category[genomicsWholeCaseSequencing].coding.system = "https://fhir.hl7.org.uk/CodeSystem/UKCore-GenomeSequencingCategory"
 
 * identifier 1..* MS
 * identifier ^slicing.discriminator.type = #value
