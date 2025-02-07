@@ -7,7 +7,7 @@ Usage:  #definition
 * type = http://hl7.org/fhir/examplescenario-actor-type#system
 * status = http://hl7.org/fhir/publication-status#draft
 * description = """
-Manages the Order.
+Manages the Order. This is the function of [Genomic Order Management Service](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir)
 """
 * documentation = """
 Receives work orders from the order filler and organizes their fulfillment.

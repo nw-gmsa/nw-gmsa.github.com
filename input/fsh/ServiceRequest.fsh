@@ -76,7 +76,6 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * basedOn ^short = "SHALL reference a parent request where this ServiceRequest is based on a previous request, e.g. in the case of reanalysis and cascade testing, or Germline Late tests in the Tumour First/Germline Late scenario"
 * note MS
 
-* supportingInfo ^short = "ISSUE. National programme is not suporting panels, this may result in transformation issues."
 * supportingInfo 0..* MS
 * supportingInfo ^slicing.discriminator.type = #value
 * supportingInfo ^slicing.discriminator.path = "type"
