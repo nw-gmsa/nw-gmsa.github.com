@@ -1,0 +1,26 @@
+@startuml
+
+title "IHE Patient Identifier Cross-referencing (PIX)"
+
+frame "Patient Identity Feed [ITI-8 (or ITI-104)]" as PIX {
+
+  component "**Order Filler**\nNW Genomic Laboratory Hub (LIMS)" as LIMS
+  component "**Patient Identity Source**" as EPR
+  component "North West GLH Regional Integration Engine (RIE)" as TIE
+  component "**Automation Manager**\nNHS England Genomic\nOrder Management System (GOMS)" as GOMS
+
+ interface "IHE ITI-8 (or ITI-104)\nHL7 v2 A31 (or FHIR) Event" as HL7_ORM1
+
+ interface "IHE ITI-8\nHL7 v2 A31 Event" as HL7_ORM2
+ interface "GOMS Adapter" as REST
+
+  TIE -d-> REST
+  REST <-d-> GOMS : FHIR RESTful\nPatient Search and Update
+  EPR -d-> HL7_ORM1
+  HL7_ORM1 -d-> TIE
+  TIE -d-> HL7_ORM2
+}
+
+HL7_ORM2 -d-> LIMS
+
+@enduml
