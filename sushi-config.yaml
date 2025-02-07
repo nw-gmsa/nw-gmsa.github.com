@@ -6,8 +6,8 @@ id: nhs.mft.fhir
 canonical: https://hl7.mft.nhs.uk
 version: 0.0.1
 name: MFT_Genomics
-title: "North West Genomics HL7 v2 and FHIR Implementation Guide"
-description: Implementation Guide for North West Genomics
+title: "North West Genomics Testing Workflow"
+description: North West Genomics Testing Workflow Implementation Guide
 releaseLabel: ci-build
 
 status: draft

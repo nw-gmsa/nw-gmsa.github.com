@@ -7,18 +7,17 @@ DRAFT Extension of [UK Core DiagnosticReport](https://simplifier.net/hl7fhirukco
 - [NHS England Genomics DiagnosticReport](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/FHIRAssets/Profiles/All-Profiles/UKCore-DiagnosticReport) use text descriptions only, not the rendered profile.
 """
 
-* extension[supportingInfoR5] 0..0
-* extension[compositionReferenceR5] 0..0
-
 * identifier 1..* MS
 * identifier.assigner 1..1 MS
 * identifier.assigner.identifier 1..1 MS
 * identifier.assigner.identifier.value 1..1 MS
+* identifier.assigner.identifier.system 1..1 MS
 * identifier.assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
 
 * basedOn.identifier 1..1 MS
 * basedOn.identifier.assigner.identifier 1..1 MS
 * basedOn.identifier.assigner.identifier.value 1..1 MS
+* basedOn.identifier.assigner.identifier.system 1..1 MS
 * basedOn.identifier.assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
 
 * basedOn ^slicing.discriminator.type = #value
