@@ -23,7 +23,10 @@
 </figure>
 <br clear="all">
 
-## Sequence Diagram
+
+## Overview
+
+### Process Description
 
 <figure>
 {%include LAB1-sequence.svg%}
@@ -79,10 +82,13 @@ A unsuccessful acknowledgement would look like:
 
 where the details section contains a reference to an included OperationOutcome listing details of the failure.
 
-### Interface Standards
+### Delayed Message Acknowledgment 
+
+TODO Asynchronous description
+
+## Interface Standards
 
 Is based on a HL7 FHIR [laboratory order (O21)](MessageDefinition-laboratory-order.html) Message which is backwards compatible with HL7 v2 OML_O21 (or ORM_O01) Message.
-
 
 ### HL7 v2 Mapping 
 
