@@ -46,8 +46,14 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 
 * identifier[placerOrderNumber].type = http://terminology.hl7.org/CodeSystem/v2-0203#PLAC
 * identifier[placerOrderNumber] ^short = "Identifier assigned by the Order Filler, HL7 v2 ORC-2 Order Placer Number. Mandatory for Order Placer"
+* identifier[accessionNumber] insert Obligation(#SHALL:handle, https://hl7.mft.nhs.uk/ActorDefinition/OrderFiller)
+* identifier[accessionNumber] insert Obligation(#SHALL:populate-if-known, https://hl7.mft.nhs.uk/ActorDefinition/OrderPlacer)
+* identifier[accessionNumber] insert Obligation(#SHALL:handle, https://hl7.mft.nhs.uk/ActorDefinition/AutomationManager)
 * identifier[accessionNumber] only AccessionNumber
 * identifier[accessionNumber] ^short = "Identifier assigned by the lab, HL7 v2 ORC-3 Order Filler Number. Mandatory for Order Placer"
+* identifier[accessionNumber] insert Obligation(#SHALL:populate-if-known, https://hl7.mft.nhs.uk/ActorDefinition/OrderFiller)
+* identifier[accessionNumber] insert Obligation(#SHALL:handle, https://hl7.mft.nhs.uk/ActorDefinition/OrderPlacer)
+* identifier[accessionNumber] insert Obligation(#SHALL:handle, https://hl7.mft.nhs.uk/ActorDefinition/AutomationManager)
 
 * category ^short = "ISSUE. Additionally should include high level category either SCT 108252007 Laboratory procedure or child code 116148004 Molecular genetics procedure"
 
