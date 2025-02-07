@@ -18,11 +18,11 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * code.coding ^slicing.description = "Slice based on the system"
 * code.coding ^slicing.ordered = false
 * code.coding contains
-  GenomicTestDirectory 1..1 MS
+  GenomicTestDirectory 1..1 MS and genomicsWholeCaseSequencing 0..1
 
 * code.coding[GenomicTestDirectory] from GenomicTestDirectory (required)
 * code.coding[GenomicTestDirectory].system = "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory"
-
+* code.coding[genomicsWholeCaseSequencing].system = "https://fhir.hl7.org.uk/CodeSystem/UKCore-GenomeSequencingCategory"
 
 * category 1..* MS
 * category ^slicing.discriminator.type = #value
@@ -55,8 +55,6 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * identifier[accessionNumber] insert Obligation(#SHOULD:persist, https://hl7.mft.nhs.uk/ActorDefinition/OrderPlacer)
 * identifier[accessionNumber] insert Obligation(#SHALL:persist, https://hl7.mft.nhs.uk/ActorDefinition/AutomationManager)
 
-* category ^short = "ISSUE. Additionally should include high level category either SCT 108252007 Laboratory procedure or child code 116148004 Molecular genetics procedure"
-
 * encounter only Reference(Encounter)
 
 * requester 1..1 MS
@@ -74,6 +72,8 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 
 * basedOn 0..* MS
 * basedOn ^short = "SHALL reference a parent request where this ServiceRequest is based on a previous request, e.g. in the case of reanalysis and cascade testing, or Germline Late tests in the Tumour First/Germline Late scenario"
+* basedOn only Reference(ServiceRequest)
+
 * note MS
 
 * supportingInfo 0..* MS
