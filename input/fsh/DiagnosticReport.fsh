@@ -16,10 +16,11 @@ DRAFT Extension of [UK Core DiagnosticReport](https://simplifier.net/hl7fhirukco
 * identifier.assigner.identifier.value 1..1 MS
 * identifier.assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
 
-* basedOn.assigner 1..1 MS
-* basedOn.assigner.identifier 1..1 MS
-* basedOn.assigner.identifier.value 1..1 MS
-* basedOn.assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
+* basedOn.identifier 1..1 MS
+* basedOn.identifier.assigner.identifier 1..1 MS
+* basedOn.identifier.assigner.identifier.value 1..1 MS
+* basedOn.identifier.assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
+
 * basedOn ^slicing.discriminator.type = #value
 * basedOn ^slicing.discriminator.path = "identifier.type"
 * basedOn ^slicing.rules = #open
