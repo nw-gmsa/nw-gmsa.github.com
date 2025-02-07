@@ -77,4 +77,4 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * note MS
 
 * supportingInfo 0..* MS
-* supportingInfor only Reference(ObservationPanel or Observation or Condition or FamilyMemberHistory or Procedure)
+* supportingInfo only Reference(ObservationPanel or Observation or Condition or FamilyMemberHistory or Procedure)
