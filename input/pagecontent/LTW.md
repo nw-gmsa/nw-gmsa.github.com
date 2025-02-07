@@ -61,8 +61,7 @@ Note: Event trigger definitions based on [NHS England HL7 v2 ADT Message Specifi
 
 It is common for this requirement to be answered by a combination of:
 
-- [IHE Patient Identifier Cross-referencing (PIX)](https://profiles.ihe.net/ITI/TF/Volume1/ch-5.html)/HL7 v2 ADT Patient Demographic Update (A31 and A40)
-  - HL7 FHIR version [IHE Patient Identifier Cross-referencing for mobile (PIXm)](https://profiles.ihe.net/ITI/PIXm/index.html)
+- [Patient Identifier Cross-referencing (PIX)](PIX.html)
 - [IHE Patient Administration Management (PAM)](https://profiles.ihe.net/ITI/TF/Volume1/ch-14.html)//HL7 v2 ADT Patient Encounter Management (A02, A08 and A12)
   - (Denmark) HL7 FHIR version [DK MedCom HospitalNotification](https://medcomfhir.dk/ig/hospitalnotification/)
 
