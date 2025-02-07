@@ -31,12 +31,18 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * category ^slicing.description = "Slice based on the coding.system"
 * category ^slicing.ordered = false
 * category contains
-  GenomicProcedure 1..1 MS and genomicsWholeCaseSequencing 0..1
+  GenomicProcedure 1..1 MS
 
 * category[GenomicProcedure].coding = $sct#116148004
-* category[genomicsWholeCaseSequencing].coding.system = "https://fhir.hl7.org.uk/CodeSystem/UKCore-GenomeSequencingCategory"
+* category[genomicsWholeCaseSequencing] MS
 
 * identifier 1..* MS
+* identifier.assigner 1..1 MS
+* identifier.assigner.identifier 1..1 MS
+* identifier.assigner.identifier.value 1..1 MS
+* identifier.assigner ^short = "Assigning Facility"
+* identifier.assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
+
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "type"
 * identifier ^slicing.rules = #open
@@ -45,7 +51,7 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * identifier contains
   accessionNumber 0..1 MS and placerOrderNumber 0..1
 
-* identifier[placerOrderNumber].type = http://terminology.hl7.org/CodeSystem/v2-0203#PLAC
+* identifier[placerOrderNumber] only OrderPlacerNumber
 * identifier[placerOrderNumber] ^short = "Identifier assigned by the Order Filler, HL7 v2 ORC-2 Order Placer Number. Mandatory for Order Placer"
 * identifier[placerOrderNumber] insert Obligation(#SHOULD:populate-if-known, https://hl7.mft.nhs.uk/ActorDefinition/OrderFiller)
 * identifier[placerOrderNumber] insert Obligation(#SHALL:populate, https://hl7.mft.nhs.uk/ActorDefinition/OrderPlacer)
