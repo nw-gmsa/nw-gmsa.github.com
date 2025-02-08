@@ -64,30 +64,7 @@ This includes making use of FHIR Identifier `assigner.identifier.value` (HL7 v2 
 
 This applies to HL7 v2 ORU_R01 feeds to the RIE.
 
-#### EI - Entity Identifier
-
-In ORC-2 and ORC-3 (mandatory for LIMS/GLH) 
-
-| Field | Name              | Value      |
-|-------|-------------------|------------|
-| EI.1  | Entity Identifier | {value}    |
-| EI.2  | Namespace Id      | ODS        | 
-| EI.3  | Universal Id      | {ODS_Code} |
-| EI.4  | Universal Id Type |            | 
-
-Examples 
-
-ORC-2 Placer Order Number
-
-```
-ABC^ODS^ROA
-```
-
-ORC-3 Filler Order Number
-
-```
-XYZ789^ODS^ROA
-```
+ORC-3, ORC-12 (XCN) and ORC-21 (XON) **SHALL** be populated.
 
 #### XCN - Extended Composite ID Number and Name for Persons
 
