@@ -54,6 +54,8 @@ This includes making use of FHIR Identifier `assigner.identifier.value` (HL7 v2 
     }
 ```
 
+## Identities and Codes
+
 ### References to other domains
 
 Is present around Organisation, Practioner and PractitionerRole. NHS England has expressed a preference to use NHS England Identifiers, these are:
