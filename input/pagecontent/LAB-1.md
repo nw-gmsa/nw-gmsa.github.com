@@ -43,7 +43,7 @@ In many Order Placer applications (i.e. the EPR or Order Comms) the order is cap
 The  [laboratory order (O21)](MessageDefinition-laboratory-order.html) is sent to the RIA via the [$process-message](OperationDefinition-ProcessMessage.html) API
 
 ```
-POST /$process-messsage
+POST [base]/$process-messsage
 ```
 
 Example payload [Bundle 'Message' - Genomics Order](Bundle-GenomicsOrderMessage.html) 
@@ -58,7 +58,7 @@ The RIE then sends the converted HL7 v2 Message to the Order Filler (LIMS) which
 
 #### Response HL7 FHIR Message
 
-The response [laboratory-order-acknowledgement (O22)](MessageDefinition-laboratory-order-acknowledgement.html) (asssumed synchronous at present and so subject to change) is returned to the order placer. For sucessful messages the MessageHeader will have `response` will look like 
+The response [laboratory-order-acknowledgement (O22)](MessageDefinition-laboratory-order-acknowledgement.html) (asssumed synchronous at present and so subject to change) is returned to the order placer. For sucessful messages the [MessageHeader](StructureDefinition-MessageHeader.html) will have `response.code` returned will be `ok` and will look like: 
 
 ```
 "response" : {
@@ -68,7 +68,7 @@ The response [laboratory-order-acknowledgement (O22)](MessageDefinition-laborato
 ```
 where the identifier refers to the Bundle.identifier in the orignial message. The Bundle may also include modified FHIR Patient or ServiceRequest resources with updated and new identifiers.
 
-A unsuccessful acknowledgement would look like: 
+When the RIE is unable to accept the message due to issues such as FHIR Validation issues, the returned [MessageHeader](StructureDefinition-MessageHeader.html) will have `response.code` returned will be `error`, e.g.:
 
 ```
 "response" : {
@@ -82,9 +82,124 @@ A unsuccessful acknowledgement would look like:
 
 where the details section contains a reference to an included OperationOutcome listing details of the failure.
 
-### Delayed Message Acknowledgment 
+Should the RIE encounter a technical problem, such as an internal service such as `FHIR Validation Service` or `Terminology Service` being unavailable, the message has not been accepted and the sender should wait and try again. the returned [MessageHeader](StructureDefinition-MessageHeader.html) will have `response.code` returned will be `transient-error`, e.g.: 
 
-TODO Asynchronous description
+```
+"response" : {
+  "identifier" : "9612365d-52a4-4fab-87e7-8a09d753f095",
+  "code" : "transient-error",
+  "details" :{
+    "reference" : "OperationOutcome/TODO"
+  }
+}
+```
+
+
+### Asynchronous Message Acknowledgement
+
+The previous section described a `synchronous` messaging system, where the Order Filler returned a response within a short time frame. This is often not going to occur, for example the response may be delayed by:
+
+- System maintenance, e.g. the LIMS has been taken off-line for an upgrade.
+- An order has not been picked up in the GOMS by a remote LIMS and is waiting in a queue.
+
+In these instances we now have `asynchronous` messaging. The suggested method for these message acknowledgements is [Asynchronous Messaging using the RESTful API](https://hl7.org/fhir/R4/messaging.html#rest)
+
+<figure>
+{%include LAB1-sequence-async-ack.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">Asynchronous Message Acknowledgement Sequence Diagram</p>
+</figure>
+<br clear="all">
+
+#### Store Message in a Message Queue
+
+The RIE will store the acknowledgement messagge in a Message Queue.
+
+#### Query for HL7 FHIR Messages
+
+The Order Placer (or TIE) will [poll](https://www.enterpriseintegrationpatterns.com/patterns/messaging/PollingConsumer.html) for new messages using a FHIR RESTful query.  
+
+```
+GET [base]/Bundle?message.reciever:identifier=[odsCode]&_lastUpdated=>2025-03-01T02:00:02+01:00
+```
+
+Example returned search results [Bundle 'SearchSet' - Genomics Order](Bundle-GenomicsOrderSearchSet.html)
+
+Initially only queries by ODS Code will be supported to support TIE to TIE exchanges.
+
+#### Update HL7 FHIR Messages
+
+Messages that have been accepted by the calling Order Place (or TIE), need to be acknowledged and removed from the MessageQueue. This is achieved by sending back the messages with the sender and destination fields reversed, i.e. 
+
+**Orignial Message Header**
+
+```
+{
+  "resourceType" : "MessageHeader",
+  "eventCoding" : {
+    "system" : "http://terminology.hl7.org/CodeSystem/v2-0003",
+    "code" : "O22"
+  },
+  "destination" : [
+    {
+      "endpoint" : "https//hive.mft.nhs.uk",
+      "receiver" : {
+        "identifier" : {
+          "system" : "https://fhir.nhs.uk/Id/ods-organization-code",
+          "value" : "R0A"
+        }
+      }
+    }
+  ],
+  "sender" : {
+    "identifier" : {
+      "system" : "https://fhir.nhs.uk/Id/ods-organization-code",
+      "value" : "699X0"
+    }
+  },
+  "response" : {
+    "identifier" : "9612365d-52a4-4fab-87e7-8a09d753f095",
+    "code" : "ok"
+  }
+}
+```
+
+**Message Header for returned update**
+
+```
+{
+  "resourceType" : "MessageHeader",
+  "eventCoding" : {
+    "system" : "http://terminology.hl7.org/CodeSystem/v2-0003",
+    "code" : "O22"
+  },
+  "destination" : [
+    {
+      "receiver" : {
+        "identifier" : {
+          "system" : "https://fhir.nhs.uk/Id/ods-organization-code",
+          "value" : "699X0"
+        }
+      }
+    }
+  ],
+  "sender" : {
+    "identifier" : {
+      "system" : "https://fhir.nhs.uk/Id/ods-organization-code",
+      "value" : "R0A"
+    }
+  },
+  "response" : {
+    "identifier" : "9612365d-52a4-4fab-87e7-8a09d753f095",
+    "code" : "ok"
+  }
+}
+```
+
+This update is sent back to the RIE as a [FHIR Transaction](https://hl7.org/fhir/R4/http.html#transaction)
+
+```
+POST [base]/
+```
 
 ## Interface Standards
 
