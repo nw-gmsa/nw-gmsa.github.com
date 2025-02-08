@@ -6,7 +6,7 @@ id: nhs.mft.fhir
 canonical: https://hl7.mft.nhs.uk
 version: 0.0.1
 name: MFT_Genomics
-title: "North West Genomics Testing Workflow"
+title: "North West Genomics Testing Workflow (GTW)"
 description: North West Genomics Testing Workflow Implementation Guide
 releaseLabel: ci-build
 
