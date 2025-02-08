@@ -78,7 +78,7 @@ This is for discussion, this applies to FHIR resources identified as not being e
 In FHIR the codes for these will be [CodeableConcept](https://hl7.org/fhir/R4/datatypes.html#CodeableConcept) (HL7 v2 CE Data Types). It is excepted NHS England will
 
 - express a preference towards [SNOMED CT](https://digital.nhs.uk/services/terminology-and-classifications/snomed-ct)
-- the use of FHIR Resources to represent these.
+- use FHIR Resources to represent these.
 
 The use of FHIR resources for data which is currently HL7 v2 CE Data Type may need to be questioned. 
 For example mapping of HL7 v2 `ORC-16` is to `ServiceRequest.requestCode` according to [ServiceRquest - HL7 v2 Mapping](https://digital.nhs.uk/services/terminology-and-classifications/snomed-ct), this is a v2 CE to FHIR CodeableConcept conversion. 
