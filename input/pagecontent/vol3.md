@@ -61,7 +61,7 @@ Is present around Organisation, Practioner and PractitionerRole. NHS England has
 - Organization 
   - [ODS Code](StructureDefinition-organisation-code.html)
 - Practitioner
-  - [Practitioner Identifiers](StructureDefinition-EnglandPractitionerIdentifier.html)
+  - [Practitioner Identifiers](StructureDefinition-EnglandPractitionerIdentifier.html) (GMP and GMC Numbers)
 - PractitionerRole
   - [ODS Code](StructureDefinition-organisation-code.html)
   - [Practitioner Identifiers](StructureDefinition-EnglandPractitionerIdentifier.html)
