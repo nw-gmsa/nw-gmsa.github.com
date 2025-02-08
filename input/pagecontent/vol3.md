@@ -9,6 +9,12 @@ The intent is to follow the data model (FHIR profiles, valuesets and codesystems
 </figure>
 <br clear="all">
 
+## Genomic Test Report Model
+
+TODO
+
+## Identities and Codes
+
 This model is a summarisation of:
 
 - [NHS England Genomics IG - How to construct Bundles](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Build/How-to-construct-Bundles)
@@ -54,7 +60,53 @@ This includes making use of FHIR Identifier `assigner.identifier.value` (HL7 v2 
     }
 ```
 
-## Identities and Codes
+### HL7 v2 Changes
+
+This applies to HL7 v2 ORU_R01 feeds to the RIE.
+
+#### EI - Entity Identifier
+
+In ORC-2 and ORC-3 (mandatory for LIMS/GLH) 
+
+| Field | Name              | Value      |
+|-------|-------------------|------------|
+| EI.1  | Entity Identifier | {value}    |
+| EI.2  | Namespace Id      | ODS        | 
+| EI.3  | Universal Id      | {ODS_Code} |
+| EI.4  | Universal Id Type |            | 
+
+Examples 
+
+ORC-2 Placer Order Number
+
+```
+ABC^ODS^ROA
+```
+
+ORC-3 Filler Order Number
+
+```
+XYZ789^ODS^ROA
+```
+
+#### XCN - Extended Composite ID Number and Name for Persons
+
+The definition of XCN from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws) **SHOULD** be followed and **SHALL** be used in ORC-12.
+
+Example 
+
+```
+C3456789^Darwin^Samuel^^^Dr^^^GMC
+```
+#### XON 
+
+The definition of XON from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws) **SHOULD** be followed and **SHALL** be used in ORC-21.
+
+Example
+
+```aiignore
+MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS
+```
 
 ### References to other domains
 
