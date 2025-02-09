@@ -3,8 +3,10 @@ Parent:         CorrelationIdentifier
 Id:             medical-record-number
 Title:          "Medical Record Number"
 Description:     """
-Only use in References if the NHS Number is not known or unverified.
+Only use in References Data Type if the NHS Number is not known or unverified.
+"""
 
+* ^purpose = """
 | Standard | Data Type | Value |
 |----------|-------|-------|
 | NHS Data Dictionary | | - |

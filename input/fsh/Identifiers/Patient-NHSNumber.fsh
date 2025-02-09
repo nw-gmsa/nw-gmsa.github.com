@@ -4,7 +4,9 @@ Id:             nhs-number
 Title:          "NHS Number"
 Description:     """
 Only traced NHS Number **SHOULD** be used, un-traced NHS Numbers **MUST** be clearly indicated.
+"""
 
+* ^purpose = """
 Format: NNNNNNNNNN (400 000 000 to 499 999 999, and 600 000 000 to 799 999)
 
 | Standard | Data Type | Value |

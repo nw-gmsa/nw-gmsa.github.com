@@ -4,7 +4,9 @@ Id:             accession-number
 Title:          "Accession Number"
 Description:     """
 Also known as Filler Order Number (ORC-3)
+"""
 
+* ^purpose = """
 | Data Item | Standard | Data Type | Value |
 |----------|-------|-------|-------|
 | |HL7 FHIR | Identifier.value | {value} |
