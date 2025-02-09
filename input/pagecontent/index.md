@@ -3,15 +3,34 @@
 
 ## Introduction
 
-This guide describes the HL7 FHIR and v2 interfaces used to support Genomics testing. It is designed to be future compatible with:
+This guide is to support Genomic Testing Workflow at a regional level and is designed to be compatible with:
 
-- [NHS England - FHIR Genomics Implementation Guide](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/FHIRAssets/Profiles) which defines the conformance requirements for Genomics in England.
+- [NHS England - FHIR Genomics Implementation Guide](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/FHIRAssets/Profiles) which defines the conformance requirements for Genomics in England
+- [NHS England - Genomic Order Management Service FHIR API](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) a [FHIR Workflow](https://hl7.org/fhir/R4/workflow.html) based service for managing orders and results at a national level.
 
-This guide focuses on the regional adoption of Genomics and will conform to the **NHS England - FHIR Genomics Implementation Guide**, such as:
+<figure>
+{%include RIE-component.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">Regional Integration Engine Scope</p>
+</figure>
+<br clear="all">
 
-- Conversion of messages to/from HL7 v2 from/to HL7 FHIR.
-  - v2.5.1 is the version for HL7 v2 used in this IG, to match [Digital Health and Care Wales - HL7 ORU_R01 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
-- Enable use of FHIR Testing tools such as [Command Line FHIR Validation](https://confluence.hl7.org/display/FHIR/Using+the+FHIR+Validator) and [Online FHIR Validation](https://validator.fhir.org/)
+This guide follows [IHE Laboratory Testing Workflow](https://wiki.ihe.net/index.php/Laboratory_Testing_Workflow), which describes how to use HL7 v2 orders and reports at an enterprise level. It will contain several modifications in order to support HL7 [FHIR Messasging](https://hl7.org/fhir/R4/messaging.html), these messages will be closely related to HL7 v2 Messages to help with adoption.
+For documentation purposes, HL7 v2 version used will be 2.5.1 (this also matches HL7 International v2 standards around structured Genomic reporting and Digital Health and Care Wales standards around ORU_R01)
+
+### GLH Regional Integration Engine (GLH RIE)
+
+This implementation guide will be supported by a **Genomics Regional Integration Engine (RIE)** which will:
+
+- [Message Routing](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageRouter.html) to deliver orders and reports to the regional GLH (and in the future national GLH's).
+- [Message Translation](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageTranslator.html) to 
+  - LAB-1 convert HL7 FHIR based orders to HL7 v2 Messages (for Order Placer (local GLH))
+  - LAB-3 convert HL7 v2 based results (from Order Placer (local GLH)) to HL7 FHIR Messages
+- [Message Bridge](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessagingBridge.html) between regional Trust Integration Engines (TIE)/GLH Laboratory Information System (LIMS) and the national Genomic Order Management Service (LAB-4 and LAB-5)
+
+### Testing 
+
+This implementation guide will also enable use of FHIR Testing tools such as [Command Line FHIR Validation](https://confluence.hl7.org/display/FHIR/Using+the+FHIR+Validator) and [Online FHIR Validation](https://validator.fhir.org/)
+
 
 ## SNOMED CT
 
