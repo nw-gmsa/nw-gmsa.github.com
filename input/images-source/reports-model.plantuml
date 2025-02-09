@@ -42,7 +42,10 @@ class "[[StructureDefinition-MessageHeader.html MessageHeader]]" as MSH {
 
 
     frame DiagnosticReport {
-    entity "[[StructureDefinition-DiagnosticReport.html DiagnosticReport]]" as OBR <<aggregate>>
+    entity "[[StructureDefinition-DiagnosticReport.html DiagnosticReport]]" as OBR <<aggregate>> {
+         identifier
+         basedOn:accessionNumber
+    }
     class "Attachment" as OBX2
 
     }
