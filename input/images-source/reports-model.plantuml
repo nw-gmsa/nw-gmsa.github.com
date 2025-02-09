@@ -2,37 +2,64 @@
 
 title "Genomic Test Report"
 
-frame Message {
-entity "Genomics Report (FHIR Bundle (messaage))" as oru
+frame "Message - Unsolicited Observation R01" as Message {
 
-entity "MessageHeader" as MSH
+entity "FHIR Bundle (messaage)" as oru {
+identifier
+}
+
+class "[[StructureDefinition-MessageHeader.html MessageHeader]]" as MSH {
+ focus
+}
 
   frame Composition {
-    entity "Patient" as PID
+     entity "[[StructureDefinition-Patient.html Patient]]\n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Patient Patient]] or [[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Fetus Fetus]])" as PID {
+    NHSNumber
+    MedicalRecordNumber
+    }
 
-    entity "Encounter" as PV1
+    entity "[[StructureDefinition-Encounter.html Encounter]]" as PV1 {
+    encounter
+    episode
+    }
 
-    entity "[[StructureDefinition-ServiceRequest.html ServiceRequest]] " as ORC
+    entity "[[StructureDefinition-ServiceRequest.html ServiceRequest]] \n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Test-Request Test Request]])" as ORC <<aggregate>> {
+      accessionNumber
+    }
 
-    entity "Specimen" as SPM
+    entity "[[StructureDefinition-Specimen.html Specimen]] \n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Primary-Sample Primary Sample]])" as SPM {
+    identifier
+    accessionNumber
+    }
 
-    entity "Observation" as OBX
+   class "[[StructureDefinition-Observation.html Observation]]" as OBX {
+      }
 
-    entity "Attachment" as OBX2
 
+      class "[[StructureDefinition-Observation-Panel.html Observation Panel]]" as panel {
+      hasmember
+      }
+
+
+    frame DiagnosticReport {
     entity "[[StructureDefinition-DiagnosticReport.html DiagnosticReport]]" as OBR <<aggregate>>
+    class "Attachment" as OBX2
 
+    }
     entity "RelatedPerson" as NK1
+
+     panel *-d- "0" OBX: hasmember
   }
 }
 
-oru *-- "1" MSH
-oru *-- "*" OBR
+oru *-d- "1" MSH
+MSH *-d- "*" OBR: focus
 OBR *-- "0" SPM
 OBR "*" *--  ORC : accensionNumber
-OBR *-- "1" PID
-OBR *-- "0" PV1
+OBR *-- "1" PID : subject
+OBR *-- "0" PV1 : encounter
 OBR *-- "*" OBX : results
+OBR *-- "0" panel: results
 OBR *-- "*" OBX2: presentedForm
 NK1 -- PID : To link Mother and Fetus
 PID -- NK1
