@@ -13,7 +13,7 @@ class "[[StructureDefinition-MessageHeader.html MessageHeader]]" as MSH {
  focus
 }
 
-  frame "Composition - Clinical Headings" as Composition {
+  frame "Template/Order Form" as Composition {
     entity "[[StructureDefinition-Patient.html Patient]]\n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Patient Patient]] or [[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Fetus Fetus]])" as PID {
     NHSNumber
     MedicalRecordNumber

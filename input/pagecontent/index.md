@@ -1,6 +1,4 @@
 
-**This is an elaboration of an approach. It is not an official guide**
-
 ## Introduction
 
 This guide is to support Genomic Testing Workflow at a regional level and is designed to be compatible with:
