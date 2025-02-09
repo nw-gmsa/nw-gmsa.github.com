@@ -5,7 +5,7 @@
 
 This guide is to support Genomic Testing Workflow at a regional level and is designed to be compatible with:
 
-- [NHS England - FHIR Genomics Implementation Guide](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/FHIRAssets/Profiles) which defines the conformance requirements for Genomics in England
+- [NHS England - FHIR Genomics Implementation Guide](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home) which defines the conformance requirements for Genomics in England
 - [NHS England - Genomic Order Management Service FHIR API](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) a [FHIR Workflow](https://hl7.org/fhir/R4/workflow.html) based service for managing orders and results at a national level.
 
 <figure>
@@ -15,7 +15,7 @@ This guide is to support Genomic Testing Workflow at a regional level and is des
 <br clear="all">
 
 This guide follows [IHE Laboratory Testing Workflow](https://wiki.ihe.net/index.php/Laboratory_Testing_Workflow), which describes how to use HL7 v2 orders and reports at an enterprise level. It will contain several modifications in order to support HL7 [FHIR Messasging](https://hl7.org/fhir/R4/messaging.html), these messages will be closely related to HL7 v2 Messages to help with adoption.
-For documentation purposes, HL7 v2 version used will be 2.5.1 (this also matches HL7 International v2 standards around structured Genomic reporting and Digital Health and Care Wales standards around ORU_R01)
+For documentation purposes, HL7 v2 version used will be 2.5.1 (this also matches NHS England FHIR Genomics, HL7 International v2 standards around structured Genomic reporting and Digital Health and Care Wales standards around ORU_R01)
 
 ### GLH Regional Integration Engine (GLH RIE)
 
@@ -26,6 +26,7 @@ This implementation guide will be supported by a **Genomics Regional Integration
   - LAB-1 convert HL7 FHIR based orders to HL7 v2 Messages (for Order Placer (local GLH))
   - LAB-3 convert HL7 v2 based results (from Order Placer (local GLH)) to HL7 FHIR Messages
 - [Message Bridge](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessagingBridge.html) between regional Trust Integration Engines (TIE)/GLH Laboratory Information System (LIMS) and the national Genomic Order Management Service (LAB-4 and LAB-5)
+- May contain a Structured Reporting [Message Translation](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageTranslator.html) to convert HL7 v2 ORU_R01 structured reports to a [HL7 Europe Laboratory Report](https://build.fhir.org/ig/hl7-eu/laboratory/) to replace the use of PDF reports.
 
 ### Testing 
 
