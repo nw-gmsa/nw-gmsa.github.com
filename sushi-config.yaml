@@ -112,6 +112,10 @@ resources:
     name: NW Genomics Test Order Form
     description: NW Genomics Test Order Form
     exampleBoolean: false
+  Questionnaire/81247-9:
+    name: NW Genomics Test Order Form
+    description: Master HL7 genetic variant reporting panel
+    exampleBoolean: false
 
 menu:
   GTW Home: index.html
