@@ -110,7 +110,7 @@ pages:
 resources:
   Questionnaire/NW-Genomics-Test-Order:
     name: NW Genomics Test Order Form
-    description: NW Genomics Test Order Form
+    description: NW Genomics Test Order Form Mock. See also [NHS Genomic Medicine Service test order forms](https://www.england.nhs.uk/publication/nhs-genomic-medicine-service-test-order-forms/)
     exampleBoolean: false
   Questionnaire/81247-9:
     name: Master HL7 genetic variant reporting panel
