@@ -10,6 +10,7 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 
 
 * identifier 1..* MS
+* identifier only CorrelationIdentifier
 
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "identifier.type"
