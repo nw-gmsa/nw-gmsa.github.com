@@ -11,7 +11,11 @@ The intent is to follow the data model (FHIR profiles, valuesets and codesystems
 
 ## Genomic Test Report Model
 
-TODO
+<figure>
+{%include reports-model.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">Genomics Test Report Model</p>
+</figure>
+<br clear="all">
 
 ## Identities and Codes
 
