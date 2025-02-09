@@ -1,5 +1,5 @@
 Profile:        OrderPlacerNumber
-Parent:         http://hl7.org/fhir/StructureDefinition/Identifier
+Parent:         CorrelationIdentifier
 Id:             order-placer-number
 Title:          "Order Placer Number"
 Description:     """

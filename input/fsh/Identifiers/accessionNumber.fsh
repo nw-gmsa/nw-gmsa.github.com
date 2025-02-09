@@ -1,5 +1,5 @@
 Profile:        AccessionNumber
-Parent:         http://hl7.org/fhir/StructureDefinition/Identifier
+Parent:         CorrelationIdentifier
 Id:             accession-number
 Title:          "Accession Number"
 Description:     """

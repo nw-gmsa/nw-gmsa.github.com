@@ -10,11 +10,6 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 
 
 * identifier 1..* MS
-* identifier.assigner 1..1 MS
-* identifier.assigner.identifier 1..1 MS
-* identifier.assigner.identifier.value 1..1 MS
-* identifier.assigner.identifier.system 1..1 MS
-* identifier.assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
 
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "identifier.type"
@@ -84,6 +79,7 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * basedOn 0..* MS
 * basedOn ^short = "SHALL reference a parent request where this ServiceRequest is based on a previous request, e.g. in the case of reanalysis and cascade testing, or Germline Late tests in the Tumour First/Germline Late scenario"
 * basedOn only Reference(ServiceRequest)
+* basedOn.identifier only CorrelationIdentifier
 
 * note MS
 

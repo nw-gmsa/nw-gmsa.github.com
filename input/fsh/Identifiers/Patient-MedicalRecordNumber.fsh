@@ -1,5 +1,5 @@
 Profile:        MedicalRecordNumber
-Parent:         http://hl7.org/fhir/StructureDefinition/Identifier
+Parent:         CorrelationIdentifier
 Id:             medical-record-number
 Title:          "Medical Record Number"
 Description:     """
@@ -21,11 +21,8 @@ Only use in References if the NHS Number is not known or unverified.
 * type = $v2-0203#MR (exactly)
 * system = "https://fhir.nhs.uk/Id/medical-record-number"
 * system ^short = "Generic system to represent MRN in NHS Trusts. Can be replaced with a system specified by NHS Trust, e.g. https://fhir.alderhey.nhs.uk/Id/medical-record-number"
-* value 1..1
 * assigner ^short = "Assigning Facility"
 * assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
 
-* assigner 1..1 MS
-* assigner.identifier 1..1 MS
-* assigner.identifier.value 1..1 MS
+
 

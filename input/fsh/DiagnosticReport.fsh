@@ -8,17 +8,11 @@ DRAFT Extension of [UK Core DiagnosticReport](https://simplifier.net/hl7fhirukco
 """
 
 * identifier 1..* MS
-* identifier.assigner 1..1 MS
-* identifier.assigner.identifier 1..1 MS
-* identifier.assigner.identifier.value 1..1 MS
-* identifier.assigner.identifier.system 1..1 MS
-* identifier.assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
+* identifier only CorrelationIdentifier
 
 * basedOn.identifier 1..1 MS
-* basedOn.identifier.assigner.identifier 1..1 MS
-* basedOn.identifier.assigner.identifier.value 1..1 MS
-* basedOn.identifier.assigner.identifier.system 1..1 MS
-* basedOn.identifier.assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
+* basedOn.identifier only CorrelationIdentifier
+
 
 * basedOn ^slicing.discriminator.type = #value
 * basedOn ^slicing.discriminator.path = "identifier.type"
