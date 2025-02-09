@@ -97,6 +97,9 @@ pages:
   vol3.md:
     title: Genomics Data Model
     generation: markdown
+  hl7v2.md:
+    title: HL7 v2 Artefacts
+    generation: markdown
   testing.md:
     title: Testing
     generation: markdown
@@ -121,7 +124,9 @@ menu:
     Order Results Management [LAB-3]: LAB-3.html
     Work Order Management [LAB-4]: LAB-4.html
   Data Models (Vol 3): vol3.html
-  Artefacts: artifacts.html
+  Artefacts:
+    HL7 FHIR: artifacts.html
+    HL7 v2: hl7v2.html
   Development:
     Testing: testing.html
     Support: support.html

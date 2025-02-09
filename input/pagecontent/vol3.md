@@ -60,31 +60,6 @@ This includes making use of FHIR Identifier `assigner.identifier.value` (HL7 v2 
     }
 ```
 
-### HL7 v2 Changes
-
-This applies to HL7 v2 ORU_R01 feeds to the RIE.
-
-ORC-3, ORC-12 (XCN) and ORC-21 (XON) **SHALL** be populated.
-
-#### XCN - Extended Composite ID Number and Name for Persons
-
-The definition of XCN from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws) **SHOULD** be followed and **SHALL** be used in ORC-12.
-
-Example 
-
-```
-C3456789^Darwin^Samuel^^^Dr^^^GMC
-```
-#### XON 
-
-The definition of XON from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws) **SHOULD** be followed and **SHALL** be used in ORC-21.
-
-Example
-
-```aiignore
-MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS
-```
-
 ### References to other domains
 
 Is present around Organisation, Practioner and PractitionerRole. NHS England has expressed a preference to use NHS England Identifiers, these are:
