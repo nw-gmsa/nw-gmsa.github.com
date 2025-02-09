@@ -74,10 +74,10 @@ instanceOptions:
 
 pages:
   index.md:
-    title: Home
+    title: GTW Home
     generation: markdown
   LTW.md:
-    title: Genomics Testing Workflow (LTW)
+    title: Laboratory Testing Workflow (LTW)
     generation: markdown
   PIX.md:
     title: Patient Identifier Cross-referencing (PIX)
@@ -114,9 +114,9 @@ resources:
     exampleBoolean: false
 
 menu:
-  Home: index.html
+  GTW Home: index.html
   Analysis and Design (Vol 1) :
-    Genomics Testing Workflow (LTW): LTW.html
+    Laboratory Testing Workflow (LTW): LTW.html
     Patient Identifier Cross-referencing (PIX): PIX.html
     Healthcare Provider Directory (HPD): HPD.html
   Interfaces (Vol 2):
