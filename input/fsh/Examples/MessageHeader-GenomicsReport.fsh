@@ -1,6 +1,7 @@
 Instance: MessageHeaderGenomicReport
 InstanceOf: MessageHeader
 Title: "Message Header - Genomic Report"
+Description: "TODO"
 Usage: #example
 
 * eventCoding = http://terminology.hl7.org/CodeSystem/v2-0003#R01

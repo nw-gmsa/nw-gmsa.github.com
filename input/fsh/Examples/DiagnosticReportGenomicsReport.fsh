@@ -1,6 +1,7 @@
 Instance: DiagnosticReportGenomicsReport
 InstanceOf: DiagnosticReport
-Title: "Diagnostic Repoort Example. First draft is based on Royal College of Radiologists HL7 v2 ORU converted to HL7 FHIR. Will be converted to a Genomics example"
+Title: "Diagnostic Repoort Example."
+Description: "First draft is based on Royal College of Radiologists HL7 v2 ORU converted to HL7 FHIR. Will be converted to a Genomics example"
 
 * meta.versionId = "1.0"
 

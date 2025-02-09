@@ -1,6 +1,7 @@
 Instance: MessageHeaderGenomicOrder
 InstanceOf: MessageHeader
 Title: "Message Header - Genomic Order"
+Description: "TODO"
 Usage: #example
 
 * eventCoding = http://terminology.hl7.org/CodeSystem/v2-0003#O21

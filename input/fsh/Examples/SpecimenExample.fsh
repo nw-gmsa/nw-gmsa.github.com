@@ -1,6 +1,7 @@
 Instance: SpecimenExample
 InstanceOf: Specimen
 Title: "Specimen Example"
+Description: "TODO"
 
 * meta.versionId = "1.0"
 
