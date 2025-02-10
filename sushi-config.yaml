@@ -138,4 +138,12 @@ menu:
     Testing: testing.html
     Support: support.html
 
-
+groups:
+  -mft-epic:
+    name: "MFT EPIC Examples"
+    description: "Examples converted from MFT EPIC [ORM_O01 General Order](hl7v2.html#orm_o01-general-order)"
+    resources:
+      - Encounter/EPIC-PV1
+      - Observation/EPIC-OBR-1
+      - Observation/EPIC-OBX-1
+      - Observation/EPIC-OBX-2
