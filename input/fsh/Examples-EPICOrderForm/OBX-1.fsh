@@ -3,6 +3,7 @@ InstanceOf: Observation
 Title: "EPIC-OBX-1 Example"
 Description: "TODO"
 
+* identifier[+].value = "1"
 
 * status = #final
 

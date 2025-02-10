@@ -25,3 +25,4 @@ Description: "TODO"
 
 * hasMember[+] = Reference(EPIC-OBX-1)
 * hasMember[+] = Reference(EPIC-OBX-2)
+* hasMember[+] = Reference(EPIC-OBX-3)

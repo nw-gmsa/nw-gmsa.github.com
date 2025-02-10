@@ -11,6 +11,7 @@ Usage: #example
 * insert EntryDocument("urn:uuid:27ca6057-e481-426a-ba8a-2acfffc0c1c4", EPIC-OBR-1)
 * insert EntryDocument("urn:uuid:f39cc804-5280-4807-91d4-075be16928e5", EPIC-OBX-1)
 * insert EntryDocument("urn:uuid:47f34393-cc83-428f-b8dd-54bcd372c847", EPIC-OBX-2)
+* insert EntryDocument("urn:uuid:edd4debe-dd82-445f-b3e5-e175760da105", EPIC-OBX-3)
 * insert EntryDocument("urn:uuid:e818ab55-1dff-4fae-8f7a-f30c97a4c4db", SpecimenExample)
 
 

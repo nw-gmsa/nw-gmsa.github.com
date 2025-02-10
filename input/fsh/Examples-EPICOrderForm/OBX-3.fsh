@@ -1,9 +1,9 @@
-Instance: EPIC-OBX-2
+Instance: EPIC-OBX-3
 InstanceOf: Observation
-Title: "EPIC-OBX-2 Example"
+Title: "EPIC-OBX-3 Example"
 Description: "TODO"
 
-* identifier[+].value = "2"
+* identifier[+].value = "3"
 
 * status = #final
 
@@ -11,11 +11,11 @@ Description: "TODO"
 
 * code
   * coding[+]
-    * code = #230048
-    * display = "Please Select Clinical Indication(s)"
+    * code = #230019
+    * display = "High Infection Risk"
     * system = "https://mft.nhs.uk/Id/IGENE"
 
-* valueString = "R240: Diagnostic testing for known mutation(s)~R242: Predictive testing for known familial mutation(s)"
+* valueString = "Np"
 
 * encounter = Reference(EPIC-PV1)
 
