@@ -5,7 +5,6 @@ Title:          "Medical Record Number"
 Description:     """
 Only use in References Data Type if the NHS Number is not known or unverified.
 """
-Usage: #definition
 
 * ^purpose = """
 | Standard | Data Type | Value |

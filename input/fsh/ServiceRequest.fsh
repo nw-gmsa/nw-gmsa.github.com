@@ -7,7 +7,6 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 - [NHS England Genomics ServiceRequest](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/FHIRAssets/Profiles/All-Profiles/UKCore-ServiceRequest) use text descriptions only, not the rendered profile.
 
 """
-Usage: #definition
 
 
 * identifier 1..* MS

@@ -3,7 +3,6 @@ Parent:         http://hl7.org/fhir/StructureDefinition/MessageHeader
 Id:             MessageHeader
 Title:          "MessageHeader"
 Description:    "DRAFT"
-Usage: #definition
 
 * eventCoding 1..1 MS
 * eventCoding from http://terminology.hl7.org/ValueSet/v2-0003 (required)
