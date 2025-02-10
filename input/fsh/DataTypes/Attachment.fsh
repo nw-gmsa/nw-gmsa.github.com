@@ -5,7 +5,6 @@ Title:          "Attachment"
 Description:     """
 DRAFT: Additional conformance on FHIR Attachment data type
 """
-Usage: #definition
 
 * url ^short = "Uri where the data can be found. Mandatory if data not populated"
 * data ^short = "Data inline, base64ed. Mandatory if url not populated"
