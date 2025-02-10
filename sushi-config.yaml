@@ -143,11 +143,22 @@ menu:
     Support: support.html
 
 groups:
-  -mft-epic:
+  -ex-example-mft-epic:
     name: "MFT EPIC Examples"
     description: "Examples converted from MFT EPIC [ORM_O01 General Order](hl7v2.html#orm_o01-general-order) Example"
     resources:
-#      - Encounter/EPIC-PV1
-#       - EPIC-OBR-1
-#      - Observation/EPIC-OBX-1
-#      - Observation/EPIC-OBX-2
+      - Encounter/EPIC-PV1
+      - Observation/EPIC-OBR-1
+      - Observation/EPIC-OBX-1
+      - Observation/EPIC-OBX-2
+      - Observation/EPIC-OBX-3
+      - Observation/EPIC-OBX-4
+      - Observation/EPIC-OBX-5
+      - Observation/EPIC-OBX-6
+      - Observation/EPIC-OBX-7
+      - Observation/EPIC-OBX-2
+      - Observation/EPIC-OBX-8
+      - Observation/EPIC-OBX-9
+      - Observation/EPIC-OBX-10
+      - Observation/EPIC-OBX-11
+      - Observation/EPIC-OBX-12
