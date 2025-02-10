@@ -164,7 +164,7 @@
           "type": "string",
           "linkId": "837505699226",
           "text": "Specimen Type",
-          "definition": "http://hl7.org/fhir/StructureDefinition/Specimen#type.coding.code"
+          "definition": "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type.coding.code"
         },
         {
           "type": "string",
