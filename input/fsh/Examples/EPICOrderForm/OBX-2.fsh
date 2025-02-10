@@ -1,6 +1,6 @@
-Instance: EPIC-OBR-1
-InstanceOf: ObservationPanel
-Title: "EPIC-OBR-1 Example"
+Instance: EPIC-OBX-2
+InstanceOf: Observation
+Title: "EPIC-OBX-2 Example"
 Description: "TODO"
 
 
@@ -10,10 +10,11 @@ Description: "TODO"
 
 * code
   * coding[+]
-    * code = #GENEAP
-    * display = "GENETICS TEST PERFORMABLE"
-    * system = "https://mft.nhs.uk/Id/IGEAP"
-  * text = "GENETICS TEST"
+    * code = #230048
+    * display = "Please Select Clinical Indication(s)"
+    * system = "https://mft.nhs.uk/Id/IGENE"
+
+* valueString = "R240: Diagnostic testing for known mutation(s)~R242: Predictive testing for known familial mutation(s)"
 
 * encounter = Reference(EPIC-PV1)
 
@@ -23,5 +24,4 @@ Description: "TODO"
   * system = "https://fhir.nhs.uk/Id/nhs-number"
   * value = "9912003888"
 
-* hasMember[+] = Reference(EPIC-OBX-1)
-* hasMember[+] = Reference(EPIC-OBX-2)
+
