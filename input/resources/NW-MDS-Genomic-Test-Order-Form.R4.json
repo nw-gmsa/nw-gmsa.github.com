@@ -133,14 +133,14 @@
         {
           "type": "string",
           "linkId": "571180233590",
-          "definition": "http://hl7.org/fhir/StructureDefinition/Specimen#identifier.value",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.identifier.value",
           "text": "ID Number"
         },
         {
           "type": "dateTime",
           "linkId": "582821425521",
           "text": "Collection Date",
-          "definition": "http://hl7.org/fhir/StructureDefinition/Specimen#collection.collectedDateTime"
+          "definition": "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.collection.collectedDateTime"
         },
         {
           "type": "string",
