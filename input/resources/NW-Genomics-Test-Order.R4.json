@@ -44,7 +44,7 @@
       "text": "Please Select Clinical Indication(s)"
     },
     {
-      "type": "boolean",
+      "type": "string",
       "code" : [{
         "coding" : [
           {
