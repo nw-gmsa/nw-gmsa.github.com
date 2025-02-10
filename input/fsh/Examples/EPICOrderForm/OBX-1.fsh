@@ -22,3 +22,4 @@ Description: "TODO"
   * system = "https://fhir.nhs.uk/Id/nhs-number"
   * value = "9912003888"
 
+* valueString = "Test on Stored DNA"
