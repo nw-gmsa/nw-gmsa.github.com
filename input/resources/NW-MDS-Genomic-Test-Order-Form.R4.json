@@ -54,7 +54,7 @@
         },
         {
           "type": "string",
-          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier.value",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier:nhsNumber.value",
           "linkId": "609776415749",
           "text": "NHS Number"
         },
@@ -66,6 +66,7 @@
       ],
       "type": "group",
       "linkId": "899151571636",
+      "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient",
       "text": "Patient Details"
     },
     {
@@ -126,7 +127,8 @@
       ],
       "type": "group",
       "linkId": "793544104775",
-      "text": "Referring Clinician"
+      "text": "Referring Clinician",
+      "definition": "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole"
     },
     {
       "item": [
@@ -156,6 +158,7 @@
       ],
       "type": "group",
       "linkId": "803201389260",
+      "definition": "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen",
       "text": "Specimen/Biopsy"
     },
     {
