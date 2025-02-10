@@ -1,5 +1,7 @@
 @startuml
 
+skinparam svgDimensionStyle false
+
 title "Genomic Test Report"
 
 frame "Message - Unsolicited Observation R01" as Message {
