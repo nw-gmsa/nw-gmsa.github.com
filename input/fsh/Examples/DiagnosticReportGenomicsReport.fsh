@@ -28,7 +28,7 @@ Description: "First draft is based on Royal College of Radiologists HL7 v2 ORU c
   * system = "https://fhir.nhs.uk/Id/nhs-number"
   * value = "9912003888"
 
-* issued = "2023-09-07T11:45:41+11:00"
+* issued = "2023-09-07T11:45:41+00:00"
 
 * performer[organisation]
   * identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"

@@ -8,9 +8,9 @@ DRAFT Extension of UKCore-Encounter which includes constraints from:
 """
 
 * identifier 1..* MS
-* type 1..1 MS
+* type 0..1 MS
 * type from AdmissionMethod
-* serviceType 1..1 MS
+* serviceType 0..1 MS
 * serviceType from Service
 
 * subject 1..1 MS
@@ -47,5 +47,5 @@ DRAFT Extension of UKCore-Encounter which includes constraints from:
 * hospitalization.admitSource from AdmissionSource
 * hospitalization.dischargeDisposition from DischargeDisposition
 
-* serviceProvider 1..1
+* serviceProvider 0..1
 * serviceProvider.identifier only OrganisationCode
