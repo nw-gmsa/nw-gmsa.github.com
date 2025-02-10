@@ -2,12 +2,24 @@ The intent is to follow the data model (FHIR profiles, valuesets and codesystems
 
 ## Genomic Test Request Model
 
+### References
+
+- [NHS Genomic Medicine Service test order forms](https://www.england.nhs.uk/publication/nhs-genomic-medicine-service-test-order-forms/)
+
+### Model
 
 <figure>
 {%include orders-model.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Genomics Test Request Model</p>
 </figure>
 <br clear="all">
+
+This model is also a summarisation of:
+
+- [NHS England Genomics IG - How to construct Bundles](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Build/How-to-construct-Bundles)
+- [NHS England Genomics IG - Clinical headings](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings)
+
+This also includes messaging concepts which are described in this guide to add compatibility with HL7 v2 and IHE LTW.
 
 ## Genomic Test Report Model
 
@@ -19,13 +31,7 @@ The intent is to follow the data model (FHIR profiles, valuesets and codesystems
 
 ## Identities and Codes
 
-This model is a summarisation of:
-
-- [NHS England Genomics IG - How to construct Bundles](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Build/How-to-construct-Bundles)
-- [NHS England Genomics IG - Clinical headings](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings)
-
-This also includes messaging concepts which are described in this guide to add compatibility with HL7 v2 and IHE LTW.
-This additional has a very strong focus on the use of [Correlation Identifier (Enterprise Integration Patterns)](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CorrelationIdentifier.html) or [Rule 3: Reference Other Aggregates by Identity (Implementing Domain Driven Design)](https://www.archi-lab.io/infopages/ddd/aggregate-design-rules-vernon.html#rule-3-reference-other-aggregates-by-identity), which is also consistent with IHE/HL7 concepts of [Bounded Context (martinfowler.com)](https://martinfowler.com/bliki/BoundedContext.html) 
+Both models have a very strong focus on the use of [Correlation Identifier (Enterprise Integration Patterns)](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CorrelationIdentifier.html) or [Rule 3: Reference Other Aggregates by Identity (Implementing Domain Driven Design)](https://www.archi-lab.io/infopages/ddd/aggregate-design-rules-vernon.html#rule-3-reference-other-aggregates-by-identity), which is also consistent with IHE/HL7 concepts of [Bounded Context (martinfowler.com)](https://martinfowler.com/bliki/BoundedContext.html) 
 
 In practice this means, the following FHIR resources will have the following identifiers within the `IHE Laboratory Testing Workflow` domain:
 
