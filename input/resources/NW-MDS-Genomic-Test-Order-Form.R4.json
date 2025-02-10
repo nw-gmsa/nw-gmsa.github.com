@@ -1,0 +1,189 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "NW-MDS-Genomics-Test-Order",
+  "title": "NW Genomic Test Order Form (MDS)",
+  "status": "draft",
+  "purpose": "North West Region Minimal Dataset for Genomic Test Orders",
+  "item": [
+    {
+      "item": [
+        {
+          "type": "string",
+          "linkId": "465259568249",
+          "text": "Patient last name "
+        },
+        {
+          "type": "string",
+          "linkId": "277911464806",
+          "text": "Patient first name"
+        },
+        {
+          "type": "string",
+          "linkId": "982519924852",
+          "text": "Date of birth"
+        },
+        {
+          "type": "string",
+          "linkId": "732642524901",
+          "text": "Postcode"
+        },
+        {
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "drop-down",
+                    "display": "Drop down"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "581186558445",
+          "text": "Sex registered at birth",
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/administrative-gender"
+        },
+        {
+          "type": "string",
+          "linkId": "609776415749",
+          "text": "NHS Number"
+        },
+        {
+          "type": "string",
+          "linkId": "431088319002",
+          "text": "Hospital Number"
+        }
+      ],
+      "type": "group",
+      "linkId": "899151571636",
+      "text": "Patient Details"
+    },
+    {
+      "type": "group",
+      "linkId": "351948562584",
+      "text": "Pedigree G Number",
+      "item": [
+        {
+          "type": "string",
+          "linkId": "541670363676",
+          "text": "Patient - G Number"
+        },
+        {
+          "type": "string",
+          "linkId": "461901239711",
+          "text": "Family - G Number"
+        }
+      ]
+    },
+    {
+      "item": [
+        {
+          "type": "string",
+          "linkId": "118538766805",
+          "text": "Name"
+        },
+        {
+          "type": "string",
+          "linkId": "698452572334",
+          "text": "Specialty"
+        },
+        {
+          "type": "string",
+          "linkId": "676669911775",
+          "text": "Professional/Consultant Code"
+        },
+        {
+          "type": "string",
+          "linkId": "847799161803",
+          "text": "Phone"
+        },
+        {
+          "type": "string",
+          "linkId": "547814828049",
+          "text": "Email"
+        },
+        {
+          "type": "string",
+          "linkId": "353098607658",
+          "text": "Referring Organisation ODS Code "
+        }
+      ],
+      "type": "string",
+      "linkId": "793544104775",
+      "text": "Referring Clinician"
+    },
+    {
+      "item": [
+        {
+          "type": "string",
+          "linkId": "571180233590",
+          "text": "ID Number"
+        },
+        {
+          "type": "date",
+          "linkId": "582821425521",
+          "text": "Collection Date"
+        },
+        {
+          "type": "string",
+          "linkId": "837505699226",
+          "text": "Specimen Type"
+        },
+        {
+          "type": "string",
+          "linkId": "311559826527",
+          "text": "Solid tumour pathology block/sample number"
+        }
+      ],
+      "type": "group",
+      "linkId": "803201389260",
+      "text": "Specimen/Biopsy"
+    },
+    {
+      "item": [
+        {
+          "type": "string",
+          "linkId": "973513968771",
+          "text": "Family Structure"
+        },
+        {
+          "type": "string",
+          "linkId": "466960738260",
+          "text": "NGIS Patient ID"
+        },
+        {
+          "type": "string",
+          "linkId": "483589002127",
+          "text": "NGIS Referral ID"
+        },
+        {
+          "linkId": "815509312282_helpText",
+          "type": "display",
+          "text": "This is an uploaded PDF",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "help",
+                    "display": "Help-Button"
+                  }
+                ],
+                "text": "Help-Button"
+              }
+            }
+          ]
+        }
+      ],
+      "type": "group",
+      "linkId": "815509312282",
+      "text": "Results"
+    }
+  ]
+}
