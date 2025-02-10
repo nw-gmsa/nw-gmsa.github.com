@@ -94,11 +94,27 @@
           "definition": "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.name",
           "text": "Name"
         },
+
         {
-          "type": "string",
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "drop-down",
+                    "display": "Drop down"
+                  }
+                ]
+              }
+            }
+          ],
           "linkId": "698452572334",
           "definition": "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.specialty.coding.code",
-          "text": "Specialty"
+          "text": "Specialty",
+          "answerValueSet": "https://fhir.hl7.org.uk/ValueSet/UKCore-PracticeSettingCode"
         },
         {
           "type": "string",
