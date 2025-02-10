@@ -2,6 +2,7 @@ Instance: CapabilityStatementRIE
 InstanceOf: CapabilityStatement
 Title: "CapabilityStatement for MFT Regional Integration Engine for Genomics"
 Usage: #definition
+
 * description = """
 Is based on [FHIR Messaging](https://hl7.org/fhir/R4/messaging.html) to handle transformation of HL7 FHIR and v2 Messages to FHIR Workflow.
 """

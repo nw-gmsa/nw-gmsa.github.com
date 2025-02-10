@@ -5,6 +5,7 @@ Title:          "Correlation Identifier"
 Description:     """
 See [Enterprise Integration Patterns - Correlation Identifier](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CorrelationIdentifier.html) and  [Rule 3: Reference Other Aggregates by Identity (Implementing Domain Driven Design)](https://www.archi-lab.io/infopages/ddd/aggregate-design-rules-vernon.html#rule-3-reference-other-aggregates-by-identity)
 """
+Usage: #definition
 
 * ^purpose = """
 This relates directly to HL7 v2 Data Types

@@ -5,6 +5,7 @@ Title:          "Organisation Code"
 Description:     """
 NHS Data Dictionary [ORGANISATION_CODE](https://www.datadictionary.nhs.uk/attributes/organisation_code.html)
 """
+Usage: #definition
 
 * system 1..1
 * system = "https://fhir.nhs.uk/Id/ods-organization-code" (exactly)

@@ -5,6 +5,7 @@ Title:          "England Practitioner Identifier"
 Description:     """
 NHS Data Dictionary [CONSULTANT CODE](https://www.datadictionary.nhs.uk/data_elements/consultant_code.html) and [GENERAL MEDICAL PRACTITIONER PPD CODE](https://www.datadictionary.nhs.uk/attributes/general_medical_practitioner_ppd_code.html).
 """
+Usage: #definition
 
 * system 1..1
 * system from PractitionerIdentifiers

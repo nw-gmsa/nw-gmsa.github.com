@@ -6,6 +6,7 @@ Description:    """
 DRAFT Extension of UKCore-Specimen which includes constraints from:
 - [NHS England Genomics Specimen](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/FHIRAssets/Profiles/All-Profiles/UKCore-Specimen) use text descriptions only, not the rendered profile.
 """
+Usage: #definition
 
 * identifier 1..* MS
 * identifier only CorrelationIdentifier

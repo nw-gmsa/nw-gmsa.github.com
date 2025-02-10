@@ -6,6 +6,7 @@ Description:    """
 DRAFT Extension of UKCore PractitionerRole
 
 """
+Usage: #definition
 
 * practitioner 1..1 MS
 * practitioner.identifier 1..1

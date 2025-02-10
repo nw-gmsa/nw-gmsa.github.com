@@ -5,6 +5,7 @@ Title:          "NHS Number"
 Description:     """
 Only traced NHS Number **SHOULD** be used, un-traced NHS Numbers **MUST** be clearly indicated.
 """
+Usage: #definition
 
 * ^purpose = """
 Format: NNNNNNNNNN (400 000 000 to 499 999 999, and 600 000 000 to 799 999)
