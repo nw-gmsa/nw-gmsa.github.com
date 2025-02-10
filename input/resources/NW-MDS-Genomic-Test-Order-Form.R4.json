@@ -9,25 +9,25 @@
       "item": [
         {
           "type": "string",
-          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#name.family",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.family",
           "linkId": "465259568249",
           "text": "Patient last name "
         },
         {
           "type": "string",
           "linkId": "277911464806",
-          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#name.given",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.given",
           "text": "Patient first name"
         },
         {
           "type": "date",
           "linkId": "982519924852",
-          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#birthDate",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.birthDate",
           "text": "Date of birth"
         },
         {
           "type": "string",
-          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#address.postalCode",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.postalCode",
           "linkId": "732642524901",
           "text": "Postcode"
         },
@@ -47,14 +47,14 @@
               }
             }
           ],
-          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#gender",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.gender",
           "linkId": "581186558445",
           "text": "Sex registered at birth",
           "answerValueSet": "http://hl7.org/fhir/ValueSet/administrative-gender"
         },
         {
           "type": "string",
-          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#identifier.value",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier.value",
           "linkId": "609776415749",
           "text": "NHS Number"
         },
@@ -90,37 +90,37 @@
         {
           "type": "string",
           "linkId": "118538766805",
-          "definition": "http://hl7.org/fhir/StructureDefinition/PractitionerRole#name",
+          "definition": "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.name",
           "text": "Name"
         },
         {
           "type": "string",
           "linkId": "698452572334",
-          "definition": "http://hl7.org/fhir/StructureDefinition/PractitionerRole#specialty.coding.code",
+          "definition": "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.specialty.coding.code",
           "text": "Specialty"
         },
         {
           "type": "string",
           "linkId": "676669911775",
-          "definition": "http://hl7.org/fhir/StructureDefinition/PractitionerRole#practitioner.identifier.value",
+          "definition": "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.practitioner.identifier.value",
           "text": "Professional/Consultant Code"
         },
         {
           "type": "string",
           "linkId": "847799161803",
-          "definition": "http://hl7.org/fhir/StructureDefinition/PractitionerRole#telecom.value",
+          "definition": "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.telecom.value",
           "text": "Phone"
         },
         {
           "type": "string",
           "linkId": "547814828049",
-          "definition": "http://hl7.org/fhir/StructureDefinition/PractitionerRole#telecom.value",
+          "definition": "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.telecom.value",
           "text": "Email"
         },
         {
           "type": "string",
           "linkId": "353098607658",
-          "definition": "http://hl7.org/fhir/StructureDefinition/PractitionerRole#organization.identifier.value",
+          "definition": "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.organization.identifier.value",
           "text": "Referring Organisation ODS Code "
         }
       ],
