@@ -20,7 +20,7 @@
           "text": "Patient first name"
         },
         {
-          "type": "string",
+          "type": "date",
           "linkId": "982519924852",
           "definition": "http://hl7.org/fhir/StructureDefinition/Patient#birthDate",
           "text": "Date of birth"
