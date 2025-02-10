@@ -54,7 +54,7 @@
         },
         {
           "type": "string",
-          "definition": "http://hl7.org/fhir/StructureDefinition/Patient[nhsNumber]#identifier.value",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#identifier.value",
           "linkId": "609776415749",
           "text": "NHS Number"
         },
@@ -90,35 +90,41 @@
         {
           "type": "string",
           "linkId": "118538766805",
+          "definition": "http://hl7.org/fhir/StructureDefinition/PractitionerRole#name",
           "text": "Name"
         },
         {
           "type": "string",
           "linkId": "698452572334",
+          "definition": "http://hl7.org/fhir/StructureDefinition/PractitionerRole#specialty.coding.code",
           "text": "Specialty"
         },
         {
           "type": "string",
           "linkId": "676669911775",
+          "definition": "http://hl7.org/fhir/StructureDefinition/PractitionerRole#practitioner.identifier.value",
           "text": "Professional/Consultant Code"
         },
         {
           "type": "string",
           "linkId": "847799161803",
+          "definition": "http://hl7.org/fhir/StructureDefinition/PractitionerRole#telecom.value",
           "text": "Phone"
         },
         {
           "type": "string",
           "linkId": "547814828049",
+          "definition": "http://hl7.org/fhir/StructureDefinition/PractitionerRole#telecom.value",
           "text": "Email"
         },
         {
           "type": "string",
           "linkId": "353098607658",
+          "definition": "http://hl7.org/fhir/StructureDefinition/PractitionerRole#organization.identifier.value",
           "text": "Referring Organisation ODS Code "
         }
       ],
-      "type": "string",
+      "type": "group",
       "linkId": "793544104775",
       "text": "Referring Clinician"
     },
@@ -127,17 +133,20 @@
         {
           "type": "string",
           "linkId": "571180233590",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Specimen#identifier.value",
           "text": "ID Number"
         },
         {
-          "type": "date",
+          "type": "dateTime",
           "linkId": "582821425521",
-          "text": "Collection Date"
+          "text": "Collection Date",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Specimen#collection.collectedDateTime"
         },
         {
           "type": "string",
           "linkId": "837505699226",
-          "text": "Specimen Type"
+          "text": "Specimen Type",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Specimen#type.coding.code"
         },
         {
           "type": "string",
@@ -152,17 +161,17 @@
     {
       "item": [
         {
-          "type": "string",
+          "type": "attachment",
           "linkId": "973513968771",
           "text": "Family Structure"
         },
         {
-          "type": "string",
+          "type": "attachment",
           "linkId": "466960738260",
           "text": "NGIS Patient ID"
         },
         {
-          "type": "string",
+          "type": "attachment",
           "linkId": "483589002127",
           "text": "NGIS Referral ID"
         },
