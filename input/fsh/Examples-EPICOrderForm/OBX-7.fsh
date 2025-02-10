@@ -1,9 +1,9 @@
-Instance: EPIC-OBX-1
+Instance: EPIC-OBX-7
 InstanceOf: Observation
-Title: "EPIC-OBX-1 Example"
+Title: "EPIC-OBX-7 Example"
 Description: "TODO"
 
-* identifier[+].value = "1"
+* identifier[+].value = "7"
 
 * status = #final
 
@@ -11,15 +11,15 @@ Description: "TODO"
 
 * code
   * coding[+]
-    * code = #230056
-    * display = "What Type of Referral Do You Require?"
+    * code = #231285
+    * display = "Please Select R242 Test(s):"
     * system = "https://mft.nhs.uk/Id/IGENE"
+
+* valueString = "R242.1: Targeted variant testing"
 
 // EPIC-PV1
 * encounter.reference = "urn:uuid:984b8a89-4194-4eb4-a7ea-ca8049ebeea3"
 
-
-* valueString = "Test on Stored DNA"
 
 * subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
 * subject.display = "Jack DAWKINS"

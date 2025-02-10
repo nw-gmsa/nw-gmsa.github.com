@@ -1,9 +1,9 @@
-Instance: EPIC-OBX-1
+Instance: EPIC-OBX-12
 InstanceOf: Observation
-Title: "EPIC-OBX-1 Example"
+Title: "EPIC-OBX-12 Example"
 Description: "TODO"
 
-* identifier[+].value = "1"
+* identifier[+].value = "12"
 
 * status = #final
 
@@ -11,15 +11,15 @@ Description: "TODO"
 
 * code
   * coding[+]
-    * code = #230056
-    * display = "What Type of Referral Do You Require?"
+    * code = #unknown
+    * display = "Name of Supervising Clinician"
     * system = "https://mft.nhs.uk/Id/IGENE"
+
+* valueString = "DESHPANDE, CHARULATA"
 
 // EPIC-PV1
 * encounter.reference = "urn:uuid:984b8a89-4194-4eb4-a7ea-ca8049ebeea3"
 
-
-* valueString = "Test on Stored DNA"
 
 * subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
 * subject.display = "Jack DAWKINS"

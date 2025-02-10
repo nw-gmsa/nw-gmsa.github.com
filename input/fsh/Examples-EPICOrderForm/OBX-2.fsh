@@ -17,7 +17,8 @@ Description: "TODO"
 
 * valueString = "R240: Diagnostic testing for known mutation(s)~R242: Predictive testing for known familial mutation(s)"
 
-* encounter = Reference(EPIC-PV1)
+// EPIC-PV1
+* encounter.reference = "urn:uuid:984b8a89-4194-4eb4-a7ea-ca8049ebeea3"
 
 * subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
 * subject.display = "Jack DAWKINS"

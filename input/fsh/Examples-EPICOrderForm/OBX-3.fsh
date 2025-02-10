@@ -15,9 +15,10 @@ Description: "TODO"
     * display = "High Infection Risk"
     * system = "https://mft.nhs.uk/Id/IGENE"
 
-* valueString = "Np"
+* valueString = "No"
 
-* encounter = Reference(EPIC-PV1)
+// EPIC-PV1
+* encounter.reference = "urn:uuid:984b8a89-4194-4eb4-a7ea-ca8049ebeea3"
 
 * subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
 * subject.display = "Jack DAWKINS"
