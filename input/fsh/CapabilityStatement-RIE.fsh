@@ -20,6 +20,14 @@ Is based on [FHIR Messaging](https://hl7.org/fhir/R4/messaging.html) to handle t
     * service = http://terminology.hl7.org/CodeSystem/restful-security-service#OAuth
     * description = "Recommend [IHE-IUA](https://profiles.ihe.net/ITI/IUA/index.html)"
 
+* insert ResourceWithExpectation(#Bundle, Bundle, #SHALL)
+* insert InteractionWithExpectation(#read, #SHOULD)
+* insert InteractionWithExpectation(#search-type, #SHALL)
+* insert SearchParamWithExpectation(message.receiver:identifier, #token, #SHALL)
+* insert WithSearchParamDocumentation(The ODS code of the message recipient)
+* insert SearchParamWithExpectation(_lastUpdated, #date, #SHALL)
+* insert WithSearchParamDocumentation(The data the message was last updated)
+
 * rest.operation[+]
   * name = "$process-message"
   * definition = Canonical(ProcessMessage)

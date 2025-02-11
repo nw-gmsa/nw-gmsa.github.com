@@ -4,6 +4,8 @@ Title: "Message Header - Genomic Order Acknowledgement"
 Description: "TODO"
 Usage: #example
 
+* meta.lastUpdated = "2025-01-29T10:40:26+00:00"
+
 * eventCoding = http://terminology.hl7.org/CodeSystem/v2-0003#O22
 
 * sender.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"

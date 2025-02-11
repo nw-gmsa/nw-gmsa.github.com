@@ -4,6 +4,8 @@ Title: "Message Header - Genomic Report"
 Description: "TODO"
 Usage: #example
 
+* meta.lastUpdated = "2025-02-01T13:39:26+00:00"
+
 * eventCoding = http://terminology.hl7.org/CodeSystem/v2-0003#R01
 
 * sender.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"

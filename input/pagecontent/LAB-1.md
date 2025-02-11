@@ -109,7 +109,7 @@ The RIE will store the acknowledgement messagge in a Message Queue.
 The Order Placer (or TIE) will [poll](https://www.enterpriseintegrationpatterns.com/patterns/messaging/PollingConsumer.html) for new messages using a FHIR RESTful query.  
 
 ```
-GET [base]/Bundle?message.reciever:identifier=[odsCode]&_lastUpdated=>2025-03-01T02:00:02+01:00
+GET [base]/Bundle?message.receiver:identifier=[odsCode]&_lastUpdated=>2025-03-01T02:00:02+01:00
 ```
 
 Example returned search results [Bundle 'SearchSet' - Genomics Order](Bundle-GenomicsOrderSearchSet.html)

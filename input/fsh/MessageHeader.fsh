@@ -4,6 +4,8 @@ Id:             MessageHeader
 Title:          "MessageHeader"
 Description:    "DRAFT"
 
+* meta.lastUpdated	1..1 MS
+
 * eventCoding 1..1 MS
 * eventCoding from http://terminology.hl7.org/ValueSet/v2-0003 (required)
 
