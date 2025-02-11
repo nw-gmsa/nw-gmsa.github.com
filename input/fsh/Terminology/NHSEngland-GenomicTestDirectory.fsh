@@ -30,6 +30,8 @@ Description: """
 * #R328.1 "Progressive cardiac conduction disease"
 * #R130.1 "Short QT syndrome"
 * #R138.1 "Sudden unexplained death or survivors of a cardiac event"
+* #R240.1 "Diagnostic testing for known variant(s)"
+* #R242.1 "Predictive testing for known familial variant(s)"
 
 /* from V7.1
 R125.1 "Thoracic aortic aneurysm or dissection
@@ -481,11 +483,9 @@ R246.1 "Carrier testing at population risk for partners of known carriers of nat
 R244.1 "Carrier testing for known familial variant(s)
 R263.1 "Confirmation of uniparental disomy
 R443.1 "Confirmation test
-R240.1 "Diagnostic testing for known variant(s)
 R375.1 "Family follow-up testing to aid variant interpretation
 R409.1 "Linkage testing for other recognisable Mendelian disorders
 R321.1 "Maternal cell contamination testing
-R242.1 "Predictive testing for known familial variant(s)
 R387.1 "Reanalysis of existing data
 R296.1 "RNA analysis of variants
 R370.1 "Validation test

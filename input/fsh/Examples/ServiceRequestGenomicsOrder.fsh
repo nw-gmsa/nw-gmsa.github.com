@@ -27,7 +27,7 @@ Description: "TODO"
 * requester.identifier.system = "https://fhir.hl7.org.uk/Id/gmc-number"
 * requester.identifier.value = "C9999999"
 
-* encounter = Reference(EPIC-PV1)
+* encounter.reference = "urn:uuid:984b8a89-4194-4eb4-a7ea-ca8049ebeea3"
 
 * subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
 * subject.display = "Octavia CHISLETT"
@@ -35,5 +35,6 @@ Description: "TODO"
   * system = "https://fhir.nhs.uk/Id/nhs-number"
   * value = "9449305552"
 
-* supportingInfo[+] = Reference(EPIC-OBR-1)
+* supportingInfo[+].reference = "urn:uuid:27ca6057-e481-426a-ba8a-2acfffc0c1c4"
 
+* specimen[+].reference = "urn:uuid:89e66518-9197-4553-9253-5ab5133b62c0"

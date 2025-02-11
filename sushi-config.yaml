@@ -146,7 +146,7 @@ groups:
     name: "MFT EPIC Examples"
     description: "Examples converted from MFT EPIC [ORM_O01 General Order](hl7v2.html#orm_o01-general-order) Example"
     resources:
-      - Encounter/EPIC-PV1
+      - Encounter/984b8a89-4194-4eb4-a7ea-ca8049ebeea3
       - Observation/EPIC-OBR-1
       - Observation/EPIC-OBX-1
       - Observation/EPIC-OBX-2
