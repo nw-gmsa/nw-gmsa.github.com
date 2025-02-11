@@ -23,10 +23,10 @@ Description: "First draft is based on Royal College of Radiologists HL7 v2 ORU c
 * code.coding[+] = $sct#1054161000000101 "Genetic report"
 
 * subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
-* subject.display = "Jack DAWKINS"
+* subject.display = "Octavia CHISLETT"
 * subject.identifier
   * system = "https://fhir.nhs.uk/Id/nhs-number"
-  * value = "9912003888"
+  * value = "9449305552"
 
 * issued = "2023-09-07T11:45:41+00:00"
 

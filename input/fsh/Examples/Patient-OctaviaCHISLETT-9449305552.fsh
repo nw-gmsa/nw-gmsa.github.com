@@ -1,8 +1,8 @@
-Instance: Patient-JackDawkins-9912003888
+Instance: Patient-OctaviaCHISLETT-9449305552
 InstanceOf: Patient
-Title: "Patient - Jack Dawkins NHS Number: 9912003888"
+Title: "Patient - OctaviaCHISLETT NHS Number: 9449305552"
 Description: """
-Example taken from existing NHS England specifications
+Example NHS England PDS Test Pack
 """
 Usage: #example
 
@@ -10,7 +10,7 @@ Usage: #example
 * identifier[0].use = #official
 * identifier[0].type = http://terminology.hl7.org/CodeSystem/v2-0203#NH
 * identifier[0].system = $nhs-number
-* identifier[0].value = "9912003888"
+* identifier[0].value = "9449305552"
 * identifier[0].assigner.identifier.value = "X24"
 * identifier[1].type = http://terminology.hl7.org/CodeSystem/v2-0203#MR
 * identifier[1].value = "A12356565"
@@ -22,19 +22,21 @@ Usage: #example
 * identifier[2].assigner.identifier.value = "R0A"
 
 * name.use = #official
-* name.family = "DAWKINS"
-* name.given = "Jack"
+* name.family = "CHISLETT"
+* name.given = "Octavia"
 
-* birthDate = "1937-10-02"
+* birthDate = "2008-09-20"
 
 * address[+]
   * use = #home
   * type = #both
-  * city = "Leodis"
-  * postalCode = "LA19 5YN"
+  * line[+] = "1 RAVENSFIELD GARDENS"
+  * city = "EPSOM"
+  * district = "SURREY"
+  * postalCode = "KT19 0ST"
 
 
-* gender = #male
+* gender = #female
 
 * contact.name.use = #official
 * contact.name.family = "DAWKINS"

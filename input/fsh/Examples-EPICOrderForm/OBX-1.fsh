@@ -22,9 +22,9 @@ Description: "TODO"
 * valueString = "Test on Stored DNA"
 
 * subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
-* subject.display = "Jack DAWKINS"
+* subject.display = "Octavia CHISLETT"
 * subject.identifier
   * system = "https://fhir.nhs.uk/Id/nhs-number"
-  * value = "9912003888"
+  * value = "9449305552"
 
 

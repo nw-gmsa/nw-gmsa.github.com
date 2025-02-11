@@ -1,4 +1,12 @@
 
+## Integration Testing
+
+It is proposed all systems should be compatible with [NHS England - Personal Demographics Service - FHIR API](https://digital.nhs.uk/developer/api-catalogue/personal-demographics-service-fhir) and use the same test patients.
+
+This can be found in [PDS FHIR API test data packs](https://digital.nhs.uk/developer/api-catalogue/personal-demographics-service-fhir/pds-fhir-api-test-data)
+
+
+
 ## FHIR Validation
 
 For details see [FHIR Validation](https://hl7.org/fhir/R4/validation.html)
