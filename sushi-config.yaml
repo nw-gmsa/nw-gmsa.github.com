@@ -111,13 +111,13 @@ pages:
     generation: markdown
 
 resources:
-  Questionnaire/NW-Genomics-Test-Order:
-    name: NW Genomics Test Order Form
+  Questionnaire/MFT-Genomics-Test-Order:
+    name: MFT Example Genomics Test Order Form
     description: NW Genomics Test Order Form Mock.
     exampleBoolean: false
-  Questionnaire/NW-MDS-Genomics-Test-Order:
-    name: NW Genomics Test Order Form - Minimal Dataset
-    description: NW Genomics Test Order - Minimal Dataset
+  Questionnaire/NW-Genomics-Test-Order:
+    name: NW Genomics Test Order Form (Minimal Dataset)
+    description: NW Genomics Test Order (Minimal Dataset)
     exampleBoolean: false
   Questionnaire/81247-9:
     name: Master HL7 genetic variant reporting panel

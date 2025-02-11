@@ -14,3 +14,5 @@ DRAFT Extension of UKCore PractitionerRole
 * organization 1..1 MS
 * organization.identifier 1..1
 * organization.identifier only OrganisationCode
+
+* specialty from Specialty

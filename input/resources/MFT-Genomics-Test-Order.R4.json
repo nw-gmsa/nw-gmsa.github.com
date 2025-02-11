@@ -1,7 +1,7 @@
 {
   "resourceType": "Questionnaire",
-  "id": "NW-Genomics-Test-Order",
-  "title": "NW Genomics Test Order",
+  "id": "MFT-Genomics-Test-Order",
+  "title": "MFT Example Genomics Test Order",
   "status": "draft",
   "description": "High level documentation of iGene Data Entry form.",
   "code" : [{

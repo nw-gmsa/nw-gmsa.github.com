@@ -36,14 +36,15 @@ class "[[StructureDefinition-MessageHeader.html MessageHeader]]" as MSH {
 
     class "Condition \n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Patient-Clinical-Information Patient Clinical Information]])" as DG1
 
+    entity "RelatedPerson" as NK1
+
+    frame "Supporting Information" as supportingInfo {
+
     entity "DiagnosticReport \n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Relevant-Clinical-Report Relevant Clinical Report]] \nand [[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Previous-Genomic-Report Previous Genomic Report]])" as OBX {
       identifier
       basedOn:accessionNumber
     }
 
-    entity "RelatedPerson" as NK1
-
-    frame "Supporting Information" as supportingInfo {
 
       class "[[StructureDefinition-Observation.html Observation]]" as OBX1 {
       }
@@ -72,7 +73,7 @@ ORC *-- "0" SPM : specimen /\n accessionNumber
 ORC *-- "1" PID : subject
 ORC *-- "0" PV1 : encounter
 ORC *-- "0" DG1 : reason\n(Reference/Code)
-ORC *-- "0" OBX: basedOn
+ORC *-- "0" OBX: supportingInfo
 ORC *-- "0" OBX1: supportingInfo
 ORC *-- "0" panel: supportingInfo
 ORC *-- "0" family: supportingInfo

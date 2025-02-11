@@ -85,4 +85,20 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * note MS
 
 * supportingInfo 0..* MS
-* supportingInfo only Reference(ObservationPanel or Observation or Condition or FamilyMemberHistory or Procedure)
+* supportingInfo only Reference(ObservationPanel or Observation or DiagnosticReport or DocumentReference)
+
+* supportingInfo ^slicing.discriminator.type = #value
+* supportingInfo ^slicing.discriminator.path = "type"
+* supportingInfo ^slicing.rules = #open
+* supportingInfo ^slicing.description = "Slice based on the coding.system"
+* supportingInfo ^slicing.ordered = false
+* supportingInfo contains
+  PreviousReports 0..1 MS and GenomicFamilyStructure 0..1 MS
+
+* supportingInfo[PreviousReports] only Reference(DiagnosticReport)
+* supportingInfo[PreviousReports].type = #DiagnosticReport
+* supportingInfo[PreviousReports].identifier 1..1 MS
+* supportingInfo[PreviousReports].identifier only CorrelationIdentifier
+
+* supportingInfo[GenomicFamilyStructure] only Reference(DocumentReference)
+* supportingInfo[GenomicFamilyStructure].type = #DocumentReference
