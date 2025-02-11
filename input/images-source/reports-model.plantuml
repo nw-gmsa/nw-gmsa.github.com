@@ -6,7 +6,7 @@ title "Genomic Test Report"
 
 frame "Message - Unsolicited Observation R01" as Message {
 
-entity "FHIR Bundle (messaage)" as oru {
+entity "FHIR Bundle (message)" as oru {
 identifier
 }
 
@@ -60,7 +60,7 @@ class "[[StructureDefinition-MessageHeader.html MessageHeader]]" as MSH {
 oru *-d- "1" MSH
 MSH *-d- "*" OBR: focus
 OBR *-- "0" SPM
-OBR "*" *--  ORC : accensionNumber
+OBR "*" *--  ORC : accessionNumber
 OBR *-- "1" PID : subject
 OBR *-- "0" PV1 : encounter
 OBR *-- "*" OBX : results
