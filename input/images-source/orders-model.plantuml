@@ -14,7 +14,7 @@ class "[[StructureDefinition-MessageHeader.html MessageHeader]]" as MSH {
 }
 
   frame "Template/Order Form" as Composition {
-    entity "[[StructureDefinition-Patient.html Patient]]\n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Patient Patient]] or [[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Fetus Fetus]])" as PID {
+    entity "[[StructureDefinition-Patient.html Patient]]" as PID {
     NHSNumber
     MedicalRecordNumber
     }
@@ -34,9 +34,8 @@ class "[[StructureDefinition-MessageHeader.html MessageHeader]]" as MSH {
     accessionNumber
     }
 
-    class "Condition \n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Patient-Clinical-Information Patient Clinical Information]])" as DG1
+    class "[[StructureDefinition-Condition.html Condition]]" as DG1
 
-    entity "RelatedPerson" as NK1
 
     frame "Supporting Information" as supportingInfo {
 
@@ -54,11 +53,15 @@ class "[[StructureDefinition-MessageHeader.html MessageHeader]]" as MSH {
       hasmember
       }
 
-      class "[[StructureDefinition-FamilyMemberHistory.html FamilyMemberHistory]]" as family {
+      class "[[StructureDefinition-DocumentReference.html DocumentReference]]\nGenomicFamilyStructure" as family {
 
       }
 
+      class "[[StructureDefinition-Attachment.html Attachment]]" as OBX2
 
+    }
+
+    family -d-> OBX2
 
     panel *-d- "0" OBX1: hasmember
 
@@ -78,7 +81,5 @@ ORC *-- "0" OBX1: supportingInfo
 ORC *-- "0" panel: supportingInfo
 ORC *-- "0" family: supportingInfo
 
-NK1 -- PID : To link Mother and Fetus
-PID -- NK1
 
 @enduml

@@ -48,7 +48,7 @@ class "[[StructureDefinition-MessageHeader.html MessageHeader]]" as MSH {
          identifier
          basedOn:accessionNumber
     }
-    class "Attachment" as OBX2
+    class "[[StructureDefinition-Attachment.html Attachment]]" as OBX2
 
     }
     entity "RelatedPerson" as NK1

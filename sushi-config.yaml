@@ -112,8 +112,8 @@ pages:
 
 resources:
   Questionnaire/MFT-Genomics-Test-Order:
-    name: MFT Example Genomics Test Order Form
-    description: NW Genomics Test Order Form Mock.
+    name: Example MFT Genomics Test Order Form
+    description: Example NW Genomics Test Order Form (Mock).
     exampleBoolean: false
   Questionnaire/NW-Genomics-Test-Order:
     name: NW Genomics Test Order Form (Minimal Dataset)
