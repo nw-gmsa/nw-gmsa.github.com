@@ -6,7 +6,7 @@ Usage: #definition
 * description = """
 Is based on [FHIR Messaging](https://hl7.org/fhir/R4/messaging.html) to handle transformation of HL7 FHIR and v2 Messages to FHIR Workflow.
 
-The `OpenAPISwagger Definition file` above, can be viewed using [Swagger Editor](https://editor.swagger.io/)
+The `OpenAPISwagger Definition file` below, can be viewed using [Swagger Editor](https://editor.swagger.io/)
 """
 * name = "CapabilityStatement-RIE"
 * status = #draft

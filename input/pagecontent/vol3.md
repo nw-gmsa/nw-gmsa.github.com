@@ -15,10 +15,7 @@ The intent is to follow the data model (FHIR profiles, valuesets and codesystems
 </figure>
 <br clear="all">
 
-This model is also a summarisation of:
-
-- [NHS England Genomics IG - How to construct Bundles](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Build/How-to-construct-Bundles)
-- [NHS England Genomics IG - Clinical headings](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings)
+A detailed description of this archetype which includes mappings to HL7 FHIR can be found [NW-Genomics-Test-Order](Questionnaire-NW-Genomics-Test-Order.html). This is also a minimal dataset based on `NHS Genomics MDM`
 
 This also includes messaging concepts which are described in this guide to add compatibility with HL7 v2 and IHE LTW.
 
