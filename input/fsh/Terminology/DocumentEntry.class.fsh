@@ -5,7 +5,6 @@ Description: """
 - [Switzerland DocumentEntry.classCode](https://fhir.ch/ig/ch-term/3.0.0/ValueSet-DocumentEntry.classCode.html)
 """
 
-
 * $SCT#734163000 "Care plan"
 * $SCT#371525003 "Clinical procedure report"
 * $SCT#422735006 "Summary clinical document"
