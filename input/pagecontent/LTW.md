@@ -88,11 +88,11 @@ This message can be extended by [template (FHIR Questionnaire)](https://hl7.org/
 
 The detail of this form/template defines:
 
-| Question                   | CodeSystem | Code      | FHIR Profile                                                    | HL7 v2 Segment |
-|----------------------------|------------|-----------|-----------------------------------------------------------------|----------------|
-| Does This Test Relate to a Pregnancy | SNOMED     | 77386006 | [Observation](StructureDefinition-Observation.html)             | OBX            |
-| Sample                     | LOINC      | 68992-7   | [Observation-Panel](StructureDefinition-Observation-Panel.html) | OBR            |
-| High Infection Risk Sample | SNOMED     | 281269004 | [Observation](StructureDefinition-Observation.html)             | OBX            |
+| Question                             | CodeSystem | Code      | FHIR Profile                                                    | HL7 v2 Segment | FHIR Observation value[x] | V2 OBX-2 |
+|--------------------------------------|------------|-----------|-----------------------------------------------------------------|----------------|---------------------------|----------|
+| Does This Test Relate to a Pregnancy | SNOMED     | 77386006  | [Observation](StructureDefinition-Observation.html)             | OBX            | valueBoolean              | CE       |
+| Sample                               | LOINC      | 68992-7   | [Observation-Panel](StructureDefinition-Observation-Panel.html) | OBR            |                           |          |
+| High Infection Risk Sample           | SNOMED     | 281269004 | [Observation](StructureDefinition-Observation.html)             | OBX            | valueBoolean              | CE       |
 
 > It is not expected the NW GLH Laboratory Information Management System (LIMS) will support UK SNOMED CT, and the RIE will handle the conversion either internally using [FHIR ConceptMap](https://hl7.org/fhir/R4/conceptmap.html) or a terminology service with the following capabilities [IHE Sharing Valuesets, Codes, and Maps (SVCM)](https://profiles.ihe.net/ITI/SVCM/index.html)
 
