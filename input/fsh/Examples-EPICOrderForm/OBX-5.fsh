@@ -13,7 +13,7 @@ Description: "TODO"
   * coding[+]
     * code = #77386006
     * display = "Pregnancy"
-    * system = "77386006"
+    * system = "http://snomed.info/sct"
 
 * valueBoolean = false
 
