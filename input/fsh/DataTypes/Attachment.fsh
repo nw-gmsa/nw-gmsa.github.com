@@ -1,6 +1,6 @@
 Profile:        Attachment
 Parent:         http://hl7.org/fhir/StructureDefinition/Attachment
-Id:             attachment
+Id:             Attachment
 Title:          "Attachment"
 Description:     """
 DRAFT: Additional conformance on FHIR Attachment data type. In HL7 FHIR this is likely to be a Binary resource and in HL7 v2 the OBX segment.
