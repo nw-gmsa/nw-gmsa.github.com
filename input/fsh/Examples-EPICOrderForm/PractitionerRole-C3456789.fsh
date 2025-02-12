@@ -5,7 +5,7 @@ Description: "TODO"
 
 * practitioner.identifier.system = "https://fhir.hl7.org.uk/Id/gmc-number"
 * practitioner.identifier.value = "C3456789"
-* practitioner.display = ""
+* practitioner.display = "Dr Samuel Darwin"
 
 * organization.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
 * organization.identifier.value = "R0A"
