@@ -17,3 +17,8 @@ Description: "TODO"
 * subject.identifier
   * system = "https://fhir.nhs.uk/Id/nhs-number"
   * value = "9449305552"
+
+* period.start = "2025-01-29T10:37:26+00:00"
+
+* participant[attendingDoctor].type.coding = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ATND
+* participant[attendingDoctor].individual.reference = "urn:uuid:ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8"

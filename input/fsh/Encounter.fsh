@@ -22,12 +22,13 @@ DRAFT Extension of UKCore-Encounter which includes constraints from:
 
 * period MS
 * participant MS
-* participant.individual only Reference(Practitioner)
+* participant.individual only Reference(Practitioner or PractitionerRole)
 * participant.type 1..1
 * participant.type.coding 1..*
 * participant.type.coding.code 1..1
+
 * participant ^slicing.discriminator.type = #value
-* participant ^slicing.discriminator.path = "type.coding.code"
+* participant ^slicing.discriminator.path = "type.coding"
 * participant ^slicing.rules = #open
 * participant contains
   attendingDoctor 0..1 and

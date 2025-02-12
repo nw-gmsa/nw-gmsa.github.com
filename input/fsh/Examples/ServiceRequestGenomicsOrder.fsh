@@ -24,8 +24,7 @@ Description: "TODO"
 
 * code = https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory#R240.1
 
-* requester.identifier.system = "https://fhir.hl7.org.uk/Id/gmc-number"
-* requester.identifier.value = "C9999999"
+* requester.reference = "urn:uuid:ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8"
 
 * encounter.reference = "urn:uuid:984b8a89-4194-4eb4-a7ea-ca8049ebeea3"
 

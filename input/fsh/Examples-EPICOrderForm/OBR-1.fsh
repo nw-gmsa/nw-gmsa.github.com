@@ -25,6 +25,8 @@ Description: "TODO"
   * system = "https://fhir.nhs.uk/Id/nhs-number"
   * value = "9449305552"
 
+* performer[+].reference = "urn:uuid:ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8"
+
 // EPIC-OBX-1
 * hasMember[+].reference = "urn:uuid:f39cc804-5280-4807-91d4-075be16928e5"
 // EPIC-OBX-2
