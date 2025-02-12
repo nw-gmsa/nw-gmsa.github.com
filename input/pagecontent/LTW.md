@@ -58,7 +58,7 @@ How this is implemented will vary between different NHS organisations and system
 
 ##### Complete Genomic Test Order Form
 
-These forms will have a computable definition called an [archetype](https://en.wikipedia.org/wiki/Archetype_(information_science) which will list the technical content requirements for the form. At present only one archetype has been defined:
+These forms will have a computable definition called an [archetype](https://en.wikipedia.org/wiki/Archetype_(information_science)) which will list the technical content requirements for the form. At present only one archetype has been defined:
 
 - [NW Genomics Test Order Form (Minimal Dataset)](Questionnaire-NW-Genomics-Test-Order.html)
 
@@ -74,10 +74,11 @@ The completed form is submitted to the Regional Integration Engine using [LAB-1]
 </figure>
 <br clear="all">
 
-The basic format of the payload is defined in a FHIR MessageDefinition [laboratory-order](MessageDefinition-laboratory-order), this message definition is based on HL7 v2 `OML_O21 Laboratory Order` which simplifies conversion to/from pipe+hat (v2) and json (FHIR) formats.
+The FHIR exchange style used [FHIR Message](https://hl7.org/fhir/R4/messaging.html) following [laboratory-order](MessageDefinition-laboratory-order) message definition. This definition is based on HL7 v2 `OML_O21 Laboratory Order` which simplifies conversion to/from pipe+hat (v2) and json (FHIR) formats. 
 
-> At present the NW GLH Laboratory Infomation Management System (LIMS) will not support HL7 FHIR. The Regional Integration Exchange (RIE) will perform conversion between v2 and FHIR formats.
+> At present the NW GLH Laboratory Information Management System (LIMS) will not support HL7 FHIR. The Regional Integration Exchange (RIE) will perform conversion between v2 and FHIR formats.
 
+This message is an [aggregate (DDD)](https://martinfowler.com/bliki/DDD_Aggregate.html) and so is a collection of FHIR Resources (similar to v2 segements) which is described in [Genomic Test Request Entity Model](vol3.html#genomic-test-request-entity-model).  
 
 
 ### Use Case 2: Order to GLH in another region

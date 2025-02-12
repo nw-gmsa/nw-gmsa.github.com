@@ -1,6 +1,6 @@
 The intent is to follow the data model (FHIR profiles, valuesets and codesystems) contained in [NHS England FHIR Genomics Implementation Guide](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home) 
 
-## Genomic Test Request Model
+## Genomic Test Request Entity Model
 
 ### References
 
@@ -19,7 +19,7 @@ A detailed description of this archetype which includes mappings to HL7 FHIR can
 
 This also includes messaging concepts which are described in this guide to add compatibility with HL7 v2 and IHE LTW.
 
-## Genomic Test Report Model
+## Genomic Test Report Entity Model
 
 <figure>
 {%include reports-model.svg%}

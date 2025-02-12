@@ -98,7 +98,7 @@ pages:
     title: Work Order Management [LAB-4]
     generation: markdown
   vol3.md:
-    title: Genomics Data Model
+    title: Genomics Data Models
     generation: markdown
   hl7v2.md:
     title: HL7 v2 Artefacts
