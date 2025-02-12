@@ -26,7 +26,7 @@
 
 #### Complete Order Entry Form
 
-In many Order Placer applications (i.e. the EPR or Order Comms) the order is captured via a form. This form may be defined in a standard way using FHIR Questionnaire or openEHR Archetype/Template, for example [NW Genomics Test Order](Questionnaire-NW-Genomics-Test-Order.html). These definitions may be used to define the content of the `laboratory order` (TODO Needs expanding to describe [FHIR Structured Data Capture](https://build.fhir.org/ig/HL7/sdc/) which may be provided by NHS England)
+In many Order Placer applications (i.e. the EPR or Order Comms) the order is captured via a form.
 
 #### Send HL7 FHIR Message Laboratory Order
 

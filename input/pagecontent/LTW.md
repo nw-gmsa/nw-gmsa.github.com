@@ -24,15 +24,63 @@ Initially only the IHE `LAB-1` is in focus and this is probably using HL7 v2.x O
 This will be followed by IHE `LAB-3` probably using HL7 v2.x ORU_R01
 Later stages will include the use of [Genomic Order Management Service](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir), using HL7 FHIR which will add in concepts covered in `LAB-4`.
 
-## Overview
+## Use Cases
 
-### Use Cases
+### Use Case 1: Order for Regional GLH
 
-#### Use Case 1: Order to Regional GLH
+An order is created by the clinical practice, and placed to the laboratory.
+
+#### Order for Regional GLH Description
+
+<figure>
+{%include LAB1-activity.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">Genomics Test Order Activity</p>
+</figure>
+<br clear="all">
+
+##### Select Genomic Test Order Form
+
+Within the system creating the genomics order, the practitioner will select a form for the test required. Below are several examples from [North West Genomic Laboratory Hub - Test Request Forms](https://mft.nhs.uk/nwglh/documents/test-request-forms/).
+How this is implemented will vary between different NHS organisations and systems they use.
+
+<table style="width:100%">
+  <tr>
+    <td>
+       <img style="padding:3px;width:200px;" src="NW GLH Genomic Testing Request Form – Rare Disease.png" alt="NW GLH Genomic Testing Request Form – Rare Disease"/>
+      <p class="figureTitle">NW GLH Genomic Testing Request Form – Rare Disease</p>   
+    </td>
+    <td>
+       <img style="padding:3px;width:200px;" src="Request for Genetic Testing for Haemoglobinopathies.png" alt="Request for Genetic Testing for Haemoglobinopathies"/>
+      <p class="figureTitle">Request for Genetic Testing for Haemoglobinopathies</p>   
+    </td>
+  </tr>
+</table>
+
+##### Complete Genomic Test Order Form
+
+These forms will have a computable definition called an [archetype](https://en.wikipedia.org/wiki/Archetype_(information_science) which will list the technical content requirements for the form. At present only one archetype has been defined:
+
+- [NW Genomics Test Order Form (Minimal Dataset)](Questionnaire-NW-Genomics-Test-Order.html)
+
+This archetype definition can also support [HL7 Structured Data Capture](https://build.fhir.org/ig/HL7/sdc/index.html) should the Order Placer system support these features.
+
+##### Submit Genomic Test Order Form
+
+The completed form is submitted to the Regional Integration Engine using [LAB-1](LAB-1.html).
+
+<figure>
+{%include LAB1-sequence.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">Genomics Test Order Sequence Diagram - LAB-1</p>
+</figure>
+<br clear="all">
+
+The basic format of the payload is defined in a FHIR MessageDefinition [laboratory-order](MessageDefinition-laboratory-order), this message definition is based on HL7 v2 `OML_O21 Laboratory Order` which simplifies conversion to/from pipe+hat (v2) and json (FHIR) formats.
+
+> At present the NW GLH Laboratory Infomation Management System (LIMS) will not support HL7 FHIR. The Regional Integration Exchange (RIE) will perform conversion between v2 and FHIR formats.
 
 
 
-#### Use Case 2: Order to GLH in another region
+### Use Case 2: Order to GLH in another region
 
 TODO
 
