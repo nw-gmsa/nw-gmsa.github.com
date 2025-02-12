@@ -81,7 +81,7 @@ The FHIR exchange style used [FHIR Message](https://hl7.org/fhir/R4/messaging.ht
 This message is an [aggregate (DDD)](https://martinfowler.com/bliki/DDD_Aggregate.html)/[archetype](https://en.wikipedia.org/wiki/Archetype_(information_science)) and so is a collection of FHIR Resources (similar to v2 segements) which is described in [Genomic Test Request Entity Model](vol3.html#genomic-test-request-entity-model).  
 This message can be extended by [template (FHIR Questionnaire)](https://hl7.org/fhir/R4/questionnaire.html) (these are the same forms/templates mentioned above) which can add further definitions to the `laboratory order`.
 
-<img style="padding:3px;width:600px;" src="sdc-order-test-form.png" alt="Order Text Form Example (extract)"/>
+<img style="padding:3px;width:700px;" src="sdc-order-test-form.png" alt="Order Text Form Example (extract)"/>
 <p class="figureTitle">Order Text Form Example (extract)</p> 
 
 The detail of this form/template defines:
