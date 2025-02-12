@@ -8,8 +8,9 @@ participant "Order Placer" as EPR
 participant "Regional Integration Engine (RIE)" as TIE
 participant "Order Filler" as LIMS
 
-EPR -> EPR: Complete Order Entry Form
-EPR -> TIE: Send HL7 FHIR Message\n**Laboratory Order O21**
+EPR -> EPR: Select Test Order Form
+EPR -> EPR: Complete Test Order Form
+EPR -> TIE: Submit Test Order Form\n(Send HL7 FHIR Message)\n**Laboratory Order O21**
 TIE -> TIE: Validate Message
 
 alt Successful validation

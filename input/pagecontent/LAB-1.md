@@ -24,11 +24,11 @@
 </figure>
 <br clear="all">
 
-#### Complete Order Entry Form
+#### Complete Order Test Form
 
 In many Order Placer applications (i.e. the EPR or Order Comms) the order is captured via a form.
 
-#### Send HL7 FHIR Message Laboratory Order
+#### Submit Test Order Form (Send HL7 FHIR Message Laboratory Order)
 
 The  [laboratory order (O21)](MessageDefinition-laboratory-order.html) is sent to the RIA via the [$process-message](OperationDefinition-ProcessMessage.html) API
 
