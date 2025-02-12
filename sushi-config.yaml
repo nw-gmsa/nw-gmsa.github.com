@@ -119,8 +119,8 @@ resources:
     description: Master HL7 genetic variant reporting panel [Questionnaire Viewer](https://project-wildfyre.github.io/questionnaire-viewer/?q=https:%2F%2Fraw.githubusercontent.com%2FInterop-NWEngland%2FLTW-Genomics%2Frefs%2Fheads%2Fmain%2Finput%2Fresources%2FMaster-HL7-genetic-variant-reporting-panel.R4.json)
     exampleBoolean: false
   Questionnaire/MFT-Genomics-Test-Order:
-    name: Example MFT Genomics Test Order Form
-    description: Example NW Genomics Test Order Form (Mock).
+    name: Example Genomics Test Order Form
+    description: Example Genomics Test Order Form (Mock).
     exampleBoolean: false
 
 menu:

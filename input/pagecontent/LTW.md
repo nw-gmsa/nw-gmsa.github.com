@@ -58,7 +58,7 @@ How this is implemented will vary between different NHS organisations and system
 
 ##### Complete Genomic Test Order Form
 
-These forms will have a computable definition called an [archetype](https://en.wikipedia.org/wiki/Archetype_(information_science)) which will list the technical content requirements for the form. At present only one archetype has been defined:
+These forms will have a computable definition called an [template (FHIR Questionnaire)](https://hl7.org/fhir/R4/questionnaire.html) which will list the technical content requirements for the form. At present only one archetype has been defined:
 
 - [NW Genomics Test Order Form (Minimal Dataset)](Questionnaire-NW-Genomics-Test-Order.html)
 
@@ -78,9 +78,21 @@ The FHIR exchange style used [FHIR Message](https://hl7.org/fhir/R4/messaging.ht
 
 > At present the NW GLH Laboratory Information Management System (LIMS) will not support HL7 FHIR. The Regional Integration Exchange (RIE) will perform conversion between v2 and FHIR formats.
 
-This message is an [aggregate (DDD)](https://martinfowler.com/bliki/DDD_Aggregate.html) and so is a collection of FHIR Resources (similar to v2 segements) which is described in [Genomic Test Request Entity Model](vol3.html#genomic-test-request-entity-model).  
+This message is an [aggregate (DDD)](https://martinfowler.com/bliki/DDD_Aggregate.html)/[archetype](https://en.wikipedia.org/wiki/Archetype_(information_science)) and so is a collection of FHIR Resources (similar to v2 segements) which is described in [Genomic Test Request Entity Model](vol3.html#genomic-test-request-entity-model).  
+This message can be extended by [template (FHIR Questionnaire)](https://hl7.org/fhir/R4/questionnaire.html) (these are the same forms/templates mentioned above) which can add further definitions to the `laboratory order`.
 
+<img style="padding:3px;width:300px;" src="sdc-order-test-form.png" alt="Order Text Form Example (extract)"/>
+<p class="figureTitle">Order Text Form Example (extract)</p> 
 
+The detail of this form/template defines:
+
+| Question                   | CodeSystem | Code      | FHIR Profile                                                    | HL7 v2 Segment |
+|----------------------------|------------|-----------|-----------------------------------------------------------------|----------------|
+| Does This Test Relate to a Pregnancy | SNOMED     | 77386006 | [Observation](StructureDefinition-Observation.html)             | OBX            |
+| Sample                     | LOINC      | 68992-7   | [Observation-Panel](StructureDefinition-Observation-Panel.html) | OBR            |
+| High Infection Risk Sample | SNOMED     | 281269004 | [Observation](StructureDefinition-Observation.html)             | OBX            |
+
+> It is not expected the NW GLH Laboratory Information Management System (LIMS) will support UK SNOMED CT, and the RIE will handle the conversion either internally using [FHIR ConceptMap](https://hl7.org/fhir/R4/conceptmap.html) or a terminology service with the following capabilities [IHE Sharing Valuesets, Codes, and Maps (SVCM)](https://profiles.ihe.net/ITI/SVCM/index.html)
 
 ### Use Case 2: Order to GLH in another region
 
