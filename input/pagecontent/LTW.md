@@ -82,7 +82,9 @@ This message is an [aggregate (DDD)](https://martinfowler.com/bliki/DDD_Aggregat
 This message can be extended by [template (FHIR Questionnaire)](https://hl7.org/fhir/R4/questionnaire.html) (these are the same forms/templates mentioned above) which can add further definitions to the `laboratory order`.
 
 <img style="padding:3px;width:700px;" src="sdc-order-test-form.png" alt="Order Text Form Example (extract)"/>
+<br clear="all">
 <p class="figureTitle">Order Text Form Example (extract)</p> 
+<br clear="all">
 
 The detail of this form/template defines:
 
