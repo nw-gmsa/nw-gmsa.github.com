@@ -1,9 +1,9 @@
 {
   "resourceType": "Questionnaire",
   "id": "MFT-Genomics-Test-Order",
-  "title": "MFT Example Genomics Test Order",
+  "title": "Example Genomics Test Order",
   "status": "draft",
-  "description": "High level documentation of iGene Data Entry form.",
+  "description": "Demonstration of FHIR Questionnaire and Structured Data Capture use within Genomic Test Orders",
   "code": [
     {
       "system": "https://mft.nhs.uk/Id/IGEAP",
@@ -14,6 +14,7 @@
   "item": [
     {
       "type": "string",
+      "linkId": "230056",
       "code": [
         {
           "system": "https://mft.nhs.uk/Id/IGENE",
@@ -21,35 +22,83 @@
           "display": "What Type of Referral Do You Require?"
         }
       ],
-      "linkId": "230056",
       "text": "What Type of Referral Do You Require"
     },
     {
-      "type": "string",
-      "code": [
+      "type": "open-choice",
+      "extension": [
         {
-          "system": "https://mft.nhs.uk/Id/IGENE",
-          "code": "230048",
-          "display": "Please Select Clinical Indication(s)"
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                "code": "autocomplete",
+                "display": "Auto-complete"
+              }
+            ]
+          }
+        },
+        {
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-preferredTerminologyServer",
+          "valueUrl": "https://snowstorm.ihtsdotools.org/fhir"
+        },
+        {
+          "valueBoolean": true,
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"
         }
       ],
       "linkId": "230048",
-      "text": "Please Select Clinical Indication(s)"
+      "text": "Please Select Clinical Indication(s)",
+      "definition": "http://hl7.org/fhir/StructureDefinition/Condition#Condition.code",
+      "repeats": true,
+      "answerValueSet": "http://snomed.info/sct/900000000000207008?fhir_vs=ecl%2F%3C%3C+404684003"
     },
     {
-      "type": "string",
-      "code": [
+      "item": [
         {
-          "system": "https://mft.nhs.uk/Id/IGENE",
-          "code": "230019",
-          "display": "High Infection Risk"
+          "type": "boolean",
+          "extension": [
+            {
+              "valueBoolean": true,
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"
+            },
+            {
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod",
+              "valueDuration": {
+                "value": 1,
+                "unit": "weeks",
+                "system": "http://unitsofmeasure.org",
+                "code": "wk"
+              }
+            }
+          ],
+          "linkId": "230019",
+          "code": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "281269004",
+              "display": "High infection risk sample"
+            }
+          ],
+          "definition": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.code",
+          "text": "High Infection Risk Sample"
         }
       ],
-      "linkId": "230019",
-      "text": "High Infection Risk"
+      "type": "group",
+      "linkId": "495944433191",
+      "definition": "https://hl7.mft.nhs.uk/StructureDefinition/Observation-Panel#Observation.code",
+      "code": [
+        {
+          "system": "http://loinc.org",
+          "code": "68992-7"
+        }
+      ],
+      "text": "Sample"
     },
     {
       "type": "string",
+      "linkId": "230016",
       "code": [
         {
           "system": "https://mft.nhs.uk/Id/IGENE",
@@ -57,23 +106,39 @@
           "display": "Test Type"
         }
       ],
-      "linkId": "230016",
       "text": "Test Type"
     },
     {
-      "type": "string",
-      "code": [
+      "type": "boolean",
+      "extension": [
         {
-          "system": "https://mft.nhs.uk/Id/IGENE",
-          "code": "230034",
-          "display": "Does This Test Relate to a Pregnancy"
+          "valueBoolean": true,
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"
+        },
+        {
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationLinkPeriod",
+          "valueDuration": {
+            "value": 9,
+            "unit": "months",
+            "system": "http://unitsofmeasure.org",
+            "code": "mo"
+          }
         }
       ],
       "linkId": "230034",
+      "definition": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.code",
+      "code": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "77386006",
+          "display": "Pregnancy"
+        }
+      ],
       "text": "Does This Test Relate to a Pregnancy"
     },
     {
       "type": "string",
+      "linkId": "231284",
       "code": [
         {
           "system": "https://mft.nhs.uk/Id/IGENE",
@@ -81,7 +146,6 @@
           "display": "Please Select R240 Test(s):"
         }
       ],
-      "linkId": "231284",
       "text": "Please Select R240 Test(s)"
     },
     {

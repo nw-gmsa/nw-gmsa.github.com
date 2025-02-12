@@ -11,11 +11,11 @@ Description: "TODO"
 
 * code
   * coding[+]
-    * code = #230019
-    * display = "High Infection Risk"
-    * system = "https://mft.nhs.uk/Id/IGENE"
+    * code = #281269004
+    * display = "High infection risk sample"
+    * system = "http://snomed.info/sct"
 
-* valueString = "No"
+* valueBoolean = false
 
 // EPIC-PV1
 * encounter.reference = "urn:uuid:984b8a89-4194-4eb4-a7ea-ca8049ebeea3"

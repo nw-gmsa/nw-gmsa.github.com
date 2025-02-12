@@ -11,11 +11,10 @@ Description: "TODO"
 
 * code
   * coding[+]
-    * code = #230048
-    * display = "Please Select Clinical Indication(s)"
-    * system = "https://mft.nhs.uk/Id/IGENE"
+    * code = #363349007
+    * display = "Malignant tumour of stomach"
+    * system = "http://snomed.info/sct"
 
-* valueString = "R240: Diagnostic testing for known mutation(s)~R242: Predictive testing for known familial mutation(s)"
 
 // EPIC-PV1
 * encounter.reference = "urn:uuid:984b8a89-4194-4eb4-a7ea-ca8049ebeea3"

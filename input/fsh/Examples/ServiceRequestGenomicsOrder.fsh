@@ -38,3 +38,9 @@ Description: "TODO"
 * supportingInfo[+].reference = "urn:uuid:27ca6057-e481-426a-ba8a-2acfffc0c1c4"
 
 * specimen[+].reference = "urn:uuid:89e66518-9197-4553-9253-5ab5133b62c0"
+
+* reasonCode[+]
+  * coding[+]
+    * code = #363349007
+    * display = "Malignant tumour of stomach"
+    * system = "http://snomed.info/sct"

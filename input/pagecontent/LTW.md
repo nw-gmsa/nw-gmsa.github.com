@@ -81,6 +81,7 @@ The FHIR exchange style used [FHIR Message](https://hl7.org/fhir/R4/messaging.ht
 This message is an [aggregate (DDD)](https://martinfowler.com/bliki/DDD_Aggregate.html) and so is a collection of FHIR Resources (similar to v2 segements) which is described in [Genomic Test Request Entity Model](vol3.html#genomic-test-request-entity-model).  
 
 
+
 ### Use Case 2: Order to GLH in another region
 
 TODO

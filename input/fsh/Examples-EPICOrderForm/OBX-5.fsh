@@ -11,11 +11,11 @@ Description: "TODO"
 
 * code
   * coding[+]
-    * code = #230034
-    * display = "Does This Test Relate to a Pregnancy"
-    * system = "https://mft.nhs.uk/Id/IGENE"
+    * code = #77386006
+    * display = "Pregnancy"
+    * system = "77386006"
 
-* valueString = "No"
+* valueBoolean = false
 
 // EPIC-PV1
 * encounter.reference = "urn:uuid:984b8a89-4194-4eb4-a7ea-ca8049ebeea3"
