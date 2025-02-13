@@ -1,6 +1,6 @@
 Profile:        AccessionNumber
 Parent:         CorrelationIdentifier
-Id:             accession-number
+Id:             AccessionNumber
 Title:          "Accession Number"
 Description:     """
 Also known as Filler Order Number (ORC-3)

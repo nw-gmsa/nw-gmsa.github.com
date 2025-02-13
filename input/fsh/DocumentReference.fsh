@@ -11,6 +11,9 @@ Based on UK Definitions from [IHE Europe Metadata for exchange medical documents
 
 * type from DocumentEntryType
 * category from DocumentEntryClass
+
+* content.attachment only Attachment
+
 * context.facilityType from FacilityType
 * context.practiceSetting from Specialty
 

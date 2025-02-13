@@ -1,6 +1,6 @@
 Profile:        OrderPlacerNumber
 Parent:         CorrelationIdentifier
-Id:             order-placer-number
+Id:             OrderPlacerNumber
 Title:          "Order Placer Number"
 Description:     """
 Known as Placer Order Number (ORC-2)

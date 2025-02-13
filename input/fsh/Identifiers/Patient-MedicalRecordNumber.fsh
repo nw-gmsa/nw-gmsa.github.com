@@ -1,6 +1,6 @@
 Profile:        MedicalRecordNumber
 Parent:         CorrelationIdentifier
-Id:             medical-record-number
+Id:             MedicalRecordNumber
 Title:          "Medical Record Number"
 Description:     """
 Only use in References Data Type if the NHS Number is not known or unverified.

@@ -1,6 +1,6 @@
 Profile:        NHSNumber
 Parent:         http://hl7.org/fhir/StructureDefinition/Identifier
-Id:             nhs-number
+Id:             NHSNumber
 Title:          "NHS Number"
 Description:     """
 Only traced NHS Number **SHOULD** be used, un-traced NHS Numbers **MUST** be clearly indicated.
