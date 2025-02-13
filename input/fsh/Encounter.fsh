@@ -18,7 +18,7 @@ DRAFT Extension of UKCore-Encounter which includes constraints from:
 * subject.identifier only NHSNumber
 
 * location.location only Reference(Location)
-* location.location.identifier only OrganisationSiteIdentifier
+* location.location.identifier only OrganisationSiteCode
 
 * period MS
 * participant MS
