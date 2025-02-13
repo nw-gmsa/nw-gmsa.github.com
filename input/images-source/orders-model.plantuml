@@ -1,92 +1,110 @@
-@startuml
+  @startuml
 
-skinparam svgDimensionStyle false
+  skinparam svgDimensionStyle false
 
-title "Genomic Test Request"
+  title "Genomic Test Request"
 
-frame "Message - Laboratory Order O21" as Message {
-entity "FHIR Bundle (messaage)" as oml <<aggregate>> {
-identifier
-}
+  frame "Message - Laboratory Order O21" as Message {
+  entity "FHIR Bundle (messaage)" as oml <<aggregate>> {
+  identifier
+  }
 
-class "[[StructureDefinition-MessageHeader.html MessageHeader]]" as MSH {
- focus
-}
+  class "[[StructureDefinition-MessageHeader.html MessageHeader]]" as MSH {
+   focus
+  }
 
-  frame "Template/Order Form" as Composition {
-    entity "[[StructureDefinition-Patient.html Patient]]" as PID {
-    NHSNumber
-    MedicalRecordNumber
-    }
+    frame "Template/Order Form" as Composition {
+      entity "[[StructureDefinition-Patient.html Patient]]" as PID {
+      NHSNumber
+      MedicalRecordNumber
+      }
 
-    entity "[[StructureDefinition-Encounter.html Encounter]]" as PV1 {
-    encounter
-    episode
-    }
+      entity "[[StructureDefinition-Encounter.html Encounter]]" as PV1 {
+      encounter
+      episode
+      subject : Patient
+      }
 
-    entity "[[StructureDefinition-RequestGroup.html RequestGroup]]" as RequestGroup <<aggregate>> {
-    identifier
-    ServiceRequest
-    }
-
-    entity "[[StructureDefinition-ServiceRequest.html ServiceRequest]] \n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Test-Request Test Request]])" as ORC <<aggregate>> {
-    orderPlacerNumber
-    accessionNumber
-    }
-
-    entity "[[StructureDefinition-Specimen.html Specimen]] \n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Primary-Sample Primary Sample]])" as SPM {
-    identifier
-    accessionNumber
-    }
-
-    class "[[StructureDefinition-Condition.html Condition]]" as DG1
-
-
-    frame "Supporting Information" as supportingInfo {
-
-    entity "DiagnosticReport \n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Relevant-Clinical-Report Relevant Clinical Report]] \nand [[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Previous-Genomic-Report Previous Genomic Report]])" as OBX {
+      entity "[[StructureDefinition-RequestGroup.html RequestGroup]]" as RequestGroup <<aggregate>> {
       identifier
-      basedOn:accessionNumber
-    }
+      ServiceRequest
+      subject : Patient
+      }
 
+      entity "[[StructureDefinition-ServiceRequest.html ServiceRequest]] \n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Test-Request Test Request]])" as ORC <<aggregate>> {
+      orderPlacerNumber
+      accessionNumber
+      subject : Patient
+      }
 
-      class "[[StructureDefinition-Observation.html Observation]]" as OBX1 {
+      entity "[[StructureDefinition-Specimen.html Specimen]] \n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Primary-Sample Primary Sample]])" as SPM {
+      identifier
+      accessionNumber
+      subject : Patient
+      }
+
+      class "[[StructureDefinition-Condition.html Condition]]" as DG1
+
+      class "[[StructureDefinition-PractitionerRole.html PractitionerRole]]" as STF {
+       organisation : ODSCode
+       practitiner: GMP/GMC Number
+       specialty: ClinicalSpecialty
+      }
+
+      frame "Supporting Information" as supportingInfo {
+
+      entity "DiagnosticReport \n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Relevant-Clinical-Report Relevant Clinical Report]] \nand [[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Previous-Genomic-Report Previous Genomic Report]])" as OBX {
+        identifier
+        basedOn:accessionNumber
       }
 
 
-      class "[[StructureDefinition-Observation-Panel.html Observation Panel]]" as panel {
-      hasmember
+        class "[[StructureDefinition-Observation.html Observation]]" as OBX1 {
+        value[x]
+        code
+        subject : Patient
+        }
+
+
+        class "[[StructureDefinition-Observation-Panel.html Observation Panel]]" as panel {
+        hasmember
+        code
+        subject : Patient
+        }
+
+        class "[[StructureDefinition-DocumentReference.html DocumentReference]]\nGenomicFamilyStructure" as family {
+           type
+           subject : Patient
+        }
+
+        class "[[StructureDefinition-Attachment.html Attachment]]" as OBX2
+
       }
 
-      class "[[StructureDefinition-DocumentReference.html DocumentReference]]\nGenomicFamilyStructure" as family {
+      family -d-> OBX2
 
-      }
+      panel o-d- "0" OBX1: hasmember
 
-      class "[[StructureDefinition-Attachment.html Attachment]]" as OBX2
+      OBX1 -d[hidden]- family
 
-    }
+   }
+  }
 
-    family -d-> OBX2
-
-    panel o-d- "0" OBX1: hasmember
-
-    OBX1 -d[hidden]- family
-
- }
-}
-
-oml o-d- "1" MSH
-MSH o-d- "1" ORC: focus
-MSH o-d- "1" RequestGroup: focus
-RequestGroup o-d- ORC: action.resource
-ORC o-- "0" SPM : specimen /\n accessionNumber
-ORC o-- "1" PID : subject
-ORC o-- "0" PV1 : encounter
-ORC o-- "0" DG1 : reason\n(Reference/Code)
-ORC o-- "0" OBX: supportingInfo
-ORC o-- "0" OBX1: supportingInfo
-ORC o-- "0" panel: supportingInfo
-ORC o-- "0" family: supportingInfo
+  oml o-d- "1" MSH
+  MSH o-d- "1" ORC: focus
+  MSH o-d- "1" RequestGroup: focus
+  RequestGroup o-d- ORC: action.resource
+  ORC o-- "0" SPM : specimen /\n accessionNumber
+  ORC o-- "1" PID : subject
+  ORC o-- "0" PV1 : encounter
+  ORC o-- "0" DG1 : reason\n(Reference/Code)
+  ORC o-- "0" OBX: supportingInfo
+  ORC o-- "0" OBX1: supportingInfo
+  ORC o-- "0" panel: supportingInfo
+  ORC o-- "0" family: supportingInfo
+  ORC o-l- "1" STF: requester
+  SPM o-u- "0" STF: collection.collector
+  PV1 o-u- "0" STF: participant.individual§
 
 
-@enduml
+  @enduml

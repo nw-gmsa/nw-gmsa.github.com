@@ -15,3 +15,9 @@ DRAFT Extension of UKCore-Specimen which includes constraints from:
 
 * subject 1..1 MS
 * subject only Reference(Patient)
+
+* collection.collected[x] only dateTime
+* collection.collectedDateTime 0..1 MS
+
+* collection.collector 0..1 MS
+* collection.collector only Reference(PractitionerRole)
