@@ -27,6 +27,7 @@ It transmits the observation results from the Order Filler to the Order Result T
 
 ## Message
 
+The following messages are used to support creation and updating of the [Genomics Test Report](vol3.html#genomic-test-report-entity-model) [composition](https://martinfowler.com/bliki/AggregationAndComposition.html)
 
 | Message                                   | Purpose                                       | EIP Type                                                                                                 |
 |-------------------------------------------|-----------------------------------------------|----------------------------------------------------------------------------------------------------------|

@@ -20,6 +20,8 @@ This transaction is used by the Order Placer to place an Order Group (FHIR Reque
 
 ## Messages
 
+The following messages are used to support creation and updating of the [Genomics Test Request](vol3.html#genomic-test-request-entity-model) [aggregation](https://martinfowler.com/bliki/AggregationAndComposition.html)/[archetype](https://en.wikipedia.org/wiki/Archetype_(information_science)) 
+
 | Message                                                               | Purpose                                                                                                     | EIP Type                                                                                                |
 |-----------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 | [Laboratory Order](#laboratory-order)               | Sending the initial `laboratory-order` request.                                                              | [Command Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CommandMessage.html) |

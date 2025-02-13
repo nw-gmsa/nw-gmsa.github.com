@@ -68,25 +68,25 @@ class "[[StructureDefinition-MessageHeader.html MessageHeader]]" as MSH {
 
     family -d-> OBX2
 
-    panel *-d- "0" OBX1: hasmember
+    panel o-d- "0" OBX1: hasmember
 
     OBX1 -d[hidden]- family
 
  }
 }
 
-oml *-d- "1" MSH
-MSH *-d- "1" ORC: focus
-MSH *-d- "1" RequestGroup: focus
-RequestGroup *-d- ORC: action.resource
-ORC *-- "0" SPM : specimen /\n accessionNumber
-ORC *-- "1" PID : subject
-ORC *-- "0" PV1 : encounter
-ORC *-- "0" DG1 : reason\n(Reference/Code)
-ORC *-- "0" OBX: supportingInfo
-ORC *-- "0" OBX1: supportingInfo
-ORC *-- "0" panel: supportingInfo
-ORC *-- "0" family: supportingInfo
+oml o-d- "1" MSH
+MSH o-d- "1" ORC: focus
+MSH o-d- "1" RequestGroup: focus
+RequestGroup o-d- ORC: action.resource
+ORC o-- "0" SPM : specimen /\n accessionNumber
+ORC o-- "1" PID : subject
+ORC o-- "0" PV1 : encounter
+ORC o-- "0" DG1 : reason\n(Reference/Code)
+ORC o-- "0" OBX: supportingInfo
+ORC o-- "0" OBX1: supportingInfo
+ORC o-- "0" panel: supportingInfo
+ORC o-- "0" family: supportingInfo
 
 
 @enduml
