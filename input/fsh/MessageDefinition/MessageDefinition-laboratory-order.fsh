@@ -13,6 +13,13 @@ DRAFT conversion of [HL7 v2.5.1 OML_O21](https://hl7-definition.caristix.com/v2/
 
 * focus[+]
 * focus[=]
+  * code = #RequestGroup
+  * profile = Canonical(RequestGroup)
+  * min = 0
+  * max = "1"
+
+* focus[+]
+* focus[=]
   * code = #ServiceRequest
   * profile = Canonical(ServiceRequest)
   * min = 1

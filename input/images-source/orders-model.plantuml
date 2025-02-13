@@ -24,6 +24,11 @@ class "[[StructureDefinition-MessageHeader.html MessageHeader]]" as MSH {
     episode
     }
 
+    entity "[[StructureDefinition-RequestGroup.html RequestGroup]]" as RequestGroup <<aggregate>> {
+    identifier
+    ServiceRequest
+    }
+
     entity "[[StructureDefinition-ServiceRequest.html ServiceRequest]] \n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Test-Request Test Request]])" as ORC <<aggregate>> {
     orderPlacerNumber
     accessionNumber
@@ -72,6 +77,8 @@ class "[[StructureDefinition-MessageHeader.html MessageHeader]]" as MSH {
 
 oml *-d- "1" MSH
 MSH *-d- "1" ORC: focus
+MSH *-d- "1" RequestGroup: focus
+RequestGroup *-d- ORC: action.resource
 ORC *-- "0" SPM : specimen /\n accessionNumber
 ORC *-- "1" PID : subject
 ORC *-- "0" PV1 : encounter
