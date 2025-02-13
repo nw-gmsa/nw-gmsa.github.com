@@ -1,11 +1,15 @@
 
-## References
+## Referenced Standards
 
 - A. [IHE Pathology and Laboratory Medicine (PaLM) Technical Framework - Volume 2a (PaLM TF-2a) Transactions](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol2a.pdf)
 - B. **Test Order Forms**
   - See [NW Genomics Test Order Form](Questionnaire-NW-Genomics-Test-Order.html) and [Questionnaire Viewer](https://project-wildfyre.github.io/questionnaire-viewer/?q=https://fhir-mft.github.io/FHIRGenomics/Questionnaire-NW-Genomics-Test-Order.json)
 
-## Component Model
+## Scope
+
+This transaction is used by the Order Placer to place an Order Group (FHIR RequestGroup) (i.e., a set of Orders to be tested together for a patient) or a standalone Order to the Order Filler. The transaction enables both Order Placer and Order Filler to notify all subsequent changes of status and/or content of each Order to the other side.
+
+## Actor Roles
 
 <figure>
 {%include LAB1-component.svg%}
@@ -14,9 +18,39 @@
 <br clear="all">
 
 
-## Overview
+## Messages
 
-### Process Description
+| Message                                                               | Purpose                                                                                                     | EIP Type                                                                                                |
+|-----------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
+| [Laboratory Order](#laboratory-order)               | Sending the initial `laboratory-order` request.                                                              | [Command Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CommandMessage.html) |
+| [Laboratory Order Acknowledgement](#laboratory-order-acknowledgement) | Is used to update the `order-placer` of changes to `laboratory-order` such as an assigned `AccessionNumber` | [Event Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/EventMessage.html)     |                                                                                      |
+| [Laboratory Order Updates](#laboratory-order-updates)   | Is used to update master data in the `laboratory-order` such as changes to Patient and Pracitioner details. | [Event Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/EventMessage.html)     |
+
+### Laboratory Order
+
+Is based on a HL7 FHIR [laboratory order (O21)](MessageDefinition-laboratory-order.html) Message which is backwards compatible with HL7 v2 OML_O21 (or ORM_O01) Message.
+
+Detailed Mapping can be here [Message OML_O21 to Bundle Map (Experimental)](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-message-oml-o21-to-bundle.html)
+Further details on genomic specific mapping can be found on [NHS England FHIR Genomics Implementation Guide - Clincial Headings](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings)
+
+This is an initial (incomplete) map and will change to match exact requirement of GLH LIMS <- This is currently OML, not ORM (EPIC).
+
+| HL7 v2 OML Segment                 | Cardinality | FHIR Resource                                             | Map                                                                                                                                            | 
+|------------------------------------|-------------|-----------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| MSH Message Header                 | 1..1        | [MessageHeader](StructureDefinition-MessageHeader.html)   | [MSH[MessageHeader]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-msh-to-messageheader.html)                                    |
+| PID Patient Identification         | 0..1        | [Patient](StructureDefinition-Patient.html)               | [PID[Patient]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pid-to-patient.html) via ServiceRequest.subject                     |                                                                                          |
+| NK1 Next of Kin/Associated Parties | 0..*        | RelatedPerson or Patient                                  | [NK1[RelatedPerson]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-nk1-to-relatedperson.html) or [NK1[Patient]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-nk1-to-patient.html)                                                                       |
+| PV1 Patient visit                  | 0..1        | [Encounter](StructureDefinition-Encounter.html)           | [PV1[Encounter]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pv1-to-encounter.html) via ServiceRequest.encounter               | 
+| **ORDER**                          | 1..*        |                                                           |                                                                                                                                                |
+| - ORC Common Order                 | 1..*        | [ServiceRequest](StructureDefinition-ServiceRequest.html) | [ORC[ServiceRequest]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-orc-to-servicerequest.html)                                  |
+| - **OBSERVATION REQUEST**          | 0..*        |                                                           |                                                                                                                                                |
+| -- OBR Observation Request         | 1..*        | [ServiceRequest](StructureDefinition-ServiceRequest.html) | [OBR[ServiceRequest]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obr-to-servicerequest.html)                                  
+| -- NTE Notes and Comments          |             | [ServiceRequest](StructureDefinition-ServiceRequest.html) | [NTE[ServiceRequest]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-nte-to-servicerequest.html)                                  |
+| -- PRT Participation               |             | PractitionerRole                                          | [PRT[PractitionerRole]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-prt-to-practitionerrole.html) via Specimen.collection      |
+| -- OBX Observation/Result          | *..*        | [Observation](StructureDefinition-ServiceRequest.html)    | [OBX[Observation-Component]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-component-to-observation.html) via ServiceRequest.supportingInfo                    
+| -- DG1 Diagnosis                   | 0..*        | [Condition](StructureDefinition-Condition.html)           | [DG1[Condition]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-dg1-to-condition.html) via ServiceRequest.resason[Reference/Code] |
+| -- SPM Specimen                    | 1..*        | [Specimen](StructureDefinition-Specimen.html)             | [SPM[Specimen]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-spm-to-specimen.html) via ServiceRequest.specimen                  |                                                                                                         |
+
 
 <figure>
 {%include LAB1-sequence.svg%}
@@ -48,7 +82,11 @@ The RIE then sends the converted HL7 v2 Message to the Order Filler (LIMS) which
 
 #### Response HL7 FHIR Message
 
-The response [laboratory-order-acknowledgement (O22)](MessageDefinition-laboratory-order-acknowledgement.html) (asssumed synchronous at present and so subject to change) is returned to the order placer. For sucessful messages the [MessageHeader](StructureDefinition-MessageHeader.html) will have `response.code` returned will be `ok` and will look like: 
+The response message is [Laboratory Order Acknowledgement](#laboratory-order-acknowledgement) described below.
+
+### Laboratory Order Acknowledgement
+
+The response [laboratory-order-acknowledgement (O22)](MessageDefinition-laboratory-order-acknowledgement.html) (asssumed synchronous at present and so subject to change) is returned to the order placer. For sucessful messages the [MessageHeader](StructureDefinition-MessageHeader.html) will have `response.code` returned will be `ok` and will look like:
 
 ```
 "response" : {
@@ -84,8 +122,7 @@ Should the RIE encounter a technical problem, such as an internal service such a
 }
 ```
 
-
-### Asynchronous Message Acknowledgement
+#### Asynchronous Message Acknowledgement
 
 The previous section described a `synchronous` messaging system, where the Order Filler returned a response within a short time frame. This is often not going to occur, for example the response may be delayed by:
 
@@ -100,11 +137,11 @@ In these instances we now have `asynchronous` messaging. The suggested method fo
 </figure>
 <br clear="all">
 
-#### Store Message in a Message Queue
+##### Store Message in a Message Queue
 
 The RIE will store the acknowledgement messagge in a Message Queue.
 
-#### Query for HL7 FHIR Messages
+##### Query for HL7 FHIR Messages
 
 The Order Placer (or TIE) will [poll](https://www.enterpriseintegrationpatterns.com/patterns/messaging/PollingConsumer.html) for new messages using a FHIR RESTful query.  
 
@@ -191,30 +228,9 @@ This update is sent back to the RIE as a [FHIR Transaction](https://hl7.org/fhir
 POST [base]/
 ```
 
-## Interface Standards
+### Laboratory Order Updates
 
-Is based on a HL7 FHIR [laboratory order (O21)](MessageDefinition-laboratory-order.html) Message which is backwards compatible with HL7 v2 OML_O21 (or ORM_O01) Message.
+Optional at present.
 
-### HL7 v2 Mapping Overview
 
-Detailed Mapping can be here [Message OML_O21 to Bundle Map (Experimental)](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-message-oml-o21-to-bundle.html)
-Further details on genomic specific mapping can be found on [NHS England FHIR Genomics Implementation Guide - Clincial Headings](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings)
-
-This is an initial (incomplete) map and will change to match exact requirement of GLH LIMS <- This is currently OML, not ORM (EPIC).
-
-| HL7 v2 OML Segment                 | Cardinality | FHIR Resource                                             | Map                                                                                                                                            | 
-|------------------------------------|-------------|-----------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| MSH Message Header                 | 1..1        | [MessageHeader](StructureDefinition-MessageHeader.html)   | [MSH[MessageHeader]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-msh-to-messageheader.html)                                    |
-| PID Patient Identification         | 0..1        | [Patient](StructureDefinition-Patient.html)               | [PID[Patient]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pid-to-patient.html) via ServiceRequest.subject                     |                                                                                          |
-| NK1 Next of Kin/Associated Parties | 0..*        | RelatedPerson or Patient                                  | [NK1[RelatedPerson]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-nk1-to-relatedperson.html) or [NK1[Patient]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-nk1-to-patient.html)                                                                       |
-| PV1 Patient visit                  | 0..1        | [Encounter](StructureDefinition-Encounter.html)           | [PV1[Encounter]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pv1-to-encounter.html) via ServiceRequest.encounter               | 
-| **ORDER**                          | 1..*        |                                                           |                                                                                                                                                |
-| - ORC Common Order                 | 1..*        | [ServiceRequest](StructureDefinition-ServiceRequest.html) | [ORC[ServiceRequest]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-orc-to-servicerequest.html)                                  |
-| - **OBSERVATION REQUEST**          | 0..*        |                                                           |                                                                                                                                                |
-| -- OBR Observation Request         | 1..*        | [ServiceRequest](StructureDefinition-ServiceRequest.html) | [OBR[ServiceRequest]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obr-to-servicerequest.html)                                  
-| -- NTE Notes and Comments          |             | [ServiceRequest](StructureDefinition-ServiceRequest.html) | [NTE[ServiceRequest]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-nte-to-servicerequest.html)                                  |
-| -- PRT Participation               |             | PractitionerRole                                          | [PRT[PractitionerRole]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-prt-to-practitionerrole.html) via Specimen.collection      |
-| -- OBX Observation/Result          | *..*        | [Observation](StructureDefinition-ServiceRequest.html)    | [OBX[Observation-Component]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-component-to-observation.html) via ServiceRequest.supportingInfo                    
-| -- DG1 Diagnosis                   | 0..*        | [Condition](StructureDefinition-Condition.html)           | [DG1[Condition]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-dg1-to-condition.html) via ServiceRequest.resason[Reference/Code] |
-| -- SPM Specimen                    | 1..*        | [Specimen](StructureDefinition-Specimen.html)             | [SPM[Specimen]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-spm-to-specimen.html) via ServiceRequest.specimen                  |                                                                                                         |
 

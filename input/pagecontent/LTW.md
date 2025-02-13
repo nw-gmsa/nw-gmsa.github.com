@@ -26,11 +26,11 @@ Later stages will include the use of [Genomic Order Management Service](https://
 
 ## Use Cases
 
-### Use Case 1: Order for Regional GLH
+### Use Case 1: Genomic Test Order
 
 An order is created by the clinical practice, and placed to the laboratory.
 
-#### Order for Regional GLH Description
+#### Genomic Test Order Description
 
 <figure>
 {%include LAB1-activity.svg%}
