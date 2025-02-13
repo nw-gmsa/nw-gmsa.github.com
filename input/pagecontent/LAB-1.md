@@ -232,7 +232,21 @@ POST [base]/
 
 ### Laboratory Order Updates
 
-Optional at present.
+For future discussion, this is equivalent of:
 
+- Patient Identify Crossing Referencing: IHE PIX, HL7 v2 ADT A31 and A40
 
+Which in HL7 FHIR (and IHE PIXm) is: 
+
+```
+PUT [base]/Patient?identifier=[identifier]
+```
+
+- Master files notification - Staff/practitioner: HL7 v2 MFN M02
+
+Which in HL7 FHIR is:
+
+```
+PUT [base]/PractitionerRole?identifier=[identifier]
+```
 
