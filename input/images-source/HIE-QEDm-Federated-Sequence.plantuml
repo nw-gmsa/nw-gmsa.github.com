@@ -1,5 +1,7 @@
   @startuml
 
+  skinparam svgDimensionStyle false
+
   title "Clinical Data Sharing - Federated"
 
   hide footbox

@@ -5,12 +5,12 @@ A. [IHE Pathology and Laboratory Medicine (PaLM) Technical Framework - Volume 1]
 
 ## Actors and Transactions
 
-| Actor                                                        | Definition                                                                                                                                       |
-|--------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Order Placer](ActorDefinition-OrderPlacer.html)             | Commonly known as the Electronic Patient Record (EPR) System                                                                                     |
-| [Order Filler](ActorDefinition-OrderFiller.html)             | Genomic Laboratory Hub (GLH), Laboratory Information System (LIMS)                                                                               |
-| [Automation Manager](ActorDefinition-AutomationManager.html) | This is the function of [Genomic Order Management Service](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) |
-| Order Result Tracker                                         | This is the function of [Genomic Order Management Service](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) |
+| Actor                                                      | Definition                                                                                                                                               |
+|------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Order Placer](ActorDefinition-OrderPlacer.html)           | Commonly known as the Electronic Patient Record (EPR) System                                                                                             |
+| [Order Filler](ActorDefinition-OrderFiller.html)           | Genomic Laboratory Hub (GLH), Laboratory Information System (LIMS)                                                                                       |
+| [Automation Manager](ActorDefinition-AutomationManager.html) | This is the function of [Genomic Order Management Service](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) and/or Laboratory Information System (LIMS) |
+| [Order Result Tracker](ActorDefinition-OrderResultTracker.html)                                    | This is often provided by Electronic Patient Record (EPR) Systems                                                                                        |
 
 See also Ref A `Section 3 Laboratory Testing Workflow (LTW) Profile` for detailed description of actors.
 

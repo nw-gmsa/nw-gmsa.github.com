@@ -10,17 +10,8 @@ It transmits the observation results from the Order Filler to the Order Result T
 
 ## Actor Roles
 
-### Options 
-
-
 <figure>
-{%include reports.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">Genomics Report Options</p>
-</figure>
-<br clear="all">
-
-<figure>
-{%include reports-component.svg%}
+{%include LAB3-component.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Genomics Test Report Component Model</p>
 </figure>
 <br clear="all">
