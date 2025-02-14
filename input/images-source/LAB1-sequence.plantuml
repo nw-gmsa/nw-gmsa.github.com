@@ -1,7 +1,5 @@
 @startuml
 
-title "Genomic Order Sequence Diagram - IHE LTW LAB-1"
-
 hide footbox
 
 participant "Order Placer" as EPR

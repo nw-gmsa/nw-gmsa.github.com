@@ -1,0 +1,34 @@
+@startuml
+
+hide footbox
+
+participant "Order Filler" as LIMS
+participant "Intermediary\nRegional Integration Engine (RIE)" as TIE
+participant "Order Result Tracker" as EPR
+
+
+LIMS -> LIMS: Perform Tests
+LIMS -> LIMS: Write Test Report
+
+LIMS -> TIE: Send HL7 v2 Message\nUnsolicited Observation ORU_R01
+
+TIE -> TIE: Validate message
+
+
+alt Successful validation
+  TIE --> LIMS: Response HL7 v2 Message AA Application Accept
+  note over TIE, EPR: Either option can carry a composition [[https://build.fhir.org/ig/hl7-eu/laboratory/ HL7 EU Laboratory Report]]
+  opt HL7 FHIR Message
+    TIE -> TIE : Transform FHIR to HL7 v2 Message
+    TIE -> EPR: Send HL7 FHIR Message\n**Laboratory Results R01**
+    EPR --> TIE: Response HL7 FHIR Message
+  else HL7 v2 Message
+    TIE -> EPR: Send HL7 v2 Message\n**Unsolicited Observation ORU_R01**
+    EPR --> TIE: Response HL7 v2 Message
+  end
+
+else Unsuccessful validation
+  TIE --> LIMS: Response HL7 v2 Message AE Application Error
+end
+
+@enduml

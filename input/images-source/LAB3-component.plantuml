@@ -1,18 +1,17 @@
 @startuml
 
-title "Genomic Report Component Model"
 
 frame "Regional Order Results management [LAB-3]" as LAB3 {
 
-component "**Order Filler**\nGenomic Laboratory Hub (GLH) LIMS" as LIMS
+component "**Order Filler**\n\nGenomic Laboratory Hub (GLH) LIMS" as LIMS
 
-component "**Intermediary**\nNW GLH Regional Integration Engine (RIE)" as TIE
+component "**Intermediary**\n\nNW GLH Regional Integration Engine (RIE)" as TIE
 
 component "**Order Result Tracker**" as user
 
-interface "HL7 v2.x ORU_R01" as HL7_ORU1
+interface "HL7 v2 Message\nORU_R01" as HL7_ORU1
 
-interface "HL7 v2.x ORU_R01" as HL7_ORU2
+interface "HL7 v2 Message\nORU_R01" as HL7_ORU2
 
 interface "HL7 FHIR Message\n**Laboratory Result O21**" as HL7_R01
 }

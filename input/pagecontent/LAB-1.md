@@ -13,7 +13,7 @@ This transaction is used by the Order Placer to place an Order Group (FHIR Reque
 
 <figure>
 {%include LAB1-component.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">Genomics Test Order Component Model - LAB-1</p>
+<p id="fX.X.X.X-X" class="figureTitle">Regional Placer Order Management [LAB-1] Component Diagram</p>
 </figure>
 <br clear="all">
 
@@ -56,7 +56,7 @@ This is an initial (incomplete) map and will change to match exact requirement o
 
 <figure>
 {%include LAB1-sequence.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">Genomics Test Order Sequence Diagram - LAB-1</p>
+<p id="fX.X.X.X-X" class="figureTitle">Regional Placer Order Management [LAB-1] Sequence Diagram</p>
 </figure>
 <br clear="all">
 

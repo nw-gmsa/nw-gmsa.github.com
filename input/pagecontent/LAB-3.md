@@ -12,7 +12,7 @@ It transmits the observation results from the Order Filler to the Order Result T
 
 <figure>
 {%include LAB3-component.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">Genomics Test Report Component Model</p>
+<p id="fX.X.X.X-X" class="figureTitle">Regional Order Results management [LAB-3] Component Diagram</p>
 </figure>
 <br clear="all">
 
@@ -42,3 +42,8 @@ Detailed Mapping can be here [Message ORU_R01 to Bundle Map (Experimental)](http
 | NTE - Notes and Comments     |             | Observation.note?                                             |                                                                                                                   |
 | OBX - Observation/Result     |             | Observation or Attachment (part of DiagnosticReport)          | [OBX[Observation]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-observation.html)           |                                                                                                          |
 
+<figure>
+{%include LAB3-sequence.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">Regional Order Results management [LAB-3] Sequence Diagram</p>
+</figure>
+<br clear="all">
