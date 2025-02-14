@@ -3,7 +3,7 @@
 hide footbox
 
 participant "Order Filler" as LIMS
-participant "Intermediary\nRegional Integration Engine (RIE)" as TIE
+participant "Intermediary\nNW GLH Regional Integration Engine (RIE)" as TIE
 participant "Order Result Tracker" as EPR
 
 
