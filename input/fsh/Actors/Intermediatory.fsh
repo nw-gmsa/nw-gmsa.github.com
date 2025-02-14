@@ -7,6 +7,7 @@ Usage:  #definition
 * type = http://hl7.org/fhir/examplescenario-actor-type#system
 * status = http://hl7.org/fhir/publication-status#draft
 * description = """
-Fulfils the Order. The Order Filler Actor is implemented by laboratory information management systems.
+North West GLH Regional Integration Engine (RIE)
+This is a Trust Integration Engine (TIE) working at a regional level
 """
 
