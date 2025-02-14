@@ -25,7 +25,6 @@
   end
 
   RIE -> XDS1 : Query Existing Data [PCC-44]\nHL7 IPA Finding and Retrieving Patient Information
-
   XDS1 --> RIE: List of FHIR {resource}
 
   RIE -> XDS2 : Query Existing Data [PCC-44]\nHL7 IPA Finding and Retrieving Patient Information
