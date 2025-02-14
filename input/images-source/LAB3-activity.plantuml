@@ -1,0 +1,10 @@
+@startuml
+
+start
+
+:Performs Tests requested in the Test Order;
+:Write Genomic Test Report;
+:Send Genomic Test Report;
+
+stop
+@enduml
