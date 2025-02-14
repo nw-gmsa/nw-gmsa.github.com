@@ -3,7 +3,7 @@
 title "Genomics Report Options"
 
 interface "Genomics\nReport In" as GenomicsReportIn
-component "GLH TIE" as GLHTIE
+component "**Intermediary**\nGLH TIE" as GLHTIE
 interface "Genomics Report or\nReport Notification\nOut" as GenomicsReportOut
 
 interface "Report Query\nAPI" as MHD

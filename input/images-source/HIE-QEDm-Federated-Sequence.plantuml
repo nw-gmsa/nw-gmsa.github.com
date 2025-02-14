@@ -1,0 +1,41 @@
+  @startuml
+
+  title "Clinical Data Sharing - Federated"
+
+  hide footbox
+
+  participant "Clinical Data Consumer QEDm" as DocumentConsumer
+
+  participant "Intermediary\nRegional Integration Engine (RIE)" as RIE
+
+  participant "Master Patient Index\nMPI" as MPI
+
+  participant "Clinical Data Source QEDm\nPyke" as XDS1
+
+  participant "Clinical Data Source QEDm\nLannisport" as XDS2
+
+  participant "Clinical Data Source QEDm\nWesteros" as IPA
+
+  DocumentConsumer -> RIE : Query Existing Data [PCC-44]\nHL7 IPA Finding and Retrieving Patient Information
+
+  opt Identify Systems with Records
+    note over RIE, MPI: Used to identify which systems have documents for the patient
+    RIE -> MPI: Patient Demographics Query [ITI-78]
+    MPI --> RIE: List of FHIR Patient (includes MRN from providers)
+  end
+
+  RIE -> XDS1 : Query Existing Data [PCC-44]\nHL7 IPA Finding and Retrieving Patient Information
+
+  XDS1 --> RIE: List of FHIR {resource}
+
+  RIE -> XDS2 : Query Existing Data [PCC-44]\nHL7 IPA Finding and Retrieving Patient Information
+  XDS2 --> RIE: List of FHIR {resource}
+
+  RIE -> IPA : Query Existing Data [PCC-44]\nHL7 IPA Finding and Retrieving Patient Information
+  XDS2 --> IPA: List of FHIR {resource}
+
+  RIE --> RIE: [[https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageTranslator.html Transform]] and [[https://www.enterpriseintegrationpatterns.com/patterns/messaging/Aggregator.html Aggregate]]
+
+  RIE --> DocumentConsumer: List of FHIR {Resource}
+
+  @enduml

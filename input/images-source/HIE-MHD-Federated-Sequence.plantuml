@@ -1,0 +1,45 @@
+  @startuml
+
+  title "Health Document Sharing - Federated"
+
+  hide footbox
+
+  participant "Document Consumer MHD" as DocumentConsumer
+
+  participant "Intermediary\nRegional Integration Engine (RIE)" as RIE
+
+  participant "Master Patient Index\nMPI" as MPI
+
+  participant "Document Registry XDS\nIron Islands" as XDS1
+
+  participant "Document Registry XDS\nWesterlands" as XDS2
+
+  participant "Clinical Data Source QEDm\nWesteros" as IPA
+
+  participant "Document Responder MHD\nNational Record Locator" as NRL
+
+  DocumentConsumer -> RIE : Find Document References [ITI-67]
+
+  RIE -> NRL : Retrieve patient's document pointers (GET)
+  NRL --> RIE: List of FHIR DocumentReference (UKCore)
+
+  opt Identify Systems with Records
+    note over RIE, MPI: Used to identify which systems have documents for the patient
+    RIE -> MPI: Patient Demographics Query [ITI-78]
+    MPI --> RIE: List of FHIR Patient (includes MRN from providers)
+  end
+
+  RIE -> XDS1 : Registry Stored Query [ITI-18]
+  XDS1 --> RIE: List of DocumentEntry
+
+  RIE -> XDS2 : Registry Stored Query [ITI-18]
+  XDS2 --> RIE: List of DocumentEntry
+
+  RIE -> IPA : Query Existing Data [PCC-44]\nHL7 IPA Finding and Retrieving Patient Information (DocumentReference)
+  IPA --> RIE: List of FHIR DocumentReference
+
+  RIE --> RIE: [[https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageTranslator.html Transform]] and [[https://www.enterpriseintegrationpatterns.com/patterns/messaging/Aggregator.html Aggregate]]
+
+  RIE --> DocumentConsumer: List of FHIR DocumentReference (UKCore + IHE UK metadata)
+
+  @enduml

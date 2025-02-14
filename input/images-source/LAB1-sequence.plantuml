@@ -5,7 +5,7 @@ title "Genomic Order Sequence Diagram - IHE LTW LAB-1"
 hide footbox
 
 participant "Order Placer" as EPR
-participant "Regional Integration Engine (RIE)" as TIE
+participant "Intermediary\nRegional Integration Engine (RIE)" as TIE
 participant "Order Filler" as LIMS
 
 EPR -> EPR: Select Test Order Form
