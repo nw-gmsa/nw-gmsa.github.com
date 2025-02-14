@@ -19,7 +19,7 @@ alt Successful validation
   TIE --> LIMS: Response HL7 v2 Message AA Application Accept
   note over TIE, EPR: Either option can carry a composition [[https://build.fhir.org/ig/hl7-eu/laboratory/ HL7 EU Laboratory Report]]
   opt HL7 FHIR Message
-    TIE -> TIE : Transform FHIR to HL7 v2 Message
+    TIE -> TIE : Transform HL7 v2 to FHIR Message
     TIE -> EPR: Send HL7 FHIR Message\n**Laboratory Results R01**
     EPR --> TIE: Response HL7 FHIR Message
   else HL7 v2 Message
