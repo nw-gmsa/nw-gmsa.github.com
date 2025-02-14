@@ -2,8 +2,6 @@
 
   skinparam svgDimensionStyle false
 
-  title "Health Document Sharing - Federated"
-
   hide footbox
 
   participant "Document Consumer MHD" as DocumentConsumer

@@ -2,8 +2,6 @@
 
   skinparam svgDimensionStyle false
 
-  title "Clinical Data Sharing - Federated"
-
   hide footbox
 
   participant "Clinical Data Consumer QEDm" as DocumentConsumer
