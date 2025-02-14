@@ -32,7 +32,7 @@
   XDS2 --> RIE: List of FHIR {resource}
 
   RIE -> IPA : Query Existing Data [PCC-44]\nHL7 IPA Finding and Retrieving Patient Information
-  XDS2 --> IPA: List of FHIR {resource}
+  IPA --> RIE: List of FHIR {resource}
 
   RIE --> RIE: [[https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageTranslator.html Transform]] and [[https://www.enterpriseintegrationpatterns.com/patterns/messaging/Aggregator.html Aggregate]]
 
