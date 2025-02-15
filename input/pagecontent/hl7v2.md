@@ -24,7 +24,7 @@ will be agreed as part of on-boarding process. The fields here are all mandatory
 
 ##### Required segments
 
-MSH, PID, PV1, Single OBR, Single OBX
+MSH, PID, PV1, OBR, Single OBX
 
 | Field HL7 | Fieldname                          | Data Type   | Optionality | Table and Notes                                                                                                         | Example Values                                                                                                                  |
 |-----------|------------------------------------|-------------|-------------|-------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
@@ -50,10 +50,16 @@ MSH, PID, PV1, Single OBR, Single OBX
 | PID.32    | Identity Reliability Code          |             | O           | Mandatory if the the NHS Number tracing status is not known.                                                            | 01                                                                                                                              |
 | PV1.1     | Set ID - PV1                       |             | R           |                                                                                                                         | 1                                                                                                                               |
 | PV1.3     | Assigned Patient Location          |             | R           |                                                                                                                         | ^^^^^^^^Greendale Surgery^W95023                                                                                                |
-| PV1.8     | Referring Doctor                   | [XCN](#XCN) | R           | [Practitioner Identifier](StructureDefinition-EnglandPractitionerIdentifier.html)                                       | C3456789^Darwin^Samuel^^^Dr^^^GMC                                                                                               
+| PV1.8     | Referring Doctor                   | [XCN](#XCN) | R           | [Practitioner Identifier](StructureDefinition-EnglandPractitionerIdentifier.html)                                       | C3456789^Darwin^Samuel^^^Dr^^^GMC                                                                                               |                                                                                   
 | PV1.10    | Hospital Service                   |             | R           | [Service](ValueSet-service.html)                                                                                        | 311                                                                                                                             |
+| ORC.2     | Placer Order Number                | [EI](#EI)   | R           | [Order Placer Number](StructureDefinition-OrderPlacerNumber.html)                                                       | 1601737^ R0A^150^L                                                                                                               |
+| ORC.3     | Filler Order Number                | [EI](#EI)   | R           | [Accession Number](StructureDefinition-AccessionNumber.html)                                                            | 1001166717^699X0^^255^ISO                                                                                                       |
+| ORC-5     | Order Status                       |             | O           |                                                                                                                         |                                                                                                                                 |
+| ORC-9     | Date/Time of Transaction           |             | O           |             |                                                                                                                                 |
+| ORC.12    | Ordering Provider                  | [XCN](#XCN) | R           | [Practitioner Identifier](StructureDefinition-EnglandPractitionerIdentifier.html)                                       | C3456789^Darwin^Samuel^^^Dr^^^GMC                                                                                               |
+| ORC.21    | Ordering Facility Name             | [XON](#XON) | R           | [ODS Code](StructureDefinition-OrganisationCode.html)                                                                   |                                                                                                                                 |
 | OBR.1     | Set ID - OBR                       |             | R           |                                                                                                                         | 1                                                                                                                               |
-| OBR.2     | Placer Order Number                | [EI](#EI)   | R           | [Order Placer Number](StructureDefinition-OrderPlacerNumber.html)                                                       | 1601737^ROA^150^L                                                                                                               |
+| OBR.2     | Placer Order Number                | [EI](#EI)   | R           | [Order Placer Number](StructureDefinition-OrderPlacerNumber.html)                                                       | 1601737^ R0A^150^L                                                                                                               |
 | OBR.3     | Filler Order Number                | [EI](#EI)   | R           | [Accession Number](StructureDefinition-AccessionNumber.html)                                                            | 1001166717^699X0^^255^ISO                                                                                                       |
 | OBR.4     | Universal Service Identifier       |             | R           | [Genomic Test Directory](ValueSet-genomic-test-directory.html)                                                          | R240.1^Diagnostic testing for known variant(s)^England-GenomicTestDirectory                                                     |
 | OBR.7     | Observation Date/Time              |             | R           |                                                                                                                         | 20170126135745                                                                                                                  |
@@ -118,7 +124,7 @@ EI.1 - Entity Identifier and EI.2 - Namespace Id are mandatory
 Manchester University NHS Foundation Trust 
 
 ```aiignore
-1601737^ROA
+1601737^R0A
 ```
 
 North West GLH Hub
@@ -160,7 +166,16 @@ MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS
 
 ## Example: Example Instances
 
-### ORM_O01 General Order
+### OML_O21 Laboratory Order
+
+```aiignore
+MSH|^~\&|EPIC|R0A|iGene|699X0|20190514102527+0200||OML^O21^OML_O21|9612365d-52a4-4fab-87e7-8a09d753f095|T|2.5.1|||AL
+PID|1||633^^^R0A^MR~9449305552^^^NHS^NH||CHISLETT^Octavia^^Miss||20080920|F|||1 RAVENSFIELD GARDENS^^EPSOM^SURREY^KT19 0ST
+PV1|1|N|^^^^^^^^The Riversdale Practice^W991234|||||C3456789^Darwin^Samuel^^^Dr^^^GMC||311
+ORC|RE|1601737^R0A|1001166717^699X0||SC||||20170126143602|||C3456789^Darwin^Samuel^^^Dr^^^GMC|||||||||MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS
+OBR|1|1601737^R0A||R240.1^Diagnostic testing for known variant(s)^England-GenomicTestDirectory|||20190514102000+0200|||SCC|O|||20190514102000+0200||C3456789^Darwin^Samuel^^^Dr^^^GMC||||||20190514102417+0200
+SPM|1|25GEN-029GN00001^R0A||||||||||||||||||Y
+```
 
 ### ORU_R01 Unsolicited transmission of an observation message
 
@@ -168,6 +183,7 @@ MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS
 MSH|^~\&|iGene|699X0|EPIC|R0A|20190514102527+0200||ORU^R01^ORU_R01|5051095-201905141025|T|2.5.1|||AL
 PID|1||633^^^R0A^MR~9449305552^^^NHS^NH||CHISLETT^Octavia^^Miss||20080920|F|||1 RAVENSFIELD GARDENS^^EPSOM^SURREY^KT19 0ST
 PV1|1|N|^^^^^^^^The Riversdale Practice^W991234|||||C3456789^Darwin^Samuel^^^Dr^^^GMC||311
-OBR|1|1601737^ROA^150^L|1001166717^699X0^^255^ISO|R240.1^Diagnostic testing for known variant(s)^England-GenomicTestDirectory|||20190514102000+0200|||SCC|O|||20190514102000+0200||C3456789^Darwin^Samuel^^^Dr^^^GMC||||||20190514102417+0200
+ORC|RE|1601737^R0A|1001166717^699X0||CM||||20170126143602|||C3456789^Darwin^Samuel^^^Dr^^^GMC|||||||||MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS
+OBR|1|1601737^R0A|1001166717^699X0|R240.1^Diagnostic testing for known variant(s)^England-GenomicTestDirectory|||20190514102000+0200|||SCC|O|||20190514102000+0200||C3456789^Darwin^Samuel^^^Dr^^^GMC||||||20190514102417+0200
 OBX|1|ED|1054161000000101^Genetic report^SNM^^^^NA||MOL^IM^PDF^Base64^JVBERi0x...||||||F
 ```
