@@ -6,5 +6,7 @@ Description: """
 """
 * ^experimental  = false
 
-* include codes from system $SCT where concept is-a "descendantOrSelfOf 4241000179101"
+// * include codes from system $SCT where concept is-a "descendantOrSelfOf 4241000179101"
 
+* $sct#1054161000000101 "Genetic report"
+* $sct#4241000179101 "Laboratory report"
