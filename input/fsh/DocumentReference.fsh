@@ -19,7 +19,7 @@ Based on UK Definitions from [IHE Europe Metadata for exchange medical documents
 
 * context.sourcePatientInfo.identifier only MedicalRecordNumber
 
-* context.related 1..*
+* context.related 0..*
 
 * context.related ^slicing.discriminator.type = #pattern
 * context.related ^slicing.discriminator.path = "type"
@@ -28,7 +28,7 @@ Based on UK Definitions from [IHE Europe Metadata for exchange medical documents
 * context.related ^slicing.ordered = false
 
 * context.related contains
-  accessionNumber 1..1 MS
+  accessionNumber 0..1 MS
 * context.related[accessionNumber] only Reference(ServiceRequest)
 * context.related[accessionNumber].type 1..1 MS
 * context.related[accessionNumber].type = "ServiceRequest"
