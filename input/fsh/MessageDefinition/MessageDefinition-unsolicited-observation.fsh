@@ -18,4 +18,9 @@ DRAFT conversion of [HL7 v2.5.1 ORU_R01](https://hl7-definition.caristix.com/v2/
   * min = 1
   * max = "*"
 
-
+* focus[+]
+* focus[=]
+  * code = #DocumentReference
+  * profile = Canonical(DocumentReference)
+  * min = 0
+  * max = "*"

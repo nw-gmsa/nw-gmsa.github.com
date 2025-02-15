@@ -10,6 +10,6 @@ Usage: #example
 // Encounter
 * insert EntryDocument("urn:uuid:fe5a1b08-84c9-46e6-8162-d2dcf3e67141", fe5a1b08-84c9-46e6-8162-d2dcf3e67141)
 // DocumentReference
-// * insert EntryDocument("urn:uuid:a293b4a6-e46b-4402-9b2b-d9517afc7137", a293b4a6-e46b-4402-9b2b-d9517afc7137)
+* insert EntryDocument("urn:uuid:94bf65ba-cd6c-4601-b339-6d547f424646", 94bf65ba-cd6c-4601-b339-6d547f424646)
 // Binary
 * insert EntryDocument("urn:uuid:0a898233-763c-405d-8172-8c4f07e6e636", 0a898233-763c-405d-8172-8c4f07e6e636)

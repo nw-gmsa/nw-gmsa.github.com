@@ -17,9 +17,13 @@ Description: "TODO"
     * display = "Genetic report"
     * system = $sct
 
-
-// EPIC-PV1
+// EPIC PV1
 * context.encounter[+].reference = "urn:uuid:fe5a1b08-84c9-46e6-8162-d2dcf3e67141"
+
+* context.related[accessionNumber].identifier.value = "1001166717"
+* context.related[accessionNumber].identifier.type = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN
+* context.related[accessionNumber].identifier.assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
+* context.related[accessionNumber].identifier.assigner.identifier.value = "699X0"
 
 * content[+]
   * attachment.contentType = #application/pdf

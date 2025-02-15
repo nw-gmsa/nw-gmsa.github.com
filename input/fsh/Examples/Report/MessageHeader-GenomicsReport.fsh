@@ -23,3 +23,7 @@ Usage: #example
 * focus[+]
   * reference = "urn:uuid:233ff41a-5067-46c4-b6aa-5d6f87719f5f"
   * type = #DiagnosticReport
+
+* focus[+]
+  * reference = "urn:uuid:94bf65ba-cd6c-4601-b339-6d547f424646"
+  * type = #DocumentReference
