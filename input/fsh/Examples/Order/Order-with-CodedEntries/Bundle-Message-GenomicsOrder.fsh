@@ -1,6 +1,6 @@
 Instance: GenomicsOrderMessage
 InstanceOf: Bundle
-Title:       "Bundle 'Message' - Genomics Order"
+Title:       "Bundle 'Message' - Genomics Order with Structured Data"
 Description:  "Influenced by HL7 v2 OML_O21"
 Usage: #example
 * insert MessageBundle("9612365d-52a4-4fab-87e7-8a09d753f095", "2024-10-13T10:33:00+00:00")

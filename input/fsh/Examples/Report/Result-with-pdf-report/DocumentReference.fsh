@@ -1,11 +1,11 @@
-Instance: a293b4a6-e46b-4402-9b2b-d9517afc7137
+Instance: 94bf65ba-cd6c-4601-b339-6d547f424646
 InstanceOf: DocumentReference
-Title: "Document Reference Example"
+Title: "Document Reference Laboratory Report"
 Description: "TODO"
 
-* identifier[+].value = "a293b4a6-e46b-4402-9b2b-d9517afc7137"
+* identifier[+].value = "94bf65ba-cd6c-4601-b339-6d547f424646"
 * identifier[=].assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
-* identifier[=].assigner.identifier.value = "R0A"
+* identifier[=].assigner.identifier.value = "699X0"
 
 * status = #current
 
@@ -13,19 +13,19 @@ Description: "TODO"
 
 * type
   * coding[+]
-    * code = #721965002
-    * display = "Laboratory order"
+    * code = #1054161000000101
+    * display = "Genetic report"
     * system = $sct
 
 
 // EPIC-PV1
-* context.encounter[+].reference = "urn:uuid:984b8a89-4194-4eb4-a7ea-ca8049ebeea3"
+* context.encounter[+].reference = "urn:uuid:fe5a1b08-84c9-46e6-8162-d2dcf3e67141"
 
 * content[+]
   * attachment.contentType = #application/pdf
   * attachment.url = "urn:uuid:0a898233-763c-405d-8172-8c4f07e6e636"
 
-* author[+].reference = "urn:uuid:ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8"
+// * author[+].reference = "urn:uuid:ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8"
 
 * subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
 * subject.display = "Octavia CHISLETT"

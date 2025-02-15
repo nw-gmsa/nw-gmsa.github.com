@@ -47,7 +47,7 @@ Description: "First draft is based on Royal College of Radiologists HL7 v2 ORU c
 * presentedForm[+]
   * contentType = #application/pdf
   * language = #en-GB
-  * url = "https://o719on.axshare.com/?id=8aol33&p=introduction&g=1"
+  * url = "urn:uuid:0a898233-763c-405d-8172-8c4f07e6e636"
   * size = 43272
-  * title = "Genomic Report for Anita Lamberts"
+  * title = "Genomic Report for Octavia CHISLETT"
   * creation = "2023-11-24"
