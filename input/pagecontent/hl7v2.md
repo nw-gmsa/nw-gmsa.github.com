@@ -1,7 +1,7 @@
 
 ## Message Definitions
 
-### ORM_O01 General Order and OML_O21 - Laboratory Order
+### OML_O21 Laboratory Order (and ORM_O01 General Order)
 
 #### References
 
@@ -44,7 +44,7 @@ MSH, PID, PV1, Single OBR, Single OBX
 | PID.3     | Patient Identifier List            | [CX](#CX)   | R           | [NHS Number](StructureDefinition-NHSNumber.html) [Medical Record Number](StructureDefinition-MedicalRecordNumber.html). | 633^^^R0A^MR~9449305552^^^NHS^NH                                                                                                |
 | PID.5     | Patient Name                       |             | R           |                                                                                                                         | CHISLETT^Octavia^^Miss                                                                                                          |
 | PID.7     | Date/Time of Birth                 |             | R           |                                                                                                                         | 20080920                                                                                                                        |
-| PID.8     | Administrative Sex                 |             | R           |                                                                                                                         | M                                                                                                                               |
+| PID.8     | Administrative Sex                 |             | R           |                                                                                                                         | F                                                                                                                               |
 | PID.11    | Patient Address                    |             | R           |                                                                                                                         | 1 RAVENSFIELD GARDENS^^EPSOM^SURREY^KT19 0ST                                                                                    |
 | PID.13    | Phone Number - Home                |             | R           |                                                                                                                         | 01656 123123^PRN^PH~07927655295^ORN^CP^NET^X.400^abc@home.com~01656 123123~01656123123^PRN^PH^^^abc@home.com~01656123123^PRN^PH |
 | PID.32    | Identity Reliability Code          |             | O           | Mandatory if the the NHS Number tracing status is not known.                                                            | 01                                                                                                                              |
@@ -53,7 +53,7 @@ MSH, PID, PV1, Single OBR, Single OBX
 | PV1.8     | Referring Doctor                   | [XCN](#XCN) | R           | [Practitioner Identifier](StructureDefinition-EnglandPractitionerIdentifier.html)                                       | C3456789^Darwin^Samuel^^^Dr^^^GMC                                                                                               
 | PV1.10    | Hospital Service                   |             | R           | [Service](ValueSet-service.html)                                                                                        | 311                                                                                                                             |
 | OBR.1     | Set ID - OBR                       |             | R           |                                                                                                                         | 1                                                                                                                               |
-| OBR.2     | Placer Order Number                | [EI](#EI)   | R           | [Order Placer Numbe](StructureDefinition-OrderPlacerNumber.html)                                                        | 1601737^ROA^150^L                                                                                                               |
+| OBR.2     | Placer Order Number                | [EI](#EI)   | R           | [Order Placer Number](StructureDefinition-OrderPlacerNumber.html)                                                       | 1601737^ROA^150^L                                                                                                               |
 | OBR.3     | Filler Order Number                | [EI](#EI)   | R           | [Accession Number](StructureDefinition-AccessionNumber.html)                                                            | 1001166717^699X0^^255^ISO                                                                                                       |
 | OBR.4     | Universal Service Identifier       |             | R           | [Genomic Test Directory](ValueSet-genomic-test-directory.html)                                                          | R240.1^Diagnostic testing for known variant(s)^England-GenomicTestDirectory                                                     |
 | OBR.7     | Observation Date/Time              |             | R           |                                                                                                                         | 20170126135745                                                                                                                  |
@@ -61,7 +61,7 @@ MSH, PID, PV1, Single OBR, Single OBX
 | OBR.22    | Results Rpt/Status Chng -Date/Time |             | R           |                                                                                                                         | 20170126135745                                                                                                                  |
 | OBX.1     | Set ID – OBX                       |             | R           |                                                                                                                         | 1                                                                                                                               |
 | OBX.2     | Value Type                         |             | R           |                                                                                                                         | ED                                                                                                                              |
-| OBX.3     | Observation Identifier             | [CE](#CE)   | R           | [Document Entry Type](ValueSet-document-entry-type.html)                                                                | 1054161000000101^Genetic report^SNM                                                                                                            |
+| OBX.3     | Observation Identifier             | [CE](#CE)   | R           | [Document Entry Type](ValueSet-document-entry-type.html)                                                                | 1054161000000101^Genetic report^SNM                                                                                             |
 | OBX.5     | Observation Value                  | ED          | R           |                                                                                                                         | MOL^IM^PDF^Base64^JVBERI0X...                                                                                                   |
 | OBX.11    | Observation Result Status          |             | R           |                                                                                                                         | F                                                                                                                               |
 
@@ -83,9 +83,11 @@ SNOMED
 
 ```1054161000000101^Genetic report^SNM```
 
-LOINC
+LOINC (from HL7 International)
 
 ```53577-3^Reason for study^LN```
+```51967-8^Genetic disease(s) assessed^LN```
+```48018-6^Gene studied^LN```
 
 ### CX 
 
@@ -160,9 +162,12 @@ MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS
 
 ### ORM_O01 General Order
 
-
 ### ORU_R01 Unsolicited transmission of an observation message
 
 ```aiignore
-# HL7v2Examples/ORU_R01_PDF_NW.txt
+MSH|^~\&|iGene|699X0|EPIC|R0A|20190514102527+0200||ORU^R01^ORU_R01|5051095-201905141025|T|2.5.1|||AL
+PID|1||633^^^R0A^MR~9449305552^^^NHS^NH||CHISLETT^Octavia^^Miss||20080920|F|||1 RAVENSFIELD GARDENS^^EPSOM^SURREY^KT19 0ST
+PV1|1|N|^^^^^^^^The Riversdale Practice^W991234|||||C3456789^Darwin^Samuel^^^Dr^^^GMC||311
+OBR|1|1601737^ROA^150^L|1001166717^699X0^^255^ISO|R240.1^Diagnostic testing for known variant(s)^England-GenomicTestDirectory|||20190514102000+0200|||SCC|O|||20190514102000+0200||C3456789^Darwin^Samuel^^^Dr^^^GMC||||||20190514102417+0200
+OBX|1|ED|1054161000000101^Genetic report^SNM^^^^NA||MOL^IM^PDF^Base64^JVBERi0x...||||||F
 ```
