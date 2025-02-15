@@ -22,3 +22,9 @@ Description: "TODO"
 
 * participant[attendingDoctor].type.coding = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ATND
 * participant[attendingDoctor].individual.reference = "urn:uuid:ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8"
+
+* location[+]
+  * location.identifier.system = "https://fhir.nhs.uk/Id/ods-site-code"
+  * location.identifier.value = "R0A09"
+  * location.identifier.assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
+  * location.identifier.assigner.identifier.value = "R0A"
