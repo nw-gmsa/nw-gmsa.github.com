@@ -1,7 +1,9 @@
 
 ## Message Definitions
 
-### OML_O21 Laboratory Order (and ORM_O01 General Order)
+### OML_O21 Laboratory Order 
+
+(and ORM_O01 General Order)
 
 #### References
 
@@ -17,14 +19,14 @@
 - [HL7 Version 2.5.1 Implementation Guide: Lab Results Interface (LRI), Release 1 from May 2017](https://confluence.hl7.org/download/attachments/25559919/2018%2004%2003%20-%20V2%20LRI%20-%20Ch.%205%20CG%20and%20Code%20System%20Tables.pdf?api=v2) includes **Data Standards**
 - [EPIC HL7 v2](https://open.epic.com/Interface/HL7v2) See **Discrete Genomic Results** (RIE to EPIC EPR)
 
-#### Using ORU to Publish PDF Reports
-
-The following table describes the minimum fields to meet the NHS Wales Informatics Service standards. OIDs
-will be agreed as part of on-boarding process. The fields here are all mandatory
-
-##### Required segments
+#### Required segments
 
 MSH, PID, PV1, OBR, Single OBX
+
+## Segments
+
+### MSH
+
 
 | Field HL7 | Fieldname                          | Data Type   | Optionality | Table and Notes                                                                                                         | Example Values                                                                                                                  |
 |-----------|------------------------------------|-------------|-------------|-------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
@@ -40,6 +42,11 @@ MSH, PID, PV1, OBR, Single OBX
 | MSH.11    | Processing ID                      |             | R           |                                                                                                                         | P                                                                                                                               |
 | MSH.12    | Version ID                         |             | R           |                                                                                                                         | 2.5.1                                                                                                                           |
 | MSH.13    | Accept AcknowledgmentType          |             | R           |                                                                                                                         | AL                                                                                                                              |
+
+### PID
+
+| Field HL7 | Fieldname                          | Data Type   | Optionality | Table and Notes                                                                                                         | Example Values                                                                                                                  |
+|-----------|------------------------------------|-------------|-------------|-------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
 | PID.1     | Set ID-PID                         |             | R           |                                                                                                                         | 1                                                                                                                               |
 | PID.3     | Patient Identifier List            | [CX](#CX)   | R           | [NHS Number](StructureDefinition-NHSNumber.html) [Medical Record Number](StructureDefinition-MedicalRecordNumber.html). | 633^^^R0A^MR~9449305552^^^NHS^NH                                                                                                |
 | PID.5     | Patient Name                       |             | R           |                                                                                                                         | CHISLETT^Octavia^^Miss                                                                                                          |
@@ -48,16 +55,33 @@ MSH, PID, PV1, OBR, Single OBX
 | PID.11    | Patient Address                    |             | R           |                                                                                                                         | 1 RAVENSFIELD GARDENS^^EPSOM^SURREY^KT19 0ST                                                                                    |
 | PID.13    | Phone Number - Home                |             | R           |                                                                                                                         | 01656 123123^PRN^PH~07927655295^ORN^CP^NET^X.400^abc@home.com~01656 123123~01656123123^PRN^PH^^^abc@home.com~01656123123^PRN^PH |
 | PID.32    | Identity Reliability Code          |             | O           | Mandatory if the the NHS Number tracing status is not known.                                                            | 01                                                                                                                              |
+
+### PV1 
+
+
+| Field HL7 | Fieldname                          | Data Type   | Optionality | Table and Notes                                                                                                         | Example Values                                                                                                                  |
+|-----------|------------------------------------|-------------|-------------|-------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
 | PV1.1     | Set ID - PV1                       |             | R           |                                                                                                                         | 1                                                                                                                               |
 | PV1.3     | Assigned Patient Location          |             | R           |                                                                                                                         | ^^^^^^^^Greendale Surgery^W95023                                                                                                |
 | PV1.8     | Referring Doctor                   | [XCN](#XCN) | R           | [Practitioner Identifier](StructureDefinition-EnglandPractitionerIdentifier.html)                                       | C3456789^Darwin^Samuel^^^Dr^^^GMC                                                                                               |                                                                                   
 | PV1.10    | Hospital Service                   |             | R           | [Service](ValueSet-service.html)                                                                                        | 311                                                                                                                             |
+
+### ORC
+
+| Field HL7 | Fieldname                          | Data Type   | Optionality | Table and Notes                                                                                                         | Example Values                                                                                                                  |
+|-----------|------------------------------------|-------------|-------------|-------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
 | ORC.2     | Placer Order Number                | [EI](#EI)   | R           | [Order Placer Number](StructureDefinition-OrderPlacerNumber.html)                                                       | 1601737^ R0A^150^L                                                                                                               |
 | ORC.3     | Filler Order Number                | [EI](#EI)   | R           | [Accession Number](StructureDefinition-AccessionNumber.html)                                                            | 1001166717^699X0^^255^ISO                                                                                                       |
 | ORC-5     | Order Status                       |             | O           |                                                                                                                         |                                                                                                                                 |
 | ORC-9     | Date/Time of Transaction           |             | O           |             |                                                                                                                                 |
 | ORC.12    | Ordering Provider                  | [XCN](#XCN) | R           | [Practitioner Identifier](StructureDefinition-EnglandPractitionerIdentifier.html)                                       | C3456789^Darwin^Samuel^^^Dr^^^GMC                                                                                               |
 | ORC.21    | Ordering Facility Name             | [XON](#XON) | R           | [ODS Code](StructureDefinition-OrganisationCode.html)                                                                   |                                                                                                                                 |
+
+
+### OBR 
+
+| Field HL7 | Fieldname                          | Data Type   | Optionality | Table and Notes                                                                                                         | Example Values                                                                                                                  |
+|-----------|------------------------------------|-------------|-------------|-------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
 | OBR.1     | Set ID - OBR                       |             | R           |                                                                                                                         | 1                                                                                                                               |
 | OBR.2     | Placer Order Number                | [EI](#EI)   | R           | [Order Placer Number](StructureDefinition-OrderPlacerNumber.html)                                                       | 1601737^ R0A^150^L                                                                                                               |
 | OBR.3     | Filler Order Number                | [EI](#EI)   | R           | [Accession Number](StructureDefinition-AccessionNumber.html)                                                            | 1001166717^699X0^^255^ISO                                                                                                       |
@@ -65,6 +89,11 @@ MSH, PID, PV1, OBR, Single OBX
 | OBR.7     | Observation Date/Time              |             | R           |                                                                                                                         | 20170126135745                                                                                                                  |
 | OBR.16    | Ordering Provider                  |             | R           | [Practitioner Identifier](StructureDefinition-EnglandPractitionerIdentifier.html)                                       | C3456789^Darwin^Samuel^^^Dr^^^GMC                                                                                               |
 | OBR.22    | Results Rpt/Status Chng -Date/Time |             | R           |                                                                                                                         | 20170126135745                                                                                                                  |
+
+### OBX
+
+| Field HL7 | Fieldname                          | Data Type   | Optionality | Table and Notes                                                                                                         | Example Values                                                                                                                  |
+|-----------|------------------------------------|-------------|-------------|-------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
 | OBX.1     | Set ID – OBX                       |             | R           |                                                                                                                         | 1                                                                                                                               |
 | OBX.2     | Value Type                         |             | R           |                                                                                                                         | ED                                                                                                                              |
 | OBX.3     | Observation Identifier             | [CE](#CE)   | R           | [Document Entry Type](ValueSet-document-entry-type.html)                                                                | 1054161000000101^Genetic report^SNM                                                                                             |
