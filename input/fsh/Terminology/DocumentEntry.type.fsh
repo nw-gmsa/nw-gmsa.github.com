@@ -10,3 +10,5 @@ Description: """
 
 * $sct#1054161000000101 "Genetic report"
 * $sct#4241000179101 "Laboratory report"
+* $sct#721963009 "Order"
+* $sct#721965002 "Laboratory order"
