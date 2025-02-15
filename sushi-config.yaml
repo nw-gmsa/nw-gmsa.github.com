@@ -136,8 +136,8 @@ menu:
     Order Results Management [LAB-3]: LAB-3.html
   Data Models (Vol 3): vol3.html
   Artefacts: artifacts.html
+  HL7 v2 Artefacts: hl7v2.html
   Development:
-    HL7 v2 Artefacts: hl7v2.html
     Testing: testing.html
     Support: support.html
 
