@@ -23,12 +23,12 @@
 
 | Segment HL7 | Optionality |
 |-------------|-------------|
-| MSH         | 1..1        |
-| PID         | 1..1        |
-| PV1         | 1..1        |
-| ORC         | 0..*        |
-| OBR         | 1..*        |
-| OBX         | 1..*        |
+| [MSH](#MSH) | 1..1        |
+| [PID](#PID) | 1..1        |
+| [PV1](#PV1) | 1..1        |
+| [ORC](#ORC) | 0..*        |
+| [OBR](#OBR) | 1..*        |
+| [OBX](#OBX) | 1..*        |
  
 ## Segments
 
