@@ -47,11 +47,11 @@ How this is implemented will vary between different NHS organisations and system
 <table style="width:100%">
   <tr>
     <td>
-       <img style="padding:3px;width:200px;" src="NW GLH Genomic Testing Request Form – Rare Disease.png" alt="NW GLH Genomic Testing Request Form – Rare Disease"/>
+       <img style="padding:3px;width:80%;" src="NW GLH Genomic Testing Request Form – Rare Disease.png" alt="NW GLH Genomic Testing Request Form – Rare Disease"/>
       <p class="figureTitle">NW GLH Genomic Testing Request Form – Rare Disease</p>   
     </td>
     <td>
-       <img style="padding:3px;width:200px;" src="Request for Genetic Testing for Haemoglobinopathies.png" alt="Request for Genetic Testing for Haemoglobinopathies"/>
+       <img style="padding:3px;width:80%;" src="Request for Genetic Testing for Haemoglobinopathies.png" alt="Request for Genetic Testing for Haemoglobinopathies"/>
       <p class="figureTitle">Request for Genetic Testing for Haemoglobinopathies</p>   
     </td>
   </tr>
