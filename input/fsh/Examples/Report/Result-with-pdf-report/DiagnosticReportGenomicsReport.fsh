@@ -16,6 +16,7 @@ Description: "First draft is based on Royal College of Radiologists HL7 v2 ORU c
   * identifier.value = "1001166717"
   * identifier.assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
   * identifier.assigner.identifier.value = "699X0"
+  * extension[ExtCodeableReference].valueCodeableConcept.coding = $test-directory#R240.1
 
 * status = #final
 * category = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
