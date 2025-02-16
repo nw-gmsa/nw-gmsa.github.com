@@ -73,11 +73,11 @@ This includes making use of FHIR Identifier `assigner.identifier.value` (HL7 v2 
 Is present around Organisation, Practioner and PractitionerRole. NHS England has expressed a preference to use NHS England Identifiers, these are:
 
 - Organization 
-  - [ODS Code](StructureDefinition-organisation-code.html)
+  - [ODS Code](StructureDefinition-OrganisationCode.html)
 - Practitioner
   - [Practitioner Identifiers](StructureDefinition-EnglandPractitionerIdentifier.html) (GMP and GMC Numbers)
 - PractitionerRole
-  - [ODS Code](StructureDefinition-organisation-code.html)
+  - [ODS Code](StructureDefinition-OrganisationCode.html)
   - [Practitioner Identifiers](StructureDefinition-EnglandPractitionerIdentifier.html)
 
 ### Codes or Resources
