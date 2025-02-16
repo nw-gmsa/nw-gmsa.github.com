@@ -1,8 +1,8 @@
 Alias: $nhs-number = https://fhir.nhs.uk/Id/nhs-number
 Alias: $ode-code = https://fhir.nhs.uk/Id/ods-organization-code
-Alias: $SCT = http://snomed.info/sct
-Alias: $UCUM = http://unitsofmeasure.org
+Alias: $ucum = http://unitsofmeasure.org
 Alias: $Obligation = http://hl7.org/fhir/StructureDefinition/obligation
+Alias: $test-directory = https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory
 
 RuleSet: Obligation(code, actor)
 * ^extension[$Obligation][+].extension[code].valueCode = {code}

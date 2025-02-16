@@ -25,6 +25,6 @@ Description: "TODO"
 
 * location[+]
   * location.identifier.system = "https://fhir.nhs.uk/Id/ods-site-code"
-  * location.identifier.value = "699X0"
+  * location.identifier.value = "P1S8J"
   * location.identifier.assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
   * location.identifier.assigner.identifier.value = "699X0"

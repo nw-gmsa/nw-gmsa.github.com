@@ -70,7 +70,7 @@
 | Field HL7 | Fieldname                          | Data Type   | Optionality | Table and Notes                                                                                                         | Example Values                    |
 |-----------|------------------------------------|-------------|-------------|-------------------------------------------------------------------------------------------------------------------------|-----------------------------------|
 | PV1.1     | Set ID - PV1                       | [PL](#pl)   | R           |                                                                                                                         | 1                                 |
-| PV1.3     | Assigned Patient Location          |             | R           |                                                                                                                         | ^^^R0A09^^^^^^^R0A <br/> ^^^699X0^^^^^^^699X0         |
+| PV1.3     | Assigned Patient Location          |             | R           |                                                                                                                         | ^^^R0A09^^^^^^^R0A <br/> ^^^P1S8J^^^^^^^699X0         |
 | PV1.8     | Referring Doctor                   | [XCN](#xcn) | R           | [Practitioner Identifier](StructureDefinition-EnglandPractitionerIdentifier.html)                                       | C3456789^Darwin^Samuel^^^Dr^^^GMC |                                                                                   
 | PV1.10    | Hospital Service                   |             | R           | [Service](ValueSet-service.html)                                                                                        | 311                               |
 
@@ -206,7 +206,7 @@ Example
 MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS
 ```
 
-## v2 to FHIR Message Conversion
+## HL7 v2 to FHIR Message Conversion
 
 - [HL7 Version 2 to FHIR - Message OML_O21 to Bundle Map](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-message-oml-o21-to-bundle.html)
 - [HL7 Version 2 to FHIR - Message ORM_O01 to Bundle Map](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-message-orm-o01-to-bundle.html) 
@@ -231,7 +231,7 @@ SPM|1|25GEN-029GN00001^R0A||||||||||||||||||Y
 ```aiignore
 MSH|^~\&|iGene|699X0|EPIC|R0A|20190514102527+0200||ORU^R01^ORU_R01|5051095-201905141025|T|2.5.1|||AL
 PID|1||633^^^R0A^MR~9449305552^^^NHS^NH||CHISLETT^Octavia^^Miss||20080920|F|||1 RAVENSFIELD GARDENS^^EPSOM^SURREY^KT19 0ST
-PV1|1|N|^^^699X0^^^^^^^699X0|||||C3456789^Darwin^Samuel^^^Dr^^^GMC||311
+PV1|1|N|^^^P1S8J^^^^^^^699X0|||||C3456789^Darwin^Samuel^^^Dr^^^GMC||311
 ORC|RE|1601737^R0A|1001166717^699X0||CM||||20170126143602|||C3456789^Darwin^Samuel^^^Dr^^^GMC|||||||||MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS
 OBR|1|1601737^R0A|1001166717^699X0|R240.1^Diagnostic testing for known variant(s)^England-GenomicTestDirectory|||20190514102000+0200|||SCC|O|||20190514102000+0200||C3456789^Darwin^Samuel^^^Dr^^^GMC||||||20190514102417+0200
 OBX|1|ED|1054161000000101^Genetic report^SNM||MOL^IM^PDF^Base64^JVBERi0x...||||||F
