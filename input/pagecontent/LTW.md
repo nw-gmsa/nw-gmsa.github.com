@@ -59,7 +59,7 @@ How this is implemented will vary between different NHS organisations and system
 
 ##### Complete Genomic Test Order Form
 
-These forms will have a computable definition called an [template (FHIR Questionnaire)](https://hl7.org/fhir/R4/questionnaire.html) which will list the technical content requirements for the form. At present only one archetype has been defined:
+These forms may (/will?) will have a computable definition called an [template (FHIR Questionnaire)](https://hl7.org/fhir/R4/questionnaire.html) which will list the technical content requirements for the form. At present only one archetype has been defined:
 
 - [NW Genomics Test Order Form (Minimal Dataset)](Questionnaire-NW-Genomics-Test-Order.html)
 
