@@ -25,9 +25,9 @@ Initially only the IHE `LAB-1` is in focus and this is probably using HL7 v2.x O
 This will be followed by IHE `LAB-3` probably using HL7 v2.x ORU_R01
 Later stages will include the use of [Genomic Order Management Service](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir), using HL7 FHIR which will add in concepts covered in `LAB-4`.
 
-## Use Cases
 
-### Use Case 1: Genomic Test Order
+
+## Use Case 1: Genomic Test Order
 
 An order is created by the clinical practice, and placed to the laboratory.
 
@@ -38,7 +38,7 @@ An order is created by the clinical practice, and placed to the laboratory.
 </figure>
 <br clear="all">
 
-#### Select Genomic Test Order Form
+### Select Genomic Test Order Form
 
 Within the system creating the genomics order, the practitioner will select a form for the test required. Below are several examples from [North West Genomic Laboratory Hub - Test Request Forms](https://mft.nhs.uk/nwglh/documents/test-request-forms/).
 How this is implemented will vary between different NHS organisations and systems they use.
@@ -56,7 +56,7 @@ How this is implemented will vary between different NHS organisations and system
   </tr>
 </table>
 
-#### Complete Genomic Test Order Form
+### Complete Genomic Test Order Form
 
 These forms may (/will?) will have a computable definition called an [template (FHIR Questionnaire)](https://hl7.org/fhir/R4/questionnaire.html) which will list the technical content requirements for the form. At present only one archetype has been defined:
 
@@ -64,7 +64,7 @@ These forms may (/will?) will have a computable definition called an [template (
 
 This archetype definition can also support [HL7 Structured Data Capture](https://build.fhir.org/ig/HL7/sdc/index.html) should the Order Placer system support these features.
 
-#### Submit Genomic Test Order Form
+### Submit Genomic Test Order Form
 
 The completed form is submitted to the Regional Integration Engine using [LAB-1](LAB-1.html).
 
@@ -89,7 +89,7 @@ The FHIR exchange style used [FHIR Message](https://hl7.org/fhir/R4/messaging.ht
 This message is an [aggregate (DDD)](https://martinfowler.com/bliki/DDD_Aggregate.html)/[archetype](https://en.wikipedia.org/wiki/Archetype_(information_science)) and so is a collection of FHIR Resources (similar to v2 segements) which is described in [Genomic Test Request Entity Model](vol3.html#genomic-test-request-entity-model).
 
 
-#### Communicating Ask at Order Entry questions and prior results
+### Communicating Ask at Order Entry questions and prior results
 
 See also [HL7 Europe Laboratory Report - ServiceRequest](https://hl7.eu/fhir/laboratory/StructureDefinition-ServiceRequest-eu-lab.html#communicating-ask-at-order-entry-questions-and-prior-results)
 This message can be extended by [template (FHIR Questionnaire)](https://hl7.org/fhir/R4/questionnaire.html) which allows the definition of additional questions to be defined for the `laboratory order`.
@@ -109,12 +109,12 @@ The detail of this form/template defines:
 
 > It is not expected the NW GLH Laboratory Information Management System (LIMS) will support UK SNOMED CT, and the RIE will handle the conversion either internally using [FHIR ConceptMap](https://hl7.org/fhir/R4/conceptmap.html) or a terminology service with the following capabilities [IHE Sharing Valuesets, Codes, and Maps (SVCM)](https://profiles.ihe.net/ITI/SVCM/index.html)
 
-### Use Case 2: Genomic Test Report
+## Use Case 2: Genomic Test Report
 
 
 A report is created by the clinical practice, and sent to the order result tracker.
 
-#### Genomic Test Report Description
+### Genomic Test Report Description
 
 <figure>
 {%include LAB3-activity.svg%}
