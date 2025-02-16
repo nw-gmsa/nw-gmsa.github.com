@@ -75,17 +75,20 @@ The completed form is submitted to the Regional Integration Engine using [LAB-1]
 </figure>
 <br clear="all">
 
+For submission, this form will be converted by the [Order Placer](ActorDefinition-OrderPlacer.html) to a communication format called [HL7 FHIR](https://hl7.org/fhir/R4/index.html) (and for compatability reasons [HL7 v2](https://en.wikipedia.org/wiki/Health_Level_7#HL7_Version_2).
+If the [Order Placer](ActorDefinition-OrderPlacer.html) has a FHIR enabled Electronic Patient Record (e.g. EPIC, Cerner, Meditech, etc), they may use [HL7 SDC - Form Data Extraction](https://build.fhir.org/ig/HL7/sdc/extraction.html) to assist with this process.
+
+<img style="padding:3px;width:700px;" src="sdc-order-test-form.png" alt="Order Text Form Example (extract)"/>
+<br clear="all">
+<p class="figureTitle">Order Text Form Example (extract)</p> 
+<br clear="all">
+
 The FHIR exchange style used [FHIR Message](https://hl7.org/fhir/R4/messaging.html) following [laboratory-order](MessageDefinition-laboratory-order) message definition. This definition is based on HL7 v2 `OML_O21 Laboratory Order` which simplifies conversion to/from pipe+hat (v2) and json (FHIR) formats. 
 
 > At present the NW GLH Laboratory Information Management System (LIMS) will not support HL7 FHIR. The Regional Integration Exchange (RIE) will perform conversion between v2 and FHIR formats.
 
 This message is an [aggregate (DDD)](https://martinfowler.com/bliki/DDD_Aggregate.html)/[archetype](https://en.wikipedia.org/wiki/Archetype_(information_science)) and so is a collection of FHIR Resources (similar to v2 segements) which is described in [Genomic Test Request Entity Model](vol3.html#genomic-test-request-entity-model).  
 This message can be extended by [template (FHIR Questionnaire)](https://hl7.org/fhir/R4/questionnaire.html) (these are the same forms/templates mentioned above) which can add further definitions to the `laboratory order`.
-
-<img style="padding:3px;width:700px;" src="sdc-order-test-form.png" alt="Order Text Form Example (extract)"/>
-<br clear="all">
-<p class="figureTitle">Order Text Form Example (extract)</p> 
-<br clear="all">
 
 The detail of this form/template defines:
 
