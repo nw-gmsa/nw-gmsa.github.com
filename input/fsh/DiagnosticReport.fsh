@@ -10,7 +10,7 @@ DRAFT Extension of [UK Core DiagnosticReport](https://simplifier.net/hl7fhirukco
 * identifier 1..* MS
 * identifier only CorrelationIdentifier
 
-* basedOn only CodeableReference
+* basedOn only CodeableReference(ServiceRequest)
 * basedOn.identifier 1..1 MS
 * basedOn.identifier only CorrelationIdentifier
 
