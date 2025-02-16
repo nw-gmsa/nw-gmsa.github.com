@@ -7,12 +7,12 @@ Description: "TODO"
 
 * identifier[placerOrderNumber].type = $v2-0203#PLAC
 * identifier[placerOrderNumber].value = "1601737"
-* identifier[placerOrderNumber].assigner.identifier.system = $ode-code
+* identifier[placerOrderNumber].assigner.identifier.system = $ods-code
 * identifier[placerOrderNumber].assigner.identifier.value = "R0A"
 
 * identifier[accessionNumber].type = $v2-0203#ACSN
 * identifier[accessionNumber].value = "1001166717"
-* identifier[accessionNumber].assigner.identifier.system = $ode-code
+* identifier[accessionNumber].assigner.identifier.system = $ods-code
 * identifier[accessionNumber].assigner.identifier.value = "699X0"
 
 * status = #active

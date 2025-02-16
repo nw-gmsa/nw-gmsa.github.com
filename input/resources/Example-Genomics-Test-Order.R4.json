@@ -173,12 +173,12 @@
       "text": "Email Addresses of Non-MFT Clinicians for Result"
     },
     {
-      "type": "string",
+      "type": "boolean",
       "code": [
         {
-          "system": "https://mft.nhs.uk/Id/IGENE",
-          "code": "230029",
-          "display": "Confirmation of Consent for Testing - MANDATORY Testing will not be performed without completed confirmation of consent"
+          "system": "http://snomed.info/sct",
+          "code": "762911000000102",
+          "display": "Informed consent given for treatment"
         }
       ],
       "linkId": "230029",

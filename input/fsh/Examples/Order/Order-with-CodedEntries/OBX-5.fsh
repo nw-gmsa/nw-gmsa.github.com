@@ -13,7 +13,7 @@ Description: "TODO"
   * coding[+]
     * code = #77386006
     * display = "Pregnancy"
-    * system = "http://snomed.info/sct"
+    * system = $sct
 
 * valueBoolean = false
 
@@ -25,7 +25,7 @@ Description: "TODO"
 * subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
 * subject.display = "Octavia CHISLETT"
 * subject.identifier
-  * system = "https://fhir.nhs.uk/Id/nhs-number"
+  * system = $nhs-number
   * value = "9449305552"
 
 

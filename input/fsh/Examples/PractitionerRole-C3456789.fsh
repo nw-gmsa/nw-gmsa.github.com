@@ -7,7 +7,7 @@ Description: "TODO"
 * practitioner.identifier.value = "C3456789"
 * practitioner.display = "Dr Samuel Darwin"
 
-* organization.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
+* organization.identifier.system = $ods-code
 * organization.identifier.value = "R0A"
 
 * specialty[+]

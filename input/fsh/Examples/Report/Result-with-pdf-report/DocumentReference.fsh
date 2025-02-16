@@ -4,7 +4,7 @@ Title: "Document Reference Laboratory Report"
 Description: "TODO"
 
 * identifier[+].value = "94bf65ba-cd6c-4601-b339-6d547f424646"
-* identifier[=].assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
+* identifier[=].assigner.identifier.system = $ods-code
 * identifier[=].assigner.identifier.value = "699X0"
 
 * status = #current
@@ -22,7 +22,7 @@ Description: "TODO"
 
 * context.related[accessionNumber].identifier.value = "1001166717"
 * context.related[accessionNumber].identifier.type = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN
-* context.related[accessionNumber].identifier.assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
+* context.related[accessionNumber].identifier.assigner.identifier.system = $ods-code
 * context.related[accessionNumber].identifier.assigner.identifier.value = "699X0"
 
 * content[+]
@@ -34,7 +34,7 @@ Description: "TODO"
 * subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
 * subject.display = "Octavia CHISLETT"
 * subject.identifier
-  * system = "https://fhir.nhs.uk/Id/nhs-number"
+  * system = $nhs-number
   * value = "9449305552"
 
 

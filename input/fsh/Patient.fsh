@@ -12,7 +12,7 @@ DRAFT Extension of UKCore-Patient which includes constraints from:
 * identifier.assigner 1..1 MS
 * identifier.assigner.identifier 1..1 MS
 * identifier.assigner.identifier.value 1..1 MS
-* identifier.assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
+* identifier.assigner.identifier.system = $ods-code
 
 * identifier contains
   MedicalRecordNumber 0..*

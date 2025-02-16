@@ -38,4 +38,4 @@ where ROA is the ODS code for Manchester University NHS Foundation Trust
 * assigner.identifier 1..1 MS
 * assigner.identifier.value 1..1 MS
 * assigner.identifier.system 1..1 MS
-* assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
+* assigner.identifier.system = $ods-code

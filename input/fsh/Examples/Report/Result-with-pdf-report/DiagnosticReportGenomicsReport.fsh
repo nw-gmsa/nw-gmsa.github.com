@@ -7,14 +7,14 @@ Description: "First draft is based on Royal College of Radiologists HL7 v2 ORU c
 
 * identifier[+]
   * value = "25edee2b-add8-4522-9fa2-1ee8f229bd75"
-  * assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
+  * assigner.identifier.system = $ods-code
   * assigner.identifier.value = "699X0"
 
 * basedOn[accessionNumber]
   * type = "ServiceRequest"
-  * identifier.type = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN
+  * identifier.type = $v2-0203#ACSN
   * identifier.value = "1001166717"
-  * identifier.assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
+  * identifier.assigner.identifier.system = $ods-code
   * identifier.assigner.identifier.value = "699X0"
   * extension[ExtCodeableReference].valueCodeableConcept.coding = $test-directory#R240.1
 
@@ -32,7 +32,7 @@ Description: "First draft is based on Royal College of Radiologists HL7 v2 ORU c
 * issued = "2023-09-07T11:45:41+00:00"
 
 * performer[organisation]
-  * identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
+  * identifier.system = $ods-code
   * identifier.value = "699X0"
   * type = #Organization
   * display = "NW GLH"

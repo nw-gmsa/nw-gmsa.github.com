@@ -7,7 +7,7 @@ Description: "TODO"
 
 * identifier[+]
   * value = "1001"
-  * assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
+  * assigner.identifier.system = $ods-code
   * assigner.identifier.value = "699X0"
 
 * class = #AMB
@@ -15,7 +15,7 @@ Description: "TODO"
 * subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
 * subject.display = "Octavia CHISLETT"
 * subject.identifier
-  * system = "https://fhir.nhs.uk/Id/nhs-number"
+  * system = $nhs-number
   * value = "9449305552"
 
 * period.start = "2025-01-29T10:37:26+00:00"
@@ -26,5 +26,5 @@ Description: "TODO"
 * location[+]
   * location.identifier.system = "https://fhir.nhs.uk/Id/ods-site-code"
   * location.identifier.value = "P1S8J"
-  * location.identifier.assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
+  * location.identifier.assigner.identifier.system = $ods-code
   * location.identifier.assigner.identifier.value = "699X0"

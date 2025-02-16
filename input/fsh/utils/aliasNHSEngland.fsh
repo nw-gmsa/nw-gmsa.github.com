@@ -1,5 +1,5 @@
 Alias: $nhs-number = https://fhir.nhs.uk/Id/nhs-number
-Alias: $ode-code = https://fhir.nhs.uk/Id/ods-organization-code
+Alias: $ods-code = https://fhir.nhs.uk/Id/ods-organization-code
 Alias: $ucum = http://unitsofmeasure.org
 Alias: $Obligation = http://hl7.org/fhir/StructureDefinition/obligation
 Alias: $test-directory = https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory

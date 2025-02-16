@@ -24,7 +24,7 @@ Description: "TODO"
 * subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
 * subject.display = "Octavia CHISLETT"
 * subject.identifier
-  * system = "https://fhir.nhs.uk/Id/nhs-number"
+  * system = $nhs-number
   * value = "9449305552"
 
 * performer[+].reference = "urn:uuid:ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8"

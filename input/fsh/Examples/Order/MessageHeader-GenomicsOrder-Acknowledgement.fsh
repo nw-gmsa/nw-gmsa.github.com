@@ -8,11 +8,11 @@ Usage: #example
 
 * eventCoding = http://terminology.hl7.org/CodeSystem/v2-0003#O22
 
-* sender.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
+* sender.identifier.system = $ods-code
 * sender.identifier.value = "699X0"
 * sender.display = "NORTH WEST GLH"
 
-* destination.receiver.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
+* destination.receiver.identifier.system = $ods-code
 * destination.receiver.identifier.value = "R0A"
 * destination.receiver.display = "MANCHESTER UNIVERSITY NHS FOUNDATION TRUST"
 * destination.endpoint = "https//hive.mft.nhs.uk"

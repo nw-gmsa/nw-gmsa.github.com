@@ -8,17 +8,17 @@ Usage: #example
 
 * active = true
 * identifier[0].use = #official
-* identifier[0].type = http://terminology.hl7.org/CodeSystem/v2-0203#NH
+* identifier[0].type = $v2-0203#NH
 * identifier[0].system = $nhs-number
 * identifier[0].value = "9449305552"
 * identifier[0].assigner.identifier.value = "X24"
-* identifier[1].type = http://terminology.hl7.org/CodeSystem/v2-0203#MR
+* identifier[1].type = $v2-0203#MR
 * identifier[1].value = "A12356565"
-* identifier[1].assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
+* identifier[1].assigner.identifier.system = $ods-code
 * identifier[1].assigner.identifier.value = "RBS"
-* identifier[2].type = http://terminology.hl7.org/CodeSystem/v2-0203#MR
+* identifier[2].type = $v2-0203#MR
 * identifier[2].value = "633"
-* identifier[2].assigner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
+* identifier[2].assigner.identifier.system = $ods-code
 * identifier[2].assigner.identifier.value = "R0A"
 
 * name.use = #official

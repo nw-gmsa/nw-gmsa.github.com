@@ -8,7 +8,7 @@ Usage: #example
 * type = $sct#1054161000000101 "Genetic report"
 //* meta.versionId = 3
 * date = "2024-10-13T10:33:00+00:00"
-* author.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
+* author.identifier.system = $ods-code
 * author.identifier.value = "R0A"
 * author.display = "MANCHESTER UNIVERSITY NHS FOUNDATION TRUST"
 
