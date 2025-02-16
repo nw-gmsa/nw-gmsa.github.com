@@ -34,17 +34,17 @@ Both models have a very strong focus on the use of [Correlation Identifier (Ente
 In practice this means, the following FHIR resources will have the following identifiers within the `IHE Laboratory Testing Workflow` domain:
 
 - ServiceRequest
-  - [Accession Number](StructureDefinition-accession-number.html)
-  - [Order Placer Number](StructureDefinition-order-placer-number.html)
+  - [Accession Number](StructureDefinition-AccessionNumber.html)
+  - [Order Placer Number](StructureDefinition-OrderPlacerNumber.html)
 - Specimen
   - identifier
-  - [Accession Number](StructureDefinition-accession-number.html)
+  - [Accession Number](StructureDefinition-AccessionNumber.html)
 - DiagnosticReport
   - identifier
-  - [Accession Number](StructureDefinition-accession-number.html)
+  - [Accession Number](StructureDefinition-AccessionNumber.html)
 - Patient (not strictly within the domain but included for HL7/IHE/NHSE compatability reasons)
-  - [NHS Number](StructureDefinition-nhs-number.html)
-  - [Medical Record Number](StructureDefinition-medical-record-number.html)
+  - [NHS Number](StructureDefinition-NHSNumber.html)
+  - [Medical Record Number](StructureDefinition-MedicalRecordNumber.html)
 
 This includes making use of FHIR Identifier `assigner.identifier.value` (HL7 v2 `Assigning Facility` in a variety of ID types) to distinguish these identifiers between different organisations, the recommendation is to use [ODS Code](https://www.datadictionary.nhs.uk/attributes/organisation_code.html), e.g.
 
