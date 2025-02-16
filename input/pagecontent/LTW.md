@@ -31,7 +31,6 @@ Later stages will include the use of [Genomic Order Management Service](https://
 
 An order is created by the clinical practice, and placed to the laboratory.
 
-#### Genomic Test Order Description
 
 <figure>
 {%include LAB1-activity.svg%}
@@ -39,7 +38,7 @@ An order is created by the clinical practice, and placed to the laboratory.
 </figure>
 <br clear="all">
 
-##### Select Genomic Test Order Form
+#### Select Genomic Test Order Form
 
 Within the system creating the genomics order, the practitioner will select a form for the test required. Below are several examples from [North West Genomic Laboratory Hub - Test Request Forms](https://mft.nhs.uk/nwglh/documents/test-request-forms/).
 How this is implemented will vary between different NHS organisations and systems they use.
@@ -57,7 +56,7 @@ How this is implemented will vary between different NHS organisations and system
   </tr>
 </table>
 
-##### Complete Genomic Test Order Form
+#### Complete Genomic Test Order Form
 
 These forms may (/will?) will have a computable definition called an [template (FHIR Questionnaire)](https://hl7.org/fhir/R4/questionnaire.html) which will list the technical content requirements for the form. At present only one archetype has been defined:
 
@@ -65,7 +64,7 @@ These forms may (/will?) will have a computable definition called an [template (
 
 This archetype definition can also support [HL7 Structured Data Capture](https://build.fhir.org/ig/HL7/sdc/index.html) should the Order Placer system support these features.
 
-##### Submit Genomic Test Order Form
+#### Submit Genomic Test Order Form
 
 The completed form is submitted to the Regional Integration Engine using [LAB-1](LAB-1.html).
 
@@ -83,12 +82,17 @@ If the [Order Placer](ActorDefinition-OrderPlacer.html) has a FHIR enabled Elect
 <p class="figureTitle">Order Test Form - Data Extraction Overview</p> 
 <br clear="all">
 
-The FHIR exchange style used [FHIR Message](https://hl7.org/fhir/R4/messaging.html) following [laboratory-order](MessageDefinition-laboratory-order.html) message definition. This definition is based on HL7 v2 `OML_O21 Laboratory Order` which simplifies conversion to/from pipe+hat (v2) and json (FHIR) formats. 
+The FHIR exchange style used [FHIR Message](https://hl7.org/fhir/R4/messaging.html) following [laboratory-order](MessageDefinition-laboratory-order.html) message definition. This definition is based on HL7 v2 `OML_O21 Laboratory Order` which simplifies conversion to/from pipe+hat (v2) and json (FHIR) formats.
 
 > At present the NW GLH Laboratory Information Management System (LIMS) will not support HL7 FHIR. The Regional Integration Exchange (RIE) will perform conversion between v2 and FHIR formats.
 
-This message is an [aggregate (DDD)](https://martinfowler.com/bliki/DDD_Aggregate.html)/[archetype](https://en.wikipedia.org/wiki/Archetype_(information_science)) and so is a collection of FHIR Resources (similar to v2 segements) which is described in [Genomic Test Request Entity Model](vol3.html#genomic-test-request-entity-model).  
-This message can be extended by [template (FHIR Questionnaire)](https://hl7.org/fhir/R4/questionnaire.html) (these are the same forms/templates mentioned above) which can add further definitions to the `laboratory order`.
+This message is an [aggregate (DDD)](https://martinfowler.com/bliki/DDD_Aggregate.html)/[archetype](https://en.wikipedia.org/wiki/Archetype_(information_science)) and so is a collection of FHIR Resources (similar to v2 segements) which is described in [Genomic Test Request Entity Model](vol3.html#genomic-test-request-entity-model).
+
+
+#### Communicating Ask at Order Entry questions and prior results
+
+See also [HL7 Europe Laboratory Report - ServiceRequest](https://hl7.eu/fhir/laboratory/StructureDefinition-ServiceRequest-eu-lab.html#communicating-ask-at-order-entry-questions-and-prior-results)
+This message can be extended by [template (FHIR Questionnaire)](https://hl7.org/fhir/R4/questionnaire.html) which allows the definition of additional questions to be defined for the `laboratory order`.
 
 The detail of this form/template defines:
 
