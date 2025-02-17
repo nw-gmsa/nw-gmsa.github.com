@@ -5,7 +5,7 @@
 * Switzerland [CH MHD DocumentReference Comprehensive](https://build.fhir.org/ig/ehealthsuisse/ch-epr-fhir/StructureDefinition-ch-mhd-documentreference-comprehensive.html)
 * [HL7 UK Core](https://simplifier.net/hl7fhirukcorer4/ukcore-documentreference)
 
-## XDS DocumentEntry and MHD (FHIR) DocumentReferece Mapping  
+## XDS DocumentEntry and MHD (FHIR) DocumentReference Mapping  
 
 For HL7 v2 MDM T02, see [HL7 v2 MDM T02 Mapping](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-message-mdm-t02-to-bundle.html) 
 
