@@ -5,6 +5,9 @@ Description: "First draft is based on Royal College of Radiologists HL7 v2 ORU c
 
 * meta.versionId = "1.0"
 
+* extension[supporting-info].valueReference.reference = "urn:uuid:94bf65ba-cd6c-4601-b339-6d547f424646"
+* extension[supporting-info].valueReference.type = #DocumentReference
+
 * identifier[+]
   * value = "25edee2b-add8-4522-9fa2-1ee8f229bd75"
   * assigner.identifier.system = $ods-code
