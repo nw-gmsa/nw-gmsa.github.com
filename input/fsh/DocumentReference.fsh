@@ -35,9 +35,14 @@ Based on UK Definitions from [IHE Europe Metadata for exchange medical documents
 * context.related[accessionNumber].identifier 1..1
 * context.related[accessionNumber].identifier only AccessionNumber
 
+* context.sourcePatientInfo only Reference(Patient)
+* context.sourcePatientInfo.identifier only MedicalRecordNumber
+
 * subject 1..1
 * subject only Reference(Patient)
 * subject.identifier only NHSNumber
+
+
 
 * author only Reference(Organization or Practitioner or PractitionerRole)
 * author.identifier only EnglandPractitionerIdentifier or OrganisationCode
