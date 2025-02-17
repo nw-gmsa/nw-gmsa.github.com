@@ -24,6 +24,7 @@ contact:
 license:  CC-BY-4.0
 fhirVersion: 4.0.1
 jurisdiction: urn:iso:std:iso:3166#GB "United Kingdom of Great Britain and Northern Ireland"
+
 #copyright: IHE http://www.ihe.net/Governance/#Intellectual_Property
 copyrightYear: 2024+
 
@@ -44,7 +45,7 @@ dependencies:
 FSHOnly: false
 # see https://confluence.hl7.org/display/FHIR/Implementation+Guide+Parameters
 parameters:
-  path-binary: input/binary
+  path-binary: input/attachments
   path-resource:
     - input/resources
     - fsh-generated/resources
@@ -124,7 +125,6 @@ resources:
     name: Example Genomics Test Order Form
     description: Example Genomics Test Order Form (Mock).
     exampleBoolean: false
-
 
 menu:
   GTW Home: index.html

@@ -27,6 +27,7 @@ Description: "TODO"
 
 * content[+]
   * attachment.contentType = #application/pdf
+  * attachment.id = "ig-loader-XT_d6eeedd1-92d3-45b9-bf33-6401e804425f.pdf"
   * attachment.url = "urn:uuid:0a898233-763c-405d-8172-8c4f07e6e636"
 
 // * author[+].reference = "urn:uuid:ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8"
