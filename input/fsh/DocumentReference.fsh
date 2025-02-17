@@ -42,7 +42,7 @@ Based on UK Definitions from [IHE Europe Metadata for exchange medical documents
 
 * subject 1..1
 * subject only Reference(Patient)
-* subject.identifier only NHSNumber or MedicalRecordNumber
+* subject.identifier only NHSNumber
 
 
 
