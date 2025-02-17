@@ -19,6 +19,8 @@ Based on UK Definitions from [IHE Europe Metadata for exchange medical documents
 
 * context.sourcePatientInfo.identifier only MedicalRecordNumber
 
+* context.event ^short = "The procedure or test code associated with the Accession Number (e.g. NICIP, Genomic Test Directory, etc.)"
+
 * context.related 0..*
 
 * context.related ^slicing.discriminator.type = #pattern
@@ -40,7 +42,7 @@ Based on UK Definitions from [IHE Europe Metadata for exchange medical documents
 
 * subject 1..1
 * subject only Reference(Patient)
-* subject.identifier only NHSNumber
+* subject.identifier only NHSNumber or MedicalRecordNumber
 
 
 
