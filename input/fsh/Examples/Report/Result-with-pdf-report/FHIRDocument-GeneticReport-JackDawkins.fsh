@@ -41,6 +41,6 @@ Usage: #example
 // DocumentReference
 * insert EntryDocument("urn:uuid:94bf65ba-cd6c-4601-b339-6d547f424646", 94bf65ba-cd6c-4601-b339-6d547f424646)
 // Binary
-* insert EntryDocument("urn:uuid:0a898233-763c-405d-8172-8c4f07e6e636", 0a898233-763c-405d-8172-8c4f07e6e636)
+* insert EntryDocument("urn:uuid:d6eeedd1-92d3-45b9-bf33-6401e804425f", d6eeedd1-92d3-45b9-bf33-6401e804425f)
 // Practitioner Role - order creator
 * insert EntryDocument("urn:uuid:ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8", ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8)
