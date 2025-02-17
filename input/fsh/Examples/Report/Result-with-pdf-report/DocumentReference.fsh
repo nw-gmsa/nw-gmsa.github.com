@@ -37,4 +37,9 @@ Description: "TODO"
   * system = $nhs-number
   * value = "9449305552"
 
+* context.sourcePatientInfo.identifier.type = $v2-0203#MR
+* context.sourcePatientInfo.identifier.value = "633"
+* context.sourcePatientInfo.identifier.assigner.identifier.system = $ods-code
+* context.sourcePatientInfo.identifier.assigner.identifier.value = "R0A"
+
 

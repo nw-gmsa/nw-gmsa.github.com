@@ -21,6 +21,11 @@ Description: "TODO"
 // EPIC-PV1
 * context.encounter[+].reference = "urn:uuid:984b8a89-4194-4eb4-a7ea-ca8049ebeea3"
 
+* context.sourcePatientInfo.identifier.type = $v2-0203#MR
+* context.sourcePatientInfo.identifier.value = "633"
+* context.sourcePatientInfo.identifier.assigner.identifier.system = $ods-code
+* context.sourcePatientInfo.identifier.assigner.identifier.value = "R0A"
+
 * content[+]
   * attachment.contentType = #application/pdf
   * attachment.url = "urn:uuid:0a898233-763c-405d-8172-8c4f07e6e636"
