@@ -17,7 +17,6 @@ Description: "TODO"
     * display = "Laboratory order"
     * system = $sct
 
-
 // EPIC-PV1
 * context.encounter[+].reference = "urn:uuid:984b8a89-4194-4eb4-a7ea-ca8049ebeea3"
 
