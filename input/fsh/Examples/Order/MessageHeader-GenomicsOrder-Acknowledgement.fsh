@@ -15,9 +15,9 @@ Usage: #example
 * destination.receiver.identifier.system = $ods-code
 * destination.receiver.identifier.value = "R0A"
 * destination.receiver.display = "MANCHESTER UNIVERSITY NHS FOUNDATION TRUST"
-* destination.endpoint = "https//hive.mft.nhs.uk"
+* destination.endpoint = "https//fhir.mft.nhs.uk/Endpoint/HIVE"
 
-* source.endpoint = "https//glh.mft.nhs.uk/"
+* source.endpoint = "https//fhir.mft.nhs.uk/Endpoint/LIMS"
 * source.software = "NW GLH"
 
 * response.identifier = "9612365d-52a4-4fab-87e7-8a09d753f095"
