@@ -12,7 +12,7 @@ Usage: #example
 * author.identifier.value = "R0A"
 * author.display = "MANCHESTER UNIVERSITY NHS FOUNDATION TRUST"
 
-* title = "Composition Referral Letter Octavia CHISLETT"
+* title = "Composition Genomics Report Octavia CHISLETT"
 
 * subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
 * subject.identifier.system = $nhs-number
