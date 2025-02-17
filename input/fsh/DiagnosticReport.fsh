@@ -75,6 +75,7 @@ DRAFT Extension of [UK Core DiagnosticReport](https://simplifier.net/hl7fhirukco
 * resultsInterpreter[primaryReporter].identifier only EnglandPractitionerIdentifier
 * resultsInterpreter[primaryReporter].type = #Practitioner
 
+
 * specimen 0..* MS
 
 * presentedForm 1..* MS

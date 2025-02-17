@@ -37,7 +37,14 @@ Description: "First draft is based on Royal College of Radiologists HL7 v2 ORU c
   * type = #Organization
   * display = "NW GLH"
 
-* resultsInterpreter[+]
+* performer[operator]
+  * type = "Practitioner"
+  * identifier.system = "https://fhir.hl7.org.uk/Id/gmc-number"
+  * identifier.value = "C1234567"
+  * display = "FICTITIOUS, Ralph"
+  * extension[performerFunction].valueCodeableConcept.coding = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#SPRF
+
+* resultsInterpreter[primaryReporter]
   * type = "Practitioner"
   * identifier.system = "https://fhir.hl7.org.uk/Id/gmc-number"
   * identifier.value = "C1234567"
