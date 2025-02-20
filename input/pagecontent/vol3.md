@@ -35,13 +35,17 @@ Both models have a very strong focus on the use of [Correlation Identifier (Ente
 In practice this means, the following FHIR resources will have the following identifiers within the `IHE Laboratory Testing Workflow` domain:
 
 - ServiceRequest
+  - [Placer Order Number](StructureDefinition-PlacerOrderNumber.html)
+  - [Filler Order Number](StructureDefinition-FillerOrderNumber.html)
+  - [Placer Group Number](StructureDefinition-PlacerGroupNumber.html)
   - [Accession Number](StructureDefinition-AccessionNumber.html)
-  - [Order Placer Number](StructureDefinition-OrderPlacerNumber.html)
+ 
 - Specimen
   - identifier
   - [Accession Number](StructureDefinition-AccessionNumber.html)
 - DiagnosticReport
   - identifier
+  - [Filler Order Number](StructureDefinition-FillerOrderNumber.html)
   - [Accession Number](StructureDefinition-AccessionNumber.html)
 - Patient (not strictly within the domain but included for HL7/IHE/NHSE compatability reasons)
   - [NHS Number](StructureDefinition-NHSNumber.html)
