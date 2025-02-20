@@ -22,13 +22,18 @@ DRAFT Extension of [UK Core DiagnosticReport](https://simplifier.net/hl7fhirukco
 * basedOn ^slicing.description = "Slice based on the type"
 * basedOn ^slicing.ordered = false
 * basedOn contains
-  accessionNumber 0..1 MS
+  fillerOrderNumber 0..1 MS and accessionNumber 0..1 MS
 
-* basedOn[accessionNumber] ^short = "Identifier assigned by the lab, HL7 v2 ORC-3 Order Filler Number"
+* basedOn[accessionNumber] ^short = "Identifier assigned by the lab"
 * basedOn[accessionNumber].type 1..1 MS
 * basedOn[accessionNumber].type = "ServiceRequest"
 * basedOn[accessionNumber].identifier 1..1
 * basedOn[accessionNumber].identifier only AccessionNumber
+* basedOn[fillerOrderNumber] ^short = "Identifier assigned by the lab (ORC-3)"
+* basedOn[fillerOrderNumber].type 1..1 MS
+* basedOn[fillerOrderNumber].type = "ServiceRequest"
+* basedOn[fillerOrderNumber].identifier 1..1
+* basedOn[fillerOrderNumber].identifier only FillerOrderNumber
 
 * subject 1..1
 * subject.identifier 1..1
@@ -76,7 +81,6 @@ DRAFT Extension of [UK Core DiagnosticReport](https://simplifier.net/hl7fhirukco
 
 * resultsInterpreter[primaryReporter].identifier only EnglandPractitionerIdentifier
 * resultsInterpreter[primaryReporter].type = #Practitioner
-
 
 * specimen 0..* MS
 

@@ -4,6 +4,7 @@ Title: "Document Reference Laboratory Order"
 Description: "TODO"
 
 * identifier[+].value = "a293b4a6-e46b-4402-9b2b-d9517afc7137"
+* identifier[=].system = "https://fhir.mft.nhs.uk/Id"
 * identifier[=].assigner.identifier.system = $ods-code
 * identifier[=].assigner.identifier.value = "R0A"
 

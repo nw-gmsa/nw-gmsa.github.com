@@ -4,6 +4,10 @@ Id:             Observation
 Title:          "Observation"
 Description:    "DRAFT Extension of UKCore-Observation"
 
-* subject 1..1 MS
+
 
 * performer only Reference(PractitionerRole or Patient)
+
+* subject 1..1 MS
+* subject.reference 1..1 MS
+* subject.identifier only NHSNumber

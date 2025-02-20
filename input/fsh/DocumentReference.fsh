@@ -24,18 +24,23 @@ Based on UK Definitions from [IHE Europe Metadata for exchange medical documents
 * context.related 0..*
 
 * context.related ^slicing.discriminator.type = #pattern
-* context.related ^slicing.discriminator.path = "type"
+* context.related ^slicing.discriminator.path = "identifier.type"
 * context.related ^slicing.rules = #open
 * context.related ^slicing.description = "Slice based on the type"
 * context.related ^slicing.ordered = false
 
 * context.related contains
-  accessionNumber 0..1 MS
+  fillerOrderNumber 0..1 MS and accessionNumber 0..1 MS
 * context.related[accessionNumber] only Reference(ServiceRequest)
 * context.related[accessionNumber].type 1..1 MS
 * context.related[accessionNumber].type = "ServiceRequest"
 * context.related[accessionNumber].identifier 1..1
 * context.related[accessionNumber].identifier only AccessionNumber
+* context.related[fillerOrderNumber] only Reference(ServiceRequest)
+* context.related[fillerOrderNumber].type 1..1 MS
+* context.related[fillerOrderNumber].type = "ServiceRequest"
+* context.related[fillerOrderNumber].identifier 1..1
+* context.related[fillerOrderNumber].identifier only FillerOrderNumber
 
 * context.sourcePatientInfo only Reference(Patient)
 * context.sourcePatientInfo.identifier only MedicalRecordNumber
@@ -43,8 +48,6 @@ Based on UK Definitions from [IHE Europe Metadata for exchange medical documents
 * subject 1..1
 * subject only Reference(Patient)
 * subject.identifier only NHSNumber
-
-
 
 * author only Reference(Organization or Practitioner or PractitionerRole)
 * author.identifier only EnglandPractitionerIdentifier or OrganisationCode

@@ -7,18 +7,21 @@ Description: "TODO"
 
 * identifier[placerOrderNumber].type = $v2-0203#PLAC
 * identifier[placerOrderNumber].value = "1601737"
+* identifier[placerOrderNumber].system = "https://fhir.mft.nhs.uk/Id/PlacerOrderNumber/Hive"
 * identifier[placerOrderNumber].assigner.identifier.system = $ods-code
 * identifier[placerOrderNumber].assigner.identifier.value = "R0A"
 
 * identifier[accessionNumber].type = $v2-0203#ACSN
 * identifier[accessionNumber].value = "1001166717"
+* identifier[accessionNumber].system = "https://fhir.mft.nhs.uk/Id/AccessionNumber"
 * identifier[accessionNumber].assigner.identifier.system = $ods-code
 * identifier[accessionNumber].assigner.identifier.value = "699X0"
 
 * status = #active
 * intent = #order
 
-* category = $sct#116148004 "Molecular genetics procedure"
+* category[GenomicProcedure] = $sct#116148004 "Molecular genetics procedure"
+* category[genomicsWholeCaseSequencing] = https://fhir.hl7.org.uk/CodeSystem/UKCore-GenomeSequencingCategory#cancer-wgs
 
 * authoredOn = "2025-01-29"
 

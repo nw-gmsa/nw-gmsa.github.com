@@ -7,13 +7,15 @@ Description: "TODO"
 
 * identifier[+].
   * value = "25GEN-029GN00001&Beaker"
+  * system = "https://fhir.mft.nhs.uk/Id/Specimen/Beaker"
   * assigner.identifier.system = $ods-code
   * assigner.identifier.value = "R0A"
 
 * accessionIdentifier.type = $v2-0203#ACSN
 * accessionIdentifier.value = "1001166717"
+* accessionIdentifier.system = "https://fhir.mft.nhs.uk/Id/AccessionNumber/Beaker"
 * accessionIdentifier.assigner.identifier.system = $ods-code
-* accessionIdentifier.assigner.identifier.value = "699X0"
+* accessionIdentifier.assigner.identifier.value = "690S0"
 
 * status = #available
 

@@ -4,6 +4,7 @@ Title: "Document Reference Laboratory Report"
 Description: "TODO"
 
 * identifier[+].value = "94bf65ba-cd6c-4601-b339-6d547f424646"
+* identifier[=].system = "https://fhir.mft.nhs.uk/Id"
 * identifier[=].assigner.identifier.system = $ods-code
 * identifier[=].assigner.identifier.value = "699X0"
 
@@ -20,10 +21,11 @@ Description: "TODO"
 // EPIC PV1
 * context.encounter[+].reference = "urn:uuid:fe5a1b08-84c9-46e6-8162-d2dcf3e67141"
 
-* context.related[accessionNumber].identifier.value = "1001166717"
-* context.related[accessionNumber].identifier.type = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN
-* context.related[accessionNumber].identifier.assigner.identifier.system = $ods-code
-* context.related[accessionNumber].identifier.assigner.identifier.value = "699X0"
+* context.related[fillerOrderNumber].identifier.value = "1001166717"
+* context.related[fillerOrderNumber].identifier.system = "https://fhir.mft.nhs.uk/Id/FillerOrderNumber"
+* context.related[fillerOrderNumber].identifier.type = http://terminology.hl7.org/CodeSystem/v2-0203#FILL
+* context.related[fillerOrderNumber].identifier.assigner.identifier.system = $ods-code
+* context.related[fillerOrderNumber].identifier.assigner.identifier.value = "699X0"
 
 * content[+]
   * attachment.contentType = #application/pdf

@@ -10,12 +10,14 @@ Description: "First draft is based on Royal College of Radiologists HL7 v2 ORU c
 
 * identifier[+]
   * value = "25edee2b-add8-4522-9fa2-1ee8f229bd75"
+  * system = "https://fhir.nwglh.nhs.uk/Id"
   * assigner.identifier.system = $ods-code
   * assigner.identifier.value = "699X0"
 
-* basedOn[accessionNumber]
+* basedOn[fillerOrderNumber]
   * type = "ServiceRequest"
-  * identifier.type = $v2-0203#ACSN
+  * identifier.type = $v2-0203#FILL
+  * identifier.system = "https://fhir.mft.nhs.uk/Id/FillerOrderNumber"
   * identifier.value = "1001166717"
   * identifier.assigner.identifier.system = $ods-code
   * identifier.assigner.identifier.value = "699X0"

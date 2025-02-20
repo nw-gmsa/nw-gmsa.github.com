@@ -3,7 +3,7 @@ Parent:         CorrelationIdentifier
 Id:             AccessionNumber
 Title:          "Accession Number"
 Description:     """
-Also known as Filler Order Number (ORC-3)
+Usually assigned by the order filler.
 """
 
 * ^purpose = """
