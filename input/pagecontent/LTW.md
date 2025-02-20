@@ -21,11 +21,9 @@ See also Ref A `Section 3 Laboratory Testing Workflow (LTW) Profile` for detaile
 </figure>
 <br clear="all">
 
-Initially only the IHE `LAB-1` is in focus and this is probably using HL7 v2.x ORM_O01/OML_O21 as described below.
-This will be followed by IHE `LAB-3` probably using HL7 v2.x ORU_R01
-Later stages will include the use of [Genomic Order Management Service](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir), using HL7 FHIR which will add in concepts covered in `LAB-4`.
-
-
+Initially only the IHE `LAB-1` and `LAB-4` is in focus and this is probably using HL7 v2.x ORM_O01/OML_O21 as described below.
+This will be followed by IHE `LAB-3` probably using HL7 v2.x ORU_R01 and `LAB-2`
+Later stages will include the use of [Genomic Order Management Service](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir).
 
 ## Use Case 1: Genomic Test Order
 
