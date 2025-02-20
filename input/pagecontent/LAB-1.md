@@ -86,9 +86,14 @@ The RIE then sends the converted HL7 v2 Message to the Order Filler (LIMS) which
 
 The response message is [Laboratory Order Acknowledgement](#laboratory-order-acknowledgement) described below.
 
+
 ### Laboratory Order Acknowledgement
 
-The response [laboratory-order-acknowledgement (O22)](MessageDefinition-laboratory-order-acknowledgement.html) (asssumed synchronous at present and so subject to change) is returned to the order placer. For sucessful messages the [MessageHeader](StructureDefinition-MessageHeader.html) will have `response.code` returned will be `ok` and will look like:
+The response [laboratory-order-acknowledgement (O22)](MessageDefinition-laboratory-order-acknowledgement.html) (asssumed synchronous at present and so subject to change) is returned to the order placer. 
+
+Example payload [Bundle 'Message' - Genomics Order Acknowledgement](Bundle-GenomicsOrderMessageAcknowledgement.html)
+
+For sucessful messages the [MessageHeader](StructureDefinition-MessageHeader.html) will have `response.code` returned will be `ok` and will look like:
 
 ```
 "response" : {
