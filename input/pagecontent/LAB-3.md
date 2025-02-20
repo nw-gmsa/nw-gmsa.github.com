@@ -8,6 +8,8 @@
 
 It transmits the observation results from the Order Filler to the Order Result Tracker, when a result is acquired, clinically validated, modified or deleted at the Order Filler level. 
 
+[EIP - Document Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html)
+
 ## Actor Roles
 
 <figure>

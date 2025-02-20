@@ -5,13 +5,13 @@ A. [IHE Pathology and Laboratory Medicine (PaLM) Technical Framework - Volume 1]
 
 ## Actors and Transactions
 
-| Actor                                                      | Definition                                                                                                                                                                                   |
-|------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Order Placer](ActorDefinition-OrderPlacer.html)           | Commonly known as the Electronic Patient Record (EPR) System                                                                                                                                 |
-| [Order Filler](ActorDefinition-OrderFiller.html)           | Genomic Laboratory Hub (GLH), Laboratory Information System (LIMS)                                                                                                                           |
-| [Automation Manager](ActorDefinition-AutomationManager.html) | This is the function of [Genomic Order Management Service](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) and/or Laboratory Information System (LIMS) |
-| [Order Result Tracker](ActorDefinition-OrderResultTracker.html)                                    | This is often provided by Electronic Patient Record (EPR) Systems                                                                                                                            |
-| Laboratory Report (Clinical Document) | See [Clinical Document](ActorDefinition-ClinicalDocument.html)                                                                                                                               | 
+| Actor                                                      | Definition                                                         |
+|------------------------------------------------------------|--------------------------------------------------------------------|
+| [Order Placer](ActorDefinition-OrderPlacer.html)           | Commonly known as the Electronic Patient Record (EPR) System       |
+| [Order Filler](ActorDefinition-OrderFiller.html)           | Genomic Laboratory Hub (GLH), Laboratory Information System (LIMS) |
+| [Automation Manager](ActorDefinition-AutomationManager.html) | Performed by Laboratory Information System (LIMS)                  |
+| [Order Result Tracker](ActorDefinition-OrderResultTracker.html)                                    | This is often provided by Electronic Patient Record (EPR) Systems  |
+| Laboratory Report (Clinical Document) | See [Clinical Document](ActorDefinition-ClinicalDocument.html)     | 
 
 See also Ref A `Section 3 Laboratory Testing Workflow (LTW) Profile` for detailed description of actors.
 
@@ -33,7 +33,7 @@ An order is created by the clinical practice, and placed to the laboratory.
 
 
 <figure>
-{%include LAB1-activity.svg%}
+{%include LTW-usecase-1-activity.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Genomics Test Order Activity</p>
 </figure>
 <br clear="all">
@@ -66,10 +66,13 @@ This archetype definition can also support [HL7 Structured Data Capture](https:/
 
 ### Submit Genomic Test Order Form
 
-The completed form is submitted to the Regional Integration Engine using [LAB-1](LAB-1.html).
+The completed form is submitted to the Regional Integration Engine using:
+
+- [LAB-1](LAB-1.html) for orders raised by Order Placer systems.
+- [LAB-4](LAB-4.html) for orders raised by Order Filler systems to another Order Filler system (typically pathology systems).
 
 <figure>
-{%include LAB1-sequence.svg%}
+{%include LTW-usecase-1-sequence.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Genomics Test Order Sequence Diagram - LAB-1</p>
 </figure>
 <br clear="all">
@@ -89,7 +92,7 @@ The FHIR exchange style used [FHIR Message](https://hl7.org/fhir/R4/messaging.ht
 This message is an [aggregate (DDD)](https://martinfowler.com/bliki/DDD_Aggregate.html)/[archetype](https://en.wikipedia.org/wiki/Archetype_(information_science)) and so is a collection of FHIR Resources (similar to v2 segements) which is described in [Genomic Test Request Entity Model](vol3.html#genomic-test-request-entity-model).
 
 
-### Communicating Ask at Order Entry questions and prior results
+#### Communicating Ask at Order Entry questions and prior results
 
 See also [HL7 Europe Laboratory Report - ServiceRequest](https://hl7.eu/fhir/laboratory/StructureDefinition-ServiceRequest-eu-lab.html#communicating-ask-at-order-entry-questions-and-prior-results)
 This message can be extended by [template (FHIR Questionnaire)](https://hl7.org/fhir/R4/questionnaire.html) which allows the definition of additional questions to be defined for the `laboratory order`.
@@ -109,6 +112,12 @@ The detail of this form/template defines:
 
 > It is not expected the NW GLH Laboratory Information Management System (LIMS) will support UK SNOMED CT, and the RIE will handle the conversion either internally using [FHIR ConceptMap](https://hl7.org/fhir/R4/conceptmap.html) or a terminology service with the following capabilities [IHE Sharing Valuesets, Codes, and Maps (SVCM)](https://profiles.ihe.net/ITI/SVCM/index.html)
 
+### Exchange Order Updates
+
+After submitting the original order, the order will be updated to include details such as a specimen collection date, order filler number, etc.
+This is also a method of notifying organisations of orders entered directly in the `Order Filler` system, see [LAB-2](LAB-2.html). 
+
+
 ## Use Case 2: Genomic Test Report
 
 
@@ -117,7 +126,7 @@ A report is created by the clinical practice, and sent to the order result track
 ### Genomic Test Report Description
 
 <figure>
-{%include LAB3-activity.svg%}
+{%include LTW-usecase-2-activity.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Genomics Test Report Activity</p>
 </figure>
 <br clear="all">

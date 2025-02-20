@@ -94,6 +94,9 @@ pages:
   LAB-1.md:
     title: Placer Order Management [LAB-1]
     generation: markdown
+  LAB-2.md:
+    title: Filler Order Management [LAB-2]
+    generation: markdown
   LAB-3.md:
     title: Order Results Management [LAB-3]
     generation: markdown
@@ -134,7 +137,9 @@ menu:
     Health Information Exchange (HIE): HIE.html
   Interfaces (Vol 2):
     Placer Order Management [LAB-1]: LAB-1.html
+    Filler Order Management [LAB-2]: LAB-2.html
     Order Results Management [LAB-3]: LAB-3.html
+    Work Order Management [LAB-4]: LAB-4.html
   Data Models (Vol 3): vol3.html
   Artefacts: artifacts.html
   HL7 v2 Artefacts: hl7v2.html

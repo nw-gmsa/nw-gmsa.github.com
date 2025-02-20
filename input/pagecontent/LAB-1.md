@@ -9,6 +9,8 @@
 
 This transaction is used by the Order Placer to place an Order Group (FHIR RequestGroup) (i.e., a set of Orders to be tested together for a patient) or a standalone Order to the Order Filler. The transaction enables both Order Placer and Order Filler to notify all subsequent changes of status and/or content of each Order to the other side.
 
+[EIP - Command Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CommandMessage.html)
+
 ## Actor Roles
 
 <figure>
