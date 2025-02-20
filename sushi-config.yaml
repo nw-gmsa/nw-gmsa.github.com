@@ -103,6 +103,9 @@ pages:
   LAB-4.md:
     title: Work Order Management [LAB-4]
     generation: markdown
+  LAB-5.md:
+    title: Test Results Management [LAB-5]
+    generation: markdown
   vol3.md:
     title: Genomics Data Models
     generation: markdown
@@ -140,6 +143,7 @@ menu:
     Filler Order Management [LAB-2]: LAB-2.html
     Order Results Management [LAB-3]: LAB-3.html
     Work Order Management [LAB-4]: LAB-4.html
+    Test Results Management [LAB-5]: LAB-5.html
   Data Models (Vol 3): vol3.html
   Artefacts: artifacts.html
   HL7 v2 Artefacts: hl7v2.html
