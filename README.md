@@ -8,5 +8,12 @@ Related links:
 
 Note files must use CR or CRLF (not unix/mac LF)
 
+### Mac
+
 curl --request POST --data-binary "@OML_O21_PDF.txt" http://192.168.1.50:9980
 curl --request POST --data-binary "@ORU_R01_PDF.txt" http://192.168.1.50:9980 
+
+### Windows 
+
+Invoke-RestMethod -Method POST -Uri http://192.168.1.50:9980 -InFile "OML_O21_PDF.txt"
+Invoke-RestMethod -Method POST -Uri http://192.168.1.50:9980 -InFile "ORU_R01_PDF.txt"
