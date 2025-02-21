@@ -1,19 +1,36 @@
 @startuml
 
 
-frame "North West [[LTW.html Genomic Testing Workflow (LTW)]]" as NW {
+package "North West GLH Regional Integration Engine [[LTW.html Genomic Testing Workflow (LTW)]]" as NW {
   agent "Order Placer" as Placer
   agent "Order Filler" as Filler
   agent "Order Result Tracker" as Tracker
-}
-frame "NHS England Genomic Order Management Service" as  NHSE {
   agent "Automation Manager" as Manager
 }
+note right of NW
+Communication (/interoperability) provided by
+North West GLH Regional Integration Engine
+end note
+
+package "NHS England Genomic Order Management Service" as  NHSE {
+  agent "External Order Placer" as xPlacer
+  agent "External Order Filler" as xFiller
+  agent "External Order Result Tracker" as xTracker
+  agent "External Automation Manager" as xManager
+}
 Placer -r-> Filler: [[LAB-1.html Placer Order Management (LAB-1)]]
-Filler -l-> Placer: Filler Order Management [LAB-2]
+Filler -l-> Placer: [[LAB-2.html Filler Order Management ([LAB-2)]]
 
 Filler -u-> Tracker: [[LAB-3.html Order Results Management (LAB-3)]]
-Filler -d-> Manager: Work Order Management [LAB-4]
-Manager -u-> Filler: Test Results Management [LAB-5]
+Filler -d-> Manager: [[LAB-4 Work Order Management (LAB-4)]]
+Manager -u-> Filler: Test Results Management (LAB-5)
+note bottom of NHSE
+Communication (/interoperability) to external GLH provided by
+North West GLH Regional Integration Engine in conjunction with
+NHS England Genomic Order Management System
+end note
+
+
+Manager -d[hidden]- xPlacer
 
 @enduml

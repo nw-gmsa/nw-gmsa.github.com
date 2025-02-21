@@ -16,7 +16,7 @@ A. [IHE Pathology and Laboratory Medicine (PaLM) Technical Framework - Volume 1]
 See also Ref A `Section 3 Laboratory Testing Workflow (LTW) Profile` for detailed description of actors.
 
 <figure>
-{%include ihe-palm-component.svg%}
+{%include LTW-component.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">IHE LTW Actor Diagram</p>
 </figure>
 <br clear="all">
