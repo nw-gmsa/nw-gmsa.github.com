@@ -107,7 +107,7 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * supportingInfo[LaboratoryReport] only Reference(DiagnosticReport)
 * supportingInfo[LaboratoryReport].type = #DiagnosticReport
 * supportingInfo[LaboratoryReport].identifier 1..1 MS
-* supportingInfo[].identifier only CorrelationIdentifier
+* supportingInfo[LaboratoryReport].identifier only CorrelationIdentifier
 
 * supportingInfo[PatientSummary] only Reference(DocumentReference)
 * supportingInfo[PatientSummary].type = #DocumentReference
