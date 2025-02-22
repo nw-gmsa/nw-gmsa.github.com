@@ -85,4 +85,4 @@ DRAFT Extension of [UK Core DiagnosticReport](https://simplifier.net/hl7fhirukco
 * specimen 0..* MS
 
 * presentedForm 1..* MS
-* presentedForm only Attachment
+* presentedForm only NWAttachment
