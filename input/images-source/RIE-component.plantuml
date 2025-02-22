@@ -1,36 +1,22 @@
 @startuml
 
 
-package "North West GLH Regional Integration Engine [[LTW.html Genomic Testing Workflow (LTW)]]" as NW {
-  agent "Order Placer" as Placer
-  agent "Order Filler" as Filler
-  agent "Order Result Tracker" as Tracker
-  agent "Automation Manager" as Manager
-}
-note right of NW
-Communication (/interoperability) provided by
-North West GLH Regional Integration Engine
-end note
+  agent "**Order Placer**\n\ne.g. EPR, Pathology LIMS" as Placer
+  agent "**Order Filler**\n\nNW GLH LIMS" as Filler
 
-package "NHS England Genomic Order Management Service" as  NHSE {
-  agent "External Order Placer" as xPlacer
-  agent "External Order Filler" as xFiller
-  agent "External Order Result Tracker" as xTracker
-  agent "External Automation Manager" as xManager
-}
-Placer -r-> Filler: [[LAB-1.html Placer Order Management (LAB-1)]]
-Filler -l-> Placer: [[LAB-2.html Filler Order Management ([LAB-2)]]
+  agent "**Order Result Tracker**\n\ne.g. EPR" as Tracker
+  agent "**Intermediary**\n\nNW GLH Regional Integration Engine" as RIE
+  frame "Future Enhancement" as future {
+    agent "**Intermediary**\n\nNHS England Gemonic\nOrder Management Service" as GOMS
+    agent "**External Order Placer**\n\ne.g. EPR, Pathology LIMS" as xPlacer
+    agent "**External Order Filler**\n\nExternal GLH LIMS" as xFiller
+  }
 
-Filler -u-> Tracker: [[LAB-3.html Order Results Management (LAB-3)]]
-Filler -d-> Manager: [[LAB-4 Work Order Management (LAB-4)]]
-Manager -u-> Filler: Test Results Management (LAB-5)
-note bottom of NHSE
-Communication (/interoperability) to external GLH provided by
-North West GLH Regional Integration Engine in conjunction with
-NHS England Genomic Order Management System
-end note
-
-
-Manager -d[hidden]- xPlacer
+Placer -r-> RIE: Orders
+xPlacer -r-> GOMS: Orders
+RIE <-r-> Filler
+RIE -u-> Tracker: Reports
+RIE <-d-> GOMS
+GOMS <-r-> xFiller
 
 @enduml
