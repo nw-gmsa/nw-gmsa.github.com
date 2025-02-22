@@ -18,4 +18,4 @@ Description:    "DRAFT Extension of UKCore-Observation"
 
 * value[x] ^short = "	Actual result (HL7 v2 OBX-5)"
 
-* effective[x]] ^short = "Clinically relevant time/time-period for observation (HL7 v2 	OBX-14)"
+* effective[x] ^short = "Clinically relevant time/time-period for observation (HL7 v2 	OBX-14)"
