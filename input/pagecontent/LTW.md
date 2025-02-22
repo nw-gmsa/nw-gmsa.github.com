@@ -25,6 +25,18 @@ Initially only the IHE `LAB-1` and `LAB-4` is in focus and this is probably usin
 This will be followed by IHE `LAB-3` probably using HL7 v2.x ORU_R01 plus `LAB-2` and `LAB-5`
 Later stages will include the use of [Genomic Order Management Service](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir).
 
+## Overview
+
+<img style="padding:3px;width:95%;" src="LTW Use Case1 and 3.drawio" alt="Genomic LTW Business Process"/>
+<br clear="all">
+<p class="figureTitle">Genomic LTW Business Process</p> 
+<br clear="all">
+
+The processes above are described in more detail in:
+
+- [Use Case 1: Genomic Test Order](#use-case-1-genomic-test-order) for the order
+- [Use Case 3: Genomic Test Report](#use-case-3-genomic-test-report) for the report
+
 ## Use Case 1: Genomic Test Order
 
 An order is created by the clinical practice, and placed to the laboratory.
@@ -78,7 +90,7 @@ The completed form is submitted to the Regional Integration Engine using:
 For submission, this form will be converted by the [Order Placer](ActorDefinition-OrderPlacer.html) to a communication format called [HL7 FHIR](https://hl7.org/fhir/R4/index.html) (and for compatability reasons [HL7 v2](https://en.wikipedia.org/wiki/Health_Level_7#HL7_Version_2).
 If the [Order Placer](ActorDefinition-OrderPlacer.html) has a FHIR enabled Electronic Patient Record (e.g. EPIC, Cerner, Meditech, etc), they may use [HL7 SDC - Form Data Extraction](https://build.fhir.org/ig/HL7/sdc/extraction.html) to assist with this process.
 
-<img style="padding:3px;width:95%;" src="sdc-overview.png" alt="Order Test Form - Data Extraction Overview"/>
+<img style="padding:3px;width:95%;" src="sdc-overview.drawio.png" alt="Order Test Form - Data Extraction Overview"/>
 <br clear="all">
 <p class="figureTitle">Order Test Form - Data Extraction Overview</p> 
 <br clear="all">
@@ -110,7 +122,7 @@ The detail of this form/template defines:
 
 > It is not expected the NW GLH Laboratory Information Management System (LIMS) will support UK SNOMED CT, and the RIE will handle the conversion either internally using [FHIR ConceptMap](https://hl7.org/fhir/R4/conceptmap.html) or a terminology service with the following capabilities [IHE Sharing Valuesets, Codes, and Maps (SVCM)](https://profiles.ihe.net/ITI/SVCM/index.html)
 
-### Collect Sample
+### Collect Sample and Update Genomic Test Order
 
 After submitting the original order, the order will be updated to include details such as a specimen collection date, order filler number, etc.
 This is also a method of notifying organisations of orders entered directly in the `Order Filler` system, see [LAB-2](LAB-2.html).
