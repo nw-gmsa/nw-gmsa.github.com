@@ -102,12 +102,12 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * supportingInfo ^slicing.description = "Slice based on the coding.system"
 * supportingInfo ^slicing.ordered = false
 * supportingInfo contains
-  PreviousReports 0..1 MS and GenomicFamilyStructure 0..1 MS
+  PreviousReports 0..1 MS and PatientSummary 0..1 MS
 
-* supportingInfo[PreviousReports] only Reference(DiagnosticReport)
-* supportingInfo[PreviousReports].type = #DiagnosticReport
-* supportingInfo[PreviousReports].identifier 1..1 MS
-* supportingInfo[PreviousReports].identifier only CorrelationIdentifier
+* supportingInfo[LaboratoryReport] only Reference(DiagnosticReport)
+* supportingInfo[LaboratoryReport].type = #DiagnosticReport
+* supportingInfo[LaboratoryReport].identifier 1..1 MS
+* supportingInfo[].identifier only CorrelationIdentifier
 
-* supportingInfo[GenomicFamilyStructure] only Reference(DocumentReference)
-* supportingInfo[GenomicFamilyStructure].type = #DocumentReference
+* supportingInfo[PatientSummary] only Reference(DocumentReference)
+* supportingInfo[PatientSummary].type = #DocumentReference

@@ -5,9 +5,7 @@ The intent is to follow the data model (FHIR profiles, valuesets and codesystems
 ### References
 
 - [NHS Genomic Medicine Service test order forms](https://www.england.nhs.uk/publication/nhs-genomic-medicine-service-test-order-forms/)
-- Reports [Genomics Reporting Implementation Guide](https://build.fhir.org/ig/HL7/genomics-reporting/index.html)
-  - HL7 USA [minimal Common Oncology Data Elements (mCODE) Implementation Guide](https://build.fhir.org/ig/HL7/fhir-mCODE-ig/index.html)
-  
+ 
 ### Model
 
 <figure>
@@ -21,6 +19,12 @@ A detailed description of this archetype which includes mappings to HL7 FHIR can
 This also includes messaging concepts which are described in this guide to add compatibility with HL7 v2 and IHE LTW.
 
 ## Genomic Test Report Entity Model
+
+### References
+
+- [Genomics Reporting Implementation Guide](https://build.fhir.org/ig/HL7/genomics-reporting/index.html)
+  - HL7 USA [minimal Common Oncology Data Elements (mCODE) Implementation Guide](https://build.fhir.org/ig/HL7/fhir-mCODE-ig/index.html)
+
 
 <figure>
 {%include reports-model.svg%}
