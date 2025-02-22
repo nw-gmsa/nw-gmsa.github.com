@@ -23,7 +23,7 @@ This also includes messaging concepts which are described in this guide to add c
 ### References
 
 - [Genomics Reporting Implementation Guide](https://build.fhir.org/ig/HL7/genomics-reporting/index.html)
-  - HL7 USA [minimal Common Oncology Data Elements (mCODE) Implementation Guide](https://build.fhir.org/ig/HL7/fhir-mCODE-ig/index.html)
+  - HL7 USA Oncology [minimal Common Oncology Data Elements (mCODE) Implementation Guide](https://build.fhir.org/ig/HL7/fhir-mCODE-ig/index.html)
 
 
 <figure>
