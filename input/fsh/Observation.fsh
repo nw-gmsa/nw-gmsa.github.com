@@ -8,6 +8,14 @@ Description:    "DRAFT Extension of UKCore-Observation"
 
 * performer only Reference(PractitionerRole or Patient)
 
+* status ^short = "Observation Status  (HL7 v2 OBX-11)"
+
 * subject 1..1 MS
 * subject.reference 1..1 MS
 * subject.identifier only NHSNumber
+
+* code ^short = "The type of observation (code / type). (HL7 v2 OBX-3)"
+
+* value[x] ^short = "	Actual result (HL7 v2 OBX-5)"
+
+* effective[x]] ^short = "Clinically relevant time/time-period for observation (HL7 v2 	OBX-14)"
