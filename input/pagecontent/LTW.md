@@ -110,13 +110,16 @@ The detail of this form/template defines:
 
 > It is not expected the NW GLH Laboratory Information Management System (LIMS) will support UK SNOMED CT, and the RIE will handle the conversion either internally using [FHIR ConceptMap](https://hl7.org/fhir/R4/conceptmap.html) or a terminology service with the following capabilities [IHE Sharing Valuesets, Codes, and Maps (SVCM)](https://profiles.ihe.net/ITI/SVCM/index.html)
 
-### Exchange Order Updates
+### Collect Sample
 
 After submitting the original order, the order will be updated to include details such as a specimen collection date, order filler number, etc.
-This is also a method of notifying organisations of orders entered directly in the `Order Filler` system, see [LAB-2](LAB-2.html). 
+This is also a method of notifying organisations of orders entered directly in the `Order Filler` system, see [LAB-2](LAB-2.html).
+
+## Use Case 2: Genomic Test Order following on from Pathology Test Order
 
 
-## Use Case 2: Genomic Test Report
+
+## Use Case 3: Genomic Test Report
 
 
 A report is created by the clinical practice, and sent to the order result tracker.
@@ -124,7 +127,7 @@ A report is created by the clinical practice, and sent to the order result track
 ### Genomic Test Report Description
 
 <figure>
-{%include LTW-usecase-2-activity.svg%}
+{%include LTW-usecase-3-activity.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Genomics Test Report Activity</p>
 </figure>
 <br clear="all">

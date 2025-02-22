@@ -5,6 +5,7 @@ start
 :Select Genomic Test Order Form;
 :Complete Genomic Test Order Form;
 :Submit Genomic Test Order Form;
-:Genomic Test Order Updates;
+:Collect Sample
+:Update Genomic Test Order;
 stop
 @enduml
