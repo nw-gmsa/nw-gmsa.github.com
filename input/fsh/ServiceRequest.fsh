@@ -7,6 +7,8 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 - [NHS England Genomics ServiceRequest](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/FHIRAssets/Profiles/All-Profiles/UKCore-ServiceRequest) use text descriptions only, not the rendered profile.
 """
 
+* extension[additionalContact] ^short = "Do not use. Use Encounter.participant instead."
+
 * identifier 1..* MS
 * identifier only CorrelationIdentifier
 
