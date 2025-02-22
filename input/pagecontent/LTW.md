@@ -155,7 +155,15 @@ This genomics process is largely the same except for:
 
 ## Use Case 4: Genomic Test Order entered on GLH (Order Filler)
 
+<img style="padding:3px;width:95%;" src="LTW Use Case 4.drawio.png" alt="Genomic LTW Business Process - Use Case 4"/>
+<br clear="all">
+<p class="figureTitle">Genomic LTW Business Process - Use Case 4</p> 
+<br clear="all">
 
+In this use case the order has been manually entered into NW GLH LIMS (as a result of an email or telephone call).
+The `Order Filler` notifies the `Order Placer` of the order.
+The `Order Placer` can then update the `Order Filler` when details change on the order such as a Order Placer Number assigned or updating details on the specimen such as collection dates.
+The proces then follows the same process as [Use Case 2: Genomic Test Report](#use-case-2-genomic-test-report)
 
 ## Security Considerations
 
