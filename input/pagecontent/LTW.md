@@ -27,7 +27,7 @@ Later stages will include the use of [Genomic Order Management Service](https://
 
 ## Overview
 
-<img style="padding:3px;width:95%;" src="LTW Use Case1 and 3.drawio" alt="Genomic LTW Business Process"/>
+<img style="padding:3px;width:95%;" src="LTW Use Case 1 and 2.drawio.png" alt="Genomic LTW Business Process"/>
 <br clear="all">
 <p class="figureTitle">Genomic LTW Business Process</p> 
 <br clear="all">
@@ -35,7 +35,7 @@ Later stages will include the use of [Genomic Order Management Service](https://
 The processes above are described in more detail in:
 
 - [Use Case 1: Genomic Test Order](#use-case-1-genomic-test-order) for the order
-- [Use Case 3: Genomic Test Report](#use-case-3-genomic-test-report) for the report
+- [Use Case 2: Genomic Test Report](#use-case-2-genomic-test-report) for the report
 
 ## Use Case 1: Genomic Test Order
 
@@ -127,11 +127,7 @@ The detail of this form/template defines:
 After submitting the original order, the order will be updated to include details such as a specimen collection date, order filler number, etc.
 This is also a method of notifying organisations of orders entered directly in the `Order Filler` system, see [LAB-2](LAB-2.html).
 
-## Use Case 2: Genomic Test Order following on from Pathology Test Order
-
-
-
-## Use Case 3: Genomic Test Report
+## Use Case 2: Genomic Test Report
 
 
 A report is created by the clinical practice, and sent to the order result tracker.
@@ -139,10 +135,26 @@ A report is created by the clinical practice, and sent to the order result track
 ### Genomic Test Report Description
 
 <figure>
-{%include LTW-usecase-3-activity.svg%}
+{%include LTW-usecase-2-activity.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Genomics Test Report Activity</p>
 </figure>
 <br clear="all">
+
+## Use Case 3: Genomic Test Order following on from Pathology Test Order
+
+<img style="padding:3px;width:95%;" src="LTW Use Case 3.drawio.png" alt="Genomic LTW Business Process - Use Case 3"/>
+<br clear="all">
+<p class="figureTitle">Genomic LTW Business Process - Use Case 3</p> 
+<br clear="all">
+
+In this use case the original order is raised by the `Order Placer` and sent to a Pathology LIMS (`Pathology Order Filler`). The Pathology LIMS follows the processes outlined in [Use Case 1: Genomic Test Order](#use-case-1-genomic-test-order) and [Use Case 2: Genomic Test Report](#use-case-2-genomic-test-report) for pathology testing.  
+As part of this testing, the clinical process requires a genomics test to be performed.
+This genomics process is largely the same except for:
+- The order is sent as one interaction as the sample does not need to be collected.
+- The order should contain the pathology report detailing the results of the pathology tests.
+
+## Use Case 4: Genomic Test Order entered on GLH (Order Filler)
+
 
 
 ## Security Considerations
