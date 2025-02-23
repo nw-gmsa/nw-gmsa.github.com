@@ -4,7 +4,7 @@
 
   title "Genomic Test Request"
 
-  frame "Message - Laboratory Order O21" as Message {
+  frame "Laboratory Order O21" as Message {
   entity "FHIR Bundle (messaage)" as oml <<aggregate>> {
   identifier
   }
@@ -15,24 +15,22 @@
 
     frame "Template/Order Form" as Composition {
       entity "[[StructureDefinition-Patient.html Patient]]" as PID {
-      NHSNumber
-      MedicalRecordNumber
+      [[StructureDefinition-NHSNumber.html NHSNumber]]
+      [[StructureDefinition-MedicalRecordNumber.html MedicalRecordNumber]]
       }
 
       entity "[[StructureDefinition-Encounter.html Encounter]]" as PV1 {
+      identifier : [[StructureDefinition-VisitNumber.html Visit Number]]
       encounter
       episode
       subject : Patient
       }
 
-      entity "[[StructureDefinition-RequestGroup.html RequestGroup]]" as RequestGroup <<aggregate>> {
-      identifier
-      ServiceRequest
-      subject : Patient
-      }
 
       entity "[[StructureDefinition-ServiceRequest.html ServiceRequest]] \n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Test-Request Test Request]])" as ORC <<aggregate>> {
       orderPlacerNumber
+      orderFillerNumber
+      orderPlacerGroupNumber
       accessionNumber
       subject : Patient
       }
@@ -43,20 +41,21 @@
       subject : Patient
       }
 
-      class "[[StructureDefinition-Condition.html Condition]]" as DG1
+      class "ConditionCode" as DG1
 
       class "[[StructureDefinition-PractitionerRole.html PractitionerRole]]" as STF {
        organisation : ODSCode
-       practitiner: GMP/GMC Number
+       practitioner: GMP/GMC Number
        specialty: ClinicalSpecialty
       }
 
+      class "ServieRequest.identifier \nOriginal Order" as previous {
+
+      }
+
+
       frame "Supporting Information" as supportingInfo {
 
-      entity "DiagnosticReport \n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Relevant-Clinical-Report Relevant Clinical Report]] \nand [[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Previous-Genomic-Report Previous Genomic Report]])" as OBX {
-        identifier
-        basedOn:accessionNumber
-      }
 
 
         class "[[StructureDefinition-Observation.html Observation]]" as OBX1 {
@@ -72,39 +71,52 @@
         subject : Patient
         }
 
-        class "[[StructureDefinition-DocumentReference.html DocumentReference]]\nGenomicFamilyStructure" as family {
+        entity "[[StructureDefinition-DocumentReference.html DocumentReference]]\nPreviousReports\nGenomicFamilyStructure" as documentReference <<aggregate>> {
            type
            subject : Patient
+           context.encounter : [[StructureDefinition-VisitNumber.html Visit Number]]
         }
 
-        class "[[StructureDefinition-Attachment.html Attachment]]" as OBX2
+        class "[[StructureDefinition-Attachment.html Attachment]]" as attachment {
+         contentType
+          url
+        }
+
+        class "[[StructureDefinition-Binary.html Binary]]" as binary
 
       }
 
-      family -d-> OBX2
+      documentReference *-d-> attachment
 
-      panel o-d- "0" OBX1: hasmember
+      attachment *-- binary : url
 
-      OBX1 -d[hidden]- family
+      panel *-d- "0" OBX1: hasmember
+
+      OBX1 -d[hidden]- documentReference
 
    }
   }
 
   oml o-d- "1" MSH
   MSH o-d- "1" ORC: focus
-  MSH o-d- "1" RequestGroup: focus
-  RequestGroup o-d- ORC: action.resource
-  ORC o-- "0" SPM : specimen /\n accessionNumber
+  ORC *-- "0" SPM : specimen /\n accessionNumber
   ORC o-- "1" PID : subject
   ORC o-- "0" PV1 : encounter
   ORC o-- "0" DG1 : reason\n(Reference/Code)
-  ORC o-- "0" OBX: supportingInfo
-  ORC o-- "0" OBX1: supportingInfo
-  ORC o-- "0" panel: supportingInfo
-  ORC o-- "0" family: supportingInfo
+  ORC o-- "0" previous: basedOn
+  ORC *-- "0" OBX1: supportingInfo
+  ORC *-- "0" panel: supportingInfo
+  ORC *-- "0" documentReference: supportingInfo
   ORC o-l- "1" STF: requester
   SPM o-u- "0" STF: collection.collector
-  PV1 o-u- "0" STF: participant.individual§
+  PV1 o-u- "0" STF: participant.individual
+  PV1 o-- "1" PID : subject
+  SPM o-- "1" PID : subject
+  documentReference o-- "1" PID : subject
+  OBX1 o-- "1" PID : subject
 
+  documentReference o-- "1" PV1 : context.encounter
+
+  OBX1 o-- "1" PV1 : encounter
 
   @enduml

@@ -4,7 +4,7 @@ skinparam svgDimensionStyle false
 
 title "Genomic Test Report"
 
-frame "Message - Unsolicited Observation R01" as Message {
+frame "Unsolicited Observation R01" as Message {
 
 entity "FHIR Bundle (message)" as oru {
 identifier
@@ -14,43 +14,60 @@ class "[[StructureDefinition-MessageHeader.html MessageHeader]]" as MSH {
  focus
 }
 
-  frame Composition {
+  frame "Laboratory Report" as Composition {
      entity "[[StructureDefinition-Patient.html Patient]]\n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Patient Patient]] or [[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Fetus Fetus]])" as PID {
-    NHSNumber
-    MedicalRecordNumber
+    [[StructureDefinition-NHSNumber.html NHSNumber]]
+    [[StructureDefinition-MedicalRecordNumber.html MedicalRecordNumber]]
     }
 
-    entity "[[StructureDefinition-Encounter.html Encounter]]" as PV1 {
-    encounter
-    episode
+    class "[[StructureDefinition-VisitNumber.html Visit Number]]\nFrom the order" as PV1 {
     }
 
-    entity "[[StructureDefinition-ServiceRequest.html ServiceRequest]] \n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Test-Request Test Request]])" as ORC <<aggregate>> {
-      accessionNumber
+    class "[[StructureDefinition-ServiceRequest.html ServiceRequest]].identifier \n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Test-Request Test Request]])" as ORC {
+      accessionNumber or
+      orderFillerNumber
     }
 
-    entity "[[StructureDefinition-Specimen.html Specimen]] \n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Primary-Sample Primary Sample]])" as SPM {
+    class "[[StructureDefinition-Specimen.html Specimen]].identifier \n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Primary-Sample Primary Sample]])" as SPM {
     identifier
     accessionNumber
     }
 
    class "[[StructureDefinition-Observation.html Observation]]" as OBX {
+     subject
+     code
+     value[x]
       }
 
 
       class "[[StructureDefinition-Observation-Panel.html Observation Panel]]" as panel {
+      subject
+      code
       hasmember
       }
 
+   entity "[[StructureDefinition-DocumentReference.html DocumentReference]]\nGenomicFamilyStructure" as documentReference {
+           type
+           subject : Patient
+           context.encounter : [[StructureDefinition-VisitNumber.html Visit Number]]
+          content.attachment
+        }
 
-    frame DiagnosticReport {
+
     entity "[[StructureDefinition-DiagnosticReport.html DiagnosticReport]]" as OBR <<aggregate>> {
          identifier
-         basedOn:accessionNumber
+         category
+         code
+         basedOn: ServiceRequest.identifier
+         results
     }
-    class "[[StructureDefinition-Attachment.html Attachment]]" as OBX2
+    class "[[StructureDefinition-Attachment.html Attachment]]" as OBX2 {
+    contentType
+    url
+    }
+    class "[[StructureDefinition-Binary.html Binary]]" as binary
 
-    }
+
     entity "RelatedPerson" as NK1
 
      panel *-d- "0" OBX: hasmember
@@ -59,14 +76,21 @@ class "[[StructureDefinition-MessageHeader.html MessageHeader]]" as MSH {
 
 oru *-d- "1" MSH
 MSH *-d- "*" OBR: focus
-OBR *-- "0" SPM
-OBR "*" *--  ORC : accessionNumber
-OBR *-- "1" PID : subject
+OBR o-- "0" SPM
+OBR "*" o--  ORC : basedOn.identifier
+OBR o-- "1" PID : subject
 OBR *-- "0" PV1 : encounter
 OBR *-- "*" OBX : results
 OBR *-- "0" panel: results
 OBR *-- "*" OBX2: presentedForm
 NK1 -- PID : To link Mother and Fetus
 PID -- NK1
+
+OBX o-- PID: subject
+panel o-- PID: subject
+documentReference o-- PID: subject
+documentReference *-- OBX2: content.attachment
+documentReference o-- PV1: context.encounter
+OBX2 *-- binary : url
 
 @enduml

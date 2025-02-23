@@ -54,6 +54,8 @@ In practice this means, the following FHIR resources will have the following ide
 - Patient (not strictly within the domain but included for HL7/IHE/NHSE compatability reasons)
   - [NHS Number](StructureDefinition-NHSNumber.html)
   - [Medical Record Number](StructureDefinition-MedicalRecordNumber.html)
+- Encounter
+  - [Visit Number](StructureDefinition-VisitNumber.html)
 
 This includes making use of FHIR Identifier `assigner.identifier.value` (HL7 v2 `Assigning Facility` in a variety of ID types) to distinguish these identifiers between different organisations, the recommendation is to use [ODS Code](https://www.datadictionary.nhs.uk/attributes/organisation_code.html), e.g.
 
