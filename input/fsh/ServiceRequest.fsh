@@ -74,6 +74,9 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * encounter 0..1 MS
 * encounter only Reference(Encounter)
 * encounter.identifier only CorrelationIdentifier
+* encounter.identifier insert Obligation(#SHALL:populate-if-known, https://hl7.mft.nhs.uk/ActorDefinition/OrderFiller)
+* encounter.identifier insert Obligation(#SHALL:populate-if-known, https://hl7.mft.nhs.uk/ActorDefinition/OrderPlacer)
+* encounter.identifier insert Obligation(#SHALL:populate-if-known, https://hl7.mft.nhs.uk/ActorDefinition/AutomationManager)
 
 * requester 1..1 MS
 * requester only Reference(PractitionerRole)

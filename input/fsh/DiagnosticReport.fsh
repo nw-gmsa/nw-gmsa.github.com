@@ -40,11 +40,18 @@ DRAFT Extension of [UK Core DiagnosticReport](https://simplifier.net/hl7fhirukco
 * subject only Reference(Patient)
 
 * effectiveDateTime 0..1 MS
+* effective[x] insert Obligation(#SHOULD:populate-if-known, https://hl7.mft.nhs.uk/ActorDefinition/OrderFiller)
+* effective[x] insert Obligation(#SHOULD:populate-if-known, https://hl7.mft.nhs.uk/ActorDefinition/OrderPlacer)
+* effective[x] insert Obligation(#SHOULD:populate-if-known, https://hl7.mft.nhs.uk/ActorDefinition/AutomationManager)
+
 * issued 0..1
 
 * encounter 0..1 MS
 * encounter only Reference(Encounter)
 * encounter.identifier only CorrelationIdentifier
+* encounter.identifier insert Obligation(#SHALL:populate-if-known, https://hl7.mft.nhs.uk/ActorDefinition/OrderFiller)
+* encounter.identifier insert Obligation(#SHALL:populate-if-known, https://hl7.mft.nhs.uk/ActorDefinition/OrderPlacer)
+* encounter.identifier insert Obligation(#SHALL:populate-if-known, https://hl7.mft.nhs.uk/ActorDefinition/AutomationManager)
 
 
 * code ^short = "ISSUE. See [National Genomic Test Directory](https://www.england.nhs.uk/wp-content/uploads/2018/08/rare-and-inherited-disease-eligibility-criteria-v2.pdf)."
