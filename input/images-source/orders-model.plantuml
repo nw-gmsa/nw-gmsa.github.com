@@ -102,14 +102,14 @@
   ORC *-- "0" SPM : specimen /\n accessionNumber
   ORC o-- "1" PID : subject
   ORC o-- "0" PV1 : encounter
-  ORC o-- "0" DG1 : reason\n(Reference/Code)
+  ORC *-- "0" DG1 : reason\n(Reference/Code)
   ORC o-- "0" previous: basedOn
   ORC *-- "0" OBX1: supportingInfo
   ORC *-- "0" panel: supportingInfo
   ORC *-- "0" documentReference: supportingInfo
-  ORC o-l- "1" STF: requester
-  SPM o-u- "0" STF: collection.collector
-  PV1 o-u- "0" STF: participant.individual
+  ORC *-- "1" STF: requester
+  SPM o-- "0" STF: collection.collector
+  PV1 o-- "0" STF: participant.individual
   PV1 o-- "1" PID : subject
   SPM o-- "1" PID : subject
   documentReference o-- "1" PID : subject
