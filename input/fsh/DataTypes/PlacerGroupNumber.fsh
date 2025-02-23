@@ -7,5 +7,5 @@ HL7 v2 Placer Group Number (ORC-4)
 """
 
 
-* type = http://terminology.hl7.org/CodeSystem/v2-0203#PGN
+* type = $v2-0203#PGN
 * value 1..1

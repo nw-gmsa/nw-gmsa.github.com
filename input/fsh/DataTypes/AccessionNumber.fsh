@@ -18,6 +18,6 @@ Usually assigned by the order filler.
 | | HL7 FHIR | Identifier.assigner.identifier | https://fhir.nhs.uk/Id/ods-organization-code#{ODS Code} |
 """
 
-* type = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN
+* type = $v2-0203#ACSN
 * system ^short = "uri should be defined and unique supplying organisation."
 * value 1..1

@@ -12,7 +12,8 @@ See also `5.6.3 Alternate Visit ID (CX)` from [NHS England HL7 v2 ADT Message Sp
 - an outpatient number (note this is not an individual attendance number)
 """
 
-* type.coding = $v2-0203#VN
+* type = $v2-0203#VN
+
 
 
 
