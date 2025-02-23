@@ -23,7 +23,7 @@ Based on UK Definitions from [IHE Europe Metadata for exchange medical documents
 
 * context.encounter 0..1 MS
 * context.encounter only Reference(Encounter)
-* context.encounter.identifier only CorrelationIdentifier
+* context.encounter.identifier only VisitNumber
 
 * context.related 0..*
 

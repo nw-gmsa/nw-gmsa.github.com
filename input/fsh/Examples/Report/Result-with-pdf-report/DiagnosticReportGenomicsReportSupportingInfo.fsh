@@ -7,10 +7,6 @@ Description: "First draft is based on Royal College of Radiologists HL7 v2 ORU c
 
 * extension[supporting-info].valueReference.reference = "urn:uuid:94bf65ba-cd6c-4601-b339-6d547f424646"
 * extension[supporting-info].valueReference.type = #DocumentReference
-* extension[supporting-info].valueReference.extension[+]
-  * url = "https://hl7.mft.nhs.uk/StructureDefinition/ext-codeable-reference"
-  * valueCodeableConcept = $sct#1054161000000101 "Genetic report"
-
 
 * identifier[+]
   * value = "25edee2b-add8-4522-9fa2-1ee8f229bd75"
@@ -29,7 +25,7 @@ Description: "First draft is based on Royal College of Radiologists HL7 v2 ORU c
 * status = #final
 * category = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
 
-* code.coding[+] = $test-directory#R240.1
+* code.coding[GenomicTestDirectory] = $test-directory#R240.1
 
 * subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
 * subject.display = "Octavia CHISLETT"
@@ -37,7 +33,14 @@ Description: "First draft is based on Royal College of Radiologists HL7 v2 ORU c
   * system = "https://fhir.nhs.uk/Id/nhs-number"
   * value = "9449305552"
 
-* issued = "2023-09-07T11:45:41+00:00"
+* encounter.identifier
+  * value = "1001166717"
+  * system = "https://fhir.nhs.uk/Id/visit-number/R0A"
+  * type = $v2-0203#VN
+  * assigner.identifier.system = $ods-code
+  * assigner.identifier.value = "R0A"
+
+* effectiveDateTime = "2023-09-07T11:45:41+00:00"
 
 * performer[organisation]
   * identifier.system = $ods-code

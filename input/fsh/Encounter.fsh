@@ -8,6 +8,22 @@ DRAFT Extension of UKCore-Encounter which includes constraints from:
 """
 
 * identifier 1..* MS
+
+* identifier ^slicing.discriminator.type = #value
+* identifier ^slicing.discriminator.path = "type"
+* identifier ^slicing.rules = #open
+* identifier ^slicing.description = "Slice based on the type"
+* identifier ^slicing.ordered = false
+* identifier contains
+  VisitNumber 0..1 MS
+
+* identifier[VisitNumber] only VisitNumber
+* identifier[VisitNumber] ^short = "Identifier assigned by the Order Placer"
+* identifier[VisitNumber] insert Obligation(#SHOULD:populate-if-known, https://hl7.mft.nhs.uk/ActorDefinition/OrderFiller)
+* identifier[VisitNumber] insert Obligation(#SHALL:populate, https://hl7.mft.nhs.uk/ActorDefinition/OrderPlacer)
+* identifier[VisitNumber] insert Obligation(#SHOULD:populate-if-known, https://hl7.mft.nhs.uk/ActorDefinition/AutomationManager)
+
+
 * type 0..1 MS
 * type from AdmissionMethod
 * serviceType 0..1 MS

@@ -6,6 +6,7 @@ Description: "TODO"
 * status = #finished
 
 * identifier[+]
+  * type = $v2-0203#VN
   * value = "1001166717"
   * assigner.identifier.system = $ods-code
   * assigner.identifier.value = "R0A"

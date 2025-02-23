@@ -34,6 +34,7 @@
 
 ### MSH
 
+This is based on the definition of MSH from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws)
 
 | Field HL7 | Fieldname                          | Data Type   | Optionality | Table and Notes                                                                                                         | Example Values                                                                                                                  |
 |-----------|------------------------------------|-------------|-------------|-------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
@@ -52,6 +53,8 @@
 
 ### PID
 
+This is based on the definition of PID from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws)
+
 | Field HL7 | Fieldname                          | Data Type | Optionality | Table and Notes                                                                                                         | Example Values                                                                                                                  |
 |-----------|------------------------------------|-----------|-------------|-------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
 | PID-1     | Set ID-PID                         |           | R           |                                                                                                                         | 1                                                                                                                               |
@@ -65,7 +68,9 @@
 
 ### PV1 
 
-> The PV1 segment should represent the sending organisations encounter, i.e. the one that created the order or report. This differs from DHCW definition.
+> The PV1 segment should represent the ordering organisations encounter/PV1, i.e. the one that created the order. 
+
+This is based on the definition of PV1 from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws)
 
 | Field HL7 | Fieldname                 | Data Type   | Optionality | Table and Notes                                                                   | Example Values                                |
 |-----------|---------------------------|-------------|-------------|-----------------------------------------------------------------------------------|-----------------------------------------------|
@@ -73,13 +78,15 @@
 | PV1-3     | Assigned Patient Location |             | R           |                                                                                   | ^^^R0A09^^^^^^^R0A <br/> ^^^P1S8J^^^^^^^699X0 |
 | PV1-8     | Referring Doctor          | [XCN](#xcn) | R           | [Practitioner Identifier](StructureDefinition-EnglandPractitionerIdentifier.html) | C3456789^Darwin^Samuel^^^Dr^^^GMC             |                                                                                   
 | PV1-10    | Hospital Service          |             | R           | [Service](ValueSet-service.html)                                                  | 311                                           |
-| PV1-19    | Visit Number              | [CX](#cx)   | R           |                                                                                   | 12345^^^R0A                                   |                                    |
+| PV1-19    | Visit Number              | [CX](#cx)   | O           | [Visit Number](StructureDefinition-VisitNumber.html)                              | 12345^^^R0A                                   |                                    |
 
 ### ORC
 
+This is based on the definition of ORC from DHCW ORU_R01 Message Specification.
+
 | Field HL7 | Fieldname                | Data Type   | Optionality | Table and Notes                                                                   | Example Values                                                                                                                  |
 |-----------|--------------------------|-------------|-------------|-----------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| ORC-2     | Placer Order Number      | [EI](#ei)   | R           | [Placer Order Number](StructureDefinition-PlacerOrderNumber.html)                 | 1601737^ R0A^150^L                                                                                                               |
+| ORC-2     | Placer Order Number      | [EI](#ei)   | R           | [Placer Order Number](StructureDefinition-PlacerOrderNumber.html)                 | 1601737^R0A^150^L                                                                                                               |
 | ORC-3     | Filler Order Number      | [EI](#ei)   | R           | [Filler Order Number](StructureDefinition-FillerOrderNumber.html)                 | 1001166717^699X0^^255^ISO                                                                                                       |
 | ORC-4     | Placer Group Number      | [EI](#ei)   | R           | [Placer Group Number](StructureDefinition-PlacerGroupNumber.html)                 | 1001166717^699X0^^255^ISO                                                                                                       |
 | ORC-5     | Order Status             |             | O           |                                                                                   |                                                                                                                                 |
@@ -89,6 +96,8 @@
 
 
 ### OBR 
+
+This is based on the definition of OBR from DHCW ORU_R01 Message Specification.
 
 | Field HL7 | Fieldname                          | Data Type | Optionality | Table and Notes                                                                   | Example Values                                                                                                                  |
 |-----------|------------------------------------|-----------|-------------|-----------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
@@ -101,6 +110,8 @@
 | OBR-22    | Results Rpt/Status Chng -Date/Time |           | R           |                                                                                   | 20170126135745                                                                                                                  |
 
 ### OBX
+
+This is based on the definition of OBX from DHCW ORU_R01 Message Specification.
 
 | Field HL7 | Fieldname                    | Data Type | Optionality | Table and Notes                                          | Example Values                      |
 |-----------|------------------------------|-----------|-------------|----------------------------------------------------------|-------------------------------------|
@@ -174,7 +185,7 @@ North West GLH Hub
 
 ### PL
 
-This is baed on the definition of PL from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws) **SHOULD** be followed and **SHALL** be used in ORC-12.
+This is based on the definition of PL from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws) **SHOULD** be followed and **SHALL** be used in ORC-12.
 In addition, this includes of PL.11 to hold organisation ODS code.  
 
 > The ODS Site Code **SHALL** belong to the ODS Code. This is to help avoid data issues in this codesystem. 
@@ -233,7 +244,7 @@ SPM|1|25GEN-029GN00001^R0A||||||||||||||||||Y
 ```aiignore
 MSH|^~\&|iGene|699X0|EPIC|R0A|20190514102527+0200||ORU^R01^ORU_R01|5051095-201905141025|T|2.5.1|||AL
 PID|1||633^^^R0A^MR~9449305552^^^NHS^NH||CHISLETT^Octavia^^Miss||20080920|F|||1 RAVENSFIELD GARDENS^^EPSOM^SURREY^KT19 0ST
-PV1|1|N|^^^P1S8J^^^^^^^699X0|||||C3456789^Darwin^Samuel^^^Dr^^^GMC||311|||||||||12345^^^699X0
+PV1|1|N|^^^R0A09^^^^^^^R0A|||||C3456789^Darwin^Samuel^^^Dr^^^GMC||311|||||||||12345^^^R0A
 ORC|RE|1601737^R0A|1001166717^699X0||CM||||20170126143602|||C3456789^Darwin^Samuel^^^Dr^^^GMC|||||||||MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS
 OBR|1|1601737^R0A|1001166717^699X0|R240.1^Diagnostic testing for known variant(s)^England-GenomicTestDirectory|||20190514102000+0200|||SCC|O|||20190514102000+0200||C3456789^Darwin^Samuel^^^Dr^^^GMC||||||20190514102417+0200
 OBX|1|ED|1054161000000101^Genetic report^SNM||MOL^IM^PDF^Base64^JVBERi0x...||||||F

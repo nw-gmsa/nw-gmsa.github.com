@@ -47,12 +47,12 @@ DRAFT Extension of [UK Core DiagnosticReport](https://simplifier.net/hl7fhirukco
 * issued 0..1
 
 * encounter 0..1 MS
+* encounter ^short = "Health care event when test ordered. (HL7 v2 PV1-19)"
 * encounter only Reference(Encounter)
-* encounter.identifier only CorrelationIdentifier
+* encounter.identifier only VisitNumber
 * encounter.identifier insert Obligation(#SHALL:populate-if-known, https://hl7.mft.nhs.uk/ActorDefinition/OrderFiller)
 * encounter.identifier insert Obligation(#SHALL:populate-if-known, https://hl7.mft.nhs.uk/ActorDefinition/OrderPlacer)
 * encounter.identifier insert Obligation(#SHALL:populate-if-known, https://hl7.mft.nhs.uk/ActorDefinition/AutomationManager)
-
 
 * code ^short = "ISSUE. See [National Genomic Test Directory](https://www.england.nhs.uk/wp-content/uploads/2018/08/rare-and-inherited-disease-eligibility-criteria-v2.pdf)."
 * code 1..1 MS
