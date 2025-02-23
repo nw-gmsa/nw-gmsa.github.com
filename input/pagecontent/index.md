@@ -39,4 +39,9 @@ UK edition of SNOMED (83821000000107)
 
 {% include dependency-table.xhtml %}
 
+## Credits
+
+| Role(s)              | Contributor(s)  | 
+|----------------------|-----------------|
+| Enterprise Architect | **Kevin Mayfield** (Aire Logic/Mayfield IS) |      
 
