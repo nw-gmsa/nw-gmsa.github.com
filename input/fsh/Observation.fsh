@@ -14,6 +14,10 @@ Description:    "DRAFT Extension of UKCore-Observation"
 * subject.reference 1..1 MS
 * subject.identifier only NHSNumber
 
+* encounter 0..1 MS
+* encounter only Reference(Encounter)
+* encounter.identifier only CorrelationIdentifier
+
 * code ^short = "The type of observation (code / type). (HL7 v2 OBX-3)"
 
 * value[x] ^short = "	Actual result (HL7 v2 OBX-5)"
