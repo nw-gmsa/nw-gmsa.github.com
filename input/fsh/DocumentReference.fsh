@@ -21,6 +21,10 @@ Based on UK Definitions from [IHE Europe Metadata for exchange medical documents
 
 * context.event ^short = "The procedure or test code associated with the Accession Number (e.g. NICIP, Genomic Test Directory, etc.)"
 
+* context.encounter 0..1 MS
+* context.encounter only Reference(Encounter)
+* context.encounter.identifier only CorrelationIdentifier
+
 * context.related 0..*
 
 * context.related ^slicing.discriminator.type = #pattern

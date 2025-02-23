@@ -71,10 +71,11 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 
 * category[genomicsWholeCaseSequencing] 1..1 MS
 
+* encounter 0..1 MS
 * encounter only Reference(Encounter)
+* encounter.identifier only CorrelationIdentifier
 
 * requester 1..1 MS
-* requester ^short = "ISSUE: If using national identifier, the reference could be omitted (see comments in Practitioner. \nISSUE: NHS England GOMS is requiring a PractitionerRole (combination of ORC-12 and ORC-21, HL7 v2 mapping is saying Practitioner"
 * requester only Reference(PractitionerRole)
 
 * performer only Reference(Organization)
@@ -82,8 +83,9 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 
 * authoredOn 1..1 MS
 
-* occurrenceDateTime 0..1 MS
+* occurrence[x] 0..1 MS
 
+* subject 1..1 MS
 * subject only Reference(Patient)
 
 * basedOn 0..* MS

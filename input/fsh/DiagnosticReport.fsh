@@ -42,6 +42,27 @@ DRAFT Extension of [UK Core DiagnosticReport](https://simplifier.net/hl7fhirukco
 * effectiveDateTime 0..1 MS
 * issued 0..1
 
+* encounter 0..1 MS
+* encounter only Reference(Encounter)
+* encounter.identifier only CorrelationIdentifier
+
+
+* code ^short = "ISSUE. See [National Genomic Test Directory](https://www.england.nhs.uk/wp-content/uploads/2018/08/rare-and-inherited-disease-eligibility-criteria-v2.pdf)."
+* code 1..1 MS
+
+* code.coding 1..* MS
+* code.coding ^slicing.discriminator.type = #value
+* code.coding ^slicing.discriminator.path = "system"
+* code.coding ^slicing.rules = #open
+* code.coding ^slicing.description = "Slice based on the system"
+* code.coding ^slicing.ordered = false
+* code.coding contains
+  GenomicTestDirectory 1..1 MS
+
+* code.coding[GenomicTestDirectory] from GenomicTestDirectory (required)
+* code.coding[GenomicTestDirectory].system = "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory"
+
+
 * performer.identifier 1..1
 * performer.identifier.system 1..1
 * performer.identifier.value 1..1
