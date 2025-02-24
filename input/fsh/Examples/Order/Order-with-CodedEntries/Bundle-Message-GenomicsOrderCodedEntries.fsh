@@ -1,6 +1,6 @@
-Instance: GenomicsOrderMessage
+Instance: GenomicsOrderMessageCodedEntries
 InstanceOf: Bundle
-Title:       "Bundle 'Message' - Genomics Order with Structured Data"
+Title:       "Bundle 'Message' - Genomics Order with Coded Entries"
 Description:  "Influenced by HL7 v2 OML_O21"
 Usage: #example
 * insert MessageBundle("9612365d-52a4-4fab-87e7-8a09d753f095", "2024-10-13T10:33:00+00:00")
@@ -8,7 +8,7 @@ Usage: #example
 * insert EntryDocument("urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd", Patient-OctaviaCHISLETT-9449305552)
 * insert EntryDocument("urn:uuid:984b8a89-4194-4eb4-a7ea-ca8049ebeea3", 984b8a89-4194-4eb4-a7ea-ca8049ebeea3)
 * insert EntryDocument("urn:uuid:ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8", ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8)
-* insert EntryDocument("urn:uuid:54b526e9-60a7-4602-9cb3-50ab3be7b564", ServiceRequestGenomicsOrder)
+* insert EntryDocument("urn:uuid:54b526e9-60a7-4602-9cb3-50ab3be7b564", ServiceRequestGenomicsOrderCodedEntries)
 * insert EntryDocument("urn:uuid:27ca6057-e481-426a-ba8a-2acfffc0c1c4", EPIC-OBR-1)
 * insert EntryDocument("urn:uuid:f39cc804-5280-4807-91d4-075be16928e5", EPIC-OBX-1)
 * insert EntryDocument("urn:uuid:47f34393-cc83-428f-b8dd-54bcd372c847", EPIC-OBX-2)

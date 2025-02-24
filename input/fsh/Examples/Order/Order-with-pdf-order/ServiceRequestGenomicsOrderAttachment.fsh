@@ -1,4 +1,4 @@
-Instance: ServiceRequestGenomicsOrder2
+Instance: ServiceRequestGenomicsOrderAttachment
 InstanceOf: ServiceRequest
 Title: "ServiceRequest Example"
 Description: "TODO"

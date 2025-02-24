@@ -9,7 +9,7 @@ Usage: #example
 * insert EntryDocument("urn:uuid:984b8a89-4194-4eb4-a7ea-ca8049ebeea3", 984b8a89-4194-4eb4-a7ea-ca8049ebeea3)
 // Practitioner Role - order creator
 * insert EntryDocument("urn:uuid:ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8", ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8)
-* insert EntryDocument("urn:uuid:54b526e9-60a7-4602-9cb3-50ab3be7b564", ServiceRequestGenomicsOrder2)
+* insert EntryDocument("urn:uuid:54b526e9-60a7-4602-9cb3-50ab3be7b564", ServiceRequestGenomicsOrderAttachment)
 * insert EntryDocument("urn:uuid:a293b4a6-e46b-4402-9b2b-d9517afc7137", a293b4a6-e46b-4402-9b2b-d9517afc7137)
 * insert EntryDocument("urn:uuid:0a898233-763c-405d-8172-8c4f07e6e636", 0a898233-763c-405d-8172-8c4f07e6e636)
 * insert EntryDocument("urn:uuid:89e66518-9197-4553-9253-5ab5133b62c0", SpecimenExample)

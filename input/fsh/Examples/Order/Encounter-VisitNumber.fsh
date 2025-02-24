@@ -1,6 +1,6 @@
 Instance: 984b8a89-4194-4eb4-a7ea-ca8049ebeea3
 InstanceOf: Encounter
-Title: "EPIC-PV1 Example"
+Title: "High level Encounter 'episode/stay' Example"
 Description: "TODO"
 
 * status = #finished
