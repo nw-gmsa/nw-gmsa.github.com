@@ -153,7 +153,7 @@ menu:
 
 groups:
   -ex-example-laboratory-order:
-    name: "Laboratory Order"
+    name: "Example: Laboratory Order"
     description: "Laboratory Order Examples"
     resources:
       - Binary/0a898233-763c-405d-8172-8c4f07e6e636
@@ -172,7 +172,7 @@ groups:
       - ServiceRequest/ServiceRequestGenomicsOrderAttachment
       - Specimen/SpecimenExample
   -ex-example-laboratory-report:
-    name: "Laboratory Report"
+    name: "Example: Laboratory Report"
     description: "Laboratory Report Examples"
     resources:
       - Binary/d6eeedd1-92d3-45b9-bf33-6401e804425f
@@ -181,8 +181,8 @@ groups:
       - DocumentReference/94bf65ba-cd6c-4601-b339-6d547f424646
       - MessageHeader/MessageHeaderGenomicReport
   -ex-example-other:
-    name: "Other"
-    description: "Other Examples"
+    name: "Example: Other"
+    description: "Other Examples used for elaborating concepts"
     resources:
       - Bundle/FHIRDocumentGeneticReportBundle
       - Composition/Composition-GenomicsReport-OctaviaCHISLETT
