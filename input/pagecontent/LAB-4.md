@@ -7,4 +7,4 @@ This transaction is used when the Order Filler issues a new work order to the Au
 
 ## Messages
 
-TODO Uses the same messaging as [LAB-1](lab-1.html)
+TODO Uses the same messaging as [LAB-1](LAB-1.html)

@@ -7,4 +7,4 @@ By this transaction, the Order Filler requests the Order Placer to assign a uniq
 
 ## Messages
 
-TODO Uses the same messaging as [LAB-1](lab-1.html)
+TODO Uses the same messaging as [LAB-1](LAB-1.html)

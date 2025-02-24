@@ -74,7 +74,7 @@ The  [laboratory order (O21)](MessageDefinition-laboratory-order.html) is sent t
 POST [base]/$process-messsage
 ```
 
-Example payload [Bundle 'Message' - Genomics Order](Bundle-GenomicsOrderMessage.html) 
+Example payload [Bundle 'Message' - Genomics Order](Bundle-GenomicsOrderMessageAttachment.html) 
 
 #### Validate Message and Transform FHIR to HL7 v2 Message 
 

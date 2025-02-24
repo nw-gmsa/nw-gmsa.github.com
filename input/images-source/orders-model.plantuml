@@ -77,7 +77,7 @@
            context.encounter : [[StructureDefinition-VisitNumber.html Visit Number]]
         }
 
-        class "[[StructureDefinition-Attachment.html Attachment]]" as attachment {
+        class "[[StructureDefinition-NWAttachment.html Attachment]]" as attachment {
          contentType
           url
         }

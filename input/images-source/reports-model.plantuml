@@ -61,7 +61,7 @@ class "[[StructureDefinition-MessageHeader.html MessageHeader]]" as MSH {
          basedOn: ServiceRequest.identifier
          results
     }
-    class "[[StructureDefinition-Attachment.html Attachment]]" as OBX2 {
+    class "[[StructureDefinition-NWAttachment.html Attachment]]" as OBX2 {
     contentType
     url
     }
