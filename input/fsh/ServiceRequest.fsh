@@ -51,11 +51,19 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * code.coding ^slicing.description = "Slice based on the system"
 * code.coding ^slicing.ordered = false
 * code.coding contains
-  GenomicTestDirectory 1..1 MS
+  GenomicTestDirectory 0..1 MS and PathologyAndLaboratoryMedicineObservables 0..1 and NICIP 0..1
 
+* code.coding[GenomicTestDirectory] ^short = "Use for Genomics Orders"
 * code.coding[GenomicTestDirectory] from GenomicTestDirectory (required)
 * code.coding[GenomicTestDirectory].system = "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory"
 
+* code.coding[PathologyAndLaboratoryMedicineObservables] ^short = "Use for Pathology and Laboratory Orders"
+* code.coding[PathologyAndLaboratoryMedicineObservables] from https://fhir.hl7.org.uk/ValueSet/UKCore-PathologyAndLaboratoryMedicineObservables
+* code.coding[PathologyAndLaboratoryMedicineObservables].system = $sct
+
+* code.coding[NICIP] ^short = "Use for Radiology Orders"
+* code.coding[NICIP] from https://fhir.hl7.org.uk/ValueSet/UKCore-PathologyAndLaboratoryMedicineObservables
+* code.coding[NICIP].system = "https://fhir.interweavedigital.nhs.uk/CodeSystem/Interweave-NICIP"
 
 * category 1..* MS
 * category ^slicing.discriminator.type = #value
