@@ -10,6 +10,18 @@
  - [EPIC HL7 v2](https://open.epic.com/Interface/HL7v2) See **Outgoing Ancillary Orders** (EPR to RIE)
  - [MEDITECH HL7 v2](https://ehr.meditech.com/sites/default/files/documents/20240613/om-orders-outbound-24.pdf)
 
+#### Message
+
+| Segment HL7 | Optionality | Notes                                                   |
+|-------------|-------------|---------------------------------------------------------|
+| [MSH](#msh) | 1..1        |                                                         |
+| [PID](#pid) | 1..1        |                                                         |
+| [PV1](#pv1) | 0..1        | PV1 should be populated if PV1-19 Visit Number is known |
+| [ORC](#orc) | 0..*        |                                                         |
+| [OBR](#obr) | 1..*        |                                                         |
+| [OBX](#obx) | 1..*        |                                                         |
+| [SPM](#spm) | 1..1        | |
+
 ### ORU_R01 Unsolicited transmission of an observation message
 
 #### References
@@ -19,16 +31,16 @@
 - [HL7 Version 2.5.1 Implementation Guide: Lab Results Interface (LRI), Release 1 from May 2017](https://confluence.hl7.org/download/attachments/25559919/2018%2004%2003%20-%20V2%20LRI%20-%20Ch.%205%20CG%20and%20Code%20System%20Tables.pdf?api=v2) includes **Data Standards**
 - [EPIC HL7 v2](https://open.epic.com/Interface/HL7v2) See **Discrete Genomic Results** (RIE to EPIC EPR)
 
-#### Segments
+#### Message
 
-| Segment HL7 | Optionality |
-|-------------|-------------|
-| [MSH](#msh) | 1..1        |
-| [PID](#pid) | 1..1        |
-| [PV1](#pv1) | 1..1        |
-| [ORC](#orc) | 0..*        |
-| [OBR](#obr) | 1..*        |
-| [OBX](#obx) | 1..*        |
+| Segment HL7 | Optionality | Notes                                                   |
+|-------------|-------------|---------------------------------------------------------|
+| [MSH](#msh) | 1..1        |                                                         |
+| [PID](#pid) | 1..1        |                                                         |
+| [PV1](#pv1) | 0..1        | PV1 should be populated if PV1-19 Visit Number is known |
+| [ORC](#orc) | 0..*        |                                                         |
+| [OBR](#obr) | 1..*        |                                                         |
+| [OBX](#obx) | 1..*        |                                                         |
  
 ## Segments
 
@@ -121,6 +133,22 @@ This is based on the definition of OBX from DHCW ORU_R01 Message Specification.
 | OBX-5     | Observation Value            | ED        | R           |                                                          | MOL^IM^PDF^Base64^JVBERI0X...       |
 | OBX-11    | Observation Result Status    |           | R           |                                                          | F                                   |
 | OBX-14    | Date/Time of the Observation |           |             |                                                          | 20190514102417+0000                 |
+
+### SPM
+
+This is based on the definition of OBX from DHCW ORU_R01 Message Specification.
+
+| Field HL7 | Fieldname                     | Data Type | Optionality | Table and Notes | Example Values                                    |
+|--------|-------------------------------|-----------|-------------|-----------------|---------------------------------------------------|
+| SPM-2  | Specimen ID                   |           | O           |                 | 1                                                 |
+| SPM-3  | Specimen Parent IDs           |           | O           |                 |                                                   |
+| SPM-4  | Specimen Type                 |           | O           |                 | 119325001^Skin specimen^SNM                       |
+| SPM-8  | Specimen Source Site          |           | O           |                 | 299706009^Bone structure of wrist and/or hand^SNM |
+| SPM-9  | Specimen Source Site Modifier |           | O           |                 | 7771000^Left^SNM                                  |
+| SPM-17 | Specimen Collection Date/Time |           | O           |                 |                                                   |
+| SPM-18 | Specimen Received Date/Time   |           | O           |                 |                                                   |
+| SPM-20 | Specimen Availability         |           | O           |                 |                                                   |
+| SPM-30 | Accession ID                  |           | O           |                 |                                                   |
 
 ## Data Types
 
