@@ -77,7 +77,7 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * category[GenomicProcedure].coding.code = #116148004
 * category[GenomicProcedure].coding.system = $sct
 
-* category[genomicsWholeCaseSequencing] 1..1 MS
+* category[genomicsWholeCaseSequencing] 0..1 MS
 
 * encounter 0..1 MS
 * encounter only Reference(Encounter)
