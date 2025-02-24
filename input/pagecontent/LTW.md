@@ -5,13 +5,14 @@ A. [IHE Pathology and Laboratory Medicine (PaLM) Technical Framework - Volume 1]
 
 ## Actors and Transactions
 
-| Actor                                                      | Definition                                                         |
-|------------------------------------------------------------|--------------------------------------------------------------------|
-| [Order Placer](ActorDefinition-OrderPlacer.html)           | Commonly known as the Electronic Patient Record (EPR) System       |
-| [Order Filler](ActorDefinition-OrderFiller.html)           | Genomic Laboratory Hub (GLH), Laboratory Information System (LIMS) |
-| [Automation Manager](ActorDefinition-AutomationManager.html) | Performed by Laboratory Information System (LIMS)                  |
-| [Order Result Tracker](ActorDefinition-OrderResultTracker.html)                                    | This is often provided by Electronic Patient Record (EPR) Systems  |
-| Laboratory Report (Clinical Document) | See [Clinical Document](ActorDefinition-ClinicalDocument.html)     | 
+| Actor                                                           | Definition                                                                                  |
+|-----------------------------------------------------------------|---------------------------------------------------------------------------------------------|
+| [Order Placer](ActorDefinition-OrderPlacer.html)                | Commonly known as the Electronic Patient Record (EPR) System or Order Communications System |
+| [Order Filler](ActorDefinition-OrderFiller.html)                | Genomic Laboratory Hub (GLH), Laboratory Information System (LIMS)                          |
+| [Automation Manager](ActorDefinition-AutomationManager.html)    | Performed by Laboratory Information System (LIMS)                                           |
+| [Order Result Tracker](ActorDefinition-OrderResultTracker.html) | This is often provided by Electronic Patient Record (EPR) Systems                           |
+| Laboratory Report (Clinical Document)                           | See [Clinical Document](ActorDefinition-ClinicalDocument.html)                              | 
+| [Intermediary](ActorDefinition-Intermediary.html)                               | E.g. Regional or Trust Integration Engine |
 
 See also Ref A `Section 3 Laboratory Testing Workflow (LTW) Profile` for detailed description of actors.
 
@@ -164,6 +165,22 @@ In this use case the order has been manually entered into NW GLH LIMS (as a resu
 The `Order Filler` notifies the `Order Placer` of the order.
 The `Order Placer` can then update the `Order Filler` when details change on the order such as a Order Placer Number assigned or updating details on the specimen such as collection dates.
 The proces then follows the same process as [Use Case 2: Genomic Test Report](#use-case-2-genomic-test-report)
+
+## Relationship to NHS England Pathology
+
+This guide implements the same use cases described in [NHS England Pathology FHIR Implementation Guide - Background](https://simplifier.net/guide/pathology-fhir-implementation-guide/Home/Design/Background), with additions to support a wider set of actors and introduces standards around the `Laboratory Order LAB-1`. Key differences:
+
+- [IHE Laboratory and Testing Worflow LTW](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol1.pdf) is used as the base description of laboratory testing workflow.
+- `GP Electronic Patient Record System` and `Order Communications System` are collectively known as [Order Placer](ActorDefinition-OrderPlacer.html), this actor can also be fulfilled by other EPR systesm.
+- An  [Intermediary](ActorDefinition-Intermediary.html) is used between [Order Placer](ActorDefinition-OrderPlacer.html) and [Order Filler](ActorDefinition-OrderFiller.html) which performs message translation and code conversions.
+- For results, the `GP Electronic Patient Record System` is classed a [Order Result Tracker](ActorDefinition-OrderResultTracker.html), other systems may be used to deliver this functionality.
+- An  [Intermediary](ActorDefinition-Intermediary.html) is used between [Order Filler](ActorDefinition-OrderFiller.html) and [Order Result Tracker](ActorDefinition-OrderResultTracker.html) which performs message translation and code conversions.
+- A [Canonical model](https://en.wikipedia.org/wiki/Canonical_model) is present which is expressed via HL7 FHIR and can be implemented via HL7 v2 and FHIR and IHE XDS. This is conformant to the latest versions of [HL7 UK Core](https://simplifier.net/guide/uk-core-implementation-guide-stu2) and [NHS England Data Model and Dictionary](https://www.datadictionary.nhs.uk/). Although this is focused on Genomics, it also includes elements from Pathology and Radiology for compatability reasons. This also includes mandatory use of NHS England National Procedure Codes. 
+
+<img style="padding:3px;width:95%;" src="Relationship to NHS England Pathology.drawio.png" alt="Relationship to NHS England Pathology"/>
+<br clear="all">
+<p class="figureTitle">Relationship to NHS England Pathology</p> 
+<br clear="all">
 
 ## Security Considerations
 
