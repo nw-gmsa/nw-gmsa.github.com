@@ -2,12 +2,12 @@
 # ───────────────────────────────────────────────────
 # the id should be lowercase made up of "ihe." + {domain acronym} + "." + {profile acronym/short-name}
 # e.g. ihe.iti.mhds, or ihe.iti.basicaudit
-id: nhs.mft.fhir
-canonical: https://hl7.mft.nhs.uk
+id: north-west.england.nhs.uk
+canonical: https://fhir.north-west.england.nhs.uk
 version: 0.0.1
 name: MFT_Genomics
-title: "North West Genomics Testing Workflow (GTW)"
-description: North West Genomics Testing Workflow Implementation Guide
+title: "NHS England North West GMSA Laboratory Testing Workflow (IHE LTW)"
+description: NHS England North West GMSA Laboratory Testing Workflow (IHE LTW) Implementation Guide
 releaseLabel: ci-build
 
 status: draft
@@ -77,7 +77,7 @@ instanceOptions:
 
 pages:
   index.md:
-    title: GTW Home
+    title: Home
     generation: markdown
   LTW.md:
     title: Laboratory Testing Workflow (LTW)
