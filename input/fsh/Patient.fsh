@@ -9,7 +9,7 @@ DRAFT Extension of UKCore-Patient which includes constraints from:
 
 * identifier 1..* MS
 * identifier.assigner ^short = "Assigning Facility"
-* identifier.assigner 1..1 MS
+* identifier.assigner 0..1 MS
 * identifier.assigner.identifier 1..1 MS
 * identifier.assigner.identifier.value 1..1 MS
 * identifier.assigner.identifier.system = $ods-code
