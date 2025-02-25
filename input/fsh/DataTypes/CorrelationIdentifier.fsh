@@ -31,6 +31,7 @@ where ROA is the ODS code for Manchester University NHS Foundation Trust
 """
 
 * type 0..1 MS
+* type from NWIdentifierType
 * system 0..1 MS
 * system ^short = "uri is defined by supplying organisation."
 * value 1..1 MS
