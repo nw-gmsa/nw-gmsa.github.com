@@ -7,19 +7,19 @@
   agent "**Order Result Tracker**\n\ne.g. EPR" as Tracker
   agent "**Intermediary**\n\nNW GLH Regional Integration Engine" as RIE
 
-  frame "Future Enhancement" as future {
+  frame "Out of Area Communication (Future)" as future {
     agent "**Intermediary**\n\nNHS England Gemonic\nOrder Management Service" as GOMS
-    agent "**External Order Placer**\n\ne.g. EPR, Pathology LIMS" as xPlacer
-    agent "**External Order Filler**\n\nExternal GLH LIMS" as xFiller
-     agent "**External Order Result Tracker**\n\ne.g. EPR" as xTracker
+    agent "**Order Placer**\n\ne.g. EPR, Pathology LIMS" as xPlacer
+    agent "**Order Filler**\n\nExternal GLH LIMS" as xFiller
+     agent "**Order Result Tracker**\n\ne.g. EPR" as xTracker
   }
 
 Placer -r-> RIE: Orders
 xPlacer -r-> GOMS: Orders
-RIE <-r-> Filler
+RIE <-r-> Filler: Orders and\nReports
 RIE -u-> Tracker: Reports
 GOMS -d-> xTracker: Reports
 RIE <-d-> GOMS
-GOMS <-r-> xFiller
+GOMS <-r-> xFiller: Orders and\nReports
 
 @enduml

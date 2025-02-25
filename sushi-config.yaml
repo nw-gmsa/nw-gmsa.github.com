@@ -137,7 +137,7 @@ menu:
   Analysis and Design (Vol 1) :
     Laboratory Testing Workflow (LTW): LTW.html
     Patient Identifier Cross-referencing (PIX): PIX.html
-    Health Information Exchange (HIE): HIE.html
+##    Health Information Exchange (HIE): HIE.html
   Interfaces (Vol 2):
     Placer Order Management [LAB-1]: LAB-1.html
     Filler Order Management [LAB-2]: LAB-2.html
