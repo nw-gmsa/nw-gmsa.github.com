@@ -1,4 +1,15 @@
-The intent is to follow the data model (FHIR profiles, valuesets and codesystems) contained in [NHS England FHIR Genomics Implementation Guide](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home) 
+
+The model used for communication is a [Canonical Data Model](https://en.wikipedia.org/wiki/Canonical_model) which is common across all technical formats (i.e. HL7 v2 and HL7 FHIR)
+
+At present, this implementation guide uses PDF documents to convey the `Clinical Data Model`, for purposes of this Implementation Guide, which is described in [NHS England FHIR Genomics Implementation Guide](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home). The use of PDF is expected to change with the `Clinical Data Model` eventually being represented via a structure similar to [HL7 Europe Laboratory Report](https://build.fhir.org/ig/hl7-eu/laboratory/), this should not alter the model presented here. 
+
+Elements from [NHS England FHIR Genomics Implementation Guide](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home) have been incorporated into this guide, in particular the use of [NHS Data Model and Dictionary Model](https://www.datadictionary.nhs.uk/) identifiers and other identifiers already present in HL7 v2 OML and ORU. 
+See [Identities and Codes](#identities-and-codes) for more details. 
+
+<img style="padding:3px;width:95%;" src="Canonical Model.drawio.png" alt="Enterprise Canonical Data Model"/>
+<br clear="all">
+<p class="figureTitle">Enterprise Canonical Data Model</p> 
+<br clear="all">
 
 ## Genomic Test Request Entity Model
 
