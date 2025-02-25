@@ -2,20 +2,22 @@
 
 skinparam svgDimensionStyle false
 
-title "Genomic Test Report"
 
-frame "Unsolicited Observation R01" as Message {
+  frame "Laboratory Report R01" as Composition {
 
-entity "FHIR Bundle (message)" as oru {
-identifier
-}
 
-class "[[StructureDefinition-MessageHeader.html MessageHeader]]" as MSH {
- focus
-}
+    entity "[[StructureDefinition-DiagnosticReport.html DiagnosticReport]]" as OBR <<aggregate>> {
+         identifier
+         category
+         code
+         performer
+         resultInterpreter
+         basedOn: ServiceRequest.identifier
+         results
+         }
 
-  frame "Laboratory Report" as Composition {
-     entity "[[StructureDefinition-Patient.html Patient]]\n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Patient Patient]] or [[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Fetus Fetus]])" as PID {
+
+    entity "[[StructureDefinition-Patient.html Patient]]\n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Patient Patient]] or [[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Fetus Fetus]])" as PID {
     [[StructureDefinition-NHSNumber.html NHSNumber]]
     [[StructureDefinition-MedicalRecordNumber.html MedicalRecordNumber]]
     }
@@ -33,49 +35,89 @@ class "[[StructureDefinition-MessageHeader.html MessageHeader]]" as MSH {
     accessionNumber
     }
 
-   class "[[StructureDefinition-Observation.html Observation]]" as OBX {
-     subject
-     code
-     value[x]
+    frame Results {
+
+         class "[[StructureDefinition-Observation.html Observation]]" as OBX {
+           subject
+           code
+           value[x]
+            }
+
+
+            class "[[StructureDefinition-Observation-Panel.html Observation Panel]]" as panel {
+            subject
+            code
+            hasmember
+            }
+
+         entity "[[StructureDefinition-DocumentReference.html DocumentReference]]\nGenomicFamilyStructure" as documentReference {
+                 type
+                 subject : Patient
+                 context.encounter : [[StructureDefinition-VisitNumber.html Visit Number]]
+                content.attachment
+              }
+
+
+          class "[[StructureDefinition-NWAttachment.html Attachment]]" as OBX2 {
+          contentType
+          url
+          }
+
+          class "[[StructureDefinition-Binary.html Binary]]" as binary
+    }
+    class "[[StructureDefinition-PractitionerRole.html PractitionerRole]]" as STF {
+       organisation : ODSCode
+       practitioner: GMP/GMC Number
+       specialty: ClinicalSpecialty
       }
 
 
-      class "[[StructureDefinition-Observation-Panel.html Observation Panel]]" as panel {
-      subject
-      code
-      hasmember
-      }
-
-   entity "[[StructureDefinition-DocumentReference.html DocumentReference]]\nGenomicFamilyStructure" as documentReference {
-           type
-           subject : Patient
-           context.encounter : [[StructureDefinition-VisitNumber.html Visit Number]]
-          content.attachment
-        }
-
-
-    entity "[[StructureDefinition-DiagnosticReport.html DiagnosticReport]]" as OBR <<aggregate>> {
-         identifier
-         category
-         code
-         basedOn: ServiceRequest.identifier
-         results
-    }
-    class "[[StructureDefinition-NWAttachment.html Attachment]]" as OBX2 {
-    contentType
-    url
-    }
-    class "[[StructureDefinition-Binary.html Binary]]" as binary
-
-
-    entity "RelatedPerson" as NK1
 
      panel *-d- "0" OBX: hasmember
   }
-}
 
-oru *-d- "1" MSH
-MSH *-d- "*" OBR: focus
+  frame "Patient Administration" {
+
+   entity "[[StructureDefinition-Encounter.html Encounter]]" as encounter {
+      identifier : [[StructureDefinition-VisitNumber.html Visit Number]]
+      encounter
+      episode
+      subject : Patient
+      }
+
+      entity "[[StructureDefinition-Patient.html Patient]]" as patient {
+       [[StructureDefinition-NHSNumber.html NHSNumber]]
+        [[StructureDefinition-MedicalRecordNumber.html MedicalRecordNumber]]
+        name
+        address
+        birthDate
+        gender
+        telecom
+      }
+
+
+  }
+
+  frame "Care Directory Services" {
+
+    entity "[[StructureDefinition-Practitioner.html Practitioner]]" as practitioner {
+    professionalCode
+    name
+    telecom
+    }
+
+    entity "[[StructureDefinition-Organizationr.html Organization]]" as organisation {
+     odsCode
+     name
+     telecom
+    }
+
+  }
+
+
+OBR o-- practitioner: resultInterpreter
+OBR o-- organisation: performer
+
 OBR o-- "0" SPM
 OBR "*" o--  ORC : basedOn.identifier
 OBR o-- "1" PID : subject
@@ -83,8 +125,12 @@ OBR *-- "0" PV1 : encounter
 OBR *-- "*" OBX : results
 OBR *-- "0" panel: results
 OBR *-- "*" OBX2: presentedForm
-NK1 -- PID : To link Mother and Fetus
-PID -- NK1
+
+
+
+  ORC *-- "1" STF: requester
+  SPM o-- "0" practitioner: collection.collector
+  PV1 o-- "0" practitioner: participant.individual
 
 OBX o-- PID: subject
 panel o-- PID: subject
@@ -92,5 +138,10 @@ documentReference o-- PID: subject
 documentReference *-- OBX2: content.attachment
 documentReference o-- PV1: context.encounter
 OBX2 *-- binary : url
+
+ PV1 -- encounter
+  PID -- patient
+  STF -- practitioner
+  STF -- organisation
 
 @enduml

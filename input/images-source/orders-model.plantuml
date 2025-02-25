@@ -2,29 +2,14 @@
 
   skinparam svgDimensionStyle false
 
-  title "Genomic Test Request"
 
-  frame "Laboratory Order O21" as Message {
-  entity "FHIR Bundle (messaage)" as oml <<aggregate>> {
-  identifier
-  }
-
-  class "[[StructureDefinition-MessageHeader.html MessageHeader]]" as MSH {
-   focus
-  }
-
-    frame "Template/Order Form" as Composition {
+    frame "Laboratory Order O21" as Composition {
       entity "[[StructureDefinition-Patient.html Patient]]" as PID {
       [[StructureDefinition-NHSNumber.html NHSNumber]]
       [[StructureDefinition-MedicalRecordNumber.html MedicalRecordNumber]]
       }
 
-      entity "[[StructureDefinition-Encounter.html Encounter]]" as PV1 {
-      identifier : [[StructureDefinition-VisitNumber.html Visit Number]]
-      encounter
-      episode
-      subject : Patient
-      }
+
 
 
       entity "[[StructureDefinition-ServiceRequest.html ServiceRequest]] \n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Test-Request Test Request]])" as ORC <<aggregate>> {
@@ -86,6 +71,8 @@
 
       }
 
+      class "[[StructureDefinition-VisitNumber.html Visit Number]]" as PV1
+
       documentReference *-d-> attachment
 
       attachment *-- binary : url
@@ -95,10 +82,47 @@
       OBX1 -d[hidden]- documentReference
 
    }
+
+  frame "Patient Administration" {
+
+   entity "[[StructureDefinition-Encounter.html Encounter]]" as encounter {
+      identifier : [[StructureDefinition-VisitNumber.html Visit Number]]
+      encounter
+      episode
+      subject : Patient
+      }
+
+      entity "[[StructureDefinition-Patient.html Patient]]" as patient {
+       [[StructureDefinition-NHSNumber.html NHSNumber]]
+        [[StructureDefinition-MedicalRecordNumber.html MedicalRecordNumber]]
+        name
+        address
+        birthDate
+        gender
+        telecom
+      }
+
+
   }
 
-  oml o-d- "1" MSH
-  MSH o-d- "1" ORC: focus
+  frame "Care Directory Services" {
+
+    entity "[[StructureDefinition-Practitioner.html Practitioner]]" as practitioner {
+    professionalCode
+    name
+    telecom
+    }
+
+    entity "[[StructureDefinition-Organizationr.html Organization]]" as organisation {
+     odsCode
+     name
+     telecom
+    }
+
+  }
+
+
+
   ORC *-- "0" SPM : specimen /\n accessionNumber
   ORC o-- "1" PID : subject
   ORC o-- "0" PV1 : encounter
@@ -108,8 +132,8 @@
   ORC *-- "0" panel: supportingInfo
   ORC *-- "0" documentReference: supportingInfo
   ORC *-- "1" STF: requester
-  SPM o-- "0" STF: collection.collector
-  PV1 o-- "0" STF: participant.individual
+  SPM o-- "0" practitioner: collection.collector
+  PV1 o-- "0" practitioner: participant.individual
   PV1 o-- "1" PID : subject
   SPM o-- "1" PID : subject
   documentReference o-- "1" PID : subject
@@ -118,5 +142,11 @@
   documentReference o-- "1" PV1 : context.encounter
 
   OBX1 o-- "1" PV1 : encounter
+
+  PV1 -- encounter
+  PID -- patient
+  STF -- practitioner
+  STF -- organisation
+
 
   @enduml
