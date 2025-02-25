@@ -105,7 +105,7 @@ DRAFT Extension of [UK Core DiagnosticReport](https://simplifier.net/hl7fhirukco
 * resultsInterpreter.identifier.system 1..1
 * resultsInterpreter.identifier.value 1..1
 * resultsInterpreter.type 1..1
-* resultsInterpreter only Reference(Practitioner)
+* resultsInterpreter only Reference(Practitioner or PractitionerRole)
 
 * resultsInterpreter ^slicing.discriminator.type = #value
 * resultsInterpreter ^slicing.discriminator.path = "type"
