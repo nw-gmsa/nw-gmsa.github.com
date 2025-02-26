@@ -45,7 +45,7 @@ Description: "TODO"
   * identifier.value = "P1S8J"
   * identifier.assigner.identifier.system = $ods-code
   * identifier.assigner.identifier.value = "699X0"
-  * display = "North West Genomic Laboratory Hub in Manchester "
+  * display = "North West Genomic Laboratory Hub in Manchester"
 
 
 * specimen[+].reference = "urn:uuid:89e66518-9197-4553-9253-5ab5133b62c0"
