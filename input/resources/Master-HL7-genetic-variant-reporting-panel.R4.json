@@ -1,7 +1,7 @@
 {
   "resourceType": "Questionnaire",
   "id": "81247-9",
-  "url": "https://hl7.mft.nhs.uk/Questionnaire/81247-9",
+  "url": "https://fhir.north-west.england.nhs.uk/Questionnaire/81247-9",
   "title": "Master HL7 genetic variant reporting panel",
   "status": "draft",
   "code": [

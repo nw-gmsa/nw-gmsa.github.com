@@ -9,3 +9,4 @@ When laboratory reports include a url link in DiagnosticReport, the FHIR Bundle 
 
 * url ^short = "Uri where the data can be found. Mandatory for PDF or FHIR Documents"
 * data ^short = "Data inline, base64ed. Not to be used for PDF or FHIR Documents"
+* contentType from DocumentEntryMimeType
