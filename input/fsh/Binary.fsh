@@ -4,3 +4,5 @@ Id:             Binary
 Title:          "Binary"
 Description:    "TODO"
 
+* contentType from DocumentEntryMimeType
+
