@@ -4,7 +4,7 @@ Title: "Document Reference Laboratory Report"
 Description: "TODO"
 
 * identifier[+].value = "94bf65ba-cd6c-4601-b339-6d547f424646"
-* identifier[=].system = "https://fhir.mft.nhs.uk/Id"
+* identifier[=].system = "urn:oid:1.2.840.114350.1.13.5325.1.7.2.798268"
 * identifier[=].assigner.identifier.system = $ods-code
 * identifier[=].assigner.identifier.value = "699X0"
 

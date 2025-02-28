@@ -7,15 +7,15 @@ Description: "TODO"
 
 * identifier[placerOrderNumber].type = $v2-0203#PLAC
 * identifier[placerOrderNumber].value = "1601737"
-* identifier[placerOrderNumber].system = "https://fhir.mft.nhs.uk/Id/PlacerOrderNumber/Hive"
+* identifier[placerOrderNumber].system = "urn:oid:1.2.840.114350.1.13.861.1.7.2.798268"
 * identifier[placerOrderNumber].assigner.identifier.system = $ods-code
 * identifier[placerOrderNumber].assigner.identifier.value = "R0A"
 
-* identifier[accessionNumber].type = $v2-0203#ACSN
-* identifier[accessionNumber].value = "1001166717"
-* identifier[accessionNumber].system = "https://fhir.mft.nhs.uk/Id/AccessionNumber"
-* identifier[accessionNumber].assigner.identifier.system = $ods-code
-* identifier[accessionNumber].assigner.identifier.value = "699X0"
+* identifier[fillerOrderNumber].type = $v2-0203#FILL
+* identifier[fillerOrderNumber].value = "1001166717"
+* identifier[fillerOrderNumber].system = "https://fhir.nwgmsa.nhs.uk/Id/OrderFillerNumber"
+* identifier[fillerOrderNumber].assigner.identifier.system = $ods-code
+* identifier[fillerOrderNumber].assigner.identifier.value = "699X0"
 
 * status = #active
 * intent = #order

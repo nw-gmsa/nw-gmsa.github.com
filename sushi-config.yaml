@@ -162,7 +162,7 @@ groups:
       - Bundle/GenomicsOrderMessageCodedEntries
       - Bundle/GenomicsOrderSearchSet
       - DocumentReference/a293b4a6-e46b-4402-9b2b-d9517afc7137
-      - Encounter/fe5a1b08-84c9-46e6-8162-d2dcf3e67141
+      - Encounter/984b8a89-4194-4eb4-a7ea-ca8049ebeea3
       - MessageHeader/MessageHeaderGenomicOrder
       - MessageHeader/MessageHeaderGenomicOrderAcknowledgement
       - QuestionnaireResponse/QuestionnaireResponseOrderEntryExample
@@ -186,7 +186,6 @@ groups:
     resources:
       - Bundle/FHIRDocumentGeneticReportBundle
       - Composition/Composition-GenomicsReport-OctaviaCHISLETT
-      - Encounter/984b8a89-4194-4eb4-a7ea-ca8049ebeea3
       - Observation/EPIC-OBR-1
       - Observation/EPIC-OBX-1
       - Observation/EPIC-OBX-2

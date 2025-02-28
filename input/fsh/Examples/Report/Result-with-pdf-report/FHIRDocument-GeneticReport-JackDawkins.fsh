@@ -36,8 +36,6 @@ Usage: #example
 * insert EntryDocument("urn:uuid:30551ce1-5a28-4356-b684-1e639094ad4d", Composition-GenomicsReport-OctaviaCHISLETT)
 * insert EntryDocument("urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd", Patient-OctaviaCHISLETT-9449305552)
 * insert EntryDocument("urn:uuid:c64139e7-f02d-409c-bf34-75e8bf23bc80", DiagnosticReportGenomicsReport)
-// Encounter
-* insert EntryDocument("urn:uuid:fe5a1b08-84c9-46e6-8162-d2dcf3e67141", fe5a1b08-84c9-46e6-8162-d2dcf3e67141)
 // DocumentReference
 * insert EntryDocument("urn:uuid:94bf65ba-cd6c-4601-b339-6d547f424646", 94bf65ba-cd6c-4601-b339-6d547f424646)
 // Binary
