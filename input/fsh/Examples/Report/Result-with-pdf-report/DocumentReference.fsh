@@ -19,7 +19,13 @@ Description: "TODO"
     * system = $sct
 
 // EPIC PV1
-* context.encounter[+].reference = "urn:uuid:fe5a1b08-84c9-46e6-8162-d2dcf3e67141"
+* context.encounter[+]
+  * identifier
+    * value = "1001166717"
+    * system = "https://fhir.nhs.uk/Id/visit-number/R0A"
+    * type = $v2-0203#VN
+    * assigner.identifier.system = $ods-code
+    * assigner.identifier.value = "R0A"
 
 * context.related[fillerOrderNumber].identifier.value = "1001166717"
 * context.related[fillerOrderNumber].identifier.system = "https://fhir.mft.nhs.uk/Id/FillerOrderNumber"
