@@ -61,6 +61,9 @@ Where the `Order Placer` sends the **Laboratory Order** to the `Order Filler`, t
 |                          | Order is updated                                     |           | [Genomic Test Order entered on GLH (Order Filler)](#use-case-2-genomic-test-order-following-on-from-pathology-test-order) |                                                                                                                                                                              |
 | (Pathology) Order Placer | Same as Order Placer                                 | &check;   | [Genomic Test Order following on from Pathology Test Order](#use-case-3-genomic-test-order-entered-on-glh-order-filler)   | Can include Pathology **Laboratory Report**                                                                                                                                  |                                                                                                                                 |
 
+### Report Event Triggers
+
+TODO
 
 ## Use Case 1: Genomic Test Order
 
