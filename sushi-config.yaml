@@ -112,6 +112,9 @@ pages:
   hl7v2.md:
     title: HL7 v2 Artefacts
     generation: markdown
+  architecture.md:
+    title: Architecture
+    generation: markdown
   testing.md:
     title: Testing
     generation: markdown
@@ -148,6 +151,7 @@ menu:
   Artefacts: artifacts.html
   HL7 v2 Artefacts: hl7v2.html
   Development:
+    Architecture: architecture.html
     Testing: testing.html
     Support: support.html
 
