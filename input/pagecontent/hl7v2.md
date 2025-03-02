@@ -12,15 +12,18 @@
 
 #### Message
 
-| Segment HL7 | Optionality | Notes                                                   |
-|-------------|-------------|---------------------------------------------------------|
-| [MSH](#msh) | 1..1        |                                                         |
-| [PID](#pid) | 1..1        |                                                         |
-| [PV1](#pv1) | 0..1        | PV1 should be populated if PV1-19 Visit Number is known |
-| [ORC](#orc) | 0..*        |                                                         |
-| [OBR](#obr) | 1..*        |                                                         |
-| [OBX](#obx) | 1..*        |                                                         |
-| [SPM](#spm) | 1..1        | |
+| Segment HL7             | Optionality | Notes                                                   |
+|-------------------------|-------------|---------------------------------------------------------|
+| [MSH](#msh)             | 1..1        |                                                         |
+| [PID](#pid)             | 1..1        |                                                         |
+| [PV1](#pv1)             | 0..1        | PV1 should be populated if PV1-19 Visit Number is known |
+| **ORDER**               | 1..*        |                                                         |
+| [ORC](#orc)             | 0..*        |                                                         |
+| **OBSERVATION REQUEST** | 1..*        |                                                         |
+| [OBR](#obr)             | 1..*        |                                                         |
+| [OBX](#obx)             | 1..*        |                                                         |
+| **SPECIMEN**            | 0..*        | Conditional - required for complete order               |
+| [SPM](#spm)             | 0..1        |                                                         |
 
 ### ORU_R01 Unsolicited transmission of an observation message
 
@@ -33,14 +36,16 @@
 
 #### Message
 
-| Segment HL7 | Optionality | Notes                                                   |
-|-------------|-------------|---------------------------------------------------------|
-| [MSH](#msh) | 1..1        |                                                         |
-| [PID](#pid) | 1..1        |                                                         |
-| [PV1](#pv1) | 0..1        | PV1 should be populated if PV1-19 Visit Number is known |
-| [ORC](#orc) | 0..*        |                                                         |
-| [OBR](#obr) | 1..*        |                                                         |
-| [OBX](#obx) | 1..*        |                                                         |
+| Segment HL7           | Optionality | Notes                                                   |
+|-----------------------|-------------|---------------------------------------------------------|
+| [MSH](#msh)           | 1..1        |                                                         |
+| [PID](#pid)           | 1..1        |                                                         |
+| [PV1](#pv1)           | 0..1        | PV1 should be populated if PV1-19 Visit Number is known |
+| **ORDER OBSERVATION** | 1..*        |                                                         |
+| [ORC](#orc)           | 0..*        |                                                         |
+| [OBR](#obr)           | 1..*        |                                                         |
+| **OBSERVATION**       | 1..*        |                                                         |
+| [OBX](#obx)           | 1..*        |                                                         |
  
 ## Segments
 
