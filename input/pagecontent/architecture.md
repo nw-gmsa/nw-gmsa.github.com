@@ -16,13 +16,13 @@ This canonical model is a mandatory extension to [HL7 UK Core](https://simplifie
 - [IHE Europe Metadata for exchange medical documents and images](https://www.ihe-europe.net/sites/default/files/2017-11/IHE_ITI_XDS_Metadata_Guidelines_v1.0.pdf) see UK content.
 - [NHS Data Model and Dictionary](https://www.datadictionary.nhs.uk/)
 
-> This canonical model is not specific to Genomics. 
+> This canonical model is not specific to Genomics. It is focused on standard message construction patterns in particular [CorrelationIdentifier](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CorrelationIdentifier.html) such as Order Numbers and Episode/Stay Identifiers and use of Clinical Coding Systems such as UK SNOMED CT. 
 > 
 > Genomic Specific modelling, which this model supports, can be found on [NHS England FHIR Genomics Implementation Guide](https://simplifier.net/guide/fhir-genomics-implementation-guide)
 
 To support genomics workflow, this guide is aligned to enterprise workflow processes described in [IHE Laboratory Testing Workflow](https://wiki.ihe.net/index.php/Laboratory_Testing_Workflow), terminology from this guide especially around Actors is used throughout this Implementation Guide.
 
-Three types of messages are used within this process:
+Three types of messages are used within this workflow process:
 
 | Message Type                                                                                                  | HL7 Name                     | IHE Name                                                         | Description                                             |
 |---------------------------------------------------------------------------------------------------------------|------------------------------|------------------------------------------------------------------|---------------------------------------------------------|
@@ -35,6 +35,11 @@ Three types of messages are used within this process:
 <p class="figureTitle">ESB Architecture</p> 
 <br clear="all">
 
-
-
+1. Transform to HL7 FHIR - The ESB internal format is HL7 FHIR, if HL7 v2 Messages are used they will be converted to HL7 FHIR.
+2. Accept Message - Uses HL7 FHIR Validation to check the message conforms to the Canonical Model, errors will result in a rejection of the message.
+3. Distribution List - The message is distributed based on the content of the event header (FHIR MessageHeader resource/v2 MSH Segment).
+4. Transform to HL7 v2 - If required, messages are converted to HL7 v2. The message is sent onto the recipient, this may be another ESB (Trust Integration Engine) or a endpoint system.
+5. API Adaptor - This will be used to send orders and reports to out of area systems via the NHS England Genomic Order Management Service (GOMS). This involves:
+   1. Processing the messages and storing its data on a FHIR Server. GOMS does not support messaging and so the ESB must convert the message from [FHIR Message](https://hl7.org/fhir/R4/messaging.html) to series of [FHIR RESTful](https://hl7.org/fhir/R4/http.html) calls paying particular attention to the business logic implemented in external FHIR server.
+   2. The API Adaptor in the ESB, reduces the development cost of interfacing with GOMS across the region. 
 
