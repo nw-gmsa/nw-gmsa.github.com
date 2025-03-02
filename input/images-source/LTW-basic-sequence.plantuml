@@ -1,0 +1,13 @@
+@startuml
+
+hide footbox
+
+participant "Order Placer" as EPR
+participant "Order Filler" as LIMS
+
+
+EPR -> LIMS: \nSend** Laboratory Order O21**
+LIMS -> LIMS: Perform Tests
+LIMS -> EPR: \nSend** Laboratory Report R01**
+
+@enduml
