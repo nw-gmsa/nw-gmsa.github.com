@@ -51,7 +51,7 @@ DRAFT Extension of [UK Core DiagnosticReport](https://simplifier.net/hl7fhirukco
 * encounter ^short = "Health care event when test ordered. (HL7 v2 PV1-19)"
 * encounter only Reference(Encounter)
 * encounter.identifier only VisitNumber
-* encounter.identifier ^short = "(HL7v2 PV1-19 from OML_O21)"
+* encounter.identifier ^short = "(HL7v2 PV1-19 Visit Number from OML_O21)"
 * encounter.identifier insert Obligation(#SHALL:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderFiller)
 * encounter.identifier insert Obligation(#SHALL:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderPlacer)
 * encounter.identifier insert Obligation(#SHALL:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/AutomationManager)
