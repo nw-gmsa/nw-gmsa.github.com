@@ -117,12 +117,13 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * supportingInfo ^slicing.description = "Slice based on the coding.system"
 * supportingInfo ^slicing.ordered = false
 * supportingInfo contains
-  LaboratoryReport 0..1 MS and PatientSummary 0..1 MS
+  PriorResult 0..1 MS and PatientSummary 0..1 MS
 
-* supportingInfo[LaboratoryReport] only Reference(DiagnosticReport)
-* supportingInfo[LaboratoryReport].type = #DiagnosticReport
-* supportingInfo[LaboratoryReport].identifier 1..1 MS
-* supportingInfo[LaboratoryReport].identifier only CorrelationIdentifier
+* supportingInfo[PriorResult] ^short = "Equivalent of HL7 v2 OML_O21 PRIOR RESULT"
+* supportingInfo[PriorResult] only Reference(DiagnosticReport)
+* supportingInfo[PriorResult].type = #DiagnosticReport
+* supportingInfo[PriorResult].identifier 1..1 MS
+* supportingInfo[PriorResult].identifier only CorrelationIdentifier
 
 * supportingInfo[PatientSummary] only Reference(DocumentReference)
 * supportingInfo[PatientSummary].type = #DocumentReference
