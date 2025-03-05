@@ -62,7 +62,7 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * code.coding[PathologyAndLaboratoryMedicine].system = $sct
 
 * code.coding[NICIP] ^short = "Use for Radiology Orders"
-* code.coding[NICIP] from https://fhir.hl7.org.uk/ValueSet/UKCore-PathologyAndLaboratoryMedicineObservables
+* code.coding[NICIP] from https://fhir.interweavedigital.nhs.uk/R4/ValueSet/Interweave-NICIP
 * code.coding[NICIP].system = "https://fhir.interweavedigital.nhs.uk/CodeSystem/Interweave-NICIP"
 
 * category 1..* MS
@@ -80,9 +80,10 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * category[genomicsWholeCaseSequencing] 0..1 MS
 
 * encounter 0..1 MS
+* encounter ^short = "A reference identifier to the episode/stay/visit number in which the request was created. (HL7 v2 PV1-19)"
 * encounter only Reference(Encounter)
-* encounter.identifier ^short = "(HL7 v2 PV1-19 Visit Number)"
 * encounter.identifier only VisitNumber
+* encounter.identifier 0..1 MS
 * encounter.identifier insert Obligation(#SHALL:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderFiller)
 * encounter.identifier insert Obligation(#SHALL:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderPlacer)
 * encounter.identifier insert Obligation(#SHALL:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/AutomationManager)
