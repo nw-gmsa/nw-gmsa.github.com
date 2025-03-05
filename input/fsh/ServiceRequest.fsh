@@ -120,7 +120,7 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * supportingInfo contains
   PriorResult 0..1 MS and PatientSummary 0..1 MS
 
-* supportingInfo[PriorResult] ^short = "Equivalent of HL7 v2 OML_O21 PRIOR RESULT"
+* supportingInfo[PriorResult] ^short = "Equivalent of HL7 v2 OML_O21 PRIOR RESULT (as PDF)"
 * supportingInfo[PriorResult] only Reference(DiagnosticReport)
 * supportingInfo[PriorResult].type = #DiagnosticReport
 * supportingInfo[PriorResult].identifier 1..1 MS
