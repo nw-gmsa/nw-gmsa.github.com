@@ -23,6 +23,8 @@ DRAFT Extension of UKCore-Patient which includes constraints from:
 * identifier[MedicalRecordNumber] only MedicalRecordNumber
 * identifier[MedicalRecordNumber] ^short = "Medical Record Number"
 
+* address.postalCode 1..1 MS
+
 * name 1..* MS
 * gender 0..1 MS
 * birthDate 0..1 MS
