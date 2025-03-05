@@ -18,28 +18,24 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * identifier ^slicing.description = "Slice based on the type"
 * identifier ^slicing.ordered = false
 * identifier contains
-  placerOrderNumber 0..1 MS and fillerOrderNumber 0..1 MS and placerGroupNumber 0..1 MS and accessionNumber 0..1 MS
+  placerOrderNumber 0..1 MS and fillerOrderNumber 0..1 MS
 
 * identifier[placerOrderNumber] only PlacerOrderNumber
 * identifier[placerOrderNumber] ^short = "Identifier assigned by the Order Placer. (HL7 v2 ORC-2/OBR-2 Placer Order Number)"
 * identifier[placerOrderNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderFiller)
 * identifier[placerOrderNumber] insert Obligation(#SHALL:populate, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderPlacer)
 * identifier[placerOrderNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/AutomationManager)
-* identifier[accessionNumber] only AccessionNumber
-* identifier[accessionNumber] ^short = "Identifier assigned by the lab (Order Filler). (HL7 v2 ORC-3/OBR-3 Filler Order Number)"
-* identifier[accessionNumber] insert Obligation(#SHALL:populate, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderFiller)
-* identifier[accessionNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderPlacer)
-* identifier[accessionNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/AutomationManager)
 * identifier[fillerOrderNumber] only FillerOrderNumber
 * identifier[fillerOrderNumber] ^short = "Identifier assigned by the lab (Order Filler)"
 * identifier[fillerOrderNumber] insert Obligation(#SHALL:populate, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderFiller)
 * identifier[fillerOrderNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderPlacer)
 * identifier[fillerOrderNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/AutomationManager)
-* identifier[placerGroupNumber] only PlacerGroupNumber
-* identifier[placerGroupNumber] ^short = "Identifier assigned by the Order Placer. (HL7 v2 ORC-4 Placer Group Number)"
-* identifier[placerGroupNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderFiller)
-* identifier[placerGroupNumber] insert Obligation(#SHALL:populate, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderPlacer)
-* identifier[placerGroupNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/AutomationManager)
+
+* requisition only PlacerGroupNumber
+* requisition ^short = "Identifier assigned by the Order Placer. (HL7 v2 ORC-4 Placer Group Number)"
+* requisition insert Obligation(#SHOULD:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderFiller)
+* requisition insert Obligation(#SHALL:populate, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderPlacer)
+* requisition insert Obligation(#SHOULD:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/AutomationManager)
 
 * code ^short = "ISSUE. See [National Genomic Test Directory](https://www.england.nhs.uk/wp-content/uploads/2018/08/rare-and-inherited-disease-eligibility-criteria-v2.pdf)."
 * code 1..1 MS
