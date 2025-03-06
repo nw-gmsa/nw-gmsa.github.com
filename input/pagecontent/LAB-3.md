@@ -53,7 +53,7 @@ Detailed Mapping can be here [Message ORU_R01 to Bundle Map (Experimental)](http
 </figure>
 <br clear="all">
 
-### Polling
+### Message Delivery - Polling
 
 During initial phases the 'laboratory report' will be delivered following a [EIP Polling Consumer](https://www.enterpriseintegrationpatterns.com/patterns/messaging/PollingConsumer.html) pattern. This will follow HL7 FHIR [Asynchronous Messaging using the RESTful API](https://hl7.org/fhir/R4/messaging.html#rest)
 
