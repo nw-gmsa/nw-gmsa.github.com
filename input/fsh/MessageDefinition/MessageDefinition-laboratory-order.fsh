@@ -25,6 +25,5 @@ DRAFT conversion of [HL7 v2.5.1 OML_O21](https://hl7-definition.caristix.com/v2/
   * min = 1
   * max = "*"
 
-* allowedResponse[+].message = Canonical(laboratory-order-acknowledgement)
 
 

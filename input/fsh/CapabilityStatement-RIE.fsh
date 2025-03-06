@@ -1,6 +1,6 @@
 Instance: CapabilityStatementRIE
 InstanceOf: CapabilityStatement
-Title: "CapabilityStatement for MFT Regional Integration Engine for Genomics"
+Title: "CapabilityStatement for NW GMSA Regional Integration Engine for Genomics"
 Usage: #definition
 
 * description = """
@@ -119,6 +119,3 @@ The `OpenAPISwagger Definition file` below, can be viewed using [Swagger Editor]
   * supportedMessage[+]
     * mode = #sender
     * definition = Canonical(unsolicited-observation)
-  * supportedMessage[+]
-    * mode = #sender
-    * definition = Canonical(laboratory-order-acknowledgement)
