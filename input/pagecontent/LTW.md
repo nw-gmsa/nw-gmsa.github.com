@@ -22,8 +22,8 @@ See also Ref A `Section 3 Laboratory Testing Workflow (LTW) Profile` for detaile
 </figure>
 <br clear="all">
 
-Initially only the IHE `LAB-1` and `LAB-4` is in focus and this is probably using HL7 v2.x ORM_O01/OML_O21 as described below.
-This will be followed by IHE `LAB-3` probably using HL7 v2.x ORU_R01 plus `LAB-2` and `LAB-5`
+Initially only the IHE `LAB-1` and `LAB-4` is in focus.
+
 Later stages will include the use of [Genomic Order Management Service](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir).
 
 ## Overview
@@ -38,7 +38,7 @@ The processes above are described in more detail in:
 - [Use Case 1: Genomic Test Order](#use-case-1-genomic-test-order) for the order
 - [Use Case 4: Genomic Test Report](#use-case-4-genomic-test-report) for the report
 
-From a technical perspective the process is 
+From a high level perspective the process is 
 
 <figure>
 {%include LTW-basic-sequence.svg%}
@@ -46,24 +46,8 @@ From a technical perspective the process is
 </figure>
 <br clear="all">
 
-Where the `Order Placer` sends the **Laboratory Order** to the `Order Filler`, the lab performs the test and then sends the **Laboratory Report** back to the `Order Placer`. However, variations exist such as the order is updated or the order is entered directly on the `Order Filler`system.
+Where the `Order Placer` sends the **Laboratory Order** to the `Order Filler`, the lab performs the test and then sends the **Laboratory Report** back to the `Order Placer`. However, variations can exist such as the order is updated or the order is entered directly on the `Order Filler`system (these are currently out of scope).
 
-### Order Event Triggers
-
-> The list of triggers resembles real life [conversations](https://www.enterpriseintegrationpatterns.com/patterns/conversation/), they may not be supported by all systems.
-
-| Actor                    | Trigger                                              | Mandatory | Use case                                                                                                                  | Advantages                                                                                                                                                                   |  
-|--------------------------|------------------------------------------------------|-----------|---------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Order Placer             | Order has been created                               |           | [Genomic Test Order](#use-case-1-genomic-test-order)                                                                      | Order Filler knows an order has been created                                                                                                                                 |
-|                          | Order is ready for processing (includes Specimen id) | &check;   | [Genomic Test Order](#use-case-1-genomic-test-order)                                                                      | Order Filler has enough information                                                                                                                                          |                                  |
-|                          | Order updated (e.g. specimen has been collected)     |           | [Genomic Test Order](#use-case-1-genomic-test-order)                                                                      | Informs Order Filler of changes to the order.                                                                                                                                |
-| Order Filler             | Order has created                                    |           | [Genomic Test Order entered on GLH (Order Filler)](#use-case-2-genomic-test-order-following-on-from-pathology-test-order) | Informs the `Order Placer` an order has been created and can be used to automate workflow such as collecting specimens perform workflow actions such as collecting specimens |
-|                          | Order is updated                                     |           | [Genomic Test Order entered on GLH (Order Filler)](#use-case-2-genomic-test-order-following-on-from-pathology-test-order) |                                                                                                                                                                              |
-| (Pathology) Order Placer | Same as Order Placer                                 | &check;   | [Genomic Test Order following on from Pathology Test Order](#use-case-3-genomic-test-order-entered-on-glh-order-filler)   | Can include Pathology **Laboratory Report**                                                                                                                                  |                                                                                                                                 |
-
-### Report Event Triggers
-
-TODO
 
 ## Use Case 1: Genomic Test Order
 
@@ -152,8 +136,7 @@ The detail of this form/template defines:
 
 ### Collect Sample and Update Genomic Test Order
 
-After submitting the original order, the order will be updated to include details such as a specimen collection date, order filler number, etc.
-This is also a method of notifying organisations of orders entered directly in the `Order Filler` system, see [LAB-2](LAB-2.html).
+After submitting the original order, the sample will be collected and sent to the Order Filler. The Order Filler will update the Test Order to include details such as a specimen collection date, order filler number, etc.
 
 ## Use Case 2: Genomic Test Order following on from Pathology Test Order
 

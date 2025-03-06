@@ -52,7 +52,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="jTdIVBTPUZk9hlG6x69J-26" value="Update Order" style="points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];shape=mxgraph.bpmn.task2;whiteSpace=wrap;rectStyle=rounded;size=10;html=1;container=1;expand=0;collapsible=0;taskMarker=send;" vertex="1" parent="jTdIVBTPUZk9hlG6x69J-2">
+        <mxCell id="jTdIVBTPUZk9hlG6x69J-26" value="Update Order" style="points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];shape=mxgraph.bpmn.task2;whiteSpace=wrap;rectStyle=rounded;size=10;html=1;container=1;expand=0;collapsible=0;taskMarker=send;dashed=1;" vertex="1" parent="jTdIVBTPUZk9hlG6x69J-2">
           <mxGeometry x="490" y="240" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="jTdIVBTPUZk9hlG6x69J-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="jTdIVBTPUZk9hlG6x69J-2" source="jTdIVBTPUZk9hlG6x69J-21" target="jTdIVBTPUZk9hlG6x69J-26">
@@ -78,9 +78,6 @@
         </mxCell>
         <mxCell id="jTdIVBTPUZk9hlG6x69J-14" value="Receive Order" style="points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];shape=mxgraph.bpmn.task2;whiteSpace=wrap;rectStyle=rounded;size=10;html=1;container=1;expand=0;collapsible=0;taskMarker=receive;" vertex="1" parent="jTdIVBTPUZk9hlG6x69J-4">
           <mxGeometry x="320" y="30" width="120" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="jTdIVBTPUZk9hlG6x69J-22" value="Receive&amp;nbsp; Updated Order" style="points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];shape=mxgraph.bpmn.task2;whiteSpace=wrap;rectStyle=rounded;size=10;html=1;container=1;expand=0;collapsible=0;taskMarker=receive;" vertex="1" parent="jTdIVBTPUZk9hlG6x69J-4">
-          <mxGeometry x="490" y="30" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="jTdIVBTPUZk9hlG6x69J-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="jTdIVBTPUZk9hlG6x69J-4" source="jTdIVBTPUZk9hlG6x69J-43" target="jTdIVBTPUZk9hlG6x69J-18">
           <mxGeometry relative="1" as="geometry" />
@@ -110,7 +107,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="jTdIVBTPUZk9hlG6x69J-43" value="Receive&amp;nbsp; Sample&lt;br&gt;(postal service)" style="points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];shape=mxgraph.bpmn.task2;whiteSpace=wrap;rectStyle=rounded;size=10;html=1;container=1;expand=0;collapsible=0;taskMarker=receive;" vertex="1" parent="jTdIVBTPUZk9hlG6x69J-4">
+        <mxCell id="jTdIVBTPUZk9hlG6x69J-43" value="Receive&amp;nbsp; Sample&lt;br&gt;(postal service)" style="points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];shape=mxgraph.bpmn.task2;whiteSpace=wrap;rectStyle=rounded;size=10;html=1;container=1;expand=0;collapsible=0;taskMarker=user;bpmnShapeType=task;" vertex="1" parent="jTdIVBTPUZk9hlG6x69J-4">
           <mxGeometry x="660" y="30" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="jTdIVBTPUZk9hlG6x69J-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="jTdIVBTPUZk9hlG6x69J-1" source="jTdIVBTPUZk9hlG6x69J-11" target="jTdIVBTPUZk9hlG6x69J-14">
@@ -118,14 +115,6 @@
         </mxCell>
         <mxCell id="jTdIVBTPUZk9hlG6x69J-20" value="IHE LAB-1&lt;br&gt;HL7 Laboratory Order O21" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="jTdIVBTPUZk9hlG6x69J-15">
           <mxGeometry x="-0.1778" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="jTdIVBTPUZk9hlG6x69J-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="jTdIVBTPUZk9hlG6x69J-1" source="jTdIVBTPUZk9hlG6x69J-26" target="jTdIVBTPUZk9hlG6x69J-22">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="jTdIVBTPUZk9hlG6x69J-28" value="IHE LAB-1&lt;br&gt;Hl7 Laboratory Order O21" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="jTdIVBTPUZk9hlG6x69J-27">
-          <mxGeometry x="-0.1333" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>

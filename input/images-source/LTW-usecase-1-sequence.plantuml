@@ -13,15 +13,9 @@ EPR -> EPR: Complete Test Order Form
 EPR -> TIE: \nSend HL7 FHIR Message\n**Laboratory Order O21**
 TIE -> LIMS: Send HL7 v2 Message\n**OML_O21**
 
-EPR -> EPR: Collect Sample
 
-== Update Genomic Test Order ==
-loop Order Filler
-LIMS -> TIE : Send HL7 v2 Message\n**OML_O21**
-TIE -> EPR  : \nSend HL7 FHIR Message\n**Laboratory Order O21**
-else Order Placer
-EPR -> TIE: \nSend HL7 FHIR Message\n**Laboratory Order O21**
-TIE -> LIMS: Send HL7 v2 Message\n**OML_O21**
-end
+== Collect Sample ==
+EPR -> EPR: Collect Sample
+LIMS -> LIMS: Update Test Order
 
 @enduml

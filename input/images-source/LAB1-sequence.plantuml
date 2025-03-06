@@ -12,12 +12,12 @@ EPR -> TIE: Submit Test Order Form\n(Send HL7 FHIR Message)\n**Laboratory Order 
 TIE -> TIE: Validate Message
 
 alt Successful validation
+TIE --> EPR: Response HL7 FHIR Message\n**Positive acknowledgement (AA)**
 TIE -> TIE : Transform HL7 FHIR to v2 Message
 TIE -> LIMS: Send HL7 v2 Message\n**OML_O21/(ORM_O01)**
 LIMS --> TIE: Response HL7 v2 Message\n**ORL_O22?**
-TIE --> EPR: Response HL7 FHIR Message\n**Laboratory Order Acknowledgment O22)**
 else Unsuccessful validation
-TIE --> EPR: Response HL7 FHIR Message\n**Laboratory Order Acknowledgment O22**
+TIE --> EPR: Response HL7 FHIR Message\n**Application Reject (AR/AE)**
 end
 
 @enduml

@@ -52,3 +52,94 @@ Detailed Mapping can be here [Message ORU_R01 to Bundle Map (Experimental)](http
 <p id="fX.X.X.X-X" class="figureTitle">Regional Order Results management [LAB-3] Sequence Diagram</p>
 </figure>
 <br clear="all">
+
+### Polling
+
+During initial phases the 'laboratory report' will be delivered following a [EIP Polling Consumer](https://www.enterpriseintegrationpatterns.com/patterns/messaging/PollingConsumer.html) pattern. This will follow HL7 FHIR [Asynchronous Messaging using the RESTful API](https://hl7.org/fhir/R4/messaging.html#rest)
+
+The Order Placer (or TIE) FHIR RESTful query to retrieve their messages.
+
+```
+GET [base]/Bundle?message.receiver:identifier=[odsCode]&_lastUpdated=[date]
+```
+
+Example returned search results [Bundle 'SearchSet' - Genomics Order](Bundle-GenomicsOrderSearchSet.html)
+
+Initially only queries by ODS Code will be supported to support TIE to TIE exchanges.
+
+#### Update HL7 FHIR Messages
+
+Messages that have been accepted by the calling Order Place (or TIE), need to be acknowledged and removed from the MessageQueue. This is achieved by sending back the messages with the sender and destination fields reversed, i.e.
+
+**Orignial Message Header**
+
+```
+{
+  "resourceType" : "MessageHeader",
+  "eventCoding" : {
+    "system" : "http://terminology.hl7.org/CodeSystem/v2-0003",
+    "code" : "O22"
+  },
+  "destination" : [
+    {
+      "endpoint" : "https//hive.mft.nhs.uk",
+      "receiver" : {
+        "identifier" : {
+          "system" : "https://fhir.nhs.uk/Id/ods-organization-code",
+          "value" : "R0A"
+        }
+      }
+    }
+  ],
+  "sender" : {
+    "identifier" : {
+      "system" : "https://fhir.nhs.uk/Id/ods-organization-code",
+      "value" : "699X0"
+    }
+  },
+  "response" : {
+    "identifier" : "9612365d-52a4-4fab-87e7-8a09d753f095",
+    "code" : "ok"
+  }
+}
+```
+
+**Message Header for returned update**
+
+```
+{
+  "resourceType" : "MessageHeader",
+  "eventCoding" : {
+    "system" : "http://terminology.hl7.org/CodeSystem/v2-0003",
+    "code" : "O22"
+  },
+  "destination" : [
+    {
+      "receiver" : {
+        "identifier" : {
+          "system" : "https://fhir.nhs.uk/Id/ods-organization-code",
+          "value" : "699X0"
+        }
+      }
+    }
+  ],
+  "sender" : {
+    "identifier" : {
+      "system" : "https://fhir.nhs.uk/Id/ods-organization-code",
+      "value" : "R0A"
+    }
+  },
+  "response" : {
+    "identifier" : "9612365d-52a4-4fab-87e7-8a09d753f095",
+    "code" : "ok"
+  }
+}
+```
+
+This update is sent back to the RIE as a [FHIR Transaction](https://hl7.org/fhir/R4/http.html#transaction)
+
+```
+POST [base]/
+```
+
+
