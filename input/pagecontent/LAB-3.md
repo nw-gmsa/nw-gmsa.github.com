@@ -78,7 +78,7 @@ Messages that have been accepted by the calling Order Place (or TIE), need to be
   "resourceType" : "MessageHeader",
   "eventCoding" : {
     "system" : "http://terminology.hl7.org/CodeSystem/v2-0003",
-    "code" : "O22"
+    "code" : "R01"
   },
   "destination" : [
     {
@@ -111,7 +111,7 @@ Messages that have been accepted by the calling Order Place (or TIE), need to be
   "resourceType" : "MessageHeader",
   "eventCoding" : {
     "system" : "http://terminology.hl7.org/CodeSystem/v2-0003",
-    "code" : "O22"
+    "code" : "R01"
   },
   "destination" : [
     {

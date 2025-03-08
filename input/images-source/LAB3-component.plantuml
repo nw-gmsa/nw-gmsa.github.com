@@ -13,7 +13,7 @@ interface "HL7 v2 Message\nORU_R01" as HL7_ORU1
 
 interface "HL7 v2 Message\nORU_R01" as HL7_ORU2
 
-interface "HL7 FHIR Message\n**Laboratory Result O21**" as HL7_R01
+interface "HL7 FHIR Message\n**Laboratory Result R01**" as HL7_R01
 }
 
 LIMS -d-> HL7_ORU1
