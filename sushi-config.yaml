@@ -6,7 +6,7 @@ id: north-west.england.nhs.uk
 canonical: https://fhir.north-west.england.nhs.uk
 version: 0.0.1
 name: MFT_Genomics
-title: NHS England North West GMSA - IHE Laboratory Testing Workflow (LTW)"
+title: NHS England North West GMSA - IHE Laboratory Testing Workflow (LTW)
 description: NHS England North West GMSA - IHE Laboratory Testing Workflow (LTW)
 releaseLabel: ci-build
 
