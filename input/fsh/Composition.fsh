@@ -1,6 +1,6 @@
 Profile:        Composition
-Parent:         http://hl7.eu/fhir/laboratory/StructureDefinition/Composition-eu-lab
+Parent:         http://hl7.org/fhir/StructureDefinition/Composition
 Id:             Composition
 Title:          "Composition"
-Description:    "DRAFT Extension of EU Lab Composition (and so IPS Composition)"
+Description:    "Placeholder for EU Lab Composition (and so IPS Composition)"
 
