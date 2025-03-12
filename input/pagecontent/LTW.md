@@ -28,7 +28,7 @@ Later stages will include the use of [Genomic Order Management Service](https://
 
 ## Overview
 
-<img style="padding:3px;width:95%;" src="LTW Use Case 1 and 2.drawio.png" alt="Genomic LTW Business Process"/>
+<img style="padding:3px;width:95%;" src="LTW Use Case 1 and 4.drawio.png" alt="Genomic LTW Business Process"/>
 <br clear="all">
 <p class="figureTitle">Genomic LTW Business Process</p> 
 <br clear="all">
