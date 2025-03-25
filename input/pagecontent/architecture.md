@@ -1,7 +1,7 @@
 
 ## Introduction
 
-The [Intermediary](ActorDefinition-Intermediary.html), North West GMSA Regional Integration Engine (RIE) is an [Enterprise Service Bus](https://en.wikipedia.org/wiki/Enterprise_service_bus) most commonly known in health as a Trust Integration Engine (TIE).
+The [Intermediary](ActorDefinition-Intermediary.html), North West GMSA Regional Integration Engine (RIE) is an [Enterprise Service Bus](https://en.wikipedia.org/wiki/Enterprise_service_bus) most commonly known in the NHS as a Trust Integration Engine (TIE).
 
 This implement as series of [Enterprise Integration Patterns](https://www.enterpriseintegrationpatterns.com/patterns/messaging/) based around messaging, the diagrams below follow conventions used for these patterns.
 
@@ -44,13 +44,13 @@ Three types of messages are used within this workflow process:
 
 - **Accept Message** The Order Placer (NHS trust) sends a FHIR Message (NW GMSA) Laboratory Order O21 to the RIE via the $process-message endpoint
   - If the RIE doesn’t understand the message for technical reasons it will respond immediately with an error message.
-  - **Validation** The RIE performs FHIR Validation on the order against the requirements listed in this Implementation Guide. The validation contains no error it is accepted, any errors will cause the message to be rejected. The RIE responds to the order placer asynchronously via a message queue, this is accessed by the order placer via a **Polling Consumer**
+  - **Validation** The RIE performs FHIR Validation on the order against the requirements listed in this Implementation Guide. The validation contains no errors, it is accepted, any errors will cause the message to be rejected. The RIE responds to the order placer asynchronously via a message queue, this is accessed by the order placer via a **Polling Consumer**
 - **Distribution List** If the message is accepted, it is passed to a router, at present this router passes the message onto the next process. This router is for future use with the national broker.
 - **Transform to HL7 v2** The RIE will convert the FHIR Message to a HL7 v 2.3 ORM O01 and send this to iGene.
 
 ### Laboratory Report
 
-- IGene sends the HL7 v2 ORU_R01 to the RIE
+- IGene sends the HL7 v2 ORU_R01 to RIE
 - **Transform to HL7 FHIR** The RIE converts the report into a FHIR Message (NW GMSA) Laboratory Report R01
 - **Distribution List** The message is then passed to a router – this router is for future use with the national broker. Currently, the only route is to a **Message Queue**
 - **Polling Consumer** The Order Placer (NHS trust) will poll the **Message Queue** for messages, this queue will include reports and also accept/reject messages.
@@ -69,7 +69,7 @@ As we are using http RESTful for communication between the Trust Integration Eng
 - TLA-MA
 - openid
 
-These are practical for point to point connections but as the solution grows it can become complicated, so it is preferred we move to enterprise level security such as OAuth2 Client Credentials Grant.
+These are practical for point-to-point connections but as the solution grows it can become complicated, so it is preferred we move to enterprise level security such as OAuth2 Client Credentials Grant.
 
 - [IHE Internet User Authorization (IUA)](https://profiles.ihe.net/ITI/IUA/index.html)
 - [NHS England - Application-restricted APIs](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis)
@@ -89,11 +89,11 @@ This is not part of the current project and is shown here to describe how the RI
 <p class="figureTitle">Future NHSE GOMS Adaptor Architecture</p> 
 <br clear="all">
 
-The national service uses a FHIR RESTful resource based API which does not contain business logic. This business logic would be implemented in the RIE and this is subdivided as follows:
+The national service uses a FHIR RESTful resource-based API which does not contain business logic. This business logic would be implemented in the RIE and this is subdivided as follows:
 
-- Patient Master Identity Registry (PMIR) Service - This handles updates to patient demographics and is populated via a Patient Identity Feed (similar to HL7 v2 ADT A28/31/40 and IHE PIX), for genomics the patient identity feed is extracted from the laboratory order/report.
-- Health Provider Directory (HPD) Service - This maintains the list of Practitioners and is populated by a Master File feed (similar to HL7 v2 MFN), for genomics the master file feed is extracted from the laboratory order/report.
-- Order and Report Service - This converts the incoming messages to a FHIR Transactional message, for genomics this uses patient and practitioners identifiers obtained from the PMIR and HPD services. 
+- Patient Master Identity Registry (PMIR) Service - This handles updates to patient demographics and is populated via a Patient Identity Feed (like HL7 v2 ADT A28/31/40 and IHE PIX), for genomics the patient identity feed is extracted from the laboratory order/report.
+- Health Provider Directory (HPD) Service - This maintains the list of Practitioners and is populated by a Master File feed like HL7 v2 MFN), for genomics the master file feed is extracted from the laboratory order/report.
+- Order and Report Service - This converts the incoming messages to a FHIR Transactional message, for genomics this uses patient and practitioner's identifiers obtained from the PMIR and HPD services. 
 
 
 ### Outgoing Messages
@@ -101,7 +101,7 @@ The national service uses a FHIR RESTful resource based API which does not conta
 - **Outgoing Messages** are received from the main RIE workflow (known here as the Enterprise Service Bus) 
 - **Process Message** orchestrates the calls to the NHS England GOMS, this involves:
   - getting the patient id (and updating patient demographics) via the **Patient Master Identity Registry (PMIR) Service**
-  - getting practitioner id's via the **Health Provider Directory (HPD) Service**
+  - getting practitioner ids via the **Health Provider Directory (HPD) Service**
   - Transforming the order or report to a FHIR Transaction and updating patient and practitioner references to include NHS England GOMS id's
 
 ### Incoming Messages
