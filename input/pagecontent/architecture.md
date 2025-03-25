@@ -1,5 +1,5 @@
 
-### Introduction
+## Introduction
 
 The [Intermediary](ActorDefinition-Intermediary.html), North West GMSA Regional Integration Engine (RIE) is an [Enterprise Service Bus](https://en.wikipedia.org/wiki/Enterprise_service_bus) most commonly known in health as a Trust Integration Engine (TIE).
 
@@ -33,33 +33,79 @@ Three types of messages are used within this workflow process:
 | [**D**ocument Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) | Laboratory Report R01        | [LAB-3](LAB-3.html) and [LAB-5](LAB-5.html)                      | Used to transfer the report to interested parties       | 
 
 
-### Phase 1 ESB
+## Phase 1 ESB
 
-<img style="padding:3px;width:95%;" src="Phase 1 ESB.drawio.png" alt="Phase 1 ESB Architecture"/>
+<img style="padding:3px;width:60%;" src="Phase 1 ESB.drawio.png" alt="Phase 1 ESB Architecture"/>
 <br clear="all">
-<p class="figureTitle">ESB Architecture</p> 
-<br clear="all">
-
-### Phase 2 ESB
-
-<img style="padding:3px;width:95%;" src="Phase 2 ESB.drawio.png" alt="Phase 2 ESB Architecture"/>
-<br clear="all">
-<p class="figureTitle">ESB Architecture</p> 
+<p class="figureTitle">Phase 1 ESB Architecture</p> 
 <br clear="all">
 
+### Laboratory Order
 
-### Future NHS England Genomics Order Management Service Adaptor
+- **Accept Message** The Order Placer (NHS trust) sends a FHIR Message (NW GMSA) Laboratory Order O21 to the RIE via the $process-message endpoint
+  - If the RIE doesn’t understand the message for technical reasons it will respond immediately with an error message.
+  - **Validation** The RIE performs FHIR Validation on the order against the requirements listed in this Implementation Guide. The validation contains no error it is accepted, any errors will cause the message to be rejected. The RIE responds to the order placer asynchronously via a message queue, this is accessed by the order placer via a **Polling Consumer**
+- **Distribution List** If the message is accepted, it is passed to a router, at present this router passes the message onto the next process. This router is for future use with the national broker.
+- **Transform to HL7 v2** The RIE will convert the FHIR Message to a HL7 v 2.3 ORM O01 and send this to iGene.
+
+### Laboratory Report
+
+- IGene sends the HL7 v2 ORU_R01 to the RIE
+- **Transform to HL7 FHIR** The RIE converts the report into a FHIR Message (NW GMSA) Laboratory Report R01
+- **Distribution List** The message is then passed to a router – this router is for future use with the national broker. Currently, the only route is to a **Message Queue**
+- **Polling Consumer** The Order Placer (NHS trust) will poll the **Message Queue** for messages, this queue will include reports and also accept/reject messages.
+  - If messages are present, the NHS Trust will acknowledge the message and then process it, this may include conversion back to HL7 v2.
+
+## Phase 2 ESB
+
+<img style="padding:3px;width:60%;" src="Phase 2 ESB.drawio.png" alt="Phase 2 ESB Architecture"/>
+<br clear="all">
+<p class="figureTitle">Phase 2 ESB Architecture</p> 
+<br clear="all">
+
+The use of a **Polling Consumer** is not optimal. This phase will send messages directly to Trust Integration Engines. 
+As we are using http RESTful for communication between the Trust Integration Engines, this security and authorisation can be solved in a number of ways such as:
+
+- TLA-MA
+- openid
+
+These are practical for point to point connections but as the solution grows it can become complicated, so it is preferred we move to enterprise level security such as OAuth2 Client Credentials Grant.
+
+- [IHE Internet User Authorization (IUA)](https://profiles.ihe.net/ITI/IUA/index.html)
+- [NHS England - Application-restricted APIs](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis)
+
+<img style="padding:3px;width:95%;" src="basic-flow.png" alt="IHE IUA Basic Flow"/>
+<br clear="all">
+<p class="figureTitle">IHE IUA Basic Flow</p> 
+<br clear="all">
+
+
+## Future NHS England Genomics Order Management Service Adaptor
+
+This is not part of the current project and is shown here to describe how the RIE could evolve and connect to the national Genomic Order Management Service.
 
 <img style="padding:3px;width:95%;" src="Future ESB.drawio.png" alt="Future NHSE GOMS Adaptor Architecture"/>
 <br clear="all">
-<p class="figureTitle">ESB Architecture</p> 
+<p class="figureTitle">Future NHSE GOMS Adaptor Architecture</p> 
 <br clear="all">
 
-1. Transform to HL7 FHIR - The ESB internal format is HL7 FHIR, if HL7 v2 Messages are used they will be converted to HL7 FHIR.
-2. Accept Message - Uses HL7 FHIR Validation to check the message conforms to the Canonical Model, errors will result in a rejection of the message.
-3. Distribution List - The message is distributed based on the content of the event header (FHIR MessageHeader resource/v2 MSH Segment).
-4. Transform to HL7 v2 - If required, messages are converted to HL7 v2. The message is sent onto the recipient, this may be another ESB (Trust Integration Engine) or a endpoint system.
-5. API Adaptor - This will be used to send orders and reports to out of area systems via the NHS England Genomic Order Management Service (GOMS). This involves:
-   1. Processing the messages and storing its data on a FHIR Server. GOMS does not support messaging and so the ESB must convert the message from [FHIR Message](https://hl7.org/fhir/R4/messaging.html) to series of [FHIR RESTful](https://hl7.org/fhir/R4/http.html) calls paying particular attention to the business logic implemented in external FHIR server.
-   2. The API Adaptor in the ESB, reduces the development cost of interfacing with GOMS across the region. 
+The national service uses a FHIR RESTful resource based API which does not contain business logic. This business logic would be implemented in the RIE and this is subdivided as follows:
 
+- Patient Master Identity Registry (PMIR) Service - This handles updates to patient demographics and is populated via a Patient Identity Feed (similar to HL7 v2 ADT A28/31/40 and IHE PIX), for genomics the patient identity feed is extracted from the laboratory order/report.
+- Health Provider Directory (HPD) Service - This maintains the list of Practitioners and is populated by a Master File feed (similar to HL7 v2 MFN), for genomics the master file feed is extracted from the laboratory order/report.
+- Order and Report Service - This converts the incoming messages to a FHIR Transactional message, for genomics this uses patient and practitioners identifiers obtained from the PMIR and HPD services. 
+
+
+### Outgoing Messages
+
+- **Outgoing Messages** are received from the main RIE workflow (known here as the Enterprise Service Bus) 
+- **Process Message** orchestrates the calls to the NHS England GOMS, this involves:
+  - getting the patient id (and updating patient demographics) via the **Patient Master Identity Registry (PMIR) Service**
+  - getting practitioner id's via the **Health Provider Directory (HPD) Service**
+  - Transforming the order or report to a FHIR Transaction and updating patient and practitioner references to include NHS England GOMS id's
+
+### Incoming Messages
+
+- **Polling Consumer** checks for orders and reports for the North West region by calling the NHS England GOMS at frequent intervals.
+- **Assemble Message** if orders/reports are found, then the RIE will assemble a FHIR Message Laboratory Order/Report.
+- **Incoming Message** these messages are then passed to the RIE ESB for message delivery.
