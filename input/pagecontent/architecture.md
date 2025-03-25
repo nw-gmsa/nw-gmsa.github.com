@@ -30,7 +30,25 @@ Three types of messages are used within this workflow process:
 | [**E**vent Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/EventMessage.html)       | Laboratory Order O21 and O22 | [LAB-1](LAB-1.html), [LAB-4](LAB-1.html) and [LAB-2](LAB-2.html) | Used to inform participants in the workflow of changes. | 
 | [**D**ocument Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) | Laboratory Report R01        | [LAB-3](LAB-3.html) and [LAB-5](LAB-5.html)                      | Used to transfer the report to interested parties       | 
 
-<img style="padding:3px;width:95%;" src="ESB-Architecture.drawio.png" alt="ESB Architecture"/>
+
+### Phase 1 ESB
+
+<img style="padding:3px;width:95%;" src="Phase 1 ESB.drawio.png" alt="Phase 1 ESB Architecture"/>
+<br clear="all">
+<p class="figureTitle">ESB Architecture</p> 
+<br clear="all">
+
+### Phase 2 ESB
+
+<img style="padding:3px;width:95%;" src="Phase 2 ESB.drawio.png" alt="Phase 2 ESB Architecture"/>
+<br clear="all">
+<p class="figureTitle">ESB Architecture</p> 
+<br clear="all">
+
+
+### Future NHS England Genomics Order Management Service Adaptor
+
+<img style="padding:3px;width:95%;" src="Future ESB.drawio.png" alt="Future NHSE GOMS Adaptor Architecture"/>
 <br clear="all">
 <p class="figureTitle">ESB Architecture</p> 
 <br clear="all">
