@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36" version="26.0.16">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36" version="26.1.2">
   <diagram name="Page-1" id="MafnDJ-7xix2ASmtRGoa">
     <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -42,7 +42,7 @@
         <mxCell id="jTdIVBTPUZk9hlG6x69J-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="jTdIVBTPUZk9hlG6x69J-2" source="jTdIVBTPUZk9hlG6x69J-9" target="jTdIVBTPUZk9hlG6x69J-16">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="jTdIVBTPUZk9hlG6x69J-21" value="Collect Sample" style="points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];shape=mxgraph.bpmn.task2;whiteSpace=wrap;rectStyle=rounded;size=10;html=1;container=1;expand=0;collapsible=0;taskMarker=user;" vertex="1" parent="jTdIVBTPUZk9hlG6x69J-2">
+        <mxCell id="jTdIVBTPUZk9hlG6x69J-21" value="Collect Sample&lt;div&gt;(if required)&lt;/div&gt;" style="points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];shape=mxgraph.bpmn.task2;whiteSpace=wrap;rectStyle=rounded;size=10;html=1;container=1;expand=0;collapsible=0;taskMarker=user;" vertex="1" parent="jTdIVBTPUZk9hlG6x69J-2">
           <mxGeometry x="490" y="120" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="jTdIVBTPUZk9hlG6x69J-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.975;entryY=0.517;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="jTdIVBTPUZk9hlG6x69J-2" source="jTdIVBTPUZk9hlG6x69J-21" target="jTdIVBTPUZk9hlG6x69J-16">
@@ -58,7 +58,7 @@
         <mxCell id="jTdIVBTPUZk9hlG6x69J-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="jTdIVBTPUZk9hlG6x69J-2" source="jTdIVBTPUZk9hlG6x69J-21" target="jTdIVBTPUZk9hlG6x69J-26">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="jTdIVBTPUZk9hlG6x69J-30" value="Send Sample&lt;br&gt;(postal service)" style="points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];shape=mxgraph.bpmn.task2;whiteSpace=wrap;rectStyle=rounded;size=10;html=1;container=1;expand=0;collapsible=0;taskMarker=send;" vertex="1" parent="jTdIVBTPUZk9hlG6x69J-2">
+        <mxCell id="jTdIVBTPUZk9hlG6x69J-30" value="Send Sample&lt;br&gt;(postal service - if required)" style="points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];shape=mxgraph.bpmn.task2;whiteSpace=wrap;rectStyle=rounded;size=10;html=1;container=1;expand=0;collapsible=0;taskMarker=send;" vertex="1" parent="jTdIVBTPUZk9hlG6x69J-2">
           <mxGeometry x="660" y="120" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="jTdIVBTPUZk9hlG6x69J-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="jTdIVBTPUZk9hlG6x69J-2" source="jTdIVBTPUZk9hlG6x69J-21" target="jTdIVBTPUZk9hlG6x69J-30">
