@@ -33,9 +33,9 @@ Later stages will include the use of [Genomic Order Management Service](https://
 <p class="figureTitle">Genomic LTW Business Process</p> 
 <br clear="all">
 
-> The sample may not need to be collected, for example:
-> - For a genomic test following on from a pathology test, the sample will have present and with the pathology laboratory.
-> - Some tests may be ordered on a specimen which is held at out of area genomics laboratory. 
+> The sample may not need collecting by the ordering clinician for 2 reasons 
+> - it has already been sent to the GLH and extracted DNA is already stored there 
+> - the sample is somewhere else in the country. In this instance the ordering clinician will need to arrange the sample transfer to the GLH.
 
 The processes above are described in more detail in:
 
