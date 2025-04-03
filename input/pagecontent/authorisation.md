@@ -1,5 +1,5 @@
 
-Is based on  [IHE Internet User Authorization (IUA)](https://profiles.ihe.net/ITI/IUA/index.html) but using `client-credentials` grant only.
+Is based on  [IHE Internet User Authorization (IUA)](https://profiles.ihe.net/ITI/IUA/index.html) but using `client-credentials` grant only (at present).
 
 The authorisation will be hosted on the Regional Integration Engine. This is responsible for maintaining all the clients for the region.
 
