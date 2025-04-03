@@ -74,10 +74,7 @@ These are practical for point-to-point connections but as the solution grows it 
 - [IHE Internet User Authorization (IUA)](https://profiles.ihe.net/ITI/IUA/index.html)
 - [NHS England - Application-restricted APIs](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis)
 
-<img style="padding:3px;width:75%;" src="basic-flow.png" alt="IHE IUA Basic Flow"/>
-<br clear="all">
-<p class="figureTitle">IHE IUA Basic Flow</p> 
-<br clear="all">
+See [Authorisation](authorisation.html) for more details.
 
 
 ## Future NHS England Genomics Order Management Service Adaptor

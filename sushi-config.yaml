@@ -118,6 +118,9 @@ pages:
   support.md:
     title: Support
     generation: markdown
+  authorisatio.md:
+    title: Authorisation (OAuth2)
+    generation: markdown
 
 resources:
   Questionnaire/NW-Genomics-Test-Order:

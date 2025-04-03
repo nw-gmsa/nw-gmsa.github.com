@@ -1,0 +1,32 @@
+@startuml
+
+title "Client Credentials"
+
+hide footbox
+
+participant "Authorisation Client\n(Trust Integration Engine)" as Client
+participant "Authorisation Server" as Server
+participant "Resource Server\n(Trust Integration Engine)" as Resource
+
+
+opt
+Client -> Server : Authorisation Server Metadata Request (ITI-103)\nGET {baseUrl}/.well-known/openid-configuration
+Server --> Client: Metadata Response
+end
+
+group Get Access Token (ITI-71)
+Client -> Server: Get Access Token Request\nPOST {baseUrl}/token\ngrant_type=client_credentials&scope=system/*.*
+Server --> Client: Access Token Response
+end
+
+Client -> Resource: Request (e.g. POST {baseUrl}/$process-message)\nHTTP Header: authorization contains Access Token
+
+group Introspect Token (ITI-102)
+Resource -> Server: Introspect Token\nPOST {baseUrl}/introspect
+Server -> Server: Validate Token
+Server --> Resource: Introspect Response
+end
+
+Server --> Client: Response
+
+@enduml
