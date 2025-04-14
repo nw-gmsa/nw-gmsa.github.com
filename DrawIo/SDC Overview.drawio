@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36" version="26.0.14">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" version="26.1.2">
   <diagram name="Page-1" id="xfo32dc73x_7MOQu_JFK">
     <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -96,7 +96,7 @@
         <mxCell id="47xueb6z-3n4pL5ucy6s-32" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fillColor=#6d8764;strokeColor=#3A5431;strokeWidth=3;" edge="1" parent="1" source="47xueb6z-3n4pL5ucy6s-30" target="47xueb6z-3n4pL5ucy6s-29">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="47xueb6z-3n4pL5ucy6s-30" value="&lt;font color=&quot;#000000&quot;&gt;HL7 FHIR PractitionerRole&lt;br&gt;HL7 v2 ORC-10 and ORC-11&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="47xueb6z-3n4pL5ucy6s-30" value="&lt;font color=&quot;#000000&quot;&gt;HL7 FHIR PractitionerRole&lt;br&gt;HL7 v2 ORC-12 and ORC-21&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
           <mxGeometry x="540" y="970" width="219" height="60" as="geometry" />
         </mxCell>
         <mxCell id="47xueb6z-3n4pL5ucy6s-31" value="&lt;font color=&quot;#000000&quot;&gt;HL7 FHIR ServiceRequest&lt;br&gt;requestor&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
@@ -117,7 +117,7 @@
         <mxCell id="47xueb6z-3n4pL5ucy6s-38" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.532;entryY=0.005;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=3;" edge="1" parent="1" source="47xueb6z-3n4pL5ucy6s-37" target="47xueb6z-3n4pL5ucy6s-18">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="47xueb6z-3n4pL5ucy6s-37" value="&lt;font color=&quot;#000000&quot;&gt;HL7 FHIR RequestGroup or ServiceRequest[PlacerGroupNumber]&lt;br&gt;HL7 v2 ORC-4&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="47xueb6z-3n4pL5ucy6s-37" value="&lt;font color=&quot;#000000&quot;&gt;HL7 FHIR ServiceRequest.requisition&lt;br&gt;HL7 v2 ORC-4&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
           <mxGeometry x="550" y="540" width="250" height="50" as="geometry" />
         </mxCell>
       </root>

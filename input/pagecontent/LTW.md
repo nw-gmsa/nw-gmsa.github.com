@@ -106,7 +106,7 @@ The completed form is submitted to the Regional Integration Engine using:
 For submission, this form will be converted by the [Order Placer](ActorDefinition-OrderPlacer.html) to a communication format called [HL7 FHIR](https://hl7.org/fhir/R4/index.html) (and for compatability reasons [HL7 v2](https://en.wikipedia.org/wiki/Health_Level_7#HL7_Version_2).
 If the [Order Placer](ActorDefinition-OrderPlacer.html) has a FHIR enabled Electronic Patient Record (e.g. EPIC, Cerner, Meditech, etc), they may use [HL7 SDC - Form Data Extraction](https://build.fhir.org/ig/HL7/sdc/extraction.html) to assist with this process.
 
-<img style="padding:3px;width:95%;" src="sdc-overview.drawio.png" alt="Order Test Form - Data Extraction Overview"/>
+<img style="padding:3px;width:95%;" src="SDC Overview.drawio.png" alt="Order Test Form - Data Extraction Overview"/>
 <br clear="all">
 <p class="figureTitle">Order Test Form - Data Extraction Overview</p> 
 <br clear="all">
