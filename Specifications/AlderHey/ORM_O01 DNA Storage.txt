@@ -1,0 +1,29 @@
+MSH|^~\&|LAB|RLC|||20250402151642+0100||ORM^O01|60643.2|D|2.3|||AL|NE|
+PID|1||AH0002531|A0-B20241016140246277|DOO^SCRAPPY||20151030|M|||ALDER HEY CHILDRENS HOSPIAL^^LIVERPOOL^^L12 2AP||01512284811^PRN^PH^^1^151^2284811|||S||V00000013586|
+PV1|1|I|W1BOB^W1BOB^46^RLC|E|||ADINGANKAR^Dingankar^Adil^^^^^^XX|||ANAE||||NHS|||ADINGANKAR^Dingankar^Adil^^^^^^XX|IN||NHS|||||||||||||||||||RLC||ADM|||202410161402|
+ORC|NW|6529^LAB||020425:GE3^005999||N|^^^^^R||202504021431|
+NTE|1||Referral lab PLEASE do following tests:|
+NTE|2|
+NTE|3||Test(s) required: DNA STORAGE|
+NTE|4||     Sample type: BLOOD (EDTA)|
+NTE|5||  Transport used: COURIER|
+NTE|6|| Tracking Number: ZXC14|
+NTE|7||  Sample sent to: LWH GENETICS|
+NTE|8||By: PDAY       on: 02/04/25|
+NTE|9|
+NTE|10||.Infection Risk: No Specific Risk|
+NTE|11||Clinical details:|
+NTE|12|
+NTE|13||TESTING DNA STORAGE FORM|
+NTE|14||Contact/Bleep No: 1234|
+OBR|1|6529^LAB||DNA^Constitutional DNA storage^L|||202504021429|||||||202504021433|BLOOD|ADINGANKAR^Dingankar^Adil^^^^^^XX||00004916||||||LAB|||^^^^^R|
+OBX|1|CE|LAB.SPEC2^Specimen Type:|1|BLD^Blood|
+OBX|2|TX|LAB.SPEC3^Tissue source/organ of origin:||blood|
+OBX|3|TX|LAB.SPEC4^Specimen volume/number of slides or scrolls:||4mls|
+OBX|4|TX|LABGE.2CLINREQ^Email Requesting Clinician:||clinician@email.com|
+OBX|5|TX|LABGE.2CLINSPEC^Speciality Requesting Clinician:||neuro|
+OBX|6|TX|LABGE.2DOCALT^Email Secondary Clinician/Department:||second@email.com|
+OBX|7|CE|LABGE.3DEPT^Test Group:||MULTI^Multi-purpose tests|
+OBX|8|TX|LABGE.3SPEC^Clinical Department:||Neurology|
+OBX|9|CE|LABGERMULTI^Test Code (Multi-purpose):|9|R346^R346.1 - DNA to be stored|
+OBX|10|TX|LABOEDNA1^Have you obtained consent for DNA storage?||Y|

@@ -1,0 +1,34 @@
+MSH|^~\&|LAB|RLC|||20250402151642+0100||ORM^O01|60643.1|D|2.3|||AL|NE|
+PID|1||AH0000256|A0-B20210511094422804|DAY^HAPPY^BIRTH||20200212|M|||55 Milky Way^^Wigan^Lancashire^WN4 0AA||01167-81760|||S||V00000000917|2233443322|
+PV1|1|I|W3CB^W3CB^09^RLC|R|||CPAIN^Pain^Clare^^^Dr^^^XX|||RHEU||||UR|||CPAIN^Pain^Clare^^^Dr^^^XX|IN||NHS||||||||||||||||#MA|||RLC||ADM|||202105110944|
+ORC|NW|6527^LAB||020425:GE1^005997||N|^^^^^R||202504021242|
+NTE|1||Referral lab PLEASE do following tests:|
+NTE|2|
+NTE|3||Test(s) required: WGS|
+NTE|4||     Sample type: Blood|
+NTE|5||  Transport used: Merlin Courier|
+NTE|6|| Tracking Number: ABC123|
+NTE|7||  Sample sent to: LWH Genetics|
+NTE|8||By: PDAY       on: 02/04/25|
+NTE|9|
+NTE|10||.Speciality Requesting Clinician: PAEDS|
+NTE|11||Test Group: Neurology|
+NTE|12||Ethnic Group: White British|
+NTE|13||Patient is from consanguineous union? : Unknown|
+NTE|14||Specimen Collection Status: Collect & send with order|
+NTE|15||Infection Risk: No Specific Risk|
+NTE|16||Clinical details:|
+NTE|17|
+NTE|18||TESTING|
+NTE|19||Contact/Bleep No: 123|
+OBR|1|6527^LAB||GENETICS^Genomics Rare Disease^L|||202504021241|||||||202504021244|BLOOD|CPAIN^Pain^Clare^^^Dr^^^XX||00004914||||||LAB|||^^^^^R|
+OBX|1|CE|LAB.SPEC2^Specimen Type:|1|BLD^Blood|
+OBX|2|TX|LAB.SPEC3^Tissue source/organ of origin:||BLOOD|
+OBX|3|TX|LAB.SPEC4^Specimen volume/number of slides or scrolls:||4mls|
+OBX|4|TX|LABGE.2CLINREQ^Email Requesting Clinician:||EMAIL|
+OBX|5|TX|LABGE.3SPEC^Clinical Department:||general paeds|
+OBX|6|CE|LABGERNEURO^Test Code (Neurology):|6|R59^R59.3 WGS Epilepsy|
+OBX|7|CE|LABGERWGSTYPE^Type of whole genome sequencing requested (WGS):||S^Singleton|
+OBX|8|CE|LABOEDISC^Record of discussion attached or to follow:||Y^Yes|
+OBX|9|TX|LABOEDNA1^Have you obtained consent for DNA storage?||Y|
+OBX|10|TX|LABOEGTEST^Have you obtained consent for testing?||Y|

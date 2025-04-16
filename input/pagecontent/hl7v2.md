@@ -21,7 +21,10 @@
 | - [ORC](#orc)             | 1..*        |                                                         |
 | - **OBSERVATION REQUEST** | 1..*        |                                                         |
 | -- [OBR](#obr)            | 1..*        |                                                         |
-| -- [OBX](#obx)            | 1..*        |                                                         |
+| -- [NTE](#nte)            | 0..*        |                                                         |
+| -- [DG1](#dg1)            | 0..*        |                                                         |
+| -- **OBSERVATION**        | 0..*        |                                                         |
+| --- [OBX](#obx)           | 0..*        |                                                         |
 | - **SPECIMEN**            | 0..*        | Conditional - required for complete order               |
 | -- [SPM](#spm)            | 0..1        |                                                         |
 
@@ -130,6 +133,23 @@ This is based on the definition of OBR from DHCW ORU_R01 Message Specification.
 | OBR-33    | Assistant Result Interpreter       | [NDL](#ndl) | O - SHOULD    | DiagnosticReport.resultsInterpreter[secondaryReporter]                            |                                                                             |
 | OBR-34    | Technician                         | [NDL](#ndl) | O - SHOULD    | DiagnosticReport.performer[operator]                                              |                                                                             |                                                                             |
 
+### NTE
+
+Multiple NTE should be converted to a single FHIR Annotation using markdown
+
+| Field HL7 | Fieldname         | Data Type | Optionality | Table and Notes | Example Values |
+|-----------|-------------------|-----------|-------------|-------------|----------------|
+| NTE-1     | Set ID - NTE      |           |             |             |                | 
+| NTE-2     | Source of Comment |           |             |             |                | 
+| NTE-3     | Comment           |           |             |             |                | 
+| NTE-4     | Comment Type      |           |             |             |                | 
+
+### DG1
+
+| Field HL7 | Fieldname         | Data Type | Optionality | Table and Notes | Example Values |
+|-----------|-------------------|-----------|-------------|-------------|----------------|
+| DG1-3     | Diagnosis Code    | [CE](#ce)          |             |             |                | 
+| DG1-4     | Diagnosis Description |           |             |             |                | 
 
 
 ### OBX
@@ -144,7 +164,7 @@ This is based on the definition of OBX from DHCW ORU_R01 Message Specification.
 | OBX-5     | Observation Value            | ED        | R           |                                                          | MOL^IM^PDF^Base64^JVBERI0X...       |
 | OBX-11    | Observation Result Status    |           | R           |                                                          | F                                   |
 | OBX-14    | Date/Time of the Observation |           | O - SHOULD  |                                                          | 20190514102417+0000                 |
- 
+
 
 ### SPM
 
