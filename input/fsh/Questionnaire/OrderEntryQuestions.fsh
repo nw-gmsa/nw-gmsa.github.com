@@ -11,10 +11,11 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
   * linkId = "102313"
   * code[+] = $sct#281269004 "High infection risk sample"
   * text = "High Infection Risk?"
-  * type = #boolean
+  * type = #choice
   * required = true
   * repeats = false
-  * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueBoolean"
+  * answerValueSet = Canonical(ll2828-3)
+  * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCoding"
 
 * item[+]
   * linkId = "113979"
@@ -151,14 +152,15 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
   * linkId = "230028"
   * code[+] = $epic#230028 "DATE OF SPECIMEN COLLECTION"
   * text = "Date of Specimen(s) Collection"
-  * type = #string
+  * type = #dateTime
   * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.collection.collectedDateTime"
 
 * item[+]
   * linkId = "230029"
   * code[+] = $epic#230029 "CONFIRMATION OF CONSENT"
   * text = "Confirmation of Consent for Testing - MANDATORY Testing will not be performed without completed confirmation of consent"
-  * type = #string
+  * type = #choice
+  * answerValueSet = Canonical(ll2828-3)
 
 * item[+]
   * linkId = "230030"
@@ -188,13 +190,15 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
   * linkId = "230034"
   * code[+] = $epic#230034 "TEST RELATED TO PREGNANCY"
   * text = "Does This Test Relate to a Pregnancy"
-  * type = #string
+  * type = #choice
+  * answerValueSet = Canonical(ll2817-6)
 
 * item[+]
   * linkId = "230035"
   * code[+] = $epic#230035 "DECEASED INFANT"
   * text = "Is This Test Request for a Deceased Infant or Pregnancy Loss"
-  * type = #string
+  * type = #choice
+  * answerValueSet = Canonical(ll2828-3)
 
 * item[+]
   * linkId = "230036"
@@ -279,7 +283,8 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
   * linkId = "230064"
   * code[+] = $epic#230064 "GENETICS - HAS PATIENT HAD TRANSPLANT"
   * text = "Has the patient had a transplant?"
-  * type = #boolean
+  * type = #choice
+  * answerValueSet = Canonical(ll2828-3)
 
 * item[+]
   * linkId = "230065"
@@ -291,7 +296,8 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
   * linkId = "230066"
   * code[+] = $epic#230066 "GENETICS - SUSPECTED LUNG CANCER"
   * text = "Is The Patient Suspected Of Having Lung Cancer?"
-  * type = #string
+  * type = #choice
+  * answerValueSet = Canonical(ll2828-3)
 
 * item[+]
   * linkId = "230067"
@@ -303,7 +309,7 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
   * linkId = "230068"
   * code[+] = $epic#230068 "GENETICS - ADVANCED LUNG CANCER STAGE"
   * text = "Please Select Advanced Stage Lung Cancer Stage"
-  * type = #string
+  * type = #choice
 
 * item[+]
   * linkId = "230100"
