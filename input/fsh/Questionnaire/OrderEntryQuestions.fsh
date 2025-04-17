@@ -1,7 +1,9 @@
 Instance: OrderEntryQuestions
 InstanceOf: Questionnaire
 Title: "Laboratory Order Questions"
-Description: "Laboratory Order Questions"
+Description: """
+Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for implementation.
+"""
 
 * status = #draft
 
@@ -28,6 +30,7 @@ Description: "Laboratory Order Questions"
   * code[+] = $epic#230001 "SPECIMEN 1 TYPE"
   * text = "Specimen 1 Type"
   * type = #string
+  * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type"
 
 * item[+]
   * linkId = "230002"
@@ -64,10 +67,11 @@ Description: "Laboratory Order Questions"
   * code[+] = $epic#230006 "SPECIMEN 2 TYPE"
   * text = "Specimen 2 Type"
   * type = #string
+  * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type"
 
 * item[+]
   * linkId = "230007"
-  * code[+] = $epic#230007 "SPECIMEN 2 SOURC"
+  * code[+] = $epic#230007 "SPECIMEN 2 SOURCE"
   * text = "Specimen 2 Source"
   * type = #string
 
@@ -76,6 +80,7 @@ Description: "Laboratory Order Questions"
   * code[+] = $epic#230011 "SPECIMEN 3 TYPE"
   * text = "Specimen 3 Type"
   * type = #string
+  * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type"
 
 * item[+]
   * linkId = "230012"
@@ -119,6 +124,7 @@ Description: "Laboratory Order Questions"
   * code[+] = $epic#230021 "SAMPLE IDENTIFIER(S)"
   * text = "Sample Identifier(s) for DNA or Pathology Material (e.g. Block Number)"
   * type = #string
+  * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.identifier"
 
 * item[+]
   * linkId = "230022"
@@ -143,6 +149,7 @@ Description: "Laboratory Order Questions"
   * code[+] = $epic#230028 "DATE OF SPECIMEN COLLECTION"
   * text = "Date of Specimen(s) Collection"
   * type = #string
+  * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.collection.collectedDateTime"
 
 * item[+]
   * linkId = "230029"
@@ -263,12 +270,13 @@ Description: "Laboratory Order Questions"
   * code[+] = $epic#230063 "SPECIMEN TYPE (PRENATAL REFFERAL)"
   * text = "Specimen 1 Type"
   * type = #string
+  * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type"
 
 * item[+]
   * linkId = "230064"
   * code[+] = $epic#230064 "GENETICS - HAS PATIENT HAD TRANSPLANT"
   * text = "Has the patient had a transplant?"
-  * type = #string
+  * type = #boolean
 
 * item[+]
   * linkId = "230065"
