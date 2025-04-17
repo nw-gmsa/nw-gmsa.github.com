@@ -134,6 +134,10 @@ resources:
     name: Example Genomics Test Order Form
     description: Example Genomics Test Order Form (Mock).
     exampleBoolean: false
+  Questionnaire/OrderEntryQuestions:
+    name: Example Order Entry Form Questions
+    description: Example Order Entry Form Questions (Draft).
+    exampleBoolean: false
 
 menu:
   Home: index.html
