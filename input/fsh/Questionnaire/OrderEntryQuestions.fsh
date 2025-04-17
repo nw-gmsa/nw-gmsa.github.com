@@ -9,9 +9,12 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
 
 * item[+]
   * linkId = "102313"
-  * code[+] = $epic#102313 "GENETICS HIGH INFECTION RISK"
+  * code[+] = $sct#281269004 "High infection risk sample"
   * text = "High Infection Risk?"
-  * type = #string
+  * type = #boolean
+  * required = true
+  * repeats = false
+  * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueBoolean"
 
 * item[+]
   * linkId = "113979"
