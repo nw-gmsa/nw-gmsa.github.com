@@ -1,6 +1,6 @@
 Instance: ServiceRequestGenomicsOrderCodedEntries
 InstanceOf: ServiceRequest
-Title: "ServiceRequest Example"
+Title: "ServiceRequest Coded Entries Example"
 Description: "TODO"
 
 * meta.versionId = "1.0"
