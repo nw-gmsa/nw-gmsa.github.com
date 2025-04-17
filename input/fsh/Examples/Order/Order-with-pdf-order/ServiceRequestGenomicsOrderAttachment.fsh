@@ -1,6 +1,6 @@
 Instance: ServiceRequestGenomicsOrderAttachment
 InstanceOf: ServiceRequest
-Title: "ServiceRequest Example"
+Title: "ServiceRequest Attachment Example"
 Description: "TODO"
 
 * meta.versionId = "1.0"
