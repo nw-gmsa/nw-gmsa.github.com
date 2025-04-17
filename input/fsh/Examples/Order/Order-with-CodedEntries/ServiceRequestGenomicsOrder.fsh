@@ -46,3 +46,26 @@ Description: "TODO"
     * code = #363349007
     * display = "Malignant tumour of stomach"
     * system = $sct
+
+* note[+]
+  * text = """
+Referral lab PLEASE do following tests:
+
+Test(s) required: WGS
+Sample type: Blood
+Transport used: Merlin Courier
+Tracking Number: ABC123
+Sample sent to: LWH Genetics
+By: PDAY       on: 02/04/25
+
+.Speciality Requesting Clinician: PAEDS
+Test Group: Neurology
+Ethnic Group: White British
+Patient is from consanguineous union? : Unknown
+Specimen Collection Status: Collect & send with order
+Infection Risk: No Specific Risk
+Clinical details:
+
+TESTING
+Contact/Bleep No: 123
+  """
