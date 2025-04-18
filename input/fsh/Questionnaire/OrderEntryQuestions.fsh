@@ -8,90 +8,69 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
 * status = #draft
 
 * item[+]
-  * linkId = "102313"
-  * code[+] = $sct#281269004 "High infection risk sample"
-  * text = "High Infection Risk?"
-  * type = #choice
-  * required = true
-  * repeats = false
-  * answerValueSet = Canonical(ll2828-3)
-  * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCoding"
+  * linkId = "Order"
+  * type = #group
 
 * item[+]
-  * linkId = "113979"
-  * code[+] = $epic#113979 "SPECIMEN 1 SOURCE (BLOOD RESTRICTIONS)"
-  * text = "Specimen 1 Source"
-  * type = #string
+  * linkId = "Specimen"
+  * type = #group
+  * repeats = true
+  * item[+]
+    * linkId = "113979"
+    * code[+] = $epic#113979 "SPECIMEN 1 SOURCE (BLOOD RESTRICTIONS)"
+    * text = "Specimen 1 Source"
+    * type = #string
+  * item[+]
+    * linkId = "230001"
+    * code[+] = $epic#230001 "SPECIMEN 1 TYPE"
+    * text = "Specimen 1 Type"
+    * type = #string
+    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type"
+  * item[+]
+    * linkId = "230002"
+    * code[+] = $epic#230002 "SPECIMEN 1 SOURCE"
+    * text = "Specimen 1 Source"
+    * type = #string
+  * item[+]
+    * linkId = "230003"
+    * code[+] = $epic#230003 "SPECIMEN 1 ANTICOAGULANT/PRESERVATIVE"
+    * text = "Anticoagulant/Preservative"
+    * type = #string
+
+  * item[+]
+    * linkId = "230004"
+    * code[+] = $epic#230004 "SPECIMEN 1 DUPLICATE VIALS"
+    * text = "Number of Duplicate Vials (If Needed)"
+    * type = #string
+  * item[+]
+    * linkId = "230005"
+    * code[+] = $epic#230005 "SPECIMEN 1 DESCRIPTION"
+    * text = "Specimen Description(s)/Sample Identifier(s) for DNA or Pathology Material (e.g. Block Number)"
+    * type = #string
+  * item[+]
+    * linkId = "230019"
+    * code[+] = $sct#281269004 "High infection risk sample"
+    * text = "High Infection Risk"
+    * answerValueSet = Canonical(ll2828-3)
+    * type = #choice
+  * item[+]
+    * linkId = "230020"
+    * code[+] = $epic#230020 "INFECTION RISK DETAILS"
+    * text = "Infection Risk Details"
+    * type = #string
+  * item[+]
+    * linkId = "230028"
+    * code[+] = $epic#230028 "DATE OF SPECIMEN COLLECTION"
+    * text = "Date of Specimen(s) Collection"
+    * type = #dateTime
+    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.collection.collectedDateTime"
+
 
 * item[+]
   * linkId = "114867"
   * code[+] = $epic#114867 "NAME OF SUPERVISING CLINICIAN (CLC)"
   * text = "Name of Supervising Clinician"
   * type = #string
-
-* item[+]
-  * linkId = "230001"
-  * code[+] = $epic#230001 "SPECIMEN 1 TYPE"
-  * text = "Specimen 1 Type"
-  * type = #string
-  * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type"
-
-* item[+]
-  * linkId = "230002"
-  * code[+] = $epic#230002 "SPECIMEN 1 SOURCE"
-  * text = "Specimen 1 Source"
-  * type = #string
-
-* item[+]
-  * linkId = "230002"
-  * code[+] = $epic#230002 "SPECIMEN 1 SOURCE"
-  * text = "Specimen 1 Source"
-  * type = #string
-
-* item[+]
-  * linkId = "230003"
-  * code[+] = $epic#230003 "SPECIMEN 1 ANTICOAGULANT/PRESERVATIVE"
-  * text = "Anticoagulant/Preservative"
-  * type = #string
-
-* item[+]
-  * linkId = "230004"
-  * code[+] = $epic#230004 "SPECIMEN 1 DUPLICATE VIALS"
-  * text = "Number of Duplicate Vials (If Needed)"
-  * type = #string
-
-* item[+]
-  * linkId = "230005"
-  * code[+] = $epic#230005 "SPECIMEN 1 DESCRIPTION"
-  * text = "Specimen Description(s)/Sample Identifier(s) for DNA or Pathology Material (e.g. Block Number)"
-  * type = #string
-
-* item[+]
-  * linkId = "230006"
-  * code[+] = $epic#230006 "SPECIMEN 2 TYPE"
-  * text = "Specimen 2 Type"
-  * type = #string
-  * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type"
-
-* item[+]
-  * linkId = "230007"
-  * code[+] = $epic#230007 "SPECIMEN 2 SOURCE"
-  * text = "Specimen 2 Source"
-  * type = #string
-
-* item[+]
-  * linkId = "230011"
-  * code[+] = $epic#230011 "SPECIMEN 3 TYPE"
-  * text = "Specimen 3 Type"
-  * type = #string
-  * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type"
-
-* item[+]
-  * linkId = "230012"
-  * code[+] = $epic#230012 "SPECIMEN 3 SOURCE"
-  * text = "Specimen 3 Source"
-  * type = #string
-
 
 * item[+]
   * linkId = "230016"
@@ -112,16 +91,15 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
   * type = #string
 
 * item[+]
-  * linkId = "230019"
-  * code[+] = $epic#230019 "HIGH INFECTION RISK"
-  * text = "High Infection Risk"
-  * type = #string
+  * linkId = "102313"
+  * code[+] = $epic#102313 "GENETICS HIGH INFECTION RISK"
+  * text = "High Infection Risk?"
+  * type = #choice
+  * required = false
+  * repeats = false
+  * answerValueSet = Canonical(ll2828-3)
+  * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCoding"
 
-* item[+]
-  * linkId = "230020"
-  * code[+] = $epic#230020 "INFECTION RISK DETAILS"
-  * text = "Infection Risk Details"
-  * type = #string
 
 * item[+]
   * linkId = "230021"
@@ -148,12 +126,6 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
   * text = "Email Addresses of Non-MFT Clinicians for Result Reports"
   * type = #string
 
-* item[+]
-  * linkId = "230028"
-  * code[+] = $epic#230028 "DATE OF SPECIMEN COLLECTION"
-  * text = "Date of Specimen(s) Collection"
-  * type = #dateTime
-  * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.collection.collectedDateTime"
 
 * item[+]
   * linkId = "230029"
