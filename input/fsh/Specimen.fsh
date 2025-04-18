@@ -19,5 +19,7 @@ DRAFT Extension of UKCore-Specimen which includes constraints from:
 * collection.collected[x] only dateTime
 * collection.collectedDateTime 0..1 MS
 
+* type from SpecimenType (required)
+
 * collection.collector 0..1 MS
 * collection.collector only Reference(PractitionerRole)

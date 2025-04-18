@@ -57,3 +57,4 @@ Alias: $ValueSetFGMFlagCode =  https://fhir.nhs.uk/England/ValueSet/FGM-FlagCode
 Alias: $ValueSetProgrammeFlagCode =  https://fhir.nhs.uk/England/ValueSet/ProgrammeFlagCode
 Alias: $ValueSetFlagConditionCategory =  https://fhir.nhs.uk/England/ValueSet/FlagConditionCategory
 Alias: $ValueSetFlagConditionCode =  https://fhir.nhs.uk/England/ValueSet/FlagConditionCode
+Alias: $v2-0487 = http://terminology.hl7.org/CodeSystem/v2-0487

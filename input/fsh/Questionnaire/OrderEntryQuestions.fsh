@@ -37,6 +37,7 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
     * code[+] = $epic#230022 "REFERRAL COMMENTS"
     * text = "Referral Comments (Please include any previous or familial variant details, if appropriate)"
     * type = #string
+    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.note.text"
   * item[+]
     * linkId = "230039"
     * code[+] = $epic#230039 "IS ORDERER THE REFERRING CLINICIAN"
@@ -54,29 +55,30 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
     * type = #string
   * item[+]
     * linkId = "230001"
-    * code[+] = $epic#230001 "SPECIMEN 1 TYPE"
+    * code[+] = $epic#230001 "SPECIMEN TYPE"
     * text = "Specimen 1 Type"
-    * type = #string
+    * type = #choice
     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type"
+    * answerValueSet = Canonical(SpecimenType)
   * item[+]
     * linkId = "230002"
-    * code[+] = $epic#230002 "SPECIMEN 1 SOURCE"
+    * code[+] = $epic#230002 "SPECIMEN SOURCE"
     * text = "Specimen 1 Source"
     * type = #string
   * item[+]
     * linkId = "230003"
-    * code[+] = $epic#230003 "SPECIMEN 1 ANTICOAGULANT/PRESERVATIVE"
+    * code[+] = $epic#230003 "SPECIMEN ANTICOAGULANT/PRESERVATIVE"
     * text = "Anticoagulant/Preservative"
     * type = #string
 
   * item[+]
     * linkId = "230004"
-    * code[+] = $epic#230004 "SPECIMEN 1 DUPLICATE VIALS"
+    * code[+] = $epic#230004 "SPECIMEN DUPLICATE VIALS"
     * text = "Number of Duplicate Vials (If Needed)"
     * type = #string
   * item[+]
     * linkId = "230005"
-    * code[+] = $epic#230005 "SPECIMEN 1 DESCRIPTION"
+    * code[+] = $epic#230005 "SPECIMEN DESCRIPTION"
     * text = "Specimen Description(s)/Sample Identifier(s) for DNA or Pathology Material (e.g. Block Number)"
     * type = #string
   * item[+]
@@ -91,7 +93,7 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
     * code[+] = $epic#230020 "INFECTION RISK DETAILS"
     * text = "Infection Risk Details"
     * type = #string
-     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.condition.text"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.condition.text"
   * item[+]
     * linkId = "230028"
     * code[+] = $epic#230028 "DATE OF SPECIMEN COLLECTION"
@@ -101,8 +103,8 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
   * item[+]
     * linkId = "230063"
     * code[+] = $epic#230063 "SPECIMEN TYPE (PRENATAL REFFERAL)"
-    * text = "Specimen 1 Type"
-    * type = #string
+    * text = "Specimen Type"
+    * type = #choice
     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type"
 
   * item[+]
@@ -288,4 +290,3 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
   * code[+] = $epic#230100 "MFT LAB GENETICS EXTRA TESTING FORM COMPLETED"
   * text = "Please Note That An Additional Test Order Form 'Whole Genome Sequencing Rare Disease Order Form (Link at Top of Form)' is Required To Activate Testing. If This is Not Received, The DNA Will Be Extracted and Stored"
   * type = #string
-
