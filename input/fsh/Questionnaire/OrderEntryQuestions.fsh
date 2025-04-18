@@ -1,6 +1,6 @@
 Instance: OrderEntryQuestions
 InstanceOf: Questionnaire
-Title: "Laboratory Order Questions"
+Title: "Genomics Laboratory Order Questions"
 Description: """
 Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for implementation.
 """
@@ -59,25 +59,26 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
   * item[+]
     * linkId = "113979"
     * code[+] = $epic#113979 "SPECIMEN 1 SOURCE (BLOOD RESTRICTIONS)"
-    * text = "Specimen 1 Source"
+    * text = "Specimen Source"
     * type = #string
   * item[+]
     * linkId = "230001"
     * code[+] = $epic#230001 "SPECIMEN TYPE"
-    * text = "Specimen 1 Type"
+    * text = "Specimen Type"
     * type = #choice
     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type"
     * answerValueSet = Canonical(SpecimenType)
   * item[+]
     * linkId = "230002"
     * code[+] = $epic#230002 "SPECIMEN SOURCE"
-    * text = "Specimen 1 Source"
+    * text = "Specimen Source"
     * type = #string
   * item[+]
     * linkId = "230003"
     * code[+] = $epic#230003 "SPECIMEN ANTICOAGULANT/PRESERVATIVE"
     * text = "Anticoagulant/Preservative"
     * type = #string
+    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.condition"
 
   * item[+]
     * linkId = "230004"
@@ -90,8 +91,9 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
     * text = "Specimen Description(s)/Sample Identifier(s) for DNA or Pathology Material (e.g. Block Number)"
     * type = #string
   * item[+]
-    * linkId = "230019"
+    * linkId = "281269004"
     * code[+] = $sct#281269004 "High infection risk sample"
+    * code[+] = $epic#230019 "HIGH INFECTION RISK"
     * text = "High Infection Risk"
     * answerValueSet = Canonical(ll2828-3)
     * type = #choice
@@ -182,7 +184,8 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
   * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
 
 * item[+]
-  * linkId = "230034"
+  * linkId = "77386006"
+  * code[+] = $sct#77386006 "Pregnancy"
   * code[+] = $epic#230034 "TEST RELATED TO PREGNANCY"
   * text = "Does This Test Relate to a Pregnancy"
   * type = #choice
