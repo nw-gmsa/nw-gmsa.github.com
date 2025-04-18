@@ -85,11 +85,13 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
     * text = "High Infection Risk"
     * answerValueSet = Canonical(ll2828-3)
     * type = #choice
+    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.condition"
   * item[+]
     * linkId = "230020"
     * code[+] = $epic#230020 "INFECTION RISK DETAILS"
     * text = "Infection Risk Details"
     * type = #string
+     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.condition.text"
   * item[+]
     * linkId = "230028"
     * code[+] = $epic#230028 "DATE OF SPECIMEN COLLECTION"
@@ -111,9 +113,6 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.identifier"
 
 
-
-
-
 * item[+]
   * linkId = "102313"
   * code[+] = $epic#102313 "GENETICS HIGH INFECTION RISK"
@@ -123,7 +122,6 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
   * repeats = false
   * answerValueSet = Canonical(ll2828-3)
   * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCoding"
-
 
 
 * item[+]
