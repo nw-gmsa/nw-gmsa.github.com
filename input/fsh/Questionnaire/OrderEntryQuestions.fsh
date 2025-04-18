@@ -150,7 +150,8 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
 
 
 * item[+]
-  * linkId = "230029"
+  * linkId = "762911000000102"
+  * code[+] = $sct#762911000000102 "Informed consent given for treatment"
   * code[+] = $epic#230029 "CONFIRMATION OF CONSENT"
   * text = "Confirmation of Consent for Testing - MANDATORY Testing will not be performed without completed confirmation of consent"
   * type = #choice
