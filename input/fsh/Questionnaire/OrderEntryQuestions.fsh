@@ -10,6 +10,38 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
 * item[+]
   * linkId = "Order"
   * type = #group
+  * item[+]
+    * linkId = "230016"
+    * code[+] = $epic#230016 "TEST TYPE (RARE DISEASE)"
+    * text = "Test Type"
+    * type = #string
+
+  * item[+]
+    * linkId = "230017"
+    * code[+] = $epic#230017 "TEST TYPE (SOLID CANCER)"
+    * text = "Test Type"
+    * type = #string
+
+  * item[+]
+    * linkId = "230018"
+    * code[+] = $epic#230018 "TEST TYPE (HAEMATOLOGICAL ONCOLOGY)"
+    * text = "Test Type"
+    * type = #string
+  * item[+]
+    * linkId = "114867"
+    * code[+] = $epic#114867 "NAME OF SUPERVISING CLINICIAN (CLC)"
+    * text = "Name of Supervising Clinician"
+    * type = #string
+  * item[+]
+    * linkId = "230022"
+    * code[+] = $epic#230022 "REFERRAL COMMENTS"
+    * text = "Referral Comments (Please include any previous or familial variant details, if appropriate)"
+    * type = #string
+  * item[+]
+    * linkId = "230039"
+    * code[+] = $epic#230039 "IS ORDERER THE REFERRING CLINICIAN"
+    * text = "Is the Person Ordering the Test the Referring Clinician"
+    * type = #string
 
 * item[+]
   * linkId = "Specimen"
@@ -64,31 +96,23 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
     * text = "Date of Specimen(s) Collection"
     * type = #dateTime
     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.collection.collectedDateTime"
+  * item[+]
+    * linkId = "230063"
+    * code[+] = $epic#230063 "SPECIMEN TYPE (PRENATAL REFFERAL)"
+    * text = "Specimen 1 Type"
+    * type = #string
+    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type"
+
+  * item[+]
+    * linkId = "230021"
+    * code[+] = $epic#230021 "SAMPLE IDENTIFIER(S)"
+    * text = "Sample Identifier(s) for DNA or Pathology Material (e.g. Block Number)"
+    * type = #string
+    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.identifier"
 
 
-* item[+]
-  * linkId = "114867"
-  * code[+] = $epic#114867 "NAME OF SUPERVISING CLINICIAN (CLC)"
-  * text = "Name of Supervising Clinician"
-  * type = #string
 
-* item[+]
-  * linkId = "230016"
-  * code[+] = $epic#230016 "TEST TYPE (RARE DISEASE)"
-  * text = "Test Type"
-  * type = #string
 
-* item[+]
-  * linkId = "230017"
-  * code[+] = $epic#230017 "TEST TYPE (SOLID CANCER)"
-  * text = "Test Type"
-  * type = #string
-
-* item[+]
-  * linkId = "230018"
-  * code[+] = $epic#230018 "TEST TYPE (HAEMATOLOGICAL ONCOLOGY)"
-  * text = "Test Type"
-  * type = #string
 
 * item[+]
   * linkId = "102313"
@@ -101,18 +125,6 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
   * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCoding"
 
 
-* item[+]
-  * linkId = "230021"
-  * code[+] = $epic#230021 "SAMPLE IDENTIFIER(S)"
-  * text = "Sample Identifier(s) for DNA or Pathology Material (e.g. Block Number)"
-  * type = #string
-  * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.identifier"
-
-* item[+]
-  * linkId = "230022"
-  * code[+] = $epic#230022 "REFERRAL COMMENTS"
-  * text = "Referral Comments (Please include any previous or familial variant details, if appropriate)"
-  * type = #string
 
 * item[+]
   * linkId = "230023"
@@ -190,11 +202,7 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
   * text = "Please Confirm the Pathology Report will Accompany the Sample to the Laboratory"
   * type = #string
 
-* item[+]
-  * linkId = "230039"
-  * code[+] = $epic#230039 "IS ORDERER THE REFERRING CLINICIAN"
-  * text = "Is the Person Ordering the Test the Referring Clinician"
-  * type = #string
+
 
 * item[+]
   * linkId = "230043"
@@ -244,12 +252,6 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
   * text = "Please enter the trisomy screening risk (including the chromosome of interest if appropriate)."
   * type = #string
 
-* item[+]
-  * linkId = "230063"
-  * code[+] = $epic#230063 "SPECIMEN TYPE (PRENATAL REFFERAL)"
-  * text = "Specimen 1 Type"
-  * type = #string
-  * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type"
 
 * item[+]
   * linkId = "230064"
