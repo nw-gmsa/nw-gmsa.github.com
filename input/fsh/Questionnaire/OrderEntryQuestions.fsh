@@ -14,19 +14,26 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
     * linkId = "230016"
     * code[+] = $epic#230016 "TEST TYPE (RARE DISEASE)"
     * text = "Test Type"
-    * type = #string
+    * type = #choice
+    * answerValueSet = Canonical(GenomicTestDirectory)
+    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.code"
 
   * item[+]
     * linkId = "230017"
     * code[+] = $epic#230017 "TEST TYPE (SOLID CANCER)"
     * text = "Test Type"
-    * type = #string
+    * type = #choice
+    * answerValueSet = Canonical(GenomicTestDirectory)
+    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.code"
 
   * item[+]
     * linkId = "230018"
     * code[+] = $epic#230018 "TEST TYPE (HAEMATOLOGICAL ONCOLOGY)"
     * text = "Test Type"
-    * type = #string
+    * type = #choice
+    * answerValueSet = Canonical(GenomicTestDirectory)
+    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.code"
+
   * item[+]
     * linkId = "114867"
     * code[+] = $epic#114867 "NAME OF SUPERVISING CLINICIAN (CLC)"
@@ -43,6 +50,7 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
     * code[+] = $epic#230039 "IS ORDERER THE REFERRING CLINICIAN"
     * text = "Is the Person Ordering the Test the Referring Clinician"
     * type = #string
+    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.requester.display"
 
 * item[+]
   * linkId = "Specimen"
@@ -112,7 +120,7 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
     * code[+] = $epic#230021 "SAMPLE IDENTIFIER(S)"
     * text = "Sample Identifier(s) for DNA or Pathology Material (e.g. Block Number)"
     * type = #string
-    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.identifier"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.identifier.value"
 
 
 * item[+]
@@ -150,13 +158,15 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
   * linkId = "230030"
   * code[+] = $epic#230030 "NEOPLASTIC CELL CONTENT LEVEL"
   * text = "Neoplastic Cell Content Level"
-  * type = #string
+  * type = #quantity
+  * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
 
 * item[+]
   * linkId = "230031"
   * code[+] = $epic#230031 "NEOPLASTIC CELL CONTENT LEVEL EXACT"
   * text = "Neoplastic Cell Content Level %"
-  * type = #string
+  * type = #quantity
+  * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
 
 * item[+]
   * linkId = "230032"
@@ -168,7 +178,8 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
   * linkId = "230033"
   * code[+] = $epic#230033 "BLAST CELL COUNT"
   * text = "Blast Cell Count"
-  * type = #string
+  * type = #quantity
+  * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
 
 * item[+]
   * linkId = "230034"
@@ -264,7 +275,8 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
   * linkId = "230065"
   * code[+] = $epic#230065 "GENETICS - WHAT TYPE OF TRANSPLANT?"
   * text = "What Type Of Transplant Has The Patient Received"
-  * type = #string
+  * type = #choice
+
 
 * item[+]
   * linkId = "230066"
@@ -277,7 +289,8 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
   * linkId = "230067"
   * code[+] = $epic#230067 "GENETICS - CONFIRMED LUNG CANCER TISSUE"
   * text = "Please Confirm That Lung Cancer Tissue is Inadequate for Testing?"
-  * type = #string
+  * type = #choice
+  * answerValueSet = Canonical(ll2828-3)
 
 * item[+]
   * linkId = "230068"
