@@ -10,8 +10,10 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
 * item[+]
   * linkId = "Order"
   * type = #group
+
   * item[+]
     * linkId = "230016"
+    * code[+] = $sct#405824009 "Genetic test (procedure)"
     * code[+] = $epic#230016 "TEST TYPE (RARE DISEASE)"
     * text = "Test Type"
     * type = #choice
@@ -19,7 +21,8 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
     * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.code"
 
   * item[+]
-    * linkId = "230017"
+    * linkId = "405824009"
+    * code[+] = $sct#405824009 "Genetic test (procedure)"
     * code[+] = $epic#230017 "TEST TYPE (SOLID CANCER)"
     * text = "Test Type"
     * type = #choice
@@ -28,6 +31,7 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
 
   * item[+]
     * linkId = "230018"
+    * code[+] = $sct#405824009 "Genetic test (procedure)"
     * code[+] = $epic#230018 "TEST TYPE (HAEMATOLOGICAL ONCOLOGY)"
     * text = "Test Type"
     * type = #choice
@@ -56,6 +60,7 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
   * linkId = "Specimen"
   * type = #group
   * repeats = true
+  * code[+] = $epic#123038009 "Specimen (specimen)"
   * item[+]
     * linkId = "113979"
     * code[+] = $epic#113979 "SPECIMEN 1 SOURCE (BLOOD RESTRICTIONS)"
@@ -106,6 +111,7 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.condition.text"
   * item[+]
     * linkId = "230028"
+    * code[+] = $sct#1208523001	"Specimen collection by healthcare professional (finding)"
     * code[+] = $epic#230028 "DATE OF SPECIMEN COLLECTION"
     * text = "Date of Specimen(s) Collection"
     * type = #dateTime
@@ -118,7 +124,8 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type"
 
   * item[+]
-    * linkId = "230021"
+    * linkId = "118522005"
+    * code[+] = $sct#118522005 "Identifier (property) (qualifier value)"
     * code[+] = $epic#230021 "SAMPLE IDENTIFIER(S)"
     * text = "Sample Identifier(s) for DNA or Pathology Material (e.g. Block Number)"
     * type = #string
@@ -151,6 +158,7 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
 
 * item[+]
   * linkId = "762911000000102"
+  * code[+] = $sct#309370004 "Consent status (finding)"
   * code[+] = $sct#762911000000102 "Informed consent given for treatment"
   * code[+] = $epic#230029 "CONFIRMATION OF CONSENT"
   * text = "Confirmation of Consent for Testing - MANDATORY Testing will not be performed without completed confirmation of consent"
@@ -158,7 +166,8 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
   * answerValueSet = Canonical(ll2828-3)
 
 * item[+]
-  * linkId = "230030"
+  * linkId = "250537006"
+  * code[+] = $sct#250537006 "Histopathology finding (finding)"
   * code[+] = $epic#230030 "NEOPLASTIC CELL CONTENT LEVEL"
   * text = "Neoplastic Cell Content Level"
   * type = #quantity
@@ -166,13 +175,15 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
 
 * item[+]
   * linkId = "230031"
+  * code[+] = $sct#250537006 "Histopathology finding (finding)"
   * code[+] = $epic#230031 "NEOPLASTIC CELL CONTENT LEVEL EXACT"
   * text = "Neoplastic Cell Content Level %"
   * type = #quantity
   * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
 
 * item[+]
-  * linkId = "230032"
+  * linkId = "252416005"
+  * code[+] = $sct#252416005 "Histopathology test (procedure)"
   * code[+] = $epic#230032 "MACRODISSECTION REQUIREMENTS"
   * text = "Macrodissection Requirements"
   * type = #string
@@ -206,7 +217,8 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
   * type = #string
 
 * item[+]
-  * linkId = "230037"
+  * linkId = "1186936003"
+  * code[+] = $sct#1186936003 "Storage of specimen (procedure)"
   * code[+] = $epic#230037 "DNA SAMPLE STORED"
   * text = "Please Acknowledge That a DNA Sample Will be Stored in the Laboratory on Completion of Testing"
   * type = #string
@@ -220,7 +232,8 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
 
 
 * item[+]
-  * linkId = "230043"
+  * linkId = "385675009"
+  * code[+] = $sct#385675009 "Reason for action (attribute)"
   * code[+] = $epic#230043 "REASON FOR RE-INTERPRETATION"
   * text = "Reason For Variant Re-Interpretation Request"
   * type = #string
@@ -256,13 +269,15 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
   * type = #string
 
 * item[+]
-  * linkId = "230061"
+  * linkId = "169222003"
+  * code[+] = $sct#169222003 "Ultrasound obstetric scan abnormal (finding)"
   * code[+] = $epic#230061 "MFT LAB GENETICS R22 - ABNORMAL SCAN FINDINGS"
   * text = "What were the Abnormal Scan Findings:"
   * type = #string
 
 * item[+]
-  * linkId = "230062"
+  * linkId = "78989007"
+  * code[+] = $sct#78989007	"Trisomy (morphologic abnormality)"
   * code[+] = $epic#230062 "MFT LAB GENETICS R401 - TRISOMY"
   * text = "Please enter the trisomy screening risk (including the chromosome of interest if appropriate)."
   * type = #string
