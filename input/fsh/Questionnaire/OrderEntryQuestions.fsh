@@ -6,6 +6,7 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
 """
 
 * status = #draft
+* url = "https://fhir.north-west.england.nhs.uk/Questionnaire/OrderEntryQuestions"
 
 * item[+]
   * linkId = "Order"
@@ -72,6 +73,7 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
     * linkId = "66746-9"
     * code[+] = $loinc#66746-9 "Specimen Type"
     * code[+] = $epic#230001 "SPECIMEN TYPE"
+    * extension[designNote].valueMarkdown = "Some text"
     * text = "Specimen Type"
     * type = #choice
     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type"
