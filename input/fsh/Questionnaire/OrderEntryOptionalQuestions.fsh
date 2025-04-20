@@ -134,6 +134,12 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
     * text = "Sample Identifier(s) for DNA or Pathology Material (e.g. Block Number)"
     * type = #string
     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.identifier.value"
+  * item[+]
+    * linkId = "1186936003"
+    * code[+] = $sct#1186936003 "Storage of specimen (procedure)"
+    * code[+] = $epic#230037 "DNA SAMPLE STORED"
+    * text = "Please Acknowledge That a DNA Sample Will be Stored in the Laboratory on Completion of Testing"
+    * type = #string
 
 * item[+]
   * type = #group
@@ -172,44 +178,70 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
     * text = "Confirmation of Consent for Testing - MANDATORY Testing will not be performed without completed confirmation of consent"
     * type = #choice
     * answerValueSet = Canonical(ll2828-3)
+  * item[+]
+    * type = #group
+    * linkId = "UnknownResultsPanel"
+    * text = "Unknown Results Panel"
+    * item[+]
+      * linkId = "250537006"
+      * code[+] = $sct#250537006 "Histopathology finding (finding)"
+      * code[+] = $epic#230030 "NEOPLASTIC CELL CONTENT LEVEL"
+      * text = "Neoplastic Cell Content Level"
+      * type = #quantity
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
+
+    * item[+]
+      * linkId = "230031"
+      * code[+] = $sct#250537006 "Histopathology finding (finding)"
+      * code[+] = $epic#230031 "NEOPLASTIC CELL CONTENT LEVEL EXACT"
+      * text = "Neoplastic Cell Content Level %"
+      * type = #quantity
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
+
+    * item[+]
+      * linkId = "252416005"
+      * code[+] = $sct#252416005 "Histopathology test (procedure)"
+      * code[+] = $epic#230032 "MACRODISSECTION REQUIREMENTS"
+      * text = "Macrodissection Requirements"
+      * type = #string
+
+    * item[+]
+      * linkId = "230033"
+      * code[+] = $epic#230033 "BLAST CELL COUNT"
+      * text = "Blast Cell Count"
+      * type = #quantity
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
+
+
 
   * item[+]
-    * linkId = "250537006"
-    * code[+] = $sct#250537006 "Histopathology finding (finding)"
-    * code[+] = $epic#230030 "NEOPLASTIC CELL CONTENT LEVEL"
-    * text = "Neoplastic Cell Content Level"
-    * type = #quantity
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
+    * type = #group
+    * linkId = "Reason"
+    * text = "Reason"
+    * item[+]
+      * linkId = "77386006"
+      * code[+] = $sct#77386006 "Pregnancy"
+      * code[+] = $epic#230034 "TEST RELATED TO PREGNANCY"
+      * text = "Does This Test Relate to a Pregnancy"
+      * type = #choice
+      * answerValueSet = Canonical(ll2817-6)
+    * item[+]
+      * linkId = "385675009"
+      * code[+] = $sct#385675009 "Reason for action (attribute)"
+      * code[+] = $epic#230043 "REASON FOR RE-INTERPRETATION"
+      * text = "Reason For Variant Re-Interpretation Request"
+      * type = #string
+    * item[+]
+      * linkId = "230048"
+      * code[+] = $epic#230048 "GENETICS TEST"
+      * text = "Please Select Clinical Indication(s)"
+      * type = #string
+    * item[+]
+      * linkId = "230057"
+      * code[+] = $epic#230057 "PRE-NATAL GENETICS TEST LIST"
+      * text = "Please Select Clinical Indication(s)"
+      * type = #string
 
-  * item[+]
-    * linkId = "230031"
-    * code[+] = $sct#250537006 "Histopathology finding (finding)"
-    * code[+] = $epic#230031 "NEOPLASTIC CELL CONTENT LEVEL EXACT"
-    * text = "Neoplastic Cell Content Level %"
-    * type = #quantity
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
-
-  * item[+]
-    * linkId = "252416005"
-    * code[+] = $sct#252416005 "Histopathology test (procedure)"
-    * code[+] = $epic#230032 "MACRODISSECTION REQUIREMENTS"
-    * text = "Macrodissection Requirements"
-    * type = #string
-
-  * item[+]
-    * linkId = "230033"
-    * code[+] = $epic#230033 "BLAST CELL COUNT"
-    * text = "Blast Cell Count"
-    * type = #quantity
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
-
-  * item[+]
-    * linkId = "77386006"
-    * code[+] = $sct#77386006 "Pregnancy"
-    * code[+] = $epic#230034 "TEST RELATED TO PREGNANCY"
-    * text = "Does This Test Relate to a Pregnancy"
-    * type = #choice
-    * answerValueSet = Canonical(ll2817-6)
 
   * item[+]
     * linkId = "230035"
@@ -224,26 +256,12 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
     * text = "Mother's Details (Name, DOB, NHS & MRN)"
     * type = #string
 
-  * item[+]
-    * linkId = "1186936003"
-    * code[+] = $sct#1186936003 "Storage of specimen (procedure)"
-    * code[+] = $epic#230037 "DNA SAMPLE STORED"
-    * text = "Please Acknowledge That a DNA Sample Will be Stored in the Laboratory on Completion of Testing"
-    * type = #string
+
 
   * item[+]
     * linkId = "230038"
     * code[+] = $epic#230038 "PATHOLOGY REPORT"
     * text = "Please Confirm the Pathology Report will Accompany the Sample to the Laboratory"
-    * type = #string
-
-
-
-  * item[+]
-    * linkId = "385675009"
-    * code[+] = $sct#385675009 "Reason for action (attribute)"
-    * code[+] = $epic#230043 "REASON FOR RE-INTERPRETATION"
-    * text = "Reason For Variant Re-Interpretation Request"
     * type = #string
 
   * item[+]
@@ -252,17 +270,6 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
     * text = "Lab DNA Number (If Known)"
     * type = #string
 
-  * item[+]
-    * linkId = "230048"
-    * code[+] = $epic#230048 "GENETICS TEST"
-    * text = "Please Select Clinical Indication(s)"
-    * type = #string
-
-  * item[+]
-    * linkId = "230057"
-    * code[+] = $epic#230057 "PRE-NATAL GENETICS TEST LIST"
-    * text = "Please Select Clinical Indication(s)"
-    * type = #string
 
   * item[+]
     * linkId = "230059"
