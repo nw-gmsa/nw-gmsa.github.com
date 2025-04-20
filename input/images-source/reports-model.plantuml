@@ -106,7 +106,7 @@ skinparam svgDimensionStyle false
     telecom
     }
 
-    entity "[[StructureDefinition-Organizationr.html Organization]]" as organisation {
+    entity "[[StructureDefinition-Organization.html Organization]]" as organisation {
      odsCode
      name
      telecom

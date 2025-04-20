@@ -3,8 +3,8 @@
 
 - A. [IHE Pathology and Laboratory Medicine (PaLM) Technical Framework - Volume 2a (PaLM TF-2a) Transactions](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol2a.pdf)
 - B. **Test Order Forms**
-  - See [NW Genomics Test Order Form](Questionnaire-NW-Genomics-Test-Order.html) and [Questionnaire Viewer](https://project-wildfyre.github.io/questionnaire-viewer/?q=https://fhir-mft.github.io/FHIRGenomics/Questionnaire-NW-Genomics-Test-Order.json)
-
+  - See [NW Genomics Test Order Form](Questionnaire-GenomicOrderEntryCommon.html) 
+  - 
 ## Scope
 
 This transaction is used by the Order Placer to place an Order Group (FHIR RequestGroup) (i.e., a set of Orders to be tested together for a patient) or a standalone Order to the Order Filler. The transaction enables both Order Placer and Order Filler to notify all subsequent changes of status and/or content of each Order to the other side.
@@ -24,11 +24,11 @@ This transaction is used by the Order Placer to place an Order Group (FHIR Reque
 
 The following messages are used to support creation and updating of the [Genomics Test Request](vol3.html#genomic-test-request-entity-model) [aggregation](https://martinfowler.com/bliki/AggregationAndComposition.html)/[archetype](https://en.wikipedia.org/wiki/Archetype_(information_science)) 
 
-| Message                                                               | Purpose                                                                                                     | EIP Type                                                                                                |
-|-----------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
+| Message                                                             | Purpose                                                                                                     | EIP Type                                                                                                |
+|---------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 | [Laboratory Order](#laboratory-order)               | Sending the initial `laboratory-order` request.                                                              | [Command Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CommandMessage.html) |
-| [Laboratory Order Acknowledgement](#laboratory-order-acknowledgement) | Is used to update the `order-placer` of changes to `laboratory-order` such as an assigned `AccessionNumber` | [Event Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/EventMessage.html)     |                                                                                      |
-| [Laboratory Order Updates](#laboratory-order-updates)   | Is used to update master data in the `laboratory-order` such as changes to Patient and Pracitioner details. | [Event Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/EventMessage.html)     |
+| Laboratory Order Acknowledgement | Is used to update the `order-placer` of changes to `laboratory-order` such as an assigned `AccessionNumber` | [Event Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/EventMessage.html)     |                                                                                      |
+| Laboratory Order Updates   | Is used to update master data in the `laboratory-order` such as changes to Patient and Pracitioner details. | [Event Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/EventMessage.html)     |
 
 ### Laboratory Order
 
