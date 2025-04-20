@@ -9,6 +9,7 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
 
 * item[+]
   * linkId = "Order"
+  * text = "Order"
   * type = #group
 
   * item[+]
@@ -58,6 +59,7 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
 
 * item[+]
   * linkId = "Specimen"
+  * text = "Specimen"
   * type = #group
   * repeats = true
   * code[+] = $epic#123038009 "Specimen (specimen)"
