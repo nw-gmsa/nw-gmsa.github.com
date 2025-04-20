@@ -145,6 +145,7 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
   * type = #group
   * linkId = "Supporting Information"
   * text = "Supporting Information"
+  * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.supportingInfo"
   * item[+]
     * linkId = "102313"
     * code[+] = $epic#102313 "GENETICS HIGH INFECTION RISK"
@@ -253,8 +254,6 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
     * code[+] = $epic#230036 "MOTHERS DETAILS"
     * text = "Mother's Details (Name, DOB, NHS & MRN)"
     * type = #string
-
-
 
   * item[+]
     * linkId = "230038"
