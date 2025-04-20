@@ -67,7 +67,8 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
     * text = "Specimen Source"
     * type = #string
   * item[+]
-    * linkId = "230001"
+    * linkId = "66746-9"
+    * code[+] = $loinc#66746-9 "Specimen Type"
     * code[+] = $epic#230001 "SPECIMEN TYPE"
     * text = "Specimen Type"
     * type = #choice
@@ -124,8 +125,8 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type"
 
   * item[+]
-    * linkId = "118522005"
-    * code[+] = $sct#118522005 "Identifier (property) (qualifier value)"
+    * linkId = "80398-1"
+    * code[+] = $loinc#80398-1 "Identifier (property) (qualifier value)"
     * code[+] = $epic#230021 "SAMPLE IDENTIFIER(S)"
     * text = "Sample Identifier(s) for DNA or Pathology Material (e.g. Block Number)"
     * type = #string
@@ -150,7 +151,8 @@ Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for imp
   * type = #string
 
 * item[+]
-  * linkId = "230027"
+  * linkId = "89058-2"
+  * code[+] = $loinc#89058-2 "Contact email address"
   * code[+] = $epic#230027 "EMAIL ADDRESSES"
   * text = "Email Addresses of Non-MFT Clinicians for Result Reports"
   * type = #string
