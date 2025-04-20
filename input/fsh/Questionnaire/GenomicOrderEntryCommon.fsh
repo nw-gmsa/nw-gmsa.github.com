@@ -66,41 +66,109 @@ Genomic Order Entry Common  - THIS IS FOR ANALYSIS, and is not to be used for im
     * text = "Family - G Number"
 
 
-  * item[+]
-    * type = #group
-    * linkId = "3"
-    * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole"
-    * text = "Referring Clinician"
+* item[+]
+  * type = #group
+  * linkId = "3"
+  * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole"
+  * text = "Referring Clinician"
 
-    * item[+]
-      * type = #string
-      * linkId = "3.1"
-      * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.name"
-      * text = "Name"
-    * item[+]
-      * type = #choice
-      * linkId = "3.2"
-      * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.specialty.coding.code"
-      * text = "Specialty"
-      * answerValueSet = "https://fhir.hl7.org.uk/ValueSet/UKCore-PracticeSettingCode"
-    * item[+]
-      * type = #string
-      * linkId = "3.3"
-      * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.practitioner.identifier.value"
-      * text = "Professional/Consultant Code"
-      * required = true
-    * item[+]
-      * type = #string
-      * linkId = "3.4"
-      * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.telecom.value"
-      * text = "Phone"
-    * item[+]
-      * type = #string
-      * linkId = "3.5"
-      * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.telecom.value"
-      * text = "Email"
-    * item[+]
-      * type = #string
-      * linkId = "3.6"
-      * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.organization.identifier.value"
-      * text = "Referring Organisation ODS Code"
+  * item[+]
+    * type = #string
+    * linkId = "3.1"
+    * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.name"
+    * text = "Name"
+  * item[+]
+    * type = #choice
+    * linkId = "3.2"
+    * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.specialty.coding.code"
+    * text = "Specialty"
+    * answerValueSet = "https://fhir.hl7.org.uk/ValueSet/UKCore-PracticeSettingCode"
+  * item[+]
+    * type = #string
+    * linkId = "3.3"
+    * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.practitioner.identifier.value"
+    * text = "Professional/Consultant Code"
+    * required = true
+  * item[+]
+    * type = #string
+    * linkId = "3.4"
+    * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.telecom.value"
+    * text = "Phone"
+  * item[+]
+    * type = #string
+    * linkId = "3.5"
+    * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.telecom.value"
+    * text = "Email"
+  * item[+]
+    * type = #string
+    * linkId = "3.6"
+    * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.organization.identifier.value"
+    * text = "Referring Organisation ODS Code"
+
+
+* item[+]
+  * type = #group
+  * linkId = "4"
+  * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest"
+  * text = "Test Request"
+  * item[+]
+    * type = #string
+    * linkId = "4.1"
+    * text = "Order Number"
+    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.identifier:placerOrderNumber"
+    * required = true
+  * item[+]
+    * type = #choice
+    * linkId = "4.2"
+    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.code"
+    * text = "CITT (Test Code)"
+    * required = true
+    * repeats = true
+    * answerValueSet = "https://hl7.mft.nhs.uk/ValueSet/genomic-test-directory"
+
+
+* item[+]
+  * type = #group
+  * linkId = "5"
+  * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen"
+  * text = "Specimen/Biopsy"
+
+  * item[+]
+    * type = #string
+    * linkId = "5.1"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.identifier.value"
+    * text = "ID Number"
+  * item[+]
+    * type = #dateTime
+    * linkId = "5.2"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.collection.collectedDateTime"
+    * text = "Collection Date"
+  * item[+]
+    * type = #string
+    * linkId = "5.3"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type.coding.code"
+    * text = "Specimen Type"
+  * item[+]
+    * type = #string
+    * linkId = "5.4"
+    * text = "Solid tumour pathology block/sample number"
+
+* item[+]
+  * type = #group
+  * linkId = "6"
+  * text = "Results"
+  * item[+]
+    * type = #attachment
+    * linkId = "6.1"
+    * text = "Family Structure (pdf)"
+    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.supportingInfo:GenomicFamilyStructure"
+  * item[+]
+    * type = #string
+    * linkId = "6.2"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier:MedicalRecordNumber.value"
+    * text = "National Genomic Information Service (NGIS) Patient ID"
+  * item[+]
+    * type = #string
+    * linkId = "6.3"
+    * text = "National Genomic Information Service (NGIS) Referral ID"
+    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.supportingInfo:PreviousReports.identifier.value"

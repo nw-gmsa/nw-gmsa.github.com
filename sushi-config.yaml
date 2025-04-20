@@ -124,12 +124,9 @@ pages:
     generation: markdown
 
 resources:
-  Questionnaire/NW-Genomics-Test-Order:
-    name: NW Genomics Test Order Form (Minimal Dataset)
-    description: NW Genomics Test Order (Minimal Dataset) - from Aldery Hey
   Questionnaire/GenomicOrderEntryCommon:
     name: NW Genomics Test Order Entry Form Common
-    description: NW Genomics Test Order Entry Form Common (Draft).
+    description: NW Genomics Test Order Entry Form Common (Draft) - from Aldery Hey (Minimum Dataset)
     exampleBoolean: false
   Questionnaire/GenomicOrderEntryOptionalQuestions:
     name: NW Genomics Test Order Entry Form Optional Questions
