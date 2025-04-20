@@ -108,7 +108,7 @@ Genomic Order Entry Common  - THIS IS FOR ANALYSIS, and is not to be used for im
 
 * item[+]
   * type = #group
-  * linkId = "4"
+  * linkId = "Order"
   * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest"
   * text = "Test Request"
   * item[+]
@@ -129,7 +129,7 @@ Genomic Order Entry Common  - THIS IS FOR ANALYSIS, and is not to be used for im
 
 * item[+]
   * type = #group
-  * linkId = "5"
+  * linkId = "Specimen"
   * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen"
   * text = "Specimen/Biopsy"
 
@@ -155,8 +155,8 @@ Genomic Order Entry Common  - THIS IS FOR ANALYSIS, and is not to be used for im
 
 * item[+]
   * type = #group
-  * linkId = "6"
-  * text = "Results"
+  * linkId = "Supporting Information"
+  * text = "Supporting Information"
   * item[+]
     * type = #attachment
     * linkId = "6.1"
