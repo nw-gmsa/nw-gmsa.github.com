@@ -212,8 +212,6 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
       * type = #quantity
       * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
 
-
-
   * item[+]
     * type = #group
     * linkId = "Reason"

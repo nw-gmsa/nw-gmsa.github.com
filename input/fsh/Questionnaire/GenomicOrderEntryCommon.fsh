@@ -76,9 +76,8 @@ Genomic Order Entry Common  - THIS IS FOR ANALYSIS, and is not to be used for im
   * item[+]
     * type = #group
     * linkId = "3"
-    * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole"
+    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.requester"
     * text = "Referring Clinician"
-
       * item[+]
         * type = #string
         * linkId = "3.1"
