@@ -182,7 +182,7 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
     * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
 
   * item[+]
-    * linkId = "230031
+    * linkId = "230031"
     * code[+] = $sct#250537006 "Histopathology finding (finding)"
     * code[+] = $epic#230031 "NEOPLASTIC CELL CONTENT LEVEL EXACT"
     * text = "Neoplastic Cell Content Level %"

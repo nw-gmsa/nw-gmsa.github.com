@@ -23,9 +23,9 @@ Description:    "DRAFT Extension of UKCore-Observation"
 
 * code ^short = "The type of observation (code / type). (HL7 v2 OBX-3)"
 
-* value[x] ^short = "	Actual result (HL7 v2 OBX-5)"
+* value[x] ^short = "Actual result (HL7 v2 OBX-5)"
 
-* effective[x] ^short = "Clinically relevant time/time-period for observation (HL7 v2 	OBX-14)"
+* effective[x] ^short = "Clinically relevant time/time-period for observation (HL7 v2 OBX-14)"
 * effective[x] insert Obligation(#SHOULD:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderFiller)
 * effective[x] insert Obligation(#SHOULD:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderPlacer)
 * effective[x] insert Obligation(#SHOULD:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/AutomationManager)
