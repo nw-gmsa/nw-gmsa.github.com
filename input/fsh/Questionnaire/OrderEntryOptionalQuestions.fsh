@@ -1,12 +1,12 @@
-Instance: OrderEntryQuestions
+Instance: GenomicOrderEntryOptionalQuestions
 InstanceOf: Questionnaire
-Title: "Genomics Laboratory Order Questions"
+Title: "Genomic Order Entry Optional Questions"
 Description: """
-Laboratory Order Questions - THIS IS FOR ANALYSIS, and is not to be used for implementation.
+Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be used for implementation.
 """
 
 * status = #draft
-* url = "https://fhir.north-west.england.nhs.uk/Questionnaire/OrderEntryQuestions"
+* url = "https://fhir.north-west.england.nhs.uk/Questionnaire/GenomicOrderEntryOptionalQuestions"
 
 * item[+]
   * linkId = "Order"

@@ -126,10 +126,14 @@ pages:
 resources:
   Questionnaire/NW-Genomics-Test-Order:
     name: NW Genomics Test Order Form (Minimal Dataset)
-    description: NW Genomics Test Order (Minimal Dataset)
-  Questionnaire/OrderEntryQuestions:
-    name: NW Genomics Test Order Entry Form Questions
-    description: NW Genomics Test Order Entry Form Questions (Draft).
+    description: NW Genomics Test Order (Minimal Dataset) - from Aldery Hey
+  Questionnaire/GenomicOrderEntryCommon:
+    name: NW Genomics Test Order Entry Form Common
+    description: NW Genomics Test Order Entry Form Common (Draft).
+    exampleBoolean: false
+  Questionnaire/GenomicOrderEntryOptionalQuestions:
+    name: NW Genomics Test Order Entry Form Optional Questions
+    description: NW Genomics Test Order Entry Form Questions (Draft) - from Manchester Foundation Trust
     exampleBoolean: false
   Questionnaire/81247-9:
     name: Master HL7 genetic variant reporting panel
