@@ -79,9 +79,9 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type"
     * answerValueSet = Canonical(SpecimenType)
     * item[+]
-        * linkId = "66746-9-designNote"
-        * type = #display
-        * text = "ORM v2.4 - OBX-3 = LOINC 66746-9 and OBX-2 = CE. OML v2.5.1 SPM-4"
+      * linkId = "66746-9-designNote"
+      * type = #display
+      * text = "ORM v2.4 - OBX-3 = LOINC 66746-9 and OBX-2 = CE. OML v2.5.1 SPM-4"
 
   * item[+]
     * linkId = "230002"
