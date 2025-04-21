@@ -117,6 +117,7 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
       * linkId = "281269004-designNote"
       * type = #display
       * text = "v2.4/v2.5.1 OBX. SNOMED 281269004"
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
   * item[+]
     * linkId = "230020"
     * code[+] = $epic#230020 "INFECTION RISK DETAILS"
@@ -135,6 +136,7 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
       * linkId = "281269004-designNote"
       * type = #display
       * text = "ORM v2.4 - OBX-3 = LOINC 33882-2 and OBX-2 = TS . OML v2.5.1 SPM-17"
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
   * item[+]
     * linkId = "230063"
     * code[+] = $epic#230063 "SPECIMEN TYPE (PRENATAL REFFERAL)"
@@ -153,6 +155,7 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
       * linkId = "80398-1-designNote"
       * type = #display
       * text = "ORM v2.4 - OBX-3 = LOINC 80398-1 and OBX-2 = CE. OML v2.5.1 SPM-2"
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
   * item[+]
     * linkId = "1186936003"
     * code[+] = $sct#1186936003 "Storage of specimen (procedure)"
