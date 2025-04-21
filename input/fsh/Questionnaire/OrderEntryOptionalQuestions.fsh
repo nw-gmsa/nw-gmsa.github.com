@@ -78,6 +78,11 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
     * type = #choice
     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type"
     * answerValueSet = Canonical(SpecimenType)
+    * item[+]
+        * linkId = "66746-9-designNote"
+        * type = #display
+        * text = "ORM v2.4 - OBX LOINC 66746-9. OML v2.5.1 SPM-4"
+
   * item[+]
     * linkId = "230002"
     * code[+] = $epic#230002 "SPECIMEN SOURCE"
@@ -107,6 +112,10 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
     * answerValueSet = Canonical(ll2828-3)
     * type = #choice
     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.condition"
+    * item[+]
+      * linkId = "281269004-designNote"
+      * type = #display
+      * text = "v2.4/v2.5.1 OBX. SNOMED 281269004"
   * item[+]
     * linkId = "230020"
     * code[+] = $epic#230020 "INFECTION RISK DETAILS"
@@ -134,6 +143,10 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
     * text = "Sample Identifier(s) for DNA or Pathology Material (e.g. Block Number)"
     * type = #string
     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.identifier.value"
+    * item[+]
+      * linkId = "80398-1-designNote"
+      * type = #display
+      * text = "ORM v2.4 - OBX LOINC 80398-1. OML v2.5.1 SPM-2"
   * item[+]
     * linkId = "1186936003"
     * code[+] = $sct#1186936003 "Storage of specimen (procedure)"
