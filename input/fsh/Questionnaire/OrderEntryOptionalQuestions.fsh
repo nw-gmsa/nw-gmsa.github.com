@@ -116,7 +116,7 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
     * item[+]
       * linkId = "281269004-designNote"
       * type = #display
-      * text = "v2.4/v2.5.1 OBX. SNOMED 281269004"
+      * text = "v2.4/v2.5.1 OBX-3 = SNOMED 281269004 and OBX-2 = CE"
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
   * item[+]
     * linkId = "230020"
