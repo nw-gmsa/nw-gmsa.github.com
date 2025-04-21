@@ -1,5 +1,5 @@
 Instance: GenomicOrderEntryCommon
-InstanceOf: Questionnaire
+InstanceOf: NWQuestionnaire
 Title: "Genomics Order Entry Common"
 Description: """
 Genomic Order Entry Common  - THIS IS FOR ANALYSIS, and is not to be used for implementation.
