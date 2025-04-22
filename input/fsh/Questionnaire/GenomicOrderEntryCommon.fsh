@@ -148,8 +148,20 @@ Genomic Order Entry Common  - THIS IS FOR ANALYSIS, and is not to be used for im
   * item[+]
     * type = #dateTime
     * linkId = "5.2"
+    * code[+] = $loinc#33882-2 "Collection date of Specimen"
+    * code[+] = $sct#1208523001	"Specimen collection by healthcare professional (finding)"
+    * code[+] = $epic#230028 "DATE OF SPECIMEN COLLECTION"
     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.collection.collectedDateTime"
     * text = "Collection Date"
+    * item[+]
+      * linkId = "281269004-designNote"
+      * type = #display
+      * text = """
+      ORM v2.4 - OBX-3 = LOINC 33882-2 and OBX-2 = TS .
+      OML v2.5.1 SPM-17
+      """
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
   * item[+]
     * type = #choice
     * linkId = "5.3"
