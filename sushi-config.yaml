@@ -6,8 +6,8 @@ id: north-west.england.nhs.uk
 canonical: https://fhir.north-west.england.nhs.uk
 version: 0.0.1
 name: NWEngland_IHELTW
-title: NHS England North West GMSA - IHE Laboratory Testing Workflow (LTW)
-description: NHS England North West GMSA - IHE Laboratory Testing Workflow (LTW)
+title: North West Genomic Medicine Service Alliance - Testing Workflow (LTW)
+description: NHS England North West Genomic Medicine Service Alliance - IHE Laboratory Testing Workflow (LTW)
 releaseLabel: ci-build
 
 status: draft
