@@ -135,23 +135,39 @@ Genomic Order Entry Common  - THIS IS FOR ANALYSIS, and is not to be used for im
 
   * item[+]
     * type = #string
+    * code[+] = $loinc#80398-1 "Unique identifier for Current sample"
+    * code[+] = $epic#230021 "SAMPLE IDENTIFIER(S)"
     * linkId = "5.1"
     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.identifier.value"
     * text = "ID Number"
+    * item[+]
+      * linkId = "80398-1-designNote"
+      * type = #display
+      * text = "ORM v2.4 - OBX-3 = LOINC 80398-1 and OBX-2 = CE. OML v2.5.1 SPM-2"
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
   * item[+]
     * type = #dateTime
     * linkId = "5.2"
     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.collection.collectedDateTime"
     * text = "Collection Date"
   * item[+]
-    * type = #string
+    * type = #choice
     * linkId = "5.3"
+    * code[+] = $loinc#66746-9 "Specimen Type"
+    * code[+] = $epic#230001 "SPECIMEN TYPE"
     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type.coding.code"
+    * answerValueSet = Canonical(SpecimenType)
     * text = "Specimen Type"
+    * item[+]
+      * linkId = "66746-9-designNote"
+      * type = #display
+      * text = "ORM v2.4 - OBX-3 = LOINC 66746-9 and OBX-2 = CE. OML v2.5.1 SPM-4"
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
   * item[+]
     * type = #string
     * linkId = "5.4"
     * text = "Solid tumour pathology block/sample number"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.identifier.value"
 
 * item[+]
   * type = #group

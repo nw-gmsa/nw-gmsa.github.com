@@ -146,7 +146,7 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
 
   * item[+]
     * linkId = "80398-1"
-    * code[+] = $loinc#80398-1 "Identifier (property) (qualifier value)"
+    * code[+] = $loinc#80398-1 "Unique identifier for Current sample"
     * code[+] = $epic#230021 "SAMPLE IDENTIFIER(S)"
     * text = "Sample Identifier(s) for DNA or Pathology Material (e.g. Block Number)"
     * type = #string
