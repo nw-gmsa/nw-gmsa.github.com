@@ -161,7 +161,10 @@ Genomic Order Entry Common  - THIS IS FOR ANALYSIS, and is not to be used for im
     * item[+]
       * linkId = "66746-9-designNote"
       * type = #display
-      * text = "ORM v2.4 - OBX-3 = LOINC 66746-9 and OBX-2 = CE. OML v2.5.1 SPM-4"
+      * text = """
+      ORM v2.4 - OBX-3 = LOINC 66746-9 and OBX-2 = CE.
+      OML v2.5.1 SPM-4
+      """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
   * item[+]
     * type = #string
