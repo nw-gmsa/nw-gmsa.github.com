@@ -228,3 +228,36 @@ Genomic Order Entry Common  - THIS IS FOR ANALYSIS, and is not to be used for im
     * question = "TestCategory"
     * operator = #=
     * answerCoding = #cancer
+  * item[+]
+    * type = #group
+    * linkId = "UnknownResultsPanel"
+    * text = "Unknown Results Panel"
+    * item[+]
+      * linkId = "250537006"
+      * code[+] = $sct#250537006 "Histopathology finding (finding)"
+      * code[+] = $epic#230030 "NEOPLASTIC CELL CONTENT LEVEL"
+      * text = "Neoplastic Cell Content Level"
+      * type = #quantity
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
+
+    * item[+]
+      * linkId = "230031"
+      * code[+] = $sct#250537006 "Histopathology finding (finding)"
+      * code[+] = $epic#230031 "NEOPLASTIC CELL CONTENT LEVEL EXACT"
+      * text = "Neoplastic Cell Content Level %"
+      * type = #quantity
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
+
+    * item[+]
+      * linkId = "252416005"
+      * code[+] = $sct#252416005 "Histopathology test (procedure)"
+      * code[+] = $epic#230032 "MACRODISSECTION REQUIREMENTS"
+      * text = "Macrodissection Requirements"
+      * type = #string
+
+    * item[+]
+      * linkId = "230033"
+      * code[+] = $epic#230033 "BLAST CELL COUNT"
+      * text = "Blast Cell Count"
+      * type = #quantity
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
