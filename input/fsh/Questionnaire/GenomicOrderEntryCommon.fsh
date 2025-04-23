@@ -119,6 +119,13 @@ Genomic Order Entry Common  - THIS IS FOR ANALYSIS, and is not to be used for im
     * required = true
   * item[+]
     * type = #choice
+    * linkId = "TestCategory"
+    * text = "Test Category"
+    * answerOption[+].valueCoding = #rare "Rare and inherited diseases"
+    * answerOption[+].valueCoding = #dna "DNA Storage"
+    * answerOption[+].valueCoding = #cancer "Cancer"
+  * item[+]
+    * type = #choice
     * linkId = "4.2"
     * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.code"
     * text = "CITT (Test Code)"

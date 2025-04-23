@@ -24,7 +24,7 @@ Description: "First draft is based on Royal College of Radiologists HL7 v2 ORU c
 //  * extension[ExtCodeableReference].valueCodeableConcept.coding = $test-directory#R240.1
 
 * status = #final
-* category = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
+* category[Genetics] = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
 
 * code.coding[GenomicTestDirectory] = $test-directory#R240.1
 

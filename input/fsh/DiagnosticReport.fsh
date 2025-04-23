@@ -7,6 +7,8 @@ DRAFT Extension of [UK Core DiagnosticReport](https://simplifier.net/hl7fhirukco
 - [NHS England Genomics DiagnosticReport](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/FHIRAssets/Profiles/All-Profiles/UKCore-DiagnosticReport) use text descriptions only, not the rendered profile.
 """
 
+// https://github.com/HL7/genomics-reporting/blob/master/input/fsh/CGGeneral.fsh
+
 * extension contains http://hl7.org/fhir/StructureDefinition/workflow-supportingInfo named supporting-info 0..1
 
 * identifier 1..* MS
@@ -34,6 +36,16 @@ DRAFT Extension of [UK Core DiagnosticReport](https://simplifier.net/hl7fhirukco
 * basedOn[fillerOrderNumber].type = "ServiceRequest"
 * basedOn[fillerOrderNumber].identifier 1..1
 * basedOn[fillerOrderNumber].identifier only FillerOrderNumber
+
+* category ^slicing.discriminator.type = #value
+* category ^slicing.discriminator.path = "coding"
+* category ^slicing.rules = #open
+* category ^slicing.description = "Slice based on the category code pattern"
+* category ^slicing.ordered = false
+* category contains Genetics 1..1
+
+* category[Genetics].coding 1..1
+* category[Genetics].coding = http://terminology.hl7.org/CodeSystem/v2-0074#GE
 
 * subject 1..1
 * subject.identifier 1..1
