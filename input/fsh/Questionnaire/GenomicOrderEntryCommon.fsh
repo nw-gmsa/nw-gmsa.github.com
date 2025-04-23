@@ -210,3 +210,21 @@ Genomic Order Entry Common  - THIS IS FOR ANALYSIS, and is not to be used for im
     * linkId = "6.3"
     * text = "National Genomic Information Service (NGIS) Referral ID"
     * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.supportingInfo:PreviousReports.identifier.value"
+
+* item[+]
+  * type = #group
+  * linkId = "raredisease"
+  * text = "Rare and Inherited Disease"
+  * enableWhen[+]
+    * question = "TestCategory"
+    * operator = #=
+    * answerCoding = #rare
+
+* item[+]
+  * type = #group
+  * linkId = "cancer"
+  * text = "Cancer"
+  * enableWhen[+]
+    * question = "TestCategory"
+    * operator = #=
+    * answerCoding = #cancer
