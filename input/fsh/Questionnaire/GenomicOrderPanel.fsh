@@ -55,7 +55,6 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
       * type = #string
       * linkId = "city"
       * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Patient#Patient.address.city"
-      * repeats = true
       * text = "City"
     * item[+]
       * type = #string
@@ -341,11 +340,11 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * answerValueSet = Canonical(YN)
     * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Observation#Observation.valueCoding"
   * item[+]
-    * linkId = "MFT/xxxx"
+    * linkId = "MFT/xxxxa"
     * text = "Tissue source/organ of origin"
     * type = #string
   * item[+]
-    * linkId = "MFT/xxxx"
+    * linkId = "MFT/xxxxb"
     * text = "Specimen Volume/number of slides or scrolls"
     * type = #string
   * item[+]
