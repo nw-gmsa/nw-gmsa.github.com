@@ -24,7 +24,7 @@ This extends [UKCoreEthnicCategory](https://simplifier.net/hl7fhirukcorer4/value
 * $sct#976711000000103 "Mixed multiple ethnic groups: White and Black Caribbean, England and Wales ethnic category 2011 census (finding)"
 * $NOS#NorthernEuropean "Northern European"
 * $sct#976971000000106 "Other ethnic group: any other ethnic group, England and Wales ethnic category 2011 census (finding)"
-* $NOS#Prefernottosay "Prefer not to say"
+* $loinc#LA28803-7 "Prefer not to say"
 * $NOS#SouthEastAsian "South East Asian"
 * $sct#976691000000100 "White: any other White background, England and Wales ethnic category 2011 census (finding)"
 * $sct#976631000000101 "White: English or Welsh or Scottish or Northern Irish or British, England and Wales ethnic category 2011 census (finding)"
