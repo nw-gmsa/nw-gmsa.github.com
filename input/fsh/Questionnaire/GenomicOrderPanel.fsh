@@ -2,7 +2,7 @@ Instance: GenomicOrderPanel
 InstanceOf: NWQuestionnaire
 Title: "NHS England North West Genomics Order Panel"
 Description: """
-THIS IS FOR ANALYSIS, and is not to be used for implementation.
+THIS IS FOR ANALYSIS, and is not to be used for implementation at present.
 """
 
 * status = #draft
@@ -115,33 +115,43 @@ THIS IS FOR ANALYSIS, and is not to be used for implementation.
   * item[+]
     * type = #string
     * code[+] = $sct#842009 "Consanguinity"
-    * linkId = "842009"
+    * linkId = "consanguinity"
     * text = "Patient is from consanguinous union?"
     * answerValueSet = Canonical(YNU)
+    * item[+]
+      * linkId = "consanguinity-designNote"
+      * type = #display
+      * text = "SNOMED CT = 842009"
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
   * item[+]
     * type = #string
-    * linkId = "ispregnancy"
+    * linkId = "isPregnant"
     * text = "Does this test relate to an ongoing pregnancy?"
     * answerValueSet = Canonical(YNU)
+    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
     * item[+]
       * type = #group
       * linkId = "pregnant"
       * enableWhen[+]
-        * question = "ispregnancy"
+        * question = "isPregnant"
         * operator = #=
         * answerCoding = #LA33-6
       * item[+]
         * type = #string
         * linkId = "multipleBirth"
         * text = "Does this test relate to a pregnancy with > 1 fetus?"
+        * answerValueSet = Canonical(YNU)
+        * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
       * item[+]
         * type = #date
         * linkId = "deliveryDate"
         * text = "Patient expected delivery date"
+        * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueDateTime"
       * item[+]
-        * type = #integer
+        * type = #quantity
         * linkId = "patientGestation"
         * text = "Patient gestation"
+        * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
 
 
 * item[+]
