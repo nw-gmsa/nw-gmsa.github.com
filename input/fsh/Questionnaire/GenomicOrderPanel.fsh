@@ -3,10 +3,12 @@ InstanceOf: NWQuestionnaire
 Title: "NHS England North West Genomics Order Panel"
 Description: """
 THIS IS FOR ANALYSIS, and is not to be used for implementation at present.
+
+The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 and FHIR.
 """
 
 * status = #draft
-* url = "https://fhir.north-west.england.nhs.uk/Questionnaire/GenomicOrderEntryCommon"
+* url = "https://fhir.north-west.england.nhs.uk/Questionnaire/GenomicOrderPanel"
 
 * item[+]
   * linkId = "Patient"
