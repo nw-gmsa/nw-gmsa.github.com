@@ -119,7 +119,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * type = #string
     * code[+] = $sct#842009 "Consanguinity"
     * linkId = "SNM/842009"
-    * text = "Patient is from consanguinous union?"
+    * text = "Patient is from consanguineous union?"
     * answerValueSet = Canonical(YNU)
     * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Observation#Observation.valueCodeableConcept"
   * item[+]
@@ -211,7 +211,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * required = false
   * item[+]
     * type = #choice
-    * linkId = "4.1"
+    * linkId = "LN/82768-3"
     * text = "Priority"
     * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.priority"
     * required = false
@@ -232,6 +232,21 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * repeats = true
     * answerValueSet = "https://fhir.north-west.england.nhs.uk/ValueSet/genomic-test-directory"
 
+* item[+]
+  * type = #group
+  * linkId = "Consent"
+  * item[+]
+    * type = #choice
+    * linkId = "LN/19826-7"
+    * text = "Has consent has been obtained for tests (Y/N)"
+    * answerValueSet = Canonical(YN)
+    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
+  * item[+]
+    * type = #choice
+    * linkId = "consent-2"
+    * text = "Has consent has been obtained for DNA storage (Y/N)"
+    * answerValueSet = Canonical(YN)
+    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
 
 * item[+]
   * type = #group
@@ -243,7 +258,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * type = #string
     * code[+] = $loinc#80398-1 "Unique identifier for Current sample"
     * code[+] = $epic#230021 "SAMPLE IDENTIFIER(S)"
-    * linkId = "5.1"
+    * linkId = "LN/80398-1"
     * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Specimen#Specimen.identifier.value"
     * text = "ID Number"
     * item[+]
@@ -253,7 +268,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
   * item[+]
     * type = #dateTime
-    * linkId = "5.2"
+    * linkId = "LN/33882-2"
     * code[+] = $loinc#33882-2 "Collection date of Specimen"
     * code[+] = $sct#1208523001	"Specimen collection by healthcare professional (finding)"
     * code[+] = $epic#230028 "DATE OF SPECIMEN COLLECTION"
@@ -270,7 +285,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
 
   * item[+]
     * type = #choice
-    * linkId = "5.3"
+    * linkId = "LN/66746-9"
     * code[+] = $loinc#66746-9 "Specimen Type"
     * code[+] = $epic#230001 "SPECIMEN TYPE"
     * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Specimen#Specimen.type.coding.code"
