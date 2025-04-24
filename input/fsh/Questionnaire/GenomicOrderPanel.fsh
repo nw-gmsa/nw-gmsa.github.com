@@ -83,13 +83,13 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * type = #string
     * linkId = "MedicalRecordNumber"
     * text = "Hospital Number"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier:MedicalRecordNumber.value"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Patient#Patient.identifier:MedicalRecordNumber.value"
     * required = true
   * item[+]
     * type = #string
     * linkId = "VisitNumber"
     * text = "Account Number"
-    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.encounter.identifier.value"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.encounter.identifier.value"
     * required = false
     * item[+]
       * linkId = "VisitNumber-designNote"
