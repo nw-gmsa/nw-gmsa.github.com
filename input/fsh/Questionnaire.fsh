@@ -5,4 +5,4 @@ Title:          "Questionnaire"
 Description:    "DRAFT Initial elaboration extending SDC Questionnaire"
 
 * item.extension contains http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl named itemControl 0..1
-
+* item.extension contains http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption named unitOption 0..*

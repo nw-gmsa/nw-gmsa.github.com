@@ -154,6 +154,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
         * type = #quantity
         * linkId = "SNM/598151000005105"
         * code[+] = $sct#598151000005105 "Gestational age"
+        * extension[unitOption].valueCoding = $ucum#wk "Week"
         * text = "Patient gestation"
         * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Observation#Observation.valueQuantity"
 
