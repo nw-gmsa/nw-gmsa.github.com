@@ -14,70 +14,70 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
   * linkId = "Patient"
   * text = "Patient"
   * type = #group
-  * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient"
+  * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.subject"
 
   * item[+]
     * type = #string
     * linkId = "LN/45394-4"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.family"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Patient#Patient.name.family"
     * required = true
     * text = "Patient surname"
   * item[+]
     * type = #string
     * linkId = "LN/45392-8"
     * required = true
-    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.given"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Patient#Patient.name.given"
     * text = "Patient first name"
   * item[+]
     * type = #date
     * linkId = "LN/21112-8"
     * required = true
-    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.birthDate"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Patient#Patient.birthDate"
     * text = "Date of birth"
   * item[+]
     * type = #date
     * linkId = "LN/81954-0"
     * required = false
-    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.deceasedDateTime"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Patient#Patient.deceasedDateTime"
     * text = "Date of death"
   * item[+]
     * type = #group
     * linkId = "LN/56799-0"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Patient#Patient.address"
     * text = "Address"
     * item[+]
       * type = #string
       * linkId = "line"
-      * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.line"
+      * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Patient#Patient.address.line"
       * repeats = true
       * text = "Address Line"
     * item[+]
       * type = #string
       * linkId = "city"
-      * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.city"
+      * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Patient#Patient.address.city"
       * repeats = true
       * text = "City"
     * item[+]
       * type = #string
       * linkId = "postcode"
-      * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.postalCode"
+      * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Patient#Patient.address.postalCode"
       * text = "Postcode"
   * item[+]
     * type = #choice
     * linkId = "LN/46098-0"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.gender"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Patient#Patient.gender"
     * text = "Sex registered at birth"
     * answerValueSet = "http://hl7.org/fhir/ValueSet/administrative-gender"
   * item[+]
     * type = #choice
     * linkId = "LN/32624-9"
     * text = "Ethnic Category"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.extension:ethnicCategory"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Patient#Patient.extension:ethnicCategory"
     * answerValueSet = Canonical(Ethnicity)
   * item[+]
     * type = #string
     * linkId = "LN/89061-6"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier:nhsNumber.value"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Patient#Patient.identifier:nhsNumber.value"
     * text = "NHS Number"
   * item[+]
     * type = #string
@@ -100,7 +100,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * type = #string
     * linkId = "pedigreeNumber"
     * text = "G Number (Pedigree Number)"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier:pedigreeNumber.value"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Patient#Patient.identifier:pedigreeNumber.value"
 
   * item[+]
     * type = #decimal
@@ -114,26 +114,26 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * type = #choice
     * linkId = "GP"
     * text = "GP Surgery (ODS Code)"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.generalPractitioner.identifier.value"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Patient#Patient.generalPractitioner.identifier.value"
   * item[+]
     * type = #string
     * code[+] = $sct#842009 "Consanguinity"
     * linkId = "SNM/842009"
     * text = "Patient is from consanguinous union?"
     * answerValueSet = Canonical(YNU)
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Observation#Observation.valueCodeableConcept"
   * item[+]
     * type = #string
     * linkId = "SNM/77386006"
     * text = "Does this test relate to an ongoing pregnancy?"
     * code[+] = $sct#77386006 "Pregnancy"
     * answerValueSet = Canonical(YNU)
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Observation#Observation.valueCodeableConcept"
     * item[+]
       * type = #group
       * linkId = "pregnant"
       * enableWhen[+]
-        * question = "isPregnant"
+        * question = "SNM/77386006"
         * operator = #=
         * answerCoding = #LA33-6
       * item[+]
@@ -142,70 +142,70 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
         * code[+] = $sct#370386005 "Ultrasound scan - multiple fetus"
         * text = "Does this test relate to a pregnancy with > 1 fetus?"
         * answerValueSet = Canonical(YNU)
-        * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
+        * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Observation#Observation.valueCodeableConcept"
 
       * item[+]
         * type = #date
         * linkId = "SNM/161714006"
         * code[+] = $sct#161714006 "Estimated date of delivery"
         * text = "Patient expected delivery date"
-        * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueDateTime"
+        * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Observation#Observation.valueDateTime"
       * item[+]
         * type = #quantity
         * linkId = "SNM/598151000005105"
         * code[+] = $sct#598151000005105 "Gestational age"
         * text = "Patient gestation"
-        * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
+        * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Observation#Observation.valueQuantity"
+
+* item[+]
+  * type = #group
+  * linkId = "3"
+  * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.requester"
+  * text = "Referring Clinician"
+  * item[+]
+    * type = #string
+    * linkId = "3.1"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/PractitionerRole#PractitionerRole.name"
+    * text = "Name"
+  * item[+]
+    * type = #choice
+    * linkId = "3.2"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/PractitionerRole#PractitionerRole.specialty.coding.code"
+    * text = "Specialty"
+    * answerValueSet = "https://fhir.hl7.org.uk/ValueSet/UKCore-PracticeSettingCode"
+  * item[+]
+    * type = #string
+    * linkId = "3.3"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/PractitionerRole#PractitionerRole.practitioner.identifier.value"
+    * text = "Professional/Consultant Code"
+    * required = true
+  * item[+]
+    * type = #string
+    * linkId = "3.4"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/PractitionerRole#PractitionerRole.telecom.value"
+    * text = "Phone"
+  * item[+]
+    * type = #string
+    * linkId = "3.5"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/PractitionerRole#PractitionerRole.telecom.value"
+    * text = "Email"
+  * item[+]
+    * type = #string
+    * linkId = "3.6"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/PractitionerRole#PractitionerRole.organization.identifier.value"
+    * text = "Referring Organisation ODS Code"
 
 
 * item[+]
   * type = #group
   * linkId = "Order"
-  * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest"
+  * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest"
   * text = "Test Request"
-  * item[+]
-    * type = #group
-    * linkId = "3"
-    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.requester"
-    * text = "Referring Clinician"
-    * item[+]
-      * type = #string
-      * linkId = "3.1"
-      * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.name"
-      * text = "Name"
-    * item[+]
-      * type = #choice
-      * linkId = "3.2"
-      * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.specialty.coding.code"
-      * text = "Specialty"
-      * answerValueSet = "https://fhir.hl7.org.uk/ValueSet/UKCore-PracticeSettingCode"
-    * item[+]
-      * type = #string
-      * linkId = "3.3"
-      * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.practitioner.identifier.value"
-      * text = "Professional/Consultant Code"
-      * required = true
-    * item[+]
-      * type = #string
-      * linkId = "3.4"
-      * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.telecom.value"
-      * text = "Phone"
-    * item[+]
-      * type = #string
-      * linkId = "3.5"
-      * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.telecom.value"
-      * text = "Email"
-    * item[+]
-      * type = #string
-      * linkId = "3.6"
-      * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.organization.identifier.value"
-      * text = "Referring Organisation ODS Code"
-
   * item[+]
     * type = #string
     * linkId = "4.1"
     * text = "Order Number"
-    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.identifier:placerOrderNumber"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.identifier:placerOrderNumber"
     * required = true
   * item[+]
     * type = #choice
@@ -217,17 +217,17 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
   * item[+]
     * type = #choice
     * linkId = "4.2"
-    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.code"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.code"
     * text = "CITT (Test Code)"
     * required = true
     * repeats = true
-    * answerValueSet = "https://hl7.mft.nhs.uk/ValueSet/genomic-test-directory"
+    * answerValueSet = "https://fhir.north-west.england.nhs.uk/ValueSet/genomic-test-directory"
 
 
 * item[+]
   * type = #group
   * linkId = "Specimen"
-  * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen"
+  * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Specimen#Specimen"
   * text = "Specimen/Biopsy"
 
   * item[+]
@@ -235,7 +235,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * code[+] = $loinc#80398-1 "Unique identifier for Current sample"
     * code[+] = $epic#230021 "SAMPLE IDENTIFIER(S)"
     * linkId = "5.1"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.identifier.value"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Specimen#Specimen.identifier.value"
     * text = "ID Number"
     * item[+]
       * linkId = "80398-1-designNote"
@@ -248,7 +248,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * code[+] = $loinc#33882-2 "Collection date of Specimen"
     * code[+] = $sct#1208523001	"Specimen collection by healthcare professional (finding)"
     * code[+] = $epic#230028 "DATE OF SPECIMEN COLLECTION"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.collection.collectedDateTime"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Specimen#Specimen.collection.collectedDateTime"
     * text = "Collection Date"
     * item[+]
       * linkId = "281269004-designNote"
@@ -264,7 +264,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * linkId = "5.3"
     * code[+] = $loinc#66746-9 "Specimen Type"
     * code[+] = $epic#230001 "SPECIMEN TYPE"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type.coding.code"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Specimen#Specimen.type.coding.code"
     * answerValueSet = Canonical(SpecimenType)
     * text = "Specimen Type"
     * item[+]
@@ -279,7 +279,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * type = #string
     * linkId = "5.4"
     * text = "Solid tumour pathology block/sample number"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.identifier.value"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Specimen#Specimen.identifier.value"
 
 * item[+]
   * type = #group
@@ -289,17 +289,17 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * type = #attachment
     * linkId = "6.1"
     * text = "Family Structure (pdf)"
-    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.supportingInfo:GenomicFamilyStructure"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.supportingInfo:GenomicFamilyStructure"
   * item[+]
     * type = #string
     * linkId = "6.2"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier:MedicalRecordNumber.value"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Patient#Patient.identifier:MedicalRecordNumber.value"
     * text = "National Genomic Information Service (NGIS) Patient ID"
   * item[+]
     * type = #string
     * linkId = "6.3"
     * text = "National Genomic Information Service (NGIS) Referral ID"
-    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.supportingInfo:PreviousReports.identifier.value"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.supportingInfo:PreviousReports.identifier.value"
 
 * item[+]
   * type = #group
@@ -328,7 +328,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
       * code[+] = $epic#230030 "NEOPLASTIC CELL CONTENT LEVEL"
       * text = "Neoplastic Cell Content Level"
       * type = #quantity
-      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
+      * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Observation#Observation.valueQuantity"
 
     * item[+]
       * linkId = "230031"
@@ -336,7 +336,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
       * code[+] = $epic#230031 "NEOPLASTIC CELL CONTENT LEVEL EXACT"
       * text = "Neoplastic Cell Content Level %"
       * type = #quantity
-      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
+      * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Observation#Observation.valueQuantity"
 
     * item[+]
       * linkId = "252416005"
@@ -350,4 +350,4 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
       * code[+] = $epic#230033 "BLAST CELL COUNT"
       * text = "Blast Cell Count"
       * type = #quantity
-      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
+      * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Observation#Observation.valueQuantity"
