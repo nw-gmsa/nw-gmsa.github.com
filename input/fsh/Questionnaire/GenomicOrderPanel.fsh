@@ -161,34 +161,36 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
   * type = #group
   * linkId = "3"
   * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.requester"
-  * text = "Referring Clinician"
+  * text = "Healthcare Professional"
   * item[+]
     * type = #string
-    * linkId = "3.1"
+    * linkId = "LN/18705-4"
+    * required = true
     * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/PractitionerRole#PractitionerRole.name"
-    * text = "Name"
+    * text = "Referring Clinician Name"
   * item[+]
     * type = #choice
-    * linkId = "3.2"
+    * linkId = "LN/18707-0"
     * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/PractitionerRole#PractitionerRole.specialty.coding.code"
-    * text = "Specialty"
+    * text = "Referring Clinician Current Speciality"
+    * required = true
     * answerValueSet = "https://fhir.hl7.org.uk/ValueSet/UKCore-PracticeSettingCode"
   * item[+]
     * type = #string
-    * linkId = "3.3"
+    * linkId = "LN/46608-6"
     * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/PractitionerRole#PractitionerRole.practitioner.identifier.value"
-    * text = "Professional/Consultant Code"
+    * text = "Referring Clinician Professional Identifier"
     * required = true
   * item[+]
     * type = #string
     * linkId = "3.4"
     * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/PractitionerRole#PractitionerRole.telecom.value"
-    * text = "Phone"
+    * text = "Email"
   * item[+]
     * type = #string
-    * linkId = "3.5"
+    * linkId = "LN/81230-5"
     * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/PractitionerRole#PractitionerRole.telecom.value"
-    * text = "Email"
+    * text = "Phone"
   * item[+]
     * type = #string
     * linkId = "3.6"
@@ -198,15 +200,22 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
 
 * item[+]
   * type = #group
-  * linkId = "Order"
+  * linkId = "TestRequest"
   * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest"
   * text = "Test Request"
   * item[+]
     * type = #string
     * linkId = "4.1"
-    * text = "Order Number"
+    * text = "Test request ID/Order ID"
     * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.identifier:placerOrderNumber"
-    * required = true
+    * required = false
+  * item[+]
+    * type = #choice
+    * linkId = "4.1"
+    * text = "Priority"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.priority"
+    * required = false
+    * answerValueSet = Canonical(RequestPriority)
   * item[+]
     * type = #choice
     * linkId = "TestCategory"

@@ -103,6 +103,8 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 * basedOn only Reference(ServiceRequest)
 * basedOn.identifier only CorrelationIdentifier
 
+* priority from RequestPriority (required)
+
 * note MS
 
 * supportingInfo 0..* MS
