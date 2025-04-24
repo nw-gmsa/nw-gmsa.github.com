@@ -120,6 +120,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * linkId = "consanguinity"
     * text = "Patient is from consanguinous union?"
     * answerValueSet = Canonical(YNU)
+    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
     * item[+]
       * linkId = "consanguinity-designNote"
       * type = #display
@@ -129,6 +130,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * type = #string
     * linkId = "isPregnant"
     * text = "Does this test relate to an ongoing pregnancy?"
+    * code[+] = $sct#77386006 "Pregnancy"
     * answerValueSet = Canonical(YNU)
     * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
     * item[+]
@@ -141,17 +143,21 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
       * item[+]
         * type = #string
         * linkId = "multipleBirth"
+        * code[+] = $sct#370386005 "Ultrasound scan - multiple fetus"
         * text = "Does this test relate to a pregnancy with > 1 fetus?"
         * answerValueSet = Canonical(YNU)
         * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
+
       * item[+]
         * type = #date
         * linkId = "deliveryDate"
+        * code[+] = $sct#161714006 "Estimated date of delivery"
         * text = "Patient expected delivery date"
         * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueDateTime"
       * item[+]
         * type = #quantity
         * linkId = "patientGestation"
+        * code[+] = $sct#598151000005105 "Gestational age"
         * text = "Patient gestation"
         * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
 
