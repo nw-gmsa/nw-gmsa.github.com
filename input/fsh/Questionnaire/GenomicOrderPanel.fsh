@@ -1,8 +1,8 @@
-Instance: GenomicOrderEntryCommon
+Instance: GenomicOrderPanel
 InstanceOf: NWQuestionnaire
-Title: "Genomics Order Entry Common"
+Title: "NHS England North West Genomics Order Panel"
 Description: """
-Genomic Order Entry Common  - THIS IS FOR ANALYSIS, and is not to be used for implementation.
+THIS IS FOR ANALYSIS, and is not to be used for implementation.
 """
 
 * status = #draft

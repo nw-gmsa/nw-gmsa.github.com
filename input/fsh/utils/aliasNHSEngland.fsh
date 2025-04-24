@@ -5,6 +5,7 @@ Alias: $Obligation = http://hl7.org/fhir/StructureDefinition/obligation
 Alias: $test-directory = https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory
 Alias: $bcp13 = urn:ietf:bcp:13
 Alias: $epic = http://fhir.epic.mft.nhs.uk
+Alias: $NOS = https://fhir.north-west.england.nhs.uk/CodeSystem/NotOtherwiseSpecified
 
 RuleSet: Obligation(code, actor)
 * ^extension[$Obligation][+].extension[code].valueCode = {code}

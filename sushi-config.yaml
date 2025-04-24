@@ -124,13 +124,9 @@ pages:
     generation: markdown
 
 resources:
-  Questionnaire/GenomicOrderEntryCommon:
-    name: NW Genomics Test Order Entry Form Common
-    description: NW Genomics Test Order Entry Form Common (Draft) - from Aldery Hey (Minimum Dataset)
-    exampleBoolean: false
-  Questionnaire/GenomicOrderEntryOptionalQuestions:
-    name: NW Genomics Test Order Entry Form Optional Questions
-    description: NW Genomics Test Order Entry Form Questions (Draft) - from Manchester Foundation Trust
+  Questionnaire/GenomicOrderPanel:
+    name: North West Genomics Order Panel
+    description: NHS England North West Genomics Order Panel (Draft)
     exampleBoolean: false
   Questionnaire/81247-9:
     name: Master HL7 genetic variant reporting panel
