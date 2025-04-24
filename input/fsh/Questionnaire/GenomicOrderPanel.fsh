@@ -36,7 +36,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * text = "Date of birth"
   * item[+]
     * type = #date
-    * linkId = "dateOfDeath"
+    * linkId = "LN/81954-0"
     * required = false
     * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.deceasedDateTime"
     * text = "Date of death"
@@ -87,7 +87,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * required = true
   * item[+]
     * type = #string
-    * linkId = "VisitNumber"
+    * linkId = "LN/56797-4"
     * text = "Account Number"
     * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.encounter.identifier.value"
     * required = false
