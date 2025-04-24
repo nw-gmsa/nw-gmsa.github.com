@@ -6,6 +6,8 @@ Alias: $test-directory = https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirec
 Alias: $bcp13 = urn:ietf:bcp:13
 Alias: $epic = http://fhir.epic.mft.nhs.uk
 Alias: $NOS = https://fhir.north-west.england.nhs.uk/CodeSystem/NotOtherwiseSpecified
+Alias: $EthnicEngland = https://fhir.hl7.org.uk/CodeSystem/UKCore-EthnicCategoryEngland
+Alias: $EthnicWales = https://fhir.hl7.org.uk/CodeSystem/UKCore-EthnicCategoryWales
 
 RuleSet: Obligation(code, actor)
 * ^extension[$Obligation][+].extension[code].valueCode = {code}
