@@ -201,12 +201,12 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
 
 * item[+]
   * type = #group
-  * linkId = "TestRequest"
+  * linkId = "HL7/OBR/ORC"
   * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest"
   * text = "Test Request"
   * item[+]
     * type = #string
-    * linkId = "4.1"
+    * linkId = "HL7/OBR-2/ORC-2"
     * text = "Test request ID/Order ID"
     * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.identifier:placerOrderNumber"
     * required = false
@@ -226,9 +226,9 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * answerOption[+].valueCoding = #cancer "Cancer"
   * item[+]
     * type = #choice
-    * linkId = "4.2"
+    * linkId = "HL7/OBR-4"
     * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.code"
-    * text = "CITT (Test Code)"
+    * text = "CITT Code"
     * required = true
     * repeats = true
     * answerValueSet = "https://fhir.north-west.england.nhs.uk/ValueSet/genomic-test-directory"
@@ -236,6 +236,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
 * item[+]
   * type = #group
   * linkId = "Consent"
+  * text = "Consent"
   * item[+]
     * type = #choice
     * linkId = "LN/19826-7"
@@ -248,6 +249,30 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * text = "Has consent has been obtained for DNA storage (Y/N)"
     * answerValueSet = Canonical(YN)
     * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
+  * item[+]
+    * type = #choice
+    * linkId = "consent-3"
+    * text = "ROD attached or to follow"
+    * answerValueSet = Canonical(YNU)
+
+
+* item[+]
+  * type = #group
+  * linkId = "PatientClinicalInformation"
+  * text = "Patient Clinical Information"
+  * item[+]
+    * type = #choice
+    * linkId = "condition"
+    * repeats = true
+    * text = "Specific disease suspected/reason for testing"
+    * answerValueSet = "https://fhir.hl7.org.uk/ValueSet/UKCore-ConditionCode"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.reasonCode"
+  * item[+]
+    * type = #string
+    * linkId = "familyhistory"
+    * text = "Relevant clinical information and family history"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.note"
+
 
 * item[+]
   * type = #group
@@ -261,12 +286,18 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * code[+] = $epic#230021 "SAMPLE IDENTIFIER(S)"
     * linkId = "LN/80398-1"
     * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Specimen#Specimen.identifier.value"
-    * text = "ID Number"
+    * text = "Specimen ID Number"
     * item[+]
       * linkId = "80398-1-designNote"
       * type = #display
       * text = "ORM v2.4 - OBX-3 = LOINC 80398-1 and OBX-2 = CE. OML v2.5.1 SPM-2"
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+  * item[+]
+    * type = #string
+    * linkId = "LN/80398-1-ODS"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Specimen#Specimen.identifier.assigner.identifier.value"
+    * text = "Pathology Laboratory Hospital/Trust ID"
+
   * item[+]
     * type = #dateTime
     * linkId = "LN/33882-2"
@@ -274,7 +305,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * code[+] = $sct#1208523001	"Specimen collection by healthcare professional (finding)"
     * code[+] = $epic#230028 "DATE OF SPECIMEN COLLECTION"
     * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Specimen#Specimen.collection.collectedDateTime"
-    * text = "Collection Date"
+    * text = "Specimen Collection Date"
     * item[+]
       * linkId = "281269004-designNote"
       * type = #display
@@ -301,30 +332,51 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
   * item[+]
-    * type = #string
-    * linkId = "5.4"
-    * text = "Solid tumour pathology block/sample number"
-    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Specimen#Specimen.identifier.value"
-
-* item[+]
-  * type = #group
-  * linkId = "Supporting Information"
-  * text = "Supporting Information"
+    * linkId = "MFT/102313"
+    * code[+] = $epic#102313 "GENETICS HIGH INFECTION RISK"
+    * text = "High Infection Risk?"
+    * type = #choice
+    * required = false
+    * repeats = false
+    * answerValueSet = Canonical(YN)
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Observation#Observation.valueCoding"
   * item[+]
-    * type = #attachment
-    * linkId = "6.1"
-    * text = "Family Structure (pdf)"
-    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.supportingInfo:GenomicFamilyStructure"
-  * item[+]
+    * linkId = "MFT/xxxx"
+    * text = "Tissue source/organ of origin"
     * type = #string
-    * linkId = "6.2"
-    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Patient#Patient.identifier:MedicalRecordNumber.value"
-    * text = "National Genomic Information Service (NGIS) Patient ID"
   * item[+]
+    * linkId = "MFT/xxxx"
+    * text = "Specimen Volume/number of slides or scrolls"
     * type = #string
-    * linkId = "6.3"
-    * text = "National Genomic Information Service (NGIS) Referral ID"
-    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.supportingInfo:PreviousReports.identifier.value"
+  * item[+]
+    * linkId = "MFT/audit"
+    * text = "Audit"
+    * type = #group
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Specimen#Specimen.collection"
+    * item[+]
+      * linkId = "MFT/xxxx1"
+      * text = "Date and time sample received in lab"
+      * type = #date
+    * item[+]
+      * linkId = "MFT/xxxx2"
+      * text = "Date and time sample sent"
+      * type = #date
+    * item[+]
+      * linkId = "MFT/xxxx3"
+      * text = "Transport used"
+      * type = #string
+    * item[+]
+      * linkId = "MFT/xxxx4"
+      * text = "Tracking number"
+      * type = #string
+    * item[+]
+      * linkId = "MFT/xxxx5"
+      * text = "Sample sent to"
+      * type = #string
+    * item[+]
+      * linkId = "MFT/xxxx6"
+      * text = "Name of person who sent sample"
+      * type = #string
 
 * item[+]
   * type = #group

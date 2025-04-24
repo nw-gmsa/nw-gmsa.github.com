@@ -107,6 +107,8 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 
 * note MS
 
+* reasonCode MS
+
 * supportingInfo 0..* MS
 * supportingInfo only Reference(ObservationPanel or Observation or DiagnosticReport or DocumentReference)
 
