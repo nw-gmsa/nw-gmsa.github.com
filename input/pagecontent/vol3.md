@@ -25,7 +25,7 @@ See [Identities and Codes](#identities-and-codes) for more details.
 </figure>
 <br clear="all">
 
-A detailed description of this archetype which includes mappings to HL7 FHIR can be found [NW-Genomics-Test-Order](Questionnaire-GenomicOrderEntryCommon.html). This is also a minimal dataset based on `NHS Genomics MDM`
+A detailed description of this archetype which includes mappings to HL7 FHIR can be found [NHS England North-West Genomics Order Panel](Questionnaire-GenomicOrderPanel.html). This is also a minimal dataset based on `NHS Genomics MDM`
 
 This also includes messaging concepts which are described in this guide to add compatibility with HL7 v2 and IHE LTW.
 

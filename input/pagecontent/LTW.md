@@ -86,7 +86,7 @@ How this is implemented will vary between different NHS organisations and system
 
 These forms may (/will?) will have a computable definition called an [template (FHIR Questionnaire)](https://hl7.org/fhir/R4/questionnaire.html) which will list the technical content requirements for the form. At present only one archetype has been defined:
 
-- [NW Genomics Test Order Form (Minimal Dataset)](Questionnaire-GenomicOrderEntryCommon.html)
+- [NHS England North-West Genomics Order Panel](Questionnaire-GenomicOrderPanel.html)
 
 This archetype definition can also support [HL7 Structured Data Capture](https://build.fhir.org/ig/HL7/sdc/index.html) should the Order Placer system support these features.
 
