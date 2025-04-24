@@ -18,19 +18,19 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
 
   * item[+]
     * type = #string
-    * linkId = "surname"
+    * linkId = "LN/45394-4"
     * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.family"
     * required = true
     * text = "Patient surname"
   * item[+]
     * type = #string
-    * linkId = "firstname"
+    * linkId = "LN/45392-8"
     * required = true
     * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.given"
     * text = "Patient first name"
   * item[+]
     * type = #date
-    * linkId = "dateOfBirth"
+    * linkId = "LN/21112-8"
     * required = true
     * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.birthDate"
     * text = "Date of birth"
@@ -42,7 +42,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * text = "Date of death"
   * item[+]
     * type = #group
-    * linkId = "address"
+    * linkId = "LN/56799-0"
     * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address"
     * text = "Address"
     * item[+]
@@ -64,24 +64,24 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
       * text = "Postcode"
   * item[+]
     * type = #choice
-    * linkId = "registeredGender"
+    * linkId = "LN/46098-0"
     * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.gender"
     * text = "Sex registered at birth"
     * answerValueSet = "http://hl7.org/fhir/ValueSet/administrative-gender"
   * item[+]
     * type = #choice
-    * linkId = "ethnicCategory"
+    * linkId = "LN/32624-9"
     * text = "Ethnic Category"
     * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.extension:ethnicCategory"
     * answerValueSet = Canonical(Ethnicity)
   * item[+]
     * type = #string
-    * linkId = "NHSNumber"
+    * linkId = "LN/89061-6"
     * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier:nhsNumber.value"
     * text = "NHS Number"
   * item[+]
     * type = #string
-    * linkId = "MedicalRecordNumber"
+    * linkId = "LN/76435-7"
     * text = "Hospital Number"
     * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Patient#Patient.identifier:MedicalRecordNumber.value"
     * required = true
@@ -118,18 +118,13 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
   * item[+]
     * type = #string
     * code[+] = $sct#842009 "Consanguinity"
-    * linkId = "consanguinity"
+    * linkId = "SNM/842009"
     * text = "Patient is from consanguinous union?"
     * answerValueSet = Canonical(YNU)
     * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
-    * item[+]
-      * linkId = "consanguinity-designNote"
-      * type = #display
-      * text = "SNOMED CT = 842009"
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
   * item[+]
     * type = #string
-    * linkId = "isPregnant"
+    * linkId = "SNM/77386006"
     * text = "Does this test relate to an ongoing pregnancy?"
     * code[+] = $sct#77386006 "Pregnancy"
     * answerValueSet = Canonical(YNU)
@@ -143,7 +138,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
         * answerCoding = #LA33-6
       * item[+]
         * type = #string
-        * linkId = "multipleBirth"
+        * linkId = "SNM/370386005"
         * code[+] = $sct#370386005 "Ultrasound scan - multiple fetus"
         * text = "Does this test relate to a pregnancy with > 1 fetus?"
         * answerValueSet = Canonical(YNU)
@@ -151,13 +146,13 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
 
       * item[+]
         * type = #date
-        * linkId = "deliveryDate"
+        * linkId = "SNM/161714006"
         * code[+] = $sct#161714006 "Estimated date of delivery"
         * text = "Patient expected delivery date"
         * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueDateTime"
       * item[+]
         * type = #quantity
-        * linkId = "patientGestation"
+        * linkId = "SNM/598151000005105"
         * code[+] = $sct#598151000005105 "Gestational age"
         * text = "Patient gestation"
         * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"

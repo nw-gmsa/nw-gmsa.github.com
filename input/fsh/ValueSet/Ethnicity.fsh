@@ -24,7 +24,7 @@ See also NHS Data Model and Dictionary [ETHNIC CATEGORY](https://www.datadiction
 * $EthnicEngland#E "Mixed - White and Black African"
 * $EthnicEngland#D "Mixed - White and Black Caribbean"
 * $NOS#NorthernEuropean "Northern European"
-* $EthnicEngland#S "Other Ethnic Group
+* $EthnicEngland#S "Other Ethnic Group"
 * $loinc#LA28803-7 "Prefer not to say"
 * $NOS#SouthEastAsian "South East Asian"
 * $EthnicEngland#C "White - Any other White Background"
