@@ -72,6 +72,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * type = #choice
     * linkId = "ethnicCategory"
     * text = "Ethnic Category"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.extension:ethnicCategory"
     * answerValueSet = Canonical(Ethnicity)
   * item[+]
     * type = #string
