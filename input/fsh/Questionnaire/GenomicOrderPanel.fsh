@@ -99,7 +99,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * type = #string
     * linkId = "pedigreeNumber"
     * text = "G Number (Pedigree Number)"
-    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Patient#Patient.identifier:pedigreeNumber.value"
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Patient#Patient.identifier:GenomicsPedigreeNumber.value"
 
   * item[+]
     * type = #decimal

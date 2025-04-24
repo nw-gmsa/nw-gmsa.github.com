@@ -15,13 +15,15 @@ DRAFT Extension of UKCore-Patient which includes constraints from:
 * identifier.assigner.identifier.system = $ods-code
 
 * identifier contains
-  MedicalRecordNumber 0..*
+  MedicalRecordNumber 0..* and GenomicsPedigreeNumber 0..*
 
 * identifier[nhsNumber] only NHSNumber
 * identifier[nhsNumber] ^short = "UK National Health Identifiers"
 * identifier[nhsNumber].extension[nhsNumberVerificationStatus] ^short = "NOT REQUIRED. As all NHS Numbers **MUST** be *01 Number present and verified*, this status will be assumed."
 * identifier[MedicalRecordNumber] only MedicalRecordNumber
 * identifier[MedicalRecordNumber] ^short = "Medical Record Number"
+* identifier[GenomicsPedigreeNumber] only GenomicsPedigreeNumber
+* identifier[GenomicsPedigreeNumber] ^short = "Genomics Pedigree Number"
 
 * address.postalCode 1..1 MS
 
