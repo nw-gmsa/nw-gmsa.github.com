@@ -1,5 +1,5 @@
 ValueSet: YesNo
-Id: ll2828-3
+Id: YN
 Title: "Yes/No"
 Description: """
 ValueSet for Yes/No answers

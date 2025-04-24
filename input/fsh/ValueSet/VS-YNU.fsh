@@ -1,5 +1,5 @@
 ValueSet: YesNoUnknown
-Id: ll2817-6
+Id: YNU
 Title: "Yes/No/Unknown"
 Description: """
 ValueSet for Yes/No/Unknown answers

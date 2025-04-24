@@ -9,63 +9,139 @@ THIS IS FOR ANALYSIS, and is not to be used for implementation.
 * url = "https://fhir.north-west.england.nhs.uk/Questionnaire/GenomicOrderEntryCommon"
 
 * item[+]
-  * linkId = "PatientDetails"
-  * text = "Patient Details"
+  * linkId = "Patient"
+  * text = "Patient"
   * type = #group
   * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient"
 
   * item[+]
     * type = #string
-    * linkId = "1.1"
+    * linkId = "surname"
     * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.family"
-    * text = "Patient last name"
+    * required = true
+    * text = "Patient surname"
   * item[+]
     * type = #string
-    * linkId = "1.2"
+    * linkId = "firstname"
+    * required = true
     * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.given"
     * text = "Patient first name"
   * item[+]
     * type = #date
-    * linkId = "1.3"
+    * linkId = "dateOfBirth"
+    * required = true
     * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.birthDate"
     * text = "Date of birth"
   * item[+]
-    * type = #string
-    * linkId = "1.4"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.postalCode"
-    * text = "Postcode"
+    * type = #date
+    * linkId = "dateOfDeath"
+    * required = false
+    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.deceasedDateTime"
+    * text = "Date of death"
+  * item[+]
+    * type = #group
+    * linkId = "address"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address"
+    * text = "Address"
+    * item[+]
+      * type = #string
+      * linkId = "line"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.line"
+      * repeats = true
+      * text = "Address Line"
+    * item[+]
+      * type = #string
+      * linkId = "city"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.city"
+      * repeats = true
+      * text = "City"
+    * item[+]
+      * type = #string
+      * linkId = "postcode"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.postalCode"
+      * text = "Postcode"
   * item[+]
     * type = #choice
-    * linkId = "1.5"
+    * linkId = "registeredGender"
     * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.gender"
     * text = "Sex registered at birth"
     * answerValueSet = "http://hl7.org/fhir/ValueSet/administrative-gender"
   * item[+]
+    * type = #choice
+    * linkId = "ethnicCategory"
+    * text = "Ethnic Category"
+    * answerValueSet = Canonical(Ethnicity)
+  * item[+]
     * type = #string
-    * linkId = "1.6"
+    * linkId = "NHSNumber"
     * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier:nhsNumber.value"
     * text = "NHS Number"
   * item[+]
     * type = #string
-    * linkId = "1.7"
+    * linkId = "MedicalRecordNumber"
     * text = "Hospital Number"
     * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier:MedicalRecordNumber.value"
     * required = true
-
-* item[+]
-  * type = #group
-  * linkId = "2"
-  * text = "Pedigree G Number"
   * item[+]
     * type = #string
-    * linkId = "2.1"
-    * text = "Patient - G Number"
+    * linkId = "VisitNumber"
+    * text = "Account Number"
+    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.encounter.identifier.value"
+    * required = false
+    * item[+]
+      * linkId = "VisitNumber-designNote"
+      * type = #display
+      * text = "PV1-19 (also known as stay number)"
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
   * item[+]
     * type = #string
-    * linkId = "2.2"
-    * text = "Family - G Number"
+    * linkId = "pedigreeNumber"
+    * text = "G Number (Pedigree Number)"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier:pedigreeNumber.value"
 
-
+  * item[+]
+    * type = #decimal
+    * linkId = "ageAtCollection"
+    * text = "Age at collection"
+  * item[+]
+    * type = #string
+    * linkId = "location"
+    * text = "Location"
+  * item[+]
+    * type = #choice
+    * linkId = "GP"
+    * text = "GP Surgery (ODS Code)"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.generalPractitioner.identifier.value"
+  * item[+]
+    * type = #string
+    * code[+] = $sct#842009 "Consanguinity"
+    * linkId = "842009"
+    * text = "Patient is from consanguinous union?"
+    * answerValueSet = Canonical(YNU)
+  * item[+]
+    * type = #string
+    * linkId = "ispregnancy"
+    * text = "Does this test relate to an ongoing pregnancy?"
+    * answerValueSet = Canonical(YNU)
+    * item[+]
+      * type = #group
+      * linkId = "pregnant"
+      * enableWhen[+]
+        * question = "ispregnancy"
+        * operator = #=
+        * answerCoding = #LA33-6
+      * item[+]
+        * type = #string
+        * linkId = "multipleBirth"
+        * text = "Does this test relate to a pregnancy with > 1 fetus?"
+      * item[+]
+        * type = #date
+        * linkId = "deliveryDate"
+        * text = "Patient expected delivery date"
+      * item[+]
+        * type = #integer
+        * linkId = "patientGestation"
+        * text = "Patient gestation"
 
 
 * item[+]

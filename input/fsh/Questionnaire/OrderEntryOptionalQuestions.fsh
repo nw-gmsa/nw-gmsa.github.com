@@ -110,7 +110,7 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
     * code[+] = $sct#281269004 "High infection risk sample"
     * code[+] = $epic#230019 "HIGH INFECTION RISK"
     * text = "High Infection Risk"
-    * answerValueSet = Canonical(ll2828-3)
+    * answerValueSet = Canonical(YN)
     * type = #choice
     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.condition"
     * item[+]
@@ -175,7 +175,7 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
     * type = #choice
     * required = false
     * repeats = false
-    * answerValueSet = Canonical(ll2828-3)
+    * answerValueSet = Canonical(YN)
     * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCoding"
 
 
@@ -200,7 +200,7 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
     * code[+] = $epic#230029 "CONFIRMATION OF CONSENT"
     * text = "Confirmation of Consent for Testing - MANDATORY Testing will not be performed without completed confirmation of consent"
     * type = #choice
-    * answerValueSet = Canonical(ll2828-3)
+    * answerValueSet = Canonical(YN)
   * item[+]
     * type = #group
     * linkId = "UnknownResultsPanel"
@@ -245,7 +245,7 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
       * code[+] = $epic#230034 "TEST RELATED TO PREGNANCY"
       * text = "Does This Test Relate to a Pregnancy"
       * type = #choice
-      * answerValueSet = Canonical(ll2817-6)
+      * answerValueSet = Canonical(YNU)
     * item[+]
       * linkId = "385675009"
       * code[+] = $sct#385675009 "Reason for action (attribute)"
@@ -269,7 +269,7 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
     * code[+] = $epic#230035 "DECEASED INFANT"
     * text = "Is This Test Request for a Deceased Infant or Pregnancy Loss"
     * type = #choice
-    * answerValueSet = Canonical(ll2828-3)
+    * answerValueSet = Canonical(YN)
 
   * item[+]
     * linkId = "230036"
@@ -322,7 +322,7 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
     * code[+] = $epic#230064 "GENETICS - HAS PATIENT HAD TRANSPLANT"
     * text = "Has the patient had a transplant?"
     * type = #choice
-    * answerValueSet = Canonical(ll2828-3)
+    * answerValueSet = Canonical(YN)
 
   * item[+]
     * linkId = "230065"
@@ -336,14 +336,14 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
     * code[+] = $epic#230066 "GENETICS - SUSPECTED LUNG CANCER"
     * text = "Is The Patient Suspected Of Having Lung Cancer?"
     * type = #choice
-    * answerValueSet = Canonical(ll2828-3)
+    * answerValueSet = Canonical(YN)
 
   * item[+]
     * linkId = "230067"
     * code[+] = $epic#230067 "GENETICS - CONFIRMED LUNG CANCER TISSUE"
     * text = "Please Confirm That Lung Cancer Tissue is Inadequate for Testing?"
     * type = #choice
-    * answerValueSet = Canonical(ll2828-3)
+    * answerValueSet = Canonical(YN)
 
   * item[+]
     * linkId = "230068"
