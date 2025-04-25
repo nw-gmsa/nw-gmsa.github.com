@@ -99,7 +99,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * type = #string
     * linkId = "pedigreeNumber"
     * text = "G Number (Pedigree Number)"
-    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Patient#Patient.identifier:GenomicsPedigreeNumber.value"
+//    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Patient#Patient.identifier:GenomicsPedigreeNumber.value"
 
   * item[+]
     * type = #decimal
@@ -119,14 +119,20 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * code[+] = $sct#842009 "Consanguinity"
     * linkId = "SNM/842009"
     * text = "Patient is from consanguineous union?"
-    * answerValueSet = Canonical(YNU)
+// * answerValueSet = Canonical(YNU)
+    * answerOption.valueCoding = $loinc#LA33-6 "Yes"
+    * answerOption.valueCoding = $loinc#LA32-8 "No"
+    * answerOption.valueCoding = $loinc#LA4489-6 "Unknown"
     * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Observation#Observation.valueCodeableConcept"
   * item[+]
     * type = #string
     * linkId = "SNM/77386006"
     * text = "Does this test relate to an ongoing pregnancy?"
     * code[+] = $sct#77386006 "Pregnancy"
-    * answerValueSet = Canonical(YNU)
+ //   * answerValueSet = Canonical(YNU)
+    * answerOption.valueCoding = $loinc#LA33-6 "Yes"
+    * answerOption.valueCoding = $loinc#LA32-8 "No"
+    * answerOption.valueCoding = $loinc#LA4489-6 "Unknown"
     * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Observation#Observation.valueCodeableConcept"
     * item[+]
       * type = #group
@@ -140,7 +146,9 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
         * linkId = "SNM/370386005"
         * code[+] = $sct#370386005 "Ultrasound scan - multiple fetus"
         * text = "Does this test relate to a pregnancy with > 1 fetus?"
-        * answerValueSet = Canonical(YNU)
+        * answerOption.valueCoding = $loinc#LA33-6 "Yes"
+        * answerOption.valueCoding = $loinc#LA32-8 "No"
+        * answerOption.valueCoding = $loinc#LA4489-6 "Unknown"
         * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Observation#Observation.valueCodeableConcept"
 
       * item[+]
@@ -229,13 +237,28 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * answerOption[+].valueCoding = #cancer "Cancer"
   * item[+]
     * type = #choice
-    * linkId = "HL7/OBR-4"
+    * linkId = "HL7/OBR-4-r"
+    * enableWhen[+]
+      * question = "TestCategory"
+      * operator = #=
+      * answerCoding = #rare
     * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.code"
-    * text = "CITT Code"
+    * text = "CITT Code (Rare and inherited diseases)"
     * required = true
     * repeats = true
     * answerValueSet = Canonical(GenomicRareAndInheritedDisease)
-
+  * item[+]
+    * type = #choice
+    * linkId = "HL7/OBR-4-c"
+    * enableWhen[+]
+      * question = "TestCategory"
+      * operator = #=
+      * answerCoding = #cancer
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.code"
+    * text = "CITT Code (Cancer)"
+    * required = true
+    * repeats = true
+    * answerValueSet = Canonical(GenomicCancer)
 * item[+]
   * type = #group
   * linkId = "Consent"
@@ -244,20 +267,21 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * type = #choice
     * linkId = "LN/19826-7"
     * text = "Has consent has been obtained for tests (Y/N)"
-    * answerValueSet = Canonical(YN)
+    * answerOption.valueCoding = $loinc#LA33-6 "Yes"
+    * answerOption.valueCoding = $loinc#LA32-8 "No"
     * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
   * item[+]
     * type = #choice
     * linkId = "consent-2"
     * text = "Has consent has been obtained for DNA storage (Y/N)"
-    * answerValueSet = Canonical(YN)
+    * answerOption.valueCoding = $loinc#LA33-6 "Yes"
+    * answerOption.valueCoding = $loinc#LA32-8 "No"
     * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
   * item[+]
     * type = #choice
     * linkId = "consent-3"
     * text = "ROD attached or to follow"
     * answerValueSet = Canonical(YNU)
-
 
 * item[+]
   * type = #group

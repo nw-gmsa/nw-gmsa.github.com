@@ -8,7 +8,11 @@
   - HL7 USA Oncology [minimal Common Oncology Data Elements (mCODE) Implementation Guide](https://build.fhir.org/ig/HL7/fhir-mCODE-ig/index.html)
 - [openEHR Genomic variant result](https://ckm.openehr.org/ckm/archetypes/1013.1.3759)
 
-### Model
+### Domain Archetype
+
+[Master HL7 genetic variant reporting panel](https://interop-nwengland.github.io/LTW-Genomics/Questionnaire-81247-9.html)
+
+### Entity Model
 
 <figure>
 {%include reports-model.svg%}
@@ -16,3 +20,6 @@
 </figure>
 <br clear="all">
 
+### Communication Model
+
+[Order Results Management [LAB-3]](LAB-3.html)
