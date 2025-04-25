@@ -9,6 +9,12 @@ See [Identities and Codes](#identities-and-codes) for more details.
 <p class="figureTitle">Enterprise Canonical Data Model</p> 
 <br clear="all">
 
+## Domain Archetype
+
+<img style="padding:3px;width:95%;" src="Domain Archetype.drawio.png" alt="Domain Archetype"/>
+<br clear="all">
+<p class="figureTitle">Domain Archetype</p> 
+<br clear="all">
 
 ## Identities and Codes
 
