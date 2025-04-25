@@ -159,12 +159,14 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
 
 * item[+]
   * type = #group
-  * linkId = "3"
+  * linkId = "HealthcareProfessional"
   * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.requester"
   * text = "Healthcare Professional"
   * item[+]
     * type = #string
     * linkId = "LN/18705-4"
+    * code[+] = $loinc#18705-4
+    * code[+] = $epic#114867 "NAME OF SUPERVISING CLINICIAN (CLC)"
     * required = true
     * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/PractitionerRole#PractitionerRole.name"
     * text = "Referring Clinician Name"
@@ -183,7 +185,9 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * required = true
   * item[+]
     * type = #string
-    * linkId = "3.4"
+    * linkId = "89058-2"
+    * code[+] = $loinc#89058-2 "Contact email address"
+    * code[+] = $epic#230027 "EMAIL ADDRESSES"
     * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/PractitionerRole#PractitionerRole.telecom.value"
     * text = "Email"
   * item[+]
@@ -221,7 +225,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * linkId = "TestCategory"
     * text = "Test Category"
     * answerOption[+].valueCoding = #rare "Rare and inherited diseases"
-    * answerOption[+].valueCoding = #dna "DNA Storage"
+    * answerOption[+].valueCoding = $sct#1186936003 "Storage of specimen (procedure)"
     * answerOption[+].valueCoding = #cancer "Cancer"
   * item[+]
     * type = #choice
@@ -340,13 +344,15 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * answerValueSet = Canonical(YN)
     * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Observation#Observation.valueCoding"
   * item[+]
-    * linkId = "MFT/xxxxa"
+    * linkId = "MFT/230002"
     * text = "Tissue source/organ of origin"
-    * type = #string
+    * type = #choice
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Specimen#Specimen.bodySite"
   * item[+]
-    * linkId = "MFT/xxxxb"
+    * linkId = "MFT/230004"
     * text = "Specimen Volume/number of slides or scrolls"
     * type = #string
+    * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Specimen#Specimen.quantity"
   * item[+]
     * linkId = "MFT/audit"
     * text = "Audit"
@@ -356,6 +362,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
       * linkId = "MFT/xxxx1"
       * text = "Date and time sample received in lab"
       * type = #date
+      * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Specimen#Specimen.receivedTime"
     * item[+]
       * linkId = "MFT/xxxx2"
       * text = "Date and time sample sent"
