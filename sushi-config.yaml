@@ -13,7 +13,7 @@ releaseLabel: ci-build
 status: draft
 publisher:
   ## Find your domain contact on the https://www.ihe.net/ihe_domains page
-  - name: Manchester University NHS Foundation Trust
+  - name: NHS England North West GMSA
   - url: https://mft.nhs.uk/
   - email: pressoffice@mft.nhs.uk
 contact:
