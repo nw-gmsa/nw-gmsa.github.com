@@ -245,7 +245,6 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * text = "CITT Code (Rare and inherited diseases)"
     * required = true
     * repeats = false
-    * answerValueSet = Canonical(GenomicRareAndInheritedDisease)
   * item[+]
     * type = #choice
     * linkId = "HL7/OBR-4-r"
