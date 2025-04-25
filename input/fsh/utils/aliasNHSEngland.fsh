@@ -8,6 +8,7 @@ Alias: $epic = http://fhir.epic.mft.nhs.uk
 Alias: $NOS = https://fhir.north-west.england.nhs.uk/CodeSystem/NotOtherwiseSpecified
 Alias: $EthnicEngland = https://fhir.hl7.org.uk/CodeSystem/UKCore-EthnicCategoryEngland
 Alias: $EthnicWales = https://fhir.hl7.org.uk/CodeSystem/UKCore-EthnicCategoryWales
+Alias: $GTD = https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory
 
 RuleSet: Obligation(code, actor)
 * ^extension[$Obligation][+].extension[code].valueCode = {code}

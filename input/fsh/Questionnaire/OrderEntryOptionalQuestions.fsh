@@ -19,7 +19,7 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
     * code[+] = $epic#230016 "TEST TYPE (RARE DISEASE)"
     * text = "Test Type"
     * type = #choice
-    * answerValueSet = Canonical(GenomicTestDirectory)
+    * answerValueSet = Canonical(GenomicRareAndInheritedDisease)
     * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.code"
 
   * item[+]
@@ -28,7 +28,7 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
     * code[+] = $epic#230017 "TEST TYPE (SOLID CANCER)"
     * text = "Test Type"
     * type = #choice
-    * answerValueSet = Canonical(GenomicTestDirectory)
+    * answerValueSet = Canonical(GenomicRareAndInheritedDisease)
     * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.code"
 
   * item[+]
@@ -37,7 +37,7 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
     * code[+] = $epic#230018 "TEST TYPE (HAEMATOLOGICAL ONCOLOGY)"
     * text = "Test Type"
     * type = #choice
-    * answerValueSet = Canonical(GenomicTestDirectory)
+    * answerValueSet = Canonical(GenomicRareAndInheritedDisease)
     * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.code"
 
   * item[+]

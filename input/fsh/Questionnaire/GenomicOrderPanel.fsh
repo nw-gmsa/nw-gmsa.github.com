@@ -234,7 +234,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * text = "CITT Code"
     * required = true
     * repeats = true
-    * answerValueSet = "https://fhir.north-west.england.nhs.uk/ValueSet/genomic-test-directory"
+    * answerValueSet = Canonical(GenomicRareAndInheritedDisease)
 
 * item[+]
   * type = #group

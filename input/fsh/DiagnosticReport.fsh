@@ -78,10 +78,10 @@ DRAFT Extension of [UK Core DiagnosticReport](https://simplifier.net/hl7fhirukco
 * code.coding ^slicing.description = "Slice based on the system"
 * code.coding ^slicing.ordered = false
 * code.coding contains
-  GenomicTestDirectory 0..1 MS and PathologyAndLaboratoryMedicine 0..1 and NICIP 0..1
+  GenomicRareAndInheritedDisease 0..1 MS and PathologyAndLaboratoryMedicine 0..1 and NICIP 0..1
 
-* code.coding[GenomicTestDirectory] from GenomicTestDirectory (required)
-* code.coding[GenomicTestDirectory].system = "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory"
+* code.coding[GenomicRareAndInheritedDisease] from GenomicRareAndInheritedDisease (required)
+* code.coding[GenomicRareAndInheritedDisease].system = $GTD
 
 * code.coding[PathologyAndLaboratoryMedicine] ^short = "Use for Pathology and Laboratory Orders"
 * code.coding[PathologyAndLaboratoryMedicine] from https://fhir.hl7.org.uk/ValueSet/UKCore-PathologyAndLaboratoryMedicineObservables
