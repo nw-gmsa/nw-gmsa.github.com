@@ -1,7 +1,5 @@
 
-The model used for communication is a [Canonical Data Model](https://en.wikipedia.org/wiki/Canonical_model) which is common across all technical formats (i.e. HL7 v2 and HL7 FHIR)
-
-At present, this implementation guide uses PDF documents to convey the `Clinical Data Model`, for purposes of this Implementation Guide, which is described in [NHS England FHIR Genomics Implementation Guide](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home). The use of PDF is expected to change with the `Clinical Data Model` eventually being represented via a structure similar to [HL7 Europe Laboratory Report](https://build.fhir.org/ig/hl7-eu/laboratory/), this should not alter the model presented here. 
+The domain archetypes use a [Canonical Data Model](https://en.wikipedia.org/wiki/Canonical_model), which is common across all technical formats (i.e. HL7 v2 and HL7 FHIR) and is described using HL7 FHIR.
 
 Elements from [NHS England FHIR Genomics Implementation Guide](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home) have been incorporated into this guide, in particular the use of [NHS Data Model and Dictionary Model](https://www.datadictionary.nhs.uk/) identifiers and other identifiers already present in HL7 v2 OML and ORU. 
 See [Identities and Codes](#identities-and-codes) for more details. 
@@ -11,44 +9,10 @@ See [Identities and Codes](#identities-and-codes) for more details.
 <p class="figureTitle">Enterprise Canonical Data Model</p> 
 <br clear="all">
 
-## Genomic Test Request Entity Model
-
-### References
-
-- [NHS Genomic Medicine Service test order forms](https://www.england.nhs.uk/publication/nhs-genomic-medicine-service-test-order-forms/)
- 
-### Model
-
-<figure>
-{%include orders-model.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">Genomics Test Request Model</p>
-</figure>
-<br clear="all">
-
-A detailed description of this archetype which includes mappings to HL7 FHIR can be found [NHS England North-West Genomics Order Panel](Questionnaire-GenomicOrderPanel.html). This is also a minimal dataset based on `NHS Genomics MDM`
-
-This also includes messaging concepts which are described in this guide to add compatibility with HL7 v2 and IHE LTW.
-
-## Genomic Test Report Entity Model
-
-### References
-
-- [HL7 Version 2.5.1 Implementation Guide: Lab Results Interface (LRI), Release 1 from May 2017](https://confluence.hl7.org/download/attachments/25559919/2018%2004%2003%20-%20V2%20LRI%20-%20Ch.%205%20CG%20and%20Code%20System%20Tables.pdf?api=v2)
-- [Genomics Reporting Implementation Guide](https://build.fhir.org/ig/HL7/genomics-reporting/index.html)
-  - HL7 USA Oncology [minimal Common Oncology Data Elements (mCODE) Implementation Guide](https://build.fhir.org/ig/HL7/fhir-mCODE-ig/index.html)
-- [openEHR Genomic variant result](https://ckm.openehr.org/ckm/archetypes/1013.1.3759)
-
-### Model
-
-<figure>
-{%include reports-model.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">Genomics Test Report Model</p>
-</figure>
-<br clear="all">
 
 ## Identities and Codes
 
-Both models have a very strong focus on the use of [Correlation Identifier (Enterprise Integration Patterns)](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CorrelationIdentifier.html) or [Rule 3: Reference Other Aggregates by Identity (Implementing Domain Driven Design)](https://www.archi-lab.io/infopages/ddd/aggregate-design-rules-vernon.html#rule-3-reference-other-aggregates-by-identity), which is also consistent with IHE/HL7 concepts of [Bounded Context (martinfowler.com)](https://martinfowler.com/bliki/BoundedContext.html) 
+Both domain archetypes have a very strong focus on the use of [Correlation Identifier (Enterprise Integration Patterns)](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CorrelationIdentifier.html) or [Rule 3: Reference Other Aggregates by Identity (Implementing Domain Driven Design)](https://www.archi-lab.io/infopages/ddd/aggregate-design-rules-vernon.html#rule-3-reference-other-aggregates-by-identity), which is also consistent with IHE/HL7 concepts of [Bounded Context (martinfowler.com)](https://martinfowler.com/bliki/BoundedContext.html) 
 
 In practice this means, the following FHIR resources will have the following identifiers within the `IHE Laboratory Testing Workflow` domain:
 

@@ -104,8 +104,14 @@ pages:
   LAB-5.md:
     title: Test Results Management [LAB-5]
     generation: markdown
-  vol3.md:
-    title: Genomics Data Models
+  DDD-TestRequest.md:
+    title: Genomic Test Request
+    generation: markdown
+  DDD-TestReport.md:
+    title: Genomic Test Report
+    generation: markdown
+  DDD-Overview.md:
+    title: Common Information Model
     generation: markdown
   hl7v2.md:
     title: HL7 v2 Artefacts
@@ -146,7 +152,10 @@ menu:
     Order Results Management [LAB-3]: LAB-3.html
 ##    Work Order Management [LAB-4]: LAB-4.html
 ##    Test Results Management [LAB-5]: LAB-5.html
-  Data Models (Vol 3): vol3.html
+  Domain Archetypes:
+    Common Information Model: DDD-overview.html
+    Genomic Test Request: DDD-TestRequest.html
+    Genomic Test Report: DDD-TestReport.html
   Artefacts: artifacts.html
   HL7 v2 Artefacts: hl7v2.html
   Development:
