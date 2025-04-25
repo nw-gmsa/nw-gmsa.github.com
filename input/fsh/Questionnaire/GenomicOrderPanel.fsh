@@ -237,16 +237,37 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * answerOption[+].valueCoding = #cancer "Cancer"
   * item[+]
     * type = #choice
+    * linkId = "HL7/OBR-4-rci"
+    * enableWhen[+]
+      * question = "TestCategory"
+      * operator = #=
+      * answerCoding = #rare
+    * text = "CITT Code (Rare and inherited diseases)"
+    * required = true
+    * repeats = false
+    * answerValueSet = Canonical(GenomicRareAndInheritedDisease)
+  * item[+]
+    * type = #choice
     * linkId = "HL7/OBR-4-r"
     * enableWhen[+]
       * question = "TestCategory"
       * operator = #=
       * answerCoding = #rare
     * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.code"
-    * text = "CITT Code (Rare and inherited diseases)"
+    * text = "Test Code (Rare and inherited diseases)"
     * required = true
     * repeats = true
     * answerValueSet = Canonical(GenomicRareAndInheritedDisease)
+  * item[+]
+    * type = #choice
+    * linkId = "HL7/OBR-4-cci"
+    * enableWhen[+]
+      * question = "TestCategory"
+      * operator = #=
+      * answerCoding = #cancer
+    * text = "CI Code (Cancer)"
+    * required = true
+    * repeats = false
   * item[+]
     * type = #choice
     * linkId = "HL7/OBR-4-c"
@@ -255,7 +276,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
       * operator = #=
       * answerCoding = #cancer
     * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.code"
-    * text = "CITT Code (Cancer)"
+    * text = "Test Code (Cancer)"
     * required = true
     * repeats = true
     * answerValueSet = Canonical(GenomicCancer)
