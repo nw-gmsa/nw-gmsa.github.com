@@ -35,8 +35,10 @@ dependencies:
   hl7.fhir.extensions.r5:
     id: r5ext
     version: 4.0.1
-    reason: |
+    reason:
       Makes available certain R5 elements for use as part of this R4 IG
+  hl7.fhir.eu.laboratory:
+    version: 0.1.1
   hl7.fhir.uv.sdc:
     version: 3.0.0
 
@@ -104,14 +106,14 @@ pages:
   LAB-5.md:
     title: Test Results Management [LAB-5]
     generation: markdown
-  DDD-TestRequest.md:
-    title: Genomic Test Request
+  DDD-TestOrder.md:
+    title: Genomic Test Order
     generation: markdown
   DDD-TestReport.md:
     title: Genomic Test Report
     generation: markdown
   DDD-Overview.md:
-    title: Common Information Model
+    title: Overview
     generation: markdown
   hl7v2.md:
     title: HL7 v2 Artefacts
@@ -153,7 +155,7 @@ menu:
 ##    Work Order Management [LAB-4]: LAB-4.html
 ##    Test Results Management [LAB-5]: LAB-5.html
   Domain Archetypes:
-    Common Information Model: DDD-Overview.html
+    Overview: DDD-Overview.html
     Genomic Test Order: DDD-TestOrder.html
     Genomic Test Report: DDD-TestReport.html
   Artefacts: artifacts.html

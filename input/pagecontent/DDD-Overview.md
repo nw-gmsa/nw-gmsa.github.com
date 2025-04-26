@@ -1,5 +1,20 @@
 
-The domain archetypes use a [Canonical Data Model](https://en.wikipedia.org/wiki/Canonical_model), which is common across all technical formats (i.e. HL7 v2 and HL7 FHIR) and is described using HL7 FHIR.
+## Domain Archetype
+
+[Domain Archetype](https://en.wikipedia.org/wiki/Archetype_(information_science)) is the result of a collaboration process which aims to form a series of common archetypes within a domain (the domain in this case is Genomics). 
+The initial format for this archetype is often a spreadsheet that is expressed in an electronic format. The format we are using in this guide is [HL7 FHIR Questionnaire](https://hl7.org/fhir/R4/questionnaire.html), other formats can be used such as openEHR Archetype (see [Genomic Variant Result](https://ckm.openehr.org/ckm/archetypes/1013.1.3759))
+
+For communication between different systems, these archetypes are mapped to a [Common Information Model](#common-information-model). 
+
+
+<img style="padding:3px;width:95%;" src="Domain Archetype.drawio.png" alt="Domain Archetype"/>
+<br clear="all">
+<p class="figureTitle">Domain Archetype</p> 
+<br clear="all">
+
+## Common Information Model
+
+The domain archetypes are implemented via a [Canonical Data Model](https://en.wikipedia.org/wiki/Canonical_model), which is common across all technical formats (i.e. HL7 v2 and HL7 FHIR) and is described using HL7 FHIR.
 
 Elements from [NHS England FHIR Genomics Implementation Guide](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home) have been incorporated into this guide, in particular the use of [NHS Data Model and Dictionary Model](https://www.datadictionary.nhs.uk/) identifiers and other identifiers already present in HL7 v2 OML and ORU. 
 See [Identities and Codes](#identities-and-codes) for more details. 
@@ -9,12 +24,7 @@ See [Identities and Codes](#identities-and-codes) for more details.
 <p class="figureTitle">Enterprise Canonical Data Model</p> 
 <br clear="all">
 
-## Domain Archetype
 
-<img style="padding:3px;width:95%;" src="Domain Archetype.drawio.png" alt="Domain Archetype"/>
-<br clear="all">
-<p class="figureTitle">Domain Archetype</p> 
-<br clear="all">
 
 ## Identities and Codes
 

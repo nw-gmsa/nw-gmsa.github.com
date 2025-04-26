@@ -9,7 +9,7 @@
 
 [North West Genomics Test Order](Questionnaire-GenomicTestOrder.html)
 
-### Entity Model
+### Communication Information Model
 
 <figure>
 {%include orders-model.svg%}

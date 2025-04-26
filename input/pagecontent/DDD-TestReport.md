@@ -12,7 +12,7 @@
 
 [Master HL7 genetic variant reporting panel](https://interop-nwengland.github.io/LTW-Genomics/Questionnaire-81247-9.html)
 
-### Entity Model
+### Common Information Model
 
 <figure>
 {%include reports-model.svg%}
