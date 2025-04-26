@@ -5,15 +5,15 @@
 id: fhir.nw-gmsa.nhs.uk
 canonical: https://fhir.nw-gmsa.nhs.uk
 version: 0.0.1
-name: NWEngland_IHELTW
+name: NWGMSA_IHELTW
 title: North West Genomic Medicine Service Alliance - Testing Workflow (LTW)
-description: NHS England North West Genomic Medicine Service Alliance - IHE Laboratory Testing Workflow (LTW)
+description: NHS North West Genomic Medicine Service Alliance - IHE Laboratory Testing Workflow (LTW)
 releaseLabel: ci-build
 
 status: draft
 publisher:
   ## Find your domain contact on the https://www.ihe.net/ihe_domains page
-  - name: NHS England North West GMSA
+  - name: NHS North West GMSA
   - url: https://www.nw-gmsa.nhs.uk/contact-us
 
 license:  CC-BY-4.0
