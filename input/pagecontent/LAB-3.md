@@ -69,7 +69,7 @@ Initially only queries by ODS Code will be supported to support TIE to TIE excha
 
 #### Update HL7 FHIR Messages
 
-Messages that have been accepted by the calling Order Place (or TIE), need to be acknowledged and removed from the MessageQueue. This is achieved by sending back the messages with the sender and destination fields reversed, i.e.
+Messages that have been accepted by the calling Order Place (or TIE) need to be acknowledged and removed from the MessageQueue. This is achieved by sending back the messages with the sender and destination fields reversed, i.e.
 
 **Orignial Message Header**
 
