@@ -16,3 +16,5 @@ DRAFT Extension of UKCore PractitionerRole
 * organization.identifier only OrganisationCode
 
 * specialty from Specialty
+
+* name MS
