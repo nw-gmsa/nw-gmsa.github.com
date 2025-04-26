@@ -24,20 +24,20 @@ See also [HL7 Europe Laboratory Report - ServiceRequest: Laboratory Order](https
 
 * identifier[placerOrderNumber] only PlacerOrderNumber
 * identifier[placerOrderNumber] ^short = "Identifier assigned by the Order Placer. (HL7 v2 ORC-2/OBR-2 Placer Order Number)"
-* identifier[placerOrderNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderFiller)
-* identifier[placerOrderNumber] insert Obligation(#SHALL:populate, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderPlacer)
-* identifier[placerOrderNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/AutomationManager)
+* identifier[placerOrderNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/OrderFiller)
+* identifier[placerOrderNumber] insert Obligation(#SHALL:populate, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/OrderPlacer)
+* identifier[placerOrderNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/AutomationManager)
 * identifier[fillerOrderNumber] only FillerOrderNumber
 * identifier[fillerOrderNumber] ^short = "Identifier assigned by the lab (Order Filler)"
-* identifier[fillerOrderNumber] insert Obligation(#SHALL:populate, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderFiller)
-* identifier[fillerOrderNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderPlacer)
-* identifier[fillerOrderNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/AutomationManager)
+* identifier[fillerOrderNumber] insert Obligation(#SHALL:populate, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/OrderFiller)
+* identifier[fillerOrderNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/OrderPlacer)
+* identifier[fillerOrderNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/AutomationManager)
 
 * requisition only PlacerGroupNumber
 * requisition ^short = "Identifier assigned by the Order Placer. (HL7 v2 ORC-4 Placer Group Number)"
-* requisition insert Obligation(#SHOULD:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderFiller)
-* requisition insert Obligation(#SHALL:populate, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderPlacer)
-* requisition insert Obligation(#SHOULD:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/AutomationManager)
+* requisition insert Obligation(#SHOULD:populate-if-known, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/OrderFiller)
+* requisition insert Obligation(#SHALL:populate, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/OrderPlacer)
+* requisition insert Obligation(#SHOULD:populate-if-known, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/AutomationManager)
 
 * code ^short = "ISSUE. See [National Genomic Test Directory](https://www.england.nhs.uk/wp-content/uploads/2018/08/rare-and-inherited-disease-eligibility-criteria-v2.pdf)."
 * code 1..1 MS
@@ -87,9 +87,9 @@ See also [HL7 Europe Laboratory Report - ServiceRequest: Laboratory Order](https
 * encounter only Reference(Encounter)
 * encounter.identifier only VisitNumber
 * encounter.identifier 0..1 MS
-* encounter.identifier insert Obligation(#SHALL:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderFiller)
-* encounter.identifier insert Obligation(#SHALL:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderPlacer)
-* encounter.identifier insert Obligation(#SHALL:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/AutomationManager)
+* encounter.identifier insert Obligation(#SHALL:populate-if-known, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/OrderFiller)
+* encounter.identifier insert Obligation(#SHALL:populate-if-known, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/OrderPlacer)
+* encounter.identifier insert Obligation(#SHALL:populate-if-known, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/AutomationManager)
 
 * requester 1..1 MS
 * requester only Reference(PractitionerRole)

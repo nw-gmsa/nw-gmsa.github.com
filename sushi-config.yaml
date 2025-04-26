@@ -2,8 +2,8 @@
 # ───────────────────────────────────────────────────
 # the id should be lowercase made up of "ihe." + {domain acronym} + "." + {profile acronym/short-name}
 # e.g. ihe.iti.mhds, or ihe.iti.basicaudit
-id: north-west.england.nhs.uk
-canonical: https://fhir.north-west.england.nhs.uk
+id: fhir.nw-gmsa.nhs.uk
+canonical: https://fhir.nw-gmsa.nhs.uk
 version: 0.0.1
 name: NWEngland_IHELTW
 title: North West Genomic Medicine Service Alliance - Testing Workflow (LTW)
@@ -14,13 +14,8 @@ status: draft
 publisher:
   ## Find your domain contact on the https://www.ihe.net/ihe_domains page
   - name: NHS England North West GMSA
-  - url: https://mft.nhs.uk/
-  - email: pressoffice@mft.nhs.uk
-contact:
-  - name: Press Office
-    telecom:
-      - system: email
-        value: pressoffice@mft.nhs.uk
+  - url: https://www.nw-gmsa.nhs.uk/contact-us
+
 license:  CC-BY-4.0
 fhirVersion: 4.0.1
 jurisdiction: urn:iso:std:iso:3166#GB "United Kingdom of Great Britain and Northern Ireland"
@@ -202,15 +197,16 @@ groups:
       - Composition/Composition-GenomicsReport-OctaviaCHISLETT
       - Observation/EPIC-OBR-1
       - Observation/OBX-GenomicReferralCategory
-      - Observation/EPIC-OBX-2
-      - Observation/OBX-HighInfectionRiskSample
-      - Observation/EPIC-OBX-4
+      - Observation/OBX-SupervisingClinician
       - Observation/OBX-Pregnancy
+      - Observation/OBX-HighInfectionRiskSample
+      - Observation/OBX-InformedConsent
+      - Observation/EPIC-OBX-4
+      - Observation/EPIC-OBX-2
       - Observation/EPIC-OBX-6
       - Observation/EPIC-OBX-7
       - Observation/EPIC-OBX-2
       - Observation/EPIC-OBX-8
-      - Observation/OBX-InformedConsent
       - Observation/EPIC-OBX-10
       - Observation/EPIC-OBX-11
-      - Observation/OBX-SupervisingClinician
+

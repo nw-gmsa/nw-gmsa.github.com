@@ -55,9 +55,9 @@ See also [HL7 Europe Laboratory Report - DiagnosticReport: Laboratory Report](ht
 * subject.identifier only NHSNumber
 
 * effectiveDateTime 0..1 MS
-* effective[x] insert Obligation(#SHOULD:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderFiller)
-* effective[x] insert Obligation(#SHOULD:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderPlacer)
-* effective[x] insert Obligation(#SHOULD:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/AutomationManager)
+* effective[x] insert Obligation(#SHOULD:populate-if-known, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/OrderFiller)
+* effective[x] insert Obligation(#SHOULD:populate-if-known, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/OrderPlacer)
+* effective[x] insert Obligation(#SHOULD:populate-if-known, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/AutomationManager)
 
 * issued 0..1
 
@@ -66,9 +66,9 @@ See also [HL7 Europe Laboratory Report - DiagnosticReport: Laboratory Report](ht
 * encounter only Reference(Encounter)
 * encounter.identifier only VisitNumber
 * encounter.identifier ^short = "(HL7v2 PV1-19 Visit Number from OML_O21)"
-* encounter.identifier insert Obligation(#SHALL:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderFiller)
-* encounter.identifier insert Obligation(#SHALL:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/OrderPlacer)
-* encounter.identifier insert Obligation(#SHALL:populate-if-known, https://fhir.north-west.england.nhs.uk/ActorDefinition/AutomationManager)
+* encounter.identifier insert Obligation(#SHALL:populate-if-known, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/OrderFiller)
+* encounter.identifier insert Obligation(#SHALL:populate-if-known, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/OrderPlacer)
+* encounter.identifier insert Obligation(#SHALL:populate-if-known, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/AutomationManager)
 
 * code ^short = "ISSUE. See [National Genomic Test Directory](https://www.england.nhs.uk/wp-content/uploads/2018/08/rare-and-inherited-disease-eligibility-criteria-v2.pdf)."
 * code 1..1 MS
