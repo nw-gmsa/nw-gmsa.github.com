@@ -174,7 +174,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * type = #string
     * linkId = "LN/18705-4"
     * code[+] = $loinc#18705-4
-    * code[+] = $epic#114867 "NAME OF SUPERVISING CLINICIAN (CLC)"
+    * code[+] = $NOS#114867 "NAME OF SUPERVISING CLINICIAN (CLC)"
     * required = true
     * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/PractitionerRole#PractitionerRole.practitioner.display"
     * text = "Referring Clinician Name"
@@ -195,7 +195,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * type = #string
     * linkId = "89058-2"
     * code[+] = $loinc#89058-2 "Contact email address"
-    * code[+] = $epic#230027 "EMAIL ADDRESSES"
+    * code[+] = $NOS#230027 "EMAIL ADDRESSES"
     * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/PractitionerRole#PractitionerRole.telecom.value"
     * text = "Email"
   * item[+]
@@ -333,7 +333,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
   * item[+]
     * type = #string
     * code[+] = $loinc#80398-1 "Unique identifier for Current sample"
-    * code[+] = $epic#230021 "SAMPLE IDENTIFIER(S)"
+    * code[+] = $NOS#230021 "SAMPLE IDENTIFIER(S)"
     * linkId = "LN/80398-1"
     * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Specimen#Specimen.identifier.value"
     * text = "Specimen ID Number"
@@ -353,7 +353,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * linkId = "LN/33882-2"
     * code[+] = $loinc#33882-2 "Collection date of Specimen"
     * code[+] = $sct#1208523001	"Specimen collection by healthcare professional (finding)"
-    * code[+] = $epic#230028 "DATE OF SPECIMEN COLLECTION"
+    * code[+] = $NOS#230028 "DATE OF SPECIMEN COLLECTION"
     * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Specimen#Specimen.collection.collectedDateTime"
     * text = "Specimen Collection Date"
     * item[+]
@@ -369,7 +369,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * type = #choice
     * linkId = "LN/66746-9"
     * code[+] = $loinc#66746-9 "Specimen Type"
-    * code[+] = $epic#230001 "SPECIMEN TYPE"
+    * code[+] = $NOS#230001 "SPECIMEN TYPE"
     * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Specimen#Specimen.type.coding.code"
     * answerValueSet = Canonical(SpecimenType)
     * text = "Specimen Type"
@@ -383,7 +383,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
   * item[+]
     * linkId = "MFT/102313"
-    * code[+] = $epic#102313 "GENETICS HIGH INFECTION RISK"
+    * code[+] = $NOS#102313 "GENETICS HIGH INFECTION RISK"
     * text = "High Infection Risk?"
     * type = #choice
     * required = false
@@ -456,7 +456,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * item[+]
       * linkId = "250537006"
       * code[+] = $sct#250537006 "Histopathology finding (finding)"
-      * code[+] = $epic#230030 "NEOPLASTIC CELL CONTENT LEVEL"
+      * code[+] = $NOS#230030 "NEOPLASTIC CELL CONTENT LEVEL"
       * text = "Neoplastic Cell Content Level"
       * type = #quantity
       * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Observation#Observation.valueQuantity"
@@ -464,7 +464,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * item[+]
       * linkId = "230031"
       * code[+] = $sct#250537006 "Histopathology finding (finding)"
-      * code[+] = $epic#230031 "NEOPLASTIC CELL CONTENT LEVEL EXACT"
+      * code[+] = $NOS#230031 "NEOPLASTIC CELL CONTENT LEVEL EXACT"
       * text = "Neoplastic Cell Content Level %"
       * type = #quantity
       * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Observation#Observation.valueQuantity"
@@ -472,13 +472,13 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * item[+]
       * linkId = "252416005"
       * code[+] = $sct#252416005 "Histopathology test (procedure)"
-      * code[+] = $epic#230032 "MACRODISSECTION REQUIREMENTS"
+      * code[+] = $NOS#230032 "MACRODISSECTION REQUIREMENTS"
       * text = "Macrodissection Requirements"
       * type = #string
 
     * item[+]
       * linkId = "230033"
-      * code[+] = $epic#230033 "BLAST CELL COUNT"
+      * code[+] = $NOS#230033 "BLAST CELL COUNT"
       * text = "Blast Cell Count"
       * type = #quantity
       * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Observation#Observation.valueQuantity"
