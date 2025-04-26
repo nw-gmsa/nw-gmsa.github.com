@@ -437,7 +437,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
   * linkId = "raredisease"
   * text = "Rare and Inherited Disease"
   * enableWhen[+]
-    * question = "TestCategory"
+    * question = "MFT/230056"
     * operator = #=
     * answerCoding = #rare
 
@@ -446,7 +446,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
   * linkId = "cancer"
   * text = "Cancer"
   * enableWhen[+]
-    * question = "TestCategory"
+    * question = "MFT/230056"
     * operator = #=
     * answerCoding = #cancer
   * item[+]
