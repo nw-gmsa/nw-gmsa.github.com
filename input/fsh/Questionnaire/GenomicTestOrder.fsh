@@ -1,6 +1,6 @@
 Instance: GenomicTestOrder
 InstanceOf: NWQuestionnaire
-Title: "NHS England North West Genomics Order Panel"
+Title: "NHS England North West Genomics Test Order"
 Description: """
 THIS IS FOR ANALYSIS, and is not to be used for implementation at present.
 
@@ -8,7 +8,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
 """
 
 * status = #draft
-* url = "https://fhir.nw-gmsa.nhs.uk/Questionnaire/GenomicOrderPanel"
+* url = "https://fhir.nw-gmsa.nhs.uk/Questionnaire/GenomicTestOrder"
 
 * item[+]
   * linkId = "Patient"
@@ -76,13 +76,13 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
   * item[+]
     * type = #string
     * linkId = "LN/89061-6"
-    * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Patient#Patient.identifier:nhsNumber.value"
+    * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Patient#Patient.identifier:nhsNumber"
     * text = "NHS Number"
   * item[+]
     * type = #string
     * linkId = "LN/76435-7"
     * text = "Hospital Number"
-    * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Patient#Patient.identifier:MedicalRecordNumber.value"
+    * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Patient#Patient.identifier:MedicalRecordNumber"
     * required = true
   * item[+]
     * type = #string
@@ -99,7 +99,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * type = #string
     * linkId = "pedigreeNumber"
     * text = "G Number (Pedigree Number)"
-//    * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Patient#Patient.identifier:GenomicsPedigreeNumber.value"
+//    * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Patient#Patient.identifier:GenomicsPedigreeNumber"
 
   * item[+]
     * type = #decimal
@@ -113,7 +113,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * type = #choice
     * linkId = "GP"
     * text = "GP Surgery (ODS Code)"
-    * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Patient#Patient.generalPractitioner.identifier.value"
+    * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Patient#Patient.generalPractitioner"
   * item[+]
     * type = #string
     * code[+] = $sct#842009 "Consanguinity"
@@ -161,7 +161,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
         * type = #quantity
         * linkId = "SNM/598151000005105"
         * code[+] = $sct#598151000005105 "Gestational age"
-        * extension[unitOption].valueCoding = $ucum#wk "Week"
+        * extension[unitOption].valueCoding = $ucum#wk "Wk"
         * text = "Patient gestation"
         * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Observation#Observation.valueQuantity"
 
@@ -240,7 +240,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * type = #choice
     * linkId = "HL7/OBR-4-rci"
     * enableWhen[+]
-      * question = "TestCategory"
+      * question = "MFT/230056"
       * operator = #=
       * answerCoding = #rare
     * text = "CITT Code (Rare and inherited diseases)"
@@ -250,7 +250,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * type = #choice
     * linkId = "HL7/OBR-4-r"
     * enableWhen[+]
-      * question = "TestCategory"
+      * question = "MFT/230056"
       * operator = #=
       * answerCoding = #rare
     * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.code"
@@ -262,7 +262,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * type = #choice
     * linkId = "HL7/OBR-4-cci"
     * enableWhen[+]
-      * question = "TestCategory"
+      * question = "MFT/230056"
       * operator = #=
       * answerCoding = #cancer
     * text = "CI Code (Cancer)"
@@ -272,7 +272,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * type = #choice
     * linkId = "HL7/OBR-4-c"
     * enableWhen[+]
-      * question = "TestCategory"
+      * question = "MFT/230056"
       * operator = #=
       * answerCoding = #cancer
     * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.code"
