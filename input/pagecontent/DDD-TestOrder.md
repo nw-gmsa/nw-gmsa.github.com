@@ -7,7 +7,7 @@
 
 ### Domain Archetype
 
-[North West Genomics Order Panel](Questionnaire-GenomicOrderPanel.html)
+[North West Genomics Test Order](Questionnaire-GenomicTestOrder.html)
 
 ### Entity Model
 

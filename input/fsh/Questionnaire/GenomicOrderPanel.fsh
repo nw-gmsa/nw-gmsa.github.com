@@ -1,4 +1,4 @@
-Instance: GenomicOrderPanel
+Instance: GenomicTestOrder
 InstanceOf: NWQuestionnaire
 Title: "NHS England North West Genomics Order Panel"
 Description: """
