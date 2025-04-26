@@ -1,15 +1,13 @@
 
-## Genomic Test Request Domain Archetype
-
-### References
+## References
 
 - [NHS Genomic Medicine Service test order forms](https://www.england.nhs.uk/publication/nhs-genomic-medicine-service-test-order-forms/)
 
-### Domain Archetype
+## Domain Archetype
 
 [North West Genomics Test Order](Questionnaire-GenomicTestOrder.html)
 
-### Communication Information Model
+## Communication Information Model
 
 <figure>
 {%include orders-model.svg%}
@@ -17,6 +15,6 @@
 </figure>
 <br clear="all">
 
-### Communication Model
+## Communication Model
 
 [Placer Order Management [LAB-1]](LAB-1.html)
