@@ -125,7 +125,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
     * definition = "https://fhir.north-west.england.nhs.uk/StructureDefinition/Observation#Observation.valueCodeableConcept"
   * item[+]
-    * type = #string
+    * type = #choice
     * linkId = "SNM/77386006"
     * text = "Does this test relate to an ongoing pregnancy?"
     * code[+] = $sct#77386006 "Pregnancy"
@@ -230,7 +230,8 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * answerValueSet = Canonical(RequestPriority)
   * item[+]
     * type = #choice
-    * linkId = "TestCategory"
+    * linkId = "MFT/230056"
+    * code[+] = $NOS#230056 "What Type of Referral Do You Require?"
     * text = "Test Category"
     * answerOption[+].valueCoding = #rare "Rare and inherited diseases"
     * answerOption[+].valueCoding = $sct#1186936003 "Storage of specimen (procedure)"

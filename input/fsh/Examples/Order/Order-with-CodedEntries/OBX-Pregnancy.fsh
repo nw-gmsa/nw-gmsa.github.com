@@ -1,6 +1,6 @@
-Instance: EPIC-OBX-5
+Instance: OBX-Pregnancy
 InstanceOf: Observation
-Title: "EPIC-OBX-5 Example"
+Title: "OBX Pregnancy"
 Description: "TODO"
 
 * identifier[+].value = "5"
@@ -15,7 +15,7 @@ Description: "TODO"
     * display = "Pregnancy"
     * system = $sct
 
-* valueBoolean = false
+* valueCodeableConcept = $loinc#LA32-8 "No"
 
 // EPIC-PV1
 * encounter.reference = "urn:uuid:984b8a89-4194-4eb4-a7ea-ca8049ebeea3"

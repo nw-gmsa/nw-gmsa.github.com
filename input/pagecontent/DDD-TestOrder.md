@@ -15,6 +15,10 @@
 </figure>
 <br clear="all">
 
-## Communication Model
+### Ask at Order Entry questions and prior results
+
+TODO Explain how questions and answers are converted into v2 OBX/FHIR Observations based on https://build.fhir.org/ig/HL7/sdc/extraction.html
+
+## Communication Model  
 
 [Placer Order Management [LAB-1]](LAB-1.html)

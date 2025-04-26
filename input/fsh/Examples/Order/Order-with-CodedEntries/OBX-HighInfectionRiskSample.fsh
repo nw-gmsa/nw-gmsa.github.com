@@ -1,6 +1,6 @@
-Instance: EPIC-OBX-3
+Instance: OBX-HighInfectionRiskSample
 InstanceOf: Observation
-Title: "EPIC-OBX-3 Example"
+Title: "High infection risk sample"
 Description: "TODO"
 
 * identifier[+].value = "3"

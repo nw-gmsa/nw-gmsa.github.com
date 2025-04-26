@@ -195,22 +195,22 @@ groups:
       - DocumentReference/94bf65ba-cd6c-4601-b339-6d547f424646
       - MessageHeader/MessageHeaderGenomicReport
   -ex-example-other:
-    name: "Example: Other"
-    description: "Other Examples used for elaborating concepts"
+    name: "Example: Ask at Order Entry questions and prior results"
+    description: " Ask at Order Entry questions and prior results"
     resources:
       - Bundle/FHIRDocumentGeneticReportBundle
       - Composition/Composition-GenomicsReport-OctaviaCHISLETT
       - Observation/EPIC-OBR-1
-      - Observation/EPIC-OBX-1
+      - Observation/OBX-GenomicReferralCategory
       - Observation/EPIC-OBX-2
-      - Observation/EPIC-OBX-3
+      - Observation/OBX-HighInfectionRiskSample
       - Observation/EPIC-OBX-4
-      - Observation/EPIC-OBX-5
+      - Observation/OBX-Pregnancy
       - Observation/EPIC-OBX-6
       - Observation/EPIC-OBX-7
       - Observation/EPIC-OBX-2
       - Observation/EPIC-OBX-8
-      - Observation/EPIC-OBX-9
+      - Observation/OBX-InformedConsent
       - Observation/EPIC-OBX-10
       - Observation/EPIC-OBX-11
-      - Observation/EPIC-OBX-12
+      - Observation/OBX-SupervisingClinician

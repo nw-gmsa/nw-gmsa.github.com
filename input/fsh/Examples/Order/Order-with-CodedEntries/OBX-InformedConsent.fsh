@@ -1,6 +1,6 @@
-Instance: EPIC-OBX-9
+Instance: OBX-InformedConsent
 InstanceOf: Observation
-Title: "EPIC-OBX-9 Example"
+Title: "Informed Consent"
 Description: "TODO"
 
 * identifier[+].value = "9"
@@ -16,7 +16,7 @@ Description: "TODO"
     * system = $sct
   * text = "Confirmation of Consent for Testing - MANDATORY Testing will not be performed without completed confirmation of consent"
 
-* valueBoolean = true
+* valueCodeableConcept = $loinc#LA33-6 "Yes"
 
 // EPIC-PV1
 * encounter.reference = "urn:uuid:984b8a89-4194-4eb4-a7ea-ca8049ebeea3"
