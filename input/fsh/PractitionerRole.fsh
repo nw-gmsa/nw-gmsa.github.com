@@ -17,4 +17,3 @@ DRAFT Extension of UKCore PractitionerRole
 
 * specialty from Specialty
 
-* name MS

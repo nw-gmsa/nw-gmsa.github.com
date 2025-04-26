@@ -176,7 +176,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * code[+] = $loinc#18705-4
     * code[+] = $epic#114867 "NAME OF SUPERVISING CLINICIAN (CLC)"
     * required = true
-    * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/PractitionerRole#PractitionerRole.name"
+    * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/PractitionerRole#PractitionerRole.practitioner.display"
     * text = "Referring Clinician Name"
   * item[+]
     * type = #choice
@@ -395,12 +395,12 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * linkId = "MFT/230002"
     * text = "Tissue source/organ of origin"
     * type = #choice
-    * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Specimen#Specimen.bodySite"
+    * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Specimen#Specimen.collection.bodySite"
   * item[+]
     * linkId = "MFT/230004"
     * text = "Specimen Volume/number of slides or scrolls"
     * type = #string
-    * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Specimen#Specimen.quantity"
+    * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Specimen#Specimen.collection.quantity"
   * item[+]
     * linkId = "MFT/audit"
     * text = "Audit"
