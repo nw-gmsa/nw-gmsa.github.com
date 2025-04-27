@@ -47,18 +47,18 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * text = "Address"
     * item[+]
       * type = #string
-      * linkId = "line"
+      * linkId = "HL7/PID-11-1"
       * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Patient#Patient.address.line"
       * repeats = true
       * text = "Address Line"
     * item[+]
       * type = #string
-      * linkId = "city"
+      * linkId = "HL7/PID-11-3"
       * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Patient#Patient.address.city"
       * text = "City"
     * item[+]
       * type = #string
-      * linkId = "postcode"
+      * linkId = "HL7/PID-11-"
       * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Patient#Patient.address.postalCode"
       * text = "Postcode"
   * item[+]
@@ -91,7 +91,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.encounter.identifier.value"
     * required = false
     * item[+]
-      * linkId = "VisitNumber-designNote"
+      * linkId = "LN/56797-4-designNote"
       * type = #display
       * text = "PV1-19 (also known as stay number)"
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
@@ -111,7 +111,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * text = "Location"
   * item[+]
     * type = #choice
-    * linkId = "GP"
+    * linkId = "HL7/PD1-3"
     * text = "GP Surgery (ODS Code)"
     * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Patient#Patient.generalPractitioner"
   * item[+]
@@ -167,7 +167,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
 
 * item[+]
   * type = #group
-  * linkId = "HealthcareProfessional"
+  * linkId = "HL7/ORC-12"
   * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.requester"
   * text = "Healthcare Professional"
   * item[+]
@@ -193,7 +193,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * required = true
   * item[+]
     * type = #string
-    * linkId = "89058-2"
+    * linkId = "LN/89058-2"
     * code[+] = $loinc#89058-2 "Contact email address"
     * code[+] = $NOS#230027 "EMAIL ADDRESSES"
     * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/PractitionerRole#PractitionerRole.telecom.value"
@@ -205,7 +205,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * text = "Phone"
   * item[+]
     * type = #string
-    * linkId = "3.6"
+    * linkId = "HL7/ORC-21"
     * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/PractitionerRole#PractitionerRole.organization.identifier.value"
     * text = "Referring Organisation ODS Code"
 
@@ -230,7 +230,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * answerValueSet = Canonical(RequestPriority)
   * item[+]
     * type = #choice
-    * linkId = "MFT/230056"
+    * linkId = "NOS/230056"
     * code[+] = $NOS#230056 "What Type of Referral Do You Require?"
     * text = "Test Category"
     * answerOption[+].valueCoding = #rare "Rare and inherited diseases"
@@ -240,7 +240,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * type = #choice
     * linkId = "HL7/OBR-4-rci"
     * enableWhen[+]
-      * question = "MFT/230056"
+      * question = "NOS/230056"
       * operator = #=
       * answerCoding = #rare
     * text = "CITT Code (Rare and inherited diseases)"
@@ -250,7 +250,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * type = #choice
     * linkId = "HL7/OBR-4-r"
     * enableWhen[+]
-      * question = "MFT/230056"
+      * question = "NOS/230056"
       * operator = #=
       * answerCoding = #rare
     * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.code"
@@ -262,7 +262,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * type = #choice
     * linkId = "HL7/OBR-4-cci"
     * enableWhen[+]
-      * question = "MFT/230056"
+      * question = "NOS/230056"
       * operator = #=
       * answerCoding = #cancer
     * text = "CI Code (Cancer)"
@@ -272,7 +272,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * type = #choice
     * linkId = "HL7/OBR-4-c"
     * enableWhen[+]
-      * question = "MFT/230056"
+      * question = "NOS/230056"
       * operator = #=
       * answerCoding = #cancer
     * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.code"
@@ -312,21 +312,21 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
   * text = "Patient Clinical Information"
   * item[+]
     * type = #choice
-    * linkId = "condition"
+    * linkId = "HL7/DG1"
     * repeats = true
     * text = "Specific disease suspected/reason for testing"
     * answerValueSet = "https://fhir.hl7.org.uk/ValueSet/UKCore-ConditionCode"
     * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.reasonCode"
   * item[+]
     * type = #string
-    * linkId = "familyhistory"
+    * linkId = "HL7/NTE"
     * text = "Relevant clinical information and family history"
     * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.note"
 
 
 * item[+]
   * type = #group
-  * linkId = "Specimen"
+  * linkId = "HL7/SPM"
   * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Specimen#Specimen"
   * text = "Specimen/Biopsy"
 
@@ -338,7 +338,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Specimen#Specimen.identifier.value"
     * text = "Specimen ID Number"
     * item[+]
-      * linkId = "80398-1-designNote"
+      * linkId = "LN/80398-1-designNote"
       * type = #display
       * text = "ORM v2.4 - OBX-3 = LOINC 80398-1 and OBX-2 = CE. OML v2.5.1 SPM-2"
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
@@ -357,7 +357,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Specimen#Specimen.collection.collectedDateTime"
     * text = "Specimen Collection Date"
     * item[+]
-      * linkId = "281269004-designNote"
+      * linkId = "LN/33882-2-designNote"
       * type = #display
       * text = """
       ORM v2.4 - OBX-3 = LOINC 33882-2 and OBX-2 = TS .
@@ -374,7 +374,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * answerValueSet = Canonical(SpecimenType)
     * text = "Specimen Type"
     * item[+]
-      * linkId = "66746-9-designNote"
+      * linkId = "LN/66746-9-designNote"
       * type = #display
       * text = """
       ORM v2.4 - OBX-3 = LOINC 66746-9 and OBX-2 = CE.
@@ -382,7 +382,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
   * item[+]
-    * linkId = "MFT/102313"
+    * linkId = "NOS/102313"
     * code[+] = $NOS#102313 "GENETICS HIGH INFECTION RISK"
     * text = "High Infection Risk?"
     * type = #choice
@@ -392,43 +392,43 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * answerOption[+].valueCoding = $loinc#LA32-8 "No"
     * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Observation#Observation.valueCoding"
   * item[+]
-    * linkId = "MFT/230002"
+    * linkId = "NOS/230002"
     * text = "Tissue source/organ of origin"
     * type = #choice
     * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Specimen#Specimen.collection.bodySite"
   * item[+]
-    * linkId = "MFT/230004"
+    * linkId = "NOS/230004"
     * text = "Specimen Volume/number of slides or scrolls"
     * type = #string
     * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Specimen#Specimen.collection.quantity"
   * item[+]
-    * linkId = "MFT/audit"
-    * text = "Audit"
+    * linkId = "NOS/audit"
+    * text = "Audit (Tracking"
     * type = #group
     * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Specimen#Specimen.collection"
     * item[+]
-      * linkId = "MFT/xxxx1"
+      * linkId = "NOS/xxxx1"
       * text = "Date and time sample received in lab"
       * type = #date
       * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Specimen#Specimen.receivedTime"
     * item[+]
-      * linkId = "MFT/xxxx2"
+      * linkId = "NOS/xxxx2"
       * text = "Date and time sample sent"
       * type = #date
     * item[+]
-      * linkId = "MFT/xxxx3"
+      * linkId = "NOS/xxxx3"
       * text = "Transport used"
       * type = #string
     * item[+]
-      * linkId = "MFT/xxxx4"
+      * linkId = "NOS/xxxx4"
       * text = "Tracking number"
       * type = #string
     * item[+]
-      * linkId = "MFT/xxxx5"
+      * linkId = "NOS/xxxx5"
       * text = "Sample sent to"
       * type = #string
     * item[+]
-      * linkId = "MFT/xxxx6"
+      * linkId = "NOS/xxxx6"
       * text = "Name of person who sent sample"
       * type = #string
 
@@ -437,7 +437,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
   * linkId = "raredisease"
   * text = "Rare and Inherited Disease"
   * enableWhen[+]
-    * question = "MFT/230056"
+    * question = "NOS/230056"
     * operator = #=
     * answerCoding = #rare
 
@@ -446,7 +446,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
   * linkId = "cancer"
   * text = "Cancer"
   * enableWhen[+]
-    * question = "MFT/230056"
+    * question = "NOS/230056"
     * operator = #=
     * answerCoding = #cancer
   * item[+]
@@ -454,7 +454,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
     * linkId = "UnknownResultsPanel"
     * text = "Unknown Results Panel"
     * item[+]
-      * linkId = "250537006"
+      * linkId = "SNM/250537006"
       * code[+] = $sct#250537006 "Histopathology finding (finding)"
       * code[+] = $NOS#230030 "NEOPLASTIC CELL CONTENT LEVEL"
       * text = "Neoplastic Cell Content Level"
@@ -462,7 +462,7 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
       * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Observation#Observation.valueQuantity"
 
     * item[+]
-      * linkId = "230031"
+      * linkId = "NOS/230031"
       * code[+] = $sct#250537006 "Histopathology finding (finding)"
       * code[+] = $NOS#230031 "NEOPLASTIC CELL CONTENT LEVEL EXACT"
       * text = "Neoplastic Cell Content Level %"
@@ -470,14 +470,14 @@ The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 
       * definition = "https://fhir.nw-gmsa.nhs.uk/StructureDefinition/Observation#Observation.valueQuantity"
 
     * item[+]
-      * linkId = "252416005"
+      * linkId = "SNM/252416005"
       * code[+] = $sct#252416005 "Histopathology test (procedure)"
       * code[+] = $NOS#230032 "MACRODISSECTION REQUIREMENTS"
       * text = "Macrodissection Requirements"
       * type = #string
 
     * item[+]
-      * linkId = "230033"
+      * linkId = "NOS/230033"
       * code[+] = $NOS#230033 "BLAST CELL COUNT"
       * text = "Blast Cell Count"
       * type = #quantity
