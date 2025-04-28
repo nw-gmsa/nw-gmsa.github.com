@@ -1,0 +1,373 @@
+{
+  "resourceType": "Questionnaire",
+  "meta": {
+    "profile": [
+      "https://nw-gmsa.github.io/StructureDefinition/NWQuestionnaire"
+    ]
+  },
+  "id": "58410-2",
+  "url": "https://fhir.nw-gmsa.nhs.uk/Questionnaire/58410-2",
+  "title": "CBC panel - Blood by Automated count",
+  "status": "draft",
+  "code": [
+    {
+      "system": "http://loinc.org",
+      "code": "58410-2",
+      "display": "CBC panel - Blood by Automated count"
+    }
+  ],
+  "item": [
+    {
+      "type": "decimal",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "system": "http://unitsofmeasure.org",
+            "code": "10*3/uL",
+            "display": "10*3/uL"
+          }
+        }
+      ],
+      "linkId": "/6690-2",
+      "code": [
+        {
+          "system": "http://loinc.org",
+          "code": "6690-2",
+          "display": "WBC # Bld Auto"
+        }
+      ],
+      "text": "WBC # Bld Auto"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "789-8",
+          "display": "RBC # Bld Auto",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "10*6/uL",
+            "display": "10*6/uL",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/789-8",
+      "text": "RBC # Bld Auto"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "718-7",
+          "display": "Hgb Bld-mCnc",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "g/dL",
+            "display": "g/dL",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/718-7",
+      "text": "Hgb Bld-mCnc"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "4544-3",
+          "display": "Hct VFr Bld Auto",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "%",
+            "display": "%",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/4544-3",
+      "text": "Hct VFr Bld Auto",
+      "item": [
+        {
+          "text": "This is the test that referral labs will report when hematocrit alone is ordered.",
+          "type": "display",
+          "linkId": "/4544-3-help",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "text": "Help-Button",
+                "coding": [
+                  {
+                    "code": "help",
+                    "display": "Help-Button",
+                    "system": "http://hl7.org/fhir/questionnaire-item-control"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "787-2",
+          "display": "RBC Auto",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "fL",
+            "display": "fL",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/787-2",
+      "text": "RBC Auto"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "785-6",
+          "display": "MCH RBC Qn Auto",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "pg",
+            "display": "pg",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/785-6",
+      "text": "MCH RBC Qn Auto"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "786-4",
+          "display": "MCHC RBC Auto-EntMCnc",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "g/dL",
+            "display": "g/dL",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/786-4",
+      "text": "MCHC RBC Auto-EntMCnc"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "788-0",
+          "display": "RDW RBC Auto",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "%",
+            "display": "%",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/788-0",
+      "text": "RDW RBC Auto",
+      "item": [
+        {
+          "text": "The RDW-CV is the ratio of the variation in width to the mean width of the RBC volume distribution curve taken at +/- 1CV.",
+          "type": "display",
+          "linkId": "/788-0-help",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "text": "Help-Button",
+                "coding": [
+                  {
+                    "code": "help",
+                    "display": "Help-Button",
+                    "system": "http://hl7.org/fhir/questionnaire-item-control"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "788-0",
+          "display": "RDW RBC Auto",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "%",
+            "display": "%",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/788-0.2",
+      "text": "RDW RBC Auto",
+      "item": [
+        {
+          "text": "The RDW-CV is the ratio of the variation in width to the mean width of the RBC volume distribution curve taken at +/- 1CV.",
+          "type": "display",
+          "linkId": "/788-0.2-help",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "text": "Help-Button",
+                "coding": [
+                  {
+                    "code": "help",
+                    "display": "Help-Button",
+                    "system": "http://hl7.org/fhir/questionnaire-item-control"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "777-3",
+          "display": "Platelet # Bld Auto",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "10*3/uL",
+            "display": "10*3/uL",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/777-3",
+      "text": "Platelet # Bld Auto"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "32207-3",
+          "display": "PDW Bld Auto",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "fL",
+            "display": "fL",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/32207-3",
+      "text": "PDW Bld Auto",
+      "item": [
+        {
+          "text": "PDW=the distribution width at the 20% level when the peak is equivalent to 100%.",
+          "type": "display",
+          "linkId": "/32207-3-help",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "text": "Help-Button",
+                "coding": [
+                  {
+                    "code": "help",
+                    "display": "Help-Button",
+                    "system": "http://hl7.org/fhir/questionnaire-item-control"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "32623-1",
+          "display": "PMV Bld Auto",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "fL",
+            "display": "fL",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/32623-1",
+      "text": "PMV Bld Auto"
+    }
+  ]
+}

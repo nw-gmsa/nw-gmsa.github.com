@@ -133,9 +133,12 @@ resources:
     exampleBoolean: false
   Questionnaire/81247-9:
     name: Master HL7 genetic variant reporting panel
-    description: Master HL7 genetic variant reporting panel [Questionnaire Viewer](https://project-wildfyre.github.io/domain-archetype/?q=https:%2F%2Fraw.githubusercontent.com%2FInterop-NWEngland%2FLTW-Genomics%2Frefs%2Fheads%2Fmain%2Finput%2Fresources%2FMaster-HL7-genetic-variant-reporting-panel.R4.json)
+    description: Master HL7 genetic variant reporting panel
     exampleBoolean: false
-
+  Questionnaire/58410-2:
+    name: CBC panel - Blood by Automated count
+    description: CBC panel - Blood by Automated count
+    exampleBoolean: false
 menu:
   Home: index.html
   Analysis and Design (Vol 1) :
