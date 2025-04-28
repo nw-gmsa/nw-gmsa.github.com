@@ -7,7 +7,7 @@
 
 ## Domain Archetype
 
-[Master HL7 genetic variant reporting panel](https://nw-gmsa.github.io/LTW/Questionnaire-81247-9.html)
+[Master HL7 genetic variant reporting panel](https://nw-gmsa.github.io/R4/Questionnaire-81247-9.html)
 
 ## Common Information Model
 
