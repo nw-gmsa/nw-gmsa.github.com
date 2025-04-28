@@ -1,12 +1,13 @@
 Instance: GenomicTestOrder
 InstanceOf: NWQuestionnaire
-Title: "NHS England North West Genomics Test Order"
+Title: "North West Genomics Test Order"
 Description: """
 THIS IS FOR ANALYSIS, and is not to be used for implementation at present.
 
 The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 and FHIR.
 """
 
+* title = "North West Genomics Test Order",
 * status = #draft
 * url = "https://nw-gmsa.github.io/Questionnaire/GenomicTestOrder"
 
