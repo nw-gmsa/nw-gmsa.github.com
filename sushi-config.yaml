@@ -139,6 +139,12 @@ resources:
     name: CBC panel - Blood by Automated count
     description: CBC panel - Blood by Automated count
     exampleBoolean: false
+  Questionnaire/24323-8:
+    name: Comprehensive metabolic 2000 panel - Serum or Plasma
+    description: Comprehensive metabolic 2000 panel - Serum or Plasma
+    exampleBoolean: false
+
+
 menu:
   Home: index.html
   Analysis and Design (Vol 1) :
