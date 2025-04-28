@@ -6,7 +6,7 @@ Genomic Order Entry Optional Questions - THIS IS FOR ANALYSIS, and is not to be 
 """
 
 * status = #draft
-* url = "https://fhir.nw-gmsa.nhs.uk/Questionnaire/GenomicOrderEntryOptionalQuestions"
+* url = "https://nw-gmsa.github.io/Questionnaire/GenomicOrderEntryOptionalQuestions"
 
 * item[+]
   * linkId = "Order"
