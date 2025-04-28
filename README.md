@@ -1,4 +1,4 @@
-See [North West Genomics HL7/IHE Implementation Guide](https://nw-gmsa.github.io/LTW-Genomics)
+See [North West Genomics HL7/IHE Implementation Guide](https://nw-gmsa.github.io/R4)
 
 Related links:
  - [NW LTW IG using HL7 igPublisher](https://build.fhir.org/ig/Interop-NWEngland/LTW-Genomics/branches/main/index.html)
