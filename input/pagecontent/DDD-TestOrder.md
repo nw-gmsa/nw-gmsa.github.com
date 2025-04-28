@@ -47,6 +47,7 @@ Similarly the panel/OBR codes are:
 - LOINC (and US Core) *58410-2 CBC panel - Blood by Automated count*
 - NHS England SNOMED CT *26604007 Full blood count*
 
+We can check the code mapping via https://browser.loincsnomed.org/? which contains a mapping between LOINC and SNOMED codes.
 
 ## Communication Model  
 
