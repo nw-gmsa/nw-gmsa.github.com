@@ -2,7 +2,7 @@
 # ───────────────────────────────────────────────────
 # the id should be lowercase made up of "ihe." + {domain acronym} + "." + {profile acronym/short-name}
 # e.g. ihe.iti.mhds, or ihe.iti.basicaudit
-id: ltw.ihe.nw-gmsa.nhs.uk
+id: nw-gmsa.github.io
 canonical: https://nw-gmsa.github.io/LTW/
 version: 0.0.1
 name: NWGMSA_IHELTW
