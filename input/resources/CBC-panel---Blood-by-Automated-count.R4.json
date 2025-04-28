@@ -29,6 +29,15 @@
           }
         }
       ],
+      "initial" : [
+        {
+          "valueQuantity" : {
+            "unit" : "10*3/uL",
+            "system" : "http://unitsofmeasure.org",
+            "code" : "10*3/uL"
+          }
+        }
+      ],
       "linkId": "/6690-2",
       "code": [
         {
@@ -58,6 +67,15 @@
           }
         }
       ],
+      "initial" : [
+        {
+          "valueQuantity" : {
+            "unit" : "10*6/uL",
+            "system" : "http://unitsofmeasure.org",
+            "code" : "10*6/uL"
+          }
+        }
+      ],
       "linkId": "/789-8",
       "text": "RBC # Bld Auto"
     },
@@ -68,6 +86,15 @@
           "code": "718-7",
           "display": "Hgb Bld-mCnc",
           "system": "http://loinc.org"
+        }
+      ],
+      "initial" : [
+        {
+          "valueQuantity" : {
+            "unit" : "g/dL",
+            "system" : "http://unitsofmeasure.org",
+            "code" : "g/dL"
+          }
         }
       ],
       "extension": [
@@ -90,6 +117,15 @@
           "code": "4544-3",
           "display": "Hct VFr Bld Auto",
           "system": "http://loinc.org"
+        }
+      ],
+      "initial" : [
+        {
+          "valueQuantity" : {
+            "unit" : "%",
+            "system" : "http://unitsofmeasure.org",
+            "code" : "%"
+          }
         }
       ],
       "extension": [
@@ -136,6 +172,15 @@
           "system": "http://loinc.org"
         }
       ],
+      "initial" : [
+        {
+          "valueQuantity" : {
+            "unit" : "fL",
+            "system" : "http://unitsofmeasure.org",
+            "code" : "fL"
+          }
+        }
+      ],
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
@@ -156,6 +201,15 @@
           "code": "785-6",
           "display": "MCH RBC Qn Auto",
           "system": "http://loinc.org"
+        }
+      ],
+      "initial" : [
+        {
+          "valueQuantity" : {
+            "unit" : "pg",
+            "system" : "http://unitsofmeasure.org",
+            "code" : "pg"
+          }
         }
       ],
       "extension": [
@@ -180,6 +234,15 @@
           "system": "http://loinc.org"
         }
       ],
+      "initial" : [
+        {
+          "valueQuantity" : {
+            "unit" : "g/dL",
+            "system" : "http://unitsofmeasure.org",
+            "code" : "g/dL"
+          }
+        }
+      ],
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
@@ -200,6 +263,15 @@
           "code": "788-0",
           "display": "RDW RBC Auto",
           "system": "http://loinc.org"
+        }
+      ],
+      "initial" : [
+        {
+          "valueQuantity" : {
+            "unit" : "%",
+            "system" : "http://unitsofmeasure.org",
+            "code" : "%"
+          }
         }
       ],
       "extension": [
@@ -246,6 +318,15 @@
           "system": "http://loinc.org"
         }
       ],
+      "initial" : [
+        {
+          "valueQuantity" : {
+            "unit" : "%",
+            "system" : "http://unitsofmeasure.org",
+            "code" : "%"
+          }
+        }
+      ],
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
@@ -290,6 +371,15 @@
           "system": "http://loinc.org"
         }
       ],
+      "initial" : [
+        {
+          "valueQuantity" : {
+            "unit" : "10*3/uL",
+            "system" : "http://unitsofmeasure.org",
+            "code" : "10*3/uL"
+          }
+        }
+      ],
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
@@ -310,6 +400,15 @@
           "code": "32207-3",
           "display": "PDW Bld Auto",
           "system": "http://loinc.org"
+        }
+      ],
+      "initial" : [
+        {
+          "valueQuantity" : {
+            "unit" : "fL",
+            "system" : "http://unitsofmeasure.org",
+            "code" : "fL"
+          }
         }
       ],
       "extension": [
@@ -354,6 +453,15 @@
           "code": "32623-1",
           "display": "PMV Bld Auto",
           "system": "http://loinc.org"
+        }
+      ],
+      "initial" : [
+        {
+          "valueQuantity" : {
+            "unit" : "fL",
+            "system" : "http://unitsofmeasure.org",
+            "code" : "fL"
+          }
         }
       ],
       "extension": [

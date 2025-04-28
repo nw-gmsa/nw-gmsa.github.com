@@ -35,7 +35,7 @@ OBX|4|NM|B0306^Red blood cell (RBC) count||6.00|x10\S\12/L|4.50-6.00|N|||F|||201
 OBX|6|CE|B0309^Mean cell volume (MCV)||NA^Not assayed^ACME|fL|80-100|N|||F|||201803091500
 ```
 
-This **appears to be related** to [LOINC 58410-2](https://loinc.org/58410-2) which has an example in FHIR US Core [CBC panel - Blood by Automated count](Questionnaire-58410-2.html)
+This **appears to be related** to [LOINC 58410-2](https://loinc.org/58410-2) which has an example in FHIR US Core [Example: CBC panel - Blood by Automated count](Questionnaire-58410-2.html)
 This **may be** related to [NHS England Pathology FHIR Implementation Guide - PATH-R4-10: Bundle Example - Full Blood Count Report](https://simplifier.net/guide/pathology-fhir-implementation-guide/Home/FHIRAssets/AllAssets/All-Profiles/Examples/Bundles/Full-Blood-Count-Report?version=0.1)
 
 If you browse between the different standards, you may be confused. At present, I think I am correct.
