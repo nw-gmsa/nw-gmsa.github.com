@@ -2,8 +2,8 @@
 # ───────────────────────────────────────────────────
 # the id should be lowercase made up of "ihe." + {domain acronym} + "." + {profile acronym/short-name}
 # e.g. ihe.iti.mhds, or ihe.iti.basicaudit
-id: fhir.nw-gmsa.nhs.uk
-canonical: https://fhir.nw-gmsa.nhs.uk
+id: ltw.ihe.nw-gmsa.nhs.uk
+canonical: https://nw-gmsa.github.io/LTW/
 version: 0.0.1
 name: NWGMSA_IHELTW
 title: North West Genomic Medicine Service Alliance
