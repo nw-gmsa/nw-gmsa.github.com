@@ -13,7 +13,7 @@ The ESB has a [Canonical Data Model](https://www.enterpriseintegrationpatterns.c
 
 This canonical model is a mandatory extension to [HL7 UK Core](https://simplifier.net/guide/ukcoreversionhistory) and includes requirements from 
 - [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws)
-- [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](https://interop-nwengland.github.io/LTW-Genomics/DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
+- [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](https://nw-gmsa.github.io/LTW/DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
 - [Royal College of Radiologist](https://www.rcr.ac.uk/media/wwtp2mif/rcr-publications_radiology-reporting-networks-understanding-the-technical-options_march-2022.pdf)
 - [IHE Europe Metadata for exchange medical documents and images](https://www.ihe-europe.net/sites/default/files/2017-11/IHE_ITI_XDS_Metadata_Guidelines_v1.0.pdf) see UK content.
 - [NHS Data Model and Dictionary](https://www.datadictionary.nhs.uk/)
