@@ -1,0 +1,671 @@
+{
+  "meta": {
+    "profile": [
+      "https://nw-gmsa.github.io/StructureDefinition/NWQuestionnaire"
+    ]
+  },
+  "id": "24323-8",
+  "url": "https://nw-gmsa.nhs.uk/Questionnaire/24323-8",
+  "code": [
+    {
+      "code": "24323-8",
+      "display": "Comprehensive metabolic 2000 panel - Serum or Plasma",
+      "system": "http://loinc.org"
+    }
+  ],
+  "title": "Comprehensive metabolic 2000 panel - Serum or Plasma",
+  "resourceType": "Questionnaire",
+  "status": "draft",
+  "item": [
+    {
+      "type": "decimal",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "system": "http://unitsofmeasure.org",
+            "code": "mg/dL",
+            "display": "mg/dL"
+          }
+        }
+      ],
+      "linkId": "/2345-7",
+      "code": [
+        {
+          "system": "http://loinc.org",
+          "code": "2345-7",
+          "display": "Glucose SerPl-mCnc"
+        }
+      ],
+      "text": "Glucose SerPl-mCnc"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "3094-0",
+          "display": "BUN SerPl-mCnc",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "mg/dL",
+            "display": "mg/dL",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/3094-0",
+      "text": "BUN SerPl-mCnc"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "2160-0",
+          "display": "Creat SerPl-mCnc",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "mg/dL",
+            "display": "mg/dL",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/2160-0",
+      "text": "Creat SerPl-mCnc"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "3097-3",
+          "display": "BUN/Creat SerPl",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "mg/mg{creat}",
+            "display": "mg/mg{creat}",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/3097-3",
+      "text": "BUN/Creat SerPl"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "33914-3",
+          "display": "GFR SerPl Creatinine-bsd frml MDRD",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "mL/min/{1.73_m2}",
+            "display": "mL/min/{1.73_m2}",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/33914-3",
+      "text": "GFR SerPl Creatinine-bsd frml MDRD"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "50044-7",
+          "display": "GFR SerPlBld Creatinine-bsd fmla FML",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "mL/min/{1.73_m2}",
+            "display": "mL/min/{1.73_m2}",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/50044-7",
+      "text": "GFR SerPlBld Creatinine-bsd fmla FML"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "48642-3",
+          "display": "GFR/BSA pr.non blk SerPlBld MDRD-ArV",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "mL/min/{1.73_m2}",
+            "display": "mL/min/{1.73_m2}",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/48642-3",
+      "text": "GFR/BSA pr.non blk SerPlBld MDRD-ArV"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "48643-1",
+          "display": "GFR SerPlBld Creatinine-bsd fmla /1.73sq",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "mL/min/{1.73_m2}",
+            "display": "mL/min/{1.73_m2}",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/48643-1",
+      "text": "GFR SerPlBld Creatinine-bsd fmla /1.73sq"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "62238-1",
+          "display": "GFR SerPlBld Creatinine-bsd fmla CKD-EPI",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "mL/min/{1.73_m2}",
+            "display": "mL/min/{1.73_m2}",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/62238-1",
+      "text": "GFR SerPlBld Creatinine-bsd fmla CKD-EPI"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "88293-6",
+          "display": "GFR/BSA pred.blk SerPlBld CKD-EPI-ArVRat",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "mL/min/{1.73_m2}",
+            "display": "mL/min/{1.73_m2}",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/88293-6",
+      "text": "GFR/BSA pred.blk SerPlBld CKD-EPI-ArVRat"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "88294-4",
+          "display": "GFR/BSA pred.nonblk SerPl CKD-EPI-ArVRat",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "mL/min/{1.73_m2}",
+            "display": "mL/min/{1.73_m2}",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/88294-4",
+      "text": "GFR/BSA pred.nonblk SerPl CKD-EPI-ArVRat"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "17861-6",
+          "display": "Calcium SerPl-mCnc",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "mg/dL",
+            "display": "mg/dL",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/17861-6",
+      "text": "Calcium SerPl-mCnc"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "2885-2",
+          "display": "Prot SerPl-mCnc",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "g/dL",
+            "display": "g/dL",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/2885-2",
+      "text": "Prot SerPl-mCnc",
+      "item": [
+        {
+          "text": "Although there is a qualitative difference between total protein in plasma and serum, the QUANTITATIVE difference is small and probably not clinically significant, therefore, system of SER/PLAS is acceptable. The protein concentration that is reported in electrophoresis is the same as that reported routinely.",
+          "type": "display",
+          "linkId": "/2885-2-help",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "text": "Help-Button",
+                "coding": [
+                  {
+                    "code": "help",
+                    "display": "Help-Button",
+                    "system": "http://hl7.org/fhir/questionnaire-item-control"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "1751-7",
+          "display": "Albumin SerPl-mCnc",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "g/dL",
+            "display": "g/dL",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/1751-7",
+      "text": "Albumin SerPl-mCnc"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "10834-0",
+          "display": "Globulin Ser Calc-mCnc",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "g/L",
+            "display": "g/L",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/10834-0",
+      "text": "Globulin Ser Calc-mCnc"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "1759-0",
+          "display": "Albumin/Glob SerPl",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "{ratio}",
+            "display": "{ratio}",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/1759-0",
+      "text": "Albumin/Glob SerPl"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "1975-2",
+          "display": "Bilirub SerPl-mCnc",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "mg/dL",
+            "display": "mg/dL",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/1975-2",
+      "text": "Bilirub SerPl-mCnc",
+      "item": [
+        {
+          "text": "Method can be DIRECT SPECTOPHOTOMETRY, WET CHEMISTRY or DRY SLIDE (TBIL)",
+          "type": "display",
+          "linkId": "/1975-2-help",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "text": "Help-Button",
+                "coding": [
+                  {
+                    "code": "help",
+                    "display": "Help-Button",
+                    "system": "http://hl7.org/fhir/questionnaire-item-control"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "6768-6",
+          "display": "ALP SerPl-cCnc",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "U/L",
+            "display": "U/L",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/6768-6",
+      "text": "ALP SerPl-cCnc"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "1742-6",
+          "display": "ALT SerPl-cCnc",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "U/L",
+            "display": "U/L",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/1742-6",
+      "text": "ALT SerPl-cCnc"
+    },
+    {
+      "type": "decimal",
+      "code": [
+        {
+          "code": "1920-8",
+          "display": "AST SerPl-cCnc",
+          "system": "http://loinc.org"
+        }
+      ],
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+          "valueCoding": {
+            "code": "U/L",
+            "display": "U/L",
+            "system": "http://unitsofmeasure.org"
+          }
+        }
+      ],
+      "linkId": "/1920-8",
+      "text": "AST SerPl-cCnc"
+    },
+    {
+      "type": "group",
+      "code": [
+        {
+          "code": "24326-1",
+          "display": "Lytes 1998 Pnl SerPl",
+          "system": "http://loinc.org"
+        }
+      ],
+      "linkId": "/24326-1",
+      "text": "Lytes 1998 Pnl SerPl",
+      "item": [
+        {
+          "type": "decimal",
+          "code": [
+            {
+              "code": "2951-2",
+              "display": "Sodium SerPl-sCnc",
+              "system": "http://loinc.org"
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "code": "mmol/L",
+                "display": "mmol/L",
+                "system": "http://unitsofmeasure.org"
+              }
+            }
+          ],
+          "linkId": "/24326-1/2951-2",
+          "text": "Sodium SerPl-sCnc"
+        },
+        {
+          "type": "decimal",
+          "code": [
+            {
+              "code": "2823-3",
+              "display": "Potassium SerPl-sCnc",
+              "system": "http://loinc.org"
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "code": "mmol/L",
+                "display": "mmol/L",
+                "system": "http://unitsofmeasure.org"
+              }
+            }
+          ],
+          "linkId": "/24326-1/2823-3",
+          "text": "Potassium SerPl-sCnc"
+        },
+        {
+          "type": "decimal",
+          "code": [
+            {
+              "code": "2075-0",
+              "display": "Chloride SerPl-sCnc",
+              "system": "http://loinc.org"
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "code": "mmol/L",
+                "display": "mmol/L",
+                "system": "http://unitsofmeasure.org"
+              }
+            }
+          ],
+          "linkId": "/24326-1/2075-0",
+          "text": "Chloride SerPl-sCnc"
+        },
+        {
+          "type": "decimal",
+          "code": [
+            {
+              "code": "1963-8",
+              "display": "HCO3 SerPl-sCnc",
+              "system": "http://loinc.org"
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "code": "mmol/L",
+                "display": "mmol/L",
+                "system": "http://unitsofmeasure.org"
+              }
+            }
+          ],
+          "linkId": "/24326-1/1963-8",
+          "text": "HCO3 SerPl-sCnc"
+        },
+        {
+          "type": "decimal",
+          "code": [
+            {
+              "code": "2028-9",
+              "display": "CO2 SerPl-sCnc",
+              "system": "http://loinc.org"
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "code": "mmol/L",
+                "display": "mmol/L",
+                "system": "http://unitsofmeasure.org"
+              }
+            }
+          ],
+          "linkId": "/24326-1/2028-9",
+          "text": "CO2 SerPl-sCnc"
+        },
+        {
+          "type": "decimal",
+          "code": [
+            {
+              "code": "33037-3",
+              "display": "Anion Gap SerPl Calc-sCnc",
+              "system": "http://loinc.org"
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "code": "mmol/L",
+                "display": "mmol/L",
+                "system": "http://unitsofmeasure.org"
+              }
+            }
+          ],
+          "linkId": "/24326-1/33037-3",
+          "text": "Anion Gap SerPl Calc-sCnc"
+        },
+        {
+          "text": "The components of this panel were defined by HCFA (now CMS)",
+          "type": "display",
+          "linkId": "/24326-1-help",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "text": "Help-Button",
+                "coding": [
+                  {
+                    "code": "help",
+                    "display": "Help-Button",
+                    "system": "http://hl7.org/fhir/questionnaire-item-control"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
