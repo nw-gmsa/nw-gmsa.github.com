@@ -34,7 +34,7 @@ See also [HL7 Europe Laboratory Report - ServiceRequest: Laboratory Order](https
 * identifier[fillerOrderNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/AutomationManager)
 
 * requisition only PlacerGroupNumber
-* requisition ^short = "Identifier assigned by the Order Placer. (HL7 v2 ORC-4 Placer Group Number)"
+* requisition ^short = "G Number (Pedigree Number) used to identify a family across a series of orders. Identifier assigned by the Order Placer. (HL7 v2 ORC-4 Placer Group Number)"
 * requisition insert Obligation(#SHOULD:populate-if-known, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/OrderFiller)
 * requisition insert Obligation(#SHALL:populate, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/OrderPlacer)
 * requisition insert Obligation(#SHOULD:populate-if-known, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/AutomationManager)
@@ -49,7 +49,8 @@ See also [HL7 Europe Laboratory Report - ServiceRequest: Laboratory Order](https
 * code.coding ^slicing.description = "Slice based on the system"
 * code.coding ^slicing.ordered = false
 * code.coding contains
-  GenomicRareAndInheritedDisease 0..1 MS and GenomicCancer 0..1 MS and PathologyAndLaboratoryMedicine 0..1 and NICIP 0..1
+  GenomicRareAndInheritedDisease 0..1 MS and GenomicCancer 0..1 MS
+  // and PathologyAndLaboratoryMedicine 0..1 and NICIP 0..1
 
 * code.coding[GenomicRareAndInheritedDisease] ^short = "Genomic Rare and Inherited Disease Test Directory"
 * code.coding[GenomicRareAndInheritedDisease] from GenomicRareAndInheritedDisease (required)
@@ -59,14 +60,34 @@ See also [HL7 Europe Laboratory Report - ServiceRequest: Laboratory Order](https
 * code.coding[GenomicCancer] from GenomicCancer (required)
 * code.coding[GenomicCancer].system = $GTD
 
+* orderDetail ^short = "Additional order codes"
 
-* code.coding[PathologyAndLaboratoryMedicine] ^short = "Use for Pathology and Laboratory Orders"
-* code.coding[PathologyAndLaboratoryMedicine] from https://fhir.hl7.org.uk/ValueSet/UKCore-PathologyAndLaboratoryMedicineObservables
-* code.coding[PathologyAndLaboratoryMedicine].system = $sct
+* orderDetail 0..* MS
 
-* code.coding[NICIP] ^short = "Use for Radiology Orders"
-* code.coding[NICIP] from https://fhir.interweavedigital.nhs.uk/R4/ValueSet/Interweave-NICIP
-* code.coding[NICIP].system = "https://fhir.interweavedigital.nhs.uk/CodeSystem/Interweave-NICIP"
+* orderDetail.coding 1..* MS
+* orderDetail.coding ^slicing.discriminator.type = #value
+* orderDetail.coding ^slicing.discriminator.path = "system"
+* orderDetail.coding ^slicing.rules = #open
+* orderDetail.coding ^slicing.description = "Slice based on the system"
+* orderDetail.coding ^slicing.ordered = false
+* orderDetail.coding contains
+  GenomicRareAndInheritedDisease 0..1 MS and GenomicCancer 0..1 MS
+
+* orderDetail.coding[GenomicRareAndInheritedDisease] ^short = "Genomic Rare and Inherited Disease Test Directory"
+* orderDetail.coding[GenomicRareAndInheritedDisease] from GenomicRareAndInheritedDisease (required)
+* orderDetail.coding[GenomicRareAndInheritedDisease].system = $GTD
+
+* orderDetail.coding[GenomicCancer] ^short = "Genomic Cancer Test Directory"
+* orderDetail.coding[GenomicCancer] from GenomicCancer (required)
+* orderDetail.coding[GenomicCancer].system = $GTD
+
+//* code.coding[PathologyAndLaboratoryMedicine] ^short = "Use for Pathology and Laboratory Orders"
+//* code.coding[PathologyAndLaboratoryMedicine] from https://fhir.hl7.org.uk/ValueSet/UKCore-PathologyAndLaboratoryMedicineObservables
+//* code.coding[PathologyAndLaboratoryMedicine].system = $sct
+
+//* code.coding[NICIP] ^short = "Use for Radiology Orders"
+//* code.coding[NICIP] from https://fhir.interweavedigital.nhs.uk/R4/ValueSet/Interweave-NICIP
+//* code.coding[NICIP].system = "https://fhir.interweavedigital.nhs.uk/CodeSystem/Interweave-NICIP"
 
 * category 1..* MS
 * category ^slicing.discriminator.type = #value

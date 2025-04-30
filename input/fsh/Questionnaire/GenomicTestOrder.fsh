@@ -101,7 +101,7 @@ Usage:  #definition
     * type = #string
     * linkId = "pedigreeNumber"
     * text = "G Number (Pedigree Number)"
-//    * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.identifier:GenomicsPedigreeNumber"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.requisition"
 
   * item[+]
     * type = #decimal
