@@ -24,14 +24,14 @@ Usage:  #definition
   * code = #612991010000106
   * target[+]
     * code = #1022471000000107
-    * equivalence = #equivalent
+    * equivalence = #related-to
 
 * group.element[+]
   * code = #613061010000108
   * target[+]
     * code = #1022491000000106
-    * equivalence = #equivalent
+    * equivalence = #related-to
   * target[+]
     * code = #1491000237105
-    * equivalence = #equivalent
+    * equivalence = #related-to
 
