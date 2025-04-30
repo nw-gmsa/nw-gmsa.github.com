@@ -1,12 +1,12 @@
 Instance: SNOMEDLOINCtoSNOMEDUK
 InstanceOf: ConceptMap
-Title: "ConceptMap for LOINC SNOMED edition to UK SNOMED edition"
+Title: "SNOMED LOINC edition to SNOMED UK edition"
 Description: """
-For demonstration purposes only.
+For demonstration purposes only - THIS HAS NOT BEEN VALIDATED
 
 For Implementation Guide see [SNOMED CT Implementation Guide for the LOINC Ontology](https://confluence.ihtsdotools.org/display/DOCLOINCSIG/1.+Introduction)
 """
-Usage:  #example
+Usage:  #definition
 
 * url = "https://nw-gmsa.github.io/ConceptMap/SNOMEDLOINCtoSNOMEDUK"
 * version = "0.0.1"
@@ -22,5 +22,16 @@ Usage:  #example
 
 * group.element[+]
   * code = #612991010000106
-  * target.code = #1022471000000107
-  * target.equivalence = #equivalent
+  * target[+]
+    * code = #1022471000000107
+    * equivalence = #equivalent
+
+* group.element[+]
+  * code = #613061010000108
+  * target[+]
+    * code = #1022491000000106
+    * equivalence = #equivalent
+  * target[+]
+    * code = #1491000237105
+    * equivalence = #equivalent
+
