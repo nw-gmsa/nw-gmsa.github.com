@@ -12,7 +12,7 @@ The architecture follows [Domain Driven Design [DDD]](https://en.wikipedia.org/w
 
 TODO 
 
-<img style="padding:3px;width:60%;" src="Domain Driven Design.drawio.png" alt="Domain Driven Design"/>
+<img style="padding:3px;width:60%;" src="Domain Driven Design Overview.drawio.png" alt="Domain Driven Design"/>
 <br clear="all">
 <p class="figureTitle">Domain Driven Design to Health Standards Mapping</p> 
 <br clear="all">
