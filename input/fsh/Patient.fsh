@@ -31,3 +31,9 @@ DRAFT Extension of UKCore-Patient which includes constraints from:
 * name 1..* MS
 * gender 0..1 MS
 * birthDate 0..1 MS
+
+* name.family MS
+* name.given MS
+
+* deceasedDateTime MS
+

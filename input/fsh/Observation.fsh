@@ -5,7 +5,6 @@ Title:          "Observation"
 Description:    "DRAFT Extension of UKCore-Observation"
 
 
-
 * performer only Reference(PractitionerRole or Patient)
 
 * status ^short = "Observation Status  (HL7 v2 OBX-11)"
@@ -29,3 +28,7 @@ Description:    "DRAFT Extension of UKCore-Observation"
 * effective[x] insert Obligation(#SHOULD:populate-if-known, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/OrderFiller)
 * effective[x] insert Obligation(#SHOULD:populate-if-known, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/OrderPlacer)
 * effective[x] insert Obligation(#SHOULD:populate-if-known, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/AutomationManager)
+
+* valueCoding MS
+* valueQuantity MS
+* valueDateTime MS
