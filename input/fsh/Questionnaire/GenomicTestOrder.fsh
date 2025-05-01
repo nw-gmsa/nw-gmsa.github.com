@@ -16,7 +16,7 @@ Usage:  #definition
   * linkId = "Patient"
   * text = "Patient"
   * type = #group
-  * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.subject"
+  * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient"
 
   * item[+]
     * type = #string
@@ -170,7 +170,7 @@ Usage:  #definition
 * item[+]
   * type = #group
   * linkId = "HL7/ORC-12"
-  * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.requester"
+  * definition = "https://nw-gmsa.github.io/StructureDefinition/PractitionerRole#PractitionerRole"
   * text = "Healthcare Professional"
   * item[+]
     * type = #string
