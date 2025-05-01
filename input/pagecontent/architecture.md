@@ -1,18 +1,36 @@
 
 ## Introduction
 
-The architecture follows [Domain Driven Design [DDD]](https://en.wikipedia.org/wiki/Domain-driven_design), it is cross-functional in that it does split the domain by function or departments (e.g. analytics, integration, BA, etc).
+The architecture follows [Domain Driven Design [DDD]](https://en.wikipedia.org/wiki/Domain-driven_design) and [Domain Driven Design](https://martinfowler.com/bliki/DomainDrivenDesign.html). This is a complex subject and recommended sources include:
+
+- `Blue Book` - Domain-Driven Design: Tackling Complexity in the Heart of Software, Eric Evans 
+- `Red Book` - Implementing Domain-Driven Design, Vaughn Vernon 
+- `Green Book` - Domain-Driven Design Distilled, Vaughn Vernon
+- Data Mesh, Zhamak Dehghani
+
+### Enterprise Architecture
+
+TODO 
+
+<img style="padding:3px;width:60%;" src="Domain Driven Design.drawio.png" alt="Domain Driven Design"/>
+<br clear="all">
+<p class="figureTitle">Domain Driven Design to Health Standards Mapping</p> 
+<br clear="all">
 
 ### Domain Data (Data Mesh)
 
-TODO Add diagram showing operational data (DICOOM, HL7 and openEHR) and analytics (OHDSI etc). [Datalake](https://en.wikipedia.org/wiki/Data_lake) likely to be a FHIR Clinical Data Repository (CDR) for Genomic Domain only, and likewise any analytic clinical data warehouse (CDW) is only specific to Genomic domain.
+TODO Add diagram showing operational data (DICOOM, HL7 and openEHR) and analytics (OHDSI etc). [Datalake](https://en.wikipedia.org/wiki/Data_lake) likely to be a FHIR Clinical Data Repository (CDR) for Genomic Domain only, and likewise any analytic clinical data warehouse (CDW) is only specific to Genomic domain. , it is cross-functional in that it does split the domain by function or departments (e.g. analytics, integration, BA, etc).
 
 [Data Mesh](https://en.wikipedia.org/wiki/Data_mesh)
+[Data Mesh Principles](https://martinfowler.com/articles/data-mesh-principles.html)
 
 <img style="padding:3px;width:60%;" src="data architecture.drawio.png" alt="Data Architecture"/>
 <br clear="all">
 <p class="figureTitle">Data Architecture</p> 
 <br clear="all">
+
+
+
 
 ### Enterprise Integration
 
