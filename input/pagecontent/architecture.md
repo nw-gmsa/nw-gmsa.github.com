@@ -9,6 +9,11 @@ TODO Add diagram showing operational data (DICOOM, HL7 and openEHR) and analytic
 
 [Data Mesh](https://en.wikipedia.org/wiki/Data_mesh)
 
+<img style="padding:3px;width:60%;" src="data architecture.drawio.png" alt="Data Architecture"/>
+<br clear="all">
+<p class="figureTitle">Data Architecture</p> 
+<br clear="all">
+
 ### Enterprise Integration
 
 The [Intermediary](ActorDefinition-Intermediary.html), North West GMSA Regional Integration Engine (RIE) is an [Enterprise Service Bus](https://en.wikipedia.org/wiki/Enterprise_service_bus) most commonly known in the NHS as a Trust Integration Engine (TIE).
