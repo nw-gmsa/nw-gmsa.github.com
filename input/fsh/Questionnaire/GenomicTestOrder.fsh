@@ -392,7 +392,7 @@ Usage:  #definition
     * repeats = false
     * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
     * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCoding"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
   * item[+]
     * linkId = "NOS/230002"
     * text = "Tissue source/organ of origin"

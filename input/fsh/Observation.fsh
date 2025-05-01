@@ -29,6 +29,6 @@ Description:    "DRAFT Extension of UKCore-Observation"
 * effective[x] insert Obligation(#SHOULD:populate-if-known, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/OrderPlacer)
 * effective[x] insert Obligation(#SHOULD:populate-if-known, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/AutomationManager)
 
-* valueCoding MS
+* valueCodeableConcept MS
 * valueQuantity MS
 * valueDateTime MS

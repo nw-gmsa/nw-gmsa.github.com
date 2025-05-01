@@ -12,8 +12,8 @@ Usage:  #definition
 * version = "0.0.1"
 * status = #draft
 
-* sourceUri = "http://snomed.info/sct"
-* targetUri = "http://snomed.info/sct"
+* sourceCanonical = "http://snomed.info/sct/11010000107?fhir_vs"
+* targetCanonical = "http://snomed.info/sct/83821000000107?fhir_vs"
 
 * group.source = "http://snomed.info/sct"
 * group.targetVersion = "http://snomed.info/sct/11010000107"
