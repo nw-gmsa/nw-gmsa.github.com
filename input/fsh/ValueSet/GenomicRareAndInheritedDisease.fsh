@@ -2,7 +2,7 @@ ValueSet: GenomicRareAndInheritedDisease
 Id: GenomicRareAndInheritedDisease
 Title: "Genomic Rare and Inherited Disease Test Directory"
 Description: """
-- [Genomic Test Directory](https://www.england.nhs.uk/publication/national-genomic-test-directories)
+- See **National genomic test directory for rare and inherited disease** on [Genomic Test Directory](https://www.england.nhs.uk/publication/national-genomic-test-directories)
 """
 * ^experimental  = false
 

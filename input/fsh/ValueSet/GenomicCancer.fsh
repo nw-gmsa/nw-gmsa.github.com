@@ -2,7 +2,7 @@ ValueSet: GenomicCancer
 Id: GenomicCancer
 Title: "Genomic Cancer Test Directory"
 Description: """
-- [Genomic Test Directory](https://www.england.nhs.uk/publication/national-genomic-test-directories)
+- See **National genomic test directory for cancer** on [Genomic Test Directory](https://www.england.nhs.uk/publication/national-genomic-test-directories)
 """
 * ^experimental  = false
 
