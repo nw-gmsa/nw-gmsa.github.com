@@ -29,11 +29,11 @@ For coding descriptions see
     * system = $sct
   * coding[+]
     * code = #613061010000108
-    * display = "Entitic mean volume of erythrocyte specimen at point in time by automated count"
+    * display = "MCV [Entitic mean volume] in Red Blood Cells by Automated count"
     * system = $sct
   * coding[+]
     * code = #787-2
-    * display = "Entitic mean volume of erythrocyte specimen at point in time by automated count"
+    * display = "MCV [Entitic mean volume] in Red Blood Cells by Automated count"
     * system = $loinc
 
 * valueQuantity.value = 85

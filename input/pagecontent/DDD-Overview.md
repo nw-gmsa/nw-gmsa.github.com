@@ -213,11 +213,20 @@ OBX|6|CE|B0309^Mean cell volume (MCV)||NA^Not assayed^ACME|fL|80-100|N|||F|||201
 
 The main difference is the use of clinical coding instead of the `B0309` local code. Note also the ranges are different and will vary between labs.
 
-Another way of handling the mapping between coding is FHIR [ConceptMap](https://hl7.org/fhir/R4/conceptmap.html). A simple example of this mapping between the UK and LOINC SNOMED coding can be found here [ConceptMap: SNOMED LOINC edition to SNOMED UK edition](ConceptMap-SNOMEDLOINCtoSNOMEDUK.html). 
+Another way of handling the mapping between coding is FHIR [ConceptMap](https://hl7.org/fhir/R4/conceptmap.html). A simple example of this mapping between the UK and LOINC SNOMED coding can be found here:
 
+- [ConceptMap: SNOMED LOINC edition to SNOMED UK edition](ConceptMap-SNOMEDLOINCtoSNOMEDUK.html) 
+  
 <img style="padding:3px;width:700px;" src="ConceptMap-Example.png" alt="FHIR ConceptMap Example"/>
 <br clear="all">
-<p class="figureTitle">FHIR ConceptMap Example</p> 
+<p class="figureTitle">FHIR ConceptMap SNOMED LOINC Edition to SNOMED UK Edition Example</p> 
+<br clear="all">
+
+- [ConceptMap: LOINC to SNOMED UK edition](ConceptMap-LOINCtoSNOMEDUK.html)
+
+<img style="padding:3px;width:700px;" src="ConceptMap-ExampleLOINC.png" alt="FHIR ConceptMap Example"/>
+<br clear="all">
+<p class="figureTitle">FHIR ConceptMap LOINC to SNOMED UK Example</p> 
 <br clear="all">
 
 
