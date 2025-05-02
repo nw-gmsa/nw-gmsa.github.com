@@ -234,17 +234,18 @@ Usage:  #definition
     * type = #choice
     * linkId = "NOS/230056"
     * code[+] = $NOS#230056 "What Type of Referral Do You Require?"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.category:genomicsWholeCaseSequencing"
     * text = "Test Category"
-    * answerOption[+].valueCoding = #rare "Rare and inherited diseases"
+    * answerOption[+].valueCoding = https://fhir.hl7.org.uk/ValueSet/UKCore-GenomeSequencingCategory#rare-disease-non-wgs "Rare and inherited diseases"
     * answerOption[+].valueCoding = $sct#1186936003 "Storage of specimen (procedure)"
-    * answerOption[+].valueCoding = #cancer "Cancer"
+    * answerOption[+].valueCoding = https://fhir.hl7.org.uk/ValueSet/UKCore-GenomeSequencingCategory#cancer-non-wgs "Cancer"
   * item[+]
     * type = #choice
     * linkId = "HL7/OBR-4-rci"
     * enableWhen[+]
       * question = "NOS/230056"
       * operator = #=
-      * answerCoding = #rare
+      * answerCoding = #rare-disease-non-wgs
     * text = "CITT Code (Rare and inherited diseases)"
     * required = true
     * repeats = false
@@ -254,7 +255,7 @@ Usage:  #definition
     * enableWhen[+]
       * question = "NOS/230056"
       * operator = #=
-      * answerCoding = #rare
+      * answerCoding = #rare-disease-non-wgs
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.code"
     * text = "Test Code (Rare and inherited diseases)"
     * required = true
@@ -266,7 +267,7 @@ Usage:  #definition
     * enableWhen[+]
       * question = "NOS/230056"
       * operator = #=
-      * answerCoding = #cancer
+      * answerCoding = #cancer-non-wgs
     * text = "CI Code (Cancer)"
     * required = true
     * repeats = false
@@ -276,7 +277,7 @@ Usage:  #definition
     * enableWhen[+]
       * question = "NOS/230056"
       * operator = #=
-      * answerCoding = #cancer
+      * answerCoding = #cancer-non-wgs
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.code"
     * text = "Test Code (Cancer)"
     * required = true
@@ -441,7 +442,7 @@ Usage:  #definition
   * enableWhen[+]
     * question = "NOS/230056"
     * operator = #=
-    * answerCoding = #rare
+    * answerCoding = #rare-disease-non-wgs
 
 * item[+]
   * type = #group
@@ -450,7 +451,7 @@ Usage:  #definition
   * enableWhen[+]
     * question = "NOS/230056"
     * operator = #=
-    * answerCoding = #cancer
+    * answerCoding = #cancer-non-wgs
   * item[+]
     * type = #group
     * linkId = "UnknownResultsPanel"
