@@ -2,11 +2,11 @@ Instance: OBX-MCV
 InstanceOf: Observation
 Title: "MCV - Mean corpuscular volume"
 Description: """
-Based on US Core [Example Observation: MCV Example](https://hl7.org/fhir/us/core/Observation-cbc-mcv.html)
+This is based on US Core [Example Observation: MCV Example](https://hl7.org/fhir/us/core/Observation-cbc-mcv.html) and incorporates extra coding from [NHS England Pathology - PATH-R4-10: Bundle Example - Full Blood Count Report](https://simplifier.net/guide/pathology-fhir-implementation-guide/Home/FHIRAssets/AllAssets/All-Profiles/Examples/Bundles/Full-Blood-Count-Report?version=0.1)
 
 For coding descriptions see
 
-- 1022491000000106 [SNOMED UK Edition](https://termbrowser.nhs.uk/?perspective=full&conceptId1=1022491000000106&edition=uk-edition&release=v20250312&server=https://termbrowser.nhs.uk/sct-browser-api/snomed&langRefset=999001261000000100,999000691000001104)
+- 1022491000000106 and 1491000237105 [SNOMED UK Edition](https://termbrowser.nhs.uk/?perspective=full&conceptId1=1022491000000106&edition=uk-edition&release=v20250312&server=https://termbrowser.nhs.uk/sct-browser-api/snomed&langRefset=999001261000000100,999000691000001104)
 - 613061010000108 and 787-2 [SNOMED LOINC Edition](https://browser.loincsnomed.org/?perspective=full&conceptId1=613061010000108&edition=MAIN/LOINC/2025-03-21&release=&languages=en)
 """
 
@@ -22,6 +22,10 @@ For coding descriptions see
   * coding[+]
     * code = #1022491000000106
     * display = "MCV - Mean corpuscular volume"
+    * system = $sct
+  * coding[+]
+    * code = #1491000237105
+    * display = "Erythrocytes MCV (mean corpuscular volume) in blood"
     * system = $sct
   * coding[+]
     * code = #613061010000108
