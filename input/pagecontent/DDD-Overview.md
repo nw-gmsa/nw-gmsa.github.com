@@ -168,7 +168,27 @@ However, LOINC and SNOMED have collaborated to produce [The LOINC Ontology SNOME
 
 > Note these SNOMED codes do not appear to be supported in the UK Edition of SNOMED.
 
-An a Domain Archetype or Panel we can represent this as a [FHIR Questionnaire](https://hl7.org/fhir/R4/questionnaire.html): [CBC panel - Blood by Automated count](Questionnaire-58410-2.html). This contains the mapping between the different coding standards.
+As a Domain Archetype or Panel, we can represent this as a [FHIR Questionnaire](https://hl7.org/fhir/R4/questionnaire.html)
+
+This format is useful as it is supported by tooling, for example, [National Laboratory of Medicine - NLM Form Builder](https://formbuilder.nlm.nih.gov/) which was used to help produce the CBC example.  
+
+<img style="padding:3px;width:700px;" src="NLMFormBuilder.png" alt="NLM Form Builder"/>
+<br clear="all">
+<p class="figureTitle">NLM Form Builder</p> 
+<br clear="all">
+
+An example for Full Blood Count: 
+
+> Archetype/Panel [CBC panel - Blood by Automated count](Questionnaire-58410-2.html). 
+
+FHIR Questionnaire can hold mappings between different structures and codes. In the example below we can see LOINC codes for questions in the `LinkId` column and where the questions should map to in FHIR Resources (for FHIR Observation resource this also implies HL7 v2 OBX segments, both are commonly used for exchanging questions and answers between systems).
+
+<img style="padding:3px;width:700px;" src="Questionnaire-Definitions.png" alt="FHIR Questionnaire Example"/>
+<br clear="all">
+<p class="figureTitle">FHIR Questionnaire Example</p> 
+<br clear="all">
+
+The JSON/XML representation can also contain coding for different codesystems, e.g.
 
 ```json
  "code": [
@@ -185,11 +205,19 @@ An a Domain Archetype or Panel we can represent this as a [FHIR Questionnaire](h
       ]
 ```
 
-This format is useful as it is supported by tooling, for example, [National Laboratory of Medicine - NLM Form Builder](https://formbuilder.nlm.nih.gov/) which was used to help produce the CBC example.  
+Armed with this information, we can create a FHIR Observation [Example Observation: MCV - Mean corpuscular volume](Observation-OBX-MCV.html). This is similar to the earlier DHCW example for OBX-6.
 
-<img style="padding:3px;width:700px;" src="NLMFormBuilder.png" alt="NLM Form Builder"/>
+```aiignore
+OBX|6|CE|B0309^Mean cell volume (MCV)||NA^Not assayed^ACME|fL|80-100|N|||F|||201803091500
+```
+
+The main difference is the use of clinical coding instead of the `B0309` local code. Note also the ranges are different and will vary between labs.
+
+Another way of handling the mapping between coding is FHIR [ConceptMap](https://hl7.org/fhir/R4/conceptmap.html). A simple example of this mapping between the UK and LOINC SNOMED coding can be found here [ConceptMap: SNOMED LOINC edition to SNOMED UK edition](ConceptMap-SNOMEDLOINCtoSNOMEDUK.html). 
+
+<img style="padding:3px;width:700px;" src="ConceptMap-Example.png" alt="FHIR ConceptMap Example"/>
 <br clear="all">
-<p class="figureTitle">NLM Form Builder</p> 
+<p class="figureTitle">FHIR ConceptMap Example</p> 
 <br clear="all">
 
 
