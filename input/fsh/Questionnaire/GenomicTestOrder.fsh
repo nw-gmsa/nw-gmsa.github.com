@@ -13,6 +13,16 @@ Usage:  #definition
 * url = "https://nw-gmsa.github.io/Questionnaire/GenomicTestOrder"
 
 * item[+]
+  * type = #choice
+  * linkId = "NOS/230056"
+  * code[+] = $NOS#230056 "What Type of Referral Do You Require?"
+  * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.category"
+  * text = "Test Category"
+  * answerValueSet = Canonical(OrderCategory)
+  * answerOption[+].valueCoding = https://fhir.hl7.org.uk/CodeSystem/UKCore-GenomeSequencingCategory#rare-disease-non-wgs "Rare and inherited diseases"
+  * answerOption[+].valueCoding = $sct#1186936003 "Storage of specimen (procedure)"
+  * answerOption[+].valueCoding = https://fhir.hl7.org.uk/CodeSystem/UKCore-GenomeSequencingCategory#cancer-non-wgs "Cancer"
+* item[+]
   * linkId = "Patient"
   * text = "Patient"
   * type = #group
@@ -231,15 +241,6 @@ Usage:  #definition
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.priority"
     * required = false
     * answerValueSet = Canonical(RequestPriority)
-  * item[+]
-    * type = #choice
-    * linkId = "NOS/230056"
-    * code[+] = $NOS#230056 "What Type of Referral Do You Require?"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.category:genomicsWholeCaseSequencing"
-    * text = "Test Category"
-    * answerOption[+].valueCoding = https://fhir.hl7.org.uk/CodeSystem/UKCore-GenomeSequencingCategory#rare-disease-non-wgs "Rare and inherited diseases"
-    * answerOption[+].valueCoding = $sct#1186936003 "Storage of specimen (procedure)"
-    * answerOption[+].valueCoding = https://fhir.hl7.org.uk/CodeSystem/UKCore-GenomeSequencingCategory#cancer-non-wgs "Cancer"
   * item[+]
     * type = #choice
     * linkId = "HL7/OBR-4-rci"
