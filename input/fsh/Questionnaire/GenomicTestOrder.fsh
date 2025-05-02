@@ -139,6 +139,7 @@ Usage:  #definition
     * item[+]
       * type = #group
       * linkId = "pregnant"
+      * text = "Pregnant"
       * enableWhen[+]
         * question = "SNM/77386006"
         * operator = #=
@@ -236,9 +237,9 @@ Usage:  #definition
     * code[+] = $NOS#230056 "What Type of Referral Do You Require?"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.category:genomicsWholeCaseSequencing"
     * text = "Test Category"
-    * answerOption[+].valueCoding = https://fhir.hl7.org.uk/ValueSet/UKCore-GenomeSequencingCategory#rare-disease-non-wgs "Rare and inherited diseases"
+    * answerOption[+].valueCoding = https://fhir.hl7.org.uk/CodeSystem/UKCore-GenomeSequencingCategory#rare-disease-non-wgs "Rare and inherited diseases"
     * answerOption[+].valueCoding = $sct#1186936003 "Storage of specimen (procedure)"
-    * answerOption[+].valueCoding = https://fhir.hl7.org.uk/ValueSet/UKCore-GenomeSequencingCategory#cancer-non-wgs "Cancer"
+    * answerOption[+].valueCoding = https://fhir.hl7.org.uk/CodeSystem/UKCore-GenomeSequencingCategory#cancer-non-wgs "Cancer"
   * item[+]
     * type = #choice
     * linkId = "HL7/OBR-4-rci"
