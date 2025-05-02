@@ -4,7 +4,7 @@
 
 ## Domain Archetype
 
-[North West Genomics Test Order](Questionnaire-GenomicTestOrder.html)
+> [North West Genomics Test Order](Questionnaire-GenomicTestOrder.html)
 
 ## Communication Information Model
 

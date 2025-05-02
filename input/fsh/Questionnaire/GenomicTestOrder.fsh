@@ -407,7 +407,7 @@ Usage:  #definition
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.collection.quantity"
   * item[+]
     * linkId = "NOS/audit"
-    * text = "Audit (Tracking"
+    * text = "Audit (Order Tracking)"
     * type = #group
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.collection"
     * item[+]
