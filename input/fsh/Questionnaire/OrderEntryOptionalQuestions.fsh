@@ -21,7 +21,7 @@ Usage:  #definition
     * text = "Test Type"
     * type = #choice
     * answerValueSet = Canonical(GenomicRareAndInheritedDisease)
-    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.code"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.code"
 
   * item[+]
     * linkId = "405824009"
@@ -30,7 +30,7 @@ Usage:  #definition
     * text = "Test Type"
     * type = #choice
     * answerValueSet = Canonical(GenomicRareAndInheritedDisease)
-    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.code"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.code"
 
   * item[+]
     * linkId = "230018"
@@ -39,7 +39,7 @@ Usage:  #definition
     * text = "Test Type"
     * type = #choice
     * answerValueSet = Canonical(GenomicRareAndInheritedDisease)
-    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.code"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.code"
 
   * item[+]
     * linkId = "114867"
@@ -51,13 +51,13 @@ Usage:  #definition
     * code[+] = $epic#230022 "REFERRAL COMMENTS"
     * text = "Referral Comments (Please include any previous or familial variant details, if appropriate)"
     * type = #string
-    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.note.text"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.note.text"
   * item[+]
     * linkId = "230039"
     * code[+] = $epic#230039 "IS ORDERER THE REFERRING CLINICIAN"
     * text = "Is the Person Ordering the Test the Referring Clinician"
     * type = #string
-    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.requester.display"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.requester.display"
 
 * item[+]
   * linkId = "Specimen"
@@ -77,7 +77,7 @@ Usage:  #definition
     * extension[designNote].valueMarkdown = "Some text"
     * text = "Specimen Type"
     * type = #choice
-    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.type"
     * answerValueSet = Canonical(SpecimenType)
     * item[+]
       * linkId = "66746-9-designNote"
@@ -95,7 +95,7 @@ Usage:  #definition
     * code[+] = $epic#230003 "SPECIMEN ANTICOAGULANT/PRESERVATIVE"
     * text = "Anticoagulant/Preservative"
     * type = #string
-    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.condition"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.condition"
   * item[+]
     * linkId = "230004"
     * code[+] = $epic#230004 "SPECIMEN DUPLICATE VIALS"
@@ -113,7 +113,7 @@ Usage:  #definition
     * text = "High Infection Risk"
     * answerValueSet = Canonical(YN)
     * type = #choice
-    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.condition"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.condition"
     * item[+]
       * linkId = "281269004-designNote"
       * type = #display
@@ -124,7 +124,7 @@ Usage:  #definition
     * code[+] = $epic#230020 "INFECTION RISK DETAILS"
     * text = "Infection Risk Details"
     * type = #string
-    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.condition.text"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.condition.text"
   * item[+]
     * linkId = "33882-2"
     * code[+] = $loinc#33882-2 "Collection date of Specimen"
@@ -132,7 +132,7 @@ Usage:  #definition
     * code[+] = $epic#230028 "DATE OF SPECIMEN COLLECTION"
     * text = "Date of Specimen(s) Collection"
     * type = #dateTime
-    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.collection.collectedDateTime"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.collection.collectedDateTime"
     * item[+]
       * linkId = "281269004-designNote"
       * type = #display
@@ -143,7 +143,7 @@ Usage:  #definition
     * code[+] = $epic#230063 "SPECIMEN TYPE (PRENATAL REFFERAL)"
     * text = "Specimen Type"
     * type = #choice
-    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.type"
 
   * item[+]
     * linkId = "80398-1"
@@ -151,7 +151,7 @@ Usage:  #definition
     * code[+] = $epic#230021 "SAMPLE IDENTIFIER(S)"
     * text = "Sample Identifier(s) for DNA or Pathology Material (e.g. Block Number)"
     * type = #string
-    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.identifier.value"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.identifier.value"
     * item[+]
       * linkId = "80398-1-designNote"
       * type = #display
@@ -168,7 +168,7 @@ Usage:  #definition
   * type = #group
   * linkId = "Supporting Information"
   * text = "Supporting Information"
-  * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.supportingInfo"
+  * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.supportingInfo"
   * item[+]
     * linkId = "102313"
     * code[+] = $epic#102313 "GENETICS HIGH INFECTION RISK"
@@ -177,7 +177,7 @@ Usage:  #definition
     * required = false
     * repeats = false
     * answerValueSet = Canonical(YN)
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCoding"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCoding"
 
 
   * item[+]
@@ -212,7 +212,7 @@ Usage:  #definition
       * code[+] = $epic#230030 "NEOPLASTIC CELL CONTENT LEVEL"
       * text = "Neoplastic Cell Content Level"
       * type = #quantity
-      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
+      * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueQuantity"
 
     * item[+]
       * linkId = "230031"
@@ -220,7 +220,7 @@ Usage:  #definition
       * code[+] = $epic#230031 "NEOPLASTIC CELL CONTENT LEVEL EXACT"
       * text = "Neoplastic Cell Content Level %"
       * type = #quantity
-      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
+      * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueQuantity"
 
     * item[+]
       * linkId = "252416005"
@@ -234,7 +234,7 @@ Usage:  #definition
       * code[+] = $epic#230033 "BLAST CELL COUNT"
       * text = "Blast Cell Count"
       * type = #quantity
-      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
+      * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueQuantity"
 
   * item[+]
     * type = #group

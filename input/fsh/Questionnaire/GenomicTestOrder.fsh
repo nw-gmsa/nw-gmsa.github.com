@@ -292,14 +292,14 @@ Usage:  #definition
     * text = "Has consent has been obtained for tests (Y/N)"
     * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
     * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
   * item[+]
     * type = #choice
     * linkId = "consent-2"
     * text = "Has consent has been obtained for DNA storage (Y/N)"
     * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
     * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
   * item[+]
     * type = #choice
     * linkId = "consent-3"
