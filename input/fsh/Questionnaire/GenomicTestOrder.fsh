@@ -31,30 +31,35 @@ Usage:  #definition
   * item[+]
     * type = #string
     * linkId = "LN/45394-4"
+    * code[+] = $loinc#45394-4
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.name.family"
     * required = true
     * text = "Patient surname"
   * item[+]
     * type = #string
     * linkId = "LN/45392-8"
+    * code[+] = $loinc#45392-8
     * required = true
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.name.given"
     * text = "Patient first name"
   * item[+]
     * type = #date
     * linkId = "LN/21112-8"
+    * code[+] = $loinc#21112-8
     * required = true
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.birthDate"
     * text = "Date of birth"
   * item[+]
     * type = #date
     * linkId = "LN/81954-0"
+    * code[+] = $loinc#81954-0
     * required = false
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.deceasedDateTime"
     * text = "Date of death"
   * item[+]
     * type = #group
     * linkId = "LN/56799-0"
+    * code[+] = $loinc#56799-0
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.address"
     * text = "Address"
     * item[+]
@@ -70,35 +75,41 @@ Usage:  #definition
       * text = "City"
     * item[+]
       * type = #string
-      * linkId = "HL7/PID-11-"
+      * linkId = "LN/45401-7"
+      * code[+] = $loinc#45401-7
       * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.address.postalCode"
       * text = "Postcode"
   * item[+]
     * type = #choice
     * linkId = "LN/46098-0"
+    * code[+] = $loinc#46098-0
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.gender"
     * text = "Sex registered at birth"
     * answerValueSet = "http://hl7.org/fhir/ValueSet/administrative-gender"
   * item[+]
     * type = #choice
     * linkId = "LN/32624-9"
+    * code[+] = $loinc#32624-9
     * text = "Ethnic Category"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.extension:ethnicCategory"
     * answerValueSet = Canonical(Ethnicity)
   * item[+]
     * type = #string
     * linkId = "LN/89061-6"
+    * code[+] = $loinc#89061-6
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.identifier:nhsNumber"
     * text = "NHS Number"
   * item[+]
     * type = #string
     * linkId = "LN/76435-7"
+    * code[+] = $loinc#76435-7
     * text = "Hospital Number"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.identifier:MedicalRecordNumber"
     * required = true
   * item[+]
     * type = #string
     * linkId = "LN/56797-4"
+    * code[+] = $loinc#56797-4
     * text = "Account Number"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.encounter.identifier.value"
     * required = false
@@ -187,13 +198,13 @@ Usage:  #definition
     * type = #string
     * linkId = "LN/18705-4"
     * code[+] = $loinc#18705-4
-    * code[+] = $NOS#114867 "NAME OF SUPERVISING CLINICIAN (CLC)"
     * required = true
     * definition = "https://nw-gmsa.github.io/StructureDefinition/PractitionerRole#PractitionerRole.practitioner.display"
     * text = "Referring Clinician Name"
   * item[+]
     * type = #choice
     * linkId = "LN/18707-0"
+    * code[+] = $loinc#18707-0
     * definition = "https://nw-gmsa.github.io/StructureDefinition/PractitionerRole#PractitionerRole.specialty.coding.code"
     * text = "Referring Clinician Current Speciality"
     * required = true
@@ -201,6 +212,7 @@ Usage:  #definition
   * item[+]
     * type = #string
     * linkId = "LN/46608-6"
+    * code[+] = $loinc#46608-6
     * definition = "https://nw-gmsa.github.io/StructureDefinition/PractitionerRole#PractitionerRole.practitioner.identifier.value"
     * text = "Referring Clinician Professional Identifier"
     * required = true
@@ -208,12 +220,12 @@ Usage:  #definition
     * type = #string
     * linkId = "LN/89058-2"
     * code[+] = $loinc#89058-2 "Contact email address"
-    * code[+] = $NOS#230027 "EMAIL ADDRESSES"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/PractitionerRole#PractitionerRole.telecom.value"
     * text = "Email"
   * item[+]
     * type = #string
     * linkId = "LN/81230-5"
+    * code[+] = $loinc#81230-5
     * definition = "https://nw-gmsa.github.io/StructureDefinition/PractitionerRole#PractitionerRole.telecom.value"
     * text = "Phone"
   * item[+]
@@ -237,6 +249,7 @@ Usage:  #definition
   * item[+]
     * type = #choice
     * linkId = "LN/82768-3"
+    * code[+] = $loinc#82768-3
     * text = "Priority"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.priority"
     * required = false
@@ -292,6 +305,7 @@ Usage:  #definition
   * item[+]
     * type = #choice
     * linkId = "LN/19826-7"
+    * code[+] = $loinc#19826-7
     * text = "Has consent has been obtained for tests (Y/N)"
     * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
     * answerOption[+].valueCoding = $loinc#LA32-8 "No"
@@ -338,7 +352,6 @@ Usage:  #definition
   * item[+]
     * type = #string
     * code[+] = $loinc#80398-1 "Unique identifier for Current sample"
-    * code[+] = $NOS#230021 "SAMPLE IDENTIFIER(S)"
     * linkId = "LN/80398-1"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.identifier.value"
     * text = "Specimen ID Number"
@@ -358,7 +371,6 @@ Usage:  #definition
     * linkId = "LN/33882-2"
     * code[+] = $loinc#33882-2 "Collection date of Specimen"
     * code[+] = $sct#1208523001	"Specimen collection by healthcare professional (finding)"
-    * code[+] = $NOS#230028 "DATE OF SPECIMEN COLLECTION"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.collection.collectedDateTime"
     * text = "Specimen Collection Date"
     * item[+]
@@ -374,7 +386,6 @@ Usage:  #definition
     * type = #choice
     * linkId = "LN/66746-9"
     * code[+] = $loinc#66746-9 "Specimen Type"
-    * code[+] = $NOS#230001 "SPECIMEN TYPE"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.type.coding.code"
     * answerValueSet = Canonical(SpecimenType)
     * text = "Specimen Type"
@@ -461,7 +472,6 @@ Usage:  #definition
     * item[+]
       * linkId = "SNM/250537006"
       * code[+] = $sct#250537006 "Histopathology finding (finding)"
-      * code[+] = $NOS#230030 "NEOPLASTIC CELL CONTENT LEVEL"
       * text = "Neoplastic Cell Content Level"
       * type = #quantity
       * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueQuantity"
@@ -469,7 +479,6 @@ Usage:  #definition
     * item[+]
       * linkId = "NOS/230031"
       * code[+] = $sct#250537006 "Histopathology finding (finding)"
-      * code[+] = $NOS#230031 "NEOPLASTIC CELL CONTENT LEVEL EXACT"
       * text = "Neoplastic Cell Content Level %"
       * type = #quantity
       * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueQuantity"
@@ -477,7 +486,6 @@ Usage:  #definition
     * item[+]
       * linkId = "SNM/252416005"
       * code[+] = $sct#252416005 "Histopathology test (procedure)"
-      * code[+] = $NOS#230032 "MACRODISSECTION REQUIREMENTS"
       * text = "Macrodissection Requirements"
       * type = #string
 
