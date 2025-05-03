@@ -19,9 +19,9 @@ Usage:  #definition
   * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.category"
   * text = "Test Category"
   * answerValueSet = Canonical(OrderCategory)
-  * answerOption[+].valueCoding = https://fhir.hl7.org.uk/CodeSystem/UKCore-GenomeSequencingCategory#rare-disease-non-wgs "Rare and inherited diseases"
+  * answerOption[+].valueCoding = $GSC#rare-disease-non-wgs "Rare and inherited diseases"
   * answerOption[+].valueCoding = $sct#1186936003 "Storage of specimen (procedure)"
-  * answerOption[+].valueCoding = https://fhir.hl7.org.uk/CodeSystem/UKCore-GenomeSequencingCategory#cancer-non-wgs "Cancer"
+  * answerOption[+].valueCoding = $GSC#cancer-non-wgs "Cancer"
 * item[+]
   * linkId = "Patient"
   * text = "Patient"
@@ -260,7 +260,7 @@ Usage:  #definition
     * enableWhen[+]
       * question = "NOS/230056"
       * operator = #=
-      * answerCoding = #rare-disease-non-wgs
+      * answerCoding = $GSC#rare-disease-non-wgs
     * text = "CITT Code (Rare and inherited diseases)"
     * required = true
     * repeats = false
@@ -270,7 +270,7 @@ Usage:  #definition
     * enableWhen[+]
       * question = "NOS/230056"
       * operator = #=
-      * answerCoding = #rare-disease-non-wgs
+      * answerCoding = $GSC#rare-disease-non-wgs
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.code"
     * text = "Test Code (Rare and inherited diseases)"
     * required = true
@@ -282,7 +282,7 @@ Usage:  #definition
     * enableWhen[+]
       * question = "NOS/230056"
       * operator = #=
-      * answerCoding = #cancer-non-wgs
+      * answerCoding = $GSC#cancer-non-wgs
     * text = "CI Code (Cancer)"
     * required = true
     * repeats = false
@@ -292,7 +292,7 @@ Usage:  #definition
     * enableWhen[+]
       * question = "NOS/230056"
       * operator = #=
-      * answerCoding = #cancer-non-wgs
+      * answerCoding = $GSC#cancer-non-wgs
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.code"
     * text = "Test Code (Cancer)"
     * required = true
@@ -455,7 +455,7 @@ Usage:  #definition
   * enableWhen[+]
     * question = "NOS/230056"
     * operator = #=
-    * answerCoding = #rare-disease-non-wgs
+    * answerCoding = $GSC#rare-disease-non-wgs
 
 * item[+]
   * type = #group
@@ -464,7 +464,7 @@ Usage:  #definition
   * enableWhen[+]
     * question = "NOS/230056"
     * operator = #=
-    * answerCoding = #cancer-non-wgs
+    * answerCoding = $GSC#cancer-non-wgs
   * item[+]
     * type = #group
     * linkId = "UnknownResultsPanel"
