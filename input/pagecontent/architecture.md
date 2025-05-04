@@ -8,6 +8,11 @@ The architecture follows [Domain Driven Design [DDD]](https://en.wikipedia.org/w
 - `Green Book` - Domain-Driven Design Distilled, Vaughn Vernon
 - Data Mesh, Zhamak Dehghani
 
+<img style="padding:3px;width:60%;" src="DataMesh.drawio.png" alt="Data Mesh"/>
+<br clear="all">
+<p class="figureTitle">Data Mesh</p> 
+<br clear="all">
+
 ### Enterprise Architecture
 
 TODO 
@@ -28,8 +33,6 @@ TODO Add diagram showing operational data (DICOOM, HL7 and openEHR) and analytic
 <br clear="all">
 <p class="figureTitle">Data Architecture</p> 
 <br clear="all">
-
-
 
 
 ### Enterprise Integration
