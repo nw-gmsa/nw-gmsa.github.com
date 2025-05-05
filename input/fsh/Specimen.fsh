@@ -1,5 +1,6 @@
 Profile:        Specimen
-Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-Specimen
+//Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-Specimen
+Parent:         http://hl7.eu/fhir/laboratory/StructureDefinition/Specimen-eu-lab
 Id:             Specimen
 Title:          "Specimen"
 Description:    """
@@ -24,7 +25,7 @@ See also [HL7 Europe Laboratory Report - Specimen: Laboratory](https://build.fhi
 * type from SpecimenType (required)
 
 * collection.collector 0..1 MS
-* collection.collector only Reference(PractitionerRole)
+//* collection.collector only Reference(PractitionerRole)
 
 * collection.bodySite MS
 

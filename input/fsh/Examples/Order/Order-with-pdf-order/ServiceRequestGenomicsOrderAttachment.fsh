@@ -21,7 +21,7 @@ Description: "TODO"
 * intent = #order
 
 * category[GenomicProcedure] = $sct#116148004 "Molecular genetics procedure"
-* category[genomicsWholeCaseSequencing] = https://fhir.hl7.org.uk/CodeSystem/UKCore-GenomeSequencingCategory#cancer-wgs
+//* category[genomicsWholeCaseSequencing] = https://fhir.hl7.org.uk/CodeSystem/UKCore-GenomeSequencingCategory#cancer-wgs
 
 * authoredOn = "2025-01-29"
 

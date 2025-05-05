@@ -1,5 +1,6 @@
 Profile:        ServiceRequest
-Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-ServiceRequest
+//Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-ServiceRequest
+Parent:         http://hl7.eu/fhir/laboratory/StructureDefinition/ServiceRequest-eu-lab
 Id:             ServiceRequest
 Title:          "ServiceRequest"
 Description:    """
@@ -9,7 +10,7 @@ DRAFT Extension of UKCore-ServiceRequest which includes constraints from:
 See also [HL7 Europe Laboratory Report - ServiceRequest: Laboratory Order](https://build.fhir.org/ig/hl7-eu/laboratory/StructureDefinition-ServiceRequest-eu-lab.html)
 """
 
-* extension[additionalContact] ^short = "Do not use, not supported. Use PractitionerRole instead."
+//* extension[additionalContact] ^short = "Do not use, not supported. Use PractitionerRole instead."
 
 * identifier 1..* MS
 * identifier only CorrelationIdentifier
@@ -101,7 +102,7 @@ See also [HL7 Europe Laboratory Report - ServiceRequest: Laboratory Order](https
 * category[GenomicProcedure].coding.code = #116148004
 * category[GenomicProcedure].coding.system = $sct
 
-* category[genomicsWholeCaseSequencing] 0..1 MS
+//* category[genomicsWholeCaseSequencing] 0..1 MS
 
 * encounter 0..1 MS
 * encounter ^short = "A reference identifier to the episode/stay/visit number in which the request was created. (HL7 v2 PV1-19)"
@@ -113,7 +114,7 @@ See also [HL7 Europe Laboratory Report - ServiceRequest: Laboratory Order](https
 * encounter.identifier insert Obligation(#SHALL:populate-if-known, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/AutomationManager)
 
 * requester 1..1 MS
-* requester only Reference(PractitionerRole)
+//* requester only Reference(PractitionerRole)
 
 * performer only Reference(Organization)
 * performer.identifier only OrganisationCode

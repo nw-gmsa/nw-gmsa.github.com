@@ -8,6 +8,8 @@ Description: "First draft is based on Royal College of Radiologists HL7 v2 ORU c
 * extension[supporting-info].valueReference.reference = "urn:uuid:94bf65ba-cd6c-4601-b339-6d547f424646"
 * extension[supporting-info].valueReference.type = #DocumentReference
 
+* extension[DiagnosticReportCompositionR5].valueReference.reference = "http://madeup.example.com/Composition/123"
+
 * identifier[+]
   * value = "25edee2b-add8-4522-9fa2-1ee8f229bd75"
   * system = "https://fhir.nwglh.nhs.uk/Id/ReportId"

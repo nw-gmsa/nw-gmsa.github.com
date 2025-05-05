@@ -1,11 +1,12 @@
 Profile:        Observation
-Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-Observation
+//Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-Observation
+Parent:         http://hl7.eu/fhir/laboratory/StructureDefinition/Observation-resultslab-eu-lab
 Id:             Observation
 Title:          "Observation"
 Description:    "DRAFT Extension of UKCore-Observation"
 
 
-* performer only Reference(PractitionerRole or Patient)
+//* performer only Reference(PractitionerRole or Patient)
 
 * status ^short = "Observation Status  (HL7 v2 OBX-11)"
 

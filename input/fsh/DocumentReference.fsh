@@ -53,7 +53,7 @@ Based on UK Definitions from [IHE Europe Metadata for exchange medical documents
 * subject only Reference(Patient)
 * subject.identifier only NHSNumber
 
-* author only Reference(Organization or Practitioner or PractitionerRole)
+//* author only Reference(Organization or Practitioner or PractitionerRole)
 * author.identifier only EnglandPractitionerIdentifier or OrganisationCode
 
 

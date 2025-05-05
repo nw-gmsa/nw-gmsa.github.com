@@ -42,7 +42,7 @@ DRAFT Extension of UKCore-Encounter which includes constraints from:
 * identifier.value MS
 * period.start MS
 
-* participant.individual only Reference(Practitioner or PractitionerRole)
+//* participant.individual only Reference(Practitioner or PractitionerRole)
 * participant.type 1..1
 * participant.type.coding 1..*
 * participant.type.coding.code 1..1
