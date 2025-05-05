@@ -40,11 +40,11 @@ See also [HL7 Europe Laboratory Report - DiagnosticReport: Laboratory Report](ht
 * basedOn[fillerOrderNumber].identifier 1..1
 * basedOn[fillerOrderNumber].identifier only FillerOrderNumber
 
-* category ^slicing.discriminator.type = #value
-* category ^slicing.discriminator.path = "coding"
-* category ^slicing.rules = #open
-* category ^slicing.description = "Slice based on the category code pattern"
-* category ^slicing.ordered = false
+//* category ^slicing.discriminator.type = #value
+//* category ^slicing.discriminator.path = "coding"
+//* category ^slicing.rules = #open
+//* category ^slicing.description = "Slice based on the category code pattern"
+//* category ^slicing.ordered = false
 * category contains Genetics 1..1
 
 * category[Genetics].coding 1..1
