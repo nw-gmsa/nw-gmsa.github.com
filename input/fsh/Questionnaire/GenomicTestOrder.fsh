@@ -242,7 +242,8 @@ Usage:  #definition
   * text = "Test Request"
   * item[+]
     * type = #string
-    * linkId = "HL7/OBR-2/ORC-2"
+    * linkId = "LN/106194-4"
+    * code[+] = $loinc#106194-4
     * text = "Test request ID/Order ID"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.identifier:placerOrderNumber"
     * required = false
@@ -436,7 +437,8 @@ Usage:  #definition
       * text = "Transport used"
       * type = #string
     * item[+]
-      * linkId = "NOS/xxxx4"
+      * linkId = "LN/97209-1"
+      * code[+] = $loinc#97209-1
       * text = "Tracking number"
       * type = #string
     * item[+]
