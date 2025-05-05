@@ -91,7 +91,7 @@ See also [HL7 Europe Laboratory Report - DiagnosticReport: Laboratory Report](ht
 
 * code.coding[NICIP] ^short = "Use for Radiology Orders"
 * code.coding[NICIP] from https://fhir.hl7.org.uk/ValueSet/UKCore-PathologyAndLaboratoryMedicineObservables
-* code.coding[NICIP].system = "https://fhir.interweavedigital.nhs.uk/CodeSystem/Interweave-NICIP"
+* code.coding[NICIP].system = "http://digital.nhs.uk/fhir/CodeSystem/nicip"
 
 * performer.identifier 1..1
 * performer.identifier.system 1..1
