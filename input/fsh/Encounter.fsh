@@ -20,9 +20,9 @@ DRAFT Extension of UKCore-Encounter which includes constraints from:
 
 * identifier[VisitNumber] only VisitNumber
 * identifier[VisitNumber] ^short = "Identifier assigned by the Order Placer"
-* identifier[VisitNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/OrderFiller)
-* identifier[VisitNumber] insert Obligation(#SHALL:populate, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/OrderPlacer)
-* identifier[VisitNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nw-gmsa.nhs.uk/ActorDefinition/AutomationManager)
+* identifier[VisitNumber] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/OrderFiller)
+* identifier[VisitNumber] insert Obligation(#SHALL:populate, https://nw-gmsa.github.io/ActorDefinition/OrderPlacer)
+* identifier[VisitNumber] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/AutomationManager)
 
 
 * type 0..1 MS

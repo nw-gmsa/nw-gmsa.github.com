@@ -27,13 +27,13 @@ The FHIR Validator defaults to validating individual FHIR resources (not FHIR Bu
 #### laboratory-order O21 Validation Example
 
 ```aiignore
- java -jar validator_cli.jar c:\temp\bundle.json -version 4.0.1 -ig package.tgz -bundle ServiceRequest:0 https://fhir.nw-gmsa.nhs.uk/StructureDefinition/ServiceRequest
+ java -jar validator_cli.jar c:\temp\bundle.json -version 4.0.1 -ig package.tgz -bundle ServiceRequest:0 https://nw-gmsa.github.io/StructureDefinition/ServiceRequest
 ```
 
 #### unsolicited-observation R01 Validation Example
 
 ```aiignore
- java -jar validator_cli.jar c:\temp\bundle.json -version 4.0.1 -ig package.tgz -bundle DiagnosticReport:0 https://fhir.nw-gmsa.nhs.uk/StructureDefinition/DiagnosticReport
+ java -jar validator_cli.jar c:\temp\bundle.json -version 4.0.1 -ig package.tgz -bundle DiagnosticReport:0 https://nw-gmsa.github.io/StructureDefinition/DiagnosticReport
 ```
 
 ## Asking a FHIR Server
