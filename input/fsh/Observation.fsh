@@ -6,7 +6,7 @@ Title:          "Observation"
 Description:    "DRAFT Extension of UKCore-Observation"
 
 
-//* performer only Reference(PractitionerRole or Patient)
+* performer only Reference(http://hl7.eu/fhir/laboratory/StructureDefinition/PractitionerRole-eu-lab  or Patient)
 
 * status ^short = "Observation Status  (HL7 v2 OBX-11)"
 

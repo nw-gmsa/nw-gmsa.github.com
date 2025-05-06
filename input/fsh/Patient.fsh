@@ -8,6 +8,8 @@ DRAFT Extension of UKCore-Patient which includes constraints from:
 - HL7 PID segment definitions from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws)
 """
 
+* extension contains https://fhir.hl7.org.uk/StructureDefinition/Extension-UKCore-EthnicCategory named ethnicCategory 0..1
+
 * identifier 1..* MS
 * identifier.assigner ^short = "Assigning Facility"
 * identifier.assigner 0..1 MS
@@ -24,7 +26,7 @@ DRAFT Extension of UKCore-Patient which includes constraints from:
 * identifier contains
   MedicalRecordNumber 0..*
   and nhsNumber 0..*
-//  and GenomicsPedigreeNumber 0..*
+//  solved via ServiceRequest.requisition and GenomicsPedigreeNumber 0..*
 
 * identifier[nhsNumber] only NHSNumber
 * identifier[nhsNumber] ^short = "UK National Health Identifiers"

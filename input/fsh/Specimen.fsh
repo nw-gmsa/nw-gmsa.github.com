@@ -25,7 +25,7 @@ See also [HL7 Europe Laboratory Report - Specimen: Laboratory](https://build.fhi
 * type from SpecimenType (required)
 
 * collection.collector 0..1 MS
-//* collection.collector only Reference(PractitionerRole)
+* collection.collector only Reference(PractitionerRole)
 
 * collection.bodySite MS
 

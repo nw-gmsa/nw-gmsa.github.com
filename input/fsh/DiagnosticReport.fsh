@@ -121,7 +121,7 @@ See also [HL7 Europe Laboratory Report - DiagnosticReport: Laboratory Report](ht
 * resultsInterpreter.identifier.system 1..1
 * resultsInterpreter.identifier.value 1..1
 * resultsInterpreter.type 1..1
-//* resultsInterpreter only Reference(Practitioner or PractitionerRole)
+* resultsInterpreter only Reference(Practitioner or PractitionerRole)
 
 * resultsInterpreter ^slicing.discriminator.type = #value
 * resultsInterpreter ^slicing.discriminator.path = "type"

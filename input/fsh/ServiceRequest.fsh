@@ -97,12 +97,14 @@ See also [HL7 Europe Laboratory Report - ServiceRequest: Laboratory Order](https
 * category ^slicing.description = "Slice based on the coding.system"
 * category ^slicing.ordered = false
 * category contains
-  GenomicProcedure 1..1 MS
+  GenomicProcedure 1..1 MS and GenomicsWholeCaseSequencing 0..1 MS
+
 
 * category[GenomicProcedure].coding.code = #116148004
 * category[GenomicProcedure].coding.system = $sct
 
-//* category[genomicsWholeCaseSequencing] 0..1 MS
+* category[GenomicsWholeCaseSequencing] 0..1 MS
+* category[GenomicsWholeCaseSequencing].coding.system = "https://fhir.hl7.org.uk/CodeSystem/UKCore-GenomeSequencingCategory"
 
 * encounter 0..1 MS
 * encounter ^short = "A reference identifier to the episode/stay/visit number in which the request was created. (HL7 v2 PV1-19)"
@@ -114,7 +116,7 @@ See also [HL7 Europe Laboratory Report - ServiceRequest: Laboratory Order](https
 * encounter.identifier insert Obligation(#SHALL:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/AutomationManager)
 
 * requester 1..1 MS
-//* requester only Reference(PractitionerRole)
+* requester only Reference(PractitionerRole)
 
 * performer only Reference(Organization)
 * performer.identifier only OrganisationCode
