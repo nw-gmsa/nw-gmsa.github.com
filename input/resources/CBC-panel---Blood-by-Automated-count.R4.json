@@ -6,7 +6,7 @@
       "http://hl7.org/fhir/4.0/StructureDefinition/Questionnaire"
     ]
   },
-  "url": "https://nw-gmsa.nhs.uk/Questionnaire/58410-2",
+  "url": "https://nw-gmsa.github.io/Questionnaire/58410-2",
   "title": "CBC panel - Blood by Automated count",
   "status": "draft",
   "code": [
