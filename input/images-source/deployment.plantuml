@@ -10,9 +10,9 @@ Genomics Regional Integration Engine - HSCN
 ----
 DNS Name: rie.nw-gmsa.nhs.uk????
 Virtual IP: TODO?????
-====
-Network Address Translation (NAT)
 ----
+Network Address Translation (NAT)
+====
 Change external virtual address to
 private IP
 ]
