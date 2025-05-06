@@ -18,12 +18,6 @@ private IP
 ]
 
 
-node arbiter <<device>> [
-Arbiter
-
-]
-
-
 node tie1 <<device>> [
 Genomics Regional Integration Engine
 ====
@@ -47,13 +41,12 @@ SSL/TLS: rie.nw-gmsa.nhs.uk????
 Port 443
 ]
 
-node arbiter [
+node arbiter <<device>> [
 Arbiter
 ----
 Monitors both RIE and controls
 which RIE is primary (active)
 ]
-
 
 database database1 [
 Database (Active)
@@ -73,7 +66,5 @@ tie2 -r[hidden]- arbiter
 tie1 -- database1
 database1 -r- database2: Online Backup
 tie2 -- database2
-
-
 
 @enduml
