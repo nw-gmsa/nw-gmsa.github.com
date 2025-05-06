@@ -49,6 +49,9 @@ Port 443
 
 node arbiter [
 Arbiter
+----
+Monitors both RIE and controls
+which RIE is primary (active)
 ]
 
 
