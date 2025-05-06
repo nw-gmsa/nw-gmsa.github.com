@@ -21,8 +21,8 @@ This implementation guide will be supported by a **Genomics Regional Integration
 
 - [Message Routing](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageRouter.html) to deliver orders and reports to the regional GLH (and in the future national GLH's).
 - [Message Translation](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageTranslator.html) to 
-  - LAB-1 convert HL7 FHIR based orders to HL7 v2 Messages (for Order Placer (local GLH))
-  - LAB-3 convert HL7 v2 based results (from Order Placer (local GLH)) to HL7 FHIR Messages
+  - LAB-1 converts HL7 FHIR based orders to HL7 v2 Messages (for Order Placer (local GLH))
+  - LAB-3 converts HL7 v2 based results (from Order Placer (local GLH)) to HL7 FHIR Messages
 - [Message Bridge](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessagingBridge.html) between regional Trust Integration Engines (TIE)/GLH Laboratory Information System (LIMS) and the national Genomic Order Management Service (LAB-4 and LAB-5)
 - May contain a Structured Reporting [Message Translation](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageTranslator.html) to convert HL7 v2 ORU_R01 structured reports to a [HL7 Europe Laboratory Report](https://build.fhir.org/ig/hl7-eu/laboratory/) to replace the use of PDF reports.
 
