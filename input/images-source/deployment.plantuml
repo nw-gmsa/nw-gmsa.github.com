@@ -1,0 +1,75 @@
+@startuml
+
+
+node network [
+Genomics Regional Integration Engine - HSCN
+
+----
+DNS Name: rie.nw-gmsa.nhs.uk????
+Virtual IP: TODO?????
+]
+
+node NAT [
+Network Address Translation
+====
+Change external virtual address to
+private IP
+]
+
+
+node arbiter [
+Arbiter
+
+]
+
+
+node tie1 [
+Genomics Regional Integration Engine
+====
+Primary (Active)
+----
+Name: gen-tie-test01.care.local
+IP: 100.64.48.171
+SSL/TLS: rie.nw-gmsa.nhs.uk????
+Port 443
+]
+
+
+node tie2 [
+Genomics Regional Integration Engine
+====
+Secondary
+----
+Name: gen-tie-test02.care.local
+IP: 100.64.48.172
+SSL/TLS: rie.nw-gmsa.nhs.uk????
+Port 443
+]
+
+node arbiter [
+Arbiter
+]
+
+
+database database1 [
+Database (Active)
+]
+
+database database2 [
+Database Mirror
+]
+
+network -- NAT
+NAT -d- tie1
+NAT -d- tie2
+
+tie1 -r[hidden]- tie2
+tie2 -r[hidden]- arbiter
+
+tie1 -- database1
+database1 -r- database2: Online Backup
+tie2 -- database2
+
+
+
+@enduml

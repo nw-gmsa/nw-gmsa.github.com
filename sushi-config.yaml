@@ -125,6 +125,9 @@ pages:
   authorisation.md:
     title: Authorisation (OAuth2)
     generation: markdown
+  deployment.md:
+    title: Deployment
+    generation: markdown
 
 resources:
   Questionnaire/GenomicTestOrder:
