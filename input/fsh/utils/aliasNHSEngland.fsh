@@ -4,7 +4,6 @@ Alias: $ucum = http://unitsofmeasure.org
 Alias: $Obligation = http://hl7.org/fhir/StructureDefinition/obligation
 Alias: $test-directory = https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory
 Alias: $bcp13 = urn:ietf:bcp:13
-Alias: $epic = http://fhir.epic.mft.nhs.uk
 Alias: $NOS = https://nw-gmsa.github.io/CodeSystem/NotOtherwiseSpecified
 Alias: $EthnicEngland = https://fhir.hl7.org.uk/CodeSystem/UKCore-EthnicCategoryEngland
 Alias: $EthnicWales = https://fhir.hl7.org.uk/CodeSystem/UKCore-EthnicCategoryWales
