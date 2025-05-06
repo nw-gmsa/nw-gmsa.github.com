@@ -10,20 +10,20 @@ Virtual IP: TODO?????
 ]
 
 node NAT [
-Network Address Translation
+Network Address Translation (NAT)
 ====
 Change external virtual address to
 private IP
 ]
 
 
-node arbiter [
+node arbiter <<device>> [
 Arbiter
 
 ]
 
 
-node tie1 [
+node tie1 <<device>> [
 Genomics Regional Integration Engine
 ====
 Primary (Active)
@@ -35,7 +35,7 @@ Port 443
 ]
 
 
-node tie2 [
+node tie2 <<device>> [
 Genomics Regional Integration Engine
 ====
 Secondary
