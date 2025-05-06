@@ -34,11 +34,16 @@ See also [HL7 Europe Laboratory Report - DiagnosticReport: Laboratory Report](ht
 * basedOn[accessionNumber].type = "ServiceRequest"
 * basedOn[accessionNumber].identifier 1..1
 * basedOn[accessionNumber].identifier only AccessionNumber
+
 * basedOn[fillerOrderNumber] ^short = "Identifier assigned by the lab (ORC-3)"
 * basedOn[fillerOrderNumber].type 1..1 MS
 * basedOn[fillerOrderNumber].type = "ServiceRequest"
 * basedOn[fillerOrderNumber].identifier 1..1
 * basedOn[fillerOrderNumber].identifier only FillerOrderNumber
+* basedOn[fillerOrderNumber] insert Obligation(#SHALL:populate, https://nw-gmsa.github.io/ActorDefinition/OrderFiller)
+* basedOn[fillerOrderNumber] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/OrderPlacer)
+* basedOn[fillerOrderNumber] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/AutomationManager)
+
 
 //* category ^slicing.discriminator.type = #value
 //* category ^slicing.discriminator.path = "coding"

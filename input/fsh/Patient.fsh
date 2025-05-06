@@ -9,6 +9,7 @@ DRAFT Extension of UKCore-Patient which includes constraints from:
 """
 
 * extension contains https://fhir.hl7.org.uk/StructureDefinition/Extension-UKCore-EthnicCategory named ethnicCategory 0..1
+* extension[ethnicCategory] ^short = "Ethnic Category. NHS England HL7 v2 PID-22 Ethnic Group"
 
 * identifier 1..* MS
 * identifier.assigner ^short = "Assigning Facility"
