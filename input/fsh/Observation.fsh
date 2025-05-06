@@ -3,7 +3,9 @@ Profile:        Observation
 Parent:         http://hl7.eu/fhir/laboratory/StructureDefinition/Observation-resultslab-eu-lab
 Id:             Observation
 Title:          "Observation"
-Description:    "DRAFT Extension of UKCore-Observation"
+Description:    """
+TODO
+"""
 
 
 * performer only Reference(http://hl7.eu/fhir/laboratory/StructureDefinition/PractitionerRole-eu-lab  or Patient)

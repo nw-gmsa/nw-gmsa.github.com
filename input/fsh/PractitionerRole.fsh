@@ -5,8 +5,7 @@ Parent:         http://hl7.org/fhir/StructureDefinition/PractitionerRole
 Id:             PractitionerRole
 Title:          "PractitionerRole"
 Description:    """
-DRAFT Extension of UKCore PractitionerRole
-
+TODO
 """
 
 * practitioner 1..1 MS
