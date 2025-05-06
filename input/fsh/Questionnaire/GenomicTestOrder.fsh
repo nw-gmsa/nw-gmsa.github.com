@@ -185,7 +185,7 @@ Usage:  #definition
         * type = #quantity
         * linkId = "SNM/598151000005105"
         * code[+] = $sct#598151000005105 "Gestational age"
-        * extension[unitOption].valueCoding = $ucum#wk "Wk"
+        * extension[unit].valueCoding = $ucum#wk "Wk"
         * text = "Patient gestation"
         * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueQuantity"
 
