@@ -399,8 +399,8 @@ Usage:  #definition
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
   * item[+]
-    * linkId = "NOS/102313"
-    * code[+] = $NOS#102313 "GENETICS HIGH INFECTION RISK"
+    * linkId = "SNM/281269004"
+    * code[+] = $sct#281269004 "High infection risk sample"
     * text = "High Infection Risk?"
     * type = #choice
     * required = false

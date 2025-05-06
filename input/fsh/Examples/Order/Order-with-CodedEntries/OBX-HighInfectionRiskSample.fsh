@@ -15,7 +15,7 @@ Description: "TODO"
     * display = "High infection risk sample"
     * system = $sct
 
-* valueBoolean = false
+* valueCodeableConcept = $loinc#LA32-8
 
 // EPIC-PV1
 * encounter.reference = "urn:uuid:984b8a89-4194-4eb4-a7ea-ca8049ebeea3"
