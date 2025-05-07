@@ -16,7 +16,7 @@ A subset of [HL7 Europe Laboratory Report ValueSet: Specimen Types](https://buil
 * $sct#440500007 "Dried blood spot specimen"
 * $sct#119359002 "Bone marrow specimen"
 * $sct#733104004 "Swab from buccal mucosa"
-* $NOS#CellPellet "Cell Pellet"
+
 * $sct#258450006 "Cerebrospinal fluid specimen"
 * $sct#258565009 "Chorionic villi specimen"
 // 30Apr25 * $NOS#ctDNA "ctDNA"
@@ -24,10 +24,9 @@ A subset of [HL7 Europe Laboratory Report ValueSet: Specimen Types](https://buil
 * $sct#309147000 "Thyroid cyst fluid specimen"
 * $sct#258566005 "Deoxyribonucleic acid specimen"
 * $sct#441652008 "Formalin-fixed paraffin-embedded tissue specimen"
-* $NOS#FFPEShavings "FFPE - Shavings"
-* $NOS#FFPESlides "FFPE - Slides"
+
 * $sct#3040001000004100	 "Paraffin embedded tissue block specimen"
-* $NOS#LiquidBiopsy "Liquid Biopsy"
+
 * $sct#1003517007 "Freeze dried specimen"
 * $sct#122571007 "Pericardial fluid specimen"
 * $sct#418564007 "Pleural fluid specimen"
@@ -37,3 +36,10 @@ A subset of [HL7 Europe Laboratory Report ValueSet: Specimen Types](https://buil
 * $sct#16214131000119100 "Frozen tissue section specimen"
 * $sct#122575003 "Urine specimen"
 * $sct#441673008 "Ribonucleic acid specimen (specimen)"
+
+* $NOS#CellPellet "Cell Pellet"
+* $NOS#LiquidBiopsy "Liquid Biopsy"
+* $NOS#FFPEShavings "FFPE - Shavings"
+* $NOS#FFPESlides "FFPE - Slides"
+* $NOS#FFPEPositivelyChargedSlides "FFPE - Positively Charged Slides"
+* $NOS#FFPEWaxBlock "FFPE - Wax block"
