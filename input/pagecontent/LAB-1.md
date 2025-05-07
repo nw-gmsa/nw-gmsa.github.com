@@ -91,7 +91,7 @@ Example payload [Bundle 'Message' - Genomics Order Acknowledgement](Bundle-Genom
 
 For sucessful messages the [MessageHeader](StructureDefinition-MessageHeader.html) will have `response.code` returned will be `ok` and will look like:
 
-{% fragment MessageHeader/MessageHeaderGenomicOrderAcknowledgement JSON BASE:response %}
+{% fragment MessageHeader/MessageHeaderGenomicOrderAcknowledgement JSON EXCEPT:response EXCEPT:identifier|code BASE:response %}
 
 ```
 "response" : {
