@@ -20,7 +20,7 @@ Usage: #example
 * source.endpoint = "https//tie.alderhey.nhs.uk/"
 * source.software = "Alder Hey TIE"
 
-* response.identifier = "9612365d-52a4-4fab-87e7-8a09d753f095",
+* response.identifier = "9612365d-52a4-4fab-87e7-8a09d753f095"
 * response.code = #ok
 
 * focus[+]
