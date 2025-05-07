@@ -100,16 +100,6 @@ When the RIE is unable to accept the message due to issues such as FHIR Validati
 {% fragment MessageHeader/MessageHeaderGenomicOrderAcknowledgementFatal JSON EXCEPT:response EXCEPT:identifier|code|details BASE:response %}
 
 
-```
-"response" : {
-  "identifier" : "9612365d-52a4-4fab-87e7-8a09d753f095",
-  "code" : "fatal-error",
-  "details" :{
-    "reference" : "OperationOutcome/TODO"
-  }
-}
-```
-
 where the details section contains a reference to an included OperationOutcome listing details of the failure.
 
 Should the RIE encounter a technical problem, such as an internal service such as `FHIR Validation Service` or `Terminology Service` being unavailable, the message has not been accepted and the sender should wait and try again. the returned [MessageHeader](StructureDefinition-MessageHeader.html) will have `response.code` returned will be `transient-error`, e.g.: 
@@ -117,12 +107,3 @@ Should the RIE encounter a technical problem, such as an internal service such a
 {% fragment MessageHeader/MessageHeaderGenomicOrderAcknowledgementTransient JSON EXCEPT:response EXCEPT:identifier|code|details BASE:response %}
 
 
-```
-"response" : {
-  "identifier" : "9612365d-52a4-4fab-87e7-8a09d753f095",
-  "code" : "transient-error",
-  "details" :{
-    "reference" : "OperationOutcome/TODO"
-  }
-}
-```
