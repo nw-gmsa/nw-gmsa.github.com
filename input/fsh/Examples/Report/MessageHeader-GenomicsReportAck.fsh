@@ -1,4 +1,4 @@
-Instance: MessageHeaderGenomicReport
+Instance: MessageHeaderGenomicReportAck
 InstanceOf: MessageHeader
 Title: "Message Header - Genomic Report"
 Description: "TODO"
@@ -9,16 +9,19 @@ Usage: #example
 * eventCoding = http://terminology.hl7.org/CodeSystem/v2-0003#R01
 
 * sender.identifier.system = $ods-code
-* sender.identifier.value = "699X0"
-* sender.display = "NORTH WEST GLH"
+* sender.identifier.value = "RBS"
+* sender.display = "ALDER HEY CHILDREN'S NHS FOUNDATION TRUST"
 
 * destination.receiver.identifier.system = $ods-code
-* destination.receiver.identifier.value = "RBS"
-* destination.receiver.display = "ALDER HEY CHILDREN'S NHS FOUNDATION TRUST"
-* destination.endpoint = "https//tie.alderhey.nhs.uk"
+* destination.receiver.identifier.value = "699X0"
+* destination.receiver.display = "NORTH WEST GLH"
+* destination.endpoint = "https//rie.nw-gmsa.nhs.uk"
 
-* source.endpoint = "https//rie.nw-gmsa.nhs.uk/"
-* source.software = "GMSA RIE"
+* source.endpoint = "https//tie.alderhey.nhs.uk/"
+* source.software = "Alder Hey TIE"
+
+* response.identifier = "9612365d-52a4-4fab-87e7-8a09d753f095",
+* response.code = #ok
 
 * focus[+]
   * reference = "urn:uuid:233ff41a-5067-46c4-b6aa-5d6f87719f5f"

@@ -73,68 +73,11 @@ Messages that have been accepted by the calling Order Place (or TIE) need to be 
 
 **Orignial Message Header**
 
-```
-{
-  "resourceType" : "MessageHeader",
-  "eventCoding" : {
-    "system" : "http://terminology.hl7.org/CodeSystem/v2-0003",
-    "code" : "R01"
-  },
-  "destination" : [
-    {
-      "endpoint" : "https//hive.mft.nhs.uk",
-      "receiver" : {
-        "identifier" : {
-          "system" : "https://fhir.nhs.uk/Id/ods-organization-code",
-          "value" : "R0A"
-        }
-      }
-    }
-  ],
-  "sender" : {
-    "identifier" : {
-      "system" : "https://fhir.nhs.uk/Id/ods-organization-code",
-      "value" : "699X0"
-    }
-  },
-  "response" : {
-    "identifier" : "9612365d-52a4-4fab-87e7-8a09d753f095",
-    "code" : "ok"
-  }
-}
-```
+{% fragment MessageHeader/MessageHeaderGenomicReport JSON %}
 
 **Message Header for returned update**
 
-```
-{
-  "resourceType" : "MessageHeader",
-  "eventCoding" : {
-    "system" : "http://terminology.hl7.org/CodeSystem/v2-0003",
-    "code" : "R01"
-  },
-  "destination" : [
-    {
-      "receiver" : {
-        "identifier" : {
-          "system" : "https://fhir.nhs.uk/Id/ods-organization-code",
-          "value" : "699X0"
-        }
-      }
-    }
-  ],
-  "sender" : {
-    "identifier" : {
-      "system" : "https://fhir.nhs.uk/Id/ods-organization-code",
-      "value" : "R0A"
-    }
-  },
-  "response" : {
-    "identifier" : "9612365d-52a4-4fab-87e7-8a09d753f095",
-    "code" : "ok"
-  }
-}
-```
+{% fragment MessageHeader/MessageHeaderGenomicReportAck JSON %}
 
 This update is sent back to the RIE as a [FHIR Transaction](https://hl7.org/fhir/R4/http.html#transaction)
 
