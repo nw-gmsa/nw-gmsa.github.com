@@ -93,15 +93,12 @@ For sucessful messages the [MessageHeader](StructureDefinition-MessageHeader.htm
 
 {% fragment MessageHeader/MessageHeaderGenomicOrderAcknowledgement JSON EXCEPT:response EXCEPT:identifier|code BASE:response %}
 
-```
-"response" : {
-  "identifier" : "9612365d-52a4-4fab-87e7-8a09d753f095",
-  "code" : "ok"
-}
-```
 Where the identifier refers to the Bundle.identifier in the orignial message. The Bundle may also include modified FHIR Patient or ServiceRequest resources with updated and new identifiers.
 
 When the RIE is unable to accept the message due to issues such as FHIR Validation issues, the returned [MessageHeader](StructureDefinition-MessageHeader.html) will have `response.code` returned will be `error`, e.g.:
+
+{% fragment MessageHeader/MessageHeaderGenomicOrderAcknowledgementFatal JSON EXCEPT:response EXCEPT:identifier|code|details EXCEPT:reference BASE:response %}
+
 
 ```
 "response" : {
@@ -116,6 +113,9 @@ When the RIE is unable to accept the message due to issues such as FHIR Validati
 where the details section contains a reference to an included OperationOutcome listing details of the failure.
 
 Should the RIE encounter a technical problem, such as an internal service such as `FHIR Validation Service` or `Terminology Service` being unavailable, the message has not been accepted and the sender should wait and try again. the returned [MessageHeader](StructureDefinition-MessageHeader.html) will have `response.code` returned will be `transient-error`, e.g.: 
+
+{% fragment MessageHeader/MessageHeaderGenomicOrderAcknowledgementTransient JSON EXCEPT:response EXCEPT:identifier|code|details EXCEPT:reference BASE:response %}
+
 
 ```
 "response" : {
