@@ -91,13 +91,15 @@ Example payload [Bundle 'Message' - Genomics Order Acknowledgement](Bundle-Genom
 
 For sucessful messages the [MessageHeader](StructureDefinition-MessageHeader.html) will have `response.code` returned will be `ok` and will look like:
 
+{% fragment MessageHeader/MessageHeaderGenomicOrderAcknowledgement JSON BASE:response %}
+
 ```
 "response" : {
   "identifier" : "9612365d-52a4-4fab-87e7-8a09d753f095",
   "code" : "ok"
 }
 ```
-where the identifier refers to the Bundle.identifier in the orignial message. The Bundle may also include modified FHIR Patient or ServiceRequest resources with updated and new identifiers.
+Where the identifier refers to the Bundle.identifier in the orignial message. The Bundle may also include modified FHIR Patient or ServiceRequest resources with updated and new identifiers.
 
 When the RIE is unable to accept the message due to issues such as FHIR Validation issues, the returned [MessageHeader](StructureDefinition-MessageHeader.html) will have `response.code` returned will be `error`, e.g.:
 
