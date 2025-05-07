@@ -37,6 +37,6 @@ See also NHS Data Model and Dictionary [ETHNIC CATEGORY](https://www.datadiction
 * $NOS#IrishTraveller "Gypsy/Traveller/ Irish Traveller"
 * $NOS#Traveller "Gypsy/Traveller"
 * $NOS#Roma "Roma"
-* $NOS#81706006 "Ashkenazi Jew, follower of religion (person)"
+* $NOS#AshkenaziJew "Ashkenazi Jew, follower of religion (person)"
 
 * $loinc#LA28803-7 "Prefer not to say"
