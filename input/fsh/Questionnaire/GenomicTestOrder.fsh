@@ -265,7 +265,8 @@ Usage:  #definition
     * text = "Patient Clinical Information"
     * item[+]
       * type = #choice
-      * linkId = "HL7/DG1"
+      * linkId = "LN/51967-8"
+      * code[+] = $loinc#51967-8
       * repeats = true
       * text = "Specific disease suspected/reason for testing"
       * answerValueSet = Canonical(GenomicConditionCode)
