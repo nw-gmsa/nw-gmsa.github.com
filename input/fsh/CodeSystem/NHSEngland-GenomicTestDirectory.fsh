@@ -33,3 +33,11 @@ Description: """
 * #R138.1 "Sudden unexplained death or survivors of a cardiac event"
 * #R240.1 "Diagnostic testing for known variant(s)"
 * #R242.1 "Predictive testing for known familial variant(s)"
+
+* #R372.1
+* #R361.1
+* #R361.2
+* #R372.1
+* #R93.1
+* #R93.2
+

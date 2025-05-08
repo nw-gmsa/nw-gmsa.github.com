@@ -201,6 +201,25 @@ Usage:  #definition
     * answerValueSet = Canonical(GenomicRareAndInheritedDisease)
   * item[+]
     * type = #choice
+    * linkId = "HL7/OBR-4-h"
+    * code[+] = $loinc#29300-1
+    * enableWhen[+]
+      * question = "SNM/15220000"
+      * operator = #=
+      * answerCoding = $NOS#HaemoglobinopathyGeneticTesting
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.code"
+    * text = "Test Code (Haemoglobinopathy)"
+    * required = true
+    * repeats = true
+    * answerOption[+].valueCoding = $GTD#R372.1
+    * answerOption[+].valueCoding = $GTD#R361.1
+    * answerOption[+].valueCoding = $GTD#R361.2
+    * answerOption[+].valueCoding = $GTD#R372.1
+    * answerOption[+].valueCoding = $GTD#R93.1
+    * answerOption[+].valueCoding = $GTD#R93.2
+
+  * item[+]
+    * type = #choice
     * linkId = "HL7/OBR-4-c"
     * code[+] = $loinc#29300-1
     * enableWhen[+]
