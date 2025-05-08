@@ -125,7 +125,7 @@ Usage:  #definition
 
 * item[+]
   * type = #group
-  * linkId = "HL7/ORC-12"
+  * linkId = "HealthcareProfessional"
   * definition = "https://nw-gmsa.github.io/StructureDefinition/PractitionerRole#PractitionerRole"
   * text = "Healthcare Professional"
   * item[+]
@@ -171,7 +171,7 @@ Usage:  #definition
 
 * item[+]
   * type = #group
-  * linkId = "HL7/OBR/ORC"
+  * linkId = "TestRequest"
   * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest"
   * text = "Test Request"
   * item[+]
@@ -351,7 +351,7 @@ Usage:  #definition
 
 * item[+]
   * type = #group
-  * linkId = "HL7/SPM"
+  * linkId = "Specimen"
   * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen"
   * text = "Specimen/Biopsy"
 
@@ -424,7 +424,7 @@ Usage:  #definition
     * type = #string
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.collection.quantity"
   * item[+]
-    * linkId = "NOS/audit"
+    * linkId = "OrderTracking"
     * text = "Audit (Order Tracking)"
     * type = #group
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.collection"
