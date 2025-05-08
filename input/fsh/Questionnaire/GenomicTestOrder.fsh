@@ -277,6 +277,23 @@ Usage:  #definition
       * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
       * answerOption[+].valueCoding = $loinc#LA32-8 "No"
       * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
+  * item[+]
+    * type = #group
+    * linkId = "PatientClinicalInformation"
+    * text = "Patient Clinical Information"
+    * item[+]
+      * type = #choice
+      * linkId = "HL7/DG1"
+      * repeats = true
+      * text = "Specific disease suspected/reason for testing"
+      * answerValueSet = Canonical(GenomicConditionCode)
+      * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.reasonCode"
+    * item[+]
+      * type = #string
+      * linkId = "HL7/NTE"
+      * text = "Relevant clinical information and family history"
+      * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.note"
+
 
 * item[+]
   * type = #group
@@ -443,22 +460,7 @@ Usage:  #definition
         * text = "Patient gestation"
         * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueQuantity"
 
-  * item[+]
-    * type = #group
-    * linkId = "PatientClinicalInformation"
-    * text = "Patient Clinical Information"
-    * item[+]
-      * type = #choice
-      * linkId = "HL7/DG1"
-      * repeats = true
-      * text = "Specific disease suspected/reason for testing"
-      * answerValueSet = "https://fhir.hl7.org.uk/ValueSet/UKCore-ConditionCode"
-      * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.reasonCode"
-    * item[+]
-      * type = #string
-      * linkId = "HL7/NTE"
-      * text = "Relevant clinical information and family history"
-      * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.note"
+
 
 * item[+]
   * type = #group

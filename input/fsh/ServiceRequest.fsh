@@ -138,7 +138,9 @@ See also [HL7 Europe Laboratory Report - ServiceRequest: Laboratory Order](https
 
 * note MS
 
+
 * reasonCode MS
+* reasonCode from GenomicConditionCode
 
 * supportingInfo 0..* MS
 * supportingInfo only Reference(ObservationPanel or Observation or DiagnosticReport or DocumentReference)
