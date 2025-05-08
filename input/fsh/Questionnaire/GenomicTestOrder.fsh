@@ -275,79 +275,6 @@ Usage:  #definition
       * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
       * answerOption[+].valueCoding = $loinc#LA32-8 "No"
       * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
-  * item[+]
-    * type = #group
-    * linkId = "AskAtOrderEntry"
-    * text = "Ask At Order Entry Questions"
-    * item[+]
-      * type = #string
-      * code[+] = $sct#842009 "Consanguinity"
-      * linkId = "SNM/842009"
-      * text = "Patient is from consanguineous union?"
-  // * answerValueSet = Canonical(YNU)
-      * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
-      * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-      * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
-      * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
-    * item[+]
-      * type = #choice
-      * linkId = "SNM/77386006"
-      * text = "Does this test relate to an ongoing pregnancy?"
-      * code[+] = $sct#77386006 "Pregnancy"
-   //   * answerValueSet = Canonical(YNU)
-      * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
-      * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-      * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
-      * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
-      * item[+]
-        * type = #group
-        * linkId = "pregnant"
-        * text = "Pregnant"
-        * enableWhen[+]
-          * question = "SNM/77386006"
-          * operator = #=
-          * answerCoding = #LA33-6
-        * item[+]
-          * type = #string
-          * linkId = "SNM/370386005"
-          * code[+] = $sct#370386005 "Ultrasound scan - multiple fetus"
-          * text = "Does this test relate to a pregnancy with > 1 fetus?"
-          * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
-          * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-          * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
-          * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
-
-        * item[+]
-          * type = #date
-          * linkId = "SNM/161714006"
-          * code[+] = $sct#161714006 "Estimated date of delivery"
-          * text = "Patient expected delivery date"
-          * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueDateTime"
-        * item[+]
-          * type = #integer
-          * linkId = "SNM/598151000005105"
-          * code[+] = $sct#598151000005105 "Gestational age"
-          * extension[unit].valueCoding = $ucum#wk "Wk"
-          * text = "Patient gestation"
-          * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueQuantity"
-
-* item[+]
-  * type = #group
-  * linkId = "PatientClinicalInformation"
-  * text = "Patient Clinical Information"
-  * item[+]
-    * type = #choice
-    * linkId = "HL7/DG1"
-    * repeats = true
-    * text = "Specific disease suspected/reason for testing"
-    * answerValueSet = "https://fhir.hl7.org.uk/ValueSet/UKCore-ConditionCode"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.reasonCode"
-  * item[+]
-    * type = #string
-    * linkId = "HL7/NTE"
-    * text = "Relevant clinical information and family history"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.note"
-
 
 * item[+]
   * type = #group
@@ -464,31 +391,109 @@ Usage:  #definition
     * operator = #=
     * answerCoding = $GSC#rare-disease-non-wgs
 
+
 * item[+]
   * type = #group
-  * linkId = "cancer"
-  * text = "Cancer"
-  * enableWhen[+]
-    * question = "NOS/230056"
-    * operator = #=
-    * answerCoding = $GSC#cancer-non-wgs
+  * linkId = "AskAtOrderEntry"
+  * text = "Ask At Order Entry Questions"
+  * item[+]
+    * type = #string
+    * code[+] = $sct#842009 "Consanguinity"
+    * linkId = "SNM/842009"
+    * text = "Patient is from consanguineous union?"
+  // * answerValueSet = Canonical(YNU)
+    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
+    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
+    * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+  * item[+]
+    * type = #choice
+    * linkId = "SNM/77386006"
+    * text = "Does this test relate to an ongoing pregnancy?"
+    * code[+] = $sct#77386006 "Pregnancy"
+   //   * answerValueSet = Canonical(YNU)
+    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
+    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
+    * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+    * item[+]
+      * type = #group
+      * linkId = "pregnant"
+      * text = "Pregnant"
+      * enableWhen[+]
+        * question = "SNM/77386006"
+        * operator = #=
+        * answerCoding = $loinc#LA33-6
+      * item[+]
+        * type = #string
+        * linkId = "SNM/370386005"
+        * code[+] = $sct#370386005 "Ultrasound scan - multiple fetus"
+        * text = "Does this test relate to a pregnancy with > 1 fetus?"
+        * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
+        * answerOption[+].valueCoding = $loinc#LA32-8 "No"
+        * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
+        * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+
+      * item[+]
+        * type = #date
+        * linkId = "SNM/161714006"
+        * code[+] = $sct#161714006 "Estimated date of delivery"
+        * text = "Patient expected delivery date"
+        * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueDateTime"
+      * item[+]
+        * type = #integer
+        * linkId = "SNM/598151000005105"
+        * code[+] = $sct#598151000005105 "Gestational age"
+        * extension[unit].valueCoding = $ucum#wk "Wk"
+        * text = "Patient gestation"
+        * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueQuantity"
+
   * item[+]
     * type = #group
-    * linkId = "UnknownResultsPanel"
-    * text = "Unknown Results Panel"
+    * linkId = "PatientClinicalInformation"
+    * text = "Patient Clinical Information"
     * item[+]
-      * linkId = "SNM/250537006"
-      * code[+] = $sct#250537006 "Histopathology finding (finding)"
-      * text = "Neoplastic Cell Content Level"
-      * type = #quantity
-      * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueQuantity"
+      * type = #choice
+      * linkId = "HL7/DG1"
+      * repeats = true
+      * text = "Specific disease suspected/reason for testing"
+      * answerValueSet = "https://fhir.hl7.org.uk/ValueSet/UKCore-ConditionCode"
+      * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.reasonCode"
+    * item[+]
+      * type = #string
+      * linkId = "HL7/NTE"
+      * text = "Relevant clinical information and family history"
+      * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.note"
 
+* item[+]
+  * type = #group
+  * linkId = "PriorResults"
+  * text = "Prior Results"
+  * item[+]
+    * type = #group
+    * linkId = "cancer"
+    * text = "Cancer"
+    * enableWhen[+]
+      * question = "NOS/230056"
+      * operator = #=
+      * answerCoding = $GSC#cancer-non-wgs
     * item[+]
-      * linkId = "NOS/230031"
-      * code[+] = $sct#250537006 "Histopathology finding (finding)"
-      * text = "Neoplastic Cell Content Level %"
-      * type = #quantity
-      * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueQuantity"
+      * type = #group
+      * linkId = "UnknownResultsPanel"
+      * text = "Unknown Results Panel"
+      * item[+]
+        * linkId = "SNM/250537006"
+        * code[+] = $sct#250537006 "Histopathology finding (finding)"
+        * text = "Neoplastic Cell Content Level"
+        * type = #quantity
+        * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueQuantity"
+
+      * item[+]
+        * linkId = "NOS/230031"
+        * code[+] = $sct#250537006 "Histopathology finding (finding)"
+        * text = "Neoplastic Cell Content Level %"
+        * type = #quantity
+        * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueQuantity"
 
     * item[+]
       * linkId = "SNM/252416005"
