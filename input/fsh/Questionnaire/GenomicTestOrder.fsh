@@ -464,12 +464,21 @@ Usage:  #definition
   * text = "Prior Results"
   * item[+]
     * type = #group
-    * linkId = "HaemoglobinopathyGeneticTesting"
-    * text = "Haemoglobinopathy Testing"
+    * linkId = "HaemoglobinopathyTestResults"
+    * text = "Haemoglobinopathy Test Results"
     * enableWhen[+]
       * question = "SNM/15220000"
       * operator = #=
       * answerCoding = $NOS#HaemoglobinopathyGeneticTesting
+    * item[+]
+      * type = #reference
+      * linkId = "LN/58410-2"
+      * text = "CBC panel - Blood by Automated count"
+      * item[+]
+        * linkId = "LN/58410-2-designNote"
+        * type = #display
+        * text = "See Questionnaire [CBC panel - Blood by Automated count](https://nw-gmsa.github.io/R4/Questionnaire-58410-2.html)"
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
   * item[+]
     * type = #group
     * linkId = "RareAndInheritedDiseasesGeneticTesting"
