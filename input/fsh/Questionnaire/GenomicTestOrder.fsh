@@ -324,7 +324,7 @@ Usage:  #definition
           * text = "Patient expected delivery date"
           * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueDateTime"
         * item[+]
-          * type = #quantity
+          * type = #integer
           * linkId = "SNM/598151000005105"
           * code[+] = $sct#598151000005105 "Gestational age"
           * extension[unit].valueCoding = $ucum#wk "Wk"
