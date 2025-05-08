@@ -382,15 +382,6 @@ Usage:  #definition
       * text = "Name of person who sent sample"
       * type = #string
 
-* item[+]
-  * type = #group
-  * linkId = "raredisease"
-  * text = "Rare and Inherited Disease"
-  * enableWhen[+]
-    * question = "NOS/230056"
-    * operator = #=
-    * answerCoding = $GSC#rare-disease-non-wgs
-
 
 * item[+]
   * type = #group
@@ -469,6 +460,18 @@ Usage:  #definition
   * type = #group
   * linkId = "PriorResults"
   * text = "Prior Results"
+  * item[+]
+    * type = #group
+    * linkId = "haemoglobinopathy"
+    * text = "Haemoglobinopathy"
+  * item[+]
+    * type = #group
+    * linkId = "raredisease"
+    * text = "Rare and Inherited Disease"
+    * enableWhen[+]
+      * question = "NOS/230056"
+      * operator = #=
+      * answerCoding = $GSC#rare-disease-non-wgs
   * item[+]
     * type = #group
     * linkId = "cancer"
