@@ -198,7 +198,7 @@ Usage:  #definition
     * text = "Test Code (Rare and inherited diseases)"
     * required = true
     * repeats = true
-    * answerValueSet = Canonical(GenomicRareAndInheritedDisease
+    * answerValueSet = Canonical(GenomicRareAndInheritedDisease)
   * item[+]
     * type = #choice
     * linkId = "HL7/OBR-4-c"
