@@ -267,8 +267,9 @@ Usage:  #definition
       * type = #choice
       * linkId = "LN/51967-8"
       * code[+] = $loinc#51967-8
+      * code[+] = $sct#782964007 "Genetic disease"
       * repeats = true
-      * text = "Specific disease suspected/reason for testing"
+      * text = "CITT code (Specific disease suspected/reason for testing)"
       * answerValueSet = Canonical(GenomicConditionCode)
       * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.reasonCode"
     * item[+]
