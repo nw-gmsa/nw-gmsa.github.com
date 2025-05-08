@@ -188,17 +188,8 @@ Usage:  #definition
     * answerOption[+].valueCoding = $NOS#CancerGeneticTesting "Cancer Genetic Testing (procedure)"
   * item[+]
     * type = #choice
-    * linkId = "HL7/OBR-4-rci"
-    * enableWhen[+]
-      * question = "SNM/15220000"
-      * operator = #=
-      * answerCoding = $NOS#RareAndInheritedDiseasesGeneticTesting
-    * text = "CITT Code (Rare and inherited diseases)"
-    * required = true
-    * repeats = false
-  * item[+]
-    * type = #choice
     * linkId = "HL7/OBR-4-r"
+    * code[+] = $loinc#29300-1
     * enableWhen[+]
       * question = "SNM/15220000"
       * operator = #=
@@ -207,20 +198,11 @@ Usage:  #definition
     * text = "Test Code (Rare and inherited diseases)"
     * required = true
     * repeats = true
-    * answerValueSet = Canonical(GenomicRareAndInheritedDisease)
-  * item[+]
-    * type = #choice
-    * linkId = "HL7/OBR-4-cci"
-    * enableWhen[+]
-      * question = "SNM/15220000"
-      * operator = #=
-      * answerCoding = $NOS#CancerGeneticTesting
-    * text = "CI Code (Cancer)"
-    * required = true
-    * repeats = false
+    * answerValueSet = Canonical(GenomicRareAndInheritedDisease
   * item[+]
     * type = #choice
     * linkId = "HL7/OBR-4-c"
+    * code[+] = $loinc#29300-1
     * enableWhen[+]
       * question = "SNM/15220000"
       * operator = #=
