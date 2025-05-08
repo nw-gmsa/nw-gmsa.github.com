@@ -13,16 +13,6 @@ Usage:  #definition
 * url = "https://nw-gmsa.github.io/Questionnaire/GenomicTestOrder"
 
 * item[+]
-  * type = #choice
-  * linkId = "NOS/230056"
-  * code[+] = $NOS#230056 "What Type of Referral Do You Require?"
-  * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.category"
-  * text = "Test Category"
-  * answerValueSet = Canonical(OrderCategory)
-  * answerOption[+].valueCoding = $GSC#rare-disease-non-wgs "Rare and inherited diseases"
-  * answerOption[+].valueCoding = $sct#1186936003 "Storage of specimen (procedure)"
-  * answerOption[+].valueCoding = $GSC#cancer-non-wgs "Cancer"
-* item[+]
   * linkId = "Patient"
   * text = "Patient"
   * type = #group
@@ -103,14 +93,14 @@ Usage:  #definition
     * type = #string
     * linkId = "LN/76435-7"
     * code[+] = $loinc#76435-7
-    * text = "Hospital Number"
+    * text = "Hospital Number (Medical Record Number)"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.identifier:MedicalRecordNumber"
     * required = true
   * item[+]
     * type = #string
     * linkId = "LN/56797-4"
     * code[+] = $loinc#56797-4
-    * text = "Account Number"
+    * text = "Account Number (Episode or Stay Number)"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.encounter.identifier.value"
     * required = false
     * item[+]
@@ -118,11 +108,6 @@ Usage:  #definition
       * type = #display
       * text = "PV1-19 (also known as stay number)"
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-  * item[+]
-    * type = #string
-    * linkId = "pedigreeNumber"
-    * text = "G Number (Pedigree Number)"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.requisition"
 
   * item[+]
     * type = #decimal
@@ -137,57 +122,6 @@ Usage:  #definition
     * linkId = "HL7/PD1-3"
     * text = "GP Surgery (ODS Code)"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.generalPractitioner"
-  * item[+]
-    * type = #string
-    * code[+] = $sct#842009 "Consanguinity"
-    * linkId = "SNM/842009"
-    * text = "Patient is from consanguineous union?"
-// * answerValueSet = Canonical(YNU)
-    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
-    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-    * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
-  * item[+]
-    * type = #choice
-    * linkId = "SNM/77386006"
-    * text = "Does this test relate to an ongoing pregnancy?"
-    * code[+] = $sct#77386006 "Pregnancy"
- //   * answerValueSet = Canonical(YNU)
-    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
-    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-    * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
-    * item[+]
-      * type = #group
-      * linkId = "pregnant"
-      * text = "Pregnant"
-      * enableWhen[+]
-        * question = "SNM/77386006"
-        * operator = #=
-        * answerCoding = #LA33-6
-      * item[+]
-        * type = #string
-        * linkId = "SNM/370386005"
-        * code[+] = $sct#370386005 "Ultrasound scan - multiple fetus"
-        * text = "Does this test relate to a pregnancy with > 1 fetus?"
-        * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
-        * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-        * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
-        * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
-
-      * item[+]
-        * type = #date
-        * linkId = "SNM/161714006"
-        * code[+] = $sct#161714006 "Estimated date of delivery"
-        * text = "Patient expected delivery date"
-        * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueDateTime"
-      * item[+]
-        * type = #integer
-        * linkId = "SNM/598151000005105"
-        * code[+] = $sct#598151000005105 "Gestational age"
-        * extension[unit].valueCoding = $ucum#wk "Wk"
-        * text = "Patient gestation"
-        * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueQuantity"
 
 * item[+]
   * type = #group
@@ -241,20 +175,15 @@ Usage:  #definition
   * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest"
   * text = "Test Request"
   * item[+]
-    * type = #string
-    * linkId = "LN/106194-4"
-    * code[+] = $loinc#106194-4
-    * text = "Test request ID/Order ID"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.identifier:placerOrderNumber"
-    * required = false
-  * item[+]
     * type = #choice
-    * linkId = "LN/82768-3"
-    * code[+] = $loinc#82768-3
-    * text = "Priority"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.priority"
-    * required = false
-    * answerValueSet = Canonical(RequestPriority)
+    * linkId = "NOS/230056"
+    * code[+] = $NOS#230056 "What Type of Referral Do You Require?"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.category"
+    * text = "Test Category"
+    * answerValueSet = Canonical(OrderCategory)
+    * answerOption[+].valueCoding = $GSC#rare-disease-non-wgs "Rare and inherited diseases"
+    * answerOption[+].valueCoding = $sct#1186936003 "Storage of specimen (procedure)"
+    * answerOption[+].valueCoding = $GSC#cancer-non-wgs "Cancer"
   * item[+]
     * type = #choice
     * linkId = "HL7/OBR-4-rci"
@@ -299,32 +228,108 @@ Usage:  #definition
     * required = true
     * repeats = true
     * answerValueSet = Canonical(GenomicCancer)
-* item[+]
-  * type = #group
-  * linkId = "Consent"
-  * text = "Consent"
+  * item[+]
+    * type = #string
+    * linkId = "pedigreeNumber"
+    * text = "G Number (Pedigree Number) - Order Group Number"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.requisition"
+  * item[+]
+    * type = #string
+    * linkId = "LN/106194-4"
+    * code[+] = $loinc#106194-4
+    * text = "Test request ID/Order ID"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.identifier:placerOrderNumber"
+    * required = false
   * item[+]
     * type = #choice
-    * linkId = "LN/19826-7"
-    * code[+] = $loinc#19826-7
-    * text = "Has consent has been obtained for tests (Y/N)"
-    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
-    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+    * linkId = "LN/82768-3"
+    * code[+] = $loinc#82768-3
+    * text = "Priority"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.priority"
+    * required = false
+    * answerValueSet = Canonical(RequestPriority)
+
   * item[+]
-    * type = #choice
-    * linkId = "consent-2"
-    * text = "Has consent has been obtained for DNA storage (Y/N)"
-    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
-    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+    * type = #group
+    * linkId = "Consent"
+    * text = "Consent"
+    * item[+]
+      * type = #choice
+      * linkId = "LN/19826-7"
+      * code[+] = $loinc#19826-7
+      * text = "Has consent has been obtained for tests (Y/N)"
+      * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
+      * answerOption[+].valueCoding = $loinc#LA32-8 "No"
+      * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+    * item[+]
+      * type = #choice
+      * linkId = "NOS/ConsentStorageSNOMEDDesired"
+      * text = "Has consent has been obtained for DNA storage (Y/N)"
+      * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
+      * answerOption[+].valueCoding = $loinc#LA32-8 "No"
+      * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+    * item[+]
+      * type = #choice
+      * linkId = "consent-3"
+      * text = "ROD attached or to follow"
+      * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
+      * answerOption[+].valueCoding = $loinc#LA32-8 "No"
+      * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
   * item[+]
-    * type = #choice
-    * linkId = "consent-3"
-    * text = "ROD attached or to follow"
-    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
-    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-    * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
+    * type = #group
+    * linkId = "AskAtOrderEntry"
+    * text = "Ask At Order Entry Questions"
+    * item[+]
+      * type = #string
+      * code[+] = $sct#842009 "Consanguinity"
+      * linkId = "SNM/842009"
+      * text = "Patient is from consanguineous union?"
+  // * answerValueSet = Canonical(YNU)
+      * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
+      * answerOption[+].valueCoding = $loinc#LA32-8 "No"
+      * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
+      * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+    * item[+]
+      * type = #choice
+      * linkId = "SNM/77386006"
+      * text = "Does this test relate to an ongoing pregnancy?"
+      * code[+] = $sct#77386006 "Pregnancy"
+   //   * answerValueSet = Canonical(YNU)
+      * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
+      * answerOption[+].valueCoding = $loinc#LA32-8 "No"
+      * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
+      * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+      * item[+]
+        * type = #group
+        * linkId = "pregnant"
+        * text = "Pregnant"
+        * enableWhen[+]
+          * question = "SNM/77386006"
+          * operator = #=
+          * answerCoding = #LA33-6
+        * item[+]
+          * type = #string
+          * linkId = "SNM/370386005"
+          * code[+] = $sct#370386005 "Ultrasound scan - multiple fetus"
+          * text = "Does this test relate to a pregnancy with > 1 fetus?"
+          * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
+          * answerOption[+].valueCoding = $loinc#LA32-8 "No"
+          * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
+          * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+
+        * item[+]
+          * type = #date
+          * linkId = "SNM/161714006"
+          * code[+] = $sct#161714006 "Estimated date of delivery"
+          * text = "Patient expected delivery date"
+          * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueDateTime"
+        * item[+]
+          * type = #quantity
+          * linkId = "SNM/598151000005105"
+          * code[+] = $sct#598151000005105 "Gestational age"
+          * extension[unit].valueCoding = $ucum#wk "Wk"
+          * text = "Patient gestation"
+          * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueQuantity"
 
 * item[+]
   * type = #group
