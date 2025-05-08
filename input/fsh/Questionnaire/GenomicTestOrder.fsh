@@ -343,7 +343,8 @@ Usage:  #definition
     * answerOption[+].valueCoding = $loinc#LA32-8 "No"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
   * item[+]
-    * linkId = "NOS/230002"
+    * linkId = "LN/39111-0"
+    * code[+] = $loinc#39111-0
     * text = "Tissue source/organ of origin"
     * type = #choice
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.collection.bodySite"
@@ -465,7 +466,7 @@ Usage:  #definition
   * item[+]
     * type = #group
     * linkId = "HaemoglobinopathyTestResults"
-    * text = "Haemoglobinopathy Test Results"
+    * text = "Haemoglobinopathy Testing Prior Results"
     * enableWhen[+]
       * question = "SNM/15220000"
       * operator = #=
@@ -482,7 +483,7 @@ Usage:  #definition
   * item[+]
     * type = #group
     * linkId = "RareAndInheritedDiseasesGeneticTesting"
-    * text = "Rare and Inherited Disease Testing"
+    * text = "Rare and Inherited Disease Prior Results"
     * enableWhen[+]
       * question = "SNM/15220000"
       * operator = #=
@@ -490,7 +491,7 @@ Usage:  #definition
   * item[+]
     * type = #group
     * linkId = "CancerGeneticTesting"
-    * text = "Cancer Testing"
+    * text = "Cancer Testing Prior Results"
     * enableWhen[+]
       * question = "SNM/15220000"
       * operator = #=
