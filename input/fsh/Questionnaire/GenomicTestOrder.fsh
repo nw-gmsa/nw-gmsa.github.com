@@ -463,28 +463,28 @@ Usage:  #definition
   * text = "Prior Results"
   * item[+]
     * type = #group
-    * linkId = "haemoglobinopathy"
-    * text = "Haemoglobinopathy"
+    * linkId = "HaemoglobinopathyGeneticTesting"
+    * text = "Haemoglobinopathy Testing"
+    * enableWhen[+]
+      * question = "SNM/15220000"
+      * operator = #=
+      * answerCoding = $NOS#HaemoglobinopathyGeneticTesting
+  * item[+]
+    * type = #group
+    * linkId = "RareAndInheritedDiseasesTesting"
+    * text = "Rare and Inherited Disease Testing"
     * enableWhen[+]
       * question = "SNM/15220000"
       * operator = #=
       * answerCoding = $NOS#RareAndInheritedDiseasesTesting
   * item[+]
     * type = #group
-    * linkId = "raredisease"
-    * text = "Rare and Inherited Disease"
+    * linkId = "CancerGeneticTesting"
+    * text = "Cancer Testing"
     * enableWhen[+]
       * question = "SNM/15220000"
       * operator = #=
-      * answerCoding = $NOS#RareAndInheritedDiseasesTesting
-  * item[+]
-    * type = #group
-    * linkId = "cancer"
-    * text = "Cancer"
-    * enableWhen[+]
-      * question = "SNM/15220000"
-      * operator = #=
-      * answerCoding = $NOS#RareAndInheritedDiseasesTesting
+      * answerCoding = $NOS#CancerGeneticTesting
     * item[+]
       * type = #group
       * linkId = "UnknownResultsPanel"
