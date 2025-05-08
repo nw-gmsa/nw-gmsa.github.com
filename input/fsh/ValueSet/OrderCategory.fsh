@@ -7,9 +7,8 @@ Top level classification of Genomic Test Directory
 
 * ^experimental  = false
 
+* $NOS#RareAndInheritedDiseasesTesting "Rare and inherited diseases Genetic Testing (procedure)"
 * $sct#1186936003 "Storage of specimen (procedure)"
-* $NOS#rare-disease "Rare Disease"
-* $NOS#rare-and-inherited-disease "Rare and Inherited Disease"
-* $NOS#solid-tumour "Solid Tumour"
-* $NOS#haematological-cancer "Haematological Cancer"
-* $NOS#somatic-cancer "Somatic Cancer"
+* $NOS#PreNatalGeneticTesting "Pre Natal Genetic Testing (procedure)"
+* $NOS#HaemoglobinopathyGeneticTesting "Haemoglobinopathy Genetic Testing (procedure)"
+* $NOS#CancerGeneticTesting "Cancer Genetic Testing (procedure)"

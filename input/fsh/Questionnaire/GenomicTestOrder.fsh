@@ -176,21 +176,22 @@ Usage:  #definition
   * text = "Test Request"
   * item[+]
     * type = #choice
-    * linkId = "NOS/230056"
-    * code[+] = $NOS#230056 "What Type of Referral Do You Require?"
+    * linkId = "SNM/15220000"
+    * code[+] = $sct#15220000 "What Type of Referral Do You Require?"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.category"
     * text = "Test Category"
     * answerValueSet = Canonical(OrderCategory)
-    * answerOption[+].valueCoding = $GSC#rare-disease-non-wgs "Rare and inherited diseases"
+    * answerOption[+].valueCoding = $NOS#RareAndInheritedDiseasesGeneticTesting "Rare and inherited diseases Genetic Testing (procedure)"
     * answerOption[+].valueCoding = $sct#1186936003 "Storage of specimen (procedure)"
-    * answerOption[+].valueCoding = $GSC#cancer-non-wgs "Cancer"
+    * answerOption[+].valueCoding = $NOS#PreNatalGeneticTesting "Pre Natal Genetic Testing (procedure)"
+    * answerOption[+].valueCoding = $NOS#HaemoglobinopathyGeneticTesting "Haemoglobinopathy Genetic Testing (procedure)"
   * item[+]
     * type = #choice
     * linkId = "HL7/OBR-4-rci"
     * enableWhen[+]
-      * question = "NOS/230056"
+      * question = "SNM/15220000"
       * operator = #=
-      * answerCoding = $GSC#rare-disease-non-wgs
+      * answerCoding = $NOS#RareAndInheritedDiseasesTesting
     * text = "CITT Code (Rare and inherited diseases)"
     * required = true
     * repeats = false
@@ -198,9 +199,9 @@ Usage:  #definition
     * type = #choice
     * linkId = "HL7/OBR-4-r"
     * enableWhen[+]
-      * question = "NOS/230056"
+      * question = "SNM/15220000"
       * operator = #=
-      * answerCoding = $GSC#rare-disease-non-wgs
+      * answerCoding = $NOS#RareAndInheritedDiseasesTesting
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.code"
     * text = "Test Code (Rare and inherited diseases)"
     * required = true
@@ -210,9 +211,9 @@ Usage:  #definition
     * type = #choice
     * linkId = "HL7/OBR-4-cci"
     * enableWhen[+]
-      * question = "NOS/230056"
+      * question = "SNM/15220000"
       * operator = #=
-      * answerCoding = $GSC#cancer-non-wgs
+      * answerCoding = $NOS#CancerGeneticTesting
     * text = "CI Code (Cancer)"
     * required = true
     * repeats = false
@@ -220,9 +221,9 @@ Usage:  #definition
     * type = #choice
     * linkId = "HL7/OBR-4-c"
     * enableWhen[+]
-      * question = "NOS/230056"
+      * question = "SNM/15220000"
       * operator = #=
-      * answerCoding = $GSC#cancer-non-wgs
+      * answerCoding = $NOS#CancerGeneticTesting
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.code"
     * text = "Test Code (Cancer)"
     * required = true
@@ -352,7 +353,7 @@ Usage:  #definition
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.collection.quantity"
   * item[+]
     * linkId = "OrderTracking"
-    * text = "Audit (Order Tracking)"
+    * text = "Audit (Specimen Tracking)"
     * type = #group
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.collection"
     * item[+]
@@ -464,22 +465,26 @@ Usage:  #definition
     * type = #group
     * linkId = "haemoglobinopathy"
     * text = "Haemoglobinopathy"
+    * enableWhen[+]
+      * question = "SNM/15220000"
+      * operator = #=
+      * answerCoding = $NOS#RareAndInheritedDiseasesTesting
   * item[+]
     * type = #group
     * linkId = "raredisease"
     * text = "Rare and Inherited Disease"
     * enableWhen[+]
-      * question = "NOS/230056"
+      * question = "SNM/15220000"
       * operator = #=
-      * answerCoding = $GSC#rare-disease-non-wgs
+      * answerCoding = $NOS#RareAndInheritedDiseasesTesting
   * item[+]
     * type = #group
     * linkId = "cancer"
     * text = "Cancer"
     * enableWhen[+]
-      * question = "NOS/230056"
+      * question = "SNM/15220000"
       * operator = #=
-      * answerCoding = $GSC#cancer-non-wgs
+      * answerCoding = $NOS#RareAndInheritedDiseasesTesting
     * item[+]
       * type = #group
       * linkId = "UnknownResultsPanel"
