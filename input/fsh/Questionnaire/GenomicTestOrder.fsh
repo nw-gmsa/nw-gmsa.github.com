@@ -185,13 +185,14 @@ Usage:  #definition
     * answerOption[+].valueCoding = $sct#1186936003 "Storage of specimen (procedure)"
     * answerOption[+].valueCoding = $NOS#PreNatalGeneticTesting "Pre Natal Genetic Testing (procedure)"
     * answerOption[+].valueCoding = $NOS#HaemoglobinopathyGeneticTesting "Haemoglobinopathy Genetic Testing (procedure)"
+    * answerOption[+].valueCoding = $NOS#CancerGeneticTesting "Cancer Genetic Testing (procedure)"
   * item[+]
     * type = #choice
     * linkId = "HL7/OBR-4-rci"
     * enableWhen[+]
       * question = "SNM/15220000"
       * operator = #=
-      * answerCoding = $NOS#RareAndInheritedDiseasesTesting
+      * answerCoding = $NOS#RareAndInheritedDiseasesGeneticTesting
     * text = "CITT Code (Rare and inherited diseases)"
     * required = true
     * repeats = false
@@ -201,7 +202,7 @@ Usage:  #definition
     * enableWhen[+]
       * question = "SNM/15220000"
       * operator = #=
-      * answerCoding = $NOS#RareAndInheritedDiseasesTesting
+      * answerCoding = $NOS#RareAndInheritedDiseasesGeneticTesting
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.code"
     * text = "Test Code (Rare and inherited diseases)"
     * required = true
@@ -471,12 +472,12 @@ Usage:  #definition
       * answerCoding = $NOS#HaemoglobinopathyGeneticTesting
   * item[+]
     * type = #group
-    * linkId = "RareAndInheritedDiseasesTesting"
+    * linkId = "RareAndInheritedDiseasesGeneticTesting"
     * text = "Rare and Inherited Disease Testing"
     * enableWhen[+]
       * question = "SNM/15220000"
       * operator = #=
-      * answerCoding = $NOS#RareAndInheritedDiseasesTesting
+      * answerCoding = $NOS#RareAndInheritedDiseasesGeneticTesting
   * item[+]
     * type = #group
     * linkId = "CancerGeneticTesting"
