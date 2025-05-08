@@ -349,7 +349,8 @@ Usage:  #definition
     * type = #choice
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.collection.bodySite"
   * item[+]
-    * linkId = "NOS/230004"
+    * linkId = "LN/3169-0"
+    * code[+] = $loinc#3169-0
     * text = "Specimen Volume/number of slides or scrolls"
     * type = #string
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.collection.quantity"
