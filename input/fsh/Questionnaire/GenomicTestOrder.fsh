@@ -480,6 +480,8 @@ Usage:  #definition
       * type = #reference
       * linkId = "LN/58410-2"
       * text = "CBC panel - Blood by Automated count"
+      * extension[referenceProfile].valueCanonical = Canonical(Observation-Panel)
+      * extension[referenceResource].valueCode = #Observation
       * item[+]
         * linkId = "LN/58410-2-designNote"
         * type = #display
