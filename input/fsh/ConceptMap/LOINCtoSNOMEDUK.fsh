@@ -1,4 +1,4 @@
-Instance: LOINCtoSNOMEDUK
+Instance: SNOMEDLOINCtoSNOMEDUK
 InstanceOf: ConceptMap
 Title: "LOINC to SNOMED UK edition"
 Description: """
