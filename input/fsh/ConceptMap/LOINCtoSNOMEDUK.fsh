@@ -1,4 +1,4 @@
-Instance: SNOMEDLOINCtoSNOMEDUK
+Instance: LOINCtoSNOMEDUK
 InstanceOf: ConceptMap
 Title: "LOINC to SNOMED UK edition"
 Description: """
@@ -8,7 +8,7 @@ For Implementation Guide see [SNOMED CT Implementation Guide for the LOINC Ontol
 """
 Usage:  #definition
 
-* url = "https://nw-gmsa.github.io/ConceptMap/SNOMEDLOINCtoSNOMEDUK"
+* url = "https://nw-gmsa.github.io/ConceptMap/LOINCtoSNOMEDUK"
 * version = "0.0.1"
 * status = #draft
 

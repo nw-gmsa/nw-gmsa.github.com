@@ -177,7 +177,7 @@ Usage:  #definition
   * item[+]
     * type = #choice
     * linkId = "SNM/15220000"
-    * code[+] = $sct#15220000 "What Type of Referral Do You Require?"
+    * code[+] = $sct#15220000 "Laboratory test"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.category"
     * text = "Test Category"
     * answerValueSet = Canonical(OrderCategory)
