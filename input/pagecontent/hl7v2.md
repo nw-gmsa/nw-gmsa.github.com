@@ -98,7 +98,7 @@ This is based on the definition of PV1 from [NHS England HL7 v2 ADT Message Spec
 | PV1-3     | Assigned Patient Location |             | R           |                                                                                   | ^^^R0A09^^^^^^^R0A <br/> ^^^P1S8J^^^^^^^699X0 |
 | PV1-8     | Referring Doctor          | [XCN](#xcn) | R           | [Practitioner Identifier](StructureDefinition-EnglandPractitionerIdentifier.html) | C3456789^Darwin^Samuel^^^Dr^^^GMC             |                                                                                   
 | PV1-10    | Hospital Service          |             | R           | [Service](ValueSet-service.html)                                                  | 311                                           |
-| PV1-19    | Visit Number              | [CX](#cx)   | O - SHOULD  | [Visit Number](StructureDefinition-VisitNumber.html)                              | 12345^^^R0A                                   |                                    |
+| PV1-19    | Visit Number              | [CX](#cx)   | O - SHOULD  | [Episode Number](StructureDefinition-EpisodeNumber.html)                            | 12345^^^R0A                                   |                                    |
 
 ### ORC
 

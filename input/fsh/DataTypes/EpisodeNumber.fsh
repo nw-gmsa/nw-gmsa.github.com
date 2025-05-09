@@ -1,7 +1,7 @@
-Profile:        VisitNumber
+Profile:        EpisodeNumber
 Parent:         CorrelationIdentifier
-Id:             VisitNumber
-Title:          "Visit Number"
+Id:             EpisodeNumber
+Title:          "Episode Number"
 Description:     """
 This is a Correlation Identifier definition compatible with [Yorkskhire and Humberside - Interweave-EncounterGrouping](https://fhir.interweavedigital.com/R4/StructureDefinition-Interweave-EncounterGrouping.html)
 
