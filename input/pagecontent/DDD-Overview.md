@@ -49,7 +49,7 @@ In practice this means, the following FHIR resources will have the following ide
   - [NHS Number](StructureDefinition-NHSNumber.html)
   - [Medical Record Number](StructureDefinition-MedicalRecordNumber.html)
 - Encounter
-  - [Visit Number](StructureDefinition-VisitNumber.html)
+  - [Episode Number](StructureDefinition-EpisodeNumber.html)
 
 This includes making use of FHIR Identifier `assigner.identifier.value` (HL7 v2 `Assigning Facility` in a variety of ID types) to distinguish these identifiers between different organisations, the recommendation is to use [ODS Code](https://www.datadictionary.nhs.uk/attributes/organisation_code.html), e.g.
 
