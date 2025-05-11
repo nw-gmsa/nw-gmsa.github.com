@@ -1,5 +1,7 @@
 @startuml
 
+skinparam svgDimensionStyle false
+
 title "North West GMSA Laboratory Report Data Product"
 
 frame "Definition ISO 13606-2" as iso136062 {
@@ -15,6 +17,7 @@ frame "Definition ISO 13606-2" as iso136062 {
   LaboratoryReport --> LaboratoryObservation
   LaboratoryPanel --> LaboratoryObservation
 }
+
 frame "ISO 13972 Common Information Model [[https://hl7europe.org/standards/ehds/ HL7 Europe EHDS]]" as iso13972 {
 
   frame "EHR Standards (openEHR)\nSee also [[https://ckm.openehr.org/ckm/archetypes/1013.1.3759 Genomic variant result]]" as openEHR {
@@ -28,7 +31,7 @@ frame "ISO 13972 Common Information Model [[https://hl7europe.org/standards/ehds
 
   }
 
-  frame "Asynchronous I/O\n([[https://confluence.hl7.org/download/attachments/25559919/2018%2004%2003%20-%20V2%20LRI%20-%20Ch.%205%20CG%20and%20Code%20System%20Tables.pdf?api=v2 HL7 Version 2.5.1 Implementation Guide: Lab Results Interface (LRI)]])" as HL7v2 {
+  frame "Asynchronous I/O\nDomain Events\n([[https://confluence.hl7.org/download/attachments/25559919/2018%2004%2003%20-%20V2%20LRI%20-%20Ch.%205%20CG%20and%20Code%20System%20Tables.pdf?api=v2 HL7 Version 2.5.1 Implementation Guide: Lab Results Interface (LRI)]])" as HL7v2 {
     entity ORC
     entity OBR
     entity OBX
