@@ -4,7 +4,7 @@ skinparam svgDimensionStyle false
 
 title "North West GMSA Laboratory Report Data Product"
 
-frame "Definition ISO 13606-2" as iso136062 {
+frame "Domain Archetype ISO 13606-2" as iso136062 {
 
   class "Laboratory Report" as LaboratoryReport {
   }
