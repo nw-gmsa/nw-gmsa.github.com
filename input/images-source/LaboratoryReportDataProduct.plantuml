@@ -1,0 +1,76 @@
+@startuml
+
+title "North West GMSA Laboratory Report Data Product"
+
+frame "Definition ISO 13606-2" as iso136062 {
+
+  class "Laboratory Report" as LaboratoryReport {
+  }
+
+  class "Laboratory Panel\nFHIR Questionnaire\n([[https://nw-gmsa.github.io/R4/Questionnaire-81247-9.html Master HL7 genetic variant reporting panel (LOINC)]])" as LaboratoryPanel
+
+  class "Laboratory Observation" as LaboratoryObservation
+
+  LaboratoryReport --> LaboratoryPanel
+  LaboratoryReport --> LaboratoryObservation
+  LaboratoryPanel --> LaboratoryObservation
+}
+frame "ISO 13972 Common Information Model [[https://hl7europe.org/standards/ehds/ HL7 Europe EHDS]]" as iso13972 {
+
+  frame "EHR Standards (openEHR)\nSee also [[https://ckm.openehr.org/ckm/archetypes/1013.1.3759 Genomic variant result]]" as openEHR {
+    entity "[[https://ckm.openehr.org/ckm/archetypes/1013.1.2191 Laboratory test result]]" as openEHRLaboratoryReport
+    entity "[[https://ckm.openehr.org/ckm/archetypes/1013.1.2192 Laboratory test panel]]" as openEHRLaboratoryPanel
+    entity "[[https://ckm.openehr.org/ckm/archetypes/1013.1.2881 Laboratory analyte result]]" as openEHRLaboratoryAnalyte
+
+    openEHRLaboratoryReport --> openEHRLaboratoryPanel
+    openEHRLaboratoryReport --> openEHRLaboratoryAnalyte
+    openEHRLaboratoryPanel --> openEHRLaboratoryAnalyte
+
+  }
+
+  frame "Asynchronous I/O\n([[https://confluence.hl7.org/download/attachments/25559919/2018%2004%2003%20-%20V2%20LRI%20-%20Ch.%205%20CG%20and%20Code%20System%20Tables.pdf?api=v2 HL7 Version 2.5.1 Implementation Guide: Lab Results Interface (LRI)]])" as HL7v2 {
+    entity ORC
+    entity OBR
+    entity OBX
+
+    ORC --> OBR
+    OBR --> OBX
+
+  }
+
+  frame "API and Datalake\n(HL7 FHIR [[https://build.fhir.org/ig/HL7/genomics-reporting/index.html Genomic Reporting]])" as FHR {
+    entity "[[DiagnosticReport]]" as DiagnosticReport
+    entity "[[StructureDefinition-Observation-Panel.html ObservationPanel]]" as ObservationPanel
+    entity "[[Observation]]" as Observation
+
+    DiagnosticReport --> ObservationPanel
+    DiagnosticReport --> Observation
+    ObservationPanel --> Observation
+
+  }
+}
+
+frame "Health Document ISO-13606-1\nHL7 FHIR Document\n([[https://build.fhir.org/ig/hl7-eu/laboratory/ EU Laboratory Report]])" as iso136061 {
+    entity Composition
+    class SectionLab
+    entity Observation
+
+    Composition --> SectionLab
+    SectionLab --> Observation
+}
+
+frame "Analytics (OHDSI - OMOP" as Analytics {
+    entity Procedure_occurence
+    entity Measurement
+    entity "Observation" as OMOPObservation
+
+    Procedure_occurence -d[hidden]- Measurement
+    Measurement -d[hidden]- OMOPObservation
+}
+
+iso136062 -d- iso13972
+iso13972 -d- iso136061
+iso13972 -d- Analytics
+
+
+@enduml
