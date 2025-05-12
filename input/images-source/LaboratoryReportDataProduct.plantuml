@@ -4,20 +4,34 @@ skinparam svgDimensionStyle false
 
 title "North West GMSA Laboratory Report Data Product"
 
-frame "Domain Archetype ISO 13606-2" as iso136062 {
+frame "Operational Business Plane (Enterprise)" {
 
-  class "Laboratory Report" as LaboratoryReport {
+  frame "Clinical Pathways" {
+    class "BPMN ([[https://www.bpm-plus.org/ BPN+]])" as BPMN
+
+    note "Getting It Right First Time ([[https://gettingitrightfirsttime.co.uk/ GIRFT]])\n[[https://www.nice.org.uk/ NICE]]" as GIRFT
+
+    note "**Federated Data Governance**\n\n- [[https://www.datadictionary.nhs.uk/ NHS Data Model and Dictionary]]\n- Business Identifiers\n- Clinical Coding" as Governance
+
+    BPMN -u[hidden]- GIRFT
+    Governance -d[hidden]- GIRFT
   }
+  frame "Domain Archetype ISO 13606-2" as iso136062 {
 
-  class "Laboratory Panel\nFHIR Questionnaire\n([[https://nw-gmsa.github.io/R4/Questionnaire-81247-9.html Master HL7 genetic variant reporting panel (LOINC)]])" as LaboratoryPanel
+    class "Laboratory Report" as LaboratoryReport {
+    }
 
-  class "Laboratory Observation" as LaboratoryObservation
+    class "Laboratory Panel\nFHIR Questionnaire\n([[https://nw-gmsa.github.io/R4/Questionnaire-81247-9.html Master HL7 genetic variant reporting panel (LOINC)]])" as LaboratoryPanel
 
-  LaboratoryReport --> LaboratoryPanel
-  LaboratoryReport --> LaboratoryObservation
-  LaboratoryPanel --> LaboratoryObservation
+    class "Laboratory Observation" as LaboratoryObservation
+
+
+    LaboratoryReport --> LaboratoryPanel
+    LaboratoryReport --> LaboratoryObservation
+    LaboratoryPanel --> LaboratoryObservation
+  }
 }
-
+frame "Operational Data Plane"  {
 frame "ISO 13972 Common Information Model [[https://hl7europe.org/standards/ehds/ HL7 Europe EHDS]]" as iso13972 {
 
   frame "EHR Standards (openEHR)\nSee also [[https://ckm.openehr.org/ckm/archetypes/1013.1.3759 Genomic variant result]]" as openEHR {
@@ -31,17 +45,19 @@ frame "ISO 13972 Common Information Model [[https://hl7europe.org/standards/ehds
 
   }
 
-  frame "Asynchronous I/O\nDomain Events\n([[https://confluence.hl7.org/download/attachments/25559919/2018%2004%2003%20-%20V2%20LRI%20-%20Ch.%205%20CG%20and%20Code%20System%20Tables.pdf?api=v2 HL7 Version 2.5.1 Implementation Guide: Lab Results Interface (LRI)]])" as HL7v2 {
-    entity ORC
-    entity OBR
-    entity OBX
+  frame "Asynchronous I/O\nDomain Events. Also known as messaging\n([[https://confluence.hl7.org/download/attachments/25559919/2018%2004%2003%20-%20V2%20LRI%20-%20Ch.%205%20CG%20and%20Code%20System%20Tables.pdf?api=v2 HL7 Version 2.5.1 Implementation Guide: Lab Results Interface (LRI)]])" as HL7v2 {
+    entity "ORC Common Order" as ORC
+    entity "OBR Observation Request" as OBR
+    entity "OBX Observation" as OBX
+    note "[[LAB-3.html FHIR Message Laboratory Report (IHE LAB-3]]]" as messaging
 
+    messaging -r[hidden]- ORC
     ORC --> OBR
     OBR --> OBX
 
   }
 
-  frame "API and Datalake\n(HL7 FHIR [[https://build.fhir.org/ig/HL7/genomics-reporting/index.html Genomic Reporting]])" as FHR {
+  frame "API, Datalake\nand Clinical Data Repository (CDR)\n(HL7 FHIR [[https://build.fhir.org/ig/HL7/genomics-reporting/index.html Genomic Reporting]])" as FHR {
     entity "[[DiagnosticReport]]" as DiagnosticReport
     entity "[[StructureDefinition-Observation-Panel.html ObservationPanel]]" as ObservationPanel
     entity "[[Observation]]" as Observation
@@ -51,29 +67,38 @@ frame "ISO 13972 Common Information Model [[https://hl7europe.org/standards/ehds
     ObservationPanel --> Observation
 
   }
+
 }
 
-frame "Health Document ISO-13606-1\nHL7 FHIR Document\n([[https://build.fhir.org/ig/hl7-eu/laboratory/ EU Laboratory Report]])" as iso136061 {
+ frame "Health Document ISO-13606-1\nHL7 FHIR Document (previously HL7 CDA)\n([[https://build.fhir.org/ig/hl7-eu/laboratory/ EU Laboratory Report]])" as iso136061 {
     entity Composition
     class SectionLab
-    entity Observation
+    entity "Observation" as cdaObservation
+    note "Often used in conjunction with an\n[[https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html IHE Cross Enterprise Document Sharing (XDS.b)]]\nbased archetecture\nAlternatives are mostly PDF based" as XDS
 
     Composition --> SectionLab
-    SectionLab --> Observation
+    SectionLab --> cdaObservation
+  }
 }
 
-frame "Analytics (OHDSI - OMOP" as Analytics {
+frame "Analytics Data Plane"  {
+
+frame "Analytics Data Warehouse\n([[https://www.ohdsi.org/data-standardization/ OHDSI - OMOP]])" as Analytics {
     entity Procedure_occurence
     entity Measurement
     entity "Observation" as OMOPObservation
+    entity etc
 
     Procedure_occurence -d[hidden]- Measurement
     Measurement -d[hidden]- OMOPObservation
+    OMOPObservation -d[hidden]- etc
+}
+ note "See also\n[[https://www.england.nhs.uk/digitaltechnology/nhs-federated-data-platform/ Federated Data Platform (FDP)]]" as FDP
 }
 
-iso136062 -d- iso13972
-iso13972 -d- iso136061
-iso13972 -d- Analytics
+LaboratoryObservation -d[hidden]- ORC
+Observation -d[hidden]- Composition
+cdaObservation -d[hidden]- Procedure_occurence
 
 
 @enduml
