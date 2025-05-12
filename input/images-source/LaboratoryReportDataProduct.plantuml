@@ -7,13 +7,13 @@ title "North West GMSA Laboratory Report Data Product"
 frame "Operational Business Plane (Enterprise)" {
 
   frame "Clinical Pathways" {
-    class "BPMN ([[https://www.bpm-plus.org/ BPN+]])" as BPMN
+    class "BPMN ([[https://www.bpm-plus.org/ BPM+]])" as BPMN
 
-    note "Getting It Right First Time ([[https://gettingitrightfirsttime.co.uk/ GIRFT]])\n[[https://www.nice.org.uk/ NICE]]" as GIRFT
+    note "**(Federated) Clinical Pathway (Requirements)**\n\nGetting It Right First Time ([[https://gettingitrightfirsttime.co.uk/ GIRFT]])\n[[https://www.nice.org.uk/ NICE]]" as GIRFT
 
     note "**Federated Data Governance**\n\n- [[https://www.datadictionary.nhs.uk/ NHS Data Model and Dictionary]]\n- Business Identifiers (e.g. Placer and Filler Order Numbers)\n- Clinical Coding (e.g. LOINC+SNOMED)" as Governance
 
-    BPMN -u[hidden]- GIRFT
+    GIRFT ..> BPMN
     Governance -d[hidden]- GIRFT
   }
   frame "Domain Archetype ISO 13606-2" as iso136062 {
@@ -30,6 +30,10 @@ frame "Operational Business Plane (Enterprise)" {
     LaboratoryReport --> LaboratoryObservation
     LaboratoryPanel --> LaboratoryObservation
   }
+
+  Governance ..> LaboratoryPanel
+  GIRFT ..> LaboratoryPanel
+  GIRFT ..> Governance
 }
 frame "Operational Data Plane"  {
 frame "ISO 13972 Common Information Model [[https://hl7europe.org/standards/ehds/ HL7 Europe EHDS]]" as iso13972 {
