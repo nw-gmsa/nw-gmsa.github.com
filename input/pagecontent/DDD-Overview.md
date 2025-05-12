@@ -1,4 +1,12 @@
 
+## Clean Architecture
+
+<img style="padding:3px;width:95%;" src="Clean Architecture.drawio.png" alt="Clean Architecture"/>
+<br clear="all">
+<p class="figureTitle">Clean Architecture</p> 
+<br clear="all">
+
+
 ## Domain Archetype
 
 [Domain Archetype](https://en.wikipedia.org/wiki/Archetype_(information_science)) is the result of a collaboration process which aims to form a series of common archetypes within a domain (the domain in this case is Genomics). 
