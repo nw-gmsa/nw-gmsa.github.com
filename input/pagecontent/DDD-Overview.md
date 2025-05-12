@@ -1,7 +1,7 @@
 
 ## Clean Architecture
 
-<img style="padding:3px;width:95%;" src="Clean Architecture.drawio.png" alt="Clean Architecture"/>
+<img style="padding:3px;width:50%;" src="Clean Architecture.drawio.png" alt="Clean Architecture"/>
 <br clear="all">
 <p class="figureTitle">Clean Architecture</p> 
 <br clear="all">
