@@ -49,7 +49,7 @@ frame "ISO 13972 Common Information Model [[https://hl7europe.org/standards/ehds
     entity "ORC Common Order" as ORC
     entity "OBR Observation Request" as OBR
     entity "OBX Observation" as OBX
-    note "[[LAB-3.html FHIR Message Laboratory Report (IHE LAB-3]]]" as messaging
+    note "[[LAB-3.html FHIR Message Laboratory Report (IHE LAB-3]]]\n\nIdeally supplement with Pub/Sub [[https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/index.html FHIR Subscriptions]]" as messaging
 
     messaging -r[hidden]- ORC
     ORC --> OBR
