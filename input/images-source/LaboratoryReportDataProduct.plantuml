@@ -11,7 +11,7 @@ frame "Operational Business Plane (Enterprise)" {
 
     note "Getting It Right First Time ([[https://gettingitrightfirsttime.co.uk/ GIRFT]])\n[[https://www.nice.org.uk/ NICE]]" as GIRFT
 
-    note "**Federated Data Governance**\n\n- [[https://www.datadictionary.nhs.uk/ NHS Data Model and Dictionary]]\n- Business Identifiers\n- Clinical Coding" as Governance
+    note "**Federated Data Governance**\n\n- [[https://www.datadictionary.nhs.uk/ NHS Data Model and Dictionary]]\n- Business Identifiers (e.g. Placer and Filler Order Numbers)\n- Clinical Coding (e.g. LOINC+SNOMED)" as Governance
 
     BPMN -u[hidden]- GIRFT
     Governance -d[hidden]- GIRFT
@@ -74,7 +74,7 @@ frame "ISO 13972 Common Information Model [[https://hl7europe.org/standards/ehds
     entity Composition
     class SectionLab
     entity "Observation" as cdaObservation
-    note "Often used in conjunction with an\n[[https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html IHE Cross Enterprise Document Sharing (XDS.b)]]\nbased archetecture\nAlternatives are mostly PDF based" as XDS
+    note "Often used in conjunction with an\n[[https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html IHE Cross Enterprise Document Sharing (XDS.b)]]\nbased archetecture\nAlternatives are mostly PDF based\nSee also data sets used with [[https://digital.nhs.uk/services/national-record-locator National Record Locator]]" as XDS
 
     Composition --> SectionLab
     SectionLab --> cdaObservation
