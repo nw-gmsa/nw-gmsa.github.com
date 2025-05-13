@@ -468,7 +468,7 @@ Usage:  #definition
     * text = "Clinical Indication"
     * code[+] = $sct#782964007 "Genetic disease"
     * code[+] = $loinc#51967-8 "Genetic disease assessed [ID]"
-    * extension[itemControl] = http://hl7.org/fhir/questionnaire-item-control#autocomplete
+    * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#autocomplete
     * extension[preferredTerminologyServer].valueUrl = "https://snowstorm.ihtsdotools.org/fhir"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
     * answerValueSet = "http://snomed.info/sct/900000000000207008?fhir_vs=ecl/<782964007"
@@ -493,7 +493,7 @@ Usage:  #definition
       * linkId = "SNM/5447007"
       * code[+] = $sct#5447007 "Transfusion"
       * text = "Transplant Type"
-      * extension[itemControl] = http://hl7.org/fhir/questionnaire-item-control#autocomplete
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#autocomplete
       * extension[preferredTerminologyServer].valueUrl = "https://snowstorm.ihtsdotools.org/fhir"
       * answerValueSet = "http://snomed.info/sct/900000000000207008?fhir_vs=ecl/<737294004"
       * enableWhen[+]
