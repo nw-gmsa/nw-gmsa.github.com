@@ -13,7 +13,7 @@ Genomics Regional Integration Engine - HSCN
 
 ----
 DNS Name: rie-test.nw-gmsa.nhs.uk????
-Virtual IP: TODO?????
+Virtual IP: i.e. 10.x IP TODO?????
 ====
 **Network Address Translation (NAT)**
 Change external IP to
