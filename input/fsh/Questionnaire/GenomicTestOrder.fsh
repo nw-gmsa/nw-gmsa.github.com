@@ -258,15 +258,18 @@ Usage:  #definition
     * item[+]
       * type = #choice
       * linkId = "LN/19826-7"
-      * code[+] = $loinc#19826-7
+      * code[+] = $sct#309370004 "Consent status"
+      * code[+] = $loinc#19826-7 "Informed consent obtained"
+      * code[+] = $loinc#59284-0 "Consent Document"
       * text = "Has consent has been obtained for tests (Y/N)"
       * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
       * answerOption[+].valueCoding = $loinc#LA32-8 "No"
       * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
     * item[+]
       * type = #choice
-      * linkId = "NOS/ConsentStorageSNOMEDDesired"
+      * linkId = "LN/75520-7"
       * text = "Has consent has been obtained for DNA storage (Y/N)"
+      * code[+] = $loinc#75520-7 "Biobank specimens are stored and available for research"
       * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
       * answerOption[+].valueCoding = $loinc#LA32-8 "No"
       * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
@@ -306,9 +309,10 @@ Usage:  #definition
   * item[+]
     * type = #string
     * code[+] = $loinc#80398-1 "Unique identifier for Current sample"
+    * code[+] = $sct#1208523001 "Identifier"
     * linkId = "LN/80398-1"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.identifier.value"
-    * text = "Specimen ID Number"
+    * text = "Specimen ID Number / Lab DNA Number (If Known)"
     * item[+]
       * linkId = "LN/80398-1-designNote"
       * type = #display
@@ -324,6 +328,7 @@ Usage:  #definition
     * type = #dateTime
     * linkId = "LN/33882-2"
     * code[+] = $loinc#33882-2 "Collection date of Specimen"
+    * code[+] = $loinc#68963-8 "Collection date and time of Specimen"
     * code[+] = $sct#1208523001	"Specimen collection by healthcare professional (finding)"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.collection.collectedDateTime"
     * text = "Specimen Collection Date"
@@ -340,6 +345,7 @@ Usage:  #definition
     * type = #choice
     * linkId = "LN/66746-9"
     * code[+] = $loinc#66746-9 "Specimen Type"
+    * code[+] = $sct#123038009 "Specimen"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.type.coding.code"
     * answerValueSet = Canonical(SpecimenType)
     * text = "Specimen Type"
@@ -362,14 +368,27 @@ Usage:  #definition
     * answerOption[+].valueCoding = $loinc#LA32-8 "No"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
   * item[+]
+    * linkId = "LN/74384-9"
+    * code[+] = $sct#434711009 "Specimen container"
+    * code[+] = $loinc#74384-9
+    * text = "Anticoagulant/preservative?"
+    * type = #choice
+    * required = false
+    * repeats = false
+    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
+    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+  * item[+]
     * linkId = "LN/39111-0"
     * code[+] = $loinc#39111-0
+    * code[+] = $loinc#31208-2 "Specimen source identified"
     * text = "Tissue source/organ of origin"
     * type = #choice
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.collection.bodySite"
   * item[+]
     * linkId = "LN/3169-0"
-    * code[+] = $loinc#3169-0
+    * code[+] = $loinc#3169-0 "Specimen volume"
+    * code[+] = $loinc#42185-9 "Number of specimens obtained"
     * text = "Specimen Volume/number of slides or scrolls"
     * type = #string
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.collection.quantity"
@@ -411,7 +430,7 @@ Usage:  #definition
   * linkId = "AskAtOrderEntry"
   * text = "Ask At Order Entry Questions"
   * item[+]
-    * type = #string
+    * type = #choice
     * code[+] = $sct#842009 "Consanguinity"
     * linkId = "SNM/842009"
     * text = "Patient is from consanguineous union?"
@@ -420,6 +439,82 @@ Usage:  #definition
     * answerOption[+].valueCoding = $loinc#LA32-8 "No"
     * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+  * item[+]
+    * type = #choice
+    * linkId = "SNM/74996004"
+    * text = "Confirm that a pathology report will be provided alongside the sample."
+    * code[+] = $sct#74996004 "Confirmation of"
+    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
+    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
+    * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+  * item[+]
+    * type = #string
+    * linkId = "SNM/385675009"
+    * text = "Reason for variant re-interpretation request"
+    * code[+] = $sct#385675009 "Confirmation of"
+    * code[+] = $loinc#53577-3 "Reason for study"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+  * item[+]
+    * type = #string
+    * linkId = "SNM/119297000"
+    * text = "Specimen Source (Blood Restrictions)"
+    * code[+] = $sct#119297000 "Blood specimen"
+    * code[+] = $loinc#31208-2 "Specimen source identified"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+  * item[+]
+    * type = #string
+    * linkId = "SNM/119297000"
+    * text = "Clinical Indication"
+    * code[+] = $sct#782964007 "Genetic disease"
+    * code[+] = $loinc#51967-8 "Genetic disease assessed [ID]"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+  * item[+]
+    * type = #string
+    * linkId = "SNM/78989007"
+    * text = "Please enter the trisomy screening risk (including the chromosome of interest if appropriate)."
+    * code[+] = $sct#78989007 "Trisomy"
+    * code[+] = $loinc#75560-3 "Fetal Trisomy 21 prior risk [Likelihood] Based on maternal age"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+  * item[+]
+    * type = #choice
+    * linkId = "SNM/782902008"
+    * text = "Transplant?"
+    * code[+] = $sct#782902008 "Implantation procedure"
+    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
+    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
+    * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+    * item[+]
+      * type = #choice
+      * linkId = "SNM/5447007"
+      * code[+] = $sct#5447007 "Transfusion"
+      * text = "Transplant Type"
+      * enableWhen[+]
+        * question = "SNM/782902008"
+        * operator = #=
+        * answerCoding = $loinc#LA33-6
+        * answerValueSet = "http://snomed.info/sct/900000000000207008?fhir_vs=ecl/< 737294004"
+  * item[+]
+    * type = #choice
+    * linkId = "LN/21908-9"
+    * code[+] = $loinc#21908-9 "Stage group.clinical Cancer"
+    * text = "Advanced Lung Cancer Stage"
+    * answerValueSet = "http://snomed.info/sct/900000000000207008?fhir_vs=ecl/< 1222594003"
+  * item[+]
+    * type = #choice
+    * linkId = "SNM/74996004"
+    * text = "Extra Testing Form Completed?"
+    * code[+] = $sct#74996004 "Confirmation of"
+    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
+    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
+    * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+    * item[+]
+      * linkId = "SNM/74996004-designNote"
+      * type = #display
+      * text = "Please Note That An Additional Test Order Form 'Whole Genome Sequencing Rare Disease Order Form (Link at Top of Form)' is Required To Activate Testing. If This is Not Received, The DNA Will Be Extracted and Stored"
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
   * item[+]
     * type = #choice
     * linkId = "SNM/77386006"
@@ -461,7 +556,12 @@ Usage:  #definition
         * extension[unit].valueCoding = $ucum#wk "Wk"
         * text = "Patient gestation"
         * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueQuantity"
-
+      * item[+]
+        * type = #string
+        * linkId = "SNM/169222003"
+        * code[+] = $sct#169222003 "US obstetric scan abnormal"
+        * text = "What were the Abnormal Scan Findings"
+        * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueQuantity"
 
 
 * item[+]
