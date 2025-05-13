@@ -441,7 +441,7 @@ Usage:  #definition
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
   * item[+]
     * type = #choice
-    * linkId = "SNM/74996004"
+    * linkId = "SNM/74996004-pathology-report"
     * text = "Confirm that a pathology report will be provided alongside the sample."
     * code[+] = $sct#74996004 "Confirmation of"
     * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
@@ -464,7 +464,7 @@ Usage:  #definition
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
   * item[+]
     * type = #string
-    * linkId = "SNM/119297000"
+    * linkId = "SNM/782964007"
     * text = "Clinical Indication"
     * code[+] = $sct#782964007 "Genetic disease"
     * code[+] = $loinc#51967-8 "Genetic disease assessed [ID]"
@@ -490,7 +490,8 @@ Usage:  #definition
       * linkId = "SNM/5447007"
       * code[+] = $sct#5447007 "Transfusion"
       * text = "Transplant Type"
-      * answerValueSet = "http://snomed.info/sct/900000000000207008?fhir_vs=ecl/<&nbsp;737294004"
+      * extension[preferredTerminologyServer].valueUrl = "https://snowstorm.ihtsdotools.org/fhir"
+      * answerValueSet = "http://snomed.info/sct/900000000000207008?fhir_vs=ecl/<737294004"
       * enableWhen[+]
         * question = "SNM/782902008"
         * operator = #=
@@ -501,7 +502,8 @@ Usage:  #definition
     * linkId = "LN/21908-9"
     * code[+] = $loinc#21908-9 "Stage group.clinical Cancer"
     * text = "Advanced Lung Cancer Stage"
-    * answerValueSet = "http://snomed.info/sct/900000000000207008?fhir_vs=ecl/<&nbsp;1222594003"
+    * answerValueSet = "http://snomed.info/sct/900000000000207008?fhir_vs=ecl/<1222594003"
+    * extension[preferredTerminologyServer].valueUrl = "https://snowstorm.ihtsdotools.org/fhir"
   * item[+]
     * type = #choice
     * linkId = "SNM/74996004"
