@@ -490,17 +490,18 @@ Usage:  #definition
       * linkId = "SNM/5447007"
       * code[+] = $sct#5447007 "Transfusion"
       * text = "Transplant Type"
+      * answerValueSet = "http://snomed.info/sct/900000000000207008?fhir_vs=ecl/<737294004"
       * enableWhen[+]
         * question = "SNM/782902008"
         * operator = #=
         * answerCoding = $loinc#LA33-6
-        * answerValueSet = "http://snomed.info/sct/900000000000207008?fhir_vs=ecl/< 737294004"
+
   * item[+]
     * type = #choice
     * linkId = "LN/21908-9"
     * code[+] = $loinc#21908-9 "Stage group.clinical Cancer"
     * text = "Advanced Lung Cancer Stage"
-    * answerValueSet = "http://snomed.info/sct/900000000000207008?fhir_vs=ecl/< 1222594003"
+    * answerValueSet = "http://snomed.info/sct/900000000000207008?fhir_vs=ecl/<1222594003"
   * item[+]
     * type = #choice
     * linkId = "SNM/74996004"
