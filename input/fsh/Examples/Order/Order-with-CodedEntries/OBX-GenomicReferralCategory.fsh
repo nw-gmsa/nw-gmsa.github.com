@@ -3,7 +3,7 @@ InstanceOf: Observation
 Title: "Genomic Referral Category"
 Description: "TODO"
 
-* identifier[+].value = "1"
+* identifier[+].value = "f39cc804-5280-4807-91d4-075be16928e5"
 
 * status = #final
 

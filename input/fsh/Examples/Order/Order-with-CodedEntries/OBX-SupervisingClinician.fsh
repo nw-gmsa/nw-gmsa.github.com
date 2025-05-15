@@ -3,7 +3,7 @@ InstanceOf: Observation
 Title: "Supervising Clinician"
 Description: "TODO"
 
-* identifier[+].value = "12"
+* identifier[+].value = "298e99de-fd29-4802-bcf2-78f901b33a6e"
 
 * status = #final
 

@@ -3,7 +3,7 @@ InstanceOf: Observation
 Title: "High infection risk sample"
 Description: "TODO"
 
-* identifier[+].value = "3"
+* identifier[+].value = "edd4debe-dd82-445f-b3e5-e175760da105"
 
 * status = #final
 

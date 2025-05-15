@@ -3,6 +3,7 @@ InstanceOf: ObservationPanel
 Title: "EPIC-OBR-1 Example"
 Description: "TODO"
 
+* identifier[+].value = "27ca6057-e481-426a-ba8a-2acfffc0c1c4"
 
 * status = #final
 

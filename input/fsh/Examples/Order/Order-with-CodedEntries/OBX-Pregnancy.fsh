@@ -3,7 +3,7 @@ InstanceOf: Observation
 Title: "OBX Pregnancy"
 Description: "TODO"
 
-* identifier[+].value = "5"
+* identifier[+].value = "390c7633-fd63-483c-8e32-e8858f232339"
 
 * status = #final
 

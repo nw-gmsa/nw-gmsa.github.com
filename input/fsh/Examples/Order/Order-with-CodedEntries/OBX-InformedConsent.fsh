@@ -3,7 +3,7 @@ InstanceOf: Observation
 Title: "Informed Consent"
 Description: "TODO"
 
-* identifier[+].value = "9"
+* identifier[+].value = "0d472ee5-8c21-467a-aafe-29c89a42ed4e"
 
 * status = #final
 

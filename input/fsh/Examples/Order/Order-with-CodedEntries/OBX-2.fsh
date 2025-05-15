@@ -3,7 +3,7 @@ InstanceOf: Observation
 Title: "EPIC-OBX-2 Example"
 Description: "TODO"
 
-* identifier[+].value = "2"
+* identifier[+].value = "47f34393-cc83-428f-b8dd-54bcd372c847"
 
 * status = #final
 

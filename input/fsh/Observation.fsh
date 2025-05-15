@@ -7,6 +7,7 @@ Description:    """
 TODO
 """
 
+* identifier 1..* MS
 
 * performer only Reference(http://hl7.eu/fhir/laboratory/StructureDefinition/PractitionerRole-eu-lab  or Patient)
 
