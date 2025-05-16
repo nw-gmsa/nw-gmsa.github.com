@@ -1,0 +1,32 @@
+@startuml
+
+
+hide footbox
+
+participant "**Order Placer**" as EPR
+participant "Intermediary\nNW GLH Regional Integration Engine (RIE)" as TIE
+participant "**Order Filler**" as LIMS
+participant "**ClincalDataRepository**" as CDR
+participant "**Subscribers**" as CDR
+
+== Asychronous Input/Output ==
+
+EPR -> TIE: Submit Test Order Form\n(Send HL7 FHIR Message)\n**Laboratory Order O21**
+TIE --> EPR: Response HL7 FHIR Message\n**Positive acknowledgement (AA)**
+TIE -> LIMS: Send HL7 v2 Message\n**OML_O21/(ORM_O01)**
+LIMS --> TIE: Response HL7 v2 Message\n**ORL_O22?**
+
+
+== REST API ==
+
+TIE -> CDR: FHIR REST API POST/PUTs
+CDR --> TIE: Reponse Messages
+
+== Asychronous Input/Output ==
+
+alt future
+TIE -> TIE: Pub/Sub (FHIR Workflow)
+TIE -> Subscribers: Event Notifications
+end
+
+@enduml
