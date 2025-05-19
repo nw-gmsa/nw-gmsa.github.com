@@ -1,0 +1,103 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36" version="27.0.6">
+  <diagram name="Page-1" id="wcHyACxHOFpinUpdBego">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="K14taMtusspFnMkYQwNe-9" value="" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="130" width="210" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="K14taMtusspFnMkYQwNe-10" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" target="K14taMtusspFnMkYQwNe-9">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="10" y="240" as="sourcePoint" />
+            <mxPoint x="870" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="K14taMtusspFnMkYQwNe-11" value="Asynchronous&lt;br&gt;In" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="K14taMtusspFnMkYQwNe-10">
+          <mxGeometry x="-0.1667" y="1" relative="1" as="geometry">
+            <mxPoint y="-19" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="K14taMtusspFnMkYQwNe-12" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="K14taMtusspFnMkYQwNe-9">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="640" y="239.5" as="sourcePoint" />
+            <mxPoint x="470" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="K14taMtusspFnMkYQwNe-13" value="Asychronous&lt;br&gt;Out" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="K14taMtusspFnMkYQwNe-12">
+          <mxGeometry x="0.1333" y="-1" relative="1" as="geometry">
+            <mxPoint x="-5" y="-20" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="K14taMtusspFnMkYQwNe-14" value="HL7 v2/FHIR Message" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="22.5" y="290" width="97.5" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="74DPA8lKF1p3KtrzpaVb-3" value="Implementing Domain Driven Design&lt;br&gt;Architecture - Event Driven, Hexagonal&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;and REST&lt;br&gt;Data Mesh&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="158.75" y="370" width="172.5" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="74DPA8lKF1p3KtrzpaVb-6" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="K14taMtusspFnMkYQwNe-9">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="650" y="249.5" as="sourcePoint" />
+            <mxPoint x="245" y="60" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="74DPA8lKF1p3KtrzpaVb-9" value="REST API" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="74DPA8lKF1p3KtrzpaVb-6">
+          <mxGeometry x="-0.0889" y="2" relative="1" as="geometry">
+            <mxPoint x="-33" y="-3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="74DPA8lKF1p3KtrzpaVb-10" value="HL7 FHIR&amp;nbsp;&lt;br&gt;RESTful (Read Only)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="270" y="50" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="74DPA8lKF1p3KtrzpaVb-11" value="IHE Laboratory Testing Workflow" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="22.5" y="260" width="97.5" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="74DPA8lKF1p3KtrzpaVb-12" value="IHE Query for Existing Data" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="270" y="20" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="74DPA8lKF1p3KtrzpaVb-13" value="IHE Internet User Authorisation" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="120" y="20" width="105" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="74DPA8lKF1p3KtrzpaVb-15" value="Domain Archetypes" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="170" y="140" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="74DPA8lKF1p3KtrzpaVb-16" value="Laboratory Order" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="170" y="180" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="74DPA8lKF1p3KtrzpaVb-17" value="Laboratory Request" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="170" y="220" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="74DPA8lKF1p3KtrzpaVb-18" value="Clinical Data Repository&lt;br&gt;(FHIR Repository)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="170" y="260" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="74DPA8lKF1p3KtrzpaVb-22" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="74DPA8lKF1p3KtrzpaVb-21" target="74DPA8lKF1p3KtrzpaVb-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="74DPA8lKF1p3KtrzpaVb-21" value="FHIR Questionnaire" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="400" y="110" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="74DPA8lKF1p3KtrzpaVb-23" value="Product Documentation" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="170" y="300" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZNk59exNOhM8uQ4xU25M-1" value="HL7 v2/FHIR Message" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="370" y="290" width="97.5" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZNk59exNOhM8uQ4xU25M-2" value="IHE Laboratory Testing Workflow" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="370" y="260" width="97.5" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZNk59exNOhM8uQ4xU25M-5" value="OAuth2 + openid" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="120" y="50" width="105" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZNk59exNOhM8uQ4xU25M-7" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="ZNk59exNOhM8uQ4xU25M-6" target="74DPA8lKF1p3KtrzpaVb-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZNk59exNOhM8uQ4xU25M-6" value="FHIR Implementation Guide" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="390" y="360" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZNk59exNOhM8uQ4xU25M-8" value="Can also be openEHR" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="400" y="140" width="90" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
