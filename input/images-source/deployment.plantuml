@@ -12,7 +12,8 @@ node network <<router>> [
 Genomics Regional Integration Engine - HSCN
 
 ----
-DNS Name: rie-test.nw-gmsa.nhs.uk????
+DNS Name: test.rie.nw-gmsa.nhs.uk????
+DNS Name: test.oauth2.nw-gmsa.nhs.uk????
 Virtual IP: i.e. 10.x IP TODO?????
 ====
 **Network Address Translation (NAT)**
