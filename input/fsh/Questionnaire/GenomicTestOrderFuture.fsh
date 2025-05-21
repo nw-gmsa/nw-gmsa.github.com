@@ -1,6 +1,6 @@
-Instance: GenomicTestOrder
+Instance: GenomicTestOrderFuture
 InstanceOf: NWQuestionnaire
-Title: "North West Genomics Test Order"
+Title: "North West Genomics Test Order Future"
 Description: """
 THIS IS FOR ANALYSIS, and is not to be used for implementation at present.
 
@@ -10,7 +10,7 @@ Usage:  #definition
 
 * title = "North West Genomics Test Order"
 * status = #draft
-* url = "https://nw-gmsa.github.io/Questionnaire/GenomicTestOrder"
+* url = "https://nw-gmsa.github.io/Questionnaire/GenomicTestOrderFuture"
 
 * item[+]
   * linkId = "Patient"
@@ -431,6 +431,16 @@ Usage:  #definition
   * text = "Ask At Order Entry Questions"
   * item[+]
     * type = #choice
+    * code[+] = $sct#842009 "Consanguinity"
+    * linkId = "SNM/842009"
+    * text = "Patient is from consanguineous union?"
+  // * answerValueSet = Canonical(YNU)
+    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
+    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
+    * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+  * item[+]
+    * type = #choice
     * linkId = "SNM/74996004-pathology-report"
     * text = "Confirm that a pathology report will be provided alongside the sample."
     * code[+] = $sct#74996004 "Confirmation of"
@@ -438,6 +448,80 @@ Usage:  #definition
     * answerOption[+].valueCoding = $loinc#LA32-8 "No"
     * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+  * item[+]
+    * type = #string
+    * linkId = "SNM/385675009"
+    * text = "Reason for variant re-interpretation request"
+    * code[+] = $sct#385675009 "Confirmation of"
+    * code[+] = $loinc#53577-3 "Reason for study"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+  * item[+]
+    * type = #string
+    * linkId = "SNM/119297000"
+    * text = "Specimen Source (Blood Restrictions)"
+    * code[+] = $sct#119297000 "Blood specimen"
+    * code[+] = $loinc#31208-2 "Specimen source identified"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+  * item[+]
+    * type = #string
+    * linkId = "SNM/782964007"
+    * text = "Clinical Indication"
+    * code[+] = $sct#782964007 "Genetic disease"
+    * code[+] = $loinc#51967-8 "Genetic disease assessed [ID]"
+    * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#autocomplete
+    * extension[preferredTerminologyServer].valueUrl = "https://snowstorm.ihtsdotools.org/fhir"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+    * answerValueSet = "http://snomed.info/sct/900000000000207008?fhir_vs=ecl/<782964007"
+  * item[+]
+    * type = #string
+    * linkId = "SNM/78989007"
+    * text = "Please enter the trisomy screening risk (including the chromosome of interest if appropriate)."
+    * code[+] = $sct#78989007 "Trisomy"
+    * code[+] = $loinc#75560-3 "Fetal Trisomy 21 prior risk [Likelihood] Based on maternal age"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+  * item[+]
+    * type = #choice
+    * linkId = "SNM/782902008"
+    * text = "Transplant?"
+    * code[+] = $sct#782902008 "Implantation procedure"
+    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
+    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
+    * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+    * item[+]
+      * type = #choice
+      * linkId = "SNM/5447007"
+      * code[+] = $sct#5447007 "Transfusion"
+      * text = "Transplant Type"
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#autocomplete
+      * extension[preferredTerminologyServer].valueUrl = "https://snowstorm.ihtsdotools.org/fhir"
+      * answerValueSet = "http://snomed.info/sct/900000000000207008?fhir_vs=ecl/<737294004"
+      * enableWhen[+]
+        * question = "SNM/782902008"
+        * operator = #=
+        * answerCoding = $loinc#LA33-6
+
+  * item[+]
+    * type = #choice
+    * linkId = "LN/21908-9"
+    * code[+] = $loinc#21908-9 "Stage group.clinical Cancer"
+    * text = "Advanced Lung Cancer Stage"
+    * answerValueSet = "http://snomed.info/sct/900000000000207008?fhir_vs=ecl/<1222594003"
+    * extension[preferredTerminologyServer].valueUrl = "https://snowstorm.ihtsdotools.org/fhir"
+  * item[+]
+    * type = #choice
+    * linkId = "SNM/74996004"
+    * text = "Extra Testing Form Completed?"
+    * code[+] = $sct#74996004 "Confirmation of"
+    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
+    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
+    * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+    * item[+]
+      * linkId = "SNM/74996004-designNote"
+      * type = #display
+      * text = "Please Note That An Additional Test Order Form 'Whole Genome Sequencing Rare Disease Order Form (Link at Top of Form)' is Required To Activate Testing. If This is Not Received, The DNA Will Be Extracted and Stored"
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
   * item[+]
     * type = #choice
     * linkId = "SNM/77386006"
@@ -487,3 +571,72 @@ Usage:  #definition
         * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueQuantity"
 
 
+* item[+]
+  * type = #group
+  * linkId = "PriorResults"
+  * text = "Prior Results"
+  * item[+]
+    * type = #group
+    * linkId = "HaemoglobinopathyTestResults"
+    * text = "Haemoglobinopathy Testing Prior Results"
+    * enableWhen[+]
+      * question = "SNM/15220000"
+      * operator = #=
+      * answerCoding = $NOS#HaemoglobinopathyGeneticTesting
+    * item[+]
+      * type = #reference
+      * linkId = "LN/58410-2"
+      * text = "CBC panel - Blood by Automated count"
+      * extension[referenceProfile].valueCanonical = Canonical(Observation-Panel)
+      * extension[referenceResource].valueCode = #Observation
+      * item[+]
+        * linkId = "LN/58410-2-designNote"
+        * type = #display
+        * text = "See Questionnaire [CBC panel - Blood by Automated count](https://nw-gmsa.github.io/R4/Questionnaire-58410-2.html)"
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+  * item[+]
+    * type = #group
+    * linkId = "RareAndInheritedDiseasesGeneticTesting"
+    * text = "Rare and Inherited Disease Prior Results"
+    * enableWhen[+]
+      * question = "SNM/15220000"
+      * operator = #=
+      * answerCoding = $NOS#RareAndInheritedDiseasesGeneticTesting
+  * item[+]
+    * type = #group
+    * linkId = "CancerGeneticTesting"
+    * text = "Cancer Testing Prior Results"
+    * enableWhen[+]
+      * question = "SNM/15220000"
+      * operator = #=
+      * answerCoding = $NOS#CancerGeneticTesting
+    * item[+]
+      * type = #group
+      * linkId = "UnknownResultsPanel"
+      * text = "Unknown Results Panel"
+      * item[+]
+        * linkId = "SNM/250537006"
+        * code[+] = $sct#250537006 "Histopathology finding (finding)"
+        * text = "Neoplastic Cell Content Level"
+        * type = #quantity
+        * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueQuantity"
+
+      * item[+]
+        * linkId = "NOS/230031"
+        * code[+] = $sct#250537006 "Histopathology finding (finding)"
+        * text = "Neoplastic Cell Content Level %"
+        * type = #quantity
+        * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueQuantity"
+
+    * item[+]
+      * linkId = "SNM/252416005"
+      * code[+] = $sct#252416005 "Histopathology test (procedure)"
+      * text = "Macrodissection Requirements"
+      * type = #string
+
+    * item[+]
+      * linkId = "NOS/230033"
+      * code[+] = $NOS#230033 "BLAST CELL COUNT"
+      * text = "Blast Cell Count"
+      * type = #quantity
+      * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueQuantity"
