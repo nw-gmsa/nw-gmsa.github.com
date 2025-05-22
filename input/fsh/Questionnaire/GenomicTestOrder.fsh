@@ -241,6 +241,9 @@ Usage:  #definition
   * linkId = "TestRequest"
   * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest"
   * text = "Test Request"
+
+// Test request	Test request type
+
   * item[+]
     * type = #choice
     * linkId = "SNM/15220000"
@@ -253,6 +256,14 @@ Usage:  #definition
     * answerOption[+].valueCoding = $NOS#PreNatalGeneticTesting "Pre Natal Genetic Testing (procedure)"
     * answerOption[+].valueCoding = $NOS#HaemoglobinopathyGeneticTesting "Haemoglobinopathy Genetic Testing (procedure)"
     * answerOption[+].valueCoding = $NOS#CancerGeneticTesting "Cancer Genetic Testing (procedure)"
+
+// Test request	CITT code
+//Test request	Type of WGS
+//Test request	Proband or Family Member (for WGS)
+//Test request	Rare Disease Test Type
+//Test request	Haemato-Oncology Test Type
+//Test request	Solid Tumour Test Type
+
   * item[+]
     * type = #choice
     * linkId = "HL7/OBR-4-r"
@@ -306,6 +317,9 @@ Usage:  #definition
     * linkId = "pedigreeNumber"
     * text = "G Number (Pedigree Number) - Order Group Number"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.requisition"
+
+// Test request	Test request ID/Order ID
+
   * item[+]
     * type = #string
     * linkId = "LN/106194-4"
@@ -313,6 +327,10 @@ Usage:  #definition
     * text = "Test request ID/Order ID"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.identifier:placerOrderNumber"
     * required = false
+
+// Test request	Priority
+
+
   * item[+]
     * type = #choice
     * linkId = "LN/82768-3"
@@ -322,12 +340,33 @@ Usage:  #definition
     * required = false
     * answerValueSet = Canonical(RequestPriority)
 
+// Healthcare professional	Clinical Geneticist email
+
+  * item[+]
+    * linkId = "NOS/GeneticistEmail"
+    * code[+] = $NOS#GeneticistEmail
+    * text = "Clinical Geneticist email"
+    * type = #string
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueString"
+
+
+// Healthcare professional	Clinical Geneticist department email
+
+  * item[+]
+    * linkId = "NOS/GeneticistDepartmentEmail"
+    * code[+] = $NOS#GeneticistDepartmentEmail
+    * text = "Clinical Geneticist department email"
+    * type = #string
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueString"
 
 
   * item[+]
     * type = #group
     * linkId = "Consent"
     * text = "Consent"
+
+// Consent	Has consent has been obtained for tests (Y/N)
+
     * item[+]
       * type = #choice
       * linkId = "LN/19826-7"
@@ -338,6 +377,9 @@ Usage:  #definition
       * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
       * answerOption[+].valueCoding = $loinc#LA32-8 "No"
       * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+
+// Consent	Has consent has been obtained for DNA storage (Y/N)
+
     * item[+]
       * type = #choice
       * linkId = "LN/75520-7"
@@ -346,9 +388,14 @@ Usage:  #definition
       * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
       * answerOption[+].valueCoding = $loinc#LA32-8 "No"
       * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+
+// Consent	ROD attached or to follow
+
     * item[+]
       * type = #choice
-      * linkId = "consent-3"
+      * linkId = "NOS/RODToFollow"
+      * code[+] = $NOS#RODToFollow
+      * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
       * text = "ROD attached or to follow"
       * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
       * answerOption[+].valueCoding = $loinc#LA32-8 "No"
@@ -357,6 +404,9 @@ Usage:  #definition
     * type = #group
     * linkId = "PatientClinicalInformation"
     * text = "Patient Clinical Information"
+
+// Patient clinical information	Specific disease suspected/reason for testing
+
     * item[+]
       * type = #choice
       * linkId = "LN/51967-8"
@@ -366,18 +416,40 @@ Usage:  #definition
       * text = "CITT code (Specific disease suspected/reason for testing)"
       * answerValueSet = Canonical(GenomicConditionCode)
       * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.reasonCode"
+
+// Patient clinical information	Relevant clinical information and family history
+
     * item[+]
       * type = #string
-      * linkId = "HL7/NTE"
+      * linkId = "HL7/NTE-1"
       * text = "Relevant clinical information and family history"
       * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.note"
 
+// Patient clinical information	Reason For Variant Re-Interpretation Request
+
+    * item[+]
+      * type = #string
+      * linkId = "HL7/NTE-2"
+      * text = "Reason For Variant Re-Interpretation Request"
+      * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.note"
 
 * item[+]
   * type = #group
   * linkId = "Specimen"
   * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen"
   * text = "Specimen/Biopsy"
+
+// Test request	Sample collection status
+
+  * item[+]
+    * type = #string
+    * linkId = "HL7/SPM"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.status"
+    * text = "Sample collection status"
+    * answerValueSet = "http://hl7.org/fhir/ValueSet/specimen-status"
+
+// Test request	Lab stored DNA Number (If Known)
+// Raw specimen/biopsy (Directly obtained from patient)	Specimin ID Number
 
   * item[+]
     * type = #string
@@ -395,7 +467,9 @@ Usage:  #definition
     * type = #string
     * linkId = "LN/80398-1-ODS"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.identifier.assigner.identifier.value"
-    * text = "Pathology Laboratory Hospital/Trust ID"
+    * text = "Pathology Laboratory Hospital/Trust ID (for Path Lab Sample/Stored DNA)"
+
+// Raw specimen/biopsy (Directly obtained from patient)	Specimin Collection Date
 
   * item[+]
     * type = #dateTime
@@ -414,6 +488,8 @@ Usage:  #definition
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
+// Raw specimen/biopsy (Directly obtained from patient)	Specimin Type
+
   * item[+]
     * type = #choice
     * linkId = "LN/66746-9"
@@ -430,6 +506,9 @@ Usage:  #definition
       OML v2.5.1 SPM-4
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+//Raw specimen/biopsy (Directly obtained from patient)	Specimin High Infection risk?
+
   * item[+]
     * linkId = "SNM/281269004"
     * code[+] = $sct#281269004 "High infection risk sample"
@@ -440,6 +519,15 @@ Usage:  #definition
     * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
     * answerOption[+].valueCoding = $loinc#LA32-8 "No"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+
+//  Raw specimen/biopsy (Directly obtained from patient)	Specimin High infection Risk Details
+  * item[+]
+    * linkId = "NOS/InfectionRiskDetails"
+    * code[+] = $NOS#InfectionRiskDetails
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueString"
+    * text = "High infection Risk Details"
+    * type = #string
+
   * item[+]
     * linkId = "LN/74384-9"
     * code[+] = $sct#434711009 "Specimen container"
@@ -451,6 +539,9 @@ Usage:  #definition
     * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
     * answerOption[+].valueCoding = $loinc#LA32-8 "No"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+
+  // Raw specimen/biopsy (Directly obtained from patient)	Tissue source/organ of origin
+
   * item[+]
     * linkId = "LN/39111-0"
     * code[+] = $loinc#39111-0
@@ -458,6 +549,9 @@ Usage:  #definition
     * text = "Tissue source/organ of origin"
     * type = #choice
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.collection.bodySite"
+
+// Raw specimen/biopsy (Directly obtained from patient)	Specimin Volume/number of slides or scrolls
+
   * item[+]
     * linkId = "LN/3169-0"
     * code[+] = $loinc#3169-0 "Specimen volume"
@@ -465,35 +559,48 @@ Usage:  #definition
     * text = "Specimen Volume/number of slides or scrolls"
     * type = #string
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.collection.quantity"
+
+// Raw specimen/biopsy (Directly obtained from patient)	Anticoagulant/preservative
+
+
   * item[+]
     * linkId = "OrderTracking"
     * text = "Audit (Specimen Tracking)"
     * type = #group
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.collection"
     * item[+]
-      * linkId = "NOS/xxxx1"
+      * linkId = "NOS/SampleReceived"
       * text = "Date and time sample received in lab"
       * type = #date
       * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.receivedTime"
     * item[+]
-      * linkId = "NOS/xxxx2"
+      * linkId = "NOS/SampleSent"
+      * code[+] = $NOS#SampleSent
       * text = "Date and time sample sent"
       * type = #date
+      * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueDateTime"
     * item[+]
-      * linkId = "NOS/xxxx3"
+      * linkId = "NOS/TransportUsed"
+      * code[+] = $NOS#TransportUsed
+      * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueString"
       * text = "Transport used"
       * type = #string
     * item[+]
       * linkId = "LN/97209-1"
       * code[+] = $loinc#97209-1
+      * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueString"
       * text = "Tracking number"
       * type = #string
     * item[+]
-      * linkId = "NOS/xxxx5"
+      * linkId = "NOS/SampleSentTo"
+      * code[+] = $NOS#SampleSentTo
+      * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueString"
       * text = "Sample sent to"
       * type = #string
     * item[+]
-      * linkId = "NOS/xxxx6"
+      * linkId = "NOS/SampleSentToName"
+      * code[+] = $NOS#SampleSentToName
+      * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueString"
       * text = "Name of person who sent sample"
       * type = #string
 
@@ -597,7 +704,7 @@ Usage:  #definition
     * linkId = "SNM/17369002"
     * text = "Is this test for a pregnancy loss?"
     * code[+] = $sct#17369002 "Miscarriage"
-    * answerOption[+].valueCoding = $NOS#LA33-6 "Yes"
+    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
     * answerOption[+].valueCoding = $loinc#LA32-8 "No"
     * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
@@ -607,8 +714,30 @@ Usage:  #definition
     * linkId = "SNM/419099009"
     * text = "Is this test for a deceased infant?"
     * code[+] = $sct#419099009 "Dead"
-    * answerOption[+].valueCoding = $NOS#LA33-6 "Yes"
+    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
     * answerOption[+].valueCoding = $loinc#LA32-8 "No"
     * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
 
+* item[+]
+  * type = #group
+  * linkId = "PriorResults"
+  * text = "Prior Results"
+
+//Raw specimen/biopsy (Directly obtained from patient)	Pathology Laboratory Hospital/Trust ID	If Test request type =solid tumour or haem onc or Cancer WGS
+//Raw specimen/biopsy (Directly obtained from patient)	Date of Diagnosis	If Test request type =solid tumour or haem onc or Cancer WGS
+//Raw specimen/biopsy (Directly obtained from patient)	Confirm pathology report to follow 	If Test request type =solid tumour or haem onc or Cancer WGS
+//Raw specimen/biopsy (Directly obtained from patient)	Germline sample also being sent 	If Test request type =solid tumour or haem onc or Cancer WGS
+//Raw specimen/biopsy (Directly obtained from patient)	Germline sample type	If Cancer sample type = germline/normal
+//Raw specimen/biopsy (Directly obtained from patient)	Solid tumour pathology block/sample number	If Cancer sample type = solid tumour
+//Raw specimen/biopsy (Directly obtained from patient)	Solid tumour type	If Cancer sample type = solid tumour
+//Raw specimen/biopsy (Directly obtained from patient)	Solid tumour location	If Cancer sample type = solid tumour
+//Raw specimen/biopsy (Directly obtained from patient)	Solid tumour topography	If Cancer sample type = solid tumour
+//Raw specimen/biopsy (Directly obtained from patient)	Solid tumour morphology	If Cancer sample type = solid tumour
+//Raw specimen/biopsy (Directly obtained from patient)	Solid tumour macrodissection requirements 	If Cancer sample type = solid tumour
+//Raw specimen/biopsy (Directly obtained from patient)	Overall neoplastic cell content (%)	If Cancer sample type = solid tumour
+//Raw specimen/biopsy (Directly obtained from patient)	Tumour sample presence (or not) of necrotic tissue within the cross section of the block that was cut	If Cancer sample type = solid tumour
+//Raw specimen/biopsy (Directly obtained from patient)	Tumour sample Overall cellularity of the block that was cut (estimated # of cells in the cross-section of the block cut)	If Cancer sample type = solid tumour
+//Raw specimen/biopsy (Directly obtained from patient)	Approx % neoplastic nuclei in tumour area highlighted 	If Cancer sample type = solid tumour
+//Raw specimen/biopsy (Directly obtained from patient)	Haemato-oncology liquid tumour type	If Cancer sample type = haem onc
+//Raw specimen/biopsy (Directly obtained from patient)	Tumour sample % Malignant nuceli/blasts	If Cancer sample type = haem onc
