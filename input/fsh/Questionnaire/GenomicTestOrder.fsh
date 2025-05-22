@@ -18,6 +18,8 @@ Usage:  #definition
   * type = #group
   * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient"
 
+// Patient	Patient/proband surname
+
   * item[+]
     * type = #string
     * linkId = "LN/45394-4"
@@ -25,6 +27,10 @@ Usage:  #definition
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.name.family"
     * required = true
     * text = "Patient surname"
+
+
+//Patient	Patient/proband first name
+
   * item[+]
     * type = #string
     * linkId = "LN/45392-8"
@@ -32,6 +38,9 @@ Usage:  #definition
     * required = true
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.name.given"
     * text = "Patient first name"
+
+//Patient	Patient/proband DOB
+
   * item[+]
     * type = #date
     * linkId = "LN/21112-8"
@@ -39,6 +48,10 @@ Usage:  #definition
     * required = true
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.birthDate"
     * text = "Date of birth"
+
+// Patient	Patient/proband date of death
+
+
   * item[+]
     * type = #date
     * linkId = "LN/81954-0"
@@ -46,6 +59,10 @@ Usage:  #definition
     * required = false
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.deceasedDateTime"
     * text = "Date of death"
+
+ // Patient	Patient/proband address
+
+
   * item[+]
     * type = #group
     * linkId = "LN/56799-0"
@@ -63,12 +80,19 @@ Usage:  #definition
       * linkId = "HL7/PID-11-3"
       * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.address.city"
       * text = "City"
+
+// Patient	Patient/proband post code
+
+
     * item[+]
       * type = #string
       * linkId = "LN/45401-7"
       * code[+] = $loinc#45401-7
       * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.address.postalCode"
       * text = "Postcode"
+
+// Patient	Patient/proband sex registered at birth
+
   * item[+]
     * type = #choice
     * linkId = "LN/46098-0"
@@ -76,6 +100,10 @@ Usage:  #definition
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.gender"
     * text = "Sex registered at birth"
     * answerValueSet = "http://hl7.org/fhir/ValueSet/administrative-gender"
+
+//  Patient	Patient/proband ethnicity
+
+
   * item[+]
     * type = #choice
     * linkId = "LN/32624-9"
@@ -83,12 +111,19 @@ Usage:  #definition
     * text = "Ethnic Category"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.extension:ethnicCategory"
     * answerValueSet = Canonical(Ethnicity)
+
+// Patient	Patient/proband NHS number
+
+
   * item[+]
     * type = #string
     * linkId = "LN/89061-6"
     * code[+] = $loinc#89061-6
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.identifier:nhsNumber"
     * text = "NHS Number"
+
+// Patient	Patient/proband hospital number
+
   * item[+]
     * type = #string
     * linkId = "LN/76435-7"
@@ -96,6 +131,10 @@ Usage:  #definition
     * text = "Hospital Number (Medical Record Number)"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.identifier:MedicalRecordNumber"
     * required = true
+
+// Patient	Account number (visit number)
+
+
   * item[+]
     * type = #string
     * linkId = "LN/56797-4"
@@ -109,14 +148,22 @@ Usage:  #definition
       * text = "PV1-19 (also known as stay number)"
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
+// Patient	Age at collection
+
   * item[+]
     * type = #decimal
     * linkId = "ageAtCollection"
     * text = "Age at collection"
+
+// Patient	Location
+
   * item[+]
     * type = #string
     * linkId = "location"
     * text = "Location"
+
+// Patient	GP
+
   * item[+]
     * type = #choice
     * linkId = "HL7/PD1-3"
@@ -128,6 +175,9 @@ Usage:  #definition
   * linkId = "HealthcareProfessional"
   * definition = "https://nw-gmsa.github.io/StructureDefinition/PractitionerRole#PractitionerRole"
   * text = "Healthcare Professional"
+
+// Healthcare professional	Referring Clinician Name
+
   * item[+]
     * type = #string
     * linkId = "LN/18705-4"
@@ -135,6 +185,9 @@ Usage:  #definition
     * required = true
     * definition = "https://nw-gmsa.github.io/StructureDefinition/PractitionerRole#PractitionerRole.practitioner.display"
     * text = "Referring Clinician Name"
+
+// Healthcare professional	Referring Clinician Current Speciality
+
   * item[+]
     * type = #choice
     * linkId = "LN/18707-0"
@@ -143,6 +196,9 @@ Usage:  #definition
     * text = "Referring Clinician Current Speciality"
     * required = true
     * answerValueSet = "https://fhir.hl7.org.uk/ValueSet/UKCore-PracticeSettingCode"
+
+// Healthcare professional	Referring Clinician Professional Identifier
+
   * item[+]
     * type = #string
     * linkId = "LN/46608-6"
@@ -150,24 +206,35 @@ Usage:  #definition
     * definition = "https://nw-gmsa.github.io/StructureDefinition/PractitionerRole#PractitionerRole.practitioner.identifier.value"
     * text = "Referring Clinician Professional Identifier"
     * required = true
+
+// Healthcare professional	Referring Clinician Email
+// Healthcare professional	Secondary Clinician Email
+
+
   * item[+]
     * type = #string
     * linkId = "LN/89058-2"
     * code[+] = $loinc#89058-2 "Contact email address"
+    * repeats = true
     * definition = "https://nw-gmsa.github.io/StructureDefinition/PractitionerRole#PractitionerRole.telecom.value"
     * text = "Email"
+
+// Healthcare professional	Referring Clinician Telephone
+
   * item[+]
     * type = #string
     * linkId = "LN/81230-5"
     * code[+] = $loinc#81230-5
     * definition = "https://nw-gmsa.github.io/StructureDefinition/PractitionerRole#PractitionerRole.telecom.value"
     * text = "Phone"
+
+//Healthcare professional	Referring Organisation ODS code
+
   * item[+]
     * type = #string
     * linkId = "HL7/ORC-21"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/PractitionerRole#PractitionerRole.organization.identifier.value"
     * text = "Referring Organisation ODS Code"
-
 
 * item[+]
   * type = #group
@@ -230,6 +297,10 @@ Usage:  #definition
     * required = true
     * repeats = true
     * answerValueSet = Canonical(GenomicCancer)
+
+
+// Patient	G number (pedigree number)
+
   * item[+]
     * type = #string
     * linkId = "pedigreeNumber"
@@ -250,6 +321,8 @@ Usage:  #definition
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.priority"
     * required = false
     * answerValueSet = Canonical(RequestPriority)
+
+
 
   * item[+]
     * type = #group
@@ -429,6 +502,18 @@ Usage:  #definition
   * type = #group
   * linkId = "AskAtOrderEntry"
   * text = "Ask At Order Entry Questions"
+
+// Patient	Patient is from consanguinous union?
+
+  * item[+]
+    * type = #choice
+    * code[+] = $sct#842009 "Consanguinity"
+    * linkId = "SNM/842009"
+    * text = "Patient is from consanguineous union?"
+    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
+    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
+    * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
   * item[+]
     * type = #choice
     * linkId = "SNM/74996004-pathology-report"
@@ -438,6 +523,10 @@ Usage:  #definition
     * answerOption[+].valueCoding = $loinc#LA32-8 "No"
     * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+
+// Patient	Does this test relate to an ongoing pregnancy?
+
+
   * item[+]
     * type = #choice
     * linkId = "SNM/77386006"
@@ -456,6 +545,9 @@ Usage:  #definition
         * question = "SNM/77386006"
         * operator = #=
         * answerCoding = $loinc#LA33-6
+
+//Patient	Does this test relate to a pregnancy with > 1 fetus?
+
       * item[+]
         * type = #string
         * linkId = "SNM/370386005"
@@ -466,12 +558,17 @@ Usage:  #definition
         * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
         * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
 
+// Patient	Patient expected delivery date
+
       * item[+]
         * type = #date
         * linkId = "SNM/161714006"
         * code[+] = $sct#161714006 "Estimated date of delivery"
         * text = "Patient expected delivery date"
         * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueDateTime"
+
+// Patient	Patient gestation
+
       * item[+]
         * type = #integer
         * linkId = "SNM/598151000005105"
@@ -479,11 +576,39 @@ Usage:  #definition
         * extension[unit].valueCoding = $ucum#wk "Wk"
         * text = "Patient gestation"
         * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueQuantity"
-      * item[+]
-        * type = #string
-        * linkId = "SNM/169222003"
-        * code[+] = $sct#169222003 "US obstetric scan abnormal"
-        * text = "What were the Abnormal Scan Findings"
-        * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueQuantity"
 
+
+// Patient	Neonatal/Prenatal/Neither
+
+  * item[+]
+    * type = #choice
+    * linkId = "SNM/118185001"
+    * text = "Neonatal/Prenatal/Neither?"
+    * code[+] = $sct#118185001 "Finding related to pregnancy"
+    * answerOption[+].valueCoding = $sct#118189007 "Prenatal finding"
+    * answerOption[+].valueCoding = $sct#255407002 "Neonatal"
+    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+
+// Patient	Is this test for a deceased infant or pregnancy loss
+
+  * item[+]
+    * type = #choice
+    * linkId = "SNM/17369002"
+    * text = "Is this test for a pregnancy loss?"
+    * code[+] = $sct#17369002 "Miscarriage"
+    * answerOption[+].valueCoding = $NOS#LA33-6 "Yes"
+    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
+    * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+
+  * item[+]
+    * type = #choice
+    * linkId = "SNM/419099009"
+    * text = "Is this test for a deceased infant?"
+    * code[+] = $sct#419099009 "Dead"
+    * answerOption[+].valueCoding = $NOS#LA33-6 "Yes"
+    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
+    * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
 
