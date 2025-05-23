@@ -1,0 +1,35 @@
+@startuml
+
+title "Cancer Data Mesh + Domain Driven Design (High Level)"
+
+hexagon "General Medicine (EHR)" as EHR {
+ rectangle "[[https://build.fhir.org/ig/HL7/fhir-sdoh-clinicalcare/ Social Determinent of Health (SDOH) - HL7 USA]]\n[[https://ckm.openehr.org/ckm/archetypes/1013.1.5804 ocial determinants of health (SDOH) self-assessment openEHR]]" as SDOH
+}
+
+hexagon "Pathology" as path {
+ rectangle "[[https://build.fhir.org/ig/HL7/fhir-mCODE-ig/index.html Laboratory Report (mCode) - USA/EU]]" as ORUP
+}
+
+hexagon "Genomics" as genomics {
+ rectangle "[[https://build.fhir.org/ig/HL7/genomics-reporting/ Genomics Reporting]]" as ORUG
+ rectangle "Pedigree Chart" as pedigree
+ rectangle "[[https://nw-gmsa.github.io/R4/Questionnaire-GenomicTestOrder.html Genomic Test Order]]" as ORMG
+}
+
+
+hexagon "Radiology" as radiology {
+ rectangle "[[https://build.fhir.org/ig/hl7-eu/imaging/ Imaging Study Report - EU]]" as study
+ rectangle "Images (DICOM)" as images
+
+}
+
+EHR -d[hidden] path
+path -d[hidden]- radiology
+
+note "Interfaces to hexagon 'lego bricks' follow IHE profiles (API contracts?)\nREST API (Read only) - IHE QEDm (HL7 IPA/FHIR RESTful API)\nAsync I/O - HL7 v2 and FHIR Pub/Sub\nSOAP/REST API - Health Documents IHE XDS/MHD (CDA/FHIR Document)" as N1
+
+note "PRSB ???? includes SDOH" as N2
+
+N1 .d[hidden]. N2
+
+@enduml
