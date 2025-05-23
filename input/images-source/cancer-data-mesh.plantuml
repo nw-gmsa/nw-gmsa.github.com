@@ -4,6 +4,7 @@ title "Cancer Data Mesh + Domain Driven Design (High Level)"
 
 hexagon "General Medicine (EHR)" as EHR {
  rectangle "[[https://build.fhir.org/ig/HL7/fhir-sdoh-clinicalcare/ Social Determinent of Health (SDOH) - HL7 USA]]\n[[https://ckm.openehr.org/ckm/archetypes/1013.1.5804 ocial determinants of health (SDOH) self-assessment openEHR]]" as SDOH
+  rectangle "Vital Signs" as vitalSigns
 }
 
 hexagon "Pathology" as path {
