@@ -10,7 +10,7 @@ Description: "TODO"
 * effectiveDateTime = "2025-01-29T10:37:26+00:00"
 
 * code
-  * coding[+] = $NOS#230056 "What Type of Referral Do You Require?"
+  * coding[+] = $MFTEPIC#230056 "What Type of Referral Do You Require?"
 
 // EPIC-PV1
 * encounter.reference = "urn:uuid:984b8a89-4194-4eb4-a7ea-ca8049ebeea3"

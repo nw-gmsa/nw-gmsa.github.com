@@ -636,7 +636,7 @@ Usage:  #definition
 
     * item[+]
       * linkId = "NOS/230033"
-      * code[+] = $NOS#230033 "BLAST CELL COUNT"
+      * code[+] = $MFTEPIC#230033 "BLAST CELL COUNT"
       * text = "Blast Cell Count"
       * type = #quantity
       * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueQuantity"
