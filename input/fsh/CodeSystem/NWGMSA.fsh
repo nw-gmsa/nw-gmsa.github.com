@@ -1,18 +1,18 @@
-CodeSystem: NWGMSA
-Id: nwgmsa
-Title: "Not Otherwise Specified"
+CodeSystem: nw-gmsa
+Id: nw-gmsa
+Title: "NW GMSA Codes"
 Description: """
 Bucket for local codes
 """
 
-* ^name = "NWGMSA"
+* ^name = "nw-gmsa"
 * ^content = #complete
 * ^caseSensitive = true
 * ^experimental = false
 * ^status = #draft
 * ^version = "0.0.1"
 * ^date = "2025-05-06"
-* ^url = "https://nw-gmsa.github.io/CodeSystem/NWGMSA"
+* ^url = "https://nw-gmsa.github.io/CodeSystem/nw-gmsa"
 
 // Ethnic
 
