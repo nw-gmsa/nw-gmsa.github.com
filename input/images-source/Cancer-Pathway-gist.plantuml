@@ -1,0 +1,35 @@
+@startuml
+
+hide footbox
+
+title "Cancer Pathway - rough gist of workflow?"
+
+participant GP
+participant SecondaryCareOncology
+participant Pathology
+participant Radiology
+participant Genomics
+
+
+GP -> SecondaryCareOncology: Patient Referral
+
+== Diagnosis ==
+
+SecondaryCareOncology -> Pathology : Laboratory Test Order\nFull Blood Count
+Pathology --> SecondaryCareOncology : Laboratory Report
+Pathology -> Genomics: Laboratory Test Order\nGenetic Test
+Genomics --> Pathology: Genomic Report
+Genomics --> SecondaryCareOncology: Genomic Report
+SecondaryCareOncology -> Pathology : Laboratory Test Order\nComprehensive Metabolic Tests
+Pathology --> SecondaryCareOncology : Laboratory Report
+
+SecondaryCareOncology --> GP: Discharge Report
+
+== Treatment ==
+
+SecondaryCareOncology -> SecondaryCareOncology: Perform Procedure
+SecondaryCareOncology -> Radiology: Imaging Test Order
+Radiology --> SecondaryCareOncology: Imaging Report
+SecondaryCareOncology --> GP: Discharge Report
+
+@enduml
