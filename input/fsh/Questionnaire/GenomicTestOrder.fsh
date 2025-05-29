@@ -692,7 +692,7 @@ Usage:  #definition
     * linkId = "SNM/118185001"
     * text = "Neonatal/Prenatal/Neither?"
     * code[+] = $sct#118185001 "Finding related to pregnancy"
-    * answerOption[+].valueCoding = $sct#118189007 "Prenatal finding"
+    * answerOption[+].valueCoding = $sct#77386006 "Pregnancy"
     * answerOption[+].valueCoding = $sct#255407002 "Neonatal"
     * answerOption[+].valueCoding = $loinc#LA32-8 "No"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
