@@ -29,9 +29,15 @@ TODO Add diagram showing operational data (DICOOM, HL7 and openEHR) and analytic
 [Data Mesh](https://en.wikipedia.org/wiki/Data_mesh)
 [Data Mesh Principles](https://martinfowler.com/articles/data-mesh-principles.html)
 
+<img style="padding:3px;width:60%;" src="Data Mesh Hexagonal.drawio.png" alt="Data Mesh"/>
+<br clear="all">
+<p class="figureTitle">Data Mesh</p> 
+<br clear="all">
+
+
 <img style="padding:3px;width:60%;" src="data architecture.drawio.png" alt="Data Architecture"/>
 <br clear="all">
-<p class="figureTitle">Data Architecture</p> 
+<p class="figureTitle">Data Mesh Application</p> 
 <br clear="all">
 
 
