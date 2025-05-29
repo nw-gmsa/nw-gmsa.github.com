@@ -153,7 +153,7 @@ Usage:  #definition
   * item[+]
     * type = #decimal
     * linkId = "ageAtCollection"
-    * text = "Age at collection"
+    * text = "Age at collection (ignore for FHIR)"
 
 // Patient	Location
 
@@ -161,6 +161,7 @@ Usage:  #definition
     * type = #string
     * linkId = "location"
     * text = "Location"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Encounter#Encounter.location"
 
 // Patient	GP
 
@@ -448,7 +449,7 @@ Usage:  #definition
     * text = "Sample collection status"
     * answerValueSet = "http://hl7.org/fhir/ValueSet/specimen-status"
 
-// Test request	Lab stored DNA Number (If Known)
+
 // Raw specimen/biopsy (Directly obtained from patient)	Specimin ID Number
 
   * item[+]
@@ -456,17 +457,28 @@ Usage:  #definition
     * code[+] = $loinc#80398-1 "Unique identifier for Current sample"
     * code[+] = $sct#1208523001 "Identifier"
     * linkId = "LN/80398-1"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.identifier.value"
-    * text = "Specimen ID Number / Lab DNA Number (If Known)"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.identifier"
+    * text = "Specimen ID Number"
     * item[+]
       * linkId = "LN/80398-1-designNote"
       * type = #display
       * text = "ORM v2.4 - OBX-3 = LOINC 80398-1 and OBX-2 = CE. OML v2.5.1 SPM-2"
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+// Test request	Lab stored DNA Number (If Known)
+
+  * item[+]
+      * type = #string
+      * code[+] = $loinc#80398-1 "Unique identifier for Current sample"
+      * code[+] = $sct#1208523001 "Identifier"
+      * linkId = "Specimen/accessionIdentifier"
+      * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.accessionIdentifier"
+      * text = "Lab DNA Number (If Known)"
+
   * item[+]
     * type = #string
     * linkId = "LN/80398-1-ODS"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.identifier.assigner.identifier.value"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.accessionIdentifier.assigner.identifier.value"
     * text = "Pathology Laboratory Hospital/Trust ID (for Path Lab Sample/Stored DNA)"
 
 // Raw specimen/biopsy (Directly obtained from patient)	Specimin Collection Date
@@ -488,7 +500,7 @@ Usage:  #definition
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
-// Raw specimen/biopsy (Directly obtained from patient)	Specimin Type
+// Raw specimen/biopsy (Directly obtained from patient)	Specimen Type
 
   * item[+]
     * type = #choice
