@@ -468,12 +468,12 @@ Usage:  #definition
 // Test request	Lab stored DNA Number (If Known)
 
   * item[+]
-      * type = #string
-      * code[+] = $loinc#80398-1 "Unique identifier for Current sample"
-      * code[+] = $sct#1208523001 "Identifier"
-      * linkId = "Specimen/accessionIdentifier"
-      * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.accessionIdentifier"
-      * text = "Lab DNA Number (If Known)"
+    * type = #string
+    * code[+] = $loinc#80398-1 "Unique identifier for Current sample"
+    * code[+] = $sct#1208523001 "Identifier"
+    * linkId = "Specimen/accessionIdentifier"
+    * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.accessionIdentifier"
+    * text = "Lab DNA Number (If Known)"
 
   * item[+]
     * type = #string
