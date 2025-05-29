@@ -634,24 +634,36 @@ Usage:  #definition
 // Patient	Does this test relate to an ongoing pregnancy?
 
 
+//  * item[+]
+//    * type = #choice
+//    * linkId = "SNM/77386006"
+//    * text = "Does this test relate to an ongoing pregnancy?"
+//    * code[+] = $sct#77386006 "Pregnancy"
+//    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
+//    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
+//    * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
+//    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+
+
+// Patient	Neonatal/Prenatal/Neither
+
   * item[+]
     * type = #choice
-    * linkId = "SNM/77386006"
-    * text = "Does this test relate to an ongoing pregnancy?"
-    * code[+] = $sct#77386006 "Pregnancy"
-   //   * answerValueSet = Canonical(YNU)
-    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
+    * linkId = "SNM/118185001"
+    * text = "Neonatal/Prenatal/Neither?"
+    * code[+] = $sct#118185001 "Finding related to pregnancy"
+    * answerOption[+].valueCoding = $sct#77386006 "Pregnancy"
+    * answerOption[+].valueCoding = $sct#255407002 "Neonatal"
     * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-    * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
     * item[+]
       * type = #group
       * linkId = "pregnant"
       * text = "Pregnant"
       * enableWhen[+]
-        * question = "SNM/77386006"
+        * question = "SNM/118185001"
         * operator = #=
-        * answerCoding = $loinc#LA33-6
+        * answerCoding = $sct#77386006
 
 //Patient	Does this test relate to a pregnancy with > 1 fetus?
 
@@ -683,19 +695,6 @@ Usage:  #definition
         * extension[unit].valueCoding = $ucum#wk "Wk"
         * text = "Patient gestation"
         * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueQuantity"
-
-
-// Patient	Neonatal/Prenatal/Neither
-
-  * item[+]
-    * type = #choice
-    * linkId = "SNM/118185001"
-    * text = "Neonatal/Prenatal/Neither?"
-    * code[+] = $sct#118185001 "Finding related to pregnancy"
-    * answerOption[+].valueCoding = $sct#77386006 "Pregnancy"
-    * answerOption[+].valueCoding = $sct#255407002 "Neonatal"
-    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
 
 // Patient	Is this test for a deceased infant or pregnancy loss
 
