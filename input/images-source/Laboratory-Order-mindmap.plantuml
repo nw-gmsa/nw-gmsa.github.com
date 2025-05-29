@@ -1,0 +1,12 @@
+@startmindmap
+* Laboratory Test Order
+** Patient
+** Healthcare Professional
+** Test Request
+*** Consent
+** Patient Clinical Information
+** Specimen
+** Ask At Order Entry
+*** Pregnant
+** Prior Results
+@endmindmap
