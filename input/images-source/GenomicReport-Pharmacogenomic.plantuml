@@ -1,0 +1,18 @@
+@startmindmap
+
+title "Pharmacogenomic Reporting"
+
+* [[https://hl7.org/fhir/uv/genomics-reporting/StructureDefinition-genomic-report.html Genomic Report]] (Somatic)
+** [[StructureDefinition-Patient.html patient (subject)]]
+** [[StructureDefinition-ServiceRequest.html Order (basedOn)]]
+** [[StructureDefinition-Specimen.html specimen]]
+** Results Interpreter
+** Performer
+** results
+***: [[https://hl7.org/fhir/uv/genomics-reporting/StructureDefinition-therapeutic-implication.html Theraputic Implication]]
+derivedFrom Genotype;
+***: [[https://hl7.org/fhir/uv/genomics-reporting/StructureDefinition-genotype.html Genotype]]
+derivedFrom Variant;
+*** [[https://hl7.org/fhir/uv/genomics-reporting/StructureDefinition-variant.html Variant]]
+
+@endmindmap

@@ -10,12 +10,26 @@
 ## Domain Archetype
 
 ### Somatic Reporting
+
+[HL7 FHIR Genomics Reporting - Somatic Reporting](https://hl7.org/fhir/uv/genomics-reporting/pharmacogenomics.html)
+
 <figure>
 {%include GenomicReport-Somatic.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Genomic Report - Somatic</p>
 </figure>
 <br clear="all">
 
+### Pharmacogenomic Reporting
+
+[HL7 FHIR Genomics Reporting - Pharmacogenomic Reporting](https://hl7.org/fhir/uv/genomics-reporting/pharmacogenomics.html)
+
+<figure>
+{%include GenomicReport-Pharmacogenomic.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">Genomic Report - Somatic</p>
+</figure>
+<br clear="all">
+
+### HL7 v2 Genetic Variant Reporting (ORU_R01)
 
 > [Master HL7 genetic variant reporting panel](https://nw-gmsa.github.io/R4/Questionnaire-81247-9.html)
 
