@@ -9,6 +9,14 @@
 
 ## Domain Archetype
 
+### Somatic Reporting
+<figure>
+{%include GenomicReport-Somatic.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">Genomic Report - Somatic</p>
+</figure>
+<br clear="all">
+
+
 > [Master HL7 genetic variant reporting panel](https://nw-gmsa.github.io/R4/Questionnaire-81247-9.html)
 
 <figure>
