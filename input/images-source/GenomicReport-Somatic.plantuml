@@ -2,9 +2,9 @@
 
 title "Somatic Reporting"
 
-* Genomic Report (Somatic)
+* [[https://hl7.org/fhir/uv/genomics-reporting/StructureDefinition-genomic-report.html Genomic Report]] (Somatic)
 ** [[StructureDefinition-Patient.html patient (subject)]]
-** Order (basedOn)
+** [[StructureDefinition-ServiceRequest.html Order (basedOn)]]
 ** [[StructureDefinition-Specimen.html specimen]]
 ** Results Interpreter
 ** Performer
