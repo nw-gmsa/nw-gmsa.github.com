@@ -159,7 +159,7 @@ Usage:  #definition
 
   * item[+]
     * type = #string
-    * linkId = "location"
+    * linkId = "LN/89009-5"
     * text = "Location"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Encounter#Encounter.location"
 
