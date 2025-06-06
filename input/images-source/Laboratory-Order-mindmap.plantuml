@@ -1,12 +1,17 @@
 @startmindmap
-* Laboratory Test Order
-** Patient
+* [[StructureDefinition-ServiceRequest.htmlLaboratory Test Order]]
+** [[StructureDefinition-Patient.html Patient (subject)]]
 ** Healthcare Professional
-** Test Request
-*** Consent
-** Patient Clinical Information
-** Specimen
-** Ask At Order Entry
-*** Pregnant
-** Prior Results
+** Clinical Indication (Condition)
+** Account Number (Episode or Stay Number)
+** Test Directory Code
+** [[StructureDefinition-Specimen.html Specimen]]
+** Supporting Information
+*** Test Request
+**** Consent
+*** Patient Clinical Information
+*** Ask At Order Entry
+**** Pregnant
+*** Prior Results
+
 @endmindmap

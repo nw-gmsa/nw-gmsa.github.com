@@ -3,9 +3,9 @@
 title "Somatic Reporting"
 
 * [[StructureDefinition-DiagnosticReport.html Genomic Report]] (Somatic)
-** [[StructureDefinition-Patient.html patient (subject)]]
+** [[StructureDefinition-Patient.html Patient (subject)]]
 ** [[StructureDefinition-ServiceRequest.html Order (basedOn)]]
-** [[StructureDefinition-Specimen.html specimen]]
+** [[StructureDefinition-Specimen.html Specimen]]
 ** Results Interpreter
 ** Performer
 ** results
