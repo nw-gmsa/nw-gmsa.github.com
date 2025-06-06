@@ -36,14 +36,13 @@
 > [Master HL7 genetic variant reporting panel](https://nw-gmsa.github.io/R4/Questionnaire-81247-9.html)
 
 <!--
+
 <figure>
 {%include LaboratoryReportDataProduct.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Genomics Test Report Data Product</p>
 </figure>
 <br clear="all">
--->
 
-<!--
 ## Common Information Model
 
 <figure>
