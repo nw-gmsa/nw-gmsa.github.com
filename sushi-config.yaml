@@ -32,6 +32,8 @@ dependencies:
     version: 4.0.1
     reason:
       Makes available certain R5 elements for use as part of this R4 IG
+  hl7.fhir.uv.genomics-reporting:
+    version: 3.0.0
   hl7.fhir.eu.laboratory:
     version: 0.1.1
   hl7.fhir.uv.sdc:
