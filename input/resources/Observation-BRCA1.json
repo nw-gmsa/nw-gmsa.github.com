@@ -1,5 +1,10 @@
 {
     "resourceType": "Observation",
+    "meta": {
+        "profile": [
+            "https://nw-gmsa.github.io/StructureDefinition/Variant"
+        ]
+    },
     "id": "brca1-variant",
     "status": "final",
     "category": [
