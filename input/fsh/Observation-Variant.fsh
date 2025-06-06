@@ -8,7 +8,7 @@ TODO
 
 * identifier 1..* MS
 
-* performer only Reference(http://hl7.eu/fhir/laboratory/StructureDefinition/PractitionerRole-eu-lab  or Patient)
+* performer only Reference(PractitionerRole or Patient)
 
 * subject 1..1 MS
 * subject.reference 1..1 MS

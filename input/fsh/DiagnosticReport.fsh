@@ -134,6 +134,9 @@ See also [HL7 Europe Laboratory Report - DiagnosticReport: Laboratory Report](ht
 
 * specimen 0..* MS
 
+* result[variant] MS
+* result[diagnostic-implication] MS
+
 * presentedForm 1..* MS
 * presentedForm ^short = "a reference to the full report (presentedForm)"
 * presentedForm only NWAttachment
