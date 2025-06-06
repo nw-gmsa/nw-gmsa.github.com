@@ -1,9 +1,9 @@
-Profile:        Variant
-Parent:         http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/variant
-Id:             Variant
-Title:          "Variant"
+Profile:        DiagnosticImplication
+Parent:         http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication
+Id:             DiagnosticImplication
+Title:          "Diagnostic Implication"
 Description:    """
-Reference:
+Reference: 
 - part of [openEHR Genomic Variant Result](https://ckm.openehr.org/ckm/archetypes/1013.1.3759)
 """
 
@@ -28,9 +28,7 @@ Reference:
 * effective[x] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/AutomationManager)
 
 * code MS
-* valueCodeableConcept MS
-* method MS
-* component[allelic-state] MS
-* component[representative-coding-hgvs] MS
-* component[genomic-ref-seq] MS
-
+* derivedFrom[variant] MS
+* derivedFrom[variant] only Reference(Variant)
+* component[predicted-phenotype] MS
+* component[clinical-significance] MS
