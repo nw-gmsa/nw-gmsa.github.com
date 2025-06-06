@@ -2,7 +2,7 @@
 
 title "Somatic Reporting"
 
-* [[https://hl7.org/fhir/uv/genomics-reporting/StructureDefinition-genomic-report.html Genomic Report]] (Somatic)
+* [[StructureDefinition-DiagnosticReport.html Genomic Report]] (Somatic)
 ** [[StructureDefinition-Patient.html patient (subject)]]
 ** [[StructureDefinition-ServiceRequest.html Order (basedOn)]]
 ** [[StructureDefinition-Specimen.html specimen]]
@@ -10,10 +10,9 @@ title "Somatic Reporting"
 ** Performer
 ** results
 *** [[https://hl7.org/fhir/uv/genomics-reporting/StructureDefinition-variant.html Variant]]
-*** [[https://hl7.org/fhir/uv/genomics-reporting/StructureDefinition-diagnostic-implication.html Diagnostic Implication]]
-*** [[https://hl7.org/fhir/uv/genomics-reporting/StructureDefinition-therapeutic-implication.html Theraputic Implication]]
-*** [[https://hl7.org/fhir/uv/genomics-reporting/StructureDefinition-molecular-consequence.html Molecular Consequences]]
-*** [[https://hl7.org/fhir/uv/genomics-reporting/StructureDefinition-molecular-biomarker.html Molecular Biomarker]]
-*** [[https://hl7.org/fhir/uv/genomics-reporting/StructureDefinition-haplotype.html Haplotype]]
+**** [[https://hl7.org/fhir/uv/genomics-reporting/StructureDefinition-diagnostic-implication.html Diagnostic Implication]]
+**** [[https://hl7.org/fhir/uv/genomics-reporting/StructureDefinition-therapeutic-implication.html Theraputic Implication]]
+** presentedFrom
+*** Attachment (report in PDF format)
 
 @endmindmap
