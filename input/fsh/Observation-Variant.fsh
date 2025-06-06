@@ -26,4 +26,10 @@ TODO
 * effective[x] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/OrderPlacer)
 * effective[x] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/AutomationManager)
 
+* code MS
+* valueCodeableConcept MS
+* method MS
+* component[allelic-state] MS
+* component[representative-coding-hgvs] MS
+* component[genomic-ref-seq] MS
 

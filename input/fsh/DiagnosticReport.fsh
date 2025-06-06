@@ -53,8 +53,7 @@ See also [HL7 Europe Laboratory Report - DiagnosticReport: Laboratory Report](ht
 //* category ^slicing.ordered = false
 //* category contains Genetics 1..1
 
-//* category[Genetics].coding 1..1
-//* category[Genetics].coding = http://terminology.hl7.org/CodeSystem/v2-0074#GE
+* category[Genetics].coding 1..1 MS
 
 * subject 1..1
 * subject.identifier 1..1
@@ -135,7 +134,9 @@ See also [HL7 Europe Laboratory Report - DiagnosticReport: Laboratory Report](ht
 * specimen 0..* MS
 
 * result[variant] MS
+* result[variant] only Reference(Variant)
 * result[diagnostic-implication] MS
+
 
 * presentedForm 1..* MS
 * presentedForm ^short = "a reference to the full report (presentedForm)"
