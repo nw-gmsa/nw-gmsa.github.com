@@ -1,6 +1,7 @@
 Profile:        DiagnosticReport
 //Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-DiagnosticReport
-Parent:         http://hl7.eu/fhir/laboratory/StructureDefinition/DiagnosticReport-eu-lab
+//Parent:         http://hl7.eu/fhir/laboratory/StructureDefinition/DiagnosticReport-eu-lab
+Parent:         http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/genomic-report
 Id:             DiagnosticReport
 Title:          "Diagnostic Report"
 Description:    """
