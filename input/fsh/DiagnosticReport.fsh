@@ -13,7 +13,7 @@ See also [HL7 Europe Laboratory Report - DiagnosticReport: Laboratory Report](ht
 
 // https://github.com/HL7/genomics-reporting/blob/master/input/fsh/CGGeneral.fsh
 
-* extension contains http://hl7.org/fhir/StructureDefinition/workflow-supportingInfo named supporting-info 0..1
+//* extension contains http://hl7.org/fhir/StructureDefinition/workflow-supportingInfo named supporting-info 0..1
 
 * identifier 1..* MS
 * identifier only CorrelationIdentifier
@@ -51,10 +51,10 @@ See also [HL7 Europe Laboratory Report - DiagnosticReport: Laboratory Report](ht
 //* category ^slicing.rules = #open
 //* category ^slicing.description = "Slice based on the category code pattern"
 //* category ^slicing.ordered = false
-* category contains Genetics 1..1
+//* category contains Genetics 1..1
 
-* category[Genetics].coding 1..1
-* category[Genetics].coding = http://terminology.hl7.org/CodeSystem/v2-0074#GE
+//* category[Genetics].coding 1..1
+//* category[Genetics].coding = http://terminology.hl7.org/CodeSystem/v2-0074#GE
 
 * subject 1..1
 * subject.identifier 1..1
@@ -87,18 +87,10 @@ See also [HL7 Europe Laboratory Report - DiagnosticReport: Laboratory Report](ht
 * code.coding ^slicing.description = "Slice based on the system"
 * code.coding ^slicing.ordered = false
 * code.coding contains
-  GenomicRareAndInheritedDisease 0..1 MS and PathologyAndLaboratoryMedicine 0..1 and NICIP 0..1
+  GenomicRareAndInheritedDisease 0..1 MS
 
 * code.coding[GenomicRareAndInheritedDisease] from GenomicRareAndInheritedDisease (required)
-* code.coding[GenomicRareAndInheritedDisease].system = $GTD
-
-* code.coding[PathologyAndLaboratoryMedicine] ^short = "Use for Pathology and Laboratory Orders"
-* code.coding[PathologyAndLaboratoryMedicine] from https://fhir.hl7.org.uk/ValueSet/UKCore-PathologyAndLaboratoryMedicineObservables
-* code.coding[PathologyAndLaboratoryMedicine].system = $sct
-
-* code.coding[NICIP] ^short = "Use for Radiology Orders"
-* code.coding[NICIP] from https://fhir.hl7.org.uk/ValueSet/UKCore-PathologyAndLaboratoryMedicineObservables
-* code.coding[NICIP].system = "http://digital.nhs.uk/fhir/CodeSystem/nicip"
+//* code.coding[GenomicRareAndInheritedDisease].system = $GTD
 
 * performer.identifier 1..1
 * performer.identifier.system 1..1
