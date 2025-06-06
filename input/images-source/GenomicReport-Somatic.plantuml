@@ -11,7 +11,6 @@ title "Somatic Reporting"
 ** results
 *** [[https://hl7.org/fhir/uv/genomics-reporting/StructureDefinition-variant.html Variant]]
 **** [[https://hl7.org/fhir/uv/genomics-reporting/StructureDefinition-diagnostic-implication.html Diagnostic Implication]]
-**** [[https://hl7.org/fhir/uv/genomics-reporting/StructureDefinition-therapeutic-implication.html Theraputic Implication]]
 ** presentedFrom
 *** [[StructureDefinition-NWAttachment.html Attachment]] (report in PDF format)
 
