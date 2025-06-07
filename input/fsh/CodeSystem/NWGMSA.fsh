@@ -1,4 +1,4 @@
-CodeSystem: nw-gmsa
+CodeSystem: nwgmsa
 Id: nw-gmsa
 Title: "NW GMSA Codes"
 Description: """
