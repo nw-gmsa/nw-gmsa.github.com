@@ -9,8 +9,8 @@ title "Somatic Reporting"
 ** Results Interpreter
 ** Performer
 ** results
-*** [[StructureDefinition-ObservationVariant.html Variant]]
-**** [[StructureDefinition-ObservationDiagnosticImplication.html Diagnostic Implication]]
+*** [[StructureDefinition-Observation-Variant.html Variant]]
+**** [[StructureDefinition-Observation-DiagnosticImplication.html Diagnostic Implication]]
 ** presentedFrom
 *** [[StructureDefinition-NWAttachment.html Attachment]] (report in PDF format)
 
