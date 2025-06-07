@@ -134,9 +134,9 @@ See also [HL7 Europe Laboratory Report - DiagnosticReport: Laboratory Report](ht
 * specimen 0..* MS
 
 * result[variant] MS
-* result[variant] only Reference(Variant)
+* result[variant] only Reference(ObservationVariant)
 * result[diagnostic-implication] MS
-* result[diagnostic-implication] only Reference(DiagnosticImplication)
+* result[diagnostic-implication] only Reference(ObservationDiagnosticImplication)
 
 * presentedForm 1..* MS
 * presentedForm ^short = "a reference to the full report (presentedForm)"

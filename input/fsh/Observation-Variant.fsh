@@ -1,7 +1,7 @@
-Profile:        Variant
+Profile:        ObservationVariant
 Parent:         http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/variant
-Id:             Variant
-Title:          "Variant"
+Id:             Observation-Variant
+Title:          "Observation Variant"
 Description:    """
 Reference:
 - part of [openEHR Genomic Variant Result](https://ckm.openehr.org/ckm/archetypes/1013.1.3759)

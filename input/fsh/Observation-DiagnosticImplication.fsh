@@ -1,7 +1,7 @@
-Profile:        DiagnosticImplication
+Profile:        ObservationDiagnosticImplication
 Parent:         http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication
-Id:             DiagnosticImplication
-Title:          "Diagnostic Implication"
+Id:             Observation-DiagnosticImplication
+Title:          "Observation Diagnostic Implication"
 Description:    """
 Reference: 
 - part of [openEHR Genomic Variant Result](https://ckm.openehr.org/ckm/archetypes/1013.1.3759)
