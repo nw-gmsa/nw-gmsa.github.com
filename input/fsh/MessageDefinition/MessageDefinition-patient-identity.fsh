@@ -10,10 +10,10 @@ See [Patient Identity Triggers](ValueSet-PatientIdentityTriggers) for `eventCodi
 
 Conversion of
 
-- [HL7 v2.4 ADT_28](https://hl7-definition.caristix.com/v2/HL7v2.4/TriggerEvents/ADT_A28)
-- [HL7 v2.4 ADT_31](https://hl7-definition.caristix.com/v2/HL7v2.4/TriggerEvents/ADT_A31)
-- [HL7 v2.4 ADT_40](https://hl7-definition.caristix.com/v2/HL7v2.4/TriggerEvents/ADT_A40)
 - [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws)
+  - Create Patient [HL7 v2.4 ADT_28](https://hl7-definition.caristix.com/v2/HL7v2.4/TriggerEvents/ADT_A28)
+  - Update Patient [HL7 v2.4 ADT_31](https://hl7-definition.caristix.com/v2/HL7v2.4/TriggerEvents/ADT_A31)
+  - Update (merge) Patient [HL7 v2.4 ADT_40](https://hl7-definition.caristix.com/v2/HL7v2.4/TriggerEvents/ADT_A40)
 
 Related to [IHE Patient Identifier Cross-referencing for mobile (PIXm)](https://profiles.ihe.net/ITI/PIXm/index.html)
 """
