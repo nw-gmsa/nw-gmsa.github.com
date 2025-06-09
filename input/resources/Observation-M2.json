@@ -2,7 +2,7 @@
     "resourceType": "Observation",
     "meta": {
         "profile": [
-            "https://nw-gmsa.github.io/StructureDefinition/DiagnosticImplication"
+            "https://nw-gmsa.github.io/StructureDefinition/Observation-DiagnosticImplication"
         ]
     },
     "id": "m2-diagnostic-implication",
