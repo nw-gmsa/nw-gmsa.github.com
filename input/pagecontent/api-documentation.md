@@ -10,17 +10,15 @@ This API has two access modes:
 - unrestricted access (DEVELOMENT)
 - OAuth2 [client-credentials](https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/) (INTEGRATION)
 
-### client-credentials
+### OAuth2 Configuration
 
-#### OAuth2 Configuration
-
-##### Request
+#### Request
 
 ```aiignore
 GET {{oauth2}}/.well-known/openid-configuration
 ```
 
-##### Response
+#### Response
 
 ```json
 {
@@ -58,9 +56,9 @@ GET {{oauth2}}/.well-known/openid-configuration
 }
 ```
 
-#### OAuth2 Token
+### OAuth2 Token (client credentials)
 
-##### Request
+#### Request
 
 Body is the following values in x-www-form-urlencoded format
 
@@ -75,7 +73,7 @@ Authorization: Basic {base64 clientid and clientsecret}
 Content-Type: application/x-www-form-urlencoded
 ```
 
-##### Response
+#### Response
 
 ```json
 {
@@ -86,9 +84,9 @@ Content-Type: application/x-www-form-urlencoded
 }
 ```
 
-#### OAuth2 Introspection
+### OAuth2 Introspection
 
-##### Request
+#### Request
 
 Body is the following values in x-www-form-urlencoded format
 
@@ -102,10 +100,25 @@ Authorization: Basic {base64 clientid and clientsecret}
 Content-Type: application/x-www-form-urlencoded
 ```
 
-##### Response
+#### Response
 
 ```json
 {
     "active": false
 }
 ```
+
+## Environment and testing
+
+| Environment         | Service                           | Base Url                                 | Capability Statement 'OAS'                                                |
+|---------------------|-----------------------------------|------------------------------------------|--------------------------------------------------------------------------|
+| Dev                 |                                   |                                          |                                                                          |
+|                     | Regional Integration Engine (RIE) | http://10.165.194.216/gentiedev/ESB      | [CapabilityStatement](CapabilityStatement-RegionalIntegrationEngine.html) |
+| Integration Testing |                                   |                                          |                                                                          |
+|                     | Regional Integration Engine (RIE) | https://10.165.194.217/gentietest/ESB    | [CapabilityStatement](CapabilityStatement-RegionalIntegrationEngine.html) |
+|                     | Regional OAuth2 Server            | https://10.165.194.217/gentietest/oauth2 |                                                                          | 
+
+### Testing
+
+All FHIR payloads **MUST** conform to this Implementation Guide. 
+This IG is available in [NPM Package](package.tgz) for which is compatible with FHIR Validation tools, see [Testing](testing.html) for more details.

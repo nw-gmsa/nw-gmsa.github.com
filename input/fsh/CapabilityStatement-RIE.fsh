@@ -1,4 +1,4 @@
-Instance: CapabilityStatementRIE
+Instance: RegionalIntegrationEngine
 InstanceOf: CapabilityStatement
 Title: "CapabilityStatement for NW GMSA Regional Integration Engine for Genomics"
 Usage: #definition
