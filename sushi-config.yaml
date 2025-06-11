@@ -180,7 +180,7 @@ menu:
   Artefacts: artifacts.html
   HL7 v2 Artefacts: hl7v2.html
   Development:
-    API Documentation: apr-documentation.html
+    API Documentation: api-documentation.html
     Testing: testing.html
     Support: support.html
     Architecture: architecture.html
