@@ -73,34 +73,6 @@ The `OpenAPISwagger Definition file` below, can be viewed using [Swagger Editor]
 * insert SearchParamWithExpectation(_lastUpdated, #date, #SHALL)
 * insert WithSearchParamDocumentation(The data the message was last updated)
 
-* insert ResourceWithExpectation(#Patient, Patient, #SHALL)
-* rest.resource[=]
-  * documentation = """
-## Update
-
-  This is used to update the `laboratory order`. See also [IHE PIXm - Patient Identity Feed FHIR [ITI-104]](https://profiles.ihe.net/ITI/PIXm/ITI-104.html)
-  The IHE PIX/[NHS England HL7 ADT](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws) equivalent is ADT_A31 and ADT_A40.
-
-  ```
-  PUT [base]/Patient?identifier=[identifier]
-  ```
-"""
-  * conditionalUpdate = true
-* insert InteractionWithExpectation(#update, #SHALL)
-
-* insert ResourceWithExpectation(#PractitionerRole, PractitionerRole, #SHALL)
-* rest.resource[=]
-  * documentation = """
-## Update
-
-  This is used to update the `laboratory order`. The HL7 equivalent is [MFN_M02 - Master files notification - Staff/practitioner master file](https://hl7-definition.caristix.com/v2/HL7v2.5.1/TriggerEvents/MFN_M02)
-
-  ```
-  PUT [base]/PractitionerRole?identifier=[identifier]
-  ```
-"""
-  * conditionalUpdate = true
-* insert InteractionWithExpectation(#update, #SHALL)
 
 
 * rest[=].interaction[+]
@@ -109,6 +81,11 @@ The `OpenAPISwagger Definition file` below, can be viewed using [Swagger Editor]
 * rest.operation[+]
   * name = "$process-message"
   * definition = Canonical(ProcessMessage)
+  * documentation = """
+  ```
+      POST [base]/$process-message
+    ```
+  """
 
 
 
