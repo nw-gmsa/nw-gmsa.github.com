@@ -7,8 +7,8 @@ This API is available on the [Health and Social Care Network (HSCN)](https://dig
 
 This API has two access modes:
 
-- unrestricted access (DEVELOMENT)
-- OAuth2 [client-credentials](https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/) (INTEGRATION)
+- unrestricted access (Development)
+- OAuth2 [client-credentials](https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/) (Integration Testing)
 
 ### OAuth2 Configuration
 
@@ -110,13 +110,13 @@ Content-Type: application/x-www-form-urlencoded
 
 ## Environment and testing
 
-| Environment         | Service                           | Base Url                                 | Capability Statement 'OAS'                                                |
-|---------------------|-----------------------------------|------------------------------------------|--------------------------------------------------------------------------|
-| Dev                 |                                   |                                          |                                                                          |
-|                     | Regional Integration Engine (RIE) | http://10.165.194.216/gentiedev/ESB      | [CapabilityStatement](CapabilityStatement-RegionalIntegrationEngine.html) |
-| Integration Testing |                                   |                                          |                                                                          |
-|                     | Regional Integration Engine (RIE) | https://10.165.194.217/gentietest/ESB    | [CapabilityStatement](CapabilityStatement-RegionalIntegrationEngine.html) |
-|                     | Regional OAuth2 Server            | https://10.165.194.217/gentietest/oauth2 |                                                                          | 
+| Environment         | Service                           | Base Url                                 | Capability Statement 'OAS'                                            |
+|---------------------|-----------------------------------|------------------------------------------|-----------------------------------------------------------------------|
+| Development         |                                   |                                          |                                                                       |
+|                     | Regional Integration Engine (RIE) | https://10.165.194.216/gentiedev/ESB     | [CapabilityStatement](https://10.165.194.216/gentiedev/ESB/metadata)  |
+| Integration Testing |                                   |                                          |                                                                       |
+|                     | Regional Integration Engine (RIE) | https://10.165.194.217/gentietest/ESB    | [CapabilityStatement](https://10.165.194.217/gentietest/ESB/metadata) |
+|                     | Regional OAuth2 Server            | https://10.165.194.217/gentietest/oauth2 |                                                                       | 
 
 ### Testing
 
