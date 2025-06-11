@@ -27,7 +27,7 @@ The `OpenAPISwagger Definition file` below, can be viewed using [Swagger Editor]
   * documentation = """
   ## Search (Poll for Messages)
 
-  The Order Placer (or TIE) will [poll](https://www.enterpriseintegrationpatterns.com/patterns/messaging/PollingConsumer.html) for new messages using a FHIR RESTful query.
+  See [Asynchronous Message Delivery](LAB-3.html#asynchronous-message-delivery)
 
   ```
   GET [base]/Bundle?message.receiver:identifier=[odsCode]&_lastUpdated=[date]
@@ -49,18 +49,19 @@ The `OpenAPISwagger Definition file` below, can be viewed using [Swagger Editor]
   PUT [base]/Bundle?identifier=[identifier]
   ```
 
-  ### Example
+  or
 
-  ```
-  PUT [base]/Bundle?identifier=9612365d-52a4-4fab-87e7-8a09d753f095
-  ```
-
-  The acknowledgement may be sent via a [FHIR Transaction](https://hl7.org/fhir/R4/http.html#transaction)
+  Using a [FHIR Transaction](https://hl7.org/fhir/R4/http.html#transaction)
 
   ```
     POST [base]/
   ```
 
+  ### Example
+
+  ```
+  PUT [base]/Bundle?identifier=9612365d-52a4-4fab-87e7-8a09d753f095
+  ```
 
   """
   * conditionalUpdate = true
@@ -82,9 +83,13 @@ The `OpenAPISwagger Definition file` below, can be viewed using [Swagger Editor]
   * name = "$process-message"
   * definition = Canonical(ProcessMessage)
   * documentation = """
+  ### Process Message
+
+  See [Submit Test Order Form (Send HL7 FHIR Message Laboratory Order)](LAB-1.html#submit-test-order-form-send-hl7-fhir-message-laboratory-order)
+
   ```
       POST [base]/$process-message
-    ```
+  ```
   """
 
 
