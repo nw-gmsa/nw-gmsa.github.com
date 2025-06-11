@@ -7,14 +7,6 @@ Usage: #definition
 Is based on [FHIR Messaging](https://hl7.org/fhir/R4/messaging.html) to handle transformation of HL7 FHIR and v2 Messages to FHIR Workflow.
 
 The `OpenAPISwagger Definition file` below, can be viewed using [Swagger Editor](https://editor.swagger.io/)
-
-  ### Process Message
-
-  See [Submit Test Order Form (Send HL7 FHIR Message Laboratory Order)](LAB-1.html#submit-test-order-form-send-hl7-fhir-message-laboratory-order)
-
-  ```
-      POST [base]/$process-message
-  ```
 """
 * name = "CapabilityStatement-RIE"
 * status = #draft
@@ -33,6 +25,14 @@ The `OpenAPISwagger Definition file` below, can be viewed using [Swagger Editor]
 * insert ResourceWithExpectation(#Bundle, Bundle, #SHALL)
 * rest.resource[=]
   * documentation = """
+  ## Process Message
+
+  See [Submit Test Order Form (Send HL7 FHIR Message Laboratory Order)](LAB-1.html#submit-test-order-form-send-hl7-fhir-message-laboratory-order)
+
+  ```
+  POST [base]/$process-message
+  ```
+
   ## Search (Poll for Messages)
 
   See [Asynchronous Message Delivery](LAB-3.html#asynchronous-message-delivery)
@@ -90,15 +90,6 @@ The `OpenAPISwagger Definition file` below, can be viewed using [Swagger Editor]
 * rest.operation[+]
   * name = "$process-message"
   * definition = Canonical(ProcessMessage)
-  * documentation = """
-  ### Process Message
-
-  See [Submit Test Order Form (Send HL7 FHIR Message Laboratory Order)](LAB-1.html#submit-test-order-form-send-hl7-fhir-message-laboratory-order)
-
-  ```
-      POST [base]/$process-message
-  ```
-  """
 
 
 
