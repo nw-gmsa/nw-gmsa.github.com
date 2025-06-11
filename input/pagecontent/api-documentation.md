@@ -64,8 +64,8 @@ Body is the following values in x-www-form-urlencoded format
 
 | Key | Value              |
 |-----|--------------------|
-| grant_type | client_credentials |
-| scope | system/*.* | 
+| grant_type | `client_credentials` |
+| scope | `system/*.*` | 
 
 ```aiignore
 GET {{oauth2}}/token
