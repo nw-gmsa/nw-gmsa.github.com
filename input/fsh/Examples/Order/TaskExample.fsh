@@ -20,6 +20,15 @@ Description: "TODO"
   * system = $nhs-number
   * value = "9449305552"
 
+* authoredOn = "2025-01-29"
+
+* focus.reference = "ServiceRequest/ServiceRequestGenomicsOrderCodedEntries"
+* focus.identifier.type = $v2-0203#PLAC
+* focus.identifier.value = "1601737"
+* focus.identifier.system = "urn:oid:1.2.840.114350.1.13.861.1.7.2.798268"
+* focus.identifier.assigner.identifier.system = $ods-code
+* focus.identifier.assigner.identifier.value = "R0A"
+
 * requester.reference = "PractitionerRole/ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8"
 * requester.identifier.system = "https://fhir.hl7.org.uk/Id/gmc-number"
 * requester.identifier.value = "C3456789"
