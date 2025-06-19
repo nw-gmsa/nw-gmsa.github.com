@@ -1,4 +1,4 @@
-Instance: TaskExample
+Instance: TaskGenomicOrderRequested
 InstanceOf: Task
 Title: "Task Genomic Test Requested"
 Description: "TODO"
