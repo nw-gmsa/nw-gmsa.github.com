@@ -1,45 +1,12 @@
 
 ## Introduction
 
-The architecture follows [Domain Driven Design [DDD]](https://en.wikipedia.org/wiki/Domain-driven_design) and [Domain Driven Design](https://martinfowler.com/bliki/DomainDrivenDesign.html). This is a complex subject and recommended sources include:
-
-- `Blue Book` - Domain-Driven Design: Tackling Complexity in the Heart of Software, Eric Evans 
-- `Red Book` - Implementing Domain-Driven Design, Vaughn Vernon 
-- `Green Book` - Domain-Driven Design Distilled, Vaughn Vernon
-- Data Mesh, Zhamak Dehghani
-
-<img style="padding:3px;width:60%;" src="DataMesh.drawio.png" alt="Data Mesh"/>
-<br clear="all">
-<p class="figureTitle">Data Mesh</p> 
-<br clear="all">
-
-### Enterprise Architecture
-
-TODO 
-
-<img style="padding:3px;width:60%;" src="Domain Driven Design Overview.drawio.png" alt="Domain Driven Design"/>
-<br clear="all">
-<p class="figureTitle">Domain Driven Design to Health Standards Mapping</p> 
-<br clear="all">
-
-### Domain Data (Data Mesh)
-
-TODO Add diagram showing operational data (DICOOM, HL7 and openEHR) and analytics (OHDSI etc). [Datalake](https://en.wikipedia.org/wiki/Data_lake) likely to be a FHIR Clinical Data Repository (CDR) for Genomic Domain only, and likewise any analytic clinical data warehouse (CDW) is only specific to Genomic domain. , it is cross-functional in that it does split the domain by function or departments (e.g. analytics, integration, BA, etc).
-
-[Data Mesh](https://en.wikipedia.org/wiki/Data_mesh)
-[Data Mesh Principles](https://martinfowler.com/articles/data-mesh-principles.html)
+The architecture generally follows [Domain Driven Design [DDD]](https://en.wikipedia.org/wiki/Domain-driven_design), [Domain Driven Design](https://martinfowler.com/bliki/DomainDrivenDesign.html) and [Data Mesh](https://en.wikipedia.org/wiki/Data_mesh)
 
 <img style="padding:3px;width:60%;" src="Data Mesh Heaxagonal.drawio.png" alt="Data Mesh"/>
 <br clear="all">
 <p class="figureTitle">Data Mesh</p> 
 <br clear="all">
-
-
-<img style="padding:3px;width:60%;" src="data architecture.drawio.png" alt="Data Architecture"/>
-<br clear="all">
-<p class="figureTitle">Data Mesh Application</p> 
-<br clear="all">
-
 
 ### Enterprise Integration
 
@@ -68,41 +35,31 @@ To support genomics workflow, this guide is aligned to enterprise workflow proce
 
 Three types of messages are used within this workflow process:
 
-| Message Type                                                                                                  | HL7 Name                     | IHE Name                                                         | Description                                             |
-|---------------------------------------------------------------------------------------------------------------|------------------------------|------------------------------------------------------------------|---------------------------------------------------------|
-| [**C**ommand Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CommandMessage.html)   | Laboratory Order O21         | [LAB-1](LAB-1.html) and [LAB-4](LAB-1.html)                      | To request a laboratory order                           |
-| [**E**vent Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/EventMessage.html)       | Laboratory Order O21 and O22 | [LAB-1](LAB-1.html), [LAB-4](LAB-1.html) and [LAB-2](LAB-2.html) | Used to inform participants in the workflow of changes. | 
-| [**D**ocument Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) | Laboratory Report R01        | [LAB-3](LAB-3.html) and [LAB-5](LAB-5.html)                      | Used to transfer the report to interested parties       | 
+| Message Type                                                                                                  | HL7 Name                     | IHE Name                                                        | Description                                             |
+|---------------------------------------------------------------------------------------------------------------|------------------------------|-----------------------------------------------------------------|---------------------------------------------------------|
+| [**C**ommand Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CommandMessage.html)   | Laboratory Order O21         | [LAB-1](LAB-1.html)                      | To request a laboratory order                           |
+| [**D**ocument Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) | Laboratory Report R01        | [LAB-3](LAB-3.html)                      | Used to transfer the report to interested parties       | 
 
 
-### Phase 1 ESB
+### Phase 1a Laboratory Order
 
-<img style="padding:3px;width:60%;" src="Phase 1 ESB.drawio.png" alt="Phase 1 ESB Architecture"/>
+<img style="padding:3px;width:60%;" src="Phase 1a ESB.drawio.png" alt="Phase 1a"/>
 <br clear="all">
-<p class="figureTitle">Phase 1 ESB Architecture</p> 
+<p class="figureTitle">Phase 1a ESB Architecture</p> 
 <br clear="all">
 
-#### Laboratory Order
-
-- **Accept Message** The Order Placer (NHS trust) sends a FHIR Message (NW GMSA) Laboratory Order O21 to the RIE via the $process-message endpoint
-  - If the RIE doesn’t understand the message for technical reasons it will respond immediately with an error message.
-  - **Validation** The RIE performs FHIR Validation on the order against the requirements listed in this Implementation Guide. The validation contains no errors, it is accepted, any errors will cause the message to be rejected. The RIE responds to the order placer asynchronously via a message queue, this is accessed by the order placer via a **Polling Consumer**
+- **Accept Message** The Order Placer (NHS trust) sends a FHIR Message (NW GMSA) [Genomic Test Order O21](DDD-TestOrder.html) to the RIE via the [$process-message](OperationDefinition-ProcessMessage.html) endpoint
+  - If the RIE doesn’t understand the message for technical reasons, it will respond immediately with an error message.
+  - **Validation** The RIE performs FHIR Validation on the order against the requirements listed in this Implementation Guide. The validation contains no errors, it is accepted; any errors will cause the message to be rejected. The RIE responds to the order placer asynchronously via a message queue, this is accessed by the order placer via a **Polling Consumer**
 - **Distribution List** If the message is accepted, it is passed to a router, at present this router passes the message onto the next process. This router is for future use with the national broker.
-- **Transform to HL7 v2** The RIE will convert the FHIR Message to a HL7 v 2.3 ORM O01 and send this to iGene.
+- **Transform to HL7 v2** The RIE will convert the FHIR Message to a [HL7 v 2.4 ORM O01](hl7v2.html#oml_o21-laboratory-order) and send this to iGene.
 
-#### Laboratory Report
 
-- IGene sends the HL7 v2 ORU_R01 to RIE
-- **Transform to HL7 FHIR** The RIE converts the report into a FHIR Message (NW GMSA) Laboratory Report R01
-- **Distribution List** The message is then passed to a router – this router is for future use with the national broker. Currently, the only route is to a **Message Queue**
-- **Polling Consumer** The Order Placer (NHS trust) will poll the **Message Queue** for messages, this queue will include reports and also accept/reject messages.
-  - If messages are present, the NHS Trust will acknowledge the message and then process it, this may include conversion back to HL7 v2.
+### Phase 1b Laboratory Order + OAuth2 Server
 
-### Phase 2 ESB
-
-<img style="padding:3px;width:60%;" src="Phase 2 ESB.drawio.png" alt="Phase 2 ESB Architecture"/>
+<img style="padding:3px;width:60%;" src="Phase 1b ESB.drawio.png" alt="Phase 1b"/>
 <br clear="all">
-<p class="figureTitle">Phase 2 ESB Architecture</p> 
+<p class="figureTitle">Phase 1b</p> 
 <br clear="all">
 
 The use of a **Polling Consumer** is not optimal. This phase will send messages directly to Trust Integration Engines. 
@@ -111,40 +68,33 @@ As we are using http RESTful for communication between the Trust Integration Eng
 - TLA-MA
 - openid
 
-These are practical for point-to-point connections but as the solution grows it can become complicated, so it is preferred we move to enterprise level security such as OAuth2 Client Credentials Grant.
+These are practical for point-to-point connections, but as the solution grows it can become complicated, so it is preferred we move to enterprise level security such as OAuth2 Client Credentials Grant.
 
 - [IHE Internet User Authorization (IUA)](https://profiles.ihe.net/ITI/IUA/index.html)
 - [NHS England - Application-restricted APIs](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis)
 
 See [Authorisation](authorisation.html) for more details.
 
+### Phase 2a Laboratory Report - Greater Manchester Care Record
 
-### Future NHS England Genomics Order Management Service Adaptor
-
-This is not part of the current project and is shown here to describe how the RIE could evolve and connect to the national Genomic Order Management Service.
-
-<img style="padding:3px;width:95%;" src="Future ESB.drawio.png" alt="Future NHSE GOMS Adaptor Architecture"/>
+<img style="padding:3px;width:60%;" src="Phase 2a ESB.drawio.png" alt="Phase 2a"/>
 <br clear="all">
-<p class="figureTitle">Future NHSE GOMS Adaptor Architecture</p> 
+<p class="figureTitle">Phase 2a</p> 
 <br clear="all">
 
-The national service uses a FHIR RESTful resource-based API which does not contain business logic. This business logic would be implemented in the RIE and this is subdivided as follows:
+- IGene sends the [HL7 v2 ORU_R01](hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message) to RIE
+- GLH RIE sends the message onwards to MFT TIE
+- MFT TIE sends the message to GMCR
 
-- Patient Master Identity Registry (PMIR) Service - This handles updates to patient demographics and is populated via a Patient Identity Feed (like HL7 v2 ADT A28/31/40 and IHE PIX), for genomics the patient identity feed is extracted from the laboratory order/report.
-- Health Provider Directory (HPD) Service - This maintains the list of Practitioners and is populated by a Master File feed like HL7 v2 MFN), for genomics the master file feed is extracted from the laboratory order/report.
-- Order and Report Service - This converts the incoming messages to a FHIR Transactional message, for genomics this uses patient and practitioner's identifiers obtained from the PMIR and HPD services. 
+### Phase 2b Laboratory Report - FHIR Repository
 
+<img style="padding:3px;width:60%;" src="Phase 2b ESB.drawio.png" alt="Phase 2b"/>
+<br clear="all">
+<p class="figureTitle">Phase 2b</p> 
+<br clear="all">
 
-#### Outgoing Messages
-
-- **Outgoing Messages** are received from the main RIE workflow (known here as the Enterprise Service Bus) 
-- **Process Message** orchestrates the calls to the NHS England GOMS, this involves:
-  - getting the patient id (and updating patient demographics) via the **Patient Master Identity Registry (PMIR) Service**
-  - getting practitioner ids via the **Health Provider Directory (HPD) Service**
-  - Transforming the order or report to a FHIR Transaction and updating patient and practitioner references to include NHS England GOMS id's
-
-#### Incoming Messages
-
-- **Polling Consumer** checks for orders and reports for the North West region by calling the NHS England GOMS at frequent intervals.
-- **Assemble Message** if orders/reports are found, then the RIE will assemble a FHIR Message Laboratory Order/Report.
-- **Incoming Message** these messages are then passed to the RIE ESB for message delivery.
+- IGene sends the [HL7 v2 ORU_R01](hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message) to RIE
+- **Dynamic Router** The RIE distributes the message to the recipients. The routing rules are held within **Dynamic Rules Base**, this is likely to be FHIR Subscription-based and held within the FHIR Repository.
+- The two recipients at this phase are the MFT TIE as per phase 1 and FHIR Repository. The FHIR Repository processing is:
+  - ** Transform to HL7 FHIR Message** Convert the HL7 v2 ORU to HL7 FHIR Message ORU
+  - ** Process the FHIR Message via **FHIR Repository Adaptor**, which applies business logic to the incoming message and updates the **Clinical Data Repository (Genomics)**
