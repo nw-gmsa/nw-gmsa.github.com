@@ -29,10 +29,10 @@ Description: "TODO"
 * focus.identifier.assigner.identifier.system = $ods-code
 * focus.identifier.assigner.identifier.value = "R0A"
 
-* requester.reference = "PractitionerRole/ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8"
-* requester.identifier.system = "https://fhir.hl7.org.uk/Id/gmc-number"
-* requester.identifier.value = "C3456789"
-* requester.display = "Dr Samuel Darwin"
+* requester.reference = "Organization/R0A"
+* requester.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
+* requester.identifier.value = "R0A"
+* requester.display = "MANCHESTER UNIVERSITY NHS FOUNDATION TRUST"
 
 * owner.reference = "Organization/699X0"
 * owner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
