@@ -12,7 +12,9 @@ participant "Order Filler" as LIMS
 
 == Submit Test Order Form ==
 
+alt IHE LTW Workflow
 EPR -> TIE: \nSend HL7 FHIR Message\n**Laboratory Order O21**
+end
 TIE -> LIMS: Send HL7 v2 Message\n**ORML_O01**
 TIE -> CDR: HL7 FHIR REST (internal)
 
@@ -23,8 +25,12 @@ LIMS -> LIMS: Perform Test
 == Send Genomic Report ==
 
 LIMS -> TIE: Send HL7 v2 Message\n**ORU_R01**
+alt IHE LTW Workflow
 TIE -> EPR: Send HL7 v2 Message\n**ORU_R01**
+end
+alt IHE LTW Workflow
 TIE -> XDS: Send HL7 v2 Message\n**ORU_R01**
+end
 TIE -> CDR: HL7 FHIR REST (internal)
 
 @enduml

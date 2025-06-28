@@ -13,9 +13,9 @@ participant "Order Filler" as LIMS
 
 EPR -> TIE: \nSend HL7 FHIR Message\n**Laboratory Order O21**
 TIE -> CDR: HL7 FHIR REST (internal)
-alt HL7 v2 Workflow
+alt IHE LTW Workflow
 TIE -> LIMS: Send HL7 v2 Message\n**ORM_O01**
-else HL7 Workflow
+else HL7 FHIR Workflow
 TIE -> Subscribers: Event Notifications (FHIR Subscription and Message)\nFHIR Task(requested)
 Subscribers -> CDR: HL7 FHIR REST Query API
 end
@@ -29,7 +29,7 @@ LIMS -> LIMS: Perform Test
 LIMS -> TIE: Send HL7 v2 Message\n**ORU_R01**
 
 TIE -> CDR: HL7 FHIR REST (internal)
-alt HL7 v2 Workflow
+alt IHE LTW Workflow
 TIE -> EPR: Send HL7 v2 Message\n**ORU_R01**
 else HL7 FHIR Workflow
 TIE -> Subscribers: Event Notifications (FHIR Subscription and Message)\nFHIR Task(completed)
