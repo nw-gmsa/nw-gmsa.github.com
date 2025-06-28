@@ -1,0 +1,40 @@
+@startuml
+
+hide footbox
+
+participant "Order Placer" as EPR
+participant "Subscribers" as Subscribers
+participant "Enterprise Data\nSharing\n(FHIR Repository)" as CDR
+participant "Intermediary\nNW GLH Regional Integration Engine (RIE)" as TIE
+participant "Order Filler" as LIMS
+
+
+
+== Submit Test Order Form ==
+
+EPR -> TIE: \nSend HL7 FHIR Message\n**Laboratory Order O21**
+TIE -> CDR: HL7 FHIR REST (internal)
+alt HL7 v2 Workflow
+TIE -> LIMS: Send HL7 v2 Message\n**OML_O21**
+else HL7 Workflow
+TIE -> Subscribers: Event Notifications (FHIR Subscription and Message)\nFHIR Task(requested)
+Subscribers -> CDR: HL7 FHIR REST Query API
+end
+
+== Perform Test ==
+
+LIMS -> LIMS: Perform Test
+
+== Send Genomic Report ==
+
+LIMS -> TIE: Send HL7 v2 Message\n**ORM_R01**
+
+TIE -> CDR: HL7 FHIR REST (internal)
+alt HL7 v2 Workflow
+TIE -> EPR: Send HL7 v2 Message\n**ORM_R01**
+else HL7 FHIR Workflow
+TIE -> Subscribers: Event Notifications (FHIR Subscription and Message)\nFHIR Task(completed)
+Subscribers -> CDR: HL7 FHIR REST Query API
+end
+
+@enduml

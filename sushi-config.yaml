@@ -133,6 +133,11 @@ pages:
   api-documentation.md:
     title: API Documentation
     generation: markdown
+  workflow.md:
+    title: Workflow Options
+    generation: markdown
+
+
 
 resources:
   Questionnaire/GenomicTestOrder:
@@ -184,6 +189,7 @@ menu:
     Testing: testing.html
     Support: support.html
     Architecture: architecture.html
+    Workflow Options: workflow.html
 
 groups:
   -ex-example-laboratory-order:
