@@ -4,8 +4,8 @@ hide footbox
 
 participant "Order Placer" as EPR
 participant "Enterprise Document\n Sharing" as XDS
-participant "Enterprise Data\nSharing\n(FHIR Repository)" as CDR
 participant "Intermediary\nRegional Integration Engine (RIE)" as TIE
+participant "Enterprise Data\nSharing\n(FHIR Repository)" as CDR
 participant "Order Filler" as LIMS
 
 
