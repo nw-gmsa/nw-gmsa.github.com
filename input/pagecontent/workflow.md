@@ -66,7 +66,7 @@ This is an evolution of the previous option by adding in an **Enterprise Clinica
 both [IHE Query for Existing Data for Mobile (QEDm)](https://build.fhir.org/ig/IHE/QEDm/branches/master/index.html) for clinical data and also [IHE Mobile access to Health Documents (MHD)](https://profiles.ihe.net/ITI/MHD/index.html) for (pdf) documents.
 The data within the CDR will adhere to [HL7 Genomics Reporting](https://build.fhir.org/ig/HL7/genomics-reporting/)
 
-In addition, the CDR allows the Order Placer to swap from messaging based workflow to FHIR Workflow using the FHIR Task resource.  
+In addition, the CDR allows the Order Placer to swap from messaging-based workflow to FHIR Workflow using the FHIR Task resource.  
 
 <figure>
 {%include LTW-cdr-sequence.svg%}
