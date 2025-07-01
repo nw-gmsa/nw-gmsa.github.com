@@ -3,27 +3,13 @@
 hide footbox
 
 participant "Order Placer" as EPR
-participant "Enterprise Document\n Sharing" as XDS
-participant "Intermediary\nRegional Integration Engine (RIE)" as TIE
 participant "Order Filler" as LIMS
 
-== Submit Test Order Form [LAB-1] ==
 
-EPR -> TIE: \nSend HL7 FHIR Message\n**Laboratory Order O21**
-TIE -> LIMS: Send HL7 v2 Message\n**ORM_O01**
-
-== Perform Test ==
-
+EPR -> EPR: Complete Referral Form
+EPR -> LIMS: [[LAB-1.html Placer Order Managment (LAB-1)]] [[DDD-TestOrder.html Genomic Order O21]] Command Message
 LIMS -> LIMS: Perform Test
+LIMS -> EPR: [[LAB-3.html Order Results Management (LAB-3)]] [[DDD-TestReport.html Genomic Report R01]] Document Message
 
-== Send Genomic Report [LAB-3] ==
-
-LIMS -> TIE: Send HL7 v2 Message\n**ORU_R01**
-
-TIE -> EPR: Send HL7 v2 Message\n**ORU_R01**
-
-alt
-TIE -> XDS: Send HL7 v2 Message\n**ORU_R01**
-end
 
 @enduml

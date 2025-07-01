@@ -1,13 +1,25 @@
 ## Workflow
 
-#### Actors (Swimlanes from left to right):
+### Actors
 
 - Order Placer – Typically a clinician or system that initiates a lab test.
 - Enterprise Document Sharing – Repository or system used for document exchange.
-- Intermediary/Regional Integration Engine (RIE) – A middleware system for routing and transforming healthcare messages.
 - Order Filler – Laboratory or testing system that performs the test and produces the result.
 
-### Current/Traditional Workflow with Clinical Document Repository
+
+### Transaction & Archetype Maps
+
+The different options include the use of the following archetypes. The differing formats are generally compatible with each other.
+
+| FHIR Document                                                                | HL7 v2                                                                                                   | HL7 FHIR Message                                                                               | HL7 FHIR Resource |
+|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|-------------------|
+|                                                                              | [OML_O21 Laboratory Order](hl7v2.html#oml_o21-laboratory-order)                                          | [Laboratory (Genomic) Order O21](MessageDefinition-laboratory-order.html)                      |                   |
+| [HL7 Europe Laboratory Report](https://build.fhir.org/ig/hl7-eu/laboratory/) | [ORU_R01 Unsolicited Observation](hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message) | [Unsolicited Observation (Genomic Report) R01](MessageDefinition-unsolicited-observation.html) | [HL7 Genomics Reporting](https://build.fhir.org/ig/HL7/genomics-reporting/)          |
+
+
+## Options 
+
+### Traditional Messaging Option
 
 <figure>
 {%include LTW-now-sequence.svg%}
@@ -28,17 +40,9 @@
      - Then from RIE to Order Placer.
 4. Finally, it may also be sent from RIE to Enterprise Document Sharing.
 
-Notes:
-
-- HL7 Messages:
-  - O21 (FHIR): A modern standard for ordering lab tests.
-  - ORM_O01: A traditional HL7 v2 order message.
-  - ORU_R01: A standard HL7 v2 message used to send lab results.
-- IHE LTW Workflow: IHE (Integrating the Healthcare Enterprise) Laboratory Testing Workflow, which includes guidelines for standardized lab test communication.
 
 
-
-### Addition of a Clinical Data Repository
+### Event Notifications and Enterprise Shared Data/Document Repositories Option
 
 The API to the CDR (FHIR Repository) will conform to [IHE Query for Existing Data for Mobile (QEDm)](https://build.fhir.org/ig/IHE/QEDm/branches/master/index.html) for clinical data and also [IHE Mobile access to Health Documents (MHD)](https://profiles.ihe.net/ITI/MHD/index.html)
 The data standard will follow this guide and also [HL7 Genomics Reporting](https://build.fhir.org/ig/HL7/genomics-reporting/)
@@ -48,7 +52,7 @@ The data standard will follow this guide and also [HL7 Genomics Reporting](https
 </figure>
 <br clear="all">
 
-### Addition of FHIR Workflow
+### Shared Repositories and FHIR Workflow Option
 
 This adds in the [FHIR Workflow](https://hl7.org/fhir/R4/workflow.html) to the Clinical Data Repository.
 FHIR Subscription is described in [FHIR Subscription](https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/toc.html) page.
