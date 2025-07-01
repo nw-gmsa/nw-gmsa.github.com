@@ -40,9 +40,9 @@ This also follows IHE Laboratory and Testing Workflow (LTW)
 #### Messaging Flow:
 
 - Complete Referral Form
-  - A manual or electronic step performed by the Order Placer before sending the message.
+  - The Order Placer completes an order form.
 - Placer Order Management (LAB-1) Genomic Order O21 – Command Message
-  - A command message (HL7 ORM_O01 or OML_O21) is sent from the Order Placer to the Order Filler.
+  - A Genomic Order O21 is sent from the Order Placer to the Order Filler.
   - Purpose: To initiate and communicate the genomic testing order.
 - Perform Test
   - The Order Filler processes the order and performs the test.
@@ -81,18 +81,17 @@ In addition, the CDR allows the Order Placer to swap from messaging-based workfl
 #### Messaging Flow:
 
 1. Initial Order Message:
-   - The Order Placer completes a referral form.
+   - The Order Placer completes an order form.
    - Sends a Genomic Order O21 Command Message to RIE.
    - RIE forwards this command to both the CDR and Order Filler.
-   - Optionally, a Genomic Order O21 Document Message is also sent to CDR.
 2. Optional FHIR Workflow (ALT Path):
-  - FHIR Task (accepted) Event Message is sent by the Order Placer to RIE and forwarded to the CDR.
+  - FHIR Task with an `accepted` status is created from the Genominc Order O21 Message and is sent by the Order Placer to the CDR.
   - This begins the FHIR-based workflow as an alternative to traditional HL7 messaging.
 3. Test Execution:
    - The Order Filler performs the genomic test.
 4. Result Reporting:
-   - The Genomic Report R01 Document Message is sent from the Order Filler to CDR.
-   - FHIR Task (completed) Event Message is then sent to indicate completion of the task.
+   - The Genomic Report R01 Document Message is sent from the Order Filler to CDR, this is used to store new FHIR resource and updating existing ones such as the ServiceRequest to a `completed` status.
+   - The FHIR Task is updated to with a `completed` status and is then sent to indicate completion of the task.
 5. Result Retrieval Options:
    - Optional (opt):
      - The Order Placer retrieves results using a REST API (FHIR-based).
@@ -126,17 +125,19 @@ This differs from the current proposal to send in **Genomic Test Requests** via 
 1. Initiation:
    - The Order Placer completes a referral form.
    - A Genomic Order O21 Document Message is sent to the Order Placer’s Clinical Data Repository.
+     - When the order is placed with the North West region, this will be a Genomic Order O21 Message which the RIE sends to the CDR.
    - A FHIR Task (requested) event message is also generated.
 2. Order Acceptance & Retrieval:
    - The Order Filler Clinical Data Repository retrieves the order using Placer Order Management (LAB-1) Genomic Order O21 REST API.
-   - A FHIR Task (accepted) event message is returned to the Order Placer confirming acceptance.
+   - A FHIR Task with a status of `accepted` event message is returned to the Order Placer confirming acceptance.
 3. Test Execution:
    - The Order Filler performs the genomic test.
 4. Results Submission:
    - The results are submitted as a Genomic Report R01 Document Message to the Order Filler Clinical Data Repository.
-   - The FHIR Task (completed) event message is sent back to the Order Placer.
+   - The FHIR Task event message with a status of `completed` is sent back to the Order Placer.
 5. Result Retrieval:
    - The Order Placer retrieves the genomic report using the Genomic Report R01 REST API from the Order Filler’s Clinical Data Repository.
+   - The RIE on reciept of a `completed` task will then convert the report to a Genomic Report R01 Message and send onto the original Order Placer.  
 
 #### Pro/Cons
 

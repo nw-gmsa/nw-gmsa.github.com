@@ -6,7 +6,7 @@ participant "Order Placer" as EPR
 participant "Order Filler" as LIMS
 
 
-EPR -> EPR: Complete Referral Form
+EPR -> EPR: Complete Order Form
 EPR -> LIMS: [[LAB-1.html Placer Order Managment (LAB-1)]] [[DDD-TestOrder.html Genomic Order O21]] Command Message
 LIMS -> LIMS: Perform Test
 LIMS -> EPR: [[LAB-3.html Order Results Management (LAB-3)]] [[DDD-TestReport.html Genomic Report R01]] Document Message

@@ -12,7 +12,7 @@ participant "Order Filler\nClinical Data Repository" as CDRF
 participant "Order Filler" as LIMS
 
 
-EPR -> EPR: Complete Referral Form
+EPR -> EPR: Complete Order Form
 EPR -> CDRO: [[LAB-1.html Placer Order Managment (LAB-1)]] [[DDD-TestOrder.html Genomic Order O21]] Document Message
 EPR -> LIMS: [[StructureDefinition-Task.html FHIR Task]] (requested) Event Message
 LIMS -> CDRO: Retrieve [[LAB-1.html Placer Order Managment (LAB-1)]] [[DDD-TestOrder.html Genomic Order O21]] REST API

@@ -12,7 +12,7 @@ participant "Enterprise\nClinical Data Repository" as CDR
 participant "Order Filler" as LIMS
 
 
-EPR -> EPR: Complete Referral Form
+EPR -> EPR: Complete Order Form
 EPR -> TIE: [[LAB-1.html Placer Order Managment (LAB-1)]] [[DDD-TestOrder.html Genomic Order O21]] Command Message
 TIE -> LIMS: [[LAB-1.html Placer Order Managment (LAB-1)]] [[DDD-TestOrder.html Genomic Order O21]] Document Message
 TIE -> CDR: [[LAB-1.html Placer Order Managment (LAB-1)]] [[DDD-TestOrder.html Genomic Order O21]] Command Message
