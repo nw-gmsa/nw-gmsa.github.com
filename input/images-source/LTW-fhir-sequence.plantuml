@@ -2,13 +2,13 @@
 
 skinparam svgDimensionStyle false
 
-title "Shared Repositories and FHIR Workflow Option"
+title "Multiple Clinical Data Repositories and FHIR Workflow"
 
 hide footbox
 
 participant "Order Placer" as EPR
-participant "Order Placer Repository" as CDRO
-participant "Order Filler Repository" as CDRF
+participant "Order Placer\nClinical Data Repository" as CDRO
+participant "Order Filler\nClinical Data Repository" as CDRF
 participant "Order Filler" as LIMS
 
 

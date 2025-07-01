@@ -4,11 +4,11 @@ skinparam svgDimensionStyle false
 
 hide footbox
 
-title "Event Notifications and Enterprise Shared Data/Document Repositories Option"
+title "Event Notifications and Enterprise Clinical Data Repository Option"
 
 participant "Order Placer" as EPR
 participant "Intermediary\nRegional Integration Engine (RIE)" as TIE
-participant "Enterprise Document/Data Sharing" as CDR
+participant "Enterprise\nClinical Data Repository" as CDR
 participant "Order Filler" as LIMS
 
 
@@ -32,6 +32,5 @@ end
 else Traditional Messaging
 TIE -> EPR: [[LAB-3.html Order Results Management (LAB-3)]] [[DDD-TestReport.html Genomic Report R01]] Document Message
 end
-
 
 @enduml
