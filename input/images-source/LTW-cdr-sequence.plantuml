@@ -1,5 +1,7 @@
 @startuml
 
+skinparam svgDimensionStyle false
+
 hide footbox
 
 title "Event Notifications and Enterprise Shared Data/Document Repositories Option"

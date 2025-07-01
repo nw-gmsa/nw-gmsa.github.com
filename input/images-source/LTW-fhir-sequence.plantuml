@@ -1,5 +1,7 @@
 @startuml
 
+skinparam svgDimensionStyle false
+
 title "Shared Repositories and FHIR Workflow Option"
 
 hide footbox
