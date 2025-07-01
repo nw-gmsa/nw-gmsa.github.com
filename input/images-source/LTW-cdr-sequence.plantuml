@@ -2,32 +2,34 @@
 
 hide footbox
 
+title "Event Notifications and Enterprise Shared Data/Document Repositories Option"
+
 participant "Order Placer" as EPR
-participant "Enterprise Document\n Sharing" as XDS
 participant "Intermediary\nRegional Integration Engine (RIE)" as TIE
-participant "Enterprise Data\nSharing\n(FHIR Repository)" as CDR
+participant "Enterprise Document/Data Sharing" as CDR
 participant "Order Filler" as LIMS
 
 
-
-== Submit Test Order Form [LAB-1] ==
-
-EPR -> TIE: \nSend HL7 FHIR Message\n**Laboratory Order O21**
-TIE -> LIMS: Send HL7 v2 Message\n**ORML_O01**
-TIE -> CDR: HL7 FHIR REST (internal)
-
-== Perform Test ==
-
+EPR -> EPR: Complete Referral Form
+EPR -> TIE: [[LAB-1.html Placer Order Managment (LAB-1)]] [[DDD-TestOrder.html Genomic Order O21]] Command Message
+TIE -> LIMS: [[LAB-1.html Placer Order Managment (LAB-1)]] [[DDD-TestOrder.html Genomic Order O21]] Document Message
+TIE -> CDR: [[LAB-1.html Placer Order Managment (LAB-1)]] [[DDD-TestOrder.html Genomic Order O21]] Command Message
+TIE -> CDR: [[StructureDefinition-Task.html FHIR Task]] (accepted) Event Message
+alt Order Placer can choose to start supporting FHIR Workflow
+TIE -> EPR: [[StructureDefinition-Task.html FHIR Task]] (accepted) Event Message
+end
 LIMS -> LIMS: Perform Test
 
-== Send Genomic Report [LAB-3] ==
-
-LIMS -> TIE: Send HL7 v2 Message\n**ORU_R01**
-
-TIE -> EPR: Send HL7 v2 Message\n**ORU_R01**
-alt IHE LTW Workflow
-TIE -> XDS: Send HL7 v2 Message\n**ORU_R01**
+LIMS -> TIE: [[LAB-3.html Order Results Management (LAB-3)]] [[DDD-TestReport.html Genomic Report R01]] Document Message
+TIE -> CDR: [[StructureDefinition-Task.html FHIR Task]] (completed) Event Message
+alt Order Placer can choose to start supporting FHIR Workflow
+TIE -> EPR: [[StructureDefinition-Task.html FHIR Task]] (completed) Event Message
+opt when required
+  EPR -> TIE: Retrieve [[LAB-3.html Order Results Management (LAB-3)]] [[DDD-TestReport.html Genomic Report R01]] Document Message
 end
-TIE -> CDR: HL7 FHIR REST (internal)
+else Traditional Messaging
+TIE -> EPR: [[LAB-3.html Order Results Management (LAB-3)]] [[DDD-TestReport.html Genomic Report R01]] Document Message
+end
+
 
 @enduml
