@@ -38,23 +38,22 @@ This also follows IHE Laboratory and Testing Workflow (LTW)
 </figure>
 <br clear="all">
 
-#### Workflow Steps:
+#### Messaging Flow:
 
-1. Submit Test Order Form
-   - The Order Placer submits a test order form.
-2. In the IHE LTW Workflow, the system may send an HL7 FHIR Message called Laboratory Order O21 and this is transformed into an HL7 v2 Message called ORM_O01 to the Order Filler via the RIE.
-2. Perform Test
-   - The Order Filler receives the order and performs the test.
-3. Send Genomic Report
-   - After the test, the Order Filler sends a genomic report.
-   - HL7 v2 Message ORU_R01 is used to transmit the result:
-     - First sent from Order Filler to RIE.
-     - Then from RIE to Order Placer.
-4. Finally, it may also be sent from RIE to Enterprise Document Sharing.
+- Complete Referral Form
+  - A manual or electronic step performed by the Order Placer before sending the message.
+- Placer Order Management (LAB-1) Genomic Order O21 – Command Message
+  - A command message (HL7 ORM_O01 or OML_O21) is sent from the Order Placer to the Order Filler.
+  - Purpose: To initiate and communicate the genomic testing order.
+- Perform Test
+  - The Order Filler processes the order and performs the test.
+- Order Results Management (LAB-3) Genomic Report R01 – Document Message
+  - A document message (HL7 ORU_R01) is sent from the Order Filler back to the Order Placer.
+  - Purpose: To report the results of the genomic test.
 
 ### Pros/Cons
 
-- Follows International standards.
+- Fo llows International standards.
     - The FHIR Messages mentioned above are not part of an international standard.
 - Makes use of [Messaging Patterns](https://www.enterpriseintegrationpatterns.com/patterns/messaging/index.html) and so in secondary care has considerable middleware via Trust Integration Engines (TIE).
 - Does not support referral triage processes or other workflow interactions.
@@ -67,6 +66,8 @@ This also follows IHE Laboratory and Testing Workflow (LTW)
 
 ### Event Notifications and Enterprise Shared Data/Document Repositories Option
 
+Advanced, flexible, and interoperable genomic reporting workflow that combines traditional HL7 messaging with FHIR-based workflows and centralized data repositories, offering a future-ready health data exchange model.
+
 This is an evolution of the previous option by adding in an **Enterprise Clinical Data Repository (CDR)** which can Genomic Orders and Reports data across the region. The API to this repository conforms to  
 both [IHE Query for Existing Data for Mobile (QEDm)](https://build.fhir.org/ig/IHE/QEDm/branches/master/index.html) for clinical data and also [IHE Mobile access to Health Documents (MHD)](https://profiles.ihe.net/ITI/MHD/index.html) for (pdf) documents.
 The data within the CDR will adhere to [HL7 Genomics Reporting](https://build.fhir.org/ig/HL7/genomics-reporting/)
@@ -78,7 +79,38 @@ In addition, the CDR allows the Order Placer to swap from messaging-based workfl
 </figure>
 <br clear="all">
 
+#### Messaging Flow:
+
+1. Initial Order Message:
+   - The Order Placer completes a referral form.
+   - Sends a Genomic Order O21 Command Message to RIE.
+   - RIE forwards this command to both the CDR and Order Filler.
+   - Optionally, a Genomic Order O21 Document Message is also sent to CDR.
+2. Optional FHIR Workflow (ALT Path):
+  - FHIR Task (accepted) Event Message is sent by the Order Placer to RIE and forwarded to the CDR.
+  - This begins the FHIR-based workflow as an alternative to traditional HL7 messaging.
+3. Test Execution:
+   - The Order Filler performs the genomic test.
+4. Result Reporting:
+   - The Genomic Report R01 Document Message is sent from the Order Filler to CDR.
+   - FHIR Task (completed) Event Message is then sent to indicate completion of the task.
+5. Result Retrieval Options:
+   - Optional (opt):
+     - The Order Placer retrieves results using a REST API (FHIR-based).
+   - Traditional (fallback):
+     - Results are also available via traditional HL7 v2 ORU_R01 Document Message.
+
+#### Pro/Cons
+
+- Hybrid Support: Works with both HL7 v2 and FHIR.
+- Scalability: Central CDR enables easier data sharing across systems.
+- Interoperability: Complies with widely accepted health IT standards.
+- Flexibility: Supports event-driven or request-driven access to results.
+
+
 ### Shared Repositories and FHIR Workflow Option
+
+A fully FHIR-based, repository-driven genomic workflow, enabling secure, scalable, and flexible collaboration between order placers and fillers through shared data access and event-driven communication.
 
 This option would apply to North West GMSA Regional Integration Engine (RIE) and Genomic Order Management System (GOMS) working with each other. In this option both can act as the Order Placer or Filler.
 This option is a full adoption of [FHIR Workflow Management Communication Patterns](https://build.fhir.org/workflow-management.html)
@@ -89,3 +121,28 @@ This differs from the current proposal to send in **Genomic Test Requests** via 
 {%include LTW-fhir-sequence.svg%}
 </figure>
 <br clear="all">
+
+#### Messaging Flow:
+
+1. Initiation:
+   - The Order Placer completes a referral form.
+   - A Genomic Order O21 Document Message is sent to the Order Placer’s Clinical Data Repository.
+   - A FHIR Task (requested) event message is also generated.
+2. Order Acceptance & Retrieval:
+   - The Order Filler Clinical Data Repository retrieves the order using Placer Order Management (LAB-1) Genomic Order O21 REST API.
+   - A FHIR Task (accepted) event message is returned to the Order Placer confirming acceptance.
+3. Test Execution:
+   - The Order Filler performs the genomic test.
+4. Results Submission:
+   - The results are submitted as a Genomic Report R01 Document Message to the Order Filler Clinical Data Repository.
+   - The FHIR Task (completed) event message is sent back to the Order Placer.
+5. Result Retrieval:
+   - The Order Placer retrieves the genomic report using the Genomic Report R01 REST API from the Order Filler’s Clinical Data Repository.
+
+#### Pro/Cons
+
+- Orders and results are shared via FHIR repositories and APIs rather than direct HL7 v2 messages.
+- Decouples systems – allowing asynchronous, federated access to shared data.
+- Scalability & Interoperability: Built for modern health IT ecosystems.
+- Flexibility: Systems can retrieve data when needed.
+- FHIR-Centric: Enables real-time tracking and status updates via FHIR Task.
