@@ -51,7 +51,7 @@ This also follows IHE Laboratory and Testing Workflow (LTW)
   - A document message (HL7 ORU_R01) is sent from the Order Filler back to the Order Placer.
   - Purpose: To report the results of the genomic test.
 
-### Pros/Cons
+#### Pros/Cons
 
 - Fo llows International standards.
     - The FHIR Messages mentioned above are not part of an international standard.
@@ -59,7 +59,7 @@ This also follows IHE Laboratory and Testing Workflow (LTW)
 - Does not support referral triage processes or other workflow interactions.
 - UK and England HL7 standards (including UKCore) do not cover this workflow, especially around the use of business identifiers.
 
-### Notes 
+#### Notes 
 
 - The NHS England Genomic Order Management Service - [Process genomic test request](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir#post-/FHIR/R4) is effectively a HL7 Message same as the Genomic Order O21 Command Message. This does not support Genomic Report R01 Document Message  
 
