@@ -60,13 +60,18 @@ This also follows IHE Laboratory and Testing Workflow (LTW)
 - Does not support referral triage processes or other workflow interactions.
 - UK and England HL7 standards (including UKCore) do not cover this workflow, especially around the use of business identifiers.
 
+### Notes 
+
+- The NHS England Genomic Order Management Service - [Process genomic test request](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir#post-/FHIR/R4) is effectively a HL7 Message same as the Genomic Order O21 Command Message. This does not support Genomic Report R01 Document Message  
+
+
 ### Event Notifications and Enterprise Shared Data/Document Repositories Option
 
 This is an evolution of the previous option by adding in an **Enterprise Clinical Data Repository (CDR)** which can Genomic Orders and Reports data across the region. The API to this repository conforms to  
 both [IHE Query for Existing Data for Mobile (QEDm)](https://build.fhir.org/ig/IHE/QEDm/branches/master/index.html) for clinical data and also [IHE Mobile access to Health Documents (MHD)](https://profiles.ihe.net/ITI/MHD/index.html) for (pdf) documents.
 The data within the CDR will adhere to [HL7 Genomics Reporting](https://build.fhir.org/ig/HL7/genomics-reporting/)
 
-In addition, the CDR allows the Order Placer to swap from messaging-based workflow to FHIR Workflow using the FHIR Task resource.  
+In addition, the CDR allows the Order Placer to swap from messaging-based workflow to FHIR Workflow using the FHIR Task resource. Ideally, FHIR Workflow would be backed by [FHIR Subscription](https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/toc.html). 
 
 <figure>
 {%include LTW-cdr-sequence.svg%}
@@ -75,10 +80,10 @@ In addition, the CDR allows the Order Placer to swap from messaging-based workfl
 
 ### Shared Repositories and FHIR Workflow Option
 
-This adds in the [FHIR Workflow](https://hl7.org/fhir/R4/workflow.html) to the Clinical Data Repository.
-FHIR Subscription is described in [FHIR Subscription](https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/toc.html) page.
+This option would apply to North West GMSA Regional Integration Engine (RIE) and Genomic Order Management System (GOMS) working with each other. In this option both can act as the Order Placer or Filler.
+This option is a full adoption of [FHIR Workflow Management Communication Patterns](https://build.fhir.org/workflow-management.html)
 
-This will require development of a FHIR Subscription service within the TIE. This may be limited to just supporting FHIR Task and message based subscriptions.
+This differs from the current proposal to send in **Genomic Test Requests** via messaging, instead they would be shared from the source system.
 
 <figure>
 {%include LTW-fhir-sequence.svg%}

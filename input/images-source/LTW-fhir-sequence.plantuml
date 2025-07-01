@@ -23,6 +23,6 @@ LIMS -> LIMS: Perform Test
 
 LIMS -> CDRF: [[LAB-3.html Order Results Management (LAB-3)]] [[DDD-TestReport.html Genomic Report R01]] Document Message
 LIMS -> EPR: [[StructureDefinition-Task.html FHIR Task]] (completed) Event Message
-EPR -> CDRF: Retrieve [[LAB-3.html Order Results Management (LAB-3)]] [[DDD-TestReport.html Genomic Report R01]] Document Message
+EPR -> CDRF: Retrieve [[LAB-3.html Order Results Management (LAB-3)]] [[DDD-TestReport.html Genomic Report R01]] REST API
 
 @enduml

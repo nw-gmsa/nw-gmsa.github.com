@@ -27,7 +27,7 @@ TIE -> CDR: [[StructureDefinition-Task.html FHIR Task]] (completed) Event Messag
 alt Order Placer can choose to start supporting FHIR Workflow
 TIE -> EPR: [[StructureDefinition-Task.html FHIR Task]] (completed) Event Message
 opt when required
-  EPR -> TIE: Retrieve [[LAB-3.html Order Results Management (LAB-3)]] [[DDD-TestReport.html Genomic Report R01]] Document Message
+  EPR -> TIE: Retrieve [[LAB-3.html Order Results Management (LAB-3)]] [[DDD-TestReport.html Genomic Report R01]] REST API
 end
 else Traditional Messaging
 TIE -> EPR: [[LAB-3.html Order Results Management (LAB-3)]] [[DDD-TestReport.html Genomic Report R01]] Document Message
