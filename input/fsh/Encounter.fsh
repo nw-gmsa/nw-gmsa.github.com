@@ -24,7 +24,7 @@ Includes constraints from:
 * identifier[VisitNumber] insert Obligation(#SHALL:populate, https://nw-gmsa.github.io/ActorDefinition/OrderPlacer)
 * identifier[VisitNumber] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/AutomationManager)
 
-
+* class 1..1 MS
 * type 0..1 MS
 * type from AdmissionMethod
 * serviceType 0..1 MS
