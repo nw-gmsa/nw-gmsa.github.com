@@ -22,6 +22,7 @@ See also [HL7 Europe Laboratory Report - Specimen: Laboratory](https://build.fhi
 * collection.collected[x] only dateTime
 * collection.collectedDateTime 0..1 MS
 
+* type 1..1 MS
 * type from SpecimenType (required)
 
 * collection.collector 0..1 MS
