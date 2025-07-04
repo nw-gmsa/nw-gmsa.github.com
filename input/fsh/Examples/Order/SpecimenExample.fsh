@@ -25,3 +25,11 @@ Description: "TODO"
   * system = $nhs-number
   * value = "9449305552"
 
+* collection.collectedDateTime = "2025-01-29T10:37:26+00:00"
+
+* type
+  * coding[+]
+    * code = #258580003
+    * display = "Whole blood specimen"
+    * system = $sct
+
