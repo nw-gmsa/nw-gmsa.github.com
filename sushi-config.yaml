@@ -168,14 +168,6 @@ resources:
     name: Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example
     description: See [Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle#Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example)
     exampleBoolean: true
-  PractitionerRole/PractitionerRole-HazelSmithKingstonPathology-Example:
-    name: PractitionerRole-HazelSmithKingstonPathology-Example
-    description:
-    exampleBoolean: true
-  Patient/Patient-ZelmaHadjkiss-Example:
-    name: Patient-ZelmaHadjkiss-Example
-    description:
-    exampleBoolean: true
 
 
 menu:
@@ -258,5 +250,3 @@ groups:
     description: "NHS Genomics Medicine Service"
     resources:
       - Bundle/Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example
-      - PractitionerRole/PractitionerRole-HazelSmithKingstonPathology-Example
-      - Patient/Patient-ZelmaHadjkiss-Example
