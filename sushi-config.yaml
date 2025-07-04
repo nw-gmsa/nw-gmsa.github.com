@@ -164,6 +164,19 @@ resources:
     name: Genomic Report Ovarian Carcinoma Diagnostic Implication Example
     description: Genomic Report Ovarian Carcinoma Diagnostic Implication Example
     exampleBoolean: true
+  Bundle/Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example:
+    name: Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example
+    description: See [Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle#Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example)
+    exampleBoolean: true
+  PractitionerRole/PractitionerRole-HazelSmithKingstonPathology-Example:
+    name: PractitionerRole-HazelSmithKingstonPathology-Example
+    description:
+    exampleBoolean: true
+  Patient/Patient-ZelmaHadjkiss-Example:
+    name: Patient-ZelmaHadjkiss-Example
+    description:
+    exampleBoolean: true
+
 
 menu:
   Home: index.html
@@ -222,7 +235,7 @@ groups:
       - MessageHeader/MessageHeaderGenomicReport
   -ex-example-other:
     name: "Example: Ask at Order Entry questions and prior results"
-    description: " Ask at Order Entry questions and prior results"
+    description: "Ask at Order Entry questions and prior results"
     resources:
       - Bundle/FHIRDocumentGeneticReportBundle
       - Composition/Composition-GenomicsReport-OctaviaCHISLETT
@@ -240,4 +253,10 @@ groups:
       - Observation/EPIC-OBX-8
       - Observation/EPIC-OBX-10
       - Observation/EPIC-OBX-11
-
+  -ex-example-NHS-Genomics-Medicine-Service:
+    name: "Example: NHS Genomics Medicine Service"
+    description: "NHS Genomics Medicine Service"
+    resources:
+      - Bundle/Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example
+      - PractitionerRole/PractitionerRole-HazelSmithKingstonPathology-Example
+      - Patient/Patient-ZelmaHadjkiss-Example
