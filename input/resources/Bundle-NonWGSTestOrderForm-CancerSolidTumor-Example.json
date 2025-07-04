@@ -537,7 +537,7 @@
           ]
         },
         "subject": {
-          "reference": "Patient-ZelmaHadjkiss-Example",
+          "reference": "Patient/Patient-ZelmaHadjkiss-Example",
           "identifier": {
             "system": "https://fhir.nhs.uk/Id/nhs-number",
             "value": "9449307555"
@@ -657,7 +657,7 @@
       }
     },
     {
-      "entry" : {
+
         "fullUrl": "http://example.org/fhir/PractitionerRole/PractitionerRole-JamesTaylorKingstonPathology-Examplee",
         "resource" : {
           "resourceType": "PractitionerRole",
@@ -715,6 +715,5 @@
           ]
         }
       }
-    }
   ]
 }
