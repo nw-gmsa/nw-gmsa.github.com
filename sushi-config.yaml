@@ -168,7 +168,10 @@ resources:
     name: Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example
     description: See [Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle#Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example)
     exampleBoolean: true
-
+  Bundle/Bundle-NonWGSTestOrderForm-FetalScenario-Example:
+    name: Bundle-NonWGSTestOrderForm-FetalScenario-Example
+    description: See [Bundle-NonWGSTestOrderForm-FetalScenario-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle#Bundle-NonWGSTestOrderForm-FetalScenario-Example)
+    exampleBoolean: true
 
 menu:
   Home: index.html
@@ -250,3 +253,4 @@ groups:
     description: "NHS Genomics Medicine Service"
     resources:
       - Bundle/Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example
+      - Bundle/Bundle-NonWGSTestOrderForm-FetalScenario-Example

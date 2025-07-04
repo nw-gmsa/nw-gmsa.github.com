@@ -12,7 +12,8 @@
       "fullUrl" : "urn:uuid:156bb6ab-15e7-42f3-a819-ecd16a5b4fbd",
       "resource" : {
         "resourceType" : "MessageHeader",
-        "id" : "MessageHeaderGenomicOrder",
+        "id" : "MessageHeaderGenomicOrderCancer",
+        "id" : "MessageHeaderGenomicOrderCancer",
         "meta" : {
           "lastUpdated" : "2025-01-29T10:39:26+00:00"
         },

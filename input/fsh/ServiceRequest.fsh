@@ -72,23 +72,11 @@ See also [HL7 Europe Laboratory Report - ServiceRequest: Laboratory Order](https
 * orderDetail.coding ^slicing.description = "Slice based on the system"
 * orderDetail.coding ^slicing.ordered = false
 * orderDetail.coding contains
-  GenomicRareAndInheritedDisease 0..1 MS and GenomicCancer 0..1 MS
+  GenomicTestDirectory 1..1 MS
 
-* orderDetail.coding[GenomicRareAndInheritedDisease] ^short = "Genomic Rare and Inherited Disease Test Directory"
-* orderDetail.coding[GenomicRareAndInheritedDisease] from GenomicRareAndInheritedDisease (required)
-* orderDetail.coding[GenomicRareAndInheritedDisease].system = $GTD
+* orderDetail.coding[GenomicTestDirectory] ^short = "Genomic Test Directory"
+* orderDetail.coding[GenomicTestDirectory].system = $GTD
 
-* orderDetail.coding[GenomicCancer] ^short = "Genomic Cancer Test Directory"
-* orderDetail.coding[GenomicCancer] from GenomicCancer (required)
-* orderDetail.coding[GenomicCancer].system = $GTD
-
-//* code.coding[PathologyAndLaboratoryMedicine] ^short = "Use for Pathology and Laboratory Orders"
-//* code.coding[PathologyAndLaboratoryMedicine] from https://fhir.hl7.org.uk/ValueSet/UKCore-PathologyAndLaboratoryMedicineObservables
-//* code.coding[PathologyAndLaboratoryMedicine].system = $sct
-
-//* code.coding[NICIP] ^short = "Use for Radiology Orders"
-//* code.coding[NICIP] from https://fhir.interweavedigital.nhs.uk/R4/ValueSet/Interweave-NICIP
-//* code.coding[NICIP].system = "https://fhir.interweavedigital.nhs.uk/CodeSystem/Interweave-NICIP"
 
 * category 1..* MS
 * category ^slicing.discriminator.type = #value
@@ -143,7 +131,7 @@ See also [HL7 Europe Laboratory Report - ServiceRequest: Laboratory Order](https
 * reasonCode from GenomicConditionCode
 
 * supportingInfo 0..* MS
-* supportingInfo only Reference(ObservationPanel or Observation or DiagnosticReport or DocumentReference)
+* supportingInfo only Reference(ObservationPanel or Observation or DiagnosticReport or QuestionnaireResponse or DocumentReference)
 
 * supportingInfo ^slicing.discriminator.type = #value
 * supportingInfo ^slicing.discriminator.path = "type"
