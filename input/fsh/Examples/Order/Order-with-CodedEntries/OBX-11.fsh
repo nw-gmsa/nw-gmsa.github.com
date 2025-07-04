@@ -13,7 +13,7 @@ Description: "TODO"
   * coding[+]
     * code = #230039
     * display = "Is the Person Ordering the Test the Referring Clinician"
-    * system = "https://mft.nhs.uk/Id/IGENE"
+    * system = $MFTEPIC
 
 * valueString = "No"
 

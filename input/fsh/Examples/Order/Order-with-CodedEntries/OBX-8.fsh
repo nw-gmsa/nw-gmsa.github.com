@@ -13,7 +13,7 @@ Description: "TODO"
   * coding[+]
     * code = #230027
     * display = "Email Addresses of Non-MFT Clinicians for Result Reports"
-    * system = "https://mft.nhs.uk/Id/IGENE"
+    * system = $MFTEPIC
 
 * valueString = "charu"
 

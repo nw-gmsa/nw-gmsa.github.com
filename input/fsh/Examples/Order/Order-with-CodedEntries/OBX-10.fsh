@@ -13,7 +13,7 @@ Description: "TODO"
   * coding[+]
     * code = #230037
     * display = "Please Acknowledge That a DNA Sample Will be Stored in the Laboratory on Completion of Testing"
-    * system = "https://mft.nhs.uk/Id/IGENE"
+    * system = $MFTEPIC
 
 * valueString = "Acknowledged"
 

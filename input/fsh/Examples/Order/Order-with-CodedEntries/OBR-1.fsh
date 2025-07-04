@@ -13,7 +13,7 @@ Description: "TODO"
   * coding[+]
     * code = #GENEAP
     * display = "GENETICS TEST PERFORMABLE"
-    * system = "https://mft.nhs.uk/Id/IGEAP"
+    * system = $MFTEPIC
   * text = "GENETICS TEST"
 
 // EPIC-PV1

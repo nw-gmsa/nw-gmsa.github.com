@@ -13,7 +13,7 @@ Description: "TODO"
   * coding[+]
     * code = #230016
     * display = "Test Type"
-    * system = "https://mft.nhs.uk/Id/IGENE"
+    * system = $MFTEPIC
 
 * valueString = "Diagnostic Screen/Test"
 

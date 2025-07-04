@@ -13,7 +13,7 @@ Description: "TODO"
   * coding[+]
     * code = #231285
     * display = "Please Select R242 Test(s):"
-    * system = "https://mft.nhs.uk/Id/IGENE"
+    * system = $MFTEPIC
 
 * valueString = "R242.1: Targeted variant testing"
 
