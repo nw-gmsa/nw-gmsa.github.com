@@ -80,7 +80,7 @@ See also [HL7 Europe Laboratory Report - ServiceRequest: Laboratory Order](https
 * category ^slicing.description = "Slice based on the coding.system"
 * category ^slicing.ordered = false
 * category contains
-  GenomicProcedure 1..1 MS and GenomicsWholeCaseSequencing 0..1 MS
+  GenomicProcedure 0..1 MS and GenomicsWholeCaseSequencing 0..1 MS
 
 
 * category[GenomicProcedure].coding.code = #116148004
