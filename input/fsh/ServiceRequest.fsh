@@ -126,7 +126,7 @@ See also [HL7 Europe Laboratory Report - ServiceRequest: Laboratory Order](https
 * reasonCode from GenomicConditionCode (preferred)
 
 * supportingInfo 0..* MS
-* supportingInfo only Reference(ObservationPanel or Observation or DiagnosticReport or QuestionnaireResponse or DocumentReference)
+//* supportingInfo only Reference(ObservationPanel or Observation or DiagnosticReport or QuestionnaireResponse or DocumentReference)
 
 * supportingInfo ^slicing.discriminator.type = #value
 * supportingInfo ^slicing.discriminator.path = "type"

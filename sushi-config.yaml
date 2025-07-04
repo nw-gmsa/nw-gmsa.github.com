@@ -4,7 +4,7 @@
 # e.g. ihe.iti.mhds, or ihe.iti.basicaudit
 id: nw-gmsa.github.io
 canonical: https://nw-gmsa.github.io
-version: 0.0.4
+version: 0.0.5
 name: NWGMSA_IHELTW
 title: North West Genomic Medicine Service Alliance
 description: NHS North West Genomic Medicine Service Alliance - IHE Laboratory Testing Workflow (LTW)
