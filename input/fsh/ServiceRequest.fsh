@@ -50,16 +50,11 @@ See also [HL7 Europe Laboratory Report - ServiceRequest: Laboratory Order](https
 * code.coding ^slicing.description = "Slice based on the system"
 * code.coding ^slicing.ordered = false
 * code.coding contains
-  GenomicRareAndInheritedDisease 0..1 MS and GenomicCancer 0..1 MS
+  GenomicTestDirectory 1..1 MS
   // and PathologyAndLaboratoryMedicine 0..1 and NICIP 0..1
 
-* code.coding[GenomicRareAndInheritedDisease] ^short = "Genomic Rare and Inherited Disease Test Directory"
-* code.coding[GenomicRareAndInheritedDisease] from GenomicRareAndInheritedDisease (required)
-* code.coding[GenomicRareAndInheritedDisease].system = $GTD
-
-* code.coding[GenomicCancer] ^short = "Genomic Cancer Test Directory"
-* code.coding[GenomicCancer] from GenomicCancer (required)
-* code.coding[GenomicCancer].system = $GTD
+* code.coding[GenomicTestDirectory] ^short = "Genomic Cancer Test Directory"
+* code.coding[GenomicTestDirectory].system = $GTD
 
 * orderDetail ^short = "Additional order codes"
 
