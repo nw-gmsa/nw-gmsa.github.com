@@ -14,14 +14,14 @@
 
   participant "Clinical Data Source\nNHS England GOMS" as CDR2
 
-  DocumentConsumer -> RIE : FHIR REST API\nQuery Existing Data [PCC-44]
+  DocumentConsumer -> RIE : FHIR REST API\nIHE Query Existing Data [QEDm)
 
 == Federated Query Access Start ==
 
-  RIE -> CDR1 : FHIR REST API\nQuery Existing Data [PCC-44]
+  RIE -> CDR1 : FHIR REST API\nIHE Query Existing Data [QEDm)
   CDR1 --> RIE: Response
 
-  RIE -> CDR2 : FHIR REST API\nQuery Existing Data [PCC-44]
+  RIE -> CDR2 : FHIR REST API\nIHE Query Existing Data [QEDm)
   CDR2 --> RIE: Response
 
   RIE --> RIE: [[https://www.enterpriseintegrationpatterns.com/patterns/messaging/Aggregator.html Aggregate]] Responses
