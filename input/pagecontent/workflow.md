@@ -150,7 +150,7 @@ This differs from the current proposal to send in **Genomic Test Requests** via 
 ### Regional Health Information Exchange (HIE)
 
 This approach enables real-time, federated access to patient data spread across multiple NHS organizations, without needing to centralize all data. It supports **clinical portals** that provide clinicians with a holistic view of patient information while respecting data sovereignty and system independence.
-Notable examples include:
+Notable examples of this pattern include:
 
 - NHS Scotland South East Region (XML/SOAP API)
 - Yorkshire and Humberside Care Record (FHIR STU3 REST API + [Care Connect API](https://nhsconnect.github.io/CareConnectAPI/))
