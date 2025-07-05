@@ -149,12 +149,14 @@ This differs from the current proposal to send in **Genomic Test Requests** via 
 
 ### Regional Health Information Exchange (HIE)
 
-This is often used to support **clinical portals** within the NHS, examples include:
+Regional HIEs are commonly used to support **clinical portals** across the NHS. Notable examples include:
 
 - NHS Scotland South East Region 
 - Yorkshire and Humberside Care Record
 
-It uses an [Aggregator](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Aggregator.html) as used in [IHE Cross-Community Access (XCA)](https://profiles.ihe.net/ITI/TF/Volume1/ch-18.html) document information exchange (used in London).
+These exchanges typically use an [Aggregator](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Aggregator.html) pattern, similar to the approach defined in [IHE Cross-Community Access (XCA)](https://profiles.ihe.net/ITI/TF/Volume1/ch-18.html), which is implemented in London.
+
+Additional clinical data repositories can be integrated into the HIE. This includes systems from regional NHS Trusts that already support IHE QEDm-compatible FHIR REST APIs in their EPR platforms—such as Meditech, EPIC, and Oracle.
 
 <figure>
 {%include HIE-QEDm-Federated-Sequence.svg%}
