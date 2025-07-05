@@ -2,39 +2,31 @@
 
   skinparam svgDimensionStyle false
 
+  title "Regional Health Information Exchange (HIE)"
+
   hide footbox
 
-  participant "Clinical Data Consumer QEDm" as DocumentConsumer
+  participant "Clinical Data Consumer" as DocumentConsumer
 
-  participant "Intermediary\nRegional Integration Engine (RIE)" as RIE
+  participant "Health Information Exchange\nRegional Integration Engine (RIE)" as RIE
 
-  participant "Master Patient Index\nMPI" as MPI
+  participant "Clinical Data Source\nNW GMSA" as CDR1
 
-  participant "Clinical Data Source QEDm\nPyke" as XDS1
+  participant "Clinical Data Source\nNHS England GOMS" as CDR2
 
-  participant "Clinical Data Source QEDm\nLannisport" as XDS2
+  DocumentConsumer -> RIE : FHIR REST API\nQuery Existing Data [PCC-44]
 
-  participant "Clinical Data Source QEDm\nWesteros" as IPA
+== Federated Query Access Start ==
 
-  DocumentConsumer -> RIE : Query Existing Data [PCC-44]\nHL7 IPA Finding and Retrieving Patient Information
+  RIE -> CDR1 : FHIR REST API\nQuery Existing Data [PCC-44]
+  CDR1 --> RIE: Response
 
-  opt Identify Systems with Records
-    note over RIE, MPI: Used to identify which systems have documents for the patient
-    RIE -> MPI: Patient Demographics Query [ITI-78]
-    MPI --> RIE: List of FHIR Patient (includes MRN from providers)
-  end
+  RIE -> CDR2 : FHIR REST API\nQuery Existing Data [PCC-44]
+  CDR2 --> RIE: Response
 
-  RIE -> XDS1 : Query Existing Data [PCC-44]\nHL7 IPA Finding and Retrieving Patient Information
-  XDS1 --> RIE: List of FHIR {resource}
+  RIE --> RIE: [[https://www.enterpriseintegrationpatterns.com/patterns/messaging/Aggregator.html Aggregate]] Responses
+== Federated Query Access End ==
 
-  RIE -> XDS2 : Query Existing Data [PCC-44]\nHL7 IPA Finding and Retrieving Patient Information
-  XDS2 --> RIE: List of FHIR {resource}
-
-  RIE -> IPA : Query Existing Data [PCC-44]\nHL7 IPA Finding and Retrieving Patient Information
-  IPA --> RIE: List of FHIR {resource}
-
-  RIE --> RIE: [[https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageTranslator.html Transform]] and [[https://www.enterpriseintegrationpatterns.com/patterns/messaging/Aggregator.html Aggregate]]
-
-  RIE --> DocumentConsumer: List of FHIR {Resource}
+  RIE --> DocumentConsumer: Response
 
   @enduml

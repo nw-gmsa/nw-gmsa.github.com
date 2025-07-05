@@ -146,3 +146,17 @@ This differs from the current proposal to send in **Genomic Test Requests** via 
 - Scalability & Interoperability: Built for modern health IT ecosystems.
 - Flexibility: Systems can retrieve data when needed.
 - FHIR-Centric: Enables real-time tracking and status updates via FHIR Task.
+
+### Regional Health Information Exchange (HIE)
+
+This is often used to support **clinical portals** within the NHS, examples include:
+
+- NHS Scotland South East Region 
+- Yorkshire and Humberside Care Record
+
+It uses an [Aggregator](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Aggregator.html) as used in [IHE Cross-Community Access (XCA)](https://profiles.ihe.net/ITI/TF/Volume1/ch-18.html) document information exchange (used in London).
+
+<figure>
+{%include HIE-QEDm-Federated-Sequence.svg%}
+</figure>
+<br clear="all">
