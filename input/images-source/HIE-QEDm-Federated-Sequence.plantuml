@@ -1,6 +1,5 @@
   @startuml
 
-  skinparam svgDimensionStyle false
 
   title "Regional Health Information Exchange (HIE)"
 
