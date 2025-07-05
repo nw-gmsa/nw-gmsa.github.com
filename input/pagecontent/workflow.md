@@ -149,16 +149,44 @@ This differs from the current proposal to send in **Genomic Test Requests** via 
 
 ### Regional Health Information Exchange (HIE)
 
-Regional HIEs are commonly used to support **clinical portals** across the NHS. Notable examples include:
+This approach enables real-time, federated access to patient data spread across multiple NHS organizations, without needing to centralize all data. It supports **clinical portals** that provide clinicians with a holistic view of patient information while respecting data sovereignty and system independence.
+Notable examples include:
 
 - NHS Scotland South East Region 
 - Yorkshire and Humberside Care Record
 
 These exchanges typically use an [Aggregator](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Aggregator.html) pattern, similar to the approach defined in [IHE Cross-Community Access (XCA)](https://profiles.ihe.net/ITI/TF/Volume1/ch-18.html), which is implemented in London.
 
-Additional clinical data repositories can be integrated into the HIE. This includes systems from regional NHS Trusts that already support IHE QEDm-compatible FHIR REST APIs in their EPR platforms—such as Meditech, EPIC, and Oracle.
-
 <figure>
 {%include HIE-QEDm-Federated-Sequence.svg%}
 </figure>
 <br clear="all">
+
+#### Key Components:
+
+- Clinical Data Consumer
+  - The system or application (e.g., a clinical portal) that initiates the query to retrieve patient data.
+- Health Information Exchange - Regional Integration Engine (RIE)
+  - Acts as the central orchestrator that receives the query and distributes it across multiple data sources.
+- Clinical Data Sources
+  - Examples shown:
+    - NW GMSA (North West Genomic Medicine Service Alliance)
+    - NHS England GOMS (Genomics Order Medical Services)
+  - These are systems that store patient genomic records and respond to data queries.
+  - Additional clinical data repositories can be integrated into the HIE. This includes systems from regional NHS Trusts that already support IHE QEDm-compatible FHIR REST APIs in their EPR platforms—such as Meditech, EPIC, and Oracle.
+
+#### Sequence of Events (from top to bottom):
+
+- Initial Query
+  - The Clinical Data Consumer sends a FHIR REST API request using IHE Query Existing Data (QEDm) [PCC-44](https://build.fhir.org/ig/IHE/QEDm/branches/master/PCC-44.html) to the RIE.
+- Federated Query Access Start
+  - The RIE starts a federated query process.
+  - It forwards the same IHE QEDm PCC-44 query to each connected clinical data source.
+- Responses from Data Sources
+  - Each clinical data source responds individually with relevant data.
+- Aggregation
+  - The RIE aggregates the responses from all sources into a unified result set.
+- Final Response
+  - The aggregated data is sent back to the Clinical Data Consumer as a single, combined response.
+
+
