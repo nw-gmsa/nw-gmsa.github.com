@@ -125,10 +125,6 @@
             ]
           }
         ]
-      },
-      "request": {
-        "method": "POST",
-        "url": "PractitionerRole"
       }
     },
     {
@@ -243,11 +239,6 @@
             "type": "seealso"
           }
         ]
-      },
-      "request": {
-        "method": "POST",
-        "url": "Patient",
-        "ifNoneExist": "Patient?identifier=https://fhir.nhs.uk/Id/nhs-number|9449307687"
       }
     },
     {
@@ -268,11 +259,6 @@
           }
         ],
         "gender": "unknown"
-      },
-      "request": {
-        "method": "POST",
-        "url": "Patient",
-        "ifNoneExist": "Patient?identifier=urn:oid:2.16.840.1.113883.2.1.3.2.4.18.24|FT-RWT13521"
       }
     },
     {
@@ -301,11 +287,6 @@
             "type": "seealso"
           }
         ]
-      },
-      "request": {
-        "method": "POST",
-        "url": "Patient",
-        "ifNoneExist": "Patient?identifier=urn:oid:2.16.840.1.113883.2.1.3.2.4.18.24|P-RWT13521"
       }
     },
     {
@@ -331,10 +312,6 @@
           }
         },
         "valueString": "unknown"
-      },
-      "request": {
-        "method": "POST",
-        "url": "Observation"
       }
     },
     {
@@ -463,10 +440,6 @@
             "text": "Free text for diagnosis/reason for referral, relevant information including family history, phenotypic details/ HPO Terms/ E.g. large echogenic kidneys with normal bladder"
           }
         ]
-      },
-      "request": {
-        "method": "POST",
-        "url": "ServiceRequest"
       }
     },
     {
@@ -494,10 +467,6 @@
         },
         "effectiveDateTime": "2023-09-25",
         "valueBoolean": false
-      },
-      "request": {
-        "method": "POST",
-        "url": "Observation"
       }
     },
     {
@@ -565,10 +534,6 @@
           }
         ],
         "effectiveDateTime": "2023-09-25"
-      },
-      "request": {
-        "method": "POST",
-        "url": "Observation"
       }
     },
     {
@@ -603,10 +568,6 @@
         },
         "effectiveDateTime": "2023-09-25",
         "valueBoolean": false
-      },
-      "request": {
-        "method": "POST",
-        "url": "Observation"
       }
     },
     {
@@ -641,10 +602,6 @@
           }
         },
         "effectiveDateTime": "2023-09-25"
-      },
-      "request": {
-        "method": "POST",
-        "url": "Observation"
       }
     },
     {
@@ -685,10 +642,6 @@
         ],
         "effectiveDateTime": "2023-09-25",
         "valueBoolean": false
-      },
-      "request": {
-        "method": "POST",
-        "url": "Observation"
       }
     },
     {
@@ -729,10 +682,6 @@
         ],
         "effectiveDateTime": "2023-09-25",
         "valueBoolean": false
-      },
-      "request": {
-        "method": "POST",
-        "url": "Observation"
       }
     },
     {
@@ -762,10 +711,6 @@
             "text": "Woman`s own egg"
           }
         ]
-      },
-      "request": {
-        "method": "POST",
-        "url": "Procedure"
       }
     },
     {
@@ -801,10 +746,6 @@
             "reference": "ServiceRequest/ServiceRequest-NonWGSTestOrderForm-FetalScenario-Example"
           }
         ]
-      },
-      "request": {
-        "method": "POST",
-        "url": "Specimen"
       }
     },
     {
@@ -845,10 +786,6 @@
             "reference": "ServiceRequest/ServiceRequest-NonWGSTestOrderForm-FetalScenario-Example"
           }
         ]
-      },
-      "request": {
-        "method": "POST",
-        "url": "Specimen"
       }
     },
     {
@@ -886,10 +823,6 @@
             ]
           }
         ]
-      },
-      "request": {
-        "method": "POST",
-        "url": "RelatedPerson"
       }
     },
     {
@@ -933,10 +866,6 @@
             ]
           }
         ]
-      },
-      "request": {
-        "method": "POST",
-        "url": "RelatedPerson"
       }
     }
   ]
