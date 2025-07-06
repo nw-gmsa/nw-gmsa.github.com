@@ -4,7 +4,7 @@ Title:   "Message Definition - Patient Identity"
 Usage:  #definition
 
 * description = """
-See [Patient Identity Triggers](ValueSet-PatientIdentityTriggers) for `eventCoding` codes.
+See [Patient Identity Triggers](ValueSet-PatientIdentityTriggers.html) for `eventCoding` codes.
 
 [Event](https://www.enterpriseintegrationpatterns.com/patterns/messaging/EventMessage.html) Message
 

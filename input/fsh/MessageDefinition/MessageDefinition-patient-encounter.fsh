@@ -4,7 +4,7 @@ Title:   "Message Definition - Patient Encounter"
 Usage:  #definition
 
 * description = """
-See [Patient Encounter Triggers](ValueSet-PatientEncounterTriggers) for `eventCoding` codes.
+See [Patient Encounter Triggers](ValueSet-PatientEncounterTriggers.html) for `eventCoding` codes.
 
 [Event](https://www.enterpriseintegrationpatterns.com/patterns/messaging/EventMessage.html) Message
 
