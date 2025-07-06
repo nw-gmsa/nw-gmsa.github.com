@@ -252,11 +252,11 @@ Usage:  #definition
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.category"
     * text = "Test Category"
     * answerValueSet = Canonical(OrderCategory)
-    * answerOption[+].valueCoding = $NOS#RareAndInheritedDiseasesGeneticTesting "Rare and inherited diseases Genetic Testing (procedure)"
+    * answerOption[+].valueCoding = $nwgmsa#RareAndInheritedDiseasesGeneticTesting "Rare and inherited diseases Genetic Testing (procedure)"
     * answerOption[+].valueCoding = $sct#1186936003 "Storage of specimen (procedure)"
-    * answerOption[+].valueCoding = $NOS#PreNatalGeneticTesting "Pre Natal Genetic Testing (procedure)"
-    * answerOption[+].valueCoding = $NOS#HaemoglobinopathyGeneticTesting "Haemoglobinopathy Genetic Testing (procedure)"
-    * answerOption[+].valueCoding = $NOS#CancerGeneticTesting "Cancer Genetic Testing (procedure)"
+    * answerOption[+].valueCoding = $nwgmsa#PreNatalGeneticTesting "Pre Natal Genetic Testing (procedure)"
+    * answerOption[+].valueCoding = $nwgmsa#HaemoglobinopathyGeneticTesting "Haemoglobinopathy Genetic Testing (procedure)"
+    * answerOption[+].valueCoding = $nwgmsa#CancerGeneticTesting "Cancer Genetic Testing (procedure)"
 
 // Test request	CITT code
 //Test request	Type of WGS
@@ -272,7 +272,7 @@ Usage:  #definition
     * enableWhen[+]
       * question = "SNM/15220000"
       * operator = #=
-      * answerCoding = $NOS#RareAndInheritedDiseasesGeneticTesting
+      * answerCoding = $nwgmsa#RareAndInheritedDiseasesGeneticTesting
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.code"
     * text = "Test Code (Rare and inherited diseases)"
     * required = true
@@ -285,7 +285,7 @@ Usage:  #definition
     * enableWhen[+]
       * question = "SNM/15220000"
       * operator = #=
-      * answerCoding = $NOS#HaemoglobinopathyGeneticTesting
+      * answerCoding = $nwgmsa#HaemoglobinopathyGeneticTesting
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.code"
     * text = "Test Code (Haemoglobinopathy)"
     * required = true
@@ -303,7 +303,7 @@ Usage:  #definition
     * enableWhen[+]
       * question = "SNM/15220000"
       * operator = #=
-      * answerCoding = $NOS#CancerGeneticTesting
+      * answerCoding = $nwgmsa#CancerGeneticTesting
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.code"
     * text = "Test Code (Cancer)"
     * required = true
@@ -345,7 +345,7 @@ Usage:  #definition
 
   * item[+]
     * linkId = "NOS/GeneticistEmail"
-    * code[+] = $NOS#GeneticistEmail
+    * code[+] = $nwgmsa#GeneticistEmail
     * text = "Clinical Geneticist email"
     * type = #string
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueString"
@@ -355,7 +355,7 @@ Usage:  #definition
 
   * item[+]
     * linkId = "NOS/GeneticistDepartmentEmail"
-    * code[+] = $NOS#GeneticistDepartmentEmail
+    * code[+] = $nwgmsa#GeneticistDepartmentEmail
     * text = "Clinical Geneticist department email"
     * type = #string
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueString"
@@ -395,7 +395,7 @@ Usage:  #definition
     * item[+]
       * type = #choice
       * linkId = "NOS/RODToFollow"
-      * code[+] = $NOS#RODToFollow
+      * code[+] = $nwgmsa#RODToFollow
       * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
       * text = "ROD attached or to follow"
       * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
@@ -535,7 +535,7 @@ Usage:  #definition
 //  Raw specimen/biopsy (Directly obtained from patient)	Specimin High infection Risk Details
   * item[+]
     * linkId = "NOS/InfectionRiskDetails"
-    * code[+] = $NOS#InfectionRiskDetails
+    * code[+] = $nwgmsa#InfectionRiskDetails
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueString"
     * text = "High infection Risk Details"
     * type = #string
@@ -587,13 +587,13 @@ Usage:  #definition
       * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.receivedTime"
     * item[+]
       * linkId = "NOS/SampleSent"
-      * code[+] = $NOS#SampleSent
+      * code[+] = $nwgmsa#SampleSent
       * text = "Date and time sample sent"
       * type = #date
       * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueDateTime"
     * item[+]
       * linkId = "NOS/TransportUsed"
-      * code[+] = $NOS#TransportUsed
+      * code[+] = $nwgmsa#TransportUsed
       * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueString"
       * text = "Transport used"
       * type = #string
@@ -605,13 +605,13 @@ Usage:  #definition
       * type = #string
     * item[+]
       * linkId = "NOS/SampleSentTo"
-      * code[+] = $NOS#SampleSentTo
+      * code[+] = $nwgmsa#SampleSentTo
       * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueString"
       * text = "Sample sent to"
       * type = #string
     * item[+]
       * linkId = "NOS/SampleSentToName"
-      * code[+] = $NOS#SampleSentToName
+      * code[+] = $nwgmsa#SampleSentToName
       * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueString"
       * text = "Name of person who sent sample"
       * type = #string

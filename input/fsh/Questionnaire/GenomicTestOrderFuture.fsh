@@ -181,11 +181,11 @@ Usage:  #definition
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.category"
     * text = "Test Category"
     * answerValueSet = Canonical(OrderCategory)
-    * answerOption[+].valueCoding = $NOS#RareAndInheritedDiseasesGeneticTesting "Rare and inherited diseases Genetic Testing (procedure)"
+    * answerOption[+].valueCoding = $nwgmsa#RareAndInheritedDiseasesGeneticTesting "Rare and inherited diseases Genetic Testing (procedure)"
     * answerOption[+].valueCoding = $sct#1186936003 "Storage of specimen (procedure)"
-    * answerOption[+].valueCoding = $NOS#PreNatalGeneticTesting "Pre Natal Genetic Testing (procedure)"
-    * answerOption[+].valueCoding = $NOS#HaemoglobinopathyGeneticTesting "Haemoglobinopathy Genetic Testing (procedure)"
-    * answerOption[+].valueCoding = $NOS#CancerGeneticTesting "Cancer Genetic Testing (procedure)"
+    * answerOption[+].valueCoding = $nwgmsa#PreNatalGeneticTesting "Pre Natal Genetic Testing (procedure)"
+    * answerOption[+].valueCoding = $nwgmsa#HaemoglobinopathyGeneticTesting "Haemoglobinopathy Genetic Testing (procedure)"
+    * answerOption[+].valueCoding = $nwgmsa#CancerGeneticTesting "Cancer Genetic Testing (procedure)"
   * item[+]
     * type = #choice
     * linkId = "HL7/OBR-4-r"
@@ -193,7 +193,7 @@ Usage:  #definition
     * enableWhen[+]
       * question = "SNM/15220000"
       * operator = #=
-      * answerCoding = $NOS#RareAndInheritedDiseasesGeneticTesting
+      * answerCoding = $nwgmsa#RareAndInheritedDiseasesGeneticTesting
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.code"
     * text = "Test Code (Rare and inherited diseases)"
     * required = true
@@ -206,7 +206,7 @@ Usage:  #definition
     * enableWhen[+]
       * question = "SNM/15220000"
       * operator = #=
-      * answerCoding = $NOS#HaemoglobinopathyGeneticTesting
+      * answerCoding = $nwgmsa#HaemoglobinopathyGeneticTesting
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.code"
     * text = "Test Code (Haemoglobinopathy)"
     * required = true
@@ -224,7 +224,7 @@ Usage:  #definition
     * enableWhen[+]
       * question = "SNM/15220000"
       * operator = #=
-      * answerCoding = $NOS#CancerGeneticTesting
+      * answerCoding = $nwgmsa#CancerGeneticTesting
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.code"
     * text = "Test Code (Cancer)"
     * required = true
@@ -582,7 +582,7 @@ Usage:  #definition
     * enableWhen[+]
       * question = "SNM/15220000"
       * operator = #=
-      * answerCoding = $NOS#HaemoglobinopathyGeneticTesting
+      * answerCoding = $nwgmsa#HaemoglobinopathyGeneticTesting
     * item[+]
       * type = #reference
       * linkId = "LN/58410-2"
@@ -601,7 +601,7 @@ Usage:  #definition
     * enableWhen[+]
       * question = "SNM/15220000"
       * operator = #=
-      * answerCoding = $NOS#RareAndInheritedDiseasesGeneticTesting
+      * answerCoding = $nwgmsa#RareAndInheritedDiseasesGeneticTesting
   * item[+]
     * type = #group
     * linkId = "CancerGeneticTesting"
@@ -609,7 +609,7 @@ Usage:  #definition
     * enableWhen[+]
       * question = "SNM/15220000"
       * operator = #=
-      * answerCoding = $NOS#CancerGeneticTesting
+      * answerCoding = $nwgmsa#CancerGeneticTesting
     * item[+]
       * type = #group
       * linkId = "UnknownResultsPanel"
