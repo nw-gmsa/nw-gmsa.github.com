@@ -6,6 +6,12 @@
         ]
     },
     "id": "brca1-variant",
+    "identifier": [
+        {
+            "system" : "urn:ietf:rfc:3986",
+            "value" : "urn:uuid:dfa620b9-0b78-4c57-8f20-7772131b917d"
+        }
+    ],
     "status": "final",
     "category": [
         {

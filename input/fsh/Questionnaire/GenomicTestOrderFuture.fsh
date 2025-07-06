@@ -309,7 +309,6 @@ Usage:  #definition
   * item[+]
     * type = #string
     * code[+] = $loinc#80398-1 "Unique identifier for Current sample"
-    * code[+] = $sct#1208523001 "Identifier"
     * linkId = "LN/80398-1"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.identifier.value"
     * text = "Specimen ID Number / Lab DNA Number (If Known)"
@@ -386,7 +385,7 @@ Usage:  #definition
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.collection.bodySite"
   * item[+]
     * linkId = "LN/3169-0"
-    * code[+] = $loinc#3169-0 "Specimen volume"
+    * code[+] = $loinc#3169-0 "Volume of Specimen"
     * code[+] = $loinc#42185-9 "Number of specimens obtained"
     * text = "Specimen Volume/number of slides or scrolls"
     * type = #string
@@ -451,7 +450,7 @@ Usage:  #definition
     * type = #string
     * linkId = "SNM/385675009"
     * text = "Reason for variant re-interpretation request"
-    * code[+] = $sct#385675009 "Confirmation of"
+    * code[+] = $sct#385675009 "Reason for action (attribute)"
     * code[+] = $loinc#53577-3 "Reason for study"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
   * item[+]

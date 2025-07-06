@@ -455,7 +455,6 @@ Usage:  #definition
   * item[+]
     * type = #string
     * code[+] = $loinc#80398-1 "Unique identifier for Current sample"
-    * code[+] = $sct#1208523001 "Identifier"
     * linkId = "LN/80398-1"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.identifier"
     * text = "Specimen ID Number"
@@ -470,7 +469,6 @@ Usage:  #definition
   * item[+]
     * type = #string
     * code[+] = $loinc#80398-1 "Unique identifier for Current sample"
-    * code[+] = $sct#1208523001 "Identifier"
     * linkId = "Specimen/accessionIdentifier"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.accessionIdentifier"
     * text = "Lab DNA Number (If Known)"
@@ -488,7 +486,6 @@ Usage:  #definition
     * linkId = "LN/33882-2"
     * code[+] = $loinc#33882-2 "Collection date of Specimen"
     * code[+] = $loinc#68963-8 "Collection date and time of Specimen"
-    //* code[+] = $sct#1208523001	"Specimen collection by healthcare professional (finding)"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.collection.collectedDateTime"
     * text = "Specimen Collection Date"
     * item[+]

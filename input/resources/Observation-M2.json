@@ -6,6 +6,12 @@
         ]
     },
     "id": "m2-diagnostic-implication",
+    "identifier": [
+        {
+            "system" : "urn:ietf:rfc:3986",
+            "value" : "urn:uuid:b4a59a58-73b8-4f47-a706-7dd0725ead83"
+        }
+    ],
     "status": "final",
     "category": [
         {
