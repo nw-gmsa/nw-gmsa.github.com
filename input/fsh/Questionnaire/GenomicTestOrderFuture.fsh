@@ -211,11 +211,11 @@ Usage:  #definition
     * text = "Test Code (Haemoglobinopathy)"
     * required = true
     * repeats = true
-    * answerOption[+].valueCoding = $GTD#R361.1 "R361.1 Sickle cell, thalassaemia and other haemoglobinopathies trait or carrier testing"
-    * answerOption[+].valueCoding = $GTD#R361.2 "R361.2 Sickle cell, thalassaemia and other haemoglobinopathies trait or carrier testing"
-    * answerOption[+].valueCoding = $GTD#R372.1 "R372.1 Newborn screening for sickle cell disease in a transfused baby"
-    * answerOption[+].valueCoding = $GTD#R93.1 "R93.1 Sickle cell, thalassaemia and other haemoglobinopathies"
-    * answerOption[+].valueCoding = $GTD#R93.2 "R93.2 Sickle cell, thalassaemia and other haemoglobinopathies"
+    * answerOption[+].valueCoding = $GTD#R361.1 "Sickle cell, thalassaemia and other haemoglobinopathies trait or carrier testing"
+    * answerOption[+].valueCoding = $GTD#R361.2 "Sickle cell, thalassaemia and other haemoglobinopathies trait or carrier testing"
+    * answerOption[+].valueCoding = $GTD#R372.1 "Newborn screening for sickle cell disease in a transfused baby"
+    * answerOption[+].valueCoding = $GTD#R93.1 "Sickle cell, thalassaemia and other haemoglobinopathies"
+    * answerOption[+].valueCoding = $GTD#R93.2 "Sickle cell, thalassaemia and other haemoglobinopathies"
 
   * item[+]
     * type = #choice
@@ -329,7 +329,6 @@ Usage:  #definition
     * linkId = "LN/33882-2"
     * code[+] = $loinc#33882-2 "Collection date of Specimen"
     * code[+] = $loinc#68963-8 "Collection date and time of Specimen"
-    * code[+] = $sct#1208523001	"Specimen collection by healthcare professional (finding)"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.collection.collectedDateTime"
     * text = "Specimen Collection Date"
     * item[+]

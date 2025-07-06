@@ -35,10 +35,11 @@ Description: """
 * #R242.1 "Predictive testing for known familial variant(s)"
 
 * #R372.1
-* #R361.1
-* #R361.2
-* #R372.1
-* #R93.1
-* #R93.2
+* #R361.1 "Sickle cell, thalassaemia and other haemoglobinopathies trait or carrier testing"
+* #R361.2 "Sickle cell, thalassaemia and other haemoglobinopathies trait or carrier testing"
+* #R372.1 "Newborn screening for sickle cell disease in a transfused baby"
+* #R93.1 "Sickle cell, thalassaemia and other haemoglobinopathies"
+* #R93.2 "Sickle cell, thalassaemia and other haemoglobinopathies"
 * #M119.5
+* #M119.1
 
