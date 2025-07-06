@@ -30,8 +30,8 @@ Description: "TODO"
 
 // EPIC-OBX-1
 * hasMember[+].reference = "urn:uuid:f39cc804-5280-4807-91d4-075be16928e5"
-// EPIC-OBX-2
-* hasMember[+].reference = "urn:uuid:47f34393-cc83-428f-b8dd-54bcd372c847"
+// EPIC-OBX-2 now a condition
+//* hasMember[+].reference = "urn:uuid:47f34393-cc83-428f-b8dd-54bcd372c847"
 
 // EPIC-OBX-3
 * hasMember[+].reference = "urn:uuid:edd4debe-dd82-445f-b3e5-e175760da105"

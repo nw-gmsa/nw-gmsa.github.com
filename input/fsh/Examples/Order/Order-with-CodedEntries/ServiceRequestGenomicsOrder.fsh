@@ -46,6 +46,8 @@ Description: "TODO"
     * code = #363349007
     * display = "Malignant tumour of stomach"
     * system = $sct
+* reasonReference[+]
+  * reference = "urn:uuid:47f34393-cc83-428f-b8dd-54bcd372c847"
 
 * note[+]
   * text = """
