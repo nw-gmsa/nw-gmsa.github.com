@@ -1,13 +1,4 @@
-Profile:        NHSNumber
-Parent:         http://hl7.org/fhir/StructureDefinition/Identifier
-Id:             NHSNumber
-Title:          "NHS Number"
-Description:     """
-Only traced NHS Number **SHOULD** be used, un-traced NHS Numbers **MUST** be clearly indicated.
-"""
 
-* ^purpose = """
-Format: NNNNNNNNNN (400 000 000 to 499 999 999, and 600 000 000 to 799 999)
 
 | Field               | HL7 FHIR Identifier | OID                       | HL7 v2 CX | HL7 FHIR Example                                 | HL7 v2 Example |
 |---------------------|---------------------|---------------------------|-----------|--------------------------------------------------|----------------|
@@ -15,10 +6,3 @@ Format: NNNNNNNNNN (400 000 000 to 499 999 999, and 600 000 000 to 799 999)
 | Type                | type                |                           | CX.5      | http://terminology.hl7.org/CodeSystem/v2-0203#NH | NH             |
 | Assigning Authority | assigner.identifier |                           | CX.6      |                                                  | NHS            |
 | System              | system              | 2.16.840.1.113883.2.1.4.1 | N/a       |                                                  | N/a            |
-
-"""
-
-* system 1..1
-* system = "https://fhir.nhs.uk/Id/nhs-number"
-* value 1..1
-* type = $v2-0203#NH (exactly)
