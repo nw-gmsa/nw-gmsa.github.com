@@ -39,7 +39,7 @@ For coding descriptions see
 * valueQuantity.value = 85
 * valueQuantity.code = #fL
 * valueQuantity.unit = "fL"
-* valueQuantity.system = "http://unitsofmeasure.org"
+* valueQuantity.system = $ucum
 
 * referenceRange[+]
   * low.value = 87.3
