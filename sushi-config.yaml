@@ -241,7 +241,7 @@ groups:
       - Observation/OBX-HighInfectionRiskSample
       - Observation/OBX-InformedConsent
       - Observation/EPIC-OBX-4
-      - Observation/EPIC-OBX-2
+      - Condition/EPIC-OBX-2
       - Observation/EPIC-OBX-6
       - Observation/EPIC-OBX-7
       - Observation/EPIC-OBX-2
