@@ -244,7 +244,6 @@ groups:
       - Condition/EPIC-OBX-2
       - Observation/EPIC-OBX-6
       - Observation/EPIC-OBX-7
-      - Observation/EPIC-OBX-2
       - Observation/EPIC-OBX-8
       - Observation/EPIC-OBX-10
       - Observation/EPIC-OBX-11
