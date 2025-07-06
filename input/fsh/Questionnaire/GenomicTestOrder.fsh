@@ -252,11 +252,11 @@ Usage:  #definition
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.category"
     * text = "Test Category"
     * answerValueSet = Canonical(OrderCategory)
-    * answerOption[+].valueCoding = $nwgmsa#RareAndInheritedDiseasesGeneticTesting "Rare and inherited diseases Genetic Testing (procedure)"
-    * answerOption[+].valueCoding = $sct#1186936003 "Storage of specimen (procedure)"
-    * answerOption[+].valueCoding = $nwgmsa#PreNatalGeneticTesting "Pre Natal Genetic Testing (procedure)"
-    * answerOption[+].valueCoding = $nwgmsa#HaemoglobinopathyGeneticTesting "Haemoglobinopathy Genetic Testing (procedure)"
-    * answerOption[+].valueCoding = $nwgmsa#CancerGeneticTesting "Cancer Genetic Testing (procedure)"
+  //  * answerOption[+].valueCoding = $nwgmsa#RareAndInheritedDiseasesGeneticTesting "Rare and inherited diseases Genetic Testing (procedure)"
+  //  * answerOption[+].valueCoding = $sct#1186936003 "Storage of specimen (procedure)"
+  //  * answerOption[+].valueCoding = $nwgmsa#PreNatalGeneticTesting "Pre Natal Genetic Testing (procedure)"
+  //  * answerOption[+].valueCoding = $nwgmsa#HaemoglobinopathyGeneticTesting "Haemoglobinopathy Genetic Testing (procedure)"
+  //  * answerOption[+].valueCoding = $nwgmsa#CancerGeneticTesting "Cancer Genetic Testing (procedure)"
 
 // Test request	CITT code
 //Test request	Type of WGS
@@ -443,7 +443,7 @@ Usage:  #definition
 // Test request	Sample collection status
 
   * item[+]
-    * type = #string
+    * type = #choice
     * linkId = "HL7/SPM"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.status"
     * text = "Sample collection status"

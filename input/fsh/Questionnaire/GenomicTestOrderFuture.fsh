@@ -181,11 +181,11 @@ Usage:  #definition
     * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.category"
     * text = "Test Category"
     * answerValueSet = Canonical(OrderCategory)
-    * answerOption[+].valueCoding = $nwgmsa#RareAndInheritedDiseasesGeneticTesting "Rare and inherited diseases Genetic Testing (procedure)"
-    * answerOption[+].valueCoding = $sct#1186936003 "Storage of specimen (procedure)"
-    * answerOption[+].valueCoding = $nwgmsa#PreNatalGeneticTesting "Pre Natal Genetic Testing (procedure)"
-    * answerOption[+].valueCoding = $nwgmsa#HaemoglobinopathyGeneticTesting "Haemoglobinopathy Genetic Testing (procedure)"
-    * answerOption[+].valueCoding = $nwgmsa#CancerGeneticTesting "Cancer Genetic Testing (procedure)"
+ //   * answerOption[+].valueCoding = $nwgmsa#RareAndInheritedDiseasesGeneticTesting "Rare and inherited diseases Genetic Testing (procedure)"
+ //   * answerOption[+].valueCoding = $sct#1186936003 "Storage of specimen (procedure)"
+ //   * answerOption[+].valueCoding = $nwgmsa#PreNatalGeneticTesting "Pre Natal Genetic Testing (procedure)"
+ //   * answerOption[+].valueCoding = $nwgmsa#HaemoglobinopathyGeneticTesting "Haemoglobinopathy Genetic Testing (procedure)"
+ //   * answerOption[+].valueCoding = $nwgmsa#CancerGeneticTesting "Cancer Genetic Testing (procedure)"
   * item[+]
     * type = #choice
     * linkId = "HL7/OBR-4-r"
@@ -461,7 +461,7 @@ Usage:  #definition
     * code[+] = $loinc#31208-2 "Specimen source identified"
     * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
   * item[+]
-    * type = #string
+    * type = #choice
     * linkId = "SNM/782964007"
     * text = "Clinical Indication"
     * code[+] = $sct#782964007 "Genetic disease"
