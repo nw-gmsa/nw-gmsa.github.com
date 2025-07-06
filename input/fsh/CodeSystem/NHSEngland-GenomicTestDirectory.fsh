@@ -1,5 +1,5 @@
 CodeSystem: NHSEngland-GenomicTestDirectory
-Id: nhsengland-genomic-test-directory
+Id: NHSEngland-GenomicTestDirectory
 Title: "Genomic Test Directory"
 Description: """
 - [Genomic Test Directory](https://www.england.nhs.uk/publication/national-genomic-test-directories)

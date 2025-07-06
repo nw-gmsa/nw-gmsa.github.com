@@ -1,7 +1,7 @@
 Profile:        DiagnosticReport
-//Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-DiagnosticReport
+Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-DiagnosticReport
 //Parent:         http://hl7.eu/fhir/laboratory/StructureDefinition/DiagnosticReport-eu-lab
-Parent:         http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/genomic-report
+//Parent:         http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/genomic-report
 Id:             DiagnosticReport
 Title:          "Diagnostic Report"
 Description:    """
@@ -46,12 +46,12 @@ See also [HL7 Europe Laboratory Report - DiagnosticReport: Laboratory Report](ht
 * basedOn[fillerOrderNumber] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/AutomationManager)
 
 
-//* category ^slicing.discriminator.type = #value
-//* category ^slicing.discriminator.path = "coding"
-//* category ^slicing.rules = #open
-//* category ^slicing.description = "Slice based on the category code pattern"
-//* category ^slicing.ordered = false
-//* category contains Genetics 1..1
+* category ^slicing.discriminator.type = #value
+* category ^slicing.discriminator.path = "coding"
+* category ^slicing.rules = #open
+* category ^slicing.description = "Slice based on the category code pattern"
+* category ^slicing.ordered = false
+* category contains Genetics 1..1
 
 * category[Genetics].coding 1..1 MS
 
@@ -86,10 +86,10 @@ See also [HL7 Europe Laboratory Report - DiagnosticReport: Laboratory Report](ht
 * code.coding ^slicing.description = "Slice based on the system"
 * code.coding ^slicing.ordered = false
 * code.coding contains
-  GenomicRareAndInheritedDisease 0..1 MS
+   GenomicTestDirectory 1..1 MS
 
-* code.coding[GenomicRareAndInheritedDisease] from GenomicRareAndInheritedDisease (required)
-//* code.coding[GenomicRareAndInheritedDisease].system = $GTD
+* code.coding[GenomicTestDirectory] ^short = "Genomic Test Directory"
+* code.coding[GenomicTestDirectory].system = $GTD
 
 * performer.identifier 1..1
 * performer.identifier.system 1..1
@@ -132,6 +132,15 @@ See also [HL7 Europe Laboratory Report - DiagnosticReport: Laboratory Report](ht
 * resultsInterpreter[primaryReporter].type = #Practitioner
 
 * specimen 0..* MS
+
+
+* result ^slicing.discriminator.type = #profile
+* result ^slicing.discriminator.path = "resolve()"
+* result ^slicing.rules = #open
+* result ^slicing.description = "Slice based on the reference profile and code pattern"
+* result contains
+    diagnostic-implication 0..* and
+    variant 0..*
 
 * result[variant] MS
 * result[variant] only Reference(ObservationVariant)

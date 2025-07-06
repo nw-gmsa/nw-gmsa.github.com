@@ -1,5 +1,5 @@
 CodeSystem: GenomicConditionCode
-Id: genomic-condition-code
+Id: GenomicConditionCode
 Title: "Genomic Condition Code"
 Description: """
 2nd level Genomic Test Directory Codes

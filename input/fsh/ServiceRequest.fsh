@@ -53,7 +53,7 @@ See also [HL7 Europe Laboratory Report - ServiceRequest: Laboratory Order](https
   GenomicTestDirectory 1..1 MS
   // and PathologyAndLaboratoryMedicine 0..1 and NICIP 0..1
 
-* code.coding[GenomicTestDirectory] ^short = "Genomic Cancer Test Directory"
+* code.coding[GenomicTestDirectory] ^short = "Genomic Test Directory"
 * code.coding[GenomicTestDirectory].system = $GTD
 
 * orderDetail ^short = "Additional order codes"
