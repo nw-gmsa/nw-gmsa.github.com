@@ -1,6 +1,6 @@
-ValueSet: GenomicConditionCode
-Id: genomic-condition-code
-Title: "Genomic Condition Code"
+ValueSet: GenomicConditionCodes
+Id: genomic-condition-codes
+Title: "Genomic Condition Codes"
 Description: """
 2nd level classification of Genomic Test Directory
 """

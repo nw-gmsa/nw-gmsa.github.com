@@ -291,7 +291,7 @@ Usage:  #definition
       * code[+] = $sct#782964007 "Genetic disease"
       * repeats = true
       * text = "CITT code (Specific disease suspected/reason for testing)"
-      * answerValueSet = Canonical(GenomicConditionCode)
+      * answerValueSet = Canonical(GenomicConditionCodes)
       * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.reasonCode"
     * item[+]
       * type = #string

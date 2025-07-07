@@ -123,7 +123,7 @@ See also [HL7 Europe Laboratory Report - ServiceRequest: Laboratory Order](https
 
 
 * reasonCode MS
-* reasonCode from GenomicConditionCode (preferred)
+* reasonCode from GenomicConditionCodes (preferred)
 
 * supportingInfo 0..* MS
 //* supportingInfo only Reference(ObservationPanel or Observation or DiagnosticReport or QuestionnaireResponse or DocumentReference)
