@@ -172,6 +172,12 @@ resources:
     name: Bundle-NonWGSTestOrderForm-FetalScenario-Example
     description: See [Bundle-NonWGSTestOrderForm-FetalScenario-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle#Bundle-NonWGSTestOrderForm-FetalScenario-Example)
     exampleBoolean: true
+  NamingSystem/nhs-number-namingsystem:
+    name: NHS Number
+    exampleBoolean: false
+  NamingSystem/ods-organization-code-namingsystem:
+    name: ODS Code
+    exampleBoolean: false
 
 menu:
   Home: index.html
