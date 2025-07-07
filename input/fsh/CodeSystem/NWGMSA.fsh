@@ -9,7 +9,7 @@ Bucket for local codes
 * ^content = #complete
 * ^caseSensitive = true
 * ^experimental = false
-* ^status = #draft
+* ^status = #active
 * ^version = "0.0.1"
 * ^date = "2025-05-06"
 * ^url = "https://nw-gmsa.github.io/CodeSystem/nwgmsa"

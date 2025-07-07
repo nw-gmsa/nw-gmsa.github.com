@@ -9,7 +9,7 @@ Description: """
 * ^content = #fragment
 * ^caseSensitive = true
 * ^experimental = false
-* ^status = #draft
+* ^status = #active
 * ^version = "0.0.1"
 * ^date = "2025-02-11"
 * ^url = "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory"
