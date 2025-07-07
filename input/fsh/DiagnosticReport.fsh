@@ -54,7 +54,7 @@ See also [HL7 Europe Laboratory Report - DiagnosticReport: Laboratory Report](ht
 * category contains Genetics 1..1
 
 * category[Genetics].coding 1..1 MS
-* category[Genetics].coding"http://terminology.hl7.org/CodeSystem/v2-0074#GE"
+* category[Genetics].coding = http://terminology.hl7.org/CodeSystem/v2-0074#GE
 
 * subject 1..1
 * subject.identifier 1..1
