@@ -14,4 +14,4 @@ Description: "Search parameter for searching resource identifier for assigning a
 * base[+] = #Condition
 * code = #assigner
 * type = #string
-* expression = "identifier.assigner.value"
+* expression = "identifier.assigner.identifier.value"
