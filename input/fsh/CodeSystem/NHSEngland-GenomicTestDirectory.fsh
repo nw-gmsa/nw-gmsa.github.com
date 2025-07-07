@@ -39,6 +39,24 @@ Description: """
 * #R372.1 "Newborn screening for sickle cell disease in a transfused baby"
 * #R93.1 "Sickle cell, thalassaemia and other haemoglobinopathies"
 * #R93.2 "Sickle cell, thalassaemia and other haemoglobinopathies"
-* #M119.5
 * #M119.1
+* #M119.2
+* #M119.4
+* #M119.5
+* #M120.1
+* #M120.2
+* #M120.3
+* #M120.4
+* #M120.5
+* #M120.6
+* #M120.7
+* #M120.8
+* #M120.9
+* #M120.10
+* #M120.11
+* #M120.12
+* #M120.13
+* #M120.14
+* #M120.15
+* #M120.16
 
