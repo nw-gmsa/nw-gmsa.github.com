@@ -4,7 +4,7 @@ Title: "Document Reference Laboratory Report"
 Description: "TODO"
 
 * identifier[+].value = "94bf65ba-cd6c-4601-b339-6d547f424646"
-* identifier[=].system = "urn:oid:1.2.840.114350.1.13.5325.1.7.2.798268"
+* identifier[=].system = "http://www.example.org/documentreference/identifier"
 * identifier[=].assigner.identifier.system = $ods-code
 * identifier[=].assigner.identifier.value = "699X0"
 
@@ -28,7 +28,7 @@ Description: "TODO"
     * assigner.identifier.value = "R0A"
 
 * context.related[fillerOrderNumber].identifier.value = "1001166717"
-* context.related[fillerOrderNumber].identifier.system = "https://fhir.mft.nhs.uk/Id/FillerOrderNumber"
+* context.related[fillerOrderNumber].identifier.system = "http://www.example.org/servicerequest/identifier"
 * context.related[fillerOrderNumber].identifier.type = http://terminology.hl7.org/CodeSystem/v2-0203#FILL
 * context.related[fillerOrderNumber].identifier.assigner.identifier.system = $ods-code
 * context.related[fillerOrderNumber].identifier.assigner.identifier.value = "699X0"

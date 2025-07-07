@@ -13,7 +13,7 @@ Description: "TODO"
 
 * accessionIdentifier.type = $v2-0203#ACSN
 * accessionIdentifier.value = "1001166717"
-* accessionIdentifier.system = "https://fhir.mft.nhs.uk/Id/AccessionNumber/Beaker"
+* accessionIdentifier.system = "http://www.example.org/specimen/accession"
 * accessionIdentifier.assigner.identifier.system = $ods-code
 * accessionIdentifier.assigner.identifier.value = "690S0"
 

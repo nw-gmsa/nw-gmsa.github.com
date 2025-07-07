@@ -13,7 +13,7 @@ Description: "TODO"
   * coding[+]
     * code = #unknown
     * display = "Name of Supervising Clinician"
-    * system = "https://mft.nhs.uk/Id/IGENE"
+    * system = $MFTEPIC
 
 * valueString = "DESHPANDE, CHARULATA"
 

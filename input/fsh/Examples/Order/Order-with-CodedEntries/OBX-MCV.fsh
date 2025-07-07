@@ -45,11 +45,11 @@ For coding descriptions see
   * low.value = 87.3
   * low.unit = #fL
   * low.system = $ucum
-  * low.code = #fL"
+  * low.code = #fL
   * high.value = 82.4
   * high.unit = #fL
   * high.system = $ucum
-  * high.code = #fL"
+  * high.code = #fL
   * type = http://terminology.hl7.org/CodeSystem/referencerange-meaning#normal "Normal Range"
 
 // EPIC-PV1

@@ -15,9 +15,9 @@ Usage: #example
 * destination.receiver.identifier.system = $ods-code
 * destination.receiver.identifier.value = "R0A"
 * destination.receiver.display = "MANCHESTER UNIVERSITY NHS FOUNDATION TRUST"
-* destination.endpoint = "https://nw-gmsa.github.io/Endpoint/HIVE"
+* destination.endpoint = "http://www.acme.org/endpoint/HIVE"
 
-* source.endpoint = "https://nw-gmsa.github.io/Endpoint/RIE"
+* source.endpoint = "http://www.acme.org/endpoint/RIE"
 * source.software = "NW GLH"
 
 * response.identifier = "9612365d-52a4-4fab-87e7-8a09d753f095"
