@@ -12,7 +12,7 @@ Description: "First draft is based on Royal College of Radiologists HL7 v2 ORU c
 
 * identifier[+]
   * value = "25edee2b-add8-4522-9fa2-1ee8f229bd75"
-  * system = "https://fhir.nwglh.nhs.uk/Id/ReportId"
+  * system = "http://www.acme.org/diagnosticreport/identifiers"
   * assigner.identifier.system = $ods-code
   * assigner.identifier.value = "699X0"
 
@@ -39,7 +39,7 @@ Description: "First draft is based on Royal College of Radiologists HL7 v2 ORU c
 
 * encounter.identifier
   * value = "1001166717"
-  * system = "https://fhir.nhs.uk/Id/visit-number/R0A"
+  * system = "http://www.acme.org/encounter/identifiers/R0A"
   * type = $v2-0203#VN
   * assigner.identifier.system = $ods-code
   * assigner.identifier.value = "R0A"

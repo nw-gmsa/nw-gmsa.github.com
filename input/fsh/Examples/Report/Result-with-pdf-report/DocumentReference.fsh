@@ -22,7 +22,7 @@ Description: "TODO"
 * context.encounter[+]
   * identifier
     * value = "1001166717"
-    * system = "https://fhir.nhs.uk/Id/visit-number/R0A"
+    * system = "http://www.acme.org/encounter/identifiers/R0A"
     * type = $v2-0203#VN
     * assigner.identifier.system = $ods-code
     * assigner.identifier.value = "R0A"
