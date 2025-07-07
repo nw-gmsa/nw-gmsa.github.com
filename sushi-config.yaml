@@ -187,7 +187,7 @@ menu:
 ##    Work Order Management [LAB-4]: LAB-4.html
 ##    Test Results Management [LAB-5]: LAB-5.html
   Domain Archetypes:
-    Overview: DDD-Overview.html
+    ##Overview: DDD-Overview.html
     Genomic Test Order: DDD-TestOrder.html
     Genomic Test Report: DDD-TestReport.html
   Artefacts: artifacts.html
