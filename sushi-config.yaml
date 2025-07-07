@@ -178,6 +178,12 @@ resources:
   NamingSystem/ods-organization-code-namingsystem:
     name: ODS Code
     exampleBoolean: false
+  NamingSystem/ods-site-code-namingsystem:
+    name: ODS Site Code
+    exampleBoolean: false
+  NamingSystem/gmcnumber-namingsystem:
+    name: GMC Number
+    exampleBoolean: false
 
 menu:
   Home: index.html

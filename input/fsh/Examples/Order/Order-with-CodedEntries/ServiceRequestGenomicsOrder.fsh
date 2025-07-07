@@ -13,7 +13,7 @@ Description: "TODO"
 
 * identifier[fillerOrderNumber].type = $v2-0203#FILL
 * identifier[fillerOrderNumber].value = "1001166717"
-* identifier[fillerOrderNumber].system = "https://fhir.nwgmsa.nhs.uk/Id/OrderFillerNumber"
+* identifier[fillerOrderNumber].system = "http://www.acme.org/servicerequest"
 * identifier[fillerOrderNumber].assigner.identifier.system = $ods-code
 * identifier[fillerOrderNumber].assigner.identifier.value = "699X0"
 

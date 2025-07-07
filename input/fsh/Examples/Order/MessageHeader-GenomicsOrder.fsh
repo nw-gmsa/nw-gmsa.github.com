@@ -16,9 +16,9 @@ Usage: #example
 * destination.receiver.identifier.system = $ods-code
 * destination.receiver.identifier.value = "699X0"
 * destination.receiver.display = "NORTH WEST GLH"
-* destination.endpoint = "https//fhir.mft.nhs.uk/Endpoint/LIMS"
+* destination.endpoint = "http://www.acme.org/endpoint/LIMS"
 
-* source.endpoint = "https//fhir.mft.nhs.uk/Endpoint/HIVE"
+* source.endpoint = "http://www.acme.org/endpoint/HIVE"
 * source.software = "MFT Epic"
 
 * focus[+]

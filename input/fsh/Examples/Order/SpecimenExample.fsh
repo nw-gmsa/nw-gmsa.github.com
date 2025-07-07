@@ -7,7 +7,7 @@ Description: "TODO"
 
 * identifier[+].
   * value = "25GEN-029GN00001"
-  * system = "https://fhir.mft.nhs.uk/Id/Specimen/Beaker"
+  * system = "http://www.acme.org/specimen/Beaker"
   * assigner.identifier.system = $ods-code
   * assigner.identifier.value = "R0A"
 

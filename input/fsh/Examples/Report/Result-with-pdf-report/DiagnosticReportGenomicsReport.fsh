@@ -19,7 +19,7 @@ Description: "First draft is based on Royal College of Radiologists HL7 v2 ORU c
 * basedOn[fillerOrderNumber]
   * type = "ServiceRequest"
   * identifier.type = $v2-0203#FILL
-  * identifier.system = "https://fhir.nwgmsa.nhs.uk/Id/OrderFillerNumber"
+  * identifier.system = "http://www.acme.org/servicerequest"
   * identifier.value = "1001166717"
   * identifier.assigner.identifier.system = $ods-code
   * identifier.assigner.identifier.value = "699X0"
