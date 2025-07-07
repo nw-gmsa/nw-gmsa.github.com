@@ -179,7 +179,7 @@
             ]
           },
           {
-            "system": "urn:oid:2.16.840.1.113883.2.1.3.2.4.18.24",
+            "system": "http://www.acme.org/patient/identifier",
             "value": "RWT13521",
             "assigner": {
               "identifier": {
@@ -248,7 +248,7 @@
         "id": "Patient-FoetusOfRyanneBoulder-Example",
         "identifier":  [
           {
-            "system": "urn:oid:2.16.840.1.113883.2.1.3.2.4.18.24",
+            "system": "http://www.acme.org/patient/identifier",
             "value": "FT-RWT13521",
             "assigner": {
               "identifier": {
@@ -268,7 +268,7 @@
         "id": "Patient-RyanneBoulderPartner-Example",
         "identifier":  [
           {
-            "system": "urn:oid:2.16.840.1.113883.2.1.3.2.4.18.24",
+            "system": "http://www.acme.org/patient/identifier",
             "value": "P-RWT13521",
             "assigner": {
               "identifier": {
@@ -360,7 +360,7 @@
         "subject": {
           "reference": "Patient/Patient-FoetusOfRyanneBoulder-Example",
           "identifier": {
-            "system": "urn:oid:2.16.840.1.113883.2.1.3.2.4.18.24",
+            "system": "http://www.acme.org/patient/identifier",
             "value": "FT-RWT13521",
             "assigner": {
               "identifier": {
@@ -555,7 +555,7 @@
           "reference": "Patient/Patient-FoetusOfRyanneBoulder-Example",
           "identifier":  [
             {
-              "system": "urn:oid:2.16.840.1.113883.2.1.3.2.4.18.24",
+              "system": "http://www.acme.org/patient/identifier",
               "value": "FT-RWT13521",
               "assigner": {
                 "identifier": {
@@ -802,7 +802,7 @@
         "patient": {
           "reference": "Patient/Patient-FoetusOfRyanneBoulder-Example",
           "identifier": {
-            "system": "urn:oid:2.16.840.1.113883.2.1.3.2.4.18.24",
+            "system": "http://www.acme.org/patient/identifier",
             "value": "FT-RWT13521",
             "assigner": {
               "identifier": {
@@ -832,7 +832,7 @@
         "id": "RelatedPerson-RyanneBoulderPartner-Example",
         "identifier":  [
           {
-            "system": "urn:oid:2.16.840.1.113883.2.1.3.2.4.18.24",
+            "system": "http://www.acme.org/patient/identifier",
             "value": "P-RWT13521",
             "assigner": {
               "identifier": {
@@ -845,7 +845,7 @@
         "patient": {
           "reference": "Patient/Patient-FoetusOfRyanneBoulder-Example",
           "identifier": {
-            "system": "urn:oid:2.16.840.1.113883.2.1.3.2.4.18.24",
+            "system": "http://www.acme.org/patient/identifier",
             "value": "FT-RWT13521",
             "assigner": {
               "identifier": {

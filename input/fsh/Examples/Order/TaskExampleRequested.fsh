@@ -25,7 +25,7 @@ Description: "TODO"
 * focus.reference = "ServiceRequest/ServiceRequestGenomicsOrderCodedEntries"
 * focus.identifier.type = $v2-0203#PLAC
 * focus.identifier.value = "1601737"
-* focus.identifier.system = "urn:oid:1.2.840.114350.1.13.861.1.7.2.798268"
+* focus.identifier.system = "urn:oid:http://www.acme.org/servicerequest/identifier"
 * focus.identifier.assigner.identifier.system = $ods-code
 * focus.identifier.assigner.identifier.value = "R0A"
 

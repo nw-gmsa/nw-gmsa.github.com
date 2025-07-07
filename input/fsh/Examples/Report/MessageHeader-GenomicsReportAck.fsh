@@ -17,7 +17,7 @@ Usage: #example
 * destination.receiver.display = "NORTH WEST GLH"
 * destination.endpoint = "https//rie.nw-gmsa.nhs.uk"
 
-* source.endpoint = "https//tie.alderhey.nhs.uk/"
+* source.endpoint = "http://www.acme.org/endpoint/identifier/RBS/"
 * source.software = "Alder Hey TIE"
 
 * response.identifier = "9612365d-52a4-4fab-87e7-8a09d753f095"

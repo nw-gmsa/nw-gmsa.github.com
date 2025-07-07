@@ -49,7 +49,7 @@ Description: "TODO"
 
 * context.sourcePatientInfo.identifier.type = $v2-0203#MR
 * context.sourcePatientInfo.identifier.value = "633"
-* context.sourcePatientInfo.identifier.system = "urn:oid:2.16.840.1.113883.2.1.3.2.4.18.24"
+* context.sourcePatientInfo.identifier.system = "http://www.acme.org/patient/identifier"
 * context.sourcePatientInfo.identifier.assigner.identifier.system = $ods-code
 * context.sourcePatientInfo.identifier.assigner.identifier.value = "R0A"
 
