@@ -7,7 +7,7 @@ Description: "TODO"
 
 * identifier[placerOrderNumber].type = $v2-0203#PLAC
 * identifier[placerOrderNumber].value = "1601737"
-* identifier[placerOrderNumber].system = "urn:oid:http://www.acme.org/servicerequest/identifier"
+* identifier[placerOrderNumber].system = "http://www.acme.org/servicerequest/identifier"
 * identifier[placerOrderNumber].assigner.identifier.system = $ods-code
 * identifier[placerOrderNumber].assigner.identifier.value = "R0A"
 
