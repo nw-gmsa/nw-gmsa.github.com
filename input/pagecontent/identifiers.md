@@ -1,6 +1,8 @@
 
 To amend an entry in these tables, amend the table directly on this GitHub page https://github.com/nw-gmsa/R4/blob/main/input/pagecontent/identifiers.md and submit a pull request.
 
+For NHS trusts with EPRs with FHIR REST APIs (e.g. EPIC, Oracle and Cerner), the FHIR system used here **SHOULD** be the same. 
+
 ## Patient 
 
 | Organisation                                    | Assigning Authority - ODS Code (All) | Type (All) | System (FHIR) | OID (FHIR, v3 and IHE) | Alternate name                       | 
