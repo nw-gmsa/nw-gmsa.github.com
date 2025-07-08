@@ -136,7 +136,9 @@ pages:
   workflow.md:
     title: Workflow Options
     generation: markdown
-
+  identifiers.md:
+    title: Identifiers and Naming Systems
+    generation: markdown
 
 
 resources:
@@ -202,8 +204,10 @@ menu:
     ##Overview: DDD-Overview.html
     Genomic Test Order: DDD-TestOrder.html
     Genomic Test Report: DDD-TestReport.html
-  Artefacts: artifacts.html
-  HL7 v2 Artefacts: hl7v2.html
+  Artefacts:
+    Hl7 FHIR: artifacts.html
+    HL7 v2: hl7v2.html
+    Identifiers and NamingSystems: identifier.html
   Development:
     API Documentation: api-documentation.html
     Testing: testing.html
