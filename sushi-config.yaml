@@ -207,7 +207,7 @@ menu:
   Artefacts:
     Hl7 FHIR: artifacts.html
     HL7 v2: hl7v2.html
-    Identifiers and NamingSystems: identifier.html
+    Identifiers and NamingSystems: identifiers.html
   Development:
     API Documentation: api-documentation.html
     Testing: testing.html
