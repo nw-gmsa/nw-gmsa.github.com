@@ -40,15 +40,15 @@ An OID can be used instead of a FHIR system, this may be defined for use with IH
 
 ## Specimen
 
-| Organisation                                        | Assigning Authority - ODS Code (All) | Type (All) | System (FHIR)                                      | OID (FHIR, v3 and IHE) | Alternate name                       | 
-|-----------------------------------------------------|--------------------------------------|------------|----------------------------------------------------|------------------------|--------------------------------------|
-| Alder Hey Children’s NHS Foundation Trust           | RBS                                  | SID        |                                                    |                        |                                      |
-|                                                     | RBS                                  | ASCN        |                                                    |                        |                                      |
-| Liverpool Women’s Hospital NHS Foundation Trust     | REP                                  | SID        |                                                    |                        |                                      |
-|                                                     | REP                                  | ASCN        |                                                    |                        |                                      |
-| The Christie NHS Foundation Trust                   | RBV                                  | SID        |                                                    |                        |                                      |
-|                                                     | RBV                                  | ASCN        |                                                    |                        |                                      |
-| Manchester University NHS Foundation Trust          | ROA                                  | SID        |                                                    |                        | Equivalent to internal v2 type = EPI |
-|                                                     | ROA                                  | ASCN        |                                                    |                        | Equivalent to internal v2 type = EPI |
-| North West Genomic Medicine Service Alliance (GMSA) | 699X0                                | SID        | https://fhir.nw-gmsa.nhs.uk/Id/Specimen            |                        |                                      |
-|                                                     | 699X0                                | ASCN       | https://fhir.nw-gmsa.nhs.uk/Id/AccessionIdentifier |                        |                                      |
+| Organisation                                        | Assigning Authority - ODS Code (All) | Type (All) | System (FHIR)                                      | OID (FHIR, v3 and IHE) | Alternate name | 
+|-----------------------------------------------------|--------------------------------------|------------|----------------------------------------------------|------------------------|----------------|
+| Alder Hey Children’s NHS Foundation Trust           | RBS                                  | SID        |                                                    |                        |                |
+|                                                     | RBS                                  | ASCN       |                                                    |                        |                |
+| Liverpool Women’s Hospital NHS Foundation Trust     | REP                                  | SID        |                                                    |                        |                |
+|                                                     | REP                                  | ASCN       |                                                    |                        |                |
+| The Christie NHS Foundation Trust                   | RBV                                  | SID        |                                                    |                        |                |
+|                                                     | RBV                                  | ASCN       |                                                    |                        |                |
+| Manchester University NHS Foundation Trust          | ROA                                  | SID        |                                                    |                        |                |
+|                                                     | ROA                                  | ASCN       |                                                    |                        |                |
+| North West Genomic Medicine Service Alliance (GMSA) | 699X0                                | SID        | https://fhir.nw-gmsa.nhs.uk/Id/Specimen            |                        |                |
+|                                                     | 699X0                                | ASCN       | https://fhir.nw-gmsa.nhs.uk/Id/AccessionIdentifier |                        |                |
