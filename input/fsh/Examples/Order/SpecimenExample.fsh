@@ -5,10 +5,10 @@ Description: "TODO"
 
 * meta.versionId = "1.0"
 
-* identifier[FillerSpecimenNumber].
+* identifier[PlacerSpecimenNumber]
   * value = "25GEN-029GN00001"
   * system = "http://www.acme.org/specimen/Beaker"
-  * accessionIdentifier.type = $v2-0203#PLAC
+  * type = $v2-0203#PLAC
   * assigner.identifier.system = $ods-code
   * assigner.identifier.value = "R0A"
 
