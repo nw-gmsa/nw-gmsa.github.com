@@ -306,7 +306,7 @@ MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS
 For the FHIR version see [Bundle 'Message' - Genomics Order with Coded Entries](Bundle-GenomicsOrderMessageCodedEntries.html)
 
 ```aiignore
-MSH|^~\&|HIVE|R0A|LIMS|699X0|20241013103300+0000||OML^O21^OML_O21|urn:uuid:9612365d-52a4-4fab-87e7-8a09d753f095|T|2.4|||AL
+MSH|^~\&|HIVE|R0A|LIMS|699X0|20241013103300+0000||OML^O21^OML_O21|urn:uuid:9612365d-52a4-4fab-87e7-8a09d753f095|T|2.5.1|||AL
 PID|1||633^^^EPI^MR~9449305552^^^^NH||CHISLETT^Octavia||20080920|F|||1 RAVENSFIELD GARDENS^^EPSOM^SURREY^KT19 0ST
 PV1|1|O|^^^R0A09^^^^^^^R0A||||C3456789^Darwin^Samuel^^^Dr^^^GMC|||100|||||||||1001166717|||||||||||||||||||||||||20250129103726+0000
 ORC|NW|1601737^R0A|1001166717^699X0||||||20250129|||C3456789^Darwin^Samuel^^^Dr^^^GMC|||||||||^^R0A^^^ODS
@@ -352,7 +352,7 @@ SPM|1|25GEN-029GN00001&R0A|^1001166717&690S0|258580003^Whole blood specimen^SNM|
 For the FHIR version see [Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example](Bundle-Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example.html)
 
 ```aiignore
-MSH|^~\&|HIVE|RAX|LIMS|RJZ|20241013103300+0000||OML^O21^OML_O21|156bb6ab-15e7-42f3-a819-ecd16a5b4fbd|T|2.4|||AL
+MSH|^~\&|HIVE|RAX|LIMS|RJZ|20241013103300+0000||OML^O21^OML_O21|156bb6ab-15e7-42f3-a819-ecd16a5b4fbd|T|2.5.1|||AL
 PID|1||RWT17335^^^EPI^MR||Hadjkiss^Zelma||20110319||||2 Barclay Close^Fetcham^^^KT22 9SY
 ORC|NW||||||||20230908|||9999999998^Smith^Hazel^^^Dr.^^^SDS|||||||||Kingston Hospital NHS Foundation Trust^^RAX01^^^ODS
 OBR|1|||M119.5^Multi Target NGS Panel Small^England-GenomicTestDirectory||20230908||||||||||9999999998^Smith^Hazel^^^Dr.^^^SDS
