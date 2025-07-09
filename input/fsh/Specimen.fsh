@@ -13,6 +13,27 @@ See also [HL7 Europe Laboratory Report - Specimen: Laboratory](https://build.fhi
 * identifier 1..* MS
 * identifier only CorrelationIdentifier
 
+
+* identifier ^slicing.discriminator.type = #value
+* identifier ^slicing.discriminator.path = "type"
+* identifier ^slicing.rules = #open
+* identifier ^slicing.description = "Slice based on the type"
+* identifier ^slicing.ordered = false
+* identifier contains
+  PlacerSpecimenNumber 0..1 MS and FillerSpecimenNumber 0..1 MS
+
+* identifier[PlacerSpecimenNumber].type = $v2-0203#PLAC
+* identifier[PlacerSpecimenNumber] ^short = "Identifier assigned by the Order Placer. (HL7 v2 ORC-2/OBR-2 Placer Order Number)"
+* identifier[PlacerSpecimenNumber] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/OrderFiller)
+* identifier[PlacerSpecimenNumber] insert Obligation(#SHALL:populate, https://nw-gmsa.github.io/ActorDefinition/OrderPlacer)
+* identifier[PlacerSpecimenNumber] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/AutomationManager)
+
+* identifier[FillerSpecimenNumber].type = $v2-0203#FILL
+* identifier[FillerSpecimenNumber] ^short = "Identifier assigned by the lab (Order Filler)"
+* identifier[FillerSpecimenNumber] insert Obligation(#SHALL:populate, https://nw-gmsa.github.io/ActorDefinition/OrderFiller)
+* identifier[FillerSpecimenNumber] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/OrderPlacer)
+* identifier[FillerSpecimenNumber] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/AutomationManager)
+
 * accessionIdentifier 0..1 MS
 * accessionIdentifier only AccessionNumber
 

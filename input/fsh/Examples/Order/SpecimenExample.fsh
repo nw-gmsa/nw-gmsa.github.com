@@ -5,7 +5,7 @@ Description: "TODO"
 
 * meta.versionId = "1.0"
 
-* identifier[+].
+* identifier[FillerSpecimenNumber].
   * value = "25GEN-029GN00001"
   * system = "http://www.acme.org/specimen/Beaker"
   * assigner.identifier.system = $ods-code
