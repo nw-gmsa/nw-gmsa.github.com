@@ -186,6 +186,9 @@ resources:
   NamingSystem/gmcnumber-namingsystem:
     name: GMC Number
     exampleBoolean: false
+  NamingSystem/gmpnumber-namingsystem:
+    name: GMP Number
+    exampleBoolean: false
 
 menu:
   Home: index.html
