@@ -189,6 +189,9 @@ resources:
   NamingSystem/gmpnumber-namingsystem:
     name: GMP Number
     exampleBoolean: false
+  OperationOutcome/operation-outcome-validate:
+    name: Output from a FHIR Validation
+    exampleBoolean: true
 
 menu:
   Home: index.html

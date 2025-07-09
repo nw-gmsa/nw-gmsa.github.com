@@ -22,4 +22,4 @@ Usage: #example
 
 * response.identifier = "9612365d-52a4-4fab-87e7-8a09d753f095"
 * response.code = #transient-error
-* response.details.reference = "OperationOutcome/TODO"
+//* response.details.reference = "OperationOutcome/TODO"

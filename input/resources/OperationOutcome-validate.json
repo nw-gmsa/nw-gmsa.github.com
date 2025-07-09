@@ -1,0 +1,785 @@
+{
+  "resourceType" : "OperationOutcome",
+  "id" : "operation-outcome-validate",
+  "meta": {
+    "profile": [
+      "https://nw-gmsa.github.io/StructureDefinition/OperationOutcome"
+    ]
+  },
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-file",
+    "valueString" : "c:\\validate\\5edc5fdd-6c00-4875-a7da-e1cdf674a92e-in.json"
+  }],
+  "issue" : [{
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+      "valueInteger" : 437
+    },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+        "valueInteger" : 6
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+        "valueString" : "InstanceValidator"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+        "valueCode" : "Validation_VAL_Profile_Minimum"
+      }],
+    "severity" : "error",
+    "code" : "structure",
+    "details" : {
+      "text" : "ServiceRequest.identifier: minimum required = 1, but only found 0 (from https://nw-gmsa.github.io/StructureDefinition/ServiceRequest|0.0.6)"
+    },
+    "expression" : ["Bundle.entry[8].resource"]
+  },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 437
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 6
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "InstanceValidator"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+          "valueCode" : "Extension_EXTP_Context_Wrong"
+        }],
+      "severity" : "error",
+      "code" : "structure",
+      "details" : {
+        "text" : "The extension https://fhir.hl7.org.uk/StructureDefinition/Extension-UKCore-AdditionalContact is not allowed to be used at this point (allowed = e:ServiceRequest; this element is [Bundle.entry.resource])"
+      },
+      "expression" : ["Bundle.entry[8].resource"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 437
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 6
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "InstanceValidator"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+          "valueCode" : "Extension_EXTP_Context_Wrong"
+        }],
+      "severity" : "error",
+      "code" : "structure",
+      "details" : {
+        "text" : "The extension https://fhir.hl7.org.uk/StructureDefinition/Extension-UKCore-Coverage is not allowed to be used at this point (allowed = e:ServiceRequest; this element is [Bundle.entry.resource])"
+      },
+      "expression" : ["Bundle.entry[8].resource"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 492
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 8
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "InstanceValidator"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+          "valueCode" : "Reference_REF_CantMatchChoice"
+        }],
+      "severity" : "error",
+      "code" : "structure",
+      "details" : {
+        "text" : "Unable to find a profile match for PractitionerRole/PractitionerRole-HazelSmithKingstonPathology-Example among choices: https://nw-gmsa.github.io/StructureDefinition/PractitionerRole"
+      },
+      "expression" : ["Bundle.entry[8].resource.requester"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 575
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 8
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "TerminologyEngine"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+          "valueCode" : "MSG_RETIRED"
+        }],
+      "severity" : "information",
+      "code" : "business-rule",
+      "details" : {
+        "text" : "Reference to retired CodeSystem https://fhir.hl7.org.uk/CodeSystem/UKCore-BiopsyState|1.0.0"
+      },
+      "expression" : ["Bundle.entry[9].resource/*Specimen/Specimen-CancerSolidTumor-Example*/.condition[0]"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 350
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 4
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "InstanceValidator"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+          "valueCode" : "BUNDLE_BUNDLE_ENTRY_REVERSE_MSG"
+        }],
+      "severity" : "information",
+      "code" : "informational",
+      "details" : {
+        "text" : "Entry 'http://example.org/fhir/Observation/Observation-Necrosis-Example' isn't reachable by traversing forwards from the MessageHeader. Check that this is meant to be included (needed to process the message)"
+      },
+      "expression" : ["Bundle.entry[12]"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 509
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 8
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "InstanceValidator"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+          "valueCode" : "Details_for__matching_against_Profile_"
+        }],
+      "severity" : "information",
+      "code" : "informational",
+      "details" : {
+        "text" : "This element does not match any known slice defined in the profile https://nw-gmsa.github.io/StructureDefinition/ServiceRequest|0.0.6 (this may not be a problem, but you should check that it's not intended to match a slice)"
+      },
+      "expression" : ["Bundle.entry[8].resource.supportingInfo[0]"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 512
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 8
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "InstanceValidator"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+          "valueCode" : "Details_for__matching_against_Profile_"
+        }],
+      "severity" : "information",
+      "code" : "informational",
+      "details" : {
+        "text" : "This element does not match any known slice defined in the profile https://nw-gmsa.github.io/StructureDefinition/ServiceRequest|0.0.6 (this may not be a problem, but you should check that it's not intended to match a slice)"
+      },
+      "expression" : ["Bundle.entry[8].resource.supportingInfo[1]"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 515
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 8
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "InstanceValidator"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+          "valueCode" : "Details_for__matching_against_Profile_"
+        }],
+      "severity" : "information",
+      "code" : "informational",
+      "details" : {
+        "text" : "This element does not match any known slice defined in the profile https://nw-gmsa.github.io/StructureDefinition/ServiceRequest|0.0.6 (this may not be a problem, but you should check that it's not intended to match a slice)"
+      },
+      "expression" : ["Bundle.entry[8].resource.supportingInfo[2]"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 76
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 8
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "TerminologyEngine"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+          "valueCode" : "Terminology_TX_NoValid_3_CC"
+        }],
+      "severity" : "information",
+      "code" : "code-invalid",
+      "details" : {
+        "text" : "None of the codings provided are in the value set 'Practice Setting Code Value Set' (http://hl7.org/fhir/ValueSet/c80-practice-codes|4.0.1), and a coding is recommended to come from this value set (codes = https://fhir.hl7.org.uk/CodeSystem/UKCore-PracticeSettingCode#820)"
+      },
+      "expression" : ["Bundle.entry[1].resource/*PractitionerRole/PractitionerRole-HazelSmithKingstonPathology-Example*/.specialty[0]"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 132
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 8
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "TerminologyEngine"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+          "valueCode" : "Terminology_TX_NoValid_3_CC"
+        }],
+      "severity" : "information",
+      "code" : "code-invalid",
+      "details" : {
+        "text" : "None of the codings provided are in the value set 'Practice Setting Code Value Set' (http://hl7.org/fhir/ValueSet/c80-practice-codes|4.0.1), and a coding is recommended to come from this value set (codes = https://fhir.hl7.org.uk/CodeSystem/UKCore-PracticeSettingCode#820)"
+      },
+      "expression" : ["Bundle.entry[2].resource/*PractitionerRole/PractitionerRole-JamesTaylorKingstonPathology-Example*/.specialty[0]"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 184
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 8
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "TerminologyEngine"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+          "valueCode" : "Terminology_TX_NoValid_3_CC"
+        }],
+      "severity" : "information",
+      "code" : "code-invalid",
+      "details" : {
+        "text" : "None of the codings provided are in the value set 'Practice Setting Code Value Set' (http://hl7.org/fhir/ValueSet/c80-practice-codes|4.0.1), and a coding is recommended to come from this value set (codes = https://fhir.hl7.org.uk/CodeSystem/UKCore-PracticeSettingCode#820)"
+      },
+      "expression" : ["Bundle.entry[3].resource/*PractitionerRole/PractitionerRole-AnnaLaneKingstonPathology-Example*/.specialty[0]"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 476
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 8
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "TerminologyEngine"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+          "valueCode" : "Terminology_TX_NoValid_3_CC"
+        }],
+      "severity" : "information",
+      "code" : "code-invalid",
+      "details" : {
+        "text" : "None of the codings provided are in the value set 'Laboratory Order' (http://hl7.eu/fhir/laboratory/ValueSet/lab-orderCodes-eu-lab|0.1.1), and a coding is recommended to come from this value set (codes = https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory#M119.5)"
+      },
+      "expression" : ["Bundle.entry[8].resource.code"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 502
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 8
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "TerminologyEngine"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+          "valueCode" : "Terminology_TX_NoValid_3_CC"
+        }],
+      "severity" : "information",
+      "code" : "code-invalid",
+      "details" : {
+        "text" : "None of the codings provided are in the value set 'Genomic Condition Codes' (https://nw-gmsa.github.io/ValueSet/genomic-condition-codes|0.0.6), and a coding is recommended to come from this value set (codes = https://fhir.nhs.uk/CodeSystem/reasonfortesting-genomics#relapse)"
+      },
+      "expression" : ["Bundle.entry[8].resource.reasonCode[0]"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 1
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 2
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "InstanceValidator"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+          "valueCode" : "Bundle_BUNDLE_Entry_NotFound"
+        }],
+      "severity" : "information",
+      "code" : "not-found",
+      "details" : {
+        "text" : "Can't find 'https://api.service.nhs.uk/personal-demographics/FHIR/R4/Patient/9449307555' in the bundle (Bundle.entry[4].resource.link[0].other)"
+      },
+      "expression" : ["Bundle"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 492
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 8
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "InstanceValidator"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+          "valueCode" : "Details_for__matching_against_Profile_"
+        }],
+      "severity" : "information",
+      "code" : "structure",
+      "details" : {
+        "text" : "Details for PractitionerRole/PractitionerRole-HazelSmithKingstonPathology-Example matching against profile https://nw-gmsa.github.io/StructureDefinition/PractitionerRole|0.0.6"
+      },
+      "expression" : ["Bundle.entry[8].resource.requester"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 326
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 8
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "TerminologyEngine"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+          "valueCode" : "Error_validating_code_running_without_terminology_services"
+        }],
+      "severity" : "warning",
+      "code" : "business-rule",
+      "details" : {
+        "text" : "Unable to validate code '%' in system 'http://unitsofmeasure.org' because the validator is running without terminology services"
+      },
+      "expression" : ["Bundle.entry[5].resource/*Observation/Observation-MultipleTumors-Example*/.value.ofType(Quantity)"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 375
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 8
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "TerminologyEngine"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+          "valueCode" : "Error_validating_code_running_without_terminology_services"
+        }],
+      "severity" : "warning",
+      "code" : "business-rule",
+      "details" : {
+        "text" : "Unable to validate code '%' in system 'http://unitsofmeasure.org' because the validator is running without terminology services"
+      },
+      "expression" : ["Bundle.entry[6].resource/*Observation/Observation-Necrosis-Example*/.value.ofType(Quantity)"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 575
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 8
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "TerminologyEngine"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+          "valueCode" : "Terminology_TX_NoValid_2_CC"
+        }],
+      "severity" : "warning",
+      "code" : "code-invalid",
+      "details" : {
+        "text" : "None of the codings provided are in the value set 'hl7VS-specimenCondition' (http://terminology.hl7.org/ValueSet/v2-0493|2.0.0), and a coding should come from this value set unless it has no suitable code (note that the validator cannot judge what is suitable) (codes = https://fhir.hl7.org.uk/CodeSystem/UKCore-BiopsyState#fresh-unfixed)"
+      },
+      "expression" : ["Bundle.entry[9].resource/*Specimen/Specimen-CancerSolidTumor-Example*/.condition[0]"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 303
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 6
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "InstanceValidator"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+          "valueCode" : "All_observations_should_have_a_performer"
+        }],
+      "severity" : "warning",
+      "code" : "invalid",
+      "details" : {
+        "text" : "Best Practice Recommendation: In general, all observations should have a performer"
+      },
+      "expression" : ["Bundle.entry[5].resource/*Observation/Observation-MultipleTumors-Example*/"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 303
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 6
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "InstanceValidator"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+          "valueCode" : "All_observations_should_have_a_performer"
+        }],
+      "severity" : "warning",
+      "code" : "invalid",
+      "details" : {
+        "text" : "Best Practice Recommendation: In general, all observations should have a performer"
+      },
+      "expression" : ["Bundle.entry[5].resource"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 352
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 6
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "InstanceValidator"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+          "valueCode" : "All_observations_should_have_a_performer"
+        }],
+      "severity" : "warning",
+      "code" : "invalid",
+      "details" : {
+        "text" : "Best Practice Recommendation: In general, all observations should have a performer"
+      },
+      "expression" : ["Bundle.entry[6].resource/*Observation/Observation-Necrosis-Example*/"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 352
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 6
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "InstanceValidator"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+          "valueCode" : "All_observations_should_have_a_performer"
+        }],
+      "severity" : "warning",
+      "code" : "invalid",
+      "details" : {
+        "text" : "Best Practice Recommendation: In general, all observations should have a performer"
+      },
+      "expression" : ["Bundle.entry[6].resource"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 311
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 8
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "TerminologyEngine"
+        }],
+      "severity" : "warning",
+      "code" : "not-found",
+      "details" : {
+        "text" : "A definition for CodeSystem 'http://snomed.info/sct' could not be found, so the code cannot be validated"
+      },
+      "expression" : ["Bundle.entry[5].resource/*Observation/Observation-MultipleTumors-Example*/.code.coding[0].system"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 339
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 10
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "TerminologyEngine"
+        }],
+      "severity" : "warning",
+      "code" : "not-found",
+      "details" : {
+        "text" : "A definition for CodeSystem 'http://snomed.info/sct' could not be found, so the code cannot be validated"
+      },
+      "expression" : ["Bundle.entry[5].resource/*Observation/Observation-MultipleTumors-Example*/.component[0].code.coding[0].system"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 360
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 8
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "TerminologyEngine"
+        }],
+      "severity" : "warning",
+      "code" : "not-found",
+      "details" : {
+        "text" : "A definition for CodeSystem 'http://snomed.info/sct' could not be found, so the code cannot be validated"
+      },
+      "expression" : ["Bundle.entry[6].resource/*Observation/Observation-Necrosis-Example*/.code.coding[0].system"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 420
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 8
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "TerminologyEngine"
+        }],
+      "severity" : "warning",
+      "code" : "not-found",
+      "details" : {
+        "text" : "A definition for CodeSystem 'http://snomed.info/sct' could not be found, so the code cannot be validated"
+      },
+      "expression" : ["Bundle.entry[7].resource/*Condition/Condition-LungTumor-Example*/.code.coding[0].system"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 476
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 8
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "TerminologyEngine"
+        }],
+      "severity" : "warning",
+      "code" : "not-found",
+      "details" : {
+        "text" : "A definition for CodeSystem 'https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory' version '9' could not be found, so the code cannot be validated. Valid versions: [0.0.6]"
+      },
+      "expression" : ["Bundle.entry[8].resource/*ServiceRequest/ServiceRequest-NonWGSTestOrderForm-CancerSolidTumor-Example*/.code.coding[0].system"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 476
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 8
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "TerminologyEngine"
+        }],
+      "severity" : "warning",
+      "code" : "not-found",
+      "details" : {
+        "text" : "A definition for CodeSystem 'https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory' version '9' could not be found, so the code cannot be validated. Valid versions: [0.0.6]"
+      },
+      "expression" : ["Bundle.entry[8].resource.code.coding[0].system"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 502
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 8
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "TerminologyEngine"
+        }],
+      "severity" : "warning",
+      "code" : "not-found",
+      "details" : {
+        "text" : "A definition for CodeSystem 'https://fhir.nhs.uk/CodeSystem/reasonfortesting-genomics' could not be found, so the code cannot be validated"
+      },
+      "expression" : ["Bundle.entry[8].resource/*ServiceRequest/ServiceRequest-NonWGSTestOrderForm-CancerSolidTumor-Example*/.reasonCode[0].coding[0].system"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 502
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 8
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "TerminologyEngine"
+        }],
+      "severity" : "warning",
+      "code" : "not-found",
+      "details" : {
+        "text" : "A definition for CodeSystem 'https://fhir.nhs.uk/CodeSystem/reasonfortesting-genomics' could not be found, so the code cannot be validated"
+      },
+      "expression" : ["Bundle.entry[8].resource.reasonCode[0].coding[0].system"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 540
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 8
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "TerminologyEngine"
+        }],
+      "severity" : "warning",
+      "code" : "not-found",
+      "details" : {
+        "text" : "A definition for CodeSystem 'http://snomed.info/sct' could not be found, so the code cannot be validated"
+      },
+      "expression" : ["Bundle.entry[9].resource/*Specimen/Specimen-CancerSolidTumor-Example*/.type.coding[0].system"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 593
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 8
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "TerminologyEngine"
+        }],
+      "severity" : "warning",
+      "code" : "not-found",
+      "details" : {
+        "text" : "A definition for CodeSystem 'http://snomed.info/sct' could not be found, so the code cannot be validated"
+      },
+      "expression" : ["Bundle.entry[10].resource/*BodyStructure/BodyStructure-BodySiteLocationLungs-Example*/.morphology.coding[0].system"]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+        "valueInteger" : 600
+      },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 8
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueString" : "TerminologyEngine"
+        }],
+      "severity" : "warning",
+      "code" : "not-found",
+      "details" : {
+        "text" : "A definition for CodeSystem 'http://snomed.info/sct' could not be found, so the code cannot be validated"
+      },
+      "expression" : ["Bundle.entry[10].resource/*BodyStructure/BodyStructure-BodySiteLocationLungs-Example*/.location.coding[0].system"]
+    }]
+}
