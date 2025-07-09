@@ -301,14 +301,67 @@ MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS
 
 ### OML_O21 Laboratory Order
 
+#### Genomics Order with Coded Entries
+
+For the FHIR version see [Bundle 'Message' - Genomics Order with Coded Entries](Bundle-GenomicsOrderMessageCodedEntries.html)
+
 ```aiignore
-MSH|^~\&|EPIC|R0A|iGene|699X0|20190514102527+0200||OML^O21^OML_O21|9612365d-52a4-4fab-87e7-8a09d753f095|T|2.5.1|||AL
-PID|1||633^^^R0A^MR~9449305552^^^NHS^NH||CHISLETT^Octavia^^Miss||20080920|F|||1 RAVENSFIELD GARDENS^^EPSOM^SURREY^KT19 0ST
-PV1|1|N|^^^R0A09^^^^^^^R0A|||||C3456789^Darwin^Samuel^^^Dr^^^GMC||311|||||||||12345^^^R0A
-ORC|NW|1601737^R0A|1001166717^699X0||SC||||20170126143602|||C3456789^Darwin^Samuel^^^Dr^^^GMC|||||||||MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS
-OBR|1|1601737^R0A||R240.1^Diagnostic testing for known variant(s)^England-GenomicTestDirectory|||20190514102000+0200|||SCC|O|||20190514102000+0200||C3456789^Darwin^Samuel^^^Dr^^^GMC||||||20190514102417+0200
-OBX|1|ED|721965002^Laboratory order^SNM||MOL^IM^PDF^Base64^JVBERi0x...||||||F
-SPM|1|25GEN-029GN00001^R0A||||||||||||||||||Y
+MSH|^~\&|HIVE|R0A|LIMS|699X0|20241013103300+0000||ORM^O01^ORM_O01|urn:uuid:9612365d-52a4-4fab-87e7-8a09d753f095|T|2.4|||AL
+PID|1||633^^^EPI^MR~9449305552^^^^NH||CHISLETT^Octavia||20080920|F|||1 RAVENSFIELD GARDENS^^EPSOM^SURREY^KT19 0ST
+PV1|1|O|^^^R0A09^^^^^^^R0A||||C3456789^Darwin^Samuel^^^Dr^^^GMC|||100|||||||||1001166717|||||||||||||||||||||||||20250129103726+0000
+ORC|NW|1601737^R0A|1001166717^699X0||||||20250129|||C3456789^Darwin^Samuel^^^Dr^^^GMC|||||||||^^R0A^^^ODS
+OBR|1|1601737^R0A|1001166717^699X0|R240.1^^England-GenomicTestDirectory||20250129||||||||||C3456789^Darwin^Samuel^^^Dr^^^GMC
+NTE|1||Referral lab PLEASE do following tests:
+NTE|2||
+NTE|3||Test(s) required: WGS
+NTE|4||Sample type: Blood
+NTE|5||Transport used: Merlin Courier
+NTE|6||Tracking Number: ABC123
+NTE|7||Sample sent to: LWH Genetics
+NTE|8||By: PDAY       on: 02/04/25
+NTE|9||
+NTE|10||.Speciality Requesting Clinician: PAEDS
+NTE|11||Test Group: Neurology
+NTE|12||Ethnic Group: White British
+NTE|13||Patient is from consanguineous union? : Unknown
+NTE|14||Specimen Collection Status: Collect & send with order
+NTE|15||Infection Risk: No Specific Risk
+NTE|16||Clinical details:
+NTE|17||
+NTE|18||TESTING
+NTE|19||Contact/Bleep No: 123
+DG1|1||363349007^Malignant tumour of stomach^SNM||20250129103726+0000
+DG1|2||363349007^Malignant tumour of stomach^SNM
+OBX|1|CE|GENEAP^GENETICS TEST PERFORMABLE^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds|||||||||||20250129103726+0000
+OBX|2|CE|230056^What Type of Referral Do You Require?^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds|||||||||||20250129103726+0000
+OBX|3|CE|281269004^High infection risk sample^SNM|||||||||||20250129103726+0000
+OBX|4|ST|230016^Test Type^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds||Diagnostic Screen/Test|||||||||20250129103726+0000
+OBX|5|CE|77386006^Pregnancy^SNM|||||||||||20250129103726+0000
+OBX|6|ST|231284^Please Select R240 Test(s):^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds||R240.1: Targeted variant testing|||||||||20250129103726+0000
+OBX|7|ST|231285^Please Select R242 Test(s):^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds||R242.1: Targeted variant testing|||||||||20250129103726+0000
+OBX|8|ST|230027^Email Addresses of Non-MFT Clinicians for Result Reports^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds||charu|||||||||20250129103726+0000
+OBX|9|CE|762911000000102^Informed consent given for treatment^SNM|||||||||||20250129103726+0000
+OBX|10|ST|230037^Please Acknowledge That a DNA Sample Will be Stored in the Laboratory on Completion of Testing^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds||Acknowledged|||||||||20250129103726+0000
+OBX|11|ST|230039^Is the Person Ordering the Test the Referring Clinician^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds||No|||||||||20250129103726+0000
+OBX|12|ST|unknown^Name of Supervising Clinician^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds||DESHPANDE, CHARULATA|||||||||20250129103726+0000
+SPM|1|25GEN-029GN00001|1001166717|258580003^Whole blood specimen^SNM|||||||||||||20250129103726+0000|||Y
+```
+
+#### NonWGSTestOrderForm-CancerSolidTumor-Example
+
+For the FHIR version see [Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example](Bundle-Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example.html)
+
+```aiignore
+MSH|^~\&|HIVE|RAX|LIMS|RJZ|20241013103300+0000||ORM^O01^ORM_O01|156bb6ab-15e7-42f3-a819-ecd16a5b4fbd|T|2.4|||AL
+PID|1||RWT17335^^^EPI^MR||Hadjkiss^Zelma||20110319||||2 Barclay Close^Fetcham^^^KT22 9SY
+ORC|NW||||||||20230908|||9999999998^Smith^Hazel^^^Dr.^^^SDS|||||||||Kingston Hospital NHS Foundation Trust^^RAX01^^^ODS
+OBR|1|||M119.5^Multi Target NGS Panel Small^England-GenomicTestDirectory||20230908||||||||||9999999998^Smith^Hazel^^^Dr.^^^SDS
+NTE|1||Free text for diagnosis/reason for referral, transplant, life status at time of request details/ e.g. malignant tumour - molecular assessment will aid management
+DG1|1||363358000^Malignant tumour of lung^SNM
+DG1|2||relapse^Relapse^https://fhir.nhs.uk/CodeSystem/reasonfortesting-genomics
+OBX|1|CE|128462008^Metastatic malignant neoplasm (disorder)^SNM|||||||||||20230908
+OBX|2|CE|6574001^Necrosis (morphologic abnormality)^SNM|||||||||||20230908
+SPM|1|RA257630||364611000000101^Tissue resection sample^SNM|||||||||||||20230909110000Z|||Y
 ```
 
 ### ORU_R01 Unsolicited transmission of an observation message
