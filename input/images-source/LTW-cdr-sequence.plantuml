@@ -21,7 +21,7 @@ TIE -> CDR: [[StructureDefinition-Task.html FHIR Task]] (accepted) Event Message
 LIMS -> LIMS: Perform Test
 
 opt preliminary/paritial reports
-LIMS -> LIMS: Create Initial Report
+LIMS -> LIMS: Write preliminary/partial report
 LIMS -> TIE: [[LAB-3.html Order Results Management (LAB-3)]] [[DDD-TestReport.html Genomic Report R01]] Document Message
 TIE -> CDR: [[LAB-3.html Order Results Management (LAB-3)]] [[DDD-TestReport.html Genomic Report R01]] Document Message
 TIE -> CDR: [[StructureDefinition-Task.html FHIR Task]] (in-progress) Event Message
@@ -29,7 +29,7 @@ TIE -> EPR: [[LAB-3.html Order Results Management (LAB-3)]] [[DDD-TestReport.htm
 
 end
 
-LIMS -> LIMS: Create Final Report
+LIMS -> LIMS: Write final report
 LIMS -> TIE: [[LAB-3.html Order Results Management (LAB-3)]] [[DDD-TestReport.html Genomic Report R01]] Document Message
 TIE -> CDR: [[LAB-3.html Order Results Management (LAB-3)]] [[DDD-TestReport.html Genomic Report R01]] Document Message
 TIE -> CDR: [[StructureDefinition-Task.html FHIR Task]] (completed) Event Message

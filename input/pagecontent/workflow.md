@@ -64,15 +64,13 @@ This also follows IHE Laboratory and Testing Workflow (LTW)
 - The NHS England Genomic Order Management Service - [Process genomic test request](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir#post-/FHIR/R4) is effectively a HL7 Message same as the Genomic Order O21 Command Message. This does not support Genomic Report R01 Document Message  
 
 
-### Event Notifications and Enterprise Shared Data/Document Repositories Option
+### Traditional Messaging plus Enterprise Clinical Data Repositories Option
 
 Advanced, flexible, and interoperable genomic reporting workflow that combines traditional HL7 messaging with FHIR-based workflows and centralized data repositories, offering a future-ready health data exchange model.
 
 This is an evolution of the previous option by adding in an **Enterprise Clinical Data Repository (CDR)** which can Genomic Orders and Reports data across the region. The API to this repository conforms to  
 both [IHE Query for Existing Data for Mobile (QEDm)](https://build.fhir.org/ig/IHE/QEDm/branches/master/index.html) for clinical data and also [IHE Mobile access to Health Documents (MHD)](https://profiles.ihe.net/ITI/MHD/index.html) for (pdf) documents.
 The data within the CDR will adhere to [HL7 Genomics Reporting](https://build.fhir.org/ig/HL7/genomics-reporting/)
-
-In addition, the CDR allows the Order Placer to swap from messaging-based workflow to FHIR Workflow using the FHIR Task resource. Ideally, FHIR Workflow would be backed by [FHIR Subscription](https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/toc.html). 
 
 <figure>
 {%include LTW-cdr-sequence.svg%}
@@ -105,9 +103,10 @@ In addition, the CDR allows the Order Placer to swap from messaging-based workfl
 - Scalability: Central CDR enables easier data sharing across systems.
 - Interoperability: Complies with widely accepted health IT standards.
 - Flexibility: Supports event-driven or request-driven access to results.
+- Initial support for [FHIR Worlflow](https://hl7.org/fhir/R4/workflow.html) which is central to the NHS England Genomic Order Management Service.
+  - This is similar to [Workflow Management Opt H](https://hl7.org/fhir/R4/workflow-management.html#optionh)
 
-
-### Shared Repositories and FHIR Workflow Option
+### FHIR Workflow plus Enterprise Clinical Data Repositories Option
 
 A fully FHIR-based, repository-driven genomic workflow, enabling secure, scalable, and flexible collaboration between order placers and fillers through shared data access and event-driven communication.
 
@@ -148,12 +147,12 @@ This differs from the current proposal to send in **Genomic Test Requests** via 
 - Flexibility: Systems can retrieve data when needed.
 - FHIR-Centric: Enables real-time tracking and status updates via FHIR Task.
 
-### Regional Health Information Exchange (HIE)
+### Health Information Exchange (HIE) and National+Enterprise Clinical Data Repositories Option
 
 This approach enables real-time, federated access to patient data spread across multiple NHS organizations, without needing to centralize all data. It supports **clinical portals** that provide clinicians with a holistic view of patient information while respecting data sovereignty and system independence.
 Notable examples of this pattern include:
 
-- NHS Scotland South East Region (XML/SOAP API)
+- NHS Scotland South-East Region (XML/SOAP API)
 - Yorkshire and Humberside Care Record (FHIR STU3 REST API + [Care Connect API](https://nhsconnect.github.io/CareConnectAPI/))
 
 These exchanges typically use an [Aggregator](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Aggregator.html) pattern, similar to the approach defined in [IHE Cross-Community Access (XCA)](https://profiles.ihe.net/ITI/TF/Volume1/ch-18.html), which is implemented in London.

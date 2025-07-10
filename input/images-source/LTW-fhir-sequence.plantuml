@@ -13,16 +13,28 @@ participant "Order Filler" as LIMS
 
 
 EPR -> EPR: Complete Order Form
-EPR -> CDRO: [[LAB-1.html Placer Order Managment (LAB-1)]] [[DDD-TestOrder.html Genomic Order O21]] Document Message
+EPR -> CDRO: Store Genomic Order
 EPR -> LIMS: [[StructureDefinition-Task.html FHIR Task]] (requested) Event Message
-LIMS -> CDRO: Retrieve [[LAB-1.html Placer Order Managment (LAB-1)]] [[DDD-TestOrder.html Genomic Order O21]] REST API
+LIMS -> CDRO: Retrieve Genomic Order FHIR REST API
+
+alt accepted
 LIMS -> EPR: [[StructureDefinition-Task.html FHIR Task]] (accepted) Event Message
 
-
 LIMS -> LIMS: Perform Test
+opt partial/preliminary reports
+LIMS -> LIMS: Write preliminary/partial report
 
-LIMS -> CDRF: [[LAB-3.html Order Results Management (LAB-3)]] [[DDD-TestReport.html Genomic Report R01]] Document Message
+LIMS -> CDRF: Store partial/preliminary Genomic Report
+LIMS -> EPR: [[StructureDefinition-Task.html FHIR Task]] (in-progress) Event Message
+EPR -> CDRF: Retrieve Genomic Report FHIR REST API
+end
+LIMS -> LIMS: Write final report
+
+LIMS -> CDRF: Store partial/preliminary Genomic Report
 LIMS -> EPR: [[StructureDefinition-Task.html FHIR Task]] (completed) Event Message
-EPR -> CDRF: Retrieve [[LAB-3.html Order Results Management (LAB-3)]] [[DDD-TestReport.html Genomic Report R01]] REST API
+EPR -> CDRF: Retrieve Genomic Report FHIR REST API
 
+else Rejected
+LIMS -> EPR: [[StructureDefinition-Task.html FHIR Task]] (rejected) Event Message
+end
 @enduml
