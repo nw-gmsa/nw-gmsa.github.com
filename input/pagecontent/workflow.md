@@ -124,8 +124,8 @@ This differs from the current proposal to send in **Genomic Test Requests** via 
 
 1. Initiation:
    - The Order Placer completes a referral form.
-   - A Genomic Order O21 Document Message is sent to the Order Placer’s Clinical Data Repository.
-     - When the order is placed with the North West region, this will be a Genomic Order O21 Message which the RIE sends to the CDR.
+   - A Genomic Order is stored on the Order Placer’s Clinical Data Repository.
+     - When the order is placed with the North West region, this will be a Genomic Order O21 Message, which the RIE sends to the Enterprise CDR.
    - A FHIR Task (requested) event message is also generated.
 2. Order Acceptance & Retrieval:
    - The Order Filler Clinical Data Repository retrieves the order using Placer Order Management (LAB-1) Genomic Order O21 REST API.
@@ -133,10 +133,12 @@ This differs from the current proposal to send in **Genomic Test Requests** via 
 3. Test Execution:
    - The Order Filler performs the genomic test.
 4. Results Submission:
-   - The results are submitted as a Genomic Report R01 Document Message to the Order Filler Clinical Data Repository.
+   - The Order Filler creates the Genomic Report (which may have multiple versions e.g., partial, preliminary, and final)
+   - The Genomic Report is stored on the Order Filler Clinical Data Repository.
+     - When the order is stored within the North West region, this will be via a Genomic Report R01 Message, which the RIE sends to the Enterprise CDR.
    - The FHIR Task event message with a status of `completed` is sent back to the Order Placer.
 5. Result Retrieval:
-   - The Order Placer retrieves the genomic report using the Genomic Report R01 REST API from the Order Filler’s Clinical Data Repository.
+   - The Order Placer retrieves the genomic report FHIR REST API from the Order Filler’s Clinical Data Repository.
    - The RIE on reciept of a `completed` task will then convert the report to a Genomic Report R01 Message and send onto the original Order Placer.  
 
 #### Pro/Cons
