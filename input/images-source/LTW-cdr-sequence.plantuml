@@ -4,7 +4,7 @@ skinparam svgDimensionStyle false
 
 hide footbox
 
-title "Event Notifications and Enterprise Clinical Data Repository Option"
+title "Traditional Messaging plus Enterprise Clinical Data Repository"
 
 participant "Order Placer" as EPR
 participant "Intermediary\nRegional Integration Engine (RIE)" as TIE

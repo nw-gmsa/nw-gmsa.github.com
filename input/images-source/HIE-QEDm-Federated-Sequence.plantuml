@@ -1,7 +1,7 @@
   @startuml
 
 
-  title "Regional Health Information Exchange (HIE)"
+  title "Health Information Exchange (HIE) and Enterprise Clinical Data Repositories"
 
   hide footbox
 

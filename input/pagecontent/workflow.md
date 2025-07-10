@@ -64,7 +64,7 @@ This also follows IHE Laboratory and Testing Workflow (LTW)
 - The NHS England Genomic Order Management Service - [Process genomic test request](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir#post-/FHIR/R4) is effectively a HL7 Message same as the Genomic Order O21 Command Message. This does not support Genomic Report R01 Document Message  
 
 
-### Traditional Messaging plus Enterprise Clinical Data Repositories Option
+### Traditional Messaging plus Enterprise Clinical Data Repository Option
 
 Advanced, flexible, and interoperable genomic reporting workflow that combines traditional HL7 messaging with FHIR-based workflows and centralized data repositories, offering a future-ready health data exchange model.
 
@@ -149,7 +149,7 @@ This differs from the current proposal to send in **Genomic Test Requests** via 
 - Flexibility: Systems can retrieve data when needed.
 - FHIR-Centric: Enables real-time tracking and status updates via FHIR Task.
 
-### Health Information Exchange (HIE) and National+Enterprise Clinical Data Repositories Option
+### Health Information Exchange (HIE) and Enterprise Clinical Data Repositories Option
 
 This approach enables real-time, federated access to patient data spread across multiple NHS organizations, without needing to centralize all data. It supports **clinical portals** that provide clinicians with a holistic view of patient information while respecting data sovereignty and system independence.
 Notable examples of this pattern include:

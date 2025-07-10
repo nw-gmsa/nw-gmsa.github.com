@@ -2,7 +2,7 @@
 
 skinparam svgDimensionStyle false
 
-title "Multiple Clinical Data Repositories and FHIR Workflow"
+title "FHIR Workflow plus Enterprise Clinical Data Repositories"
 
 hide footbox
 

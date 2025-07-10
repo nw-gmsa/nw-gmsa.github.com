@@ -2,6 +2,8 @@
 
 hide footbox
 
+title "Traditional Messaging"
+
 participant "Order Placer" as EPR
 participant "Order Filler" as LIMS
 
