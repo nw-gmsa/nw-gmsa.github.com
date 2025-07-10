@@ -105,7 +105,7 @@ The data within the CDR will adhere to [HL7 Genomics Reporting](https://build.fh
 - Flexibility: Supports event-driven or request-driven access to results.
 - Initial support for [FHIR Worlflow](https://hl7.org/fhir/R4/workflow.html) which is central to the NHS England Genomic Order Management Service.
   - This is similar to [Workflow Management Opt H](https://hl7.org/fhir/R4/workflow-management.html#optionh)
-- Introduces [Conversation Patterns](https://www.enterpriseintegrationpatterns.com/patterns/conversation/index.html) as an alternative option to Messaging Patterns.
+- Introduces [Conversation Patterns](https://www.enterpriseintegrationpatterns.com/patterns/conversation/index.html) as an alternative option to [Messaging Patterns](https://www.enterpriseintegrationpatterns.com/patterns/messaging/index.html).
 
 ### FHIR Workflow plus Enterprise Clinical Data Repositories Option
 
@@ -114,7 +114,7 @@ A fully FHIR-based, repository-driven genomic workflow, enabling secure, scalabl
 This option would apply to North West GMSA Regional Integration Engine (RIE) and Genomic Order Management System (GOMS) working with each other. In this option both can act as the Order Placer or Filler.
 This option is a full adoption of [FHIR Workflow Management Communication Patterns](https://build.fhir.org/workflow-management.html)
 
-This differs from the current proposal to send in **Genomic Test Requests** via messaging, instead they would be shared from the source system.
+> This differs from the current proposal to send in **Genomic Test Requests** via messaging ([Process genomic test request](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir#post-/FHIR/R4)), instead they would be shared from the enterprise CDR, and the request to `process genomic test request` would be [Create a new Task](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir#post-/FHIR/R4/Task)
 
 <figure>
 {%include LTW-fhir-sequence.svg%}
