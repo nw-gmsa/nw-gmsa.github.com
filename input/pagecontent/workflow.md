@@ -64,6 +64,7 @@ This also follows IHE Laboratory and Testing Workflow (LTW)
 - The message interactions will follow:  
   - LAB-1 and LAB-3 from [IHE Laboratory and Testing Workflow (LTW)](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol2a.pdf)
   - The FHIR Messages defined in this specification are not part of this standard (or another standard), but are following LAB-1 and LAB-3.
+- Security—all interactions will use OAuth2 Authorisation (this includes HL7 over http) 
      
 #### Notes 
 
@@ -119,6 +120,8 @@ The data within the CDR will adhere to [HL7 Genomics Reporting](https://build.fh
 - FHIR REST API will adhere to the following International Standards (this is roughly the same approach as Yorkshire and Humberside Care Record (YHCR)):
   - [IHE Query for Existing Data for Mobile (QEDm)](https://build.fhir.org/ig/IHE/QEDm/branches/master/index.html)
   - [IHE Mobile access to Health Documents (MHD)](https://profiles.ihe.net/ITI/MHD/index.html) for PDF reports.
+  - [IHE Internet User Access](https://profiles.ihe.net/ITI/IUA/index.html) (which includes OAuth2 Authorisation) for access control
+    - This can be extended to include [SMART on FHIR](https://hl7.org/fhir/smart-app-launch/index.html)   
 
 ### FHIR Workflow plus Enterprise Clinical Data Repositories Option
 
