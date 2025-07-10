@@ -10,10 +10,10 @@ EPR -> EPR: Complete Order Form
 EPR -> LIMS: [[LAB-1.html Placer Order Managment (LAB-1)]] [[DDD-TestOrder.html Genomic Order O21]] Command Message
 LIMS -> LIMS: Perform Test
 opt preliminary/partial reports
-LIMS -> LIMS: Write preliminary/partial report
+LIMS -> LIMS: Create preliminary/partial report
 LIMS -> EPR: [[LAB-3.html Order Results Management (LAB-3)]] [[DDD-TestReport.html Genomic Report R01]] Document Message
 end
-LIMS -> LIMS: Write final report
+LIMS -> LIMS: Create final report
 LIMS -> EPR: [[LAB-3.html Order Results Management (LAB-3)]] [[DDD-TestReport.html Genomic Report R01]] Document Message
 
 

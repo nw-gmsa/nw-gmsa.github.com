@@ -22,13 +22,13 @@ LIMS -> EPR: [[StructureDefinition-Task.html FHIR Task]] (accepted) Event Messag
 
 LIMS -> LIMS: Perform Test
 opt partial/preliminary reports
-LIMS -> LIMS: Write preliminary/partial report
+LIMS -> LIMS: Create preliminary/partial report
 
 LIMS -> CDRF: Store partial/preliminary Genomic Report
 LIMS -> EPR: [[StructureDefinition-Task.html FHIR Task]] (in-progress) Event Message
 EPR -> CDRF: Retrieve Genomic Report FHIR REST API
 end
-LIMS -> LIMS: Write final report
+LIMS -> LIMS: Create final report
 
 LIMS -> CDRF: Store partial/preliminary Genomic Report
 LIMS -> EPR: [[StructureDefinition-Task.html FHIR Task]] (completed) Event Message
