@@ -53,12 +53,18 @@ This also follows IHE Laboratory and Testing Workflow (LTW)
 
 #### Pros/Cons
 
-- Fo llows International standards.
-    - The FHIR Messages mentioned above are not part of an international standard.
+
 - Makes use of [Messaging Patterns](https://www.enterpriseintegrationpatterns.com/patterns/messaging/index.html) and so in secondary care has considerable middleware via Trust Integration Engines (TIE).
 - Does not support referral triage processes or other workflow interactions.
 - UK and England HL7 standards (including UKCore) do not cover this workflow, especially around the use of business identifiers.
-
+- The order and report messages are semantically aligned and compatible (HL7 v2 and FHIR) with:
+    - NHS England HL7 Message Specification
+    - NHS England Data Model and Dictionary
+    - Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide
+- The message interactions will follow:  
+  - LAB-1 and LAB-3 from [IHE Laboratory and Testing Workflow (LTW)](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol2a.pdf)
+  - The FHIR Messages defined in this specification are not part of this standard (or another standard), but are following LAB-1 and LAB-3.
+     
 #### Notes 
 
 - The NHS England Genomic Order Management Service - [Process genomic test request](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir#post-/FHIR/R4) is effectively a HL7 Message same as the Genomic Order O21 Command Message. This does not support Genomic Report R01 Document Message  
@@ -106,6 +112,12 @@ The data within the CDR will adhere to [HL7 Genomics Reporting](https://build.fh
 - Initial support for [FHIR Worlflow](https://hl7.org/fhir/R4/workflow.html) which is central to the NHS England Genomic Order Management Service.
   - This is similar to [Workflow Management Opt H](https://hl7.org/fhir/R4/workflow-management.html#optionh)
 - Introduces [Conversation Patterns](https://www.enterpriseintegrationpatterns.com/patterns/conversation/index.html) as an alternative option to [Messaging Patterns](https://www.enterpriseintegrationpatterns.com/patterns/messaging/index.html).
+- Detailed report will conform semantically with:
+  - [HL7 Genomics Reporting](https://build.fhir.org/ig/HL7/genomics-reporting/)
+  - [NHS England - FHIR Genomics Implementation Guide](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home)
+- FHIR REST API will adhere to the following International Standards (this is roughly the same approach as Yorkshire and Humberside Care Record (YHCR)):
+  - [IHE Query for Existing Data for Mobile (QEDm)](https://build.fhir.org/ig/IHE/QEDm/branches/master/index.html)
+  - [IHE Mobile access to Health Documents (MHD)](https://profiles.ihe.net/ITI/MHD/index.html) for PDF reports.
 
 ### FHIR Workflow plus Enterprise Clinical Data Repositories Option
 
