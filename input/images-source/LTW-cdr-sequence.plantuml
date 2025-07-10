@@ -14,8 +14,10 @@ participant "Order Filler" as LIMS
 
 EPR -> EPR: Complete Order Form
 EPR -> TIE: [[LAB-1.html Placer Order Managment (LAB-1)]] [[DDD-TestOrder.html Genomic Order O21]] Command Message
-TIE -> LIMS: [[LAB-1.html Placer Order Managment (LAB-1)]] [[DDD-TestOrder.html Genomic Order O21]] Command Message
 TIE -> CDR: [[LAB-1.html Placer Order Managment (LAB-1)]] [[DDD-TestOrder.html Genomic Order O21]] Document Message
+alt accepted
+TIE -> LIMS: [[LAB-1.html Placer Order Managment (LAB-1)]] [[DDD-TestOrder.html Genomic Order O21]] Command Message
+
 TIE -> CDR: [[StructureDefinition-Task.html FHIR Task]] (accepted) Event Message
 
 LIMS -> LIMS: Perform Test
@@ -35,5 +37,8 @@ TIE -> CDR: [[LAB-3.html Order Results Management (LAB-3)]] [[DDD-TestReport.htm
 TIE -> CDR: [[StructureDefinition-Task.html FHIR Task]] (completed) Event Message
 
 TIE -> EPR: [[LAB-3.html Order Results Management (LAB-3)]] [[DDD-TestReport.html Genomic Report R01]] Document Message
-
+else rejected
+TIE -> EPR: General laboratory order response message O22
+TIE -> CDR: [[StructureDefinition-Task.html FHIR Task]] (rejected) Event Message
+end
 @enduml
