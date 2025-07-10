@@ -116,6 +116,10 @@ This is an evolution of the previous option by adding in an **Enterprise Clinica
   - This is similar to [Workflow Management Opt H](https://hl7.org/fhir/R4/workflow-management.html#optionh)
   - This can be extended to include pub/sub using [FHIR Subscription](https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/index.html)
 - Introduces Event-based [Conversation Patterns](https://www.enterpriseintegrationpatterns.com/patterns/conversation/index.html) as an alternative option to Command and Document [Messaging Patterns](https://www.enterpriseintegrationpatterns.com/patterns/messaging/index.html).
+
+<img style="padding:3px;width:60%;" src="follow-up.png" alt="Follow Up"/>
+<br clear="all">
+
 - Detailed report will conform semantically with:
   - [HL7 Genomics Reporting](https://build.fhir.org/ig/HL7/genomics-reporting/)
   - [NHS England - FHIR Genomics Implementation Guide](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home)
