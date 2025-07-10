@@ -111,6 +111,7 @@ The data within the CDR will adhere to [HL7 Genomics Reporting](https://build.fh
 - Flexibility: Supports event-driven or request-driven access to results.
 - Initial support for [FHIR Worlflow](https://hl7.org/fhir/R4/workflow.html) which is central to the NHS England Genomic Order Management Service.
   - This is similar to [Workflow Management Opt H](https://hl7.org/fhir/R4/workflow-management.html#optionh)
+  - This can be extended to include pub/sub using [FHIR Subscription](https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/index.html)
 - Introduces [Conversation Patterns](https://www.enterpriseintegrationpatterns.com/patterns/conversation/index.html) as an alternative option to [Messaging Patterns](https://www.enterpriseintegrationpatterns.com/patterns/messaging/index.html).
 - Detailed report will conform semantically with:
   - [HL7 Genomics Reporting](https://build.fhir.org/ig/HL7/genomics-reporting/)
@@ -161,6 +162,9 @@ This option is a full adoption of [FHIR Workflow Management Communication Patter
 - Scalability & Interoperability: Built for modern health IT ecosystems.
 - Flexibility: Systems can retrieve data when needed.
 - FHIR-Centric: Enables real-time tracking and status updates via FHIR Task.
+- Uses international standards for Data/Document sharing and [FHIR Workflow](https://hl7.org/fhir/R4/workflow.html) via [Conversation Patterns](https://www.enterpriseintegrationpatterns.com/patterns/conversation/index.html), this combination removes [Messaging Patterns](https://www.enterpriseintegrationpatterns.com/patterns/messaging/index.html)
+  - This can be extended to include pub/sub using [FHIR Subscription](https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/index.html)  
+
 
 ### Federated Genomic Data Access and Health Information Exchange (HIE) Option
 
