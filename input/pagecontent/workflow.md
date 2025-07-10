@@ -105,6 +105,7 @@ The data within the CDR will adhere to [HL7 Genomics Reporting](https://build.fh
 - Flexibility: Supports event-driven or request-driven access to results.
 - Initial support for [FHIR Worlflow](https://hl7.org/fhir/R4/workflow.html) which is central to the NHS England Genomic Order Management Service.
   - This is similar to [Workflow Management Opt H](https://hl7.org/fhir/R4/workflow-management.html#optionh)
+- Introduces [Conversation Patterns](https://www.enterpriseintegrationpatterns.com/patterns/conversation/index.html) as an alternative option to Messaging Patterns.
 
 ### FHIR Workflow plus Enterprise Clinical Data Repositories Option
 
