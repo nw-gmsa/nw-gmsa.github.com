@@ -162,7 +162,7 @@ This option is a full adoption of [FHIR Workflow Management Communication Patter
 - Flexibility: Systems can retrieve data when needed.
 - FHIR-Centric: Enables real-time tracking and status updates via FHIR Task.
 
-### Health Information Exchange (HIE) and Enterprise Clinical Data Repositories Option
+### Federated Genomic Data Access and Health Information Exchange (HIE) Option
 
 This approach enables real-time, federated access to patient data spread across multiple NHS organizations, without needing to centralize all data. It supports **clinical portals** that provide clinicians with a holistic view of patient information while respecting data sovereignty and system independence.
 Notable examples of this pattern include:

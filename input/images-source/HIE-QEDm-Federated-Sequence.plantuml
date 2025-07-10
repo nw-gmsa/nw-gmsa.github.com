@@ -1,7 +1,7 @@
   @startuml
 
 
-  title "Health Information Exchange (HIE) and Enterprise Clinical Data Repositories"
+  title "Federated Genomic Data Access and Health Information Exchange (HIE)"
 
   hide footbox
 
