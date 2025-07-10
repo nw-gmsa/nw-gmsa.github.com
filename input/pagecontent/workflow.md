@@ -75,6 +75,10 @@ This also follows IHE Laboratory and Testing Workflow (LTW)
 
 Advanced, flexible, and interoperable genomic reporting workflow that combines traditional HL7 messaging with FHIR-based workflows and centralized data repositories, offering a future-ready health data exchange model.
 
+<img style="padding:3px;width:60%;" src="breakthrough.png" alt="Modernisation"/>
+<br clear="all">
+
+
 This is an evolution of the previous option by adding in an **Enterprise Clinical Data Repository (CDR)** which allows Genomic Orders and Reports data to be shared across the region. 
 
 <figure>
