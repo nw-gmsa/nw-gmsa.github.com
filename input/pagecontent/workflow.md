@@ -48,6 +48,7 @@ This also follows IHE Laboratory and Testing Workflow (LTW)
   - The Order Filler processes the order and performs the test.
 - Order Results Management (LAB-3) Genomic Report R01 – Document Message
   - A document message (HL7 ORU_R01) is sent from the Order Filler back to the Order Placer.
+    - This may include preliminary and partial reports before the final report.
   - Purpose: To report the results of the genomic test.
 
 #### Pros/Cons
@@ -85,18 +86,18 @@ In addition, the CDR allows the Order Placer to swap from messaging-based workfl
    - Sends a Genomic Order O21 Command Message to RIE.
    - RIE forwards this command to both the CDR and Order Filler.
 2. Optional FHIR Workflow (ALT Path):
-  - FHIR Task with an `accepted` status is created from the Genominc Order O21 Message and is sent by the Order Placer to the CDR.
+  - FHIR Task with an `accepted` status is created from the Genominc Order O21 Message and is sent to the CDR.
   - This begins the FHIR-based workflow as an alternative to traditional HL7 messaging.
 3. Test Execution:
    - The Order Filler performs the genomic test.
-4. Result Reporting:
+4. Preliminary/Partial Results Reporting:
+   - The Genomic Report R01 Document Message is sent from the Order Filler to CDR, this is used to store new FHIR resource and updating existing ones such as the ServiceRequest to a `completed` status.
+  - The FHIR Task is updated to with a `in-progress` status and is then sent to indicate completion of the task.
+5. Result Reporting:
    - The Genomic Report R01 Document Message is sent from the Order Filler to CDR, this is used to store new FHIR resource and updating existing ones such as the ServiceRequest to a `completed` status.
    - The FHIR Task is updated to with a `completed` status and is then sent to indicate completion of the task.
 5. Result Retrieval Options:
-   - Optional (opt):
-     - The Order Placer retrieves results using a REST API (FHIR-based).
-   - Traditional (fallback):
-     - Results are also available via traditional HL7 v2 ORU_R01 Document Message.
+   - The Order Placer retrieves results via traditional HL7 v2 ORU_R01 Document Message.
 
 #### Pro/Cons
 
