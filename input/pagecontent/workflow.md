@@ -185,6 +185,9 @@ Notable examples of this pattern include:
 - NHS Scotland South-East Region (XML/SOAP API)
 - Yorkshire and Humberside Care Record (FHIR STU3 REST API + [Care Connect API](https://nhsconnect.github.io/CareConnectAPI/))
 
+<img style="padding:3px;width:60%;" src="Health Information Exchange.drawio.png" alt="Follow Up"/>
+<br clear="all">
+
 These exchanges typically use an [Aggregator](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Aggregator.html) pattern, similar to the approach defined in [IHE Cross-Community Access (XCA)](https://profiles.ihe.net/ITI/TF/Volume1/ch-18.html), which is implemented in London.
 
 <figure>

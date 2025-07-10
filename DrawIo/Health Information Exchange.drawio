@@ -1,0 +1,49 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" version="27.2.0">
+  <diagram name="Page-1" id="53n2EaOwPSsr41wj17no">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="jgpSiwze4TK5Q7L4IDOj-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="jgpSiwze4TK5Q7L4IDOj-1" target="jgpSiwze4TK5Q7L4IDOj-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jgpSiwze4TK5Q7L4IDOj-1" value="&lt;b&gt;Clinical Portal&lt;/b&gt; &lt;br&gt;(or other applications)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="320" y="160" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jgpSiwze4TK5Q7L4IDOj-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="jgpSiwze4TK5Q7L4IDOj-2" target="jgpSiwze4TK5Q7L4IDOj-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jgpSiwze4TK5Q7L4IDOj-2" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="415" y="50" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jgpSiwze4TK5Q7L4IDOj-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="jgpSiwze4TK5Q7L4IDOj-3" target="jgpSiwze4TK5Q7L4IDOj-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jgpSiwze4TK5Q7L4IDOj-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="jgpSiwze4TK5Q7L4IDOj-3" target="jgpSiwze4TK5Q7L4IDOj-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jgpSiwze4TK5Q7L4IDOj-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="jgpSiwze4TK5Q7L4IDOj-3" target="jgpSiwze4TK5Q7L4IDOj-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jgpSiwze4TK5Q7L4IDOj-3" value="&lt;b&gt;Health Information Exchange (HIE)&lt;/b&gt;&lt;br&gt;(Federated Query)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="320" y="270" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jgpSiwze4TK5Q7L4IDOj-6" value="&lt;b&gt;Clinical Data Repository&lt;/b&gt;&lt;br&gt;(North West GMSA)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="150" y="400" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jgpSiwze4TK5Q7L4IDOj-8" value="&lt;b&gt;Clinical Data Repository&lt;/b&gt;&lt;br&gt;(Genomic Order Management Service)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="320" y="490" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jgpSiwze4TK5Q7L4IDOj-10" value="&lt;b&gt;Other Clinical Data Repository&lt;/b&gt;&lt;br&gt;(e.g. MFT EPIC, GMCR, Alder Hey Meditech, etc)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;dashed=1;dashPattern=12 12;fillStyle=hatch;" vertex="1" parent="1">
+          <mxGeometry x="490" y="400" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jgpSiwze4TK5Q7L4IDOj-12" value="Provided by Regional Integration Engine" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="560" y="285" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jgpSiwze4TK5Q7L4IDOj-13" value="Provided by FHIR Repository" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="130" y="480" width="160" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
