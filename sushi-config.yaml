@@ -195,22 +195,22 @@ resources:
 
 menu:
   Home: index.html
-  Analysis and Design (Vol 1) :
+  Analysis and Design (Volume 1) :
     Laboratory Testing Workflow (LTW): LTW.html
     Patient Identifier Cross-referencing (PIX): PIX.html
     Authorisation (OAuth2): authorisation.html
 ##    Health Information Exchange (HIE): HIE.html
-  Interfaces (Vol 2):
+  Interfaces (Volume 2):
     Placer Order Management [LAB-1]: LAB-1.html
 ##    Filler Order Management [LAB-2]: LAB-2.html
-    Order Results Management [LAB-3]: LAB-3.html
+  Order Results Management [LAB-3]: LAB-3.html
 ##    Work Order Management [LAB-4]: LAB-4.html
 ##    Test Results Management [LAB-5]: LAB-5.html
   Domain Archetypes:
     ##Overview: DDD-Overview.html
     Genomic Test Order: DDD-TestOrder.html
     Genomic Test Report: DDD-TestReport.html
-  Artefacts:
+  Artefacts (Volume 3):
     Hl7 FHIR: artifacts.html
     HL7 v2: hl7v2.html
     Identifiers and NamingSystems: identifiers.html
