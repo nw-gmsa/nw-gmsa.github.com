@@ -141,10 +141,10 @@ GET [base]/Patient/{id}
 GET [base]/Patient?[parameter]=[value]]
 </div>
 
-| Parameter    | Type      | Search                                             | Note                                                                                                      |
-|--------------|-----------|----------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
-| _lastUpdated | date      | ```GET [base]/Patient?_lastUpdated=[date]```       |                                                                                                           |
-| identifier   | token     | ```GET [base]/Patient?identifier=[system]&#124;[code]``` |                                                                                                           |
+| Parameter    | Type      | Search                                         | Note                                                                                                      |
+|--------------|-----------|------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
+| _lastUpdated | date      | GET [base]/Patient?_lastUpdated=[date]      |                                                                                                           |
+| identifier   | token     | GET [base]/Patient?identifier=[system&#124;][code] |                                                                                                           |
 
 #### Example
 
@@ -180,12 +180,12 @@ GET [base]/ServiceRequest/{id}
 GET [base]/ServiceRequest?[parameter]=[value]]
 </div>
 
-| Parameter    | Type      | Search                                                    | Note                                                                                                      |
-|--------------|-----------|-----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
-| _lastUpdated | date      | ```GET [base]/ServiceRequest?_lastUpdated=[date]```       |                                                                                                           |
-| identifier   | token     | ```GET [base]/ServiceRequest?identifier=[system]&vert;[code]``` |                                                                                                           |
-| patient      | reference | ```GET [base]/ServiceRequest?patient=[id]```              | `id` is the logical id of the patient on the server which can be obtained by a [Patient](#patient) query. |
-| [assigner](SearchParameter-assigner.html) | token | ```GET [base]/ServiceRequest?assigner=[system] [code]``` | |
+| Parameter    | Type      | Search                                              | Note                                                                                                      |
+|--------------|-----------|-----------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
+| _lastUpdated | date      | GET [base]/ServiceRequest?_lastUpdated=[date]```    |                                                                                                           |
+| identifier   | token     | GET [base]/ServiceRequest?identifier=[[system&#124;][code]``` |                                                                                                           |
+| patient      | reference | GET [base]/ServiceRequest?patient=[id]          | `id` is the logical id of the patient on the server which can be obtained by a [Patient](#patient) query. |
+| [assigner](SearchParameter-assigner.html) | token | GET [base]/ServiceRequest?assigner=[system&#124;][code] | |
 
 #### Example
 
@@ -222,11 +222,11 @@ GET [base]/Specimen/{id}
 GET [base]/Specimen?[parameter]=[value]]
 </div>
 
-| Parameter    | Type      | Search                                                     | Note                                                                                                      |
-|--------------|-----------|------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
-| _lastUpdated | date      | ```GET [base]/Specimen?_lastUpdated=[date]```        |                                                                                                           |
-| identifier   | token     | ```GET [base]/Specimen?identifier=[system] [code]``` |                                                                                                           |
-| patient      | reference | ```GET [base]/Specimen?patient=[id]```               | `id` is the logical id of the patient on the server which can be obtained by a [Patient](#patient) query. |
+| Parameter    | Type      | Search                                           | Note                                                                                                      |
+|--------------|-----------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
+| _lastUpdated | date      | GET [base]/Specimen?_lastUpdated=[date]    |                                                                                                           |
+| identifier   | token     | GET [base]/Specimen?identifier=[system&#124;][code] |                                                                                                           |
+| patient      | reference | GET [base]/Specimen?patient=[id]           | `id` is the logical id of the patient on the server which can be obtained by a [Patient](#patient) query. |
 
 
 ## Task
