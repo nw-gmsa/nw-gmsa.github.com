@@ -29,7 +29,33 @@ The `OpenAPISwagger Definition file` below, can be viewed using [Swagger Editor]
 * insert ResourceWithExpectation(#ServiceRequest, ServiceRequest, #SHALL)
 * rest.resource[=]
   * documentation = """
- TODO
+
+## Read
+
+```
+GET [base]/ServiceRequest/{id}
+```
+
+## Search
+
+### _lastUpdated
+
+<div class="alert alert-success" role="alert">
+GET [base]/ServiceRequest?_lastUpdated=[date]
+</div>
+
+### identifier
+
+```
+GET [base]/ServiceRequest?identifier=[system]|[code]
+```
+
+### patient
+
+```
+GET [base]/ServiceRequest?patient=[id]
+```
+
   """
 
 * insert InteractionWithExpectation(#read, #SHALL)
