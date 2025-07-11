@@ -8,9 +8,21 @@ The search parameters are based on [FHIR Search](https://hl7.org/fhir/R4/search.
 
 ## Condition
 
-<div class="alert alert-info" role="alert">
-<b>FHIR Profile (schema):</b> <a href="StructureDefinition-Condition.html" _target="_blank">Condition</a> 
-</div>
+<table style="">
+    <tr>
+        <td>
+            <div class="alert alert-info" role="alert">
+            <b>FHIR Profile (schema):</b> <a href="StructureDefinition-Condition.html" _target="_blank">Condition</a> 
+            </div>
+        </td>
+        <td>
+            <div class="alert alert-secondary" role="alert">
+                <b>Related to HL7 v2 Segment:</b> <a href="hl7v2.html#dg1" _target="_blank">DG1</a> 
+            </div>
+        </td>
+	</tr>
+</table>
+
 
 ### Read
 
