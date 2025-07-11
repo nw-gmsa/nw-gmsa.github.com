@@ -100,9 +100,22 @@ GET [base]/Observation/{id}
 
 ## Patient
 
-<div class="alert alert-info" role="alert">
-<b>FHIR Profile (schema):</b> <a href="StructureDefinition-Patient.html" _target="_blank">Patient</a> 
-</div>
+
+<table style="">
+    <tr>
+        <td>
+           <div class="alert alert-info" role="alert">
+            <b>FHIR Profile (schema):</b> <a href="StructureDefinition-Patient.html" _target="_blank">Patient</a> 
+            </div>
+        </td>
+        <td>
+            <div class="alert alert-secondary" role="alert">
+                <b>Related to HL7 v2 Segment:</b> <a href="hl7v2.html#pid" _target="_blank">PID</a> 
+            </div>
+        </td>
+	</tr>
+</table>
+
 
 ### Read
 
