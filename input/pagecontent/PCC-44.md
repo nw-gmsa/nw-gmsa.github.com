@@ -60,6 +60,10 @@ GET [base]/Observation/{id}
 
 ## Patient
 
+<div class="alert alert-success" role="alert">
+<b>FHIR Profile (schema):</b> <a href="StructureDefinition-Patient.html" _target="_blank">Patient</a> 
+</div>
+
 ### Read
 
 <div class="alert alert-success" role="alert">
