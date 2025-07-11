@@ -12,7 +12,7 @@ The search parameters are based on [FHIR Search](https://hl7.org/fhir/R4/search.
     <tr>
         <td>
             <div class="alert alert-info" role="alert">
-            <b>FHIR Profile (schema):</b> <a href="StructureDefinition-Condition.html" _target="_blank">Condition</a> 
+            <b>FHIR Profile:</b> <a href="StructureDefinition-Condition.html" _target="_blank">Condition</a> 
             </div>
         </td>
         <td>
@@ -42,7 +42,7 @@ GET [base]/Condition/{id}
     <tr>
         <td>
             <div class="alert alert-info" role="alert">
-            <b>FHIR Profile (schema):</b> <a href="StructureDefinition-DiagnosticReport.html" _target="_blank">DiagnosticReport</a> 
+            <b>FHIR Profile:</b> <a href="StructureDefinition-DiagnosticReport.html" _target="_blank">DiagnosticReport</a> 
             </div>
         </td>
         <td>
@@ -96,7 +96,7 @@ Accept: application/fhir+json
     <tr>
         <td>
             <div class="alert alert-info" role="alert">
-            <b>FHIR Profile (schema):</b> <a href="StructureDefinition-DocumentReference.html" _target="_blank">DocumentReference</a> 
+            <b>FHIR Profile:</b> <a href="StructureDefinition-DocumentReference.html" _target="_blank">DocumentReference</a> 
             </div>
         </td>
         <td>
@@ -143,7 +143,7 @@ Accept: application/fhir+json
     <tr>
         <td>
            <div class="alert alert-info" role="alert">
-            <b>FHIR Profile (schema):</b> <a href="StructureDefinition-Encounter.html" _target="_blank">Encounter</a> 
+            <b>FHIR Profile:</b> <a href="StructureDefinition-Encounter.html" _target="_blank">Encounter</a> 
            </div>
         </td>
         <td>
@@ -191,7 +191,7 @@ Accept: application/fhir+json
     <tr>
         <td>
           <div class="alert alert-info" role="alert">
-            <b>FHIR Profile (schema):</b> <a href="StructureDefinition-Observation.html" _target="_blank">Observation</a> 
+            <b>FHIR Profile:</b> <a href="StructureDefinition-Observation.html" _target="_blank">Observation</a> 
           </div>
         </td>
         <td>
@@ -248,7 +248,7 @@ Accept: application/fhir+json
     <tr>
         <td>
            <div class="alert alert-info" role="alert">
-            <b>FHIR Profile (schema):</b> <a href="StructureDefinition-Patient.html" _target="_blank">Patient</a> 
+            <b>FHIR Profile:</b> <a href="StructureDefinition-Patient.html" _target="_blank">Patient</a> 
             </div>
         </td>
         <td>
@@ -295,13 +295,11 @@ Accept: application/fhir+json
 
 ## ServiceRequest
 
-
-
 <table style="">
     <tr>
         <td>
          <div class="alert alert-info" role="alert">
-            <b>FHIR Profile (schema):</b> <a href="StructureDefinition-ServiceRequest.html" _target="_blank">ServiceRequest</a> 
+            <b>FHIR Profile:</b> <a href="StructureDefinition-ServiceRequest.html" _target="_blank">ServiceRequest</a> 
             </div>
         </td>
         <td>
@@ -362,7 +360,7 @@ Accept: application/fhir+json
     <tr>
         <td>
                  <div class="alert alert-info" role="alert">
-            <b>FHIR Profile (schema):</b> <a href="StructureDefinition-Specimen.html" _target="_blank">Specimen</a> 
+            <b>FHIR Profile:</b> <a href="StructureDefinition-Specimen.html" _target="_blank">Specimen</a> 
             </div>
         </td>
         <td>
@@ -405,7 +403,7 @@ Accept: application/fhir+json
 ## Task
 
 <div class="alert alert-info" role="alert">
-<b>FHIR Profile (schema):</b> <a href="StructureDefinition-Task.html" _target="_blank">Task</a> 
+<b>FHIR Profile:</b> <a href="StructureDefinition-Task.html" _target="_blank">Task</a> 
 </div>
 
 ### Read
