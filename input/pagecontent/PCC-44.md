@@ -385,7 +385,7 @@ GET [base]/Specimen?[parameter]=[value]]
 
 | Parameter    | Type      | Search                                           | Note                                                                                                      |
 |--------------|-----------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
-| _lastUpdated | date      | GET [base]/Specimen?_lastUpdated=[date]    |                                                                                                           |
+| _lastUpdated | date      | GET [base]/Specimen?_lastUpdated=[date]    | Date the resource was last updated                                                                                                          |
 | identifier   | token     | GET [base]/Specimen?identifier=[system&#124;][code] | The unique identifier associated with the specimen                                                                                                          |
 | accession   | token     | GET [base]/Specimen?accession=[system&#124;][code] | The accession number associated with the specimen                                                                                                          |
 | patient      | reference | GET [base]/Specimen?patient=[id]           | `id` is the logical id of the patient on the server which can be obtained by a [Patient](#patient) query. |
@@ -411,3 +411,36 @@ Accept: application/fhir+json
 <div class="alert alert-success" role="alert">
 GET [base]/Task/{id}
 </div>
+
+### Search
+
+<div class="alert alert-success" role="alert">
+GET [base]/Task?[parameter]=[value]]
+</div>
+
+| Parameter            | Type      | Search                                                    | Note                                                                                                      |
+|----------------------|-----------|-----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
+| _lastUpdated         | date      | GET [base]/Task?_lastUpdated=[date]                       | Date the resource was last updated                                                                                                          |
+| identifier           | token     | GET [base]/Task?identifier=[system&#124;][code]           | Search for a task instance by its business identifier                                                                                                          |
+| patient              | reference | GET [base]/Task?patient=[id]                              | `id` is the logical id of the patient on the server which can be obtained by a [Patient](#patient) query. |
+| code                 | token     | GET [base]/Task?code=[system&#124;][code]                 | Search by task code |
+| authored-on          | date      | GET [base]/Task?authored-on=[date]                        | Search by creation date |
+| requester:identifier | token     | GET [base]/Task?requester:identifier=[system&#124;][code] | Search by task requester |
+| owner:identifier     | token     | GET [base]/Task?owner:identifier=[system&#124;][code]     | Search by task owner |
+| status               | token     | GET [base]/Task?status=[code]                             | Search by task status |
+
+#### Example
+
+Searching for a `requested` Task for an Organisation.
+
+```
+GET [base]/Task?status=requested&owner:organization=https://fhir.nhs.uk/Id/ods-organization-code|699X0
+Accept: application/fhir+json
+```
+
+Searching for updates for to a Task requested by an Organisation since 11th July 2025
+
+```
+GET [base]/Task?requester:organization=https://fhir.nhs.uk/Id/ods-organization-code|R0A&_lastUpdated=ge2025-07-11
+Accept: application/fhir+json
+```
