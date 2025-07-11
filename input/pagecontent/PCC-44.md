@@ -32,9 +32,24 @@ GET [base]/Condition/{id}
 
 ## Encounter
 
-<div class="alert alert-info" role="alert">
-<b>FHIR Profile (schema):</b> <a href="StructureDefinition-Encounter.html" _target="_blank">Encounter</a> 
-</div>
+
+<table style="">
+    <tr>
+        <td>
+           <div class="alert alert-info" role="alert">
+            <b>FHIR Profile (schema):</b> <a href="StructureDefinition-Encounter.html" _target="_blank">Encounter</a> 
+           </div>
+        </td>
+        <td>
+            <div class="alert alert-secondary" role="alert">
+                <b>Related to HL7 v2 Segment:</b> <a href="hl7v2.html#pv1" _target="_blank">PV1</a> 
+            </div>
+        </td>
+	</tr>
+</table>
+
+
+This Encounter represents the overall episode or stay, for further information see [Interweave Encounter Grouping](https://fhir.interweavedigital.com/R4/StructureDefinition-Interweave-EncounterGrouping.html)
 
 ### Read
 
@@ -48,10 +63,12 @@ GET [base]/Encounter/{id}
 GET [base]/Encounter?[parameter]=[value]]
 </div>
 
-| Parameter    | Type      | Search                                                  | Note     |
-|--------------|-----------|---------------------------------------------------------|----------|
-| _lastUpdated | date      | GET [base]/Encounter?_lastUpdated=[date]          |          |
-| identifier   | token     | GET [base]/Encounter?identifier=[system]&#124;[code] |                                                                                                           |
+| Parameter    | Type      | Search                                               | Note                               |
+|--------------|-----------|------------------------------------------------------|------------------------------------|
+| _lastUpdated | date      | GET [base]/Encounter?_lastUpdated=[date]             | date the resource was last updated |
+| identifier   | token     | GET [base]/Encounter?identifier=[system&#124;][code] | Identifier(s) by which this encounter is known                                   |
+| patient      | reference | GET [base]/Encounter?identifier=[id]                 | The patient present at the encounter                                   |
+| date         | date     | GET [base]/Encounter?identifier=[date]               | A date within the actualPeriod the Encounter lasted                                   |
 
 
 
