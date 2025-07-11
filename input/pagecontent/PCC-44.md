@@ -23,7 +23,6 @@ The search parameters are based on [FHIR Search](https://hl7.org/fhir/R4/search.
 	</tr>
 </table>
 
-
 ### Read
 
 <div class="alert alert-success" role="alert">
@@ -53,7 +52,6 @@ GET [base]/Condition/{id}
         </td>
 	</tr>
 </table>
-
 
 ### Read
 
@@ -109,7 +107,6 @@ Accept: application/fhir+json
 	</tr>
 </table>
 
-
 ### Read
 
 <div class="alert alert-success" role="alert">
@@ -140,9 +137,7 @@ GET [base]/DocumentReference?type=http://snomed.info/sct|1054161000000101&patien
 Accept: application/fhir+json
 ```
 
-
 ## Encounter
-
 
 <table style="">
     <tr>
@@ -190,9 +185,7 @@ GET [base]/Encounter?identifier=http://www.acme.org/encounter/identifiers/R0A|10
 Accept: application/fhir+json
 ```
 
-
 ## Observation
-
 
 <table style="">
     <tr>
@@ -302,9 +295,23 @@ Accept: application/fhir+json
 
 ## ServiceRequest
 
-<div class="alert alert-info" role="alert">
-<b>FHIR Profile (schema):</b> <a href="StructureDefinition-ServiceRequest.html" _target="_blank">ServiceRequest</a> 
-</div>
+
+
+<table style="">
+    <tr>
+        <td>
+         <div class="alert alert-info" role="alert">
+            <b>FHIR Profile (schema):</b> <a href="StructureDefinition-ServiceRequest.html" _target="_blank">ServiceRequest</a> 
+            </div>
+        </td>
+        <td>
+            <div class="alert alert-secondary" role="alert">
+                <b>Related to HL7 v2 Segment:</b> <a href="hl7v2.html#orc" _target="_blank">ORC</a> and <a href="hl7v2.html#obr" _target="_blank">OBR</a>  
+            </div>
+        </td>
+	</tr>
+</table>
+
 
 ### Read
 
@@ -351,9 +358,20 @@ Accept: application/fhir+json
 
 ## Specimen
 
-<div class="alert alert-info" role="alert">
-<b>FHIR Profile (schema):</b> <a href="StructureDefinition-Specimen.html" _target="_blank">Specimen</a> 
-</div>
+<table style="">
+    <tr>
+        <td>
+                 <div class="alert alert-info" role="alert">
+            <b>FHIR Profile (schema):</b> <a href="StructureDefinition-Specimen.html" _target="_blank">Specimen</a> 
+            </div>
+        </td>
+        <td>
+            <div class="alert alert-secondary" role="alert">
+                <b>Related to HL7 v2 Segment:</b> <a href="hl7v2.html#spm" _target="_blank">SPM</a>   
+            </div>
+        </td>
+	</tr>
+</table>
 
 ### Read
 
@@ -370,9 +388,19 @@ GET [base]/Specimen?[parameter]=[value]]
 | Parameter    | Type      | Search                                           | Note                                                                                                      |
 |--------------|-----------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
 | _lastUpdated | date      | GET [base]/Specimen?_lastUpdated=[date]    |                                                                                                           |
-| identifier   | token     | GET [base]/Specimen?identifier=[system&#124;][code] |                                                                                                           |
+| identifier   | token     | GET [base]/Specimen?identifier=[system&#124;][code] | The unique identifier associated with the specimen                                                                                                          |
+| accession   | token     | GET [base]/Specimen?accession=[system&#124;][code] | The accession number associated with the specimen                                                                                                          |
 | patient      | reference | GET [base]/Specimen?patient=[id]           | `id` is the logical id of the patient on the server which can be obtained by a [Patient](#patient) query. |
 
+
+#### Example
+
+Searching for a Specimen via Accession Number.
+
+```
+GET [base]/Specimen?identifier=http://www.example.org/specimen/accession|1001166717
+Accept: application/fhir+json
+```
 
 ## Task
 
