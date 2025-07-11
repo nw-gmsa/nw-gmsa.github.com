@@ -1,6 +1,10 @@
 
 ## Condition
 
+<div class="alert alert-info" role="alert">
+<b>FHIR Profile (schema):</b> <a href="StructureDefinition-Condition.html" _target="_blank">Condition</a> 
+</div>
+
 ### Read
 
 <div class="alert alert-success" role="alert">
@@ -8,6 +12,10 @@ GET [base]/Condition/{id}
 </div>
 
 ## Encounter
+
+<div class="alert alert-info" role="alert">
+<b>FHIR Profile (schema):</b> <a href="StructureDefinition-Encounter.html" _target="_blank">Encounter</a> 
+</div>
 
 ### Read
 
@@ -17,6 +25,10 @@ GET [base]/Encounter/{id}
 
 
 ## DiagnosticReport
+
+<div class="alert alert-info" role="alert">
+<b>FHIR Profile (schema):</b> <a href="StructureDefinition-DiagnosticReport.html" _target="_blank">DiagnosticReport</a> 
+</div>
 
 ### Read
 
@@ -38,6 +50,11 @@ GET [base]/DiagnosticReport?[parameter]=[value]]
 
 ## DocumentReference
 
+<div class="alert alert-info" role="alert">
+<b>FHIR Profile (schema):</b> <a href="StructureDefinition-DocumentReference.html" _target="_blank">DocumentReference</a> 
+</div>
+
+
 ### Read
 
 <div class="alert alert-success" role="alert">
@@ -52,6 +69,10 @@ GET [base]/DocumentReference?[parameter]=[value]]
 
 ## Observation
 
+<div class="alert alert-info" role="alert">
+<b>FHIR Profile (schema):</b> <a href="StructureDefinition-Observation.html" _target="_blank">Observation</a> 
+</div>
+
 ### Read
 
 <div class="alert alert-success" role="alert">
@@ -60,7 +81,7 @@ GET [base]/Observation/{id}
 
 ## Patient
 
-<div class="alert alert-success" role="alert">
+<div class="alert alert-info" role="alert">
 <b>FHIR Profile (schema):</b> <a href="StructureDefinition-Patient.html" _target="_blank">Patient</a> 
 </div>
 
@@ -99,6 +120,10 @@ Accept: application/fhir+json
 
 ## ServiceRequest
 
+<div class="alert alert-info" role="alert">
+<b>FHIR Profile (schema):</b> <a href="StructureDefinition-ServiceRequest.html" _target="_blank">ServiceRequest</a> 
+</div>
+
 ### Read
 
 <div class="alert alert-success" role="alert">
@@ -118,6 +143,10 @@ GET [base]/ServiceRequest?[parameter]=[value]]
 | patient      | reference | ```GET [base]/ServiceRequest?patient=[id]```               | `id` is the logical id of the patient on the server which can be obtained by a [Patient](#patient) query. |
 
 ## Specimen
+
+<div class="alert alert-info" role="alert">
+<b>FHIR Profile (schema):</b> <a href="StructureDefinition-Specimen.html" _target="_blank">Specimen</a> 
+</div>
 
 ### Read
 
@@ -139,6 +168,10 @@ GET [base]/Specimen?[parameter]=[value]]
 
 
 ## Task
+
+<div class="alert alert-info" role="alert">
+<b>FHIR Profile (schema):</b> <a href="StructureDefinition-Task.html" _target="_blank">Task</a> 
+</div>
 
 ### Read
 
