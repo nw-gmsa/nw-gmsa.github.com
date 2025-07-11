@@ -42,6 +42,18 @@ GET [base]/Condition/{id}
 GET [base]/Encounter/{id}
 </div>
 
+### Search
+
+<div class="alert alert-success" role="alert">
+GET [base]/Encounter?[parameter]=[value]]
+</div>
+
+| Parameter    | Type      | Search                                                  | Note     |
+|--------------|-----------|---------------------------------------------------------|----------|
+| _lastUpdated | date      | GET [base]/Encounter?_lastUpdated=[date]          |          |
+| identifier   | token     | GET [base]/Encounter?identifier=[system]&#124;[code] |                                                                                                           |
+
+
 
 ## DiagnosticReport
 
@@ -61,11 +73,11 @@ GET [base]/DiagnosticReport/{id}
 GET [base]/DiagnosticReport?[parameter]=[value]]
 </div>
 
-| Parameter    | Type      | Search                                                       | Note                                                                                                      |
-|--------------|-----------|--------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
-| _lastUpdated | date      | ```GET [base]/DiagnosticReport?_lastUpdated=[date]```        |                                                                                                           |
-| identifier   | token     | ```GET [base]/DiagnosticReport?identifier=[system] [code]``` |                                                                                                           |
-| patient      | reference | ```GET [base]/DiagnosticReport?patient=[id]```               | `id` is the logical id of the patient on the server which can be obtained by a [Patient](#patient) query. |
+| Parameter    | Type      | Search                                                      | Note                                                                                                      |
+|--------------|-----------|-------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
+| _lastUpdated | date      | GET [base]/DiagnosticReport?_lastUpdated=[date]             |                                                                                                           |
+| identifier   | token     | GET [base]/DiagnosticReport?identifier=[system&#124;][code] |                                                                                                           |
+| patient      | reference | GET [base]/DiagnosticReport?patient=[id]                    | `id` is the logical id of the patient on the server which can be obtained by a [Patient](#patient) query. |
 
 ## DocumentReference
 
