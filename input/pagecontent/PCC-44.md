@@ -402,9 +402,19 @@ Accept: application/fhir+json
 
 ## Task
 
-<div class="alert alert-info" role="alert">
-<b>FHIR Profile:</b> <a href="StructureDefinition-Task.html" _target="_blank">Task</a> 
-</div>
+<table style="">
+    <tr>
+        <td>
+            <div class="alert alert-info" role="alert">
+            <b>FHIR Profile:</b> <a href="StructureDefinition-Task.html" _target="_blank">Task</a> 
+            </div>
+        </td>
+        <td>
+            &nbsp;
+        </td>
+	</tr>
+</table>
+
 
 ### Read
 
