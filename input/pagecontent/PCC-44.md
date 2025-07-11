@@ -141,6 +141,24 @@ GET [base]/ServiceRequest?[parameter]=[value]]
 | _lastUpdated | date      | ```GET [base]/ServiceRequest?_lastUpdated=[date]```        |                                                                                                           |
 | identifier   | token     | ```GET [base]/ServiceRequest?identifier=[system] [code]``` |                                                                                                           |
 | patient      | reference | ```GET [base]/ServiceRequest?patient=[id]```               | `id` is the logical id of the patient on the server which can be obtained by a [Patient](#patient) query. |
+| [assigner](SearchParameter-assigner.html) | token | ```GET [base]/ServiceRequest?assigner=[system] [code]``` | |
+
+#### Example
+
+Searching for a ServiceRequest via Order Placer Number.
+
+```
+GET [base]/ServiceRequest?identifier=http://www.acme.org/servicerequest/identifier|1601737
+Accept: application/fhir+json
+```
+
+Searching for a ServiceRequest via Order Placer Number and Assigning Authority.
+
+```
+GET [base]/ServiceRequest?identifier=1601737&assigner=R0A
+Accept: application/fhir+json
+```
+
 
 ## Specimen
 
