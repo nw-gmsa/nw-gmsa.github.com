@@ -8,7 +8,6 @@ Includes constraints from:
 """
 
 * identifier 1..* MS
-* identifier only CorrelationIdentifier
 
 * subject 1..1 MS
 * subject only Reference(Patient)
