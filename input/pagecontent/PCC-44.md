@@ -30,6 +30,12 @@ The search parameters are based on [FHIR Search](https://hl7.org/fhir/R4/search.
 GET [base]/Condition/{id}
 </div>
 
+| Parameter    | Type      | Search                                               | Note                                        |
+|--------------|-----------|------------------------------------------------------|---------------------------------------------|
+| _lastUpdated | date      | GET [base]/Condition?_lastUpdated=[date]             | date the resource was last updated          |
+| identifier   | token     | GET [base]/Condition?identifier=[system&#124;][code] | A unique identifier of the condition record |
+| patient      | reference | GET [base]/Condition?patient=[id]                    | Who has the condition?                      |
+
 ## Encounter
 
 
@@ -63,20 +69,32 @@ GET [base]/Encounter/{id}
 GET [base]/Encounter?[parameter]=[value]]
 </div>
 
-| Parameter    | Type      | Search                                               | Note                               |
-|--------------|-----------|------------------------------------------------------|------------------------------------|
-| _lastUpdated | date      | GET [base]/Encounter?_lastUpdated=[date]             | date the resource was last updated |
-| identifier   | token     | GET [base]/Encounter?identifier=[system&#124;][code] | Identifier(s) by which this encounter is known                                   |
-| patient      | reference | GET [base]/Encounter?identifier=[id]                 | The patient present at the encounter                                   |
-| date         | date     | GET [base]/Encounter?identifier=[date]               | A date within the actualPeriod the Encounter lasted                                   |
+| Parameter    | Type      | Search                                               | Note                                                |
+|--------------|-----------|------------------------------------------------------|-----------------------------------------------------|
+| _lastUpdated | date      | GET [base]/Encounter?_lastUpdated=[date]             | date the resource was last updated                  |
+| identifier   | token     | GET [base]/Encounter?identifier=[system&#124;][code] | Identifier(s) by which this encounter is known      |
+| patient      | reference | GET [base]/Encounter?patient=[id]                    | The patient present at the encounter                |
+| date         | date      | GET [base]/Encounter?date=[date]                     | A date within the actualPeriod the Encounter lasted |
 
 
 
 ## DiagnosticReport
 
-<div class="alert alert-info" role="alert">
-<b>FHIR Profile (schema):</b> <a href="StructureDefinition-DiagnosticReport.html" _target="_blank">DiagnosticReport</a> 
-</div>
+<table style="">
+    <tr>
+        <td>
+            <div class="alert alert-info" role="alert">
+            <b>FHIR Profile (schema):</b> <a href="StructureDefinition-DiagnosticReport.html" _target="_blank">DiagnosticReport</a> 
+            </div>
+        </td>
+        <td>
+            <div class="alert alert-secondary" role="alert">
+                <b>Related to HL7 v2 Segment:</b> <a href="hl7v2.html#orc" _target="_blank">ORC</a> and <a href="hl7v2.html#obr" _target="_blank">OBR</a>  
+            </div>
+        </td>
+	</tr>
+</table>
+
 
 ### Read
 
@@ -90,17 +108,31 @@ GET [base]/DiagnosticReport/{id}
 GET [base]/DiagnosticReport?[parameter]=[value]]
 </div>
 
-| Parameter    | Type      | Search                                                      | Note                                                                                                      |
-|--------------|-----------|-------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
-| _lastUpdated | date      | GET [base]/DiagnosticReport?_lastUpdated=[date]             |                                                                                                           |
-| identifier   | token     | GET [base]/DiagnosticReport?identifier=[system&#124;][code] |                                                                                                           |
-| patient      | reference | GET [base]/DiagnosticReport?patient=[id]                    | `id` is the logical id of the patient on the server which can be obtained by a [Patient](#patient) query. |
+| Parameter    | Type      | Search                                                      | Note                                                                                                                                             |
+|--------------|-----------|-------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| _lastUpdated | date      | GET [base]/DiagnosticReport?_lastUpdated=[date]             | date the resource was last updated                                                                                                               |
+| identifier   | token     | GET [base]/DiagnosticReport?identifier=[system&#124;][code] | An identifier for the report                                                                                                                     |
+| patient      | reference | GET [base]/DiagnosticReport?patient=[id]                    | `id` is the logical id of the patient on the server which can be obtained by a [Patient](#patient) query.                                        |
+| category     | token     | GET [base]/DiagnosticReport?category=[system&#124;][code]   | Which diagnostic discipline/department created the report                                                                                        |
+| code         | token     | GET [base]/DiagnosticReport?code=[system&#124;][code]       | The code for the report, as opposed to codes for the atomic results, which are the names on the observation resource referred to from the result |
+| date         | date      | GET [base]/DiagnosticReport?date=[date]                     | The clinically relevant time of the report                                                                                                       |
 
 ## DocumentReference
 
-<div class="alert alert-info" role="alert">
-<b>FHIR Profile (schema):</b> <a href="StructureDefinition-DocumentReference.html" _target="_blank">DocumentReference</a> 
-</div>
+<table style="">
+    <tr>
+        <td>
+            <div class="alert alert-info" role="alert">
+            <b>FHIR Profile (schema):</b> <a href="StructureDefinition-DocumentReference.html" _target="_blank">DocumentReference</a> 
+            </div>
+        </td>
+        <td>
+            <div class="alert alert-secondary" role="alert">
+                <b>Related to HL7 v2 Segment:</b> <a href="hl7v2.html#obx" _target="_blank">OBX</a> type=ED  
+            </div>
+        </td>
+	</tr>
+</table>
 
 
 ### Read
@@ -114,6 +146,15 @@ GET [base]/DocumentReference/{id}
 <div class="alert alert-success" role="alert">
 GET [base]/DocumentReference?[parameter]=[value]]
 </div>
+
+| Parameter    | Type      | Search                                                       | Note                                     |
+|--------------|-----------|--------------------------------------------------------------|------------------------------------------|
+| _lastUpdated | date      | GET [base]/DocumentReference?_lastUpdated=[date]             | date the resource was last updated       |
+| identifier   | token     | GET [base]/DocumentReference?identifier=[system&#124;][code] | Master Version Specific Identifier       |
+| patient      | reference | GET [base]/DocumentReference?patient=[id]                    | Who/what is the subject of the document  |
+| date         | date      | GET [base]/DocumentReference?date=[date]                     | When this document reference was created |
+| category     | token     | GET [base]/DocumentReference?category=[system&#124;][code]   | Categorisation of document               |
+| type         | token     | GET [base]/DocumentReference?type=[system&#124;][code]       | Kind of document                         |
 
 ## Observation
 
