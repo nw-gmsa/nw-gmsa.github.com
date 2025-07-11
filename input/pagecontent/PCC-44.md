@@ -35,6 +35,8 @@ GET [base]/ServiceRequest?identifier=[system]|[code]
 GET [base]/ServiceRequest?patient=[id]
 ```
 
+`id` is the logical id of the patient on the server which can be obtained by a [Patient](#patient) query.
+
 ### Specimen
 
 ### Task
