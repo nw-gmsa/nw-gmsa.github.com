@@ -103,6 +103,9 @@ pages:
   LAB-5.md:
     title: Test Results Management [LAB-5]
     generation: markdown
+  PCC-44.md:
+    title: Query Existing Data [PCC-44]
+    generation: markdown
   DDD-TestOrder.md:
     title: Genomic Test Order
     generation: markdown
@@ -203,7 +206,8 @@ menu:
   Interfaces (Volume 2):
     Placer Order Management [LAB-1]: LAB-1.html
 ##    Filler Order Management [LAB-2]: LAB-2.html
-  Order Results Management [LAB-3]: LAB-3.html
+    Order Results Management [LAB-3]: LAB-3.html
+    Query Existing Data: PCC-44.html
 ##    Work Order Management [LAB-4]: LAB-4.html
 ##    Test Results Management [LAB-5]: LAB-5.html
   Domain Archetypes:
