@@ -29,6 +29,13 @@ The search parameters are based on [FHIR Search](https://hl7.org/fhir/R4/search.
 GET [base]/Condition/{id}
 </div>
 
+### Search
+
+<div class="alert alert-success" role="alert">
+GET [base]/Condition?[parameter]=[value]]
+</div>
+
+
 | Parameter    | Type      | Search                                               | Note                                        |
 |--------------|-----------|------------------------------------------------------|---------------------------------------------|
 | _lastUpdated | date      | GET [base]/Condition?_lastUpdated=[date]             | Date the resource was last updated          |
