@@ -36,6 +36,19 @@ GET [base]/DiagnosticReport?[parameter]=[value]]
 | identifier   | token     | ```GET [base]/DiagnosticReport?identifier=[system] [code]``` |                                                                                                           |
 | patient      | reference | ```GET [base]/DiagnosticReport?patient=[id]```               | `id` is the logical id of the patient on the server which can be obtained by a [Patient](#patient) query. |
 
+## DocumentReference
+
+### Read
+
+<div class="alert alert-success" role="alert">
+GET [base]/DocumentReference/{id}
+</div>
+
+### Search
+
+<div class="alert alert-success" role="alert">
+GET [base]/DocumentReference?[parameter]=[value]]
+</div>
 
 ## Observation
 
@@ -70,12 +83,14 @@ Searching for a Patient via NHS Number.
 
 ```
 GET [base]/Patient?identifier=https://fhir.nhs.uk/Id/nhs-number|9449305552
+Accept: application/fhir+json
 ```
 
 Searching for a Patient via Medical Record Number.
 
 ```
 GET [base]/Patient?identifier=http://www.acme.org/patient/identifier|A12356565
+Accept: application/fhir+json
 ```
 
 ## ServiceRequest
