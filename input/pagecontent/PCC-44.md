@@ -330,13 +330,13 @@ GET [base]/ServiceRequest/{id}
 GET [base]/ServiceRequest?[parameter]=[value]]
 </div>
 
-| Parameter                                 | Type      | Search                                                        | Note                                                                                                      |
-|-------------------------------------------|-----------|---------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
-| _lastUpdated                              | date      | GET [base]/ServiceRequest?_lastUpdated=[date]```              | Date the resource was last updated                                                                        |
-| identifier                                | token     | GET [base]/ServiceRequest?identifier=[[system&#124;][code]``` | Identifiers assigned to this order                                                                        |
-| patient                                   | reference | GET [base]/ServiceRequest?patient=[id]                        | `id` is the logical id of the patient on the server which can be obtained by a [Patient](#patient) query. |
-| [assigner](SearchParameter-assigner.html) | token | GET [base]/ServiceRequest?assigner=[system&#124;][code]       | Assigning Authority (ODS Code) for identifiers assigned to this order                                     |
-| code                                      | token | GET [base]/ServiceRequest?code=[system&#124;][code]           | What is being requested/ordered                                                                           |
+| Parameter                                 | Type      | Search                                                    | Note                                                                                                      |
+|-------------------------------------------|-----------|-----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
+| _lastUpdated                              | date      | GET [base]/ServiceRequest?_lastUpdated=[date]             | Date the resource was last updated                                                                        |
+| identifier                                | token     | GET [base]/ServiceRequest?identifier=[[system&#124;][code] | Identifiers assigned to this order                                                                        |
+| patient                                   | reference | GET [base]/ServiceRequest?patient=[id]                    | `id` is the logical id of the patient on the server which can be obtained by a [Patient](#patient) query. |
+| [assigner](SearchParameter-assigner.html) | token | GET [base]/ServiceRequest?assigner=[system&#124;][code]   | Assigning Authority (ODS Code) for identifiers assigned to this order                                     |
+| code                                      | token | GET [base]/ServiceRequest?code=[system&#124;][code]       | What is being requested/ordered                                                                           |
 
 #### Example
 
