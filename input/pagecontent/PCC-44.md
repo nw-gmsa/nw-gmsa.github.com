@@ -72,14 +72,16 @@ GET [base]/DiagnosticReport/{id}
 GET [base]/DiagnosticReport?[parameter]=[value]]
 </div>
 
-| Parameter    | Type      | Search                                                      | Note                                                                                                                                             |
-|--------------|-----------|-------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
-| _lastUpdated | date      | GET [base]/DiagnosticReport?_lastUpdated=[date]             | Date the resource was last updated                                                                                                               |
-| identifier   | token     | GET [base]/DiagnosticReport?identifier=[system&#124;][code] | An identifier for the report                                                                                                                     |
-| patient      | reference | GET [base]/DiagnosticReport?patient=[id]                    | `id` is the logical id of the patient on the server which can be obtained by a [Patient](#patient) query.                                        |
-| category     | token     | GET [base]/DiagnosticReport?category=[system&#124;][code]   | Which diagnostic discipline/department created the report                                                                                        |
-| code         | token     | GET [base]/DiagnosticReport?code=[system&#124;][code]       | The code for the report, as opposed to codes for the atomic results, which are the names on the observation resource referred to from the result |
-| date         | date      | GET [base]/DiagnosticReport?date=[date]                     | The clinically relevant time of the report                                                                                                       |
+| Parameter    | Type      | Search                                                           | Note                                                                                                                                             |
+|--------------|-----------|------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| _lastUpdated | date      | GET [base]/DiagnosticReport?_lastUpdated=[date]                  | Date the resource was last updated                                                                                                               |
+| identifier   | token     | GET [base]/DiagnosticReport?identifier=[system&#124;][code]      | An identifier for the report                                                                                                                     |
+| patient      | reference | GET [base]/DiagnosticReport?patient=[id]                         | `id` is the logical id of the patient on the server which can be obtained by a [Patient](#patient) query.                                        |
+| category     | token     | GET [base]/DiagnosticReport?category=[system&#124;][code]        | Which diagnostic discipline/department created the report                                                                                        |
+| code         | token     | GET [base]/DiagnosticReport?code=[system&#124;][code]            | The code for the report, as opposed to codes for the atomic results, which are the names on the observation resource referred to from the result |
+| date         | date      | GET [base]/DiagnosticReport?date=[date]                          | The clinically relevant time of the report                                                                                                       |
+| _include     |           | GET [base]/DiagnosticReport?_include=[resource&#124;][parameter] |                                                                                                                                                  | 
+| _id          |           | GET [base]/DiagnosticReport?_id=[id]                             |                                                                                                                                                  |
 
 #### Example
 
