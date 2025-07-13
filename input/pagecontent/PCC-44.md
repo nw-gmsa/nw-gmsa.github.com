@@ -99,6 +99,13 @@ GET [base]/DiagnosticReport?category=http://terminology.hl7.org/CodeSystem/v2-00
 Accept: application/fhir+json
 ```
 
+Return a single DiagnosticReport with its associated results (Observation).
+
+```
+GET [base]/DiagnosticReport?_id=46120&_include:Observation:result
+Accept: application/fhir+json
+```
+
 ## DocumentReference
 
 <table style="">
