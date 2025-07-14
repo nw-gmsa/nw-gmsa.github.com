@@ -572,7 +572,7 @@
             "reference": "Observation/Observation-MultipleTumors-Example"
           },
           {
-            "reference": "Observation/Observation-MultipleTumors-Example"
+            "reference": "Observation/Observation-Necrosis-Example"
           },
           {
             "reference": "Condition/Condition-LungTumor-Example"
