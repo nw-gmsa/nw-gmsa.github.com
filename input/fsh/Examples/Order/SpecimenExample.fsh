@@ -16,7 +16,7 @@ Description: "TODO"
 * accessionIdentifier.value = "1001166717"
 * accessionIdentifier.system = "http://www.example.org/specimen/accession"
 * accessionIdentifier.assigner.identifier.system = $ods-code
-* accessionIdentifier.assigner.identifier.value = "690S0"
+* accessionIdentifier.assigner.identifier.value = "699X0"
 
 * status = #available
 

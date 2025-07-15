@@ -156,31 +156,32 @@ Multiple NTE should be converted to a single FHIR Annotation using markdown
 
 This is based on the definition of OBX from DHCW ORU_R01 Message Specification.
 
-| Field HL7 | Fieldname                    | Data Type | Optionality | Table and Notes                                          | Example Values                      |
-|-----------|------------------------------|-----------|-------------|----------------------------------------------------------|-------------------------------------|
-| OBX-1     | Set ID – OBX                 |           | R           |                                                          | 1                                   |
-| OBX-2     | Value Type                   |           | R           |                                                          | ED                                  |
-| OBX-3     | Observation Identifier       | [CE](#ce) | R           | [Document Entry Type](ValueSet-document-entry-type.html) | 1054161000000101^Genetic report^SNM |
-| OBX-5     | Observation Value            | ED        | R           |                                                          | MOL^IM^PDF^Base64^JVBERI0X...       |
-| OBX-11    | Observation Result Status    |           | R           |                                                          | F                                   |
-| OBX-14    | Date/Time of the Observation |           | O - SHOULD  |                                                          | 20190514102417+0000                 |
+| Field HL7 | Fieldname                    | Data Type | Optionality | Table and Notes                                          | Example Values                           |
+|-----------|------------------------------|-----------|-------------|----------------------------------------------------------|------------------------------------------|
+| OBX-1     | Set ID – OBX                 |           | R           |                                                          | 1                                        |
+| OBX-2     | Value Type                   |           | R           |                                                          | ED                                       |
+| OBX-3     | Observation Identifier       | [CE](#ce) | R           |                                                          | 281269004^High infection risk sample^SNM |
+| OBX-3     | Observation Identifier       | [ED](#ed) | R           | [Document Entry Type](ValueSet-document-entry-type.html) | 1054161000000101^Genetic report^SNM      |
+| OBX-5     | Observation Value            | ED        | R           |                                                          | MOL^IM^PDF^Base64^JVBERI0X...            |
+| OBX-11    | Observation Result Status    |           | R           |                                                          | F                                        |
+| OBX-14    | Date/Time of the Observation |           | O - SHOULD  |                                                          | 20190514102417+0000                      |
 
 
 ### SPM
 
 This is based on the definition of OBX from DHCW ORU_R01 Message Specification.
 
-| Field HL7 | Fieldname                     | Data Type | Optionality | Table and Notes | Example Values                                    |
-|--------|-------------------------------|-----------|-------------|-----------------|---------------------------------------------------|
-| SPM-2  | Specimen ID                   |           | O           |                 | 1                                                 |
-| SPM-3  | Specimen Parent IDs           |           | O           |                 |                                                   |
-| SPM-4  | Specimen Type                 |           | O           |                 | 119325001^Skin specimen^SNM                       |
-| SPM-8  | Specimen Source Site          |           | O           |                 | 299706009^Bone structure of wrist and/or hand^SNM |
-| SPM-9  | Specimen Source Site Modifier |           | O           |                 | 7771000^Left^SNM                                  |
-| SPM-17 | Specimen Collection Date/Time |           | O           |                 |                                                   |
-| SPM-18 | Specimen Received Date/Time   |           | O           |                 |                                                   |
-| SPM-20 | Specimen Availability         |           | O           |                 |                                                   |
-| SPM-30 | Accession ID                  |           | O           |                 |                                                   |
+| Field HL7 | Fieldname                     | Data Type | Optionality | Table and Notes                                              | Example Values                                   |
+|--------|-------------------------------|-----------|-------------|--------------------------------------------------------------|--------------------------------------------------|
+| SPM-2  | Specimen ID                   |           | O           | Placer Number^Filler Number                                  | 25GEN-029GN00001&R0A                                                 |
+| SPM-3  | Specimen Parent IDs           |           | O           | [Accession Number](StructureDefinition-AccessionNumber.html) | ^1001166717&699X0                                                 |
+| SPM-4  | Specimen Type                 |           | O           |                                                              | 119325001^Skin specimen^SNM                      |
+| SPM-8  | Specimen Source Site          |           | O           |                                                              | 299706009^Bone structure of wrist and/or hand^SNM |
+| SPM-9  | Specimen Source Site Modifier |           | O           |                                                              | 7771000^Left^SNM                                 |
+| SPM-17 | Specimen Collection Date/Time |           | O           |                                                              |                                                  |
+| SPM-18 | Specimen Received Date/Time   |           | O           |                                                              |                                                  |
+| SPM-20 | Specimen Availability         |           | O           |                                                              |                                                  |
+| SPM-30 | Accession ID                  |           | O           |                                                              |                                                  |
 
 ## Data Types
 
@@ -344,7 +345,7 @@ OBX|9|CE|762911000000102^Informed consent given for treatment^SNM|||||||||||2025
 OBX|10|ST|230037^Please Acknowledge That a DNA Sample Will be Stored in the Laboratory on Completion of Testing^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds||Acknowledged|||||||||20250129103726+0000
 OBX|11|ST|230039^Is the Person Ordering the Test the Referring Clinician^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds||No|||||||||20250129103726+0000
 OBX|12|ST|unknown^Name of Supervising Clinician^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds||DESHPANDE, CHARULATA|||||||||20250129103726+0000
-SPM|1|25GEN-029GN00001&R0A|^1001166717&690S0|258580003^Whole blood specimen^SNM|||||||||||||20250129103726+0000|||Y
+SPM|1|25GEN-029GN00001&R0A|^1001166717&699X0|258580003^Whole blood specimen^SNM|||||||||||||20250129103726+0000|||Y
 ```
 
 #### NonWGSTestOrderForm-CancerSolidTumor-Example
