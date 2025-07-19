@@ -8,14 +8,14 @@ The conventions described below are taken from several UK national HL7 specifica
 
 Both guides are effectively merged in this guide and applied to both HL7 v2 and FHIR. The pattern used here is [Canonical Data Mode](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CanonicalDataModel.html), this can also be applied to other formats such as IHE XDS and DICOM. 
 
-| v2 Segment | FHIR Resource | IHE XDS | National Guide                          |
-|------------|---------------|-------------------------------------------------|
-| PID        | Patient       | | NHS England (v2) and Digital Health and Care Wales                              |
-| PV1        | Encounter     | | NHS England (v2)                                |
-| OBX        | Observation |  |                                               |
-| OBX        | DocumentReference | DocumentEntry | Digital Health and Care Scotland and IHE Europe | 
-| ORC        | ServiceRequest | | Digital Health and Care Wales                   |
-| OBR        | DiagnosticReport |  |Digital Health and Care Wales                   | 
+| v2 Segment | FHIR Resource     | IHE XDS       | National Guide                                          |
+|------------|-------------------|---------------|---------------------------------------------------------|
+| PID        | Patient           |               | NHS England (v2) and Digital Health and Care Wales (v2) |
+| PV1        | Encounter         |               | NHS England (v2)                                        |
+| OBX        | Observation       |               |                                                         |
+| OBX        | DocumentReference | DocumentEntry | Digital Health and Care Scotland and IHE Europe         | 
+| ORC        | ServiceRequest    |               | Digital Health and Care Wales (v2)                      |
+| OBR        | DiagnosticReport  |               | Digital Health and Care Wales (v2)                      | 
 
 This is also conformant with [HL7 UKCore](https://simplifier.net/guide/ukcoreversionhistory?version=current) which it extends.
 
