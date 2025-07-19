@@ -17,7 +17,7 @@ Both guides are effectively merged in this guide and applied to both HL7 v2 and 
 | ORC             | ServiceRequest    |               | Digital Health and Care Wales (v2)                      |
 | OBR             | DiagnosticReport  |               | Digital Health and Care Wales (v2)                      | 
 
-This is also conformant with [HL7 UKCore](https://simplifier.net/guide/ukcoreversionhistory?version=current) which it extends.
+This is also conformant with [HL7 UK Core](https://simplifier.net/guide/ukcoreversionhistory?version=current), which this extends.
 
 The scope of this guide is the North West NHS region (for Genomics) and sits in the between English NHS Trusts (and their system suppliers) and NHS England.
 
