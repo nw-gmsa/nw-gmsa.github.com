@@ -10,7 +10,7 @@ Both guides are effectively merged in this guide and applied to both HL7 v2 and 
 
 | v2 Segment | FHIR Resource | IHE XDS | National Guide                          |
 |------------|---------------|-------------------------------------------------|
-| PID        | Patient       | | NHS England (v2)                                |
+| PID        | Patient       | | NHS England (v2) and Digital Health and Care Wales                              |
 | PV1        | Encounter     | | NHS England (v2)                                |
 | OBX        | Observation |  |                                               |
 | OBX        | DocumentReference | DocumentEntry | Digital Health and Care Scotland and IHE Europe | 
@@ -19,9 +19,23 @@ Both guides are effectively merged in this guide and applied to both HL7 v2 and 
 
 This is also conformant with [HL7 UKCore](https://simplifier.net/guide/ukcoreversionhistory?version=current) which it extends.
 
+The scope of this guide is the North West NHS region (for Genomics) and sits in the between English NHS Trusts (and their system suppliers) and NHS England.
+
+## Patient (PID) Identifiers 
+
+Only validated patient identifiers should be provided, unverified NHS Numbers are not permitted. 
+At least one patient identifier be should be provided, the types supported are **Medical Record Number (type=MR)** and **NHS Number (type=NH)** (other types can be present). 
+HL7 v2 PID.3 CX type and FHIR Patient.identifier have similar structures, see [ConceptMap: Datatype CX to Identifier Map](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-datatype-cx-to-identifier.html)
+
+Changes to v2 and FHIR:
 
 
-## Patient.identifier (PID.3 PatientId) 
+### Example
+
+
+
+
+### Conversion Table
 
 | Organisation                                    | Assigning Authority - ODS Code (All) | Type (All) | System (FHIR) | OID (FHIR, v3 and IHE) | Alternate name                       | 
 |-------------------------------------------------|--------------------------------------|------------|---------------|------------------------|--------------------------------------|
