@@ -140,7 +140,7 @@ pages:
     title: Workflow Options
     generation: markdown
   identifiers.md:
-    title: Identifiers and Naming Systems
+    title: Identifiers and Codes
     generation: markdown
 
 
@@ -217,7 +217,7 @@ menu:
   Artefacts (Volume 3):
     Hl7 FHIR: artifacts.html
     HL7 v2: hl7v2.html
-    Identifiers and NamingSystems: identifiers.html
+    Identifiers and Codes: identifiers.html
   Development:
     API Documentation: api-documentation.html
     Testing: testing.html
