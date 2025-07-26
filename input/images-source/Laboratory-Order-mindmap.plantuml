@@ -1,4 +1,7 @@
 @startmindmap
+
+title "Genomic Laboratory Order"
+
 * [[StructureDefinition-ServiceRequest.htmlLaboratory Test Order]]
 ** [[StructureDefinition-Patient.html Patient (subject)]]
 ** Healthcare Professional
