@@ -212,7 +212,8 @@ menu:
 ##    Test Results Management [LAB-5]: LAB-5.html
   Domain Archetypes:
     ##Overview: DDD-Overview.html
-    Genomic Test Order: DDD-TestOrder.html
+    Genomic Test Order: Questionnaire-GenomicTestOrder.html
+    Genomic Test OrderX: DDD-TestOrder.html
     Genomic Test Report: DDD-TestReport.html
   Artefacts (Volume 3):
     Hl7 FHIR: artifacts.html
