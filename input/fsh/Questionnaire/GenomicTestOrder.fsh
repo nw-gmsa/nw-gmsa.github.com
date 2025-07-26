@@ -2,9 +2,7 @@ Instance: GenomicTestOrder
 InstanceOf: NWQuestionnaire
 Title: "North West Genomics Test Order"
 Description: """
-THIS IS FOR ANALYSIS, and is not to be used for implementation at present.
-
-The aim of this is to support conversion of multiple Genomic Order Forms HL7 v2 and FHIR.
+The aim of this is to support conversion of multiple Genomic Order Forms from several NHS Trusts to HL7 v2 and/or FHIR.
 """
 Usage:  #definition
 
