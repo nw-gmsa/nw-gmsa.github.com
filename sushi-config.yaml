@@ -106,9 +106,6 @@ pages:
   PCC-44.md:
     title: Query Existing Data [PCC-44]
     generation: markdown
-  DDD-TestOrder.md:
-    title: Genomic Test Order
-    generation: markdown
   DDD-TestReport.md:
     title: Genomic Test Report
     generation: markdown
@@ -211,9 +208,7 @@ menu:
 ##    Work Order Management [LAB-4]: LAB-4.html
 ##    Test Results Management [LAB-5]: LAB-5.html
   Domain Archetypes:
-    ##Overview: DDD-Overview.html
     Genomic Test Order: Questionnaire-GenomicTestOrder.html
-    Genomic Test OrderX: DDD-TestOrder.html
     Genomic Test Report: DDD-TestReport.html
   Artefacts (Volume 3):
     Hl7 FHIR: artifacts.html
