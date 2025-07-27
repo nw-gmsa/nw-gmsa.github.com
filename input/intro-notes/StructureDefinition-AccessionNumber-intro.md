@@ -1,4 +1,7 @@
 
+In pathology and genomics, the accession number refers to the Specimen. 
+In imaging the accession number refers to the imaging test [RADIOLOGICAL ACCESSION NUMBER](https://www.datadictionary.nhs.uk/data_elements/radiological_accession_number.html)  
+
 | Field    | HL7 FHIR Identifier | OID | HL7 v2 CX | HL7 FHIR Example                                   | HL7 v2 Example |
 |----------|---------------------|-----|-----------|----------------------------------------------------|----------------|
 | Value    | value               |     | EI.1      | ABC1234                                            | ABC1234        |
