@@ -3,7 +3,7 @@ Parent:         CorrelationIdentifier
 Id:             FillerOrderNumber
 Title:          "Filler Order Number"
 Description:     """
-HL7 v2 Filler Order Number (ORC-3)
+HL7 v2 Filler Order Number (ORC-3). See [CorrelationIdentifier](StructureDefinition-CorrelationIdentifier.html) for more details.
 """
 
 

@@ -3,7 +3,7 @@ Parent:         CorrelationIdentifier
 Id:             PlacerGroupNumber
 Title:          "Placer Group Number"
 Description:     """
-HL7 v2 Placer Group Number (ORC-4)
+HL7 v2 Placer Group Number (ORC-4). See [CorrelationIdentifier](StructureDefinition-CorrelationIdentifier.html) for more details.
 """
 
 

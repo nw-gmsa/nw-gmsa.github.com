@@ -3,7 +3,7 @@ Parent:         CorrelationIdentifier
 Id:             AccessionNumber
 Title:          "Accession Number"
 Description:     """
-Usually assigned by the order filler.
+Usually assigned by the order filler. See [CorrelationIdentifier](StructureDefinition-CorrelationIdentifier.html) for more details.
 """
 
 * ^purpose = ""
