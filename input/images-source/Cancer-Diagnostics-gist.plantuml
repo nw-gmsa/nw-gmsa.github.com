@@ -1,0 +1,35 @@
+@startuml
+
+hide footbox
+
+title "Cancer - Test Workflow (gist)"
+
+participant Oncology
+participant Pathology
+participant Genomics
+participant Imaging
+
+
+
+== Pathology Tests (on Specimen) ==
+
+Oncology -> Pathology : Laboratory Test Order (Pathology)\nHL7 v2.5.1 OML_O21 IHE LTW LAB-1
+Pathology --> Oncology : Laboratory Report (preliminary)\nHL7 v2.5.1 ORU_R01 IHE LTW LAB-3
+
+== Genomic Tests (on Specimen) ==
+
+opt
+Pathology -> Genomics: Laboratory Test Order (Genomics)\nHL7 v2.5.1 OML_O21 IHE LTW LAB-2
+Genomics --> Pathology: Laboratory Report (Genomics)\nHL7 v2.5.1 ORU_R01 IHE LTW LAB-3
+end
+
+== Imaging Tests (on Specimen) ==
+
+opt
+Pathology -> Imaging: Imaging Test Order\nHL7 v2.5.1 OMG_O19 IHE RAD RAD-2
+Imaging --> Pathology: Imaging Report\nHL7 v2.5.1 ORU_R01 IHE RAD RAD-28
+end
+Pathology --> Oncology : Laboratory Report (final)\nHL7 v2.5.1 ORU_R01 IHE LTW LAB-3
+
+
+@enduml
