@@ -144,8 +144,8 @@ This is based on the definition of OBR from [Digital Health and Care Wales - HL7
 | OBR-33    | Assistant Result Interpreter       | [NDL](#ndl) | O - SHOULD    | DiagnosticReport.resultsInterpreter[secondaryReporter]                            |                                                                             |
 | OBR-34    | Technician                         | [NDL](#ndl) | O - SHOULD    | DiagnosticReport.performer[operator]                                              |                                                                             |                                                                             |
 
-> v2 to FHIR Guidance: OML_O21 [OBR to FHIR ServiceRequest](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obr-to-servicerequest.html)
-> v2 to FHIR Guidance: ORU_R01 [OBR to FHIR DiagnosticReport](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obr-to-diagnosticreport.html)
+> v2 to FHIR Guidance OML_O21: [OBR to FHIR ServiceRequest](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obr-to-servicerequest.html)
+> v2 to FHIR Guidance ORU_R01: [OBR to FHIR DiagnosticReport](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obr-to-diagnosticreport.html)
 > FHIR Profile: [DiagnosticReport](StructureDefinition-DiagnosticReport.html)
 > FHIR Resource Example: [Diagnostic Report Example](DiagnosticReport-DiagnosticReportGenomicsReport.html)
 
@@ -162,7 +162,8 @@ Multiple NTE should be converted to a single FHIR Annotation using markdown
 
 > v2 to FHIR Guidance: OML_O21 [NTE to FHIR ServiceRequest](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-nte-to-servicerequest.html)
 > v2 to FHIR Guidance: ORU_R01 [NTE to FHIR Observation](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-nte-to-observation.html)
-> FHIR Profile: ORU_R01 [Observation](StructureDefinition-Observation.html)
+> FHIR Resource Example OML_O21: [ServiceRequest Coded Entries Example](ServiceRequest-ServiceRequestGenomicsOrderCodedEntries.html)
+> FHIR Resource Example ORU_R01: TODO
 
 ### DG1
 
@@ -174,6 +175,7 @@ Multiple NTE should be converted to a single FHIR Annotation using markdown
 > v2 to FHIR Guidance: [DG1 to FHIR Condition](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-dg1-to-condition.html)
 > Note: In orders this is likely to be a coded entry in ServiceRequest.reasonCode as only a code is present.
 > FHIR Profile: [Condition](StructureDefinition-Condition.html)
+> FHIR Resource Example ORU_R01: TODO
  
 ### OBX
 
