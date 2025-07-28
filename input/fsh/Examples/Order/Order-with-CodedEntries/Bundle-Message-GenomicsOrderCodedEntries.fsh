@@ -22,6 +22,9 @@ Usage: #example
 * insert EntryDocument("urn:uuid:4b910bc3-68c6-4252-a218-076110f0d23d", EPIC-OBX-10)
 * insert EntryDocument("urn:uuid:3a3ba1ed-831d-4f82-b487-e40860a2befd", EPIC-OBX-11)
 * insert EntryDocument("urn:uuid:298e99de-fd29-4802-bcf2-78f901b33a6e", OBX-SupervisingClinician)
+* insert EntryDocument("urn:uuid:9a012a65-062e-4e0a-9fce-f0aa09a4783b", OBX-OrderTrackingNumber)
+* insert EntryDocument("urn:uuid:af0eb9c5-f694-4d3e-9720-b49c1101c019", OBX-Consanguinity)
+* insert EntryDocument("urn:uuid:57ea3361-7b8d-4415-ae21-5e10bfc30992", OBX-PregnancyExpectedDeliveryDate)
 
 * insert EntryDocument("urn:uuid:89e66518-9197-4553-9253-5ab5133b62c0", SpecimenExample)
 
