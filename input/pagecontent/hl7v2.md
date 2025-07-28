@@ -161,8 +161,20 @@ This is based on the definition of OBX from DHCW ORU_R01 Message Specification.
 | OBX-1     | Set ID – OBX                 |           | R           |                                                          | 1                                        |
 | OBX-2     | Value Type                   |           | R           |                                                          | ED                                       |
 | OBX-3     | Observation Identifier       | [CE](#ce) | R           |                                                          | 281269004^High infection risk sample^SNM |
+| OBX-5     | Observation Value            |         | R           |                                                          | MOL^IM^PDF^Base64^JVBERI0X...            |
+| OBX-11    | Observation Result Status    |           | R           |                                                          | F                                        |
+| OBX-14    | Date/Time of the Observation |           | O - SHOULD  |                                                          | 20190514102417+0000                      |
+
+### OBX (type = ED)
+
+This is based on the definition of OBX from DHCW ORU_R01 Message Specification.
+
+| Field HL7 | Fieldname                    | Data Type | Optionality | Table and Notes                                          | Example Values                           |
+|-----------|------------------------------|-----------|-------------|----------------------------------------------------------|------------------------------------------|
+| OBX-1     | Set ID – OBX                 |           | R           |                                                          | 1                                        |
+| OBX-2     | Value Type                   | ED        | R           |                                                          | ED                                       |
 | OBX-3     | Observation Identifier       | [ED](#ed) | R           | [Document Entry Type](ValueSet-document-entry-type.html) | 1054161000000101^Genetic report^SNM      |
-| OBX-5     | Observation Value            | ED        | R           |                                                          | MOL^IM^PDF^Base64^JVBERI0X...            |
+| OBX-5     | Observation Value            |         | R           |                                                          | MOL^IM^PDF^Base64^JVBERI0X...            |
 | OBX-11    | Observation Result Status    |           | R           |                                                          | F                                        |
 | OBX-14    | Date/Time of the Observation |           | O - SHOULD  |                                                          | 20190514102417+0000                      |
 

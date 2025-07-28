@@ -14,5 +14,15 @@
 </figure>
 <br clear="all"> 
 
+| Entity                   | Cardinality | HL7 v2 ORU_RO1 Message                  | HL7 FHIR DiagnosticReport                                                                                     | HL7 FHIR Resource (RESTful)                                                |
+|--------------------------|-------------|-----------------------------------------|---------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| Patient                  | 1..1        | [PID](hl7v2.html#pid)                   | subject (resource reference)                                                                                  | [Patient](https://nw-gmsa.github.io/R4/StructureDefinition-Patient.html)   |
+| Order Number             | 1..1        | [ORC](hl7v2.html#orc) ORC-3             | basedOn [Filler Order Number](https://nw-gmsa.github.io/R4/StructureDefinition-FillerOrderNumber.html)        | [ServiceRequest](StructureDefinition-ServiceRequest.html)                  |
+| Results Interpreter      | 0..*        | [OBR](hl7v2.html#obr) ORC-32 and ORC-33 | resultsInterpreter [England Practitioner Identifier](StructureDefinition-EnglandPractitionerIdentifier.html)  | [Practitioner](StructureDefinition-Practitioner.html)                      |                                                                                            
+| Performer (operator)     | 1..*        | [OBR](hl7v2.html#obr) ORC-34            | performer[operator] [England Practitioner Identifier](StructureDefinition-EnglandPractitionerIdentifier.html) | [Practitioner](StructureDefinition-Practitioner.html)                      |
+| Performer (organisation) | 1..*        |                                         | performer[organisation] [Organisation Code](StructureDefinition-OrganisationCode.html)                        | [Organizaton](StructureDefinition-Organizaton.html)                        |
+| Specimen                 | 0..*        | [SPM](hl7v2.html#spm)                   | specimen (resource reference)                                                                                 | [Specimen](StructureDefinition-Specimen.html)                              |
+| presentedForm            | 1..1        | [OBX (type=ED](hl7v2.html#obx-type--ed) | presentedForm [Attachment](StructureDefinition-NWAttachment.html)                                             | [DocumentReference](StructureDefinition-DocumentReference.html) and Binary |
+
 [Questionnaire Viewer](https://project-wildfyre.github.io/domain-archetype/?q=https://nw-gmsa.github.io/R4/Questionnaire-GenomicTestOrder.json)
 

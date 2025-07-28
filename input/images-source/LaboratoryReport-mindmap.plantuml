@@ -2,13 +2,12 @@
 
 title "Genomic Laboratory Report"
 
-* [[StructureDefinition-DiagnosticReport.html Genomic Report]] (Somatic)
-** [[StructureDefinition-Patient.html Patient (subject)]]
-** [[StructureDefinition-ServiceRequest.html Order (basedOn)]]
+* Genomic Report [[StructureDefinition-DiagnosticReport.html DiagnosticReport]]
+** subject [[StructureDefinition-Patient.html Patient]]
+** basedOn [[StructureDefinition-ServiceRequest.html ServiceRequest]]
 ** [[StructureDefinition-Specimen.html Specimen]]
-** Results Interpreter
-** Performer
-** presentedFrom
-*** [[StructureDefinition-NWAttachment.html Attachment]] (report in PDF format)
+** Results Interpreter [[StructureDefinition-Practitioner.html Practitioner]]
+** Performer [[StructureDefinition-Practitioner.html Practitioner]]
+** presentedFrom [[StructureDefinition-NWAttachment.html Attachment]] (report in PDF format)
 
 @endmindmap

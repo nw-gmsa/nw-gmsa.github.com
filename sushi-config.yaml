@@ -206,7 +206,7 @@ menu:
 ##    Test Results Management [LAB-5]: LAB-5.html
   Domain Archetypes:
     Genomic Test Order (Template): Questionnaire-GenomicTestOrder.html
-    Genomic Test Report (Template): Questionnaire-GenomicTestReport.html
+    Genomic Test Report: Questionnaire-GenomicTestReport.html
   Artefacts (Volume 3):
     Hl7 FHIR: artifacts.html
     HL7 v2: hl7v2.html
