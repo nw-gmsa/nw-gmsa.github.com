@@ -54,7 +54,7 @@
 
 ### MSH
 
-This is based on the definition of MSH from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws)
+This is based on the definition of MSH from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws) and [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
 
 | Field HL7 | Fieldname                          | Data Type   | Optionality | Table and Notes                                                                                                         | Example Values                                                                                                                  |
 |-----------|------------------------------------|-------------|-------------|-------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
@@ -86,9 +86,11 @@ This is based on the definition of PID from [NHS England HL7 v2 ADT Message Spec
 | PID-13    | Phone Number - Home                |           | R           |                                                                                                                               | 01656 123123^PRN^PH~07927655295^ORN^CP^NET^X.400^abc@home.com~01656 123123~01656123123^PRN^PH^^^abc@home.com~01656123123^PRN^PH |
 | PID-32    | Identity Reliability Code          |           | O           | Mandatory if the the NHS Number tracing status is not known.                                                                  | 01                                                                                                                              |
 
+> v2 to FHIR Guidance: [PID to FHIR Patient](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pid-to-patient.html)
+
 ### PV1 
 
-> The PV1 segment should represent the ordering organisations encounter/PV1, i.e. the one that created the order. 
+> The PV1 segment should represent the episode/stay/visit number, not a consultant episode. 
 
 This is based on the definition of PV1 from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws)
 
@@ -100,9 +102,11 @@ This is based on the definition of PV1 from [NHS England HL7 v2 ADT Message Spec
 | PV1-10    | Hospital Service          |             | R           | [Service](ValueSet-service.html)                                                  | 311                                           |
 | PV1-19    | Visit Number              | [CX](#cx)   | O - SHOULD  | [Episode Number](StructureDefinition-EpisodeNumber.html)                            | 12345^^^R0A                                   |                                    |
 
+> v2 to FHIR Guidance: [PV1 to FHIR Encounter](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pv1-to-encounter.html)
+
 ### ORC
 
-This is based on the definition of ORC from DHCW ORU_R01 Message Specification.
+This is based on the definition of ORC from [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf).
 
 | Field HL7 | Fieldname                | Data Type   | Optionality | Table and Notes                                                                   | Example Values                                                                                                                  |
 |-----------|--------------------------|-------------|-------------|-----------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
@@ -114,10 +118,11 @@ This is based on the definition of ORC from DHCW ORU_R01 Message Specification.
 | ORC-12    | Ordering Provider        | [XCN](#xcn) | R           | [Practitioner Identifier](StructureDefinition-EnglandPractitionerIdentifier.html) | C3456789^Darwin^Samuel^^^Dr^^^GMC                                                                                               |
 | ORC-21    | Ordering Facility Name   | [XON](#xon) | R           | [Organisation Code](StructureDefinition-OrganisationCode.html)                    |                                                                                                                                 |
 
+> v2 to FHIR Guidance: [ORC to FHIR ServiceRequest](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-orc-to-servicerequest.html)
 
 ### OBR 
 
-This is based on the definition of OBR from DHCW ORU_R01 Message Specification.
+This is based on the definition of OBR from [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
 
 | Field HL7 | Fieldname                          | Data Type   | Optionality   | Table and Notes                                                                   | Example Values                                                              |
 |-----------|------------------------------------|-------------|---------------|-----------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
@@ -133,6 +138,9 @@ This is based on the definition of OBR from DHCW ORU_R01 Message Specification.
 | OBR-33    | Assistant Result Interpreter       | [NDL](#ndl) | O - SHOULD    | DiagnosticReport.resultsInterpreter[secondaryReporter]                            |                                                                             |
 | OBR-34    | Technician                         | [NDL](#ndl) | O - SHOULD    | DiagnosticReport.performer[operator]                                              |                                                                             |                                                                             |
 
+> v2 to FHIR Guidance: OML_O21 [OBR to FHIR ServiceRequest](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obr-to-servicerequest.html)
+> v2 to FHIR Guidance: ORU_R01 [OBR to FHIR DiagnosticReport](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obr-to-diagnosticreport.html)
+
 ### NTE
 
 Multiple NTE should be converted to a single FHIR Annotation using markdown
@@ -144,6 +152,9 @@ Multiple NTE should be converted to a single FHIR Annotation using markdown
 | NTE-3     | Comment           |           |             |             |                | 
 | NTE-4     | Comment Type      |           |             |             |                | 
 
+> v2 to FHIR Guidance: OML_O21 [NTE to FHIR ServiceRequest](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-nte-to-servicerequest.html)
+> v2 to FHIR Guidance: ORU_R01 [NTE to FHIR Observation](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-nte-to-observation.html)
+
 ### DG1
 
 | Field HL7 | Fieldname         | Data Type | Optionality | Table and Notes | Example Values |
@@ -151,10 +162,12 @@ Multiple NTE should be converted to a single FHIR Annotation using markdown
 | DG1-3     | Diagnosis Code    | [CE](#ce)          |             |             |                | 
 | DG1-4     | Diagnosis Description |           |             |             |                | 
 
+> v2 to FHIR Guidance: [DG1 to FHIR Condition](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-dg1-to-condition.html)
+> Note: In orders this is likely to be a coded entry in ServiceRequest.reasonCode as only a code is present.
 
 ### OBX
 
-This is based on the definition of OBX from DHCW ORU_R01 Message Specification.
+This is based on the definition of OBX from [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
 
 | Field HL7 | Fieldname                    | Data Type | Optionality | Table and Notes                                          | Example Values                           |
 |-----------|------------------------------|-----------|-------------|----------------------------------------------------------|------------------------------------------|
@@ -165,9 +178,11 @@ This is based on the definition of OBX from DHCW ORU_R01 Message Specification.
 | OBX-11    | Observation Result Status    |           | R           |                                                          | F                                        |
 | OBX-14    | Date/Time of the Observation |           | O - SHOULD  |                                                          | 20190514102417+0000                      |
 
+> v2 to FHIR Guidance: [OBX to FHIR Observation](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-observation.html)
+
 ### OBX (type = ED)
 
-This is based on the definition of OBX from DHCW ORU_R01 Message Specification.
+This is based on the definition of OBX from [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
 
 | Field HL7 | Fieldname                    | Data Type | Optionality | Table and Notes                                          | Example Values                           |
 |-----------|------------------------------|-----------|-------------|----------------------------------------------------------|------------------------------------------|
@@ -178,10 +193,11 @@ This is based on the definition of OBX from DHCW ORU_R01 Message Specification.
 | OBX-11    | Observation Result Status    |           | R           |                                                          | F                                        |
 | OBX-14    | Date/Time of the Observation |           | O - SHOULD  |                                                          | 20190514102417+0000                      |
 
+> v2 to FHIR Guidance:  [OBX to FHIR DocumentReference](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-documentreference.html) 
 
 ### SPM
 
-This is based on the definition of OBX from DHCW ORU_R01 Message Specification.
+This is based on the definition of OBX from [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
 
 | Field HL7 | Fieldname                     | Data Type | Optionality | Table and Notes                                              | Example Values                                   |
 |--------|-------------------------------|-----------|-------------|--------------------------------------------------------------|--------------------------------------------------|

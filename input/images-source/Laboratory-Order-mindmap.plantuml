@@ -2,7 +2,7 @@
 
 title "Genomic Laboratory Order"
 
-* [[StructureDefinition-ServiceRequest.htmlLaboratory Test Order]]
+* Genomic Order [[StructureDefinition-ServiceRequest.html ServiceRequest]]
 ** [[StructureDefinition-Patient.html Patient (subject)]]
 ** Healthcare Professional
 ** Clinical Indication (Condition)
