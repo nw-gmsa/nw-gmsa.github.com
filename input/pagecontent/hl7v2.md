@@ -208,12 +208,13 @@ This is based on the definition of OBX from [Digital Health and Care Wales - HL7
 > v2 to FHIR Guidance: [OBX to FHIR Observation](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-observation.html)
 > 
 > FHIR Profile: [Observation](StructureDefinition-Observation.html)
-> 
-> FHIR Resource Example: [Pregnancy Expected Delivery Date (value type=DT)](Observation-OBX-PregnancyExpectedDeliveryDate.html)
+>
+> FHIR Resource Example: [Consanguinity (value type=CE)](Observation-OBX-Consanguinity.html)
 > 
 > FHIR Resource Example: [Order Tracking Number (value type=ST)](Observation-OBX-OrderTrackingNumber.html)
-> 
-> FHIR Resource Example: [Consanguinity (value type=CE)](Observation-OBX-Consanguinity.html)
+> >
+> FHIR Resource Example: [Pregnancy Expected Delivery Date (value type=DT)](Observation-OBX-PregnancyExpectedDeliveryDate.html)
+
 
 ### OBX (type = ED)
 
