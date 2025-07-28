@@ -56,7 +56,7 @@
 
 This is based on the definition of MSH from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws).
 
-| Field HL7 | Fieldname                          | Data Type   | Optionality | Table and Notes                                                                                                         | Example Values                                                                                                                  |
+| Field HL7 | Fieldname                          | Data Type   | Optionality | Data Type and Notes                                                                                                         | Example Values                                                                                                                  |
 |-----------|------------------------------------|-------------|-------------|-------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
 | MSH-1     | Field Separator                    |             | R           |                                                                                                                         | &#9;                                                                                                                            |                                                                                                                          | `                                                                                                         |
 | MSH-2     | Encoding Characters                |             | R           |                                                                                                                         | ^~\&                                                                                                                            |
@@ -75,7 +75,7 @@ This is based on the definition of MSH from [NHS England HL7 v2 ADT Message Spec
 
 This is based on the definition of PID from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws) and [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
 
-| Field HL7 | Fieldname                          | Data Type | Optionality | Table and Notes                                                                                                               | Example Values                                                                                                                  |
+| Field HL7 | Fieldname                          | Data Type | Optionality | Data Type and Notes                                                                                                               | Example Values                                                                                                                  |
 |-----------|------------------------------------|-----------|-------------|-------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
 | PID-1     | Set ID-PID                         |           | R           |                                                                                                                               | 1                                                                                                                               |
 | PID-3     | Patient Identifier List            | [CX](#cx) | R           | [NHS Number](StructureDefinition-NHSNumber.html) <br/> [Medical Record Number](StructureDefinition-MedicalRecordNumber.html). | 633^^^R0A^MR~9449305552^^^NHS^NH                                                                                                |
@@ -96,7 +96,7 @@ This is based on the definition of PID from [NHS England HL7 v2 ADT Message Spec
 
 This is based on the definition of PV1 from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws)
 
-| Field HL7 | Fieldname                 | Data Type   | Optionality | Table and Notes                                                                   | Example Values                                |
+| Field HL7 | Fieldname                 | Data Type   | Optionality | Data Type and Notes                                                                   | Example Values                                |
 |-----------|---------------------------|-------------|-------------|-----------------------------------------------------------------------------------|-----------------------------------------------|
 | PV1-1     | Set ID - PV1              | [PL](#pl)   | R           |                                                                                   | 1                                             |
 | PV1-3     | Assigned Patient Location |             | R           |                                                                                   | ^^^R0A09^^^^^^^R0A <br/> ^^^P1S8J^^^^^^^699X0 |
@@ -112,7 +112,7 @@ This is based on the definition of PV1 from [NHS England HL7 v2 ADT Message Spec
 
 This is based on the definition of ORC from [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf).
 
-| Field HL7 | Fieldname                | Data Type   | Optionality | Table and Notes                                                                   | Example Values                                                                                                                  |
+| Field HL7 | Fieldname                | Data Type   | Optionality | Data Type and Notes                                                                   | Example Values                                                                                                                  |
 |-----------|--------------------------|-------------|-------------|-----------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
 | ORC-2     | Placer Order Number      | [EI](#ei)   | R           | [Placer Order Number](StructureDefinition-PlacerOrderNumber.html)                 | 1601737^R0A^150^L                                                                                                               |
 | ORC-3     | Filler Order Number      | [EI](#ei)   | R           | [Filler Order Number](StructureDefinition-FillerOrderNumber.html)                 | 1001166717^699X0^^255^ISO                                                                                                       |
@@ -130,7 +130,7 @@ This is based on the definition of ORC from [Digital Health and Care Wales - HL7
 
 This is based on the definition of OBR from [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
 
-| Field HL7 | Fieldname                          | Data Type   | Optionality   | Table and Notes                                                                   | Example Values                                                              |
+| Field HL7 | Fieldname                          | Data Type   | Optionality   | Data Type and Notes                                                                   | Example Values                                                              |
 |-----------|------------------------------------|-------------|---------------|-----------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
 | OBR-1     | Set ID - OBR                       |             | R             |                                                                                   | 1                                                                           |
 | OBR-2     | Placer Order Number                | [EI](#ei)   | R             | [Placer Order Number](StructureDefinition-PlacerOrderNumber.html)                 | 1601737^ R0A^150^L                                                          |
@@ -153,7 +153,7 @@ This is based on the definition of OBR from [Digital Health and Care Wales - HL7
 
 Multiple NTE should be converted to a single FHIR Annotation using markdown
 
-| Field HL7 | Fieldname         | Data Type | Optionality | Table and Notes | Example Values |
+| Field HL7 | Fieldname         | Data Type | Optionality | Data Type and Notes | Example Values |
 |-----------|-------------------|-----------|-------------|-------------|----------------|
 | NTE-1     | Set ID - NTE      |           |             |             |                | 
 | NTE-2     | Source of Comment |           |             |             |                | 
@@ -167,7 +167,7 @@ Multiple NTE should be converted to a single FHIR Annotation using markdown
 
 ### DG1
 
-| Field HL7 | Fieldname         | Data Type | Optionality | Table and Notes | Example Values |
+| Field HL7 | Fieldname         | Data Type | Optionality | Data Type and Notes | Example Values |
 |-----------|-------------------|-----------|-------------|-------------|----------------|
 | DG1-3     | Diagnosis Code    | [CE](#ce)          |             |             |                | 
 | DG1-4     | Diagnosis Description |           |             |             |                | 
@@ -181,7 +181,7 @@ Multiple NTE should be converted to a single FHIR Annotation using markdown
 
 This is based on the definition of OBX from [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
 
-| Field HL7 | Fieldname                    | Data Type | Optionality | Table and Notes         | Example Values                             |
+| Field HL7 | Fieldname                    | Data Type | Optionality | Data Type and Notes         | Example Values                             |
 |-----------|------------------------------|-----------|-------------|-------------------------|--------------------------------------------|
 | OBX-1     | Set ID – OBX                 |           | R           |                         | 1                                          |
 | OBX-2     | Value Type                   |           | R           | See next section for ED | CE                                         |
@@ -199,7 +199,7 @@ This is based on the definition of OBX from [Digital Health and Care Wales - HL7
 
 This is based on the definition of OBX from [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
 
-| Field HL7 | Fieldname                    | Data Type | Optionality | Table and Notes                                          | Example Values                           |
+| Field HL7 | Fieldname                    | Data Type | Optionality | Data Type and Notes                                          | Example Values                           |
 |-----------|------------------------------|-----------|-------------|----------------------------------------------------------|------------------------------------------|
 | OBX-1     | Set ID – OBX                 |           | R           |                                                          | 1                                        |
 | OBX-2     | Value Type                   | ED        | R           |                                                          | ED                                       |
@@ -216,9 +216,9 @@ This is based on the definition of OBX from [Digital Health and Care Wales - HL7
 
 This is based on the definition of OBX from [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
 
-| Field HL7 | Fieldname                     | Data Type | Optionality | Table and Notes                                              | Example Values                                   |
+| Field HL7 | Fieldname                     | Data Type | Optionality | Data Type and Notes                                          | Example Values                                   |
 |--------|-------------------------------|-----------|-------------|--------------------------------------------------------------|--------------------------------------------------|
-| SPM-2  | Specimen ID                   |           | O           | Placer Number^Filler Number                                  | 25GEN-029GN00001&R0A                                                 |
+| SPM-2  | Specimen ID                   |           | O           | Placer Specimen Number^Filler Specimen Number                | 25GEN-029GN00001&R0A                                                 |
 | SPM-3  | Specimen Parent IDs           |           | O           | [Accession Number](StructureDefinition-AccessionNumber.html) | ^1001166717&699X0                                                 |
 | SPM-4  | Specimen Type                 |           | O           |                                                              | 119325001^Skin specimen^SNM                      |
 | SPM-8  | Specimen Source Site          |           | O           |                                                              | 299706009^Bone structure of wrist and/or hand^SNM |
@@ -300,7 +300,7 @@ In addition, this includes of PL.11 to hold organisation ODS code.
 
 > The ODS Site Code **SHALL** belong to the ODS Code. This is to help avoid data issues in this codesystem. 
 
-| Field HL7 | Fieldname                        | Data Type | Optionality | Table and Notes                                                         | Example Values |
+| Field HL7 | Fieldname                        | Data Type | Optionality | Data Type and Notes                                                         | Example Values |
 |-----------|----------------------------------|-----------|-------------|-------------------------------------------------------------------------|----------------|
 | PL.4      | Facility                         | HD        | R           | [Organisation Site Code](StructureDefinition-OrganisationSiteCode.html) | R0A09               |
 | PL.11     | Assigning Authority For Location | HD        | R           | [Organisation Code](StructureDefinition-OrganisationCode.html)          | R0A            | 
@@ -310,7 +310,7 @@ In addition, this includes of PL.11 to hold organisation ODS code.
 
 This is based on the definitions of NDL from [Royal College of Radiologists](https://www.rcr.ac.uk/media/wwtp2mif/rcr-publications_radiology-reporting-networks-understanding-the-technical-options_march-2022.pdf)
 
-| Field HL7   | Fieldname   | Data Type | Optionality | Table and Notes | Example Values |
+| Field HL7   | Fieldname   | Data Type | Optionality | Data Type and Notes | Example Values |
 |-------------|-------------|-----------|-------------|-----------------|----------------|
 | NDL-1.CNN.1 | Id Number   | ST        | O           | [Practitioner Identifier](StructureDefinition-EnglandPractitionerIdentifier.html)      |                |
 | NDL-1.CNN.2 | Family Name | ST        | O           | Surname         |                |
