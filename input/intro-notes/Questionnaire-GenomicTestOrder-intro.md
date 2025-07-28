@@ -23,8 +23,8 @@
 | Results Interpreter      | 0..*        | [OBR](hl7v2.html#obr) OBR-32 and OBR-33 | resultsInterpreter [England Practitioner Identifier](StructureDefinition-EnglandPractitionerIdentifier.html)  | [Practitioner](StructureDefinition-Practitioner.html)                      |                                                                                            
 | Performer (operator)     | 1..*        | [OBR](hl7v2.html#obr) OBR-34            | performer[operator] [England Practitioner Identifier](StructureDefinition-EnglandPractitionerIdentifier.html) | [Practitioner](StructureDefinition-Practitioner.html)                      |
 | Performer (organisation) | 1..*        |                                         | performer[organisation] [Organisation Code](StructureDefinition-OrganisationCode.html)                        | [Organizaton](StructureDefinition-Organizaton.html)                        |
-| Specimen                 | 0..*        | [SPM](hl7v2.html#spm)                   | specimen                                                                                  | [Specimen](StructureDefinition-Specimen.html)                              |
 | presentedForm            | 1..1        | [OBX (type=ED](hl7v2.html#obx-type--ed) | presentedForm [Attachment](StructureDefinition-NWAttachment.html)                                             | [DocumentReference](StructureDefinition-DocumentReference.html) and Binary |
+| Specimen                 | 0..*        | [SPM](hl7v2.html#spm)                   | specimen                                                                                  | [Specimen](StructureDefinition-Specimen.html)                              |
 
 
 [Questionnaire Viewer](https://project-wildfyre.github.io/domain-archetype/?q=https://nw-gmsa.github.io/R4/Questionnaire-GenomicTestOrder.json)
