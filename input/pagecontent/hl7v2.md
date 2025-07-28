@@ -196,14 +196,14 @@ Multiple NTE should be converted to a single FHIR Annotation using markdown
 
 This is based on the definition of OBX from [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
 
-| Field HL7 | Fieldname                    | Data Type | Optionality | Data Type and Notes         | Example Values                                                        |
-|-----------|------------------------------|-----------|-------------|-------------------------|-----------------------------------------------------------------------|
-| OBX-1     | Set ID – OBX                 |           | R           |                         | 1                                                                     |
-| OBX-2     | Value Type                   |           | R           | See next section for ED | CE                                                                    |
+| Field HL7 | Fieldname                    | Data Type | Optionality | Data Type and Notes         | Example Values                                                                                                |
+|-----------|------------------------------|-----------|-------------|-------------------------|---------------------------------------------------------------------------------------------------------------|
+| OBX-1     | Set ID – OBX                 |           | R           |                         | 1                                                                                                             |
+| OBX-2     | Value Type                   |           | R           | See next section for ED | CE                                                                                                            |
 | OBX-3     | Observation Identifier       | [CE](#ce) | R           |                         | 842009^Consanguinity^SNM<br/>97209-1^Shipment tracking number^LN<br/>161714006^Estimated date of delivery^SNM |
-| OBX-5     | Observation Value            | Varies        | R           |                         | LN^Yes^LA33-6                                                         |
-| OBX-11    | Observation Result Status    |           | R           |                         | F                                                                     |
-| OBX-14    | Date/Time of the Observation |           | O - SHOULD  |                         | 20190514102417+0000                                                   |
+| OBX-5     | Observation Value            | Varies        | R           |                         | LN^Yes^LA33-6 (value type=CE)<br/>UK3096580215 (value type=ST)<br/>20250512103726+0000 (value type=DT)        |
+| OBX-11    | Observation Result Status    |           | R           |                         | F                                                                                                             |
+| OBX-14    | Date/Time of the Observation |           | O - SHOULD  |                         | 20190514102417+0000                                                                                           |
 
 > v2 to FHIR Guidance: [OBX to FHIR Observation](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-observation.html)
 > 
