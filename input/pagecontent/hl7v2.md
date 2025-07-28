@@ -209,9 +209,11 @@ This is based on the definition of OBX from [Digital Health and Care Wales - HL7
 > 
 > FHIR Profile: [Observation](StructureDefinition-Observation.html)
 > 
-> FHIR Resource Example: TODO
+> FHIR Resource Example: [Pregnancy Expected Delivery Date (value type=DT)](Observation-OBX-PregnancyExpectedDeliveryDate.html)
 > 
-> FHIR Resource Example: TODO
+> FHIR Resource Example: [Order Tracking Number (value type=ST)](Observation-OBX-OrderTrackingNumber.html)
+> 
+> FHIR Resource Example: [Consanguinity (value type=CE)](Observation-OBX-Consanguinity.html)
 
 ### OBX (type = ED)
 
