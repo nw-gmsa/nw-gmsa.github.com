@@ -169,14 +169,14 @@ Multiple NTE should be converted to a single FHIR Annotation using markdown
 
 This is based on the definition of OBX from [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
 
-| Field HL7 | Fieldname                    | Data Type | Optionality | Table and Notes                                          | Example Values                           |
-|-----------|------------------------------|-----------|-------------|----------------------------------------------------------|------------------------------------------|
-| OBX-1     | Set ID – OBX                 |           | R           |                                                          | 1                                        |
-| OBX-2     | Value Type                   |           | R           |                                                          | ED                                       |
-| OBX-3     | Observation Identifier       | [CE](#ce) | R           |                                                          | 281269004^High infection risk sample^SNM |
-| OBX-5     | Observation Value            |         | R           |                                                          | MOL^IM^PDF^Base64^JVBERI0X...            |
-| OBX-11    | Observation Result Status    |           | R           |                                                          | F                                        |
-| OBX-14    | Date/Time of the Observation |           | O - SHOULD  |                                                          | 20190514102417+0000                      |
+| Field HL7 | Fieldname                    | Data Type | Optionality | Table and Notes | Example Values                             |
+|-----------|------------------------------|-----------|-------------|-----------------|--------------------------------------------|
+| OBX-1     | Set ID – OBX                 |           | R           |                 | 1                                          |
+| OBX-2     | Value Type                   |           | R           |                 | CE                                         |
+| OBX-3     | Observation Identifier       | [CE](#ce) | R           |           | 842009^Consanguinity^SNM <br/> 75520-7^Biobank specimens are stored and available for research^LN |
+| OBX-5     | Observation Value            | Varies        | R           |                 | LN^Yes^LA33-6                      |
+| OBX-11    | Observation Result Status    |           | R           |                 | F                                          |
+| OBX-14    | Date/Time of the Observation |           | O - SHOULD  |                 | 20190514102417+0000                        |
 
 > v2 to FHIR Guidance: [OBX to FHIR Observation](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-observation.html)
 
@@ -210,6 +210,8 @@ This is based on the definition of OBX from [Digital Health and Care Wales - HL7
 | SPM-18 | Specimen Received Date/Time   |           | O           |                                                              |                                                  |
 | SPM-20 | Specimen Availability         |           | O           |                                                              |                                                  |
 | SPM-30 | Accession ID                  |           | O           |                                                              |                                                  |
+
+> v2 to FHIR Guidance:  [SPM to FHIR Specimen](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-spm-to-specimen.html)
 
 ## Data Types
 
