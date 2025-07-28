@@ -87,6 +87,8 @@ This is based on the definition of PID from [NHS England HL7 v2 ADT Message Spec
 | PID-32    | Identity Reliability Code          |           | O           | Mandatory if the the NHS Number tracing status is not known.                                                                  | 01                                                                                                                              |
 
 > v2 to FHIR Guidance: [PID to FHIR Patient](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pid-to-patient.html)
+> FHIR Profile: [Patient](StructureDefinition-Patient.html)
+> FHIR Resource Example: [Patient - Octavia CHISLETT NHS Number: 9449305552](Patient-Patient-OctaviaCHISLETT-9449305552.html)
 
 ### PV1 
 
@@ -103,6 +105,8 @@ This is based on the definition of PV1 from [NHS England HL7 v2 ADT Message Spec
 | PV1-19    | Visit Number              | [CX](#cx)   | O - SHOULD  | [Episode Number](StructureDefinition-EpisodeNumber.html)                            | 12345^^^R0A                                   |                                    |
 
 > v2 to FHIR Guidance: [PV1 to FHIR Encounter](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pv1-to-encounter.html)
+> FHIR Profile: [Encounter](StructureDefinition-Encounter.html)
+> FHIR Resource Example: [Encounter 'episode/stay' Example](Encounter-984b8a89-4194-4eb4-a7ea-ca8049ebeea3.html)
 
 ### ORC
 
@@ -119,6 +123,8 @@ This is based on the definition of ORC from [Digital Health and Care Wales - HL7
 | ORC-21    | Ordering Facility Name   | [XON](#xon) | R           | [Organisation Code](StructureDefinition-OrganisationCode.html)                    |                                                                                                                                 |
 
 > v2 to FHIR Guidance: [ORC to FHIR ServiceRequest](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-orc-to-servicerequest.html)
+> FHIR Profile: [ServiceRequest](StructureDefinition-ServiceRequest.html)
+> FHIR Resource Example: [ServiceRequest Coded Entries Example](ServiceRequest-ServiceRequestGenomicsOrderCodedEntries.html)
 
 ### OBR 
 
@@ -140,6 +146,8 @@ This is based on the definition of OBR from [Digital Health and Care Wales - HL7
 
 > v2 to FHIR Guidance: OML_O21 [OBR to FHIR ServiceRequest](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obr-to-servicerequest.html)
 > v2 to FHIR Guidance: ORU_R01 [OBR to FHIR DiagnosticReport](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obr-to-diagnosticreport.html)
+> FHIR Profile: [DiagnosticReport](StructureDefinition-DiagnosticReport.html)
+> FHIR Resource Example: [Diagnostic Report Example](DiagnosticReport-DiagnosticReportGenomicsReport.html)
 
 ### NTE
 
@@ -154,6 +162,7 @@ Multiple NTE should be converted to a single FHIR Annotation using markdown
 
 > v2 to FHIR Guidance: OML_O21 [NTE to FHIR ServiceRequest](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-nte-to-servicerequest.html)
 > v2 to FHIR Guidance: ORU_R01 [NTE to FHIR Observation](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-nte-to-observation.html)
+> FHIR Profile: ORU_R01 [Observation](StructureDefinition-Observation.html)
 
 ### DG1
 
@@ -164,7 +173,8 @@ Multiple NTE should be converted to a single FHIR Annotation using markdown
 
 > v2 to FHIR Guidance: [DG1 to FHIR Condition](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-dg1-to-condition.html)
 > Note: In orders this is likely to be a coded entry in ServiceRequest.reasonCode as only a code is present.
-
+> FHIR Profile: [Condition](StructureDefinition-Condition.html)
+ 
 ### OBX
 
 This is based on the definition of OBX from [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
@@ -179,6 +189,9 @@ This is based on the definition of OBX from [Digital Health and Care Wales - HL7
 | OBX-14    | Date/Time of the Observation |           | O - SHOULD  |                         | 20190514102417+0000                        |
 
 > v2 to FHIR Guidance: [OBX to FHIR Observation](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-observation.html)
+> FHIR Profile: [Observation](StructureDefinition-Observation.html)
+> FHIR Resource Example: TODO
+> FHIR Resource Example: TODO
 
 ### OBX (type = ED)
 
@@ -193,7 +206,9 @@ This is based on the definition of OBX from [Digital Health and Care Wales - HL7
 | OBX-11    | Observation Result Status    |           | R           |                                                          | F                                        |
 | OBX-14    | Date/Time of the Observation |           | O - SHOULD  |                                                          | 20190514102417+0000                      |
 
-> v2 to FHIR Guidance:  [OBX to FHIR DocumentReference](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-documentreference.html) 
+> v2 to FHIR Guidance:  [OBX to FHIR DocumentReference](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-documentreference.html)
+> FHIR Profile: [DocumentReference](StructureDefinition-DocumentReference.html)
+> FHIR Resource Example: [Document Reference Laboratory Report](DocumentReference-94bf65ba-cd6c-4601-b339-6d547f424646.html)
 
 ### SPM
 
@@ -212,6 +227,8 @@ This is based on the definition of OBX from [Digital Health and Care Wales - HL7
 | SPM-30 | Accession ID                  |           | O           |                                                              |                                                  |
 
 > v2 to FHIR Guidance:  [SPM to FHIR Specimen](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-spm-to-specimen.html)
+> FHIR Profile: [Specimen](StructureDefinition-Specimen.html)
+> FHIR Resource Example: [Specimen Example](Specimen-SpecimenExample.html)
 
 ## Data Types
 
