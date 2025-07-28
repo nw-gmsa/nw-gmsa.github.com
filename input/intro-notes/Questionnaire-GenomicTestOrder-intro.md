@@ -8,6 +8,8 @@
 
 ## Domain Archetype
 
+### Phase 1 PDF Report
+
 <figure>
 {%include Laboratory-Order-mindmap.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Genomic Test Order Sections</p>
@@ -25,6 +27,9 @@
 | Performer (organisation) | 1..*        |                                         | performer[organisation] [Organisation Code](StructureDefinition-OrganisationCode.html)                        | [Organizaton](StructureDefinition-Organizaton.html)                        |
 | presentedForm            | 1..1        | [OBX (type=ED](hl7v2.html#obx-type--ed) | presentedForm [Attachment](StructureDefinition-NWAttachment.html)                                             | [DocumentReference](StructureDefinition-DocumentReference.html) and Binary |
 | Specimen                 | 0..*        | [SPM](hl7v2.html#spm)                   | specimen                                                                                  | [Specimen](StructureDefinition-Specimen.html)                              |
+
+### Phase 2 Structured Report
+
 
 
 [Questionnaire Viewer](https://project-wildfyre.github.io/domain-archetype/?q=https://nw-gmsa.github.io/R4/Questionnaire-GenomicTestOrder.json)
