@@ -33,7 +33,7 @@
 
 ### Phase 2 Structured Report
 
-
+TODO - This will include a modernisation to core FHIR concepts such as  FHIR Workflow, FHIR Subscription and FHIR RESTful.
 
 <!-- 
 ### Somatic Reporting
