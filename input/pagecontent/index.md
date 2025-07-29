@@ -8,7 +8,7 @@ This guide is to support Genomic Testing Workflow at a regional level and is des
 
 It also brings in both data and workflow requirements from a variety of other guides.
 
-<img style="padding:3px;width:95%;" src="GenomicsIG.drawio.png" alt="North West GMSA IG"/>
+<img style="padding:3px;width:70%;" src="GenomicsIG.drawio.png" alt="North West GMSA IG"/>
 <br clear="all">
 <p class="figureTitle">North West GMSA IG</p> 
 <br clear="all">
