@@ -6,6 +6,15 @@ This guide is to support Genomic Testing Workflow at a regional level and is des
 - [NHS England - FHIR Genomics Implementation Guide](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home) which defines the conformance requirements for Genomics in England
 - [NHS England - Genomic Order Management Service FHIR API](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) a [FHIR Workflow](https://hl7.org/fhir/R4/workflow.html) based service for managing orders and results at a national level.
 
+It also brings in both data and workflow requirements from a variety of other guides.
+
+<img style="padding:3px;width:95%;" src="GenomicsIG.drawio.png" alt="North West GMSA IG"/>
+<br clear="all">
+<p class="figureTitle">North West GMSA IG</p> 
+<br clear="all">
+
+This Implementation Guide is implemented in the Regional Integration Engine (RIE)
+
 <figure>
 {%include RIE-component.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Regional Integration Engine Scope</p>
