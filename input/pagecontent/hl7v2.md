@@ -308,7 +308,7 @@ OBX|1|ED|1054161000000101^Genetic report^SNM||MOL^IM^PDF^Base64^JVBERi0x...|||||
 
 ### SPM
 
-This is based on the definition of OBX from [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
+This is based on the definition of SPM from [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
 
 | Field HL7 | Fieldname                     | Data Type | Optionality | Identifier Type or ValueSet                                          | Example Values                                    |
 |-----------|-------------------------------|-----------|-------------|--------------------------------------------------------------|---------------------------------------------------|
