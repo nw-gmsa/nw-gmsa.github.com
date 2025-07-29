@@ -310,17 +310,17 @@ OBX|1|ED|1054161000000101^Genetic report^SNM||MOL^IM^PDF^Base64^JVBERi0x...|||||
 
 This is based on the definition of OBX from [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
 
-| Field HL7 | Fieldname                     | Data Type | Optionality | Data Type and Notes                                          | Example Values                                   |
-|--------|-------------------------------|-----------|-------------|--------------------------------------------------------------|--------------------------------------------------|
-| SPM-2  | Specimen ID                   |           | O           | Placer Specimen Number^Filler Specimen Number                | 25GEN-029GN00001&R0A                                                 |
-| SPM-3  | Specimen Parent IDs           |           | O           | [Accession Number](StructureDefinition-AccessionNumber.html) | ^1001166717&699X0                                                 |
-| SPM-4  | Specimen Type                 |           | O           |                                                              | 119325001^Skin specimen^SNM                      |
-| SPM-8  | Specimen Source Site          |           | O           |                                                              | 299706009^Bone structure of wrist and/or hand^SNM |
-| SPM-9  | Specimen Source Site Modifier |           | O           |                                                              | 7771000^Left^SNM                                 |
-| SPM-17 | Specimen Collection Date/Time |           | O           |                                                              |                                                  |
-| SPM-18 | Specimen Received Date/Time   |           | O           |                                                              |                                                  |
-| SPM-20 | Specimen Availability         |           | O           |                                                              |                                                  |
-| SPM-30 | Accession ID                  |           | O           |                                                              |                                                  |
+| Field HL7 | Fieldname                     | Data Type | Optionality | Data Type and Notes                                          | Example Values                                    |
+|-----------|-------------------------------|-----------|-------------|--------------------------------------------------------------|---------------------------------------------------|
+| SPM-2     | Specimen ID                   |           | O           | Placer Specimen Number^Filler Specimen Number                | 25GEN-029GN00001&R0A                              |
+| SPM-3     | Specimen Parent IDs           |           | O           | [Accession Number](StructureDefinition-AccessionNumber.html) | ^1001166717&699X0                                 |
+| SPM-4     | Specimen Type                 |           | O           | [Specimen Type](ValueSet-specimen-type.html)                 | 119325001^Skin specimen^SNM                       |
+| SPM-8     | Specimen Source Site          |           | O           |                                                              | 299706009^Bone structure of wrist and/or hand^SNM |
+| SPM-9     | Specimen Source Site Modifier |           | O           |                                                              | 7771000^Left^SNM                                  |
+| SPM-17    | Specimen Collection Date/Time |           | O           |                                                              |                                                   |
+| SPM-18    | Specimen Received Date/Time   |           | O           |                                                              |                                                   |
+| SPM-20    | Specimen Availability         |           | O           |                                                              |                                                   |
+| SPM-30    | Accession ID                  |           | O           |                                                              |                                                   |
 
 > v2 to FHIR Guidance:  [SPM to FHIR Specimen](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-spm-to-specimen.html)
 > 
