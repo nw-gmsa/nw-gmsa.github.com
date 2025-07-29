@@ -89,7 +89,13 @@ This is based on the definition of PID from [NHS England HL7 v2 ADT Message Spec
 > v2 to FHIR Guidance: [PID to FHIR Patient](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pid-to-patient.html)
 > 
 > FHIR Profile: [Patient](StructureDefinition-Patient.html)
-> 
+
+#### Examples
+
+```
+PID|1||633^^^R0A^MR~9449305552^^^^NH||CHISLETT^Octavia||20080920|F|||1 RAVENSFIELD GARDENS^^EPSOM^SURREY^KT19 0ST
+```
+
 > FHIR Resource Example: [Patient - Octavia CHISLETT NHS Number: 9449305552](Patient-Patient-OctaviaCHISLETT-9449305552.html)
 
 ### PV1 
@@ -109,7 +115,13 @@ This is based on the definition of PV1 from [NHS England HL7 v2 ADT Message Spec
 > v2 to FHIR Guidance: [PV1 to FHIR Encounter](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pv1-to-encounter.html)
 > 
 > FHIR Profile: [Encounter](StructureDefinition-Encounter.html)
-> 
+
+#### Examples
+
+```
+PV1|1|O|^^^R0A09^^^^^^^R0A||||C3456789^Darwin^Samuel^^^Dr^^^GMC|||100|||||||||1001166717|||||||||||||||||||||||||20250129103726+0000
+```
+
 > FHIR Resource Example: [Encounter 'episode/stay' Example](Encounter-984b8a89-4194-4eb4-a7ea-ca8049ebeea3.html)
 
 ### ORC
@@ -127,9 +139,16 @@ This is based on the definition of ORC from [Digital Health and Care Wales - HL7
 | ORC-21    | Ordering Facility Name   | [XON](#xon) | R           | [Organisation Code](StructureDefinition-OrganisationCode.html)                    |                                                                                                                                 |
 
 > v2 to FHIR Guidance: [ORC to FHIR ServiceRequest](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-orc-to-servicerequest.html)
-> 
+>
 > FHIR Profile: [ServiceRequest](StructureDefinition-ServiceRequest.html)
-> 
+>
+
+#### Examples
+
+```
+ORC|NW|1601737^R0A|1001166717^699X0||||||20250129|||C3456789^Darwin^Samuel^^^Dr^^^GMC|||||||||^^R0A^^^ODS
+```
+
 > FHIR Resource Example: [ServiceRequest Coded Entries Example](ServiceRequest-ServiceRequestGenomicsOrderCodedEntries.html)
 
 ### OBR 
@@ -155,7 +174,14 @@ This is based on the definition of OBR from [Digital Health and Care Wales - HL7
 > v2 to FHIR Guidance ORU_R01: [OBR to FHIR DiagnosticReport](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obr-to-diagnosticreport.html)
 > 
 > FHIR Profile: [DiagnosticReport](StructureDefinition-DiagnosticReport.html)
-> 
+
+
+#### Examples
+
+```
+OBR|1|1601737^R0A|1001166717^699X0|R240.1^^England-GenomicTestDirectory||20250129||||||||||C3456789^Darwin^Samuel^^^Dr^^^GMC
+```
+
 > FHIR Resource Example: [Diagnostic Report Example](DiagnosticReport-DiagnosticReportGenomicsReport.html)
 
 ### NTE
@@ -172,7 +198,31 @@ Multiple NTE should be converted to a single FHIR Annotation using markdown
 > v2 to FHIR Guidance: OML_O21 [NTE to FHIR ServiceRequest](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-nte-to-servicerequest.html)
 > 
 > v2 to FHIR Guidance: ORU_R01 [NTE to FHIR Observation](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-nte-to-observation.html)
-> 
+
+#### Examples
+
+```
+NTE|1||Referral lab PLEASE do following tests:
+NTE|2||
+NTE|3||Test(s) required: WGS
+NTE|4||Sample type: Blood
+NTE|5||Transport used: Merlin Courier
+NTE|6||Tracking Number: ABC123
+NTE|7||Sample sent to: LWH Genetics
+NTE|8||By: PDAY       on: 02/04/25
+NTE|9||
+NTE|10||.Speciality Requesting Clinician: PAEDS
+NTE|11||Test Group: Neurology
+NTE|12||Ethnic Group: White British
+NTE|13||Patient is from consanguineous union? : Unknown
+NTE|14||Specimen Collection Status: Collect & send with order
+NTE|15||Infection Risk: No Specific Risk
+NTE|16||Clinical details:
+NTE|17||
+NTE|18||TESTING
+NTE|19||Contact/Bleep No: 123
+```
+
 > FHIR Resource Example OML_O21: [ServiceRequest Coded Entries Example](ServiceRequest-ServiceRequestGenomicsOrderCodedEntries.html)
 > 
 > FHIR Resource Example ORU_R01: TODO
@@ -189,7 +239,13 @@ Multiple NTE should be converted to a single FHIR Annotation using markdown
 > Note: In orders this is likely to be a coded entry in ServiceRequest.reasonCode as only a code is present.
 > 
 > FHIR Profile: [Condition](StructureDefinition-Condition.html)
-> 
+
+#### Examples
+
+```
+DG1|1||363349007^Malignant tumour of stomach^SNM||20250129103726+0000
+```
+
 > FHIR Resource Example ORU_R01: TODO
  
 ### OBX
@@ -210,7 +266,16 @@ This is based on the definition of OBX from [Digital Health and Care Wales - HL7
 > FHIR Profile: [Observation](StructureDefinition-Observation.html)
 >
 > FHIR Resource Example: [Consanguinity (value type=CE)](Observation-OBX-Consanguinity.html)
-> 
+
+#### Examples
+
+```
+OBX|1|CE|GENEAP^GENETICS TEST PERFORMABLE^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds|||||||||||20250129103726+0000
+OBX|2|CE|230056^What Type of Referral Do You Require?^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds|||||||||||20250129103726+0000
+OBX|3|CE|281269004^High infection risk sample^SNM|||||||||||20250129103726+0000
+OBX|4|ST|230016^Test Type^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds||Diagnostic Screen/Test|||||||||20250129103726+0000
+```
+
 > FHIR Resource Example: [Order Tracking Number (value type=ST)](Observation-OBX-OrderTrackingNumber.html)
 > >
 > FHIR Resource Example: [Pregnancy Expected Delivery Date (value type=DT)](Observation-OBX-PregnancyExpectedDeliveryDate.html)
@@ -232,7 +297,13 @@ This is based on the definition of OBX from [Digital Health and Care Wales - HL7
 > v2 to FHIR Guidance:  [OBX to FHIR DocumentReference](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-documentreference.html)
 > 
 > FHIR Profile: [DocumentReference](StructureDefinition-DocumentReference.html)
-> 
+
+#### Examples
+
+```
+OBX|1|ED|1054161000000101^Genetic report^SNM||MOL^IM^PDF^Base64^JVBERi0x...||||||F
+```
+
 > FHIR Resource Example: [Document Reference Laboratory Report](DocumentReference-94bf65ba-cd6c-4601-b339-6d547f424646.html)
 
 ### SPM
@@ -254,7 +325,13 @@ This is based on the definition of OBX from [Digital Health and Care Wales - HL7
 > v2 to FHIR Guidance:  [SPM to FHIR Specimen](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-spm-to-specimen.html)
 > 
 > FHIR Profile: [Specimen](StructureDefinition-Specimen.html)
-> 
+
+#### Examples
+
+```
+SPM|1|25GEN-029GN00001&R0A|^1001166717&699X0|258580003^Whole blood specimen^SNM|||||||||||||20250129103726+0000|||Y
+```
+
 > FHIR Resource Example: [Specimen Example](Specimen-SpecimenExample.html)
 
 ## Data Types
