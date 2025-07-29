@@ -277,7 +277,7 @@ OBX|4|ST|230016^Test Type^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds||D
 ```
 
 > FHIR Resource Example: [Order Tracking Number (value type=ST)](Observation-OBX-OrderTrackingNumber.html)
-> >
+> 
 > FHIR Resource Example: [Pregnancy Expected Delivery Date (value type=DT)](Observation-OBX-PregnancyExpectedDeliveryDate.html)
 
 
