@@ -5,7 +5,8 @@ Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-DiagnosticRep
 Id:             DiagnosticReport
 Title:          "Diagnostic Report"
 Description:    """
-Includes constraints from:
+Includes modelling from:
+- The Royal College of Radiologists [Reporting networks - understanding the technical options](https://www.rcr.ac.uk/media/wwtp2mif/rcr-publications_radiology-reporting-networks-understanding-the-technical-options_march-2022.pdf)
 - [NHS England Genomics DiagnosticReport](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/FHIRAssets/Profiles/All-Profiles/UKCore-DiagnosticReport) use text descriptions only, not the rendered profile.
 
 See also [HL7 Europe Laboratory Report - DiagnosticReport: Laboratory Report](https://build.fhir.org/ig/hl7-eu/laboratory/StructureDefinition-DiagnosticReport-eu-lab.html)

@@ -191,11 +191,11 @@ A report is created by the clinical practice and sent to the order result tracke
 
 This is the most common method of exchanging laboratory reports which uses HL7 v2 message called [HL7 v2 ORU_R01](hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message). 
 At present many suppliers within NHS trusts and laboratories will use their own variation of the standard and this is transformed using Trust Integration Engines (TIE).
-To reduce the cost of this integration and increase region wide interoperability, it is proposed we develop a regional standard for ORU_R01 which extends [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
-
+To reduce the cost of this integration and increase region wide interoperability, it is proposed we develop a regional standard for ORU_R01 which extends [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf) (NHS England have not produced guidance around HL7 v2 ORU_R01), this will also incorporate elements from 
+The Royal College of Radiologists [Reporting networks - understanding the technical options](https://www.rcr.ac.uk/media/wwtp2mif/rcr-publications_radiology-reporting-networks-understanding-the-technical-options_march-2022.pdf), [IHE Europe Document Metadata](https://www.ihe-europe.net/sites/default/files/2017-11/IHE_ITI_XDS_Metadata_Guidelines_v1.0.pdf) and [Digital Health and Care Scotland - (EH4001) CLINICAL DOCUMENT INDEXING STANDARDS ](https://www.digihealthcare.scot/app/uploads/2024/05/CDI-Standard-V4.5-FINAL.pdf)
 The reports will be shared in PDF format only and maybe limited to regional orders (which will be supported by combinations of the other options).
 
-> The ORU_R01 is not designed only for genomics, it can be reused by the six other diagnostic (imaging and pathology) networks in the region and will also include standards which could also be reused in region wide IHE XDS Document sharing. 
+> The working desing of the regional ORU_R01 is not designed only for genomics, it can be reused by the six other diagnostic (imaging and pathology) networks in the region.
 
 #### Phase Regional Genomic Data Sharing
 
