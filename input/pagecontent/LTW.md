@@ -195,6 +195,8 @@ To reduce the cost of this integration and increase region wide interoperability
 
 The reports will be shared in PDF format only and maybe limited to regional orders (which will be supported by combinations of the other options).
 
+> The ORU_R01 is not designed only for genomics, it can be reused by the six other diagnostic (imaging and pathology) networks in the region and will also include standards which could also be reused in region wide IHE XDS Document sharing. 
+
 #### Phase Regional Genomic Data Sharing
 
 One of the main limitations of `Traditional Workflow` is that reports are only available in systems which has received the report via HL7 v2 ORU_R01.
