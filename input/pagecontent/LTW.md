@@ -187,36 +187,36 @@ A report is created by the clinical practice and sent to the order result tracke
 </figure>
 <br clear="all">
 
-#### Phase Traditional Workflow
+#### Phase: Traditional Workflow
 
-This is the most common method of exchanging laboratory reports which uses HL7 v2 message called [HL7 v2 ORU_R01](hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message). 
-At present many suppliers within NHS trusts and laboratories will use their own variation of the standard and this is transformed using Trust Integration Engines (TIE).
-To reduce the cost of this integration and increase region wide interoperability, it is proposed we develop a regional standard for ORU_R01 which extends [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf) (NHS England have not produced guidance around HL7 v2 ORU_R01), this will also incorporate elements from 
-The Royal College of Radiologists [Reporting networks - understanding the technical options](https://www.rcr.ac.uk/media/wwtp2mif/rcr-publications_radiology-reporting-networks-understanding-the-technical-options_march-2022.pdf), [IHE Europe Document Metadata](https://www.ihe-europe.net/sites/default/files/2017-11/IHE_ITI_XDS_Metadata_Guidelines_v1.0.pdf) and [Digital Health and Care Scotland - (EH4001) CLINICAL DOCUMENT INDEXING STANDARDS ](https://www.digihealthcare.scot/app/uploads/2024/05/CDI-Standard-V4.5-FINAL.pdf)
-The reports will be shared in PDF format only and maybe limited to regional orders (which will be supported by combinations of the other options).
+This is the most widely used method for exchanging laboratory reports and is based on the [HL7 v2 ORU_R01](hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message) message. Currently, many NHS trusts and laboratories use custom implementations of this standard, which are adapted via Trust Integration Engines (TIE). To reduce integration costs and enhance regional interoperability, we propose developing a regional standard for ORU_R01. This will build upon the  [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf) (as NHS England has not issued equivalent guidance) and incorporate elements from:
 
-> The working desing of the regional ORU_R01 is not designed only for genomics, it can be reused by the six other diagnostic (imaging and pathology) networks in the region.
+- The Royal College of Radiologists – [Reporting networks - understanding the technical options](https://www.rcr.ac.uk/media/wwtp2mif/rcr-publications_radiology-reporting-networks-understanding-the-technical-options_march-2022.pdf) for ORC+OBR/FHIR DiagnosticReport
+- [IHE Europe Document Metadata](https://www.ihe-europe.net/sites/default/files/2017-11/IHE_ITI_XDS_Metadata_Guidelines_v1.0.pdf) for OBX (value type = ED)/FHIR DocumentReference metadata
+- [Digital Health and Care Scotland - (EH4001) CLINICAL DOCUMENT INDEXING STANDARDS ](https://www.digihealthcare.scot/app/uploads/2024/05/CDI-Standard-V4.5-FINAL.pdf) for OBX (value type = ED)/FHIR DocumentReference metadata
 
-#### Phase Regional Genomic Data Sharing
+Reports will be shared in PDF format, potentially limited to regionally placed orders (supported by complementary integration methods).
 
-One of the main limitations of `Traditional Workflow` is that reports are only available in systems which has received the report via HL7 v2 ORU_R01.
-This phase provides a regional Clinical Data Repository (CDR) for Genomics, which is available to all care providers within the region.
-The CDR is planned to be implemented using Intersystems FHIR Repository and follow FHIR RESTful/IHE QEDm PCC-44.
-In later phases this will extend to include the national Genomics CDR using an integration pattern called `Health Information Exchange (HIE)`
+> The regional ORU_R01 design is not specific to genomics and can be reused across the six regional diagnostic networks (including imaging and pathology).
 
-The CDR will initially be populated via HL7 v2 ORU_R01 (and OML_O21) converted to HL7 FHIR and supplemented via other methods to provide a structured Genomic Report following [Genomics Reporting Implementation Guide](https://build.fhir.org/ig/HL7/genomics-reporting/index.html). 
-The CDR will also provide a valuable learning tool for HL7 v2 developers as they will be able to see how v2 messages convert to HL7 FHIR.
+#### Phase: Regional Genomic Data Sharing
 
-#### Phase Event Notifications
+One major limitation of the `traditional workflow` is that reports are only accessible within systems that received them via HL7 v2 ORU_R01. This phase introduces a regional Clinical Data Repository (CDR) for genomics, accessible to all care providers in the region.
 
-This phase adds notification support, this is similar to online ordering where updates to the order are sent via email and SMS messages.
+The CDR will be built using the InterSystems FHIR Repository and follow FHIR RESTful/IHE QEDm (PCC-44) standards. In future phases, it will connect to the national Genomics CDR through a Health Information Exchange (HIE) integration pattern.
 
-It is proposed this notification service is based on [Subscriptions R5 Backport](https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/index.html) and will initially support the following channels:
+Initially, the CDR will be populated by converting HL7 v2 ORU_R01 (and OML_O21) messages into HL7 FHIR, with additional data sources providing structured genomic reports based on the Genomics Reporting Implementation Guide. This will also serve as a useful resource for HL7 v2 developers, offering insights into converting v2 messages into FHIR.
 
-- email
-- FHIR Messaging - using event notifications based on FHIR Task
+#### Phase: Event Notifications
 
-In later stages this will also include notifications from the national [Genomic Order Management Service FHIR API](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir)
+This phase introduces real-time notification support, similar to online order tracking where updates are sent via email or SMS.
+
+The notification system will be based on the [Subscriptions R5 Backport](https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/index.html) and initially support:
+
+- Email
+- FHIR Messaging – using FHIR Task-based event notifications
+
+Future expansions will include notifications from the national [Genomic Order Management Service FHIR API](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) via its FHIR API.
 
 ### Relationship to NHS England Pathology
 
