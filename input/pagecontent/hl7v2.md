@@ -264,8 +264,6 @@ This is based on the definition of OBX from [Digital Health and Care Wales - HL7
 > v2 to FHIR Guidance: [OBX to FHIR Observation](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-observation.html)
 > 
 > FHIR Profile: [Observation](StructureDefinition-Observation.html)
->
-> FHIR Resource Example: [Consanguinity (value type=CE)](Observation-OBX-Consanguinity.html)
 
 #### Examples
 
@@ -276,6 +274,8 @@ OBX|3|CE|281269004^High infection risk sample^SNM|||||||||||20250129103726+0000
 OBX|4|ST|230016^Test Type^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds||Diagnostic Screen/Test|||||||||20250129103726+0000
 ```
 
+> FHIR Resource Example: [Consanguinity (value type=CE)](Observation-OBX-Consanguinity.html)
+> 
 > FHIR Resource Example: [Order Tracking Number (value type=ST)](Observation-OBX-OrderTrackingNumber.html)
 > 
 > FHIR Resource Example: [Pregnancy Expected Delivery Date (value type=DT)](Observation-OBX-PregnancyExpectedDeliveryDate.html)
