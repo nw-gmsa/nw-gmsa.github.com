@@ -13,29 +13,29 @@ participant "Clinical Data Repository \nGenomics" as CDR
 == Phase Traditional Messaging ==
 
 opt HL7 v2 Messaging
-OrderFiller -> OrderPlacer : Laboratory Report (preliminary)\nHL7 v2.5.1 ORU_R01 IHE LTW LAB-3
+  OrderFiller -> OrderPlacer : Laboratory Report (preliminary)\nHL7 v2.5.1 ORU_R01 IHE LTW LAB-3
 end
 
 == Phase Regional Genomics Data Sharing ==
 
 opt RESTful Query
-user -> CDR : Query Genomic Report (Data)\nIHE QEDm PCC-44 (FHIR RESTful Query)
+  user -> CDR : Query Genomic Report (Data)\nIHE QEDm PCC-44 (FHIR RESTful Query)
 end
 
 == Phase Event Notifications ==
 
 opt HL7 FHIR Workflow (inc FHIR Subscription)
 OrderFiller -> OrderPlacer: Task Notifications
-opt
-  OrderPlacer -> CDR: Query Genomic Report\nIHE QEDm PCC-44 (FHIR RESTful Query)
-end
+  opt
+    OrderPlacer -> CDR: Query Genomic Report\nIHE QEDm PCC-44 (FHIR RESTful Query)
+  end
 end
 
 opt Email/SMS (inc FHIR Subscription)
 OrderFiller -> user: Email Notifications
-opt
-  user -> CDR: Query Genomic Report (Document)\nIHE MHD ITI-68 (FHIR RESTful Query)
-end
+  opt
+    user -> CDR: Query Genomic Report (Document)\nIHE MHD ITI-68 (FHIR RESTful Query)
+  end
 end
 
 @enduml
