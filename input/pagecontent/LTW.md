@@ -169,7 +169,7 @@ The proces then follows the same process as [Use Case 4: Genomic Test Report](#u
 
 ## Use Case 4: Genomic Test Report
 
-A report is created by the clinical practice, and sent to the order result tracker.
+A report is created by the clinical practice and sent to the order result tracker.
 
 ### Genomic Test Report Description
 
@@ -179,6 +179,42 @@ A report is created by the clinical practice, and sent to the order result track
 </figure>
 <br clear="all">
 
+### Options
+
+<figure>
+{%include LTW-usecase-4-options.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">Genomics Test Report Options</p>
+</figure>
+<br clear="all">
+
+#### Phase Traditional Workflow
+
+This is the most common method of exchanging laboratory reports which uses HL7 v2 message called [HL7 v2 ORU_R01](hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message). 
+At present many suppliers within NHS trusts and laboratories will use their own variation of the standard and this is transformed using Trust Integration Engines (TIE).
+To reduce the cost of this integration and increase region wide interoperability, it is proposed we develop a regional standard for ORU_R01 which extends [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
+
+The reports will be shared in PDF format only and maybe limited to regional orders (which will be supported by combinations of the other options).
+
+#### Phase Regional Genomic Data Sharing
+
+One of the main limitations of `Traditional Workflow` is that reports are only available in systems which has received the report via HL7 v2 ORU_R01.
+This phase provides a regional Clinical Data Repository (CDR) for Genomics, which is available to all care providers within the region.
+The CDR is planned to be implemented using Intersystems FHIR Repository and follow FHIR RESTful/IHE QEDm PCC-44.
+In later phases this will extend to include the national Genomics CDR using an integration pattern called `Health Information Exchange (HIE)`
+
+The CDR will initially be populated via HL7 v2 ORU_R01 (and OML_O21) converted to HL7 FHIR and supplemented via other methods to provide a structured Genomic Report following [Genomics Reporting Implementation Guide](https://build.fhir.org/ig/HL7/genomics-reporting/index.html). 
+The CDR will also provide a valuable learning tool for HL7 v2 developers as they will be able to see how v2 messages convert to HL7 FHIR.
+
+#### Phase Event Notifications
+
+This phase adds notification support, this is similar to online ordering where updates to the order are sent via email and SMS messages.
+
+It is proposed this notification service is based on [Subscriptions R5 Backport](https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/index.html) and will initially support the following channels:
+
+- email
+- FHIR Messaging - using event notifications based on FHIR Task
+
+In later stages this will also include notifications from the national [Genomic Order Management Service FHIR API](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir)
 
 ### Relationship to NHS England Pathology
 
