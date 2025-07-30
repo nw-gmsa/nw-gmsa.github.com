@@ -2,37 +2,37 @@
 
 hide footbox
 
-title "Cancer - Test Workflow (gist)"
+title "Genomic Test Report Options"
 
 participant "Order Filler\n(via RIE)" as OrderFiller
 participant "Order Placer\n(via TIE)" as OrderPlacer
-participant "Care Provider" as user
+participant "Care Provider (any)" as user
 participant "Clinical Data Repository \nGenomics" as CDR
 
 
-== Phase Traditional Messaging ==
+== Phase: Traditional Messaging ==
 
 opt HL7 v2 Messaging
   OrderFiller -> OrderPlacer : Laboratory Report (preliminary)\nHL7 v2.5.1 ORU_R01 IHE LTW LAB-3
 end
 
-== Phase Regional Genomics Data Sharing ==
+== Phase: Regional Genomics Data Sharing ==
 
 opt RESTful Query
   user -> CDR : Query Genomic Report (Data)\nIHE QEDm PCC-44 (FHIR RESTful Query)
 end
 
-== Phase Event Notifications ==
+== Phase: Event Notifications ==
 
-opt HL7 FHIR Workflow (inc FHIR Subscription)
-OrderFiller -> OrderPlacer: Task Notifications
+opt HL7 FHIR Workflow
+OrderFiller -> OrderPlacer: Task Notifications\nFHIR Subscription
   opt
     OrderPlacer -> CDR: Query Genomic Report\nIHE QEDm PCC-44 (FHIR RESTful Query)
   end
 end
 
-opt Email/SMS (inc FHIR Subscription)
-OrderFiller -> user: Email Notifications
+opt Email/SMS
+OrderFiller -> user: Email Notifications\nFHIR Subscription
   opt
     user -> CDR: Query Genomic Report (Document)\nIHE MHD ITI-68 (FHIR RESTful Query)
   end
