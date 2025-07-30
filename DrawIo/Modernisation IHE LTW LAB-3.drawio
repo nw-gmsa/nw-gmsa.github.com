@@ -56,7 +56,7 @@
           <mxGeometry x="330" y="180" width="180" height="30" as="geometry" />
         </mxCell>
         <mxCell id="NujAStLh1tiRep0dk-tb-15" value="Traditional Messaging replacement option for new suppliers" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
-          <mxGeometry x="660" y="245" width="180" height="55" as="geometry" />
+          <mxGeometry x="660" y="215" width="180" height="55" as="geometry" />
         </mxCell>
         <mxCell id="NujAStLh1tiRep0dk-tb-16" value="Report is available for all care providers, not just those participating in the order workflow" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
           <mxGeometry x="10" y="200" width="180" height="65" as="geometry" />
@@ -84,6 +84,9 @@
         </mxCell>
         <mxCell id="NujAStLh1tiRep0dk-tb-23" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;Genomic Report (and Order)&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="255" y="-20" width="330" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NujAStLh1tiRep0dk-tb-24" value="More alignment to clinical workflow" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="660" y="275" width="180" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
