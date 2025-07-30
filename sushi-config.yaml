@@ -136,7 +136,9 @@ pages:
   identifiers.md:
     title: Identifiers and Codes
     generation: markdown
-
+  LAB-3-Options.md:
+    title: Genomic Report Options
+    generation: markdown
 
 resources:
   Questionnaire/GenomicTestOrder:
@@ -216,7 +218,8 @@ menu:
     Testing: testing.html
     Support: support.html
     Architecture: architecture.html
-    Workflow Options: workflow.html
+    Genomic Report Options: LAB-3-Options.html
+    ##Workflow Options: workflow.html
 
 groups:
   -ex-example-laboratory-order:

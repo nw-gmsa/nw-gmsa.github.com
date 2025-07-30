@@ -65,7 +65,7 @@ GET [base]/Bundle?message.receiver:identifier=[odsCode]&_lastUpdated=[date]
 
 Example returned search results [Bundle 'SearchSet' - Genomics Order](Bundle-GenomicsOrderSearchSet.html)
 
-Initially only queries by ODS Code will be supported to support TIE to TIE exchanges.
+Initially, only queries by ODS Code will be supported to support TIE to TIE exchanges.
 
 #### Update HL7 FHIR Messages
 
