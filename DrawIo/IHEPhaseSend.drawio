@@ -1,0 +1,37 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36" version="28.0.7">
+  <diagram name="Page-1" id="hKMuID0U8rs_4JC-Y38t">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Mx6EFH9LAYgf8zmXd2bW-1" value="&lt;span style=&quot;font-size: 26px;&quot;&gt;Traditional &lt;b&gt;Send&lt;/b&gt; Genomic Order/ Report&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="180" y="50" width="510" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Mx6EFH9LAYgf8zmXd2bW-2" value="IHE Laboratory Testing Workflow (LTW)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="340" y="140" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Mx6EFH9LAYgf8zmXd2bW-3" value="LAB-1&lt;br&gt;HL7 v2.5.1 OML_O21" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="240" y="210" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Mx6EFH9LAYgf8zmXd2bW-4" value="LAB-3&lt;br&gt;HL7 v2.5.1 ORU_R01" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="450" y="210" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Mx6EFH9LAYgf8zmXd2bW-6" value="OAuth2&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="240" y="280" width="400" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Mx6EFH9LAYgf8zmXd2bW-7" value="HL7 over http" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="240" y="330" width="400" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Mx6EFH9LAYgf8zmXd2bW-8" value="HL7 v2 Segments will be mapped to FHIR Profiles which forms the North West HL7 FHIR Base" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="670" y="205" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Mx6EFH9LAYgf8zmXd2bW-9" value="A regional OAuth2 Authorisation Server enables organisation to organisation data exchanges&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="30" y="275" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Mx6EFH9LAYgf8zmXd2bW-10" value="The NW Base will extend HL7 UK Core" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="670" y="280" width="180" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

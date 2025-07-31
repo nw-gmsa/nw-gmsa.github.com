@@ -14,6 +14,11 @@
 
 #### Phase: Traditional Workflow
 
+<img style="padding:3px;width:50%;" src="IHEPhaseSend.drawio.png" alt="Traditional Workflow"/>
+<br clear="all">
+<p class="figureTitle">Traditional Workflow</p> 
+<br clear="all">
+
 This is the most widely used method for exchanging laboratory reports and is based on the [HL7 v2 ORU_R01](hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message) message. Currently, many NHS trusts and laboratories use custom implementations of this standard, which are adapted via Trust Integration Engines (TIE). To reduce integration costs and enhance regional interoperability, we propose developing a regional standard for ORU_R01. This will build upon the  [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf) (as NHS England has not issued equivalent guidance) and incorporate elements from:
 
 - The Royal College of Radiologists – [Reporting networks - understanding the technical options](https://www.rcr.ac.uk/media/wwtp2mif/rcr-publications_radiology-reporting-networks-understanding-the-technical-options_march-2022.pdf) for ORC+OBR/FHIR DiagnosticReport
@@ -25,6 +30,11 @@ Reports will be shared in PDF format, potentially limited to regionally placed o
 > The regional ORU_R01 design is not specific to genomics and can be reused across the six regional diagnostic networks (including imaging and pathology).
 
 #### Phase: Regional Genomic Data Sharing
+
+<img style="padding:3px;width:50%;" src="IHEPhaseShare.drawio.png" alt="Regional Genomic Data Sharing"/>
+<br clear="all">
+<p class="figureTitle">Regional Genomic Data Sharing</p> 
+<br clear="all">
 
 One major limitation of the `traditional workflow` is that reports are only accessible within systems that received them via HL7 v2 ORU_R01. This phase introduces a regional Clinical Data Repository (CDR) for genomics, accessible to all care providers in the region.
 
