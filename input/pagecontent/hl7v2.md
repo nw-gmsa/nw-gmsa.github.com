@@ -508,7 +508,7 @@ For the FHIR version see [Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example](B
 
 ```aiignore
 MSH|^~\&|HIVE|RAX|LIMS|RJZ|20241013103300+0000||OML^O21^OML_O21|156bb6ab-15e7-42f3-a819-ecd16a5b4fbd|T|2.4|||AL
-PID|1||9449307555^^^EPI^MR||Hadjkiss^Zelma||20110319||||2 Barclay Close^Fetcham^^^KT22 9SY
+PID|1||9449307555^^^^NH||Hadjkiss^Zelma||20110319||||2 Barclay Close^Fetcham^^^KT22 9SY
 ORC|NW||||||||20230908|||9999999998^Smith^Hazel^^^Dr.^^^SDS|||||||||Kingston Hospital NHS Foundation Trust^^RAX01^^^ODS
 OBR|1|||M119.5^Multi Target NGS Panel Small^England-GenomicTestDirectory||20230908||||||||||9999999998^Smith^Hazel^^^Dr.^^^SDS
 NTE|1||Free text for diagnosis/reason for referral, transplant, life status at time of request details/ e.g. malignant tumour - molecular assessment will aid management
