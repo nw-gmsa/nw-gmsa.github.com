@@ -485,8 +485,7 @@ NTE|19||Contact/Bleep No: 123
 DG1|1||363349007^Malignant tumour of stomach^SNM3||20250129103726+0000
 DG1|2||363349007^Malignant tumour of stomach^SNM3
 OBX|1|CE|GENEAP^GENETICS TEST PERFORMABLE^GMSA|||||||||||20250129103726+0000
-OBX|2|CE|230056^What Type of Referral Do You Require?^GMSA||1186936003^Storage of specimen
-(procedure)^SNM3|||||||||20250129103726+0000
+OBX|2|CE|230056^What Type of Referral Do You Require?^GMSA||1186936003^Storage of specimen (procedure)^SNM3|||||||||20250129103726+0000
 OBX|3|CE|281269004^High infection risk sample^SNM3||LA32-8^No^LN|||||||||20250129103726+0000
 OBX|4|ST|230016^Test Type^GMSA||Diagnostic Screen/Test|||||||||20250129103726+0000
 OBX|5|CE|77386006^Pregnancy^SNM3||LA33-6^Yes^LN|||||||||20250129103726+0000
