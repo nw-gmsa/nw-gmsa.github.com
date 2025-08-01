@@ -121,6 +121,8 @@ See also [HL7 Europe Laboratory Report - ServiceRequest: Laboratory Order](https
 
 * note MS
 
+* specimen 1..* MS
+
 
 * reasonCode MS
 * reasonCode from GenomicConditionCodes (preferred)
