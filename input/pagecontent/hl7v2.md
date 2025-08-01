@@ -458,7 +458,7 @@ MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS
 For the FHIR version see [Bundle 'Message' - Genomics Order with Coded Entries](Bundle-GenomicsOrderMessageCodedEntries.html)
 
 ```aiignore
-MSH|^~\&|HIVE|R0A|LIMS|699X0|20241013103300+0000||OML^O21^OML_O21|urn:uuid:9612365d-52a4-4fab-87e7-8a09d753f095|T|2.5.1|||AL
+MSH|^~\&|HIVE|R0A|LIMS|699X0|20241013103300+0000||OML^O21^OML_O21|urn:uuid:9612365d-52a4-4fab-87e7-8a09d753f095|T|2.4|||AL
 PID|1||633^^^EPI^MR~9449305552^^^^NH||CHISLETT^Octavia||20080920|F|||1 RAVENSFIELD GARDENS^^EPSOM^SURREY^KT19 0ST
 PV1|1|O|^^^R0A09^^^^^^^R0A||||C3456789^Darwin^Samuel^^^Dr^^^GMC|||100|||||||||1001166717|||||||||||||||||||||||||20250129103726+0000
 ORC|NW|1601737^R0A|1001166717^699X0||||||20250129|||C3456789^Darwin^Samuel^^^Dr^^^GMC|||||||||^^R0A^^^ODS
@@ -470,9 +470,9 @@ NTE|4||Sample type: Blood
 NTE|5||Transport used: Merlin Courier
 NTE|6||Tracking Number: ABC123
 NTE|7||Sample sent to: LWH Genetics
-NTE|8||By: PDAY       on: 02/04/25
+NTE|8||By: PDAY on: 02/04/25
 NTE|9||
-NTE|10||.Speciality Requesting Clinician: PAEDS
+NTE|10||Speciality Requesting Clinician: PAEDS
 NTE|11||Test Group: Neurology
 NTE|12||Ethnic Group: White British
 NTE|13||Patient is from consanguineous union? : Unknown
@@ -482,21 +482,25 @@ NTE|16||Clinical details:
 NTE|17||
 NTE|18||TESTING
 NTE|19||Contact/Bleep No: 123
-DG1|1||363349007^Malignant tumour of stomach^SNM||20250129103726+0000
-DG1|2||363349007^Malignant tumour of stomach^SNM
-OBX|1|CE|GENEAP^GENETICS TEST PERFORMABLE^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds|||||||||||20250129103726+0000
-OBX|2|CE|230056^What Type of Referral Do You Require?^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds|||||||||||20250129103726+0000
-OBX|3|CE|281269004^High infection risk sample^SNM|||||||||||20250129103726+0000
-OBX|4|ST|230016^Test Type^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds||Diagnostic Screen/Test|||||||||20250129103726+0000
-OBX|5|CE|77386006^Pregnancy^SNM|||||||||||20250129103726+0000
-OBX|6|ST|231284^Please Select R240 Test(s):^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds||R240.1: Targeted variant testing|||||||||20250129103726+0000
-OBX|7|ST|231285^Please Select R242 Test(s):^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds||R242.1: Targeted variant testing|||||||||20250129103726+0000
-OBX|8|ST|230027^Email Addresses of Non-MFT Clinicians for Result Reports^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds||charu|||||||||20250129103726+0000
-OBX|9|CE|762911000000102^Informed consent given for treatment^SNM|||||||||||20250129103726+0000
-OBX|10|ST|230037^Please Acknowledge That a DNA Sample Will be Stored in the Laboratory on Completion of Testing^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds||Acknowledged|||||||||20250129103726+0000
-OBX|11|ST|230039^Is the Person Ordering the Test the Referring Clinician^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds||No|||||||||20250129103726+0000
-OBX|12|ST|unknown^Name of Supervising Clinician^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds||DESHPANDE, CHARULATA|||||||||20250129103726+0000
-SPM|1|25GEN-029GN00001&R0A|^1001166717&699X0|258580003^Whole blood specimen^SNM|||||||||||||20250129103726+0000|||Y
+DG1|1||363349007^Malignant tumour of stomach^SNM3||20250129103726+0000
+DG1|2||363349007^Malignant tumour of stomach^SNM3
+OBX|1|CE|GENEAP^GENETICS TEST PERFORMABLE^GMSA|||||||||||20250129103726+0000
+OBX|2|CE|230056^What Type of Referral Do You Require?^GMSA||1186936003^Storage of specimen
+(procedure)^SNM3|||||||||20250129103726+0000
+OBX|3|CE|281269004^High infection risk sample^SNM3||LA32-8^No^LN|||||||||20250129103726+0000
+OBX|4|ST|230016^Test Type^GMSA||Diagnostic Screen/Test|||||||||20250129103726+0000
+OBX|5|CE|77386006^Pregnancy^SNM3||LA33-6^Yes^LN|||||||||20250129103726+0000
+OBX|6|ST|231284^Please Select R240 Test(s):^GMSA||R240.1: Targeted variant testing|||||||||20250129103726+0000
+OBX|7|ST|231285^Please Select R242 Test(s):^GMSA||R242.1: Targeted variant testing|||||||||20250129103726+0000
+OBX|8|ST|230027^Email Addresses of Non-MFT Clinicians for Result Reports^GMSA||charu|||||||||20250129103726+0000
+OBX|9|CE|762911000000102^Informed consent given for treatment^SNM3||LA33-6^Yes^LN|||||||||20250129103726+0000
+OBX|10|ST|230037^Please Acknowledge That a DNA Sample Will be Stored in the Laboratory on Completion of Testing^GMSA||Acknowledged|||||||||20250129103726+0000
+OBX|11|ST|230039^Is the Person Ordering the Test the Referring Clinician^GMSA||No|||||||||20250129103726+0000
+OBX|12|ST|unknown^Name of Supervising Clinician^GMSA||DESHPANDE, CHARULATA|||||||||20250129103726+0000
+OBX|13|ST|97209-1^Shipment tracking number^LN||UK3096580215|||||||||20250129103726+0000
+OBX|14|CE|842009^Consanguinity^SNM3||LA32-8^No^LN|||||||||20250129103726+0000
+OBX|15|DT|161714006^Estimated date of delivery^SNM3||20250512103726+0000|||||||||20250129103726+0000
+SPM|1|25GEN-029GN00001&R0A|^1001166717&699X0|258580003^Whole blood specimen^SNM3|||||||||||||20250129103726+0000|||Y
 ```
 
 #### NonWGSTestOrderForm-CancerSolidTumor-Example
