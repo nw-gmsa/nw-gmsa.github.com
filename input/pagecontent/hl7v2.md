@@ -507,16 +507,16 @@ SPM|1|25GEN-029GN00001&R0A|^1001166717&699X0|258580003^Whole blood specimen^SNM3
 For the FHIR version see [Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example](Bundle-Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example.html)
 
 ```aiignore
-MSH|^~\&|HIVE|RAX|LIMS|RJZ|20241013103300+0000||OML^O21^OML_O21|156bb6ab-15e7-42f3-a819-ecd16a5b4fbd|T|2.5.1|||AL
-PID|1||RWT17335^^^EPI^MR||Hadjkiss^Zelma||20110319||||2 Barclay Close^Fetcham^^^KT22 9SY
+MSH|^~\&|HIVE|RAX|LIMS|RJZ|20241013103300+0000||OML^O21^OML_O21|156bb6ab-15e7-42f3-a819-ecd16a5b4fbd|T|2.4|||AL
+PID|1||9449307555^^^EPI^MR||Hadjkiss^Zelma||20110319||||2 Barclay Close^Fetcham^^^KT22 9SY
 ORC|NW||||||||20230908|||9999999998^Smith^Hazel^^^Dr.^^^SDS|||||||||Kingston Hospital NHS Foundation Trust^^RAX01^^^ODS
 OBR|1|||M119.5^Multi Target NGS Panel Small^England-GenomicTestDirectory||20230908||||||||||9999999998^Smith^Hazel^^^Dr.^^^SDS
 NTE|1||Free text for diagnosis/reason for referral, transplant, life status at time of request details/ e.g. malignant tumour - molecular assessment will aid management
-DG1|1||363358000^Malignant tumour of lung^SNM
-DG1|2||relapse^Relapse^https://fhir.nhs.uk/CodeSystem/reasonfortesting-genomics
-OBX|1|CE|128462008^Metastatic malignant neoplasm (disorder)^SNM|||||||||||20230908
-OBX|2|CE|6574001^Necrosis (morphologic abnormality)^SNM|||||||||||20230908
-SPM|1|RA257630||364611000000101^Tissue resection sample^SNM|||||||||||||20230909110000Z|||Y
+DG1|1||363358000^Malignant tumour of lung^SNM3
+DG1|2||relapse^Relapse^England-ReasonForTesting
+OBX|1|CE|128462008^Metastatic malignant neoplasm (disorder)^SNM3|||||||||||20230908
+OBX|2|CE|6574001^Necrosis (morphologic abnormality)^SNM3|||||||||||20230908
+SPM|1|RA257630||364611000000101^Tissue resection sample^SNM3|||||||||||||20230909110000Z|||Y
 ```
 
 ### ORU_R01 Unsolicited transmission of an observation message
