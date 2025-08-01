@@ -243,7 +243,7 @@ NTE|19||Contact/Bleep No: 123
 #### Examples
 
 ```
-DG1|1||363349007^Malignant tumour of stomach^SNM||20250129103726+0000
+DG1|1||363349007^Malignant tumour of stomach^SNM3||20250129103726+0000
 ```
 
 > FHIR Resource Example ORU_R01: TODO
@@ -252,14 +252,14 @@ DG1|1||363349007^Malignant tumour of stomach^SNM||20250129103726+0000
 
 This is based on the definition of OBX from [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
 
-| Field HL7 | Fieldname                    | Data Type | Optionality | Identifier Type or ValueSet         | Example Values                                                                                                |
-|-----------|------------------------------|-----------|-------------|-------------------------|---------------------------------------------------------------------------------------------------------------|
-| OBX-1     | Set ID – OBX                 |           | R           |                         | 1                                                                                                             |
-| OBX-2     | Value Type                   |           | R           | See next section for ED | CE                                                                                                            |
-| OBX-3     | Observation Identifier       | [CE](#ce) | R           |                         | 842009^Consanguinity^SNM<br/>97209-1^Shipment tracking number^LN<br/>161714006^Estimated date of delivery^SNM |
-| OBX-5     | Observation Value            | Varies        | R           |                         | LN^Yes^LA33-6 (value type=CE)<br/>UK3096580215 (value type=ST)<br/>20250512103726+0000 (value type=DT)        |
-| OBX-11    | Observation Result Status    |           | R           |                         | F                                                                                                             |
-| OBX-14    | Date/Time of the Observation |           | O - SHOULD  |                         | 20190514102417+0000                                                                                           |
+| Field HL7 | Fieldname                    | Data Type | Optionality | Identifier Type or ValueSet         | Example Values                                                                                                  |
+|-----------|------------------------------|-----------|-------------|-------------------------|-----------------------------------------------------------------------------------------------------------------|
+| OBX-1     | Set ID – OBX                 |           | R           |                         | 1                                                                                                               |
+| OBX-2     | Value Type                   |           | R           | See next section for ED | CE                                                                                                              |
+| OBX-3     | Observation Identifier       | [CE](#ce) | R           |                         | 842009^Consanguinity^SNM3<br/>97209-1^Shipment tracking number^LN<br/>161714006^Estimated date of delivery^SNM3 |
+| OBX-5     | Observation Value            | Varies        | R           |                         | LN^Yes^LA33-6 (value type=CE)<br/>UK3096580215 (value type=ST)<br/>20250512103726+0000 (value type=DT)          |
+| OBX-11    | Observation Result Status    |           | R           |                         | F                                                                                                               |
+| OBX-14    | Date/Time of the Observation |           | O - SHOULD  |                         | 20190514102417+0000                                                                                             |
 
 > v2 to FHIR Guidance: [OBX to FHIR Observation](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-observation.html)
 > 
@@ -270,7 +270,7 @@ This is based on the definition of OBX from [Digital Health and Care Wales - HL7
 ```
 OBX|1|CE|GENEAP^GENETICS TEST PERFORMABLE^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds|||||||||||20250129103726+0000
 OBX|2|CE|230056^What Type of Referral Do You Require?^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds|||||||||||20250129103726+0000
-OBX|3|CE|281269004^High infection risk sample^SNM|||||||||||20250129103726+0000
+OBX|3|CE|281269004^High infection risk sample^SNM3|||||||||||20250129103726+0000
 OBX|4|ST|230016^Test Type^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds||Diagnostic Screen/Test|||||||||20250129103726+0000
 ```
 
@@ -285,14 +285,14 @@ OBX|4|ST|230016^Test Type^https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds||D
 
 This is based on the definition of OBX from [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
 
-| Field HL7 | Fieldname                    | Data Type | Optionality | Identifier Type or ValueSet                                          | Example Values                           |
-|-----------|------------------------------|-----------|-------------|----------------------------------------------------------|------------------------------------------|
-| OBX-1     | Set ID – OBX                 |           | R           |                                                          | 1                                        |
-| OBX-2     | Value Type                   | ED        | R           |                                                          | ED                                       |
-| OBX-3     | Observation Identifier       | [ED](#ed) | R           | [Document Entry Type](ValueSet-document-entry-type.html) | 1054161000000101^Genetic report^SNM      |
-| OBX-5     | Observation Value            |         | R           |                                                          | MOL^IM^PDF^Base64^JVBERI0X...            |
-| OBX-11    | Observation Result Status    |           | R           |                                                          | F                                        |
-| OBX-14    | Date/Time of the Observation |           | O - SHOULD  |                                                          | 20190514102417+0000                      |
+| Field HL7 | Fieldname                    | Data Type | Optionality | Identifier Type or ValueSet                                          | Example Values                       |
+|-----------|------------------------------|-----------|-------------|----------------------------------------------------------|--------------------------------------|
+| OBX-1     | Set ID – OBX                 |           | R           |                                                          | 1                                    |
+| OBX-2     | Value Type                   | ED        | R           |                                                          | ED                                   |
+| OBX-3     | Observation Identifier       | [ED](#ed) | R           | [Document Entry Type](ValueSet-document-entry-type.html) | 1054161000000101^Genetic report^SNM3 |
+| OBX-5     | Observation Value            |         | R           |                                                          | MOL^IM^PDF^Base64^JVBERI0X...        |
+| OBX-11    | Observation Result Status    |           | R           |                                                          | F                                    |
+| OBX-14    | Date/Time of the Observation |           | O - SHOULD  |                                                          | 20190514102417+0000                  |
 
 > v2 to FHIR Guidance:  [OBX to FHIR DocumentReference](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-documentreference.html)
 > 
@@ -301,7 +301,7 @@ This is based on the definition of OBX from [Digital Health and Care Wales - HL7
 #### Examples
 
 ```
-OBX|1|ED|1054161000000101^Genetic report^SNM||MOL^IM^PDF^Base64^JVBERi0x...||||||F
+OBX|1|ED|1054161000000101^Genetic report^SNM3||MOL^IM^PDF^Base64^JVBERi0x...||||||F
 ```
 
 > FHIR Resource Example: [Document Reference Laboratory Report](DocumentReference-94bf65ba-cd6c-4601-b339-6d547f424646.html)
@@ -310,17 +310,17 @@ OBX|1|ED|1054161000000101^Genetic report^SNM||MOL^IM^PDF^Base64^JVBERi0x...|||||
 
 This is based on the definition of SPM from [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
 
-| Field HL7 | Fieldname                     | Data Type | Optionality | Identifier Type or ValueSet                                          | Example Values                                    |
-|-----------|-------------------------------|-----------|-------------|--------------------------------------------------------------|---------------------------------------------------|
-| SPM-2     | Specimen ID                   |           | O           | Placer Specimen Number^Filler Specimen Number                | 25GEN-029GN00001&R0A                              |
-| SPM-3     | Specimen Parent IDs           |           | O           | [Accession Number](StructureDefinition-AccessionNumber.html) | ^1001166717&699X0                                 |
-| SPM-4     | Specimen Type                 |           | O           | [Specimen Type](ValueSet-specimen-type.html)                 | 119325001^Skin specimen^SNM                       |
-| SPM-8     | Specimen Source Site          |           | O           |                                                              | 299706009^Bone structure of wrist and/or hand^SNM |
-| SPM-9     | Specimen Source Site Modifier |           | O           |                                                              | 7771000^Left^SNM                                  |
-| SPM-17    | Specimen Collection Date/Time |           | O           |                                                              |                                                   |
-| SPM-18    | Specimen Received Date/Time   |           | O           |                                                              |                                                   |
-| SPM-20    | Specimen Availability         |           | O           |                                                              |                                                   |
-| SPM-30    | Accession ID                  |           | O           |                                                              |                                                   |
+| Field HL7 | Fieldname                     | Data Type | Optionality | Identifier Type or ValueSet                                          | Example Values                                     |
+|-----------|-------------------------------|-----------|-------------|--------------------------------------------------------------|----------------------------------------------------|
+| SPM-2     | Specimen ID                   |           | O           | Placer Specimen Number^Filler Specimen Number                | 25GEN-029GN00001&R0A                               |
+| SPM-3     | Specimen Parent IDs           |           | O           | [Accession Number](StructureDefinition-AccessionNumber.html) | ^1001166717&699X0                                  |
+| SPM-4     | Specimen Type                 |           | O           | [Specimen Type](ValueSet-specimen-type.html)                 | 119325001^Skin specimen^SNM3                       |
+| SPM-8     | Specimen Source Site          |           | O           |                                                              | 299706009^Bone structure of wrist and/or hand^SNM3 |
+| SPM-9     | Specimen Source Site Modifier |           | O           |                                                              | 7771000^Left^SNM3                                  |
+| SPM-17    | Specimen Collection Date/Time |           | O           |                                                              |                                                    |
+| SPM-18    | Specimen Received Date/Time   |           | O           |                                                              |                                                    |
+| SPM-20    | Specimen Availability         |           | O           |                                                              |                                                    |
+| SPM-30    | Accession ID                  |           | O           |                                                              |                                                    |
 
 > v2 to FHIR Guidance:  [SPM to FHIR Specimen](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-spm-to-specimen.html)
 > 
@@ -329,7 +329,7 @@ This is based on the definition of SPM from [Digital Health and Care Wales - HL7
 #### Examples
 
 ```
-SPM|1|25GEN-029GN00001&R0A|^1001166717&699X0|258580003^Whole blood specimen^SNM|||||||||||||20250129103726+0000|||Y
+SPM|1|25GEN-029GN00001&R0A|^1001166717&699X0|258580003^Whole blood specimen^SNM3|||||||||||||20250129103726+0000|||Y
 ```
 
 > FHIR Resource Example: [Specimen Example](Specimen-SpecimenExample.html)
@@ -349,7 +349,7 @@ UK SNOMED CT is preferred and may be mandatory depending on use, for example for
 
 SNOMED
 
-```1054161000000101^Genetic report^SNM```
+```1054161000000101^Genetic report^SNM3```
 
 LOINC (from HL7 International)
 
