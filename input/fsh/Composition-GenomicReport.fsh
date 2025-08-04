@@ -5,6 +5,13 @@ Title:          "Composition Genomic Report"
 Description:    """
 """
 
+* subject 1..1
+* subject.reference 1..1
+* subject only Reference(Patient)
+* subject.identifier only NHSNumber
+* relatesTo.target[x] only Identifier or Reference(Composition)
+* custodian.identifier only OrganisationCode
+
 * type.coding ^slicing.discriminator[0].type = #value
 * type.coding ^slicing.discriminator[=].path = "system"
 * type.coding ^slicing.ordered = false
