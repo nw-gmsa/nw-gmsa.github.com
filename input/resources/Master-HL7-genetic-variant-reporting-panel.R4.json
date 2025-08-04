@@ -1843,6 +1843,7 @@
         },
         {
           "type": "choice",
+          "type": "choice",
           "code": [
             {
               "code": "69548-6",
