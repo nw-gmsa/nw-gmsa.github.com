@@ -84,3 +84,12 @@ Description:    """
 * section[Report].code = $loinc#81247-9
 * section[Report].entry ^short = "Report"
 * section[Report].entry only Reference(DiagnosticReport or DocumentReference)
+
+* section[Report] contains
+    Overview 0..* MS
+
+* section[Report].section[Overview] ^short = "Overview"
+* section[Report].section[Overview].title = "Overview"
+* section[Report].section[Overview].code = $loinc#81306-1
+* section[Report].section[Overview].entry ^short = "Overview"
+* section[Report].section[Overview].entry only Reference(Observation)
