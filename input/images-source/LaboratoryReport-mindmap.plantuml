@@ -2,12 +2,34 @@
 
 title "Genomic Laboratory Report"
 
-* Genomic Report [[StructureDefinition-DiagnosticReport.html DiagnosticReport]]
-** subject [[StructureDefinition-Patient.html Patient]]
-** basedOn [[StructureDefinition-ServiceRequest.html ServiceRequest]]
-** [[StructureDefinition-Specimen.html Specimen]]
-** Results Interpreter [[StructureDefinition-Practitioner.html Practitioner]]
-** Performer [[StructureDefinition-Practitioner.html Practitioner]]
-** presentedFrom [[StructureDefinition-NWAttachment.html Attachment]] (report in PDF format)
+* Genomic Report
+** Subject
+*** [[StructureDefinition-Patient.html Patient]]
+** Author
+*** [[StructureDefinition-Practitioner.html Practitioner]]
+** Validator
+*** [[StructureDefinition-Practitioner.html Practitioner]]
+** Legal Authenticator
+*** [[StructureDefinition-Practitioner.html Practitioner]]
+** Custodian
+*** [[StructureDefinition-Organization.html Organization]]
+** Sections
+*** Information Recipient (section)
+*** Order (59772-4 section)
+**** [[StructureDefinition-ServiceRequest.html ServiceRequest]]
+*** Specimen (59773-2 section)
+**** [[StructureDefinition-Specimen.html Specimen]]
+*** Report (81247-9 section)
+**** [[StructureDefinition-DiagnosticReport.html DiagnosticReport]]
+***** [[StructureDefinition-NWAttachment.html Attachment]] (report in PDF format)
+**** [[StructureDefinition-DocumentReference.html DocumentReference]]
+***** [[StructureDefinition-NWAttachment.html Attachment]] (report in PDF format)
+**** Overall Study (81306-1 section)
+**** Discrete Genetic Variant (81250-3 section)
+**** Structural Variant (81297-4 section)
+**** Comprehensive Variant (81251-1 section)
+**** Pharmacogenomics Result (82118-1 section)
+**** Haplotype Definition (83011-7 section)
+
 
 @endmindmap
