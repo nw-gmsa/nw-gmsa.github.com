@@ -83,4 +83,4 @@ Description:    """
 * section[Report].title = "Laboratory Report"
 * section[Report].code = $loinc#81247-9
 * section[Report].entry ^short = "Report"
-* section[Report].entry only Reference(DiagnosticReport)
+* section[Report].entry only Reference(DiagnosticReport or DocumentReference)
