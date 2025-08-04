@@ -56,5 +56,7 @@ Based on UK Definitions from [IHE Europe Metadata for exchange medical documents
 * author only Reference(Organization or Practitioner or PractitionerRole)
 * author.identifier only EnglandPractitionerIdentifier or OrganisationCode
 
+* custodian only Reference(Organization)
+* custodian.identifier only OrganisationCode
 
 
