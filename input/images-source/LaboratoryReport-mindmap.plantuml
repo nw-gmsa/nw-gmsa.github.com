@@ -26,8 +26,11 @@ title "Genomic Laboratory Report"
 ***** [[StructureDefinition-NWAttachment.html Attachment]] (report in PDF format)
 **** Overall Study (81306-1 section)
 **** Discrete Genetic Variant (81250-3 section)
+***** [[StructureDefinition-Observation-Variant.html Observation-Variant]]
+***** [[StructureDefinition-Observation-DiagnosticImplication.html Observation-DiagnosticImplication]]
 **** Structural Variant (81297-4 section)
 **** Comprehensive Variant (81251-1 section)
+***** [[StructureDefinition-Observation-DiagnosticImplication.html Observation-DiagnosticImplication]]
 **** Pharmacogenomics Result (82118-1 section)
 **** Haplotype Definition (83011-7 section)
 
