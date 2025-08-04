@@ -93,10 +93,34 @@ Description:    """
 * section[Report].section ^definition = "The root of the sections that make up the report."
 * section[Report].section.text 1.. MS
 * section[Report].section contains
-    Overview 0..* MS
+    OverallStudy  0..* MS
+    and DiscreteGeneticVariant 0..* MS
+    and StructuralVariant 0..* MS
+    and ComprehensiveVariant 0..* MS
+    and PharmacogenomicsResult 0..* MS
+    and HaplotypeDefinition 0..* MS
 
-* section[Report].section[Overview] ^short = "Overview"
-* section[Report].section[Overview].title = "Overview"
-* section[Report].section[Overview].code = $loinc#81306-1
-* section[Report].section[Overview].entry ^short = "Overview"
-* section[Report].section[Overview].entry only Reference(Observation)
+
+* section[Report].section[OverallStudy] ^short = "Overall study"
+* section[Report].section[OverallStudy].title = "Overall study"
+* section[Report].section[OverallStudy].code = $loinc#81306-1
+
+* section[Report].section[DiscreteGeneticVariant] ^short = "Discrete genetic variant"
+* section[Report].section[DiscreteGeneticVariant].title = "Discrete genetic variant"
+* section[Report].section[DiscreteGeneticVariant].code = $loinc#81250-3
+
+* section[Report].section[StructuralVariant] ^short = "Structural Variant"
+* section[Report].section[StructuralVariant].title = "Structural Variant"
+* section[Report].section[StructuralVariant].code = $loinc#81297-4
+
+* section[Report].section[ComprehensiveVariant] ^short = "Structural Variant"
+* section[Report].section[ComprehensiveVariant].title = "Structural Variant"
+* section[Report].section[ComprehensiveVariant].code = $loinc#81251-1
+
+* section[Report].section[PharmacogenomicsResult] ^short = "Structural Variant"
+* section[Report].section[PharmacogenomicsResult].title = "Structural Variant"
+* section[Report].section[PharmacogenomicsResult].code = $loinc#82118-1
+
+* section[Report].section[HaplotypeDefinition] ^short = "Haplotype Definition"
+* section[Report].section[HaplotypeDefinition].title = "Haplotype Definition"
+* section[Report].section[HaplotypeDefinition].code = $loinc#83011-7
