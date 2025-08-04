@@ -60,7 +60,6 @@ Description:    """
 * section ^short = "Sections composing the report"
 * section ^definition = "The root of the sections that make up the report."
 * section.text 1.. MS
-* section.section ..0
 * section contains
     Order 0..* MS
     and Specimen 0..* MS
@@ -85,7 +84,15 @@ Description:    """
 * section[Report].entry ^short = "Report"
 * section[Report].entry only Reference(DiagnosticReport or DocumentReference)
 
-* section[Report] contains
+
+* section[Report].section ^slicing.discriminator[0].type = #value
+* section[Report].section ^slicing.discriminator[=].path = "code"
+* section[Report].section ^slicing.ordered = false
+* section[Report].section ^slicing.rules = #open
+* section[Report].section ^short = "Sections composing the report"
+* section[Report].section ^definition = "The root of the sections that make up the report."
+* section[Report].section.text 1.. MS
+* section[Report].section contains
     Overview 0..* MS
 
 * section[Report].section[Overview] ^short = "Overview"
