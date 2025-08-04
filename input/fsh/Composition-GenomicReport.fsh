@@ -98,9 +98,9 @@ Description:    """
 
 * section[Report].section[GenomicFinding] ^short = "Genomic Finding"
 * section[Report].section[GenomicFinding].title = "Genomic Finding"
-* section[Report].section[GenomicFinding].entry only Reference(ObservationVariant or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/haplotype or https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-genotype or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/sequence-phase-relationship)
+* section[Report].section[GenomicFinding].entry only Reference(ObservationVariant or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/haplotype or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/genotype or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/sequence-phase-relationship)
 
 * section[Report].section[GenomicImplication] ^short = "Genomic Implication"
 * section[Report].section[GenomicImplication].title = "Genomic Implication"
-* section[Report].section[GenomicImplication].entry only Reference(Observation-DiagnosticImplication or Observation-TherapeuticImplication or https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-molecular-consequence or https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-genomic-annotation)
+* section[Report].section[GenomicImplication].entry only Reference(Observation-DiagnosticImplication or Observation-TherapeuticImplication or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/molecular-consequence or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/genomic-annotation)
 
