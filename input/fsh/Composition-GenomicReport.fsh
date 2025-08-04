@@ -104,12 +104,12 @@ Description:    """
 * section[Report].section[OverallStudy] ^short = "Overall study"
 * section[Report].section[OverallStudy].title = "Overall study"
 * section[Report].section[OverallStudy].code = $loinc#81306-1
-* section[Report].section[OverallStudy].entry only Reference(http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/therapeutic-implication)
+* section[Report].section[OverallStudy].entry only Reference(Observation-TherapeuticImplication)
 
 * section[Report].section[DiscreteGeneticVariant] ^short = "Discrete genetic variant"
 * section[Report].section[DiscreteGeneticVariant].title = "Discrete genetic variant"
 * section[Report].section[DiscreteGeneticVariant].code = $loinc#81250-3
-* section[Report].section[DiscreteGeneticVariant].entry only Reference(ObservationVariant or Observation-DiagnosticImplication or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/sequence-phase-relationship or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/haplotype or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/therapeutic-implication)
+* section[Report].section[DiscreteGeneticVariant].entry only Reference(ObservationVariant or Observation-DiagnosticImplication or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/sequence-phase-relationship or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/haplotype or Observation-TherapeuticImplication)
 
 * section[Report].section[StructuralVariant] ^short = "Structural Variant"
 * section[Report].section[StructuralVariant].title = "Structural Variant"
@@ -118,12 +118,12 @@ Description:    """
 * section[Report].section[ComprehensiveVariant] ^short = "Comprehensive Variant"
 * section[Report].section[ComprehensiveVariant].title = "Comprehensive Variant"
 * section[Report].section[ComprehensiveVariant].code = $loinc#81251-1
-* section[Report].section[ComprehensiveVariant].entry only Reference(Observation-DiagnosticImplication or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/therapeutic-implication)
+* section[Report].section[ComprehensiveVariant].entry only Reference(Observation-DiagnosticImplication or Observation-TherapeuticImplication)
 
 * section[Report].section[PharmacogenomicsResult] ^short = "Pharmacogenomics Result"
 * section[Report].section[PharmacogenomicsResult].title = "Pharmacogenomics Result"
 * section[Report].section[PharmacogenomicsResult].code = $loinc#82118-1
-* section[Report].section[PharmacogenomicsResult].entry only Reference(http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/genotype or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/therapeutic-implication)
+* section[Report].section[PharmacogenomicsResult].entry only Reference(http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/genotype or Observation-TherapeuticImplication)
 
 * section[Report].section[HaplotypeDefinition] ^short = "Haplotype Definition"
 * section[Report].section[HaplotypeDefinition].title = "Haplotype Definition"

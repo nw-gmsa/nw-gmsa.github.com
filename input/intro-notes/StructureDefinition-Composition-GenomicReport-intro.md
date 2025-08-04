@@ -11,6 +11,8 @@
 
 ### Phase 1 PDF Report
 
+> **DRAFT FOR ELABORATION PURPOSES**
+
 <figure>
 {%include LaboratoryReport-mindmap.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Laboratory Report - Map</p>
@@ -34,6 +36,9 @@
 ### Phase 2 Structured Report
 
 TODO - This will include a modernisation to core FHIR concepts such as  FHIR Workflow, FHIR Subscription and FHIR RESTful.
+
+
+> **DRAFT FOR ELABORATION PURPOSES**
 
 <!-- 
 ### Somatic Reporting
