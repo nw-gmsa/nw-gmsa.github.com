@@ -95,6 +95,7 @@ Description:    """
 * section[Report].section contains
     GenomicFinding  0..* MS
     and GenomicImplication 0..* MS
+    and RecommendedActions 0..* MS
 
 * section[Report].section[GenomicFinding] ^short = "Genomic Finding"
 * section[Report].section[GenomicFinding].title = "Genomic Finding"
@@ -102,5 +103,8 @@ Description:    """
 
 * section[Report].section[GenomicImplication] ^short = "Genomic Implication"
 * section[Report].section[GenomicImplication].title = "Genomic Implication"
-* section[Report].section[GenomicImplication].entry only Reference(Observation-DiagnosticImplication or Observation-TherapeuticImplication or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/molecular-consequence or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/genomic-annotation)
+* section[Report].section[GenomicImplication].entry only Reference(Observation-DiagnosticImplication or Observation-TherapeuticImplication or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/molecular-consequence)
 
+* section[Report].section[RecommendedActions] ^short = "Recommended Actions"
+* section[Report].section[RecommendedActions].title = "Recommended Actions"
+* section[Report].section[RecommendedActions].entry only Reference(http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/medication-recommendation or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/followup-recommendation)

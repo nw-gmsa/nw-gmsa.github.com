@@ -34,5 +34,8 @@ title "Genomic Laboratory Report"
 ***** [[StructureDefinition-Observation-TherapeuticImplication.html Therapeutic Implication]]
 ***** [[https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-molecular-consequence.html Molecular Consequence]]
 ***** [[https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-genomic-annotation.html Genomic Annotation]]
+**** Recommended Actions (section)
+***** [[https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-followup-recommendation.html Followup Recommendation]]
+***** [[https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-medication-recommendation.html Medication Recommendation]]
 
 @endmindmap
