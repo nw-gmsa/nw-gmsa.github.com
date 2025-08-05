@@ -9,8 +9,6 @@
 
 ## Domain Archetype
 
-### Phase 1 PDF Report
-
 > **DRAFT FOR ELABORATION PURPOSES**
 
 <figure>
@@ -19,6 +17,7 @@
 </figure>
 <br clear="all">
 
+### Phase 1 PDF Report
 
 | Entity                    | Cardinality | HL7 v2 ORU_RO1 Message                  | HL7 FHIR DiagnosticReport                                                                                     | HL7 FHIR Resource (RESTful)                                                |
 |---------------------------|-------------|-----------------------------------------|---------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|
