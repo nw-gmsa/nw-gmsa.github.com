@@ -1,4 +1,4 @@
-Profile:        Composition-GenomicReport
+Profile:        CompositionGenomicReport
 Parent:         http://hl7.org/fhir/StructureDefinition/Composition
 Id:             Composition-GenomicReport
 Title:          "Composition Genomic Report"

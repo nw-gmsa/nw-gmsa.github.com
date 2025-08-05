@@ -1,6 +1,6 @@
-Instance: MessageHeaderGenomicOrderAcknowledgement
+Instance: MessageHeaderGenomicOrderReplyFatal
 InstanceOf: MessageHeader
-Title: "Message Header - Genomic Order Acknowledgement"
+Title: "Message Header - Genomic Order Reply fatal"
 Description: "TODO"
 Usage: #example
 
@@ -21,4 +21,5 @@ Usage: #example
 * source.software = "NW GLH"
 
 * response.identifier = "9612365d-52a4-4fab-87e7-8a09d753f095"
-* response.code = #ok
+* response.code = #fatal-error
+* response.details.reference = "OperationOutcome/operation-outcome-validate"

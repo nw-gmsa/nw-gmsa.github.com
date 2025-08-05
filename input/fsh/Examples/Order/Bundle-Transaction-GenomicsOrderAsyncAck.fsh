@@ -1,7 +1,7 @@
 Instance: Transaction-GenomicsOrderAsyncAck
 InstanceOf: Bundle
-Title:       "Bundle 'Transaction' - Genomics Order Asynchronous Message Acknowledgement"
-Description:  "Influenced by HL7 v2 OML_O21"
+Title:       "Bundle 'Transaction' - Genomics Order Asynchronous Message Reply Acknowledgement"
+Description:  "Influenced by HL7 v2 OML_O22"
 Usage: #example
 * type = #transaction
 

@@ -1,6 +1,6 @@
-Instance: MessageHeaderGenomicOrderAcknowledgementTransient
+Instance: MessageHeaderGenomicOrderReplyTransient
 InstanceOf: MessageHeader
-Title: "Message Header - Genomic Order Acknowledgement"
+Title: "Message Header - Genomic Order Reply Transient"
 Description: "TODO"
 Usage: #example
 
