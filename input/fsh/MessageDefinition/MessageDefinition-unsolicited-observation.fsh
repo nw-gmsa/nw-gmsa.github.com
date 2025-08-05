@@ -4,9 +4,6 @@ Title:   "Message Definition - Unsolicited Observation"
 Usage:  #definition
 
 * description = """
-[Document](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) Message
-
-Conversion of [HL7 v2.5.1 ORU_R01](https://hl7-definition.caristix.com/v2/HL7v2.5.1/TriggerEvents/ORU_R01)
 """
 
 * category = #notification

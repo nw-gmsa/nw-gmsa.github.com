@@ -18,7 +18,6 @@ This transaction is used by the Order Placer to place an Order Group (FHIR Reque
 </figure>
 <br clear="all">
 
-
 ## Messages
 
 The following messages are used to support creation and updating of the [Genomics Test Order](DDD-TestOrder.html) [aggregation](https://martinfowler.com/bliki/AggregationAndComposition.html)/[archetype](https://en.wikipedia.org/wiki/Archetype_(information_science)) 
@@ -78,21 +77,61 @@ The response message contains a FHIR MessageHeader with a populated response ele
 
 Example payload [Bundle 'Message' - Genomics Order Acknowledgement](Bundle-GenomicsOrderMessageAcknowledgement.html)
 
+##### Accepted
+
 For sucessful messages the [MessageHeader](StructureDefinition-MessageHeader.html) will have `response.code` returned will be `ok` and will look like:
 
 {% fragment MessageHeader/MessageHeaderGenomicOrderAcknowledgement JSON EXCEPT:response EXCEPT:identifier|code BASE:response %}
 
-Where the identifier refers to the Bundle.identifier in the orignial message. The Bundle may also include modified FHIR Patient or ServiceRequest resources with updated and new identifiers.
+Where the identifier refers to the Bundle.identifier in the original message. The Bundle may also include modified FHIR Patient or ServiceRequest resources with updated and new identifiers.
+
+##### Error/Reject
 
 When the RIE is unable to accept the message due to issues such as FHIR Validation issues, the returned [MessageHeader](StructureDefinition-MessageHeader.html) will have `response.code` returned will be `error`, e.g.:
 
 {% fragment MessageHeader/MessageHeaderGenomicOrderAcknowledgementFatal JSON EXCEPT:response EXCEPT:identifier|code|details BASE:response %}
 
-
 where the details section contains a reference to an included OperationOutcome listing details of the failure.
 
-Should the RIE encounter a technical problem, such as an internal service such as `FHIR Validation Service` or `Terminology Service` being unavailable, the message has not been accepted and the sender should wait and try again. the returned [MessageHeader](StructureDefinition-MessageHeader.html) will have `response.code` returned will be `transient-error`, e.g.: 
+##### Transient Response
+
+When FHIR Validation is active on the RIE, the response will be delayed due to the time taken to validate the message. The immediate response will contain a [MessageHeader](StructureDefinition-MessageHeader.html) with a `response.code` of `transient-error`, e.g.: 
 
 {% fragment MessageHeader/MessageHeaderGenomicOrderAcknowledgementTransient JSON EXCEPT:response EXCEPT:identifier|code|details BASE:response %}
+
+The next section details how to retrieve the response.
+
+### Asynchronous Message Response
+
+This follows HL7 FHIR [Asynchronous Messaging using the RESTful API](https://hl7.org/fhir/R4/messaging.html#rest)
+
+The Order Placer (or TIE) FHIR RESTful query to retrieve their messages.
+
+<div class="alert alert-success" role="alert">
+GET [base]/Bundle?message.receiver:identifier=[odsCode]&_lastUpdated=[date]
+</div>
+
+Example returned search results [Bundle 'SearchSet' - Genomics Order](Bundle-GenomicsOrderSearchSet.html)
+
+Initially, only queries by ODS Code will be supported to support TIE to TIE exchanges.
+
+#### Update HL7 FHIR Messages
+
+Messages that have been accepted by the calling Order Place (or TIE) need to be acknowledged and removed from the MessageQueue. This is achieved by sending back the messages with the sender and destination fields reversed, i.e.
+
+**Orignial Message Header**
+
+{% fragment MessageHeader/MessageHeaderGenomicReport JSON %}
+
+**Message Header for returned update**
+
+{% fragment MessageHeader/MessageHeaderGenomicReportAck JSON %}
+
+This update is sent back to the RIE as a [FHIR Transaction](https://hl7.org/fhir/R4/http.html#transaction)
+
+<div class="alert alert-success" role="alert">
+POST [base]/
+</div>
+
 
 

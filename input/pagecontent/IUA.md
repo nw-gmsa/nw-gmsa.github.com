@@ -61,8 +61,8 @@ Body is the following values in x-www-form-urlencoded format
 | scope | `system/*.*` | 
 
 <div class="alert alert-success" role="alert">
-GET {{oauth2}}/token
-Authorization: Basic {base64 clientid and clientsecret}
+GET {{oauth2}}/token<br/>
+Authorization: Basic {base64 clientid and clientsecret}<br/>
 Content-Type: application/x-www-form-urlencoded
 </div>
 
@@ -88,8 +88,8 @@ Body is the following values in x-www-form-urlencoded format
 | token | {token} to verify |
 
 <div class="alert alert-success" role="alert">
-POST {{oauth2}}/introspection
-Authorization: Basic {base64 clientid and clientsecret}
+POST {{oauth2}}/introspection<br/>
+Authorization: Basic {base64 clientid and clientsecret}<br/>
 Content-Type: application/x-www-form-urlencoded
 </div>
 
