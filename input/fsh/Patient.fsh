@@ -27,8 +27,8 @@ Includes constraints from:
 * identifier ^slicing.ordered = false
 
 * identifier contains
-  MedicalRecordNumber 0..*
-  and nhsNumber 0..*
+  MedicalRecordNumber 0..* MS
+  and nhsNumber 0..* MS
 //  solved via ServiceRequest.requisition and GenomicsPedigreeNumber 0..*
 
 * identifier[nhsNumber] only NHSNumber

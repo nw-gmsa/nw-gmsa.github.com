@@ -1,5 +1,5 @@
 CodeSystem: NWGMSA
-Id: nwgmsa
+Id: NWGMSA
 Title: "NW GMSA Codes"
 Description: """
 Bucket for local codes

@@ -10,7 +10,7 @@ Description: "DPD, Hermes, etc"
 * effectiveDateTime = "2025-01-29T10:37:26+00:00"
 
 * code
-  * coding[+] = $loinc#97209-1 "Shipment tracking number"
+  * coding[+] = $loinc#97209-1 "Shipment tracking number [Identifier]"
 
 // EPIC-PV1
 * encounter.reference = "urn:uuid:984b8a89-4194-4eb4-a7ea-ca8049ebeea3"
