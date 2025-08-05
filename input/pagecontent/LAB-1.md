@@ -75,7 +75,7 @@ The response message contains a FHIR MessageHeader with a populated response ele
 
 For sucessful messages the [MessageHeader](StructureDefinition-MessageHeader.html) will have `response.code` returned will be `ok` and will look like:
 
-{% fragment MessageHeader/MessageHeaderGenomicOrderAcknowledgement JSON EXCEPT:response EXCEPT:identifier|code BASE:response %}
+{% fragment MessageHeader/MessageHeaderGenomicOrderReplyOk JSON EXCEPT:response EXCEPT:identifier|code BASE:response %}
 
 Where the identifier refers to the Bundle.identifier in the original message. The Bundle may also include modified FHIR Patient or ServiceRequest resources with updated and new identifiers.
 
@@ -85,7 +85,7 @@ Where the identifier refers to the Bundle.identifier in the original message. Th
 
 When the RIE is unable to accept the message due to issues such as FHIR Validation issues, the returned [MessageHeader](StructureDefinition-MessageHeader.html) will have `response.code` returned will be `error`, e.g.:
 
-{% fragment MessageHeader/MessageHeaderGenomicOrderAcknowledgementFatal JSON EXCEPT:response EXCEPT:identifier|code|details BASE:response %}
+{% fragment MessageHeader/MessageHeaderGenomicOrderReplyFatal JSON EXCEPT:response EXCEPT:identifier|code|details BASE:response %}
 
 where the details section contains a reference to an included OperationOutcome listing details of the failure.
 
@@ -93,7 +93,7 @@ where the details section contains a reference to an included OperationOutcome l
 
 When FHIR Validation is active on the RIE, the response will be delayed due to the time taken to validate the message. The immediate response will contain a [MessageHeader](StructureDefinition-MessageHeader.html) with a `response.code` of `transient-error`, e.g.: 
 
-{% fragment MessageHeader/MessageHeaderGenomicOrderAcknowledgementTransient JSON EXCEPT:response EXCEPT:identifier|code|details BASE:response %}
+{% fragment MessageHeader/MessageHeaderGenomicOrderReplyTransient JSON EXCEPT:response EXCEPT:identifier|code|details BASE:response %}
 
 The next section details how to retrieve the response.
 
@@ -115,11 +115,11 @@ Initially, only queries by ODS Code will be supported to support TIE to TIE exch
 
 Messages that have been accepted by the calling Order Place (or TIE) need to be acknowledged and removed from the MessageQueue. This is achieved by sending back the messages with the sender and destination fields reversed, i.e.
 
-**Orignial Message Header**
+##### Orignial Message Header
 
 {% fragment MessageHeader/MessageHeaderGenomicOrderReplyFatal JSON %}
 
-**Message Header for returned update**
+##### Message Header for returned update
 
 {% fragment MessageHeader/MessageHeaderGenomicOrderReplyFatal JSON %}
 
