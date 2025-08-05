@@ -1,4 +1,4 @@
-This is backwards compatible with [HL7 v2 ORU_R01](hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message) Message.
+This is backwards compatible conversion of [HL7 v2 ORU_R01](hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message) Message.
 
 Detailed Mapping can be here [Message ORU_R01 to Bundle Map (Experimental)](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-message-oru-r01-to-bundle.html)
 
@@ -15,3 +15,4 @@ Detailed Mapping can be here [Message ORU_R01 to Bundle Map (Experimental)](http
 | -- **OBSERVATION**                                                                                              |                                     | 1..*        |                                                                                                                                                                                                                       |
 | Observation or Attachment (part of DiagnosticReport)                                                            | -- OBX - Observation/Result         | 0..*        | [OBX[Observation]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-observation.html)                                                                                                               |                                                                                                          |
 | [DocumentReference](StructureDefinition-DocumentReference.html) <br/> [Binary](StructureDefinition-Binary.html) | -- OBX Observation/Result (type=ED) | 0..*        | [OBX[Observation-Component]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-documentreference.html) DiagnosticReport.extension:supporting-info <br/> and DiagnosticReport.presentedForm to Binary |
+

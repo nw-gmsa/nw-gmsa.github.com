@@ -122,8 +122,8 @@ pages:
   deployment.md:
     title: Deployment
     generation: markdown
-  api-documentation.md:
-    title: API Documentation
+  IUA.md:
+    title: OAuth2
     generation: markdown
   workflow.md:
     title: Workflow Options
@@ -199,6 +199,7 @@ menu:
 ##    Filler Order Management [LAB-2]: LAB-2.html
     Order Results Management [LAB-3]: LAB-3.html
     Query Existing Data [PCC-44]: PCC-44.html
+    Authorisation [IUA] : IUA.html
 ##    Work Order Management [LAB-4]: LAB-4.html
 ##    Test Results Management [LAB-5]: LAB-5.html
   Domain Archetypes:
@@ -209,8 +210,7 @@ menu:
     HL7 v2: hl7v2.html
     Identifiers and Codes: identifiers.html
   Development:
-    API Documentation: api-documentation.html
-    Testing: testing.html
+    Environments and Testing: testing.html
     Support: support.html
     Architecture: architecture.html
     Genomic Report Options: LAB-3-Options.html

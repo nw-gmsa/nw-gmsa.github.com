@@ -1,10 +1,27 @@
+The APIs are available on the [Health and Social Care Network (HSCN)](https://digital.nhs.uk/services/health-and-social-care-network)
+
+## Environments
+
+| Environment         | Service                           | Base Url                                 | Capability Statement 'OAS'                                            |
+|---------------------|-----------------------------------|------------------------------------------|-----------------------------------------------------------------------|
+| Development         |                                   |                                          |                                                                       |
+|                     | Regional Integration Engine (RIE) | https://10.165.194.216/gentiedev/ESB     | [CapabilityStatement](https://10.165.194.216/gentiedev/ESB/metadata)  |
+| Integration Testing |                                   |                                          |                                                                       |
+|                     | Regional Integration Engine (RIE) | https://10.165.194.217/gentietest/ESB    | [CapabilityStatement](https://10.165.194.217/gentietest/ESB/metadata) |
+|                     | Regional OAuth2 Server            | https://10.165.194.217/gentietest/oauth2 |                                                                       | 
+
+### Security and authorisation
+
+This API has two access modes:
+
+- Development - unrestricted access 
+- Integration Testing - OAuth2 [client-credentials](https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/)
 
 ## Integration Testing
 
 It is proposed all systems should be compatible with [NHS England - Personal Demographics Service - FHIR API](https://digital.nhs.uk/developer/api-catalogue/personal-demographics-service-fhir) and use the same test patients.
 
 This can be found in [PDS FHIR API test data packs](https://digital.nhs.uk/developer/api-catalogue/personal-demographics-service-fhir/pds-fhir-api-test-data)
-
 
 
 ## FHIR Validation

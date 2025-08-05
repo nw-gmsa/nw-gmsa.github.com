@@ -1,5 +1,5 @@
 
-This is backwards compatible with [HL7 v2 OML_O21](hl7v2.html#oml_o21-laboratory-order) (or ORM_O01) Message.
+This is backwards compatible conversion of [HL7 v2 OML_O21](hl7v2.html#oml_o21-laboratory-order) Message.
 
 Detailed Mapping can be here [Message OML_O21 to Bundle Map (Experimental)](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-message-oml-o21-to-bundle.html)
 Further details on genomic specific mapping can be found on [NHS England FHIR Genomics Implementation Guide - Clincial Headings](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings)

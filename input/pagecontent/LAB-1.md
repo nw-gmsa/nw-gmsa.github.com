@@ -31,29 +31,9 @@ The following messages are used to support creation and updating of the [Genomic
 
 ### Laboratory Order
 
-Is based on a HL7 FHIR [laboratory order (O21)](MessageDefinition-laboratory-order.html) Message which is backwards compatible with HL7 v2 OML_O21 (or ORM_O01) Message.
-
-Detailed Mapping can be here [Message OML_O21 to Bundle Map (Experimental)](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-message-oml-o21-to-bundle.html)
-Further details on genomic specific mapping can be found on [NHS England FHIR Genomics Implementation Guide - Clincial Headings](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings)
-
-This is an initial (incomplete) map and will change to match exact requirement of GLH LIMS <- This is currently OML, not ORM (EPIC).
-
-| FHIR Resource                                                   | HL7 v2 OML Segment                  | Cardinality                                     | Map                                                                                                                                                           | 
-|-----------------------------------------------------------------|-------------------------------------|-------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [MessageHeader](StructureDefinition-MessageHeader.html)         | MSH Message Header                  | 1..1                                            | [MSH[MessageHeader]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-msh-to-messageheader.html)                                                   |
-| [Patient](StructureDefinition-Patient.html)                     | PID Patient Identification          | 1..1                                            | [PID[Patient]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pid-to-patient.html) via ServiceRequest.subject                                    |                                                                                          |
-| [Encounter](StructureDefinition-Encounter.html)                 | PV1 Patient visit                   | 0..1                                            | [PV1[Encounter]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pv1-to-encounter.html) via ServiceRequest.encounter                              | 
-| **ORDER**                                                       |                                     | 1..*                                            |                                                                                                                                                               |
-| [ServiceRequest](StructureDefinition-ServiceRequest.html)       | - ORC Common Order                  | 1..*                                            | [ORC[ServiceRequest]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-orc-to-servicerequest.html)                                                 |
-| - **OBSERVATION REQUEST**                                       |                                     | 1..*                                            |                                                                                                                                                               |
-| [ServiceRequest](StructureDefinition-ServiceRequest.html)       | -- OBR Observation Request          | 1..*                                            | [OBR[ServiceRequest]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obr-to-servicerequest.html)                                                 |
-| [ServiceRequest](StructureDefinition-ServiceRequest.html)       | -- NTE Notes and Comments           |                                                 | [NTE[ServiceRequest]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-nte-to-servicerequest.html)                                                 |
-| [Observation](StructureDefinition-Observation.html)             | -- OBX Observation/Result           | 0..*                                            | [OBX[Observation-Component]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-component-to-observation.html) via ServiceRequest.supportingInfo |
-| [DocumentReference](StructureDefinition-DocumentReference.html) | -- OBX Observation/Result (type=ED) | 0..*                                            | [OBX[Observation-Component]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-documentreference.html) via ServiceRequest.supportingInfo     |
-|                                                                 | -- DG1 Diagnosis                    | 0..*                                            |                                                                                                                                                               | ServiceRequest.resasonCode    |  
-| - **SPECIMEN**                                                  |                                     | 0..*  Conditional - required for complete order |                                                                                                                                                               |
-| [Specimen](StructureDefinition-Specimen.html)                   | -- SPM Specimen                     | 1..*                                            | [SPM[Specimen]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-spm-to-specimen.html) via ServiceRequest.specimen                                 |                                                                                                         |
-
+<div class="alert alert-info" role="alert">
+<b>FHIR Message Definition:</b> <a href="MessageDefinition-laboratory-order.html" _target="_blank">Laboratory Order (O21)</a> 
+</div>
 
 <figure>
 {%include LAB1-sequence.svg%}
@@ -69,13 +49,22 @@ In many Order Placer applications (i.e. the EPR or Order Comms) the order is cap
 
 The  [laboratory order (O21)](MessageDefinition-laboratory-order.html) is sent to the RIA via the [$process-message](OperationDefinition-ProcessMessage.html) API
 
-```
+<div class="alert alert-success" role="alert">
 POST [base]/$process-messsage
-```
+</div>
+
+<div class="alert alert-info" role="alert">
+<b>FHIR Operation Definition:</b> <a href="OperationDefinition-ProcessMessage.html" _target="_blank">$process-message</a> 
+</div>
+
 
 Example payload [Bundle 'Message' - Genomics Order](Bundle-GenomicsOrderMessageAttachment.html) 
 
 #### Validate Message and Transform FHIR to HL7 v2 Message 
+
+<div class="alert alert-success" role="alert">
+POST [base]/$validate
+</div>
 
 The incoming order is checked for validity, this may include [FHIR Validation](https://hl7.org/fhir/R4/validation.html) against this Implementation Guide. If the message is accepted it is then transformed to a HL7 v2 Message, else a [Response HL7 FHIR Message](#response-hl7-fhir-message) is returned listing the issues in a [FHIR OperationOutcome](StructureDefinition-OperationOutcome.html) resource.
 

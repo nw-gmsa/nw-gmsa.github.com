@@ -29,23 +29,9 @@ The following messages are used to support creation and updating of the [Genomic
 
 ### Laboratory Results
 
-Is based on a HL7 FHIR [unsolicited-observation (R01)](MessageDefinition-unsolicited-observation.html) Message which is backwards compatible with HL7 v2 ORU_R01 Message.
-
-Detailed Mapping can be here [Message ORU_R01 to Bundle Map (Experimental)](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-message-oru-r01-to-bundle.html)
-
-| FHIR Resource                                                                                                   | HL7 v2 ORU Segment                  | Cardinality | Map                                                                                                                                                                                                                   | 
-|-----------------------------------------------------------------------------------------------------------------|-------------------------------------|-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| MessageHeader                                                                                                   | MSH - Message Header                | 1..1        | [MSH[MessageHeader]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-msh-to-messageheader.html)                                                                                                           |
-| Patient                                                                                                         | PID - Patient Identification        | 1..1        | [PID[Patient]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pid-to-patient.html)                                                                                                                       |    
-| Encounter                                                                                                       | PV1 - Patient visit                 | 0..1        | [PV1[Encounter]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pv1-to-encounter.html) via DiagnosticReport.encounter <br/> (.identifier (PV1-19) preferred, Encounter is optional)                      | 
-| **ORDER OBSERVATION**                                                                                           |                                     | 1..*        |                                                                                                                                                                                                                       |
-| [DiagnosticReport](StructureDefinition-DiagnosticReport.html)                                                   | - ORC - Common Order                | 1..*        | [ORC[DiagnosticReport]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-orc-to-diagnosticreport.html)                                                                                                     |
-| [ServiceRequest](StructureDefinition-ServiceRequest.html)                                                       |                                     |             | [ORC[ServiceRequest]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-orc-to-servicerequest.html)                                                                                                         |
-|                                                                                                                 | - OBR - Observations Request        | 1..*        | [OBR[DiagnosticReport]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obr-to-diagnosticreport.html)                                                                                                     |
-| DiagnosticReport.note                                                                                           | - NTE - Notes and Comments          |             |                                                                                                                                                                                                                       |
-| -- **OBSERVATION**                                                                                              |                                     | 1..*        |                                                                                                                                                                                                                       |
-| Observation or Attachment (part of DiagnosticReport)                                                            | -- OBX - Observation/Result         | 0..*        | [OBX[Observation]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-observation.html)                                                                                                               |                                                                                                          |
-| [DocumentReference](StructureDefinition-DocumentReference.html) <br/> [Binary](StructureDefinition-Binary.html) | -- OBX Observation/Result (type=ED) | 0..*        | [OBX[Observation-Component]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-documentreference.html) DiagnosticReport.extension:supporting-info <br/> and DiagnosticReport.presentedForm to Binary |
+<div class="alert alert-info" role="alert">
+<b>FHIR Message Definition:</b> <a href="MessageDefinition-unsolicited-observation.html" _target="_blank">Unsolicited Observations (R01)</a> 
+</div>
 
 <figure>
 {%include LAB3-sequence.svg%}
@@ -59,9 +45,9 @@ During initial phases the 'laboratory report' will be delivered following a [EIP
 
 The Order Placer (or TIE) FHIR RESTful query to retrieve their messages.
 
-```
+<div class="alert alert-success" role="alert">
 GET [base]/Bundle?message.receiver:identifier=[odsCode]&_lastUpdated=[date]
-```
+</div>
 
 Example returned search results [Bundle 'SearchSet' - Genomics Order](Bundle-GenomicsOrderSearchSet.html)
 
