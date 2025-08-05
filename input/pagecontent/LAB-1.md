@@ -117,14 +117,16 @@ Messages that have been accepted by the calling Order Place (or TIE) need to be 
 
 **Orignial Message Header**
 
-{% fragment MessageHeader/MessageHeaderGenomicOrder JSON %}
+{% fragment MessageHeader/MessageHeaderGenomicOrderReplyFatal JSON %}
 
 **Message Header for returned update**
 
-{% fragment MessageHeader/MessageHeaderGenomicOrderAcknowledgement JSON %}
+{% fragment MessageHeader/MessageHeaderGenomicOrderReplyFatal JSON %}
 
 This update is sent back to the RIE as a [FHIR Transaction](https://hl7.org/fhir/R4/http.html#transaction)
 
 <div class="alert alert-success" role="alert">
 POST [base]/
 </div>
+
+{% fragment Bundle/TransactionGenomicsOrderReplyAck JSON %}
