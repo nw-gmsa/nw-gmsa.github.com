@@ -2,13 +2,14 @@ The APIs are available on the [Health and Social Care Network (HSCN)](https://di
 
 ## Environments
 
-| Environment         | Service                           | Base Url                                 | Capability Statement 'OAS'                                            |
-|---------------------|-----------------------------------|------------------------------------------|-----------------------------------------------------------------------|
-| Development         |                                   |                                          |                                                                       |
-|                     | Regional Integration Engine (RIE) | https://10.165.194.216/gentiedev/ESB     | [CapabilityStatement](https://10.165.194.216/gentiedev/ESB/metadata)  |
-| Integration Testing |                                   |                                          |                                                                       |
-|                     | Regional Integration Engine (RIE) | https://10.165.194.217/gentietest/ESB    | [CapabilityStatement](https://10.165.194.217/gentietest/ESB/metadata) |
-|                     | Regional OAuth2 Server            | https://10.165.194.217/gentietest/oauth2 |                                                                       | 
+| Environment         | Service                                 | Base Url                                                                         | Capability Statement 'OAS'                                                                                                  |
+|---------------------|-----------------------------------------|----------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| Development         |                                         |                                                                                  |                                                                                                                             |
+|                     | Regional Integration Engine (RIE)       | https://10.165.194.216/gentiedev/ESB                                             | See [Placer Order Management [LAB-1]](LAB-1.html) and [CapabilityStatement](https://10.165.194.216/gentiedev/ESB/metadata)  |
+|                     | Regional Clinical Data Repository (CDR) | https://10.165.194.216/irishealth/csp/healthshare/clinicaldatarepository/fhir/r4 | See [Query Existing Data [PCC-44]](PCC-44.html)                                                                             |
+| Integration Testing |                                         |                                                                                  |                                                                                                                             |
+|                     | Regional Integration Engine (RIE)       | https://10.165.194.217/gentietest/ESB                                            | See [Placer Order Management [LAB-1]](LAB-1.html) and [CapabilityStatement](https://10.165.194.217/gentietest/ESB/metadata) |
+|                     | Regional OAuth2 Server                  | https://10.165.194.217/gentietest/oauth2                                         |                                                                                                                             | 
 
 ### Security and authorisation
 

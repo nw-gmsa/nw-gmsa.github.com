@@ -48,20 +48,15 @@ The  [laboratory order (O21)](MessageDefinition-laboratory-order.html) is sent t
 <b>FHIR Message Definition:</b> <a href="MessageDefinition-laboratory-order.html" _target="_blank">Laboratory Order (O21)</a> 
 </div>
 
-<div class="alert alert-info" role="alert">
-<b>FHIR Operation Definition:</b> <a href="OperationDefinition-ProcessMessage.html" _target="_blank">$process-message</a> 
+<div class="alert alert-success" role="alert">
+POST [base]/$process-message<br/>
+Authorization: Basic {accessToken}<br/>
+Content-Type: application/fhir+json
 </div>
 
 
 Example payload [Bundle 'Message' - Genomics Order](Bundle-GenomicsOrderMessageAttachment.html) 
 
-#### Validate Message and Transform FHIR to HL7 v2 Message 
-
-<div class="alert alert-success" role="alert">
-POST [base]/$validate
-</div>
-
-The incoming order is checked for validity, this may include [FHIR Validation](https://hl7.org/fhir/R4/validation.html) against this Implementation Guide. If the message is accepted it is then transformed to a HL7 v2 Message, else a [Response HL7 FHIR Message](#response-hl7-fhir-message) is returned listing the issues in a [FHIR OperationOutcome](StructureDefinition-OperationOutcome.html) resource.
 
 #### Send HL7 v2 Message and Response HL7 v2 Message
 
@@ -104,14 +99,16 @@ This follows HL7 FHIR [Asynchronous Messaging using the RESTful API](https://hl7
 The Order Placer (or TIE) FHIR RESTful query to retrieve their response messages.
 
 <div class="alert alert-success" role="alert">
-GET [base]/Bundle?message.receiver:identifier=[odsCode]&_lastUpdated=[date]
+GET [base]/Bundle?message.receiver:identifier=[odsCode]&_lastUpdated=[date]<br/>
+Authorization: Basic {accessToken}<br/>
+Content-Type: application/fhir+json
 </div>
 
 > Example returned search results [Bundle 'SearchSet' - Genomics Order](Bundle-GenomicsOrderSearchSet.html)
 
 Initially, only queries by ODS Code will be supported to support TIE to TIE exchanges.
 
-#### Acknowledge Asynchronous HL7 FHIR Messages
+### Acknowledge Asynchronous HL7 FHIR Messages
 
 Messages that have been accepted by the calling Order Place (or TIE) need to be acknowledged and removed from the MessageQueue. This is achieved by sending back the messages with the sender and destination fields reversed, i.e.
 
@@ -126,7 +123,36 @@ Messages that have been accepted by the calling Order Place (or TIE) need to be 
 This update is sent back to the RIE as a [FHIR Transaction](https://hl7.org/fhir/R4/http.html#transaction)
 
 <div class="alert alert-success" role="alert">
-POST [base]/
+POST [base]/<br/>
+Authorization: Basic {accessToken}<br/>
+Content-Type: application/fhir+json
 </div>
 
 {% fragment Bundle/TransactionGenomicsOrderReplyAck JSON %}
+
+### Validate Message
+
+<div class="alert alert-success" role="alert">
+POST [base]/$validate<br/>
+Content-Type: application/fhir+json
+</div>
+
+The incoming order is checked for validity, this may include [FHIR Validation](https://hl7.org/fhir/R4/validation.html) against this Implementation Guide. If the message is accepted it is then transformed to a HL7 v2 Message, else a [Response HL7 FHIR Message](#response-hl7-fhir-message) is returned listing the issues in a [FHIR OperationOutcome](StructureDefinition-OperationOutcome.html) resource.
+
+### Transform FHIR to HL7 v2 Message
+
+> **NOT FOR OPERATIONAL USE**
+
+<div class="alert alert-success" role="alert">
+POST [base]:9981/$transformToFHIR<br/>
+Content-Type: application/hl7-v2+er7
+</div>
+
+### Transform HL7 v2 FHIR Message
+
+> **NOT FOR OPERATIONAL USE**
+
+<div class="alert alert-success" role="alert">
+POST [base]:9981/$transformToV2<br/>
+Content-Type: application/fhir+json
+</div>
