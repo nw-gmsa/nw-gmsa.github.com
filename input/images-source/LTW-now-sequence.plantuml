@@ -9,15 +9,15 @@ participant "Order Filler" as LIMS
 
 
 EPR -> EPR: Complete Order Form
-EPR -> LIMS: [[LAB-1.html Placer Order Managment (LAB-1)]] [[DDD-TestOrder.html Genomic Order O21]] Command Message
+EPR -> LIMS: [[LAB-1.html Placer Order Managment (LAB-1)]] [[Questionnaire-GenomicTestOrder.html Genomic Order O21]] Command Message
 alt accepted
 LIMS -> LIMS: Perform Test
 opt preliminary/partial reports
 LIMS -> LIMS: Create preliminary/partial report
-LIMS -> EPR: [[LAB-3.html Order Results Management (LAB-3)]] [[DDD-TestReport.html Genomic Report R01]] Document Message
+LIMS -> EPR: [[LAB-3.html Order Results Management (LAB-3)]] [[StructureDefinition-Composition-GenomicReport.html Genomic Report R01]] Document Message
 end
 LIMS -> LIMS: Create final report
-LIMS -> EPR: [[LAB-3.html Order Results Management (LAB-3)]] [[DDD-TestReport.html Genomic Report R01]] Document Message
+LIMS -> EPR: [[LAB-3.html Order Results Management (LAB-3)]] [[StructureDefinition-Composition-GenomicReport.html Genomic Report R01]] Document Message
 else rejected
 LIMS -> EPR: General laboratory order response message O22
 end

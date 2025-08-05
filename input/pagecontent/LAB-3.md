@@ -76,7 +76,7 @@ Future expansions will include notifications from the national [Genomic Order Ma
 
 ## Message (Traditional Workflow) 
 
-The following messages are used to support creation and updating of the [Genomics Test Report](DDD-TestReport.html) [composition](https://martinfowler.com/bliki/AggregationAndComposition.html)
+The following messages are used to support creation and updating of the [Genomics Test Report](StructureDefinition-Composition-GenomicReport.html) [composition](https://martinfowler.com/bliki/AggregationAndComposition.html)
 
 | Message                                   | Purpose                                       | EIP Type                                                                                                 |
 |-------------------------------------------|-----------------------------------------------|----------------------------------------------------------------------------------------------------------|

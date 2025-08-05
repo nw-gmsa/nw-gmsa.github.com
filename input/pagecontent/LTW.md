@@ -86,7 +86,7 @@ How this is implemented will vary between different NHS organisations and system
 
 These forms may (/will?) will have a computable definition called an [template (FHIR Questionnaire)](https://hl7.org/fhir/R4/questionnaire.html) which will list the technical content requirements for the form. At present only one archetype has been defined:
 
-- [NW GMSA Genomics Test Order Panel](DDD-TestOrder.html)
+- [NW GMSA Genomics Test Order Panel](Questionnaire-GenomicTestOrder.html)
 
 This archetype definition can also support [HL7 Structured Data Capture](https://build.fhir.org/ig/HL7/sdc/index.html) should the Order Placer system support these features.
 
@@ -115,7 +115,7 @@ The FHIR exchange style used [FHIR Message](https://hl7.org/fhir/R4/messaging.ht
 
 > At present the NW GLH Laboratory Information Management System (LIMS) will not support HL7 FHIR. The Regional Integration Exchange (RIE) will perform conversion between v2 and FHIR formats.
 
-This message is an [aggregate (DDD)](https://martinfowler.com/bliki/DDD_Aggregate.html)/[archetype](https://en.wikipedia.org/wiki/Archetype_(information_science)) and so is a collection of FHIR Resources (similar to v2 segements) which is described in [Genomic Test Order](DDD-TestOrder.html).
+This message is an [aggregate (DDD)](https://martinfowler.com/bliki/DDD_Aggregate.html)/[archetype](https://en.wikipedia.org/wiki/Archetype_(information_science)) and so is a collection of FHIR Resources (similar to v2 segements) which is described in [Genomic Test Order](Questionnaire-GenomicTestOrder.html).
 
 
 #### Communicating Ask at Order Entry questions and prior results

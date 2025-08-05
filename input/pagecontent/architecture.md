@@ -48,7 +48,7 @@ Three types of messages are used within this workflow process:
 <p class="figureTitle">Phase 1a ESB Architecture</p> 
 <br clear="all">
 
-- **Accept Message** The Order Placer (NHS trust) sends a FHIR Message (NW GMSA) [Genomic Test Order O21](DDD-TestOrder.html) to the RIE via the [$process-message](OperationDefinition-ProcessMessage.html) endpoint
+- **Accept Message** The Order Placer (NHS trust) sends a FHIR Message (NW GMSA) [Genomic Test Order O21](Questionnaire-GenomicTestOrder.html) to the RIE via the [$process-message](OperationDefinition-ProcessMessage.html) endpoint
   - If the RIE doesn’t understand the message for technical reasons, it will respond immediately with an error message.
   - **Validation** The RIE performs FHIR Validation on the order against the requirements listed in this Implementation Guide. The validation contains no errors, it is accepted; any errors will cause the message to be rejected. The RIE responds to the order placer asynchronously via a message queue, this is accessed by the order placer via a **Polling Consumer**
 - **Distribution List** If the message is accepted, it is passed to a router, at present this router passes the message onto the next process. This router is for future use with the national broker.

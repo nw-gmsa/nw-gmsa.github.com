@@ -35,7 +35,7 @@ The `OpenAPISwagger Definition file` below, can be viewed using [Swagger Editor]
 
   ## Search (Poll for Messages)
 
-  See [Asynchronous Message Delivery](LAB-3.html#asynchronous-message-delivery)
+  See [Asynchronous Message Delivery](LAB-1.html#asynchronous-message-response)
 
   ```
   GET [base]/Bundle?message.receiver:identifier=[odsCode]&_lastUpdated=[date]

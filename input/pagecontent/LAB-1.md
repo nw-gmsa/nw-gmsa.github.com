@@ -2,7 +2,7 @@
 
 - A. [IHE Pathology and Laboratory Medicine (PaLM) Technical Framework - Volume 2a (PaLM TF-2a) Transactions](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol2a.pdf)
 - B. **Test Order Forms**
-  - See [NW GMSA Genomics Test Order](DDD-TestOrder.html) 
+  - See [NW GMSA Genomics Test Order](Questionnaire-GenomicTestOrder.html) 
   - 
 ## Scope
 
@@ -20,7 +20,7 @@ This transaction is used by the Order Placer to place an Order Group (FHIR Reque
 
 ## Messages
 
-The following messages are used to support creation and updating of the [Genomics Test Order](DDD-TestOrder.html) [aggregation](https://martinfowler.com/bliki/AggregationAndComposition.html)/[archetype](https://en.wikipedia.org/wiki/Archetype_(information_science)) 
+The following messages are used to support creation and updating of the [Genomics Test Order](Questionnaire-GenomicTestOrder.html) [aggregation](https://martinfowler.com/bliki/AggregationAndComposition.html)/[archetype](https://en.wikipedia.org/wiki/Archetype_(information_science)) 
 
 | Message                                                             | Purpose                                                                                                     | EIP Type                                                                                                |
 |---------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
