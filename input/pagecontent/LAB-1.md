@@ -101,7 +101,7 @@ The next section details how to retrieve the response.
 
 This follows HL7 FHIR [Asynchronous Messaging using the RESTful API](https://hl7.org/fhir/R4/messaging.html#rest)
 
-The Order Placer (or TIE) FHIR RESTful query to retrieve their messages.
+The Order Placer (or TIE) FHIR RESTful query to retrieve their response messages.
 
 <div class="alert alert-success" role="alert">
 GET [base]/Bundle?message.receiver:identifier=[odsCode]&_lastUpdated=[date]
@@ -117,11 +117,11 @@ Messages that have been accepted by the calling Order Place (or TIE) need to be 
 
 **Orignial Message Header**
 
-{% fragment MessageHeader/MessageHeaderGenomicReport JSON %}
+{% fragment MessageHeader/MessageHeaderGenomicOrder JSON %}
 
 **Message Header for returned update**
 
-{% fragment MessageHeader/MessageHeaderGenomicReportAck JSON %}
+{% fragment MessageHeader/MessageHeaderGenomicOrderAcknowledgement JSON %}
 
 This update is sent back to the RIE as a [FHIR Transaction](https://hl7.org/fhir/R4/http.html#transaction)
 
