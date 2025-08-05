@@ -30,10 +30,6 @@ The following messages are used to support creation and updating of the [Genomic
 
 ### Laboratory Order
 
-<div class="alert alert-info" role="alert">
-<b>FHIR Message Definition:</b> <a href="MessageDefinition-laboratory-order.html" _target="_blank">Laboratory Order (O21)</a> 
-</div>
-
 <figure>
 {%include LAB1-sequence.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Regional Placer Order Management [LAB-1] Sequence Diagram</p>
@@ -48,8 +44,8 @@ In many Order Placer applications (i.e. the EPR or Order Comms) the order is cap
 
 The  [laboratory order (O21)](MessageDefinition-laboratory-order.html) is sent to the RIA via the [$process-message](OperationDefinition-ProcessMessage.html) API
 
-<div class="alert alert-success" role="alert">
-POST [base]/$process-messsage
+<div class="alert alert-info" role="alert">
+<b>FHIR Message Definition:</b> <a href="MessageDefinition-laboratory-order.html" _target="_blank">Laboratory Order (O21)</a> 
 </div>
 
 <div class="alert alert-info" role="alert">
@@ -75,8 +71,6 @@ The RIE then sends the converted HL7 v2 Message to the Order Filler (LIMS) which
 
 The response message contains a FHIR MessageHeader with a populated response element, the focus element is not populated.
 
-Example payload [Bundle 'Message' - Genomics Order Acknowledgement](Bundle-GenomicsOrderMessageAcknowledgement.html)
-
 ##### Accepted
 
 For sucessful messages the [MessageHeader](StructureDefinition-MessageHeader.html) will have `response.code` returned will be `ok` and will look like:
@@ -84,6 +78,8 @@ For sucessful messages the [MessageHeader](StructureDefinition-MessageHeader.htm
 {% fragment MessageHeader/MessageHeaderGenomicOrderAcknowledgement JSON EXCEPT:response EXCEPT:identifier|code BASE:response %}
 
 Where the identifier refers to the Bundle.identifier in the original message. The Bundle may also include modified FHIR Patient or ServiceRequest resources with updated and new identifiers.
+
+> Example payload [Bundle 'Message' - Genomics Order Acknowledgement](Bundle-GenomicsOrderMessageAcknowledgement.html)
 
 ##### Error/Reject
 
@@ -111,11 +107,11 @@ The Order Placer (or TIE) FHIR RESTful query to retrieve their messages.
 GET [base]/Bundle?message.receiver:identifier=[odsCode]&_lastUpdated=[date]
 </div>
 
-Example returned search results [Bundle 'SearchSet' - Genomics Order](Bundle-GenomicsOrderSearchSet.html)
+> Example returned search results [Bundle 'SearchSet' - Genomics Order](Bundle-GenomicsOrderSearchSet.html)
 
 Initially, only queries by ODS Code will be supported to support TIE to TIE exchanges.
 
-#### Update HL7 FHIR Messages
+#### Acknowledge Asynchronous HL7 FHIR Messages
 
 Messages that have been accepted by the calling Order Place (or TIE) need to be acknowledged and removed from the MessageQueue. This is achieved by sending back the messages with the sender and destination fields reversed, i.e.
 
@@ -132,6 +128,3 @@ This update is sent back to the RIE as a [FHIR Transaction](https://hl7.org/fhir
 <div class="alert alert-success" role="alert">
 POST [base]/
 </div>
-
-
-
