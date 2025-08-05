@@ -117,7 +117,7 @@ Messages that have been accepted by the calling Order Place (or TIE) need to be 
 
 ##### Orignial Message Header
 
-{% fragment MessageHeader/MessageHeaderGenomicOrderReplyFatal JSON BASE:response BASE:sender BASE:destination %}
+{% fragment MessageHeader/MessageHeaderGenomicOrderReplyFatal JSON EXCEPT:response|sender|destination %}
 
 ##### Message Header for returned update
 
