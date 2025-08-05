@@ -97,14 +97,17 @@ Description:    """
     and GenomicImplication 0..* MS
     and RecommendedActions 0..* MS
 
-* section[Report].section[GenomicFinding] ^short = "Genomic Finding"
-* section[Report].section[GenomicFinding].title = "Genomic Finding"
+* section[Report].section[GenomicFinding] ^short = "Finding"
+* section[Report].section[GenomicFinding].title = "Finding"
+* section[Report].section[GenomicFinding].code = $loinc#59776-5 "Procedure findings"
 * section[Report].section[GenomicFinding].entry only Reference(ObservationVariant or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/haplotype or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/genotype or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/sequence-phase-relationship)
 
-* section[Report].section[GenomicImplication] ^short = "Genomic Implication"
-* section[Report].section[GenomicImplication].title = "Genomic Implication"
+* section[Report].section[GenomicImplication] ^short = "Implication"
+* section[Report].section[GenomicImplication].title = "Implication"
+//* section[Report].section[GenomicImplication].code = $loinc#
 * section[Report].section[GenomicImplication].entry only Reference(Observation-DiagnosticImplication or Observation-TherapeuticImplication or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/molecular-consequence)
 
 * section[Report].section[RecommendedActions] ^short = "Recommended Actions"
 * section[Report].section[RecommendedActions].title = "Recommended Actions"
+//* section[Report].section[RecommendedActions].code = $loinc#
 * section[Report].section[RecommendedActions].entry only Reference(http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/medication-recommendation or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/followup-recommendation)
