@@ -22,7 +22,7 @@ skinparam svgDimensionStyle false
     [[StructureDefinition-MedicalRecordNumber.html MedicalRecordNumber]]
     }
 
-    class "[[StructureDefinition-EpisodeNumber.html Episode Number]]\nFrom the order" as PV1 {
+    class "[[StructureDefinition-HospitalProviderSpellIdentifier.html Episode Number]]\nFrom the order" as PV1 {
     }
 
     class "[[StructureDefinition-ServiceRequest.html ServiceRequest]].identifier \n([[https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinicalheadings#Test-Request Test Request]])" as ORC {
@@ -53,7 +53,7 @@ skinparam svgDimensionStyle false
          entity "[[StructureDefinition-DocumentReference.html DocumentReference]]\nGenomicFamilyStructure" as documentReference {
                  type
                  subject : Patient
-                 context.encounter : [[StructureDefinition-EpisodeNumber.html Episode Number]]
+                 context.encounter : [[StructureDefinition-HospitalProviderSpellIdentifier.html Episode Number]]
                 content.attachment
               }
 
@@ -79,7 +79,7 @@ skinparam svgDimensionStyle false
   frame "Patient Administration" {
 
    entity "[[StructureDefinition-Encounter.html Encounter]]" as encounter {
-      identifier : [[StructureDefinition-EpisodeNumber.html Episode Number]]
+      identifier : [[StructureDefinition-HospitalProviderSpellIdentifier.html Episode Number]]
       encounter
       episode
       subject : Patient

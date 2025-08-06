@@ -92,7 +92,7 @@ See also [HL7 Europe Laboratory Report - ServiceRequest: Laboratory Order](https
 * encounter 0..1 MS
 * encounter ^short = "A reference identifier to the episode/stay/visit number in which the request was created. (HL7 v2 PV1-19)"
 * encounter only Reference(Encounter)
-* encounter.identifier only EpisodeNumber
+* encounter.identifier only HospitalProviderSpellIdentifier
 * encounter.identifier 0..1 MS
 * encounter.identifier insert Obligation(#SHALL:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/OrderFiller)
 * encounter.identifier insert Obligation(#SHALL:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/OrderPlacer)

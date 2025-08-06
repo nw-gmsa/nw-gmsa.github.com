@@ -7,6 +7,6 @@ Description:    "DRAFT Initial elaboration"
 * subject 1..1 MS
 * subject.identifier only NHSNumber
 
-* encounter.identifier only EpisodeNumber
+* encounter.identifier only HospitalProviderSpellIdentifier
 
 * questionnaire 1..1 MS

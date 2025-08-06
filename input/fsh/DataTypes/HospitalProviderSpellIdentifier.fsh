@@ -1,8 +1,11 @@
-Profile:        EpisodeNumber
+Profile:        HospitalProviderSpellIdentifier
 Parent:         CorrelationIdentifier
-Id:             EpisodeNumber
-Title:          "Episode Number"
+Id:             HospitalProviderSpellIdentifier
+Title:          "Hospital Provider Spell Identifier"
 Description:     """
+
+[HOSPITAL PROVIDER SPELL IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_identifier.html)
+
 See [CorrelationIdentifier](StructureDefinition-CorrelationIdentifier.html) for more details.
 This definition compatible with [Yorkskhire and Humberside - Interweave-EncounterGrouping](https://fhir.interweavedigital.com/R4/StructureDefinition-Interweave-EncounterGrouping.html)
 

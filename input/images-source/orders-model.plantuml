@@ -59,7 +59,7 @@
         entity "[[StructureDefinition-DocumentReference.html DocumentReference]]\nPreviousReports\nGenomicFamilyStructure" as documentReference <<aggregate>> {
            type
            subject : Patient
-           context.encounter : [[StructureDefinition-EpisodeNumber.html Visit Number]]
+           context.encounter : [[StructureDefinition-HospitalProviderSpellIdentifier.html Visit Number]]
         }
 
         class "[[StructureDefinition-NWAttachment.html Attachment]]" as attachment {
@@ -71,7 +71,7 @@
 
       }
 
-      class "[[StructureDefinition-EpisodeNumber.html Episode Number]]" as PV1
+      class "[[StructureDefinition-HospitalProviderSpellIdentifier.html Episode Number]]" as PV1
 
       documentReference *-d-> attachment
 
@@ -86,7 +86,7 @@
   frame "Patient Administration" {
 
    entity "[[StructureDefinition-Encounter.html Encounter]]" as encounter {
-      identifier : [[StructureDefinition-EpisodeNumber.html Episode Number]]
+      identifier : [[StructureDefinition-HospitalProviderSpellIdentifier.html Episode Number]]
       encounter
       episode
       subject : Patient
