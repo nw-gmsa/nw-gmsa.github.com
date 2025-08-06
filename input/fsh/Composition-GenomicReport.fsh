@@ -73,7 +73,7 @@ Description:    """
 * section[InformationRecipient].title = "Information Recipient"
 //* section[InformationRecipient].code = $loinc#59772-4 	"Planned procedure Narrative"
 * section[InformationRecipient].entry ^short = "Order"
-* section[InformationRecipient].entry only Reference(Organisation)
+* section[InformationRecipient].entry only Reference(Organization)
 
 * section[Order] ^short = "Laboratory Order"
 * section[Order].title = "Laboratory Order"
