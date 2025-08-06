@@ -61,10 +61,19 @@ Description:    """
 * section ^definition = "The root of the sections that make up the report."
 * section.text 1.. MS
 * section contains
-    Order 0..* MS
+    InformationRecipient 0..* MS
+    and Order 0..* MS
     and Specimen 0..* MS
-    and Report 0..* MS
+    and Narrative 0..* MS
+    and GenomicFinding  0..* MS
+    and GenomicImplication 0..* MS
+    and RecommendedActions 0..* MS
 
+* section[InformationRecipient] ^short = "Information Recipient"
+* section[InformationRecipient].title = "Information Recipient"
+//* section[InformationRecipient].code = $loinc#59772-4 	"Planned procedure Narrative"
+* section[InformationRecipient].entry ^short = "Order"
+* section[InformationRecipient].entry only Reference(Organisation)
 
 * section[Order] ^short = "Laboratory Order"
 * section[Order].title = "Laboratory Order"
@@ -78,36 +87,23 @@ Description:    """
 * section[Specimen].entry ^short = "Specimen"
 * section[Specimen].entry only Reference(Specimen)
 
-* section[Report] ^short = "Laboratory Report"
-* section[Report].title = "Laboratory Report"
-* section[Report].code = $loinc#81247-9
-* section[Report].entry ^short = "Report"
-* section[Report].entry only Reference(DiagnosticReport or DocumentReference)
+* section[Narrative] ^short = "Narrative"
+* section[Narrative].title = "Narrative"
+* section[Narrative].code = $loinc#29554-3
+* section[Narrative].entry ^short = "Procedure Narrative"
+* section[Narrative].entry only Reference(DiagnosticReport or DocumentReference)
 
+* section[GenomicFinding] ^short = "Finding"
+* section[GenomicFinding].title = "Finding"
+* section[GenomicFinding].code = $loinc#59776-5 "Procedure findings"
+* section[GenomicFinding].entry only Reference(ObservationVariant or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/haplotype or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/genotype or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/sequence-phase-relationship)
 
-* section[Report].section ^slicing.discriminator[0].type = #value
-* section[Report].section ^slicing.discriminator[=].path = "code"
-* section[Report].section ^slicing.ordered = false
-* section[Report].section ^slicing.rules = #open
-* section[Report].section ^short = "Sections composing the report"
-* section[Report].section ^definition = "The root of the sections that make up the report."
-* section[Report].section.text 1.. MS
-* section[Report].section contains
-    GenomicFinding  0..* MS
-    and GenomicImplication 0..* MS
-    and RecommendedActions 0..* MS
+* section[GenomicImplication] ^short = "Implication"
+* section[GenomicImplication].title = "Implication"
+* section[GenomicImplication].code = $loinc#59768-2 "Procedure indications"
+* section[GenomicImplication].entry only Reference(Observation-DiagnosticImplication or Observation-TherapeuticImplication or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/molecular-consequence)
 
-* section[Report].section[GenomicFinding] ^short = "Finding"
-* section[Report].section[GenomicFinding].title = "Finding"
-* section[Report].section[GenomicFinding].code = $loinc#59776-5 "Procedure findings"
-* section[Report].section[GenomicFinding].entry only Reference(ObservationVariant or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/haplotype or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/genotype or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/sequence-phase-relationship)
-
-* section[Report].section[GenomicImplication] ^short = "Implication"
-* section[Report].section[GenomicImplication].title = "Implication"
-//* section[Report].section[GenomicImplication].code = $loinc#
-* section[Report].section[GenomicImplication].entry only Reference(Observation-DiagnosticImplication or Observation-TherapeuticImplication or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/molecular-consequence)
-
-* section[Report].section[RecommendedActions] ^short = "Recommended Actions"
-* section[Report].section[RecommendedActions].title = "Recommended Actions"
-//* section[Report].section[RecommendedActions].code = $loinc#
-* section[Report].section[RecommendedActions].entry only Reference(http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/medication-recommendation or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/followup-recommendation)
+* section[RecommendedActions] ^short = "Recommended Actions"
+* section[RecommendedActions].title = "Recommended Actions"
+* section[RecommendedActions].code = $loinc#46209-3 "Provider orders"
+* section[RecommendedActions].entry only Reference(http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/medication-recommendation or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/followup-recommendation)

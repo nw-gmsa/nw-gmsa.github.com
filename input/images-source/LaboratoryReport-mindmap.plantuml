@@ -19,23 +19,23 @@ title "Genomic Laboratory Report"
 **** [[StructureDefinition-ServiceRequest.html ServiceRequest]]
 *** Specimen (59773-2 section)
 **** [[StructureDefinition-Specimen.html Specimen]]
-*** Report (81247-9 section)
+*** Narrative (29554-3 section)
 **** [[StructureDefinition-DiagnosticReport.html DiagnosticReport]]
 ***** [[StructureDefinition-NWAttachment.html Attachment]] (report in PDF format)
 **** [[StructureDefinition-DocumentReference.html DocumentReference]]
 ***** [[StructureDefinition-NWAttachment.html Attachment]] (report in PDF format)
-**** Genomic Finding (section)
-***** Observation [[StructureDefinition-Observation-Variant.html Variant]]
-***** Observation [[http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/haplotype Halotype]]
-***** Observation [[https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-genotype.html Genotype]]
-***** Observation [[http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/sequence-phase-relationship Sequence Phase Relationship]]
-**** Genomic Implication (section)
-***** Observation [[StructureDefinition-Observation-DiagnosticImplication.html Diagnostic Implication]]
-***** Observation [[StructureDefinition-Observation-TherapeuticImplication.html Therapeutic Implication]]
-***** Observation [[https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-molecular-consequence.html Molecular Consequence]]
-***** Observation [[https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-genomic-annotation.html Genomic Annotation]]
-**** Recommended Actions (section)
-***** Task [[https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-followup-recommendation.html Followup Recommendation]]
-***** Task [[https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-medication-recommendation.html Medication Recommendation]]
+*** Finding (59776-5 section)
+**** Observation [[StructureDefinition-Observation-Variant.html Variant]]
+**** Observation [[http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/haplotype Halotype]]
+**** Observation [[https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-genotype.html Genotype]]
+**** Observation [[http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/sequence-phase-relationship Sequence Phase Relationship]]
+*** Implication (59768-2 section)
+**** Observation [[StructureDefinition-Observation-DiagnosticImplication.html Diagnostic Implication]]
+**** Observation [[StructureDefinition-Observation-TherapeuticImplication.html Therapeutic Implication]]
+**** Observation [[https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-molecular-consequence.html Molecular Consequence]]
+**** Observation [[https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-genomic-annotation.html Genomic Annotation]]
+*** Recommended Actions (46209-3 section)
+**** Task [[https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-followup-recommendation.html Followup Recommendation]]
+**** Task [[https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-medication-recommendation.html Medication Recommendation]]
 
 @endmindmap
