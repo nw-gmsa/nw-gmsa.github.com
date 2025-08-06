@@ -40,7 +40,7 @@ Description:    """
 * attester.party only Reference(Practitioner or PractitionerRole)
 * attester.party.identifier only EnglandPractitionerIdentifier
 
-* custodian only Reference(Organisation)
+* custodian only Reference(Organization)
 * custodian.identifier only OrganisationCode
 
 * section 1..* MS
