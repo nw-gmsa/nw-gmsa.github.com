@@ -111,7 +111,9 @@ If the [Order Placer](ActorDefinition-OrderPlacer.html) has a FHIR enabled Elect
 <p class="figureTitle">Order Test Form - Data Extraction Overview</p> 
 <br clear="all">
 
-> Domain Archetype [Genomic Test Order (Template)](Questionnaire-GenomicTestOrder.html)
+<div class="alert alert-info" role="alert">
+<b>Domain Archetype:</b> <a href="Questionnaire-GenomicTestOrder.html" _target="_blank">Genomic Test Order (Template)</a> 
+</div>
 
 
 The FHIR exchange style used [FHIR Message](https://hl7.org/fhir/R4/messaging.html) following [laboratory-order](MessageDefinition-laboratory-order.html) message definition. This definition is based on HL7 v2 `OML_O21 Laboratory Order` which simplifies conversion to/from pipe+hat (v2) and json (FHIR) formats.
@@ -194,7 +196,9 @@ A report is created by the clinical practice and sent to the order result tracke
 <p class="figureTitle">Genomic Report Example</p> 
 <br clear="all">
 
-> Domain Archetype [Genomic Test Report (Composition)](StructureDefinition-Composition-GenomicReport.html)
+<div class="alert alert-info" role="alert">
+<b>Domain Archetype:</b> <a href="StructureDefinition-Composition-GenomicReport.html" _target="_blank">Genomic Test Report (Composition)</a> 
+</div>
 
 ### Relationship to NHS England Pathology
 
