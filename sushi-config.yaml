@@ -192,9 +192,10 @@ menu:
     Authorisation (OAuth2): authorisation.html
 ##    Health Information Exchange (HIE): HIE.html
   Interfaces (Volume 2):
-    Placer Order Management [LAB-1]: LAB-1.html
+    Placer Order Management [LAB-1] HL7 FHIR: LAB-1.html
 ##    Filler Order Management [LAB-2]: LAB-2.html
-    Order Results Management [LAB-3]: LAB-3.html
+    Order Results Management [LAB-3] HL7 FHIR: LAB-3.html
+    Order and Results [LAB-1] and [LAB-3] HL7 v2: hl7v2.html
     Query Existing Data [PCC-44]: PCC-44.html
     Authorisation [IUA] : IUA.html
 ##    Work Order Management [LAB-4]: LAB-4.html
@@ -202,15 +203,12 @@ menu:
   Domain Archetypes:
     Genomic Test Order (Template): Questionnaire-GenomicTestOrder.html
     Genomic Test Report (Composition): StructureDefinition-Composition-GenomicReport.html
-  Artefacts (Volume 3):
-    Hl7 FHIR: artifacts.html
-    HL7 v2: hl7v2.html
-    Identifiers and Codes: identifiers.html
+  Artefacts (Volume 3): artifacts.html
   Development:
     Environments and Testing: testing.html
     Support: support.html
     Architecture: architecture.html
-    ##Workflow Options: workflow.html
+
 
 groups:
   -ex-example-laboratory-order:

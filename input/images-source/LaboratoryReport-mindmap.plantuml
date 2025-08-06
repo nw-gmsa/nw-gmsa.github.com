@@ -25,17 +25,17 @@ title "Genomic Laboratory Report"
 **** [[StructureDefinition-DocumentReference.html DocumentReference]]
 ***** [[StructureDefinition-NWAttachment.html Attachment]] (report in PDF format)
 **** Genomic Finding (section)
-***** [[StructureDefinition-Observation-Variant.html Variant]]
-***** [[http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/haplotype Halotype]]
-***** [[https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-genotype.html Genotype]]
-***** [[http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/sequence-phase-relationship Sequence Phase Relationship]]
+***** Observation [[StructureDefinition-Observation-Variant.html Variant]]
+***** Observation [[http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/haplotype Halotype]]
+***** Observation [[https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-genotype.html Genotype]]
+***** Observation [[http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/sequence-phase-relationship Sequence Phase Relationship]]
 **** Genomic Implication (section)
-***** [[StructureDefinition-Observation-DiagnosticImplication.html Diagnostic Implication]]
-***** [[StructureDefinition-Observation-TherapeuticImplication.html Therapeutic Implication]]
-***** [[https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-molecular-consequence.html Molecular Consequence]]
-***** [[https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-genomic-annotation.html Genomic Annotation]]
+***** Observation [[StructureDefinition-Observation-DiagnosticImplication.html Diagnostic Implication]]
+***** Observation [[StructureDefinition-Observation-TherapeuticImplication.html Therapeutic Implication]]
+***** Observation [[https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-molecular-consequence.html Molecular Consequence]]
+***** Observation [[https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-genomic-annotation.html Genomic Annotation]]
 **** Recommended Actions (section)
-***** [[https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-followup-recommendation.html Followup Recommendation]]
-***** [[https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-medication-recommendation.html Medication Recommendation]]
+***** Task [[https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-followup-recommendation.html Followup Recommendation]]
+***** Task [[https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-medication-recommendation.html Medication Recommendation]]
 
 @endmindmap

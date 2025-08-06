@@ -171,12 +171,24 @@ The proces then follows the same process as [Use Case 4: Genomic Test Report](#u
 
 A report is created by the clinical practice and sent to the order result tracker.
 
+
 ### Genomic Test Report Description
 
 <figure>
 {%include LTW-usecase-4-activity.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Genomics Test Report Activity</p>
 </figure>
+<br clear="all">
+
+### Send/Share Genomic Test Report
+
+
+<img style="padding:3px;width:95%;" src="LaboratoryReportExplainedPage1.drawio.png" alt="Genomic Report Page 1"/>
+<br clear="all">
+
+<img style="padding:3px;width:95%;" src="LaboratoryReportExplainedPage1.drawio.png" alt="Genomic Report Page 2"/>
+<br clear="all">
+<p class="figureTitle">Genomic Report Example</p> 
 <br clear="all">
 
 
