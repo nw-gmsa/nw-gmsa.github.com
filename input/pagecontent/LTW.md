@@ -191,7 +191,7 @@ A report is created by the clinical practice and sent to the order result tracke
 <img style="padding:3px;width:95%;" src="LaboratoryReportExplainedPage1.drawio.png" alt="Genomic Report Page 1"/>
 <br clear="all">
 
-<img style="padding:3px;width:95%;" src="LaboratoryReportExplainedPage1.drawio.png" alt="Genomic Report Page 2"/>
+<img style="padding:3px;width:95%;" src="LaboratoryReportExplainedPage2.drawio.png" alt="Genomic Report Page 2"/>
 <br clear="all">
 <p class="figureTitle">Genomic Report Example</p> 
 <br clear="all">
