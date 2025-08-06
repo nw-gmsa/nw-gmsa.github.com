@@ -20,10 +20,11 @@ This API has two access modes:
 
 ## Integration Testing
 
-It is proposed all systems should be compatible with [NHS England - Personal Demographics Service - FHIR API](https://digital.nhs.uk/developer/api-catalogue/personal-demographics-service-fhir) and use the same test patients.
+It is recommended all systems should be compatible with [NHS England - Personal Demographics Service - FHIR API](https://digital.nhs.uk/developer/api-catalogue/personal-demographics-service-fhir) and use the same test patients.
 
-This can be found in [PDS FHIR API test data packs](https://digital.nhs.uk/developer/api-catalogue/personal-demographics-service-fhir/pds-fhir-api-test-data)
-
+<div class="alert alert-success" role="alert">
+Test Patients should be sourced from <a href="https://digital.nhs.uk/developer/api-catalogue/personal-demographics-service-fhir/pds-fhir-api-test-data" _target="_blank">ORC</a> and <a href="hl7v2.html#obr" _target="_blank">PDS FHIR API test data packs</a>
+</div>
 
 ## FHIR Validation
 
