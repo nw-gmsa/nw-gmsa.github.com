@@ -618,17 +618,7 @@
             },
             "display": "ClinicalScientist-John Taylor"
           },
-          "collectedDateTime": "2023-09-09T11:00:00Z",
-          "bodySite": {
-            "extension": [
-              {
-                "url": "https://fhir.hl7.org.uk/StructureDefinition/Extension-UKCore-BodySiteReference",
-                "valueReference": {
-                  "reference": "urn:uuid:83806961-f9b9-4c64-aefe-26946eaa79a6"
-                }
-              }
-            ]
-          }
+          "collectedDateTime": "2023-09-09T11:00:00Z"
         },
         "condition": [
           {
@@ -643,41 +633,9 @@
         ],
         "request": [
           {
-            "reference": "urn:uuid:5a263b55-a789-4c3f-9c15-c2e9df59b187"
+            "reference": "urn:uuid:51479894-77f0-48ec-b67a-70d7d5dffc50"
           }
         ]
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:83806961-f9b9-4c64-aefe-26946eaa79a6",
-      "resource" : {
-        "resourceType": "BodyStructure",
-        "id": "BodyStructure-BodySiteLocationLungs-Example",
-        "morphology": {
-          "coding":  [
-            {
-              "system": "http://snomed.info/sct",
-              "code": "369755005",
-              "display": "Multiple tumors (qualifier value)"
-            }
-          ]
-        },
-        "location": {
-          "coding":  [
-            {
-              "system": "http://snomed.info/sct",
-              "code": "39607008",
-              "display": "Lung structure (body structure)"
-            }
-          ]
-        },
-        "patient": {
-          "reference": "urn:uuid:335bd074-a09c-40c5-a6a5-8fb766a90661",
-          "identifier": {
-            "system": "https://fhir.nhs.uk/Id/nhs-number",
-            "value": "9449307555"
-          }
-        }
       }
     }
   ]
