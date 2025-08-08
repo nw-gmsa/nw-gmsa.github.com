@@ -49,17 +49,16 @@
         },
         "focus" : [
           {
-            "reference" : "http://example.org/fhir/ServiceRequest/ServiceRequest-NonWGSTestOrderForm-CancerSolidTumor-Example",
+            "reference" : "urn:uuid:51479894-77f0-48ec-b67a-70d7d5dffc50",
             "type" : "ServiceRequest"
           }
         ]
       }
     },
     {
-      "fullUrl": "http://example.org/fhir/PractitionerRole/PractitionerRole-HazelSmithKingstonPathology-Example",
+      "fullUrl": "urn:uuid:e98a0266-85e1-41bb-833e-387f2f1dd838",
       "resource": {
         "resourceType": "PractitionerRole",
-        "id": "PractitionerRole-HazelSmithKingstonPathology-Example",
         "practitioner": {
           "identifier": {
             "system": "https://fhir.nhs.uk/Id/sds-user-id",
@@ -118,7 +117,7 @@
       }
     },
     {
-      "fullUrl": "http://example.org/fhir/PractitionerRole/PractitionerRole-JamesTaylorKingstonPathology-Example",
+      "fullUrl": "urn:uuid:887d7209-4bd2-44e6-ae81-1bab209bd235",
       "resource": {
         "resourceType": "PractitionerRole",
         "id": "PractitionerRole-JamesTaylorKingstonPathology-Example",
@@ -176,10 +175,9 @@
       }
     },
     {
-      "fullUrl": "http://example.org/fhir/PractitionerRole/PractitionerRole-AnnaLaneKingstonPathology-Example",
+      "fullUrl": "urn:uuid:202517a8-57d3-4b18-ab04-21793feddf79",
       "resource": {
         "resourceType": "PractitionerRole",
-        "id": "PractitionerRole-AnnaLaneKingstonPathology-Example",
         "practitioner": {
           "identifier": {
             "system": "https://fhir.nhs.uk/Id/sds-user-id",
@@ -234,10 +232,9 @@
       }
     },
     {
-      "fullUrl": "http://example.org/fhir/Patient/Patient-ZelmaHadjkiss-Example",
+      "fullUrl": "urn:uuid:335bd074-a09c-40c5-a6a5-8fb766a90661",
       "resource": {
         "resourceType": "Patient",
-        "id": "Patient-ZelmaHadjkiss-Example",
         "extension":  [
           {
             "url": "https://fhir.hl7.org.uk/StructureDefinition/Extension-UKCore-BirthSex",
@@ -342,10 +339,10 @@
       }
     },
     {
-      "fullUrl": "http://example.org/fhir/Observation/Observation-MultipleTumors-Example",
+      "fullUrl": "urn:uuid:96901f41-92f8-47eb-847b-2475939e114a",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-MultipleTumors-Example",
+
         "status": "final",
         "code": {
           "coding":  [
@@ -357,7 +354,7 @@
           ]
         },
         "subject": {
-          "reference": "Patient/Patient-ZelmaHadjkiss-Example",
+          "reference": "urn:uuid:335bd074-a09c-40c5-a6a5-8fb766a90661",
           "identifier": {
             "system": "https://fhir.nhs.uk/Id/nhs-number",
             "value": "9449307555"
@@ -396,7 +393,6 @@
       "fullUrl": "http://example.org/fhir/Observation/Observation-Necrosis-Example",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-Necrosis-Example",
         "status": "final",
         "code": {
           "coding":  [
@@ -408,7 +404,7 @@
           ]
         },
         "subject": {
-          "reference": "Patient/Patient-ZelmaHadjkiss-Example",
+          "reference": "urn:uuid:335bd074-a09c-40c5-a6a5-8fb766a90661",
           "identifier": {
             "system": "https://fhir.nhs.uk/Id/nhs-number",
             "value": "9449307555"
@@ -445,7 +441,6 @@
       "fullUrl": "http://example.org/fhir/Condition/Condition-LungTumor-Example",
       "resource": {
         "resourceType": "Condition",
-        "id": "Condition-LungTumor-Example",
         "clinicalStatus": {
           "coding":  [
             {
@@ -482,10 +477,9 @@
       }
     },
     {
-      "fullUrl": "http://example.org/fhir/ServiceRequest/ServiceRequest-NonWGSTestOrderForm-CancerSolidTumor-Example",
+      "fullUrl": "urn:uuid:51479894-77f0-48ec-b67a-70d7d5dffc50",
       "resource": {
         "resourceType": "ServiceRequest",
-        "id": "ServiceRequest-NonWGSTestOrderForm-CancerSolidTumor-Example",
         "extension":  [
           {
             "url": "https://fhir.hl7.org.uk/StructureDefinition/Extension-UKCore-Coverage",
@@ -502,13 +496,13 @@
           {
             "url": "https://fhir.hl7.org.uk/StructureDefinition/Extension-UKCore-AdditionalContact",
             "valueReference": {
-              "reference": "PractitionerRole/PractitionerRole-AnnaLaneKingstonPathology-Example"
+              "reference": "urn:uuid:202517a8-57d3-4b18-ab04-21793feddf79"
             }
           },
           {
             "url": "https://fhir.hl7.org.uk/StructureDefinition/Extension-UKCore-AdditionalContact",
             "valueReference": {
-              "reference": "PractitionerRole/PractitionerRole-JamesTaylorKingstonPathology-Example"
+              "reference": "urn:uuid:887d7209-4bd2-44e6-ae81-1bab209bd235"
             }
           }
         ],
@@ -537,7 +531,7 @@
           ]
         },
         "subject": {
-          "reference": "Patient/Patient-ZelmaHadjkiss-Example",
+          "reference": "urn:uuid:335bd074-a09c-40c5-a6a5-8fb766a90661",
           "identifier": {
             "system": "https://fhir.nhs.uk/Id/nhs-number",
             "value": "9449307555"
@@ -545,7 +539,7 @@
         },
         "authoredOn": "2023-09-08",
         "requester": {
-          "reference": "PractitionerRole/PractitionerRole-HazelSmithKingstonPathology-Example"
+          "reference": "urn:uuid:e98a0266-85e1-41bb-833e-387f2f1dd838"
         },
         "reasonCode":  [
           {
@@ -569,7 +563,7 @@
         ],
         "supportingInfo":  [
           {
-            "reference": "Observation/Observation-MultipleTumors-Example"
+            "reference": "urn:uuid:96901f41-92f8-47eb-847b-2475939e114a"
           },
           {
             "reference": "Observation/Observation-Necrosis-Example"
@@ -580,7 +574,7 @@
         ],
         "specimen":  [
           {
-            "reference": "Specimen/Specimen-CancerSolidTumor-Example"
+            "reference": "urn:uuid:b27ef240-5b85-4726-aa3b-d19c5ed6fb16"
           }
         ],
         "note":  [
@@ -591,10 +585,9 @@
       }
     },
     {
-      "fullUrl": "http://example.org/fhir/Specimen/Specimen-CancerSolidTumor-Example",
+      "fullUrl": "urn:uuid:b27ef240-5b85-4726-aa3b-d19c5ed6fb16",
       "resource": {
         "resourceType": "Specimen",
-        "id": "Specimen-CancerSolidTumor-Example",
         "identifier": [
           {
             "system": "https://fhir.add.nhs.uk/Id/specimenId",
@@ -612,7 +605,7 @@
           ]
         },
         "subject": {
-          "reference": "Patient/Patient-ZelmaHadjkiss-Example",
+          "reference": "urn:uuid:335bd074-a09c-40c5-a6a5-8fb766a90661",
           "identifier": {
             "system": "https://fhir.nhs.uk/Id/nhs-number",
             "value": "9449307555"
@@ -632,7 +625,7 @@
               {
                 "url": "https://fhir.hl7.org.uk/StructureDefinition/Extension-UKCore-BodySiteReference",
                 "valueReference": {
-                  "reference": "BodyStructure/BodyStructure-BodySiteLocationLungs-Example"
+                  "reference": "urn:uuid:83806961-f9b9-4c64-aefe-26946eaa79a6"
                 }
               }
             ]
@@ -651,13 +644,13 @@
         ],
         "request": [
           {
-            "reference": "ServiceRequest/ServiceRequest-NonWGSTestOrderForm-CancerSolidTumor-Example"
+            "reference": "urn:uuid:5a263b55-a789-4c3f-9c15-c2e9df59b187"
           }
         ]
       }
     },
     {
-      "fullUrl": "http://example.org/fhir/BodyStructure/BodyStructure-BodySiteLocationLungs-Example",
+      "fullUrl": "urn:uuid:83806961-f9b9-4c64-aefe-26946eaa79a6",
       "resource" : {
         "resourceType": "BodyStructure",
         "id": "BodyStructure-BodySiteLocationLungs-Example",
@@ -680,7 +673,7 @@
           ]
         },
         "patient": {
-          "reference": "Patient/Patient-ZelmaHadjkiss-Example",
+          "reference": "urn:uuid:335bd074-a09c-40c5-a6a5-8fb766a90661",
           "identifier": {
             "system": "https://fhir.nhs.uk/Id/nhs-number",
             "value": "9449307555"
