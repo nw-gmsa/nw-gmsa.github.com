@@ -17,7 +17,7 @@ Only use in References Data Type if the NHS Number is not known or unverified.
 
 * assigner ^short = "Assigning Facility"
 * assigner.identifier.system = $ods-code
-* assigner.identifier.value ^example.valueString = "R0A"
+* assigner.identifier.value ^example.valueCoding = #R0A
 * assigner.identifier.value ^example.label = "Manchester University NHS Foundation Trust"
 
 
