@@ -120,11 +120,10 @@
       "fullUrl": "urn:uuid:887d7209-4bd2-44e6-ae81-1bab209bd235",
       "resource": {
         "resourceType": "PractitionerRole",
-        "id": "PractitionerRole-JamesTaylorKingstonPathology-Example",
         "practitioner": {
           "identifier": {
             "system": "https://fhir.nhs.uk/Id/sds-user-id",
-            "value": "9999999998"
+            "value": "9999999997"
           },
           "display": "Dr. James Taylor"
         },
@@ -181,7 +180,7 @@
         "practitioner": {
           "identifier": {
             "system": "https://fhir.nhs.uk/Id/sds-user-id",
-            "value": "9999999998"
+            "value": "9999999996"
           },
           "display": "Dr. Anna Lane"
         },
@@ -390,7 +389,7 @@
       }
     },
     {
-      "fullUrl": "http://example.org/fhir/Observation/Observation-Necrosis-Example",
+      "fullUrl": "urn:uuid:a9129941-a2c5-45b2-a9d9-ed4c2624f690",
       "resource": {
         "resourceType": "Observation",
         "status": "final",
@@ -438,7 +437,7 @@
       }
     },
     {
-      "fullUrl": "http://example.org/fhir/Condition/Condition-LungTumor-Example",
+      "fullUrl": "urn:uuid:46144bc0-fad7-4b2e-a2da-90fc4f31be3d",
       "resource": {
         "resourceType": "Condition",
         "clinicalStatus": {
@@ -566,10 +565,10 @@
             "reference": "urn:uuid:96901f41-92f8-47eb-847b-2475939e114a"
           },
           {
-            "reference": "Observation/Observation-Necrosis-Example"
+            "reference": "urn:uuid:a9129941-a2c5-45b2-a9d9-ed4c2624f690"
           },
           {
-            "reference": "Condition/Condition-LungTumor-Example"
+            "reference": "urn:uuid:46144bc0-fad7-4b2e-a2da-90fc4f31be3d"
           }
         ],
         "specimen":  [
