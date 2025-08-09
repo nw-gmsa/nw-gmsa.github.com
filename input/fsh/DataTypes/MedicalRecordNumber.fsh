@@ -5,6 +5,7 @@ Title:          "Medical Record Number"
 Description:     """
 **NHS Data Model and Dictionary** See also [LOCAL PATIENT IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/local_patient_identifier__extended_.html)
 **Type** [CorrelationIdentifier](StructureDefinition-CorrelationIdentifier.html)
+**HL7 v2** Patient Identifier List (PID-3)
 """
 
 * ^purpose = """

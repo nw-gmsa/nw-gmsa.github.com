@@ -5,6 +5,7 @@ Title:          "Accession Number"
 Description:     """
 **NHS Data Model and Dictionary** nil, see also [RADIOLOGICAL ACCESSION NUMBER](https://www.datadictionary.nhs.uk/data_elements/radiological_accession_number.html)
 **Type** [CorrelationIdentifier](StructureDefinition-CorrelationIdentifier.html)
+**HL7 v2** Specimen Parent IDs (SPM-3)
 
 Uniquely identifies a Specimen in multiple laboratory systems.
 """
