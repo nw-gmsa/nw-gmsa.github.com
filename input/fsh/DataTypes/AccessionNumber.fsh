@@ -7,7 +7,7 @@ Description:     """
 - **HL7 v2** Specimen Parent IDs (SPM-3)
 - **IHE XDS** referenceIdList
 
-Uniquely identifies a Specimen in multiple laboratory systems.
+Uniquely identifies a Specimen across multiple laboratory systems.
 """
 
 * ^purpose = ""
