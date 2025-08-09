@@ -3,6 +3,7 @@ Parent:         http://hl7.org/fhir/StructureDefinition/Identifier
 Id:             CorrelationIdentifier
 Title:          "Correlation Identifier"
 Description:     """
+Extension to FHIR Identifier
 """
 
 * ^purpose = """
