@@ -35,7 +35,7 @@ Includes constraints from:
 * subject.identifier only NHSNumber
 
 * location.location only Reference(Location)
-* location.location.identifier only OrganisationSiteCode
+* location.location.identifier only OrganisationSiteIdentifier
 
 * period MS
 * participant MS

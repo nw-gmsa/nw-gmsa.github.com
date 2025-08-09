@@ -404,7 +404,7 @@ In addition, this includes of PL.11 to hold organisation ODS code.
 
 | Field HL7 | Fieldname                        | Data Type | Optionality | Identifier Type or ValueSet                                                         | Example Values |
 |-----------|----------------------------------|-----------|-------------|-------------------------------------------------------------------------|----------------|
-| PL.4      | Facility                         | HD        | R           | [Organisation Site Code](StructureDefinition-OrganisationSiteCode.html) | R0A09               |
+| PL.4      | Facility                         | HD        | R           | [Organisation Site Code](StructureDefinition-OrganisationSiteIdentifier.html) | R0A09               |
 | PL.11     | Assigning Authority For Location | HD        | R           | [Organisation Code](StructureDefinition-OrganisationCode.html)          | R0A            | 
 
 
