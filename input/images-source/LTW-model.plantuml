@@ -27,15 +27,20 @@ entity "[[StructureDefinition-Specimen.html Specimen]]" as Specimen {
   [[StructureDefinition-AccessionNumber.html Accession Number]]
 }
 
+entity "[[Spell]]" as Spell {
+  [[StructureDefinition-HospitalProviderSpellIdentifier.html Hospital Provider Spell Identifier]]
+}
+
 OrderGroup o--* Order
 OrderGroup --* GMSA
-Order -- GMSA
+Order *-- GMSA
 Order --* Report
 Specimen --* "0..*" Order
+Specimen --* "0..*" Report
+Spell --* Order
+Spell --* Report
 
-OrderGroup -- Patient
-Order -- Patient
-Specimen -- Patient
-Report -- Patient
+Patient --* Spell
+
 
 @enduml
