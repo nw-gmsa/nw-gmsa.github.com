@@ -3,7 +3,7 @@ Parent:         CorrelationIdentifier
 Id:             MedicalRecordNumber
 Title:          "Medical Record Number"
 Description:     """
-- **NHS Data Model and Dictionary** See also [LOCAL PATIENT IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/local_patient_identifier__extended_.html)
+- **NHS Data Model and Dictionary** nil, see also [LOCAL PATIENT IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/local_patient_identifier__extended_.html)
 - **HL7 v2** Patient Identifier List (PID-3)
 - **IHE XDS** sourcePatientId and patientId
 """

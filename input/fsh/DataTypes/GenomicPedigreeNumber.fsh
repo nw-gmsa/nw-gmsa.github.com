@@ -3,7 +3,7 @@ Parent:         CorrelationIdentifier
 Id:             GenomicsPedigreeNumber
 Title:          "Genomics Pedigree Number"
 Description:     """
-- **NHS Data Model and Dictionary** Nil, see also [Medical Record Number](StructureDefinition-MedicalRecordNumber.html)
+- **NHS Data Model and Dictionary** nil, see also [Medical Record Number](StructureDefinition-MedicalRecordNumber.html)
 - **HL7 v2** Patient Identifier List (PID-3)
 """
 
