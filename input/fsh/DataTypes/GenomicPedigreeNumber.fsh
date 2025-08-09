@@ -3,7 +3,7 @@ Parent:         CorrelationIdentifier
 Id:             GenomicsPedigreeNumber
 Title:          "Genomics Pedigree Number"
 Description:     """
-TODO
+**NHS Data Model and Dictionary** Nil, see also [Medical Record Number](StructureDefinition-MedicalRecordNumber.html)
 """
 
 * ^purpose = """

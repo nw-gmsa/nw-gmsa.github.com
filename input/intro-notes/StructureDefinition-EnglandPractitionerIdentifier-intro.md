@@ -1,4 +1,3 @@
-NHS Data Dictionary [CONSULTANT CODE](https://www.datadictionary.nhs.uk/data_elements/consultant_code.html) and [GENERAL MEDICAL PRACTITIONER PPD CODE](https://www.datadictionary.nhs.uk/attributes/general_medical_practitioner_ppd_code.html).
 
 | FHIR identifier                          | OID/HL7v3                         | HL7v2 | Format            | Description                                                                                                              |
 |------------------------------------------|-----------------------------------|-------|-------------------|--------------------------------------------------------------------------------------------------------------------------|

@@ -3,7 +3,9 @@ Parent:         CorrelationIdentifier
 Id:             AccessionNumber
 Title:          "Accession Number"
 Description:     """
-Usually assigned by the order filler. See [CorrelationIdentifier](StructureDefinition-CorrelationIdentifier.html) for more details.
+**NHS Data Model and Dictionary** nil, see also [RADIOLOGICAL ACCESSION NUMBER](https://www.datadictionary.nhs.uk/data_elements/radiological_accession_number.html)
+
+Uniquely identifies a Specimen in multiple laboratory systems.
 """
 
 * ^purpose = ""
