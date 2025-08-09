@@ -88,10 +88,10 @@ Is present around Organisation, Practioner and PractitionerRole. NHS England has
 - Organization 
   - [ODS Code](StructureDefinition-OrganisationCode.html)
 - Practitioner
-  - [Practitioner Identifiers](StructureDefinition-EnglandPractitionerIdentifier.html) (GMP and GMC Numbers)
+  - [Practitioner Identifiers](StructureDefinition-PractitionerIdentifier.html) (GMP and GMC Numbers)
 - PractitionerRole
   - [ODS Code](StructureDefinition-OrganisationCode.html)
-  - [Practitioner Identifiers](StructureDefinition-EnglandPractitionerIdentifier.html)
+  - [Practitioner Identifiers](StructureDefinition-PractitionerIdentifier.html)
 
 ## Domain Archetype and Panels
 

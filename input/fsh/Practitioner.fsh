@@ -20,8 +20,8 @@ Includes elements from:
 * identifier ^slicing.description = "Slice based on the type"
 * identifier ^slicing.ordered = false
 * identifier contains
-  EnglandPractitionerIdentifier 1..1 MS
+  PractitionerIdentifier 1..1 MS
 
-* identifier[EnglandPractitionerIdentifier] only EnglandPractitionerIdentifier
+* identifier[PractitionerIdentifier] only PractitionerIdentifier
 
 * name 0..1 MS

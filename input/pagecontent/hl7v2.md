@@ -108,7 +108,7 @@ This is based on the definition of PV1 from [NHS England HL7 v2 ADT Message Spec
 |-----------|---------------------------|-------------|-------------|-----------------------------------------------------------------------------------|-----------------------------------------------|
 | PV1-1     | Set ID - PV1              | [PL](#pl)   | R           |                                                                                   | 1                                             |
 | PV1-3     | Assigned Patient Location |             | R           |                                                                                   | ^^^R0A09^^^^^^^R0A <br/> ^^^P1S8J^^^^^^^699X0 |
-| PV1-8     | Referring Doctor          | [XCN](#xcn) | R           | [Practitioner Identifier](StructureDefinition-EnglandPractitionerIdentifier.html) | C3456789^Darwin^Samuel^^^Dr^^^GMC             |                                                                                   
+| PV1-8     | Referring Doctor          | [XCN](#xcn) | R           | [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html) | C3456789^Darwin^Samuel^^^Dr^^^GMC             |                                                                                   
 | PV1-10    | Hospital Service          |             | R           | [Service](ValueSet-service.html)                                                  | 311                                           |
 | PV1-19    | Visit Number              | [CX](#cx)   | O - SHOULD  | [Hospital Provider Spell Identifier](StructureDefinition-HospitalProviderSpellIdentifier.html)                            | 12345^^^R0A                                   |                                    |
 
@@ -135,7 +135,7 @@ This is based on the definition of ORC from [Digital Health and Care Wales - HL7
 | ORC-4     | Placer Group Number      | [EI](#ei)   | R           | [Placer Group Number](StructureDefinition-PlacerGroupNumber.html)                 | 1001166717^699X0^^255^ISO                                                                                                       |
 | ORC-5     | Order Status             |             | O           |                                                                                   |                                                                                                                                 |
 | ORC-9     | Date/Time of Transaction |             | O           |                                                                                   |                                                                                                                                 |
-| ORC-12    | Ordering Provider        | [XCN](#xcn) | R           | [Practitioner Identifier](StructureDefinition-EnglandPractitionerIdentifier.html) | C3456789^Darwin^Samuel^^^Dr^^^GMC                                                                                               |
+| ORC-12    | Ordering Provider        | [XCN](#xcn) | R           | [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html) | C3456789^Darwin^Samuel^^^Dr^^^GMC                                                                                               |
 | ORC-21    | Ordering Facility Name   | [XON](#xon) | R           | [Organisation Code](StructureDefinition-OrganisationCode.html)                    |                                                                                                                                 |
 
 > v2 to FHIR Guidance: [ORC to FHIR ServiceRequest](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-orc-to-servicerequest.html)
@@ -163,7 +163,7 @@ This is based on the definition of OBR from [Digital Health and Care Wales - HL7
 | OBR-4     | Universal Service Identifier       |             | R             | [Genomic Test Directory](ValueSet-genomic-test-directory.html)                    | R240.1^Diagnostic testing for known variant(s)^England-GenomicTestDirectory |
 | OBR-6     | Requested Date/Time              |             | R for OML_O21 |                                                                                   | 20170126135745                                                              |
 | OBR-7     | Observation Date/Time              |             | R for ORU_R01 |                                                                                   | 20170126135745                                                              |
-| OBR-16    | Ordering Provider                  |             | R             | [Practitioner Identifier](StructureDefinition-EnglandPractitionerIdentifier.html) | C3456789^Darwin^Samuel^^^Dr^^^GMC                                           |
+| OBR-16    | Ordering Provider                  |             | R             | [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html) | C3456789^Darwin^Samuel^^^Dr^^^GMC                                           |
 | OBR-22    | Results Rpt/Status Chng -Date/Time |             | R             |                                                                                   | 20170126135745                                                              |
 | OBR-32    | Principal Result Interpreter       | [NDL](#ndl) | O - SHOULD    | DiagnosticReport.resultsInterpreter[primaryReporter]                              |                                                                             |
 | OBR-33    | Assistant Result Interpreter       | [NDL](#ndl) | O - SHOULD    | DiagnosticReport.resultsInterpreter[secondaryReporter]                            |                                                                             |
@@ -414,7 +414,7 @@ This is based on the definitions of NDL from [Royal College of Radiologists](htt
 
 | Field HL7   | Fieldname   | Data Type | Optionality | Identifier Type or ValueSet | Example Values |
 |-------------|-------------|-----------|-------------|-----------------|----------------|
-| NDL-1.CNN.1 | Id Number   | ST        | O           | [Practitioner Identifier](StructureDefinition-EnglandPractitionerIdentifier.html)      |                |
+| NDL-1.CNN.1 | Id Number   | ST        | O           | [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html)      |                |
 | NDL-1.CNN.2 | Family Name | ST        | O           | Surname         |                |
 | NDL-1.CNN.3 | Given  Name | ST        | O           | Forename        |                |
 | NDL-7       | Facility    | HD        | O           | [Organisation Code](StructureDefinition-OrganisationCode.html)         |                |

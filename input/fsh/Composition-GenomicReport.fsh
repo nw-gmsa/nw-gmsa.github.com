@@ -35,10 +35,10 @@ Description:    """
 * encounter.identifier insert Obligation(#SHALL:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/AutomationManager)
 
 * author only Reference(Practitioner or PractitionerRole)
-* author.identifier only EnglandPractitionerIdentifier
+* author.identifier only PractitionerIdentifier
 
 * attester.party only Reference(Practitioner or PractitionerRole)
-* attester.party.identifier only EnglandPractitionerIdentifier
+* attester.party.identifier only PractitionerIdentifier
 
 * custodian only Reference(Organization)
 * custodian.identifier only OrganisationCode

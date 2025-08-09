@@ -57,13 +57,13 @@ Includes constraints from:
   admittingDoctor 0..1
 
 * participant[attendingDoctor].type.coding = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ATND
-* participant[attendingDoctor].individual.identifier only EnglandPractitionerIdentifier
+* participant[attendingDoctor].individual.identifier only PractitionerIdentifier
 * participant[referringDoctor].type.coding = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#REF
-* participant[referringDoctor].individual.identifier only EnglandPractitionerIdentifier
+* participant[referringDoctor].individual.identifier only PractitionerIdentifier
 * participant[consultingDoctor].type.coding = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CON
-* participant[consultingDoctor].individual.identifier only EnglandPractitionerIdentifier
+* participant[consultingDoctor].individual.identifier only PractitionerIdentifier
 * participant[admittingDoctor].type.coding = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ADM
-* participant[admittingDoctor].individual.identifier only EnglandPractitionerIdentifier
+* participant[admittingDoctor].individual.identifier only PractitionerIdentifier
 
 * hospitalization.admitSource from AdmissionSource
 * hospitalization.dischargeDisposition from DischargeDisposition

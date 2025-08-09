@@ -112,7 +112,7 @@ See also [HL7 Europe Laboratory Report - DiagnosticReport: Laboratory Report](ht
 * performer[organisation].identifier only OrganisationCode
 * performer[organisation].type = #Organization
 
-* performer[operator].identifier only EnglandPractitionerIdentifier
+* performer[operator].identifier only PractitionerIdentifier
 * performer[operator].extension[performerFunction].valueCodeableConcept.coding = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#SPRF
 * performer[operator].type = #Practitioner
 
@@ -130,7 +130,7 @@ See also [HL7 Europe Laboratory Report - DiagnosticReport: Laboratory Report](ht
 * resultsInterpreter contains
   primaryReporter 0..*
 
-* resultsInterpreter[primaryReporter].identifier only EnglandPractitionerIdentifier
+* resultsInterpreter[primaryReporter].identifier only PractitionerIdentifier
 * resultsInterpreter[primaryReporter].type = #Practitioner
 
 * specimen 0..* MS
