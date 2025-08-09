@@ -131,6 +131,9 @@ pages:
   identifiers.md:
     title: Identifiers and Codes
     generation: markdown
+  archetype-intro.md:
+    title: Domain Archetypes Introduction
+    generation: markdown
 
 resources:
   Questionnaire/GenomicTestOrder:
@@ -201,6 +204,7 @@ menu:
 ##    Work Order Management [LAB-4]: LAB-4.html
 ##    Test Results Management [LAB-5]: LAB-5.html
   Domain Archetypes:
+    Overview: archetype-intro.html
     Genomic Test Order (Template): Questionnaire-GenomicTestOrder.html
     Genomic Test Report (Composition): StructureDefinition-Composition-GenomicReport.html
   Artefacts (Volume 3): artifacts.html

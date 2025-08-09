@@ -1,0 +1,41 @@
+@startuml
+
+title "Genomic Model Overview"
+
+
+entity "[[StructureDefinition-Patient.html Patient]]" as Patient {
+  [[StructureDefinition-NHSNumber.html NHS Number]]
+  [[StructureDefinition-MedicalRecordNumber.html Medical Record Number]]
+}
+
+entity "GMSA ([[StructureDefinition-Organization.html Organisation]])" as GMSA {
+[[StructureDefinition-OrganisationCode.html Organisation Code]]
+}
+
+entity "Order Group" as OrderGroup {
+  [[StructureDefinition-PlacerGroupNumber.html Placer Group Number]]
+}
+
+entity "[[Questionnaire-GenomicTestOrder.html Genomic Test Order]]" as Order <<aggregate>> {
+  [[StructureDefinition-PlacerOrderNumber.html Placer Order Number]]
+  [[StructureDefinition-FillerOrderNumber.html Filler Order Number]]
+}
+
+entity "[[StructureDefinition-Composition-GenomicReport.html Genomic Test Report]]" as Report <<aggregate>>
+
+entity "[[StructureDefinition-Specimen.html Specimen]]" as Specimen {
+  [[StructureDefinition-AccessionNumber.html Accession Number]]
+}
+
+OrderGroup o--* Order
+OrderGroup --* GMSA
+Order -- GMSA
+Order --* Report
+Specimen --* "0..*" Order
+
+OrderGroup -- Patient
+Order -- Patient
+Specimen -- Patient
+Report -- Patient
+
+@enduml
