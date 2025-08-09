@@ -4,6 +4,7 @@ Id:             GenomicsPedigreeNumber
 Title:          "Genomics Pedigree Number"
 Description:     """
 **NHS Data Model and Dictionary** Nil, see also [Medical Record Number](StructureDefinition-MedicalRecordNumber.html)
+**Type** [CorrelationIdentifier](StructureDefinition-CorrelationIdentifier.html)
 """
 
 * ^purpose = """

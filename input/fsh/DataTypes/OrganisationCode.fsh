@@ -4,6 +4,7 @@ Id:             OrganisationCode
 Title:          "Organisation Code"
 Description:     """
 **NHS Data Model and Dictionary** [ORGANISATION_CODE](https://www.datadictionary.nhs.uk/attributes/organisation_code.html)
+**Type** [CorrelationIdentifier](StructureDefinition-CorrelationIdentifier.html)
 """
 
 * system 1..1

@@ -4,6 +4,7 @@ Id:             NHSNumber
 Title:          "NHS Number"
 Description:     """
 **NHS Data Model and Dictionary** [NHS NUMBER](https://www.datadictionary.nhs.uk/attributes/nhs_number.html), see also Northern Ireland [HEALTH AND CARE NUMBER](https://www.datadictionary.nhs.uk/data_elements/health_and_care_number.html) and Scotland [COMMUNITY HEALTH INDEX NUMBER](https://www.datadictionary.nhs.uk/attributes/community_health_index_number.html)
+**Type** [CorrelationIdentifier](StructureDefinition-CorrelationIdentifier.html)
 
 Only traced NHS Number **SHOULD** be used, un-traced NHS Numbers **MUST** be clearly indicated.
 """

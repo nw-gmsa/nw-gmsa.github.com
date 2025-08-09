@@ -4,8 +4,9 @@ Id:             PlacerOrderNumber
 Title:          "Placer Order Number"
 Description:     """
 **NHS Data Model and Dictionary** nil
+**Type** [CorrelationIdentifier](StructureDefinition-CorrelationIdentifier.html)
 
-HL7 v2 Placer Order Number (ORC-2). See [CorrelationIdentifier](StructureDefinition-CorrelationIdentifier.html) for more details.
+HL7 v2 Placer Order Number (ORC-2).
 """
 
 

@@ -4,8 +4,7 @@ Id:             MedicalRecordNumber
 Title:          "Medical Record Number"
 Description:     """
 **NHS Data Model and Dictionary** See also [LOCAL PATIENT IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/local_patient_identifier__extended_.html)
-
-Only use in References Data Type if the NHS Number is not known or unverified.
+**Type** [CorrelationIdentifier](StructureDefinition-CorrelationIdentifier.html)
 """
 
 * ^purpose = """

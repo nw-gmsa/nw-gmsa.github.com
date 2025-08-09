@@ -4,8 +4,9 @@ Id:             FillerOrderNumber
 Title:          "Filler Order Number"
 Description:     """
 **NHS Data Model and Dictionary** nil
+**Type** [CorrelationIdentifier](StructureDefinition-CorrelationIdentifier.html)
 
-HL7 v2 Filler Order Number (ORC-3). See [CorrelationIdentifier](StructureDefinition-CorrelationIdentifier.html) for more details.
+HL7 v2 Filler Order Number (ORC-3).
 """
 
 
