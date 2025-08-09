@@ -8,11 +8,10 @@ Description:     """
 **Type** [CorrelationIdentifier](StructureDefinition-CorrelationIdentifier.html)
 
 This definition compatible with [Yorkskhire and Humberside - Interweave-EncounterGrouping](https://fhir.interweavedigital.com/R4/StructureDefinition-Interweave-EncounterGrouping.html)
-See also `5.6.3 Alternate Visit ID (CX)` from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws) PV1 documentation.
+See also `PV1-19 Visit ID (CX)` from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws) PV1 documentation.
 """
 
 * type = $v2-0203#VN
-
 
 
 
