@@ -27,6 +27,7 @@ See also [HL7 Europe Laboratory Report - DiagnosticReport: Laboratory Report](ht
 * identifier contains
   FillerReportNumber 0..1 MS
 
+* identifier[FillerReportNumber].type = $v2-0203#RI
 * identifier[FillerReportNumber] ^short = "Identifier assigned by the lab (Order Filler)"
 * identifier[FillerReportNumber] insert Obligation(#SHALL:populate, https://nw-gmsa.github.io/ActorDefinition/OrderFiller)
 * identifier[FillerReportNumber] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/AutomationManager)
