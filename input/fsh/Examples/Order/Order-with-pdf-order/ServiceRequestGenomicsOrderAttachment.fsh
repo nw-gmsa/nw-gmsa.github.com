@@ -5,17 +5,17 @@ Description: "TODO"
 
 * meta.versionId = "1.0"
 
-* identifier[placerOrderNumber].type = $v2-0203#PLAC
-* identifier[placerOrderNumber].value = "1601737"
-* identifier[placerOrderNumber].system = "http://www.acme.org/servicerequest/identifier"
-* identifier[placerOrderNumber].assigner.identifier.system = $ods-code
-* identifier[placerOrderNumber].assigner.identifier.value = "R0A"
+* identifier[PlacerOrderNumber].type = $v2-0203#PLAC
+* identifier[PlacerOrderNumber].value = "1601737"
+* identifier[PlacerOrderNumber].system = "http://www.acme.org/servicerequest/identifier"
+* identifier[PlacerOrderNumber].assigner.identifier.system = $ods-code
+* identifier[PlacerOrderNumber].assigner.identifier.value = "R0A"
 
-* identifier[fillerOrderNumber].type = $v2-0203#FILL
-* identifier[fillerOrderNumber].value = "1001166717"
-* identifier[fillerOrderNumber].system = "http://www.acme.org/servicerequest"
-* identifier[fillerOrderNumber].assigner.identifier.system = $ods-code
-* identifier[fillerOrderNumber].assigner.identifier.value = "699X0"
+* identifier[FillerOrderNumber].type = $v2-0203#FILL
+* identifier[FillerOrderNumber].value = "1001166717"
+* identifier[FillerOrderNumber].system = "http://www.acme.org/servicerequest"
+* identifier[FillerOrderNumber].assigner.identifier.system = $ods-code
+* identifier[FillerOrderNumber].assigner.identifier.value = "699X0"
 
 * status = #active
 * intent = #order
