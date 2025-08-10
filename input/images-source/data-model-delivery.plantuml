@@ -1,0 +1,42 @@
+@startuml
+
+title "NW GMSA Genomic Model Delivery Plan"
+
+start
+:Phase 1 - Establish initial enterprise **clinical process model**;
+note right
+Starting with the current model (IHE LTW + HL7 v2 OML/ORU)
+Extract key business identifiers (NHS Number, ODS Code, GMP/GMC Number, Order Placer Number, etc)
+Start improving **clinical data model** via codes and values (SNOMED + LOINC)
+end note
+:Phase 2 - Align with NHS England <i>Information Standards</i> and <i>Commissioning</i>;
+:Phase 3 - Clinical Data and Clinical Process Models;
+note right
+**Strategic Modernisation**
+
+We are shifting from **Sending** to **Sharing** data
+this allows us to iterate models and innovate design
+end note
+
+fork
+:Starting with international **genomic data models**;
+note left
+We need clinicians to be able to view this model,
+so they can drive it's improvement.
+Existing systems are likely to be insufficient
+end note
+:Align with NHS England <i>Interoperability Standards</i>;
+while (iterate until done)
+:Improve **Clinical Genomic Data Models**;
+endwhile (done)
+
+fork again
+:Initial alignment started in phase 1;
+while (iterate until done)
+:Improve **clinical process model** alignment with other diagnostic services;
+endwhile(done)
+
+end fork
+stop
+
+@enduml
