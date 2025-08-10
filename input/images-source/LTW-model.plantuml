@@ -12,16 +12,16 @@ entity "GMSA ([[StructureDefinition-Organization.html Organisation]])" as GMSA {
 [[StructureDefinition-OrganisationCode.html Organisation Code]]
 }
 
-entity "Order Group" as OrderGroup {
+class "[[Questionnaire-GenomicTestOrder.html Genomic Test Order]]" as Order <<aggregate>> {
   [[StructureDefinition-PlacerGroupNumber.html Placer Group Number]]
 }
 
-entity "[[Questionnaire-GenomicTestOrder.html Genomic Test Order]]" as Order <<aggregate>> {
+entity "Order Item\n[[StructureDefinition-ServiceRequest.html Service Request]]" as OrderItem  {
   [[StructureDefinition-PlacerOrderNumber.html Placer Order Number]]
   [[StructureDefinition-FillerOrderNumber.html Filler Order Number]]
 }
 
-entity "[[StructureDefinition-Composition-GenomicReport.html Genomic Test Report]]" as Report <<aggregate>>
+class "[[StructureDefinition-Composition-GenomicReport.html Genomic Test Report]]" as Report <<aggregate>>
 
 entity "[[StructureDefinition-Specimen.html Specimen]]" as Specimen {
   [[StructureDefinition-AccessionNumber.html Accession Number]]
@@ -31,16 +31,23 @@ entity "[[Spell]]" as Spell {
   [[StructureDefinition-HospitalProviderSpellIdentifier.html Hospital Provider Spell Identifier]]
 }
 
-OrderGroup o--* Order
-OrderGroup --* GMSA
-Order *-- GMSA
-Order --* Report
-Specimen --* "0..*" Order
-Specimen --* "0..*" Report
-Spell --* Order
-Spell --* Report
+entity "[[StructureDefinition-DiagnosticReport.html Diagnostic Report]]" as DiagnosticReport {
+Filler Report Number
+}
+entity "[[StructureDefinition-Observation.html Observation]]" as Observation
 
-Patient --* Spell
+Order o-d- "1..*" OrderItem
+OrderItem o-- "0..*" Report
+Report o-d- DiagnosticReport
+DiagnosticReport o-d- Observation
 
+OrderItem -l- "1..*" Specimen
+
+OrderItem -r- "1..1" GMSA
+
+
+Order -r- Spell
+
+Patient -r- Order
 
 @enduml

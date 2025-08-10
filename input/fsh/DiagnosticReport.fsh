@@ -19,6 +19,19 @@ See also [HL7 Europe Laboratory Report - DiagnosticReport: Laboratory Report](ht
 * identifier 1..* MS
 * identifier only CorrelationIdentifier
 
+* identifier ^slicing.discriminator.type = #value
+* identifier ^slicing.discriminator.path = "type"
+* identifier ^slicing.rules = #open
+* identifier ^slicing.description = "Slice based on the type"
+* identifier ^slicing.ordered = false
+* identifier contains
+  FillerReportNumber 0..1 MS
+
+* identifier[FillerReportNumber] ^short = "Identifier assigned by the lab (Order Filler)"
+* identifier[FillerReportNumber] insert Obligation(#SHALL:populate, https://nw-gmsa.github.io/ActorDefinition/OrderFiller)
+* identifier[FillerReportNumber] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/AutomationManager)
+
+
 * basedOn only CodeableReference
 * basedOn.identifier 1..1 MS
 * basedOn.identifier only CorrelationIdentifier
@@ -29,13 +42,7 @@ See also [HL7 Europe Laboratory Report - DiagnosticReport: Laboratory Report](ht
 * basedOn ^slicing.description = "Slice based on the type"
 * basedOn ^slicing.ordered = false
 * basedOn contains
-  fillerOrderNumber 0..1 MS and accessionNumber 0..1 MS
-
-* basedOn[accessionNumber] ^short = "Identifier assigned by the lab"
-* basedOn[accessionNumber].type 1..1 MS
-* basedOn[accessionNumber].type = "ServiceRequest"
-* basedOn[accessionNumber].identifier 1..1
-* basedOn[accessionNumber].identifier only AccessionNumber
+  fillerOrderNumber 0..1 MS
 
 * basedOn[fillerOrderNumber] ^short = "Identifier assigned by the lab (ORC-3)"
 * basedOn[fillerOrderNumber].type 1..1 MS
