@@ -5,6 +5,12 @@
 
 (and ORM_O01 General Order)
 
+<div class="alert alert-success" role="alert">
+POST [base]/<br/>
+Authorization: Basic {accessToken}<br/>
+Content-Type: application/hl7-v2+er7
+</div>
+
 #### References
 
  - [EPIC HL7 v2](https://open.epic.com/Interface/HL7v2) See **Outgoing Ancillary Orders** (EPR to RIE)
@@ -29,6 +35,12 @@
 | -- [SPM](#spm)            | 0..1        |                                                         |
 
 ### ORU_R01 Unsolicited transmission of an observation message
+
+<div class="alert alert-success" role="alert">
+POST [base]/<br/>
+Authorization: Basic {accessToken}<br/>
+Content-Type: application/hl7-v2+er7
+</div>
 
 #### References
 
@@ -86,9 +98,11 @@ This is based on the definition of PID from [NHS England HL7 v2 ADT Message Spec
 | PID-13    | Phone Number - Home                |           | R           |                                                                                                                               | 01656 123123^PRN^PH~07927655295^ORN^CP^NET^X.400^abc@home.com~01656 123123~01656123123^PRN^PH^^^abc@home.com~01656123123^PRN^PH |
 | PID-32    | Identity Reliability Code          |           | O           | Mandatory if the the NHS Number tracing status is not known.                                                                  | 01                                                                                                                              |
 
-> v2 to FHIR Guidance: [PID to FHIR Patient](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pid-to-patient.html)
-> 
-> FHIR Profile: [Patient](StructureDefinition-Patient.html)
+<div class="alert alert-info" role="alert">
+<b>v2 to FHIR Conversion:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pid-to-patient.html" _target="_blank">PID to FHIR Patient</a> 
+<br/>
+<b>FHIR Profile:</b> <a href="StructureDefinition-Patient.html" _target="_blank">Patient</a> 
+</div>
 
 #### Examples
 
