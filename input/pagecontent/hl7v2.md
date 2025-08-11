@@ -126,9 +126,11 @@ This is based on the definition of PV1 from [NHS England HL7 v2 ADT Message Spec
 | PV1-10    | Hospital Service          |             | R           | [Service](ValueSet-service.html)                                                  | 311                                           |
 | PV1-19    | Visit Number              | [CX](#cx)   | O - SHOULD  | [Hospital Provider Spell Identifier](StructureDefinition-HospitalProviderSpellIdentifier.html)                            | 12345^^^R0A                                   |                                    |
 
-> v2 to FHIR Guidance: [PV1 to FHIR Encounter](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pv1-to-encounter.html)
-> 
-> FHIR Profile: [Encounter](StructureDefinition-Encounter.html)
+<div class="alert alert-info" role="alert">
+<b>v2 to FHIR Conversion:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pv1-to-encounter.html" _target="_blank">PV1 to FHIR Encounter</a> 
+<br/>
+<b>FHIR Profile:</b> <a href="StructureDefinition-Encounter.html" _target="_blank">Encounter</a> 
+</div>
 
 #### Examples
 
@@ -152,10 +154,13 @@ This is based on the definition of ORC from [Digital Health and Care Wales - HL7
 | ORC-12    | Ordering Provider        | [XCN](#xcn) | R           | [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html) | C3456789^Darwin^Samuel^^^Dr^^^GMC                                                                                               |
 | ORC-21    | Ordering Facility Name   | [XON](#xon) | R           | [Organisation Code](StructureDefinition-OrganisationCode.html)                    |                                                                                                                                 |
 
-> v2 to FHIR Guidance: [ORC to FHIR ServiceRequest](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-orc-to-servicerequest.html)
->
-> FHIR Profile: [ServiceRequest](StructureDefinition-ServiceRequest.html)
->
+
+<div class="alert alert-info" role="alert">
+<b>v2 to FHIR Conversion:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-orc-to-servicerequest.html" _target="_blank">ORC to FHIR ServiceRequest</a> 
+<br/>
+<b>FHIR Profile:</b> <a href="StructureDefinition-ServiceRequest.html" _target="_blank">ServiceRequest</a> 
+</div>
+
 
 #### Examples
 
@@ -183,12 +188,14 @@ This is based on the definition of OBR from [Digital Health and Care Wales - HL7
 | OBR-33    | Assistant Result Interpreter       | [NDL](#ndl) | O - SHOULD    | DiagnosticReport.resultsInterpreter[secondaryReporter]                            |                                                                             |
 | OBR-34    | Technician                         | [NDL](#ndl) | O - SHOULD    | DiagnosticReport.performer[operator]                                              |                                                                             |                                                                             |
 
-> v2 to FHIR Guidance OML_O21: [OBR to FHIR ServiceRequest](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obr-to-servicerequest.html)
-> 
-> v2 to FHIR Guidance ORU_R01: [OBR to FHIR DiagnosticReport](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obr-to-diagnosticreport.html)
-> 
-> FHIR Profile: [DiagnosticReport](StructureDefinition-DiagnosticReport.html)
 
+<div class="alert alert-info" role="alert">
+<b>v2 to FHIR Conversion OML_O21:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obr-to-servicerequest.html" _target="_blank">OBR to FHIR ServiceRequest</a> 
+<br/>
+<b>v2 to FHIR Conversion ORU_R01:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obr-to-diagnosticreport.html" _target="_blank">OBR to FHIR DiagnosticReport</a> 
+<br/>
+<b>FHIR Profile:</b> <a href="StructureDefinition-DiagnosticReport.html" _target="_blank">DiagnosticReport</a> 
+</div>
 
 #### Examples
 
@@ -209,9 +216,12 @@ Multiple NTE should be converted to a single FHIR Annotation using markdown
 | NTE-3     | Comment           |           |             |             |                | 
 | NTE-4     | Comment Type      |           |             |             |                | 
 
-> v2 to FHIR Guidance: OML_O21 [NTE to FHIR ServiceRequest](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-nte-to-servicerequest.html)
-> 
-> v2 to FHIR Guidance: ORU_R01 [NTE to FHIR Observation](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-nte-to-observation.html)
+
+<div class="alert alert-info" role="alert">
+<b>v2 to FHIR Conversion OML_O21:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-nte-to-servicerequest.html" _target="_blank">NTE to FHIR ServiceRequest</a> 
+<br/>
+<b>v2 to FHIR Conversion ORU_R01:</b> <a href="(https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-nte-to-observation.html" _target="_blank">NTE to FHIR Observation</a> 
+</div>
 
 #### Examples
 
@@ -248,11 +258,11 @@ NTE|19||Contact/Bleep No: 123
 | DG1-3     | Diagnosis Code    | [CE](#ce)          |             |             |                | 
 | DG1-4     | Diagnosis Description |           |             |             |                | 
 
-> v2 to FHIR Guidance: [DG1 to FHIR Condition](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-dg1-to-condition.html)
-> 
-> Note: In orders this is likely to be a coded entry in ServiceRequest.reasonCode as only a code is present.
-> 
-> FHIR Profile: [Condition](StructureDefinition-Condition.html)
+<div class="alert alert-info" role="alert">
+<b>v2 to FHIR Conversion:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-dg1-to-condition.html" _target="_blank">DG1 to FHIR Condition</a> Note: In orders this is likely to be a coded entry in ServiceRequest.reasonCode as only a code is present.
+<br/>
+<b>FHIR Profile:</b> <a href="StructureDefinition-Condition.html" _target="_blank">Condition</a> 
+</div>
 
 #### Examples
 
@@ -275,9 +285,12 @@ This is based on the definition of OBX from [Digital Health and Care Wales - HL7
 | OBX-11    | Observation Result Status    |           | R           |                         | F                                                                                                               |
 | OBX-14    | Date/Time of the Observation |           | O - SHOULD  |                         | 20190514102417+0000                                                                                             |
 
-> v2 to FHIR Guidance: [OBX to FHIR Observation](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-observation.html)
-> 
-> FHIR Profile: [Observation](StructureDefinition-Observation.html)
+
+<div class="alert alert-info" role="alert">
+<b>v2 to FHIR Conversion:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-observation.html" _target="_blank">OBX to FHIR Observation</a> 
+<br/>
+<b>FHIR Profile:</b> <a href="StructureDefinition-Observation.html" _target="_blank">Observation</a> 
+</div>
 
 #### Examples
 
@@ -308,9 +321,11 @@ This is based on the definition of OBX from [Digital Health and Care Wales - HL7
 | OBX-11    | Observation Result Status    |           | R           |                                                          | F                                    |
 | OBX-14    | Date/Time of the Observation |           | O - SHOULD  |                                                          | 20190514102417+0000                  |
 
-> v2 to FHIR Guidance:  [OBX to FHIR DocumentReference](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-documentreference.html)
-> 
-> FHIR Profile: [DocumentReference](StructureDefinition-DocumentReference.html)
+<div class="alert alert-info" role="alert">
+<b>v2 to FHIR Conversion:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-documentreference.html" _target="_blank">OBX to FHIR DocumentReference</a> 
+<br/>
+<b>FHIR Profile:</b> <a href="StructureDefinition-DocumentReference.html" _target="_blank">DocumentReference</a> 
+</div>
 
 #### Examples
 
@@ -336,9 +351,12 @@ This is based on the definition of SPM from [Digital Health and Care Wales - HL7
 | SPM-20    | Specimen Availability         |           | O           |                                                              |                                                    |
 | SPM-30    | Accession ID                  |           | O           |                                                              |                                                    |
 
-> v2 to FHIR Guidance:  [SPM to FHIR Specimen](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-spm-to-specimen.html)
-> 
-> FHIR Profile: [Specimen](StructureDefinition-Specimen.html)
+
+<div class="alert alert-info" role="alert">
+<b>v2 to FHIR Conversion:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-spm-to-specimen.html" _target="_blank">SPM to FHIR Specimen</a> 
+<br/>
+<b>FHIR Profile:</b> <a href="StructureDefinition-Specimen.html" _target="_blank">Specimen</a> 
+</div>
 
 #### Examples
 
