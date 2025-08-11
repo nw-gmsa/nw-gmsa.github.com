@@ -168,6 +168,10 @@ resources:
     name: Bundle-NonWGSTestOrderForm-FetalScenario-Example
     description: See [Bundle-NonWGSTestOrderForm-FetalScenario-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle#Bundle-NonWGSTestOrderForm-FetalScenario-Example)
     exampleBoolean: true
+  Bundle/Bundle-NonWGSTestOrderForm-Reanalysis-Example:
+    name: Bundle-Bundle-NonWGSTestOrderForm-Reanalysis-Example
+    description: See [Bundle-Bundle-NonWGSTestOrderForm-Reanalysis-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/ServiceRequest?version=0.4.3#ServiceRequest-NonWGSTestOrderForm-ReAnalysis-Example-duplicate-2)
+    exampleBoolean: true
   NamingSystem/nhs-number-namingsystem:
     name: NHS Number
     exampleBoolean: false
@@ -267,3 +271,4 @@ groups:
     resources:
       - Bundle/Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example
       - Bundle/Bundle-NonWGSTestOrderForm-FetalScenario-Example
+      - Bundle/Bundle-NonWGSTestOrderForm-Reanalysis-Example
