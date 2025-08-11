@@ -3,7 +3,7 @@
 
 ### OML_O21 Laboratory Order 
 
-(and ORM_O01 General Order)
+HL7 over HTTP is preferred for this message, MLLP is also supported.
 
 <div class="alert alert-success" role="alert">
 POST [base]/<br/>
@@ -35,6 +35,8 @@ Content-Type: application/hl7-v2+er7
 | -- [SPM](#spm)            | 0..1        |                                                         |
 
 ### ORU_R01 Unsolicited transmission of an observation message
+
+HL7 over HTTP is preferred for this message, MLLP is also supported.
 
 <div class="alert alert-success" role="alert">
 POST [base]/<br/>
