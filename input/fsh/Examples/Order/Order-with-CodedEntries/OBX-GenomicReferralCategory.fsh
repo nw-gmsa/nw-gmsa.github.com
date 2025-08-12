@@ -16,7 +16,7 @@ Description: "TODO"
 * encounter.reference = "urn:uuid:984b8a89-4194-4eb4-a7ea-ca8049ebeea3"
 
 
-* valueCodeableConcept = $sct#1186936003 "Storage of specimen (procedure)"
+* valueCodeableConcept = $sct#1186936003 "Specimen storage"
 
 * subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
 * subject.display = "Octavia CHISLETT"
