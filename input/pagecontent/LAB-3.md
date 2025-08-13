@@ -27,7 +27,7 @@ It transmits the observation results from the Order Filler to the Order Result T
 <br clear="all">
 
 <figure>
-{%include LTW-usecase-4-options.svg%}
+{%include LTW-usecase-2-options.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">IHE LTW LAB-3 Modernisation Options Sequence Diagram</p>
 </figure>
 <br clear="all">
