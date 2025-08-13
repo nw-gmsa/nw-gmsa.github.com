@@ -9,7 +9,7 @@ participant "Order Filler" as LIMS
 EPR -> EPR: Select Test Order Form
 EPR -> EPR: Complete Test Order Form
 
-== Submit Test Order Form ==
+== Submit Test Order Form IHE LAB-1 ==
 EPR -> TIE: \nSend HL7 FHIR Message\n**Laboratory Order O21**
 TIE -> LIMS: Send HL7 v2 Message\n**OML_O21**
 

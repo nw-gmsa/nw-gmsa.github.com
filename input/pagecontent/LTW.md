@@ -28,7 +28,7 @@ Later stages will include the use of [Genomic Order Management Service](https://
 
 ## Overview
 
-<img style="padding:3px;width:95%;" src="LTW Use Case 1 and 4.drawio.png" alt="Genomic LTW Business Process"/>
+<img style="padding:3px;width:95%;" src="LTW Use Case 1 and 2.drawio.png" alt="Genomic LTW Business Process"/>
 <br clear="all">
 <p class="figureTitle">Genomic LTW Business Process</p> 
 <br clear="all">
@@ -95,7 +95,7 @@ This archetype definition can also support [HL7 Structured Data Capture](https:/
 The completed form is submitted to the Regional Integration Engine using:
 
 - [LAB-1](LAB-1.html) for orders raised by Order Placer systems.
-- [LAB-4](LAB-4.html) for orders raised by Order Filler systems to another Order Filler system (typically pathology systems).
+
 
 <figure>
 {%include LTW-usecase-1-sequence.svg%}
@@ -155,7 +155,7 @@ A report is created by the clinical practice and sent to the order result tracke
 ### Genomic Test Report Description
 
 <figure>
-{%include LTW-usecase-4-activity.svg%}
+{%include LTW-usecase-2-activity.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Genomics Test Report Activity</p>
 </figure>
 <br clear="all">
@@ -175,10 +175,15 @@ A report is created by the clinical practice and sent to the order result tracke
 <b>Domain Archetype:</b> <a href="StructureDefinition-Composition-GenomicReport.html" _target="_blank">Genomic Test Report (Composition)</a> 
 </div>
 
+<figure>
+{%include LTW-usecase-2-sequence.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">Genomics Test Report Sequence Diagram - LAB-3</p>
+</figure>
+<br clear="all">
 
 ## Use Case 3: Genomic Test Order following on from Pathology Test Order
 
-<img style="padding:3px;width:95%;" src="LTW Use Case 2.drawio.png" alt="Genomic LTW Business Process - Use Case 3"/>
+<img style="padding:3px;width:95%;" src="LTW Use Case 3.drawio.png" alt="Genomic LTW Business Process - Use Case 3"/>
 <br clear="all">
 <p class="figureTitle">Genomic LTW Business Process - Use Case 3</p> 
 <br clear="all">
@@ -188,6 +193,8 @@ As part of this testing, the clinical process requires a genomics test to be per
 This genomics process is largely the same except for:
 - The order is sent as one interaction as the sample does not need to be collected.
 - The order should contain the pathology report detailing the results of the pathology tests.
+
+- [LAB-4](LAB-4.html) for orders raised by Order Filler systems to another Order Filler system (typically pathology systems).
 
 This use case can often occur around cancer:
 
@@ -201,7 +208,7 @@ The details of this is beyond the scope of this guide, for more details see [Get
 
 ## Use Case 4: Genomic Test Order entered on GLH (Order Filler)
 
-<img style="padding:3px;width:95%;" src="LTW Use Case 3.drawio.png" alt="Genomic LTW Business Process - Use Case 3"/>
+<img style="padding:3px;width:95%;" src="LTW Use Case 4.drawio.png" alt="Genomic LTW Business Process - Use Case 3"/>
 <br clear="all">
 <p class="figureTitle">Genomic LTW Business Process - Use Case 4</p> 
 <br clear="all">
