@@ -20,4 +20,9 @@ LIMS -> LIMS: Complete Report
 LIMS -> TIE: Send HL7 v2 Message\n**Laboratory Report ORU_R01**
 TIE -> EPR: Send HL7 v2 Message\n**Laboratory Report ORU_R01**
 
+note over EPR, TIE
+When all tests in the order are complete
+end note
+RIE -> EPR: Task complete notification\n(Can be an email notification)
+
 @enduml

@@ -1,0 +1,22 @@
+@startuml
+
+hide footbox
+
+participant "Order Placer" as EPR
+participant "Order Filler (Pathology)" as LIMSP
+participant "Order Filler (Genomics)" as LIMSG
+
+
+EPR -> LIMSP: Submit Laboratory Order O21
+LIMSP -> EPR: Send Laboratory Report R01
+
+opt
+note over LIMSP, LIMSG
+Same specimen can reused for multiple tests
+end note
+LIMSP --> LIMSG: Send Specimen
+EPR -> LIMSG: Submit Genomic Order O21
+LIMSG -> EPR: Send Genomic Report R01
+end
+
+@enduml

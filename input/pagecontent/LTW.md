@@ -53,7 +53,7 @@ From a high level perspective the process is
 Where the `Order Placer` sends the **Laboratory Order** to the `Order Filler`, the lab performs the test and then sends the **Laboratory Report** back to the `Order Placer`. However, variations can exist such as the order is updated or the order is entered directly on the `Order Filler`system (these are currently out of scope).
 
 
-## Use Case 1: Genomic Test Order
+## Use Case: Genomic Test Order
 
 An order is created by the clinical practice and placed to the laboratory.
 
@@ -147,7 +147,7 @@ The detail of this form/template defines:
 
 After submitting the original order, the sample will be collected and sent to the Order Filler. The Order Filler will update the Test Order to include details such as a specimen collection date, order filler number, etc.
 
-## Use Case 2: Genomic Test Report
+## Use Case: Genomic Test Report
 
 A report is created by the clinical practice and sent to the order result tracker.
 
@@ -181,20 +181,26 @@ A report is created by the clinical practice and sent to the order result tracke
 </figure>
 <br clear="all">
 
-## Use Case 3: Genomic Test Order following on from Pathology Test Order
+## Use Case: Genomic Test Order following on from Pathology Test Order
 
 <img style="padding:3px;width:95%;" src="LTW Use Case 3.drawio.png" alt="Genomic LTW Business Process - Use Case 3"/>
 <br clear="all">
 <p class="figureTitle">Genomic LTW Business Process - Use Case 3</p> 
 <br clear="all">
 
-In this use case the original order is raised by the `Order Placer` and sent to a Pathology LIMS (`Pathology Order Filler`). The Pathology LIMS follows the processes outlined in [Use Case 1: Genomic Test Order](#use-case-1-genomic-test-order) and [Use Case 4: Genomic Test Report](#use-case-4-genomic-test-report) for pathology testing.  
+In this use case the original order is raised by the `Order Placer` and sent to a Pathology LIMS (`Pathology Order Filler`). The Pathology LIMS follows the processes outlined in [Use Case 1: Genomic Test Order](#use-case-1-genomic-test-order) and [Use Case 2: Genomic Test Report](#use-case-2-genomic-test-report) for pathology testing.  
 As part of this testing, the clinical process requires a genomics test to be performed.
 This genomics process is largely the same except for:
 - The order is sent as one interaction as the sample does not need to be collected.
 - The order should contain the pathology report detailing the results of the pathology tests.
 
-- [LAB-4](LAB-4.html) for orders raised by Order Filler systems to another Order Filler system (typically pathology systems).
+<figure>
+{%include LTW-usecase-3-sequence.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">Multiple Diagnostic Tests - LAB-1 and LAB-3</p>
+</figure>
+<br clear="all">
+
+### Diagnostic Cancer Pathways 
 
 This use case can often occur around cancer:
 
@@ -206,20 +212,11 @@ This use case can often occur around cancer:
 The details of this is beyond the scope of this guide, for more details see [Getting It Right First Time (GIRFT) Best Practice Timed Diagnostic Cancer pathways ](https://gettingitrightfirsttime.co.uk/wp-content/uploads/2024/03/BestPracticeTimedDiagnosticCancerPathwayssummary-guide-March-24-V3.pdf)
 
 
-## Use Case 4: Genomic Test Order entered on GLH (Order Filler)
-
-<img style="padding:3px;width:95%;" src="LTW Use Case 4.drawio.png" alt="Genomic LTW Business Process - Use Case 3"/>
-<br clear="all">
-<p class="figureTitle">Genomic LTW Business Process - Use Case 4</p> 
-<br clear="all">
-
-In this use case the order has been manually entered into NW GLH LIMS (as a result of an email or telephone call).
-The `Order Filler` notifies the `Order Placer` of the order.
-The `Order Placer` can then update the `Order Filler` when details change on the order such as a Order Placer Number assigned or updating details on the specimen such as collection dates.
-The proces then follows the same process as [Use Case 4: Genomic Test Report](#use-case-4-genomic-test-report)
+## Use Case: Work Order Management 
 
 
-## Relationship to NHS England Genomic Order Management Service FHIR API
+
+### Relationship to NHS England Genomic Order Management Service FHIR API
 
 This guide builds on the use cases outlined in [NHS England Genomic Order Management Service FHIR API - Background](https://simplifier.net/guide/genomic-order-management-service-fhir-api/Home/Design/Background), expanding them to support a broader range of participants and introducing standards for the `Laboratory Order LAB-1`.
 Key differences include:
@@ -235,7 +232,7 @@ Key differences include:
 <p class="figureTitle">Relationship to NHS England Genomic Order Management Service</p> 
 <br clear="all">
 
-## Relationship to NHS England Pathology
+### Relationship to NHS England Pathology
 
 This guide builds on the use cases described in the [NHS England Pathology FHIR Implementation Guide](https://simplifier.net/guide/pathology-fhir-implementation-guide/Home/Design/Background), extending them to support a wider range of stakeholders and introducing standards for the Laboratory Order LAB-1.
 

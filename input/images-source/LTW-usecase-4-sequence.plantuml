@@ -1,0 +1,34 @@
+@startuml
+
+hide footbox
+
+participant "Order Placer" as EPR
+participant "Automation Manager\nRegional Integration Engine" as RIE
+participant "Order Filler\n(North West GMSA)" as LIMSP
+participant "Order Filler\n(other GMSA)" as LIMSG
+
+EPR -> RIE: Submit Laboratory Order O21 (LAB-1)
+
+note over RIE
+Route order as required,
+splitting the order is necessary
+end note
+
+opt North West GMSA Order
+RIE -> LIMSP: Submit Genomic Order O21 (LAB-1/LAB-4)
+LIMSP -> RIE: Send Laboratory Report R01
+RIE -> EPR: Send Laboratory Report R01
+end
+
+opt Other GMSA Order
+RIE -> LIMSP: Submit Genomic Order O21 (LAB-1/LAB-4)\nUsing Genomic Order Management Service API
+LIMSP -> RIE: Send Laboratory Report R01\nUsing Genomic Order Management Service API
+RIE -> EPR: Send Laboratory Report R01
+end
+
+note over EPR, RIE
+When all tests in the order are complete
+end note
+RIE -> EPR: Task complete notification\n(Can be an email notification)
+
+@enduml
