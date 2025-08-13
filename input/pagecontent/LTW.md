@@ -196,7 +196,7 @@ This use case can often occur around cancer:
 <p class="figureTitle">Genomic LTW Business Process - Use Case 3</p> 
 <br clear="all">
 
-<img style="padding:3px;width:95%;" src="cancer-diagnostics.png" alt="Cancer Diagnostics"/>
+<img style="padding:3px;width:30%;" src="cancer-diagnostics.png" alt="Cancer Diagnostics"/>
 <br clear="all">
 <p class="figureTitle">Cancer Diagnostics</p> 
 <br clear="all">
