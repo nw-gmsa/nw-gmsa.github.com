@@ -213,7 +213,7 @@ Key differences include:
 
 <img style="padding:3px;width:95%;" src="Relationship to NHS England Genomic Order Management Service.drawio.png" alt="Relationship to NHS England Genomic Order Management Service FHIR API"/>
 <br clear="all">
-<p class="figureTitle">Relationship to NHS England Pathology</p> 
+<p class="figureTitle">Relationship to NHS England Genomic Order Management Service</p> 
 <br clear="all">
 
 ### Relationship to NHS England Pathology
