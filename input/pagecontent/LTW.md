@@ -241,7 +241,7 @@ This genomics process is largely the same except for:
 
 This use case can often occur around cancer:
 
-<img style="padding:3px;width:30%;" src="cancer-diagnostics.png" alt="Cancer Diagnostics"/>
+<img style="padding:3px;width:20%;" src="cancer-diagnostics.png" alt="Cancer Diagnostics"/>
 <br clear="all">
 <p class="figureTitle">Cancer Diagnostics</p> 
 <br clear="all">
