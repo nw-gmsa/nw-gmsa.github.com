@@ -200,16 +200,34 @@ A report is created by the clinical practice and sent to the order result tracke
 <b>Domain Archetype:</b> <a href="StructureDefinition-Composition-GenomicReport.html" _target="_blank">Genomic Test Report (Composition)</a> 
 </div>
 
+### Relationship to NHS England Genomic Order Management Service FHIR API
+
+This guide builds on the use cases outlined in [NHS England Genomic Order Management Service FHIR API - Background](https://simplifier.net/guide/genomic-order-management-service-fhir-api/Home/Design/Background), expanding them to support a broader range of participants and introducing standards for the `Laboratory Order LAB-1`.
+Key differences include:
+
+- **Workflow basis:** The [IHE Laboratory and Testing Worflow LTW](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol1.pdf) serves as the primary reference for describing laboratory testing processes.
+- **Message translation and code conversion:** The Regional Integration Engine (RIE) handles translations and code mappings to and from the Genomic Order Management Service FHIR API.
+- **Routing of orders and reports:** The RIE routes orders and reports for other GMSAs through the Genomic Order Management Service FHIR API.
+- **Regional workflow consistency:** Existing regional workflows remain largely unchanged, with both HL7 v2 and FHIR standardised across the region.
+- **Report compatibility:** Reports are aligned with neighbouring Welsh NHS systems, using DHCW HL7 v2 ORU as the core model for both HL7 v2 and FHIR in the North West.
+
+<img style="padding:3px;width:95%;" src="Relationship to NHS England Genomic Order Management Service.drawio.png" alt="Relationship to NHS England Genomic Order Management Service FHIR API"/>
+<br clear="all">
+<p class="figureTitle">Relationship to NHS England Pathology</p> 
+<br clear="all">
+
 ### Relationship to NHS England Pathology
 
-This guide implements the same use cases described in [NHS England Pathology FHIR Implementation Guide - Background](https://simplifier.net/guide/pathology-fhir-implementation-guide/Home/Design/Background), with additions to support a wider set of actors and introduces standards around the `Laboratory Order LAB-1`. Key differences:
+This guide builds on the use cases described in the [NHS England Pathology FHIR Implementation Guide](https://simplifier.net/guide/pathology-fhir-implementation-guide/Home/Design/Background), extending them to support a wider range of stakeholders and introducing standards for the Laboratory Order LAB-1.
 
-- [IHE Laboratory and Testing Worflow LTW](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol1.pdf) is used as the base description of laboratory testing workflow.
-- `GP Electronic Patient Record System` and `Order Communications System` are collectively known as [Order Placer](ActorDefinition-OrderPlacer.html), this actor can also be fulfilled by other EPR systesm.
-- An  [Intermediary](ActorDefinition-Intermediary.html) is used between [Order Placer](ActorDefinition-OrderPlacer.html) and [Order Filler](ActorDefinition-OrderFiller.html) which performs message translation and code conversions.
-- For results, the `GP Electronic Patient Record System` is classed a [Order Result Tracker](ActorDefinition-OrderResultTracker.html), other systems may be used to deliver this functionality.
-- An  [Intermediary](ActorDefinition-Intermediary.html) is used between [Order Filler](ActorDefinition-OrderFiller.html) and [Order Result Tracker](ActorDefinition-OrderResultTracker.html) which performs message translation and code conversions.
-- A [Canonical model](https://en.wikipedia.org/wiki/Canonical_model) is present which is expressed via HL7 FHIR and can be implemented via HL7 v2 and FHIR and IHE XDS. This is conformant to the latest versions of [HL7 UK Core](https://simplifier.net/guide/uk-core-implementation-guide-stu2) and [NHS England Data Model and Dictionary](https://www.datadictionary.nhs.uk/). Although this is focused on Genomics, it also includes elements from Pathology and Radiology for compatability reasons. This also includes mandatory use of NHS England National Procedure Codes. 
+Key differences include:
+
+- **Workflow foundation:** The [IHE Laboratory and Testing Worflow LTW](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol1.pdf) is used as the reference model for describing laboratory testing processes.
+- **Order Placer role:** The GP Electronic Patient Record (EPR) System and the Order Communications System together form the Order Placer role, which may also be fulfilled by other EPR systems.
+- **Intermediary between Order Placer and Order Filler:** This intermediary performs message translation and code conversion.
+- **Order Result Tracker role:** For results, the GP EPR System acts as the Order Result Tracker, though other systems (e.g. Secondary Care EPR) can provide this function.
+- **Intermediary between Order Filler and Order Result Tracker:** This intermediary also handles message translation and code conversion.
+- **Canonical model:** A standardised model ([Canonical model](https://en.wikipedia.org/wiki/Canonical_model)), expressed in HL7 FHIR, that can be implemented using HL7 v2, FHIR, and IHE XDS. It aligns with the latest HL7 UK Core and NHS England Data Model and Dictionary. While primarily focused on genomics, it incorporates elements from pathology and radiology for compatibility, and mandates the use of NHS England National Procedure Codes.
 
 <img style="padding:3px;width:95%;" src="Relationship to NHS England Pathology.drawio.png" alt="Relationship to NHS England Pathology"/>
 <br clear="all">
@@ -218,7 +236,7 @@ This guide implements the same use cases described in [NHS England Pathology FHI
 
 ## Security Considerations
 
-TODO 
+TODO - is OAuth2 based using client credentials flow.
 
 This may include [IHE Internet User Authentication [IUA]](https://profiles.ihe.net/ITI/IUA/index.html) and [IHE Basic Audit Log Patterns[BALP]](https://profiles.ihe.net/ITI/BALP/index.html) which includes use of:
 
