@@ -200,6 +200,26 @@ This genomics process is largely the same except for:
 </figure>
 <br clear="all">
 
+### Main Process Flow
+
+- Initial Laboratory Order
+  - Step 1: The Order Placer submits a Laboratory Order O21 (LAB-1) to Order Filler (Pathology).
+  - Step 2: Order Filler (Pathology) sends back a Laboratory Report R01 (LAB-3).
+  - Note: As required by local clinical guidelines, this step can also include imaging orders.
+- Optional Path 1 – Genomic Order created by original order placer
+  - Condition: [Genomic Order created by original order placer].
+  - Note: The same specimen can be reused for multiple tests.
+  - Step 3: Order Placer submits a Genomic Order O21 (LAB-2) to Order Filler (Genomics).
+  - Step 4: Specimen is sent from Order Placer to Genomics.
+  - Step 5: Order Filler (Genomics) sends a Genomic Report R01 (LAB-3) back to the Order Placer.
+- Optional Path 2 – Genomic Order created by Pathology
+  - Condition: [Order Filler (Pathology) creates Genomic Order].
+  - Note: The same specimen can be reused for multiple tests.
+  - Step 6: Order Filler (Pathology) submits a Genomic Order O21 (LAB-2) to Order Filler (Genomics).
+  - Step 7: Specimen is sent from Pathology to Genomics.
+  - Step 8: Order Filler (Genomics) sends a Genomic Report R01 (LAB-3) to Order Filler (Pathology).
+  - Step 9: Pathology sends the Genomic Report R01 (LAB-3) to the Order Placer.
+
 ### Diagnostic Cancer Pathways 
 
 This use case can often occur around cancer:
@@ -214,7 +234,28 @@ The details of this is beyond the scope of this guide, for more details see [Get
 
 ## Use Case: Work Order Management 
 
+<figure>
+{%include LTW-usecase-4-sequence.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">Work Order Management LAB-4</p>
+</figure>
+<br clear="all">
 
+### Main Process Flow
+
+- Order Submission
+  - The Order Placer submits a Laboratory Order O21 (LAB-1) to the Automation Manager.
+  - The Automation Manager decides whether to route or split the order as needed depending on the requested tests.
+- Conditional Routing (opt blocks)
+  - [North West GMSA Order]
+    - The Automation Manager submits a Genomic Order O21 (LAB-1/LAB-4) to Order Filler (North West GMSA). 
+    - The Order Filler sends back Laboratory Report R01 to the Automation Manager.
+    - The Automation Manager forwards this Laboratory Report R01 to the Order Placer.
+  - [Other GMSA Order]
+    - The Automation Manager submits a Genomic Order O21 (LAB-1/LAB-4) using the Genomic Order Management Service API to Order Filler (other GMSA).
+    - The Order Filler returns Laboratory Report R01 via the same API.
+    - The Automation Manager sends this Laboratory Report R01 to the Order Placer.
+- Completion
+  - When all tests in the order are complete, the Automation Manager sends a task complete notification (which can be an email) to the Order Placer.
 
 ### Relationship to NHS England Genomic Order Management Service FHIR API
 

@@ -7,16 +7,28 @@ participant "Order Filler (Pathology)" as LIMSP
 participant "Order Filler (Genomics)" as LIMSG
 
 
-EPR -> LIMSP: Submit Laboratory Order O21
-LIMSP -> EPR: Send Laboratory Report R01
+EPR -> LIMSP: Submit Laboratory Order O21 (LAB-1)
+LIMSP -> EPR: Send Laboratory Report R01 (LAB-3)
 
-opt
+opt Genomic Order created by original order placer
+
 note over LIMSP, LIMSG
 Same specimen can reused for multiple tests
 end note
+EPR -> LIMSG: Submit Genomic Order O21 (LAB-2)
 LIMSP --> LIMSG: Send Specimen
-EPR -> LIMSG: Submit Genomic Order O21
-LIMSG -> EPR: Send Genomic Report R01
+LIMSG -> EPR: Send Genomic Report R01 (LAB-3)
+end
+
+opt Order Filler (Pathology) creates Genomic Order
+note over LIMSP, LIMSG
+Same specimen can reused for multiple tests
+end note
+LIMSP -> LIMSG: Submit Genomic Order O21 (LAB-2)
+LIMSP -> EPR: Copy of Genomic Order O21 (LAB-2)
+LIMSP --> LIMSG: Send Specimen
+LIMSG -> LIMSP: Send Genomic Report R01 (LAB-3)
+LIMSG -> EPR: Send Genomic Report R01 (LAB-3)
 end
 
 @enduml
