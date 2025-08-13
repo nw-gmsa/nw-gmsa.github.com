@@ -181,6 +181,23 @@ A report is created by the clinical practice and sent to the order result tracke
 </figure>
 <br clear="all">
 
+### Main Process Flow
+
+- Optional Preliminary Report Stage
+  - Perform Diagnostic Test → Write Preliminary Report (Order Filler).
+  - Send (Preliminary) Genomic Test Report IHE LAB-3 from the Order Filler to the Intermediary (RIE).
+  - RIE sends HL7 v2 message Laboratory Report ORU_R01 to the Order Placer.
+  - The same HL7 v2 message is also sent from the Intermediary to the Order Placer.
+
+- Final Report Stage
+  - Complete Report (Order Filler).
+  - Send (Final) Genomic Test Report IHE LAB-3 from the Order Filler to the Intermediary (RIE).
+  - RIE sends HL7 v2 message Laboratory Report ORU_R01 to the Order Placer.
+
+- Completion Notification
+  - When all tests in the order are complete, a Task Complete Notification is sent to the Order Placer.
+    - This notification can be sent via email or another messaging system.
+
 ## Use Case: Genomic Test Order following on from Pathology Test Order
 
 <img style="padding:3px;width:95%;" src="LTW Use Case 3.drawio.png" alt="Genomic LTW Business Process - Use Case 3"/>
