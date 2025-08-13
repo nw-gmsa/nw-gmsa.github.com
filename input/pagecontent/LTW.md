@@ -191,11 +191,6 @@ This genomics process is largely the same except for:
 
 This use case can often occur around cancer:
 
-<img style="padding:3px;width:95%;" src="LTW Use Case 2.drawio.png" alt="Genomic LTW Business Process - Use Case 3"/>
-<br clear="all">
-<p class="figureTitle">Genomic LTW Business Process - Use Case 3</p> 
-<br clear="all">
-
 <img style="padding:3px;width:30%;" src="cancer-diagnostics.png" alt="Cancer Diagnostics"/>
 <br clear="all">
 <p class="figureTitle">Cancer Diagnostics</p> 
