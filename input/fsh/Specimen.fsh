@@ -34,7 +34,7 @@ See also [HL7 Europe Laboratory Report - Specimen: Laboratory](https://build.fhi
 * identifier[FillerSpecimenNumber] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/OrderPlacer)
 * identifier[FillerSpecimenNumber] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/AutomationManager)
 
-* identifier[ShipmentTrackingNumber].type = $v2-0203#FILL
+* identifier[ShipmentTrackingNumber] only ShipmentTrackingNumber
 * identifier[ShipmentTrackingNumber] ^short = "Identifier assigned by the Order Placer"
 * identifier[ShipmentTrackingNumber] insert Obligation(#SHOULD:populate, https://nw-gmsa.github.io/ActorDefinition/OrderFiller)
 * identifier[ShipmentTrackingNumber] insert Obligation(#SHALL:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/OrderPlacer)
