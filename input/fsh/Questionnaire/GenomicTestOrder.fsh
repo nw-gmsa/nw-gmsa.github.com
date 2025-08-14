@@ -595,7 +595,7 @@ Usage:  #definition
     * item[+]
       * linkId = "LN/97209-1"
       * code[+] = $loinc#97209-1
-      * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueString"
+      * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.identifier[ShipmentTrackingNumber]"
       * text = "Tracking number"
       * type = #string
     * item[+]

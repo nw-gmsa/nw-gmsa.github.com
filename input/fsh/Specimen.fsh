@@ -20,10 +20,10 @@ See also [HL7 Europe Laboratory Report - Specimen: Laboratory](https://build.fhi
 * identifier ^slicing.description = "Slice based on the type"
 * identifier ^slicing.ordered = false
 * identifier contains
-  PlacerSpecimenNumber 0..1 MS and FillerSpecimenNumber 0..1 MS
+  PlacerSpecimenNumber 0..1 MS and FillerSpecimenNumber 0..1 MS and ShipmentTrackingNumber 0..1 MS
 
 * identifier[PlacerSpecimenNumber].type = $v2-0203#PLAC
-* identifier[PlacerSpecimenNumber] ^short = "Identifier assigned by the Order Placer. (HL7 v2 ORC-2/OBR-2 Placer Order Number)"
+* identifier[PlacerSpecimenNumber] ^short = "Identifier assigned by the Order Placer."
 * identifier[PlacerSpecimenNumber] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/OrderFiller)
 * identifier[PlacerSpecimenNumber] insert Obligation(#SHALL:populate, https://nw-gmsa.github.io/ActorDefinition/OrderPlacer)
 * identifier[PlacerSpecimenNumber] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/AutomationManager)
@@ -33,6 +33,13 @@ See also [HL7 Europe Laboratory Report - Specimen: Laboratory](https://build.fhi
 * identifier[FillerSpecimenNumber] insert Obligation(#SHALL:populate, https://nw-gmsa.github.io/ActorDefinition/OrderFiller)
 * identifier[FillerSpecimenNumber] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/OrderPlacer)
 * identifier[FillerSpecimenNumber] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/AutomationManager)
+
+* identifier[ShipmentTrackingNumber].type = $v2-0203#FILL
+* identifier[ShipmentTrackingNumber] ^short = "Identifier assigned by the Order Placer"
+* identifier[ShipmentTrackingNumber] insert Obligation(#SHOULD:populate, https://nw-gmsa.github.io/ActorDefinition/OrderFiller)
+* identifier[ShipmentTrackingNumber] insert Obligation(#SHALL:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/OrderPlacer)
+* identifier[ShipmentTrackingNumber] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/AutomationManager)
+
 
 * accessionIdentifier 0..1 MS
 * accessionIdentifier only AccessionNumber
