@@ -42,6 +42,7 @@ Report o-d- DiagnosticReport
 DiagnosticReport o-d- Observation
 
 OrderItem -l- "1..*" Specimen
+Order -l- "1..1" Specimen
 
 OrderItem -r- "1..1" GMSA
 
