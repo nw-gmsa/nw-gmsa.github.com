@@ -222,7 +222,7 @@ Multiple NTE should be converted to a single FHIR Annotation using markdown
 <div class="alert alert-info" role="alert">
 <b>v2 to FHIR Conversion OML_O21:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-nte-to-servicerequest.html" _target="_blank">NTE to FHIR ServiceRequest</a> 
 <br/>
-<b>v2 to FHIR Conversion ORU_R01:</b> <a href="(https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-nte-to-observation.html" _target="_blank">NTE to FHIR Observation</a> 
+<b>v2 to FHIR Conversion ORU_R01:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-nte-to-observation.html" _target="_blank">NTE to FHIR Observation</a> 
 </div>
 
 #### Examples
