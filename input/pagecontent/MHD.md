@@ -1,6 +1,6 @@
 This API for the NW GMSA Clinical Data Repository is based on the following API contracts:
 
-- [IHE Mobile access to Health Documents [MHD]]https://profiles.ihe.net/ITI/MHD/index.html)
+- [IHE Mobile access to Health Documents [MHD]](https://profiles.ihe.net/ITI/MHD/index.html)
 - [INTEROPen/NHS England Care Connect API](https://nhsconnect.github.io/CareConnectAPI) updated to FHIR R4.
 
 The search parameters are based on [FHIR Search](https://hl7.org/fhir/R4/search.html) which provides detailed description of the parameters and value types.
