@@ -98,8 +98,11 @@ pages:
   LAB-5.md:
     title: Test Results Management [LAB-5]
     generation: markdown
-  PCC-44.md:
-    title: Query Existing Data [PCC-44]
+  QEDm.md:
+    title: Query Existing Data [QEDm]
+    generation: markdown
+  MHD.md:
+    title: Mobile Access to Health Documents [MHD]
     generation: markdown
   DDD-Overview.md:
     title: Overview
@@ -203,7 +206,8 @@ menu:
 ##    Filler Order Management [LAB-2]: LAB-2.html
     Order Results Management [LAB-3] HL7 FHIR: LAB-3.html
     Order and Results [LAB-1] and [LAB-3] HL7 v2: hl7v2.html
-    Query Existing Data [PCC-44]: PCC-44.html
+    Query Summary Data [MHD]: MHD.html
+    Query Detailed Data [QEDm]: QEDm.html
     Authorisation [IUA] : IUA.html
 ##    Work Order Management [LAB-4]: LAB-4.html
 ##    Test Results Management [LAB-5]: LAB-5.html

@@ -106,53 +106,6 @@ GET [base]/DiagnosticReport?_id=46120&_include=DiagnosticReport:result
 Accept: application/fhir+json
 ```
 
-## DocumentReference
-
-<table style="">
-    <tr>
-        <td>
-            <div class="alert alert-info" role="alert">
-            <b>FHIR Profile:</b> <a href="StructureDefinition-DocumentReference.html" _target="_blank">DocumentReference</a> 
-            </div>
-        </td>
-        <td>
-            <div class="alert alert-secondary" role="alert">
-                <b>Related to HL7 v2 Segment:</b> <a href="hl7v2.html#obx" _target="_blank">OBX</a> type=ED  
-            </div>
-        </td>
-	</tr>
-</table>
-
-### Read
-
-<div class="alert alert-success" role="alert">
-GET [base]/DocumentReference/{id}
-</div>
-
-### Search
-
-<div class="alert alert-success" role="alert">
-GET [base]/DocumentReference?[parameter]=[value]]
-</div>
-
-| Parameter    | Type      | Search                                                       | Note                                     |
-|--------------|-----------|--------------------------------------------------------------|------------------------------------------|
-| _lastUpdated | date      | GET [base]/DocumentReference?_lastUpdated=[date]             | Date the resource was last updated       |
-| identifier   | token     | GET [base]/DocumentReference?identifier=[system&#124;][code] | Master Version Specific Identifier       |
-| patient      | reference | GET [base]/DocumentReference?patient=[id]                    | Who/what is the subject of the document  |
-| date         | date      | GET [base]/DocumentReference?date=[date]                     | When this document reference was created |
-| category     | token     | GET [base]/DocumentReference?category=[system&#124;][code]   | Categorisation of document               |
-| type         | token     | GET [base]/DocumentReference?type=[system&#124;][code]       | Kind of document                         |
-
-#### Example
-
-Searching for a DocumentReference by type (Genetic report) and patient.
-
-```
-GET [base]/DocumentReference?type=http://snomed.info/sct|1054161000000101&patient=995525
-Accept: application/fhir+json
-```
-
 ## Encounter
 
 <table style="">
