@@ -248,6 +248,10 @@ This use case can often occur around cancer:
 
 The details of this is beyond the scope of this guide, for more details see [Getting It Right First Time (GIRFT) Best Practice Timed Diagnostic Cancer pathways ](https://gettingitrightfirsttime.co.uk/wp-content/uploads/2024/03/BestPracticeTimedDiagnosticCancerPathwayssummary-guide-March-24-V3.pdf)
 
+<img style="padding:3px;width:40%;" src="GM.drawio.png" alt="Diagnostics IHE Architecture"/>
+<br clear="all">
+<p class="figureTitle">Diagnostics IHE Architecture</p> 
+<br clear="all">
 
 ## Use Case: Work Order Management 
 
