@@ -1,3 +1,8 @@
+<div class="alert alert-danger" role="alert">
+This is currently being elaborated and subject to change.
+</div>
+
+
 This API for the NW GMSA Clinical Data Repository is based on the following API contracts:
 
 - [IHE Mobile access to Health Documents [MHD]](https://profiles.ihe.net/ITI/MHD/index.html)

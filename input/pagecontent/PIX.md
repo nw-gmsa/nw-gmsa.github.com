@@ -1,3 +1,8 @@
+<div class="alert alert-danger" role="alert">
+This is currently being elaborated and subject to change.
+</div>
+
+
 ## References
 
 - A. Patient Identity Feed HL7 v2 [ITI-8] [IHE Patient Identifier Cross-referencing (PIX) - Volume 1](https://profiles.ihe.net/ITI/TF/Volume1/ch-5.html) 
