@@ -125,5 +125,9 @@ The notification system will be based on the [Subscriptions R5 Backport](https:/
 
 Future expansions will include notifications from the national [Genomic Order Management Service FHIR API](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) via its FHIR API.
 
-
+<figure>
+{%include LTW-option-pubsub-workflow.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">FHIR Subscription</p>
+</figure>
+<br clear="all">
 
