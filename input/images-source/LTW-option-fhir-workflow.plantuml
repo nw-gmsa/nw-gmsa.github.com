@@ -1,0 +1,22 @@
+@startuml
+
+hide footbox
+
+title "Order Fulfillment Tasking"
+
+
+participant "Order Placer" as OrderPlacer
+participant "Order Filler" as OrderFiller
+
+
+OrderPlacer --> OrderPlacer: Order is created
+OrderPlacer -> OrderFiller: Order Fulfillment Task (requested)
+OrderFiller -> OrderPlacer: Query Repository for Laboratory Order Details\nIHE QEDm PCC-44
+OrderFiller -> OrderPlacer: Order Fulfillment Task (accepted)
+OrderFiller --> OrderFiller: Start testing
+OrderFiller -> OrderPlacer: Order Fulfillment Task (in-progress)
+OrderFiller --> OrderFiller: Finish testing and Write Report
+OrderFiller -> OrderPlacer: Order Fulfillment Task (completed)
+OrderPlacer -> OrderFiller: Query Repository for Laboratory Report\nIHE QEDm PCC-44
+
+@enduml

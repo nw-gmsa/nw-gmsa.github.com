@@ -29,7 +29,7 @@ It transmits the observation results from the Order Filler to the Order Result T
 <p class="figureTitle">IHE LTW LAB-3 Modernisation Options</p> 
 <br clear="all">
 
-### Phase: Traditional Workflow
+### Traditional Workflow
 
 <img style="padding:3px;width:50%;" src="IHEPhaseSend.drawio.png" alt="Traditional Workflow"/>
 <br clear="all">
@@ -74,7 +74,7 @@ The following messages are used to support creation and updating of the [Genomic
 <br clear="all">
 
 
-### Phase: Regional Genomic Data Sharing
+### Regional Genomic Data Sharing
 
 <img style="padding:3px;width:50%;" src="IHEPhaseShare.drawio.png" alt="Regional Genomic Data Sharing"/>
 <br clear="all">
@@ -93,7 +93,28 @@ Initially, the CDR will be populated by converting HL7 v2 ORU_R01 (and OML_O21) 
 </figure>
 <br clear="all">
 
-### Phase: Communication/Event Notifications
+### Order Fulfillment Tasking
+
+This introduces an alternative way of requesting a laboratory order which is based on [FHIR Workflow](https://hl7.org/fhir/R4/workflow.html)
+
+<figure>
+{%include LTW-option-fhir-workflow.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">Order Fulfillment Tasking</p>
+</figure>
+<br clear="all">
+
+In this workflow, both the order and report are shared instead of being sent. The communication between the Order Placer and Filler changes to a [conversation](https://www.enterpriseintegrationpatterns.com/patterns/conversation/toc.html) rather than messaging pattern around the Fulfillment Task.
+
+This modernisation is central to the [NHS England Genomic Order Management Service FHIR API](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) and the North West Regional Integration will provide the adapter from `tradtional workflow` to `FHIR workflow`
+
+<figure>
+{%include LTW-option-GOMS-workflow.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">RIE and GOMS Workflow</p>
+</figure>
+<br clear="all">
+
+
+### Communication Task (/Event Notifications)
 
 This phase introduces real-time notification support, similar to online order tracking where updates are sent via email or SMS.
 

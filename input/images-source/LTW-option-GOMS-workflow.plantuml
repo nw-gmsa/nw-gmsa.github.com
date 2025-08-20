@@ -1,0 +1,25 @@
+@startuml
+
+hide footbox
+
+title "Traditional (v2 and IHE LTW) and FHIR Workflow Combined"
+
+
+participant "Order Placer\nNHS Trust system" as OrderPlacerTIE
+participant "Regional Integration Engine\nacting as Order Placer/Filler" as OrderPlacer
+participant "Order Filler\nNHS England GOMS\nRemote GMSA" as OrderFiller
+
+
+OrderPlacerTIE --> OrderPlacerTIE: Order is created
+OrderPlacerTIE -> OrderPlacer: Laboratory Order O21\nIHE LTW LAB-1
+OrderPlacer -> OrderFiller: Order Fulfillment Task (requested)
+OrderFiller -> OrderPlacer: Query Repository for Laboratory Order Details\nIHE QEDm PCC-44
+OrderFiller -> OrderPlacer: Order Fulfillment Task (accepted)
+OrderFiller --> OrderFiller: Start testing
+OrderFiller -> OrderPlacer: Order Fulfillment Task (in-progress)
+OrderFiller --> OrderFiller: Finish testing and Write Report
+OrderFiller -> OrderPlacer: Order Fulfillment Task (completed)
+OrderPlacer -> OrderFiller: Query Repository for Laboratory Report\nIHE QEDm PCC-44
+OrderPlacer -> OrderPlacerTIE : Laboratory Report (final) R01\nIHE LTW LAB-3
+
+@enduml
