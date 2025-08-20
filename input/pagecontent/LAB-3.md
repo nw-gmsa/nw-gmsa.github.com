@@ -114,7 +114,7 @@ This modernisation is central to the [NHS England Genomic Order Management Servi
 <br clear="all">
 
 
-### Communication Task (/Event Notifications)
+### Communication Task, Subscription and  Event Notifications
 
 This phase introduces real-time notification support, similar to online order tracking where updates are sent via email or SMS.
 
