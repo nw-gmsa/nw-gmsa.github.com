@@ -1,0 +1,27 @@
+@startuml
+
+hide footbox
+
+title "Shared Patient Genomic Record"
+
+participant "Practitioner" as practitioner
+participant "Clinical Data Repository" as CDR
+participant "Order Placer" as OrderPlacer
+participant "Order Filler" as OrderFiller
+
+
+== Methods of populating the Clinical Data Repository ==
+
+OrderPlacer -> CDR : Copy of Laboratory Order O21\nIHE LTW LAB-1
+OrderFiller --> OrderFiller: Perform Test
+opt
+  OrderFiller -> CDR : Copy of Laboratory Report (preliminary) R01\nIHE LTW LAB-3
+end
+OrderFiller -> CDR : Copy of Laboratory Report (final) R01\nIHE LTW LAB-3
+
+== Using the Clinical Data Repository ==
+
+practitioner -> CDR: Query Shared Patient Genomic Repository\nIHE QEDm PCC-44
+CDR --> practitioner: Results
+
+@enduml

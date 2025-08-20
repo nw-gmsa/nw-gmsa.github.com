@@ -1,0 +1,18 @@
+@startuml
+
+hide footbox
+
+title "Traditional Workflow"
+
+participant "Order Placer" as OrderPlacer
+participant "Order Filler" as OrderFiller
+
+
+OrderPlacer -> OrderFiller : Laboratory Order O21\nIHE LTW LAB-1
+OrderFiller --> OrderFiller: Perform Test
+opt
+  OrderFiller -> OrderPlacer : Laboratory Report (preliminary) R01\nIHE LTW LAB-3
+end
+OrderFiller -> OrderPlacer : Laboratory Report (final) R01\nIHE LTW LAB-3
+
+@enduml

@@ -1,3 +1,6 @@
+<div class="alert alert-danger" role="alert">
+This is currently being elaborated and subject to change.
+</div>
 
 ## Referenced Standards
 
@@ -26,12 +29,6 @@ It transmits the observation results from the Order Filler to the Order Result T
 <p class="figureTitle">IHE LTW LAB-3 Modernisation Options</p> 
 <br clear="all">
 
-<figure>
-{%include LTW-usecase-2-options.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">IHE LTW LAB-3 Modernisation Options Sequence Diagram</p>
-</figure>
-<br clear="all">
-
 ### Phase: Traditional Workflow
 
 <img style="padding:3px;width:50%;" src="IHEPhaseSend.drawio.png" alt="Traditional Workflow"/>
@@ -49,6 +46,34 @@ Reports will be shared in PDF format, potentially limited to regionally placed o
 
 > The regional ORU_R01 design is not specific to genomics and can be reused across the six regional diagnostic networks (including imaging and pathology).
 
+<figure>
+{%include LTW-option-traditional-workflow.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">IHE LTW Traditional Workflow Option</p>
+</figure>
+<br clear="all">
+
+#### Message (Traditional Workflow)
+
+The following messages are used to support creation and updating of the [Genomics Test Report](StructureDefinition-Composition-GenomicReport.html) [composition](https://martinfowler.com/bliki/AggregationAndComposition.html)
+
+| Message                                   | Purpose                                       | EIP Type                                                                                                 |
+|-------------------------------------------|-----------------------------------------------|----------------------------------------------------------------------------------------------------------|
+| [Laboratory Results](#laboratory-results) | The results for a `laboratory-order` request. | [Document Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) |
+
+
+##### Laboratory Results
+
+<div class="alert alert-info" role="alert">
+<b>FHIR Message Definition:</b> <a href="MessageDefinition-unsolicited-observation.html" _target="_blank">Unsolicited Observations (R01)</a> 
+</div>
+
+<figure>
+{%include LAB3-sequence.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">Regional Order Results management [LAB-3] Sequence Diagram</p>
+</figure>
+<br clear="all">
+
+
 ### Phase: Regional Genomic Data Sharing
 
 <img style="padding:3px;width:50%;" src="IHEPhaseShare.drawio.png" alt="Regional Genomic Data Sharing"/>
@@ -62,7 +87,13 @@ The CDR will be built using the InterSystems FHIR Repository and follow FHIR RES
 
 Initially, the CDR will be populated by converting HL7 v2 ORU_R01 (and OML_O21) messages into HL7 FHIR, with additional data sources providing structured genomic reports based on the Genomics Reporting Implementation Guide. This will also serve as a useful resource for HL7 v2 developers, offering insights into converting v2 messages into FHIR.
 
-### Phase: Event Notifications
+<figure>
+{%include LTW-option-shared-repository.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">Shared Patient Genomic Record Option</p>
+</figure>
+<br clear="all">
+
+### Phase: Communication/Event Notifications
 
 This phase introduces real-time notification support, similar to online order tracking where updates are sent via email or SMS.
 
@@ -74,24 +105,4 @@ The notification system will be based on the [Subscriptions R5 Backport](https:/
 Future expansions will include notifications from the national [Genomic Order Management Service FHIR API](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) via its FHIR API.
 
 
-## Message (Traditional Workflow) 
-
-The following messages are used to support creation and updating of the [Genomics Test Report](StructureDefinition-Composition-GenomicReport.html) [composition](https://martinfowler.com/bliki/AggregationAndComposition.html)
-
-| Message                                   | Purpose                                       | EIP Type                                                                                                 |
-|-------------------------------------------|-----------------------------------------------|----------------------------------------------------------------------------------------------------------|
-| [Laboratory Results](#laboratory-results) | The results for a `laboratory-order` request. | [Document Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) |
-
-
-### Laboratory Results
-
-<div class="alert alert-info" role="alert">
-<b>FHIR Message Definition:</b> <a href="MessageDefinition-unsolicited-observation.html" _target="_blank">Unsolicited Observations (R01)</a> 
-</div>
-
-<figure>
-{%include LAB3-sequence.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">Regional Order Results management [LAB-3] Sequence Diagram</p>
-</figure>
-<br clear="all">
 
