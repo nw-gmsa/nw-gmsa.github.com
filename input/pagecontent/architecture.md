@@ -40,8 +40,9 @@ Three types of messages are used within this workflow process:
 | [**C**ommand Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CommandMessage.html)   | Laboratory Order O21         | [LAB-1](LAB-1.html)                      | To request a laboratory order                           |
 | [**D**ocument Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) | Laboratory Report R01        | [LAB-3](LAB-3.html)                      | Used to transfer the report to interested parties       | 
 
+### Laboratory Order 
 
-### Phase 1a Laboratory Order
+#### Messaging
 
 <img style="padding:3px;width:60%;" src="Phase 1a ESB.drawio.png" alt="Phase 1a"/>
 <br clear="all">
@@ -55,14 +56,14 @@ Three types of messages are used within this workflow process:
 - **Transform to HL7 v2** The RIE will convert the FHIR Message to a [HL7 v 2.4 ORM O01](hl7v2.html#oml_o21-laboratory-order) and send this to iGene.
 
 
-### Phase 1b Laboratory Order + OAuth2 Server
+#### Asynchronpous Response Messaging (Optional)
 
 <img style="padding:3px;width:60%;" src="Phase 1b ESB.drawio.png" alt="Phase 1b"/>
 <br clear="all">
 <p class="figureTitle">Phase 1b</p> 
 <br clear="all">
 
-The use of a **Polling Consumer** is not optimal. This phase will send messages directly to Trust Integration Engines. 
+The use of a **Polling Consumer** is not optimal. This phase will allow response messages to be directly sent to Trust Integration Engines. 
 As we are using http RESTful for communication between the Trust Integration Engines, this security and authorisation can be solved in a number of ways such as:
 
 - TLA-MA
@@ -70,27 +71,36 @@ As we are using http RESTful for communication between the Trust Integration Eng
 
 These are practical for point-to-point connections, but as the solution grows it can become complicated, so it is preferred we move to enterprise level security such as OAuth2 Client Credentials Grant.
 
-- [IHE Internet User Authorization (IUA)](https://profiles.ihe.net/ITI/IUA/index.html)
+- [IHE Internet User Authorization (IUA)](IUA.html)
 - [NHS England - Application-restricted APIs](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis)
 
 See [Authorisation](authorisation.html) for more details.
 
-### Phase 2a Laboratory Report - Greater Manchester Care Record
+#### Messaging + FHIR Repository
+
+<img style="padding:3px;width:60%;" src="Phase 1c ESB.drawio.png" alt="Phase 1b"/>
+<br clear="all">
+<p class="figureTitle">Messaging + FHIR Repository</p> 
+<br clear="all">
+
+### Laboratory Report
+
+#### Overview
 
 <img style="padding:3px;width:60%;" src="Phase 2a ESB.drawio.png" alt="Phase 2a"/>
 <br clear="all">
-<p class="figureTitle">Phase 2a</p> 
+<p class="figureTitle">Phase 2 Overview</p> 
 <br clear="all">
 
 - IGene sends the [HL7 v2 ORU_R01](hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message) to RIE
 - GLH RIE sends the message onwards to MFT TIE
 - MFT TIE sends the message to GMCR
 
-### Phase 2b Laboratory Report - FHIR Repository
+#### Detailed (inc FHIR Repository)
 
 <img style="padding:3px;width:60%;" src="Phase 2b ESB.drawio.png" alt="Phase 2b"/>
 <br clear="all">
-<p class="figureTitle">Phase 2b</p> 
+<p class="figureTitle">Phase 2 Detailed</p> 
 <br clear="all">
 
 - IGene sends the [HL7 v2 ORU_R01](hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message) to RIE
