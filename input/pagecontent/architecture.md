@@ -78,7 +78,7 @@ See [Authorisation](authorisation.html) for more details.
 
 #### Messaging + FHIR Repository
 
-<img style="padding:3px;width:60%;" src="Phase 1c ESB.drawio.png" alt="Phase 1b"/>
+<img style="padding:3px;width:60%;" src="Phase 1c Repository.drawio.png" alt="Phase 1b"/>
 <br clear="all">
 <p class="figureTitle">Messaging + FHIR Repository</p> 
 <br clear="all">
