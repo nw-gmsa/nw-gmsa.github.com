@@ -56,7 +56,7 @@ Three types of messages are used within this workflow process:
 - **Transform to HL7 v2** The RIE will convert the FHIR Message to a [HL7 v 2.4 ORM O01](hl7v2.html#oml_o21-laboratory-order) and send this to iGene.
 
 
-#### Asynchronpous Response Messaging (Optional)
+#### http Authorisation and Asynchronpous Response Messaging (Optional)
 
 <img style="padding:3px;width:60%;" src="Phase 1b ESB.drawio.png" alt="Phase 1b"/>
 <br clear="all">
@@ -83,6 +83,21 @@ See [Authorisation](authorisation.html) for more details.
 <p class="figureTitle">Messaging + FHIR Repository</p> 
 <br clear="all">
 
+- Update Genomic Data Repository
+  - First point of entry for HL7 FHIR O21 messages (regional canonical model).
+  - Updates internal genomic data repository using FHIR RESTful interactions.
+- Dynamic Router
+  - Routes messages dynamically based on rules stored in the Dynamic Rule Base (a database).
+  - Determines where to send each message.
+- Transform to HL7 v2 Message (Region Canonical Model)
+  - Converts HL7 FHIR O21 messages into HL7 v2.5.1 OML_O21 format.
+  - These transformed messages are sent to NW GMSA LIMS iGene.
+- FHIR Repository Adaptor
+  - Provides translation between HL7 FHIR messages and internal repositories or services.
+- Genomic Order Management Adaptor Service FHIR API
+  - Targets NHS England Genomic Order Management Service FHIR API which is the interface to external GMSA.
+  - This uses a FHIR RESTful API, similar to the FHIR Repository Adaptor, and like this service, the business logic (how to update the repository) is held within Regional Integrations Engine and this is not exposed externally. 
+
 ### Laboratory Report
 
 #### Overview
@@ -92,9 +107,24 @@ See [Authorisation](authorisation.html) for more details.
 <p class="figureTitle">Phase 2 Overview</p> 
 <br clear="all">
 
-- IGene sends the [HL7 v2 ORU_R01](hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message) to RIE
-- GLH RIE sends the message onwards to MFT TIE
-- MFT TIE sends the message to GMCR
+- Source System
+  - NW GMSA LIMS (iGene):
+    - The starting point where genomic test results are generated.
+    - The results are transmitted as HL7 v2.3 ORU_R01 messages. 
+- Regional Integration Engine (NW GMSA)
+  - This acts as the middleware hub where data is standardized, enriched, and routed. It has three key steps:
+    - Convert HL7 v2.3 → HL7 v2.5.1 Regional Canonical Data Model
+      - The messages are transformed into a newer HL7 standard and structured in a common data model.
+    - Update Genomic Data Repository & Enrich Report Content
+      - The genomic data is stored in a repository, and additional contextual information may be added.
+    - Route report to NHS Trust
+      - The enriched, standardized report is distributed to appropriate NHS Trust systems.
+- Trust Integration Engine (per NHS Trust)
+  - Each Trust (e.g., MFT, Alder Hey, etc.) has its own integration engine that receives the reports:
+    - They receive the HL7 v2.5.1 ORU_R01 messages.
+    - Two main output paths are shown:
+      - Greater Manchester Care Record (and similar systems)
+      - Meditech, EPIC, etc. (hospital EPR systems)
 
 #### Detailed (inc FHIR Repository)
 
@@ -103,8 +133,29 @@ See [Authorisation](authorisation.html) for more details.
 <p class="figureTitle">Phase 2 Detailed</p> 
 <br clear="all">
 
-- IGene sends the [HL7 v2 ORU_R01](hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message) to RIE
-- **Dynamic Router** The RIE distributes the message to the recipients. The routing rules are held within **Dynamic Rules Base**, this is likely to be FHIR Subscription-based and held within the FHIR Repository.
-- The two recipients at this phase are the MFT TIE as per phase 1 and FHIR Repository. The FHIR Repository processing is:
-  - ** Transform to HL7 FHIR Message** Convert the HL7 v2 ORU to HL7 FHIR Message ORU
-  - ** Process the FHIR Message via **FHIR Repository Adaptor**, which applies business logic to the incoming message and updates the **Clinical Data Repository (Genomics)**
+- Source System
+  - NW GMSA LIMS (iGene)
+    - Produces genomic test results in HL7 v2.3 ORU_R01 messages.
+    - These are sent into the Enterprise Service Bus (ESB).
+- Transformation and Enrichment (inside ESB)
+  - Transform to HL7 FHIR Message (Regional Canonical Data Model)
+    - Converts HL7 v2.3 message into a modern HL7 FHIR R01 message.
+  - Update Genomic Data Repository & Enrich Content
+    - Stores and enhances the message with additional data elements.
+    - Provides a consistent, enriched dataset for downstream use.
+  - Transform to HL7 v2 Message (Regional Canonical Data Model)
+    - Converts enriched content back into a structured HL7 v2.x format for downstream systems that still rely on v2.
+    - This ensures backward compatibility with existing hospital systems.
+- Routing
+  - Dynamic Router
+    - Determines where the message should be delivered (e.g., hospital systems, care records, repositories).
+    - Uses a Dynamic Rule Base (FHIR Subscription) to apply routing logic.
+- Output
+  - Reports are sent as:
+    - HL7 v2.5.1 ORU_R01 messages (for systems using HL7 v2).
+    - HL7 over HTTP with OAuth2 (for secure API-based delivery).
+- Repository Service
+  - A dedicated Repository Service captures and stores all enriched FHIR data.
+    - FHIR Repository Adapter converts incoming HL7 FHIR messages into a format suitable for storage.
+    - Data is stored in the IRIS FHIR Repository.
+    - Access is available via HL7 FHIR RESTful API.
