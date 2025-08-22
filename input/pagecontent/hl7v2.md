@@ -68,6 +68,15 @@ Content-Type: application/hl7-v2+er7
 
 ### MDM_T02 Original document notification and content
 
+See also which are functionally equivalent and have a similar data model:
+
+- IHE XDS Cross-Enterprise Document Sharing (XDS.b) or Cross-Enterprise Document Reliable Interchange (XDR) - [Provide and Register Document Set-b [ITI-41]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-41.html#3.41)
+- IHE MHD Mobile access to Health Documents (MHD) - [Simplified Publish [ITI-105]](https://profiles.ihe.net/ITI/MHD/ITI-105.html)
+
+#### References 
+
+- [EPIC Incoming Scanned Document Link Interface Technical Specification](https://open.epic.com/Tech/TechSpec?spec=5323)
+
 #### Message
 
 | Segment HL7   | Optionality | Notes                                                   |
@@ -381,12 +390,14 @@ This is based on the definition of SPM from [Digital Health and Care Wales - HL7
 
 ### TXA
 
-| Field HL7 | Fieldname                  | Data Type | Optionality | Identifier Type or ValueSet | Example Values   |
-|-----------|----------------------------|-----------|-------------|-----------------------------|------------------|
-| TXA-1     | Set ID - TXA               |           | R           |                             | 1                |
-| TXA-4     | Activity Date/Time         | TS        | O           |                             | 
-| TXA.12    | Unique Document Number     | [EI](#ei) | R           |                             | 1001166717^699X0 |
-| TXA-17    | Document Completion Status |           | R           |                             | F                |
+| Field HL7 | Fieldname                           | Data Type | Optionality | Identifier Type or ValueSet | Example Values   |
+|-----------|-------------------------------------|-----------|-------------|-----------------------------|------------------|
+| TXA-1     | Set ID - TXA                        |           | R           |                             | 1                |
+| TXA.2     | Document Type                       | IS        | R           |                             |
+| TXA-4     | Activity Date/Time                  | TS        | R           |                             |                  |
+| TXA.5     | Primary Activity Provider Code/Name | XCN       | R           |                             |
+| TXA.12    | Unique Document Number              | [EI](#ei) | R           |                             | 1001166717^699X0 |
+| TXA-17    | Document Completion Status          |           | R           |                             | F                |
 
 <div class="alert alert-info" role="alert">
 <b>v2 to FHIR Conversion:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-txa-to-documentreference.html" _target="_blank">TXA to DocumentReference</a> 
