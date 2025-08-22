@@ -68,6 +68,10 @@ Content-Type: application/hl7-v2+er7
 
 ### MDM_T02 Original document notification and content
 
+<div class="alert alert-info" role="alert">
+This is currently being elaborated and subject to change.
+</div>
+
 See also which are functionally equivalent and have a similar data model:
 
 - IHE XDS Cross-Enterprise Document Sharing (XDS.b) or Cross-Enterprise Document Reliable Interchange (XDR) - [Provide and Register Document Set-b [ITI-41]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-41.html#3.41)
