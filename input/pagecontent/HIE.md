@@ -40,7 +40,7 @@ In the North West region the HIE systems are:
 </figure>
 <br clear="all">
 
-HL7 v2 [MDM_T02](mdm_t02-original-document-notification-and-content) can also be used for this purpose. 
+HL7 v2 [MDM_T02 - NW GMSA](mdm_t02-original-document-notification-and-content) can also be used for this purpose. 
 
 ### Search and Retrieve document
 
@@ -50,6 +50,8 @@ HL7 v2 [MDM_T02](mdm_t02-original-document-notification-and-content) can also be
 </figure>
 <br clear="all">
 
+- [NW GMSA Clinical Data Repository IHE MHD](MHD.html)
+
 ## Query Clinical Data 
 
 <figure>
@@ -57,4 +59,6 @@ HL7 v2 [MDM_T02](mdm_t02-original-document-notification-and-content) can also be
 <p id="fX.X.X.X-X" class="figureTitle">Search and Retrieve document</p>
 </figure>
 <br clear="all">
+
+- [NW GMSA Clinical Data Repository IHE QEDm](QEDm.html)
 
