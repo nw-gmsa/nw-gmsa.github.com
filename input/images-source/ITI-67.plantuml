@@ -1,0 +1,16 @@
+@startuml
+
+title "Search and Retrieve a Document"
+
+agent "Document Consumer" as Consumer
+
+node "Document Responder" {
+agent "Document Registry" as Registry
+agent "Document Repository" as Repository
+Registry -d[hidden]- Repository
+}
+
+Consumer -r-> Registry: Registry Stored Query [ITI-18]\nFind Document References [ITI-67]
+Consumer -r-> Repository: Retrieve Document Set [ITI-43]\nRetrieve Document [ITI-68]
+
+@enduml

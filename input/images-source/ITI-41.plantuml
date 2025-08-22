@@ -1,0 +1,14 @@
+@startuml
+
+title "Publish a Document"
+
+agent "Document Source" as Source
+node "Document Recipient" as Filler {
+agent "Document Registry" as Registry
+agent "Document Repository" as Repository
+Registry -d[hidden]- Repository
+}
+
+Source -r-> Filler: Provide and Register Document Set-b[ITI-41]\nProvide Document Bundle [ITI-65]\nSimplified Publish [ITI-105]\nGenerate Metadata [ITI-106]
+
+@enduml

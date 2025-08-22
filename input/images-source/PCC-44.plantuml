@@ -1,0 +1,13 @@
+@startuml
+
+title "Query for Clinical Data"
+
+agent "Clinical Data Consumer" as Consumer
+
+agent "Clinical Data Source" as Source
+
+}
+
+Consumer -r-> Source: Mobile Query Existing Data [PCC-44]
+
+@enduml

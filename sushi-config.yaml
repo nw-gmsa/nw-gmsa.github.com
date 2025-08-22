@@ -198,9 +198,10 @@ menu:
   Home: index.html
   Analysis and Design (Volume 1) :
     Laboratory Testing Workflow (LTW): LTW.html
+    Health Information Exchange (HIE): HIE.html
     Patient Identifier Cross-referencing (PIX): PIX.html
     Authorisation (OAuth2): authorisation.html
-##    Health Information Exchange (HIE): HIE.html
+
   Interfaces (Volume 2):
     Placer Order Management [LAB-1] HL7 FHIR: LAB-1.html
 ##    Filler Order Management [LAB-2]: LAB-2.html
