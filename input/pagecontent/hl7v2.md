@@ -44,6 +44,8 @@ Authorization: Basic {accessToken}<br/>
 Content-Type: application/hl7-v2+er7
 </div>
 
+
+
 #### References
 
 - [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
@@ -63,7 +65,25 @@ Content-Type: application/hl7-v2+er7
 | - [OBR](#obr)         | 1..*        |                                                         |
 | -- **OBSERVATION**    | 1..*        |                                                         |
 | -- [OBX](#obx)        | 1..*        |                                                         |
- 
+
+### MDM_T02 Original document notification and content
+
+#### Message
+
+| Segment HL7   | Optionality | Notes                                                   |
+|---------------|-------------|---------------------------------------------------------|
+| [MSH](#msh)   | 1..1        |                                                         |
+| EVN           | 1..1        |                                                         | 
+| [PID](#pid)   | 1..1        |                                                         |
+| [PV1](#pv1)   | 1..1        | PV1 should be populated if PV1-19 Visit Number is known |
+| **ORDER**     | 0..*        |                                                         |
+| - [ORC](#orc) | 1..1        |                                                         |
+| - [OBR](#obr) | 1..1        |                                                         |
+| [TXA](#txa)   | 1..1        |                                                         |
+| **OBXNTE**    | 1..*        |                                                         |
+| - [OBX](#obx) | 1..1        |                                                         |
+
+
 ## Segments
 
 ### MSH
@@ -152,17 +172,15 @@ This is based on the definition of ORC from [Digital Health and Care Wales - HL7
 | ORC-3     | Filler Order Number      | [EI](#ei)   | R           | [Filler Order Number](StructureDefinition-FillerOrderNumber.html)                 | 1001166717^699X0^^255^ISO                                                                                                       |
 | ORC-4     | Placer Group Number      | [EI](#ei)   | R           | [Placer Group Number](StructureDefinition-PlacerGroupNumber.html)                 | 1001166717^699X0^^255^ISO                                                                                                       |
 | ORC-5     | Order Status             |             | O           |                                                                                   |                                                                                                                                 |
-| ORC-9     | Date/Time of Transaction |             | O           |                                                                                   |                                                                                                                                 |
+| ORC-9     | Date/Time of Transaction | TS          | O           |                                                                                   |                                                                                                                                 |
 | ORC-12    | Ordering Provider        | [XCN](#xcn) | R           | [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html) | C3456789^Darwin^Samuel^^^Dr^^^GMC                                                                                               |
 | ORC-21    | Ordering Facility Name   | [XON](#xon) | R           | [Organisation Code](StructureDefinition-OrganisationCode.html)                    |                                                                                                                                 |
-
 
 <div class="alert alert-info" role="alert">
 <b>v2 to FHIR Conversion:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-orc-to-servicerequest.html" _target="_blank">ORC to FHIR ServiceRequest</a> 
 <br/>
 <b>FHIR Profile:</b> <a href="StructureDefinition-ServiceRequest.html" _target="_blank">ServiceRequest</a> 
 </div>
-
 
 #### Examples
 
@@ -182,10 +200,10 @@ This is based on the definition of OBR from [Digital Health and Care Wales - HL7
 | OBR-2     | Placer Order Number                | [EI](#ei)   | R             | [Placer Order Number](StructureDefinition-PlacerOrderNumber.html)          | 1601737^ R0A^150^L                                                          |
 | OBR-3     | Filler Order Number                | [EI](#ei)   | R             | [Filler Order Number](StructureDefinition-FillerOrderNumber.html)          | 1001166717^699X0^^255^ISO                                                   |
 | OBR-4     | Universal Service Identifier       |             | R             | [Genomic Test Directory](ValueSet-genomic-test-directory.html)             | R240.1^Diagnostic testing for known variant(s)^England-GenomicTestDirectory |
-| OBR-6     | Requested Date/Time                |             | R for OML_O21 |                                                                            | 20170126135745                                                              |
-| OBR-7     | Observation Date/Time              |             | R for ORU_R01 |                                                                            | 20170126135745                                                              |
+| OBR-6     | Requested Date/Time                | TS          | R for OML_O21 |                                                                            | 20170126135745                                                              |
+| OBR-7     | Observation Date/Time              | TS          | R for ORU_R01 |                                                                            | 20170126135745                                                              |
 | OBR-16    | Ordering Provider                  |             | R             | [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html) | C3456789^Darwin^Samuel^^^Dr^^^GMC                                           |
-| OBR-22    | Results Rpt/Status Chng -Date/Time |             | R             |                                                                            | 20170126135745                                                              |
+| OBR-22    | Results Rpt/Status Chng -Date/Time | TS          | R             |                                                                            | 20170126135745                                                              |
 | OBR-25    | Result Status                      |             |               |                                                                            | |
 | OBR-32    | Principal Result Interpreter       | [NDL](#ndl) | O - SHOULD    | DiagnosticReport.resultsInterpreter[primaryReporter]                       |                                                                             |
 | OBR-33    | Assistant Result Interpreter       | [NDL](#ndl) | O - SHOULD    | DiagnosticReport.resultsInterpreter[secondaryReporter]                     |                                                                             |
@@ -284,9 +302,9 @@ This is based on the definition of OBX from [Digital Health and Care Wales - HL7
 | OBX-1     | Set ID – OBX                 |           | R           |                         | 1                                                                                                               |
 | OBX-2     | Value Type                   |           | R           | See next section for ED | CE                                                                                                              |
 | OBX-3     | Observation Identifier       | [CE](#ce) | R           |                         | 842009^Consanguinity^SNM3<br/>97209-1^Shipment tracking number^LN<br/>161714006^Estimated date of delivery^SNM3 |
-| OBX-5     | Observation Value            | Varies        | R           |                         | LN^Yes^LA33-6 (value type=CE)<br/>UK3096580215 (value type=ST)<br/>20250512103726+0000 (value type=DT)          |
+| OBX-5     | Observation Value            | Varies    | R           |                         | LN^Yes^LA33-6 (value type=CE)<br/>UK3096580215 (value type=ST)<br/>20250512103726+0000 (value type=DT)          |
 | OBX-11    | Observation Result Status    |           | R           |                         | F                                                                                                               |
-| OBX-14    | Date/Time of the Observation |           | O - SHOULD  |                         | 20190514102417+0000                                                                                             |
+| OBX-14    | Date/Time of the Observation | TS        | O - SHOULD  |                         | 20190514102417+0000                                                                                             |
 
 
 <div class="alert alert-info" role="alert">
@@ -349,8 +367,8 @@ This is based on the definition of SPM from [Digital Health and Care Wales - HL7
 | SPM-4     | Specimen Type                 |           | O           | [Specimen Type](ValueSet-specimen-type.html)                                | 119325001^Skin specimen^SNM3                       |
 | SPM-8     | Specimen Source Site          |           | O           |                                                                             | 299706009^Bone structure of wrist and/or hand^SNM3 |
 | SPM-9     | Specimen Source Site Modifier |           | O           |                                                                             | 7771000^Left^SNM3                                  |
-| SPM-17    | Specimen Collection Date/Time |           | O           |                                                                             |                                                    |
-| SPM-18    | Specimen Received Date/Time   |           | O           |                                                                             |                                                    |
+| SPM-17    | Specimen Collection Date/Time | TS        | O           |                                                                             |                                                    |
+| SPM-18    | Specimen Received Date/Time   | TS        | O           |                                                                             |                                                    |
 | SPM-20    | Specimen Availability         |           | O           |                                                                             |                                                    |
 | SPM-30    | Accession ID                  |           | O           | [Accession Number](StructureDefinition-AccessionNumber.html)                |                                                    |
 | SPM-32    | Shipment Tracking Number      |           | O           | [Shipment Tracking Number](StructureDefinition-ShipmentTrackingNumber.html) |                                                    |
@@ -359,6 +377,21 @@ This is based on the definition of SPM from [Digital Health and Care Wales - HL7
 <b>v2 to FHIR Conversion:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-spm-to-specimen.html" _target="_blank">SPM to FHIR Specimen</a> 
 <br/>
 <b>FHIR Profile:</b> <a href="StructureDefinition-Specimen.html" _target="_blank">Specimen</a> 
+</div>
+
+### TXA
+
+| Field HL7 | Fieldname                  | Data Type | Optionality | Identifier Type or ValueSet | Example Values   |
+|-----------|----------------------------|-----------|-------------|-----------------------------|------------------|
+| TXA-1     | Set ID - TXA               |           | R           |                             | 1                |
+| TXA-4     | Activity Date/Time         | TS        | O           |                             | 
+| TXA.12    | Unique Document Number     | [EI](#ei) | R           |                             | 1001166717^699X0 |
+| TXA-17    | Document Completion Status |           | R           |                             | F                |
+
+<div class="alert alert-info" role="alert">
+<b>v2 to FHIR Conversion:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-txa-to-documentreference.html" _target="_blank">TXA to DocumentReference</a> 
+<br/>
+<b>FHIR Profile:</b> <a href="StructureDefinition-DocumentReference.html" _target="_blank">DocumentReference</a> 
 </div>
 
 #### Examples
