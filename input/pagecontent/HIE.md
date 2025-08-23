@@ -7,9 +7,9 @@ This is currently being elaborated and subject to change.
 1. Health Information Exchange (IHE)
    - [IHE HIE White Paper](https://profiles.ihe.net/ITI/HIE-Whitepaper/)
    - [HL7 Intermediataries White Paper](https://confluence.hl7.org/spaces/FHIR/pages/144967060/Intermediaries+White+Paper)
-2. [IHE Cross-Enterprise Document Sharing (XDS.b)](https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html) 
-3. [IHE Mobile access to Health Documents (MHD)](https://profiles.ihe.net/ITI/MHD/index.html)
-4. [IHE Query for Existing Data Mobile (QEDm)](https://profiles.ihe.net/PCC/QEDm/index.html)
+2. [IHE Cross-Enterprise Document Sharing (XDS.b)](https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html) XML
+3. [IHE Mobile access to Health Documents (MHD)](https://profiles.ihe.net/ITI/MHD/index.html) HL7 FHIR
+4. [IHE Query for Existing Data Mobile (QEDm)](https://profiles.ihe.net/PCC/QEDm/index.html) HL7 FHIR
 
 ## Actors and Transactions
 
