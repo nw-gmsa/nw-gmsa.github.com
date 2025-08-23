@@ -20,6 +20,14 @@ While the order is being fulfilled, patient demographics may change and systems 
 | [Patient Identity Source](ActorDefinition-PatientIdentitySource.html) | Commonly implemented by Patient Administration (PAS) or Electronic Patient Record (EPR) Systems  |
 | Patient Identifier Cross-reference Manager | For the purposes of this IG, this is either [Order Filler](ActorDefinition-OrderFiller.html) or [Automation Manager](ActorDefinition-AutomationManager.html) |
 
+### Patient Identifier Cross-referencing (PIX)
+
+<figure>
+{%include ITI-8.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">Patient Identity Feed</p>
+</figure>
+<br clear="all">
+
 <figure>
 {%include PIX-component.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">IHE PIX/PIX(m) Actor Diagram</p>

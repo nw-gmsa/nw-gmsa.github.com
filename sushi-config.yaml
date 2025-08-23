@@ -74,8 +74,8 @@ pages:
   LTW.md:
     title: Laboratory Testing Workflow (LTW)
     generation: markdown
-  PIX.md:
-    title: Patient Identifier Cross-referencing (PIX)
+  PAM.md:
+    title: Patient Administration (PAM)
     generation: markdown
   HPD.md:
     title: Healthcare Provider Directory (HPD)
@@ -199,7 +199,7 @@ menu:
   Analysis and Design (Volume 1) :
     Laboratory Testing Workflow (LTW): LTW.html
     Health Information Exchange (HIE): HIE.html
-    Patient Identifier Cross-referencing (PIX): PIX.html
+    Patient Administration: PAM.html
     Authorisation (OAuth2): authorisation.html
 
   Interfaces (Volume 2):
