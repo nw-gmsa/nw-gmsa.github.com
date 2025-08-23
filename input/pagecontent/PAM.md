@@ -70,6 +70,10 @@ This diagram shows how a Patient Identity Source (like an EHR or registration sy
 </figure>
 <br clear="all">
 
+<div class="alert alert-info" role="alert">
+<a href="QEDm.html" _target="_blank">NW GMSA PQDm</a> 
+</div>
+
 - Patient Demographics Consumer (left box)
   - This is the system or application that needs patient demographic information (for example, an EHR system, a registration system, or another clinical application).
   - It sends a query to request demographic details (like name, DOB, address, identifiers, etc.) about a patient.

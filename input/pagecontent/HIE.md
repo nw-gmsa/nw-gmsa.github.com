@@ -70,7 +70,9 @@ HL7 v2 [MDM_T02 - NW GMSA](mdm_t02-original-document-notification-and-content) c
 </figure>
 <br clear="all">
 
-- [NW GMSA Clinical Data Repository IHE MHD](MHD.html)
+<div class="alert alert-info" role="alert">
+<a href="MHD.html" _target="_blank">NW GMSA MHD</a> 
+</div>
 
 #### Interactions
 
@@ -109,7 +111,9 @@ HL7 v2 [MDM_T02 - NW GMSA](mdm_t02-original-document-notification-and-content) c
 </figure>
 <br clear="all">
 
-- [NW GMSA Clinical Data Repository IHE QEDm](QEDm.html)
+<div class="alert alert-info" role="alert">
+<a href="QEDm.html" _target="_blank">NW GMSA QEDm</a> 
+</div>
 
 - This is the IHE transaction for mobile clinical data access.
 - It is FHIR-based and allows the Clinical Data Consumer to query and retrieve structured clinical data directly from the Clinical Data Source.
