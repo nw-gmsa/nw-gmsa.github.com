@@ -8,6 +8,6 @@ agent "Clinical Data Source" as Source
 
 }
 
-Consumer -r-> Source: Mobile Query Existing Data [PCC-44]
+Consumer -r-> Source: [[https://profiles.ihe.net/PCC/QEDm/PCC-44.html Mobile Query Existing Data (PCC-44)]]
 
 @enduml
