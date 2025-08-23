@@ -22,9 +22,15 @@ See also Ref A `Section 3 Laboratory Testing Workflow (LTW) Profile` for detaile
 </figure>
 <br clear="all">
 
-Initially only the IHE `LAB-1` and `LAB-4` is in focus.
+Initially only the IHE `LAB-1` and `LAB-3` is in focus.
 
 Later stages will include the use of [Genomic Order Management Service](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir).
+
+<div class="alert alert-info" role="alert">
+<b>Interaction:</b> LAB-1 <a href="LAB-1.html" _target="_blank">Genomic Test Order O21</a> HL7 FHIR and <a href="hl7v2.html#oml_o21-laboratory-order" _target="_blank">Laboratory Order OML_021</a> HL7 v2
+<br/>
+<b>Interaction:</b> LAB-3 <a href="LAB-3.html" _target="_blank">Genomic Test Report R01</a> HL7 FHIR and <a href="hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message" _target="_blank">Unsolicited Results ORU_R01</a> HL7 v2 
+</div>
 
 ## Overview
 
