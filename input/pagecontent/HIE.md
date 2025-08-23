@@ -60,7 +60,9 @@ The Document Source sends documents to the Document Recipient using one of sever
 - Generate Metadata [ITI-106]
   - Used when the document source wants the recipient to generate metadata automatically (instead of providing it explicitly).
 
-HL7 v2 [MDM_T02 - NW GMSA](mdm_t02-original-document-notification-and-content) can also be used for this purpose.
+<div class="alert alert-info" role="alert">
+<b>Interaction:</b> <a href="mdm_t02-original-document-notification-and-content" _target="_blank">NW GMSA HL7 v2 MDM_T02</a> can also be used for this purpose.
+</div>
 
 ### Search and Retrieve document
 
@@ -71,7 +73,7 @@ HL7 v2 [MDM_T02 - NW GMSA](mdm_t02-original-document-notification-and-content) c
 <br clear="all">
 
 <div class="alert alert-info" role="alert">
-<a href="MHD.html" _target="_blank">NW GMSA MHD</a> 
+<b>Interaction:</b> <a href="MHD.html" _target="_blank">NW GMSA MHD</a> 
 </div>
 
 #### Interactions
@@ -112,7 +114,7 @@ HL7 v2 [MDM_T02 - NW GMSA](mdm_t02-original-document-notification-and-content) c
 <br clear="all">
 
 <div class="alert alert-info" role="alert">
-<a href="QEDm.html" _target="_blank">NW GMSA QEDm</a> 
+<b>Interaction:</b> <a href="QEDm.html" _target="_blank">NW GMSA QEDm</a> 
 </div>
 
 - This is the IHE transaction for mobile clinical data access.

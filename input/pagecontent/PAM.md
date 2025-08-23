@@ -71,7 +71,7 @@ This diagram shows how a Patient Identity Source (like an EHR or registration sy
 <br clear="all">
 
 <div class="alert alert-info" role="alert">
-<a href="QEDm.html" _target="_blank">NW GMSA PQDm</a> 
+<b>Interaction:</b> <a href="QEDm.html" _target="_blank">NW GMSA PQDm</a> 
 </div>
 
 - Patient Demographics Consumer (left box)

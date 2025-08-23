@@ -94,8 +94,9 @@ This archetype definition can also support [HL7 Structured Data Capture](https:/
 
 The completed form is submitted to the Regional Integration Engine using:
 
-- [LAB-1](LAB-1.html) for orders raised by Order Placer systems.
-
+<div class="alert alert-info" role="alert">
+<b>Interaction:</b> <a href="LAB-1.html" _target="_blank">Genomic Test Order O21</a> 
+</div>
 
 <figure>
 {%include LTW-usecase-1-sequence.svg%}
