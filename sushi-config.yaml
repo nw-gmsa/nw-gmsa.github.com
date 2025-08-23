@@ -199,7 +199,7 @@ menu:
   Analysis and Design (Volume 1) :
     Laboratory Testing Workflow (LTW): LTW.html
     Health Information Exchange (HIE): HIE.html
-    Patient Administration: PAM.html
+    Patient Administration (PAM): PAM.html
     Authorisation (OAuth2): authorisation.html
 
   Interfaces (Volume 2):

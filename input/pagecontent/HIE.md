@@ -61,7 +61,7 @@ The Document Source sends documents to the Document Recipient using one of sever
   - Used when the document source wants the recipient to generate metadata automatically (instead of providing it explicitly).
 
 <div class="alert alert-info" role="alert">
-<b>Interaction:</b> <a href="mdm_t02-original-document-notification-and-content" _target="_blank">NW GMSA HL7 v2 MDM_T02</a> can also be used for this purpose.
+<b>Interaction:</b> <a href="hl7v2.html#mdm_t02-original-document-notification-and-content" _target="_blank">NW GMSA HL7 v2 MDM_T02</a> can also be used for this purpose.
 </div>
 
 ### Search and Retrieve document
