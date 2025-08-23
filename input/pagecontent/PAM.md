@@ -33,6 +33,23 @@ While the order is being fulfilled, patient demographics may change and systems 
 </figure>
 <br clear="all">
 
+- Patient Identity Source (left box)
+  - The system that creates or maintains patient identity information (e.g., a hospital registration system, EHR, or patient administration system).
+  - It sends identity data such as patient identifiers, name, date of birth, and updates like merges or changes.
+- Patient Identifier Cross-reference Manager (right box)
+  - A system that manages multiple patient identifiers across different domains.
+  - It links and reconciles identifiers for the same patient coming from different hospitals, clinics, or systems.
+  - Example: If Hospital A identifies a patient as 12345 and Hospital B as XYZ678, this manager can cross-reference them to the same person.
+- Patient Identity Feed (top label)
+  - The interaction between the Identity Source and the Cross-reference Manager.
+  - There are several technical transactions defined:
+    - Patient Identity Feed (ITI-8): HL7 v2-based standard (classic hospital integration).
+    - Patient Identity Feed FHIR (ITI-104): Modern RESTful FHIR-based implementation.
+    - Mobile Patient Identity Feed (ITI-93): Lightweight RESTful API (FHIR/REST) optimized for mobile/web apps.
+
+✅ In summary:
+This diagram shows how a Patient Identity Source (like an EHR or registration system) sends patient identity information to a Patient Identifier Cross-reference Manager using different technical standards (HL7 v2, FHIR, or mobile REST). The cross-reference manager then ensures consistent patient identity mapping across multiple systems.
+
 <figure>
 {%include PIX-component.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">IHE PIX/PIX(m) Actor Diagram</p>
@@ -52,3 +69,18 @@ While the order is being fulfilled, patient demographics may change and systems 
 <p id="fX.X.X.X-X" class="figureTitle">Patient Demographic Query</p>
 </figure>
 <br clear="all">
+
+- Patient Demographics Consumer (left box)
+  - This is the system or application that needs patient demographic information (for example, an EHR system, a registration system, or another clinical application).
+  - It sends a query to request demographic details (like name, DOB, address, identifiers, etc.) about a patient.
+- Patient Demographics Supplier (right box)
+  -This is the system that maintains and provides patient demographic information (e.g., a Master Patient Index (MPI) or a hospital registration system).
+  - It receives the query and responds with the matching patient demographic data.
+- Patient Demographic Query (top label)
+  - Represents the type of interaction between the consumer and supplier.
+  - There are two technical transaction standards for this query:
+    - Mobile Patient Demographics Query (ITI-78) → uses modern RESTful APIs (FHIR-based), suitable for mobile or web apps.
+    - Patient Demographics Query (ITI-21) → the older HL7 v2 message-based standard.
+
+✅ In short:
+The diagram shows that a Patient Demographics Consumer system can request patient demographic data from a Patient Demographics Supplier system using either the older ITI-21 transaction or the newer ITI-78 transaction.
