@@ -101,7 +101,7 @@ HL7 v2 [MDM_T02 - NW GMSA](mdm_t02-original-document-notification-and-content) c
 - Data inside documents may be hard to query directly (need to download and parse).
 - Best for document-level interoperability, not fine-grained data queries.
 
-## Query Clinical Data 
+### Query Clinical Data 
 
 <figure>
 {%include PCC-44.svg%}
