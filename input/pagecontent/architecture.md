@@ -122,7 +122,7 @@ See [Authorisation](authorisation.html) for more details.
     - They receive the HL7 v2.5.1 MDM_T02 messages.
     - These are filtered by patients primary care provider (GP Surgery), so that each ICS only recieves reports for patients they are responsible for.
 
-### Detailed (inc FHIR Repository)
+### EPR/NHS Trust Routing and Content Enrichment
 
 <img style="padding:3px;width:60%;" src="Phase 2b ESB.drawio.png" alt="Phase 2b"/>
 <br clear="all">
@@ -155,3 +155,13 @@ See [Authorisation](authorisation.html) for more details.
     - FHIR Repository Adapter converts incoming HL7 FHIR messages into a format suitable for storage.
     - Data is stored in the IRIS FHIR Repository.
     - Access is available via HL7 FHIR RESTful API.
+
+### EDMS/ICS Routing and Content Enrichment
+
+<img style="padding:3px;width:60%;" src="Phase 2b EDMS.drawio.png" alt="Phase 2b"/>
+<br clear="all">
+<p class="figureTitle">Phase 2 Detailed</p> 
+<br clear="all">
+
+The message flow is the same as the EPR/NHS Trust Routing and Content Enrichment, except that the message is sent to the EDMS/ICS. 
+The routing is done by the Dynamic Router which using [NHS England Personal Demgraphic Service FHIR API](https://digital.nhs.uk/developer/api-catalogue/personal-demographics-service-fhir), which routes the message to the appropriate EDMS/ICS based on the GP Surgery.
