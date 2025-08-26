@@ -9,6 +9,8 @@ agent "Document Repository" as Repository
 Registry -d[hidden]- Repository
 }
 
-Source -r-> Filler: Provide and Register Document Set-b[ITI-41]\nProvide Document Bundle [ITI-65]\nSimplified Publish [ITI-105]\nGenerate Metadata [ITI-106]
+
+Source -r-> Filler: [[https://profiles.ihe.net/ITI/TF/Volume2/ITI-41.html Provide and Register Document Set-b (ITI-41)]]\n[[https://profiles.ihe.net/ITI/MHD/ITI-65.html Provide Document Bundle (ITI-65)]]\n[[https://profiles.ihe.net/ITI/MHD/ITI-105.html Simplified Publish (ITI-105)]]\n[[https://profiles.ihe.net/ITI/MHD/ITI-106.html Generate Metadata (ITI-106)]]
+
 
 @enduml

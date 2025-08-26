@@ -5,7 +5,7 @@
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="_b9NuXSDLzWbAmvTPXuV-12" value="Regional Integration Engine&lt;div&gt;(Repository Service)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
-          <mxGeometry x="590" y="1110" width="450" height="180" as="geometry" />
+          <mxGeometry x="590" y="1110" width="300" height="180" as="geometry" />
         </mxCell>
         <mxCell id="HnpPnAv44DMsRuAQf5Vg-59" value="Regional Integration Engine&lt;br&gt;(Enterprise Service Bus)" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
           <mxGeometry x="280" y="710" width="760" height="370" as="geometry" />
@@ -39,11 +39,8 @@
         <mxCell id="7jtiY5M9mVHTs9dgm_Sb-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startFill=0;" edge="1" parent="1" source="7jtiY5M9mVHTs9dgm_Sb-17" target="7jtiY5M9mVHTs9dgm_Sb-15">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="7jtiY5M9mVHTs9dgm_Sb-17" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;Dynamic Rule Base&lt;br&gt;(FHIR Subscription)&lt;/font&gt;" style="html=1;strokeWidth=2;outlineConnect=0;dashed=0;align=center;fontSize=8;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.eip.message_store;fillColor=#c0f5a9" vertex="1" parent="1">
+        <mxCell id="7jtiY5M9mVHTs9dgm_Sb-17" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;NHS England Personnel&amp;nbsp;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Demographic Service (PDS)&lt;/font&gt;&lt;/div&gt;" style="html=1;strokeWidth=2;outlineConnect=0;dashed=0;align=center;fontSize=8;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.eip.message_store;fillColor=#c0f5a9" vertex="1" parent="1">
           <mxGeometry x="885" y="950" width="110" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="ASGDk-45rUAA4ve6-Ohr-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="7jtiY5M9mVHTs9dgm_Sb-17" target="_b9NuXSDLzWbAmvTPXuV-13">
-          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="_b9NuXSDLzWbAmvTPXuV-1" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="1160" y="799.5" width="73" height="50" as="geometry" />
@@ -65,13 +62,13 @@
             <mxPoint x="1102.7000000000003" y="824.9999999999998" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="_b9NuXSDLzWbAmvTPXuV-18" value="HL7 v2.5.1&amp;nbsp;&lt;div&gt;ORU_R01&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="_b9NuXSDLzWbAmvTPXuV-9">
+        <mxCell id="_b9NuXSDLzWbAmvTPXuV-18" value="HL7 v2.5.1&amp;nbsp;&lt;div&gt;MDM_T02&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="_b9NuXSDLzWbAmvTPXuV-9">
           <mxGeometry x="-0.1386" y="-3" relative="1" as="geometry">
             <mxPoint x="31" y="22" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="_b9NuXSDLzWbAmvTPXuV-13" value="IRIS&lt;br&gt;FHIR Repository" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
-          <mxGeometry x="910" y="1160" width="60" height="80" as="geometry" />
+          <mxGeometry x="780" y="1160" width="60" height="80" as="geometry" />
         </mxCell>
         <mxCell id="_b9NuXSDLzWbAmvTPXuV-14" value="FHIR&amp;nbsp;&lt;div&gt;Repository&amp;nbsp;&lt;div&gt;Adaptor&lt;/div&gt;&lt;/div&gt;" style="strokeWidth=2;outlineConnect=0;dashed=0;align=center;html=1;fontSize=8;shape=mxgraph.eip.channel_adapter;fillColor=#9ddbef;" vertex="1" parent="1">
           <mxGeometry x="650" y="1155" width="45" height="90" as="geometry" />
@@ -82,9 +79,9 @@
         <mxCell id="_b9NuXSDLzWbAmvTPXuV-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="_b9NuXSDLzWbAmvTPXuV-14" target="_b9NuXSDLzWbAmvTPXuV-13">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="_b9NuXSDLzWbAmvTPXuV-17" value="HL7 FHIR RESTful" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="_b9NuXSDLzWbAmvTPXuV-16">
+        <mxCell id="_b9NuXSDLzWbAmvTPXuV-17" value="HL7 FHIR&amp;nbsp;&lt;div&gt;RESTful&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="_b9NuXSDLzWbAmvTPXuV-16">
           <mxGeometry x="-0.2917" y="-3" relative="1" as="geometry">
-            <mxPoint x="28" y="17" as="offset" />
+            <mxPoint x="15" y="17" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="ASGDk-45rUAA4ve6-Ohr-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ASGDk-45rUAA4ve6-Ohr-3" target="ASGDk-45rUAA4ve6-Ohr-6">
@@ -108,16 +105,13 @@
         <mxCell id="ASGDk-45rUAA4ve6-Ohr-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ASGDk-45rUAA4ve6-Ohr-6" target="7jtiY5M9mVHTs9dgm_Sb-15">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ASGDk-45rUAA4ve6-Ohr-6" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;Transform to&amp;nbsp;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;HL7 v2 ORU_R01 Message&lt;/font&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;(Region Canonical Data Model)&lt;/font&gt;&lt;/div&gt;" style="html=1;strokeWidth=2;outlineConnect=0;dashed=0;align=center;fontSize=8;shape=mxgraph.eip.message_translator;fillColor=#c0f5a9;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+        <mxCell id="ASGDk-45rUAA4ve6-Ohr-6" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;Transform to&amp;nbsp;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;HL7 v2 MDM_T02 Message&lt;/font&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;(Region Canonical Data Model)&lt;/font&gt;&lt;/div&gt;" style="html=1;strokeWidth=2;outlineConnect=0;dashed=0;align=center;fontSize=8;shape=mxgraph.eip.message_translator;fillColor=#c0f5a9;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
           <mxGeometry x="690" y="792" width="125" height="65" as="geometry" />
-        </mxCell>
-        <mxCell id="ASGDk-45rUAA4ve6-Ohr-11" value="The processing and logic implemented here is very similar to the NHS England Genomic Order Management FHIR API" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
-          <mxGeometry x="600" y="1300" width="430" height="60" as="geometry" />
         </mxCell>
         <mxCell id="yU3ElABQZjIhGrlI_ipJ-1" value="HL7 over http&lt;br&gt;OAuth2" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn4.iconfinder.com/data/icons/ios-web-user-interface-multi-circle-flat-vol-3/512/Authorisation_lock_padlock_password_privacy_safe_security-128.png" vertex="1" parent="1">
           <mxGeometry x="1080" y="875" width="40" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="ck6UTDwcm1I5cA8ir3R7-1" value="Electronic Patient Record (EPR)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="ck6UTDwcm1I5cA8ir3R7-1" value="Health Information Exchange (HIE)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
           <mxGeometry x="1136.5" y="720" width="120" height="60" as="geometry" />
         </mxCell>
       </root>

@@ -8,7 +8,7 @@ The architecture generally follows [Domain Driven Design [DDD]](https://en.wikip
 <p class="figureTitle">Data Mesh</p> 
 <br clear="all">
 
-### Enterprise Integration
+## Enterprise Integration
 
 The [Intermediary](ActorDefinition-Intermediary.html), North West GMSA Regional Integration Engine (RIE) is an [Enterprise Service Bus](https://en.wikipedia.org/wiki/Enterprise_service_bus) most commonly known in the NHS as a Trust Integration Engine (TIE).
 
@@ -35,18 +35,19 @@ To support genomics workflow, this guide is aligned to enterprise workflow proce
 
 Three types of messages are used within this workflow process:
 
-| Message Type                                                                                                  | HL7 Name                     | IHE Name                                                        | Description                                             |
-|---------------------------------------------------------------------------------------------------------------|------------------------------|-----------------------------------------------------------------|---------------------------------------------------------|
-| [**C**ommand Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CommandMessage.html)   | Laboratory Order O21         | [LAB-1](LAB-1.html)                      | To request a laboratory order                           |
-| [**D**ocument Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) | Laboratory Report R01        | [LAB-3](LAB-3.html)                      | Used to transfer the report to interested parties       | 
+| Message Type                                                                                                  | HL7 Name              | IHE Name                                                                 | Description                                                                       |
+|:--------------------------------------------------------------------------------------------------------------|-----------------------|--------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
+| [**C**ommand Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CommandMessage.html)   | Laboratory Order O21  | [LAB-1](LAB-1.html) | To request a laboratory order                                                     |
+| [**D**ocument Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) | Laboratory Report R01 | [LAB-3](LAB-3.html)                                                      | Used to transfer the report back to the order placer and othre interested parties | 
+|                                                                                                               | Original Document T02 | [HL7 MDM_T02](hl7v2.html#mdm_t02-original-document-notification-and-content) | Used to send a copy of the report to a HIE                                        | 
 
-### Laboratory Order 
+## Laboratory Order 
 
-#### Messaging
+### Messaging
 
-<img style="padding:3px;width:60%;" src="Phase 1a ESB.drawio.png" alt="Phase 1a"/>
+<img style="padding:3px;width:60%;" src="Phase 1b ESB.drawio.png" alt="Phase 1b"/>
 <br clear="all">
-<p class="figureTitle">Phase 1a ESB Architecture</p> 
+<p class="figureTitle">Laboratory Order Messaging</p> 
 <br clear="all">
 
 - **Accept Message** The Order Placer (NHS trust) sends a FHIR Message (NW GMSA) [Genomic Test Order O21](Questionnaire-GenomicTestOrder.html) to the RIE via the [$process-message](OperationDefinition-ProcessMessage.html) endpoint
@@ -55,15 +56,8 @@ Three types of messages are used within this workflow process:
 - **Distribution List** If the message is accepted, it is passed to a router, at present this router passes the message onto the next process. This router is for future use with the national broker.
 - **Transform to HL7 v2** The RIE will convert the FHIR Message to a [HL7 v 2.4 ORM O01](hl7v2.html#oml_o21-laboratory-order) and send this to iGene.
 
+#### http Authorisation 
 
-#### http Authorisation and Asynchronpous Response Messaging (Optional)
-
-<img style="padding:3px;width:60%;" src="Phase 1b ESB.drawio.png" alt="Phase 1b"/>
-<br clear="all">
-<p class="figureTitle">Phase 1b</p> 
-<br clear="all">
-
-The use of a **Polling Consumer** is not optimal. This phase will allow response messages to be directly sent to Trust Integration Engines. 
 As we are using http RESTful for communication between the Trust Integration Engines, this security and authorisation can be solved in a number of ways such as:
 
 - TLA-MA
@@ -76,7 +70,7 @@ These are practical for point-to-point connections, but as the solution grows it
 
 See [Authorisation](authorisation.html) for more details.
 
-#### Messaging + FHIR Repository
+### Messaging with a copy sent to a FHIR Repository
 
 <img style="padding:3px;width:60%;" src="Phase 1c Repository.drawio.png" alt="Phase 1b"/>
 <br clear="all">
@@ -98,13 +92,13 @@ See [Authorisation](authorisation.html) for more details.
   - Targets NHS England Genomic Order Management Service FHIR API which is the interface to external GMSA.
   - This uses a FHIR RESTful API, similar to the FHIR Repository Adaptor, and like this service, the business logic (how to update the repository) is held within Regional Integrations Engine and this is not exposed externally. 
 
-### Laboratory Report
+## Laboratory Report
 
-#### Overview
+### Messaging
 
 <img style="padding:3px;width:60%;" src="Phase 2a ESB.drawio.png" alt="Phase 2a"/>
 <br clear="all">
-<p class="figureTitle">Phase 2 Overview</p> 
+<p class="figureTitle">Laboratory Report Messaging</p> 
 <br clear="all">
 
 - Source System
@@ -119,14 +113,16 @@ See [Authorisation](authorisation.html) for more details.
       - The genomic data is stored in a repository, and additional contextual information may be added.
     - Route report to NHS Trust
       - The enriched, standardized report is distributed to appropriate NHS Trust systems.
-- Trust Integration Engine (per NHS Trust)
-  - Each Trust (e.g., MFT, Alder Hey, etc.) has its own integration engine that receives the reports:
+- Destinations
+  - Order Placer - The organisation that placed the order (e.g., MFT, Alder Hey, etc.) will receive reports via its own integration engine that receives the reports:
     - They receive the HL7 v2.5.1 ORU_R01 messages.
-    - Two main output paths are shown:
-      - Greater Manchester Care Record (and similar systems)
-      - Meditech, EPIC, etc. (hospital EPR systems)
+    - They send the report onto internal systems, primarily the Electronic Patient Record (EPR), i.e. :
+      - Meditech, EPIC, Oracle/Cerner, etc. 
+  - Health Information Exchange (HIE) - The regions ICS/STP receive copies of the reports: 
+    - They receive the HL7 v2.5.1 MDM_T02 messages.
+    - These are filtered by patients primary care provider (GP Surgery), so that each ICS only recieves reports for patients they are responsible for.
 
-#### Detailed (inc FHIR Repository)
+### EPR/NHS Trust Routing and Content Enrichment
 
 <img style="padding:3px;width:60%;" src="Phase 2b ESB.drawio.png" alt="Phase 2b"/>
 <br clear="all">
@@ -159,3 +155,13 @@ See [Authorisation](authorisation.html) for more details.
     - FHIR Repository Adapter converts incoming HL7 FHIR messages into a format suitable for storage.
     - Data is stored in the IRIS FHIR Repository.
     - Access is available via HL7 FHIR RESTful API.
+
+### EDMS/ICS Routing and Content Enrichment
+
+<img style="padding:3px;width:60%;" src="Phase 2b EDMS.drawio.png" alt="Phase 2b"/>
+<br clear="all">
+<p class="figureTitle">Phase 2 Detailed</p> 
+<br clear="all">
+
+The message flow is the same as the EPR/NHS Trust Routing and Content Enrichment, except that the message is sent to the EDMS/ICS. 
+The routing is done by the Dynamic Router which using [NHS England Personal Demgraphic Service FHIR API](https://digital.nhs.uk/developer/api-catalogue/personal-demographics-service-fhir), which routes the message to the appropriate EDMS/ICS based on the GP Surgery.

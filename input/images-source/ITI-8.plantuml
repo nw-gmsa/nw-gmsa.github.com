@@ -1,0 +1,11 @@
+@startuml
+
+title "Patient Identity Feed"
+
+agent "Patient Identity Source" as Source
+
+agent "Patient Identifier Cross-reference Manager" as MPI
+
+Source -r-> MPI: [[https://profiles.ihe.net/ITI/TF/Volume2/ITI-8.html Patient Identity Feed (ITI-8)]]\n[[https://profiles.ihe.net/ITI/PIXm/ITI-104.html Patient Identity Feed FHIR (ITI-104)]]\n[[https://profiles.ihe.net/ITI/PMIR/ITI-93.html Mobile Patient Identity Feed (ITI-93)]]
+
+@enduml

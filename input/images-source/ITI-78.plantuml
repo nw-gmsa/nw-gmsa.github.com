@@ -1,0 +1,11 @@
+@startuml
+
+title "Patient Demographic Query"
+
+agent "Patient Demographics Consumer" as Source
+
+agent "Patient Demographics Supplier" as MPI
+
+Source -r-> MPI: [[https://profiles.ihe.net/ITI/PDQm/ITI-78.html Mobile Patient Demographics Query (ITI-78)]]\n[[https://profiles.ihe.net/ITI/TF/Volume2/ITI-21.html#3.21 Patient Demographics Query (ITI-21)]]
+
+@enduml
