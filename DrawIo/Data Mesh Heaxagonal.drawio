@@ -32,7 +32,7 @@
         <mxCell id="K14taMtusspFnMkYQwNe-14" value="HL7 v2/FHIR Message" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
           <mxGeometry x="22.5" y="290" width="97.5" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="74DPA8lKF1p3KtrzpaVb-3" value="Implementing Domain Driven Design&lt;br&gt;Architecture - Event Driven, Hexagonal&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;and REST&lt;br&gt;Data Mesh&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="74DPA8lKF1p3KtrzpaVb-3" value="Implementing Domain Driven Design&lt;br&gt;Architecture - Event Driven, Hexagonal&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;and REST&lt;br&gt;Data Mesh&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
           <mxGeometry x="158.75" y="370" width="172.5" height="80" as="geometry" />
         </mxCell>
         <mxCell id="74DPA8lKF1p3KtrzpaVb-6" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="K14taMtusspFnMkYQwNe-9">
@@ -41,9 +41,9 @@
             <mxPoint x="245" y="60" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="74DPA8lKF1p3KtrzpaVb-9" value="REST API" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="74DPA8lKF1p3KtrzpaVb-6">
+        <mxCell id="74DPA8lKF1p3KtrzpaVb-9" value="Read only REST API and SQL" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="74DPA8lKF1p3KtrzpaVb-6">
           <mxGeometry x="-0.0889" y="2" relative="1" as="geometry">
-            <mxPoint x="-33" y="12" as="offset" />
+            <mxPoint x="-84" y="12" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="74DPA8lKF1p3KtrzpaVb-10" value="HL7 FHIR&amp;nbsp;&lt;br&gt;RESTful (Read Only)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
@@ -80,10 +80,10 @@
           <mxGeometry x="170" y="300" width="150" height="40" as="geometry" />
         </mxCell>
         <mxCell id="ZNk59exNOhM8uQ4xU25M-1" value="HL7 v2/FHIR Message" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
-          <mxGeometry x="370" y="290" width="97.5" height="30" as="geometry" />
+          <mxGeometry x="502.5" y="230" width="97.5" height="30" as="geometry" />
         </mxCell>
         <mxCell id="ZNk59exNOhM8uQ4xU25M-2" value="IHE Laboratory Testing Workflow" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
-          <mxGeometry x="370" y="260" width="97.5" height="30" as="geometry" />
+          <mxGeometry x="502.5" y="200" width="97.5" height="30" as="geometry" />
         </mxCell>
         <mxCell id="ZNk59exNOhM8uQ4xU25M-5" value="OAuth2 + openid" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
           <mxGeometry x="192.5" y="-40" width="105" height="30" as="geometry" />
@@ -104,10 +104,22 @@
           <mxGeometry x="100" y="10" width="120" height="30" as="geometry" />
         </mxCell>
         <mxCell id="7E-u6rZYLFc40Sw6MdSP-3" value="HL7 v2/FHIR Message/XML SOAP" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
-          <mxGeometry x="480" y="290" width="120" height="30" as="geometry" />
+          <mxGeometry x="480" y="310" width="120" height="30" as="geometry" />
         </mxCell>
         <mxCell id="7E-u6rZYLFc40Sw6MdSP-4" value="IHE XDS/MHD" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
-          <mxGeometry x="480" y="260" width="120" height="30" as="geometry" />
+          <mxGeometry x="480" y="280" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="U9sZ-D53BlCDA6lc3gA6-2" value="Applications, Clinical Portals, Health Information Exchange,&amp;nbsp; Data Analytics (inc AI), etc" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="158.75" y="-150" width="165" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="U9sZ-D53BlCDA6lc3gA6-3" value="Electronic Patient Records (EPR) and Laboratory Information Systems (LIMS)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="-150" y="210" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="U9sZ-D53BlCDA6lc3gA6-4" value="Electronic Patient Records (EPR) and Laboratory Information Systems (LIMS)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="620" y="200" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="U9sZ-D53BlCDA6lc3gA6-5" value="Health Information Exchange (HIE)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="620" y="280" width="140" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
