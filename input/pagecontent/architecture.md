@@ -8,7 +8,7 @@ The architecture generally follows [Domain Driven Design [DDD]](https://en.wikip
 <p class="figureTitle">Data Mesh</p> 
 <br clear="all">
 
-### Enterprise Integration
+## Enterprise Integration
 
 The [Intermediary](ActorDefinition-Intermediary.html), North West GMSA Regional Integration Engine (RIE) is an [Enterprise Service Bus](https://en.wikipedia.org/wiki/Enterprise_service_bus) most commonly known in the NHS as a Trust Integration Engine (TIE).
 
@@ -35,18 +35,19 @@ To support genomics workflow, this guide is aligned to enterprise workflow proce
 
 Three types of messages are used within this workflow process:
 
-| Message Type                                                                                                  | HL7 Name                     | IHE Name                                                        | Description                                             |
-|---------------------------------------------------------------------------------------------------------------|------------------------------|-----------------------------------------------------------------|---------------------------------------------------------|
-| [**C**ommand Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CommandMessage.html)   | Laboratory Order O21         | [LAB-1](LAB-1.html)                      | To request a laboratory order                           |
-| [**D**ocument Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) | Laboratory Report R01        | [LAB-3](LAB-3.html)                      | Used to transfer the report to interested parties       | 
+| Message Type                                                                                                  | HL7 Name              | IHE Name                                                                 | Description                                                                       |
+|:--------------------------------------------------------------------------------------------------------------|-----------------------|--------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
+| [**C**ommand Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CommandMessage.html)   | Laboratory Order O21  | [LAB-1](LAB-1.html) | To request a laboratory order                                                     |
+| [**D**ocument Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) | Laboratory Report R01 | [LAB-3](LAB-3.html)                                                      | Used to transfer the report back to the order placer and othre interested parties | 
+|                                                                                                               | Original Document T02 | [HL7 MDM_T02](hl7v2.html#mdm_t02-original-document-notification-and-content) | Used to send a copy of the report to a HIE                                        | 
 
-### Laboratory Order 
+## Laboratory Order 
 
-#### Messaging
+### Messaging
 
-<img style="padding:3px;width:60%;" src="Phase 1a ESB.drawio.png" alt="Phase 1a"/>
+<img style="padding:3px;width:60%;" src="Phase 1b ESB.drawio.png" alt="Phase 1b"/>
 <br clear="all">
-<p class="figureTitle">Phase 1a ESB Architecture</p> 
+<p class="figureTitle">Laboratory Order</p> 
 <br clear="all">
 
 - **Accept Message** The Order Placer (NHS trust) sends a FHIR Message (NW GMSA) [Genomic Test Order O21](Questionnaire-GenomicTestOrder.html) to the RIE via the [$process-message](OperationDefinition-ProcessMessage.html) endpoint
@@ -55,15 +56,8 @@ Three types of messages are used within this workflow process:
 - **Distribution List** If the message is accepted, it is passed to a router, at present this router passes the message onto the next process. This router is for future use with the national broker.
 - **Transform to HL7 v2** The RIE will convert the FHIR Message to a [HL7 v 2.4 ORM O01](hl7v2.html#oml_o21-laboratory-order) and send this to iGene.
 
+#### http Authorisation 
 
-#### http Authorisation and Asynchronpous Response Messaging (Optional)
-
-<img style="padding:3px;width:60%;" src="Phase 1b ESB.drawio.png" alt="Phase 1b"/>
-<br clear="all">
-<p class="figureTitle">Phase 1b</p> 
-<br clear="all">
-
-The use of a **Polling Consumer** is not optimal. This phase will allow response messages to be directly sent to Trust Integration Engines. 
 As we are using http RESTful for communication between the Trust Integration Engines, this security and authorisation can be solved in a number of ways such as:
 
 - TLA-MA
@@ -76,7 +70,7 @@ These are practical for point-to-point connections, but as the solution grows it
 
 See [Authorisation](authorisation.html) for more details.
 
-#### Messaging + FHIR Repository
+### Messaging with a copy sent to a FHIR Repository
 
 <img style="padding:3px;width:60%;" src="Phase 1c Repository.drawio.png" alt="Phase 1b"/>
 <br clear="all">
@@ -98,9 +92,9 @@ See [Authorisation](authorisation.html) for more details.
   - Targets NHS England Genomic Order Management Service FHIR API which is the interface to external GMSA.
   - This uses a FHIR RESTful API, similar to the FHIR Repository Adaptor, and like this service, the business logic (how to update the repository) is held within Regional Integrations Engine and this is not exposed externally. 
 
-### Laboratory Report
+## Laboratory Report
 
-#### Overview
+### Overview
 
 <img style="padding:3px;width:60%;" src="Phase 2a ESB.drawio.png" alt="Phase 2a"/>
 <br clear="all">
@@ -126,7 +120,7 @@ See [Authorisation](authorisation.html) for more details.
       - Greater Manchester Care Record (and similar systems)
       - Meditech, EPIC, etc. (hospital EPR systems)
 
-#### Detailed (inc FHIR Repository)
+### Detailed (inc FHIR Repository)
 
 <img style="padding:3px;width:60%;" src="Phase 2b ESB.drawio.png" alt="Phase 2b"/>
 <br clear="all">
