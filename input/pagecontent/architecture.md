@@ -47,7 +47,7 @@ Three types of messages are used within this workflow process:
 
 <img style="padding:3px;width:60%;" src="Phase 1b ESB.drawio.png" alt="Phase 1b"/>
 <br clear="all">
-<p class="figureTitle">Laboratory Order</p> 
+<p class="figureTitle">Laboratory Order Messaging</p> 
 <br clear="all">
 
 - **Accept Message** The Order Placer (NHS trust) sends a FHIR Message (NW GMSA) [Genomic Test Order O21](Questionnaire-GenomicTestOrder.html) to the RIE via the [$process-message](OperationDefinition-ProcessMessage.html) endpoint
@@ -94,11 +94,11 @@ See [Authorisation](authorisation.html) for more details.
 
 ## Laboratory Report
 
-### Overview
+### Messaging
 
 <img style="padding:3px;width:60%;" src="Phase 2a ESB.drawio.png" alt="Phase 2a"/>
 <br clear="all">
-<p class="figureTitle">Phase 2 Overview</p> 
+<p class="figureTitle">Laboratory Report Messaging</p> 
 <br clear="all">
 
 - Source System
@@ -113,12 +113,14 @@ See [Authorisation](authorisation.html) for more details.
       - The genomic data is stored in a repository, and additional contextual information may be added.
     - Route report to NHS Trust
       - The enriched, standardized report is distributed to appropriate NHS Trust systems.
-- Trust Integration Engine (per NHS Trust)
-  - Each Trust (e.g., MFT, Alder Hey, etc.) has its own integration engine that receives the reports:
+- Destinations
+  - Order Placer - The organisation that placed the order (e.g., MFT, Alder Hey, etc.) will receive reports via its own integration engine that receives the reports:
     - They receive the HL7 v2.5.1 ORU_R01 messages.
-    - Two main output paths are shown:
-      - Greater Manchester Care Record (and similar systems)
-      - Meditech, EPIC, etc. (hospital EPR systems)
+    - They send the report onto internal systems, primarily the Electronic Patient Record (EPR), i.e. :
+      - Meditech, EPIC, Oracle/Cerner, etc. 
+  - Health Information Exchange (HIE) - The regions ICS/STP receive copies of the reports: 
+    - They receive the HL7 v2.5.1 MDM_T02 messages.
+    - These are filtered by patients primary care provider (GP Surgery), so that each ICS only recieves reports for patients they are responsible for.
 
 ### Detailed (inc FHIR Repository)
 
