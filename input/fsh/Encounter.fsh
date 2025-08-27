@@ -3,7 +3,10 @@ Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-Encounter
 Id:             Encounter
 Title:          "Encounter"
 Description:    """
-Includes constraints from:
+HL7 v2:
+- [PV1 to Encounter](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pv1-to-encounter.html)
+
+Reference:
 - HL7 PV1 segment definitions from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws)
 """
 

@@ -4,10 +4,13 @@ Parent:         http://hl7.eu/fhir/laboratory/StructureDefinition/ServiceRequest
 Id:             ServiceRequest
 Title:          "ServiceRequest"
 Description:    """
-Includes constraints from:
-- [NHS England Genomics ServiceRequest](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/FHIRAssets/Profiles/All-Profiles/UKCore-ServiceRequest) use text descriptions only, not the rendered profile.
+HL7 v2:
+- [ORC](hl7v2.html#orc)
+- [ORC to ServiceRequest](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-orc-to-servicerequest.html)
 
-See also [HL7 Europe Laboratory Report - ServiceRequest: Laboratory Order](https://build.fhir.org/ig/hl7-eu/laboratory/StructureDefinition-ServiceRequest-eu-lab.html)
+Reference:
+- [NHS England Genomics ServiceRequest](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/FHIRAssets/Profiles/All-Profiles/UKCore-ServiceRequest) use text descriptions only, not the rendered profile.
+- [HL7 Europe Laboratory Report - ServiceRequest: Laboratory Order](https://build.fhir.org/ig/hl7-eu/laboratory/StructureDefinition-ServiceRequest-eu-lab.html)
 """
 
 //* extension[additionalContact] ^short = "Do not use, not supported. Use PractitionerRole instead."

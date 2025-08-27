@@ -3,7 +3,14 @@ Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-DocumentRefer
 Id:             DocumentReference
 Title:          "DocumentReference"
 Description:    """
-Based on UK Definitions from [IHE Europe Metadata for exchange medical documents and images](https://www.ihe-europe.net/sites/default/files/2017-11/IHE_ITI_XDS_Metadata_Guidelines_v1.0.pdf)
+HL7 v2:
+- [OBX type ED](hl7v2.html#obx-type--ed)
+- [OBX to DocumentReference](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-documentreference.html)
+- [TXA](hl7v2.html#txa)
+- [TXA to DocumentReference](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-txa-to-documentreference.html)
+
+Reference:
+[IHE Europe Metadata for exchange medical documents and images](https://www.ihe-europe.net/sites/default/files/2017-11/IHE_ITI_XDS_Metadata_Guidelines_v1.0.pdf)
 """
 
 * identifier 1..* MS
