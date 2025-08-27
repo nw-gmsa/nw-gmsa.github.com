@@ -5,9 +5,7 @@ Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-DiagnosticRep
 Id:             DiagnosticReport
 Title:          "Diagnostic Report"
 Description:    """
-HL7 v2:
-- [OBR](hl7v2.html#obr)
-- [OBR to DiagnosticReport](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obr-to-diagnosticreport.html)
+**HL7 v2** [OBR](hl7v2.html#obr) *mapping* [OBR to DiagnosticReport](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obr-to-diagnosticreport.html)
 
 Reference:
 - The Royal College of Radiologists [Reporting networks - understanding the technical options](https://www.rcr.ac.uk/media/wwtp2mif/rcr-publications_radiology-reporting-networks-understanding-the-technical-options_march-2022.pdf)

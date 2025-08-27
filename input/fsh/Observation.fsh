@@ -4,8 +4,7 @@ Parent:         http://hl7.eu/fhir/laboratory/StructureDefinition/Observation-re
 Id:             Observation
 Title:          "Observation"
 Description:    """
-HL7 v2:
-- [OBX to Observation](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-observation.html)
+**HL7 v2** [OBX](hl7v2.html#obx) *mapping* [OBX to Observation](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-observation.html)
 """
 
 * identifier 1..* MS
