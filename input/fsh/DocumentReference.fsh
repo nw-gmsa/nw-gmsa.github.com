@@ -5,7 +5,6 @@ Title:          "DocumentReference"
 Description:    """
 **HL7 v2** [OBX type ED](hl7v2.html#obx-type--ed) *mapping* [OBX to DocumentReference](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obx-to-documentreference.html)
 **HL7 v2** [TXA](hl7v2.html#txa) *mapping* [TXA to DocumentReference](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-txa-to-documentreference.html)
-
 Reference:
 [IHE Europe Metadata for exchange medical documents and images](https://www.ihe-europe.net/sites/default/files/2017-11/IHE_ITI_XDS_Metadata_Guidelines_v1.0.pdf)
 """

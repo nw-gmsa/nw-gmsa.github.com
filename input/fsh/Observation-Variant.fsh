@@ -5,9 +5,7 @@ Title:          "Observation Variant"
 Description:    """
 Reference:
 - part of [openEHR Genomic Variant Result](https://ckm.openehr.org/ckm/archetypes/1013.1.3759)
-
-For reference:
- - [NHS England Genomics Education - Visual communication aid: Variants of uncertain significance (VUS)](https://www.genomicseducation.hee.nhs.uk/genotes/knowledge-hub/visual-communication-aid-variants-of-uncertain-significance-vus/)
+- [NHS England Genomics Education - Visual communication aid: Variants of uncertain significance (VUS)](https://www.genomicseducation.hee.nhs.uk/genotes/knowledge-hub/visual-communication-aid-variants-of-uncertain-significance-vus/)
 """
 
 * identifier 1..* MS
