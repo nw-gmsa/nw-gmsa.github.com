@@ -4,6 +4,7 @@ Id:             OrganisationSiteIdentifier
 Title:          "Organisation Site Identifier"
 Description:     """
 - **NHS Data Model and Dictionary** [ORGANISATION SITE IDENTIFIER](https://www.datadictionary.nhs.uk/attributes/organisation_site_identifier.html)
+- **HL7 FHIR** Location.identifier
 - **HL7 v2** Facility (PL.5)
 """
 

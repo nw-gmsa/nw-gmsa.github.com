@@ -4,6 +4,7 @@ Id:             ShipmentTrackingNumber
 Title:          "Shipment Tracking Number"
 Description:     """
 - **NHS Data Model and Dictionary** nil
+- **HL7 FHIR** Specimen.identifier
 - **HL7 v2** Accession ID (SPM-32)
 - **IHE XDS** nil
 

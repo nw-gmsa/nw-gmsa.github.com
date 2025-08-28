@@ -26,12 +26,17 @@ Reference:
 * identifier ^slicing.description = "Slice based on the type"
 * identifier ^slicing.ordered = false
 * identifier contains
-  FillerReportNumber 0..1 MS
+  ReportNumber 0..1 MS and FillerOrderNumber 0..1 MS
 
-* identifier[FillerReportNumber].type = $v2-0203#RI
-* identifier[FillerReportNumber] ^short = "Identifier assigned by the lab (Order Filler)"
-* identifier[FillerReportNumber] insert Obligation(#SHALL:populate, https://nw-gmsa.github.io/ActorDefinition/OrderFiller)
-* identifier[FillerReportNumber] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/AutomationManager)
+* identifier[ReportNumber] only ReportNumber
+* identifier[ReportNumber] ^short = "Identifier assigned by the lab (Order Filler)"
+* identifier[ReportNumber] insert Obligation(#SHALL:populate, https://nw-gmsa.github.io/ActorDefinition/OrderFiller)
+* identifier[ReportNumber] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/AutomationManager)
+
+* identifier[FillerOrderNumber] only FillerOrderNumber
+* identifier[FillerOrderNumber] ^short = "Identifier assigned by the lab (Order Filler)"
+* identifier[FillerOrderNumber] insert Obligation(#SHALL:populate, https://nw-gmsa.github.io/ActorDefinition/OrderFiller)
+* identifier[FillerOrderNumber] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/AutomationManager)
 
 
 * basedOn only CodeableReference
