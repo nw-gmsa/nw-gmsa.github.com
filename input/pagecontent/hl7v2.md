@@ -394,14 +394,16 @@ This is based on the definition of SPM from [Digital Health and Care Wales - HL7
 
 ### TXA
 
-| Field HL7 | Fieldname                           | Data Type | Optionality | Identifier Type or ValueSet | Example Values   |
-|-----------|-------------------------------------|-----------|-------------|-----------------------------|------------------|
-| TXA-1     | Set ID - TXA                        |           | R           |                             | 1                |
-| TXA.2     | Document Type                       | IS        | R           |                             |
-| TXA-4     | Activity Date/Time                  | TS        | R           |                             |                  |
-| TXA.5     | Primary Activity Provider Code/Name | XCN       | R           |                             |
-| TXA.12    | Unique Document Number              | [EI](#ei) | R           |                             | 1001166717^699X0 |
-| TXA-17    | Document Completion Status          |           | R           |                             | F                |
+| Field HL7 | Fieldname                           | Data Type | Optionality | Identifier Type or ValueSet                               | Example Values                       |
+|-----------|-------------------------------------|-----------|-------------|-----------------------------------------------------------|--------------------------------------|
+| TXA-1     | Set ID - TXA                        |           | R           |                                                           | 1                                    |
+| TXA.2     | Document Type                       | CWE       | R           | [Document Entry Type](ValueSet-document-entry-type.html)  | 1054161000000101^Genetic report^SNM3 |
+| TXA-4     | Activity Date/Time                  | TS        | R           |                                                           |                                      |
+| TXA.5     | Primary Activity Provider Code/Name | XCN       |             |                                                           |                                      |
+| TXA.12    | Unique Document Number              | [EI](#ei) | R           |                                                           | 1001166717^699X0                     |
+| TXA-17    | Document Completion Status          |           | R           |                                                           | F                                    |
+| TXA-24    | Folder Assignment                   | CWE       |             | [DocumentEntry Class](ValueSet-document-entry-class.html) |                                      |                    
+| TXA-25    | Document Title                      | ST        |             |                                                           |                                      |
 
 <div class="alert alert-info" role="alert">
 <b>v2 to FHIR Conversion:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-txa-to-documentreference.html" _target="_blank">TXA to DocumentReference</a> 
