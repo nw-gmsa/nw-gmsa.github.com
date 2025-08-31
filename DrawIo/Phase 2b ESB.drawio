@@ -1,14 +1,14 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36" version="28.1.1">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36" version="28.1.2">
   <diagram name="Page-1" id="toyqWjw3-tFAEOU__Un6">
     <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="_b9NuXSDLzWbAmvTPXuV-12" value="Regional Integration Engine&lt;div&gt;(Repository Service)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
-          <mxGeometry x="590" y="1110" width="450" height="180" as="geometry" />
+          <mxGeometry x="580" y="1300" width="450" height="180" as="geometry" />
         </mxCell>
         <mxCell id="HnpPnAv44DMsRuAQf5Vg-59" value="Regional Integration Engine&lt;br&gt;(Enterprise Service Bus)" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
-          <mxGeometry x="280" y="710" width="760" height="370" as="geometry" />
+          <mxGeometry x="280" y="710" width="930" height="550" as="geometry" />
         </mxCell>
         <mxCell id="7jtiY5M9mVHTs9dgm_Sb-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="SpyZkMs1lM7mogaTS6Ty-38" target="_b9NuXSDLzWbAmvTPXuV-6">
           <mxGeometry relative="1" as="geometry" />
@@ -21,7 +21,7 @@
         <mxCell id="SpyZkMs1lM7mogaTS6Ty-38" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="153.5" y="800" width="73" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="HnpPnAv44DMsRuAQf5Vg-33" value="Laboratory Information System (LIMS)&amp;nbsp;&lt;div&gt;NW GMSA&amp;nbsp;iGene&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="HnpPnAv44DMsRuAQf5Vg-33" value="&lt;b&gt;Laboratory Information System (LIMS)&amp;nbsp;&lt;/b&gt;&lt;div&gt;NW GMSA&amp;nbsp;iGene&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
           <mxGeometry x="130" y="720" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="7jtiY5M9mVHTs9dgm_Sb-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0;exitY=0.5;endArrow=none;dashed=0;html=1;strokeColor=#808080;strokeWidth=2;" edge="1" parent="1" source="7jtiY5M9mVHTs9dgm_Sb-12" target="7jtiY5M9mVHTs9dgm_Sb-11">
@@ -33,48 +33,40 @@
         <mxCell id="7jtiY5M9mVHTs9dgm_Sb-12" value="D" style="strokeWidth=2;dashed=0;align=center;fontSize=8;shape=rect;fillColor=#C7A0FF;fontStyle=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="192.5" y="828" width="12" height="12" as="geometry" />
         </mxCell>
+        <mxCell id="By_1TARWnx_QZHChqkb0-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="7jtiY5M9mVHTs9dgm_Sb-15" target="ASGDk-45rUAA4ve6-Ohr-6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="990" y="821" as="sourcePoint" />
+            <mxPoint x="1046" y="822" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="7jtiY5M9mVHTs9dgm_Sb-15" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;Dynamic&amp;nbsp; Router&lt;/font&gt;" style="html=1;strokeWidth=2;outlineConnect=0;dashed=0;align=center;fontSize=8;shape=mxgraph.eip.content_based_router;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#c0f5a9;" vertex="1" parent="1">
-          <mxGeometry x="880" y="792.5" width="120" height="65" as="geometry" />
-        </mxCell>
-        <mxCell id="7jtiY5M9mVHTs9dgm_Sb-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startFill=0;" edge="1" parent="1" source="7jtiY5M9mVHTs9dgm_Sb-17" target="7jtiY5M9mVHTs9dgm_Sb-15">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="7jtiY5M9mVHTs9dgm_Sb-17" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;Dynamic Rule Base&lt;br&gt;(FHIR Subscription)&lt;/font&gt;" style="html=1;strokeWidth=2;outlineConnect=0;dashed=0;align=center;fontSize=8;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.eip.message_store;fillColor=#c0f5a9" vertex="1" parent="1">
-          <mxGeometry x="885" y="950" width="110" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="ASGDk-45rUAA4ve6-Ohr-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="7jtiY5M9mVHTs9dgm_Sb-17" target="_b9NuXSDLzWbAmvTPXuV-13">
-          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry x="870" y="792.5" width="120" height="65" as="geometry" />
         </mxCell>
         <mxCell id="_b9NuXSDLzWbAmvTPXuV-1" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="1160" y="799.5" width="73" height="50" as="geometry" />
+          <mxGeometry x="1321" y="800.5" width="73" height="50" as="geometry" />
         </mxCell>
         <mxCell id="_b9NuXSDLzWbAmvTPXuV-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0;exitY=0.5;endArrow=none;dashed=0;html=1;strokeColor=#808080;strokeWidth=2;" edge="1" parent="1" source="_b9NuXSDLzWbAmvTPXuV-4" target="_b9NuXSDLzWbAmvTPXuV-3">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="_b9NuXSDLzWbAmvTPXuV-3" value="" style="strokeWidth=2;dashed=0;align=center;fontSize=8;shape=ellipse;fillColor=#808080;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="1174.5" y="810" width="12" height="12" as="geometry" />
+          <mxGeometry x="1335.5" y="811" width="12" height="12" as="geometry" />
         </mxCell>
         <mxCell id="_b9NuXSDLzWbAmvTPXuV-4" value="D" style="strokeWidth=2;dashed=0;align=center;fontSize=8;shape=rect;fillColor=#C7A0FF;fontStyle=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="1190.5" y="828" width="12" height="12" as="geometry" />
+          <mxGeometry x="1351.5" y="829" width="12" height="12" as="geometry" />
         </mxCell>
         <mxCell id="_b9NuXSDLzWbAmvTPXuV-6" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;Transform to&amp;nbsp;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;HL7 FHIR Message&lt;/font&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;(Region Canonical Data Model)&lt;/font&gt;&lt;/div&gt;" style="html=1;strokeWidth=2;outlineConnect=0;dashed=0;align=center;fontSize=8;shape=mxgraph.eip.message_translator;fillColor=#c0f5a9;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
           <mxGeometry x="321" y="792" width="119" height="65" as="geometry" />
         </mxCell>
-        <mxCell id="_b9NuXSDLzWbAmvTPXuV-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="7jtiY5M9mVHTs9dgm_Sb-15" target="_b9NuXSDLzWbAmvTPXuV-1">
+        <mxCell id="_b9NuXSDLzWbAmvTPXuV-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ASGDk-45rUAA4ve6-Ohr-6" target="_b9NuXSDLzWbAmvTPXuV-1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1102.7000000000003" y="824.9999999999998" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="_b9NuXSDLzWbAmvTPXuV-18" value="HL7 v2.5.1&amp;nbsp;&lt;div&gt;ORU_R01&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="_b9NuXSDLzWbAmvTPXuV-9">
-          <mxGeometry x="-0.1386" y="-3" relative="1" as="geometry">
-            <mxPoint x="31" y="22" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="_b9NuXSDLzWbAmvTPXuV-13" value="IRIS&lt;br&gt;FHIR Repository" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
-          <mxGeometry x="910" y="1160" width="60" height="80" as="geometry" />
+        <mxCell id="_b9NuXSDLzWbAmvTPXuV-13" value="Clinical Data Repository" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="900" y="1350" width="60" height="80" as="geometry" />
         </mxCell>
         <mxCell id="_b9NuXSDLzWbAmvTPXuV-14" value="FHIR&amp;nbsp;&lt;div&gt;Repository&amp;nbsp;&lt;div&gt;Adaptor&lt;/div&gt;&lt;/div&gt;" style="strokeWidth=2;outlineConnect=0;dashed=0;align=center;html=1;fontSize=8;shape=mxgraph.eip.channel_adapter;fillColor=#9ddbef;" vertex="1" parent="1">
-          <mxGeometry x="650" y="1155" width="45" height="90" as="geometry" />
+          <mxGeometry x="640" y="1345" width="45" height="90" as="geometry" />
         </mxCell>
         <mxCell id="_b9NuXSDLzWbAmvTPXuV-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="_b9NuXSDLzWbAmvTPXuV-6" target="ASGDk-45rUAA4ve6-Ohr-3">
           <mxGeometry relative="1" as="geometry" />
@@ -87,38 +79,122 @@
             <mxPoint x="28" y="17" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ASGDk-45rUAA4ve6-Ohr-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ASGDk-45rUAA4ve6-Ohr-3" target="ASGDk-45rUAA4ve6-Ohr-6">
+        <mxCell id="By_1TARWnx_QZHChqkb0-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ASGDk-45rUAA4ve6-Ohr-3" target="By_1TARWnx_QZHChqkb0-3">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="ASGDk-45rUAA4ve6-Ohr-3" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;Update Genomic Data&amp;nbsp;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Repository and enrich content&lt;/font&gt;&lt;/div&gt;" style="html=1;strokeWidth=2;outlineConnect=0;dashed=0;align=center;fontSize=8;fillColor=#c0f5a9;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.eip.content_enricher;" vertex="1" parent="1">
           <mxGeometry x="500" y="792.5" width="120" height="65" as="geometry" />
         </mxCell>
-        <mxCell id="ASGDk-45rUAA4ve6-Ohr-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=classic;startFill=1;" edge="1" parent="1" source="ASGDk-45rUAA4ve6-Ohr-3" target="_b9NuXSDLzWbAmvTPXuV-14">
+        <mxCell id="yU3ElABQZjIhGrlI_ipJ-1" value="OAuth2" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn4.iconfinder.com/data/icons/ios-web-user-interface-multi-circle-flat-vol-3/512/Authorisation_lock_padlock_password_privacy_safe_security-128.png" vertex="1" parent="1">
+          <mxGeometry x="1241" y="731" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ck6UTDwcm1I5cA8ir3R7-1" value="NHS Trust&lt;br&gt;&lt;b&gt;Electronic Patient Record (EPR)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1394" y="796" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="By_1TARWnx_QZHChqkb0-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="By_1TARWnx_QZHChqkb0-1" target="By_1TARWnx_QZHChqkb0-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="By_1TARWnx_QZHChqkb0-1" value="FHIR&amp;nbsp;&lt;div&gt;Repository&amp;nbsp;&lt;div&gt;Adaptor&lt;/div&gt;&lt;/div&gt;" style="strokeWidth=2;outlineConnect=0;dashed=0;align=center;html=1;fontSize=8;shape=mxgraph.eip.channel_adapter;fillColor=#9ddbef;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="939.75" width="45" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="By_1TARWnx_QZHChqkb0-2" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;Genomic Order Management&amp;nbsp;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Service FHIR API&lt;/font&gt;&lt;/div&gt;" style="strokeWidth=2;dashed=0;align=center;fontSize=8;shape=rect;fillColor=#c0f5a9;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="952" width="120" height="65.5" as="geometry" />
+        </mxCell>
+        <mxCell id="By_1TARWnx_QZHChqkb0-3" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;Copy for ICS&lt;/font&gt;" style="html=1;strokeWidth=2;outlineConnect=0;dashed=0;align=center;fontSize=8;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.eip.wire_tap;fillColor=#c0f5a9" vertex="1" parent="1">
+          <mxGeometry x="680" y="790" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="By_1TARWnx_QZHChqkb0-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="ASGDk-45rUAA4ve6-Ohr-3" target="_b9NuXSDLzWbAmvTPXuV-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="By_1TARWnx_QZHChqkb0-7" value="FHIR Message" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="By_1TARWnx_QZHChqkb0-6">
+          <mxGeometry x="-0.3434" y="-3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ASGDk-45rUAA4ve6-Ohr-6" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;Transform to&amp;nbsp;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;HL7 v2 ORU_R01 Message&lt;/font&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;(Region Canonical Data Model)&lt;/font&gt;&lt;/div&gt;" style="html=1;strokeWidth=2;outlineConnect=0;dashed=0;align=center;fontSize=8;shape=mxgraph.eip.message_translator;fillColor=#c0f5a9;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="1046" y="792.5" width="125" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="By_1TARWnx_QZHChqkb0-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="By_1TARWnx_QZHChqkb0-3" target="7jtiY5M9mVHTs9dgm_Sb-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="By_1TARWnx_QZHChqkb0-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="7jtiY5M9mVHTs9dgm_Sb-15" target="By_1TARWnx_QZHChqkb0-1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="560" y="1200" />
+              <mxPoint x="1020" y="825" />
+              <mxPoint x="1020" y="985" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="ASGDk-45rUAA4ve6-Ohr-5" value="HL7 FHIR Message &lt;br&gt;R01" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="ASGDk-45rUAA4ve6-Ohr-4">
-          <mxGeometry x="-0.25" y="-1" relative="1" as="geometry">
-            <mxPoint x="-69" as="offset" />
+        <mxCell id="By_1TARWnx_QZHChqkb0-14" value="External NHS Trust&lt;br&gt;&lt;b&gt;Electronic Patient Record (EPR)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="954.75" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="By_1TARWnx_QZHChqkb0-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="By_1TARWnx_QZHChqkb0-17" target="By_1TARWnx_QZHChqkb0-25">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="990" y="1150" as="sourcePoint" />
+            <mxPoint x="1046" y="1151" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ASGDk-45rUAA4ve6-Ohr-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ASGDk-45rUAA4ve6-Ohr-6" target="7jtiY5M9mVHTs9dgm_Sb-15">
+        <mxCell id="By_1TARWnx_QZHChqkb0-17" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;Dynamic&amp;nbsp; Router&lt;/font&gt;" style="html=1;strokeWidth=2;outlineConnect=0;dashed=0;align=center;fontSize=8;shape=mxgraph.eip.content_based_router;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#c0f5a9;" vertex="1" parent="1">
+          <mxGeometry x="870" y="1121.5" width="120" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="By_1TARWnx_QZHChqkb0-18" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1321" y="1129.5" width="73" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="By_1TARWnx_QZHChqkb0-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0;exitY=0.5;endArrow=none;dashed=0;html=1;strokeColor=#808080;strokeWidth=2;" edge="1" parent="1" source="By_1TARWnx_QZHChqkb0-21" target="By_1TARWnx_QZHChqkb0-20">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ASGDk-45rUAA4ve6-Ohr-6" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;Transform to&amp;nbsp;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;HL7 v2 ORU_R01 Message&lt;/font&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;(Region Canonical Data Model)&lt;/font&gt;&lt;/div&gt;" style="html=1;strokeWidth=2;outlineConnect=0;dashed=0;align=center;fontSize=8;shape=mxgraph.eip.message_translator;fillColor=#c0f5a9;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
-          <mxGeometry x="690" y="792" width="125" height="65" as="geometry" />
+        <mxCell id="By_1TARWnx_QZHChqkb0-20" value="" style="strokeWidth=2;dashed=0;align=center;fontSize=8;shape=ellipse;fillColor=#808080;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1335.5" y="1140" width="12" height="12" as="geometry" />
         </mxCell>
-        <mxCell id="ASGDk-45rUAA4ve6-Ohr-11" value="The processing and logic implemented here is very similar to the NHS England Genomic Order Management FHIR API" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
-          <mxGeometry x="600" y="1300" width="430" height="60" as="geometry" />
+        <mxCell id="By_1TARWnx_QZHChqkb0-21" value="D" style="strokeWidth=2;dashed=0;align=center;fontSize=8;shape=rect;fillColor=#C7A0FF;fontStyle=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1351.5" y="1158" width="12" height="12" as="geometry" />
         </mxCell>
-        <mxCell id="yU3ElABQZjIhGrlI_ipJ-1" value="HL7 over http&lt;br&gt;OAuth2" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn4.iconfinder.com/data/icons/ios-web-user-interface-multi-circle-flat-vol-3/512/Authorisation_lock_padlock_password_privacy_safe_security-128.png" vertex="1" parent="1">
-          <mxGeometry x="1080" y="875" width="40" height="40" as="geometry" />
+        <mxCell id="By_1TARWnx_QZHChqkb0-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="By_1TARWnx_QZHChqkb0-25" target="By_1TARWnx_QZHChqkb0-18">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1102.7000000000003" y="1153.9999999999998" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
-        <mxCell id="ck6UTDwcm1I5cA8ir3R7-1" value="Electronic Patient Record (EPR)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="1136.5" y="720" width="120" height="60" as="geometry" />
+        <mxCell id="By_1TARWnx_QZHChqkb0-23" value="OAuth2" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn4.iconfinder.com/data/icons/ios-web-user-interface-multi-circle-flat-vol-3/512/Authorisation_lock_padlock_password_privacy_safe_security-128.png" vertex="1" parent="1">
+          <mxGeometry x="1241" y="1170" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="By_1TARWnx_QZHChqkb0-24" value="NHS ICS&lt;div&gt;&lt;b&gt;Health Informations Exchange (HIE) or&amp;nbsp;&lt;/b&gt;&lt;/div&gt;&lt;b&gt;IHE XDS or&amp;nbsp;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1394" y="1125" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="By_1TARWnx_QZHChqkb0-25" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;Transform to&amp;nbsp;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;HL7 v2 MDM_T02 Message&lt;/font&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;or IHE XDS ITI&lt;/font&gt;&lt;/div&gt;" style="html=1;strokeWidth=2;outlineConnect=0;dashed=0;align=center;fontSize=8;shape=mxgraph.eip.message_translator;fillColor=#c0f5a9;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="1046" y="1121.5" width="125" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="By_1TARWnx_QZHChqkb0-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="By_1TARWnx_QZHChqkb0-3" target="By_1TARWnx_QZHChqkb0-17">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="740" y="1154" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="By_1TARWnx_QZHChqkb0-27" value="Genomic Data Consumers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="1360" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="By_1TARWnx_QZHChqkb0-28" value="Includes IHE QEDm" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="1455" width="245" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="By_1TARWnx_QZHChqkb0-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="By_1TARWnx_QZHChqkb0-27" target="_b9NuXSDLzWbAmvTPXuV-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="By_1TARWnx_QZHChqkb0-30" value="HL7 FHIR RESTful&amp;nbsp;&lt;br&gt;(read only)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="By_1TARWnx_QZHChqkb0-29">
+          <mxGeometry x="-0.2" relative="1" as="geometry">
+            <mxPoint x="11" y="20" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="By_1TARWnx_QZHChqkb0-31" value="OAuth2" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn4.iconfinder.com/data/icons/ios-web-user-interface-multi-circle-flat-vol-3/512/Authorisation_lock_padlock_password_privacy_safe_security-128.png" vertex="1" parent="1">
+          <mxGeometry x="1080" y="1320" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="By_1TARWnx_QZHChqkb0-32" value="Follows IHE LTW LAB-3" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="130" y="650" width="1400" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="By_1TARWnx_QZHChqkb0-33" value="Includes IHE QEDm and&amp;nbsp;&lt;div&gt;IHE XDS/MHD&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="1220" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="By_1TARWnx_QZHChqkb0-34" value="Includes IHE QEDm" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="880" width="160" height="25" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
