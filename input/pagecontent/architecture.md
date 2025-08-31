@@ -94,36 +94,6 @@ See [Authorisation](authorisation.html) for more details.
 
 ## Laboratory Report
 
-### Messaging
-
-<img style="padding:3px;width:60%;" src="Phase 2a ESB.drawio.png" alt="Phase 2a"/>
-<br clear="all">
-<p class="figureTitle">Laboratory Report Messaging</p> 
-<br clear="all">
-
-- Source System
-  - NW GMSA LIMS (iGene):
-    - The starting point where genomic test results are generated.
-    - The results are transmitted as HL7 v2.3 ORU_R01 messages. 
-- Regional Integration Engine (NW GMSA)
-  - This acts as the middleware hub where data is standardized, enriched, and routed. It has three key steps:
-    - Convert HL7 v2.3 → HL7 v2.5.1 Regional Canonical Data Model
-      - The messages are transformed into a newer HL7 standard and structured in a common data model.
-    - Update Genomic Data Repository & Enrich Report Content
-      - The genomic data is stored in a repository, and additional contextual information may be added.
-    - Route report to NHS Trust
-      - The enriched, standardized report is distributed to appropriate NHS Trust systems.
-- Destinations
-  - Order Placer - The organisation that placed the order (e.g., MFT, Alder Hey, etc.) will receive reports via its own integration engine that receives the reports:
-    - They receive the HL7 v2.5.1 ORU_R01 messages.
-    - They send the report onto internal systems, primarily the Electronic Patient Record (EPR), i.e. :
-      - Meditech, EPIC, Oracle/Cerner, etc. 
-  - Health Information Exchange (HIE) - The regions ICS/STP receive copies of the reports: 
-    - They receive the HL7 v2.5.1 MDM_T02 messages.
-    - These are filtered by patients primary care provider (GP Surgery), so that each ICS only recieves reports for patients they are responsible for.
-
-### EPR/NHS Trust Routing and Content Enrichment
-
 <img style="padding:3px;width:60%;" src="Phase 2b ESB.drawio.png" alt="Phase 2b"/>
 <br clear="all">
 <p class="figureTitle">Phase 2 Detailed</p> 
@@ -153,6 +123,6 @@ See [Authorisation](authorisation.html) for more details.
 - Repository Service
   - A dedicated Repository Service captures and stores all enriched FHIR data.
     - FHIR Repository Adapter converts incoming HL7 FHIR messages into a format suitable for storage.
-    - Data is stored in the IRIS FHIR Repository.
+    - Data is stored in the Clinic Data Repository (IRIS FHIR Repository).
     - Access is available via HL7 FHIR RESTful API.
 
