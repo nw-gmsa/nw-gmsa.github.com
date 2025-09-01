@@ -81,7 +81,7 @@ These are practical for point-to-point connections, but as the solution grows it
 
 See [Authorisation](authorisation.html) for more details.
 
-### Asynchronous Replies
+### Message Validation and Asynchronous Replies
 
 <img style="padding:3px;width:60%;" src="Phase 1b ESB.drawio.png" alt="Phase 1b"/>
 <br clear="all">
