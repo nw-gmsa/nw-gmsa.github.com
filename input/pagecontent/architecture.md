@@ -43,8 +43,6 @@ Three types of messages are used within this workflow process:
 
 ## Laboratory Order 
 
-
-
 ### Messaging with a copy sent to a FHIR Repository
 
 <img style="padding:3px;width:60%;" src="Phase 1c Repository.drawio.png" alt="Phase 1b"/>
@@ -52,49 +50,17 @@ Three types of messages are used within this workflow process:
 <p class="figureTitle">Messaging + FHIR Repository</p> 
 <br clear="all">
 
-- Update Genomic Data Repository
-  - First point of entry for HL7 FHIR O21 messages (regional canonical model).
-  - Updates internal genomic data repository using FHIR RESTful interactions.
-- Dynamic Router
-  - Routes messages dynamically based on rules stored in the Dynamic Rule Base (a database).
-  - Determines where to send each message.
-- Transform to HL7 v2 Message (Region Canonical Model)
+- Update Genomic Data Repository ([Wire Tap](https://www.enterpriseintegrationpatterns.com/patterns/messaging/WireTap.html))
+  - First point of entry for HL7 FHIR O21 messages [Command Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CommandMessage.html).
+  - Updates internal genomic data repository using FHIR RESTful interactions. ([Messaging Gateway](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessagingGateway.html))
+- Router ([Message Router](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageRouter.html))
+  - Routes messages based on order metadata.
+- Transform to HL7 v2 Message ([Message Translator](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageTranslator.html) and v2 [Canoncial Model](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CanonicalDataModel.html))
   - Converts HL7 FHIR O21 messages into HL7 v2.5.1 OML_O21 format.
   - These transformed messages are sent to NW GMSA LIMS iGene.
-- FHIR Repository Adaptor
-  - Provides translation between HL7 FHIR messages and internal repositories or services.
-- Genomic Order Management Adaptor Service FHIR API
+- Genomic Order Management Adaptor Service FHIR API ([Messaging Gateway](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessagingGateway.html))
   - Targets NHS England Genomic Order Management Service FHIR API which is the interface to external GMSA.
-  - This uses a FHIR RESTful API, similar to the FHIR Repository Adaptor, and like this service, the business logic (how to update the repository) is held within Regional Integrations Engine and this is not exposed externally. 
-
-#### http Authorisation
-
-As we are using http RESTful for communication between the Trust Integration Engines, this security and authorisation can be solved in a number of ways such as:
-
-- TLA-MA
-- openid
-
-These are practical for point-to-point connections, but as the solution grows it can become complicated, so it is preferred we move to enterprise level security such as OAuth2 Client Credentials Grant.
-
-- [IHE Internet User Authorization (IUA)](IUA.html)
-- [NHS England - Application-restricted APIs](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis)
-
-See [Authorisation](authorisation.html) for more details.
-
-### Message Validation and Asynchronous Replies
-
-<img style="padding:3px;width:60%;" src="Phase 1b ESB.drawio.png" alt="Phase 1b"/>
-<br clear="all">
-<p class="figureTitle">Laboratory Order Messaging</p> 
-<br clear="all">
-
-- **Accept Message** The Order Placer (NHS trust) sends a FHIR Message (NW GMSA) [Genomic Test Order O21](Questionnaire-GenomicTestOrder.html) to the RIE via the [$process-message](OperationDefinition-ProcessMessage.html) endpoint
-    - If the RIE doesn’t understand the message for technical reasons, it will respond immediately with an error message.
-    - **Validation** The RIE performs FHIR Validation on the order against the requirements listed in this Implementation Guide. The validation contains no errors, it is accepted; any errors will cause the message to be rejected. The RIE responds to the order placer asynchronously via a message queue, this is accessed by the order placer via a **Polling Consumer**
-- **Distribution List** If the message is accepted, it is passed to a router, at present this router passes the message onto the next process. This router is for future use with the national broker.
-- **Transform to HL7 v2** The RIE will convert the FHIR Message to a [HL7 v 2.4 ORM O01](hl7v2.html#oml_o21-laboratory-order) and send this to iGene.
-
-
+  - This uses a FHIR RESTful API, similar to the Clinical Data Repository Adaptor, and like this service, the business logic (how to update the repository) is held within Regional Integrations Engine and this is not exposed externally. 
 
 ## Laboratory Report
 
@@ -114,7 +80,7 @@ See [Authorisation](authorisation.html) for more details.
     - Stores and enhances the message with additional data elements.
     - Provides a consistent, enriched dataset for downstream use.
 - Routing
-  - Dynamic Router ([]())
+  - Router
     - Determines where the message should be delivered (e.g., hospital systems, care records, repositories).
     - Reports are sent to the NHS Trust which ordered the test ([Message Router](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageRouter.html))
     - Reports are sent to NHS ICS Health Information Exchange (HIE) for sharing the reports within the ICS, this is based on the GP Surgery for the patient which is obtained via a PDS lookup. ([Dynamic Router](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DynamicRouter.html))
@@ -130,4 +96,33 @@ See [Authorisation](authorisation.html) for more details.
     - FHIR Repository Adapter converts incoming HL7 FHIR messages into a format suitable for storage.
     - Data is stored in the Clinic Data Repository (IRIS FHIR Repository).
     - Access is available via HL7 FHIR RESTful API.
+
+## Security
+
+### http Authorisation
+
+As we are using http RESTful for communication between the Trust Integration Engines, this security and authorisation can be solved in a number of ways such as:
+
+- TLA-MA
+- openid
+
+These are practical for point-to-point connections, but as the solution grows it can become complicated, so it is preferred we move to enterprise level security such as OAuth2 Client Credentials Grant.
+
+- [IHE Internet User Authorization (IUA)](IUA.html)
+- [NHS England - Application-restricted APIs](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#application-restricted-apis)
+
+See [Authorisation](authorisation.html) for more details.
+
+## Message Validation and Asynchronous Replies
+
+<img style="padding:3px;width:60%;" src="Phase 1b ESB.drawio.png" alt="Phase 1b"/>
+<br clear="all">
+<p class="figureTitle">Laboratory Order Messaging</p> 
+<br clear="all">
+
+- **Accept Message** The Order Placer (NHS trust) sends a FHIR Message (NW GMSA) [Genomic Test Order O21](Questionnaire-GenomicTestOrder.html) to the RIE via the [$process-message](OperationDefinition-ProcessMessage.html) endpoint
+    - If the RIE doesn’t understand the message for technical reasons, it will respond immediately with an error message.
+    - **Validation** The RIE performs FHIR Validation on the order against the requirements listed in this Implementation Guide. The validation contains no errors, it is accepted; any errors will cause the message to be rejected. The RIE responds to the order placer asynchronously via a message queue, this is accessed by the order placer via a **Polling Consumer**
+- **Distribution List** If the message is accepted, it is passed to a router, at present this router passes the message onto the next process. This router is for future use with the national broker.
+- **Transform to HL7 v2** The RIE will convert the FHIR Message to a [HL7 v 2.4 ORM O01](hl7v2.html#oml_o21-laboratory-order) and send this to iGene.
 
