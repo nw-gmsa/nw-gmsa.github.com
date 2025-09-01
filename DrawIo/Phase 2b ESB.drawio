@@ -65,14 +65,13 @@
         <mxCell id="_b9NuXSDLzWbAmvTPXuV-13" value="Clinical Data Repository" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
           <mxGeometry x="906" y="1460" width="60" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="_b9NuXSDLzWbAmvTPXuV-14" value="FHIR&amp;nbsp;&lt;div&gt;Repository&amp;nbsp;&lt;div&gt;Adaptor&lt;/div&gt;&lt;/div&gt;" style="strokeWidth=2;outlineConnect=0;dashed=0;align=center;html=1;fontSize=8;shape=mxgraph.eip.channel_adapter;fillColor=#9ddbef;" vertex="1" parent="1">
-          <mxGeometry x="646" y="1455" width="45" height="90" as="geometry" />
-        </mxCell>
         <mxCell id="_b9NuXSDLzWbAmvTPXuV-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="_b9NuXSDLzWbAmvTPXuV-6" target="ASGDk-45rUAA4ve6-Ohr-3">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="_b9NuXSDLzWbAmvTPXuV-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="_b9NuXSDLzWbAmvTPXuV-14" target="_b9NuXSDLzWbAmvTPXuV-13">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="_b9NuXSDLzWbAmvTPXuV-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="A2E8gG3wmct7KMqBH02L-5" target="_b9NuXSDLzWbAmvTPXuV-13">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="691" y="1500" as="sourcePoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="_b9NuXSDLzWbAmvTPXuV-17" value="HL7 FHIR RESTful" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="_b9NuXSDLzWbAmvTPXuV-16">
           <mxGeometry x="-0.2917" y="-3" relative="1" as="geometry">
@@ -91,11 +90,10 @@
         <mxCell id="ck6UTDwcm1I5cA8ir3R7-1" value="NHS Trust&lt;br&gt;&lt;b&gt;Electronic Patient Record (EPR)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
           <mxGeometry x="1394" y="796" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="By_1TARWnx_QZHChqkb0-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="By_1TARWnx_QZHChqkb0-1" target="By_1TARWnx_QZHChqkb0-2">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="By_1TARWnx_QZHChqkb0-1" value="FHIR&amp;nbsp;&lt;div&gt;Repository&amp;nbsp;&lt;div&gt;Adaptor&lt;/div&gt;&lt;/div&gt;" style="strokeWidth=2;outlineConnect=0;dashed=0;align=center;html=1;fontSize=8;shape=mxgraph.eip.channel_adapter;fillColor=#9ddbef;" vertex="1" parent="1">
-          <mxGeometry x="1090" y="939.75" width="45" height="90" as="geometry" />
+        <mxCell id="By_1TARWnx_QZHChqkb0-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" target="By_1TARWnx_QZHChqkb0-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1170" y="985" as="sourcePoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="By_1TARWnx_QZHChqkb0-2" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;Genomic Order Management&amp;nbsp;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Service FHIR API&lt;/font&gt;&lt;/div&gt;" style="strokeWidth=2;dashed=0;align=center;fontSize=8;shape=rect;fillColor=#c0f5a9;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
           <mxGeometry x="1250" y="952" width="120" height="65.5" as="geometry" />
@@ -103,8 +101,10 @@
         <mxCell id="By_1TARWnx_QZHChqkb0-3" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;Copy for ICS&lt;/font&gt;" style="html=1;strokeWidth=2;outlineConnect=0;dashed=0;align=center;fontSize=8;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.eip.wire_tap;fillColor=#c0f5a9" vertex="1" parent="1">
           <mxGeometry x="680" y="790" width="120" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="By_1TARWnx_QZHChqkb0-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="ASGDk-45rUAA4ve6-Ohr-3" target="_b9NuXSDLzWbAmvTPXuV-14">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="By_1TARWnx_QZHChqkb0-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="ASGDk-45rUAA4ve6-Ohr-3" target="A2E8gG3wmct7KMqBH02L-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="646" y="1500" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="By_1TARWnx_QZHChqkb0-7" value="FHIR Message" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="By_1TARWnx_QZHChqkb0-6">
           <mxGeometry x="-0.3434" y="-3" relative="1" as="geometry">
@@ -117,12 +117,14 @@
         <mxCell id="By_1TARWnx_QZHChqkb0-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="By_1TARWnx_QZHChqkb0-3" target="7jtiY5M9mVHTs9dgm_Sb-15">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="By_1TARWnx_QZHChqkb0-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="7jtiY5M9mVHTs9dgm_Sb-15" target="By_1TARWnx_QZHChqkb0-1">
+        <mxCell id="By_1TARWnx_QZHChqkb0-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="7jtiY5M9mVHTs9dgm_Sb-15" target="A2E8gG3wmct7KMqBH02L-4">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1020" y="825" />
               <mxPoint x="1020" y="985" />
+              <mxPoint x="1046" y="985" />
             </Array>
+            <mxPoint x="1090" y="984.75" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="By_1TARWnx_QZHChqkb0-14" value="External NHS Trust&lt;br&gt;&lt;b&gt;Electronic Patient Record (EPR)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
@@ -204,6 +206,24 @@
         </mxCell>
         <mxCell id="FSswNMQdKsKT9vddK4mb-3" value="IHE PDQm" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
           <mxGeometry x="1010" y="1300" width="150" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="A2E8gG3wmct7KMqBH02L-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="A2E8gG3wmct7KMqBH02L-1" target="ASGDk-45rUAA4ve6-Ohr-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="490.5" y="865" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="470" y="985" />
+              <mxPoint x="470" y="825" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A2E8gG3wmct7KMqBH02L-1" value="GOMS&amp;nbsp;&lt;br&gt;(future)" style="strokeWidth=2;outlineConnect=0;dashed=0;align=center;html=1;fontSize=8;shape=mxgraph.eip.channel_adapter;fillColor=#9ddbef;" vertex="1" parent="1">
+          <mxGeometry x="176" y="940" width="45" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="A2E8gG3wmct7KMqBH02L-4" value="&lt;font size=&quot;1&quot;&gt;Genomic Order Management Service&amp;nbsp;&lt;br&gt;Gateway Adaptor&lt;br&gt;(future)&lt;/font&gt;" style="fillColor=#c0f5a9;dashed=0;outlineConnect=0;strokeWidth=2;html=1;align=center;fontSize=8;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.eip.messaging_gateway;" vertex="1" parent="1">
+          <mxGeometry x="1046" y="949" width="120" height="68.5" as="geometry" />
+        </mxCell>
+        <mxCell id="A2E8gG3wmct7KMqBH02L-5" value="&lt;font size=&quot;1&quot;&gt;Clinical Data Reposttory&amp;nbsp;&lt;br&gt;Gateway Adaptor&lt;/font&gt;" style="fillColor=#c0f5a9;dashed=0;outlineConnect=0;strokeWidth=2;html=1;align=center;fontSize=8;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.eip.messaging_gateway;" vertex="1" parent="1">
+          <mxGeometry x="610" y="1465.75" width="120" height="68.5" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
