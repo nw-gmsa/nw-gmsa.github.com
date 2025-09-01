@@ -104,28 +104,29 @@ See [Authorisation](authorisation.html) for more details.
 <br clear="all">
 
 - Source System
-  - NW GMSA LIMS (iGene)
+  - NW GMSA LIMS (iGene) ([Document Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html))
     - Produces genomic test results in HL7 v2.3 ORU_R01 messages.
     - These are sent into the Enterprise Service Bus (ESB).
 - Transformation and Enrichment (inside ESB)
-  - Transform to HL7 FHIR Message (Regional Canonical Data Model)
+  - Transform to HL7 FHIR Message ([Message Translator](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageTranslator.html) and FHIR [Canoncial Model](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CanonicalDataModel.html))
     - Converts HL7 v2.3 message into a modern HL7 FHIR R01 message.
-  - Update Genomic Data Repository & Enrich Content
+  - Update Genomic Data Repository & Enrich Content ([Content Enricher](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DataEnricher.html))
     - Stores and enhances the message with additional data elements.
     - Provides a consistent, enriched dataset for downstream use.
-  - Transform to HL7 v2 Message (Regional Canonical Data Model)
+- Routing
+  - Dynamic Router ([]())
+    - Determines where the message should be delivered (e.g., hospital systems, care records, repositories).
+    - Reports are sent to the NHS Trust which ordered the test ([Message Router](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageRouter.html))
+    - Reports are sent to NHS ICS Health Information Exchange (HIE) for sharing the reports within the ICS, this is based on the GP Surgery for the patient which is obtained via a PDS lookup. ([Dynamic Router](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DynamicRouter.html))
+  - Transform to HL7 v2 Message ([Message Translator](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageTranslator.html) and v2 [Canoncial Model](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CanonicalDataModel.html))
     - Converts enriched content back into a structured HL7 v2.x format for downstream systems that still rely on v2.
     - This ensures backward compatibility with existing hospital systems.
-- Routing
-  - Dynamic Router
-    - Determines where the message should be delivered (e.g., hospital systems, care records, repositories).
-    - Uses a Dynamic Rule Base (FHIR Subscription) to apply routing logic.
 - Output
   - Reports are sent as:
-    - HL7 v2.5.1 ORU_R01 messages (for systems using HL7 v2).
+    - HL7 v2.5.1 ORU_R01 or MDM_T02 messages (for systems using HL7 v2).
     - HL7 over HTTP with OAuth2 (for secure API-based delivery).
 - Repository Service
-  - A dedicated Repository Service captures and stores all enriched FHIR data.
+  - A dedicated Repository Service captures and stores all enriched FHIR data. ([Messaging Gateway](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessagingGateway.html))
     - FHIR Repository Adapter converts incoming HL7 FHIR messages into a format suitable for storage.
     - Data is stored in the Clinic Data Repository (IRIS FHIR Repository).
     - Access is available via HL7 FHIR RESTful API.
