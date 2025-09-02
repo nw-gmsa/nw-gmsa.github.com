@@ -161,8 +161,8 @@
         <mxCell id="ILvifMnPqF2TKCAFdpOd-1" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;Update Genomic Data Repository&amp;nbsp;&lt;/span&gt;" style="html=1;strokeWidth=2;outlineConnect=0;dashed=0;align=center;fontSize=8;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.eip.wire_tap;fillColor=#c0f5a9" vertex="1" parent="1">
           <mxGeometry x="500" y="791.5" width="120" height="67.5" as="geometry" />
         </mxCell>
-        <mxCell id="psYKPzLQwSFd3BFdngnA-3" value="Includes IHE QEDm (HL7 FHIR)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
-          <mxGeometry x="1090" y="1260" width="245" height="25" as="geometry" />
+        <mxCell id="psYKPzLQwSFd3BFdngnA-3" value="Includes IHE QEDm (HL7 FHIR) + PDQm + MHD" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="1260" width="220" height="40" as="geometry" />
         </mxCell>
         <mxCell id="psYKPzLQwSFd3BFdngnA-4" value="Follows IHE LTW LAB-1&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
           <mxGeometry x="70" y="630" width="1410" height="25" as="geometry" />
