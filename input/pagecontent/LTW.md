@@ -257,7 +257,7 @@ The details of this is beyond the scope of this guide, for more details see [Get
 
 Note: the reason for referral to the Genomics in the diagram below (which is based on GIRFT) is NICE DG27 [Molecular testing strategies for Lynch syndrome in people with colorectal cancer](https://www.nice.org.uk/guidance/dg27)
 
-<img style="padding:3px;width:40%;" src="ERIC.drawio.png" alt="Colorectal Cancer Diagnostics and Patient Referrals"/>
+<img style="padding:3px;width:90%;" src="ERIC.drawio.png" alt="Colorectal Cancer Diagnostics and Patient Referrals"/>
 <br clear="all">
 <p class="figureTitle">Colorectal Cancer Diagnostics and Patient Referrals</p> 
 <br clear="all">
