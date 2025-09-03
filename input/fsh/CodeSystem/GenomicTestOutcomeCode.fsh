@@ -6,7 +6,7 @@ Test Outcome Code from [NHS England Genomics Test Reporting Specification](https
 """
 
 * ^name = "GenomicTestOutcomeCode"
-* ^content = #fragment
+* ^content = #complete
 * ^caseSensitive = true
 * ^experimental = false
 * ^status = #draft
