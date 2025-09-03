@@ -179,4 +179,4 @@ Reference:
    GenomicTestOutcomeCode 1..1 MS
 
 * conclusionCode.coding[GenomicTestOutcomeCode] ^short = "Genomic Test Outcome Code"
-* conclusionCode.coding[GenomicTestOutcomeCode].system = $GTOC
+* conclusionCode.coding[GenomicTestOutcomeCode] from GenomicTestOutcomeCodes
