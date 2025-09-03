@@ -205,6 +205,23 @@ A report is created by the clinical practice and sent to the order result tracke
   - When all tests in the order are complete, a Task Complete Notification is sent to the Order Placer.
     - This notification can be sent via email or another messaging system.
 
+### Relationship to NHS England Genomic Order Management Service FHIR API
+
+This guide builds on the use cases outlined in [NHS England Genomic Order Management Service FHIR API - Background](https://simplifier.net/guide/genomic-order-management-service-fhir-api/Home/Design/Background), expanding them to support a broader range of participants and introducing standards for the `Laboratory Order LAB-1`.
+Key differences include:
+
+- **Workflow basis:** The [IHE Laboratory and Testing Worflow LTW](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol1.pdf) serves as the primary reference for describing laboratory testing processes.
+- **Message translation and code conversion:** The Regional Integration Engine (RIE) handles translations and code mappings to and from the Genomic Order Management Service FHIR API.
+- **Routing of orders and reports:** The RIE routes orders and reports for other GMSAs through the Genomic Order Management Service FHIR API.
+- **Regional workflow consistency:** Existing regional workflows remain largely unchanged, with both HL7 v2 and FHIR standardised across the region.
+- **Report compatibility:** Reports are aligned with neighbouring Welsh NHS systems, using DHCW HL7 v2 ORU as the core model for both HL7 v2 and FHIR in the North West.
+
+<img style="padding:3px;width:95%;" src="Relationship to NHS England Genomic Order Management Service.drawio.png" alt="Relationship to NHS England Genomic Order Management Service FHIR API"/>
+<br clear="all">
+<p class="figureTitle">Relationship to NHS England Genomic Order Management Service</p> 
+<br clear="all">
+
+
 ## Use Case: Genomic Test Order following on from Pathology Test Order
 
 <img style="padding:3px;width:95%;" src="LTW Use Case 3.drawio.png" alt="Genomic LTW Business Process - Use Case 3"/>
@@ -262,6 +279,26 @@ Note: the reason for referral to the Genomics in the diagram below (which is bas
 <p class="figureTitle">Colorectal Cancer Diagnostics and Patient Referrals</p> 
 <br clear="all">
 
+
+### Relationship to NHS England Pathology
+
+This guide builds on the use cases described in the [NHS England Pathology FHIR Implementation Guide](https://simplifier.net/guide/pathology-fhir-implementation-guide/Home/Design/Background), extending them to support a wider range of stakeholders and introducing standards for the Laboratory Order LAB-1.
+
+Key differences include:
+
+- **Workflow foundation:** The [IHE Laboratory and Testing Worflow LTW](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol1.pdf) is used as the reference model for describing laboratory testing processes.
+- **Order Placer role:** The GP Electronic Patient Record (EPR) System and the Order Communications System together form the Order Placer role, which may also be fulfilled by other EPR systems.
+- **Intermediary between Order Placer and Order Filler:** This intermediary performs message translation and code conversion.
+- **Order Result Tracker role:** For results, the GP EPR System acts as the Order Result Tracker, though other systems (e.g. Secondary Care EPR) can provide this function.
+- **Intermediary between Order Filler and Order Result Tracker:** This intermediary also handles message translation and code conversion.
+- **Canonical model:** A standardised model ([Canonical model](https://en.wikipedia.org/wiki/Canonical_model)), expressed in HL7 FHIR, that can be implemented using HL7 v2, FHIR, and IHE XDS. It aligns with the latest HL7 UK Core and NHS England Data Model and Dictionary. While primarily focused on genomics, it incorporates elements from pathology and radiology for compatibility, and mandates the use of NHS England National Procedure Codes.
+
+<img style="padding:3px;width:95%;" src="Relationship to NHS England Pathology.drawio.png" alt="Relationship to NHS England Pathology"/>
+<br clear="all">
+<p class="figureTitle">Relationship to NHS England Pathology</p> 
+<br clear="all">
+
+
 ## Use Case: Work Order Management 
 
 <figure>
@@ -287,39 +324,6 @@ Note: the reason for referral to the Genomics in the diagram below (which is bas
 - Completion
   - When all tests in the order are complete, the Automation Manager sends a task complete notification (which can be an email) to the Order Placer.
 
-### Relationship to NHS England Genomic Order Management Service FHIR API
-
-This guide builds on the use cases outlined in [NHS England Genomic Order Management Service FHIR API - Background](https://simplifier.net/guide/genomic-order-management-service-fhir-api/Home/Design/Background), expanding them to support a broader range of participants and introducing standards for the `Laboratory Order LAB-1`.
-Key differences include:
-
-- **Workflow basis:** The [IHE Laboratory and Testing Worflow LTW](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol1.pdf) serves as the primary reference for describing laboratory testing processes.
-- **Message translation and code conversion:** The Regional Integration Engine (RIE) handles translations and code mappings to and from the Genomic Order Management Service FHIR API.
-- **Routing of orders and reports:** The RIE routes orders and reports for other GMSAs through the Genomic Order Management Service FHIR API.
-- **Regional workflow consistency:** Existing regional workflows remain largely unchanged, with both HL7 v2 and FHIR standardised across the region.
-- **Report compatibility:** Reports are aligned with neighbouring Welsh NHS systems, using DHCW HL7 v2 ORU as the core model for both HL7 v2 and FHIR in the North West.
-
-<img style="padding:3px;width:95%;" src="Relationship to NHS England Genomic Order Management Service.drawio.png" alt="Relationship to NHS England Genomic Order Management Service FHIR API"/>
-<br clear="all">
-<p class="figureTitle">Relationship to NHS England Genomic Order Management Service</p> 
-<br clear="all">
-
-### Relationship to NHS England Pathology
-
-This guide builds on the use cases described in the [NHS England Pathology FHIR Implementation Guide](https://simplifier.net/guide/pathology-fhir-implementation-guide/Home/Design/Background), extending them to support a wider range of stakeholders and introducing standards for the Laboratory Order LAB-1.
-
-Key differences include:
-
-- **Workflow foundation:** The [IHE Laboratory and Testing Worflow LTW](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol1.pdf) is used as the reference model for describing laboratory testing processes.
-- **Order Placer role:** The GP Electronic Patient Record (EPR) System and the Order Communications System together form the Order Placer role, which may also be fulfilled by other EPR systems.
-- **Intermediary between Order Placer and Order Filler:** This intermediary performs message translation and code conversion.
-- **Order Result Tracker role:** For results, the GP EPR System acts as the Order Result Tracker, though other systems (e.g. Secondary Care EPR) can provide this function.
-- **Intermediary between Order Filler and Order Result Tracker:** This intermediary also handles message translation and code conversion.
-- **Canonical model:** A standardised model ([Canonical model](https://en.wikipedia.org/wiki/Canonical_model)), expressed in HL7 FHIR, that can be implemented using HL7 v2, FHIR, and IHE XDS. It aligns with the latest HL7 UK Core and NHS England Data Model and Dictionary. While primarily focused on genomics, it incorporates elements from pathology and radiology for compatibility, and mandates the use of NHS England National Procedure Codes.
-
-<img style="padding:3px;width:95%;" src="Relationship to NHS England Pathology.drawio.png" alt="Relationship to NHS England Pathology"/>
-<br clear="all">
-<p class="figureTitle">Relationship to NHS England Pathology</p> 
-<br clear="all">
 
 ## Security Considerations
 
