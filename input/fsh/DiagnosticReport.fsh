@@ -166,3 +166,17 @@ Reference:
 * presentedForm 1..* MS
 * presentedForm ^short = "a reference to the full report (presentedForm)"
 * presentedForm only NWAttachment
+
+* conclusionCode 0..* MS
+
+* conclusionCode.coding 1..* MS
+* conclusionCode.coding ^slicing.discriminator.type = #value
+* conclusionCode.coding ^slicing.discriminator.path = "system"
+* conclusionCode.coding ^slicing.rules = #open
+* conclusionCode.coding ^slicing.description = "Slice based on the system"
+* conclusionCode.coding ^slicing.ordered = false
+* conclusionCode.coding contains
+   GenomicTestOutcomeCode 1..1 MS
+
+* conclusionCode.coding[GenomicTestOutcomeCode] ^short = "Genomic Test Outcome Code"
+* conclusionCode.coding[GenomicTestOutcomeCode].system = $GTOC
