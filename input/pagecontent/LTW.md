@@ -326,11 +326,11 @@ Key differences include:
 - Completion
   - When all tests in the order are complete, the Automation Manager sends a task complete notification (which can be an email) to the Order Placer.
 
-## Use Case: Order Communication and Notifications
+## Use Case: Genomic Order Notifications
 
 <img style="padding:3px;width:95%;" src="OrderCommunicationAndNotifications.drawio.png" alt="Order Communication and Notifications"/>
 <br clear="all">
-<p class="figureTitle">Order Communication and Notifications - Use Case 4</p> 
+<p class="figureTitle">Genomic Order Notifications - Use Case 4</p> 
 <br clear="all">
 
 ### As is Process
