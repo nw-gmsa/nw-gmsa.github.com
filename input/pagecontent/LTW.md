@@ -324,6 +324,31 @@ Key differences include:
 - Completion
   - When all tests in the order are complete, the Automation Manager sends a task complete notification (which can be an email) to the Order Placer.
 
+## Use Case: Order Communication and Notifications
+
+<img style="padding:3px;width:95%;" src="OrderCommunicationAndNotifications.png" alt="Order Communication and Notifications"/>
+<br clear="all">
+<p class="figureTitle">Order Communication and Notifications - Use Case 4</p> 
+<br clear="all">
+
+### As is Process
+
+(From North West Children Cancer. This is centred around laboratory tests, genomic tests will have similar notification systems)
+
+- Blood test requested by Primary Treatment Centre (PTC)
+- Blood sample taken by Community Nurse or Paediatric Oncology Shared Care Unit (POSCU) and the specimen details are documented
+- Blood Laboratory Order is created and a laboratory order request is sent to the laboratory
+- Blood test performed by laboratory
+- Laboratory writes up a blood results report (laboratory report)
+- Laboratory report sent to Community Nurse or POSCU
+- Laboratory report then sent to PTC
+- Community Nurse or POSCU calls PTC by phone to notify that the results have been sent and to confirm that they have been received
+- If results cannot be understood, PTC will call Community Nurse or POSCU to inform them. This is usually due to a defective message
+  - Community Nurse or POSCU sends results in a different format (via telephone or re-writes the results out)
+- PTC may edit a child's prescription on regimen in light of blood results and may need to recall a patient into hospital for additional tests
+- If prescription is amended then PTC must notify POSCU
+
+
 
 ## Security Considerations
 
