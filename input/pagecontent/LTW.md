@@ -326,7 +326,7 @@ Key differences include:
 
 ## Use Case: Order Communication and Notifications
 
-<img style="padding:3px;width:95%;" src="OrderCommunicationAndNotifications.png" alt="Order Communication and Notifications"/>
+<img style="padding:3px;width:95%;" src="OrderCommunicationAndNotifications.drawio.png" alt="Order Communication and Notifications"/>
 <br clear="all">
 <p class="figureTitle">Order Communication and Notifications - Use Case 4</p> 
 <br clear="all">
