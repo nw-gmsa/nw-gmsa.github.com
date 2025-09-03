@@ -255,9 +255,11 @@ This use case can often occur around cancer:
 
 The details of this is beyond the scope of this guide, for more details see [Getting It Right First Time (GIRFT) Best Practice Timed Diagnostic Cancer pathways ](https://gettingitrightfirsttime.co.uk/wp-content/uploads/2024/03/BestPracticeTimedDiagnosticCancerPathwayssummary-guide-March-24-V3.pdf)
 
-<img style="padding:3px;width:40%;" src="GM.drawio.png" alt="Diagnostics IHE Architecture"/>
+Note: the reason for referral to the Genomics in the diagram below (which is based on GIRFT) is NICE DG27 [Molecular testing strategies for Lynch syndrome in people with colorectal cancer](https://www.nice.org.uk/guidance/dg27)
+
+<img style="padding:3px;width:40%;" src="ERIC.drawio.png" alt="Colorectal Cancer Diagnostics and Patient Referrals"/>
 <br clear="all">
-<p class="figureTitle">Diagnostics IHE Architecture</p> 
+<p class="figureTitle">Colorectal Cancer Diagnostics and Patient Referrals</p> 
 <br clear="all">
 
 ## Use Case: Work Order Management 
