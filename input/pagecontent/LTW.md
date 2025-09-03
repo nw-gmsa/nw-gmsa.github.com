@@ -270,6 +270,8 @@ This use case can often occur around cancer:
 <p class="figureTitle">Cancer Diagnostics</p> 
 <br clear="all">
 
+#### Colorectal Cancer—Diagnostic Pathways Example
+
 The details of this is beyond the scope of this guide, for more details see [Getting It Right First Time (GIRFT) Best Practice Timed Diagnostic Cancer pathways ](https://gettingitrightfirsttime.co.uk/wp-content/uploads/2024/03/BestPracticeTimedDiagnosticCancerPathwayssummary-guide-March-24-V3.pdf)
 
 Note: the reason for referral to the Genomics in the diagram below (which is based on GIRFT) is NICE DG27 [Molecular testing strategies for Lynch syndrome in people with colorectal cancer](https://www.nice.org.uk/guidance/dg27)
