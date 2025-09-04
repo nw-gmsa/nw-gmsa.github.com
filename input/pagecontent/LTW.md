@@ -205,6 +205,27 @@ A report is created by the clinical practice and sent to the order result tracke
   - When all tests in the order are complete, a Task Complete Notification is sent to the Order Placer.
     - This notification can be sent via email or another messaging system.
 
+### Order and Report Use Case Summary
+
+<img style="padding:3px;width:95%;" src="order Entry.drawio.png" alt="Genomic Order and Report Summary"/>
+<br clear="all">
+<p class="figureTitle">Genomic Order and Report Summary</p> 
+<br clear="all">
+
+Genomic Test Order and Report use cases form part of a broader diagnostic testing workflow, which is guided by:
+
+- [NICE](https://www.nice.org.uk/) standards
+- **Getting It Right First Time (GIRFT)** best practice pathways (e.g. [Getting It Right First Time (GIRFT) Best Practice Timed Diagnostic Cancer pathways ](https://gettingitrightfirsttime.co.uk/wp-content/uploads/2024/03/BestPracticeTimedDiagnosticCancerPathwayssummary-guide-March-24-V3.pdf)
+- Local Diagnostic Pathway Guidance.
+
+These pathways are technically implmented and generally align with the [IHE Laboratory and Testing Worflow LTW](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol1.pdf) (for Imaging workflows see [IHE Radiology (RAD)](https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Vol1.pdf))
+
+Within EHR systems, test orders are usually created through an **Order Entry Form** (also referred to in health informatics as a *Template*). Reports are typically displayed in the EPR as a *Composition* (health informatics terminology).
+
+Between the **Order Placer** (e.g., consultant and EPR) and the **Order Filler** (e.g., laboratory and LIMS), various intermediary systems are used. These are often called Trust Integration Engines (TIEs). The most widely used messaging standard is HL7 v2.
+
+To modernise these workflows, the North West GMSA is also introducing **FHIR**. Alongside this, a regional canonical data model—compatible with HL7 v2, FHIR, and IHE XDS—is being developed. This model aims to reduce the need for multiple message transformations by establishing a common (regional) NHS core data standard.
+
 ### Relationship to NHS England Genomic Order Management Service FHIR API
 
 This guide builds on the use cases outlined in [NHS England Genomic Order Management Service FHIR API - Background](https://simplifier.net/guide/genomic-order-management-service-fhir-api/Home/Design/Background), expanding them to support a broader range of participants and introducing standards for the `Laboratory Order LAB-1`.
