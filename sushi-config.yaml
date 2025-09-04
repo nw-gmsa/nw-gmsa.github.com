@@ -2,19 +2,19 @@
 # ───────────────────────────────────────────────────
 # the id should be lowercase made up of "ihe." + {domain acronym} + "." + {profile acronym/short-name}
 # e.g. ihe.iti.mhds, or ihe.iti.basicaudit
-id: nw-gmsa.github.io
-canonical: https://nw-gmsa.github.io
+id: fhir.nwgenomics.nhs.uk
+canonical: https://fhir.nwgenomics.nhs.uk
 version: 0.0.7
 name: NWGMSA
-title: North West Genomic Medicine Service Alliance
+title: NHS North West Genomics
 description: NHS North West Genomic Medicine Service Alliance - IHE Laboratory Testing Workflow (LTW)
 releaseLabel: ci-build
 
 status: draft
 publisher:
   ## Find your domain contact on the https://www.ihe.net/ihe_domains page
-  - name: NHS North West GMSA
-  - url: https://www.nw-gmsa.nhs.uk/contact-us
+  - name: NHS North West Genomics
+  - url: https://www.nwgenomics.nhs.uk/contact-us
 
 license:  CC-BY-4.0
 fhirVersion: 4.0.1

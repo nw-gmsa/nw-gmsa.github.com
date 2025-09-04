@@ -3,7 +3,7 @@
   "id" : "operation-outcome-validate",
   "meta": {
     "profile": [
-      "https://nw-gmsa.github.io/StructureDefinition/OperationOutcome"
+      "https://fhir.nwgenomics.nhs.uk/StructureDefinition/OperationOutcome"
     ]
   },
   "extension" : [{
@@ -30,7 +30,7 @@
     "severity" : "error",
     "code" : "structure",
     "details" : {
-      "text" : "ServiceRequest.identifier: minimum required = 1, but only found 0 (from https://nw-gmsa.github.io/StructureDefinition/ServiceRequest|0.0.6)"
+      "text" : "ServiceRequest.identifier: minimum required = 1, but only found 0 (from https://fhir.nwgenomics.nhs.uk/StructureDefinition/ServiceRequest|0.0.6)"
     },
     "expression" : ["Bundle.entry[8].resource"]
   },
@@ -102,7 +102,7 @@
       "severity" : "error",
       "code" : "structure",
       "details" : {
-        "text" : "Unable to find a profile match for PractitionerRole/PractitionerRole-HazelSmithKingstonPathology-Example among choices: https://nw-gmsa.github.io/StructureDefinition/PractitionerRole"
+        "text" : "Unable to find a profile match for PractitionerRole/PractitionerRole-HazelSmithKingstonPathology-Example among choices: https://fhir.nwgenomics.nhs.uk/StructureDefinition/PractitionerRole"
       },
       "expression" : ["Bundle.entry[8].resource.requester"]
     },
@@ -174,7 +174,7 @@
       "severity" : "information",
       "code" : "informational",
       "details" : {
-        "text" : "This element does not match any known slice defined in the profile https://nw-gmsa.github.io/StructureDefinition/ServiceRequest|0.0.6 (this may not be a problem, but you should check that it's not intended to match a slice)"
+        "text" : "This element does not match any known slice defined in the profile https://fhir.nwgenomics.nhs.uk/StructureDefinition/ServiceRequest|0.0.6 (this may not be a problem, but you should check that it's not intended to match a slice)"
       },
       "expression" : ["Bundle.entry[8].resource.supportingInfo[0]"]
     },
@@ -198,7 +198,7 @@
       "severity" : "information",
       "code" : "informational",
       "details" : {
-        "text" : "This element does not match any known slice defined in the profile https://nw-gmsa.github.io/StructureDefinition/ServiceRequest|0.0.6 (this may not be a problem, but you should check that it's not intended to match a slice)"
+        "text" : "This element does not match any known slice defined in the profile https://fhir.nwgenomics.nhs.uk/StructureDefinition/ServiceRequest|0.0.6 (this may not be a problem, but you should check that it's not intended to match a slice)"
       },
       "expression" : ["Bundle.entry[8].resource.supportingInfo[1]"]
     },
@@ -222,7 +222,7 @@
       "severity" : "information",
       "code" : "informational",
       "details" : {
-        "text" : "This element does not match any known slice defined in the profile https://nw-gmsa.github.io/StructureDefinition/ServiceRequest|0.0.6 (this may not be a problem, but you should check that it's not intended to match a slice)"
+        "text" : "This element does not match any known slice defined in the profile https://fhir.nwgenomics.nhs.uk/StructureDefinition/ServiceRequest|0.0.6 (this may not be a problem, but you should check that it's not intended to match a slice)"
       },
       "expression" : ["Bundle.entry[8].resource.supportingInfo[2]"]
     },
@@ -342,7 +342,7 @@
       "severity" : "information",
       "code" : "code-invalid",
       "details" : {
-        "text" : "None of the codings provided are in the value set 'Genomic Condition Codes' (https://nw-gmsa.github.io/ValueSet/genomic-condition-codes|0.0.6), and a coding is recommended to come from this value set (codes = https://fhir.nhs.uk/CodeSystem/reasonfortesting-genomics#relapse)"
+        "text" : "None of the codings provided are in the value set 'Genomic Condition Codes' (https://fhir.nwgenomics.nhs.uk/ValueSet/genomic-condition-codes|0.0.6), and a coding is recommended to come from this value set (codes = https://fhir.nhs.uk/CodeSystem/reasonfortesting-genomics#relapse)"
       },
       "expression" : ["Bundle.entry[8].resource.reasonCode[0]"]
     },
@@ -390,7 +390,7 @@
       "severity" : "information",
       "code" : "structure",
       "details" : {
-        "text" : "Details for PractitionerRole/PractitionerRole-HazelSmithKingstonPathology-Example matching against profile https://nw-gmsa.github.io/StructureDefinition/PractitionerRole|0.0.6"
+        "text" : "Details for PractitionerRole/PractitionerRole-HazelSmithKingstonPathology-Example matching against profile https://fhir.nwgenomics.nhs.uk/StructureDefinition/PractitionerRole|0.0.6"
       },
       "expression" : ["Bundle.entry[8].resource.requester"]
     },

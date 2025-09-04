@@ -25,21 +25,21 @@ Reference:
 
 * identifier[PlacerSpecimenNumber].type = $v2-0203#PLAC
 * identifier[PlacerSpecimenNumber] ^short = "Identifier assigned by the Order Placer."
-* identifier[PlacerSpecimenNumber] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/OrderFiller)
-* identifier[PlacerSpecimenNumber] insert Obligation(#SHALL:populate, https://nw-gmsa.github.io/ActorDefinition/OrderPlacer)
-* identifier[PlacerSpecimenNumber] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/AutomationManager)
+* identifier[PlacerSpecimenNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderFiller)
+* identifier[PlacerSpecimenNumber] insert Obligation(#SHALL:populate, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderPlacer)
+* identifier[PlacerSpecimenNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/AutomationManager)
 
 * identifier[FillerSpecimenNumber].type = $v2-0203#FILL
 * identifier[FillerSpecimenNumber] ^short = "Identifier assigned by the lab (Order Filler)"
-* identifier[FillerSpecimenNumber] insert Obligation(#SHALL:populate, https://nw-gmsa.github.io/ActorDefinition/OrderFiller)
-* identifier[FillerSpecimenNumber] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/OrderPlacer)
-* identifier[FillerSpecimenNumber] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/AutomationManager)
+* identifier[FillerSpecimenNumber] insert Obligation(#SHALL:populate, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderFiller)
+* identifier[FillerSpecimenNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderPlacer)
+* identifier[FillerSpecimenNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/AutomationManager)
 
 * identifier[ShipmentTrackingNumber] only ShipmentTrackingNumber
 * identifier[ShipmentTrackingNumber] ^short = "Identifier assigned by the Order Placer"
-* identifier[ShipmentTrackingNumber] insert Obligation(#SHOULD:populate, https://nw-gmsa.github.io/ActorDefinition/OrderFiller)
-* identifier[ShipmentTrackingNumber] insert Obligation(#SHALL:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/OrderPlacer)
-* identifier[ShipmentTrackingNumber] insert Obligation(#SHOULD:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/AutomationManager)
+* identifier[ShipmentTrackingNumber] insert Obligation(#SHOULD:populate, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderFiller)
+* identifier[ShipmentTrackingNumber] insert Obligation(#SHALL:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderPlacer)
+* identifier[ShipmentTrackingNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/AutomationManager)
 
 
 * accessionIdentifier 0..1 MS

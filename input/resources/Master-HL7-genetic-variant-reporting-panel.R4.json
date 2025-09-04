@@ -2,11 +2,11 @@
   "resourceType": "Questionnaire",
   "meta": {
     "profile": [
-      "https://nw-gmsa.github.io/StructureDefinition/NWQuestionnaire"
+      "https://fhir.nwgenomics.nhs.uk/StructureDefinition/NWQuestionnaire"
     ]
   },
   "id": "81247-9",
-  "url": "https://nw-gmsa.github.io/Questionnaire/81247-9",
+  "url": "https://fhir.nwgenomics.nhs.uk/Questionnaire/81247-9",
   "title": "Master HL7 genetic variant reporting panel",
   "status": "draft",
   "code": [

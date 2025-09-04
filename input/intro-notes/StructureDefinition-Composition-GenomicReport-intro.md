@@ -59,7 +59,7 @@ is a mindmap
 
 > This is not included in the current phase and is for reference purposes. 
 
-> [Master HL7 genetic variant reporting panel](https://nw-gmsa.github.io/R4/Questionnaire-81247-9.html)
+> [Master HL7 genetic variant reporting panel](https://fhir.nwgenomics.nhs.uk/R4/Questionnaire-81247-9.html)
 
 -->
 

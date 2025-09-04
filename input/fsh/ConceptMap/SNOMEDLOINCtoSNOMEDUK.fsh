@@ -8,7 +8,7 @@ For Implementation Guide see [SNOMED CT Implementation Guide for the LOINC Ontol
 """
 Usage:  #definition
 
-* url = "https://nw-gmsa.github.io/ConceptMap/SNOMEDLOINCtoSNOMEDUK"
+* url = "https://fhir.nwgenomics.nhs.uk/ConceptMap/SNOMEDLOINCtoSNOMEDUK"
 * version = "0.0.1"
 * status = #draft
 

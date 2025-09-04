@@ -31,8 +31,8 @@ Description:    """
 * encounter 0..1 MS
 * encounter only Reference(Encounter)
 * encounter.identifier only HospitalProviderSpellIdentifier
-* encounter.identifier insert Obligation(#SHALL:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/OrderFiller)
-* encounter.identifier insert Obligation(#SHALL:populate-if-known, https://nw-gmsa.github.io/ActorDefinition/AutomationManager)
+* encounter.identifier insert Obligation(#SHALL:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderFiller)
+* encounter.identifier insert Obligation(#SHALL:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/AutomationManager)
 
 * author only Reference(Practitioner or PractitionerRole)
 * author.identifier only PractitionerIdentifier
