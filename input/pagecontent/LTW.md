@@ -207,7 +207,7 @@ A report is created by the clinical practice and sent to the order result tracke
 
 ### Order and Report Use Case Summary
 
-<img style="padding:3px;width:95%;" src="order Entry.drawio.png" alt="Genomic Order and Report Summary"/>
+<img style="padding:3px;width:95%;" src="Order Entry.drawio.png" alt="Genomic Order and Report Summary"/>
 <br clear="all">
 <p class="figureTitle">Genomic Order and Report Summary</p> 
 <br clear="all">
