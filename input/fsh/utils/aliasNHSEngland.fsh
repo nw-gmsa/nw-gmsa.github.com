@@ -4,14 +4,14 @@ Alias: $ucum = http://unitsofmeasure.org
 Alias: $Obligation = http://hl7.org/fhir/StructureDefinition/obligation
 Alias: $test-directory = https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory
 Alias: $bcp13 = urn:ietf:bcp:13
-Alias: $nwgmsa = https://nw-gmsa.github.io/CodeSystem/NWGMSA
-Alias: $MFTEPIC = https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds
+Alias: $nwgmsa = https://fhir.nwgenomics.nhs.uk/CodeSystem/NWGMSA
+Alias: $MFTEPIC = https://fhir.nwgenomics.nhs.uk/CodeSystem/MFTQuestionIds
 Alias: $EthnicEngland = https://fhir.hl7.org.uk/CodeSystem/UKCore-EthnicCategoryEngland
 Alias: $EthnicWales = https://fhir.hl7.org.uk/CodeSystem/UKCore-EthnicCategoryWales
 Alias: $GTD = https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory
 Alias: $GSC = https://fhir.hl7.org.uk/CodeSystem/UKCore-GenomeSequencingCategory
-Alias: $GCC = https://nw-gmsa.github.io/CodeSystem/GenomicConditionCode
-Alias: $GTOC = https://nw-gmsa.github.io/CodeSystem/GenomicTestOutcomeCode
+Alias: $GCC = https://fhir.nwgenomics.nhs.uk/CodeSystem/GenomicConditionCode
+Alias: $GTOC = https://fhir.nwgenomics.nhs.uk/CodeSystem/GenomicTestOutcomeCode
 
 RuleSet: Obligation(code, actor)
 * ^extension[$Obligation][+].extension[code].valueCode = {code}

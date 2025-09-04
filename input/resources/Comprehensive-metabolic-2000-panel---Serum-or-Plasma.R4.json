@@ -1,11 +1,11 @@
 {
   "meta": {
     "profile": [
-      "https://nw-gmsa.github.io/StructureDefinition/NWQuestionnaire"
+      "https://fhir.nwgenomics.nhs.uk/StructureDefinition/NWQuestionnaire"
     ]
   },
   "id": "24323-8",
-  "url": "https://nw-gmsa.github.io/Questionnaire/24323-8",
+  "url": "https://fhir.nwgenomics.nhs.uk/Questionnaire/24323-8",
   "code": [
     {
       "code": "24323-8",

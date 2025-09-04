@@ -8,13 +8,13 @@ Usage:  #definition
 
 * title = "North West Genomics Test Order"
 * status = #draft
-* url = "https://nw-gmsa.github.io/Questionnaire/GenomicTestOrder"
+* url = "https://fhir.nwgenomics.nhs.uk/Questionnaire/GenomicTestOrder"
 
 * item[+]
   * linkId = "Patient"
   * text = "Patient"
   * type = #group
-  * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient"
+  * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Patient#Patient"
 
 // Patient	Patient/proband surname
 
@@ -22,7 +22,7 @@ Usage:  #definition
     * type = #string
     * linkId = "LN/45394-4"
     * code[+] = $loinc#45394-4
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.name.family"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Patient#Patient.name.family"
     * required = true
     * text = "Patient surname"
 
@@ -34,7 +34,7 @@ Usage:  #definition
     * linkId = "LN/45392-8"
     * code[+] = $loinc#45392-8
     * required = true
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.name.given"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Patient#Patient.name.given"
     * text = "Patient first name"
 
 //Patient	Patient/proband DOB
@@ -44,7 +44,7 @@ Usage:  #definition
     * linkId = "LN/21112-8"
     * code[+] = $loinc#21112-8
     * required = true
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.birthDate"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Patient#Patient.birthDate"
     * text = "Date of birth"
 
 // Patient	Patient/proband date of death
@@ -55,7 +55,7 @@ Usage:  #definition
     * linkId = "LN/81954-0"
     * code[+] = $loinc#81954-0
     * required = false
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.deceasedDateTime"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Patient#Patient.deceasedDateTime"
     * text = "Date of death"
 
  // Patient	Patient/proband address
@@ -65,18 +65,18 @@ Usage:  #definition
     * type = #group
     * linkId = "LN/56799-0"
     * code[+] = $loinc#56799-0
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.address"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Patient#Patient.address"
     * text = "Address"
     * item[+]
       * type = #string
       * linkId = "HL7/PID-11-1"
-      * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.address.line"
+      * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Patient#Patient.address.line"
       * repeats = true
       * text = "Address Line"
     * item[+]
       * type = #string
       * linkId = "HL7/PID-11-3"
-      * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.address.city"
+      * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Patient#Patient.address.city"
       * text = "City"
 
 // Patient	Patient/proband post code
@@ -86,7 +86,7 @@ Usage:  #definition
       * type = #string
       * linkId = "LN/45401-7"
       * code[+] = $loinc#45401-7
-      * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.address.postalCode"
+      * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Patient#Patient.address.postalCode"
       * text = "Postcode"
 
 // Patient	Patient/proband sex registered at birth
@@ -95,7 +95,7 @@ Usage:  #definition
     * type = #choice
     * linkId = "LN/46098-0"
     * code[+] = $loinc#46098-0
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.gender"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Patient#Patient.gender"
     * text = "Sex registered at birth"
     * answerValueSet = "http://hl7.org/fhir/ValueSet/administrative-gender"
 
@@ -107,7 +107,7 @@ Usage:  #definition
     * linkId = "LN/32624-9"
     * code[+] = $loinc#32624-9
     * text = "Ethnic Category"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.extension:ethnicCategory"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Patient#Patient.extension:ethnicCategory"
     * answerValueSet = Canonical(Ethnicity)
 
 // Patient	Patient/proband NHS number
@@ -117,7 +117,7 @@ Usage:  #definition
     * type = #string
     * linkId = "LN/89061-6"
     * code[+] = $loinc#89061-6
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.identifier:nhsNumber"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Patient#Patient.identifier:nhsNumber"
     * text = "NHS Number"
 
 // Patient	Patient/proband hospital number
@@ -127,7 +127,7 @@ Usage:  #definition
     * linkId = "LN/76435-7"
     * code[+] = $loinc#76435-7
     * text = "Hospital Number (Medical Record Number)"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.identifier:MedicalRecordNumber"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Patient#Patient.identifier:MedicalRecordNumber"
     * required = true
 
 // Patient	Account number (visit number)
@@ -138,7 +138,7 @@ Usage:  #definition
     * linkId = "LN/56797-4"
     * code[+] = $loinc#56797-4
     * text = "Account Number (Episode or Stay Number)"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.encounter.identifier.value"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.encounter.identifier.value"
     * required = false
     * item[+]
       * linkId = "LN/56797-4-designNote"
@@ -159,7 +159,7 @@ Usage:  #definition
     * type = #string
     * linkId = "LN/89009-5"
     * text = "Location"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Encounter#Encounter.location"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Encounter#Encounter.location"
 
 // Patient	GP
 
@@ -167,12 +167,12 @@ Usage:  #definition
     * type = #choice
     * linkId = "HL7/PD1-3"
     * text = "GP Surgery (ODS Code)"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Patient#Patient.generalPractitioner"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Patient#Patient.generalPractitioner"
 
 * item[+]
   * type = #group
   * linkId = "HealthcareProfessional"
-  * definition = "https://nw-gmsa.github.io/StructureDefinition/PractitionerRole#PractitionerRole"
+  * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/PractitionerRole#PractitionerRole"
   * text = "Healthcare Professional"
 
 // Healthcare professional	Referring Clinician Name
@@ -182,7 +182,7 @@ Usage:  #definition
     * linkId = "LN/18705-4"
     * code[+] = $loinc#18705-4
     * required = true
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/PractitionerRole#PractitionerRole.practitioner.display"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/PractitionerRole#PractitionerRole.practitioner.display"
     * text = "Referring Clinician Name"
 
 // Healthcare professional	Referring Clinician Current Speciality
@@ -191,7 +191,7 @@ Usage:  #definition
     * type = #choice
     * linkId = "LN/18707-0"
     * code[+] = $loinc#18707-0
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/PractitionerRole#PractitionerRole.specialty.coding.code"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/PractitionerRole#PractitionerRole.specialty.coding.code"
     * text = "Referring Clinician Current Speciality"
     * required = true
     * answerValueSet = "https://fhir.hl7.org.uk/ValueSet/UKCore-PracticeSettingCode"
@@ -202,7 +202,7 @@ Usage:  #definition
     * type = #string
     * linkId = "LN/46608-6"
     * code[+] = $loinc#46608-6
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/PractitionerRole#PractitionerRole.practitioner.identifier.value"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/PractitionerRole#PractitionerRole.practitioner.identifier.value"
     * text = "Referring Clinician Professional Identifier"
     * required = true
 
@@ -215,7 +215,7 @@ Usage:  #definition
     * linkId = "LN/89058-2"
     * code[+] = $loinc#89058-2 "Contact email address"
     * repeats = true
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/PractitionerRole#PractitionerRole.telecom.value"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/PractitionerRole#PractitionerRole.telecom.value"
     * text = "Email"
 
 // Healthcare professional	Referring Clinician Telephone
@@ -224,7 +224,7 @@ Usage:  #definition
     * type = #string
     * linkId = "LN/81230-5"
     * code[+] = $loinc#81230-5
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/PractitionerRole#PractitionerRole.telecom.value"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/PractitionerRole#PractitionerRole.telecom.value"
     * text = "Phone"
 
 //Healthcare professional	Referring Organisation ODS code
@@ -232,13 +232,13 @@ Usage:  #definition
   * item[+]
     * type = #string
     * linkId = "HL7/ORC-21"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/PractitionerRole#PractitionerRole.organization.identifier.value"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/PractitionerRole#PractitionerRole.organization.identifier.value"
     * text = "Referring Organisation ODS Code"
 
 * item[+]
   * type = #group
   * linkId = "TestRequest"
-  * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest"
+  * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest"
   * text = "Test Request"
 
 // Test request	Test request type
@@ -247,7 +247,7 @@ Usage:  #definition
     * type = #choice
     * linkId = "SNM/15220000"
     * code[+] = $sct#15220000 "Laboratory test"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.category"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.category"
     * text = "Test Category"
     * answerValueSet = Canonical(OrderCategory)
   //  * answerOption[+].valueCoding = $nwgmsa#RareAndInheritedDiseasesGeneticTesting "Rare and inherited diseases Genetic Testing (procedure)"
@@ -271,7 +271,7 @@ Usage:  #definition
       * question = "SNM/15220000"
       * operator = #=
       * answerCoding = $nwgmsa#RareAndInheritedDiseasesGeneticTesting
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.code"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.code"
     * text = "Test Code (Rare and inherited diseases)"
     * required = true
     * repeats = true
@@ -284,7 +284,7 @@ Usage:  #definition
       * question = "SNM/15220000"
       * operator = #=
       * answerCoding = $nwgmsa#HaemoglobinopathyGeneticTesting
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.code"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.code"
     * text = "Test Code (Haemoglobinopathy)"
     * required = true
     * repeats = true
@@ -302,7 +302,7 @@ Usage:  #definition
       * question = "SNM/15220000"
       * operator = #=
       * answerCoding = $nwgmsa#CancerGeneticTesting
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.code"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.code"
     * text = "Test Code (Cancer)"
     * required = true
     * repeats = true
@@ -315,7 +315,7 @@ Usage:  #definition
     * type = #string
     * linkId = "pedigreeNumber"
     * text = "G Number (Pedigree Number) - Order Group Number"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.requisition"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.requisition"
 
 // Test request	Test request ID/Order ID
 
@@ -324,7 +324,7 @@ Usage:  #definition
     * linkId = "LN/106194-4"
     * code[+] = $loinc#106194-4
     * text = "Test request ID/Order ID"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.identifier:placerOrderNumber"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.identifier:placerOrderNumber"
     * required = false
 
 // Test request	Priority
@@ -335,7 +335,7 @@ Usage:  #definition
     * linkId = "LN/82768-3"
     * code[+] = $loinc#82768-3
     * text = "Priority"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.priority"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.priority"
     * required = false
     * answerValueSet = Canonical(RequestPriority)
 
@@ -346,7 +346,7 @@ Usage:  #definition
     * code[+] = $nwgmsa#GeneticistEmail
     * text = "Clinical Geneticist email"
     * type = #string
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueString"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Observation#Observation.valueString"
 
 
 // Healthcare professional	Clinical Geneticist department email
@@ -356,7 +356,7 @@ Usage:  #definition
     * code[+] = $nwgmsa#GeneticistDepartmentEmail
     * text = "Clinical Geneticist department email"
     * type = #string
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueString"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Observation#Observation.valueString"
 
 
   * item[+]
@@ -375,7 +375,7 @@ Usage:  #definition
       * text = "Has consent has been obtained for tests (Y/N)"
       * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
       * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-      * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+      * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Observation#Observation.valueCodeableConcept"
 
 // Consent	Has consent has been obtained for DNA storage (Y/N)
 
@@ -386,7 +386,7 @@ Usage:  #definition
       * code[+] = $loinc#75520-7 "Biobank specimens are stored and available for research"
       * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
       * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-      * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+      * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Observation#Observation.valueCodeableConcept"
 
 // Consent	ROD attached or to follow
 
@@ -394,7 +394,7 @@ Usage:  #definition
       * type = #choice
       * linkId = "NOS/RODToFollow"
       * code[+] = $nwgmsa#RODToFollow
-      * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+      * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Observation#Observation.valueCodeableConcept"
       * text = "ROD attached or to follow"
       * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
       * answerOption[+].valueCoding = $loinc#LA32-8 "No"
@@ -414,7 +414,7 @@ Usage:  #definition
       * repeats = true
       * text = "CITT code (Specific disease suspected/reason for testing)"
       * answerValueSet = Canonical(GenomicConditionCodes)
-      * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.reasonCode"
+      * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.reasonCode"
 
 // Patient clinical information	Relevant clinical information and family history
 
@@ -422,7 +422,7 @@ Usage:  #definition
       * type = #string
       * linkId = "HL7/NTE-1"
       * text = "Relevant clinical information and family history"
-      * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.note"
+      * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.note"
 
 // Patient clinical information	Reason For Variant Re-Interpretation Request
 
@@ -430,12 +430,12 @@ Usage:  #definition
       * type = #string
       * linkId = "HL7/NTE-2"
       * text = "Reason For Variant Re-Interpretation Request"
-      * definition = "https://nw-gmsa.github.io/StructureDefinition/ServiceRequest#ServiceRequest.note"
+      * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/ServiceRequest#ServiceRequest.note"
 
 * item[+]
   * type = #group
   * linkId = "Specimen"
-  * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen"
+  * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Specimen#Specimen"
   * text = "Specimen/Biopsy"
 
 // Test request	Sample collection status
@@ -443,7 +443,7 @@ Usage:  #definition
   * item[+]
     * type = #choice
     * linkId = "HL7/SPM"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.status"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Specimen#Specimen.status"
     * text = "Sample collection status"
     * answerValueSet = "http://hl7.org/fhir/ValueSet/specimen-status"
 
@@ -454,7 +454,7 @@ Usage:  #definition
     * type = #string
     * code[+] = $loinc#80398-1 "Unique identifier for Current sample"
     * linkId = "LN/80398-1"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.identifier"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Specimen#Specimen.identifier"
     * text = "Specimen ID Number"
     * item[+]
       * linkId = "LN/80398-1-designNote"
@@ -468,13 +468,13 @@ Usage:  #definition
     * type = #string
     * code[+] = $loinc#80398-1 "Unique identifier for Current sample"
     * linkId = "Specimen/accessionIdentifier"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.accessionIdentifier"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Specimen#Specimen.accessionIdentifier"
     * text = "Lab DNA Number (If Known)"
 
   * item[+]
     * type = #string
     * linkId = "LN/80398-1-ODS"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.accessionIdentifier.assigner.identifier.value"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Specimen#Specimen.accessionIdentifier.assigner.identifier.value"
     * text = "Pathology Laboratory Hospital/Trust ID (for Path Lab Sample/Stored DNA)"
 
 // Raw specimen/biopsy (Directly obtained from patient)	Specimin Collection Date
@@ -484,7 +484,7 @@ Usage:  #definition
     * linkId = "LN/33882-2"
     * code[+] = $loinc#33882-2 "Collection date of Specimen"
     * code[+] = $loinc#68963-8 "Collection date and time of Specimen"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.collection.collectedDateTime"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Specimen#Specimen.collection.collectedDateTime"
     * text = "Specimen Collection Date"
     * item[+]
       * linkId = "LN/33882-2-designNote"
@@ -502,7 +502,7 @@ Usage:  #definition
     * linkId = "LN/66746-9"
     * code[+] = $loinc#66746-9 "Specimen Type"
     * code[+] = $sct#123038009 "Specimen"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.type.coding.code"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Specimen#Specimen.type.coding.code"
     * answerValueSet = Canonical(SpecimenType)
     * text = "Specimen Type"
     * item[+]
@@ -525,13 +525,13 @@ Usage:  #definition
     * repeats = false
     * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
     * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Observation#Observation.valueCodeableConcept"
 
 //  Raw specimen/biopsy (Directly obtained from patient)	Specimin High infection Risk Details
   * item[+]
     * linkId = "NOS/InfectionRiskDetails"
     * code[+] = $nwgmsa#InfectionRiskDetails
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueString"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Observation#Observation.valueString"
     * text = "High infection Risk Details"
     * type = #string
 
@@ -545,7 +545,7 @@ Usage:  #definition
     * repeats = false
     * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
     * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Observation#Observation.valueCodeableConcept"
 
   // Raw specimen/biopsy (Directly obtained from patient)	Tissue source/organ of origin
 
@@ -555,7 +555,7 @@ Usage:  #definition
     * code[+] = $loinc#31208-2 "Specimen source identified"
     * text = "Tissue source/organ of origin"
     * type = #choice
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.collection.bodySite"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Specimen#Specimen.collection.bodySite"
 
 // Raw specimen/biopsy (Directly obtained from patient)	Specimin Volume/number of slides or scrolls
 
@@ -565,7 +565,7 @@ Usage:  #definition
     * code[+] = $loinc#42185-9 "Number of specimens obtained"
     * text = "Specimen Volume/number of slides or scrolls"
     * type = #string
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.collection.quantity"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Specimen#Specimen.collection.quantity"
 
 // Raw specimen/biopsy (Directly obtained from patient)	Anticoagulant/preservative
 
@@ -574,40 +574,40 @@ Usage:  #definition
     * linkId = "OrderTracking"
     * text = "Audit (Specimen Tracking)"
     * type = #group
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.collection"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Specimen#Specimen.collection"
     * item[+]
       * linkId = "NOS/SampleReceived"
       * text = "Date and time sample received in lab"
       * type = #date
-      * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.receivedTime"
+      * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Specimen#Specimen.receivedTime"
     * item[+]
       * linkId = "NOS/SampleSent"
       * code[+] = $nwgmsa#SampleSent
       * text = "Date and time sample sent"
       * type = #date
-      * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueDateTime"
+      * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Observation#Observation.valueDateTime"
     * item[+]
       * linkId = "NOS/TransportUsed"
       * code[+] = $nwgmsa#TransportUsed
-      * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueString"
+      * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Observation#Observation.valueString"
       * text = "Transport used"
       * type = #string
     * item[+]
       * linkId = "LN/97209-1"
       * code[+] = $loinc#97209-1
-      * definition = "https://nw-gmsa.github.io/StructureDefinition/Specimen#Specimen.identifier[ShipmentTrackingNumber]"
+      * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Specimen#Specimen.identifier[ShipmentTrackingNumber]"
       * text = "Tracking number"
       * type = #string
     * item[+]
       * linkId = "NOS/SampleSentTo"
       * code[+] = $nwgmsa#SampleSentTo
-      * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueString"
+      * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Observation#Observation.valueString"
       * text = "Sample sent to"
       * type = #string
     * item[+]
       * linkId = "NOS/SampleSentToName"
       * code[+] = $nwgmsa#SampleSentToName
-      * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueString"
+      * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Observation#Observation.valueString"
       * text = "Name of person who sent sample"
       * type = #string
 
@@ -627,7 +627,7 @@ Usage:  #definition
     * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
     * answerOption[+].valueCoding = $loinc#LA32-8 "No"
     * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Observation#Observation.valueCodeableConcept"
   * item[+]
     * type = #choice
     * linkId = "SNM/74996004-pathology-report"
@@ -636,7 +636,7 @@ Usage:  #definition
     * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
     * answerOption[+].valueCoding = $loinc#LA32-8 "No"
     * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Observation#Observation.valueCodeableConcept"
 
 // Patient	Does this test relate to an ongoing pregnancy?
 
@@ -649,7 +649,7 @@ Usage:  #definition
 //    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
 //    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
 //    * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
-//    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+//    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Observation#Observation.valueCodeableConcept"
 
 
 // Patient	Neonatal/Prenatal/Neither
@@ -662,7 +662,7 @@ Usage:  #definition
     * answerOption[+].valueCoding = $sct#77386006 "Pregnancy"
     * answerOption[+].valueCoding = $sct#255407002 "Neonatal"
     * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Observation#Observation.valueCodeableConcept"
     * item[+]
       * type = #group
       * linkId = "pregnant"
@@ -682,7 +682,7 @@ Usage:  #definition
         * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
         * answerOption[+].valueCoding = $loinc#LA32-8 "No"
         * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
-        * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+        * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Observation#Observation.valueCodeableConcept"
 
 // Patient	Patient expected delivery date
 
@@ -691,7 +691,7 @@ Usage:  #definition
         * linkId = "SNM/161714006"
         * code[+] = $sct#161714006 "Estimated date of delivery"
         * text = "Patient expected delivery date"
-        * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueDateTime"
+        * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Observation#Observation.valueDateTime"
 
 // Patient	Patient gestation
 
@@ -701,7 +701,7 @@ Usage:  #definition
         * code[+] = $sct#598151000005105 "Gestational age"
         * extension[unit].valueCoding = $ucum#wk "Wk"
         * text = "Patient gestation"
-        * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueQuantity"
+        * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Observation#Observation.valueQuantity"
 
 // Patient	Is this test for a deceased infant or pregnancy loss
 
@@ -713,7 +713,7 @@ Usage:  #definition
     * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
     * answerOption[+].valueCoding = $loinc#LA32-8 "No"
     * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Observation#Observation.valueCodeableConcept"
 
   * item[+]
     * type = #choice
@@ -723,7 +723,7 @@ Usage:  #definition
     * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
     * answerOption[+].valueCoding = $loinc#LA32-8 "No"
     * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
-    * definition = "https://nw-gmsa.github.io/StructureDefinition/Observation#Observation.valueCodeableConcept"
+    * definition = "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Observation#Observation.valueCodeableConcept"
 
 * item[+]
   * type = #group

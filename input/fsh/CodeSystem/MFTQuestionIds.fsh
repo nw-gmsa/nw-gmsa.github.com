@@ -12,5 +12,5 @@ Bucket for local codes
 * ^status = #active
 * ^version = "0.0.1"
 * ^date = "2025-05-06"
-* ^url = "https://nw-gmsa.github.io/CodeSystem/MFTQuestionIds"
+* ^url = "https://fhir.nwgenomics.nhs.uk/CodeSystem/MFTQuestionIds"
 

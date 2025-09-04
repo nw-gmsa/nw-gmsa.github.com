@@ -12,7 +12,7 @@ Description: """
 * ^status = #draft
 * ^version = "0.0.1"
 * ^date = "2025-05-08"
-* ^url = "https://nw-gmsa.github.io/CodeSystem/GenomicConditionCode"
+* ^url = "https://fhir.nwgenomics.nhs.uk/CodeSystem/GenomicConditionCode"
 
 * #R361 "Childhood onset hereditary spastic paraplegia"
 * #R362 "Not present in 8.0"

@@ -3,10 +3,10 @@
   "id": "58410-2",
   "meta": {
     "profile": [
-      "https://nw-gmsa.github.io/StructureDefinition/NWQuestionnaire"
+      "https://fhir.nwgenomics.nhs.uk/StructureDefinition/NWQuestionnaire"
     ]
   },
-  "url": "https://nw-gmsa.github.io/Questionnaire/58410-2",
+  "url": "https://fhir.nwgenomics.nhs.uk/Questionnaire/58410-2",
   "title": "CBC panel - Blood by Automated count",
   "status": "draft",
   "code": [

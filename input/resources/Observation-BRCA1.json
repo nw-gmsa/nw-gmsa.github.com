@@ -2,7 +2,7 @@
     "resourceType": "Observation",
     "meta": {
         "profile": [
-            "https://nw-gmsa.github.io/StructureDefinition/Observation-Variant"
+            "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Observation-Variant"
         ]
     },
     "id": "brca1-variant",

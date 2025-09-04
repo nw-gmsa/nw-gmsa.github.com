@@ -12,7 +12,7 @@ Test Outcome Code from [NHS England Genomics Test Reporting Specification](https
 * ^status = #draft
 * ^version = "0.0.1"
 * ^date = "2025-05-08"
-* ^url = "https://nw-gmsa.github.io/CodeSystem/GenomicTestOutcomeCode"
+* ^url = "https://fhir.nwgenomics.nhs.uk/CodeSystem/GenomicTestOutcomeCode"
 
 * #311 "RESULT CONSISTENT WITH REFERRAL INDICATION"
 * #312 "RESULT  PARTIALLY CAUSATIVE OF REFERRAL INDICATION"
