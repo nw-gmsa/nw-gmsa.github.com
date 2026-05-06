@@ -24,7 +24,8 @@ This is currently being elaborated and subject to change.
 | Performer                           | OBX-16 ResponsibleObserver  |                |                          | Observation.performer                                           |                                   |
 | Result Code                        | OBX-3 ObservationIdentifier | Recommended    | Analyte name             | Observation.code                                                |                                   |
 | - Reference Range                  | OBX-7 ReferenceRange        |                | Reference range guidance | Observation.referenceRange                                      | 0.0030-55.00                      |
-| - Value                            | OBX-5 Observation Value     |                | Analyte result           | Observation.valueQuantity.value (note value is invalid)         | INVALID [Too high ABL transcript] |
+| - Value                            | OBX-5 Observation Value     |                | Analyte result           | Observation.valueQuantity.value          | 0.011 |
+| - Value Absent                     | OBX-5 Observation Value     |                |            | Observation.dataAbsentReason.text          | INVALID [Too high ABL transcript] |
 | - Unit                             | OBX-6 Units                 |                |                          | Obsevation.valueQuantity.unit                                   | % (IS)                            |
 | Result Detail Code                 | OBX-4 ObservationSubID      | Recommended    |                          | ?? Observation.valueQuantity                                    | ^24.2                             |                                                              
 | - Value                            | OBX-5 ObservationValue      |                | Analyte result           | Observation.valueQuantity.value (note value is invalid)         | INVALID [Too high ABL transcript] ||
