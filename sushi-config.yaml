@@ -195,6 +195,14 @@ resources:
     name: Genomic Report BRCA1 Variant Example
     description: Genomic Report BRCA1 Variant Example
     exampleBoolean: true
+  Observation/BCRABL-Invalid:
+    name: Laboratory Analyte Result BCRABL Invalid Example
+    description: Laboratory Analyte Result BCRABL Invalid Example
+    exampleBoolean: true
+  Observation/BCRABL-Valid:
+    name: Laboratory Analyte Result BCRABL Valid Example
+    description: Laboratory Analyte Result BCRABL Valid Example
+    exampleBoolean: true
   Observation/m2-diagnostic-implication:
     name: Genomic Report Ovarian Carcinoma Diagnostic Implication Example
     description: Genomic Report Ovarian Carcinoma Diagnostic Implication Example
