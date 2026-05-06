@@ -13,3 +13,8 @@ Description:    """
 * ^keyword[+] = #diagnostics "Diagnostics"
 
 * derivedFrom only Reference(Variant)
+
+
+* value[x] only Quantity
+
+* component.value[x] only Quantity
