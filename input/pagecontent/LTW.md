@@ -306,6 +306,9 @@ Key differences include:
 <p class="figureTitle">Relationship to NHS England Genomic Order Management Service</p> 
 <br clear="all">
 
+## Filler Order Management (LAB-2)
+
+See interaction to North East and Yorkshire Genomics in the following section.
 
 ## Work Order Management (LAB-4)
 
@@ -333,7 +336,7 @@ end
 iGene --> |"Work Order Management (LAB-4)<br/>i. Worksheet (iGene SQL data-pipeline)"| RIE4
 RIE4 <--> |"Work Order Management (LAB-4)<br/>ii. Lab Orders HL7 QBP Query"| Cepheid
 RIE4 <--> |"Work Order Management (LAB-4)<br/>ii. Lab Orders HL7 FHIR Query"| StarLIMS
-RIE4 <--> |"Order Notification (LAB-1)<br/> Lab Order O21<br/>HL7 FHIR Query"| NEY 
+RIE4 <--> |"Order Notification (LAB-2)<br/> Lab Order O21<br/>HL7 FHIR Query"| NEY 
 
 
 classDef purple fill:#E1D5E7;

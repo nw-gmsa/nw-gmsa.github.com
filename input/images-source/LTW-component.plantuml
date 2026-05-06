@@ -7,11 +7,11 @@ agent "Order Filler" as Filler
 agent "Automation Manager" as Manager
 agent "Order Result Tracker" as Tracker
 
-Placer -r-> Filler: [[LAB-1.html Placer Order Management (LAB-1)]]
-Filler -l-> Placer: [[LAB-2.html Filler Order Management (LAB-2)]]
+Placer -r-> Filler: [[LTW.html#laboratory-order-lab-1 Placer Order Management (LAB-1)]]
+Filler -l-> Placer: [[LTW.html#filler-order-management-lab-2 Filler Order Management (LAB-2)]]
 
-Filler -u-> Tracker: [[LAB-3.html Order Results Management (LAB-3)]]
-Filler -d-> Manager: [[LAB-4.html Work Order Management (LAB-4)]]
-Manager -u-> Filler: Test Results Management (LAB-5)
+Filler -u-> Tracker: [[LTW.html#laboratory-report-lab-3 Order Results Management (LAB-3)]]
+Filler -d-> Manager: [[LTW.html#work-order-management-lab-4 Work Order Management (LAB-4)]]
+Manager -u-> Filler: [[LTW.html#test-results-management-lab-5 Test Results Management (LAB-5)]]
 
 @enduml
