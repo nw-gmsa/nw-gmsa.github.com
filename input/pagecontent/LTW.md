@@ -342,7 +342,7 @@ RIE4 <--> |"Order Notification (LAB-2)<br/> Lab Order O21<br/>HL7 FHIR Query"| N
 classDef purple fill:#E1D5E7;
 classDef pink fill:#F8CECC;
 
-class GDR,RIE,VCFFHIR pink;
+class GDR,RIE4,VCFFHIR pink;
 ```
 
 ## Test Results Management (LAB-5)
