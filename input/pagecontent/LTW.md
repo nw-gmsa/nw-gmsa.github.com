@@ -320,16 +320,20 @@ subgraph GenomicLIMS["Order Filler"];
 end
 
 subgraph HIE["Genomic Archiving and Communication System (GACS)"];
-    RIE["Regional Orchestration Engine (RIE)"]
+    RIE4["RIE Workflow Orchestration"]
 end
 
 
-subgraph Analyser["Automation Manager (Analyser)"];
-    Cepheid[Cepheid]
+subgraph Analyser["Automation Manager"];
+    Cepheid[Analyser - Cepheid]
+    StarLIMS[LIMS - StarLIMS]
+    NEY["Repository - North East and Yorkshire Genomics"]
 end
 
-iGene --> |"Work Order Management (LAB-4)<br/>i. Worksheet CSV"| RIE
-RIE <--> |"Work Order Management (LAB-4)<br/>ii. Lab Orders HL7 QBP Query"| Cepheid
+iGene --> |"Work Order Management (LAB-4)<br/>i. Worksheet (iGene SQL data-pipeline)"| RIE4
+RIE4 <--> |"Work Order Management (LAB-4)<br/>ii. Lab Orders HL7 QBP Query"| Cepheid
+RIE4 <--> |"Work Order Management (LAB-4)<br/>ii. Lab Orders HL7 FHIR Query"| StarLIMS
+RIE4 <--> |"Order Notification (LAB-1)<br/> Lab Order O21<br/>HL7 FHIR Query"| NEY 
 
 
 classDef purple fill:#E1D5E7;
@@ -347,27 +351,24 @@ subgraph GenomicLIMS["Order Filler"];
     iGene[LIMS<br/>IGene]
 end
 
-
-subgraph Analyser["Automation Manager (Analyser)"];
-    Cepheid[Cepheid]
+subgraph Analyser["Automation Manager"];
+    Cepheid[Analyser - Cepheid]
+    StarLIMS[LIMS - StarLIMS]
 end
-
 
 subgraph HIE["Genomic Archiving and Communication System (GACS)"];
     RIE["Regional Orchestration Engine (RIE)"]
 end
 
+Cepheid --> |"Test Results Management (LAB-5/LAB-32)<br/>a. Lab Reports HL7 ORU_R32"| RIE
+StarLIMS --> |"Test Results Management (LAB-5)<br/>a. SQL data-pipeline"| RIE
 
-Cepheid --> |"Test Results Management (LAB-5/LAB-32)<br/>a. Lab Reports HL7 ORU_R30"| RIE
-
-RIE --> |"Test Results Management (LAB-5)<br/b. CSV  Import"| iGene
-
+RIE --> |"Test Results Management (LAB-5)<br/>b. CSV  Import"| iGene
 
 classDef purple fill:#E1D5E7;
 classDef pink fill:#F8CECC;
 
 class GDR,RIE,VCFFHIR pink;
-
 ```
 
 In Progress
