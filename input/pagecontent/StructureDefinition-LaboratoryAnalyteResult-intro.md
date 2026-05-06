@@ -12,24 +12,23 @@ This is currently being elaborated and subject to change.
 
 ## Data Mapping
 
-| Data Element                       | HL7 v2 - Cepheid            | LOINC / SNOMED | openEHR                  | HL7 FHIR                                                        | Example                           |
-|------------------------------------|-----------------------------|----------------|--------------------------|-----------------------------------------------------------------|-----------------------------------|
-
-| Sample / Specimen (iGene S-Number) | SPM-2                       |                | Specimen                 | DiagnosticReport.specimen                                       |                                   |
-| Report Number (iGene T-Number)     |                             |                |                          | DiagnosticReport.identifier[PlacerNumber]                       |                                   |                               
-| Result                             |                         |                |                          | DiagnosticReport.result referencing Observation                 | |
-| Variant                            |                             |                |                          | Observation.derivedFrom(Variant) - BCR::ABL Major (e14a2/e13a2) |                                   |
-| Test Start DateTime                | TQ1-7 Startdatetime         |                | Analysis performed time  | Observation.effectivePeriod.start                               |                                   |
-| Test End DateTime                  | TQ1-8 Enddatetime           |                | Analysis performed time  | Observation.effectivePeriod.end                                 |                                   |
-| Performer                           | OBX-16 ResponsibleObserver  |                |                          | Observation.performer                                           |                                   |
-| Result Code                        | OBX-3 ObservationIdentifier | Recommended    | Analyte name             | Observation.code                                                |                                   |
-| - Reference Range                  | OBX-7 ReferenceRange        |                | Reference range guidance | Observation.referenceRange                                      | 0.0030-55.00                      |
-| - Value                            | OBX-5 Observation Value     |                | Analyte result           | Observation.valueQuantity.value          | 0.011 |
-| - Value Absent                     | OBX-5 Observation Value     |                |            | Observation.dataAbsentReason.text          | INVALID [Too high ABL transcript] |
-| - Unit                             | OBX-6 Units                 |                |                          | Obsevation.valueQuantity.unit                                   | % (IS)                            |
-| Result Detail Code                 | OBX-4 ObservationSubID      | Recommended    |                          | ?? Observation.valueQuantity                                    | ^24.2                             |                                                              
-| - Value                            | OBX-5 ObservationValue      |                | Analyte result           | Observation.valueQuantity.value (note value is invalid)         | INVALID [Too high ABL transcript] ||
-| Device Identifier              | ?? OBX-18 EquipmentInstanceIdentifier                   |                |                          | Observation.device                      |                                   |
+| Data Element                       | HL7 v2 - Cepheid                              | LOINC / SNOMED | openEHR                  | HL7 FHIR                                                        | Example                           |
+|------------------------------------|-----------------------------------------------|----------------|--------------------------|-----------------------------------------------------------------|-----------------------------------|
+| Sample / Specimen (iGene S-Number) | SPM-2                                         |                | Specimen                 | DiagnosticReport.specimen                                       |                                   |
+| Report Number (iGene T-Number)     |                                               |                |                          | DiagnosticReport.identifier[PlacerNumber]                       |                                   |                               
+| Result                             |                                               |                |                          | DiagnosticReport.result referencing Observation                 |                                   |
+| Variant                            |                                               |                |                          | Observation.derivedFrom(Variant) - BCR::ABL Major (e14a2/e13a2) |                                   |
+| Test Start DateTime                | TQ1-7 Startdatetime                           |                | Analysis performed time  | Observation.effectivePeriod.start                               |                                   |
+| Test End DateTime                  | TQ1-8 Enddatetime                             |                | Analysis performed time  | Observation.effectivePeriod.end                                 |                                   |
+| Performer                          | OBX-16 ResponsibleObserver                    |                |                          | Observation.performer                                           |                                   |
+| Result Code                        | OBX-3 ObservationIdentifier                   | Recommended    | Analyte name             | Observation.code                                                |                                   |
+| - Reference Range                  | OBX-7 ReferenceRange                          |                | Reference range guidance | Observation.referenceRange                                      | 0.0030-55.00                      |
+| - Value                            | OBX-5 Observation Value                       |                | Analyte result           | Observation.valueQuantity.value                                 | 0.011                             |
+| - Value Absent                     | OBX-5 Observation Value                       |                |                          | Observation.dataAbsentReason.text                               | INVALID [Too high ABL transcript] |
+| - Unit                             | OBX-6 Units                                   |                |                          | Obsevation.valueQuantity.unit                                   | % (IS)                            |
+| Result Detail Code                 | OBX-4 ObservationSubID (when populated)       | Recommended    |                          | Observation.component.code                                      | MR                                |                                                              
+| - Value                            | OBX-5 ObservationValue (when OBX-4 populated) |                |                          | Observation.component.valueQuantity.value                       | 3.96                              |
+| Device Identifier                  | ?? OBX-18 EquipmentInstanceIdentifier         |                |                          | Observation.device                                              |                                   |
 {:.grid}
 
 Key LOINC Codes for BCR-ABL:
