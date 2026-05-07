@@ -14,7 +14,7 @@ This is currently being elaborated and subject to change.
 
 | Data Element                       | HL7 v2 R32                                    | LOINC / SNOMED | openEHR                  | HL7 FHIR                                                               | Example                           |
 |------------------------------------|-----------------------------------------------|----------------|--------------------------|------------------------------------------------------------------------|-----------------------------------|
-| Sample / Specimen (iGene S-Number) | SPM-2                                         |                | Specimen                 | DiagnosticReport.specimen                                              |                                   |
+| Sample / Specimen (iGene S-Number) | SPM-2 Specimen ID                             |                | Specimen                 | DiagnosticReport.specimen                                              |                                   |
 | Report Number (iGene T-Number)     |                                               |                |                          | DiagnosticReport.identifier[PlacerNumber]                              |                                   |                               
 | Report/Test Code                   | OBR-4 Universalserviceidentifier              | Recommended    |            | DiagnosticReport.code                                                  | BCRABL                            |
 | Result Status                      | OBR-25 ResultStatus                           |                | Result Status            | DiagnosticReport.status                                                | F                                 |
