@@ -5,8 +5,7 @@ title "iGene SQL Tables"
 class "Referral (FHIR ServiceRequest)" as Referral <<aggregate>> {
 id
 externalRef: IdentifierOrderPlacerNumber
-externalRef2 IdentifierOrderPlacerNumber2
-referralNumber :IdentifierOrderFillerNumber - R Number
+referralNumber :IdentifierOrderFillerNumber R-Number
 referringDepartment_id
 organisationUnit_id
 patientVisit_id
@@ -30,7 +29,7 @@ id
 
 class "SampleTube (FHIR Specimen)" as SampleTube <<aggregate>> {
 id
-tubeNumber : ContainerIdentifier or SpecimenIdentifier - S or D Number
+tubeNumber : ContainerIdentifier or SpecimenIdentifier D or S-Number
 rootSample_id
 sampleType_id
 subSampleType_id
@@ -56,6 +55,17 @@ patientNumberType_id
 sex_id
 }
 
+class "ReferralTest (FHIR DiagnosticReport)" as ReferralTest <<aggregate>> {
+patient_id
+referral_id: ServiceRequestId
+test_id
+resultCode_id
+testNUmber: IdentifierOrderFillerNumber T-Number
+}
+
+class ReferralTestResult {
+
+}
 class PatientNumber {
 id
 }
@@ -65,7 +75,7 @@ id
 Code
 }
 
-SampleTube o-- "referral_id  1..*" Referral
+SampleTube "*" -- "referral_id  1" Referral
 
 ReferringDepartment o-- "0..* referringDepartment_id" Referral
 OrganisationUnit o-- "0..* organisationUnit_id" Referral
@@ -78,5 +88,7 @@ SampleTube o-- "rootSample_id 0..*" SampleTube
 Sex o-- "0..*" Patient
 PatientNumber o-- "0..*" Patient
 Patient o-- "1..*" Referral
-
+Patient -- "1..*" ReferralTest
+Referral -- "0..*" ReferralTest
+ReferralTest --o ReferralTestResult
 @enduml
