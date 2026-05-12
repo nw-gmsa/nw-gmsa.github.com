@@ -1,0 +1,30 @@
+@startuml
+
+ title "High Level Genomic Model"
+
+ class ServiceRequest <<aggregate>>
+ class DiagnosticReport <<aggregate>> {
+ attachment
+ result
+ }
+ entity Patient
+ entity Specimen
+ entity DocumentReference {
+ attachment
+ }
+ entity "Binary - Genomic Report PDF" as Binary
+ entity Observation
+ entity "Task - Work Order" as Task
+
+ ServiceRequest "0" -- "*" Specimen
+ DiagnosticReport "0" -- "*" ServiceRequest
+ Binary "1" -- "0 attachment" DiagnosticReport
+ Observation "*" -- "0 result" DiagnosticReport
+ Binary "1" -- "1 attachment" DocumentReference
+ ServiceRequest "0" -- "*" Task
+
+ Patient -- ServiceRequest
+ Patient -- DiagnosticReport
+ Patient -- Specimen
+
+@enduml

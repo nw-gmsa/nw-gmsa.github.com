@@ -3,16 +3,23 @@
  title "High Level Genomic Model"
 
  class ServiceRequest <<aggregate>>
- class DiagnosticReport <<aggregate>>
+ class DiagnosticReport <<aggregate>> {
+ attachment
+ }
  entity Patient
  entity Specimen
- entity DocumentReference
+ entity DocumentReference {
+ attachment
+ }
  entity "Binary - Genomic Report PDF" as Binary
+
 
  ServiceRequest "0" -- "*" Specimen
  DiagnosticReport "0" -- "*" ServiceRequest
- Binary "0" -- "1" DiagnosticReport
- Binary "0" -- "1" DocumentReference
+ Binary "1" -- "0 attachment" DiagnosticReport
+
+ Binary "1" -- "1 attachment" DocumentReference
+
 
  Patient -- ServiceRequest
  Patient -- DiagnosticReport
