@@ -314,6 +314,12 @@ See interaction to North East and Yorkshire Genomics in the following section.
 
 In Progress
 
+<figure>
+{%include LTW-advanced-sequence.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">Genomics Work Order Simplified Sequence Diagram</p>
+</figure>
+<br clear="all">
+
 ```mermaid
 graph TD
 
