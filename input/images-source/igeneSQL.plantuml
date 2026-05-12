@@ -1,0 +1,82 @@
+@startuml
+
+title "iGene SQL Tables"
+
+class "Referral (FHIR ServiceRequest)" as Referral <<aggregate>> {
+id
+externalRef: IdentifierOrderPlacerNumber
+externalRef2 IdentifierOrderPlacerNumber2
+referralNumber :IdentifierOrderFillerNumber - R Number
+referringDepartment_id
+organisationUnit_id
+patientVisit_id
+patient_id
+}
+
+class ReferringDepartment {
+id
+dept.name : RequesterName
+dept.code : RequesterCode
+}
+
+class OrganisationUnit {
+id
+}
+
+class PatientVisit {
+id
+??? : AccountNumber
+}
+
+class "SampleTube (FHIR Specimen)" as SampleTube <<aggregate>> {
+id
+tubeNumber : ContainerIdentifier or SpecimenIdentifier - S or D Number
+rootSample_id
+sampleType_id
+subSampleType_id
+sampleStatus_id
+referral_id : ServiceRequestId
+}
+
+class SampleType {
+id
+name: TypeName
+}
+
+class SampleStatus {
+id
+code : Status
+}
+
+class "Patient (FHIR Patient)" as Patient <<aggregate>> {
+id
+identifier
+medicareNumber: IdentifierNHSNumber
+patientNumberType_id
+sex_id
+}
+
+class PatientNumber {
+id
+}
+
+class Sex {
+id
+Code
+}
+
+SampleTube o-- "referral_id  1..*" Referral
+
+ReferringDepartment o-- "0..* referringDepartment_id" Referral
+OrganisationUnit o-- "0..* organisationUnit_id" Referral
+PatientVisit o-- "0..* visitNumber" Referral
+
+SampleType o-- "0..* sampleType_id" SampleTube
+SampleStatus o-- "0..* sampleStatus_id" SampleTube
+SampleTube o-- "rootSample_id 0..*" SampleTube
+
+Sex o-- "0..*" Patient
+PatientNumber o-- "0..*" Patient
+Patient o-- "1..*" Referral
+
+@enduml
