@@ -1,8 +1,8 @@
 Profile:        Specimen
 //Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-Specimen
 // Use this when next version released
-//Parent:         http://hl7.eu/fhir/laboratory/StructureDefinition/Specimen-eu-lab
-Parent:         http://hl7.org/fhir/StructureDefinition/Specimen
+Parent:         http://hl7.eu/fhir/laboratory/StructureDefinition/Specimen-eu-lab
+//Parent:         http://hl7.org/fhir/StructureDefinition/Specimen
 Id:             Specimen
 Title:          "Specimen"
 Description:    """
