@@ -2,8 +2,9 @@ Profile:        MolecularBiomarker
 Parent:         Observation
 Id:             molecular-biomarker
 Title:          "Molecular Biomarker"
-Description:    "This profile is used to represent laboratory measurements of human inherent substances such as gene products, antigens and antibodies, and complex chemicals that result from post-translational processing of multi-gene products."
-
+Description:    """
+`Diagnostic - Genomics Reporting`
+"""
 * derivedFrom only Reference(Variant)
 
 
