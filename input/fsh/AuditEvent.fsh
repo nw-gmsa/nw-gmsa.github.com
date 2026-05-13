@@ -2,7 +2,7 @@ Profile:        AuditEvent
 Parent:         http://hl7.org/fhir/StructureDefinition/AuditEvent
 Id:             AuditEvent
 Title:          "AuditEvent"
-Description:    "`Audit` [IHE Basic Audit Log Patterns (BALP)](https://profiles.ihe.net/ITI/BALP/index.html)"
+Description:    "`Audit`"
 
 //* type = http://terminology.hl7.org/CodeSystem/audit-event-type#rest
 

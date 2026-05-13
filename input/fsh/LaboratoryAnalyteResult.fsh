@@ -3,7 +3,7 @@ Parent:         Observation
 Id:             LaboratoryAnalyteResult
 Title:          "Laboratory Analyte Result (Observation)"
 Description:    """
-`Diagnostic - Genomics Test`
+`Diagnostic - Genomics Result`
 """
 
 //https://github.com/HL7/genomics-reporting/blob/master/input/fsh/CGFindings.fsh

@@ -3,7 +3,7 @@ Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-DocumentRefer
 Id:             DocumentReference
 Title:          "DocumentReference"
 Description:    """
-`Health Document` `IHE Europe` Reference: [IHE Europe Metadata for exchange medical documents and images](https://www.ihe-europe.net/sites/default/files/2017-11/IHE_ITI_XDS_Metadata_Guidelines_v1.0.pdf)
+`Health Document`
 """
 
 * identifier 1..* MS

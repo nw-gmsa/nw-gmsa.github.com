@@ -6,7 +6,7 @@ Parent:         http://hl7.eu/fhir/laboratory/StructureDefinition/Specimen-eu-la
 Id:             Specimen
 Title:          "Specimen"
 Description:    """
-`Diagnostic` `Specimen Collection`
+`Diagnostic - Laboratory` `Specimen Collection`
 """
 
 * ^keyword[+] = #core "Core"
