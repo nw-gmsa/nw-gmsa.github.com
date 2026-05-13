@@ -3,7 +3,7 @@ Parent:         Observation
 Id:             Genotype
 Title:          "Genotype (Observation)"
 Description:    """
-`Diagnostic - Genomics Reporting`
+`Diagnostic - Genomics Reporting Finding`
 """
 
 * ^keyword[+] = #archetype "Domain Analysis Model"

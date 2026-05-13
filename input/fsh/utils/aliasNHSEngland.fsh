@@ -21,6 +21,9 @@ Alias: $DIAGNOSTICSERVICE = http://terminology.hl7.org/CodeSystem/v2-0074
 Alias: $LNC = http://loinc.org
 Alias: $DCM = http://dicom.nema.org/resources/ontology/DCM
 Alias: $audit = http://terminology.hl7.org/CodeSystem/audit-event-type
+Alias: $TbdCodesCS = http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs
+Alias: $MolecularBiomarkerCategoryVS = http://hl7.org/fhir/uv/genomics-reporting/ValueSet/molecular-biomarker-category-vs
+Alias: $HGNCVS = http://hl7.org/fhir/uv/genomics-reporting/ValueSet/hgnc-vs
 
 RuleSet: Obligation(code, actor)
 * ^extension[$Obligation][+].extension[code].valueCode = {code}

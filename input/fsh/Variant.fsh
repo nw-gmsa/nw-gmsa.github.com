@@ -3,7 +3,7 @@ Parent:         Observation
 Id:             Variant
 Title:          "Variant (Observation)"
 Description:    """
-`Diagnostic - Genomics Reporting`
+`Diagnostic - Genomics Reporting Finding`
 """
 
 //https://github.com/HL7/genomics-reporting/blob/master/input/fsh/CGFindings.fsh

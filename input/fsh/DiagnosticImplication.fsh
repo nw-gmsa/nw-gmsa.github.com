@@ -3,7 +3,7 @@ Parent:         Observation
 Id:             DiagnosticImplication
 Title:          "Diagnostic Implication (Observation)"
 Description:    """
-`Diagnostic - Genomics Reporting`
+`Diagnostic - Genomics Reporting Implication`
 """
 
 * ^keyword[+] = #archetype "Domain Analysis Model"

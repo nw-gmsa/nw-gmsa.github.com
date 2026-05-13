@@ -1,5 +1,5 @@
 Profile:        LaboratoryAnalyteResult
-Parent:         Observation
+Parent:         MolecularBiomarker
 Id:             LaboratoryAnalyteResult
 Title:          "Laboratory Analyte Result (Observation)"
 Description:    """
@@ -12,7 +12,7 @@ Description:    """
 * ^keyword[+] = #genomics "Genomics"
 * ^keyword[+] = #diagnostics "Diagnostics"
 
-* derivedFrom only Reference(Variant)
+
 
 
 * value[x] only Quantity
