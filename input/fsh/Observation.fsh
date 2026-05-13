@@ -17,8 +17,12 @@ Description:    """
 * category ^slicing.description = "Slice based on the category code pattern"
 * category ^slicing.ordered = false
 
-* category contains genomicsCategory 1..1
-* category[genomicsCategory] = $DIAGNOSTICSERVICE#GE
+* category contains labCategory 0..1
+                and geCategory 1..1
+* category[labCategory].coding 1..1
+* category[labCategory].coding = $OBSCAT#laboratory
+* category[geCategory].coding 1..1
+* category[geCategory].coding = $DIAGNOSTICSERVICE#GE
 
 * identifier 1..* MS
 

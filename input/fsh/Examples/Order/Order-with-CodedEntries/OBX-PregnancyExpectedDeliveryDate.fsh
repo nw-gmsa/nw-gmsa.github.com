@@ -1,7 +1,7 @@
 Instance: OBX-PregnancyExpectedDeliveryDate
 InstanceOf: Observation
 Title: "Pregnancy Expected Delivery Date (type=DT)"
-Description: ""
+Description: "TODO"
 
 * identifier[+].value = "57ea3361-7b8d-4415-ae21-5e10bfc30992"
 
