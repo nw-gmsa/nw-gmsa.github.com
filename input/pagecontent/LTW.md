@@ -310,11 +310,11 @@ Key differences include:
 
 See interaction to North East and Yorkshire Genomics in the following section.
 
-## Work Order Management (LAB-4)
+## Work Order and Test Result Management
 
 In Progress
 
-### Usecase 
+### usecase 
 
 > BCR-ABL1 concentration testing (M84.2) is used to monitor the amount of the fusion gene (Philadelphia chromosome) in chronic myeloid leukemia (CML) patients, with results typically reported on an International Scale (%IS) to measure treatment response.
 
@@ -323,6 +323,14 @@ In Progress
 <p id="fX.X.X.X-X" class="figureTitle">Genomics Work Order Simplified Sequence Diagram</p>
 </figure>
 <br clear="all">
+
+### Work Order Management (LAB-4)
+
+#### Domain Archetype 
+
+TODO - FHIR Task and v2 OML_O21
+
+#### Process Flow
 
 ```mermaid
 graph TD
@@ -355,7 +363,13 @@ classDef pink fill:#F8CECC;
 class GDR,RIE4,VCFFHIR pink;
 ```
 
-## Test Results Management (LAB-5)
+### Test Results Management (LAB-5)
+
+#### Domain Archetype
+
+[Laboratory Analyte Result](StructureDefinition-LaboratoryAnalyteResult.html)
+
+#### Process Flow
 
 ```mermaid
 graph TD
