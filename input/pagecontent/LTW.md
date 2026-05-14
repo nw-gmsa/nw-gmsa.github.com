@@ -314,6 +314,10 @@ See interaction to North East and Yorkshire Genomics in the following section.
 
 In Progress
 
+### Usecase 
+
+> BCR-ABL1 concentration testing (M84.2) is used to monitor the amount of the fusion gene (Philadelphia chromosome) in chronic myeloid leukemia (CML) patients, with results typically reported on an International Scale (%IS) to measure treatment response.
+
 <figure>
 {%include LTW-advanced-sequence.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Genomics Work Order Simplified Sequence Diagram</p>
