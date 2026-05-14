@@ -36,6 +36,7 @@ iGene Codes
 * #"SAMPLE: BL" "Blood"
 * #"SAMPLE: Ascitic fluid" "Ascitic Fluid"
 * #"SAMPLE: AF" "Amniotic Fluid"
+* #"SAMPLE: UNK" "Unknown"
 * #"Pl F" "Pleural fluid"
 
 

@@ -44,4 +44,5 @@ A subset of [HL7 Europe Laboratory Report ValueSet: Specimen Types](https://buil
 * $igene#"SAMPLE: FFPE-SL" "FFPE - Slides"
 * $igene#"SAMPLE: FFPE-PCS" "FFPE - Positively Charged Slides"
 * $igene#"SAMPLE: FFPE-WB" "FFPE - Wax block"
+* $igene#"SAMPLE: UNK" "Unknown"
 
