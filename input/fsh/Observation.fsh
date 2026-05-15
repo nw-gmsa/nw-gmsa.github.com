@@ -1,6 +1,6 @@
 Profile:        Observation
-//Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-Observation
 Parent:         http://hl7.eu/fhir/base/StructureDefinition/medicalTestResult-eu-core
+//Parent:         http://hl7.eu/fhir/laboratory/StructureDefinition/Observation-resultslab-eu-lab
 Id:             Observation
 Title:          "Observation"
 Description:    """

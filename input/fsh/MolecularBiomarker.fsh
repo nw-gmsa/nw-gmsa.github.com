@@ -34,4 +34,4 @@ Component biomarker-category is an optional and repeating field that provides fo
 //* component[biomarker-category].value[x] only CodeableConcept
 * component[biomarker-category].value[x] 1..1
 * component[biomarker-category].value[x] ^short = "cell receptor | antigen | protein | immune stain"
-* component[biomarker-category].valueCodeableConcept from $MolecularBiomarkerCategoryVS (example)
+* component[biomarker-category].valueCodeableConcept from $MolecularBiomarkerCategoryVS (preferred)
