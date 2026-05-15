@@ -1,5 +1,5 @@
 Profile:        Genotype
-Parent:         Observation
+Parent:         GenomicObservation
 Id:             Genotype
 Title:          "Genotype (Observation)"
 Description:    """

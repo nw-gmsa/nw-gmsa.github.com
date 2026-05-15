@@ -13,8 +13,7 @@ Description:    """
 * ^keyword[+] = #diagnostics "Diagnostics"
 
 
-
+* hasMember 0..0
 
 * value[x] only Quantity
-
-* component.value[x] only Quantity
+* component.value[x] only CodeableConcept or Quantity
