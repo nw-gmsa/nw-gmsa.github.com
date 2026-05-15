@@ -1,5 +1,5 @@
 Profile:        DiagnosticImplication
-Parent:         Observation
+Parent:         GenomicObservation
 Id:             DiagnosticImplication
 Title:          "Diagnostic Implication (Observation)"
 Description:    """

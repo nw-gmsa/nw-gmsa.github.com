@@ -1,5 +1,5 @@
 Profile:        LaboratoryAnalyteResult
-Parent:         MolecularBiomarker
+Parent:         Observation
 Id:             LaboratoryAnalyteResult
 Title:          "Laboratory Analyte Result (Observation)"
 Description:    """

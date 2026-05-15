@@ -1,5 +1,5 @@
 Profile:        TherapeuticImplication
-Parent:         Observation
+Parent:         GenomicObservation
 Id:             TherapeuticImplication
 Title:          "Therapeutic Implication (Observation)"
 Description:    """

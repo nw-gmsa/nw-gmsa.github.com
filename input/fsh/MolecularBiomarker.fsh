@@ -1,5 +1,5 @@
 Profile:        MolecularBiomarker
-Parent:         Observation
+Parent:         LaboratoryAnalyteResult
 Id:             molecular-biomarker
 Title:          "Molecular Biomarker"
 Description:    """
@@ -15,6 +15,7 @@ Description:    """
 * component contains
     gene-studied 0..* and
     biomarker-category 0..*
+
 * component[gene-studied] ^short = "Gene Studied"
 * component[gene-studied] ^definition = "The gene(s) directly or indirectly assessed by the biomarker."
 * component[gene-studied].code = $LNC#48018-6
@@ -22,7 +23,7 @@ Description:    """
 //* component[gene-studied].value[x] only CodeableConcept
 * component[gene-studied].value[x] ^short = "The HGNC gene symbol is to be used as display text and the HGNC gene ID used as the code. If no HGNC code issued for this gene yet, NCBI gene IDs SHALL be used."
 * component[gene-studied].value[x] 1..1
-* component[gene-studied].valueCodeableConcept from $HGNCVS (extensible)
+* component[gene-studied].value[x] from $HGNCVS (extensible)
 
 * component[biomarker-category] ^short = "Biomarker Category"
 * component[biomarker-category] ^definition = "A categorization of a given biomarker observation."
@@ -33,4 +34,4 @@ Component biomarker-category is an optional and repeating field that provides fo
 //* component[biomarker-category].value[x] only CodeableConcept
 * component[biomarker-category].value[x] 1..1
 * component[biomarker-category].value[x] ^short = "cell receptor | antigen | protein | immune stain"
-* component[biomarker-category].valueCodeableConcept from $MolecularBiomarkerCategoryVS (example)
+* component[biomarker-category].value[x] from $MolecularBiomarkerCategoryVS (example)

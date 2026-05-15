@@ -1,5 +1,5 @@
 Profile:        Variant
-Parent:         Observation
+Parent:         GenomicObservation
 Id:             Variant
 Title:          "Variant (Observation)"
 Description:    """
