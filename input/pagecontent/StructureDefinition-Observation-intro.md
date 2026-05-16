@@ -14,15 +14,17 @@ graph
   ComponentObservation[Component Observation<br/><br/>FHIR Observation<br/>HL7 v2 OBX]
   Template[Template<br/><br/>opnEHR Template<br/>FHIR Questionnaire<br/>LOINC Groups and Panels<br/>Laboratory Batteries<br/>Survery and Questionnaires<br/>Ask At Order Entry Questions]
   ObservationDefinition[Observation Definition<br/><br/>FHIR ObservationDefinition<br/>implied by LOINC panel]
-  Archetype[Archetype/Analyte Model<br/><br/>openEHR Archetype<br/>FHIR Profile<br/>LOINC Analyte<br/>Genomic Findings+Implications]
+  Archetype[Clinical/Archetype/Analyte Model<br/><br/>openEHR Archetype<br/>FHIR Profile<br/>LOINC Analyte<br/>Genomic Findings+Implications]
 
   Template --> |defines| ObservationPanel    
   ObservationDefinition --> |defines| SimpleObservation
   Archetype --> |defines| ComponentObservation
+  Archetype --> |defines| SimpleObservation
+  Archetype --> |defines| ObservationDefinition
 
   ObservationPanel --> |contains| SimpleObservation
   ObservationPanel --> |contains| ComponentObservation
-  Template --> |contains| Archetype
+  Archetype --> |instantiates/uses| Template
   Template --> |contains| ObservationDefinition
 
   SimpleObservation --> |isA| Observation
