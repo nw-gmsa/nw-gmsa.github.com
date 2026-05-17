@@ -653,6 +653,13 @@ This is based on the definitions of NDL from [Royal College of Radiologists](htt
 Extended Composite ID Number and Name for Persons.
 The definition of XCN from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws) **SHOULD** be followed and **SHALL** be used in ORC-12.
 
+| Field HL7 | Fieldname    | Data Type | Optionality | Identifier Type or ValueSet                                                | Example Values |
+|-----------|--------------|-----------|-------------|----------------------------------------------------------------------------|----------------|
+| XCN-1     | Id Number    | ST        | O           | [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html) |                |
+| XCN-2     | Family Name  | ST        | O           | Surname                                                                    |                |
+| XCN-3     | Given  Name  | ST        | O           | Forename                                                                   |                |
+| XCN-8     | Source Table | HD        | O           | See [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html)                                                                        |                |
+
 Example
 
 GMC Code
