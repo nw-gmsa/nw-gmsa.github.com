@@ -659,6 +659,7 @@ The definition of XCN from [NHS England HL7 v2 ADT Message Specification](https:
 | XCN-2     | Family Name  | ST        | O           |                                                                     |                |
 | XCN-3     | Given  Name  | ST        | O           |                                                                   |                |
 | XCN-8     | Source Table | HD        | O           | See [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html)                                                                        |                |
+{:.grid}
 
 Example
 
