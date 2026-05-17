@@ -631,8 +631,8 @@ This is based on the definitions of NDL from [Royal College of Radiologists](htt
 | Field HL7   | Fieldname   | Data Type | Optionality | Identifier Type or ValueSet | Example Values |
 |-------------|-------------|-----------|-------------|-----------------|----------------|
 | NDL-1.CNN.1 | Id Number   | ST        | O           | [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html)      |                |
-| NDL-1.CNN.2 | Family Name | ST        | O           | Surname         |                |
-| NDL-1.CNN.3 | Given  Name | ST        | O           | Forename        |                |
+| NDL-1.CNN.2 | Family Name | ST        | O           |          |                |
+| NDL-1.CNN.3 | Given  Name | ST        | O           |         |                |
 | NDL-7       | Facility    | HD        | O           | [Organisation Code](StructureDefinition-OrganisationCode.html)         |                |
 {:.grid}
 
@@ -656,8 +656,8 @@ The definition of XCN from [NHS England HL7 v2 ADT Message Specification](https:
 | Field HL7 | Fieldname    | Data Type | Optionality | Identifier Type or ValueSet                                                | Example Values |
 |-----------|--------------|-----------|-------------|----------------------------------------------------------------------------|----------------|
 | XCN-1     | Id Number    | ST        | O           | [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html) |                |
-| XCN-2     | Family Name  | ST        | O           | Surname                                                                    |                |
-| XCN-3     | Given  Name  | ST        | O           | Forename                                                                   |                |
+| XCN-2     | Family Name  | ST        | O           |                                                                     |                |
+| XCN-3     | Given  Name  | ST        | O           |                                                                   |                |
 | XCN-8     | Source Table | HD        | O           | See [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html)                                                                        |                |
 
 Example
