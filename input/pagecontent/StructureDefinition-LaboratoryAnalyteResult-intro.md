@@ -10,6 +10,8 @@ This is currently being elaborated and subject to change.
 
 > BCR-ABL1 concentration testing is used to monitor the amount of the fusion gene (Philadelphia chromosome) in chronic myeloid leukemia (CML) patients, with results typically reported on an International Scale (%IS) to measure treatment response.
 
+> [Designing an interoperable solution to support pharmacogenomic-guided prescribing in primary care: an implementer report](https://informatics.bmj.com/content/bmjhci/32/1/e101163.full.pdf)
+
 ## Data Mapping
 
 | Data Element                       | HL7 v2 R32                                    | LOINC / SNOMED | openEHR                  | HL7 FHIR                                                               | Example                           |
