@@ -160,6 +160,16 @@ This appears to be part of [FHIR R6 GenomicStudy](https://build.fhir.org/genomic
 
 Description: [Genomic Observations](https://build.fhir.org/ig/HL7/genomics-reporting/general.html#genomic-observations)
 
+#### Laboratory Analyte Result
+
+<div class="alert alert-danger" role="alert">
+This is for elaboration and subject to change.
+</div>
+
+<div class="alert alert-info" role="alert">
+<a href="StructureDefinition-LaboratoryAnalyteResult.html" _target="_blank">Laboratory Analyte Result (Observation)</a> 
+</div>
+
 #### Variant
 
 <div class="alert alert-danger" role="alert">
