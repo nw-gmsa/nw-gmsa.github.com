@@ -36,9 +36,7 @@ This is currently being elaborated and subject to change.
 | Device Identifier                  | ?? OBX-18 EquipmentInstanceIdentifier         |                |                          | Observation.device                                                     |                                   |
 {:.grid}
 
-Key LOINC Codes for BCR-ABL:
+Possible LOINC Codes for BCR-ABL:
 
-- [174041-5](https://loinc.org/74041-5): BCR-ABL1 p210 Major Molecular Response [Presence] in Blood or Tissue.
-- [21821-4](https://loinc.org/21821-4): BCR-ABL1 fusion transcript [Ratio] in Blood/Tissue.
-- [46434-7](https://loinc.org/46434-7): t(9;22)(q34.1;q11)(ABL1,BCR) fusion transcript [Presence] in Blood/Tissue.
-- [50195-7](https://loinc.org/50195-7): t(9;22)(q34.1;q11)(ABL1,BCR) fusion transcript [Ratio] in Blood or Tissue by Molecular genetics method.
+- [69380-4](https://loinc.org/69380-4/) t(9;22)(q34.1;q11)(ABL1,BCR) b2a2+b3a2 fusion transcript/control transcript (International Scale) [# Ratio] in Blood or Tissue by Molecular genetics method
+
