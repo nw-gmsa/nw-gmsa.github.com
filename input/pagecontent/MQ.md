@@ -76,7 +76,7 @@ The Bundle is taken from the `Check Inbox` search, only the MessageHeader resour
 
 #### Examples
 
-Searching for Messages for NE&Y Genomics after 1st May 2026..
+Acknowledge a single message.
 
 ```
 POST [base]/Bundle
