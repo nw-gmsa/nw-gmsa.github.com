@@ -27,10 +27,11 @@ GET [base]/Bundle?[parameter]=[value]]
 </div>
 
 
-| Parameter    | Type      | Search                                                                 | Note                                                    |
-|--------------|-----------|------------------------------------------------------------------------|---------------------------------------------------------|
-| _lastUpdated | date      | GET [base]/Bundle?_lastUpdated=[date]                                  | Date the resource was last updated                      |
-| message.receiver:identifier   | token     | GET [base]/Bundle?message.receiver:identifier =[system&#124;][ODScode] | ODS Code of calling organisation |
+| Parameter    | Type      | Search                                                                | Note                                                    |
+|--------------|-----------|-----------------------------------------------------------------------|---------------------------------------------------------|
+| _lastUpdated | date      | GET [base]/Bundle?_lastUpdated=[date]                                 | Date the resource was last updated                      |
+| message.receiver:identifier   | token     | GET [base]/Bundle?message.receiver:identifier=[system&#124;][ODScode] | ODS Code of calling organisation |
+| message.event | token | GET [base]/Bundle?message.event=[system&#124;][eventcode] | Event Code of the message |
 
 `message.receiver:identifier` is a mandatory parameter and must match the OAuth2 clientID associated with the ODS code.
 
