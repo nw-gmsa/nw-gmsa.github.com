@@ -69,7 +69,7 @@ The Bundle is taken from the `Check Inbox` search, only the MessageHeader resour
 
 **Reversed MessageHeader**
 
-{% fragment MessageHeader/MessageHeaderGenomicOrderReplyFatal JSON JSON EXCEPT:sender|destination %}
+{% fragment MessageHeader/MessageHeaderGenomicOrderReplyFatalAcknowledge JSON JSON EXCEPT:sender|destination %}
 
 
 #### Examples
