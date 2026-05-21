@@ -61,6 +61,8 @@ Authorization: Bearer {accessToken}
 POST [base]/Bundle
 </div>
 
+Acknowledging a Message removes it from the Inbox.
+
 The Bundle is taken from the `Check Inbox` search, only the MessageHeader resource is required where the source and destination elements are swapped over, and posts it back to the server. E.g. 
 
 **Original MessageHeader**
