@@ -1,0 +1,46 @@
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:bdda4a5b-1264-4353-ba1a-d76839dd90d8",
+      "resource": {
+        "resourceType": "MessageHeader",
+        "destination": [
+          {
+            "receiver": {
+              "display": "MANCHESTER UNIVERSITY NHS FOUNDATION TRUST",
+              "identifier": {
+                "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+                "value": "R0A"
+              }
+            }
+          }
+        ],
+        "eventCoding": {
+          "code": "O21",
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0003"
+        },
+        "response": {
+          "code": "ok",
+          "identifier": "9612365d-52a4-4fab-87e7-8a09d753f095"
+        },
+        "sender": {
+          "identifier": {
+            "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+            "value": "X24"
+          }
+        },
+        "source": {
+          "endpoint": "https://fhir.north-west.england.nhs.uk/Endpoint/RIE",
+          "software": "NW GLH Regional Integration Engine"
+        }
+      }
+    }
+  ],
+  "id": "5",
+  "identifier": {
+    "value": "2472860"
+  },
+  "timestamp": "2025-03-20T11:57:05.612+00:00",
+  "type": "message"
+}

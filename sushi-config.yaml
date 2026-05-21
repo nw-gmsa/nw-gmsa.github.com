@@ -111,6 +111,9 @@ pages:
   QEDm.md:
     title: Query Existing Data [QEDm]
     generation: markdown
+  MQ.md:
+    title: Message Exchange
+    generation: markdown
   MHD.md:
     title: Mobile Access to Health Documents [MHD]
     generation: markdown
@@ -245,6 +248,14 @@ resources:
     name: NRL Genomic Report for Cersei LONDON (Test NHS Number 9737383230). Original order electronic from EPIC system
     description: Proof of concept example. Type, category, custodian and author are currently incorrect values
     exampleBoolean: true
+  Bundle/5:
+    name: Example of a Message Acknowledgement
+    description: Example of a Message Acknowledgement
+    exampleBoolean: true
+  Bundle/312fb428-0f63-4814-b6e3-ed6aa6e6bbe0:
+    name: Example of a Message Search
+    description: Example of a Message Search
+    exampleBoolean: true
 
 menu:
   Home: index.html
@@ -268,6 +279,7 @@ menu:
     Resource Access [QEDm]: QEDm.html
 ##    Health Data API: CapabilityStatement-HealthDataAPI.html
     Authorisation [IUA] : IUA.html
+    Message Exchange [MQ]: MQ.html
 ##    Work Order Management [LAB-4]: LAB-4.html
 ##    Test Results Management [LAB-5]: LAB-5.html
   Data Models (Volume 3):
