@@ -319,7 +319,36 @@ Key differences include:
 
 ## Filler Order Management (LAB-2)
 
-See interaction to North East and Yorkshire Genomics in the following section.
+Work in progress. 
+
+LAB-2 is aimed at sending a copy of the order back to the Order Placer, and this will include updated data items such as Order Filler Number.
+
+It is envisaged this design will also extend to Laboratory Reports (R01). 
+
+```mermaid
+graph TD
+
+
+OrderFiller[Order Filler]
+GDP["Genomic Data Platform"]
+PubSub["Subscription Service (Future?)"]
+RIE[RIE Message Distribution]
+OrderPlacer[Order Placer or Interested Party]
+
+OrderFiller --> GDP
+GDP --> |O21 Event Trigger| PubSub
+GDP --> |O21 Event Trigger| RIE
+RIE --> |HL7 v2 OML_O21| OrderPlacer
+PubSub --> |Event Notification| OrderPlacer
+
+classDef purple fill:#E1D5E7;
+classDef pink fill:#F8CECC;
+classDef yellow fill:#FFF2CC;
+
+class GDP,RIE,PubSub pink;
+class OrderFiller,OrderPlacer yellow
+```
+
 
 ## Work Order and Test Result Management
 
