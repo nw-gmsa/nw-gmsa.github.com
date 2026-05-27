@@ -49,7 +49,7 @@ The processes above are described in more detail in:
 - [Use Case 1: Genomic Test Order](#use-case-genomic-test-order) for the order
 - [Use Case 2: Genomic Test Report](#use-case-genomic-test-report) for the report
 
-From a high level perspective the process is 
+From a high-level perspective, the process is 
 
 <figure>
 {%include LTW-basic-sequence.svg%}
@@ -64,22 +64,38 @@ Where the `Order Placer` sends the **Laboratory Order** to the `Order Filler`, t
 
 ```mermaid
 graph TD;
-    OrderPlacer["<b>Order Placer</b><br/>(EPR or Order Comms)"] --> |1. Send Genomic Laboratory Order<br/>HL7 v2 ORM_O01 or OML_O21| OR[Acute Hospitals<br/>Trust Integration Engine]
-       OrderPlacer --> |"2. Asks for (Order)"| SpecimenCollection
-    SpecimenCollection[Specimen Collection] --> |3. Sends Specimen| OrderFiller
-    OR --> |"1a. HL7 FHIR Message O21<br/>(IHE LTW)"| RIE[Middleware<br/>Regional Orchestration Engine] 
-    RIE --> |"1c. Send Genomic Laboratory Order<br/>HL7 FHIR Message O21<br/>(IHE LTW)"| CDR[NW Genomics<br/>Clinical Data Repository]
-    CDR --> |1d. Send FHIR Event Notification| Any["Any <br/>(future)"]
-    RIE --> |"1b. Send Genomic Laboratory Order<br/>HL7 v2 OML_O21<br/>(IHE LTW)"| EHRTIE[NW Genomics<br/>Laboratory Information Management System] 
-    RIE --> |"1b. Send Genomic Laboratory Order<br/>FHIR Transaction<br/>via NHS England Genomic Order Management Service"| GOMS["External<br/>Laboratory Information Management System<br/>(Future)"] 
-    EHRTIE --> OrderFiller[<b>Order Filler</b>]
-    GOMS --> OrderFiller
+    subgraph OrderPlacer;
+        EHR["EPR or Order Comms"] 
+        SpecimenCollection[Specimen Collection]
+        OR[Acute Hospitals<br/>Trust Integration Engine]
+        EHR --> |HL7 v2 O01/O21| OR
+        EHR --> |"2. Asks for (Order)"| SpecimenCollection    
+    end
 
+    RIE["Regional Orchestration Engine (RIE)"]
+    GDP["Genomic Data Platform"]
+    PubSub["Subscription Service (Future?)"]
+
+    subgraph OrderFiller;
+        iGene[LIMS<br/>IGene]
+        GOMS["NHS England Genomic Order Management System"] 
+        ExtLIMS[External GMSA/LIMS]
+    end 
+
+    SpecimenCollection[Specimen Collection] --> |3. Sends Specimen| OrderFiller
+    OR --> |HL7 FHIR O21| RIE
+    RIE --> |Update| GDP
+    RIE --> |HL7 v2 O21| iGene
+    RIE --> GOMS
+    GOMS --> ExtLIMS
+    GDP --> |O21 Event Notification| PubSub
+    
     classDef green fill:#D5E8D4;
     classDef yellow fill:#FFF2CC;
-    class RIE green;
+    classDef pink fill:#F8CECC;
+    class RIE,GDP,PubSub pink;
     class OR green;
-    class CDR yellow;
+
 ```
 
 ### Use Case: Genomic Test Order
@@ -177,46 +193,41 @@ The detail of this form/template defines:
 
 After submitting the original order, the sample will be collected and sent to the Order Filler. The Order Filler will update the Test Order to include details such as a specimen collection date, order filler number, etc.
 
-#### Relationship to NHS England Pathology
-
-This guide builds on the use cases described in the [NHS England Pathology FHIR Implementation Guide](https://simplifier.net/guide/pathology-fhir-implementation-guide/Home/Design/Background), extending them to support a wider range of stakeholders and introducing standards for the Laboratory Order LAB-1.
-
-Key differences include:
-
-- **Workflow foundation:** The [IHE Laboratory and Testing Worflow LTW](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol1.pdf) is used as the reference model for describing laboratory testing processes.
-- **Order Placer role:** The GP Electronic Patient Record (EPR) System and the Order Communications System together form the Order Placer role, which may also be fulfilled by other EPR systems.
-- **Intermediary between Order Placer and Order Filler:** This intermediary performs message translation and code conversion.
-- **Order Result Tracker role:** For results, the GP EPR System acts as the Order Result Tracker, though other systems (e.g. Secondary Care EPR) can provide this function.
-- **Intermediary between Order Filler and Order Result Tracker:** This intermediary also handles message translation and code conversion.
-- **Canonical model:** A standardised model ([Canonical model](https://en.wikipedia.org/wiki/Canonical_model)), expressed in HL7 FHIR, that can be implemented using HL7 v2, FHIR, and IHE XDS. It aligns with the latest HL7 UK Core and NHS England Data Model and Dictionary. While primarily focused on genomics, it incorporates elements from pathology and radiology for compatibility, and mandates the use of NHS England National Procedure Codes.
-
-<img style="padding:3px;width:95%;" src="Relationship to NHS England Pathology.drawio.png" alt="Relationship to NHS England Pathology"/>
-<br clear="all">
-<p class="figureTitle">Relationship to NHS England Pathology</p> 
-<br clear="all">
-
-
 ## Laboratory Report (LAB-3)
 
 ```mermaid
 graph TD;
-    OrderFiller["<b>Order Filler</b><br/>Diagnostic Testing (LIMS)"] --> |"1. Sends HL7 v2 ORU_R01<br/>(IHE LTW)"| RIE[Middleware<br/>NW Genomics<br/>Regional Orchestration Engine] 
-    RIE --> |"1a. Sends HL7 v2 ORU_R01<br/>(IHE LTW)"| TIE[Middleware<br/>Acute Hospitals<br/>Trust Integration Engine] 
-    TIE--> |"1a. Sends HL7 v2 ORU_R01<br/>(IHE LTW)"| EHRTIE[North West<br/>NHS Trust<br/>EHR] 
-    RIE--> |"1a. Sends HL7 v2 ORU_R01<br/>(IHE LTW)"| BOARD["NHS Wales<br/>Health Board<br/> (future?)"]
-    RIE --> |"1a. Sends FHIR Transaction<br/>via NHS England Genomic Order Management Service"| GOMS["NHS England<br/>NHS Trust<br/>EHR (Future)"] 
-    RIE --> |1b. Sends HL7 v2 MDM_T02 or IHE XDS| ICSTIE[Integrated Care System <br/> Document Repository]
-    RIE --> |1c. Sends HL7 FHIR R4<br/>Message O21| CDR[NW Genomics<br/>Clinical Data Repository]
-    CDR --> |1d. Sends FHIR Event Notification| Any["Any <br/>(future)"]
-    GOMS --> OrderPlacer[<b>Order Placer</b>]
-    EHRTIE --> OrderPlacer
-    BOARD--> OrderPlacer
 
+    subgraph OrderFiller;
+        iGene[LIMS<br/>IGene]
+        GOMS["NHS England Genomic Order Management System"] 
+        ExtLIMS[External GMSA/LIMS]
+    end 
+
+    subgraph OrderPlacer;
+        EHR["EPR or Order Comms"] 
+
+        OR[Acute Hospitals<br/>Trust Integration Engine]
+        OR --> |HL7 v2 R01| EHR
+
+    end
+     RIE["Regional Orchestration Engine (RIE)"]
+     GDP["Genomic Data Platform"]
+    PubSub["Subscription Service (Future?)"]
+
+    RIE --> |HL7 v2 R01| OR
+    RIE --> |Update| GDP
+    iGene --> |HL7 v2 R01| RIE
+    GOMS --> RIE
+    ExtLIMS --> GOMS
+    GDP --> |R01 Event Notification| PubSub
+    
     classDef green fill:#D5E8D4;
     classDef yellow fill:#FFF2CC;
-    class RIE green;
-    class TIE green;
-    class CDR yellow;
+    classDef pink fill:#F8CECC;
+    class RIE,GDP,PubSub pink;
+    class OR green;
+
 ```
 
 ### Use Case: Genomic Test Report
@@ -336,31 +347,41 @@ TODO - FHIR Task and v2 OML_O21
 graph TD
 
 
-subgraph GenomicLIMS["Order Filler"];
+subgraph GenomicLIMS["Order Placer"];
     iGene[LIMS<br/>IGene]
 end
 
-subgraph HIE["Genomic Archiving and Communication System (GACS)"];
+subgraph HIE["Automation Manager"];
     RIE4["RIE Workflow Orchestration"]
+ 
 end
 
+subgraph OrderFiller;
+Cepheid[Analyser - Cepheid]
+StarLIMS[LIMS - StarLIMS]
 
-subgraph Analyser["Automation Manager"];
-    Cepheid[Analyser - Cepheid]
-    StarLIMS[LIMS - StarLIMS]
-    NEY["Repository - North East and Yorkshire Genomics"]
-end
+GOMS["NHS England Genomic Order Management System"] 
+ExtLIMS[External GMSA/LIMS]
 
-iGene --> |"Work Order Management (LAB-4)<br/>i. Worksheet (iGene SQL data-pipeline)"| RIE4
-RIE4 <--> |"Work Order Management (LAB-4)<br/>ii. Lab Orders HL7 QBP Query"| Cepheid
-RIE4 <--> |"Work Order Management (LAB-4)<br/>ii. Lab Orders HL7 FHIR Query"| StarLIMS
-RIE4 <--> |"Order Notification (LAB-2)<br/> Lab Order O21<br/>HL7 FHIR Query"| NEY 
+end 
 
+GDP["Genomic Data Platform"]
+ PubSub["Subscription Service (Future?)"]
+
+RIE4 --> |Update| GDP
+GDP --> |O21 Event Notification| PubSub
+
+
+iGene --> |"Work Order Management (LAB-4)<br/>Worksheet (iGene SQL data-pipeline)"| RIE4
+RIE4 <--> |"Work Order Management (LAB-4)<br/>HL7 QBP Query"| Cepheid
+RIE4 <--> |"Work Order Management (LAB-4)<br/>HL7 FHIR Query"| StarLIMS
+RIE4 --> |"Work Order Management (LAB-4)<br/>FHIR Transaction"| GOMS
+GOMS --> ExtLIMS
 
 classDef purple fill:#E1D5E7;
 classDef pink fill:#F8CECC;
 
-class GDR,RIE4,VCFFHIR pink;
+class GDP,RIE4,PubSub,VCFFHIR pink;
 ```
 
 ### Test Results Management (LAB-5)
@@ -374,28 +395,38 @@ class GDR,RIE4,VCFFHIR pink;
 ```mermaid
 graph TD
 
-subgraph GenomicLIMS["Order Filler"];
+subgraph GenomicLIMS["Order Placer"];
     iGene[LIMS<br/>IGene]
 end
 
-subgraph Analyser["Automation Manager"];
+subgraph Analyser["Order Filler"];
     Cepheid[Analyser - Cepheid]
     StarLIMS[LIMS - StarLIMS]
+    ExtLIMS[External GMSA/LIMS]
+    GOMS["NHS England Genomic Order Management System"] 
+    ExtLIMS --> GOMS
 end
 
-subgraph HIE["Genomic Archiving and Communication System (GACS)"];
+subgraph HIE["Automation Manager"];
     RIE["Regional Orchestration Engine (RIE)"]
 end
 
-Cepheid --> |"Test Results Management (LAB-5/LAB-32)<br/>a. Lab Reports HL7 ORU_R32"| RIE
-StarLIMS --> |"Test Results Management (LAB-5)<br/>a. SQL data-pipeline"| RIE
+GDP["Genomic Data Platform"]
+PubSub["Subscription Service (Future?)"]
 
-RIE --> |"Test Results Management (LAB-5)<br/>b. CSV  Import"| iGene
+RIE --> |Update| GDP
+GDP --> |R01 or R32 Event Notification| PubSub
+
+Cepheid --> |"Test Results Management (LAB-5/LAB-32)<br/>Lab Reports HL7 ORU_R32"| RIE
+StarLIMS --> |"Test Results Management (LAB-5)<br/>SQL data-pipeline"| RIE
+GOMS --> RIE
+
+RIE --> |"Test Results Management (LAB-5)<br/>CSV Import"| iGene
 
 classDef purple fill:#E1D5E7;
 classDef pink fill:#F8CECC;
 
-class GDR,RIE,VCFFHIR pink;
+class GDP,RIE,PubSub pink;
 ```
 
 In Progress

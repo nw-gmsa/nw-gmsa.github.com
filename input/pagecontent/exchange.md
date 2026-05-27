@@ -9,7 +9,7 @@ The architecture consists of three primary components:
 1. **Regional Orchestration Engine (RIE)**  
    Routes and standardises messaging between organisations.
 
-2. **Genomic Data Repository (GDR)**  
+2. **Genomic Data Platform (GDR)**  
    A central read-only repository for genomic data and reports. Also known as a **Data Platform**
 
 3. **API Gateway (APIG)**  
@@ -104,7 +104,7 @@ TIE["Trust Integration Engine (TIE)"]
 
 subgraph HIE["Genomic Archiving and Communication System (GACS)"]
     RIE["Regional Orchestration Engine (RIE)"]
-    GDR["Genomic Data Repository (GDR)"]
+    GDR["Genomic Data Platform (GDR)"]
    APIG["API Gateway (APIG)"]
 end
 

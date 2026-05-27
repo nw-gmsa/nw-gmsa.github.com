@@ -234,16 +234,16 @@ graph LR
 
 ## Data and Document Sharing
 
-### Regional Data and Document Sharing - Genomic Data Repository (GDR)
+### Regional Data and Document Sharing - Genomic Data Platform (GDR)
 
 Traditional messaging focuses solely on communication between two systems—the order placer and the order filler—and does not support wider sharing of genomic data across multiple organisations such as NHS Trusts, GP practices, or other clinical teams.
 
-To address this, a central Genomic Data Repository (GDR) will be established. This repository will provide a read-only [FHIR RESTful (read only API)](https://hl7.org/fhir/R4/http.html) and will be populated via data flows through the RIE (See [Health Information Exhange (HIE)](#health-information-exchange-hie)) and will focus primarily on sharing data produced by NHS North West Genomics.
+To address this, a central Genomic Data Platform (GDR) will be established. This repository will provide a read-only [FHIR RESTful (read only API)](https://hl7.org/fhir/R4/http.html) and will be populated via data flows through the RIE (See [Health Information Exhange (HIE)](#health-information-exchange-hie)) and will focus primarily on sharing data produced by NHS North West Genomics.
 
 ```mermaid
 graph TD
     subgraph DataContracts[Data Contract]
-        CDR["<b>Data Source</b><br/>Genomic Data Repository (GDR)"]
+        CDR["<b>Data Source</b><br/>Genomic Data Platform (GDR)"]
         subgraph DocS[Document Sharing IHE MHD]
                 NHSB[<b>Document Consumer</b><br/>NHS GP/Trust/Board/ICS B] 
           APPB[<b>Document Consumer</b><br/>Application 2]
@@ -344,9 +344,9 @@ The Order Placer creates a diagnostic order and notifies the Order Filler via a 
 
 A conversational (event-based) workflow, also referred to as a conversation-based workflow, represents a modern approach to clinical messaging. This paradigm assumes that both the Order Placer and the Order Filler can share data using HL7 FHIR RESTful APIs.
 
-In practice, this capability may not always be available. For example, Laboratory Information Management Systems (LIMS) within NHS North West Genomics may not support FHIR RESTful APIs. In such cases, the Genomic Data Repository (GDR) is used to share genomic laboratory reports and other genomic data. Similarly, if Electronic Patient Record (EPR) systems do not support FHIR RESTful APIs, the GDR is used to facilitate the sharing of laboratory orders.
+In practice, this capability may not always be available. For example, Laboratory Information Management Systems (LIMS) within NHS North West Genomics may not support FHIR RESTful APIs. In such cases, the Genomic Data Platform (GDR) is used to share genomic laboratory reports and other genomic data. Similarly, if Electronic Patient Record (EPR) systems do not support FHIR RESTful APIs, the GDR is used to facilitate the sharing of laboratory orders.
 
-Together, the Regional Orchestration Engine (RIE) and the Genomic Data Repository (GDR) collectively constitute the Genomic Archiving and Communication System (GACS).
+Together, the Regional Orchestration Engine (RIE) and the Genomic Data Platform (GDR) collectively constitute the Genomic Archiving and Communication System (GACS).
 
 
 <figure>

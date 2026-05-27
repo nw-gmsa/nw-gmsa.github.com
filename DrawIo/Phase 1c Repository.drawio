@@ -40,7 +40,7 @@
             <mxPoint x="14" y="-28" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="_b9NuXSDLzWbAmvTPXuV-13" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" value="Genomic Data Repository" vertex="1">
+        <mxCell id="_b9NuXSDLzWbAmvTPXuV-13" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" value="Genomic Data Platform" vertex="1">
           <mxGeometry height="80" width="60" x="938" y="530" as="geometry" />
         </mxCell>
         <mxCell id="_b9NuXSDLzWbAmvTPXuV-16" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" target="_b9NuXSDLzWbAmvTPXuV-13">
@@ -159,7 +159,7 @@
         <mxCell id="ASGDk-45rUAA4ve6-Ohr-40" parent="1" style="strokeWidth=2;dashed=0;align=center;fontSize=8;shape=rect;fillColor=#FF8080;fontStyle=1;whiteSpace=wrap;html=1;" value="C" vertex="1">
           <mxGeometry height="12" width="12" x="1321" y="908.25" as="geometry" />
         </mxCell>
-        <mxCell id="ILvifMnPqF2TKCAFdpOd-1" parent="1" style="html=1;strokeWidth=2;outlineConnect=0;dashed=0;align=center;fontSize=8;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.eip.wire_tap;fillColor=#c0f5a9" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;Update Genomic Data Repository&amp;nbsp;&lt;/span&gt;" vertex="1">
+        <mxCell id="ILvifMnPqF2TKCAFdpOd-1" parent="1" style="html=1;strokeWidth=2;outlineConnect=0;dashed=0;align=center;fontSize=8;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.eip.wire_tap;fillColor=#c0f5a9" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;Update Genomic Data Platform&amp;nbsp;&lt;/span&gt;" vertex="1">
           <mxGeometry height="67.5" width="120" x="510" y="791.5" as="geometry" />
         </mxCell>
         <mxCell id="psYKPzLQwSFd3BFdngnA-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="Includes IHE QEDm (HL7 FHIR) + PDQm + MHD" vertex="1">

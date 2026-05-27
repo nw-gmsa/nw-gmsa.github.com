@@ -106,7 +106,7 @@ Three types of messages are used within this workflow process:
   - Call NHS England PDS & Enrich Content ([Content Enricher](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DataEnricher.html))
     - Stores and enhances the message with additional data elements (GP Practice and ICS).
     - Ensures only traced NHS Numbers are present in the message.
-- Update Genomic Data Repository ([Wire Tap](https://www.enterpriseintegrationpatterns.com/patterns/messaging/WireTap.html))
+- Update Genomic Data Platform ([Wire Tap](https://www.enterpriseintegrationpatterns.com/patterns/messaging/WireTap.html))
   - Updates internal genomic data repository using FHIR RESTful interactions. ([Messaging Gateway](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessagingGateway.html))
 - Router ([Message Router](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageRouter.html))
   - Routes messages based on order metadata.
@@ -140,7 +140,7 @@ Three types of messages are used within this workflow process:
   - Call NHS England PDS & Enrich Content ([Content Enricher](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DataEnricher.html))
     - Stores and enhances the message with additional data elements (GP Practice and ICS).
     - Ensures only traced NHS Numbers are present in the message.
-  - Update Genomic Data Repository & Enrich Content ([Content Enricher](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DataEnricher.html))
+  - Update Genomic Data Platform & Enrich Content ([Content Enricher](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DataEnricher.html))
     - Stores and enhances the message with additional data elements.
     - Provides a consistent, enriched dataset for downstream use.
 - Routing

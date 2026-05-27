@@ -16,7 +16,7 @@ Usage: #definition
 //* insert ActorEntity(placer, "Order Placer",         [[ [Order Placer](ActorDefinition-OrderPlacer.html) ]])
 * insert ActorEntity(epr, "Order Placer/Electronic Patient Record",   [[ NHS Trust [Provider Information Source](ActorDefinition-ProviderInformationSource.html) ]])
 * insert ActorEntity(hie, "ICS - Health Information Exchange",   [[  [Intermediary](ActorDefinition-Intermediary.html) found in LHCRE/ICS ]])
-* insert ActorEntity(cdr, "Regional - Genomic Data Repository",   [[ Clinical Data Repository ]])
+* insert ActorEntity(cdr, "Regional - Genomic Data Platform",   [[ Clinical Data Repository ]])
 
 * insert Instance_Empty(Request1,   Binary,   "HL7 v2 ORU_R01 - supplier",  [[ [iGene HL7 v2 ORU_R01](hl7v2.html#original-igene-message) ]])
 * insert Instance_Empty(Request2,   Binary,   "HL7 v2 ORU_R01 - regional",  [[ [Regional HL7 v2 ORU_R01](hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message-1) ]])

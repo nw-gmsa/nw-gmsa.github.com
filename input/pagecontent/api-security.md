@@ -20,7 +20,7 @@ subgraph DataPlatform[Data Platform]
     audit1[Audit Logging]
     consent[Patient Consent]
     data[Data Security]
-    api[(Genomic Data Repository<br/>FHIR Repository)]
+    api[(Genomic Data Platform<br/>FHIR Repository)]
 end
 
 consumer --> |request| APIGateway
@@ -207,7 +207,7 @@ subgraph DataPlatform[Data Platform]
     auth[Access Control and Authorisation]
     audit1[Audit Logging]
     data[Data Security]
-    api[(Genomic Data Repository)]
+    api[(Genomic Data Platform)]
 end
 end 
 

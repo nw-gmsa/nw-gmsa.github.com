@@ -65,7 +65,7 @@
             <mxPoint x="1102.7000000000003" y="824.9999999999998" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="_b9NuXSDLzWbAmvTPXuV-13" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" value="Genomic Data Repository" vertex="1">
+        <mxCell id="_b9NuXSDLzWbAmvTPXuV-13" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" value="Genomic Data Platform" vertex="1">
           <mxGeometry height="80" width="60" x="1080" y="570" as="geometry" />
         </mxCell>
         <mxCell id="_b9NuXSDLzWbAmvTPXuV-15" edge="1" parent="1" source="_b9NuXSDLzWbAmvTPXuV-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="ASGDk-45rUAA4ve6-Ohr-3">

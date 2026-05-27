@@ -7,7 +7,7 @@ The implementation patterns rely on FHIR RESTful APIs combined with HL7 v2 Event
 
 ## Local/Regional Genomic Reports
 
-Local or regional systems allow consumers to retrieve genomic reports from the NW Genomic Data Repository or regional care records (for example ICS/LHCRE repositories).
+Local or regional systems allow consumers to retrieve genomic reports from the NW Genomic Data Platform or regional care records (for example ICS/LHCRE repositories).
 
 Reports can be accessed either as documents (PDF) or as structured data.
 
@@ -62,7 +62,7 @@ Typical resources returned include:
 
 ### Sending and Adding Genomic Report Documents to NHS Trusts, Regional and LHCRE/ICS Repositories
 
-Within NW Genomics, reports are initially shared with the NW Genomic Data Repository.
+Within NW Genomics, reports are initially shared with the NW Genomic Data Platform.
 
 <div class="alert alert-info" role="alert">
 <b>Pattern:</b> <a href="TLW.html" _target="_blank">IHE Laboratory Testing Workflow (LTW) [LAB-3]</a> for ORU_R01 
@@ -92,7 +92,7 @@ Examples:
 ```mermaid
 sequenceDiagram
     participant Producer As Document Producer<br/>via NW Regional Orchestration Engine
-    participant Repository As Document Consumer<br/>NW Genomic Data Repository
+    participant Repository As Document Consumer<br/>NW Genomic Data Platform
     participant Trust As Document Consumer<br/>NHS Trust
     participant RepositoryICS As Document Consumer<br/>ICS e.g. GMCR
 
@@ -142,7 +142,7 @@ sequenceDiagram
     participant Consumer As Document Consumer
     participant Registry As Document Registry<br/>National Record Locator Service
     participant SSP As Spine Secure Proxy
-    participant Repository As Document Repository<br/>NW Genomic Data Repository
+    participant Repository As Document Repository<br/>NW Genomic Data Platform
 
     Note over Consumer,Repository: Retrieving documents from the Registry and Repository
     Consumer ->> Registry: Query Document Metadata
@@ -193,7 +193,7 @@ The existing HL7 v2 MDM_T02 message is transformed into:
 
 ```mermaid
 sequenceDiagram
-    participant Producer As Event Producer<br/>NW Genomic Data Repository
+    participant Producer As Event Producer<br/>NW Genomic Data Platform
     participant Consumer As Event Consumer<br/>NW Regional Orchestration Engine
     participant Registry As Document Registry<br/>National Record Locator Service
 
@@ -209,7 +209,7 @@ These notifications are delivered as CloudWatch-formatted JSON events.
 
 ```mermaid
 sequenceDiagram
-    participant Producer As Event Producer<br/>e.g. NW Genomic Data Repository
+    participant Producer As Event Producer<br/>e.g. NW Genomic Data Platform
     participant Consumer As Event Subscriber
    
     Note over Producer,Consumer: Event Notification 

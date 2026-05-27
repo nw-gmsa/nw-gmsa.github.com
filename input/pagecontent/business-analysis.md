@@ -339,7 +339,7 @@ This relates to points 4a->4d in the diagram above.
 ```mermaid
 graph LR
     IGene[iGene] --> |"1. (New HL7 v2 OML_O21 feed from iGene)"| RIE[Regional Orchestration Engine] 
-    RIE --> |"2. Stores a copies of orders"| CDR[Genomic Data Repository]
+    RIE --> |"2. Stores a copies of orders"| CDR[Genomic Data Platform]
     StarLimsMiddleware["StarLims Middleware <br/>(May be RIE)"] --> |"3. Polls for (starlims) orders from CDR (FHIR RESTful)"| CDR
     StarLimsMiddleware --> |"4. Stores starlims order"| StarLims
     StarLimsMiddleware --> |"5. Gets Reports (poll?)"| StarLims

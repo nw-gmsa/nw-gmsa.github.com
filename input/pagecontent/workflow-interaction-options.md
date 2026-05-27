@@ -94,13 +94,13 @@ graph LR
 
 ```mermaid
 graph LR
-    DataConsumer[<b>Data Consumer</b>] --> |HL7 FHIR RESTful GET<br/>read only| GenomicDataRepository[<b>Genomic Data Repository</b>]
+    DataConsumer[<b>Data Consumer</b>] --> |HL7 FHIR RESTful GET<br/>read only| GenomicDataRepository[<b>Genomic Data Platform</b>]
 ```
 ### Advantages
 
 - Becoming the default method for using HL7 FHIR
   - Supported by EPIC, Cerner, Meditech, etc
-- Is part of the Genomic Data Repository (Intersystems FHIR Repository)
+- Is part of the Genomic Data Platform (Intersystems FHIR Repository)
 
 ### Disadvantages
 

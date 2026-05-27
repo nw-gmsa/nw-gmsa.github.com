@@ -1,6 +1,6 @@
 Instance: HealthDataAPI
 InstanceOf: CapabilityStatement
-Title: "CapabilityStatement for NW Genomics Genomic Data Repository (EURIDICE Health Data API)"
+Title: "CapabilityStatement for NW Genomics Genomic Data Platform (EURIDICE Health Data API)"
 Usage: #definition
 
 * description = """
