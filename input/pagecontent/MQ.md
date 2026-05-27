@@ -10,13 +10,17 @@ This is based on [Asynchronous Messaging using the RESTful API](https://hl7.org/
 ```mermaid
 sequenceDiagram
 
-participant consumer as Message Consumer
-participant esb as Regional Integration Engine
+participant gdp as Genomic Data Platform
+participant RIE as Regional Integration Engine
+participant consumer as Consumer
 
-consumer ->> esb: Check Inbox (GET /Bundle?message.receiver:identifier={odsCode})
-esb -->> consumer: Messages
+
+gdp -->> RIE: R01 or O21 Event Trigger
+RIE -->> RIE: Add to Message Queue
+consumer ->> RIE: Check Inbox (GET /Bundle?message.receiver:identifier={odsCode})
+RIE -->> consumer: Messages
 alt For each individual Message
-    consumer ->> esb: Acknowledge Message (POST /Bundle) 
+    consumer ->> RIE: Acknowledge Message (POST /Bundle) 
 end
 ```
 
