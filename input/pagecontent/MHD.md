@@ -128,7 +128,7 @@ GET [base]/DocumentReference?type=http://snomed.info/sct|1054161000000101&patien
 Accept: application/fhir+json
 ```
 
-## NRL Document Consumption
+### NRL Document Consumption
 
 In the NRL version, Genomics Data Platform (GDP) is a Document Repository, and NRL is a Document Registry.
 
@@ -150,3 +150,24 @@ sequenceDiagram
     Repository-->>Consumer: PDF or FHIR Document Bundle
     end
 ```
+
+
+## Document Publish
+
+### MDM_T02 Original document notification and content
+
+Document is currently PDF.
+
+```mermaid
+sequenceDiagram
+    participant Provider as Document Provider
+    participant Consumer as Document Consumer
+
+    rect rgb(240, 248, 255)
+    Note over Consumer,Provider:Original document <br/>notification and content
+    Provider->>Consumer: HL7 v2 MDM_T02 Message
+    Consumer-->>Provider: Resonse HL7 v2 ACK
+    end
+```
+
+See [MDM_T02 Original document notification and content](hl7v2.html#mdm_t02-original-document-notification-and-content)

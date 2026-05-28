@@ -48,23 +48,7 @@ sequenceDiagram
 
 See [Simplified Publish [ITI-105]](https://hl7.eu/fhir/health-data-api/1.0.0-ballot/en/document-exchange.html#iti-105-simplified-publish)
 
-### Traditional Exchange Option
 
-Document can be FHIR Document or PDF.
-
-```mermaid
-sequenceDiagram
-    participant Provider as Document Provider
-    participant Consumer as Document Consumer
-
-    rect rgb(240, 248, 255)
-    Note over Consumer,Provider:Original document <br/>notification and content
-    Provider->>Consumer: HL7 v2 MDM_T02 Message
-    Consumer-->>Provider: Resonse HL7 v2 ACK
-    end
-```
-
-See [MDM_T02 Original document notification and content](hl7v2.html#mdm_t02-original-document-notification-and-content)
 
 ### System Exchange using NHS England Services Option
 
