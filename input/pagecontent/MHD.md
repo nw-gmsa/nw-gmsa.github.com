@@ -166,7 +166,7 @@ sequenceDiagram
     rect rgb(240, 248, 255)
     Note over Consumer,Provider:Original document <br/>notification and content
     Provider->>Consumer: HL7 v2 MDM_T02 Message
-    Consumer-->>Provider: Resonse HL7 v2 ACK
+    Consumer-->>Provider: Response HL7 v2 ACK
     end
 ```
 
