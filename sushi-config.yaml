@@ -117,6 +117,9 @@ pages:
   MHD.md:
     title: Document Exchange [MHD]
     generation: markdown
+  MHD-elaboration.md:
+    title: Document Exchange [MHD] Elaboration
+    generation: markdown
   PDQm.md:
     title: Patient Demographics Query for Mobile (PDQm)
     generation: markdown
@@ -262,7 +265,7 @@ menu:
   Analysis and Design (Volume 1) :
     Design Overview: design.html
     Laboratory Testing Workflow (LTW): LTW.html
-    Inter-Laboratory Workflow (ILW): ILW.html
+ ##   Inter-Laboratory Workflow (ILW): ILW.html
     ##Health Document Sharing (MHDS) and Sharing Laboratory Reports (XD-LAB): MHDS.html
    ## Specimen Event Tracking (SET): SET.html
  #   Genomic Archiving and Communication System (GACS): GACS.html

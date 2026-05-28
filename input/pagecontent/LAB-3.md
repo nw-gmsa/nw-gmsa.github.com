@@ -21,19 +21,13 @@ It transmits the observation results from the Order Filler to the Order Result T
 </figure>
 <br clear="all">
 
-## Options
 
 
-<img style="padding:3px;width:70%;" src="Modernisation IHE LTW LAB-3.drawio.png" alt="IHE LTW LAB-3 Options"/>
+### Workflow
+
+<img style="padding:3px;width:50%;" src="IHEPhaseSend.drawio.png" alt="Workflow"/>
 <br clear="all">
-<p class="figureTitle">IHE LTW LAB-3 Modernisation Options</p> 
-<br clear="all">
-
-### Traditional Workflow
-
-<img style="padding:3px;width:50%;" src="IHEPhaseSend.drawio.png" alt="Traditional Workflow"/>
-<br clear="all">
-<p class="figureTitle">Traditional Workflow</p> 
+<p class="figureTitle">Workflow</p> 
 <br clear="all">
 
 This is the most widely used method for exchanging laboratory reports and is based on the [HL7 v2 ORU_R01](hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message) message. Currently, many NHS trusts and laboratories use custom implementations of this standard, which are adapted via Trust Integration Engines (TIE). To reduce integration costs and enhance regional interoperability, we propose developing a regional standard for ORU_R01. This will build upon the  [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf) (as NHS England has not issued equivalent guidance) and incorporate elements from:
@@ -48,7 +42,7 @@ Reports will be shared in PDF format, potentially limited to regionally placed o
 
 <figure>
 {%include LTW-option-traditional-workflow.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">IHE LTW Traditional Workflow Option</p>
+<p id="fX.X.X.X-X" class="figureTitle">IHE LTW Laboratory Testing Workflow</p>
 </figure>
 <br clear="all">
 
@@ -64,7 +58,7 @@ Reports will be shared in PDF format, potentially limited to regionally placed o
 - Final Report
   - The Order Filler sends the Laboratory Report (final) R01 (IHE LTW LAB-3) to the Order Placer.
 
-#### Message (Traditional Workflow)
+#### Message 
 
 The following messages are used to support creation and updating of the [Genomics Test Report](StructureDefinition-Composition-GenomicReport.html) [composition](https://martinfowler.com/bliki/AggregationAndComposition.html)
 
@@ -84,145 +78,3 @@ The following messages are used to support creation and updating of the [Genomic
 <p id="fX.X.X.X-X" class="figureTitle">Regional Order Results management [LAB-3] Sequence Diagram</p>
 </figure>
 <br clear="all">
-
-
-### Regional Genomic Data Sharing
-
-<img style="padding:3px;width:50%;" src="IHEPhaseShare.drawio.png" alt="Regional Genomic Data Sharing"/>
-<br clear="all">
-<p class="figureTitle">Regional Genomic Data Sharing</p> 
-<br clear="all">
-
-One major limitation of the `traditional workflow` is that reports are only accessible within systems that received them via HL7 v2 ORU_R01. This phase introduces a regional Clinical Data Repository (CDR) for genomics, accessible to all care providers in the region.
-
-The CDR will be built using the InterSystems FHIR Repository and follow FHIR RESTful/IHE QEDm (PCC-44) standards. In future phases, it will connect to the national Genomics CDR through a Genomic Archiving and Communication System (GACS) integration pattern.
-
-Initially, the CDR will be populated by converting HL7 v2 ORU_R01 (and OML_O21) messages into HL7 FHIR, with additional data sources providing structured genomic reports based on the Genomics Reporting Implementation Guide. This will also serve as a useful resource for HL7 v2 developers, offering insights into converting v2 messages into FHIR.
-
-<figure>
-{%include LTW-option-shared-repository.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">Shared Patient Genomic Record Option</p>
-</figure>
-<br clear="all">
-
-#### Flow Description
-
-#####  Methods of populating the Clinical Data Repository
-
-- Laboratory Order Submission
-  - The Order Placer sends a copy of the laboratory order (O21) to the Clinical Data Repository.
-  - This follows the IHE LTW LAB-1 profile.
-- Laboratory Test Execution
-  - The Order Filler performs the test (internal action).
-- Preliminary Laboratory Report (Optional)
-  - A preliminary lab report (R01) may be sent to the Clinical Data Repository.
-  - This uses IHE LTW LAB-3.
-- Final Laboratory Report
-  - A final lab report (R01) is sent to the Clinical Data Repository.
-  - This also uses IHE LTW LAB-3.
-
-##### Using the Clinical Data Repository
-
-- Querying Genomic Data
-  - The Practitioner queries the Shared Patient Genomic Repository using IHE QEDm PCC-44.
-- Results Returned
-  - The Clinical Data Repository sends back the results to the Practitioner.
-
-### Order Fulfillment Tasking
-
-This introduces an alternative way of requesting a laboratory order which is based on [FHIR Workflow](https://hl7.org/fhir/R4/workflow.html)
-
-<figure>
-{%include LTW-option-fhir-workflow.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">Order Fulfillment Tasking</p>
-</figure>
-<br clear="all">
-
-In this workflow, both the order and report are shared instead of being sent. The communication between the Order Placer and Filler changes to a [conversation](https://www.enterpriseintegrationpatterns.com/patterns/conversation/toc.html) rather than messaging pattern around the Fulfillment Task.
-
-### Flow Description:
-
-- Order Creation
-  - The Order Placer creates an order (e.g., a laboratory test order).
-- Order Fulfillment Task (requested)
-  - The Order Placer sends an Order Fulfillment Task request to the Order Filler.
-- Query Repository for Order Details (IHE QEDm PCC-44)
-  - The Order Filler queries a repository to retrieve the detailed order information, using the IHE QEDm PCC-44 profile.
-- Order Fulfillment Task (accepted)
-  - The Order Filler accepts the order and confirms receipt.
-  - At this stage, the laboratory or service acknowledges that it will perform the requested task.
-- Order Fulfillment Task (in-progress)
-  - The Order Filler begins processing the order.
-  - Internally, this corresponds to starting testing.
-- Testing Completion & Report Generation
-  - Once the testing is finished, the Order Filler writes the report.
-  - The Order Fulfillment Task is marked as completed.
-- Query Repository for Laboratory Report (IHE QEDm PCC-44)
-  - The Order Placer queries the repository to retrieve the laboratory report produced by the Order Filler.
-
-
-This modernisation is central to the [NHS England Genomic Order Management Service FHIR API](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) and the North West Regional Integration will provide the adapter from `tradtional workflow` to `FHIR workflow`
-
-<figure>
-{%include LTW-option-GOMS-workflow.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">RIE and GOMS Workflow</p>
-</figure>
-<br clear="all">
-
-#### Workflow Steps
-
-- Order Creation
-  - The NHS Trust system creates a laboratory order (Order O21, IHE LTW LAB-1).
-  - This order is sent to the Regional Orchestration Engine.
-- Order Fulfillment Request
-  - The RIE sends an Order Fulfillment Task (requested) to the Order Filler.
-- Order Details Query
-  - The Order Filler queries the repository for laboratory order details (IHE QEDm PCC-44).
-- Order Acceptance
-  - The Order Filler accepts the order fulfillment task and sends acknowledgment back to the RIE.
-- Order Processing (Testing Phase)
-  - The Order Filler begins testing (internally marked as “Start testing”).
-  - It updates the RIE with Order Fulfillment Task (in-progress).
-- Order Completion
-  - After completing tests and writing the report (internally marked “Finish testing and Write Report”),
-  - The Order Filler sends Order Fulfillment Task (completed) back to the RIE.
-- Report Query and Distribution
-  - The RIE queries the repository for the laboratory report (IHE QEDm PCC-44).
-  - The final Laboratory Report (R01, IHE LTW LAB-3) is sent to the NHS Trust system.
-
-#### Key Notes
-
-- Traditional HL7 v2/IHE LTW messages (O21, R01, LAB-1, LAB-3) are used alongside FHIR task-based workflow messages (requested, accepted, in-progress, completed).
-- The RIE acts as a bridge, integrating traditional order management with modern FHIR-based fulfillment.
-- The Order Filler (GOMS) is also a bridge linking to other Order Fillers which perform the actual testing and provides results back through this combined workflow.
-
-
-### Communication Task, Subscription, and Event Notifications
-
-This phase introduces real-time notification support, similar to online order tracking where updates are sent via email or SMS.
-
-The notification system will be based on the [Subscriptions R5 Backport](https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/index.html) and initially support:
-
-- Email
-- FHIR Messaging – using FHIR Task-based event notifications
-
-Future expansions will include notifications from the national [Genomic Order Management Service FHIR API](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) via its FHIR API.
-
-<figure>
-{%include LTW-option-pubsub.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">FHIR Subscription</p>
-</figure>
-<br clear="all">
-
-####  Flow Description:
-
-- Subscription (FHIR Subscription)
-  - The Practitioner sends a subscription request (e.g., to an Order, Report, or other clinical resource) to the Regional Orchestration Engine.
-  - This is based on the FHIR Subscription standard.
-- Communication Request
-  - Alternatively, the Practitioner may send a CommunicationRequest Task to the Integration Engine.
-  - The Integration Engine converts this task into a Subscription, ensuring the Practitioner will receive updates when relevant events occur.
-- Event Notification (when event occurs)
-  - Once the subscribed event occurs (e.g., new lab report, status update, or order completion), the Regional Orchestration Engine sends an Event Notification back to the Practitioner.
-  - This closes the loop, ensuring the Practitioner is informed in real time.
-
