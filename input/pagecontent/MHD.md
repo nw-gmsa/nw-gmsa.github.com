@@ -47,26 +47,6 @@ sequenceDiagram
     end
 ```
 
-In the NRL version, Genomics Data Platform (GDP) is a Document Repository, and NRL is a Document Registry.
-
-```mermaid
-sequenceDiagram
-    participant Consumer as Document Consumer
-    participant Provider as Document Registry (NRL)
-    participant Repository as Document Repository (GDP)
-
-    rect rgb(240, 248, 255)
-    Note over Consumer,Provider: Find Document References (ITI-67)
-    Consumer->>Provider: GET /DocumentReference?patient=...&type=...
-    Provider-->>Consumer: Bundle of DocumentReferences
-    end
-
-    rect rgb(240, 255, 240)
-    Note over Consumer,Repository: Retrieve Document (ITI-68)
-    Consumer->>Repository: GET [attachment.url from DocumentReference]
-    Repository-->>Consumer: PDF or FHIR Document Bundle
-    end
-```
 
 ### Binary [ITI-68]
 
@@ -146,4 +126,27 @@ Searching for a DocumentReference by type (Genetic report) and patient.
 ```
 GET [base]/DocumentReference?type=http://snomed.info/sct|1054161000000101&patient=995525
 Accept: application/fhir+json
+```
+
+## NRL Document Consumption
+
+In the NRL version, Genomics Data Platform (GDP) is a Document Repository, and NRL is a Document Registry.
+
+```mermaid
+sequenceDiagram
+    participant Consumer as Document Consumer
+    participant Provider as Document Registry (NRL)
+    participant Repository as Document Repository (GDP)
+
+    rect rgb(240, 248, 255)
+    Note over Consumer,Provider: Find Document References (ITI-67)
+    Consumer->>Provider: GET /DocumentReference?patient=...&type=...
+    Provider-->>Consumer: Bundle of DocumentReferences
+    end
+
+    rect rgb(240, 255, 240)
+    Note over Consumer,Repository: Retrieve Document (ITI-68)
+    Consumer->>Repository: GET [attachment.url from DocumentReference]
+    Repository-->>Consumer: PDF or FHIR Document Bundle
+    end
 ```
