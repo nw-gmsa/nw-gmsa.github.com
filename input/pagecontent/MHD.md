@@ -194,6 +194,11 @@ See [MDM_T02 Original document notification and content](hl7v2.html#mdm_t02-orig
 The diagram below illustrates the full sequence for a Document Publish; the later parts reuse the 'Document Publish' APIs described above.
 The document retrieval (NRL: Retrieve information from producer) is optional, and the early section can be used to provide a [Document Subscription for Mobile (DSUBm)](https://profiles.ihe.net/ITI/DSUBm/index.html) service. 
 
+1. From a R01 event trigger, the RIE (creates and) posts the FHIR DocumentReference to NRL. The url of the (PDF or FHIR) document is embedded in the DocumentReference.
+2. The RIE publishes an event to the MNS, this has a link to the FHIR DocumentReference stored in NRL.
+3. MNS Subscribers receive the event (note a subscription will need to be created by the consumer in MNS beforehand) via MESH or AWS SQS, and retrieve the FHIR DocumentReference from NRL.
+4. The consumer retrieves the document (PDF or FHIR Document) from the producer. For NW Genomics, the FHIR Document will be generated on demand and PDF will be concurrently supported, which type of document that is returned is controlled by Accept header (e.g. application/fhir+json or application/pdf).
+
 ```mermaid
 sequenceDiagram
 
