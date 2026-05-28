@@ -160,7 +160,7 @@ pages:
     title: Identifiers and Codes
     generation: markdown
   data-intro.md:
-    title: Data Contracts and Issue Reporting
+    title: Overview - Data Contracts
     generation: markdown
   mCSD.md:
     title: Care Services Discovery
@@ -263,7 +263,7 @@ resources:
 menu:
   Home: index.html
   Analysis and Design (Volume 1) :
-    Design Overview: design.html
+ ##   Design Overview: design.html
     Laboratory Testing Workflow (LTW): LTW.html
  ##   Inter-Laboratory Workflow (ILW): ILW.html
     ##Health Document Sharing (MHDS) and Sharing Laboratory Reports (XD-LAB): MHDS.html
@@ -286,7 +286,7 @@ menu:
 ##    Work Order Management [LAB-4]: LAB-4.html
 ##    Test Results Management [LAB-5]: LAB-5.html
   Data Models (Volume 3):
-    Data Contracts and Issue Reporting: data-intro.html
+    Overview - Data Contracts: data-intro.html
     Genomic Test Order (Template): Questionnaire-GenomicTestOrder.html
    ## Genomic Test Report (Composition): StructureDefinition-Composition-GenomicReport.html
     Genomic Test Report (Template): Questionnaire-GenomicTestReport.html
