@@ -171,7 +171,7 @@ sequenceDiagram
 
 See [Simplified Publish [ITI-105]](https://hl7.eu/fhir/health-data-api/1.0.0-ballot/en/document-exchange.html#iti-105-simplified-publish)
 
-### Linear Exchange Option
+### Traditional Exchange Option
 
 Document can be FHIR Document or PDF.
 
@@ -189,10 +189,10 @@ sequenceDiagram
 
 See [MDM_T02 Original document notification and content](hl7v2.html#mdm_t02-original-document-notification-and-content)
 
-### System Exchange Option
+### System Exchange using NHS England Services Option
 
 The diagram below illustrates the full sequence for a Document Publish; the later parts reuse the 'Document Publish' APIs described above.
-The document retrieval (NRL: Retrieve information from producer) is optional, and the early section can be used to provide a [Document Subscription for Mobile (DSUBm)](https://profiles.ihe.net/ITI/DSUBm/index.html) service. 
+The document retrieval (NRL: Retrieve information from producer) is optional.
 
 1. From a R01 event trigger, the RIE (creates and) posts the FHIR DocumentReference to NRL. The url of the (PDF or FHIR) document is embedded in the DocumentReference.
 2. The RIE publishes an event to the MNS, this has a link to the FHIR DocumentReference stored in NRL.
@@ -205,7 +205,7 @@ sequenceDiagram
 participant gdp as Document Provider
 participant RIE as Regional Integration Engine
 participant nrl as Document Registry (NRL)
-participant mns as Multicast Notification Service
+participant mns as Subsription Service (MNS)
 participant consumer as Document Consumer
 
 
@@ -241,6 +241,42 @@ opt if required
     end
 end 
 end
-
 ```
 
+### System Exchange Using FHIR Subscription and IHE DSUBm Option
+
+Is based on [Document Subscription for Mobile (DSUBm)](https://profiles.ihe.net/ITI/DSUBm/index.html).
+
+```mermaid
+sequenceDiagram
+
+participant gdp as Document Provider
+participant RIE as Regional Integration Engine
+participant mns as Subscription Service
+participant consumer as Document Consumer
+
+
+gdp -->> RIE: R01 Event Trigger
+
+rect rgb(240, 248, 255)
+    Note over RIE,mns:Resource Publish (ITI-111)
+    RIE ->> mns: POST /DocumentReference 
+    mns -->> RIE: Response
+end    
+    alt for each Subscriber
+        rect rgb(240, 248, 255)
+        Note over mns,consumer: Resource Notify (ITI-112)
+        mns ->> consumer: Receive Event (MESH or AWS SQS)
+        end
+        
+ 
+opt if required
+    rect rgb(240, 248, 255)
+        Note over gdp,consumer: Retrieve Document (ITI-68)
+        consumer ->> gdp: GET /Binary/{id} 
+        gdp -->> consumer: PDF or FHIR Document
+    end
+end 
+end
+
+```
