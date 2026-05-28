@@ -50,7 +50,7 @@ sequenceDiagram
     end
 ```
 
-In the NRL version, Genomics Data Platform (GDP) is a Document Repository and NRL is a Document Registry.
+In the NRL version, Genomics Data Platform (GDP) is a Document Repository, and NRL is a Document Registry.
 
 ```mermaid
 sequenceDiagram
@@ -266,7 +266,7 @@ end
     alt for each Subscriber
         rect rgb(240, 248, 255)
         Note over mns,consumer: Resource Notify (ITI-112)
-        mns ->> consumer: Receive Event (MESH or AWS SQS)
+        mns ->> consumer: Receive Event
         end
         
  
