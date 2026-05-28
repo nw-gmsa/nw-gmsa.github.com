@@ -109,13 +109,13 @@ pages:
     title: Test Results Management [LAB-5]
     generation: markdown
   QEDm.md:
-    title: Query Existing Data [QEDm]
+    title: Resource Access [IPA/QEDm]
     generation: markdown
   MQ.md:
     title: Message Exchange
     generation: markdown
   MHD.md:
-    title: Mobile Access to Health Documents [MHD]
+    title: Document Exchange [MHD]
     generation: markdown
   PDQm.md:
     title: Patient Demographics Query for Mobile (PDQm)
@@ -276,7 +276,7 @@ menu:
     Order Results Management [LAB-3] HL7 FHIR: LAB-3.html
     Patient Matching [PDQm]: PDQm.html
     Document Exchange [MHD]: MHD.html
-    Resource Access [QEDm]: QEDm.html
+    Resource Access [IPA/QEDm]: QEDm.html
 ##    Health Data API: CapabilityStatement-HealthDataAPI.html
     Authorisation [IUA] : IUA.html
     Message Exchange [MQ]: MQ.html
