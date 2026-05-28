@@ -9,7 +9,7 @@
 #### Request
 
 <div class="alert alert-success" role="alert">
-GET {{oauth2}}/.well-known/openid-configuration
+GET [base]/.well-known/openid-configuration
 </div>
 
 #### Response
@@ -62,7 +62,7 @@ Body is the following values in x-www-form-urlencoded format
 | scope | `system/*.*` | 
 
 <div class="alert alert-success" role="alert">
-GET {{oauth2}}/token<br/>
+GET [base]/token<br/>
 Authorization: Basic {base64 clientid and clientsecret}<br/>
 Content-Type: application/x-www-form-urlencoded
 </div>
@@ -89,7 +89,7 @@ Body is the following values in x-www-form-urlencoded format
 | token | {token} to verify |
 
 <div class="alert alert-success" role="alert">
-POST {{oauth2}}/introspection<br/>
+POST [base]/introspection<br/>
 Authorization: Basic {base64 clientid and clientsecret}<br/>
 Content-Type: application/x-www-form-urlencoded
 </div>
