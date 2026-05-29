@@ -8,7 +8,11 @@ This specification also conforms to HL7 UK Core.
 
 Process flows and background information are the same as [EU Health Data API](https://hl7.eu/fhir/health-data-api/1.0.0-ballot/en/index.html) and so are not repeated here.
 
-## Authorization
+## API Security 
+
+See [API Security](api-security.html)
+
+### Authorization
 
 HL7 SMART Backend Services - Defines authorization in FHIR. We use the SMART Backend Services profile for system-system authorization, and FHIR scopes.
 [Authorisation [IUA]](IUA.html) - Defines authorization and access control actors and mechanisms. We use the actors and transactions model.
