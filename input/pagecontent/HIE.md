@@ -42,7 +42,7 @@ provider --> |Respond| consumer
 ```mermaid
 graph LR
 
-publisher["Workflow Exchange (e.g. IHE LTW)<br/>Bioninformatics Pipelines"]
+publisher["Workflow Exchange (i.e. IHE LTW)<br/>Bioninformatics Pipelines"]
 provider[Resource Access Provider<br/><br/>Genomic Data Platform]
 consumer[Resource/Data Consumer]
 
