@@ -140,11 +140,7 @@ This archetype definition can also support [HL7 Structured Data Capture](https:/
 
 #### Submit Genomic Test Order Form
 
-The completed form is submitted to the Regional Orchestration Engine using:
-
-<div class="alert alert-info" role="alert">
-<b>Interaction:</b> <a href="LAB-1.html" _target="_blank">Genomic Test Order O21</a> 
-</div>
+The completed form is submitted to the Regional Orchestration Engine following:
 
 <figure>
 {%include LTW-usecase-1-sequence.svg%}
@@ -159,11 +155,6 @@ If the [Order Placer](ActorDefinition-OrderPlacer.html) has a FHIR enabled Elect
 <br clear="all">
 <p class="figureTitle">Order Test Form - Data Extraction Overview</p> 
 <br clear="all">
-
-<div class="alert alert-info" role="alert">
-<b>Domain Archetype:</b> <a href="Questionnaire-GenomicTestOrder.html" _target="_blank">Genomic Test Order (Template)</a> 
-</div>
-
 
 The FHIR exchange style used [FHIR Message](https://hl7.org/fhir/R4/messaging.html) following [laboratory-order](MessageDefinition-laboratory-order.html) message definition. This definition is based on HL7 v2 `OML_O21 Laboratory Order` which simplifies conversion to/from pipe+hat (v2) and json (FHIR) formats.
 
@@ -456,14 +447,12 @@ In Progress
 
 ## Security Considerations
 
-TODO - is OAuth2 based using client credentials flow.
+Includes:
 
-This may include [IHE Internet User Authentication [IUA]](https://profiles.ihe.net/ITI/IUA/index.html) and [IHE Basic Audit Log Patterns[BALP]](https://profiles.ihe.net/ITI/BALP/index.html) which includes use of:
-
-- OAuth2 Standard for **Authorisation**
-  - including use of JWT access tokens and including future support for [SMART-on-FHIR Scopes](https://build.fhir.org/ig/HL7/smart-app-launch/scopes-and-launch-context.html))
-- FHIR AuditEvent for **Logging Access**
-- TLS for **Transport Security**
+- OAuth2 Standard for [Authorisation](api-security.html#authorisation---oauth2)
+  - including use of JWT access tokens and including future support for [SMART-on-FHIR Scopes](api-security.html#scopes))
+- FHIR AuditEvent/IHE BALP for [Audit Logging](api-security.html#audit-logging)
+- TLS for [Transport Security/Encrytion](api-security.html#encryption)
 
 ## Cross-Profile Considerations
 
