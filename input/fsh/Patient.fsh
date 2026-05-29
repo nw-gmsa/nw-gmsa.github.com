@@ -14,6 +14,7 @@ Description: """
 * extension[sex-for-clinical-use]
 
 * identifier 1..* MS
+* identifier only CorrelationIdentifier
 * identifier.assigner ^short = "Assigning Facility"
 * identifier.assigner 0..1 MS
 * identifier.assigner.identifier 1..1 MS

@@ -1,5 +1,5 @@
 Profile:        NHSIdentifier
-Parent:         http://hl7.org/fhir/StructureDefinition/Identifier
+Parent:         CorrelationIdentifier
 Id:             NHSIdentifier
 Title:          "NHS Identifier"
 Description:     """

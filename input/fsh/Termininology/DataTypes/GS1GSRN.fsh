@@ -1,5 +1,5 @@
 Profile:        GS1GSRN
-Parent:         Identifier
+Parent:         CorrelationIdentifier
 Id:             GS1GSRN
 Title:          "GS1 Global Service Relation Number (GSRN)"
 Description:     """
