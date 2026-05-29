@@ -78,6 +78,9 @@ pages:
   LTW.md:
     title: Laboratory Testing Workflow (LTW)
     generation: markdown
+  HIE.md:
+    title: Health Data API (HIE/EURDICE)
+    generation: markdown
   PAM.md:
     title: Patient Administration (PAM)
     generation: markdown
@@ -121,7 +124,7 @@ pages:
     title: Document Exchange [MHD] Elaboration
     generation: markdown
   PDQm.md:
-    title: Patient Demographics Query for Mobile (PDQm)
+    title: Patient Identity Matching (PDQm)
     generation: markdown
   DDD-Overview.md:
     title: Overview
@@ -148,7 +151,7 @@ pages:
     title: Delivery Overview
     generation: markdown
   IUA.md:
-    title: OAuth2
+    title: Authorisation [IUA]
     generation: markdown
   workflow-interaction-options.md:
     title: Workflow/Interaction Options
@@ -265,6 +268,7 @@ menu:
   Analysis and Design (Volume 1) :
  ##   Design Overview: design.html
     Laboratory Testing Workflow (LTW): LTW.html
+    Health Data API (HIE/EURDICE): HIE.html
  ##   Inter-Laboratory Workflow (ILW): ILW.html
     ##Health Document Sharing (MHDS) and Sharing Laboratory Reports (XD-LAB): MHDS.html
    ## Specimen Event Tracking (SET): SET.html
@@ -277,7 +281,7 @@ menu:
     Placer Order Management [LAB-1] HL7 FHIR: LAB-1.html
 ##    Filler Order Management [LAB-2]: LAB-2.html
     Order Results Management [LAB-3] HL7 FHIR: LAB-3.html
-    Patient Matching [PDQm]: PDQm.html
+    Patient Identity Matching [PDQm]: PDQm.html
     Document Exchange [MHD]: MHD.html
     Resource Access [IPA/QEDm]: QEDm.html
 ##    Health Data API: CapabilityStatement-HealthDataAPI.html
