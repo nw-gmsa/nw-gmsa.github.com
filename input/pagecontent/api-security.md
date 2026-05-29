@@ -101,7 +101,9 @@ NHS England user identification and authentication is:
 
 #### Authorisation - OAuth2
 
-- [EURIDICE EU Health Data API - Authorization](https://hl7.eu/fhir/health-data-api/en/authorization.html)]
+<div class="alert alert-info" role="alert">
+<b>Interaction:</b> <a href="IUA.html" _target="_blank">Authorisation [IUA]</a> 
+</div>
 
 Is based on [IHE Internet User Authorization (IUA)](https://profiles.ihe.net/ITI/IUA/index.html) but using `client-credentials` grant only (at present).
 
@@ -138,6 +140,10 @@ FHIR Resource Scopes are used to define the permissions a client has to access a
 
 
 ### Audit Logging
+
+<div class="alert alert-info" role="alert">
+<b>Domain Archetype:</b> <a href="StructureDefinition-AuditEvent.html" _target="_blank">AuditEvent</a> 
+</div>
 
 See [IHE Basic Audit Log Patterns (BALP)](https://profiles.ihe.net/ITI/BALP/volume-1.html)
 
