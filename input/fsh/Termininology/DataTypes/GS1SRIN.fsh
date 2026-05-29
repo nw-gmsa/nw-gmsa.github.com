@@ -1,5 +1,5 @@
 Profile:        GS1SRIN
-Parent:         Identifier
+Parent:         CorrelationIdentifier
 Id:             GS1SRIN
 Title:          "GS1 Service Relation Instance Number (SRIN)"
 Description:     """
