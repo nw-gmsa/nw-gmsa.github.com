@@ -9,5 +9,5 @@ Description:     """
 GS1 Code 8019
 """
 
-* type = $v2-0203#VN (exactly)
+* type = $v2-0203#SNO (exactly)
 * system = "urn:oid:2.51.1.2.8019"

@@ -22,9 +22,9 @@ Description:    """
 * identifier ^slicing.description = "Slice based on the type"
 * identifier ^slicing.ordered = false
 
-//* identifier contains  GS1SRIN 0..1 MS
+* identifier contains  GS1SRIN 0..1 MS
 
-//* identifier[GS1SRIN] only GS1SRIN
+* identifier[GS1SRIN] only GS1SRIN
 
 * class 1..1
 * type 0..1
