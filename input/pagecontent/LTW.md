@@ -23,15 +23,7 @@ See also Ref A `Section 3 Laboratory Testing Workflow (LTW) Profile` for detaile
 </figure>
 <br clear="all">
 
-Initially only the IHE `LAB-1` and `LAB-3` is in focus.
-
-Later stages will include the use of [Genomic Order Management Service](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir).
-
-<div class="alert alert-info" role="alert">
-<b>Interaction:</b> LAB-1 <a href="LAB-1.html" _target="_blank">Genomic Test Order O21</a> HL7 FHIR and <a href="hl7v2.html#oml_o21-laboratory-order" _target="_blank">Laboratory Order OML_021</a> HL7 v2
-<br/>
-<b>Interaction:</b> LAB-3 <a href="LAB-3.html" _target="_blank">Genomic Test Report R01</a> HL7 FHIR and <a href="hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message" _target="_blank">Unsolicited Results ORU_R01</a> HL7 v2 
-</div>
+Initially only the IHE `LAB-1` and `LAB-3` is in focus. Later stages will include the use of [Genomic Order Management Service](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir).
 
 ## Overview
 
@@ -61,6 +53,17 @@ Where the `Order Placer` sends the **Laboratory Order** to the `Order Filler`, t
 
 
 ## Laboratory Order (LAB-1)
+
+<div class="alert alert-info" role="alert">
+<b>Domain Archetype:</b> <a href="Questionnaire-GenomicTestOrder.html" _target="_blank">Genomic Test Order</a> 
+</div>
+
+<div class="alert alert-info" role="alert">
+<b>Interaction:</b> LAB-1 <a href="LAB-1.html" _target="_blank">Genomic Test Order O21</a> HL7 FHIR and <a href="hl7v2.html#oml_o21-laboratory-order" _target="_blank">Laboratory Order OML_021</a> HL7 v2
+<br/>
+</div>
+
+### Process Flow
 
 ```mermaid
 graph TD;
@@ -195,6 +198,16 @@ After submitting the original order, the sample will be collected and sent to th
 
 ## Laboratory Report (LAB-3)
 
+<div class="alert alert-info" role="alert">
+<b>Domain Archetype:</b> <a href="Questionnaire-GenomicTestReport.html" _target="_blank">Genomic Test Report</a> 
+</div>
+
+<div class="alert alert-info" role="alert">
+<b>Interaction:</b> LAB-3 <a href="LAB-3.html" _target="_blank">Genomic Test Report R01</a> HL7 FHIR and <a href="hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message" _target="_blank">Unsolicited Results ORU_R01</a> HL7 v2 
+</div>
+
+### Process Flow
+
 ```mermaid
 graph TD;
 
@@ -253,9 +266,7 @@ A report is created by the clinical practice and sent to the order result tracke
 <p class="figureTitle">Genomic Report Example</p> 
 <br clear="all">
 
-<div class="alert alert-info" role="alert">
-<b>Domain Archetype:</b> <a href="StructureDefinition-Composition-GenomicReport.html" _target="_blank">Genomic Test Report (Composition)</a> 
-</div>
+
 
 <figure>
 {%include LTW-usecase-2-sequence.svg%}
@@ -280,7 +291,7 @@ A report is created by the clinical practice and sent to the order result tracke
   - When all tests in the order are complete, a Task Complete Notification is sent to the Order Placer.
     - This notification can be sent via email or another messaging system.
 
-### Order and Report Use Case Summary
+## Order and Report Use Case Summary
 
 <img style="padding:3px;width:95%;" src="Order Entry.drawio.png" alt="Genomic Order and Report Summary"/>
 <br clear="all">
@@ -289,11 +300,19 @@ A report is created by the clinical practice and sent to the order result tracke
 
 ## Filler Order Management (LAB-2)
 
-Work in progress. 
-
 LAB-2 is aimed at sending a copy of the order back to the Order Placer, and this will include updated data items such as Order Filler Number.
-
 It is envisaged this design will also extend to Laboratory Reports (R01). 
+
+<div class="alert alert-info" role="alert">
+<b>Domain Archetype:</b> <a href="Questionnaire-GenomicTestOrder.html" _target="_blank">Genomic Test Order</a> 
+<b>Domain Archetype:</b> <a href="Questionnaire-GenomicTestReport.html" _target="_blank">Genomic Test Report</a> 
+</div>
+
+<div class="alert alert-info" role="alert">
+<b>Interaction:</b> LAB-2 <a href="MQ.html" _target="_blank">Message Exchange (FHIR)</a> 
+</div>
+
+### Process Flow
 
 ```mermaid
 graph TD
@@ -334,13 +353,14 @@ In Progress
 </figure>
 <br clear="all">
 
-### Work Order Management (LAB-4)
+## Work Order Management (LAB-4)
 
-#### Domain Archetype 
+<div class="alert alert-info" role="alert">
+<b>Domain Archetype:</b> <a href="StructureDefinition-WorkOrder.html" _target="_blank">Work Order</a> 
+</div>
 
-TODO - FHIR Task and v2 OML_O21
 
-#### Process Flow
+### Process Flow
 
 ```mermaid
 graph TD
@@ -383,13 +403,17 @@ classDef pink fill:#F8CECC;
 class GDP,RIE4,PubSub,VCFFHIR pink;
 ```
 
-### Test Results Management (LAB-5)
+## Test Results Management (LAB-5)
 
-#### Domain Archetype
+<div class="alert alert-info" role="alert">
+<b>Domain Archetype:</b> <a href="StructureDefinition-LaboratoryAnalyteResult.html" _target="_blank">Laboratory Analyte Result</a> 
+</div>
 
-[Laboratory Analyte Result](StructureDefinition-LaboratoryAnalyteResult.html)
+<div class="alert alert-info" role="alert">
+<b>Interaction:</b> LAB-5 <a href="hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message" _target="_blank">Unsolicited Pre-Ordered Point-Of-Care Observation ORU_R32</a> currently based on ORU_R01 
+</div>
 
-#### Process Flow
+### Process Flow
 
 ```mermaid
 graph TD

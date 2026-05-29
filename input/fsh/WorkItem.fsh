@@ -1,8 +1,8 @@
-Profile: WorkItem
+Profile: WorkOrder
 Parent: Task
-Id: WorkItem
+Id: WorkOrder
 Description: """
-`Diagnostic` iGene Work Item Management
+`Diagnostic` iGene Work Order Management
 """
 
 * focus only Reference(ServiceRequest)
