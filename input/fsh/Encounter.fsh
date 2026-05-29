@@ -14,6 +14,7 @@ Description:    """
 
 
 * identifier 1..* MS
+* identifier only CorrelationIdentifier
 
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "type"
