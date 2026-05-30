@@ -18,5 +18,8 @@ Usage:  #definition
   * min = 1
   * max = "*"
 
+* responseRequired = #always
+* allowedResponse[+]
+  * message = Canonical(acknowledgement)
 
 
