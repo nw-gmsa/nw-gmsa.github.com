@@ -7,14 +7,44 @@
 
 ## Message Types
 
-| Event | Event Trigger | IHE Interaction Code      | HL7 FHIR Message Definition                                          | HL7 v2 Message Definition                                                                                           | EIP Type                                                                                                  |
-|-------|---------------|---------------------------|----------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
-| O21   |               | LAB-1                     | [Laboratory Order](MessageDefinition-laboratory-order.html)          | [OML_O21 Laboratory Order](hl7v2.html#oml_o21-laboratory-order)                                                     | [Document Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) |
-| R01   |               | LAB-3                     | [Laboratory Results](MessageDefinition-unsolicited-observation.html) | [ORU_R01 Unsolicited transmission of an observation message](hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message)                                                                                                                | [Document Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) |
-| T02   |               | none - related to ITI-105 |                                                                      | [MDM_T02 Original document notification and content](hl7v2.html#mdm_t02-original-document-notification-and-content) | [Document Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) |
+| Event | Event Trigger | IHE Interaction Code      | HL7 FHIR Message Definition                                                    | HL7 v2 Message Definition                                                                                           | EIP Type                                                                                                  |
+|-------|---------------|---------------------------|--------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
+| O21   |               | LAB-1                     | [Laboratory Order](MessageDefinition-laboratory-order.html)                    | [OML_O21 Laboratory Order](hl7v2.html#oml_o21-laboratory-order)                                                     | [Document Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) |
+| R01   |               | LAB-3                     | [Laboratory Results](MessageDefinition-unsolicited-observation.html)           | [ORU_R01 Unsolicited transmission of an observation message](hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message)                                                                                                                | [Document Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) |
+| T02   |               | none - related to ITI-105 | [Document and Document Notification](MessageDefinition-original-document.html) | [MDM_T02 Original document notification and content](hl7v2.html#mdm_t02-original-document-notification-and-content) | [Document Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) |
 {:.grid}
 
 ## Send Message
+
+### NW Genomics as a Producer
+
+```mermaid
+sequenceDiagram
+
+participant gdp as Genomic Data Platform
+participant RIE as Regional Integration Engine
+participant consumer as Consumer
+
+
+gdp ->> RIE: Event Trigger
+RIE ->> RIE: Create message
+RIE ->> consumer: Send Message (POST [base/$process-message)
+consumer -->> RIE: Acknowledgement
+```
+
+### NW Genomics as a Consumer
+
+```mermaid
+sequenceDiagram
+
+participant producer as Producer
+participant RIE as Regional Integration Engine
+
+producer ->> RIE: Send Message (POST [base/$process-message)
+RIE -->> producer: Acknowledgement
+```
+
+### Send Message (FHIR)
 
 <div class="alert alert-success" role="alert">
 POST [base]/$process-message<br/>
@@ -24,12 +54,15 @@ Content-Type: application/fhir+json
 
 Example LAB-1/O21 payload [Bundle 'Message' - Genomics Order](Bundle-GenomicsOrderMessageAttachment.html)
 
+### Send Message (V2)
 
-## Recieve Message - Synchronous Messaging
+Uses Minimal Lower Layer Protocol (MLLP) over TCP/IP.
+
+## Receive Message – Synchronous Messaging
 
 TODO
 
-## Recieve Message - Asynchronous Messaging
+## Receive Message – Asynchronous Messaging
 
 This is based on [Asynchronous Messaging using the RESTful API](https://hl7.org/fhir/R4/messaging.html#rest)
 
@@ -42,7 +75,7 @@ participant consumer as Consumer
 
 
 gdp -->> RIE: R01 or O21 Event Trigger
-RIE -->> RIE: Add to Message Queue
+RIE -->> RIE: Create message and add to Message Queue
 consumer ->> RIE: Check Inbox (GET /Bundle?message.receiver:identifier={odsCode})
 RIE -->> consumer: Messages
 alt For each individual Message
@@ -50,7 +83,7 @@ alt For each individual Message
 end
 ```
 
-### Search - Checking an Inbox
+### Search - Checking an Inbox (FHIR)
 
 <div class="alert alert-success" role="alert">
 GET [base]/Bundle?[parameter]=[value]]

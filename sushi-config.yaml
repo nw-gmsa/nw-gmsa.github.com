@@ -115,7 +115,7 @@ pages:
     title: Resource Access [IPA/QEDm]
     generation: markdown
   MQ.md:
-    title: Message Exchange [MX]
+    title: Message Exchange [MQ]
     generation: markdown
   MHD.md:
     title: Document Exchange [MHD]
@@ -286,7 +286,7 @@ menu:
     Resource Access [IPA/QEDm]: QEDm.html
 ##    Health Data API: CapabilityStatement-HealthDataAPI.html
     Authorisation [IUA] : IUA.html
-    Message Exchange [MX]: MQ.html
+    Message Exchange [MQ]: MQ.html
 ##    Work Order Management [LAB-4]: LAB-4.html
 ##    Test Results Management [LAB-5]: LAB-5.html
   Data Models (Volume 3):
