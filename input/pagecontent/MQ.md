@@ -56,8 +56,10 @@ Authorization: Basic {accessToken}<br/>
 Content-Type: application/fhir+json
 </div>
 
-Example LAB-1/O21 payload [Bundle 'Message' - Genomics Order](Bundle-GenomicsOrderMessageAttachment.html)
-Example LAB-3/R01 payload [Bundle 'Message' - Genomics Result](Bundle-GenomicsReportMessage.html)
+Examples
+- LAB-1/O21 payload [Bundle 'Message' - Genomics Order](Bundle-GenomicsOrderMessageAttachment.html)
+- LAB-3/R01 payload [Bundle 'Message' - Genomics Result](Bundle-GenomicsReportMessage.html)
+- /T02 payload [Bundle 'Message' - Original Document](Bundle-OriginalDocumentMessage.html)
 
 ### Send Message (V2)
 

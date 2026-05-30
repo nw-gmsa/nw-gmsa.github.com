@@ -262,6 +262,10 @@ resources:
     name: Example of a Message Search
     description: Example of a Message Search
     exampleBoolean: true
+  Bundle/OriginalDocumentMessage:
+    name: Example Document and Document Notification Message
+    description: Example Document and Document Notification Message for GMCR
+    exampleBoolean: true
 
 menu:
   Home: index.html
