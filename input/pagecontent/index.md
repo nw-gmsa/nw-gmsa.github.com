@@ -20,20 +20,6 @@ As part of the service transition, existing systems for electronic test ordering
 <br clear="all">
 
 
-| Diagnostic Process              | Analysis and Design                                | Interfaces                                                                               | Domain Archetype                                                                                                                                                                                | 
-|---------------------------------|----------------------------------------------------|------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <b>Test Workflow Management</b> | [Laboratory Testing Workflow (LTW)](LTW.html)      | [FHIR Workflow](https://hl7.org/fhir/R4/workflow.html) LAB-4 and LAB-5                   | [Work Order](StructureDefinition-WorkOrder.html) <br/> [Laboratory Analyte Result](StructureDefinition-LaboratoryAnalyteResult.html)                                                            | 
-| <b>Laboratory Order</b>         | [Laboratory Testing Workflow (LTW)](LTW.html)      | [Message Exchange [MQ]](MQ.html) LAB-1                                                   | [North West Genomics Test Order](Questionnaire-GenomicTestOrder.html)                                                                                                                           |                              
-|                                 | [Health Data API (HIE/EURDICE)](HIE.html)          | [Resource Access [IPA/QEDm]](QEDm.html)                                                  |                                                                                                                                                                                                 |                                                     
-|                                 | [Inter Laboratory Workflow (ILW)](ILW.html)        | [Message Exchange [MQ]](MQ.html)                                                         |                                                                                                                                                                                                 |
-| <b>Laboratory Report<b/>        | [Laboratory Testing Workflow (LTW)](LTW.html)      | [Message Exchange [MQ]](MQ.html) LAB-3 <br/> [Document Exchange [MHD]](MHD.html) MDM_T02 | [North West Genomics Test Report](Questionnaire-GenomicTestReport.html)                                                                                                                         | 
-|                                 | [Health Data API (HIE/EURDICE)](HIE.html)          | [Resource Access [IPA/QEDm]](QEDm.html)                                                  |                                                                                                                                                                                                 | 
-|                                 | [Health Data API (HIE/EURDICE)](HIE.html)          | [Document Exchange [MHD]](MHD.html) ITI-67 ITI-68                                        | [DocumentReference[MHD]/Document Entry[XDS]](StructureDefinition-DocumentReference.html)<br/> plus Future - FHIR Document [HL7 Europe Laboratory Report](https://hl7.eu/fhir/laboratory/2.0.0/) | 
-| <b>Specimen Collection</b>      | Future - [Specimen Event Tracking (SET)](SET.html) | [Resource Access [IPA/QEDm]](QEDm.html)                                                  |                                                                                                                                                                                                 |                                                  
-| API Security                    | [API Security](api-security.html)                  | [Authorisation [IUA]](IUA.html) OAuth2                                                   |                                                                                                                                                                                                 |                                                                                               
-{:.grid}
-
-
 ## How to Read this IG
 
 ```mermaid
@@ -50,6 +36,14 @@ IHE --> HL7
 IHE --> Data
 Data --> Artefacts
 Artefacts --> |Constrains| HL7
+
+    classDef pink fill:#F8CECC;
+    classDef blue fill:#DAE8FC;
+    classDef purple fill:#E1D5E7;
+
+    class Data,Artefacts blue;
+    class HL7 pink;
+    class IHE purple;
 ```
 
 <table >
@@ -94,6 +88,21 @@ Artefacts --> |Constrains| HL7
     </tr>
   </tbody>
 </table>
+
+
+| Diagnostic Process              | <span style="background-color: #E1D5E7">Analysis and Design</span> | <span style="background-color: #F8CECC">Interfaces</span>                                                                               | <span style="background-color: #DAE8FC">Domain Archetype</span>                                                                                                                                                                                | 
+|---------------------------------|--------------------------------------------------------------------|------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <b>Test Workflow Management</b> | [Laboratory Testing Workflow (LTW)](LTW.html)                      | [FHIR Workflow](https://hl7.org/fhir/R4/workflow.html) LAB-4 and LAB-5                   | [Work Order](StructureDefinition-WorkOrder.html) <br/> [Laboratory Analyte Result](StructureDefinition-LaboratoryAnalyteResult.html)                                                            | 
+| <b>Laboratory Order</b>         | [Laboratory Testing Workflow (LTW)](LTW.html)                      | [Message Exchange [MQ]](MQ.html) LAB-1                                                   | [North West Genomics Test Order](Questionnaire-GenomicTestOrder.html)                                                                                                                           |                              
+|                                 | [Health Data API (HIE/EURDICE)](HIE.html)                          | [Resource Access [IPA/QEDm]](QEDm.html)                                                  |                                                                                                                                                                                                 |                                                     
+|                                 | [Inter Laboratory Workflow (ILW)](ILW.html)                        | [Message Exchange [MQ]](MQ.html)                                                         |                                                                                                                                                                                                 |
+| <b>Laboratory Report<b/>        | [Laboratory Testing Workflow (LTW)](LTW.html)                      | [Message Exchange [MQ]](MQ.html) LAB-3 <br/> [Document Exchange [MHD]](MHD.html) MDM_T02 | [North West Genomics Test Report](Questionnaire-GenomicTestReport.html)                                                                                                                         | 
+|                                 | [Health Data API (HIE/EURDICE)](HIE.html)                          | [Resource Access [IPA/QEDm]](QEDm.html)                                                  |                                                                                                                                                                                                 | 
+|                                 | [Health Data API (HIE/EURDICE)](HIE.html)                          | [Document Exchange [MHD]](MHD.html) ITI-67 ITI-68                                        | [DocumentReference[MHD]/Document Entry[XDS]](StructureDefinition-DocumentReference.html)<br/> plus Future - FHIR Document [HL7 Europe Laboratory Report](https://hl7.eu/fhir/laboratory/2.0.0/) | 
+| <b>Specimen Collection</b>      | Future - [Specimen Event Tracking (SET)](SET.html)                 | [Resource Access [IPA/QEDm]](QEDm.html)                                                  |                                                                                                                                                                                                 |                                                  
+| API Security                    | [API Security](api-security.html)                                  | [Authorisation [IUA]](IUA.html) OAuth2                                                   |                                                                                                                                                                                                 |                                                                                               
+{:.grid}
+
 
 
 
