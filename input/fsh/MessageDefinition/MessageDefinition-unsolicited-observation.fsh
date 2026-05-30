@@ -24,3 +24,7 @@ Usage:  #definition
   * profile = Canonical(DocumentReference)
   * min = 0
   * max = "*"
+
+* responseRequired = #always
+* allowedResponse[+]
+  * message = Canonical(acknowledgement)
