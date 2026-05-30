@@ -39,11 +39,11 @@ As part of the service transition, existing systems for electronic test ordering
 ```mermaid
 graph TD 
 
-User[User Requirements <br/><br/> Clinical Workflow]
-IHE[Analysis & Design <br/><br/>IHE + EURDICE]
-HL7[Interfaces <br/><br/> HL7 FHIR REST API and V2/FHIR Messages]
-Data[Data Models <br/><br/> NHS England, EHDS, HL7, etc]
-Arefacts[Arefacts <br/><br/>Canonical Data Model] 
+User[<b>User Requirements</b> <br/><br/> Clinical Workflow<br/>Patient Pathway]
+IHE[<b>Analysis & Design - Vol 1</b> <br/><br/>IHE + EURDICE]
+HL7[<b>Interfaces - Vol 2</b> <br/><br/> HL7 FHIR REST API and V2/FHIR Messages]
+Data[<b>Data Models and Domain Archetypes - Vol 3</b> <br/><br/> NHS England, EHDS, HL7, openEHR, etc]
+Arefacts[<b>Arefacts & Data Contracts - Vol 4</b>  <br/><br/>Canonical Data Model] 
 
 User --> IHE
 IHE --> HL7
