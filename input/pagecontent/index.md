@@ -43,13 +43,13 @@ User[<b>User Requirements</b> <br/><br/> Clinical Workflow<br/>Patient Pathway]
 IHE[<b>Analysis & Design - Vol 1</b> <br/><br/>IHE + EURDICE]
 HL7[<b>Interfaces - Vol 2</b> <br/><br/> HL7 FHIR REST API and V2/FHIR Messages]
 Data[<b>Data Models and Domain Archetypes - Vol 3</b> <br/><br/> NHS England, EHDS, HL7, openEHR, etc]
-Arefacts[<b>Arefacts, Entities & Data Contracts - Vol 4</b>  <br/><br/>Canonical Data Model] 
+Artefacts[<b>Artefacts, Entities & Data Contracts - Vol 4</b>  <br/><br/>Canonical Data Model] 
 
 User --> IHE
 IHE --> HL7
 IHE --> Data
-Data --> Arefacts
-Arefacts --> |Constrains| HL7
+Data --> Artefacts
+Artefacts --> |Constrains| HL7
 ```
 
 <table >
