@@ -3,14 +3,6 @@
 
 ## OML_O21 Laboratory Order 
 
-HL7 over HTTP is preferred for this message, MLLP is also supported.
-
-<div class="alert alert-success" role="alert">
-POST [base]/<br/>
-Authorization: Basic {accessToken}<br/>
-Content-Type: application/hl7-v2+er7
-</div>
-
 ### References
 
 <span class="badge badge-danger">Diagnostic Workflow</span> 
@@ -39,16 +31,6 @@ Content-Type: application/hl7-v2+er7
 {:.grid}
 
 ## ORU_R01 Unsolicited transmission of an observation message
-
-HL7 over HTTP is preferred for this message, MLLP is also supported.
-
-<div class="alert alert-success" role="alert">
-POST [base]/<br/>
-Authorization: Basic {accessToken}<br/>
-Content-Type: application/hl7-v2+er7
-</div>
-
-
 
 ### References
 

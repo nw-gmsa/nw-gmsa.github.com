@@ -55,7 +55,7 @@ RIE -->> producer: Acknowledgement
 
 <div class="alert alert-success" role="alert">
 POST [base]/$process-message<br/>
-Authorization: Basic {accessToken}<br/>
+Authorization: Bearer {accessToken}<br/>
 Content-Type: application/fhir+json
 </div>
 
@@ -67,6 +67,13 @@ Examples
 ### Send Message (V2)
 
 Uses Minimal Lower Layer Protocol (MLLP) over TCP/IP.
+HL7 over http can be supported. 
+
+<div class="alert alert-success" role="alert">
+POST [base]/<br/>
+Authorization: Bearer {accessToken}<br/>
+Content-Type: application/hl7-v2+er7
+</div>
 
 ## Receive Message – Synchronous Messaging
 
