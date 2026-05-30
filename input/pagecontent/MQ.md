@@ -2,8 +2,34 @@
 
 1. [FHIR Messaging](https://hl7.org/fhir/R4/messaging.html)
 2. See also [Message Exchange for Social Care and Health (MESH) API](https://digital.nhs.uk/developer/api-catalogue/message-exchange-for-social-care-and-health-api)
+3. [IHE Pathology and Laboratory Medicine (PaLM) Technical Framework - Volume 2a (PaLM TF-2a) Transactions](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol2a.pdf)
+4. [HL7 Version 2.5.1 Implementation Guide: Lab Results Interface (LRI), Release 1 from May 2017](https://confluence.hl7.org/download/attachments/25559919/2018%2004%2003%20-%20V2%20LRI%20-%20Ch.%205%20CG%20and%20Code%20System%20Tables.pdf?api=v2)
 
-## Asynchronous Messaging
+## Message Types
+
+| Event | Event Trigger | IHE Interaction Code      | HL7 FHIR Message Definition                                          | HL7 v2 Message Definition                                                                                           | EIP Type                                                                                                  |
+|-------|---------------|---------------------------|----------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
+| O21   |               | LAB-1                     | [Laboratory Order](MessageDefinition-laboratory-order.html)          | [OML_O21 Laboratory Order](hl7v2.html#oml_o21-laboratory-order)                                                     | [Document Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) |
+| R01   |               | LAB-3                     | [Laboratory Results](MessageDefinition-unsolicited-observation.html) | [ORU_R01 Unsolicited transmission of an observation message](hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message)                                                                                                                | [Document Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) |
+| T02   |               | none - related to ITI-105 |                                                                      | [MDM_T02 Original document notification and content](hl7v2.html#mdm_t02-original-document-notification-and-content) | [Document Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) |
+{:.grid}
+
+## Send Message
+
+<div class="alert alert-success" role="alert">
+POST [base]/$process-message<br/>
+Authorization: Basic {accessToken}<br/>
+Content-Type: application/fhir+json
+</div>
+
+Example LAB-1/O21 payload [Bundle 'Message' - Genomics Order](Bundle-GenomicsOrderMessageAttachment.html)
+
+
+## Recieve Message - Synchronous Messaging
+
+TODO
+
+## Recieve Message - Asynchronous Messaging
 
 This is based on [Asynchronous Messaging using the RESTful API](https://hl7.org/fhir/R4/messaging.html#rest)
 
@@ -36,6 +62,7 @@ GET [base]/Bundle?[parameter]=[value]]
 | _lastUpdated | date      | GET [base]/Bundle?_lastUpdated=[date]                                 | Date the resource was last updated                      |
 | message.receiver:identifier   | token     | GET [base]/Bundle?message.receiver:identifier=[system&#124;][ODScode] | ODS Code of calling organisation |
 | message.event | token | GET [base]/Bundle?message.event=[system&#124;][eventcode] | Event Code of the message |
+{:.grid}
 
 `message.receiver:identifier` is a mandatory parameter and must match the OAuth2 clientID associated with the ODS code.
 

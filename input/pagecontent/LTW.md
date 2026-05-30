@@ -59,8 +59,7 @@ Where the `Order Placer` sends the **Laboratory Order** to the `Order Filler`, t
 </div>
 
 <div class="alert alert-info" role="alert">
-<b>Interaction:</b> LAB-1 <a href="LAB-1.html" _target="_blank">Genomic Test Order O21</a> HL7 FHIR and <a href="hl7v2.html#oml_o21-laboratory-order" _target="_blank">Laboratory Order OML_021</a> HL7 v2
-<br/>
+<b>Interaction:</b> <a href="MQ.html" _target="_blank">Message Exchange</a> LAB-1
 </div>
 
 ### Process Flow
@@ -194,7 +193,7 @@ After submitting the original order, the sample will be collected and sent to th
 </div>
 
 <div class="alert alert-info" role="alert">
-<b>Interaction:</b> LAB-3 <a href="LAB-3.html" _target="_blank">Genomic Test Report R01</a> HL7 FHIR and <a href="hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message" _target="_blank">Unsolicited Results ORU_R01</a> HL7 v2 
+<b>Interaction:</b> <a href="MQ.html" _target="_blank">Message Exchange</a> LAB-3
 </div>
 
 ### Process Flow
@@ -300,7 +299,7 @@ It is envisaged this design will also extend to Laboratory Reports (R01).
 </div>
 
 <div class="alert alert-info" role="alert">
-<b>Interaction:</b> LAB-2 <a href="MQ.html" _target="_blank">Message Exchange (FHIR)</a> 
+<b>Interaction:</b> <a href="MQ.html" _target="_blank">Message Exchange</a> LAB-2
 </div>
 
 ### Process Flow
@@ -401,7 +400,7 @@ class GDP,RIE4,PubSub,VCFFHIR pink;
 </div>
 
 <div class="alert alert-info" role="alert">
-<b>Interaction:</b> LAB-5 <a href="hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message" _target="_blank">Unsolicited Pre-Ordered Point-Of-Care Observation ORU_R32</a> currently based on ORU_R01 
+<b>Interaction:</b> <a href="MQ.html" _target="_blank">Message Exchange</a> LAB-5
 </div>
 
 ### Process Flow

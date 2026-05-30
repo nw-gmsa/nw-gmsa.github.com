@@ -45,6 +45,7 @@ GET [base]/Condition?[parameter]=[value]]
 | _lastUpdated | date      | GET [base]/Condition?_lastUpdated=[date]             | Date the resource was last updated          |
 | identifier   | token     | GET [base]/Condition?identifier=[system&#124;][code] | A unique identifier of the condition record |
 | patient      | reference | GET [base]/Condition?patient=[id]                    | Who has the condition?                      |
+{:.grid}
 
 #### Examples
 
@@ -99,6 +100,7 @@ GET [base]/DiagnosticReport?[parameter]=[value]]
 | date         | date      | GET [base]/DiagnosticReport?date=[date]                           | The clinically relevant time of the report                                                                                                       |
 | _include     |           | GET [base]/DiagnosticReport?_include=DiagnosticResult:[parameter] |                                                                                                                                                  | 
 | _id          |           | GET [base]/DiagnosticReport?_id=[id]                              |                                                                                                                                                  |
+{:.grid}
 
 #### Example
 
@@ -161,6 +163,7 @@ GET [base]/Encounter?[parameter]=[value]]
 | identifier   | token     | GET [base]/Encounter?identifier=[system&#124;][code] | Identifier(s) by which this encounter is known      |
 | patient      | reference | GET [base]/Encounter?patient=[id]                    | The patient present at the encounter                |
 | date         | date      | GET [base]/Encounter?date=[date]                     | A date within the actualPeriod the Encounter lasted |
+{:.grid}
 
 #### Example
 
@@ -215,6 +218,7 @@ GET [base]/Observation?[parameter]=[value]]
 | code         | token     | GET [base]/Observation?code=[system&#124;][code]       | The code of the observation type                                                                          |
 | date         | date      | GET [base]/Observation?date=[date]                     | Obtained date/time. If the obtained element is a period, a date that falls in the period                  |
 | combo-code         | token     | GET [base]/Observation?combo-code=[system&#124;][code]       | The code of the observation type or component type                                                        |
+{:.grid}
 
 #### Examples
 
@@ -280,6 +284,7 @@ GET [base]/ServiceRequest?[parameter]=[value]]
 | patient                                   | reference | GET [base]/ServiceRequest?patient=[id]                    | `id` is the logical id of the patient on the server which can be obtained by a [Patient](#patient) query. |
 | [assigner](SearchParameter-assigner.html) | token | GET [base]/ServiceRequest?assigner=[system&#124;][code]   | Assigning Authority (ODS Code) for identifiers assigned to this order                                     |
 | code                                      | token | GET [base]/ServiceRequest?code=[system&#124;][code]       | What is being requested/ordered                                                                           |
+{:.grid}
 
 #### Example
 
@@ -339,7 +344,7 @@ GET [base]/Specimen?[parameter]=[value]]
 | identifier   | token     | GET [base]/Specimen?identifier=[system&#124;][code] | The unique identifier associated with the specimen                                                                                                          |
 | accession   | token     | GET [base]/Specimen?accession=[system&#124;][code] | The accession number associated with the specimen                                                                                                          |
 | patient      | reference | GET [base]/Specimen?patient=[id]           | `id` is the logical id of the patient on the server which can be obtained by a [Patient](#patient) query. |
-
+{:.grid}
 
 #### Example
 
@@ -388,6 +393,7 @@ GET [base]/Task?[parameter]=[value]]
 | requester:identifier | token     | GET [base]/Task?requester:identifier=[system&#124;][code] | Search by task requester |
 | owner:identifier     | token     | GET [base]/Task?owner:identifier=[system&#124;][code]     | Search by task owner |
 | status               | token     | GET [base]/Task?status=[code]                             | Search by task status |
+{:.grid}
 
 #### Example
 

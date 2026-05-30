@@ -115,7 +115,7 @@ pages:
     title: Resource Access [IPA/QEDm]
     generation: markdown
   MQ.md:
-    title: Message Exchange
+    title: Message Exchange [MX]
     generation: markdown
   MHD.md:
     title: Document Exchange [MHD]
@@ -278,15 +278,15 @@ menu:
     API Security: api-security.html
   Interfaces (Volume 2):
  ##   Exchange Overview: exchange.html
-    Placer Order Management [LAB-1] HL7 FHIR: LAB-1.html
+ ##   Placer Order Management [LAB-1] HL7 FHIR: LAB-1.html
 ##    Filler Order Management [LAB-2]: LAB-2.html
-    Order Results Management [LAB-3] HL7 FHIR: LAB-3.html
+##    Order Results Management [LAB-3] HL7 FHIR: LAB-3.html
     Patient Identity Matching [PDQm]: PDQm.html
     Document Exchange [MHD]: MHD.html
     Resource Access [IPA/QEDm]: QEDm.html
 ##    Health Data API: CapabilityStatement-HealthDataAPI.html
     Authorisation [IUA] : IUA.html
-    Message Exchange [MQ]: MQ.html
+    Message Exchange [MX]: MQ.html
 ##    Work Order Management [LAB-4]: LAB-4.html
 ##    Test Results Management [LAB-5]: LAB-5.html
   Data Models (Volume 3):
