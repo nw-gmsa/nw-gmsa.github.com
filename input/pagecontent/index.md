@@ -13,68 +13,24 @@ Genomic diagnostic testing contributes to this process by examining a patient’
 
 NHS North West Genomics is a new regional NHS service that consolidates clinical genomic testing across the North West of England. Although the service is delivered regionally, it also processes genomic test requests from across the UK. The service is hosted by Manchester University NHS Foundation Trust.
 
-As part of the service transition, existing systems for electronic test ordering and reporting will be enhanced through the introduction of a Regional Orchestration Engine (RIE) and a Genomic Clinical Data Repository. These components enable seamless data exchange between local clinical systems and regional genomic laboratory services.
+As part of the service transition, existing systems for electronic test ordering and reporting will be enhanced through the introduction of a Regional Orchestration Engine (ROE) and a Genomic Data Platform. These components enable seamless data exchange between local clinical systems and regional genomic laboratory services.
 
-## Process Overview
 
-The laboratory testing workflow begins when a clinician, known as the **Order Placer**, creates a request for a procedure in the electronic health record (EHR). In genomics, this order may request testing for a specific genetic or genomic condition. The order is then sent or shared with the laboratory, which acts as the **Order Filler**.
+| Diagnostic Process              | Analysis and Design                                | Interfaces                                                                               | Domain Archetype                                                                                                                                                                                | 
+|---------------------------------|----------------------------------------------------|------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <b>Test Workflow Management</b> | [Laboratory Testing Workflow (LTW)](LTW.html)      | [FHIR Workflow](https://hl7.org/fhir/R4/workflow.html) LAB-4 and LAB-5                   | [Work Order](StructureDefinition-WorkOrder.html) <br/> [Laboratory Analyte Result](StructureDefinition-LaboratoryAnalyteResult.html)                                                            | 
+| <b>Laboratory Order</b>         | [Laboratory Testing Workflow (LTW)](LTW.html)      | [Message Exchange [MQ]](MQ.html) LAB-1                                                   | [North West Genomics Test Order](Questionnaire-GenomicTestOrder.html)                                                                                                                           |                              
+|                                 | [Health Data API (HIE/EURDICE)](HIE.html)          | [Resource Access [IPA/QEDm]](QEDm.html)                                                  |                                                                                                                                                                                                 |                                                     
+|                                 | [Inter Laboratory Workflow (ILW)](ILW.html)        | [Message Exchange [MQ]](MQ.html)                                                         |                                                                                                                                                                                                 |
+| <b>Laboratory Report<b/>        | [Laboratory Testing Workflow (LTW)](LTW.html)      | [Message Exchange [MQ]](MQ.html) LAB-3 <br/> [Document Exchange [MHD]](MHD.html) MDM_T02 | [North West Genomics Test Report](Questionnaire-GenomicTestReport.html)                                                                                                                         | 
+|                                 | [Health Data API (HIE/EURDICE)](HIE.html)          | [Resource Access [IPA/QEDm]](QEDm.html)                                                  |                                                                                                                                                                                                 | 
+|                                 | [Health Data API (HIE/EURDICE)](HIE.html)          | [Document Exchange [MHD]](MHD.html) ITI-67 ITI-68                                        | [DocumentReference[MHD]/Document Entry[XDS]](StructureDefinition-DocumentReference.html)<br/> plus Future - FHIR Document [HL7 Europe Laboratory Report](https://hl7.eu/fhir/laboratory/2.0.0/) | 
+| <b>Specimen Collection</b>      | Future - [Specimen Event Tracking (SET)](SET.html) | [Resource Access [IPA/QEDm]](QEDm.html)                                                  |                                                                                                                                                                                                 |                                                  
+| API Security                    | [API Security](api-security.html)                  | [Authorisation [IUA]](IUA.html) OAuth2                                                   |                                                                                                                                                                                                 |                                                                                               
+{:.grid}
 
-A separate request is typically issued for **Specimen Collection**. This step may involve collecting a blood sample or performing a biopsy. Once the specimen is collected, it is shipped to the laboratory. The shipment is often accompanied by a printed laboratory order, and both the specimen and the order are usually labeled with barcodes to ensure accurate identification and tracking.
-
-After the laboratory receives both the order and the specimen, the requested tests are performed. Based on the results, the laboratory prepares a report summarizing the findings. This laboratory report is then sent or shared with the original Order Placer clinician.
-
-```mermaid
-sequenceDiagram
-    participant clinician as Order Placer<br/>Clinician (EHR)
-    participant nurse as Specimen Collection<br/>Clinician/Nurse
-    participant LIMS as Order Filler<br/>LIMS 
-
-    clinician ->> clinician: Creates Order
-    clinician ->> LIMS: Sends Laboratory Order
-    clinician ->> nurse: Requests specimen collection
-    nurse ->> nurse: Collect Specimen
-    nurse ->> LIMS: Ship Specimen
-    LIMS ->> LIMS: Perform Test
-    LIMS ->> LIMS: Write Report
-    LIMS ->> clinician: Sends Laboratory Report
-```
-## Design Overview
-
-The technical design focuses on automating interactions between the order placer and the order filler, while enabling genomic data and related documents to be shared through a FHIR repository for access by other clinicians and healthcare providers.
-
-The design is based on international standards, including several from Integrating the Healthcare Enterprise (IHE) as well as technical standards from Health Level Seven International (HL7). It also aligns with European HL7 and IHE technical guidance https://euridice.org/ and complies with NHS England data standards https://www.datadictionary.nhs.uk/.
-
-### Standardising HL7-based Workflows
-
-Although NW GMSA is hosted by Manchester University NHS Foundation Trust, it operates in practice as a distinct organisation. It has its own Trust Integration Engine (TIE), referred to as the Regional Orchestration Engine (RIE).
-
-<img style="padding:3px;width:80%;" src="Design IHE.drawio.png" alt="NW Genomics Technical Overview"/>
+<img style="padding:3px;width:80%;" src="GACS.png" alt="NW Genomics GACS Interoperability Platform"/>
 <br clear="all">
-
-At present, LIMS and EPR systems across the North West use a range of HL7 v2 Message based workflows, this remains the case with the RIE (centre and right of the above diagram). 
-To reduce this variation, the IHE Laboratory Testing Workflow (LTW) profile and region-wide genomic messaging standards (HL7 v2.5.1 and FHIR R4) have been adopted. This standardisation applies to interactions between the NW GMSA Regional Orchestration Engine (RIE) and NHS Trust Integration Engines (TIEs). Interactions between LIMS and EPR systems, as well as the internal integration engine configurations within trusts, remain unchanged.
-
-For external systems and NHS Trusts, NW Genomics LIMS will present as a single system with unified ordering and reporting interfaces. Direct point-to-point integrations between individual NHS Trust EPR systems and the NW LIMS will not be supported.
-
-The NW Genomics HL7 v2 + FHIR specifications and the IHE LTW standards are detailed in this Implementation Guide.
-
-In addition, NW Genomics is delivering a Genomic Clinical Repository (GCR) to support broader sharing of genomic test results across NHS Trusts, Integrated Care Systems (ICSs), and other Genomic Medicine Service Alliances (GMSAs). This GCR is populated by 'wire-taps' on existing workflows and solely HL7 FHIR R4 based plus IHE QEDm and MHD profiles to provide an additional layer of standardisation.
-
-<div class="alert alert-info" role="alert">
-Although two HL7 standards are used, the data model is identical.
-</div>
-
-
-### Genomic Document Sharing
-
-Genomic Document Sharing is a proposed new capability within NW Genomics that leverages the existing  [NHS England National Record Locator (NRL)](https://digital.nhs.uk/developer/api-catalogue/national-record-locator-fhir). 
-The solution is aligned with the [IHE Mobile Health Document Sharing (MHDS)](https://profiles.ihe.net/ITI/MHDS/index.html) profile and so, follows a similar architectural approach to that used by the  [NHS England National Imaging Registry](https://digital.nhs.uk/services/national-imaging-registry) in its integration with the NRL.
-
-<img style="padding:3px;width:80%;" src="NRL-Design.drawio.png" alt="NHS England NRL Design"/>
-<br clear="all">
-
-For the initial phase, genomic reports will be published in **PDF format**. 
-In later phases, the target format is the [HL7 Europe Laboratory Report](https://build.fhir.org/ig/hl7-eu/laboratory/en/), aligning with the (anticipated) strategic direction for [NHS England Pathology FHIR](https://digital.nhs.uk/data-and-information/information-standards/governance/latest-activity/standards-and-collections/dapb4101-pathology-and-laboratory-medicine-reporting-information-standard/implementation/pathology-fhir-specification/), which specifies FHIR-based pathology reporting.
 
 ## How to Read this IG
 
@@ -121,18 +77,6 @@ In later phases, the target format is the [HL7 Europe Laboratory Report](https:/
   </tbody>
 </table>
 
-| Diagnostic Process              | Analysis and Design                                | Interfaces                                                                               | Domain Archetype                                                                                                                                                                                | 
-|---------------------------------|----------------------------------------------------|------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <b>Test Workflow Management</b> | [Laboratory Testing Workflow (LTW)](LTW.html)      | [FHIR Workflow](https://hl7.org/fhir/R4/workflow.html) LAB-4 and LAB-5                   | [Work Order](StructureDefinition-WorkOrder.html) <br/> [Laboratory Analyte Result](StructureDefinition-LaboratoryAnalyteResult.html)                                                            | 
-| <b>Laboratory Order</b>         | [Laboratory Testing Workflow (LTW)](LTW.html)      | [Message Exchange [MQ]](MQ.html) LAB-1                                                   | [North West Genomics Test Order](Questionnaire-GenomicTestOrder.html)                                                                                                                           |                              
-|                                 | [Health Data API (HIE/EURDICE)](HIE.html)          | [Resource Access [IPA/QEDm]](QEDm.html)                                                  |                                                                                                                                                                                                 |                                                     
-|                                 | [Inter Laboratory Workflow (ILW)](ILW.html)        | [Message Exchange [MQ]](MQ.html)                                                         |                                                                                                                                                                                                 |
-| <b>Laboratory Report<b/>        | [Laboratory Testing Workflow (LTW)](LTW.html)      | [Message Exchange [MQ]](MQ.html) LAB-3 <br/> [Document Exchange [MHD]](MHD.html) MDM_T02 | [North West Genomics Test Report](Questionnaire-GenomicTestReport.html)                                                                                                                         | 
-|                                 | [Health Data API (HIE/EURDICE)](HIE.html)          | [Resource Access [IPA/QEDm]](QEDm.html)                                                  |                                                                                                                                                                                                 | 
-|                                 | [Health Data API (HIE/EURDICE)](HIE.html)          | [Document Exchange [MHD]](MHD.html) ITI-67 ITI-68                                        | [DocumentReference[MHD]/Document Entry[XDS]](StructureDefinition-DocumentReference.html)<br/> plus Future - FHIR Document [HL7 Europe Laboratory Report](https://hl7.eu/fhir/laboratory/2.0.0/) | 
-| <b>Specimen Collection</b>      | Future - [Specimen Event Tracking (SET)](SET.html) | [Resource Access [IPA/QEDm]](QEDm.html)                                                  |                                                                                                                                                                                                 |                                                  
-| API Security                    | [API Security](api-security.html)                  | [Authorisation [IUA]](IUA.html) OAuth2                                                   |                                                                                                                                                                                                 |                                                                                               
-{:.grid}
 
 
 ## SNOMED CT
