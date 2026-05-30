@@ -46,6 +46,10 @@ RIE -->> producer: Acknowledgement
 
 ### Send Message (FHIR)
 
+<div class="alert alert-info" role="alert">
+<b>Operation:</b> <a href="https://hl7.org/fhir/R4/messageheader-operation-process-message.html" _target="_blank">$process-message</a>
+</div>
+
 <div class="alert alert-success" role="alert">
 POST [base]/$process-message<br/>
 Authorization: Basic {accessToken}<br/>
@@ -53,6 +57,7 @@ Content-Type: application/fhir+json
 </div>
 
 Example LAB-1/O21 payload [Bundle 'Message' - Genomics Order](Bundle-GenomicsOrderMessageAttachment.html)
+Example LAB-3/R01 payload [Bundle 'Message' - Genomics Result](Bundle-GenomicsReportMessage.html)
 
 ### Send Message (V2)
 
@@ -117,7 +122,7 @@ Accept: application/fhir+json
 Authorization: Bearer {accessToken}
 ```
 
- [Bundle 'SearchSet' - Genomics Order](Bundle-GenomicsOrderSearchSet.html)
+ [Search Response - Bundle 'SearchSet' - Genomics Order](Bundle-GenomicsOrderSearchSet.html)
 
 ### Acknowledge a Message
 
