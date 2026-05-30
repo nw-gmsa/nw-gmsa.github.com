@@ -16,6 +16,10 @@ NHS North West Genomics is a new regional NHS service that consolidates clinical
 As part of the service transition, existing systems for electronic test ordering and reporting will be enhanced through the introduction of a Regional Orchestration Engine (ROE) and a Genomic Data Platform. These components enable seamless data exchange between local clinical systems and regional genomic laboratory services.
 
 
+<img style="padding:3px;width:80%;" src="GACS.png" alt="NW Genomics GACS Interoperability Platform"/>
+<br clear="all">
+
+
 | Diagnostic Process              | Analysis and Design                                | Interfaces                                                                               | Domain Archetype                                                                                                                                                                                | 
 |---------------------------------|----------------------------------------------------|------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | <b>Test Workflow Management</b> | [Laboratory Testing Workflow (LTW)](LTW.html)      | [FHIR Workflow](https://hl7.org/fhir/R4/workflow.html) LAB-4 and LAB-5                   | [Work Order](StructureDefinition-WorkOrder.html) <br/> [Laboratory Analyte Result](StructureDefinition-LaboratoryAnalyteResult.html)                                                            | 
@@ -29,10 +33,24 @@ As part of the service transition, existing systems for electronic test ordering
 | API Security                    | [API Security](api-security.html)                  | [Authorisation [IUA]](IUA.html) OAuth2                                                   |                                                                                                                                                                                                 |                                                                                               
 {:.grid}
 
-<img style="padding:3px;width:80%;" src="GACS.png" alt="NW Genomics GACS Interoperability Platform"/>
-<br clear="all">
 
 ## How to Read this IG
+
+```mermaid
+graph TD 
+
+User[User Requirements <br/><br/> Clinical Workflow]
+IHE[Analysis & Design <br/><br/>IHE + EURDICE]
+HL7[Interfaces <br/><br/> HL7 FHIR REST API and V2/FHIR Messages]
+Data[Data Models <br/><br/> NHS England, EHDS, HL7, etc]
+Arefacts[Arefacts <br/><br/>Canonical Data Model] 
+
+User --> IHE
+IHE --> HL7
+IHE --> Data
+Data --> Arefacts
+Arefacts --> |Constrains| HL7
+```
 
 <table >
   <thead>
