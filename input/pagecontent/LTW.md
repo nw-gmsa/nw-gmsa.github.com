@@ -51,6 +51,21 @@ From a high-level perspective, the process is
 
 Where the `Order Placer` sends the **Laboratory Order** to the `Order Filler`, the lab performs the test and then sends the **Laboratory Report** back to the `Order Placer`. However, variations can exist such as the order is updated or the order is entered directly on the `Order Filler`system (these are currently out of scope).
 
+```mermaid
+sequenceDiagram
+    participant clinician as Order Placer<br/>Clinician (EHR)
+    participant nurse as Specimen Collection<br/>Clinician/Nurse
+    participant LIMS as Order Filler<br/>LIMS 
+
+    clinician ->> clinician: Creates Order
+    clinician ->> LIMS: Sends Laboratory Order
+    clinician ->> nurse: Requests specimen collection
+    nurse ->> nurse: Collect Specimen
+    nurse ->> LIMS: Ship Specimen
+    LIMS ->> LIMS: Perform Test
+    LIMS ->> LIMS: Write Report
+    LIMS ->> clinician: Sends Laboratory Report
+```
 
 ## Laboratory Order (LAB-1)
 
