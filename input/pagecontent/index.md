@@ -68,31 +68,31 @@ Artefacts --> |Data Contracts| HL7
       <td style="background-color: #E1D5E7">&nbsp;&nbsp;</td>
       <td>Analysis and Design (Volume 1)</td>
       <td>Description of the processes and corresponding technical frameworks</td>
-      <td>General</td>
+      <td>General (Enterprise Architect and Software Engineering)</td>
     </tr>
     <tr>
       <td style="background-color: #F8CECC">&nbsp;&nbsp;</td>
       <td>Interfaces (Volume 2)</td>
       <td>Description of the processes and corresponding technical frameworks (HL7 v2 and FHIR Interactions)</td>
-      <td>Detailed Technical (Integration Developer)</td>
+      <td>Technical Design (Developer)</td>
     </tr>
     <tr>
       <td style="background-color: #DAE8FC">&nbsp;&nbsp;</td>
       <td>Data Models (Volume 3)</td>
       <td>NHS North West Forms, Templates, Reports, and Compositions</td>
-      <td>Data Modeling (Detailed Technical)</td>
+      <td>Data Modeling (Clinical Informatics)</td>
     </tr>
     <tr>
       <td style="background-color: #DAE8FC">&nbsp;&nbsp;</td>
       <td>Artefacts (Volume 4)</td>
       <td>NHS North West Common Data Models</td>
-      <td>Detailed Technical</td>
+      <td>Data Modeling (Data Engineering)</td>
     </tr>
     <tr>
-      <td style="background-color: #DAE8FC">&nbsp;&nbsp;</td>
+      <td style="background-color: #F8CECC">&nbsp;&nbsp;</td>
       <td>Development</td>
       <td>Testing, Suppport and Architecture</td>
-      <td>Detailed Technical (Developer)</td>
+      <td>Technical (Developer)</td>
     </tr>
   </tbody>
 </table>
