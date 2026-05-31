@@ -26,16 +26,24 @@ As part of the service transition, existing systems for electronic test ordering
 graph TD 
 
 User[<b>User Requirements</b> <br/><br/> Clinical Workflow<br/>Patient Pathway]
-IHE[<b>Analysis & Design - Vol 1</b> <br/><br/>IHE + EURDICE]
-HL7[<b>Interfaces - Vol 2</b> <br/><br/> HL7 FHIR REST API and V2/FHIR Messages]
-Data[<b>Data Models and Domain Archetypes - Vol 3</b> <br/><br/> NHS England, EHDS, HL7, openEHR, etc]
-Artefacts[<b>Artefacts, Entities & Data Contracts - Vol 4</b>  <br/><br/>Canonical Data Model] 
+IHE[<b>Analysis & Design]
+HL7[<b>Interfaces - Vol 2</b> <br/><br/> HL7 FHIR REST API, V2 Messages and FHIR Workflow]
+Data["<b>Data Models and Domain Archetypes - Vol 3</b> <br/><br/> PRSB, GA4GH, English NHS (and suppliers), NHS England, HL7, openEHR, etc"]
+Artefacts["<b>Events, Artefacts & Entities  - Vol 4</b>  <br/><br/>EHDS plus NHS England Canonical Data Model (CDM)"] 
+Share[<b>Data and Document Sharing - Vol 1</b><br/><br/>EURIDICE]
+Message[<b>Workflow Data Exchange - Vol 1</b><br/><br/>IHE LTW and ILW]
+API[<b>API Security - Vol 1</b><br/><br/>Consent, Authorisation, Authentication, Access Control and Audits<br/>SMART-on-FHIR,IHE BALP, PCF & IUA]
 
 User --> IHE
-IHE --> HL7
+IHE -->  Share
+IHE --> Message
+IHE --> API
+Share --> HL7
+Message --> HL7
+API --> |Secures| HL7
 IHE --> Data
 Data --> Artefacts
-Artefacts --> |Constrains| HL7
+Artefacts --> |Data Contracts| HL7
 
     classDef pink fill:#F8CECC;
     classDef blue fill:#DAE8FC;
@@ -43,7 +51,7 @@ Artefacts --> |Constrains| HL7
 
     class Data,Artefacts blue;
     class HL7 pink;
-    class IHE purple;
+    class Message,Share,API purple;
 ```
 
 <table >
