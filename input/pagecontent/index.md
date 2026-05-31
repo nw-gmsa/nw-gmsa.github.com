@@ -27,7 +27,7 @@ graph TD
 
 User[<b>User Requirements</b> <br/><br/> Clinical Workflow<br/>Patient Pathway]
 IHE[<b>Analysis & Design]
-HL7[<b>Interfaces - Vol 2</b> <br/><br/> HL7 FHIR REST API, V2 Messages, GA4GH and FHIR Workflow]
+HL7["<b>Interfaces - Vol 2</b> <br/><br/> HL7 FHIR REST API, V2 Messages, FHIR Operations (GA4GH/GACS) and FHIR Workflow"]
 Data["<b>Data Models and Domain Archetypes - Vol 3</b> <br/><br/> PRSB, GA4GH, English NHS (and suppliers), NHS England, HL7, openEHR, etc"]
 Artefacts["<b>Events, Artefacts & Entities  - Vol 4</b>  <br/><br/>EHDS plus NHS England Canonical Data Model (CDM)"] 
 Share[<b>Data and Document Sharing - Vol 1</b><br/><br/>EURIDICE]
