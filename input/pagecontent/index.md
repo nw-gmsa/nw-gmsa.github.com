@@ -51,7 +51,7 @@ Artefacts --> |Data Contracts| HL7
 
     class Data,Artefacts blue;
     class HL7 pink;
-    class Message,Share,API purple;
+    class IHE,Message,Share,API purple;
 ```
 
 <table >
@@ -68,7 +68,7 @@ Artefacts --> |Data Contracts| HL7
       <td style="background-color: #E1D5E7">&nbsp;&nbsp;</td>
       <td>Analysis and Design (Volume 1)</td>
       <td>Description of the processes and corresponding technical frameworks</td>
-      <td>General (Enterprise Architect and Software Engineering)</td>
+      <td>General (Users, Enterprise Architects, Business Analysts, and Staff Software Engineers)</td>
     </tr>
     <tr>
       <td style="background-color: #F8CECC">&nbsp;&nbsp;</td>
@@ -80,7 +80,7 @@ Artefacts --> |Data Contracts| HL7
       <td style="background-color: #DAE8FC">&nbsp;&nbsp;</td>
       <td>Data Models (Volume 3)</td>
       <td>NHS North West Forms, Templates, Reports, and Compositions</td>
-      <td>Data Modeling (Clinical Informatics)</td>
+      <td>Data Modeling (Clinical Informatics and Business Analysts)</td>
     </tr>
     <tr>
       <td style="background-color: #DAE8FC">&nbsp;&nbsp;</td>
