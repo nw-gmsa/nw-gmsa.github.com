@@ -23,7 +23,7 @@ Description:    """
 
 * context.encounter 0..1 MS
 * context.encounter only Reference(Encounter)
-* context.encounter.identifier only HospitalProviderSpellIdentifier
+* context.encounter.identifier only CorrelationIdentifier
 
 * context.related 0..*
 
