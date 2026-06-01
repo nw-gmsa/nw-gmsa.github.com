@@ -9,6 +9,8 @@ Description: "DPD, Hermes, etc"
 
 * effectiveDateTime = "2025-01-29T10:37:26+00:00"
 
+* category[labCategory] = $OBSCAT#laboratory
+
 * code
   * coding[+] = $loinc#97209-1 "Shipment tracking number [Identifier]"
 

@@ -9,6 +9,8 @@ Description: "TODO"
 
 * effectiveDateTime = "2025-01-29T10:37:26+00:00"
 
+* category[labCategory] = $OBSCAT#laboratory
+
 * code
   * coding[+] = $sct#161714006 "Estimated date of delivery"
 
