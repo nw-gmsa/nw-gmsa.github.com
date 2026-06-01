@@ -143,6 +143,7 @@ Description:    """
 //* resultsInterpreter[author].type = #Practitioner
 
 * specimen 0..* MS
+* specimen only Reference(Specimen)
 
 //* result only Reference(Observation)
 

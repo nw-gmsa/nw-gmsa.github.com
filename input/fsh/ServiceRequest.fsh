@@ -123,9 +123,12 @@ Description:    """
 * note
 
 * specimen 0..* MS
+* specimen only Reference(Specimen)
 
 * reasonCode
 * reasonCode from GenomicClinicalIndicationCodes (preferred)
+
+* reasonReference only Reference(Condition or Observation)
 
 * supportingInfo 0..*
 * supportingInfo only Reference(Observation or DocumentReference)

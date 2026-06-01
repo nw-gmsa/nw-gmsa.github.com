@@ -53,6 +53,7 @@ Description:    """
 
 * subject 1..1 MS
 * subject only Reference(Patient)
+* subject.identifier only CorrelationIdentifier
 
 * collection.collected[x] only dateTime
 * collection.collectedDateTime 0..1 MS
