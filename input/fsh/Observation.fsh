@@ -18,7 +18,7 @@ Description:    """
 * category ^slicing.ordered = false
 
 * category contains labCategory 0..1
-                and geCategory 1..1
+                and geCategory 0..1
 * category[labCategory].coding 1..1
 * category[labCategory].coding = $OBSCAT#laboratory
 * category[geCategory].coding 1..1

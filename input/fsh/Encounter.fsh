@@ -30,14 +30,14 @@ Description:    """
 * type 0..1
 * type from AdmissionMethod
 * serviceType 0..1 MS
-* serviceType from Service
+* serviceType from Service (preferred)
 
 * subject 1..1 MS
 * subject only Reference(Patient)
 * subject.identifier only NHSIdentifier
 
 * location.location only Reference(Location)
-* location.location.identifier only OrganisationSiteIdentifier
+//* location.location.identifier only OrganisationSiteIdentifier
 
 * period
 * participant
