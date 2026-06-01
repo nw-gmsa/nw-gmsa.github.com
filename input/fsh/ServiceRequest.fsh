@@ -139,7 +139,7 @@ Description:    """
 * supportingInfo ^slicing.description = "Slice based on the coding.system"
 * supportingInfo ^slicing.ordered = false
 * supportingInfo contains
-  OrderEntryQuestions 0..1 and clinicalContext 0..1
+  OrderEntryQuestions 0..* and clinicalContext 0..*
 
 * supportingInfo[OrderEntryQuestions] only Reference(Observation)
 
