@@ -31,7 +31,7 @@ Description:    """
 * type.coding[LOINC].code = #51969-4
 
 * encounter 0..1 MS
-* encounter only Reference(HospitalSpell or VisitNumber)
+* encounter only Reference(HospitalSpell or Visit)
 * encounter.identifier only CorrelationIdentifier
 * encounter.identifier insert Obligation(#SHALL:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderFiller)
 * encounter.identifier insert Obligation(#SHALL:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/AutomationManager)
