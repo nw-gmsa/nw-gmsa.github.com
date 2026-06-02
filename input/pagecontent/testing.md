@@ -6,7 +6,7 @@ For details see [FHIR Validation](https://hl7.org/fhir/R4/validation.html)
 
 ### Command Line Validation
 
-See [Using the FHIR Validator](https://confluence.hl7.org/display/FHIR/Using+the+FHIR+Validator)
+See [Using the FHIR Validator](https://confluence.hl7.org/display/FHIR/Using+the+FHIR+Validator) (download link [https://github.com/hapifhir/org.hl7.fhir.core/releases/latest/download/validator_cli.jar](https://github.com/hapifhir/org.hl7.fhir.core/releases/latest/download/validator_cli.jar))
 
 The FHIR Validator works best with individual FHIR Resources and this may be an easier why to start checking your FHIR is correct.
 Due to API security requirements of the NHS England Ontology Service, this can not be used as a Terminology Server (the `-tx` parameter). This ig is configured to use the UK edition of SNOMED (83821000000107).
