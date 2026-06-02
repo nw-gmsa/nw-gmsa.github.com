@@ -10,7 +10,7 @@ Description:    """
 * ^keyword[+] = #patientcare "Patient Care"
 
 
-* identifier 1..* MS
+* identifier 0..* MS
 
 * subject 1..1 MS
 * subject only Reference(Patient)
