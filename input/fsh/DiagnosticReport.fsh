@@ -63,8 +63,8 @@ Description:    """
 * category contains Genetics 0..1
 
 // Looks like this has is fixe on EU Core newer than hl7.fhir.eu.base#2.0.0-ballot based on FHIR 4.0.1. Generated 2025-12-19
-//* category[Genetics].coding 1..1 MS
-//* category[Genetics].coding = http://terminology.hl7.org/CodeSystem/v2-0074#GE
+* category[Genetics].coding 1..1 MS
+* category[Genetics].coding = http://terminology.hl7.org/CodeSystem/v2-0074#GE
 
 * subject 1..1 MS
 * subject.identifier 1..1
