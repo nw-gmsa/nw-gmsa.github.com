@@ -24,7 +24,7 @@ Description:     """
 * assigner 1..1
 * assigner ^short = "Assigning Facility"
 * assigner.identifier.system = $ods-code
-* assigner.identifier.valueString ^example.value = "R0A"
+* assigner.identifier.value ^example.valueString = "R0A"
 * assigner.identifier.value ^example.label = "Manchester University NHS Foundation Trust"
 
 
