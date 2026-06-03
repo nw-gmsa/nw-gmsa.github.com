@@ -72,15 +72,15 @@ end
 
 ### Encryption
 
-| Transport level integration | Requirement | 
-|-----------------------------|-------------|
-| Protocols | TLS 1.2 is the minimum; TLS 1.3 is recommended. |
-| Prohibitions | TLS 1.0, 1.1, and SSL are forbidden. |
-| Authentication | Mutual authentication (TLS-MA) is frequently required for API interactions. Note NHS England APIM recommends using Signed JWT Authentication. |
-| Ciphers | TLS_AES_256_GCM_SHA384 |
+| Transport level integration | Requirement                                                                                                                                                                                                                                                                                                                      | 
+|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Protocols | TLS 1.3 is the minimum.                                                                                                                                                                                                                                                                                  |
+| Prohibitions | TLS 1.0, 1.1, and SSL are forbidden.                                                                                                                                                                                                                                                                                             |
+| Authentication | Mutual authentication (TLS-MA) is frequently required for API interactions. Note NHS England APIM recommends using Signed JWT Authentication.                                                                                                                                                                                    |
+| Ciphers | TLS_AES_256_GCM_SHA384                                                                                                                                                                                                                                                                                                           |
 | Mutual Authentication | MUST only accept client certificates issued by the NHS England Digital Deployment Issue and Resolution (DIR) team <br/>MUST only accept client certificates with a valid Spine ‘chain of trust’ (that is, linked to the Spine SubCA and RootCA)<br/> MUST only accept client certificates which have not expired or been revoked |
-| Content compression | MUST support GZIP compression |
-| Transfer encoding | MUST support chunked transfer encoding |
+| Content compression | MUST support GZIP compression                                                                                                                                                                                                                                                                                                    |
+| Transfer encoding | MUST support chunked transfer encoding                                                                                                                                                                                                                                                                                           |
 
 ### Rate Limiting
 
