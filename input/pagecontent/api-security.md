@@ -81,6 +81,7 @@ end
 | Mutual Authentication | MUST only accept client certificates issued by the NHS England Digital Deployment Issue and Resolution (DIR) team <br/>MUST only accept client certificates with a valid Spine ‘chain of trust’ (that is, linked to the Spine SubCA and RootCA)<br/> MUST only accept client certificates which have not expired or been revoked |
 | Content compression | MUST support GZIP compression                                                                                                                                                                                                                                                                                                    |
 | Transfer encoding | MUST support chunked transfer encoding                                                                                                                                                                                                                                                                                           |
+{:.grid}
 
 ### Rate Limiting
 
@@ -136,7 +137,7 @@ FHIR Resource Scopes are used to define the permissions a client has to access a
 | Patient or Citizen | User Restricted - [NHS England NHS login](https://digital.nhs.uk/services/nhs-login)                                                                     | `patient/*.rs` | Permission to read and search any resource for the current patient (see notes on wildcard scopes below).          |
 | Practitioner       | User Restricted - [NHS England CIS2 Authentication](https://digital.nhs.uk/services/care-identity-service/applications-and-services/cis2-authentication) | `user/*.cruds` | Permission to read and write all resources that the current user can access (see notes on wildcard scopes below). |
 | System             | Application Restricted - OAuth2 client credentials                                                                                                       | `system/*.*`   | Permission to read and write any resource.|
-
+{:.grid}
 
 
 ### Audit Logging
@@ -166,6 +167,17 @@ TODO See [IHE Privacy Consent on FHIR (PCF)](https://profiles.ihe.net/ITI/PCF/vo
 
 All interactions must conform to this Implementation Guide, details on testing and validation are available in the [Testing](testing.html) section.
 
+This implementation guide conforms to the following information standards:
+
+| Guide                                                                      | Notes                                                                                                                                                                                                                                                                   |
+|----------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [HL7 UK Core](https://digital.nhs.uk/services/fhir-uk-core)                | NHS England [DAPB4020: UK Core Fast Healthcare Interoperability Resources (FHIR) Release 4 (R4) Governance](https://digital.nhs.uk/data-and-information/information-standards/governance/latest-activity/standards-and-collections/dapb4020-uk-core-fhir-r4-governance) |
+| [HL7 Europe Laboratory Report](https://hl7.eu/fhir/laboratory/2.0.0/)      | EHDS                                                                                                                                                                                                                                                                    |
+| [HL7 Europe Base and Core FHIR IG](https://build.fhir.org/ig/hl7-eu/base/) | EHDS                                                                                                                                                                                                                                                                    |
+| [NHS Data Dictionary](https://www.datadictionary.nhs.uk/)                  |                                                                                                                                                                                                                                                                         |
+| NHS England Canonical Data Model (not yet published)                       | Single Patient Record                                                                                                                                                                                                                                                   |
+{:.grid}
+
 ## NRL and Spine Security Proxy (SSP)
 
 Based on [National Record Locator - FHIR API v3 - Producer](https://digital.nhs.uk/developer/api-catalogue/national-record-locator-fhir/v3/producer)
@@ -191,7 +203,7 @@ and [SSP Retrieval](https://webarchive.nationalarchives.gov.uk/ukgwa/20250306000
 | Request Datetime                           |                                                                                                                                                                                                                      | recorded                   |                  |
 | Trace ID                                   |                                                                                                                                                                                                                      | entity[message]            | X-Correlation-ID |
 | User ID                                    |                                                                                                                                                                                                                      | agent[user]                           |                  |
-
+{:.grid}
 
 Initial NW Genomics Design.
 

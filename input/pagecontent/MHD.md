@@ -118,6 +118,7 @@ GET [base]/DocumentReference?[parameter]=[value]]
 | date         | date      | GET [base]/DocumentReference?date=[date]                     | When this document reference was created |
 | category     | token     | GET [base]/DocumentReference?category=[system&#124;][code]   | Categorisation of document               |
 | type         | token     | GET [base]/DocumentReference?type=[system&#124;][code]       | Kind of document                         |
+{:.grid}
 
 ##### Example
 

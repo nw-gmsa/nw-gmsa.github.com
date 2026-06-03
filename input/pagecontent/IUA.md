@@ -60,6 +60,7 @@ Body is the following values in x-www-form-urlencoded format
 |-----|--------------------|
 | grant_type | `client_credentials` |
 | scope | `system/*.*` | 
+{:.grid}
 
 <div class="alert alert-success" role="alert">
 GET [base]/token<br/>
@@ -87,6 +88,7 @@ Body is the following values in x-www-form-urlencoded format
 | Key   | Value             |
 |-------|-------------------|
 | token | {token} to verify |
+{:.grid}
 
 <div class="alert alert-success" role="alert">
 POST [base]/introspection<br/>
