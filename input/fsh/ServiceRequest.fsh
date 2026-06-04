@@ -54,7 +54,7 @@ Description:    """
   // and PathologyAndLaboratoryMedicine 0..1 and NICIP 0..1
 
 * code.coding[GenomicTestDirectory] ^short = "Genomic Test Directory"
-* code.coding[GenomicTestDirectory].system = $GTD
+* code.coding[GenomicTestDirectory] from GenomicTestCodes
 
 * orderDetail ^short = "Additional order codes"
 
