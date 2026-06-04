@@ -63,7 +63,7 @@ Body is the following values in x-www-form-urlencoded format
 {:.grid}
 
 <div class="alert alert-success" role="alert">
-GET [base]/token<br/>
+POST [base]/token<br/>
 Authorization: Basic {base64 clientid and clientsecret}<br/>
 Content-Type: application/x-www-form-urlencoded
 </div>
