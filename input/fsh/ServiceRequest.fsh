@@ -42,19 +42,21 @@ Description:    """
 
 * code ^short = "See [National Genomic Test Directory](https://www.england.nhs.uk/wp-content/uploads/2018/08/rare-and-inherited-disease-eligibility-criteria-v2.pdf)."
 * code 1..1 MS
+* code from GenomicTestCodes
 
-* code.coding 1..* MS
-* code.coding ^slicing.discriminator.type = #value
-* code.coding ^slicing.discriminator.path = "system"
-* code.coding ^slicing.rules = #open
-* code.coding ^slicing.description = "Slice based on the system"
-* code.coding ^slicing.ordered = false
-* code.coding contains
-  GenomicTestDirectory 1..1 MS
-  // and PathologyAndLaboratoryMedicine 0..1 and NICIP 0..1
 
-* code.coding[GenomicTestDirectory] ^short = "Genomic Test Directory"
-* code.coding[GenomicTestDirectory] from GenomicTestCodes
+//* code.coding 1..* MS
+//* code.coding ^slicing.discriminator.type = #value
+//* code.coding ^slicing.discriminator.path = "system"
+//* code.coding ^slicing.rules = #open
+//* code.coding ^slicing.description = "Slice based on the system"
+//* code.coding ^slicing.ordered = false
+//* code.coding contains
+//  GenomicTestDirectory 1..1 MS
+//  // and PathologyAndLaboratoryMedicine 0..1 and NICIP 0..1
+
+//* code.coding[GenomicTestDirectory] ^short = "Genomic Test Directory"
+//* code.coding[GenomicTestDirectory] from GenomicTestCodes
 
 * orderDetail ^short = "Additional order codes"
 
