@@ -12,6 +12,10 @@ This is currently being elaborated and subject to change.
 
 > [Designing an interoperable solution to support pharmacogenomic-guided prescribing in primary care: an implementer report](https://informatics.bmj.com/content/bmjhci/32/1/e101163.full.pdf)
 
+## Process Flow 
+
+See [Test Results Management (LAB-5)](LTW.html#test-results-management-lab-5)
+
 ## Data Mapping
 
 | Data Element                       | HL7 v2 R32                                    | LOINC / SNOMED | openEHR                  | HL7 FHIR                                                               | Example                           |
