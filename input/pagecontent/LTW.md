@@ -398,7 +398,7 @@ GDP --> |O21 Event Notification| PubSub
 
 iGene --> |"Work Order Management (LAB-4)<br/>Worksheet (iGene SQL data-pipeline)"| RIE4
 RIE4 <--> |"Work Order Management (LAB-4)<br/>HL7 QBP Query"| Cepheid
-RIE4 <--> |"Work Order Management (LAB-4)<br/>HL7 FHIR Query"| StarLIMS
+GDP <--> |"Work Order Management (LAB-4)<br/>HL7 FHIR Query"| StarLIMS
 RIE4 --> |"Work Order Management (LAB-4)<br/>FHIR Transaction"| GOMS
 GOMS --> ExtLIMS
 
