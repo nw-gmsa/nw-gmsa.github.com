@@ -370,31 +370,24 @@ In Progress
 ```mermaid
 graph TD
 
-
-subgraph GenomicLIMS["Order Placer"];
+subgraph GenomicLIMS["Order Filler"];
     iGene[LIMS<br/>IGene]
 end
 
-subgraph HIE["Automation Manager"];
-    RIE4["RIE Workflow Orchestration"]
- 
-end
+RIE4["RIE Workflow Orchestration"]
 
-subgraph OrderFiller;
-Cepheid[Analyser - Cepheid]
-StarLIMS[LIMS - StarLIMS]
-
-GOMS["NHS England Genomic Order Management System"] 
-ExtLIMS[External GMSA/LIMS]
-
+subgraph OrderFiller["Automation Manager"];
+    Cepheid[Analyser - Cepheid]
+    StarLIMS[LIMS - StarLIMS]
+    GOMS["NHS England Genomic Order Management System"] 
+    ExtLIMS[External GMSA/LIMS]
 end 
 
 GDP["Genomic Data Platform"]
- PubSub["Subscription Service (Future?)"]
+PubSub["Subscription Service (Future?)"]
 
 RIE4 --> |Update| GDP
 GDP --> |O21 Event Notification| PubSub
-
 
 iGene --> |"Work Order Management (LAB-4)<br/>Worksheet (iGene SQL data-pipeline)"| RIE4
 RIE4 <--> |"Work Order Management (LAB-4)<br/>HL7 QBP Query"| Cepheid
@@ -423,11 +416,11 @@ class GDP,RIE4,PubSub,VCFFHIR pink;
 ```mermaid
 graph TD
 
-subgraph GenomicLIMS["Order Placer"];
+subgraph GenomicLIMS["Order Filler"];
     iGene[LIMS<br/>IGene]
 end
 
-subgraph Analyser["Order Filler"];
+subgraph Analyser["Automation Manager"];
     Cepheid[Analyser - Cepheid]
     StarLIMS[LIMS - StarLIMS]
     ExtLIMS[External GMSA/LIMS]
@@ -435,9 +428,8 @@ subgraph Analyser["Order Filler"];
     ExtLIMS --> GOMS
 end
 
-subgraph HIE["Automation Manager"];
-    RIE["Regional Orchestration Engine (RIE)"]
-end
+
+RIE["Regional Orchestration Engine (RIE)"]
 
 GDP["Genomic Data Platform"]
 PubSub["Subscription Service (Future?)"]
