@@ -143,6 +143,6 @@ Description:    """
 * supportingInfo contains
   OrderEntryQuestions 0..* and clinicalContext 0..*
 
-* supportingInfo[OrderEntryQuestions] only Reference(Observation)
+* supportingInfo[OrderEntryQuestions] only Reference(ObservationOrder)
 
 * supportingInfo[clinicalContext] only Reference(DocumentReference)
