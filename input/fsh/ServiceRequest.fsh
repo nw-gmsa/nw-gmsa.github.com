@@ -133,7 +133,7 @@ Description:    """
 * reasonReference only Reference(Condition or Observation)
 
 * supportingInfo 0..*
-* supportingInfo only Reference(Observation or DocumentReference)
+* supportingInfo only Reference(ObservationOrder or DocumentReference)
 
 * supportingInfo ^slicing.discriminator.type = #profile
 * supportingInfo ^slicing.discriminator.path = "$this.resolve()"
