@@ -1,7 +1,7 @@
 Profile:        ObservationOrder
 Parent:         http://hl7.org/fhir/StructureDefinition/Observation
 Id:             ObservationOrder
-Title:          "Observation"
+Title:          "Observation Order"
 Description:    """
 `Diagnostic - Core` for use with test orders.
 """
