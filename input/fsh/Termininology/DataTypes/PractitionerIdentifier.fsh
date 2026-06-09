@@ -19,5 +19,5 @@ Description:     """
 * system 1..1
 * system from PractitionerIdentifiers
 * value 1..1
-* type.coding = $v2-0203#LN (exactly)
+* type = $v2-0203#LN (exactly)
 
