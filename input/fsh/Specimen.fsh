@@ -13,7 +13,7 @@ Description:    """
 * ^keyword[+] = #diagnostics "Diagnostics"
 * ^keyword[+] = #genomics "Genomics"
 
-* identifier 1..* MS
+* identifier 0..* MS
 //* identifier only CorrelationIdentifier
 
 
