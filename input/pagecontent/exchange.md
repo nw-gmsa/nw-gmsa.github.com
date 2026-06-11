@@ -7,14 +7,14 @@ Generally they are all based on supporting clinical workflow which in laboratory
 graph TD;
 
 
-DocumentMessaging[<b>Document Messaging</b><br/><br/>e.g. V2 and FHIR Messaging/Transactions]
-DocumentSharing["<b>Document Sharing</b><br/><br/>e.g. IHE XDS (SOAP API) plus IHE MHD, EURIDICE Document Exchange and NHSE NRL (FHIR RESTful API) "]
+DocumentMessaging["<b>Document Messaging</b><br/><br/>e.g. V2 Messaging (ORU_R01, MDM_T02, ORM_O01, OML_O21, etc) and FHIR Messaging/Transactions"]
+DocumentSharing["<b>Document Sharing</b><br/><br/>e.g. IHE XDS (SOAP API), IHE MHD, EURIDICE Document Exchange and NHSE NRL (FHIR RESTful API) "]
 
 DocumentEventNotifications[<b>Document Event Notifications</b><br/><br/>e.g. NHSE MNS and IHE DSUBm]
 ClinicalDocumentArchitecture[<b>Clinical Document Architecture</b><br/><br/>e.g. CDA, FHIR Document<br/>EU Laboratory Report<br/>International Patient Summary] 
 DocumentWorkflow[<b>Document Workflow</b><br/><br/>e.g. IHE XDW]
 
-DataSharig["<b>Data/Resource Sharing</b><br/><br/>EURIDICE Resource Exchange (FHIR RESTful API)"]
+DataSharig["<b>Data/Resource Sharing</b><br/><br/>EURIDICE Resource Exchange, HL7 IPA/IHE QEDm, NHS England Care Connect API (FHIR RESTful API)"]
 ResourceEventNotifications[<b>Resource Event Notifications</b><br/><br/>e.g. FHIR Subscription]
 ConversationalMessaging[<b>Conversational Messaging</b><br/><br/>e.g. FHIR Workflow, NHSE Electroinc Prescription Service and Genomic Order Management System]
 
@@ -35,7 +35,6 @@ DocumentEventNotifications --> |expands to| ResourceEventNotifications
 classDef green fill:#D5E8D4;
 
 class DocumentMessaging,DocumentSharing,DataSharig green
-
 ```
 
 ## Document Messaging
