@@ -195,7 +195,7 @@ For a FHIR implementation see [FHIR Worfklow](https://hl7.org/fhir/R4/workflow.h
 
 This is a replacement for [Document Messaging](#document-messaging) (i.e. HL7 v2, FHIR Messaging and FHIR Transaction)
 
-Prerequisite is [Data Sharing](#data-sharing) and [Resource Event Notifications](#resource-event-notifications-)
+Prerequisite is [Data Sharing](#data-sharing) and [Resource Event Notifications](#resource-event-notifications-), [polling](https://www.enterpriseintegrationpatterns.com/patterns/messaging/PollingConsumer.html) can be used as an interim measure if event notification infrastructure is not available.
 
 ```mermaid
 sequenceDiagram 
