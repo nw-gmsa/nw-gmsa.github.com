@@ -1,8 +1,4 @@
 
-Health Enterprise Integration Patterns are summarised below. 
-
-Generally they are all based on supporting clinical workflow which in laboratory is sending in an order and receiving a report. Most patterns from Document Messaging tend to deal with sharing the Laboratory Report to a wide audience rather than just the order placer 
-
 ```mermaid
 graph TD;
 
@@ -36,6 +32,27 @@ classDef green fill:#D5E8D4;
 
 class DocumentMessaging,DocumentSharing,DataSharig green
 ```
+
+This diagram provides a high-level view of enterprise interoperability across the NHS. Most NHS Trusts have implemented some form of Document Messaging, typically through HL7 v2 messaging and, increasingly, FHIR-based transactions.
+
+Many Shared Care Record providers (including the former LHCREs) have also established Document Sharing capabilities. Examples include One London, Lancashire & South Cumbria, and Cheshire & Merseyside, enabling clinical documents to be exchanged and consumed across organisational boundaries.
+
+Several regions have progressed further by implementing Data/Resource Sharing in addition to document sharing. Examples include the Yorkshire & Humber Care Record, SiDER, and the Great North Care Record. These initiatives support the exchange of structured clinical data through APIs and shared resource models, moving beyond traditional document-centric interoperability.
+
+Collectively, these Shared Care Record platforms are likely to form a significant foundation for the emerging Single Patient Record (SPR) landscape.
+
+As a newly established diagnostic organisation (April 2026), we have already implemented all three interoperability layers—Document Messaging, Document Sharing, and Data/Resource Sharing—building upon capabilities developed prior to our formal establishment.
+
+Our strategic ambition is to progress towards Conversational Messaging, which aligns with the direction being taken by national diagnostic services such as the Genomic Order Management Service (GOMS). Conversational Messaging supports structured request-response interactions between systems that mirror real-world business processes (for example, "Can you fulfil this request?" followed by an acceptance, rejection, or request for further information), enabling more dynamic and workflow-oriented interoperability.
+
+Realising this model depends on widespread adoption of Data/Resource Sharing through capabilities such as the Single Patient Record (SPR) and FHIR APIs, together with national eventing services such as the NHS Multicast Notification Service (MNS). Without these foundations, organisations typically revert to point-to-point HL7 v2 messaging or FHIR transaction and bundle patterns, which are less effective for coordinating complex, multi-organisational workflows.
+
+Importantly, both Document Messaging and Conversational Messaging are likely to play a role in addressing the "write-back" challenge frequently discussed in relation to SPR. Document Messaging provides a proven mechanism for distributing updates to consuming systems, whilst Conversational Messaging offers a more sophisticated approach for coordinating actions, acknowledgements, and workflow state changes across organisational boundaries.
+
+<img style="padding:3px;width:95%;" src="EIP.png" alt="Genomic Enterprise Integration"/>
+<br clear="all">
+<p class="figureTitle">Genomic Enterprise Integration</p> 
+<br clear="all">
 
 ## Document Messaging
 
