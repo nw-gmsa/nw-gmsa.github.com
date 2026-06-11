@@ -7,7 +7,7 @@ Generally they are all based on supporting clinical workflow which in laboratory
 graph TD;
 
 
-DocumentMessaging[<b>Document Messaging</b><br/><br/>e.g. V2/FHIR Messaging]
+DocumentMessaging[<b>Document Messaging</b><br/><br/>e.g. V2 and FHIR Messaging/Transactions]
 DocumentSharing["<b>Document Sharing</b><br/><br/>e.g. IHE XDS (SOAP API) plus IHE MHD, EURIDICE Document Exchange and NHSE NRL (FHIR RESTful API) "]
 
 DocumentEventNotifications[<b>Document Event Notifications</b><br/><br/>e.g. NHSE MNS and IHE DSUBm]
