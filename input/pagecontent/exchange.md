@@ -197,6 +197,41 @@ This is a replacement for [Document Messaging](#document-messaging) (i.e. HL7 v2
 
 Prerequisite is [Data Sharing](#data-sharing) and [Resource Event Notifications](#resource-event-notifications-)
 
+```mermaid
+sequenceDiagram 
+
+ 
+
+participant OrderPlacer
+
+participant OrderFiller
+
+note over OrderPlacer,OrderFiller: LAB-1 Laboratory Order
+
+OrderPlacer -->> OrderPlacer: Share Laboratory Order via Resource Access Provider
+
+OrderPlacer -->> OrderFiller: Task Event Notification (Task status = requested) 
+
+OrderFiller -->> OrderPlacer: Retrieve Laboratory Order
+
+alt accepted
+OrderFiller -->> OrderPlacer: Task Event Notification (Task status = accepted) 
+note over OrderPlacer,OrderFiller: LAB-3 Laboratory Report
+OrderFiller -->> OrderFiller: Perform Test and share Laboratory Report via Resource Access Provider
+OrderFiller -->> OrderPlacer: Task Event Notification (Task status = completed) 
+OrderPlacer -->> OrderFiller: Retrieve Laboratory Order
+else rejected
+OrderFiller -->> OrderPlacer: Task Event Notification (Task status = rejected) 
+else other
+alt Filler initiated
+OrderFiller -->> OrderPlacer: Task Event Notification (Task status = rejected/cancelled) 
+else Placer initiated
+OrderPlacer -->> OrderFiller: Task Event Notification (Task status = rejected/cancelled) 
+end
+end
+
+```
+
 ### Example - NHS England Genomic Order Management System
 
 See [NHS England Genomic Order Management System](https://simplifier.net/guide/FHIR-Genomics-Implementation-Guide/Home/Design/Interactions.page.md?version=current)
