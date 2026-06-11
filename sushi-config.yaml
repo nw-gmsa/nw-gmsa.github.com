@@ -184,7 +184,7 @@ pages:
     title: Design
     generation: markdown
   exchange.md:
-    title: Exchange
+    title: Enterprise Integration Patterns (EIP)
     generation: markdown
 
 resources:
