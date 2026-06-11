@@ -239,9 +239,9 @@ OrderPlacer -->> OrderFiller: Retrieve Laboratory Order
 else rejected
 OrderFiller -->> OrderPlacer: Task Event Notification (Task status = rejected) 
 else other
-alt Filler initiated
+alt Exception Order Filler initiated
 OrderFiller -->> OrderPlacer: Task Event Notification (Task status = rejected/cancelled) 
-else Placer initiated
+else Exception Order Placer initiated
 OrderPlacer -->> OrderFiller: Task Event Notification (Task status = rejected/cancelled) 
 end
 end
