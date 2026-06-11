@@ -99,10 +99,10 @@ Prerequisite is [Document Sharing](#document-sharing)
 graph LR;
 
 
-Publisher[Notification Publisher]
-Broker[Notification Broker]
-Subscriber[Notification Subscriber]
-Recipient[Notification Recipient]
+Publisher[Document Notification Publisher]
+Broker[Document Notification Broker]
+Subscriber[Document Notification Subscriber]
+Recipient[Document Notification Recipient]
 
 Publisher --> |Event Publish| Broker
 Subscriber --> |Event Subscription| Broker
@@ -145,3 +145,42 @@ See also [Health Information Exchange - Resource Exchange](HIE.html#resource-exc
 ## Resource Event Notifications 
 
 Prerequisite is [Data Sharing](#data-sharing) 
+
+```mermaid
+graph LR;
+
+
+Publisher[Resource Notification Publisher]
+Broker[Resource Notification Broker]
+Subscriber[Resource Notification Subscriber]
+Recipient[Resource Notification Recipient]
+
+Publisher --> |Event Publish| Broker
+Subscriber --> |Event Subscription| Broker
+Broker --> |Event Notify| Recipient
+
+classDef yellow fill:#FFF2CC;
+
+class v2D,fMessage yellow
+```
+
+## Conversational Messaging
+
+See [Conversation Patterns](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Conversation.html)
+For a FHIR implementation see [FHIR Worfklow](https://hl7.org/fhir/R4/workflow.html)
+
+This is a replacement for [Document Messaging](#document-messaging) (i.e. HL7 v2, FHIR Messaging and FHIR Transaction)
+
+Prerequisite is [Data Sharing](#data-sharing) and [Resource Event Notifications](#resource-event-notifications-)
+
+### Example - NHS England Genomic Order Management System
+
+See [NHS England Genomic Order Management System](https://simplifier.net/guide/FHIR-Genomics-Implementation-Guide/Home/Design/Interactions.page.md?version=current)
+
+### Example - HL7 AU eRequesting 
+
+See [AU eRequesting Implementation Guide](https://build.fhir.org/ig/hl7au/au-fhir-erequesting/)
+
+### Example - NHS England Electronic Prescription Service
+
+See [NHS England Electronic Prescription Service - Dispensing](https://simplifier.net/guide/NHSEngland-EPS/Home/Design/Dispensing?version=current)
