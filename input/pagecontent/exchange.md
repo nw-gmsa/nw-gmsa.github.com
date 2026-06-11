@@ -1,4 +1,43 @@
 
+Health Enterprise Integration Patterns are summarised below. 
+
+Generally they are all based on supporting clinical workflow which in laboratory is sending in an order and receiving a report. Most patterns from Document Messaging tend to deal with sharing the Laboratory Report to a wide audience rather than just the order placer 
+
+```mermaid
+graph TD;
+
+
+DocumentMessaging[<b>Document Messaging</b><br/><br/>e.g. V2/FHIR Messaging]
+DocumentSharing["<b>Document Sharing</b><br/><br/>e.g. IHE XDS (SOAP API) plus IHE MHD, EURIDICE Document Exchange and NHSE NRL (FHIR RESTful API) "]
+
+DocumentEventNotifications[<b>Document Event Notifications</b><br/><br/>e.g. NHSE MNS and IHE DSUBm]
+ClinicalDocumentArchitecture[<b>Clinical Document Architecture</b><br/><br/>e.g. CDA, FHIR Document<br/>EU Laboratory Report<br/>International Patient Summary] 
+DocumentWorkflow[<b>Document Workflow</b><br/><br/>e.g. IHE XDW]
+
+DataSharig["<b>Data/Resource Sharing</b><br/><br/>EURIDICE Resource Exchange (FHIR RESTful API)"]
+ResourceEventNotifications[<b>Resource Event Notifications</b><br/><br/>e.g. FHIR Subscription]
+ConversationalMessaging[<b>Conversational Messaging</b><br/><br/>e.g. FHIR Workflow, NHSE Electroinc Prescription Service and Genomic Order Management System]
+
+
+DocumentMessaging --> DocumentSharing
+DocumentSharing --> DocumentEventNotifications
+DocumentSharing --> ClinicalDocumentArchitecture
+DocumentEventNotifications --> DocumentWorkflow
+ClinicalDocumentArchitecture --> DocumentWorkflow
+
+DocumentMessaging --> DataSharig
+DataSharig --> ResourceEventNotifications
+ResourceEventNotifications --> ConversationalMessaging
+
+DocumentSharing --> |expands to| DataSharig
+DocumentEventNotifications --> |expands to| ResourceEventNotifications
+
+classDef green fill:#D5E8D4;
+
+class DocumentMessaging,DocumentSharing,DataSharig green
+
+```
+
 ## Document Messaging
 
 This basic patten is the exchange of records via [Document Messaging](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) and is supported by a wide area of [Messaging Patterns](https://www.enterpriseintegrationpatterns.com/patterns/messaging/index.html) 
@@ -14,9 +53,7 @@ graph LR;
 
 s --> |v2 Message<br/>FHIR Message<br/>FHIR Transaction| d 
 
-classDef yellow fill:#FFF2CC;
 
-class v2D,fMessage yellow
 ```
 
 ### Example - Laboratory Testing Workflow
@@ -37,9 +74,7 @@ end
 EPR --> |LAB-1 Laboratory Order OML_O21/ORM_O01| LIMS
 LIMS -->  |LAB-3 Laboratory Report ORU_R01| EPR
 
-classDef yellow fill:#FFF2CC;
 
-class v2D,fMessage yellow
 ```
 
 ## Document Sharing
@@ -54,9 +89,7 @@ graph LR;
 
 s --> |Query API<br/>XDS API<br/>FHIR RESTful| d 
 
-classDef yellow fill:#FFF2CC;
 
-class v2D,fMessage yellow
 ```
 
 ### Example - Document Exchange
@@ -76,9 +109,6 @@ graph LR;
 s --> |Find Document References ITI-67 FHIR RESTful<br/>Registry Stored Query ITI-18| Registry
 s --> |Retrieve Document ITI-68<br/>Retrieve Document Set ITI-41| Repository
 
-classDef yellow fill:#FFF2CC;
-
-class v2D,fMessage yellow
 ```
 
 ### Example - NHS England National Record Locator
@@ -89,7 +119,7 @@ See [NHS England National Record Locator](https://digital.nhs.uk/services/nation
 
 Electronic Document Management (EDM) is a common practice for storing and sharing documents across healthcare systems and common formats for the documents are often PDF. In diagnostics this is not desirable and so instead a document format called [Clinical Document Architecture (CDA)](https://en.wikipedia.org/wiki/Clinical_Document_Architecture), in HL7 FHIR this is known as [FHIR Document](https://hl7.org/fhir/R4/documents.html)
 
-This is the is described in [HL7 Europe Laboratory Report](https://build.fhir.org/ig/hl7-eu/laboratory/), [NHS England Pathology](https://simplifier.net/guide/pathology-fhir-implementation-guide/Home/Design/How-to-Construct-Bundles?version=0.4.0) is a based on this but it using [Document Messaging](#document-messaging---generation-1), the EU is likely to use [Document Sharing](#document-sharing---generation-2).
+This is described in [IHE https://wiki.ihe.net/index.php/Sharing_Laboratory_Reports](https://wiki.ihe.net/index.php/Sharing_Laboratory_Reports [HL7 Europe Laboratory Report](https://build.fhir.org/ig/hl7-eu/laboratory/), [NHS England Pathology](https://simplifier.net/guide/pathology-fhir-implementation-guide/Home/Design/How-to-Construct-Bundles?version=0.4.0) is a based on this but it using [Document Messaging](#document-messaging---generation-1), the EU is likely to use [Document Sharing](#document-sharing---generation-2).
 
 ## Document Event Notifications
 
@@ -108,9 +138,6 @@ Publisher --> |Event Publish| Broker
 Subscriber --> |Event Subscription| Broker
 Broker --> |Event Notify| Recipient
 
-classDef yellow fill:#FFF2CC;
-
-class v2D,fMessage yellow
 ```
 
 ### Example - Multicast Notifcation Service
@@ -159,12 +186,9 @@ Publisher --> |Event Publish| Broker
 Subscriber --> |Event Subscription| Broker
 Broker --> |Event Notify| Recipient
 
-classDef yellow fill:#FFF2CC;
-
-class v2D,fMessage yellow
 ```
 
-## Conversational Messaging
+## Conversational Messaging (Resource/Data)
 
 See [Conversation Patterns](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Conversation.html)
 For a FHIR implementation see [FHIR Worfklow](https://hl7.org/fhir/R4/workflow.html)
@@ -184,3 +208,9 @@ See [AU eRequesting Implementation Guide](https://build.fhir.org/ig/hl7au/au-fhi
 ### Example - NHS England Electronic Prescription Service
 
 See [NHS England Electronic Prescription Service - Dispensing](https://simplifier.net/guide/NHSEngland-EPS/Home/Design/Dispensing?version=current)
+
+## Conversational Messaging (Document)
+
+### Example - IHE Cross-Enterprise Document Workflow Content Profile (XDW)
+
+See [Cross-Enterprise Document Workflow Content Profile (XDW)](https://profiles.ihe.net/ITI/TF/Volume1/ch-30.html)
