@@ -4,13 +4,13 @@ graph TD;
 
 
 DocumentMessaging["<b>Document Messaging</b><br/><b>Laboratory Testing Workflow (LTW)</b><br/><br/>e.g. V2 Messaging (ORU_R01, MDM_T02, ORM_O01, OML_O21, etc) and FHIR Messaging/Transactions"]
-DocumentSharing["<b>Document Sharing</b><br/><br/>e.g. IHE XDS (SOAP API), IHE MHD, EURIDICE Document Exchange and NHSE NRL (FHIR RESTful API) "]
+DocumentSharing["<b>Document Sharing/<br/>EURIDICE Document Exchange</b><br/><br/>e.g. IHE XDS (SOAP API), IHE MHD and NHSE NRL (FHIR RESTful API) "]
 
 DocumentEventNotifications[<b>Document Event Notifications</b><br/><br/>e.g. NHSE MNS and IHE DSUBm]
 ClinicalDocumentArchitecture[<b>Clinical Document Architecture</b><br/><br/>e.g. CDA, FHIR Document<br/>EU Laboratory Report<br/>International Patient Summary] 
 DocumentWorkflow[<b>Document Workflow</b><br/><br/>e.g. IHE XDW]
 
-DataSharig["<b>Data/Resource Sharing</b><br/><br/>EURIDICE Resource Exchange, HL7 IPA/IHE QEDm, NHS England Care Connect API (FHIR RESTful API)"]
+DataSharig["<b>Data/Resource Sharing<br/>EURIDICE Resource Exchange</b><br/><br/> HL7 IPA/IHE QEDm, NHS England Care Connect API (FHIR RESTful API)"]
 ResourceEventNotifications[<b>Resource Event Notifications</b><br/><br/>e.g. FHIR Subscription]
 ConversationalMessaging[<b>Conversational Workflow</b><br/><br/>e.g. FHIR Workflow, NHSE Electroinc Prescription Service and Genomic Order Management System]
 
