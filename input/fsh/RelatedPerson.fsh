@@ -1,5 +1,5 @@
 Profile:        RelatedPerson
-Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-RelatedPerson
+Parent:         http://hl7.org/fhir/StructureDefinition/RelatedPerson
 Id:             RelatedPerson
 Title:          "RelatedPerson"
 Description:    """

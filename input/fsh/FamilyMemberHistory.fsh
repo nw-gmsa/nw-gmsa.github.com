@@ -1,5 +1,5 @@
 Profile:        FamilyMemberHistory
-Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-FamilyMemberHistory
+Parent:         http://hl7.org/fhir/StructureDefinition/FamilyMemberHistory
 Id:             FamilyMemberHistory
 Title:          "FamilyMemberHistory"
 Description:    """

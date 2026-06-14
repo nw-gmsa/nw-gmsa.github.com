@@ -1,5 +1,5 @@
 Profile:        Procedure
-Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-Procedure
+Parent:         http://hl7.org/fhir/StructureDefinition/Procedure
 Id:             Procedure
 Title:          "Procedure"
 Description:    """

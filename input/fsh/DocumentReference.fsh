@@ -1,5 +1,5 @@
 Profile:        DocumentReference
-Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-DocumentReference
+Parent:         http://hl7.org/fhir/StructureDefinition/DocumentReference
 Id:             DocumentReference
 Title:          "DocumentReference"
 Description:    """
