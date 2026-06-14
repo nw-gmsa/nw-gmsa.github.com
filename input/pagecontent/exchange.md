@@ -204,6 +204,34 @@ Broker --> |Event Notify| Recipient
 
 ```
 
+## Event Messaging 
+
+Placeholder for MNS discussion
+
+```mermaid
+sequenceDiagram
+
+
+
+participant OrderPlacer
+
+participant OrderFiller
+
+note over OrderPlacer,OrderFiller: LAB-1 Laboratory Order
+
+OrderPlacer -->> OrderPlacer: Share Laboratory Order via Resource Access Provider
+
+OrderPlacer -->> OrderFiller: Event Notification
+
+OrderFiller -->> OrderPlacer: Retrieve Resources or Document
+
+note over OrderPlacer,OrderFiller: LAB-3 Laboratory Report
+
+OrderFiller -->> OrderFiller: Perform Test and share Laboratory Report via Resource Access Provider
+OrderFiller -->> OrderPlacer: Event Notification
+OrderPlacer -->> OrderFiller: Retrieve Resources or Document
+``
+
 ## Conversational Messaging (Resource/Data)
 
 See [Conversation Patterns](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Conversation.html)
