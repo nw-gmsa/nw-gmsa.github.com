@@ -4,7 +4,7 @@
 # e.g. ihe.iti.mhds, or ihe.iti.basicaudit
 id: fhir.nwgenomics.nhs.uk
 canonical: https://fhir.nwgenomics.nhs.uk
-version: 2.0.8
+version: 2.0.9
 name: NWGMSA
 title: NHS North West Genomics
 description: NHS North West Genomic Medicine Service Alliance - IHE Laboratory Testing Workflow (LTW)
@@ -183,9 +183,9 @@ pages:
   design.md:
     title: Design
     generation: markdown
-  exchange.md:
-    title: Enterprise Integration Patterns (EIP)
-    generation: markdown
+#  exchange.md:
+#    title: Enterprise Integration Patterns (EIP)
+#    generation: markdown
 
 resources:
   Questionnaire/GenomicTestOrder:

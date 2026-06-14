@@ -28,9 +28,9 @@ Description:    """
 
 * class 1..1
 * type 0..1
-* type from AdmissionMethod
+//* type from AdmissionMethod
 * serviceType 0..1 MS
-* serviceType from Service (preferred)
+//* serviceType from Service (preferred)
 
 * subject 1..1 MS
 * subject only Reference(Patient)
@@ -44,8 +44,8 @@ Description:    """
 * identifier.value MS
 * period.start
 
-* hospitalization.admitSource from AdmissionSource
-* hospitalization.dischargeDisposition from DischargeDisposition
+//* hospitalization.admitSource from AdmissionSource
+//* hospitalization.dischargeDisposition from DischargeDisposition
 
 * serviceProvider 0..1
 * serviceProvider.identifier only OrganisationCode
