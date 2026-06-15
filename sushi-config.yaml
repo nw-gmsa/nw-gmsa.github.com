@@ -75,11 +75,14 @@ pages:
   LTW.md:
     title: Laboratory Testing Workflow (LTW)
     generation: markdown
+  ILW.md:
+    title: Inter Laboratory Workflow (ILW)
+    generation: markdown
   HIE.md:
     title: Health Data API (HIE/EURDICE)
     generation: markdown
-  MHDS.md:
-    title: Health Document Sharing (MHDS) and Sharing Laboratory Reports (XD-LAB)
+  api-security.md:
+    title: API Security
     generation: markdown
   LAB-1.md:
     title: Placer Order Management [LAB-1]
@@ -108,6 +111,9 @@ pages:
   PDQm.md:
     title: Patient Identity Matching (PDQm)
     generation: markdown
+  IUA.md:
+    title: Authorisation [IUA]
+    generation: markdown
   hl7v2.md:
     title: HL7 v2 Standards
     generation: markdown
@@ -120,26 +126,8 @@ pages:
   support.md:
     title: Support
     generation: markdown
-  api-security.md:
-    title: API Security
-    generation: markdown
-  deployment.md:
-    title: Deployment
-    generation: markdown
-  delivery.md:
-    title: Delivery Overview
-    generation: markdown
-  IUA.md:
-    title: Authorisation [IUA]
-    generation: markdown
   data-intro.md:
     title: Overview - Data Contracts
-    generation: markdown
-  ILW.md:
-    title: Inter Laboratory Workflow (ILW)
-    generation: markdown
-  design.md:
-    title: Design
     generation: markdown
 #  exchange.md:
 #    title: Enterprise Integration Patterns (EIP)

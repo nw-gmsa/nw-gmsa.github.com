@@ -273,7 +273,7 @@ The CDR is expected to adopt emerging IHE Europe standards for clinical data and
 - [IHE Mobile access to Health Documents (MHD) ITI-66 and ITI-67](MHD.html) HL7 FHIR
 - [IHE Query for Existing Data for Mobile (QEDm) PCC-44](QEDm.html) HL7 FHIR
 - [IHE Patient Demographics Query for Mobile (PDQm) ITI-78](PDQm.html) HL7 FHIR
-- [IHE Internet User Authorization (IUA)](IUA.md) OAuth2
+- [IHE Internet User Authorization (IUA)](../../input/pagecontent/IUA.md) OAuth2
 - [IHE Basic Audit Log Patterns (BALP)](https://profiles.ihe.net/ITI/BALP/index.html) HL7 FHIR
 
 ## Conversational (Event) Based Workflow
