@@ -117,9 +117,6 @@ pages:
   hl7v2.md:
     title: HL7 v2 Standards
     generation: markdown
-  architecture.md:
-    title: Architecture
-    generation: markdown
   testing.md:
     title: Testing
     generation: markdown
@@ -129,9 +126,12 @@ pages:
   data-intro.md:
     title: Overview - Data Contracts
     generation: markdown
-#  exchange.md:
-#    title: Enterprise Integration Patterns (EIP)
-#    generation: markdown
+  architecture.md:
+    title: Architecture
+    generation: markdown
+  exchange.md:
+    title: Architecture - Enterprise Integration Patterns (EIP)
+    generation: markdown
 
 resources:
   Questionnaire/GenomicTestOrder:
