@@ -72,26 +72,11 @@ pages:
   index.md:
     title: Home
     generation: markdown
-  business-analysis.md:
-    title: Business Analysis
-    generation: markdown
   LTW.md:
     title: Laboratory Testing Workflow (LTW)
     generation: markdown
   HIE.md:
     title: Health Data API (HIE/EURDICE)
-    generation: markdown
-  PAM.md:
-    title: Patient Administration (PAM)
-    generation: markdown
-  LBL.md:
-    title: Laboratory Specimen Barcode Labeling (LBL)
-    generation: markdown
-  HPD.md:
-    title: Healthcare Provider Directory (HPD)
-    generation: markdown
-  GACS.md:
-    title: Genomic Archiving and Communication System (GACS)
     generation: markdown
   MHDS.md:
     title: Health Document Sharing (MHDS) and Sharing Laboratory Reports (XD-LAB)
@@ -120,14 +105,8 @@ pages:
   MHD.md:
     title: Document Exchange [MHD]
     generation: markdown
-  MHD-elaboration.md:
-    title: Document Exchange [MHD] Elaboration
-    generation: markdown
   PDQm.md:
     title: Patient Identity Matching (PDQm)
-    generation: markdown
-  DDD-Overview.md:
-    title: Overview
     generation: markdown
   hl7v2.md:
     title: HL7 v2 Standards
@@ -153,32 +132,11 @@ pages:
   IUA.md:
     title: Authorisation [IUA]
     generation: markdown
-  workflow-interaction-options.md:
-    title: Workflow/Interaction Options
-    generation: markdown
-  workflow-report-options.md:
-    title: Genomic Report Sharing Options
-    generation: markdown
-  identifiers.md:
-    title: Identifiers and Codes
-    generation: markdown
   data-intro.md:
     title: Overview - Data Contracts
     generation: markdown
-  mCSD.md:
-    title: Care Services Discovery
-    generation: markdown
-  SET.md:
-    title: Specimen Event Tracking (SET)
-    generation: markdown
   ILW.md:
     title: Inter Laboratory Workflow (ILW)
-    generation: markdown
-  simple.md:
-    title: Simple
-    generation: markdown
-  BPPC.md:
-    title: Digital Consent (IHE BPPC and PCF)
     generation: markdown
   design.md:
     title: Design
