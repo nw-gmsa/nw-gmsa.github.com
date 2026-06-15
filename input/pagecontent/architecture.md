@@ -67,7 +67,7 @@ The ESB has a [Canonical Data Model](https://www.enterpriseintegrationpatterns.c
 
 ### Enterprise Data Contracts
 
-<img style="padding:3px;width:60%;" src="CDM.jpg" alt="CDM"/>
+<img style="padding:3px;width:60%;" src="CDM.jpeg" alt="CDM"/>
 <br clear="all">
 <p class="figureTitle">Canonical Data Model</p> 
 <br clear="all">
@@ -93,7 +93,7 @@ These are detailed in [Data Contracts](data-intro.html) with standard-specific v
 
 ### Enterprise Workflow Interactions
 
-<img style="padding:3px;width:60%;" src="LAB-1.jpg" alt="LAB-1"/>
+<img style="padding:3px;width:60%;" src="LAB-1.jpeg" alt="LAB-1"/>
 <br clear="all">
 <p class="figureTitle">LAB-1 Data Model, inc CDM ServiceRequest</p> 
 <br clear="all">
