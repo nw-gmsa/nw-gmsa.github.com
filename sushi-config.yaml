@@ -251,6 +251,7 @@ menu:
     Environments and Testing: testing.html
     Support: support.html
     Architecture: architecture.html
+    Enterprise Integration Patterns (EIP): exchange.html
 
 groups:
   -ex-example-laboratory-order:

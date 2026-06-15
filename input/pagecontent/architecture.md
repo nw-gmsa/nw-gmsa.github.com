@@ -67,6 +67,11 @@ The ESB has a [Canonical Data Model](https://www.enterpriseintegrationpatterns.c
 
 ### Enterprise Data Contracts
 
+<img style="padding:3px;width:60%;" src="CDM.jpg" alt="CDM"/>
+<br clear="all">
+<p class="figureTitle">Canonical Data Model</p> 
+<br clear="all">
+
 This canonical model is a mandatory extension to [HL7 UK Core](https://simplifier.net/guide/ukcoreversionhistory) and includes requirements from 
 - [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws)
 - [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](https://nw-gmsa.github.io/R4/DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
@@ -87,6 +92,11 @@ These are detailed in [Data Contracts](data-intro.html) with standard-specific v
 
 
 ### Enterprise Workflow Interactions
+
+<img style="padding:3px;width:60%;" src="LAB-1.jpg" alt="LAB-1"/>
+<br clear="all">
+<p class="figureTitle">LAB-1 Data Model, inc CDM ServiceRequest</p> 
+<br clear="all">
 
 To support genomics workflow, this guide is aligned to enterprise workflow processes described in [IHE Laboratory Testing Workflow](LTW.html), terminology from this guide especially around Actors is used throughout this Implementation Guide.
 
