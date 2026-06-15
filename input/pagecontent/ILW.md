@@ -38,11 +38,36 @@ The current IHE ILW specification relies on HL7 v2.x, HL7 v3, and IHE XDS. Sever
 
 - [NHS England - Genomic Order Management Service FHIR API](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) a [FHIR Workflow](https://hl7.org/fhir/R4/workflow.html) based service for managing orders and results at a national level.
 
-<figure>
-{%include ILW-usecase-4-sequence.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">Work Order Management </p>
-</figure>
-<br clear="all">
+```mermaid
+sequenceDiagram
+
+participant EPR as Order Placer
+participant RIE as Automation Manager<br/>Regional Orchestration Engine
+participant LIMSP as Order Filler<br/>(North West GMSA)
+participant LIMSG as Order Filler<br/>(other GMSA)
+
+EPR -->> RIE: Submit Laboratory Order O21 (LAB-1)
+
+note over RIE : Route order as required, splitting the order is necessary
+
+
+opt North West GMSA Order
+RIE -> LIMSP: Submit Genomic Order O21 (LAB-1/LAB-35)
+LIMSP -> RIE: Send Laboratory Report R01 (LAB-3/LAB-36)
+RIE -> EPR: Send Laboratory Report R01 (LAB-3)
+end
+
+opt Other GMSA Order
+RIE -> LIMSG: Submit Genomic Order O21 (LAB-1/LAB-4)\nUsing Genomic Order Management Service API
+LIMSG -> RIE: Send Laboratory Report R01\nUsing Genomic Order Management Service API
+RIE -> EPR: Send Laboratory Report R01 (LAB-3)
+end
+
+note over EPR, RIE: When all tests in the order are complete
+
+RIE -> EPR: Task complete notification\n(Can be an email notification)
+
+```
 
 #### Main Process Flow
 
@@ -126,11 +151,37 @@ This genomics process is largely the same except for:
 - The order is sent as one interaction as the sample does not need to be collected.
 - The order should contain the pathology report detailing the results of the pathology tests.
 
-<figure>
-{%include ILW-usecase-3-sequence.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">Multiple Diagnostic Tests - LAB-1 and LAB-3</p>
-</figure>
-<br clear="all">
+```mermaid
+sequenceDiagram
+
+
+participant EPR as Order Placer
+participant LIMSP as Order Filler (Pathology)
+participant LIMSG as Order Filler (Genomics)
+
+
+EPR -> LIMSP: Submit Laboratory Order O21 (LAB-1)
+LIMSP -> EPR: Send Laboratory Report R01 (LAB-3)
+
+opt Genomic Order created by original order placer
+
+note over LIMSP,LIMSG: Same specimen can reused for multiple tests
+
+EPR -> LIMSG: Submit Genomic Order O21 (LAB-1)
+LIMSP --> LIMSG: Send Specimen (not a technical interaction)
+LIMSG -> EPR: Send Genomic Report R01 (LAB-3)
+end
+
+opt Order Filler (Pathology) creates Genomic Order
+note over LIMSP,LIMSG: Same specimen can reused for multiple tests
+
+LIMSP -> LIMSG: Submit Genomic Order O21 (LAB-1/LAB-35)
+LIMSP -> EPR: Copy of Genomic Order O22 (LAB-2)
+LIMSP --> LIMSG: Send Specimen (not a technical interaction)
+LIMSG -> LIMSP: Send Genomic Report R01 (LAB-3/LAB-36)
+LIMSG -> EPR: Send Genomic Report R01 (LAB-3)
+end
+```
 
 #### Main Process Flow
 
