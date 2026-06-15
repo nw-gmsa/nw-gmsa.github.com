@@ -112,11 +112,34 @@ The authorisation will be hosted on the Regional Orchestration Engine. This is r
 
 Any Trust Integration can act as the Authorisation Client or Resource Server in the diagram below.
 
-<figure>
-{%include authorisation-sequence.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">OAuth2 - Client Credentials Grant</p>
-</figure>
-<br clear="all">
+```mermaid
+sequenceDiagram
+
+
+participant Client as Authorisation Client<br/>(Trust Integration Engine)
+participant Server as Authorisation Server
+participant Resource as Resource Server<br/>(Trust Integration Engine)
+
+
+opt
+    Client ->> Server : Authorisation Server Metadata Request (ITI-103)\nGET {baseUrl}/.well-known/openid-configuration
+    Server -->> Client: Metadata Response
+end
+
+note over Client,Server: Get Access Token [ITI-71]
+    Client ->> Server: Get Access Token Request\nPOST {baseUrl}/token\ngrant_type=client_credentials&scope=system/*.*
+    Server -->> Client: Access Token Response
+
+Client ->> Resource: Request (e.g. POST {baseUrl}/$process-message)\nHTTP Header: authorization contains Access Token
+
+note over Resource,Server: Introspect Token [ITI-102]
+    Resource ->> Server: Introspect Token\nPOST {baseUrl}/introspect
+    Server ->> Server: Validate Token
+    Server -->> Resource: Introspect Response
+
+Server -->> Client: Response
+
+```
 
 - **Authorisation Server Metadata Request (ITI-103)** is an optional step to retrieve the metadata for the Authorisation Server
 - **Get Access Token (ITI-71)** is used to obtain the `Access Token`, the request uses basic authentication using the client id as username and client secret as the password.

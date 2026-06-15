@@ -46,26 +46,26 @@ participant RIE as Automation Manager<br/>Regional Orchestration Engine
 participant LIMSP as Order Filler<br/>(North West GMSA)
 participant LIMSG as Order Filler<br/>(other GMSA)
 
-EPR -->> RIE: Submit Laboratory Order O21 (LAB-1)
+EPR ->> RIE: Submit Laboratory Order O21 (LAB-1)
 
 note over RIE : Route order as required, splitting the order is necessary
 
 
 opt North West GMSA Order
-RIE -> LIMSP: Submit Genomic Order O21 (LAB-1/LAB-35)
-LIMSP -> RIE: Send Laboratory Report R01 (LAB-3/LAB-36)
-RIE -> EPR: Send Laboratory Report R01 (LAB-3)
+RIE ->> LIMSP: Submit Genomic Order O21 (LAB-1/LAB-35)
+LIMSP ->> RIE: Send Laboratory Report R01 (LAB-3/LAB-36)
+RIE ->> EPR: Send Laboratory Report R01 (LAB-3)
 end
 
 opt Other GMSA Order
-RIE -> LIMSG: Submit Genomic Order O21 (LAB-1/LAB-4)\nUsing Genomic Order Management Service API
-LIMSG -> RIE: Send Laboratory Report R01\nUsing Genomic Order Management Service API
-RIE -> EPR: Send Laboratory Report R01 (LAB-3)
+RIE ->> LIMSG: Submit Genomic Order O21 (LAB-1/LAB-4)\nUsing Genomic Order Management Service API
+LIMSG ->> RIE: Send Laboratory Report R01\nUsing Genomic Order Management Service API
+RIE ->> EPR: Send Laboratory Report R01 (LAB-3)
 end
 
 note over EPR, RIE: When all tests in the order are complete
 
-RIE -> EPR: Task complete notification\n(Can be an email notification)
+RIE ->> EPR: Task complete notification\n(Can be an email notification)
 
 ```
 
@@ -160,26 +160,26 @@ participant LIMSP as Order Filler (Pathology)
 participant LIMSG as Order Filler (Genomics)
 
 
-EPR -> LIMSP: Submit Laboratory Order O21 (LAB-1)
-LIMSP -> EPR: Send Laboratory Report R01 (LAB-3)
+EPR ->> LIMSP: Submit Laboratory Order O21 (LAB-1)
+LIMSP ->> EPR: Send Laboratory Report R01 (LAB-3)
 
 opt Genomic Order created by original order placer
 
 note over LIMSP,LIMSG: Same specimen can reused for multiple tests
 
-EPR -> LIMSG: Submit Genomic Order O21 (LAB-1)
-LIMSP --> LIMSG: Send Specimen (not a technical interaction)
-LIMSG -> EPR: Send Genomic Report R01 (LAB-3)
+EPR ->> LIMSG: Submit Genomic Order O21 (LAB-1)
+LIMSP -->> LIMSG: Send Specimen (not a technical interaction)
+LIMSG ->> EPR: Send Genomic Report R01 (LAB-3)
 end
 
 opt Order Filler (Pathology) creates Genomic Order
 note over LIMSP,LIMSG: Same specimen can reused for multiple tests
 
-LIMSP -> LIMSG: Submit Genomic Order O21 (LAB-1/LAB-35)
-LIMSP -> EPR: Copy of Genomic Order O22 (LAB-2)
-LIMSP --> LIMSG: Send Specimen (not a technical interaction)
-LIMSG -> LIMSP: Send Genomic Report R01 (LAB-3/LAB-36)
-LIMSG -> EPR: Send Genomic Report R01 (LAB-3)
+LIMSP ->> LIMSG: Submit Genomic Order O21 (LAB-1/LAB-35)
+LIMSP ->> EPR: Copy of Genomic Order O22 (LAB-2)
+LIMSP -->> LIMSG: Send Specimen (not a technical interaction)
+LIMSG ->> LIMSP: Send Genomic Report R01 (LAB-3/LAB-36)
+LIMSG ->> EPR: Send Genomic Report R01 (LAB-3)
 end
 ```
 
