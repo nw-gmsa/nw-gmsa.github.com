@@ -236,7 +236,7 @@ menu:
     Resource Access [IPA/QEDm]: QEDm.html
 ##    Health Data API: CapabilityStatement-HealthDataAPI.html
     Authorisation [IUA] : IUA.html
-    Message Exchange [MQ]: MQ.html
+    Message Exchange [LTW/MQ]: MQ.html
 ##    Work Order Management [LAB-4]: LAB-4.html
 ##    Test Results Management [LAB-5]: LAB-5.html
   Data Models (Volume 3):
