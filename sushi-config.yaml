@@ -88,7 +88,7 @@ pages:
     title: Resource Access [IPA/QEDm]
     generation: markdown
   MQ.md:
-    title: Message Exchange [MQ]
+    title: Message Exchange [LTW/MQ]
     generation: markdown
   MHD.md:
     title: Document Exchange [MHD]
