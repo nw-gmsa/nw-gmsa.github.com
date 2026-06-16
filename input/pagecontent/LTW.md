@@ -43,11 +43,18 @@ The processes above are described in more detail in:
 
 From a high-level perspective, the process is 
 
-<figure>
-{%include LTW-basic-sequence.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">Genomics Simplified Sequence Diagram</p>
-</figure>
-<br clear="all">
+```mermaid
+sequenceDiagram
+
+participant EPR  as Order Placer
+participant LIMS as Order Filler
+
+note over EPR,LIMS: IHE LAB-1 Laboratory Order
+EPR ->> LIMS: Send Laboratory Order O21
+LIMS ->> LIMS: Perform Tests
+note over EPR,LIMS: IHE LAB-3 Laboratory Report
+LIMS ->> EPR: Send Laboratory Report R01
+```
 
 Where the `Order Placer` sends the **Laboratory Order** to the `Order Filler`, the lab performs the test and then sends the **Laboratory Report** back to the `Order Placer`. However, variations can exist such as the order is updated or the order is entered directly on the `Order Filler`system (these are currently out of scope).
 
@@ -58,12 +65,14 @@ sequenceDiagram
     participant LIMS as Order Filler<br/>LIMS 
 
     clinician ->> clinician: Creates Order
+    note over clinician,LIMS: IHE LAB-1 Laboratory Order
     clinician ->> LIMS: Sends Laboratory Order
     clinician ->> nurse: Requests specimen collection
     nurse ->> nurse: Collect Specimen
     nurse ->> LIMS: Ship Specimen
     LIMS ->> LIMS: Perform Test
     LIMS ->> LIMS: Write Report
+    note over clinician,LIMS: IHE LAB-3 Laboratory Report
     LIMS ->> clinician: Sends Laboratory Report
 ```
 
@@ -156,11 +165,23 @@ This archetype definition can also support [HL7 Structured Data Capture](https:/
 
 The completed form is submitted to the Regional Orchestration Engine following:
 
-<figure>
-{%include LTW-usecase-1-sequence.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">Genomics Test Order Sequence Diagram - LAB-1</p>
-</figure>
-<br clear="all">
+```mermaid
+sequenceDiagram
+participant EPR as Order Placer
+participant TIE as Intermediary<br/>NW GLH Regional Orchestration Engine (RIE)
+participant LIMS as Order Filler 
+
+EPR ->> EPR: Select Test Order Form
+EPR ->> EPR: Complete Test Order Form
+
+note over EPR,LIMS:IHE LAB-1 Laboratory Order
+EPR ->> TIE: Send HL7 FHIR Message<br/>Laboratory Order O21
+TIE ->> LIMS: Send HL7 v2 Message<br/>OML_O21
+
+EPR ->> EPR: Collect Sample
+EPR -->> LIMS: Send Sample
+LIMS ->> LIMS: Update Test Order
+```
 
 For submission, this form will be converted by the [Order Placer](ActorDefinition-OrderPlacer.html) to a communication format called [HL7 FHIR](https://hl7.org/fhir/R4/index.html) (and for compatability reasons [HL7 v2](https://en.wikipedia.org/wiki/Health_Level_7#HL7_Version_2).
 If the [Order Placer](ActorDefinition-OrderPlacer.html) has a FHIR enabled Electronic Patient Record (e.g. EPIC, Cerner, Meditech, etc), they may use [HL7 SDC - Form Data Extraction](https://build.fhir.org/ig/HL7/sdc/extraction.html) to assist with this process.
@@ -272,12 +293,34 @@ A report is created by the clinical practice and sent to the order result tracke
 <br clear="all">
 
 
+```mermaid
+sequenceDiagram
+participant EPR as Order Placer
+participant TIE as Intermediary<br/>NW GLH Regional Orchestration Engine (RIE)
+participant LIMS as Order Filler
 
-<figure>
-{%include LTW-usecase-2-sequence.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">Genomics Test Report Sequence Diagram - LAB-3</p>
-</figure>
-<br clear="all">
+LIMS ->> LIMS: Perform Diagnostic Test
+LIMS ->> LIMS: Write Preliminary Report
+
+opt
+note over LIMS,EPR: IHE LAB-3 Laboratory Report (preliminary)
+
+LIMS ->> TIE: Send HL7 v2 Message<br/>Laboratory Report ORU_R01
+TIE ->> EPR: Send HL7 v2 Message<br/>Laboratory Report ORU_R01
+end
+LIMS ->> LIMS: Complete Report
+
+note over LIMS,EPR: IHE LAB-3 Laboratory Report (final)
+
+LIMS ->> TIE: Send HL7 v2 Message<br/>Laboratory Report ORU_R01
+TIE ->> EPR: Send HL7 v2 Message<br/>Laboratory Report ORU_R01
+
+note over EPR,TIE: When all tests in the order are complete
+
+TIE ->> EPR: Task complete notification\n(Can be an email notification)
+
+```
+
 
 #### Main Process Flow
 
@@ -352,11 +395,17 @@ In Progress
 
 > BCR-ABL1 concentration testing (M84.2) is used to monitor the amount of the fusion gene (Philadelphia chromosome) in chronic myeloid leukemia (CML) patients, with results typically reported on an International Scale (%IS) to measure treatment response.
 
-<figure>
-{%include LTW-advanced-sequence.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">Genomics Work Order Simplified Sequence Diagram</p>
-</figure>
-<br clear="all">
+```mermaid
+sequenceDiagram
+
+participant LIMS as Order Filler
+participant Device as Automation Manager
+
+LIMS ->> Device: Send Work Order Manangment LAB-4 O21
+Device ->> Device: Perform Tests
+Device ->> LIMS: Send Test Results Management LAB-5 R22/R32
+
+```
 
 ## Work Order Management (LAB-4)
 
