@@ -4,7 +4,7 @@
 # e.g. ihe.iti.mhds, or ihe.iti.basicaudit
 id: fhir.nwgenomics.nhs.uk
 canonical: https://fhir.nwgenomics.nhs.uk
-version: 2.0.9
+version: 2.0.10
 name: NWGMSA
 title: NHS North West Genomics
 description: NHS North West Genomic Medicine Service Alliance - IHE Laboratory Testing Workflow (LTW)
@@ -84,21 +84,6 @@ pages:
   api-security.md:
     title: API Security
     generation: markdown
-  LAB-1.md:
-    title: Placer Order Management [LAB-1]
-    generation: markdown
-  LAB-2.md:
-    title: Filler Order Management [LAB-2]
-    generation: markdown
-  LAB-3.md:
-    title: Order Results Management [LAB-3]
-    generation: markdown
-  LAB-4.md:
-    title: Work Order Management [LAB-4]
-    generation: markdown
-  LAB-5.md:
-    title: Test Results Management [LAB-5]
-    generation: markdown
   QEDm.md:
     title: Resource Access [IPA/QEDm]
     generation: markdown
@@ -132,6 +117,21 @@ pages:
   exchange.md:
     title: Architecture - Enterprise Integration Patterns (EIP)
     generation: markdown
+    #  LAB-1.md:
+    #   title: Placer Order Management [LAB-1]
+    #    generation: markdown
+    # LAB-2.md:
+    #   title: Filler Order Management [LAB-2]
+    #   generation: markdown
+    # LAB-3.md:
+    #   title: Order Results Management [LAB-3]
+    #    generation: markdown
+    #  LAB-4.md:
+    #    title: Work Order Management [LAB-4]
+    #    generation: markdown
+    #  LAB-5.md:
+    #    title: Test Results Management [LAB-5]
+  #   generation: markdown
 
 resources:
   Questionnaire/GenomicTestOrder:
@@ -219,7 +219,7 @@ menu:
  ##   Design Overview: design.html
     Laboratory Testing Workflow (LTW): LTW.html
     Health Data API (HIE/EURDICE): HIE.html
- ##   Inter-Laboratory Workflow (ILW): ILW.html
+    Inter-Laboratory Workflow (ILW): ILW.html
     ##Health Document Sharing (MHDS) and Sharing Laboratory Reports (XD-LAB): MHDS.html
    ## Specimen Event Tracking (SET): SET.html
  #   Genomic Archiving and Communication System (GACS): GACS.html
