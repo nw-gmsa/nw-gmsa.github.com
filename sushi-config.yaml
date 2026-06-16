@@ -247,6 +247,7 @@ menu:
   Artefacts (Volume 4):
     HL7 FHIR R4: artifacts.html
     HL7 v2.5.1: hl7v2.html
+    IHE XDS.b/MHD: StructureDefinition-DocumentReference.html
   Development:
     Environments and Testing: testing.html
     Support: support.html
