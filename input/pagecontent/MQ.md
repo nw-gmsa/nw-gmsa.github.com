@@ -100,7 +100,7 @@ This is based on [Asynchronous Messaging using the RESTful API](https://hl7.org/
 sequenceDiagram
 
 participant gdp as Genomic Data Platform
-participant RIE as Message Product<br/>Regional Integration Engine
+participant RIE as Message Producer<br/>Regional Integration Engine
 participant consumer as Message Consumer
 
 
