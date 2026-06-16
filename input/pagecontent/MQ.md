@@ -19,18 +19,30 @@
 
 ## Send Message
 
+```mermaid
+
+sequenceDiagram
+    participant Producer as Message Producer
+    participant Consumer as Message Consumer 
+
+    note over Producer,Consumer: Laboratory Order (LAB-1) <br/> Laboratory Report (LAB-3)
+    Producer->>Consumer: Send Message
+    Consumer-->>Producer: Acknowledge Message
+```
+
 ### NW Genomics as a Producer
 
 ```mermaid
 sequenceDiagram
 
 participant gdp as Genomic Data Platform
-participant RIE as Regional Integration Engine
-participant consumer as Consumer
+participant RIE as Message Producer<br/>Regional Integration Engine
+participant consumer as Message Consumer
 
 
 gdp ->> RIE: Event Trigger
 RIE ->> RIE: Create message
+note over RIE,consumer: Laboratory Order (LAB-1) <br/> Laboratory Report (LAB-3)
 RIE ->> consumer: Send Message (POST [base/$process-message)
 consumer -->> RIE: Acknowledgement
 ```
@@ -40,9 +52,10 @@ consumer -->> RIE: Acknowledgement
 ```mermaid
 sequenceDiagram
 
-participant producer as Producer
-participant RIE as Regional Integration Engine
+participant producer as Message Producer
+participant RIE as Message Consumer<br/>Regional Integration Engine
 
+note over producer,RIE: Laboratory Order (LAB-1) <br/> Laboratory Report (LAB-3)
 producer ->> RIE: Send Message (POST [base/$process-message)
 RIE -->> producer: Acknowledgement
 ```
@@ -87,8 +100,8 @@ This is based on [Asynchronous Messaging using the RESTful API](https://hl7.org/
 sequenceDiagram
 
 participant gdp as Genomic Data Platform
-participant RIE as Regional Integration Engine
-participant consumer as Consumer
+participant RIE as Message Product<br/>Regional Integration Engine
+participant consumer as Message Consumer
 
 
 gdp -->> RIE: R01 or O21 Event Trigger

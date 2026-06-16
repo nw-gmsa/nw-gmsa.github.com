@@ -10,6 +10,21 @@ This API for the NW GMSA Clinical Data Repository is based on the following API 
 
 The search parameters are based on [FHIR Search](https://hl7.org/fhir/R4/search.html) which provides detailed description of the parameters and value types.
 
+```mermaid
+
+sequenceDiagram
+    participant Consumer as Resource Consumer
+    participant Provider as Resource Access Provider
+
+    note over Consumer,Provider: Query Existing Data (PCC-44)
+    Consumer->>Provider: GET /ServiceRequest?patient=123&category=GE
+    Provider-->>Consumer: Bundle of ServiceRequests
+
+    Consumer->>Provider: GET /DiagnosticReport?patient=123&category=GE
+    Provider-->>Consumer: Bundle of DiagnosticReports
+
+```
+
 ## Condition
 
 <table style="">
