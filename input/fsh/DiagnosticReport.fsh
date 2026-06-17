@@ -108,7 +108,7 @@ Description:    """
 * performer.type 1..1
 * performer.extension contains
       http://hl7.org/fhir/StructureDefinition/event-performerFunction named performerFunction 0..1
-* performer only Reference(Practitioner or Organization)
+
 
 //* performer ^slicing.discriminator.type = #pattern
 //* performer ^slicing.discriminator.path = "type"
@@ -119,9 +119,11 @@ Description:    """
 * performer contains operator 0..*
 
 * performer[organization].identifier only OrganisationCode
+* performer[organization] only Reference(Organization)
 //* performer[organization].type = #Organization
 
 * performer[operator].identifier only PractitionerIdentifier
+* performer[operator] only Reference(Practitioner)
 * performer[operator].extension[performerFunction].valueCodeableConcept.coding = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#SPRF
 * performer[operator].type = #Practitioner
 
@@ -129,7 +131,7 @@ Description:    """
 * resultsInterpreter.identifier.system 1..1
 * resultsInterpreter.identifier.value 1..1
 * resultsInterpreter.type 0..1
-* resultsInterpreter only Reference(Practitioner or PractitionerRole)
+
 
 //* resultsInterpreter ^slicing.discriminator.type = #value
 //* resultsInterpreter ^slicing.discriminator.path = "type"
@@ -140,6 +142,7 @@ Description:    """
 //  primaryReporter 0..*
 
 * resultsInterpreter[author].identifier only PractitionerIdentifier
+* resultsInterpreter[author] only Reference(PractitionerRole)
 //* resultsInterpreter[author].type = #Practitioner
 
 * specimen 0..* MS

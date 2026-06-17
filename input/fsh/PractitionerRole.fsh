@@ -1,7 +1,4 @@
 Profile:        PractitionerRole
-//Parent:         https://fhir.hl7.org.uk/StructureDefinition/UKCore-PractitionerRole
-//Parent:         http://hl7.eu/fhir/laboratory/StructureDefinition/PractitionerRole-eu-lab
-//Parent:         http://hl7.org/fhir/StructureDefinition/PractitionerRole
 Parent:         http://hl7.eu/fhir/base/StructureDefinition/practitionerRole-eu-core
 Id:             PractitionerRole
 Title:          "PractitionerRole"

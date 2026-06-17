@@ -16,7 +16,7 @@ Usage: #example
 * name.family = "Birmingham"
 * name.given = "Tommen"
 
-* relationship[0] = $v3-RoleCode#DAU "daughter"
+* relationship[0] = $v3-RoleCode#DAU "natural daughter"
 * relationship[+] = $v3-RoleCode#NIENEPH "niece/nephew"
 
 * patient = Reference(Patient-Lancaster)
