@@ -28,14 +28,14 @@ Usage: #definition
 * insert Instance_Empty(Request5,   Binary,   "HL7 v2 ORM_O01 - supplier",  [[ ]])
 
 * insert Instance_Empty(Request6,   Bundle,   "HL7 FHIR Message O21 - regional",  [[ This is equivalent to HL7 v2.5 OML_O21, it may be advisable to use this message in the previous step to reduce transforms. ]])
-* insert InstanceVersion(6, "HL7 FHIR Message O21", GenomicsOrderMessageCodedEntries , )
+* insert InstanceVersion(6, "HL7 FHIR Message O21", GenomicsOrderMessageCodedEntries , [[ TODO ]])
 
 * insert Instance_Empty(Request7,   Binary,   "HL7 v2 OML_O21 - regional",  [[ [Regional HL7 v2 OML_O21](hl7v2.html#oml_o21-laboratory-order-1) ]])
 
 * insert Instance_Empty(Request8,   Binary,   "Collect Sample",  [[ ]])
 
 * insert Instance_Empty(Request9,   Bundle,   "HL7 FHIR Message O21 - regional",  [[ TODO ]])
-* insert InstanceVersion(9, "HL7 FHIR Message O21", GenomicsOrderMessageCodedEntries , )
+* insert InstanceVersion(9, "HL7 FHIR Message O21", GenomicsOrderMessageCodedEntries , [[ TODO ]])
 
 * process[+]
   * title = "Complete Genomic Test Order Form"
