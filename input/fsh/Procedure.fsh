@@ -27,5 +27,5 @@ Description:    """
 * code.coding contains snomedCT 1..1
 
 * code.coding[snomedCT] 1..1 MS
-* code.coding[snomedCT] from https://fhir.hl7.org.uk/ValueSet/UKCore-ProcedureCode
+//* code.coding[snomedCT] from https://fhir.hl7.org.uk/ValueSet/UKCore-ProcedureCode
 * code.coding[snomedCT].system = $sct
