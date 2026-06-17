@@ -4,7 +4,12 @@ Title: "Composition - Genomics Report Octavia CHISLETT"
 Description: "Composition - Genomics Report Octavia CHISLETT"
 Usage: #example
 
-* identifier.value = "30551ce1-5a28-4356-b684-1e639094ad4d"
+* identifier
+  * value = "25edee2b-add8-4522-9fa2-1ee8f229bd75"
+  * system = "http://www.acme.org/diagnosticreport/identifiers"
+  * assigner.identifier.system = $ods-code
+  * assigner.identifier.value = "699X0"
+
 * status = #final
 * type = $sct#1054161000000101 "Genetic report"
 //* meta.versionId = 3

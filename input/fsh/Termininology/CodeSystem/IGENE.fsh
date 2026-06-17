@@ -26,7 +26,7 @@ iGene Codes
 * #"SAMPLE: FFPE-SH" "FFPE - Shavings"
 * #"SAMPLE: FFPE-PCS" "FFPE - Positively Charged Slides"
 * #"SAMPLE: Cystic fluid" "Cystic fluid"
-* #"SAMPLE: CVB	Chorionic" "Villus Biopsy"
+* #"SAMPLE: CVB Chorionic" "Villus Biopsy"
 * #"SAMPLE: Cult Cells" "Cultured Cells"
 * #"SAMPLE: CSF" "Cerebrospinal fluid"
 * #"SAMPLE: Cell Pellet" "Cell Pellet"
