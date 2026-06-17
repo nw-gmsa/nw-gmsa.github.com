@@ -1,5 +1,5 @@
 Instance: GenomicsOrderMessageCodedEntries
-InstanceOf: Bundle
+InstanceOf: BundleMessage
 Title:       "Bundle 'Message' - Genomics Order with Coded Entries"
 Description:  "Influenced by HL7 v2 OML_O21"
 Usage: #example

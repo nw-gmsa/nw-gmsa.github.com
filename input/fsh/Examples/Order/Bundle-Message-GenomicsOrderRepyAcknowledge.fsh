@@ -1,5 +1,5 @@
 Instance: GenomicsOrderMessageReplyAcknowledge
-InstanceOf: Bundle
+InstanceOf: BundleMessage
 Title:       "Bundle 'Message' - Genomics Order Reply Acknowledgement"
 Description:  "Acknowledgement of Async response to a Genomic Order"
 Usage: #example

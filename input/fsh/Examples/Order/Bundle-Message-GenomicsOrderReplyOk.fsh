@@ -1,5 +1,5 @@
 Instance: GenomicsOrderMessageReplyOk
-InstanceOf: Bundle
+InstanceOf: BundleMessage
 Title:       "Bundle 'Message' - Genomics Order Reply"
 Description:  "Influenced by HL7 v2 OML_O22"
 Usage: #example

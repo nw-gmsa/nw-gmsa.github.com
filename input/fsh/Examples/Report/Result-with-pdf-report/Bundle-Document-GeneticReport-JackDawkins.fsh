@@ -29,7 +29,7 @@ Usage: #example
   * entry[+].reference = "urn:uuid:94bf65ba-cd6c-4601-b339-6d547f424646"
 
 Instance: FHIRDocumentGeneticReportBundle
-InstanceOf: Bundle
+InstanceOf: BundleDocument
 Title:       "Bundle `Document` - Genetic Report"
 Description:  "FHIR Document Genetic Report for Jack Dawkins"
 Usage: #example

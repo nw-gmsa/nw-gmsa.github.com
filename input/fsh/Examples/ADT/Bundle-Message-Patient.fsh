@@ -1,5 +1,5 @@
 Instance: PatientMessage
-InstanceOf: Bundle
+InstanceOf: BundleMessage
 Title:       "Bundle 'Event Message' - Patient Update"
 Description:  "Influenced by HL7 v2 ADT_A31"
 Usage: #example

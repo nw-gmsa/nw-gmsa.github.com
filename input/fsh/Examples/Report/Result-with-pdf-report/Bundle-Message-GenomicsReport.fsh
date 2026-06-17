@@ -1,5 +1,5 @@
 Instance: GenomicsReportMessage
-InstanceOf: Bundle
+InstanceOf: BundleMessage
 Title:       "Bundle 'Message' - Genomics Report"
 Description:  "Influenced by HL7 v2 ORU_R01"
 Usage: #example
