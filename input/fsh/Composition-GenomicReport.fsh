@@ -36,8 +36,8 @@ Description:    """
 * encounter.identifier insert Obligation(#SHALL:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderFiller)
 * encounter.identifier insert Obligation(#SHALL:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/AutomationManager)
 
-* author only Reference(Practitioner or PractitionerRole)
-* author.identifier only PractitionerIdentifier
+* author only Reference(Practitioner or Organization or PractitionerRole)
+//* author.identifier only PractitionerIdentifier
 
 * attester.party only Reference(Practitioner or PractitionerRole)
 * attester.party.identifier only PractitionerIdentifier
