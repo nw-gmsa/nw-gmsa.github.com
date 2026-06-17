@@ -5,7 +5,7 @@ Description: "evidenced by pathology diagnostic testing"
 
 * identifier[+].value = "d6c19529-a64e-476b-b896-303abec26a79"
 
-* clinicalStatus = #final
+* clinicalStatus = #active
 * verificationStatus = #confirmed
 
 * recordedDate = "2025-10-28T10:37:26+00:00"

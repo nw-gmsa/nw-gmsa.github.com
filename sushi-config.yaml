@@ -59,6 +59,8 @@ parameters:
     - xml
     - json
   path-expansion-params: '../resources/Parameters-exp-params.json'
+  special-url:
+    - https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory
 
 
 #resources:

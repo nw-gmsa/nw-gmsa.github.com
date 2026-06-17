@@ -5,7 +5,7 @@ Description: "evidenced by genomic diagnostic testing"
 
 * identifier[+].value = "c8f82825-e4cb-4e1f-b728-3fd2808e93db"
 
-* clinicalStatus = #final
+* clinicalStatus = #active
 * verificationStatus = #confirmed
 
 * recordedDate = "2025-10-24T10:37:26+00:00"

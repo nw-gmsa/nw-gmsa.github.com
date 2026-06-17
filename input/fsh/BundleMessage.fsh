@@ -1,7 +1,7 @@
 Profile:        BundleMessage
 Parent:         Bundle
 Id:             BundleMessage
-Title:          "Bundle - FHR Messaging"
+Title:          "Bundle - FHIR Messaging"
 Description:    "[FHIR Messaging](https://hl7.org/fhir/R4/messaging.html)"
 
 * identifier ^short = "Business identifier for this Laboratory Report"
