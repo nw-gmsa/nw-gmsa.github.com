@@ -165,7 +165,7 @@ LIMSP ->> EPR: Send Laboratory Report R01 (LAB-3)
 
 opt Genomic Order created by original order placer
 
-note over LIMSP,LIMSG: Same specimen can reused for multiple tests
+note over LIMSP,LIMSG: Same specimen can be reused for multiple tests
 
 EPR ->> LIMSG: Submit Genomic Order O21 (LAB-1)
 LIMSP -->> LIMSG: Send Specimen (not a technical interaction)
@@ -173,7 +173,7 @@ LIMSG ->> EPR: Send Genomic Report R01 (LAB-3)
 end
 
 opt Order Filler (Pathology) creates Genomic Order
-note over LIMSP,LIMSG: Same specimen can reused for multiple tests
+note over LIMSP,LIMSG: Same specimen can be reused for multiple tests
 
 LIMSP ->> LIMSG: Submit Genomic Order O21 (LAB-1/LAB-35)
 LIMSP ->> EPR: Copy of Genomic Order O22 (LAB-2)
