@@ -61,6 +61,7 @@ parameters:
   path-expansion-params: '../resources/Parameters-exp-params.json'
   special-url:
     - https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory
+    - http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs
 
 
 #resources:

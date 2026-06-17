@@ -97,12 +97,12 @@ Description:    """
 
 * section[GenomicFinding] ^short = "Finding"
 * section[GenomicFinding].title = "Finding"
-* section[GenomicFinding].code = $loinc#59776-5 "Procedure findings"
+* section[GenomicFinding].code = $loinc#59776-5 "Findings"
 //* section[GenomicFinding].entry only Reference(Variant or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/haplotype or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/genotype or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/sequence-phase-relationship)
 
 * section[GenomicImplication] ^short = "Implication"
 * section[GenomicImplication].title = "Implication"
-* section[GenomicImplication].code = $loinc#59768-2 "Procedure indications"
+* section[GenomicImplication].code = $loinc#59768-2 "Procedure indications Imp"
 //* section[GenomicImplication].entry only Reference(DiagnosticImplication or TherapeuticImplication or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/molecular-consequence)
 
 * section[RecommendedActions] ^short = "Recommended Actions"
