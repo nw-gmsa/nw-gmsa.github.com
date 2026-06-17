@@ -58,8 +58,8 @@ RIE ->> EPR: Send Laboratory Report R01 (LAB-3)
 end
 
 opt Other GMSA Order
-RIE ->> LIMSG: Submit Genomic Order O21 (LAB-1/LAB-4)\nUsing Genomic Order Management Service API
-LIMSG ->> RIE: Send Laboratory Report R01\nUsing Genomic Order Management Service API
+RIE ->> LIMSG: Submit Genomic Order O21 (LAB-1/LAB-4)<br/>Using Genomic Order Management Service API
+LIMSG ->> RIE: Send Laboratory Report R01<br/>Using Genomic Order Management Service API
 RIE ->> EPR: Send Laboratory Report R01 (LAB-3)
 end
 
