@@ -37,7 +37,7 @@ Usage: #definition
 * insert Instance_Empty(Reply7,   Binary,   "Dummy", [[ ]])
 
 * insert Instance_Empty(Request8,   Observation,   "Create Observation - Vital Signs",  [[ ]])
-* insert Instance_Empty(Request9,   Binary,   "Create Disharge Letter", [[ ]])
+* insert Instance_Empty(Request9,   Binary,   "Create Discharge Letter", [[ ]])
 
 * insert Instance_Empty(Reply8,   Binary,   "Dummy",  [[ ]])
 * insert Instance_Empty(Reply9,   Binary,   "Dummy", [[ ]])
