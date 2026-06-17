@@ -5,8 +5,8 @@ Description: "evidenced by genomic diagnostic testing"
 
 * identifier[+].value = "c8f82825-e4cb-4e1f-b728-3fd2808e93db"
 
-* clinicalStatus = #active
-* verificationStatus = #confirmed
+* clinicalStatus = http://terminology.hl7.org/CodeSystem/condition-clinical#active
+* verificationStatus = http://terminology.hl7.org/CodeSystem/condition-ver-status#confirmed
 
 * recordedDate = "2025-10-24T10:37:26+00:00"
 
