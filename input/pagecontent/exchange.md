@@ -23,9 +23,10 @@ ClinicalDocumentArchitecture --> DocumentWorkflow
 DocumentMessaging --> DataSharig
 DataSharig --> ResourceEventNotifications
 ResourceEventNotifications --> ConversationalMessaging
+DocumentWorkflow --> ConversationalMessaging
 
 DocumentSharing --> |expands to| DataSharig
-DocumentEventNotifications --> |expands to| ResourceEventNotifications
+DocumentEventNotifications --> ResourceEventNotifications
 
 classDef green fill:#D5E8D4;
 
