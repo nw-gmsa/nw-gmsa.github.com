@@ -28,15 +28,15 @@ Usage: #example
 * section[+]
   * title = "Results"
   * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Genetics Report</li></ul></div>"
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Genomics Report</li></ul></div>"
   * code = http://loinc.org#30954-2
   * entry[+].reference = "urn:uuid:c64139e7-f02d-409c-bf34-75e8bf23bc80"
   * entry[+].reference = "urn:uuid:94bf65ba-cd6c-4601-b339-6d547f424646"
 
 Instance: FHIRDocumentGeneticReportBundle
 InstanceOf: BundleDocument
-Title:       "Bundle `Document` - Genetic Report"
-Description:  "FHIR Document Genetic Report for Jack Dawkins"
+Title:       "Bundle `Document` - Genomics Report"
+Description:  "FHIR Document Genomics Report for Jack Dawkins"
 Usage: #example
 * insert DocumentBundle("1d7155e8-b5b8-4406-adda-01a474d5ff6c", "2024-10-13T10:33:00+00:00")
 * insert EntryDocument("urn:uuid:30551ce1-5a28-4356-b684-1e639094ad4d", Composition-GenomicsReport-OctaviaCHISLETT)
