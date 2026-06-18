@@ -181,7 +181,7 @@ classDiagram
     }
 ```
 
-The FHIR Document can also be treated as a HTML document, for example, see [Bundle 'document' - Genomic Report](Bundle-FHIRDocumentGeneticReportBundle.html)
+The FHIR Document can also be treated as a HTML document, for example, see [Bundle 'document' - Genomic Report](Bundle-FHIRDocumentGeneticReportBundle.html). Additional (laboratory) examples can be found on [HL7 Europe Laboratory Report](https://build.fhir.org/ig/hl7-eu/laboratory/StructureDefinition-Bundle-eu-lab.html)
 
 <img style="padding:3px;width:50%;" src="GenomicReportCDA.png" alt="Genomic Report FHIR Document rendered as HTML"/>
 <br clear="all">
