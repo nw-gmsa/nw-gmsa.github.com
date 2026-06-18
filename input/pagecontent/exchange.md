@@ -75,7 +75,7 @@ The messages exchange all the data in one interaction, for example, a Laboratory
 
 ```mermaid
 classDiagram
-    class Bundle["Bundle (message) - Document Message" ] {
+    class Bundle["Bundle (message) - Document Message (FHIR Message)" ] {
         MessageHeader 
         DiagnosticReport 
         Patient 
@@ -83,7 +83,17 @@ classDiagram
         Observeration 
         PractitionerRole
     }
+
+      class Bundle2["Bundle (transaction - Document Message (FHIR Transaction)" ] {
+        DiagnosticReport 
+        Patient 
+        Specimen 
+        Observeration 
+        PractitionerRole
+    }
 ```
+
+Note: FHIR Transaction is considered an antipattern for loosely coupled systems in an enterprise environment.
 
 ### Example - Laboratory Testing Workflow
 
@@ -108,7 +118,7 @@ LIMS -->  |LAB-3 Laboratory Report ORU_R01| EPR
 
 ## Document Sharing
 
-Document Messaging main limitation is it is between two parties, often in health care many other practitioners are involved. Messaging can be used to solve this but it begins to have scaling and data concurrency issues. 
+Document Messaging's main limitation is it is between two parties; often in health care many other practitioners are involved. Messaging can be used to solve this, but it begins to have scaling and data concurrency issues. 
 
 ```mermaid
 graph LR;
@@ -169,7 +179,7 @@ Broker --> |Event Notify| Recipient
 
 ```
 
-Only    
+   
 
 ### Example - Multicast Notifcation Service
 
@@ -202,11 +212,10 @@ See also [Health Information Exchange - Resource Exchange](HIE.html#resource-exc
 
 ## Resource Event Notifications 
 
-Prerequisite is [Data Sharing](#data-sharing) 
+Prerequisite is [Data Sharing](#data-sharing). 
 
 ```mermaid
 graph LR;
-
 
 Publisher[Resource Notification Publisher]
 Broker[Resource Notification Broker]
@@ -219,26 +228,26 @@ Broker --> |Event Notify| Recipient
 
 ```
 
-The majority of the data is obtained via Data Sharing, only an event notification is sent to the recipient. For example for Laboratory Reports the payloads can be:
+The majority of the data is obtained via Document Sharing, only an event notification is sent to the recipient. For example for Laboratory Reports the payloads can be:
 
 ```mermaid
 classDiagram
     class Bundle1["Bundle (message) - Pointer Event Message" ] {
-        MessageHeader
+        MessageHeader - points to DocumentReference 
     }
     
     class Bundle2["Bundle (history) - Pointer Event Message via MNS" ] {
-        SubscriptionTopic 
+        SubscriptionTopic - points to DocumentReference
     }
 
     class Bundle3["Bundle (message) - Resource Event Message" ] {
         MessageHeader 
         SubscriptionTopic - optional
-        DiagnosticReport 
+        DocumentReference
     }
 ```
 
-## Event Messaging 
+### Event Messaging 
 
 Placeholder for MNS discussion
 
@@ -276,10 +285,8 @@ Prerequisite is [Data Sharing](#data-sharing) and [Resource Event Notifications]
 ```mermaid
 sequenceDiagram 
 
- 
 
 participant OrderPlacer
-
 participant OrderFiller
 
 note over OrderPlacer,OrderFiller: LAB-1 Laboratory Order
@@ -306,6 +313,18 @@ OrderPlacer -->> OrderFiller: Task Event Notification (Task status = rejected/ca
 end
 end
 
+```
+
+The payload example:
+
+```mermaid
+classDiagram
+
+    class Bundle3["Bundle (message) - Resource Event Message (FHIR Workflow)" ] {
+        MessageHeader 
+        SubscriptionTopic - optional
+        Task 
+    }
 ```
 
 ### Example - NHS England Genomic Order Management System
