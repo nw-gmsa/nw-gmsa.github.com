@@ -4,14 +4,14 @@ graph TD;
 
 
 DocumentMessaging["<b>Document Messaging</b><br/><b>Laboratory Testing Workflow (LTW)</b><br/><br/>e.g. V2 Messaging (ORU_R01, MDM_T02, ORM_O01, OML_O21, etc) and FHIR Messaging/Transactions"]
-DocumentSharing["<b>Document Sharing/<br/>EURIDICE Document Exchange</b><br/><br/>e.g. IHE XDS (SOAP API), IHE MHD and NHSE NRL (FHIR RESTful API) "]
+DocumentSharing["<b>Document Sharing/<br/>EURIDICE Document Exchange</b><br/><br/>e.g. IHE XDS (SOAP API), IHE MHD and NHSE NRL (FHIR RESTful Query API) "]
 
 DocumentEventNotifications[<b>Document Event Notifications</b><br/><br/>e.g. NHSE MNS and IHE DSUBm]
 ClinicalDocumentArchitecture[<b>Clinical Document Architecture</b><br/><br/>e.g. CDA, FHIR Document<br/>EU Laboratory Report<br/>International Patient Summary] 
 DocumentWorkflow[<b>Document Workflow</b><br/><br/>e.g. IHE XDW]
 
-DataSharig["<b>Data/Resource Sharing<br/>EURIDICE Resource Exchange</b><br/><br/> HL7 IPA/IHE QEDm, NHS England Care Connect API (FHIR RESTful API)"]
-ResourceEventNotifications[<b>Resource Event Notifications</b><br/><br/>e.g. FHIR Subscription]
+DataSharig["<b>Data/Resource Sharing<br/>EURIDICE Resource Exchange</b><br/><br/> HL7 IPA/IHE QEDm, NHS England Care Connect API (FHIR RESTful Query API)"]
+ResourceEventNotifications[<b>Resource Event Notifications</b><br/><br/>e.g. FHIR Subscription and NHSE MNS]
 ConversationalMessaging[<b>Conversational Workflow</b><br/><br/>e.g. FHIR Workflow, NHSE Electroinc Prescription Service and Genomic Order Management System]
 
 
@@ -183,6 +183,11 @@ classDiagram
 
 The FHIR Document can also be treated as a HTML document, for example, see [Bundle 'document' - Genomic Report](Bundle-FHIRDocumentGeneticReportBundle.html)
 
+<img style="padding:3px;width:50%;" src="GenomicReportCDA.png" alt="Genomic Report FHIR Document rendered as HTML"/>
+<br clear="all">
+<p class="figureTitle">Genomic Report FHIR Document rendered as HTML</p> 
+<br clear="all">
+
 
 ## Document Event Notifications
 
@@ -203,7 +208,39 @@ Broker --> |Event Notify| Recipient
 
 ```
 
-   
+The majority of the data is obtained via Document Sharing, only an event notification is sent to the recipient. For example for Laboratory Reports the payloads can be:
+
+```mermaid
+classDiagram
+    class Bundle1["Bundle (message) - Pointer Event Message" ] {
+        MessageHeader - points to DocumentReference 
+    }
+    
+    class Bundle2["Bundle (history) - Pointer Event Message via MNS" ] {
+        SubscriptionTopic - points to DocumentReference
+    }
+
+    class Bundle3["Bundle (message) - Resource Event Message" ] {
+        MessageHeader 
+        SubscriptionTopic - optional
+        DocumentReference
+    }
+```
+
+Process Flow
+
+```mermaid
+sequenceDiagram
+
+participant OrderPlacer as Document Notification Publisher
+participant DocumentExchange as Document Exchange
+participant OrderFiller as Document Notification Recipient
+
+OrderPlacer ->> DocumentExchange: Share document via Document Exchange
+note over OrderPlacer,OrderFiller: Document Event Notification
+OrderPlacer ->> OrderFiller: Document Notification
+OrderFiller ->> DocumentExchange: Retrieve Document via Document Exchange
+```
 
 ### Example - Multicast Notifcation Service
 
@@ -212,6 +249,12 @@ See [NHS England Multicast Notification Service API](https://digital.nhs.uk/deve
 ### Example - Document Subscription for Mobile (DSUBm)
 
 See [IHE Document Subscription for Mobile (DSUBm)](https://profiles.ihe.net/ITI/DSUBm/index.html)
+
+## Document Workflow
+
+### Example - IHE Cross-Enterprise Document Workflow Content Profile (XDW)
+
+See [Cross-Enterprise Document Workflow Content Profile (XDW)](https://profiles.ihe.net/ITI/TF/Volume1/ch-30.html)
 
 ## Data Sharing
 
@@ -252,28 +295,26 @@ Broker --> |Event Notify| Recipient
 
 ```
 
-The majority of the data is obtained via Document Sharing, only an event notification is sent to the recipient. For example for Laboratory Reports the payloads can be:
+The majority of the data is obtained via Data Sharing, only an event notification is sent to the recipient. For example for Laboratory Reports the payloads can be:
 
 ```mermaid
 classDiagram
     class Bundle1["Bundle (message) - Pointer Event Message" ] {
-        MessageHeader - points to DocumentReference 
+        MessageHeader - points to Resource e.g. DiagnosticReport 
     }
     
     class Bundle2["Bundle (history) - Pointer Event Message via MNS" ] {
-        SubscriptionTopic - points to DocumentReference
+        SubscriptionTopic - points to Resource e.g. DiagnosticReport
     }
 
     class Bundle3["Bundle (message) - Resource Event Message" ] {
         MessageHeader 
         SubscriptionTopic - optional
-        DocumentReference
+        Resource e.g. DiagnosticReport 
     }
 ```
 
-### Event Messaging 
-
-Placeholder for MNS discussion
+As only the event resource is sent, other resources can be retrieved via Data Sharing.
 
 ```mermaid
 sequenceDiagram
@@ -286,15 +327,15 @@ note over OrderPlacer,OrderFiller: LAB-1 Laboratory Order
 
 OrderPlacer -->> OrderPlacer: Share Laboratory Order via Resource Access Provider
 
-OrderPlacer -->> OrderFiller: Event Notification
+OrderPlacer -->> OrderFiller: Resource Event Notification
 
-OrderFiller -->> OrderPlacer: Retrieve Resources or Document
+OrderFiller -->> OrderPlacer: Retrieve Resources
 
 note over OrderPlacer,OrderFiller: LAB-3 Laboratory Report
 
 OrderFiller -->> OrderFiller: Perform Test and share Laboratory Report via Resource Access Provider
 OrderFiller -->> OrderPlacer: Event Notification
-OrderPlacer -->> OrderFiller: Retrieve Resources or Document
+OrderPlacer -->> OrderFiller: Retrieve Resources
 ```
 
 ## Conversational Messaging (Resource/Data)
@@ -363,8 +404,4 @@ See [AU eRequesting Implementation Guide](https://build.fhir.org/ig/hl7au/au-fhi
 
 See [NHS England Electronic Prescription Service - Dispensing](https://simplifier.net/guide/NHSEngland-EPS/Home/Design/Dispensing?version=current)
 
-## Conversational Messaging (Document)
 
-### Example - IHE Cross-Enterprise Document Workflow Content Profile (XDW)
-
-See [Cross-Enterprise Document Workflow Content Profile (XDW)](https://profiles.ihe.net/ITI/TF/Volume1/ch-30.html)
