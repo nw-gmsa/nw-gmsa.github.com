@@ -58,6 +58,7 @@ Importantly, both Document Messaging and Conversational Messaging are likely to 
 
 This basic patten is the exchange of records via [Document Messaging](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) and is supported by a wide area of [Messaging Patterns](https://www.enterpriseintegrationpatterns.com/patterns/messaging/index.html) 
 In NHS Trusts this is often supported by a Trust Integration Engine.
+This is the default option for HL7 v2 and in FHIR this is known as [FHIR Messaging](https://hl7.org/fhir/R4/messaging.html)
 
 ```mermaid
 graph LR;
@@ -93,7 +94,7 @@ classDiagram
     }
 ```
 
-Note: FHIR Transaction is considered an antipattern for loosely coupled systems in an enterprise environment.
+Note: [FHIR Transaction](https://hl7.org/fhir/R4/http.html#transaction) is considered an antipattern for loosely coupled systems in an enterprise environment.
 
 ### Example - Laboratory Testing Workflow
 
@@ -119,6 +120,7 @@ LIMS -->  |LAB-3 Laboratory Report ORU_R01| EPR
 ## Document Sharing
 
 Document Messaging's main limitation is it is between two parties; often in health care many other practitioners are involved. Messaging can be used to solve this, but it begins to have scaling and data concurrency issues. 
+In FHIR these API's are known as [FHIR RESTful](https://www.hl7.org/fhir/R4/http.html#rest) and [FHIR Search](https://www.hl7.org/fhir/R4/search.html)
 
 ```mermaid
 graph LR;
@@ -162,7 +164,7 @@ This is described in [IHE https://wiki.ihe.net/index.php/Sharing_Laboratory_Repo
 
 ## Clinical Document Architecture (FHIR Document/CDA)
 
-FHIR Document replaces HL7 CDA and unstructed documents such as PDF. The FHIR Document is a FHIR resource that is a container for the document content.
+[FHIR Document](https://hl7.org/fhir/R4/documents.html) replaces HL7 CDA and unstructed documents such as PDF. The FHIR Document is a FHIR resource that is a container for the document content.
 
 For example, for a Lab Report the content may contain:
 
@@ -260,7 +262,8 @@ See [Cross-Enterprise Document Workflow Content Profile (XDW)](https://profiles.
 
 Can be considered an extension of Document Sharing where the data contained in the documents is queryable. This data is known as Resources and is related to Segments used in HL7 v2 Messaging.
 
-This is the most common use of HL7 FHIR.
+This is the most common use of HL7 FHIR. In FHIR these API's are known as [FHIR RESTful](https://www.hl7.org/fhir/R4/http.html#rest) and [FHIR Search](https://www.hl7.org/fhir/R4/search.html)
+
 
 ```mermaid
 graph LR
@@ -345,7 +348,7 @@ For a FHIR implementation see [FHIR Worfklow](https://hl7.org/fhir/R4/workflow.h
 
 This is a replacement for [Document Messaging](#document-messaging) (i.e. HL7 v2, FHIR Messaging and FHIR Transaction)
 
-Prerequisite is [Data Sharing](#data-sharing) and [Resource Event Notifications](#resource-event-notifications-), [polling](https://www.enterpriseintegrationpatterns.com/patterns/messaging/PollingConsumer.html) can be used as an interim measure if event notification infrastructure is not available.
+Prerequisite is [Data Sharing](#data-sharing) and [Resource Event Notifications](#resource-event-notifications), [polling](https://www.enterpriseintegrationpatterns.com/patterns/messaging/PollingConsumer.html) can be used as an interim measure if event notification infrastructure is not available.
 
 ```mermaid
 sequenceDiagram 
