@@ -12,8 +12,7 @@ DocumentWorkflow[<b>Document Workflow</b><br/><br/>e.g. IHE XDW]
 
 DataSharig["<b>Data/Resource Sharing<br/>EURIDICE Resource Exchange</b><br/><br/> HL7 IPA/IHE QEDm, NHS England Care Connect API (FHIR RESTful Query API)"]
 ResourceEventNotifications[<b>Resource Event Notifications</b><br/><br/>e.g. FHIR Subscription and NHSE MNS]
-ConversationalMessaging[<b>Conversational Workflow</b><br/><br/>e.g. FHIR Workflow, NHSE Electroinc Prescription Service and Genomic Order Management System]
-
+ConversationalMessaging[<b>Conversational Workflow</b><br/><b>Cross Organisation Task based Workflow</b><br/><br/>e.g. FHIR Workflow, NHSE Electroinc Prescription Service and Genomic Order Management System]
 
 DocumentMessaging --> DocumentSharing
 DocumentSharing --> DocumentEventNotifications
