@@ -211,8 +211,6 @@ Placeholder for MNS discussion
 ```mermaid
 sequenceDiagram
 
-
-
 participant OrderPlacer
 
 participant OrderFiller
@@ -230,7 +228,7 @@ note over OrderPlacer,OrderFiller: LAB-3 Laboratory Report
 OrderFiller -->> OrderFiller: Perform Test and share Laboratory Report via Resource Access Provider
 OrderFiller -->> OrderPlacer: Event Notification
 OrderPlacer -->> OrderFiller: Retrieve Resources or Document
-``
+```
 
 ## Conversational Messaging (Resource/Data)
 
