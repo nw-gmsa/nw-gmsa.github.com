@@ -69,7 +69,20 @@ graph LR;
 
 s --> |v2 Message<br/>FHIR Message<br/>FHIR Transaction| d 
 
+```
 
+The messages exchange all the data in one interaction, for example, a Laboratory Report could consist of 
+
+```mermaid
+classDiagram
+    class Bundle["Bundle (message) - Document Message" ] {
+        MessageHeader 
+        DiagnosticReport 
+        Patient 
+        Specimen 
+        Observeration 
+        PractitionerRole
+    }
 ```
 
 ### Example - Laboratory Testing Workflow
@@ -156,6 +169,8 @@ Broker --> |Event Notify| Recipient
 
 ```
 
+Only    
+
 ### Example - Multicast Notifcation Service
 
 See [NHS England Multicast Notification Service API](https://digital.nhs.uk/developer/api-catalogue/multicast-notification-service)
@@ -202,6 +217,25 @@ Publisher --> |Event Publish| Broker
 Subscriber --> |Event Subscription| Broker
 Broker --> |Event Notify| Recipient
 
+```
+
+The majority of the data is obtained via Data Sharing, only an event notification is sent to the recipient. For example for Laboratory Reports the payloads can be:
+
+```mermaid
+classDiagram
+    class Bundle1["Bundle (message) - Pointer Event Message" ] {
+        MessageHeader
+    }
+    
+    class Bundle2["Bundle (history) - Pointer Event Message via MNS" ] {
+        SubscriptionTopic 
+    }
+
+    class Bundle3["Bundle (message) - Resource Event Message" ] {
+        MessageHeader 
+        SubscriptionTopic - optional
+        DiagnosticReport 
+    }
 ```
 
 ## Event Messaging 
