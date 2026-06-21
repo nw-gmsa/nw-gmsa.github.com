@@ -23,7 +23,7 @@ Description: "Based on HL7 LRI Example 3 (Ref 5.9.1.3)"
 * subject = Reference(Patient-Liverpool)
 * subject.display = "Ned LIVERPOOL"
 
-* component[0].code = $loinc#51967-8 "Gene dis assessed"
+* component[0].code = $loinc#51967-8 "Genetic disease assessed [ID]"
 * component[=].valueCodeableConcept = $GCC#R210 "Inherited MMR deficiency (Lynch syndrome)"
 
 

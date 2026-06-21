@@ -40,7 +40,7 @@ Description: "TODO"
 * owner.display = "NORTH WEST GLH"
 
 * output[+]
-  * type = http://hl7.org/fhir/task-inputoutput-parameter-type#reference-results
+  * type = TaskInputOutputParameterType#reference-results
   * valueReference.reference = "DiagnosticReport/DiagnosticReportGenomicsReport"
   * valueReference.identifier.system = "http://www.acme.org/diagnosticreport/identifiers"
   * valueReference.identifier.value = "25edee2b-add8-4522-9fa2-1ee8f229bd75"
