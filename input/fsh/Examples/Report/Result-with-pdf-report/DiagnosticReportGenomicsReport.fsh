@@ -8,7 +8,7 @@ Description: "First draft is based on Royal College of Radiologists HL7 v2 ORU c
 //* extension[supporting-info].valueReference.reference = "urn:uuid:94bf65ba-cd6c-4601-b339-6d547f424646"
 //* extension[supporting-info].valueReference.type = #DocumentReference
 
-//* extension[DiagnosticReportCompositionR5].valueReference.reference = "http://madeup.example.com/Composition/123"
+* extension[DiagnosticReportCompositionR5].valueReference.reference = Canonical(Composition-GenomicsReport-OctaviaCHISLETT)
 
 * identifier[ReportIdentifier]
   * value = "25edee2b-add8-4522-9fa2-1ee8f229bd75"
@@ -29,6 +29,7 @@ Description: "First draft is based on Royal College of Radiologists HL7 v2 ORU c
 * category[Genetics] = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
 
 * code.coding[GenomicTestDirectory] = $GTD#R240.1
+* code.coding[+] = $sct#1054161000000101 "Genetic report"
 
 * subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
 * subject.display = "Octavia CHISLETT"
