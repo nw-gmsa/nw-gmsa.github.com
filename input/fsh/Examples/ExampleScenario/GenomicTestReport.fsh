@@ -18,7 +18,7 @@ Usage: #definition
 * insert ActorEntity(hie, "ICS - Health Information Exchange",   [[  [Intermediary](ActorDefinition-Intermediary.html) found in LHCRE/ICS ]])
 * insert ActorEntity(cdr, "Regional - Genomic Data Platform",   [[ Clinical Data Repository ]])
 
-* insert Instance_Empty(Request1,   Binary,   "HL7 v2 ORU_R01 - supplier",  [[ [iGene HL7 v2 ORU_R01](hl7v2.html#original-igene-message) ]])
+* insert Instance_Empty(Request1,   Binary,   "HL7 v2 ORU_R01 - supplier",  [[ [iGene HL7 v2 ORU_R01](hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message-1) ]])
 * insert Instance_Empty(Request2,   Binary,   "HL7 v2 ORU_R01 - regional",  [[ [Regional HL7 v2 ORU_R01](hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message-1) ]])
 //* insert Instance_Empty(Request3,   Binary,   "HL7 v2 ORU_R01 - supplier",  [[ ]])
 * insert Instance_Empty(Request7,   Binary,   "HL7 v2 ORU_R01 - supplier",  [[ ]])

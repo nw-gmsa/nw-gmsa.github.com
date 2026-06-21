@@ -6,10 +6,6 @@ Description: """
 """
 * ^experimental  = false
 
-* $GTD#M119.1
-* $GTD#M119.2
-* $GTD#M119.4
-* $GTD#M119.5
 * $GTD#M120.1
 * $GTD#M120.2
 * $GTD#M120.3

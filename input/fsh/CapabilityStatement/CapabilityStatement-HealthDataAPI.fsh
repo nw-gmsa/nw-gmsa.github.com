@@ -12,7 +12,7 @@ The `OpenAPISwagger Definition file` below, can be viewed using [Swagger Editor]
 * status = #draft
 * experimental = false
 * date = "2026-03-08"
-* kind = #capability
+* kind = #requirements
 * fhirVersion = #4.0.1
 * format[+] = #application/fhir+xml
 * format[+] = #application/fhir+json

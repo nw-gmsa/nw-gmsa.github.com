@@ -4,4 +4,5 @@ Title: "NW IdentifierType"
 Description: """IdentifierType work around to bypass lack of NH in based definition
 """
 * ^experimental  = false
-* include codes from system http://terminology.hl7.org/CodeSystem/v2-0203
+* include codes from system http://terminology.hl7.org/CodeSystem/v2-0203|5.0.0
+* include codes from valueset http://hl7.org/fhir/ValueSet/organization-type
