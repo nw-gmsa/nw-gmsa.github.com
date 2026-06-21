@@ -6,9 +6,9 @@ Description: """
 """
 * ^experimental  = false
 
-* $bcp13#application/pdf "PDF"
-* $bcp13#application/dicom "DICOM"
-* $bcp13#application/fhir+json "FHIR (JSON)"
-* $bcp13#application/fhir+xml "FHIR (XML)"
-* $bcp13#image/jpeg "JPEG Image"
-* $bcp13#image/png "PNG Portable Network Graphics"
+* $bcp13#application/pdf
+* $bcp13#application/dicom
+* $bcp13#application/fhir+json
+* $bcp13#application/fhir+xml
+* $bcp13#image/jpeg
+* $bcp13#image/png

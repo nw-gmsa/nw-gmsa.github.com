@@ -288,11 +288,11 @@ Usage:  #definition
     * text = "Test Code (Haemoglobinopathy)"
     * required = true
     * repeats = true
-    * answerOption[+].valueCoding = $GTD#R361.1 "Sickle cell, thalassaemia and other haemoglobinopathies trait or carrier testing"
-    * answerOption[+].valueCoding = $GTD#R361.2 "Sickle cell, thalassaemia and other haemoglobinopathies trait or carrier testing"
-    * answerOption[+].valueCoding = $GTD#R372.1 "Newborn screening for sickle cell disease in a transfused baby"
-    * answerOption[+].valueCoding = $GTD#R93.1 "Sickle cell, thalassaemia and other haemoglobinopathies"
-    * answerOption[+].valueCoding = $GTD#R93.2 "Sickle cell, thalassaemia and other haemoglobinopathies"
+    * answerOption[+].valueCoding = $GTD#R361.1
+    * answerOption[+].valueCoding = $GTD#R361.2
+    * answerOption[+].valueCoding = $GTD#R372.1
+    * answerOption[+].valueCoding = $GTD#R93.1
+    * answerOption[+].valueCoding = $GTD#R93.2
 
   * item[+]
     * type = #choice
