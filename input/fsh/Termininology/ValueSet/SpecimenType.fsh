@@ -7,25 +7,25 @@ Local codes are provided for backward compatability, SNOMED codes are preferred.
 """
 
 * ^experimental  = false
-* $sct#119297000 "Blood specimen"
-* $sct#119373006 "Amniotic fluid specimen"
-* $sct#309201001 "Ascitic fluid specimen"
-* $sct#258580003 "Whole blood specimen"
-* $sct#122552005 "Arterial blood specimen"
-* $sct#122556008 "Cord blood specimen"
-* $sct#737357006 "Fetal blood specimen"
-* $sct#122555007 "Venous blood specimen"
-* $sct#440500007 "Dried blood spot specimen"
-* $sct#119359002 "Bone marrow specimen"
-* $sct#733104004 "Swab from buccal mucosa"
+* $sct#119297000
+* $sct#119373006
+* $sct#309201001
+* $sct#258580003
+* $sct#122552005
+* $sct#122556008
+* $sct#737357006
+* $sct#122555007
+* $sct#440500007
+* $sct#119359002
+* $sct#733104004
 
-* $sct#258450006 "Cerebrospinal fluid specimen"
-* $sct#258565009 "Chorionic villi specimen"
+* $sct#258450006
+* $sct#258565009
 // 30Apr25 * $NOS#ctDNA "ctDNA"
-* $sct#702451000 "Cultured cells substance"
-* $sct#309147000 "Thyroid cyst fluid specimen"
-* $sct#258566005 "Deoxyribonucleic acid specimen"
-* $sct#441652008 "Formalin-fixed paraffin-embedded tissue specimen"
+* $sct#702451000
+* $sct#309147000
+* $sct#258566005
+* $sct#441652008
 
 * $sct#3040001000004100	 "Paraffin embedded tissue block specimen"
 
