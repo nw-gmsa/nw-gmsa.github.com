@@ -7,6 +7,3 @@
 <br clear="all">
 
 
-## Communication Model
-
-[Placer Order Management [LAB-1]](LAB-1.html)

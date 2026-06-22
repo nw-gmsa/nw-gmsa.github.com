@@ -57,7 +57,7 @@ Treat as mandatory for reflex or subcontracted orders.
 | Report date              |         |                                                                                    | 1..1        | [OBR](hl7v2.html#obr)-7                  | [DiagnosticReport](StructureDefinition-DiagnosticReport.html).effectiveDateTime        |                                                           |
 | Results Interpreter      |         | [England Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html) | 0..*        | [OBR](hl7v2.html#obr)-32 and OBR-33      | [DiagnosticReport](StructureDefinition-DiagnosticReport.html).resultsInterpreter       | [Practitioner](StructureDefinition-Practitioner.html)     |                                                                                            
 | Performer (operator)     |         | [England Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html) | 1..*        | [OBR](hl7v2.html#obr)-34                 | [DiagnosticReport](StructureDefinition-DiagnosticReport.html).performer[operator]      | [Practitioner](StructureDefinition-Practitioner.html)     |
-| Performer (organisation) |         | [Organisation Code](StructureDefinition-OrganisationCode.html)                     | 1..*        |                                          | [DiagnosticReport](StructureDefinition-DiagnosticReport.html).performer[organization]  | [Organizaton](StructureDefinition-Organizaton.html)       |
+| Performer (organisation) |         | [Organisation Code](StructureDefinition-OrganisationCode.html)                     | 1..*        |                                          | [DiagnosticReport](StructureDefinition-DiagnosticReport.html).performer[organization]  | [Organizaton](StructureDefinition-Organization.html)       |
 | Specimen                 | 80398-1 | See [Genomic Test Order - Specimen](Questionnaire-GenomicTestOrder.html#specimen)  | 0..1        | [SPM](hl7v2.html#spm)                    | [DiagnosticReport](StructureDefinition-DiagnosticReport.html).specimen.identifier                 | [Specimen](StructureDefinition-Specimen.html)             |
 | Results                  |         | Domain specific - see below                                                        | 0..*        | [OBX](hl7v2.html#obx)                    | [DiagnosticReport](StructureDefinition-DiagnosticReport.html).results                  | Varies                                                    |   
 | Narrative Report         |         | Domain specific - see below                                                        | 0..*        | [OBX (type=ED)](hl7v2.html#obx-type--ed) | [DiagnosticReport](StructureDefinition-DiagnosticReport.html).presentedForm            |                                                           |
@@ -73,7 +73,7 @@ Treat as mandatory for reflex or subcontracted orders.
 <div class="alert alert-info" role="alert">
 <b>HL7 FHIR Genomic Reporting:</b> <a href="https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-genomic-report.html" _target="_blank">Genomic Report</a> 
 <br/>
-<b>Localised (NW Genomics) version:</b> <a href="StructureDefinition-DiagnosticReport" _target="_blank">DiagnosticReport</a> 
+<b>Localised (NW Genomics) version:</b> <a href="StructureDefinition-DiagnosticReport.html" _target="_blank">DiagnosticReport</a> 
 </div>
 
 ### Results Mapping

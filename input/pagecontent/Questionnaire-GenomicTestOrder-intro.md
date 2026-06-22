@@ -65,8 +65,8 @@ Treat as mandatory for reflex or subcontracted orders.
 
 | Name                                                  | LOINC   | Value Set / Data Type                                                                       | Cardinality | HL7 v2 OML_O21 Message            | HL7 FHIR ServiceRequest                                               | HL7 FHIR Resource (Message + RESTful)                                                                                       |
 |-------------------------------------------------------|---------|---------------------------------------------------------------------------------------------|-------------|-----------------------------------|-----------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
-| (Order) Procedure Code - Genomic Test Code                        |         | [Genomic Test Directory](ValueSet-genomic-test-directory.html)                              | 1..1        | [OBR](hl7v2.html#obr)-4           | [ServiceRequest](StructureDefinition-ServiceRequest.html).code                                                                  |                                                                                                                             |
-| Suspected Condition - Clinical Indication / CITT code |         | [Genomic Condition Codes](ValueSet-genomic-condition-codes.html)                            | *..*        | [DG1](hl7v2.html#dg1)-3           | [ServiceRequest](StructureDefinition-ServiceRequest.html).reasonCode                                                            |                                                                                                                             |
+| (Order) Procedure Code - Genomic Test Code                        |         | [Genomic Test Directory](ValueSet-GenomicTestCodes.html)                              | 1..1        | [OBR](hl7v2.html#obr)-4           | [ServiceRequest](StructureDefinition-ServiceRequest.html).code                                                                  |                                                                                                                             |
+| Suspected Condition - Clinical Indication / CITT code |         | [Genomic Condition Codes](ValueSet-GenomicClinicalIndicationCodes.html)                            | *..*        | [DG1](hl7v2.html#dg1)-3           | [ServiceRequest](StructureDefinition-ServiceRequest.html).reasonCode                                                            |                                                                                                                             |
 {:.grid}
 
 ## Specimen
@@ -89,8 +89,6 @@ Note: it is likely that source systems will use ORM_01 and not include specimen 
 ## Order Entry Questions
 
 <span class="badge badge-primary">Diagnostic Genomics</span>
-
-See also [Domain Archetype and Panels](DDD-Overview.html#domain-archetype-and-panels) for technical notes on how form questions are converted into HL7 v2/FHIR.
 
 | Name                                                                   | Code System            | Answer ValueSet                      | Cardinality | HL7 v2 OML_O21 Message | OBX-2 Value Type | HL7 FHIR Resource (Message + RESTful)                                    |
 |------------------------------------------------------------------------|------------------------|--------------------------------------|-------------|------------------------|------------------|--------------------------------------------------------------------------|

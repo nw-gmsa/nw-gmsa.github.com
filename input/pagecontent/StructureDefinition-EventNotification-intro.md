@@ -44,9 +44,9 @@ Reference:
 
 #### Specimen
 
-| MNS Event Type | Description | HL7/IHE Event Trigger                                         | Description |
-|----------------|-------------|---------------------------------------------------------------|-------------|
-|                |             | Events are defined in [IHE Specimen Event Tracking](SET.html) |             |
+| MNS Event Type | Description | HL7/IHE Event Trigger                                        | Description |
+|----------------|-------------|--------------------------------------------------------------|-------------|
+|                |             | Events are defined in IHE Specimen Event Tracking |             |
 {:.grid }
 
 #### Task

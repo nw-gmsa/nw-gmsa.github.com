@@ -109,4 +109,4 @@ Specimen-related information may be limited in both laboratory orders and report
 To address these gaps, the following approaches can be used:
 
 - [IHE Pathology and Laboratory Medicine (PaLM) Volume 2 - LAB-4](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol2a.pdf) from the LIMS, which can be issued whenever specimen details are updated.
-- use [IHE Specimen Event Tracking (SET)](SET.html), which allows the laboratory facility to send specimen-related event messages to the central automation management system and from the specimen collection facility—typically an Electronic Patient Record (EPR) system.
+- use IHE Specimen Event Tracking (SET), which allows the laboratory facility to send specimen-related event messages to the central automation management system and from the specimen collection facility—typically an Electronic Patient Record (EPR) system.

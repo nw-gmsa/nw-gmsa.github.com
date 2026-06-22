@@ -27,7 +27,7 @@ The `OpenAPISwagger Definition file` below, can be viewed using [Swagger Editor]
   * documentation = """
   ## Process Message
 
-  See [Submit Test Order Form (Send HL7 FHIR Message Laboratory Order)](LAB-1.html#submit-test-order-form-send-hl7-fhir-message-laboratory-order)
+  See [Submit Test Order Form (Send HL7 FHIR Message Laboratory Order)](MQ.html#send-message)
 
   ```
   POST [base]/$process-message
@@ -35,7 +35,7 @@ The `OpenAPISwagger Definition file` below, can be viewed using [Swagger Editor]
 
   ## Search (Poll for Messages)
 
-  See [Asynchronous Message Delivery](LAB-1.html#asynchronous-message-response)
+  See [Asynchronous Message Delivery](MQ.html#search---checking-an-inbox-fhir)
 
   ```
   GET [base]/Bundle?message.receiver:identifier=[odsCode]&_lastUpdated=[date]

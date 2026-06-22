@@ -160,7 +160,7 @@ See [NHS England National Record Locator](https://digital.nhs.uk/services/nation
 
 Electronic Document Management (EDM) is a common practice for storing and sharing documents across healthcare systems and common formats for the documents are often PDF. In diagnostics this is not desirable and so instead a document format called [Clinical Document Architecture (CDA)](https://en.wikipedia.org/wiki/Clinical_Document_Architecture), in HL7 FHIR this is known as [FHIR Document](https://hl7.org/fhir/R4/documents.html)
 
-This is described in [IHE https://wiki.ihe.net/index.php/Sharing_Laboratory_Reports](https://wiki.ihe.net/index.php/Sharing_Laboratory_Reports [HL7 Europe Laboratory Report](https://build.fhir.org/ig/hl7-eu/laboratory/), [NHS England Pathology](https://simplifier.net/guide/pathology-fhir-implementation-guide/Home/Design/How-to-Construct-Bundles?version=0.4.0) is a based on this but it using [Document Messaging](#document-messaging---generation-1), the EU is likely to use [Document Sharing](#document-sharing---generation-2).
+This is described in [IHE https://wiki.ihe.net/index.php/Sharing_Laboratory_Reports](https://wiki.ihe.net/index.php/Sharing_Laboratory_Reports [HL7 Europe Laboratory Report](https://build.fhir.org/ig/hl7-eu/laboratory/), [NHS England Pathology](https://simplifier.net/guide/pathology-fhir-implementation-guide/Home/Design/How-to-Construct-Bundles?version=0.4.0) is a based on this but it using [Document Messaging](#document-messaging), the EU is likely to use [Document Sharing](#document-sharing).
 
 ## Clinical Document Architecture (FHIR Document/CDA)
 
