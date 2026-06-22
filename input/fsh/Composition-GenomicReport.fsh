@@ -63,19 +63,18 @@ Description:    """
 //* section ^definition = "The root of the sections that make up the report."
 //* section.text 1.. MS
 * section contains
-    InformationRecipient 0..* MS
-    and Order 0..* MS
+    Order 0..* MS
     and Specimen 0..* MS
     and Narrative 0..* MS
     and GenomicFinding  0..* MS
     and GenomicImplication 0..* MS
     and RecommendedActions 0..* MS
 
-* section[InformationRecipient] ^short = "Information Recipient"
-* section[InformationRecipient].title = "Information Recipient"
+//* section[InformationRecipient] ^short = "Information Recipient"
+//* section[InformationRecipient].title = "Information Recipient"
 //* section[InformationRecipient].code = $loinc#59772-4 	"Planned procedure Narrative"
-* section[InformationRecipient].entry ^short = "Order"
-* section[InformationRecipient].entry only Reference(Organization)
+//* section[InformationRecipient].entry ^short = "Order"
+//* section[InformationRecipient].entry only Reference(Organization)
 
 * section[Order] ^short = "Laboratory Order"
 * section[Order].title = "Laboratory Order"

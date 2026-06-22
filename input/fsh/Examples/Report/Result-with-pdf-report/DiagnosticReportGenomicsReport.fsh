@@ -29,7 +29,7 @@ Description: "First draft is based on Royal College of Radiologists HL7 v2 ORU c
 * status = #final
 * category[Genetics] = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
 
-* code.coding[GenomicTestDirectory] = $GTD#R240.1
+* code.coding[+] = $GTD#R240.1
 * code.coding[+] = $sct#1054161000000101 "Genetic report"
 
 * subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
@@ -53,12 +53,12 @@ Description: "First draft is based on Royal College of Radiologists HL7 v2 ORU c
   * type = #Organization
   * display = "NW GLH"
 
-* performer[+]
-  * type = "Practitioner"
-  * identifier.system = "https://fhir.hl7.org.uk/Id/gmc-number"
-  * identifier.value = "C1234567"
-  * display = "FICTITIOUS, Ralph"
-  * extension[performerFunction].valueCodeableConcept.coding = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#SPRF
+//* performer[+]
+//  * type = "Practitioner"
+//  * identifier.system = "https://fhir.hl7.org.uk/Id/gmc-number"
+//  * identifier.value = "C1234567"
+//  * display = "FICTITIOUS, Ralph"
+//  * extension[performerFunction].valueCodeableConcept.coding = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#SPRF
 
 * resultsInterpreter[author]
   * type = "Practitioner"

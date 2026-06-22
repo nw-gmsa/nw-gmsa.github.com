@@ -116,16 +116,16 @@ Description:    """
 //* performer ^slicing.description = "Slice based on the type"
 //* performer ^slicing.ordered = false
 
-* performer contains operator 0..*
+//* performer contains operator 0..*
 
 * performer[organization].identifier only OrganisationCode
 * performer[organization] only Reference(Organization)
 //* performer[organization].type = #Organization
 
-* performer[operator].identifier only PractitionerIdentifier
-* performer[operator] only Reference(Practitioner)
-* performer[operator].extension[performerFunction].valueCodeableConcept.coding = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#SPRF
-* performer[operator].type = #Practitioner
+//* performer[operator].identifier only PractitionerIdentifier
+//* performer[operator] only Reference(Practitioner)
+//* performer[operator].extension[performerFunction].valueCodeableConcept.coding = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#SPRF
+//* performer[operator].type = #Practitioner
 
 * resultsInterpreter.identifier 0..1
 * resultsInterpreter.identifier.system 1..1
@@ -142,7 +142,7 @@ Description:    """
 //  primaryReporter 0..*
 
 * resultsInterpreter[author].identifier only PractitionerIdentifier
-* resultsInterpreter[author] only Reference(PractitionerRole)
+* resultsInterpreter[author] only Reference(PractitionerRole    )
 //* resultsInterpreter[author].type = #Practitioner
 
 * specimen 0..* MS
