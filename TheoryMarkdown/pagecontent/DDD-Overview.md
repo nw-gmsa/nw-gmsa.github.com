@@ -43,7 +43,7 @@ In practice this means, the following FHIR resources will have the following ide
 - ServiceRequest
   - [(Placer) Order Identifier](StructureDefinition-OrderIdentifier.html)
   - Filler Order Number
-  - [Placer Group Number](StructureDefinition-PlacerGroupNumber.html)
+  - [Placer Group Number](StructureDefinition-OrderGroupNumber.html)
   - [Accession Number](StructureDefinition-SpecimenAccessionNumber.html)
  
 - Specimen

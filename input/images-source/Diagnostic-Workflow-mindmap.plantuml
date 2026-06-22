@@ -7,7 +7,7 @@
 ** [[Questionnaire-GenomicTestReport.html Laboratory Test Report (ORU_R01)\nGenomic Test Report]]
 *** [[StructureDefinition-DiagnosticReport.html Diagnostic Report (OBR)]]
 ** Sample Management\nSpecimen Event Tracking
-*** [[StructureDefinition-Specimen Specimen (SPM)]]
+*** [[StructureDefinition-Specimen.html Specimen (SPM)]]
 ** [[StructureDefinition-Task.html Task (Future)]]
 * Patient Administration
 ** [[StructureDefinition-Patient.html Patient (PID)]]

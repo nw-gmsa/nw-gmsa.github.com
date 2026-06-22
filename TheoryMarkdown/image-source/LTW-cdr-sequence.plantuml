@@ -24,19 +24,19 @@ LIMS -> LIMS: Perform Test
 
 opt preliminary/paritial reports
 LIMS -> LIMS: Create preliminary/partial report
-LIMS -> TIE: [[LAB-3.html Order Results Management (LAB-3)]] [[StructureDefinition-Composition-GenomicReport.html Genomic Report R01]] Document Message
-TIE -> CDR: [[LAB-3.html Order Results Management (LAB-3)]] [[StructureDefinition-Composition-GenomicReport.html Genomic Report R01]] Document Message
+LIMS -> TIE: [[MQ.html Order Results Management (LAB-3)]] [[StructureDefinition-Composition-GenomicReport.html Genomic Report R01]] Document Message
+TIE -> CDR: [[MQ.html Order Results Management (LAB-3)]] [[StructureDefinition-Composition-GenomicReport.html Genomic Report R01]] Document Message
 TIE -> CDR: [[StructureDefinition-Task.html FHIR Task]] (in-progress) Event Message
-TIE -> EPR: [[LAB-3.html Order Results Management (LAB-3)]] [[StructureDefinition-Composition-GenomicReport.html Genomic Report R01]] Document Message
+TIE -> EPR: [[MQ.html Order Results Management (LAB-3)]] [[StructureDefinition-Composition-GenomicReport.html Genomic Report R01]] Document Message
 
 end
 
 LIMS -> LIMS: Create final report
-LIMS -> TIE: [[LAB-3.html Order Results Management (LAB-3)]] [[StructureDefinition-Composition-GenomicReport.html Genomic Report R01]] Document Message
-TIE -> CDR: [[LAB-3.html Order Results Management (LAB-3)]] [[StructureDefinition-Composition-GenomicReport.html Genomic Report R01]] Document Message
+LIMS -> TIE: [[MQ.html Order Results Management (LAB-3)]] [[StructureDefinition-Composition-GenomicReport.html Genomic Report R01]] Document Message
+TIE -> CDR: [[MQ.html Order Results Management (LAB-3)]] [[StructureDefinition-Composition-GenomicReport.html Genomic Report R01]] Document Message
 TIE -> CDR: [[StructureDefinition-Task.html FHIR Task]] (completed) Event Message
 
-TIE -> EPR: [[LAB-3.html Order Results Management (LAB-3)]] [[StructureDefinition-Composition-GenomicReport.html Genomic Report R01]] Document Message
+TIE -> EPR: [[MQ.html Order Results Management (LAB-3)]] [[StructureDefinition-Composition-GenomicReport.html Genomic Report R01]] Document Message
 else rejected
 TIE -> EPR: General laboratory order response message O22
 TIE -> CDR: [[StructureDefinition-Task.html FHIR Task]] (rejected) Event Message
