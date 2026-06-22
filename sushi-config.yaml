@@ -192,9 +192,9 @@ resources:
   NamingSystem/gmpnumber-namingsystem:
     name: GMP Number
     exampleBoolean: false
-  OperationOutcome/operation-outcome-validate:
-    name: Output from a FHIR Validation
-    exampleBoolean: true
+#  OperationOutcome/operation-outcome-validate:
+#    name: Output from a FHIR Validation
+#    exampleBoolean: true
   DocumentReference/Y05868-d783361d-83fa-438f-977c-601f30ef5ceb:
     name: NRL Genomic Report for Tommen BIRMINGHAM (Test NHS Number 9737383249). Original order not electronic
     description: Proof of concept example. Type, category, custodian and author are currently incorrect values
