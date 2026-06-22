@@ -25,6 +25,12 @@ Usage: #example
 * subject.identifier.value = "9449305552"
 * subject.display = "Octavia CHISLETT"
 
+* encounter.identifier
+  * value = "1001166717"
+  * system = "http://www.acme.org/encounter/identifiers/R0A"
+  * assigner.identifier.system = $ods-code
+  * assigner.identifier.value = "R0A"
+
 * section[+]
   * title = "Results"
   * text.status = #generated

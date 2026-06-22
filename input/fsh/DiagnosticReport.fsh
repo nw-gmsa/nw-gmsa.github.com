@@ -97,10 +97,14 @@ Description:    """
 * code.coding ^slicing.description = "Slice based on the system"
 * code.coding ^slicing.ordered = false
 * code.coding contains
-   GenomicTestDirectory 1..1 MS
+   GenomicTestDirectory 1..1 MS and UKCoreReportCode 1..1 MS
 
 * code.coding[GenomicTestDirectory] ^short = "Genomic Test Directory"
 * code.coding[GenomicTestDirectory].system = $GTD
+
+* code.coding[UKCoreReportCode] ^short = "UKCore Report Codes"
+* code.coding[UKCoreReportCode].system = $sct
+* code.coding[UKCoreReportCode] from https://fhir.hl7.org.uk/ValueSet/UKCore-ReportCode (required)
 
 * performer.identifier 1..1
 * performer.identifier.system 1..1
