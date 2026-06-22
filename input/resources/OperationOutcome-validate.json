@@ -1,0 +1,19 @@
+{
+  "resourceType" : "OperationOutcome",
+  "id" : "operation-outcome-validate",
+  "meta": {
+    "profile": [
+      "https://fhir.nwgenomics.nhs.uk/StructureDefinition/OperationOutcome"
+    ]
+  },
+
+  "issue" : [{
+    "severity" : "error",
+    "code" : "structure",
+    "details" : {
+      "text" : "ServiceRequest.identifier: minimum required = 1, but only found 0 (from https://fhir.nwgenomics.nhs.uk/StructureDefinition/ServiceRequest|0.0.6)"
+    },
+    "expression" : ["Bundle.entry[8].resource"]
+  }
+    ]
+}
