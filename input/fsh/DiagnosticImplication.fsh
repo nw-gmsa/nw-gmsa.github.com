@@ -6,9 +6,9 @@ Description:    """
 `Diagnostic - Genomics Reporting Implication`
 """
 
-* ^keyword[+] = #archetype "Domain Analysis Model"
-* ^keyword[+] = #genomics "Genomics"
-* ^keyword[+] = #diagnostics "Diagnostics"
+//* ^keyword[+] = #archetype "Domain Analysis Model"
+//* ^keyword[+] = #genomics "Genomics"
+//* ^keyword[+] = #diagnostics "Diagnostics"
 
 //https://github.com/HL7/genomics-reporting/blob/master/input/fsh/CGImplications.fsh
 

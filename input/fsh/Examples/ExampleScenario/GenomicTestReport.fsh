@@ -8,7 +8,7 @@ This is for background information for genomic test reporting.
 Usage: #definition
 
 * status = #draft
-* name = "Genomic Test Report"
+* name = "GenomicTestReport"
 
 * insert ActorEntity(filler, "Order Filler",         [[ [Order Filler](ActorDefinition-OrderFiller.html) ]])
 * insert ActorEntity(rie, "Regional Orchestration Engine",   [[ [Intermediary](ActorDefinition-Intermediary.html) ]])

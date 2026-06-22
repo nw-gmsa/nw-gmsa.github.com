@@ -9,8 +9,8 @@ Description:    """
 - `Visit Number` [Visit](StructureDefinition-Visit.html) - an A&E attendance, a community contract, an OP attendance (Appointment), etc
 """
 
-* ^keyword[+] = #core "Base"
-* ^keyword[+] = #pam "Patient Administration"
+//* ^keyword[+] = #core "Base"
+//* ^keyword[+] = #pam "Patient Administration"
 
 
 * identifier 1..* MS

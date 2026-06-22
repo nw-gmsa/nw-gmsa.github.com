@@ -11,7 +11,7 @@ This is related to [RADIOLOGICAL ACCESSION NUMBER](https://www.datadictionary.nh
 * ^purpose = """
 """
 
-* ^keyword[+] = #NHSDataDictionary "NHS Data Dictionary"
+//* ^keyword[+] = #NHSDataDictionary "NHS Data Dictionary"
 
 * type = $v2-0203#ACSN
 * system ^short = "uri should be defined and unique supplying organisation."

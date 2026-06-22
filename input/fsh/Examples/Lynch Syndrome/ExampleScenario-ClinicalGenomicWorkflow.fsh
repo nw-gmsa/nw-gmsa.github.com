@@ -7,7 +7,7 @@ Overview Clinical Workflow including Genomic Diagnostic Testing
 Usage: #definition
 
 * status = #draft
-* name = "Clinical And Genomic Workflow"
+* name = "ClinicalAndGenomicWorkflow"
 
 * insert ActorEntity(diagnostics, "Genomic Diagnostic Testing",         [[TODO]])
 * insert ActorEntity(counsellor, "Genomic counsellor",   [[TODO]])
@@ -48,5 +48,5 @@ Usage: #definition
   * title = "Perform Genomic Counselling"
   * description = "This step acts on the [Genomics Test Report](Questionnaire-GenomicTestReport.html)"
   * preConditions = "A Task has been received to perform Genomic Counselling"
-  * insert ProcessCreateEvent(4, "Family History for Son Leeds is added to Genomic CDR ", counsellor, cdr, Request4 ,  , [[Probably Gen-O]])
+  * insert ProcessCreateEvent(4, "Family History for Son Leeds is added to Genomic CDR", counsellor, cdr, Request4 ,  , [[Probably Gen-O]])
   * insert ProcessCreateEvent(5, "Family History for Mother Nottingham is added to Genomic CDR", counsellor, cdr, Request5 ,  , [[Probably Gen-O]])

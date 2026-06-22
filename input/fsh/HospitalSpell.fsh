@@ -6,8 +6,8 @@ Description:    """
 `Patient Administration` Related to [Yorkskhire and Humberside - EncounterGrouping](https://fhir.interweavedigital.com/R4/StructureDefinition-Interweave-EncounterGrouping.html)
 """
 
-* ^keyword[+] = #core "Core"
-* ^keyword[+] = #pam "Patient Administration"
+//* ^keyword[+] = #core "Core"
+//* ^keyword[+] = #pam "Patient Administration"
 
 * identifier contains
   HospitalSpellIdentifier 0..1 MS

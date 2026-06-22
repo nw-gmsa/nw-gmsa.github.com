@@ -8,7 +8,7 @@ This is for background information for genomic test ordering.
 Usage: #definition
 
 * status = #draft
-* name = "Genomic Test Order"
+* name = "GenomicTestOrder"
 
 * insert ActorEntity(placer, "Order Placer",  [[ [Order Placer](ActorDefinition-OrderPlacer.html) ]])
 * insert ActorEntity(forms, "Form Manager",   [[This may be part of the EPR or be paper based]])
@@ -42,7 +42,7 @@ Usage: #definition
   * description = "Creates Test Order Form. Details on what questions and answers should be in the form are listed here [Questionnaire: North West Genomics Test Order](Questionnaire-GenomicTestOrder.html). This is also designed to work with [HL7 Structured Data Capture](https://build.fhir.org/ig/HL7/sdc/), however in most cases this form based data capture be part of the EPR."
   * insert ProcessSearch(1, "Select Genomic Test Order Form", placer, forms, Request1 , Reply1 , [[This may be part of the EPR and not implemented in HL7 FHIR. If not using FHIR, the clinical coding and valuesets in the FHIR Questionnaire should be implemented in the EPR Order Form]])
   * insert ProcessCreateEvent(2, "Pre-populate Order Form", forms, epr, Request2 ,  , [[If using electronic forms and their is a connection to an EPR or Health Information Exchange - the forms may be pre-populated ]])
-  * insert ProcessCreateEvent(4, "Complete Genomic Test Order Form. ", placer, epr, Request4,   , [[Enter answers to questions in the forms. The end of this process is likely to be signalled via a **IHE Patient Administration** HL7 v2 ADT Admission event. ]])
+  * insert ProcessCreateEvent(4, "Complete Genomic Test Order Form.", placer, epr, Request4,   , [[Enter answers to questions in the forms. The end of this process is likely to be signalled via a **IHE Patient Administration** HL7 v2 ADT Admission event. ]])
 
 * process[+]
   * title = "Submit Genomic Test Order Form"

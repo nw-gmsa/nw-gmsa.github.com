@@ -7,9 +7,9 @@ Description:    """
 `Diagnostic - Core`
 """
 
-* ^keyword[+] = #core "Core"
-* ^keyword[+] = #patientcare "Patient Care"
-* ^keyword[+] = #diagnostics "Diagnostics"
+//* ^keyword[+] = #core "Core"
+//* ^keyword[+] = #patientcare "Patient Care"
+//* ^keyword[+] = #diagnostics "Diagnostics"
 
 * category ^slicing.discriminator.type = #value
 * category ^slicing.discriminator.path = "coding"

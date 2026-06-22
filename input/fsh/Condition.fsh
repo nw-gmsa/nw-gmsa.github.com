@@ -6,8 +6,8 @@ Description:    """
 `Patient Care`
 """
 
-* ^keyword[+] = #core "Core"
-* ^keyword[+] = #patientcare "Patient Care"
+//* ^keyword[+] = #core "Core"
+//* ^keyword[+] = #patientcare "Patient Care"
 
 
 * identifier 0..* MS

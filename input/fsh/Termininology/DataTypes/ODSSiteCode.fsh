@@ -13,7 +13,7 @@ Description:     """
 - **HL7 v2** Facility (PL.5)
 """
 
-* ^keyword[+] = #NHSDataDictionary "NHS Data Dictionary"
+//* ^keyword[+] = #NHSDataDictionary "NHS Data Dictionary"
 
 * system 1..1
 * system = "https://fhir.nhs.uk/Id/ods-site-code" (exactly)

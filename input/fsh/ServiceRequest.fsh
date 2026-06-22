@@ -7,9 +7,9 @@ Description:    """
 `Diagnostic - Laboratory`
 """
 
-* ^keyword[+] = #core "Core"
-* ^keyword[+] = #diagnostics "Diagnostics"
-* ^keyword[+] = #genomics "Genomics"
+//* ^keyword[+] = #core "Core"
+//* ^keyword[+] = #diagnostics "Diagnostics"
+//* ^keyword[+] = #genomics "Genomics"
 
 //* extension[additionalContact] ^short = "Do not use, not supported. Use PractitionerRole instead."
 

@@ -6,9 +6,9 @@ Description:    """
 `Genomic Observation` Placeholder for [Genomic Implication](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-diagnostic-implication.html)
 """
 
-* ^keyword[+] = #archetype "Domain Analysis Model"
-* ^keyword[+] = #genomics "Genomics"
-* ^keyword[+] = #diagnostics "Diagnostics"
+//* ^keyword[+] = #archetype "Domain Analysis Model"
+//* ^keyword[+] = #genomics "Genomics"
+//* ^keyword[+] = #diagnostics "Diagnostics"
 
 * derivedFrom 1..*
 * derivedFrom contains variant 0..* and

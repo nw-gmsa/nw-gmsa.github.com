@@ -8,9 +8,9 @@ Description:    """
 `Diagnostic - Core`
 """
 
-* ^keyword[+] = #core "Core"
-* ^keyword[+] = #diagnostics "Diagnostics"
-* ^keyword[+] = #genomics "Genomics"
+//* ^keyword[+] = #core "Core"
+//* ^keyword[+] = #diagnostics "Diagnostics"
+//* ^keyword[+] = #genomics "Genomics"
 // this is not allowed in R4 http://hl7.org/fhir/StructureDefinition/workflow-supportingInfo
 * extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.study named studyR5 0..* and http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.supportingInfo named supportingInfoR5 0..*
 

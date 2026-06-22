@@ -8,7 +8,7 @@ This is for background information around the specimen collection process, it is
 Usage: #definition
 
 * status = #draft
-* name = "Biopsy Procedure"
+* name = "BiopsyProcedure"
 
 * insert ActorEntity(nurse, "Nurse",         [[TODO]])
 * insert ActorEntity(forms, "Form Manager",   [[This may be part of the EPR or be paper based]])
@@ -48,8 +48,8 @@ Usage: #definition
   * preConditions = "Test Order has been created ([Genomic Test Order Process](ExampleScenario-GenomicTestOrderProcess.html))"
   * insert ProcessSearch(1, "Select Admission Forms", nurse, forms,Request1 , Reply1 , [[This may be paper based]])
   * insert ProcessCreateEvent(2, "Pre-populate Admission Form", forms, epr, Request2 ,  , [[If using electronic forms and their is a connection to an EPR or Health Information Exchange - the forms may be pre-populated ]])
-  * insert ProcessRead(3, "Complete Admission Form. ", nurse, patient, Request3 , Reply3 , [[This includes enquiring about the patients medical history, such as conditions and medications. This also includes taking the patient vital signs - device data may be automatically uploaded into the EPR. ]])
-  * insert ProcessCreateEvent(4, "Complete Admission Form. ", nurse, forms, Request4,   , [[Enter answers to questions in the forms. The end of this process is likely to be signalled via a **IHE Patient Administration** HL7 v2 ADT Admission event. ]])
+  * insert ProcessRead(3, "Complete Admission Form.", nurse, patient, Request3 , Reply3 , [[This includes enquiring about the patients medical history, such as conditions and medications. This also includes taking the patient vital signs - device data may be automatically uploaded into the EPR. ]])
+  * insert ProcessCreateEvent(4, "Complete Admission Form.", nurse, forms, Request4,   , [[Enter answers to questions in the forms. The end of this process is likely to be signalled via a **IHE Patient Administration** HL7 v2 ADT Admission event. ]])
 
 * process[+]
   * title = "Perform Biopsy"

@@ -12,7 +12,7 @@ Description: "TODO"
   * assigner.identifier.system = $ods-code
   * assigner.identifier.value = "R0A"
 
-* class = #AMB
+* class = http://terminology.hl7.org/CodeSystem/v3-ActCode#AMB
 
 * subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
 * subject.display = "Octavia CHISLETT"

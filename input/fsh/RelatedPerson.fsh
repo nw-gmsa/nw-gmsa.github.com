@@ -6,8 +6,8 @@ Description:    """
 `Patient Administration`
 """
 
-* ^keyword[+] = #core "Core"
-* ^keyword[+] = #pam "Patient Administration"
+//* ^keyword[+] = #core "Core"
+//* ^keyword[+] = #pam "Patient Administration"
 
 * identifier 1..* MS
 * identifier.assigner ^short = "Assigning Facility"

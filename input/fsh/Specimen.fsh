@@ -9,9 +9,9 @@ Description:    """
 `Diagnostic - Laboratory` `Specimen Collection`
 """
 
-* ^keyword[+] = #core "Core"
-* ^keyword[+] = #diagnostics "Diagnostics"
-* ^keyword[+] = #genomics "Genomics"
+//* ^keyword[+] = #core "Core"
+//* ^keyword[+] = #diagnostics "Diagnostics"
+//* ^keyword[+] = #genomics "Genomics"
 
 * identifier 0..* MS
 //* identifier only CorrelationIdentifier

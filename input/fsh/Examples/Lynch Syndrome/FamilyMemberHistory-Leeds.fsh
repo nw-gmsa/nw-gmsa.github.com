@@ -17,5 +17,5 @@ Description: "FamilyMemberHistory - Ricky LEEDS"
 
 * reasonReference = Reference(6beb613f-d303-42af-b025-86e8e0872061)
 
-* sex = #male
+* sex = http://hl7.org/fhir/administrative-gender#male
 

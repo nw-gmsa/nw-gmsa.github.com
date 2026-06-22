@@ -6,8 +6,8 @@ Description:    """
 `Care Directory` [HL7 Europe Core - Practitioner](http://hl7.eu/fhir/base/StructureDefinition/practitioner-eu-core)
 """
 
-* ^keyword[+] = #core "Core"
-* ^keyword[+] = #cds "Care Directory"
+//* ^keyword[+] = #core "Core"
+//* ^keyword[+] = #cds "Care Directory"
 
 * identifier 0..* MS
 * identifier.system 1..1

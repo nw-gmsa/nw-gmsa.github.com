@@ -6,9 +6,9 @@ Description:    """
 `Diagnostic - Core` for use with test orders.
 """
 
-* ^keyword[+] = #core "Core"
-* ^keyword[+] = #patientcare "Patient Care"
-* ^keyword[+] = #diagnostics "Diagnostics"
+//* ^keyword[+] = #core "Core"
+//* ^keyword[+] = #patientcare "Patient Care"
+//* ^keyword[+] = #diagnostics "Diagnostics"
 
 
 * identifier 1..* MS

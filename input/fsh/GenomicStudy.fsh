@@ -6,8 +6,8 @@ Description:    """
 `Diagnostic - Genomics Reporting`
 """
 
-* ^keyword[+] = #archetype "Domain Analysis Model"
-* ^keyword[+] = #genomics "Genomics"
+//* ^keyword[+] = #archetype "Domain Analysis Model"
+//* ^keyword[+] = #genomics "Genomics"
 
 * reasonCode 1..* MS
 * reasonCode from GenomicClinicalIndicationCodes (preferred)

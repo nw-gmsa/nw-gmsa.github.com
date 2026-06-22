@@ -18,7 +18,7 @@ Description: "FamilyMemberHistory - Sarah-Jane Nottingham"
 
 * reasonReference = Reference(6beb613f-d303-42af-b025-86e8e0872061)
 
-* sex = #female
+* sex = http://hl7.org/fhir/administrative-gender#female
 
 * condition[+]
   * code = $sct#126765001 "Gastrointestinal obstruction (disorder)"
