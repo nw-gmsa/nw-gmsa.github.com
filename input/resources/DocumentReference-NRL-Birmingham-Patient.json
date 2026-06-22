@@ -32,8 +32,8 @@
     "coding": [
       {
         "system": "http://snomed.info/sct",
-        "code": "887701000000100",
-        "display": "Emergency health care plan"
+        "code" : "1054161000000101",
+        "display" : "Genetic report"
       }
     ]
   },
@@ -158,7 +158,6 @@
         }
       },
       {
-        "reference": "https://gen-tie-test.nwgenomics.nhs.uk/cdr/fhir/r4/ServiceRequest/1787",
         "type": "ServiceRequest",
         "identifier": {
           "type": {
@@ -179,7 +178,6 @@
         }
       },
       {
-        "reference": "https://gen-tie-test.nwgenomics.nhs.uk/cdr/fhir/r4/DiagnosticReport/1788",
         "type": "DiagnosticReport",
         "identifier": {
           "type": {
