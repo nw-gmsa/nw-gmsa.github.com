@@ -8,6 +8,9 @@ For Implementation Guide see [SNOMED CT Implementation Guide for the LOINC Ontol
 """
 Usage:  #definition
 
+* name = "LOINCtoSNOMEDUK"
+* experimental = false
+
 * url = "https://fhir.nwgenomics.nhs.uk/ConceptMap/LOINCtoSNOMEDUK"
 * version = "0.0.1"
 * status = #draft

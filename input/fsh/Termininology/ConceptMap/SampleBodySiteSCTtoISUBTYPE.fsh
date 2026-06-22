@@ -6,9 +6,13 @@ Sample Body Site (SNOMED) to iGene Specimen Sub Type
 """
 Usage:  #definition
 
+* name = "SampleBodySiteSCTtoISUBTYPE"
+* experimental = false
+
 * url = "https://fhir.nwgenomics.nhs.uk/ConceptMap/SampleBodySiteSCTtoISUBTYPE"
 * version = "0.0.1"
 * status = #draft
+
 
 //* sourceCanonical = "https://fhir.nwgenomics.nhs.uk/ValueSet/specimen-type"
 
