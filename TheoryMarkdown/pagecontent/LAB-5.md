@@ -11,4 +11,4 @@ This transaction is used by the Automation Manager to transmit the test results 
 
 ## Messages
 
-TODO Uses the same messaging as [LAB-3](LAB-3.html)
+TODO Uses the same messaging as [LAB-3](MQ.html)

@@ -89,7 +89,6 @@ RIE ->> EPR: Task complete notification\n(Can be an email notification)
 
 ### NHS North West Children Cancer 
 
-See [Blood Tests](SET.html#blood-sample-collection) which includes inter-organisation workflows around laboratory testing. 
 
 <img style="padding:3px;width:95%;" src="OrderCommunicationAndNotifications.drawio.png" alt="Order Communication and Notifications"/>
 <br clear="all">

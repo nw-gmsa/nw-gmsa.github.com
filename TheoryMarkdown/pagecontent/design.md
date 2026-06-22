@@ -206,7 +206,7 @@ These requirements are outlined in the [Data Contract](data-intro.html). HL7 v2 
 
 - [IHE Laboratory Testing Workflow (LTW)](TLW.html) profile
 - [IHE Inter Laboratory Workflow (ILW)](ILW.mw) profile (Future)
-- [IHE Specimen Event Tracking (SET)](SET.html) profile (Future)
+- IHE Specimen Event Tracking (SET) profile (Future)
 
 #### Practical Implementation
 

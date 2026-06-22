@@ -1,10 +1,10 @@
 
 Three types of messages are used within this workflow process:
 
-| Message Type                                                                                                  | HL7 Name              | IHE Name                                                                 | Description                                                                       |
-|:--------------------------------------------------------------------------------------------------------------|-----------------------|--------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
-| [**C**ommand Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CommandMessage.html)   | Laboratory Order O21  | [LAB-1](LAB-1.html) | To request a laboratory order                                                     |
-| [**D**ocument Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) | Laboratory Report R01 | [LAB-3](LAB-3.html)                                                      | Used to transfer the report back to the order placer and othre interested parties | 
+| Message Type                                                                                                  | HL7 Name              | IHE Name                                                                     | Description                                                                       |
+|:--------------------------------------------------------------------------------------------------------------|-----------------------|------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
+| [**C**ommand Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CommandMessage.html)   | Laboratory Order O21  | [LAB-1](MQ.html)                                                             | To request a laboratory order                                                     |
+| [**D**ocument Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) | Laboratory Report R01 | [LAB-3](MQ.html)                                                             | Used to transfer the report back to the order placer and othre interested parties | 
 |                                                                                                               | Original Document T02 | [HL7 MDM_T02](hl7v2.html#mdm_t02-original-document-notification-and-content) | Used to send a copy of the report to a HIE                                        | 
 
 ## Laboratory Order 
