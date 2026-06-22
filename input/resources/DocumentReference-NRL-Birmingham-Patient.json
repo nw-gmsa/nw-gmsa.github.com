@@ -125,9 +125,9 @@
     "practiceSetting": {
       "coding": [
         {
-          "system": "http://snomed.info/sct",
-          "code": "907271000000106",
-          "display": "Genetics laboratory service"
+          "system": "https://fhir.hl7.org.uk/CodeSystem/UKCore-PracticeSettingCode",
+          "code": "311",
+          "display": "Clinical Genetics"
         }
       ]
     },
