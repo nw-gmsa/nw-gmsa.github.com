@@ -28,10 +28,6 @@ For coding descriptions see
     * display = "Erythrocytes MCV (mean corpuscular volume) in blood"
     * system = $sct
   * coding[+]
-    * code = #613061010000108
-    * display = "MCV [Entitic mean volume] in Red Blood Cells by Automated count"
-    * system = $sct
-  * coding[+]
     * code = #787-2
     * display = "MCV [Entitic mean volume] in Red Blood Cells by Automated count"
     * system = $loinc
