@@ -36,7 +36,7 @@
 
 <span class="badge badge-danger">Diagnostic Workflow</span> 
 
-- [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
+- [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](../DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
   - See Appendix A – Using ORU to Publish PDF Reports
 - The Royal College of Radiologists [Reporting networks - understanding the technical options](https://www.rcr.ac.uk/media/wwtp2mif/rcr-publications_radiology-reporting-networks-understanding-the-technical-options_march-2022.pdf)
 
@@ -148,7 +148,7 @@ This is based on the definition of MSH from [NHS England HL7 v2 ADT Message Spec
 
 ### PID
 
-This is based on the definition of PID from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws) and [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
+This is based on the definition of PID from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws) and [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](../DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
 
 | Field HL7 | Fieldname                          | Data Type | Optionality                                 | Identifier Type or ValueSet                                                                                                               | Example Values                                                                                                                  |
 |-----------|------------------------------------|-----------|---------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
