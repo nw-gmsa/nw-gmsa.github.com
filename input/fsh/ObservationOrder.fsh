@@ -43,7 +43,7 @@ Description:    """
 * valueDateTime MS
 * valueString MS
 
-* valueString.extension contains http://hl7.org/fhir/StructureDefinition/rendering-markdown named valueMarkdown 0..*
+//* valueString.extension contains http://hl7.org/fhir/StructureDefinition/rendering-markdown named valueMarkdown 0..*
 
 
 * derivedFrom ^slicing.discriminator.type = #profile
