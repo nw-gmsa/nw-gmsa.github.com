@@ -10,6 +10,10 @@ Usage:  #definition
 * status = #draft
 * url = "https://fhir.nwgenomics.nhs.uk/Questionnaire/GenomicTestOrder"
 
+* extension[+]
+  * url = "http://hl7.org/fhir/StructureDefinition/artifact-versionAlgorithm"
+  * valueCodeableConcept.coding[+] = http://hl7.org/fhir/version-algorithm#integer
+
 * item[+]
   * linkId = "Patient"
   * text = "Patient"

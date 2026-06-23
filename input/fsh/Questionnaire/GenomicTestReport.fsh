@@ -11,6 +11,10 @@ Usage:  #definition
 * url = "https://fhir.nwgenomics.nhs.uk/Questionnaire/81247-9"
 * code[+] = $loinc#81247-9
 
+* extension[+]
+  * url = "http://hl7.org/fhir/StructureDefinition/artifact-versionAlgorithm"
+  * valueCodeableConcept.coding[+] = http://hl7.org/fhir/version-algorithm#integer
+
 * item[+]
   * type = #group
   * linkId = "/Metadata"
