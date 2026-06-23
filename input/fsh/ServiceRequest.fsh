@@ -75,7 +75,7 @@ Description:    """
 * orderDetail.coding[GenomicTestDirectory].system = $GTD
 
 
-* category 1..*
+* category 0..*
 * category ^slicing.discriminator.type = #value
 * category ^slicing.discriminator.path = "coding.system"
 * category ^slicing.rules = #open
