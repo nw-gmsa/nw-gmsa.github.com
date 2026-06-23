@@ -8,10 +8,6 @@
 
 ## Domain Archetype
 
-<div class="alert alert-info" role="alert">
-Archetype Viewer <a href="https://project-wildfyre.github.io/domain-archetype/?q=https://nw-gmsa.github.io/Questionnaire-GenomicTestOrder.json" target="_blank">Questionnaire-GenomicTestOrder</a>
-</div>
-
 <figure>
 {%include Laboratory-Order-mindmap.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Genomic Test Order Sections</p>

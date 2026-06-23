@@ -4,7 +4,7 @@
 # e.g. ihe.iti.mhds, or ihe.iti.basicaudit
 id: fhir.nwgenomics.nhs.uk
 canonical: https://fhir.nwgenomics.nhs.uk
-version: 2.0.16
+version: 2.1.0
 name: NWGMSA
 title: NHS North West Genomics
 description: NHS North West Genomic Medicine Service Alliance - IHE Laboratory Testing Workflow (LTW)
@@ -46,7 +46,7 @@ parameters:
   show-inherited-invariants: 'false'
   usage-stats-opt-out: 'false'
   logging: progress
-  shownav: 'true'
+  shownav: true
   active-tables: 'false'
   apply-contact: 'true'
   apply-jurisdiction: 'true'

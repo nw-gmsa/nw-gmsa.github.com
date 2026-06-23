@@ -12,10 +12,6 @@
 This is currently being elaborated and subject to change.
 </div>
 
-<div class="alert alert-info" role="alert">
-Archetype Viewer <a href="https://project-wildfyre.github.io/domain-archetype/?q=https://nw-gmsa.github.io/Questionnaire-GenomicTestReport.json" target="_blank">Questionnaire-GenomicTestReport</a>
-</div>
-
 <figure>
 {%include LaboratoryReport-mindmap.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Laboratory Report - MindMap</p>
