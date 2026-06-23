@@ -12,7 +12,7 @@
         "resourceType": "MessageHeader",
         "destination": [
           {
-            "endpoint": "https//fhir.mft.nhs.uk/Endpoint/iGene",
+            "endpoint": "https//fhir.nwgenomics.nhs.uk/Endpoint/iGene",
             "receiver": {
               "identifier": {
                 "system": "https://fhir.nhs.uk/Id/ods-organization-code",

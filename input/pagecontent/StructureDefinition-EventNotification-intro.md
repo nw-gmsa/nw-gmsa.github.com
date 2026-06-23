@@ -148,7 +148,7 @@ An alternative approach would use existing event triggers in common use in the N
         }
         "destination": [
           {
-            "endpoint": "https//fhir.mft.nhs.uk/Endpoint/EPIC",
+            "endpoint": "https//fhir.nwgenomics.nhs.uk/Endpoint/EPIC",
             "receiver": {
               "identifier": {
                 "system": "https://fhir.nhs.uk/Id/ods-organization-code",
@@ -202,7 +202,7 @@ An alternative approach would use existing event triggers in common use in the N
         },
         "destination": [
           {
-            "endpoint": "https//fhir.mft.nhs.uk/Endpoint/EPIC",
+            "endpoint": "https//fhir.nwgenomics.nhs.uk/Endpoint/EPIC",
             "receiver": {
               "identifier": {
                 "system": "https://fhir.nhs.uk/Id/ods-organization-code",

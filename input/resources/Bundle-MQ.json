@@ -11,7 +11,7 @@
               "resourceType": "MessageHeader",
               "destination": [
                 {
-                  "endpoint": "https//fhir.mft.nhs.uk/Endpoint/EPIC",
+                  "endpoint": "https//fhir.nwgenomics.nhs.uk/Endpoint/EPIC",
                   "receiver": {
                     "identifier": {
                       "system": "https://fhir.nhs.uk/Id/ods-organization-code",
@@ -642,7 +642,7 @@
               "resourceType": "MessageHeader",
               "destination": [
                 {
-                  "endpoint": "https//fhir.mft.nhs.uk/Endpoint/EPIC",
+                  "endpoint": "https//fhir.nwgenomics.nhs.uk/Endpoint/EPIC",
                   "receiver": {
                     "identifier": {
                       "system": "https://fhir.nhs.uk/Id/ods-organization-code",
@@ -1273,7 +1273,7 @@
               "resourceType": "MessageHeader",
               "destination": [
                 {
-                  "endpoint": "https//fhir.mft.nhs.uk/Endpoint/EPIC",
+                  "endpoint": "https//fhir.nwgenomics.nhs.uk/Endpoint/EPIC",
                   "receiver": {
                     "identifier": {
                       "system": "https://fhir.nhs.uk/Id/ods-organization-code",
@@ -1904,7 +1904,7 @@
               "resourceType": "MessageHeader",
               "destination": [
                 {
-                  "endpoint": "https//fhir.mft.nhs.uk/Endpoint/EPIC",
+                  "endpoint": "https//fhir.nwgenomics.nhs.uk/Endpoint/EPIC",
                   "receiver": {
                     "identifier": {
                       "system": "https://fhir.nhs.uk/Id/ods-organization-code",

@@ -12,6 +12,7 @@
         "resourceType": "MessageHeader",
         "destination": [
           {
+            "endpoint": "https://fhir.north-west.england.nhs.uk/Endpoint/EpicBeaker",
             "receiver": {
               "display": "MANCHESTER UNIVERSITY NHS FOUNDATION TRUST",
               "identifier": {

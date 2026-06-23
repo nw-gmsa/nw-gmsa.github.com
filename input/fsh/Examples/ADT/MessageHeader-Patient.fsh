@@ -17,7 +17,7 @@ Usage: #example
 * destination.receiver.display = "ALDER HEY CHILDREN'S NHS FOUNDATION TRUST"
 * destination.endpoint = "http://www.acme.org/endpoint/identifier/RBS"
 
-* source.endpoint = "http://www.acme.org/endpoint/identifier/rie"
+* source.endpoint = "https://fhir.nwgenomics.nhs.uk/Endpoint/RIE"
 * source.software = "GMSA RIE"
 
 * focus[+]

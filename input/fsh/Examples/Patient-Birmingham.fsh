@@ -13,16 +13,17 @@ Usage: #example
   * value = "801850508989737383249"
 
 * identifier[+]
-* identifier[nhsNumber].use = #official
-* identifier[nhsNumber].type = $v2-0203#NH
-* identifier[nhsNumber].system = $nhs-number
-* identifier[nhsNumber].value = "9737383249"
+  * use = #official
+  * type = $v2-0203#NH
+  * system = $nhs-number
+  * value = "9737383249"
 
-* identifier[MedicalRecordNumber].use = #official
-* identifier[MedicalRecordNumber].type = $v2-0203#MR
-* identifier[MedicalRecordNumber].assigner.identifier.system = $ods-code
-* identifier[MedicalRecordNumber].assigner.identifier.value = "RXK"
-* identifier[MedicalRecordNumber].value = "1234567"
+* identifier[+]
+  * use = #official
+  * type = $v2-0203#MR
+  * assigner.identifier.system = $ods-code
+  * assigner.identifier.value = "RXK"
+  * value = "1234567"
 
 
 
