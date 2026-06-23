@@ -123,7 +123,7 @@ Usage:  #definition
 * group.element[+]
   * code = #258565009 "Chorionic villi specimen"
   * target[+]
-    * code = #"SAMPLE: CVB"
+    * code = #"SAMPLE: CVB Chorionic"
     * equivalence = #equivalent
 
 * group.element[+]
@@ -159,7 +159,7 @@ Usage:  #definition
 * group.element[+]
   * code = #418564007 "Pleural fluid specimen"
   * target[+]
-    * code = #"SAMPLE: PLF"
+    * code = #"Pl F"
     * equivalence = #equivalent
 
 

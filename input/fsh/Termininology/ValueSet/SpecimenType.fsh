@@ -27,7 +27,7 @@ Local codes are provided for backward compatability, SNOMED codes are preferred.
 * $sct#258566005
 * $sct#441652008
 
-* $sct#3040001000004100	 "Paraffin embedded tissue block specimen"
+// * $sct#3040001000004100	 "Paraffin embedded tissue block specimen"
 
 * $sct#1003517007 "Freeze dried specimen"
 * $sct#122571007 "Pericardial fluid specimen"
@@ -35,7 +35,7 @@ Local codes are provided for backward compatability, SNOMED codes are preferred.
 * $sct#119342007 "Saliva specimen"
 // 30Apr25 * $NOS#StoredDNA "Stored DNA"
 * $sct#441479001 "Fresh tissue specimen"
-* $sct#16214131000119100 "Frozen tissue section specimen"
+//* $sct#16214131000119100 "Frozen tissue section specimen"
 * $sct#122575003 "Urine specimen"
 * $sct#441673008 "Ribonucleic acid specimen (specimen)"
 
