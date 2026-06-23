@@ -6,5 +6,5 @@ Usage: #example
 * type = #transaction
 
 * insert TransactionBundle("2024-10-13T10:33:00+00:00")
-* insert EntryTransaction("Bundle","Bundle/GenomicsOrderMessageReplyAcknowledge", GenomicsOrderMessageReplyAcknowledge)
+* insert EntryTransaction("Bundle","https://fhir.nwgenomics.nhs.uk/Bundle/GenomicsOrderMessageReplyAcknowledge", GenomicsOrderMessageReplyAcknowledge)
 

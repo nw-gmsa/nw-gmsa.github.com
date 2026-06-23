@@ -46,11 +46,11 @@ Usage:  #definition
     * code = #"SAMPLE: TC"
     * equivalence = #equivalent
 
-* group.element[+]
-  * code = #16214131000119100 "Frozen tissue section specimen"
-  * target[+]
-    * code = #"SAMPLE: TC"
-    * equivalence = #equivalent
+//* group.element[+]
+//  * code = #16214131000119100 "Frozen tissue section specimen"
+//  * target[+]
+//    * code = #"SAMPLE: TC"
+//    * equivalence = #equivalent
 
 * group.element[+]
   * code = #119342007 "Saliva specimen"
@@ -144,11 +144,11 @@ Usage:  #definition
     * code = #"SAMPLE: FFPE-PCS"
     * equivalence = #relatedto
 
-* group.element[+]
-  * code = #3040001000004100 "Paraffin embedded tissue block specimen"
-  * target[+]
-    * code = #"SAMPLE: FFPE-WB"
-    * equivalence = #equivalent
+//* group.element[+]
+//  * code = #3040001000004100 "Paraffin embedded tissue block specimen"
+//  * target[+]
+//    * code = #"SAMPLE: FFPE-WB"
+//    * equivalence = #equivalent
 
 * group.element[+]
   * code = #122571007 "Pericardial fluid specimen"

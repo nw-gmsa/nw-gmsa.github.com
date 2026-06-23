@@ -8,7 +8,7 @@ Description:    "`Messaging` [Event Messsage](https://www.enterpriseintegrationp
 
 * eventCoding 1..1 MS
 
-* eventCoding from http://terminology.hl7.org/ValueSet/v2-0003|*
+* eventCoding from http://terminology.hl7.org/ValueSet/v2-0003|3.0.0
 
 * sender.identifier 1..1 MS
 * sender.identifier only OrganisationCode
