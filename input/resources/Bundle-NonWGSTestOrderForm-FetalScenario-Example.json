@@ -173,7 +173,7 @@
                 "valueCodeableConcept": {
                   "coding":  [
                     {
-                      "system": "https://fhir.hl7.org.uk/CodeSystem/UKCore-NHSIdentifierVerificationStatusEngland",
+                      "system": "https://fhir.hl7.org.uk/CodeSystem/UKCore-NHSNumberVerificationStatusEngland",
                       "version": "2.2.0",
                       "code": "01",
                       "display": "Number present and verified"
@@ -231,12 +231,6 @@
           }
         ],
         "link":  [
-          {
-            "other": {
-              "reference": "https://api.service.nhs.uk/personal-demographics/FHIR/R4/Patient/9449307687"
-            },
-            "type": "seealso"
-          },
           {
             "other": {
               "reference": "RelatedPerson/RelatedPerson-RyanneBoulder-Example"

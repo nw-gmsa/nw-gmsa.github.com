@@ -6,6 +6,21 @@
       "https://fhir.nwgenomics.nhs.uk/StructureDefinition/LaboratoryAnalyteResult"
     ]
   },
+  "category" : [
+    {
+      "coding" : [
+        {
+          "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code" : "laboratory"
+        }
+      ]
+    }
+  ],
+  "identifier": [
+    {
+      "value": "BCRABL-Valid"
+    }
+  ],
   "code": {
     "coding": [
       {
@@ -17,6 +32,14 @@
         "system": "https://fhir.nwgenomics.nhs.uk/CodeSystem/Cepheid"
       }
     ]
+  },
+  "subject": {
+    "reference": "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd",
+    "identifier": {
+      "system": "https://fhir.nhs.uk/Id/nhs-number",
+      "value": "9449305552"
+    },
+    "display": "Octavia CHISLETT"
   },
   "component": [
     {
