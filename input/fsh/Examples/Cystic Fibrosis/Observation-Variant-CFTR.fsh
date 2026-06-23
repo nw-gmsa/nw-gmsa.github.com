@@ -24,7 +24,7 @@ Description: "Based on HL7 LRI Example 2 (Ref 5.9.1.2)"
 * subject = Reference(Patient-Lancaster)
 * subject.display = "Jaime LANCASTER"
 
-//* method = $loinc#LA26398 "Sequencing"
+* method = $loinc#LLA26398-0 "Sequencing"
 
 * component[0].code = $loinc#48018-6 "Gene studied [ID]"
 * component[=].valueCodeableConcept = $genenames#HGNC:1884 "CFTR"

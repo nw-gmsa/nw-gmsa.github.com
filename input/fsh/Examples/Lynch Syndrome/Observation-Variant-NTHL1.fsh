@@ -24,7 +24,7 @@ Description: "Based on HL7 LRI Example 3 (Ref 5.9.1.3)"
 * subject = Reference(Patient-Liverpool)
 * subject.display = "Ned LIVERPOOL"
 
-* method = $loinc#LA26398 "Sequencing"
+* method = $loinc#LA26398-0 "Sequencing"
 
 * component[0].code = $loinc#48018-6 "Gene studied [ID]"
 * component[=].valueCodeableConcept = $genenames#HGNC:89753 "NTHL1"

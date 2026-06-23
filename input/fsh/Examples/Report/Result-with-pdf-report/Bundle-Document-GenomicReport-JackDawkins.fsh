@@ -53,4 +53,4 @@ Usage: #example
 // Binary
 * insert EntryDocument("urn:uuid:d6eeedd1-92d3-45b9-bf33-6401e804425f", d6eeedd1-92d3-45b9-bf33-6401e804425f)
 // Practitioner Role - order creator
-* insert EntryDocument("urn:uuid:ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8", ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8)
+//* insert EntryDocument("urn:uuid:ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8", ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8)
