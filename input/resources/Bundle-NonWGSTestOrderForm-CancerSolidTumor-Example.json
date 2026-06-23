@@ -1,6 +1,11 @@
 {
   "resourceType": "Bundle",
   "id": "Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example",
+  "meta": {
+    "profile": [
+      "https://fhir.nwgenomics.nhs.uk/StructureDefinition/BundleMessage"
+    ]
+  },
   "identifier" : {
     "system" : "https://tools.ietf.org/html/rfc4122",
     "value" : "156bb6ab-15e7-42f3-a819-ecd16a5b4fbd"
@@ -266,7 +271,7 @@
             "value": "9449307555",
             "extension":  [
               {
-                "url": "https://fhir.hl7.org.uk/StructureDefinition/Extension-UKCore-NHSIdentifierVerificationStatus",
+                "url": "https://fhir.hl7.org.uk/StructureDefinition/Extension-UKCore-NHSNumberVerificationStatus",
                 "valueCodeableConcept": {
                   "coding":  [
                     {

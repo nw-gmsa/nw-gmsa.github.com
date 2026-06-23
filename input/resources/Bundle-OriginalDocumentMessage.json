@@ -1,5 +1,10 @@
 {
     "resourceType": "Bundle",
+    "meta": {
+        "profile": [
+            "https://fhir.nwgenomics.nhs.uk/StructureDefinition/BundleMessage"
+        ]
+    },
     "id": "OriginalDocumentMessage",
     "entry": [
         {
@@ -250,7 +255,6 @@
                                 },
                                 "value": "160171601"
                             },
-                            "reference": "urn:uuid:74948329-9e5f-42fa-8bd9-aee473f550df",
                             "type": "ServiceRequest"
                         },
                         {
@@ -272,7 +276,6 @@
                                 },
                                 "value": "T25-6218"
                             },
-                            "reference": "urn:uuid:a78555ae-fc6a-49ec-8586-359861240f86",
                             "type": "DiagnosticReport"
                         }
                     ],

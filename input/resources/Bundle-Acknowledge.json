@@ -1,5 +1,10 @@
 {
   "resourceType": "Bundle",
+  "meta": {
+    "profile": [
+      "https://fhir.nwgenomics.nhs.uk/StructureDefinition/BundleMessage"
+    ]
+  },
   "entry": [
     {
       "fullUrl": "urn:uuid:bdda4a5b-1264-4353-ba1a-d76839dd90d8",

@@ -1,5 +1,10 @@
 {
   "resourceType": "Bundle",
+  "meta": {
+    "profile": [
+      "https://fhir.nwgenomics.nhs.uk/StructureDefinition/BundleMessage"
+    ]
+  },
   "id": "Bundle-NonWGSTestOrderForm-FetalScenario-Example",
   "identifier" : {
     "system" : "https://tools.ietf.org/html/rfc4122",
@@ -164,7 +169,7 @@
             "value": "9449307687",
             "extension":  [
               {
-                "url": "https://fhir.hl7.org.uk/StructureDefinition/Extension-UKCore-NHSIdentifierVerificationStatus",
+                "url": "https://fhir.hl7.org.uk/StructureDefinition/Extension-UKCore-NHSNumberVerificationStatus",
                 "valueCodeableConcept": {
                   "coding":  [
                     {
@@ -553,7 +558,7 @@
         },
         "subject": {
           "reference": "Patient/Patient-FoetusOfRyanneBoulder-Example",
-          "identifier":  [
+          "identifier":
             {
               "system": "http://www.acme.org/patient/identifier",
               "value": "FT-RWT13521",
@@ -564,7 +569,6 @@
                 }
               }
             }
-          ]
         },
         "effectiveDateTime": "2023-09-25",
         "valueBoolean": false
