@@ -269,8 +269,7 @@
                         {
                             "system": "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory",
                             "code": "R387",
-                            "display": "Re-analysis",
-                            "version": "7"
+                            "display": "Re-analysis"
                         }
                     ]
                 },
@@ -280,8 +279,7 @@
                             {
                                 "system": "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory",
                                 "code": "R59",
-                                "display": "Early onset or syndromic epilepsy",
-                                "version": "7"
+                                "display": "Early onset or syndromic epilepsy"
                             }
                         ]
                     }
@@ -397,8 +395,7 @@
                         {
                             "system": "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory",
                             "code": "R67.2",
-                            "display": "Monogenic hearing loss",
-                            "version": "7"
+                            "display": "Monogenic hearing loss"
                         }
                     ]
                 },
