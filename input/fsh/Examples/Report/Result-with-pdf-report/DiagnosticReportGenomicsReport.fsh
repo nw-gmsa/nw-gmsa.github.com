@@ -30,8 +30,8 @@ Description: "First draft is based on Royal College of Radiologists HL7 v2 ORU c
 * category[Genetics] = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
 
 * code.coding[+] = $GTD#R240.1
-* code.coding[+] = $sct#4241000179101 "Laboratory report"
-//* code.coding[+] = $sct#1054161000000101 "Genetic report"
+//* code.coding[+] = $sct#4241000179101 "Laboratory report"
+* code.coding[+] = $sct#1054161000000101 "Genetic report"
 
 * subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
 * subject.display = "Octavia CHISLETT"
