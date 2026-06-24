@@ -29,7 +29,7 @@ Description: "Based on HL7 LRI Example 2 (Ref 5.9.1.2)"
 * component[0].code = $loinc#53037-8 "Genetic variation clinical significance [Imp]"
 * component[=].valueCodeableConcept = $loinc#LA6668-3 "Pathogenic"
 * component[+].code = $loinc#81259-4
-* component[=].valueCodeableConcept.coding[0] = $GCC#R185 "Cystic fibrosis carrier testing"
+* component[=].valueCodeableConcept.coding[0] = $GCC#R185 "Cystic fibrosis carrier"
 * component[=].valueCodeableConcept.coding[+] = $sct#441520002 "Carrier of cystic fibrosis gene mutation"
-* component[=].valueCodeableConcept.text = "Cystic fibrosis carrier testing"
+* component[=].valueCodeableConcept.text = "Cystic fibrosis carrier"
 

@@ -32,4 +32,4 @@ Description: """
 * #M215	"Endometrial Cancer"
 
 * #R210 "Inherited MMR deficiency (Lynch syndrome)"
-* #R185 "Cystic fibrosis carrier testing"
+* #R185 "Cystic fibrosis carrier"

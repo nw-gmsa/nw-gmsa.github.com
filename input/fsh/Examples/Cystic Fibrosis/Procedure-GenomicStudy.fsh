@@ -22,7 +22,7 @@ Description: "Based on HL7 LRI Example 1 (Ref 5.9.1.2)"
 * reasonCode[+]
   * coding[+]
     * code = #R185
-    * display = "Cystic fibrosis carrier testing"
+    * display = "Cystic fibrosis carrier"
     * system = $GCC
 
 * outcome = $GTOC#321 "VARIANT DETECTED"
