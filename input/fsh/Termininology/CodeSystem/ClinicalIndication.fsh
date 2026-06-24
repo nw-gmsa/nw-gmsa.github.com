@@ -30,3 +30,6 @@ Description: """
 
 * #M9 "Thyroid Papillary Carcinoma - Adult"
 * #M215	"Endometrial Cancer"
+
+* #R210
+* #R185
