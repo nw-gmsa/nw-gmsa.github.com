@@ -20,7 +20,7 @@ Description:    """
 * type.coding ^slicing.discriminator[0].type = #value
 * type.coding ^slicing.discriminator[=].path = "system"
 * type.coding ^slicing.ordered = false
-* type.coding ^slicing.rules = #closed
+* type.coding ^slicing.rules = #open
 * type.coding contains
     UKCoreReportCode 0..* MS and
     LOINC 0..*
