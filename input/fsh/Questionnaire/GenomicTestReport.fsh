@@ -13,7 +13,7 @@ Usage:  #definition
 
 * extension[+]
   * url = "http://hl7.org/fhir/StructureDefinition/artifact-versionAlgorithm"
-  * valueCodeableConcept.coding[+] = http://hl7.org/fhir/version-algorithm#integer
+  * valueCoding = http://hl7.org/fhir/version-algorithm#integer
 
 * item[+]
   * type = #group

@@ -2,7 +2,6 @@ Instance: GenomicTestReportProcess
 InstanceOf: ExampleScenario
 Title:       "Genomic Test Report Process"
 Description: """
-
 This is for background information for genomic test reporting.
 """
 Usage: #definition

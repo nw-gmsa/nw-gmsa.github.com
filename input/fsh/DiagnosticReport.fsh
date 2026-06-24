@@ -12,7 +12,7 @@ Description:    """
 //* ^keyword[+] = #diagnostics "Diagnostics"
 //* ^keyword[+] = #genomics "Genomics"
 // this is not allowed in R4 http://hl7.org/fhir/StructureDefinition/workflow-supportingInfo
-* extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.study named studyR5 0..* and http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.supportingInfo named supportingInfoR5 0..*
+* extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.study named studyR5 0..* and http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.supportingInfo|1.0.2 named supportingInfoR5 0..*
 
 * identifier 1..* MS
 * identifier only CorrelationIdentifier
@@ -111,7 +111,7 @@ Description:    """
 * performer.identifier.value 1..1
 * performer.type 1..1
 * performer.extension contains
-      http://hl7.org/fhir/StructureDefinition/event-performerFunction named performerFunction 0..1
+      http://hl7.org/fhir/StructureDefinition/event-performerFunction|5.3.0 named performerFunction 0..1
 
 
 //* performer ^slicing.discriminator.type = #pattern
