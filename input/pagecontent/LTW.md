@@ -109,8 +109,8 @@ graph TD;
     end 
 
     SpecimenCollection[Specimen Collection] --> |3. Sends Specimen| OrderFiller
-    OR --> |HL7 FHIR O21| RIE
-    RIE --> |Update| GDP
+    OR --> |HL7 FHIR Message O21| RIE
+    RIE --> |"Update<br/>FHIR RESTful PUT/POST (inc Transaction)"| GDP
     RIE --> |HL7 v2 O21| iGene
     RIE --> GOMS
     GOMS --> ExtLIMS
@@ -255,7 +255,7 @@ graph TD;
     PubSub["Subscription Service (Future?)"]
 
     RIE --> |HL7 v2 R01| OR
-    RIE --> |Update| GDP
+    RIE --> |"Update<br/>FHIR RESTful PUT/POST (inc Transaction)"| GDP
     iGene --> |HL7 v2 R01| RIE
     GOMS --> RIE
     ExtLIMS --> GOMS
@@ -435,13 +435,13 @@ end
 GDP["Genomic Data Platform"]
 PubSub["Subscription Service (Future?)"]
 
-RIE4 --> |Update| GDP
+RIE4 --> |"Update<br/>FHIR RESTful PUT/POST (inc Transaction)"| GDP
 GDP --> |O21 Event Notification| PubSub
 
-iGene --> |"Work Order Management (LAB-4)<br/>Worksheet (iGene SQL data-pipeline)"| RIE4
-RIE4 <--> |"Work Order Management (LAB-4)<br/>HL7 QBP Query"| Cepheid
-GDP <--> |"Work Order Management (LAB-4)<br/>HL7 FHIR Query"| StarLIMS
-RIE4 --> |"Work Order Management (LAB-4)<br/>FHIR Transaction"| GOMS
+iGene --> |"Work Order Management (LAB-4)<br/>Worksheet (iGene CSV export)"| RIE4
+GDP <--> |"Work Order Management (LAB-4)<br/>HL7 QBP Query"| Cepheid
+GDP <--> |"Work Order Management (LAB-4)<br/>HL7 FHIR RESTful Query"| StarLIMS
+RIE4 --> |"Work Order Management (LAB-4)<br/>FHIR RESTful PUT/POST (inc Transaction)"| GOMS
 GOMS --> ExtLIMS
 
 classDef purple fill:#E1D5E7;
@@ -483,7 +483,7 @@ RIE["Regional Orchestration Engine (RIE)"]
 GDP["Genomic Data Platform"]
 PubSub["Subscription Service (Future?)"]
 
-RIE --> |Update| GDP
+RIE --> |"Update<br/>FHIR RESTful PUT/POST (inc Transaction)"| GDP
 GDP --> |R01 or R32 Event Notification| PubSub
 
 Cepheid --> |"Test Results Management (LAB-5/LAB-32)<br/>Lab Reports HL7 ORU_R32"| RIE
