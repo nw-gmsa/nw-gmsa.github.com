@@ -10,6 +10,8 @@ Usage: #example
   * assigner.identifier.system = $ods-code
   * assigner.identifier.value = "699X0"
 
+* category[+] = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
+
 * status = #final
 //* type = $sct#1054161000000101 "Genetic report"
 * type.coding[+] = $GTD#R240.1
