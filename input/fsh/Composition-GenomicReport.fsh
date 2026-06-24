@@ -45,7 +45,7 @@ Description:    """
 * custodian only Reference(Organization)
 //* custodian.identifier only OrganisationCode
 
-* section 1..* MS
+* section 1..* 
 //* section.text MS
 * section.title 1..1
 * section.code 1..1
