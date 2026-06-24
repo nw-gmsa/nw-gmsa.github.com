@@ -22,4 +22,4 @@ Description:    """
 * component[conclusion-string].code = http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs#conclusion-string
 * component[conclusion-string].code ^short = "conclusion-string"
 //* component[conclusion-string].value[x] only string or Quantity
-* component[conclusion-string].value[x] ^short = "Summary conclusion (interpretation/impression)"
+//* component[conclusion-string].value[x] ^short = "Summary conclusion (interpretation/impression)"
