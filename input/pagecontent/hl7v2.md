@@ -437,9 +437,9 @@ This is based on the definition of OBX from [Digital Health and Care Wales - HL7
 | Field HL7 | Fieldname                    | Data Type | Optionality | Identifier Type or ValueSet                                          | Example Values                       |
 |-----------|------------------------------|-----------|-------------|----------------------------------------------------------|--------------------------------------|
 | OBX-1     | Set ID – OBX                 |           | R           |                                                          | 1                                    |
-| OBX-2     | Value Type                   | ED        | R <span class="badge badge-danger">S</span>          |                                                          | ED                                   |
-| OBX-3     | Observation Identifier       | [ED](#ed) | R <span class="badge badge-danger">S</span>          | [Document Entry Type](ValueSet-document-entry-type.html) | 1054161000000101^Genetic report^SNM3 |
-| OBX-5     | Observation Value            |         | R <span class="badge badge-danger">S</span>          |                                                          | MOL^IM^PDF^Base64^JVBERI0X...        |
+| OBX-2     | Value Type                   |        | R <span class="badge badge-danger">S</span>          |                                                          | ED                                   |
+| OBX-3     | Observation Identifier       | [CE](#ce) | R <span class="badge badge-danger">S</span>          | [Document Entry Type](ValueSet-document-entry-type.html) | 1054161000000101^Genetic report^SNM3 |
+| OBX-5     | Observation Value            | [ED](#ed)        | R <span class="badge badge-danger">S</span>          |                                                          | MOL^IM^PDF^Base64^JVBERI0X...        |
 | OBX-11    | Observation Result Status    |           | R           |                                                          | F                                    |
 | OBX-14    | Date/Time of the Observation |           | O - SHOULD  |                                                          | 20190514102417+0000                  |
 {:.grid}
