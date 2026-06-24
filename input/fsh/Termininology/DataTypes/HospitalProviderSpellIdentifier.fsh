@@ -17,7 +17,7 @@ Accession ID
 
 //* ^keyword[+] = #NHSDataDictionary "NHS Data Dictionary"
 
-* type = $v2-0203#AN "Account number"
+* type = $v2-0203#AN (exactly)
 * assigner 1..1
 
 
