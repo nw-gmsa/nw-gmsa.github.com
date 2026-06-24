@@ -9,7 +9,7 @@ Description:    """
 * code ^short = "Indicates archetype/FHIR Profile"
 
 * component 1..*
-* component.value[x] only CodeableConcept or Quantity or string
+//* component.value[x] only CodeableConcept or Quantity or string
 * component ^slicing.discriminator.type = #value
 * component ^slicing.discriminator.path = "code"
 * component ^slicing.rules = #open
