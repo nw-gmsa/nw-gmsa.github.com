@@ -22,11 +22,12 @@ Description:    """
 * type.coding ^slicing.ordered = false
 * type.coding ^slicing.rules = #closed
 * type.coding contains
-    SNOMED 0..* MS and
+    UKCoreReportCode 0..* MS and
     LOINC 0..*
 
-* type.coding[SNOMED].system = $sct
-* type.coding[SNOMED].code = #1054161000000101
+* type.coding[UKCoreReportCode].system = $sct
+* type.coding[UKCoreReportCode] from https://fhir.hl7.org.uk/ValueSet/UKCore-ReportCode (required)
+
 * type.coding[LOINC].system = $loinc
 * type.coding[LOINC].code = #51969-4
 
@@ -45,7 +46,7 @@ Description:    """
 * custodian only Reference(Organization)
 //* custodian.identifier only OrganisationCode
 
-* section 1..* 
+* section 1..*
 //* section.text MS
 * section.title 1..1
 * section.code 1..1
