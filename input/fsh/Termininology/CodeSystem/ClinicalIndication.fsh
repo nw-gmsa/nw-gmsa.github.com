@@ -14,6 +14,7 @@ Description: """
 * ^date = "2025-05-08"
 * ^url = "https://fhir.nwgenomics.nhs.uk/CodeSystem/GenomicClinicalIndication"
 
+* #R125 "Thoracic aortic aneurysm or dissection"
 * #R240 "Diagnostic testing for known mutation(s)"
 * #R361 "Childhood onset hereditary spastic paraplegia"
 * #R362 "Not present in 8.0"

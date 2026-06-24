@@ -3,7 +3,7 @@ InstanceOf: ActorDefinition
 Title:   "Order Result Tracker"
 Usage:  #definition
 
-* name = "Order Result Tracker"
+* name = "OrderResultTracker"
 * type = http://hl7.org/fhir/examplescenario-actor-type#system
 * status = http://hl7.org/fhir/publication-status#draft
 * description = """
