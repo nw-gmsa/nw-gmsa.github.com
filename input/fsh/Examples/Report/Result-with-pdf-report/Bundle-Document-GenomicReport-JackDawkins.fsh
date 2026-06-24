@@ -13,7 +13,9 @@ Usage: #example
 * status = #final
 //* type = $sct#1054161000000101 "Genetic report"
 * type.coding[+] = $GTD#R240.1
-* type.coding[+] = $sct#1054161000000101 "Genetic report"
+//* type.coding[+] = $sct#1054161000000101 "Genetic report"
+* type.coding[+] = $sct#4241000179101 "Laboratory report"
+
 //* meta.versionId = 3
 * date = "2024-10-13T10:33:00+00:00"
 * author.identifier.system = $ods-code
