@@ -702,7 +702,8 @@ Usage:  #definition
       * item[+]
         * type = #integer
         * linkId = "SNM/598151000005105"
-        * code[+] = $sct#598151000005105 "Gestational age"
+        // * code[+] = $sct#598151000005105 "Gestational age"
+        * code[+] = $sct#57036006 "Fetal gestational age"
         * extension[unit].valueCoding = $ucum#wk "Wk"
         * text = "Patient gestation"
         * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
@@ -729,10 +730,10 @@ Usage:  #definition
     * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
     * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
 
-* item[+]
-  * type = #group
-  * linkId = "PriorResults"
-  * text = "Prior Results"
+//* item[+]
+//  * type = #group
+//  * linkId = "PriorResults"
+//  * text = "Prior Results"
 
 //Raw specimen/biopsy (Directly obtained from patient)	Pathology Laboratory Hospital/Trust ID	If Test request type =solid tumour or haem onc or Cancer WGS
 //Raw specimen/biopsy (Directly obtained from patient)	Date of Diagnosis	If Test request type =solid tumour or haem onc or Cancer WGS
