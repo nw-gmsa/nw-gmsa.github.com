@@ -31,5 +31,5 @@ Description: """
 * #M9 "Thyroid Papillary Carcinoma - Adult"
 * #M215	"Endometrial Cancer"
 
-* #R210
-* #R185
+* #R210 "Inherited MMR deficiency (Lynch syndrome)"
+* #R185 "Cystic fibrosis carrier testing"
