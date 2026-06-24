@@ -15,7 +15,7 @@ Description:    "`Audit`"
 * agent ^slicing.rules = #open
 * agent ^slicing.ordered = false
 * agent contains
-  oClient 1..1 MS and user 0..1 and server 1..1 and client 0..1
+  oClient 1..1 MS and user 0..1 MS and server 1..1 MS and client 0..1 MS
 
 * agent[oClient] ^short = "OAuth2 ClientID. Known as `oClient` in IHE BALP"
 * agent[oClient].type = http://dicom.nema.org/resources/ontology/DCM#110150
