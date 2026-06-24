@@ -8,7 +8,7 @@ Usage:  #definition
 
 * title = "North West Genomics Test Report"
 * status = #draft
-* url = "https://fhir.nwgenomics.nhs.uk/Questionnaire/81247-9"
+* url = "https://fhir.nwgenomics.nhs.uk/Questionnaire/GenomicTestReport"
 * code[+] = $loinc#81247-9
 
 * extension[+]
