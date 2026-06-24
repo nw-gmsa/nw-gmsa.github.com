@@ -18,7 +18,6 @@ Description: "Based on HL7 LRI Example 3 (Ref 5.9.1.3)"
 
 * subject = Reference(Patient-Liverpool)
 * subject.display = "Nedl LIVERPOOL"
-
-* code = $sct#1365861003 "Lynch syndrome gene mutation detected"
-
+// SNOMED Validation issues * code = $sct#1365861003 "Lynch syndrome gene mutation detected"
+* code = $sct#716318002 "Lynch syndrome"
 
