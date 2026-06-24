@@ -33,8 +33,8 @@ Description: "Based on HL7 LRI Example 3 (Ref 5.9.1.3)"
 * component[+].code = $loinc#51958-7 "Transcript reference sequence [ID]"
 * component[=].valueCodeableConcept = $refseq#NM_000249
 
-* component[+].code = $loinc#81290-9 "Genomic DNA change (gHGVS)"
-* component[=].valueCodeableConcept = $ghgvs#NC_000003.11
+// validation issues* component[+].code = $loinc#81290-9 "Genomic DNA change (gHGVS)"
+// validation issues* component[=].valueCodeableConcept = $ghgvs#NC_000003.11
 
 * component[+].code = $loinc#48013-7 "Genomic reference sequence [ID]"
 * component[=].valueCodeableConcept = $refseq#NG_007109.2:g.40514dupC
