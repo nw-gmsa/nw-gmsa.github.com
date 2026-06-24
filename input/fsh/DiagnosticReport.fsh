@@ -104,7 +104,7 @@ Description:    """
 
 * code.coding[UKCoreReportCode] ^short = "UKCore Report Codes"
 * code.coding[UKCoreReportCode].system = $sct
-* code.coding[UKCoreReportCode] from https://fhir.hl7.org.uk/ValueSet/UKCore-ReportCode (required)
+* code.coding[UKCoreReportCode] from ReportType (required)
 
 * performer.identifier 1..1
 * performer.identifier.system 1..1

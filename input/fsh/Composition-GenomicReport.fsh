@@ -26,7 +26,7 @@ Description:    """
     LOINC 0..*
 
 * type.coding[UKCoreReportCode].system = $sct
-* type.coding[UKCoreReportCode] from https://fhir.hl7.org.uk/ValueSet/UKCore-ReportCode (required)
+* type.coding[UKCoreReportCode] from ReportType (required)
 
 * type.coding[LOINC].system = $loinc
 * type.coding[LOINC].code = #51969-4
