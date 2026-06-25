@@ -107,7 +107,7 @@ Description:    """
 * performer only Reference(Organization)
 * performer.identifier only OrganisationCode
 
-* authoredOn 1..1 MS
+* authoredOn 0..1 MS
 
 * occurrence[x] 0..1
 
