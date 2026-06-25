@@ -576,13 +576,13 @@ Medical Record Number
 <b>v2 to FHIR Conversion:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-datatype-ed-to-documentreference.html" _target="_blank">ED to FHIR DocumentReference</a>
 </div>
 
-| Field HL7 | Fieldname          | Data Type | Optionality | Identifier Type or ValueSet | Example Values  |
-|-----------|--------------------|-----------|-----|-----------------------------|-----------------|
-| ED.1      | Source Application | HD        | O   |                             |                 |
-| ED.2      | Type Of Data       | ID        | R   |                             | AP              | 
-| ED.3      | Data Subtype       | ID        | R   | [DocumentEntry mimeType](ValueSet-document-entry-mimetype.html)                        | application/pdf | 
-| ED.4      | Encoding           | ID        | R   |                             | base64          |
-| ED.5      | Type Of Data       | TX        | R   |                             | AP              | 
+| Field HL7 | Fieldname          | Data Type | Optionality | Identifier Type or ValueSet                                     | Example Values        |
+|-----------|--------------------|-----------|-------------|-----------------------------------------------------------------|-----------------------|
+| ED.1      | Source Application | HD        | O           |                                                                 |                       |
+| ED.2      | Type Of Data       | ID        | R           | [DocumentEntry mimeType](ValueSet-document-entry-mimetype.html) | AP or application/pdf | 
+| ED.3      | Data Subtype       | ID        | R           |                                                                 | PDF                   | 
+| ED.4      | Encoding           | ID        | R           |                                                                 | Base64                |
+| ED.5      | Type Of Data       | TX        | R           |                                                                 | JVBERI0X…                    | 
 {:.grid}
 
 ### EI 
