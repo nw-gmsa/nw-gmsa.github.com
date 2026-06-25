@@ -9,7 +9,7 @@ Description:     """
 GS1 Code 8018
 """
 
-* type = $v2-0203#PI (exactly)
+* type = $v2-0203#PN (exactly)
 
 * system = "urn:oid:2.51.1.7"
 
