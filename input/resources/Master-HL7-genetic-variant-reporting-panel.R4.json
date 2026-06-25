@@ -7,6 +7,15 @@
   },
   "id": "81247-9",
   "url": "https://fhir.nwgenomics.nhs.uk/Questionnaire/81247-9",
+  "extension" : [
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/artifact-versionAlgorithm",
+      "valueCoding" : {
+        "system" : "http://hl7.org/fhir/version-algorithm",
+        "code" : "semver"
+      }
+    }
+  ],
   "title": "Master HL7 genetic variant reporting panel",
   "status": "draft",
   "code": [
