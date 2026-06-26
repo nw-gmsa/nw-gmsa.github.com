@@ -182,34 +182,32 @@ This genomics process is largely the same except for:
 
 ```mermaid
 sequenceDiagram
+    participant clinician as Order Placer<br/>Clinician (EHR)
+    participant nurse as Specimen Collection<br/>Clinician/Nurse
+    participant LIMS as Order Filler<br/>LIMS 
+    participant Sub as Subcontractor<br/>e.g. other GMSA
 
-
-participant EPR as Order Placer
-participant LIMSP as Order Filler (Pathology)
-participant LIMSG as Order Filler (Genomics)
-
-
-EPR ->> LIMSP: Submit Laboratory Order O21 (LAB-1)
-LIMSP ->> EPR: Send Laboratory Report R01 (LAB-3)
-
-opt Genomic Order created by original order placer
-
-note over LIMSP,LIMSG: Same specimen can be reused for multiple tests
-
-EPR ->> LIMSG: Submit Genomic Order O21 (LAB-1)
-LIMSP -->> LIMSG: Send Specimen (not a technical interaction)
-LIMSG ->> EPR: Send Genomic Report R01 (LAB-3)
-end
-
-opt Order Filler (Pathology) creates Genomic Order
-note over LIMSP,LIMSG: Same specimen can be reused for multiple tests
-
-LIMSP ->> LIMSG: Submit Genomic Order O21 (LAB-1/LAB-35)
-LIMSP ->> EPR: Copy of Genomic Order O22 (LAB-2)
-LIMSP -->> LIMSG: Send Specimen (not a technical interaction)
-LIMSG ->> LIMSP: Send Genomic Report R01 (LAB-3/LAB-36)
-LIMSG ->> EPR: Send Genomic Report R01 (LAB-3)
-end
+    clinician ->> clinician: Creates Order
+    note over clinician,LIMS: IHE LAB-1 Laboratory Order
+    clinician ->> LIMS: Sends Laboratory Order
+    clinician ->> nurse: Requests specimen collection
+    nurse ->> nurse: Collect Specimen
+    nurse ->> LIMS: Ship Specimen
+    opt
+        LIMS->> LIMS : Perform Test
+    end
+    note over LIMS,Sub: IHE LAB-35 Sub-order Management
+    LIMS ->> Sub: Sends Laboratory Reflex Order
+    LIMS ->> Sub: Ship Specimen
+    Sub ->> Sub : Perform Test
+    Sub ->> Sub: Write Report
+    note over LIMS,Sub: IHE LAB-36 Sub-order Results Delivery
+    Sub ->> LIMS: Sends Laboratory Report
+    opt
+        LIMS ->> LIMS: Write Report
+    end
+    note over clinician,LIMS: IHE LAB-3 Laboratory Report
+    LIMS ->> clinician: Sends Laboratory Report
 ```
 
 #### Main Process Flow
