@@ -1,0 +1,374 @@
+{
+  "resourceType": "Bundle",
+  "id": "Bundle-Message-ReflexOrder",
+  "meta": {
+    "profile": [
+      "https://fhir.nwgenomics.nhs.uk/StructureDefinition/BundleMessage"
+    ]
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:0e9c7bbf-7d70-417b-a91f-90980a18cf7e",
+      "resource": {
+        "resourceType": "MessageHeader",
+        "destination": [
+          {
+            "endpoint": "https//fhir.mft.nhs.uk/Endpoint/STARLIMS",
+            "receiver": {
+              "identifier": {
+                "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+                "value": "699X0"
+              }
+            }
+          }
+        ],
+        "eventCoding": {
+          "code": "O21",
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0003"
+        },
+        "focus": [
+          {
+            "reference": "urn:uuid:075c12a9-5128-4e5e-9913-7759c2cd6b89"
+          }
+        ],
+        "sender": {
+          "identifier": {
+            "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+            "value": "699X0"
+          }
+        },
+        "source": {
+          "endpoint": "https://fhir.nwgenomics.nhs.uk/Endpoint/IGENE",
+          "name": "IGENE",
+          "software": "NW GLH"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:07e8ec6d-cb59-42ea-b9b2-7da6d58ef8f9",
+      "resource": {
+        "resourceType": "Patient",
+        "birthDate": "2026-05-25",
+        "gender": "female",
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.2.1.3.2.4.16.53",
+            "type": {
+              "coding": [
+                {
+                  "code": "NH",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                }
+              ]
+            },
+            "value": "1111111111"
+          },
+          {
+            "assigner": {
+              "identifier": {
+                "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+                "value": "699X0"
+              }
+            },
+            "system": "https://fhir.nwgenomics.nhs.uk/Identifier/IGENE-PatientIdentifier",
+            "type": {
+              "coding": [
+                {
+                  "code": "PI",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                }
+              ]
+            },
+            "value": "13690"
+          },
+          {
+            "assigner": {
+              "identifier": {
+                "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+                "value": "699X0"
+              }
+            },
+            "type": {
+              "coding": [
+                {
+                  "code": "MR",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                }
+              ]
+            },
+            "value": "H123456"
+          }
+        ],
+        "name": [
+          {
+            "family": "DLIMStest",
+            "given": [
+              "Aphrodite"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:844bf384-d0e1-4eb4-99f2-a5e565ad199f",
+      "resource": {
+        "resourceType": "Specimen",
+        "collection": {
+          "collectedDateTime": "2026-06-03"
+        },
+        "identifier": [
+          {
+            "assigner": {
+              "identifier": {
+                "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+                "value": "699X0"
+              }
+            },
+            "system": "https://fhir.nwgenomics.nhs.uk/Identifier/IGENE-SpecimenIdentifier",
+            "type": {
+              "coding": [
+                {
+                  "code": "FILL",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                }
+              ]
+            },
+            "value": "S26-00JX"
+          }
+        ],
+        "status": "available",
+        "subject": {
+          "identifier": {
+            "system": "urn:oid:2.16.840.1.113883.2.1.3.2.4.16.53",
+            "type": {
+              "coding": [
+                {
+                  "code": "NH",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                }
+              ]
+            },
+            "value": "1111111111"
+          },
+          "reference": "urn:uuid:07e8ec6d-cb59-42ea-b9b2-7da6d58ef8f9"
+        },
+        "type": {
+          "coding": [
+            {
+              "code": "119297000",
+              "display": "Blood specimen",
+              "system": "http://snomed.info/sct"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:0b061421-5133-4f49-ad46-96cba54b5509",
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "116148004",
+                "system": "http://snomed.info/sct"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "R95.1",
+              "system": "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory"
+            }
+          ],
+          "text": "ACTION: R95.1 - Iron overload - hereditary haemochromatosis testing (EXPORT)"
+        },
+        "identifier": [
+          {
+            "assigner": {
+              "identifier": {
+                "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+                "value": "699X0"
+              }
+            },
+            "type": {
+              "coding": [
+                {
+                  "code": "PLAC",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                }
+              ]
+            },
+            "value": "56781345"
+          },
+          {
+            "assigner": {
+              "identifier": {
+                "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+                "value": "699X0"
+              }
+            },
+            "system": "https://fhir.nwgenomics.nhs.uk/Identifier/IGENE-ReferralIdentifier",
+            "type": {
+              "coding": [
+                {
+                  "code": "FILL",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                }
+              ]
+            },
+            "value": "R26-00JW"
+          }
+        ],
+        "intent": "original-order",
+        "requester": {
+          "identifier": {
+            "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+            "value": "699X0"
+          }
+        },
+        "specimen": [
+          {
+            "reference": "urn:uuid:844bf384-d0e1-4eb4-99f2-a5e565ad199f",
+            "type": "Specimen"
+          }
+        ],
+        "status": "active",
+        "subject": {
+          "identifier": {
+            "system": "urn:oid:2.16.840.1.113883.2.1.3.2.4.16.53",
+            "type": {
+              "coding": [
+                {
+                  "code": "NH",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                }
+              ]
+            },
+            "value": "1111111111"
+          },
+          "reference": "urn:uuid:07e8ec6d-cb59-42ea-b9b2-7da6d58ef8f9"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:075c12a9-5128-4e5e-9913-7759c2cd6b89",
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "authoredOn": "2026-06-10",
+        "basedOn": [
+          {
+            "reference": "urn:uuid:0b061421-5133-4f49-ad46-96cba54b5509"
+          }
+        ],
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "116148004",
+                "system": "http://snomed.info/sct"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "R95.1",
+              "system": "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory"
+            }
+          ],
+          "text": "ACTION: R95.1 - Iron overload - hereditary haemochromatosis testing (EXPORT)"
+        },
+        "identifier": [
+          {
+            "assigner": {
+              "identifier": {
+                "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+                "value": "699X0"
+              }
+            },
+            "system": "https://fhir.nwgenomics.nhs.uk/Identifier/IGENE-TestIdentifier",
+            "type": {
+              "coding": [
+                {
+                  "code": "PLAC",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                }
+              ]
+            },
+            "value": "T26-01MR"
+          }
+        ],
+        "intent": "reflex-order",
+        "note": [
+          {
+            "text": "Clinical notes added to the referral\r"
+          }
+        ],
+        "performer": [
+          {
+            "identifier": {
+              "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+              "value": "REP"
+            }
+          }
+        ],
+        "requester": {
+          "identifier": {
+            "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+            "value": "699X0"
+          }
+        },
+        "requisition": {
+          "assigner": {
+            "identifier": {
+              "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+              "value": "699X0"
+            }
+          },
+          "system": "https://fhir.nwgenomics.nhs.uk/Identifier/IGENE-ReferralIdentifier",
+          "type": {
+            "coding": [
+              {
+                "code": "PGN",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+              }
+            ]
+          },
+          "value": "R26-00JW"
+        },
+        "specimen": [
+          {
+            "reference": "urn:uuid:844bf384-d0e1-4eb4-99f2-a5e565ad199f",
+            "type": "Specimen"
+          }
+        ],
+        "status": "active",
+        "subject": {
+          "identifier": {
+            "system": "urn:oid:2.16.840.1.113883.2.1.3.2.4.16.53",
+            "type": {
+              "coding": [
+                {
+                  "code": "NH",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                }
+              ]
+            },
+            "value": "1111111111"
+          },
+          "reference": "urn:uuid:07e8ec6d-cb59-42ea-b9b2-7da6d58ef8f9"
+        }
+      }
+    }
+  ],
+  "identifier": {
+    "value": "706045"
+  },
+  "timestamp": "2026-06-26T05:03:10.520Z",
+  "type": "message"
+}
