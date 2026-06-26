@@ -23,6 +23,36 @@ See Ref 1 for details.
 <p class="figureTitle">IHE ILW Summary</p> 
 <br clear="all">
 
+## LAB-35 and LAB-36 Sub-orders
+
+```mermaid
+sequenceDiagram
+    participant clinician as Order Placer<br/>Clinician (EHR)
+    participant nurse as Specimen Collection<br/>Clinician/Nurse
+    participant LIMS as Order Filler<br/>LIMS 
+    participant Sub as Subcontractor<br/>e.g. other GMSA
+
+    clinician ->> clinician: Creates Order
+    note over clinician,LIMS: IHE LAB-1 Laboratory Order
+    clinician ->> LIMS: Sends Laboratory Order
+    clinician ->> nurse: Requests specimen collection
+    nurse ->> nurse: Collect Specimen
+    nurse ->> LIMS: Ship Specimen
+    opt
+        LIMS->> LIMS : Perform Test
+    end
+    note over LIMS,Sub: IHE LAB-35 Sub-order Management
+    Sub ->> Sub : Perform Test
+    Sub ->> Sub: Write Report
+    note over LIMS,Sub: IHE LAB-36 Sub-order Results Delivery
+    Sub ->> LIMS: Sends Laboratory Report
+    opt
+        LIMS ->> LIMS: Write Report
+    end
+    note over clinician,LIMS: IHE LAB-3 Laboratory Report
+    LIMS ->> clinician: Sends Laboratory Report
+```
+
 ### Modernisation
 
 The current IHE ILW specification relies on HL7 v2.x, HL7 v3, and IHE XDS. Several modernization paths are available, most of which focus on adopting FHIR, updating relevant IHE profiles, and shifting from Clinical Documents (HL7 CDA and FHIR Documents) to IHE QEDm for data exchange.
