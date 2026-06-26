@@ -121,6 +121,9 @@ pages:
   exchange.md:
     title: Architecture - Enterprise Integration Patterns (EIP)
     generation: markdown
+  reflex-order.md:
+    title: Reflex Order
+    generation: markdown
     #  LAB-1.md:
     #   title: Placer Order Management [LAB-1]
     #    generation: markdown
@@ -246,6 +249,7 @@ menu:
   Data Models (Volume 3):
     Overview - Data Contracts: data-intro.html
     Genomic Test Order (Template): Questionnaire-GenomicTestOrder.html
+    Reflex Order: reflex-order.html
    ## Genomic Test Report (Composition): StructureDefinition-Composition-GenomicReport.html
     Genomic Test Report (Template): Questionnaire-GenomicTestReport.html
   Artefacts (Volume 4):
