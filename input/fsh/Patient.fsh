@@ -13,7 +13,7 @@ Description: """
 
 * extension[sex-for-clinical-use]
 
-* identifier 1..* MS
+* identifier 1..*
 * identifier only CorrelationIdentifier
 * identifier.assigner ^short = "Assigning Facility"
 * identifier.assigner 0..1 MS
@@ -30,7 +30,8 @@ Description: """
 * identifier contains
   MedicalRecordNumber 0..* MS
   and nhsNumber 0..* MS
-  and GS1GSRN 0..1
+  and PatientIdentifier 0..*
+// and GS1GSRN 0..1
 
 //  solved via ServiceRequest.requisition and GenomicsPedigreeNumber 0..*
 
@@ -39,9 +40,10 @@ Description: """
 //* identifier[nhsNumber].extension[nhsNumberVerificationStatus] ^short = "NOT REQUIRED. As all NHS Numbers **MUST** be *01 Number present and verified*, this status will be assumed."
 * identifier[MedicalRecordNumber] only MedicalRecordNumber
 * identifier[MedicalRecordNumber] ^short = "Medical Record Number"
-* identifier[GS1GSRN] only GS1GSRN
-* identifier[GS1GSRN] ^short = "GS1 Global Service Relation Number"
-
+//* identifier[GS1GSRN] only GS1GSRN
+//* identifier[GS1GSRN] ^short = "GS1 Global Service Relation Number"
+* identifier[PatientIdentifier] only PatientIdentifier
+* identifier[PatientIdentifier] ^short = "Patient Identifier"
 //* identifier[GenomicsPedigreeNumber] only GenomicsPedigreeNumber
 //* identifier[GenomicsPedigreeNumber] ^short = "Genomics Pedigree Number"
 
