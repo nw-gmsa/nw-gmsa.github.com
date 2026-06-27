@@ -25,7 +25,7 @@ See also Ref A `Section 3 Laboratory Testing Workflow (LTW) Profile` for detaile
 
 Initially only the IHE `LAB-1` and `LAB-3` is in focus. Later stages will include the use of [Genomic Order Management Service](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir).
 
-## Overview
+## Laboratory Order and Report LAB-1 and LAB-3
 
 <img style="padding:3px;width:95%;" src="LTW Use Case 1 and 2.drawio.png" alt="Genomic LTW Business Process"/>
 <br clear="all">
@@ -76,7 +76,7 @@ sequenceDiagram
     LIMS ->> clinician: Sends Laboratory Report
 ```
 
-## Laboratory Order (LAB-1)
+### Laboratory Order (LAB-1)
 
 <div class="alert alert-info" role="alert">
 <b>Domain Archetype:</b> <a href="Questionnaire-GenomicTestOrder.html" _target="_blank">Genomic Test Order</a> 
@@ -86,7 +86,7 @@ sequenceDiagram
 <b>Interaction:</b> <a href="MQ.html" _target="_blank">Message Exchange</a> LAB-1
 </div>
 
-### Process Flow
+#### Process Flow
 
 ```mermaid
 graph TD;
@@ -124,7 +124,7 @@ graph TD;
 
 ```
 
-### Use Case: Genomic Test Order
+#### Use Case: Genomic Test Order
 
 An order is created by the clinical practice and placed to the laboratory.
 
@@ -135,7 +135,7 @@ An order is created by the clinical practice and placed to the laboratory.
 </figure>
 <br clear="all">
 
-#### Select Genomic Test Order Form
+##### Select Genomic Test Order Form
 
 Within the system creating the genomics order, the practitioner will select a form for the test required. Below are several examples from [North West Genomic Laboratory Hub - Test Request Forms](https://mft.nhs.uk/nwglh/documents/test-request-forms/).
 How this is implemented will vary between different NHS organisations and systems they use.
@@ -153,7 +153,7 @@ How this is implemented will vary between different NHS organisations and system
   </tr>
 </table>
 
-#### Complete Genomic Test Order Form
+##### Complete Genomic Test Order Form
 
 These forms may (/will?) will have a computable definition called an [template (FHIR Questionnaire)](https://hl7.org/fhir/R4/questionnaire.html) which will list the technical content requirements for the form. At present only one archetype has been defined:
 
@@ -161,7 +161,7 @@ These forms may (/will?) will have a computable definition called an [template (
 
 This archetype definition can also support [HL7 Structured Data Capture](https://build.fhir.org/ig/HL7/sdc/index.html) should the Order Placer system support these features.
 
-#### Submit Genomic Test Order Form
+##### Submit Genomic Test Order Form
 
 The completed form is submitted to the Regional Orchestration Engine following:
 
@@ -198,7 +198,7 @@ The FHIR exchange style used [FHIR Message](https://hl7.org/fhir/R4/messaging.ht
 This message is an [aggregate (DDD)](https://martinfowler.com/bliki/DDD_Aggregate.html)/[archetype](https://en.wikipedia.org/wiki/Archetype_(information_science)) and so is a collection of FHIR Resources (similar to v2 segements) which is described in [Genomic Test Order](Questionnaire-GenomicTestOrder.html).
 
 
-#### Communicating Ask at Order Entry questions and prior results
+##### Communicating Ask at Order Entry questions and prior results
 
 See also [HL7 Europe Laboratory Report - ServiceRequest](https://hl7.eu/fhir/laboratory/StructureDefinition-ServiceRequest-eu-lab.html#communicating-ask-at-order-entry-questions-and-prior-results)
 This message can be extended by [template (FHIR Questionnaire)](https://hl7.org/fhir/R4/questionnaire.html) which allows the definition of additional questions to be defined for the `laboratory order`.
@@ -218,11 +218,11 @@ The detail of this form/template defines:
 
 > It is not expected the NW GLH Laboratory Information Management System (LIMS) will support UK SNOMED CT, and the RIE will handle the conversion either internally using [FHIR ConceptMap](https://hl7.org/fhir/R4/conceptmap.html) or a terminology service with the following capabilities [IHE Sharing Valuesets, Codes, and Maps (SVCM)](https://profiles.ihe.net/ITI/SVCM/index.html)
 
-#### Collect Sample and Update Genomic Test Order
+##### Collect Sample and Update Genomic Test Order
 
 After submitting the original order, the sample will be collected and sent to the Order Filler. The Order Filler will update the Test Order to include details such as a specimen collection date, order filler number, etc.
 
-## Laboratory Report (LAB-3)
+### Laboratory Report (LAB-3)
 
 <div class="alert alert-info" role="alert">
 <b>Domain Archetype:</b> <a href="Questionnaire-GenomicTestReport.html" _target="_blank">Genomic Test Report</a> 
@@ -387,9 +387,35 @@ class OrderFiller,OrderPlacer yellow
 ```
 
 
-## Work Order and Test Result Management
+## Work Order and Test Result Management LAB-4 and LAB-5
 
 In Progress
+
+```mermaid
+sequenceDiagram
+    participant clinician as Order Placer<br/>Clinician (EHR)
+    participant nurse as Specimen Collection<br/>Clinician/Nurse
+    participant LIMS as Order Filler<br/>LIMS 
+    participant Sub as Workflow Automation
+
+    clinician ->> clinician: Creates Order
+    note over clinician,LIMS: IHE LAB-1 Laboratory Order
+    clinician ->> LIMS: Sends Laboratory Order
+    clinician ->> nurse: Requests specimen collection
+    nurse ->> nurse: Collect Specimen
+    nurse ->> LIMS: Ship Specimen
+
+    note over LIMS,Sub: IHE LAB-4 Work Order Management
+    Sub ->> Sub : Perform Test
+
+    note over LIMS,Sub: IHE LAB-5 Test Results Management
+    Sub ->> LIMS: Sends Laboratory Report
+ 
+    LIMS ->> LIMS: Write Report
+ 
+    note over clinician,LIMS: IHE LAB-3 Laboratory Report
+    LIMS ->> clinician: Sends Laboratory Report
+```
 
 ### usecase 
 
@@ -407,13 +433,13 @@ Device ->> LIMS: Send Test Results Management LAB-5 R22/R32
 
 ```
 
-## Work Order Management (LAB-4)
+### Work Order Management (LAB-4)
 
 <div class="alert alert-info" role="alert">
 <b>Domain Archetype:</b> <a href="reflex-order.html" _target="_blank">Reflex Order</a> 
 </div>
 
-### Process Flow
+#### Process Flow
 
 ```mermaid
 graph TD
@@ -449,7 +475,7 @@ classDef pink fill:#F8CECC;
 class GDP,RIE4,PubSub,VCFFHIR pink;
 ```
 
-## Test Results Management (LAB-5)
+### Test Results Management (LAB-5)
 
 <div class="alert alert-info" role="alert">
 <b>Domain Archetype:</b> <a href="StructureDefinition-LaboratoryAnalyteResult.html" _target="_blank">Laboratory Analyte Result</a> 
@@ -459,7 +485,7 @@ class GDP,RIE4,PubSub,VCFFHIR pink;
 <b>Interaction:</b> <a href="MQ.html" _target="_blank">Message Exchange</a> LAB-5
 </div>
 
-### Process Flow
+#### Process Flow
 
 ```mermaid
 graph TD
