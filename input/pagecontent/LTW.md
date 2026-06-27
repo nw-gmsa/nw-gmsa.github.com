@@ -411,7 +411,7 @@ sequenceDiagram
     Sub -->> Sub : Perform Test
 
     note over LIMS,Sub: IHE LAB-5 Test Results Management
-    Sub ->> LIMS: Sends Laboratory Report
+    Sub ->> LIMS: Sends Laboratory Report / Sends Laboratory Analyte Result
  
     LIMS -->> LIMS: Write Report
  
