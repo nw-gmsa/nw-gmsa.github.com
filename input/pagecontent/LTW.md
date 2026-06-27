@@ -64,14 +64,14 @@ sequenceDiagram
     participant nurse as Specimen Collection<br/>Clinician/Nurse
     participant LIMS as Order Filler<br/>LIMS 
 
-    clinician ->> clinician: Creates Order
+    clinician -->> clinician: Creates Order
     note over clinician,LIMS: IHE LAB-1 Laboratory Order
     clinician ->> LIMS: Sends Laboratory Order
-    clinician ->> nurse: Requests specimen collection
-    nurse ->> nurse: Collect Specimen
-    nurse ->> LIMS: Ship Specimen
-    LIMS ->> LIMS: Perform Test
-    LIMS ->> LIMS: Write Report
+    clinician -->> nurse: Requests specimen collection
+    nurse -->> nurse: Collect Specimen
+    nurse -->> LIMS: Ship Specimen
+    LIMS -->> LIMS: Perform Test
+    LIMS -->> LIMS: Write Report
     note over clinician,LIMS: IHE LAB-3 Laboratory Report
     LIMS ->> clinician: Sends Laboratory Report
 ```
@@ -398,21 +398,22 @@ sequenceDiagram
     participant LIMS as Order Filler<br/>LIMS 
     participant Sub as Workflow Automation
 
-    clinician ->> clinician: Creates Order
+    clinician -->> clinician: Creates Order
     note over clinician,LIMS: IHE LAB-1 Laboratory Order
     clinician ->> LIMS: Sends Laboratory Order
-    clinician ->> nurse: Requests specimen collection
-    nurse ->> nurse: Collect Specimen
-    nurse ->> LIMS: Ship Specimen
+    clinician -->> nurse: Requests specimen collection
+    nurse -->> nurse: Collect Specimen
+    nurse -->> LIMS: Ship Specimen
 
     note over LIMS,Sub: IHE LAB-4 Work Order Management
-    Sub ->> LIMS: Send Filler Order
-    Sub ->> Sub : Perform Test
+    LIMS ->> Sub: Send Filler Order
+    LIMS -->> Sub: Ship Specimen
+    Sub -->> Sub : Perform Test
 
     note over LIMS,Sub: IHE LAB-5 Test Results Management
-    Sub ->> LIMS: Sends Laboratory Report / Laboratory Analyte Result
+    Sub ->> LIMS: Sends Laboratory Report
  
-    LIMS ->> LIMS: Write Report
+    LIMS -->> LIMS: Write Report
  
     note over clinician,LIMS: IHE LAB-3 Laboratory Report
     LIMS ->> clinician: Sends Laboratory Report

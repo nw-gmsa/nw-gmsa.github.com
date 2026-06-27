@@ -32,23 +32,24 @@ sequenceDiagram
     participant LIMS as Order Filler<br/>LIMS 
     participant Sub as Subcontractor<br/>e.g. other GMSA
 
-    clinician ->> clinician: Creates Order
+    clinician -->> clinician: Creates Order
     note over clinician,LIMS: IHE LAB-1 Laboratory Order
     clinician ->> LIMS: Sends Laboratory Order
-    clinician ->> nurse: Requests specimen collection
-    nurse ->> nurse: Collect Specimen
-    nurse ->> LIMS: Ship Specimen
+    clinician -->> nurse: Requests specimen collection
+    nurse -->> nurse: Collect Specimen
+    nurse -->> LIMS: Ship Specimen
     opt
-        LIMS->> LIMS : Perform Test
+        LIMS-->> LIMS : Perform Test
     end
     note over LIMS,Sub: IHE LAB-35 Sub-order Management
-    LIMS ->> Sub: Send Relfex Order
-    Sub ->> Sub : Perform Test
-    Sub ->> Sub: Write Report
+    LIMS ->> Sub: Send Reflex Order
+    LIMS -->> Sub: Ship Specimen
+    Sub -->> Sub : Perform Test
+    Sub -->> Sub: Write Report
     note over LIMS,Sub: IHE LAB-36 Sub-order Results Delivery
     Sub ->> LIMS: Sends Laboratory Report
     opt
-        LIMS ->> LIMS: Write Report
+        LIMS -->> LIMS: Write Report
     end
     note over clinician,LIMS: IHE LAB-3 Laboratory Report
     LIMS ->> clinician: Sends Laboratory Report
