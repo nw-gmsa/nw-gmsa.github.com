@@ -229,14 +229,15 @@ menu:
   Analysis and Design (Volume 1) :
  ##   Design Overview: design.html
     Laboratory Testing Workflow (LTW): LTW.html
-    Health Data API (HIE/EURDICE): HIE.html
     Inter-Laboratory Workflow (ILW): ILW.html
+    Health Data API (EURDICE): HIE.html
+    API Security: api-security.html
     ##Health Document Sharing (MHDS) and Sharing Laboratory Reports (XD-LAB): MHDS.html
    ## Specimen Event Tracking (SET): SET.html
  #   Genomic Archiving and Communication System (GACS): GACS.html
  #   Care Services Discovery (mCSD): mCSD.html
  #  Patient Administration (PAM): PAM.html
-    API Security: api-security.html
+
   Interfaces (Volume 2):
  ##   Exchange Overview: exchange.html
  ##   Placer Order Management [LAB-1] HL7 FHIR: LAB-1.html
