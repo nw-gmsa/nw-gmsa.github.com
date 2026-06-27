@@ -406,10 +406,11 @@ sequenceDiagram
     nurse ->> LIMS: Ship Specimen
 
     note over LIMS,Sub: IHE LAB-4 Work Order Management
+    Sub ->> LIMS: Send Filler Order
     Sub ->> Sub : Perform Test
 
     note over LIMS,Sub: IHE LAB-5 Test Results Management
-    Sub ->> LIMS: Sends Laboratory Report
+    Sub ->> LIMS: Sends Laboratory Report / Laboratory Analyte Result
  
     LIMS ->> LIMS: Write Report
  

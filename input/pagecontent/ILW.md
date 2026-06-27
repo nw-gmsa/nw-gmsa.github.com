@@ -42,6 +42,7 @@ sequenceDiagram
         LIMS->> LIMS : Perform Test
     end
     note over LIMS,Sub: IHE LAB-35 Sub-order Management
+    LIMS ->> Sub: Send Relfex Order
     Sub ->> Sub : Perform Test
     Sub ->> Sub: Write Report
     note over LIMS,Sub: IHE LAB-36 Sub-order Results Delivery
