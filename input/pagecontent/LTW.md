@@ -339,7 +339,7 @@ TIE ->> EPR: Task complete notification\n(Can be an email notification)
   - When all tests in the order are complete, a Task Complete Notification is sent to the Order Placer.
     - This notification can be sent via email or another messaging system.
 
-## Order and Report Use Case Summary
+### Use Case Summary
 
 <img style="padding:3px;width:95%;" src="Order Entry.drawio.png" alt="Genomic Order and Report Summary"/>
 <br clear="all">
