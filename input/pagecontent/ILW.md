@@ -13,6 +13,7 @@ This is currently being elaborated and subject to change.
 |-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Requestor](ActorDefinition-Requestor.html)         | A hospital laboratory that subcontracts a part of an Order or of an Order Group to another laboratory, e.g. Pathology or HODS. Is known in IHE TLW as [Order Placer](ActorDefinition-OrderPlacer.html) |
 | [Subcontractor](ActorDefinition-Subcontractor.html) | Receives Sub-orders, acknowledges specimen arrival and sends back results fulfilling these Sub-orders, e.g. Genomics. Is known in IHE TLW as [Order Filler](ActorDefinition-OrderFiller.html)                                                           |
+{:.grid}
 
 ## Overview
 
@@ -22,6 +23,14 @@ See Ref 1 for details.
 <br clear="all">
 <p class="figureTitle">IHE ILW Summary</p> 
 <br clear="all">
+
+| Type                | Description                                                                                                                                                     | IHE PALM | Created by   | Order Placer<br/>Order Intent | Order Filler<br/>based-on Order Intent | Suborder Intent |
+|---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|--------------|----------------------------------------|----------------------------------------|-----------------|
+| Laboratory Order    | A request for one or more laboratory investigations submitted by the requesting clinician or system.                                                            | LAB-1    | Order Placer | order                                  |                                        |                 | 
+| Work Order          | A subordinate order created by the laboratory to organise and fulfil part of the overall Laboratory Order.                                                      | LAB-4    | Order Filler |                                        | order                                  | filler-order    | 
+| Subcontracted Order | A laboratory order forwarded to another laboratory for fulfilment, for example when a specialised test is referred to an external provider.                     | LAB-35   | Order Filler |                                        | order (originai=order?)                | order           |
+| Reflex Order        | A new order created automatically by the Order Filler based on previous test results, for example when pathology findings automatically trigger a genomic test. | LAB-35   | Order Filler |                                        | original-order                         | reflex          | 
+{:.grid}
 
 ## Sub-orders LAB-35 and LAB-36
 
