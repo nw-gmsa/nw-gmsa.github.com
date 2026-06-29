@@ -440,7 +440,7 @@ Device ->> LIMS: Send Test Results Management LAB-5 R22/R32
 ### Work Order Management (LAB-4)
 
 <div class="alert alert-info" role="alert">
-<b>Domain Archetype:</b> <a href="reflex-order.html" _target="_blank">Reflex Order</a> 
+<b>Domain Archetype:</b> <a href="filler-order.html" _target="_blank">Filler Order</a> 
 </div>
 
 #### Process Flow
