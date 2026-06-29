@@ -3,11 +3,11 @@
 ```mermaid
 erDiagram
 
-  OriginalOrder ||--|{ ReflexOrder : "has (FillerOrderNumber = FillerGroupNumber)"
+  OriginalOrder ||--|{ FillerOrder : "has (FillerOrderNumber = FillerGroupNumber)"
   OriginalOrder ||--|{ Specimen : contains
-  ReflexOrder ||--|{ Specimen : contains
+  FillerOrder ||--|{ Specimen : contains
   Patient ||--|{ OriginalOrder : "NHSNumber or PatientIdentifier"
-  Patient ||--|{ ReflexOrder : "NHSNumber or PatientIdentifier" 
+  Patient ||--|{ FillerOrder : "NHSNumber or PatientIdentifier" 
 
   OriginalOrder {
     identifier OrderPlacerNumber
@@ -18,7 +18,7 @@ erDiagram
     reference Patient
   }
 
-  ReflexOrder {
+  FillerOrder {
     code OrderStatus
     date TestOrderDate
     idenitifier OrderPlacerNumber-T
