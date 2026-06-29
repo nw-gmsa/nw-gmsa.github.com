@@ -121,8 +121,8 @@ pages:
   exchange.md:
     title: Architecture - Enterprise Integration Patterns (EIP)
     generation: markdown
-  reflex-order.md:
-    title: Reflex Order
+  filler-order.md:
+    title: Filler Order
     generation: markdown
     #  LAB-1.md:
     #   title: Placer Order Management [LAB-1]
