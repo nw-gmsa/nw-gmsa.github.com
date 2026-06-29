@@ -87,7 +87,7 @@ See also [Test Order](Questionnaire-GenomicTestOrder.html)
 
 ## Filler Order Intent
 
-| Type                | Description                                                                                                                                                     | IHE PALM | Created by   | Original Order Intent | Filler Order<br/>(Sub Order) Intent |
+| Type                | Description                                                                                                                                                     | IHE PALM | Created by   | Original Order Intent | Filler Order Intent |
 |---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|--------------|----------------------------------------|-------------------------------------|
 | Laboratory Order    | A request for one or more laboratory investigations submitted by the requesting clinician or system.                                                            | LAB-1    | Order Placer | order / reflex                         |                                     | 
 | Work Order          | A subordinate order created by the laboratory to organise and fulfil part of the overall Laboratory Order.                                                      | LAB-4    | Order Filler |                                        | instance-order?                     | 
