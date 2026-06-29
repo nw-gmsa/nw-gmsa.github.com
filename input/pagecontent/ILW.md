@@ -24,12 +24,12 @@ See Ref 1 for details.
 <p class="figureTitle">IHE ILW Summary</p> 
 <br clear="all">
 
-| Type                | Description                                                                                                                                                     | IHE PALM | Created by   | Order Placer<br/>Order Intent | Order Filler<br/>based-on Order Intent | Suborder Intent |
-|---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|--------------|----------------------------------------|----------------------------------------|-----------------|
-| Laboratory Order    | A request for one or more laboratory investigations submitted by the requesting clinician or system.                                                            | LAB-1    | Order Placer | order                                  |                                        |                 | 
-| Work Order          | A subordinate order created by the laboratory to organise and fulfil part of the overall Laboratory Order.                                                      | LAB-4    | Order Filler |                                        | order                                  | filler-order    | 
-| Subcontracted Order | A laboratory order forwarded to another laboratory for fulfilment, for example when a specialised test is referred to an external provider.                     | LAB-35   | Order Filler |                                        | order (originai=order?)                | order           |
-| Reflex Order        | A new order created automatically by the Order Filler based on previous test results, for example when pathology findings automatically trigger a genomic test. | LAB-35   | Order Filler |                                        | original-order                         | reflex          | 
+| Type                | Description                                                                                                                                                     | IHE PALM | Created by   | Original Order Intent | Filler Order<br/>Sub Order Intent |
+|---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|--------------|----------------------------------------|-----------------------------------|
+| Laboratory Order    | A request for one or more laboratory investigations submitted by the requesting clinician or system.                                                            | LAB-1    | Order Placer | order / reflex                         |                                   | 
+| Work Order          | A subordinate order created by the laboratory to organise and fulfil part of the overall Laboratory Order.                                                      | LAB-4    | Order Filler |                                        | instance-order                    | 
+| Subcontracted Order | A laboratory order forwarded to another laboratory for fulfilment, for example when a specialised test is referred to an external provider.                     | LAB-35   | Order Filler |                                        | order (filler-order)              |
+| Reflex Order        | A new order created automatically by the Order Filler based on previous test results, for example when pathology findings automatically trigger a genomic test. | LAB-35   | Order Filler |                                        | relfex                            | 
 {:.grid}
 
 ## Sub-orders LAB-35 and LAB-36
