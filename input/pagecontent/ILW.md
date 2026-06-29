@@ -57,6 +57,27 @@ sequenceDiagram
     LIMS ->> clinician: Sends Laboratory Report
 ```
 
+### Sub Order Management (LAB-35)
+
+<div class="alert alert-info" role="alert">
+<b>Domain Archetype:</b> <a href="filler-order.html" _target="_blank">Filler Order</a> 
+</div>
+
+<div class="alert alert-info" role="alert">
+<b>Interaction:</b> <a href="MQ.html" _target="_blank">Message Exchange</a> LAB-35
+</div>
+
+### Sub-order Results Delivery (LAB-36)
+
+<div class="alert alert-info" role="alert">
+<b>Domain Archetype:</b> <a href="Questionnaire-GenomicTestReport.html" _target="_blank">Genomic Test Report</a> 
+</div>
+
+<div class="alert alert-info" role="alert">
+<b>Interaction:</b> <a href="MQ.html" _target="_blank">Message Exchange</a> LAB-36
+</div>
+
+
 ### Modernisation
 
 The current IHE ILW specification relies on HL7 v2.x, HL7 v3, and IHE XDS. Several modernization paths are available, most of which focus on adopting FHIR, updating relevant IHE profiles, and shifting from Clinical Documents (HL7 CDA and FHIR Documents) to IHE QEDm for data exchange.
