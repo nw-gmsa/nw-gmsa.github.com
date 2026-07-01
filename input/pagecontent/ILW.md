@@ -97,30 +97,25 @@ The current IHE ILW specification relies on HL7 v2.x, HL7 v3, and IHE XDS. Sever
 sequenceDiagram
 
 participant EPR as Order Placer
-participant RIE as Automation Manager<br/>Regional Orchestration Engine
-participant LIMSP as Order Filler<br/>(North West GMSA)
-participant LIMSG as Order Filler<br/>(other GMSA)
+participant RIE as Regional Orchestration Engine
+participant LIMSP as Order Filler for LAB-1<br/>Order Placer for LAB-35<br/>(North West GMSA)
+participant LIMSG as Order Filler<br/>(other GMSA via GOMS)
 
 EPR ->> RIE: Submit Laboratory Order O21 (LAB-1)
 
+RIE ->> LIMSP: Submit Genomic Order O21 (LAB-1)
+
+opt Other GMSA Order (Sub Contract)
+
 note over RIE : Route order as required, splitting the order is necessary
 
-
-opt North West GMSA Order
-RIE ->> LIMSP: Submit Genomic Order O21 (LAB-1/LAB-35)
-LIMSP ->> RIE: Send Laboratory Report R01 (LAB-3/LAB-36)
-RIE ->> EPR: Send Laboratory Report R01 (LAB-3)
-end
-
-opt Other GMSA Order
-RIE ->> LIMSG: Submit Genomic Order O21 (LAB-1/LAB-4)<br/>Using Genomic Order Management Service API
-LIMSG ->> RIE: Send Laboratory Report R01<br/>Using Genomic Order Management Service API
+LIMSP ->> RIE: Submit Sub-Contract Order O21 (LAB-35)
+RIE ->> LIMSG: Submit Sub-Contract Order O21 (LAB-35)<br/>Using Genomic Order Management Service API
+LIMSG ->> RIE: Send Laboratory Report R01 (LAB-36)<br/>Using Genomic Order Management Service API
 RIE ->> EPR: Send Laboratory Report R01 (LAB-3)
 end
 
 note over EPR, RIE: When all tests in the order are complete
-
-RIE ->> EPR: Task complete notification\n(Can be an email notification)
 
 ```
 
