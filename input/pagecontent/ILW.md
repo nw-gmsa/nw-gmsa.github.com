@@ -240,19 +240,19 @@ EPR ->> LIMS: Submit Laboratory Order O21 (LAB-1)
 
 opt Order Filler (HODS) creates Pathology Order
 
-    note over LIMS,LIMSP: Same specimen can be reused for multiple tests
 
     LIMS ->> LIMSP: Submit Pathology Reflex Order O21 (LAB-35)
     LIMS -->> LIMSP: Send Specimen (not a technical interaction)
+    LIMSP -->> LIMSP : Performs Test
     LIMSP ->> LIMS: Send Pathology Report R01 (LAB-36)
 end
 
 opt Order Filler (HODS) creates Genomic Order
 
-    note over LIMS,LIMSG: Same specimen can be reused for multiple tests
-
+   
     LIMS ->> LIMSG: Submit Genomic Reflex Order O21 (LAB-35)
     LIMSP -->> LIMSG: Send Specimen (unsure of workflow)
+    LIMSG -->> LIMSG : Performs Test
     LIMSG ->> LIMS: Send Genomic Report R01 (LAB-36)
 end
 LIMS -->> LIMS: Write Report
