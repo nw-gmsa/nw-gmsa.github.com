@@ -97,75 +97,30 @@ The current IHE ILW specification relies on HL7 v2.x, HL7 v3, and IHE XDS. Sever
 sequenceDiagram
 
 participant EPR as Order Placer
-participant RIE as Automation Manager<br/>Regional Orchestration Engine
-participant LIMSP as Order Filler<br/>(North West GMSA)
-participant LIMSG as Order Filler<br/>(other GMSA)
+participant RIE as Regional Orchestration Engine
+participant LIMSP as Order Filler for LAB-1<br/>Order Placer for LAB-35<br/>(North West GMSA)
+participant LIMSG as Order Filler<br/>(other GMSA via GOMS)
 
 EPR ->> RIE: Submit Laboratory Order O21 (LAB-1)
 
-note over RIE : Route order as required, splitting the order is necessary
+RIE ->> LIMSP: Submit Genomic Order O21 (LAB-1)
 
+opt Other GMSA Order (Sub Contract)
 
-opt North West GMSA Order
-RIE ->> LIMSP: Submit Genomic Order O21 (LAB-1/LAB-35)
-LIMSP ->> RIE: Send Laboratory Report R01 (LAB-3/LAB-36)
+note over RIE,LIMSG: IHE LAB-35 Sub-order Management
+
+LIMSP ->> RIE: Submit Sub-Contract Order O21 (LAB-35)
+RIE ->> LIMSG: Submit Sub-Contract Order O21 (LAB-35)<br/>Using Genomic Order Management Service API
+
+note over RIE,LIMSG: IHE LAB-36 Sub-order Results Delivery
+
+LIMSG ->> RIE: Send Laboratory Report R01 (LAB-36)<br/>Using Genomic Order Management Service API
+RIE -->> LIMSP: Send Laboratory Report R01 (LAB-36)<br/>Using Genomic Order Management Service API
+
 RIE ->> EPR: Send Laboratory Report R01 (LAB-3)
 end
-
-opt Other GMSA Order
-RIE ->> LIMSG: Submit Genomic Order O21 (LAB-1/LAB-4)<br/>Using Genomic Order Management Service API
-LIMSG ->> RIE: Send Laboratory Report R01<br/>Using Genomic Order Management Service API
-RIE ->> EPR: Send Laboratory Report R01 (LAB-3)
-end
-
-note over EPR, RIE: When all tests in the order are complete
-
-RIE ->> EPR: Task complete notification\n(Can be an email notification)
-
 ```
 
-#### Main Process Flow
-
-- Order Submission
-    - The Order Placer submits a Laboratory Order O21 (LAB-1) to the Automation Manager.
-    - The Automation Manager decides whether to route or split the order as needed depending on the requested tests.
-- Conditional Routing (opt blocks)
-    - [North West GMSA Order]
-        - The Automation Manager submits a Genomic Order O21 (LAB-1/LAB-4) to Order Filler (North West GMSA).
-        - The Order Filler sends back Laboratory Report R01 to the Automation Manager.
-        - The Automation Manager forwards this Laboratory Report R01 to the Order Placer.
-    - [Other GMSA Order]
-        - The Automation Manager submits a Genomic Order O21 (LAB-1/LAB-4) using the Genomic Order Management Service API to Order Filler (other GMSA).
-        - The Order Filler returns Laboratory Report R01 via the same API.
-        - The Automation Manager sends this Laboratory Report R01 to the Order Placer.
-- Completion
-    - When all tests in the order are complete, the Automation Manager sends a task complete notification (which can be an email) to the Order Placer.
-
-
-### NHS North West Children Cancer 
-
-
-<img style="padding:3px;width:95%;" src="OrderCommunicationAndNotifications.drawio.png" alt="Order Communication and Notifications"/>
-<br clear="all">
-<p class="figureTitle">Genomic Order Notifications - Use Case 4</p> 
-<br clear="all">
-
-#### As is Process
-
-(From North West Children Cancer. This is centred around laboratory tests, genomic tests will have similar notification systems)
-
-- Blood test requested by Primary Treatment Centre (PTC)
-- Blood sample taken by Community Nurse or Paediatric Oncology Shared Care Unit (POSCU) and the specimen details are documented
-- Blood Laboratory Order is created and a laboratory order request is sent to the laboratory
-- Blood test performed by laboratory
-- Laboratory writes up a blood results report (laboratory report)
-- Laboratory report sent to Community Nurse or POSCU
-- Laboratory report then sent to PTC
-- Community Nurse or POSCU calls PTC by phone to notify that the results have been sent and to confirm that they have been received
-- If results cannot be understood, PTC will call Community Nurse or POSCU to inform them. This is usually due to a defective message
-    - Community Nurse or POSCU sends results in a different format (via telephone or re-writes the results out)
-- PTC may edit a child's prescription on regimen in light of blood results and may need to recall a patient into hospital for additional tests
-- If prescription is amended then PTC must notify POSCU
 
 
 ### Use Case: Genomic Test Order following on from Pathology Test Order
@@ -214,26 +169,19 @@ participant LIMSG as Order Filler (Genomics)
 
 
 EPR ->> LIMSP: Submit Laboratory Order O21 (LAB-1)
-LIMSP ->> EPR: Send Laboratory Report R01 (LAB-3)
 
-opt Genomic Order created by original order placer
-
-note over LIMSP,LIMSG: Same specimen can be reused for multiple tests
-
-EPR ->> LIMSG: Submit Genomic Order O21 (LAB-1)
-LIMSP -->> LIMSG: Send Specimen (not a technical interaction)
-LIMSG ->> EPR: Send Genomic Report R01 (LAB-3)
-end
+LIMSP -->> LIMSP : Performs Test
 
 opt Order Filler (Pathology) creates Genomic Order
-note over LIMSP,LIMSG: Same specimen can be reused for multiple tests
 
-LIMSP ->> LIMSG: Submit Genomic Order O21 (LAB-1/LAB-35)
-LIMSP ->> EPR: Copy of Genomic Order O22 (LAB-2)
-LIMSP -->> LIMSG: Send Specimen (not a technical interaction)
-LIMSG ->> LIMSP: Send Genomic Report R01 (LAB-3/LAB-36)
-LIMSG ->> EPR: Send Genomic Report R01 (LAB-3)
+    note over LIMSP,LIMSG: Same specimen can be reused for multiple tests
+
+    LIMSP ->> LIMSG: Submit Genomic Reflex Order O21 (LAB-35)
+    LIMSP -->> LIMSG: Send Specimen (not a technical interaction)
+    LIMSG ->> LIMSP: Send Genomic Report R01 (LAB-36)
 end
+
+LIMSP ->> EPR: Send Laboratory Report R01 (LAB-3)
 ```
 
 #### Main Process Flow
@@ -276,6 +224,65 @@ For information on `Genomic Tests on the bowel cancer cells`, see [macmillan.org
 <p class="figureTitle">Colorectal Cancer Diagnostics and Patient Referrals</p> 
 <br clear="all">
 
+### Haematological Malignancy Diagnostic Services
+
+```mermaid
+sequenceDiagram
+
+
+participant EPR as Order Placer
+participant LIMS as Order Filler (HODS)
+participant LIMSP as Order Filler (Pathology)
+participant LIMSG as Order Filler (Genomics)
+
+
+EPR ->> LIMS: Submit Laboratory Order O21 (LAB-1)
+
+opt Order Filler (HODS) creates Pathology Order
+
+
+    LIMS ->> LIMSP: Submit Pathology Reflex Order O21 (LAB-35)
+    LIMS -->> LIMSP: Send Specimen (not a technical interaction)
+    LIMSP -->> LIMSP : Performs Test
+    LIMSP ->> LIMS: Send Pathology Report R01 (LAB-36)
+end
+
+opt Order Filler (HODS) creates Genomic Order
+
+   
+    LIMS ->> LIMSG: Submit Genomic Reflex Order O21 (LAB-35)
+    LIMSP -->> LIMSG: Send Specimen (unsure of workflow)
+    LIMSG -->> LIMSG : Performs Test
+    LIMSG ->> LIMS: Send Genomic Report R01 (LAB-36)
+end
+LIMS -->> LIMS: Write Report
+LIMS ->> EPR: Send Laboratory Report R01 (LAB-3)
+```
+
+#### NHS North West Children Cancer Example
+
+
+<img style="padding:3px;width:95%;" src="OrderCommunicationAndNotifications.drawio.png" alt="Order Communication and Notifications"/>
+<br clear="all">
+<p class="figureTitle">Genomic Order Notifications - Use Case 4</p> 
+<br clear="all">
+
+#### As is Process
+
+(From North West Children Cancer. This is centred around laboratory tests, genomic tests will have similar notification systems)
+
+- Blood test requested by Primary Treatment Centre (PTC)
+- Blood sample taken by Community Nurse or Paediatric Oncology Shared Care Unit (POSCU) and the specimen details are documented
+- Blood Laboratory Order is created and a laboratory order request is sent to the laboratory
+- Blood test performed by laboratory
+- Laboratory writes up a blood results report (laboratory report)
+- Laboratory report sent to Community Nurse or POSCU
+- Laboratory report then sent to PTC
+- Community Nurse or POSCU calls PTC by phone to notify that the results have been sent and to confirm that they have been received
+- If results cannot be understood, PTC will call Community Nurse or POSCU to inform them. This is usually due to a defective message
+    - Community Nurse or POSCU sends results in a different format (via telephone or re-writes the results out)
+- PTC may edit a child's prescription on regimen in light of blood results and may need to recall a patient into hospital for additional tests
+- If prescription is amended then PTC must notify POSCU
 
 
 
