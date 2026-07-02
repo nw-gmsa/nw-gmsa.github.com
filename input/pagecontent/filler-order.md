@@ -23,8 +23,7 @@ erDiagram
   FillerOrder {
     code OrderStatus
     date TestOrderDate
-    idenitifier OrderPlacerNumber-T
-    identifier Requisition-OrderFillerNumber-R
+    identifier TestAccessionIdentifier
     code NGTDTestCode
     string ClinicalDetails
     code Performer
@@ -44,7 +43,6 @@ erDiagram
   }
 
   Specimen {
-    identifier SpecimenNumber
     identifier SpecimenAccessionIdentifier
     identifier ShipmentTrackingNumber
     identifier FMIIdentifier
@@ -56,7 +54,7 @@ erDiagram
   }
 
   DiagnosticReport {
-    identifier ReportIdentifier
+    identifier TestAccessionIdentifier
     reference FillerOrder
     reference Patient
     code NGTDTestCode
@@ -68,7 +66,7 @@ erDiagram
 
 See [Patient](StructureDefinition-Patient.html)
 
-| Type       | Name                       | FHIR Patient                 |
+| Type       | Name                       | FHIR [Patient](StructureDefinition-Patient.html)                 |
 |------------|----------------------------|------------------------------|
 | identifier | NHSNumber                  | Patient.identifier (type=NH) |
 | identifier | HospitalNumber             | Patient.identifier (type=MR) |
@@ -79,43 +77,39 @@ See [Patient](StructureDefinition-Patient.html)
 | code       | AdministrativeSex          | Patient.gender               |
 {:.grid}
 
-## Specimen 
+## Original Order
 
-See also [Test Order - Specimen](Questionnaire-GenomicTestOrder.html#specimen)
+See also [Test Order](Questionnaire-GenomicTestOrder.html). The Original Order is distinguised from the Filler Order by value of intent, .
 
-| Name                                  | iGene CSV | FHIR                                                                             |
-|---------------------------------------|-----------|----------------------------------------------------------------------------------| 
-| identifier FillerSpecimenIdentifier-S | SpecimenAccessionIdentifier          | [Specimen](StructureDefinition-Specimen.html).identifier[FillerSpecimenNumber]   |
-| ShipmentTrackingNumber                | ShipmentTrackingNumber          | [Specimen](StructureDefinition-Specimen.html).identifier[ShipmentTrackingNumber] |
-| SpecimenType                          | SpecimenTypeDescription          | [Specimen](StructureDefinition-Specimen.html).type                               |
-| DispatchDate                          | SpecimenDispatchDate          | Task? [Work Order](StructureDefinition-WorkOrder.html)                                                             |
-| CollectionDatae                       | SpecimenTakenDateTime          | [Specimen](StructureDefinition-Specimen.html).collection.collectedDateTime       |
-{:.grid}
-
-## Original Order 
-
-See also [Test Order](Questionnaire-GenomicTestOrder.html)
-
-| Name                            | iGene CSV                 | FHIR                                                                                         | 
-|---------------------------------|---------------------------|----------------------------------------------------------------------------------------------| 
-| intent                          |                           | [ServiceRequest](StructureDefinition-ServiceRequest.html).intent = original-order (or order) |
+| Type       | Name                       | FHIR [ServiceRequest](StructureDefinition-ServiceRequest.html) |
+|------------|----------------------------|----------------------------------------------------------------|
+| identifier | PlacerOrderNumber          | ServiceRequest.identifier (type = PLAC)                        |
+| identifier | FillerOrderNumber          | ServiceRequest.identifier (type = FILL)                        |
+| code       |                     | ServiceRequest.intent (code = original-order)                  | 
+| code       | NGTDTestCode               | ServiceRequest.code                                            |
+| code       | RequestingOrganisationCode | ServiceRequest.requester (ODS Code)                                       |
+| code       | Performer                  | ServiceRequest.perform (fixed ODS code = 699X0)                |
+| reference  | Specimen                   | ServiceRequest.specimen                                        |
+| reference  | Patient                    | ServiceRequest.subject                                         |
 {:.grid}
 
 ## Filler Order
 
-| Name                            | iGene CSV                 | FHIR                                                                                 | 
-|---------------------------------|---------------------------|--------------------------------------------------------------------------------------| 
-| OrderStatus                     | OrderStatus               | Task? [Work Order](StructureDefinition-WorkOrder.html)                               |
-| [intent](#filler-order-intent)  |                           | [ServiceRequest](StructureDefinition-ServiceRequest.html).intent                     |
-| TestOrderDate                   | TestOrderDate             | [ServiceRequest](StructureDefinition-ServiceRequest.html).authoredOn                 | 
-| OrderPlacerNumber-T             | TestAccessionIdentifier   | [ServiceRequest](StructureDefinition-ServiceRequest.html).identifier[OrderIdentifier] |
-| Requisition-OrderFillerNumber-R | FillerOrderNumber         | [ServiceRequest](StructureDefinition-ServiceRequest.html).requisition                |
-| NGTDTestCode                    | NGTDTestCode              | [ServiceRequest](StructureDefinition-ServiceRequest.html).code                       |
-| ClinicalDetails                 | ClinicalDetails           | [ServiceRequest](StructureDefinition-ServiceRequest.html).note                       |
-| Performer                       | DatasetTargetOrganisation | [ServiceRequest](StructureDefinition-ServiceRequest.html).performer                  |
+| Type       | Name                       | FHIR [ServiceRequest](StructureDefinition-ServiceRequest.html) |
+|------------|----------------------------|----------------------------------------------------------------|
+| code       | OrderStatus                | ServiceRequest.status                                          |
+| date       | TestOrderDate              | ServiceRequest.authoredOn                                      |
+| identifier | TestAccessionIdentifier    | ServiceRequest.identifier                                      |
+| code       | NGTDTestCode               | ServiceRequest.code                                            |
+| string     | ClinicalDetails            | ServiceRequest.note                                            |
+| code       | RequestingOrganisationCode | ServiceRequest.requester (fixed ODS code = 699X0)              |
+| code       | Performer                  | ServiceRequest.perform (ODS Code)                              |
+| reference  | Specimen                   | ServiceRequest.specimen                                        |
+| reference  | Patient                    | ServiceRequest.subject                                         |
+| reference  | OriginalOrder              | ServiceRequest.requisition and ServiceRequest.basedOn          |
 {:.grid}
 
-## Filler Order Intent
+### Filler Order Intent
 
 | Type                | Description                                                                                                                                                     | IHE PALM | Created by   | Original Order Intent | Filler Order Intent   |
 |---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|--------------|----------------------------------------|-----------------------|
@@ -124,3 +118,36 @@ See also [Test Order](Questionnaire-GenomicTestOrder.html)
 | Subcontracted Order | A laboratory order forwarded to another laboratory for fulfilment, for example when a specialised test is referred to an external provider.                     | LAB-35   | Order Filler |                                        | order (filler-order?) |
 | Reflex Order        | A new order created automatically by the Order Filler based on previous test results, for example when pathology findings automatically trigger a genomic test. | LAB-35   | Order Filler |                                        | reflex                | 
 {:.grid}
+
+## Specimen 
+
+See also [Test Order - Specimen](Questionnaire-GenomicTestOrder.html#specimen)
+
+| Type       | Name                        | FHIR [Specimen](StructureDefinition-Specimen.html)       |
+|------------|-----------------------------|----------------------------------------------------------|
+| identifier | SpecimenAccessionIdentifier | Specimen.identifier                                      |
+| identifier | ShipmentTrackingNumber      | Specimen.identifier[ShipmentTrackingNumber] (type = STN) |
+| identifier | FMIIdentifier               | Specimen.container.identifier                            |
+| reference  | Patient                     | Specimen.subject                                         |
+| code       | SpecimenTypeCode            | Specimen.type                                            |
+| date       | SpecimenDispatchDate        |                                                          |
+| date       | SpecimenTakenDateTime       | Specimen.collection.collectedDateTime                    |
+| date       | SpecimenReceivedDateTime    |                                                          |
+{:.grid}
+
+## Diagnostic Report
+
+See also [Test Report](Questionnaire-GenomicTestReport.html)
+
+| Type       | Name                    | FHIR [DiagnosticReport](StructureDefinition-DiagnosticReport.html)                           |
+|------------|-------------------------|----------------------------------------------------------------------------------------------|
+| identifier | TestAccessionIdentifier | DiagnosticReport.identifier                                                                  |
+| reference  | FillerOrder             | DiagnosticReport.basedOn (FillerOrder)                                                       |
+| reference  | Patient                 | DiagnosticReport.subject                                                                     |
+| code       | NGTDTestCode            | DiagnosticReport.code (system = https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory) |
+| date       | ReportStatusDateTime    | DiagnosticReport.effectiveDateTime                                                           |
+{:.grid}
+
+
+
+
