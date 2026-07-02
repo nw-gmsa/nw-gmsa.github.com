@@ -277,7 +277,7 @@ groups:
       - Bundle/GenomicsOrderMessageAttachment
       - Bundle/GenomicsOrderMessageCodedEntries
       - Bundle/GenomicsOrderSearchSet
-      - Bundle/Bundle-Message-ReflexOrder
+      - Bundle/Bundle-Message-FillerOrder
       - DocumentReference/a293b4a6-e46b-4402-9b2b-d9517afc7137
       - Encounter/984b8a89-4194-4eb4-a7ea-ca8049ebeea3
       - MessageHeader/MessageHeaderGenomicOrder
