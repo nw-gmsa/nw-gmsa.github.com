@@ -219,9 +219,9 @@ resources:
     name: Example Document and Document Notification Message
     description: Example Document and Document Notification Message for GMCR
     exampleBoolean: true
-  Bundle/Bundle-Message-ReflexOrder:
-    name: Bundle 'Message' - Reflex Order Message
-    description: Example Reflex Order Message for internal LIMS
+  Bundle/Bundle-Message-FillerOrder:
+    name: Bundle 'Message' - Filler Order Message
+    description: Example Filler Order Message for internal or external LIMS
     exampleBoolean: true
 
 menu:

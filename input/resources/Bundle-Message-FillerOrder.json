@@ -1,6 +1,6 @@
 {
   "resourceType": "Bundle",
-  "id": "Bundle-Message-ReflexOrder",
+  "id": "Bundle-Message-FillerOrder",
   "meta": {
     "profile": [
       "https://fhir.nwgenomics.nhs.uk/StructureDefinition/BundleMessage"
