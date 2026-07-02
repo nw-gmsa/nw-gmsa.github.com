@@ -8,12 +8,12 @@
   },
   "entry": [
     {
-      "fullUrl": "urn:uuid:0e9c7bbf-7d70-417b-a91f-90980a18cf7e",
+      "fullUrl": "urn:uuid:3bed1f74-173f-4841-b3c0-c112b8d53e12",
       "resource": {
         "resourceType": "MessageHeader",
         "destination": [
           {
-            "endpoint": "https//fhir.mft.nhs.uk/Endpoint/STARLIMS",
+            "endpoint": "https//fhir.mft.nhs.uk/Endpoint/RIE",
             "receiver": {
               "identifier": {
                 "system": "https://fhir.nhs.uk/Id/ods-organization-code",
@@ -28,7 +28,7 @@
         },
         "focus": [
           {
-            "reference": "urn:uuid:075c12a9-5128-4e5e-9913-7759c2cd6b89"
+            "reference": "urn:uuid:afae0544-f0d1-4cb1-afb9-572ee5dad285"
           }
         ],
         "sender": {
@@ -45,14 +45,28 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:07e8ec6d-cb59-42ea-b9b2-7da6d58ef8f9",
+      "fullUrl": "urn:uuid:17d826c4-911c-4b49-8910-fa079f50705f",
       "resource": {
         "resourceType": "Patient",
-        "birthDate": "2026-05-25",
+        "birthDate": "1993-12-27",
         "gender": "female",
         "identifier": [
           {
-            "system": "urn:oid:2.16.840.1.113883.2.1.3.2.4.16.53",
+            "extension": [
+              {
+                "url": "https://fhir.hl7.org.uk/StructureDefinition/Extension-UKCore-NHSNumberVerificationStatus",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "code": "05",
+                      "display": "Trace needs to be resolved - (NHS number or patient detail conflict)",
+                      "system": "https://fhir.hl7.org.uk/CodeSystem/UKCore-NHSNumberVerificationStatusEngland"
+                    }
+                  ]
+                }
+              }
+            ],
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
             "type": {
               "coding": [
                 {
@@ -61,7 +75,7 @@
                 }
               ]
             },
-            "value": "1111111111"
+            "value": "9737873998"
           },
           {
             "assigner": {
@@ -79,13 +93,13 @@
                 }
               ]
             },
-            "value": "13690"
+            "value": "336389"
           },
           {
             "assigner": {
               "identifier": {
                 "system": "https://fhir.nhs.uk/Id/ods-organization-code",
-                "value": "699X0"
+                "value": "RAE"
               }
             },
             "type": {
@@ -96,25 +110,25 @@
                 }
               ]
             },
-            "value": "H123456"
+            "value": "336577"
           }
         ],
         "name": [
           {
-            "family": "DLIMStest",
+            "family": "DURHAM",
             "given": [
-              "Aphrodite"
+              "Alicent"
             ]
           }
         ]
       }
     },
     {
-      "fullUrl": "urn:uuid:844bf384-d0e1-4eb4-99f2-a5e565ad199f",
+      "fullUrl": "urn:uuid:b3cc579c-66b5-4fb1-91d4-dcc07d0f548c",
       "resource": {
         "resourceType": "Specimen",
         "collection": {
-          "collectedDateTime": "2026-06-03"
+          "collectedDateTime": "2026-06-26"
         },
         "identifier": [
           {
@@ -133,13 +147,13 @@
                 }
               ]
             },
-            "value": "S26-00JX"
+            "value": "S26-1K74"
           }
         ],
         "status": "available",
         "subject": {
           "identifier": {
-            "system": "urn:oid:2.16.840.1.113883.2.1.3.2.4.16.53",
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
             "type": {
               "coding": [
                 {
@@ -148,9 +162,9 @@
                 }
               ]
             },
-            "value": "1111111111"
+            "value": "9737873998"
           },
-          "reference": "urn:uuid:07e8ec6d-cb59-42ea-b9b2-7da6d58ef8f9"
+          "reference": "urn:uuid:17d826c4-911c-4b49-8910-fa079f50705f"
         },
         "type": {
           "coding": [
@@ -164,7 +178,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:0b061421-5133-4f49-ad46-96cba54b5509",
+      "fullUrl": "urn:uuid:ae7d645c-f0e0-468b-a34f-a40aa2246874",
       "resource": {
         "resourceType": "ServiceRequest",
         "category": [
@@ -180,30 +194,13 @@
         "code": {
           "coding": [
             {
-              "code": "R95.1",
+              "code": "M4.14",
               "system": "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory"
             }
           ],
-          "text": "ACTION: R95.1 - Iron overload - hereditary haemochromatosis testing (EXPORT)"
+          "text": "PACKAGE: M4.14 - Non-Small Cell Lung Cancer, Multi-target ctDNA combined Multi-target NGS panel - small variant (EGFR, ALK, BRAF, KRAS, MET exon 14 skipping and copy number variations) and structural variant (ROS1, RET, ALK, NTRK1, NTRK2, NTRK3, MET exon "
         },
         "identifier": [
-          {
-            "assigner": {
-              "identifier": {
-                "system": "https://fhir.nhs.uk/Id/ods-organization-code",
-                "value": "699X0"
-              }
-            },
-            "type": {
-              "coding": [
-                {
-                  "code": "PLAC",
-                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
-                }
-              ]
-            },
-            "value": "56781345"
-          },
           {
             "assigner": {
               "identifier": {
@@ -220,26 +217,26 @@
                 }
               ]
             },
-            "value": "R26-00JW"
+            "value": "R26-15F8"
           }
         ],
         "intent": "original-order",
         "requester": {
           "identifier": {
             "system": "https://fhir.nhs.uk/Id/ods-organization-code",
-            "value": "699X0"
+            "value": "RAE"
           }
         },
         "specimen": [
           {
-            "reference": "urn:uuid:844bf384-d0e1-4eb4-99f2-a5e565ad199f",
+            "reference": "urn:uuid:b3cc579c-66b5-4fb1-91d4-dcc07d0f548c",
             "type": "Specimen"
           }
         ],
         "status": "active",
         "subject": {
           "identifier": {
-            "system": "urn:oid:2.16.840.1.113883.2.1.3.2.4.16.53",
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
             "type": {
               "coding": [
                 {
@@ -248,20 +245,20 @@
                 }
               ]
             },
-            "value": "1111111111"
+            "value": "9737873998"
           },
-          "reference": "urn:uuid:07e8ec6d-cb59-42ea-b9b2-7da6d58ef8f9"
+          "reference": "urn:uuid:17d826c4-911c-4b49-8910-fa079f50705f"
         }
       }
     },
     {
-      "fullUrl": "urn:uuid:075c12a9-5128-4e5e-9913-7759c2cd6b89",
+      "fullUrl": "urn:uuid:afae0544-f0d1-4cb1-afb9-572ee5dad285",
       "resource": {
         "resourceType": "ServiceRequest",
-        "authoredOn": "2026-06-10",
+        "authoredOn": "2026-06-30",
         "basedOn": [
           {
-            "reference": "urn:uuid:0b061421-5133-4f49-ad46-96cba54b5509"
+            "reference": "urn:uuid:ae7d645c-f0e0-468b-a34f-a40aa2246874"
           }
         ],
         "category": [
@@ -277,11 +274,11 @@
         "code": {
           "coding": [
             {
-              "code": "R95.1",
+              "code": "ctDNA_M4",
               "system": "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory"
             }
           ],
-          "text": "ACTION: R95.1 - Iron overload - hereditary haemochromatosis testing (EXPORT)"
+          "text": "PACKAGE: M4.14 - Non-Small Cell Lung Cancer, Multi-target ctDNA combined Multi-target NGS panel - small variant (EGFR, ALK, BRAF, KRAS, MET exon 14 skipping and copy number variations) and structural variant (ROS1, RET, ALK, NTRK1, NTRK2, NTRK3, MET exon "
         },
         "identifier": [
           {
@@ -300,20 +297,15 @@
                 }
               ]
             },
-            "value": "T26-01MR"
+            "value": "T26-5AMV"
           }
         ],
-        "intent": "reflex-order",
-        "note": [
-          {
-            "text": "Clinical notes added to the referral\r"
-          }
-        ],
+        "intent": "filler-order",
         "performer": [
           {
             "identifier": {
               "system": "https://fhir.nhs.uk/Id/ods-organization-code",
-              "value": "REP"
+              "value": "699X0"
             }
           }
         ],
@@ -339,18 +331,18 @@
               }
             ]
           },
-          "value": "R26-00JW"
+          "value": "R26-15F8"
         },
         "specimen": [
           {
-            "reference": "urn:uuid:844bf384-d0e1-4eb4-99f2-a5e565ad199f",
+            "reference": "urn:uuid:b3cc579c-66b5-4fb1-91d4-dcc07d0f548c",
             "type": "Specimen"
           }
         ],
         "status": "active",
         "subject": {
           "identifier": {
-            "system": "urn:oid:2.16.840.1.113883.2.1.3.2.4.16.53",
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
             "type": {
               "coding": [
                 {
@@ -359,16 +351,16 @@
                 }
               ]
             },
-            "value": "1111111111"
+            "value": "9737873998"
           },
-          "reference": "urn:uuid:07e8ec6d-cb59-42ea-b9b2-7da6d58ef8f9"
+          "reference": "urn:uuid:17d826c4-911c-4b49-8910-fa079f50705f"
         }
       }
     }
   ],
   "identifier": {
-    "value": "706045"
+    "value": "728357"
   },
-  "timestamp": "2026-06-26T05:03:10.520Z",
+  "timestamp": "2026-07-02T08:44:38.631Z",
   "type": "message"
 }
