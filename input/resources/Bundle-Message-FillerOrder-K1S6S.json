@@ -1,0 +1,370 @@
+{
+  "resourceType": "Bundle",
+  "id": "Bundle-Message-FillerOrder-K1S6S",
+  "meta": {
+    "profile": [
+      "https://fhir.nwgenomics.nhs.uk/StructureDefinition/BundleMessage"
+    ]
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:d7020a25-0cc4-4299-9603-c3049234a726",
+      "resource": {
+        "resourceType": "MessageHeader",
+        "destination": [
+          {
+            "endpoint": "https//fhir.mft.nhs.uk/Endpoint/STARLIMS",
+            "receiver": {
+              "identifier": {
+                "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+                "value": "699X0"
+              }
+            }
+          }
+        ],
+        "eventCoding": {
+          "code": "O21",
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0003"
+        },
+        "focus": [
+          {
+            "reference": "urn:uuid:ee5fd453-712f-419f-bf84-9475c806e97c"
+          }
+        ],
+        "sender": {
+          "identifier": {
+            "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+            "value": "699X0"
+          }
+        },
+        "source": {
+          "endpoint": "https://fhir.nwgenomics.nhs.uk/Endpoint/IGENE",
+          "name": "IGENE",
+          "software": "NW GLH"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:a7d47478-79ca-444b-a53a-84b79ac65dd2",
+      "resource": {
+        "resourceType": "Patient",
+        "birthDate": "1978-01-17",
+        "gender": "male",
+        "identifier": [
+          {
+            "extension": [
+              {
+                "url": "https://fhir.hl7.org.uk/StructureDefinition/Extension-UKCore-NHSNumberVerificationStatus",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "code": "05",
+                      "display": "Trace needs to be resolved - (NHS number or patient detail conflict)",
+                      "system": "https://fhir.hl7.org.uk/CodeSystem/UKCore-NHSNumberVerificationStatusEngland"
+                    }
+                  ]
+                }
+              }
+            ],
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
+            "type": {
+              "coding": [
+                {
+                  "code": "NH",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                }
+              ]
+            },
+            "value": "9737383222"
+          },
+          {
+            "assigner": {
+              "identifier": {
+                "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+                "value": "699X0"
+              }
+            },
+            "system": "https://fhir.nwgenomics.nhs.uk/Identifier/IGENE-PatientIdentifier",
+            "type": {
+              "coding": [
+                {
+                  "code": "PI",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                }
+              ]
+            },
+            "value": "330684"
+          },
+          {
+            "assigner": {
+              "identifier": {
+                "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+                "value": "R0A"
+              }
+            },
+            "type": {
+              "coding": [
+                {
+                  "code": "MR",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                }
+              ]
+            },
+            "value": "12184219"
+          }
+        ],
+        "name": [
+          {
+            "family": "LEEDS",
+            "given": [
+              "Rob"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:6857f5af-a048-460a-801b-edf39e1fcb34",
+      "resource": {
+        "resourceType": "Specimen",
+        "collection": {
+          "collectedDateTime": "2026-06-29"
+        },
+        "identifier": [
+          {
+            "assigner": {
+              "identifier": {
+                "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+                "value": "699X0"
+              }
+            },
+            "system": "https://fhir.nwgenomics.nhs.uk/Identifier/IGENE-SpecimenIdentifier",
+            "type": {
+              "coding": [
+                {
+                  "code": "FILL",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                }
+              ]
+            },
+            "value": "S26-1KAP"
+          }
+        ],
+        "status": "available",
+        "subject": {
+          "identifier": {
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
+            "type": {
+              "coding": [
+                {
+                  "code": "NH",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                }
+              ]
+            },
+            "value": "9737383222"
+          },
+          "reference": "urn:uuid:a7d47478-79ca-444b-a53a-84b79ac65dd2"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:185ea5de-1529-4c21-8197-73dc6809b220",
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "116148004",
+                "system": "http://snomed.info/sct"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "R314.2",
+              "system": "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory"
+            }
+          ],
+          "text": "PACKAGE: R314.2 - Ambiguous genitalia (Karyotype)"
+        },
+        "identifier": [
+          {
+            "assigner": {
+              "identifier": {
+                "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+                "value": "R0A"
+              }
+            },
+            "type": {
+              "coding": [
+                {
+                  "code": "PLAC",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                }
+              ]
+            },
+            "value": "1034438528.0"
+          },
+          {
+            "assigner": {
+              "identifier": {
+                "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+                "value": "699X0"
+              }
+            },
+            "system": "https://fhir.nwgenomics.nhs.uk/Identifier/IGENE-ReferralIdentifier",
+            "type": {
+              "coding": [
+                {
+                  "code": "FILL",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                }
+              ]
+            },
+            "value": "R26-15HE"
+          }
+        ],
+        "intent": "original-order",
+        "requester": {
+          "identifier": {
+            "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+            "value": "R0A"
+          }
+        },
+        "specimen": [
+          {
+            "reference": "urn:uuid:6857f5af-a048-460a-801b-edf39e1fcb34",
+            "type": "Specimen"
+          }
+        ],
+        "status": "active",
+        "subject": {
+          "identifier": {
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
+            "type": {
+              "coding": [
+                {
+                  "code": "NH",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                }
+              ]
+            },
+            "value": "9737383222"
+          },
+          "reference": "urn:uuid:a7d47478-79ca-444b-a53a-84b79ac65dd2"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:ee5fd453-712f-419f-bf84-9475c806e97c",
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "authoredOn": "2026-07-01",
+        "basedOn": [
+          {
+            "reference": "urn:uuid:185ea5de-1529-4c21-8197-73dc6809b220"
+          }
+        ],
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "116148004",
+                "system": "http://snomed.info/sct"
+              }
+            ]
+          }
+        ],
+        "identifier": [
+          {
+            "assigner": {
+              "identifier": {
+                "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+                "value": "699X0"
+              }
+            },
+            "system": "https://fhir.nwgenomics.nhs.uk/Identifier/IGENE-TestIdentifier",
+            "type": {
+              "coding": [
+                {
+                  "code": "PLAC",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                }
+              ]
+            },
+            "value": "T26-5B4U"
+          }
+        ],
+        "intent": "filler-order",
+        "note": [
+          {
+            "text": "REDACTED"
+          }
+        ],
+        "performer": [
+          {
+            "identifier": {
+              "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+              "value": "K1S6S"
+            }
+          }
+        ],
+        "requester": {
+          "identifier": {
+            "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+            "value": "699X0"
+          }
+        },
+        "requisition": {
+          "assigner": {
+            "identifier": {
+              "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+              "value": "699X0"
+            }
+          },
+          "system": "https://fhir.nwgenomics.nhs.uk/Identifier/IGENE-ReferralIdentifier",
+          "type": {
+            "coding": [
+              {
+                "code": "PGN",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+              }
+            ]
+          },
+          "value": "R26-15HE"
+        },
+        "specimen": [
+          {
+            "reference": "urn:uuid:6857f5af-a048-460a-801b-edf39e1fcb34",
+            "type": "Specimen"
+          }
+        ],
+        "status": "active",
+        "subject": {
+          "identifier": {
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
+            "type": {
+              "coding": [
+                {
+                  "code": "NH",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+                }
+              ]
+            },
+            "value": "9737383222"
+          },
+          "reference": "urn:uuid:a7d47478-79ca-444b-a53a-84b79ac65dd2"
+        }
+      }
+    }
+  ],
+  "identifier": {
+    "value": "729946"
+  },
+  "timestamp": "2026-07-02T10:42:50.048Z",
+  "type": "message"
+}
