@@ -6,14 +6,16 @@ erDiagram
   OriginalOrder ||--|{ FillerOrder : "has (FillerOrderNumber = FillerGroupNumber)"
   OriginalOrder ||--|{ Specimen : contains
   FillerOrder ||--|{ Specimen : contains
-  Patient ||--|{ OriginalOrder : "NHSNumber or PatientIdentifier"
-  Patient ||--|{ FillerOrder : "NHSNumber or PatientIdentifier" 
+  Patient ||--|{ OriginalOrder : "NHSNumber or PatientAccessionIdentifier"
+  Patient ||--|{ FillerOrder : "NHSNumber or PatientAccessionIdentifier" 
+  Patient ||--|{ DiagnosticReport : "NHSNumber or PatientAccessionIdentifier" 
+  OriginalOrder ||--|{ DiagnosticReport : contains
 
   OriginalOrder {
-    identifier OrderPlacerNumber
-    identifier OrderFillerNumber-R
+    identifier PlacerOrderNumber
+    identifier FillerOrderNumber
     code NGTDTestCode
-    code OrderingFacilityCode
+    code RequestingOrganisationCode
     reference Specimen
     reference Patient
   }
@@ -28,26 +30,54 @@ erDiagram
     code Performer
     reference Specimen
     reference Patient
+    reference OriginalOrder
   }
 
   Patient {
     identifier NHSNumber
     identifier HospitalNumber
-    identifier PatientIdentifier-S
+    identifier PatientAccessionIdentifier
+    string PatientGivenName
+    string PatientFamilyName
+    date DateOfBirth
+    code AdministrativeSex
   }
 
   Specimen {
-    identifier FillerSpecimenIdentifier-S
+    identifier SpecimenNumber
+    identifier SpecimenAccessionIdentifier
     identifier ShipmentTrackingNumber
-    code SpecimenType
-    date DispatchDate
-    date CollectionDatae
+    identifier FMIIdentifier
+    reference Patient
+    code SpecimenTypeCode
+    date SpecimenDispatchDate
+    date SpecimenTakenDateTime
+    date SpecimenReceivedDateTime
+  }
+
+  DiagnosticReport {
+    identifier ReportIdentifier
+    reference FillerOrder
+    reference Patient
+    code NGTDTestCode
+    date ReportStatusDateTime
   }
 ```
 
 ## Patient 
 
 See [Patient](StructureDefinition-Patient.html)
+
+| Type       | Name                       | FHIR Patient                 |
+|------------|----------------------------|------------------------------|
+| identifier | NHSNumber                  | Patient.identifier (type=NH) |
+| identifier | HospitalNumber             | Patient.identifier (type=MR) |
+| identifier | PatientAccessionIdentifier | Patient.identifier (type=PI) |
+| string     | PatientGivenName           | Patient.name.given           |
+| string     | PatientFamilyName          | Patient.name.family          |
+| date       | DateOfBirth                | Patient.birthDate            |
+| code       | AdministrativeSex          | Patient.gender               |
+{:.grid}
 
 ## Specimen 
 
