@@ -1,7 +1,7 @@
 Profile:        PatientIdentifier
 Parent:         CorrelationIdentifier
 Id:             PatientIdentifier
-Title:          "Medical Record Number"
+Title:          "Patient Identifier"
 Description:     """
 `Patient Administration` HL7 IdentifierType: **PI** Patient Identifier
 `NHS Data Model and Dictionary`  [LOCAL PATIENT IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/local_patient_identifier__extended_.html)

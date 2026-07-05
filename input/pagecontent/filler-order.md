@@ -10,6 +10,9 @@ erDiagram
   Patient ||--|{ FillerOrder : "NHSNumber or PatientAccessionIdentifier" 
   Patient ||--|{ DiagnosticReport : "NHSNumber or PatientAccessionIdentifier" 
   OriginalOrder ||--|{ DiagnosticReport : contains
+  HospitalSpell ||--|{ OriginalOrder : "HospitalSpellProviderIdentifier"
+  HospitalSpell ||--|{ FillerOrder : "HospitalSpellProviderIdentifier" 
+  HospitalSpell ||--|{ DiagnosticReport : "HospitalSpellProviderIdentifier" 
 
   OriginalOrder {
     identifier PlacerOrderNumber
@@ -18,18 +21,21 @@ erDiagram
     code RequestingOrganisationCode
     reference Specimen
     reference Patient
+    reference HospitalSpellProviderIdentifier
   }
 
   FillerOrder {
     code OrderStatus
     date TestOrderDate
-    identifier TestAccessionIdentifier
+    idenitifier OrderPlacerNumber-T
+    identifier Requisition-OrderFillerNumber-R
     code NGTDTestCode
     string ClinicalDetails
     code Performer
     reference Specimen
     reference Patient
     reference OriginalOrder
+    reference HospitalSpellProviderIdentifier
   }
 
   Patient {
@@ -43,10 +49,12 @@ erDiagram
   }
 
   Specimen {
+    identifier SpecimenNumber
     identifier SpecimenAccessionIdentifier
     identifier ShipmentTrackingNumber
     identifier FMIIdentifier
     reference Patient
+    reference HospitalSpellProviderIdentifier
     code SpecimenTypeCode
     date SpecimenDispatchDate
     date SpecimenTakenDateTime
@@ -54,11 +62,15 @@ erDiagram
   }
 
   DiagnosticReport {
-    identifier TestAccessionIdentifier
+    identifier ReportIdentifier
     reference FillerOrder
     reference Patient
     code NGTDTestCode
     date ReportStatusDateTime
+    reference HospitalSpellProviderIdentifier
+  }
+  HospitalSpell {
+    identifier HospitalSpellProviderIdentifier
   }
 ```
 
@@ -66,31 +78,38 @@ erDiagram
 
 See [Patient](StructureDefinition-Patient.html)
 
-| Type       | Name                       | FHIR [Patient](StructureDefinition-Patient.html)                 |
-|------------|----------------------------|------------------------------|
-| identifier | NHSNumber                  | Patient.identifier (type=NH) |
-| identifier | HospitalNumber             | Patient.identifier (type=MR) |
-| identifier | PatientAccessionIdentifier | Patient.identifier (type=PI) |
-| string     | PatientGivenName           | Patient.name.given           |
-| string     | PatientFamilyName          | Patient.name.family          |
-| date       | DateOfBirth                | Patient.birthDate            |
-| code       | AdministrativeSex          | Patient.gender               |
+| Type       | Name                                                | FHIR [Patient](StructureDefinition-Patient.html)                 |
+|------------|-----------------------------------------------------|------------------------------|
+| identifier | [NHSNumber](StructureDefinition-NHSIdentifier.html) | Patient.identifier (type=NH) |
+| identifier | [HospitalNumber](StructureDefinition-MedicalRecordNumber.html)                                  | Patient.identifier (type=MR) |
+| identifier | PatientAccessionIdentifier                          | Patient.identifier (type=PI) |
+| string     | PatientGivenName                                    | Patient.name.given           |
+| string     | PatientFamilyName                                   | Patient.name.family          |
+| date       | DateOfBirth                                         | Patient.birthDate            |
+| code       | AdministrativeSex                                   | Patient.gender               |
 {:.grid}
+
+## Hospital Spell
+
+| Type       | Name                                   | FHIR [Hospital Spell](StructureDefinition-HospitalSpell.html) |
+|------------|----------------------------------------|---------------------------------------------------------------|
+| identifier | [Hospital Spell Provider Identifier](StructureDefinition-HospitalProviderSpellIdentifier.html) | Encounter.identifier                                          |
 
 ## Original Order
 
 See also [Test Order](Questionnaire-GenomicTestOrder.html). The Original Order is distinguised from the Filler Order by value of intent, .
 
-| Type       | Name                       | FHIR [ServiceRequest](StructureDefinition-ServiceRequest.html) |
-|------------|----------------------------|----------------------------------------------------------------|
-| identifier | PlacerOrderNumber          | ServiceRequest.identifier (type = PLAC)                        |
-| identifier | FillerOrderNumber          | ServiceRequest.identifier (type = FILL)                        |
-| code       |                     | ServiceRequest.intent (code = original-order)                  | 
-| code       | NGTDTestCode               | ServiceRequest.code                                            |
-| code       | RequestingOrganisationCode | ServiceRequest.requester (ODS Code)                                       |
-| code       | Performer                  | ServiceRequest.perform (fixed ODS code = 699X0)                |
-| reference  | Specimen                   | ServiceRequest.specimen                                        |
-| reference  | Patient                    | ServiceRequest.subject                                         |
+| Type       | Name                               | FHIR [ServiceRequest](StructureDefinition-ServiceRequest.html) |
+|------------|------------------------------------|----------------------------------------------------------------|
+| identifier | PlacerOrderNumber                  | ServiceRequest.identifier (type = PLAC)                        |
+| identifier | FillerOrderNumber                  | ServiceRequest.identifier (type = FILL)                        |
+| code       |                                    | ServiceRequest.intent (code = original-order)                  | 
+| code       | [NGTDTestCode](ValueSet-GenomicTestCodes.html)                       | ServiceRequest.code                                            |
+| code       | RequestingOrganisationCode         | ServiceRequest.requester (ODS Code)                            |
+| code       | Performer                          | ServiceRequest.perform (fixed ODS code = 699X0)                |
+| reference  | Specimen                           | ServiceRequest.specimen                                        |
+| reference  | Patient                            | ServiceRequest.subject                                         |
+| reference  | Hospital Spell | ServiceRequest.encounter                                       |
 {:.grid}
 
 ## Filler Order
@@ -100,13 +119,14 @@ See also [Test Order](Questionnaire-GenomicTestOrder.html). The Original Order i
 | code       | OrderStatus                | ServiceRequest.status                                          |
 | date       | TestOrderDate              | ServiceRequest.authoredOn                                      |
 | identifier | TestAccessionIdentifier    | ServiceRequest.identifier                                      |
-| code       | NGTDTestCode               | ServiceRequest.code                                            |
+| code       | [NGTDTestCode](ValueSet-GenomicTestCodes.html)               | ServiceRequest.code                                            |
 | string     | ClinicalDetails            | ServiceRequest.note                                            |
 | code       | RequestingOrganisationCode | ServiceRequest.requester (fixed ODS code = 699X0)              |
 | code       | Performer                  | ServiceRequest.perform (ODS Code)                              |
 | reference  | Specimen                   | ServiceRequest.specimen                                        |
 | reference  | Patient                    | ServiceRequest.subject                                         |
 | reference  | OriginalOrder              | ServiceRequest.requisition and ServiceRequest.basedOn          |
+| reference  | Hospital Spell | ServiceRequest.encounter                                       |
 {:.grid}
 
 ### Filler Order Intent
@@ -144,8 +164,9 @@ See also [Test Report](Questionnaire-GenomicTestReport.html)
 | identifier | TestAccessionIdentifier | DiagnosticReport.identifier                                                                  |
 | reference  | FillerOrder             | DiagnosticReport.basedOn (FillerOrder)                                                       |
 | reference  | Patient                 | DiagnosticReport.subject                                                                     |
-| code       | NGTDTestCode            | DiagnosticReport.code (system = https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory) |
+| code       | [NGTDTestCode](ValueSet-GenomicTestCodes.html)        | DiagnosticReport.code (system = https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory) |
 | date       | ReportStatusDateTime    | DiagnosticReport.effectiveDateTime                                                           |
+| reference  | Hospital Spell          | ServiceRequest.encounter                                       |
 {:.grid}
 
 
