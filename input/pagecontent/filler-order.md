@@ -10,6 +10,9 @@ erDiagram
   Patient ||--|{ FillerOrder : "NHSNumber or PatientAccessionIdentifier" 
   Patient ||--|{ DiagnosticReport : "NHSNumber or PatientAccessionIdentifier" 
   OriginalOrder ||--|{ DiagnosticReport : contains
+  HospitalSpell ||--|{ OriginalOrder : "HospitalSpellProviderIdentifier"
+  HospitalSpell ||--|{ FillerOrder : "HospitalSpellProviderIdentifier" 
+  HospitalSpell ||--|{ DiagnosticReport : "HospitalSpellProviderIdentifier" 
 
   OriginalOrder {
     identifier PlacerOrderNumber
@@ -18,6 +21,7 @@ erDiagram
     code RequestingOrganisationCode
     reference Specimen
     reference Patient
+     reference HospitalSpellProviderIdentifier
   }
 
   FillerOrder {
@@ -30,6 +34,7 @@ erDiagram
     reference Specimen
     reference Patient
     reference OriginalOrder
+     reference HospitalSpellProviderIdentifier
   }
 
   Patient {
@@ -59,6 +64,10 @@ erDiagram
     reference Patient
     code NGTDTestCode
     date ReportStatusDateTime
+    reference HospitalSpellProviderIdentifier
+  }
+  HospitalSpell {
+    identifier HospitalSpellProviderIdentifier
   }
 ```
 
@@ -77,6 +86,14 @@ See [Patient](StructureDefinition-Patient.html)
 | code       | AdministrativeSex          |                                             | Patient.gender                                   |
 {:.grid}
 
+## Hospital Spell
+
+
+| Type       | Name                                                                                        | Description                       | FHIR [Hospital Spell](StructureDefinition-HospitalSpell.html) |
+|------------|---------------------------------------------------------------------------------------------|-----------------------------------|---------------------------------------------------------------|
+| identifier | [HospitalSpellProviderIdentifier](StructureDefinition-HospitalProviderSpellIdentifier.html) | Identifier from ordering hospital | Encounter.identifier (type = AN)                              |
+{:.grid}
+
 ## Original Order
 
 See also [Test Order](Questionnaire-GenomicTestOrder.html). The Original Order is distinguised from the Filler Order by value of intent, .
@@ -92,6 +109,7 @@ See also [Test Order](Questionnaire-GenomicTestOrder.html). The Original Order i
 | code       | Performer                  |                                     | ServiceRequest.performer (fixed ODS code = 699X0)              |
 | reference  | Specimen                   |                                     | ServiceRequest.specimen                                        |
 | reference  | Patient                    |                                     | ServiceRequest.subject                                         |
+| reference | Hospital Spell | | ServiceRequest.encounter (Hospital Spell) |
 {:.grid}
 
 ## Filler Order
@@ -107,6 +125,7 @@ See also [Test Order](Questionnaire-GenomicTestOrder.html). The Original Order i
 | reference  | Specimen                   |                                     | ServiceRequest.specimen                                        |
 | reference  | Patient                    |                                     | ServiceRequest.subject                                         |
 | reference  | OriginalOrder              |                                     | ServiceRequest.requisition and ServiceRequest.basedOn          |
+| reference | Hospital Spell | | ServiceRequest.encounter (Hospital Spell) |
 {:.grid}
 
 ### Filler Order Intent
@@ -146,6 +165,7 @@ See also [Test Report](Questionnaire-GenomicTestReport.html)
 | reference  | Patient                 |             | DiagnosticReport.subject                                                                     |
 | code       | NGTDTestCode            |             | DiagnosticReport.code (system = https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory) |
 | date       | ReportStatusDateTime    |             | DiagnosticReport.effectiveDateTime                                                           |
+| reference  | Hospital Spell          |             | ServiceRequest.encounter (Hospital Spell)                                                    |
 {:.grid}
 
 
