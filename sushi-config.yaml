@@ -219,11 +219,14 @@ resources:
     name: Example Document and Document Notification Message
     description: Example Document and Document Notification Message for GMCR
     exampleBoolean: true
-  Bundle/Bundle-Message-ReflexOrder:
-    name: Bundle 'Message' - Reflex Order Message
-    description: Example Reflex Order Message for internal LIMS
+  Bundle/Bundle-Message-FillerOrder:
+    name: Bundle 'Message' - Filler Order Message
+    description: Example Filler Order Message for internal or external LIMS
     exampleBoolean: true
-
+  Bundle/Bundle-Message-FillerOrder-K1S6S:
+    name: Bundle 'Message' - Filler Order Message
+    description: Example Filler Order Message for internal or external LIMS
+    exampleBoolean: true
 menu:
   Home: index.html
   Analysis and Design (Volume 1) :
@@ -277,7 +280,7 @@ groups:
       - Bundle/GenomicsOrderMessageAttachment
       - Bundle/GenomicsOrderMessageCodedEntries
       - Bundle/GenomicsOrderSearchSet
-      - Bundle/Bundle-Message-ReflexOrder
+      - Bundle/Bundle-Message-FillerOrder
       - DocumentReference/a293b4a6-e46b-4402-9b2b-d9517afc7137
       - Encounter/984b8a89-4194-4eb4-a7ea-ca8049ebeea3
       - MessageHeader/MessageHeaderGenomicOrder
