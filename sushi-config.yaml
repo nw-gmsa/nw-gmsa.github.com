@@ -255,9 +255,9 @@ menu:
 ##    Work Order Management [LAB-4]: LAB-4.html
 ##    Test Results Management [LAB-5]: LAB-5.html
   Data Models (Volume 3):
-    Overview - Data Contracts: data-intro.html
+    Diagnostic Core: filler-order.html
+  ##  Overview - Data Contracts: data-intro.html
     Genomic Test Order (Template): Questionnaire-GenomicTestOrder.html
-    Filler Order: filler-order.html
    ## Genomic Test Report (Composition): StructureDefinition-Composition-GenomicReport.html
     Genomic Test Report (Template): Questionnaire-GenomicTestReport.html
   Artefacts (Volume 4):

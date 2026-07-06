@@ -1,4 +1,16 @@
-## Domain Archetype
+This implementation guide primarily focuses on the **Diagnostic Workflow** and how it integrates within the broader **health data model**, as illustrated in the diagram above.
+- **Patient Care** and **Patient Administration** are typically found in NHS providers **Electronic Patient Record** systems
+- **Care Directory Service** on the other hand, are centrally defined by NHS England, with supporting APIs also provided by NHS England (for example, the ODS API).
+
+In software design, these areas are often referred to as [domains](https://en.wikipedia.org/wiki/Domain-driven_design). The **Genomic Diagnostic Workflow** operates across several of these domains — in software architecture terms, this is known as a [bounded context](https://martinfowler.com/bliki/BoundedContext.html).
+
+<figure>
+{%include Diagnostic-Workflow-mindmap.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">Diagnostic Workflow - MindMap</p>
+</figure>
+<br clear="all">
+
+## Entity Relationship Diagram
 
 ```mermaid
 erDiagram
@@ -71,7 +83,8 @@ erDiagram
   }
 ```
 
-## Patient 
+
+### Patient 
 
 See [Patient](StructureDefinition-Patient.html)
 
@@ -86,7 +99,7 @@ See [Patient](StructureDefinition-Patient.html)
 | code       | AdministrativeSex          |                                             | Patient.gender                                   |
 {:.grid}
 
-## Hospital Spell
+### Hospital Spell
 
 
 | Type       | Name                                                                                        | Description                       | FHIR [Hospital Spell](StructureDefinition-HospitalSpell.html) |
@@ -94,7 +107,7 @@ See [Patient](StructureDefinition-Patient.html)
 | identifier | [HospitalSpellProviderIdentifier](StructureDefinition-HospitalProviderSpellIdentifier.html) | Identifier from ordering hospital | Encounter.identifier (type = AN)                              |
 {:.grid}
 
-## Original Order
+### Original Order
 
 See also [Test Order](Questionnaire-GenomicTestOrder.html). The Original Order is distinguised from the Filler Order by value of intent, .
 
@@ -112,7 +125,7 @@ See also [Test Order](Questionnaire-GenomicTestOrder.html). The Original Order i
 | reference | Hospital Spell | | ServiceRequest.encounter (Hospital Spell) |
 {:.grid}
 
-## Filler Order
+### Filler Order
 
 | Type       | Name                       | Description                         | FHIR [ServiceRequest](StructureDefinition-ServiceRequest.html) |
 |------------|----------------------------|-------------------------------------|----------------------------------------------------------------|
@@ -128,7 +141,7 @@ See also [Test Order](Questionnaire-GenomicTestOrder.html). The Original Order i
 | reference | Hospital Spell | | ServiceRequest.encounter (Hospital Spell) |
 {:.grid}
 
-### Filler Order Intent
+#### Filler Order Intent
 
 | Type                | Description                                                                                                                                                     | IHE PALM | Created by   | Original Order Intent | Filler Order Intent   |
 |---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|--------------|----------------------------------------|-----------------------|
@@ -138,7 +151,7 @@ See also [Test Order](Questionnaire-GenomicTestOrder.html). The Original Order i
 | Reflex Order        | A new order created automatically by the Order Filler based on previous test results, for example when pathology findings automatically trigger a genomic test. | LAB-35   | Order Filler |                                        | reflex                | 
 {:.grid}
 
-## Specimen 
+### Specimen 
 
 See also [Test Order - Specimen](Questionnaire-GenomicTestOrder.html#specimen)
 
@@ -154,7 +167,7 @@ See also [Test Order - Specimen](Questionnaire-GenomicTestOrder.html#specimen)
 | date       | SpecimenReceivedDateTime    | Received date/time      |                                                          |
 {:.grid}
 
-## Diagnostic Report
+### Diagnostic Report
 
 See also [Test Report](Questionnaire-GenomicTestReport.html)
 
@@ -167,7 +180,3 @@ See also [Test Report](Questionnaire-GenomicTestReport.html)
 | date       | ReportStatusDateTime    |             | DiagnosticReport.effectiveDateTime                                                           |
 | reference  | Hospital Spell          |             | ServiceRequest.encounter (Hospital Spell)                                                    |
 {:.grid}
-
-
-
-
