@@ -124,6 +124,9 @@ pages:
   filler-order.md:
     title: Filler Order
     generation: markdown
+  reportable-variants.md:
+    title: Reportable Variants
+    generation: markdown
     #  LAB-1.md:
     #   title: Placer Order Management [LAB-1]
     #    generation: markdown
