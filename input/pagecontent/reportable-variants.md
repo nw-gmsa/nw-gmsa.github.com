@@ -15,7 +15,7 @@ placer[Order Placer]
 analysis --> filtering
 filtering --> classification
 classification --> action
-action --> |Variants| report
+action --> |Reportable Variants| report
 report --> |Genomic Report| placer  
 
   classDef green fill:#D5E8D4;
