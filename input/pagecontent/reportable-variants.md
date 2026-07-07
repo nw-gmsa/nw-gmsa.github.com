@@ -48,4 +48,7 @@ For pathogenic or likely pathogenic variants, the decision support system querie
 
 ## Final Clinical Review and Reporting
 
+See [Genomic Test Report](Questionnaire-GenomicTestReport.html)
+
 The computational outputs are reviewed by clinical pathologists or laboratory scientists who confirm the findings, often utilizing tools such as VarSome to adhere to best practices. The finalized, reportable variants are then populated into a structured, evidence-based report. This report is delivered to the treating physician to guide the patient's personalized treatment or diagnostic journey.
+
