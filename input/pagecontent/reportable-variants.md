@@ -5,17 +5,21 @@ The step-by-step process operates as follows:
 ```mermaid
 graph
 
+subgraph CDS[Clinical Decision Support]
 analysis[Primary and Secondary Analysis]
 filtering["Annotation and Prioritization (Filtering)"]
 classification[Variant Classification & Interpretation]
+end
+
 action[Actionability and Clinical Matching]
 report[Final Clinical Review and Reporting]
 placer[Order Placer]
 
 analysis --> filtering
 filtering --> classification
-classification --> action
-action --> |Reportable Variants| report
+classification -.-> |for background info.| action
+CDS --> |Reportable Variants| report
+action -.->  report
 report --> |Genomic Report| placer  
 
   classDef green fill:#D5E8D4;
@@ -49,5 +53,5 @@ For pathogenic or likely pathogenic variants, the decision support system querie
 
 See [Genomic Test Report](Questionnaire-GenomicTestReport.html)
 
-The computational outputs are reviewed by clinical pathologists or laboratory scientists who confirm the findings, often utilizing tools such as VarSome to adhere to best practices. The finalized, reportable variants are then populated into a structured, evidence-based report. This report is delivered to the treating physician to guide the patient's personalized treatment or diagnostic journey.
+The computational outputs are reviewed by Genomic Clinical Scientists or laboratory scientists who confirm the findings, often utilizing tools such as VarSome to adhere to best practices. The finalized, reportable variants are then populated into a structured, evidence-based report. This report is delivered to the treating physician to guide the patient's personalized treatment or diagnostic journey.
 
