@@ -19,8 +19,7 @@ action --> |Reportable Variants| report
 report --> |Genomic Report| placer  
 
   classDef green fill:#D5E8D4;
-  class placer greention
-action --> report
+  class placer green
 ```
 
 ## Primary and Secondary Analysis
