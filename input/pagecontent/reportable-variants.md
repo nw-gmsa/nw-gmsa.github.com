@@ -63,11 +63,11 @@ The computational outputs are reviewed by Genomic Clinical Scientists or laborat
 
 TODO
 
-| Name                       | LOINC   | Value Set / Data Type | Example | Cardinality | HL7 v2 OBX-4 | FHIR [Variant (Observation)](StructureDefinition-Variant.html)] Profile |
-|----------------------------|---------|-----------------------|---------|-------------|--------------|-------------------------------------------------------------------------|
-| Genetic variant assessment | 69548-6 |                       |         |             |              | Observation.code                                                        |
-|                            |         |                       |         |             |              |                                                                         |
-|                            |         |                       |         |             |              |                                                                         |
+| Name                       | LOINC   | Value Set / Data Type | Example | Cardinality | FHIR [Variant (Observation)](StructureDefinition-Variant.html)] Profile |
+|----------------------------|---------|-----------------------|---------|-------------|-------------------------------------------------------------------------|
+| Genetic variant assessment | 69548-6 |                       |         |             | Observation.code                                                        |
+|                            |         |                       |         |             |                                                                         |
+|                            |         |                       |         |             |                                                                         |
 {:grid}
 
 <div class="alert alert-info" role="alert">
