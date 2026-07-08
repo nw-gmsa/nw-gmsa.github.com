@@ -70,7 +70,7 @@ sequenceDiagram
 ### Sub-order Results Delivery (LAB-36)
 
 <div class="alert alert-info" role="alert">
-<b>Domain Archetype:</b> <a href="Questionnaire-GenomicTestReport.html" _target="_blank">Genomic Test Report</a> 
+<b>Domain Archetype:</b> <a href="GenomicTestReport.html" _target="_blank">Genomic Test Report</a> 
 </div>
 
 <div class="alert alert-info" role="alert">

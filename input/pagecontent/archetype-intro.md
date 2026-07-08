@@ -53,12 +53,12 @@ In genomics, all these **archetype** definitions are interrelated and **designed
 
 ### Genomic Observation
 
-- [Variant](Questionnaire-GenomicTestReport.html#variant)
-- [Diagnostic Implication](Questionnaire-GenomicTestReport.html#diagnostic-implication)
+- [Variant](GenomicTestReport.html#variant)
+- [Diagnostic Implication](GenomicTestReport.html#diagnostic-implication)
 
 ### Genomic Procedure
 
-- [Genomic Study](Questionnaire-GenomicTestReport.html#genomic-study)
+- [Genomic Study](GenomicTestReport.html#genomic-study)
 
 ### Genomic Ordering and Reporting (Right Side)
 
@@ -71,7 +71,7 @@ In genomics, all these **archetype** definitions are interrelated and **designed
 This domain focuses on genomic and molecular diagnostics, the data modeling here is **Archetypes** or templates.
 
 - [Genomic Test Order](Questionnaire-GenomicTestOrder.html)
-- [Genomic Test Report](Questionnaire-GenomicTestReport.html) – Summarizes genomic testing results.
+- [Genomic Test Report](GenomicTestReport.html) – Summarizes genomic testing results.
   - Variant – Represents a specific genetic variant or mutation.
   - Diagnostic Implication – Links variants to clinical significance (e.g., pathogenicity, treatment implications).
   - The relationships show that a Genomic Report contains Variants, which in turn have Diagnostic Implications. 

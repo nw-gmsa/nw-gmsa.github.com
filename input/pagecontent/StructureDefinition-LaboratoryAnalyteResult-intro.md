@@ -40,7 +40,7 @@ Once the analyzer generates a value, the results must be evaluated and distribut
 - Reporting: The final validated result is transmitted to the clinician's health record or client file.
 - Critical Action: If the analyte is at a dangerously abnormal level, immediate protocols (e.g., direct calls to the doctor) are enacted.Would you like to know more about how a specific clinical test (like a Comprehensive Metabolic Panel or Complete Blood Count) works, or are you interested in a specific analytical technology (like Mass Spectrometry)?
 
-Output: [Genomic Test Report](Questionnaire-GenomicTestReport.html)
+Output: [Genomic Test Report](GenomicTestReport.html)
 Process Flow: [Test Results Management (LAB-5)](LTW.html#test-results-management-lab-5)
 
 ## Data Mapping

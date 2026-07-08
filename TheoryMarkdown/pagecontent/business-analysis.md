@@ -28,7 +28,7 @@ graph TD;
     E[Evaluate]--> |Reviews Care| A;
     
     click T Questionnaire-GenomicTestOrder.html
-    click AN Questionnaire-GenomicTestReport.html
+    click AN GenomicTestReport.html
     click S ExampleScenario-BiopsyProcedure.html
 
     classDef purple fill:#E1D5E7;
@@ -252,7 +252,7 @@ graph TD;
         RIE[Regional Orchestration Engine] --> |4b. Sends Laboratory Report<br/>LAB-3 HL7 v2 ORU_R01| TIE;
     end 
     click T Questionnaire-GenomicTestOrder.html
-    click AN Questionnaire-GenomicTestReport.html
+    click AN GenomicTestReport.html
     click S ExampleScenario-BiopsyProcedure.html
 
     classDef purple fill:#E1D5E7;

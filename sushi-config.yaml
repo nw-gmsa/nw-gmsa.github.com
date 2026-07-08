@@ -127,6 +127,9 @@ pages:
   reportable-variants.md:
     title: Reportable Variants
     generation: markdown
+  GenomicTestReport.md:
+    title: Genomic Test Report
+    generation: markdown
     #  LAB-1.md:
     #   title: Placer Order Management [LAB-1]
     #    generation: markdown
@@ -262,7 +265,7 @@ menu:
   ##  Overview - Data Contracts: data-intro.html
     Genomic Test Order (Template): Questionnaire-GenomicTestOrder.html
    ## Genomic Test Report (Composition): StructureDefinition-Composition-GenomicReport.html
-    Genomic Test Report (Template): Questionnaire-GenomicTestReport.html
+    Genomic Test Report: GenomicTestReport.html
     Laboratory Analyte Result: StructureDefinition-LaboratoryAnalyteResult.html
   Artefacts (Volume 4):
     HL7 FHIR R4: artifacts.html
