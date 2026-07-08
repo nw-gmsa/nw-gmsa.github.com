@@ -109,7 +109,7 @@ GET [base]/DiagnosticReport?[parameter]=[value]]
 |--------------|-----------|-------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
 | _lastUpdated | date      | GET [base]/DiagnosticReport?_lastUpdated=[date]                   | Date the resource was last updated                                                                                                               |
 | identifier   | token     | GET [base]/DiagnosticReport?identifier=[system&#124;][code]       | An identifier for the report                                                                                                                     |
-| patient      | reference | GET [base]/DiagnosticReport?patient=[id]                          | `id` is the logical id of the patient on the server which can be obtained by a [Patient](#patient) query.                                        |
+| patient      | reference | GET [base]/DiagnosticReport?patient=[id]                          | `id` is the logical id of the patient on the server which can be obtained by a [Patient](PDQm.html) query.                                       |
 | category     | token     | GET [base]/DiagnosticReport?category=[system&#124;][code]         | Which diagnostic discipline/department created the report                                                                                        |
 | code         | token     | GET [base]/DiagnosticReport?code=[system&#124;][code]             | The code for the report, as opposed to codes for the atomic results, which are the names on the observation resource referred to from the result |
 | date         | date      | GET [base]/DiagnosticReport?date=[date]                           | The clinically relevant time of the report                                                                                                       |
@@ -224,20 +224,20 @@ GET [base]/Observation/{id}
 GET [base]/Observation?[parameter]=[value]]
 </div>
 
-| Parameter    | Type      | Search                                                      | Note                                                                                                      |
-|--------------|-----------|-------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
-| _lastUpdated | date      | GET [base]/Observation?_lastUpdated=[date]             | Date the resource was last updated                                                                        |
-| identifier   | token     | GET [base]/Observation?identifier=[system&#124;][code] | The unique id for a particular observation                                                                |
-| patient      | reference | GET [base]/Observation?patient=[id]                    | `id` is the logical id of the patient on the server which can be obtained by a [Patient](#patient) query. |
-| category     | token     | GET [base]/Observation?category=[system&#124;][code]   | The classification of the type of observation                                                             |
-| code         | token     | GET [base]/Observation?code=[system&#124;][code]       | The code of the observation type                                                                          |
-| date         | date      | GET [base]/Observation?date=[date]                     | Obtained date/time. If the obtained element is a period, a date that falls in the period                  |
-| combo-code         | token     | GET [base]/Observation?combo-code=[system&#124;][code]       | The code of the observation type or component type                                                        |
+| Parameter    | Type      | Search                                                      | Note                                                                                                       |
+|--------------|-----------|-------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+| _lastUpdated | date      | GET [base]/Observation?_lastUpdated=[date]             | Date the resource was last updated                                                                         |
+| identifier   | token     | GET [base]/Observation?identifier=[system&#124;][code] | The unique id for a particular observation                                                                 |
+| patient      | reference | GET [base]/Observation?patient=[id]                    | `id` is the logical id of the patient on the server which can be obtained by a [Patient](PDQm.html) query. |
+| category     | token     | GET [base]/Observation?category=[system&#124;][code]   | The classification of the type of observation                                                              |
+| code         | token     | GET [base]/Observation?code=[system&#124;][code]       | The code of the observation type                                                                           |
+| date         | date      | GET [base]/Observation?date=[date]                     | Obtained date/time. If the obtained element is a period, a date that falls in the period                   |
+| combo-code         | token     | GET [base]/Observation?combo-code=[system&#124;][code]       | The code of the observation type or component type                                                         |
 {:.grid}
 
 #### Examples
 
-Searching for an [Variant](StructureDefinition-Observation-Variant.html) Observation by code.
+Searching for an [Variant](StructureDefinition-Variant.html) Observation by code.
 ```
 GET [base]/Observation?code=http://loinc.org|69548-6&patient=Patient-Liverpool
 Accept: application/fhir+json
@@ -246,7 +246,7 @@ Accept: application/fhir+json
 
 ---
 
-Searching for a [Variant](StructureDefinition-Observation-Variant.html) Observation with a specific gene (LOINC 48018-6 - Gene studied [ID]) of `HGNC:8028` (NTHL1).
+Searching for a [Variant](StructureDefinition-Variant.html) Observation with a specific gene (LOINC 48018-6 - Gene studied [ID]) of `HGNC:8028` (NTHL1).
 ```
 GET [base]/Observation?combo-code=http://loinc.org|48018-6&combo-value-concept=HGNC:8028
 Accept: application/fhir+json
@@ -255,7 +255,7 @@ Accept: application/fhir+json
 
 ---
 
-Searching for a [Diagnostic Implication](StructureDefinition-Observation-DiagnosticImplication.html) Observation by code.
+Searching for a [Diagnostic Implication](StructureDefinition-DiagnosticImplication.html) Observation by code.
 ```
 GET [base]/Observation?code=diagnostic-implication&patient=Patient-Liverpool
 Accept: application/fhir+json
@@ -292,13 +292,13 @@ GET [base]/ServiceRequest/{id}
 GET [base]/ServiceRequest?[parameter]=[value]]
 </div>
 
-| Parameter                                 | Type      | Search                                                    | Note                                                                                                      |
-|-------------------------------------------|-----------|-----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
-| _lastUpdated                              | date      | GET [base]/ServiceRequest?_lastUpdated=[date]             | Date the resource was last updated                                                                        |
-| identifier                                | token     | GET [base]/ServiceRequest?identifier=[[system&#124;][code] | Identifiers assigned to this order                                                                        |
-| patient                                   | reference | GET [base]/ServiceRequest?patient=[id]                    | `id` is the logical id of the patient on the server which can be obtained by a [Patient](#patient) query. |
-| [assigner](SearchParameter-assigner.html) | token | GET [base]/ServiceRequest?assigner=[system&#124;][code]   | Assigning Authority (ODS Code) for identifiers assigned to this order                                     |
-| code                                      | token | GET [base]/ServiceRequest?code=[system&#124;][code]       | What is being requested/ordered                                                                           |
+| Parameter                                 | Type      | Search                                                    | Note                                                                                                       |
+|-------------------------------------------|-----------|-----------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+| _lastUpdated                              | date      | GET [base]/ServiceRequest?_lastUpdated=[date]             | Date the resource was last updated                                                                         |
+| identifier                                | token     | GET [base]/ServiceRequest?identifier=[[system&#124;][code] | Identifiers assigned to this order                                                                         |
+| patient                                   | reference | GET [base]/ServiceRequest?patient=[id]                    | `id` is the logical id of the patient on the server which can be obtained by a [Patient](PDQm.html) query. |
+| [assigner](SearchParameter-assigner.html) | token | GET [base]/ServiceRequest?assigner=[system&#124;][code]   | Assigning Authority (ODS Code) for identifiers assigned to this order                                      |
+| code                                      | token | GET [base]/ServiceRequest?code=[system&#124;][code]       | What is being requested/ordered                                                                            |
 {:.grid}
 
 #### Example
@@ -358,7 +358,7 @@ GET [base]/Specimen?[parameter]=[value]]
 | _lastUpdated | date      | GET [base]/Specimen?_lastUpdated=[date]    | Date the resource was last updated                                                                                                          |
 | identifier   | token     | GET [base]/Specimen?identifier=[system&#124;][code] | The unique identifier associated with the specimen                                                                                                          |
 | accession   | token     | GET [base]/Specimen?accession=[system&#124;][code] | The accession number associated with the specimen                                                                                                          |
-| patient      | reference | GET [base]/Specimen?patient=[id]           | `id` is the logical id of the patient on the server which can be obtained by a [Patient](#patient) query. |
+| patient      | reference | GET [base]/Specimen?patient=[id]           | `id` is the logical id of the patient on the server which can be obtained by a [Patient](PDQm.html) query. |
 {:.grid}
 
 #### Example
@@ -402,7 +402,7 @@ GET [base]/Task?[parameter]=[value]]
 |----------------------|-----------|-----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
 | _lastUpdated         | date      | GET [base]/Task?_lastUpdated=[date]                       | Date the resource was last updated                                                                                                          |
 | identifier           | token     | GET [base]/Task?identifier=[system&#124;][code]           | Search for a task instance by its business identifier                                                                                                          |
-| patient              | reference | GET [base]/Task?patient=[id]                              | `id` is the logical id of the patient on the server which can be obtained by a [Patient](#patient) query. |
+| patient              | reference | GET [base]/Task?patient=[id]                              | `id` is the logical id of the patient on the server which can be obtained by a [Patient](PDQm.html) query. |
 | code                 | token     | GET [base]/Task?code=[system&#124;][code]                 | Search by task code |
 | authored-on          | date      | GET [base]/Task?authored-on=[date]                        | Search by creation date |
 | requester:identifier | token     | GET [base]/Task?requester:identifier=[system&#124;][code] | Search by task requester |
