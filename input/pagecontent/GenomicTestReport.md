@@ -26,37 +26,40 @@ Test detail tends to be common across all diagnostic tests in a patient's pathwa
 <span class="badge badge-info">Patient Demographics</span>
 
 
-| Name                  | LOINC | Value Set / Data Type                                                 | Cardinality | HL7 v2 OML_O21 Message | HL7 FHIR ServiceRequest                                                      | HL7 FHIR Resource (Message + RESTful)                                    |
-|-----------------------|-------|-----------------------------------------------------------------------|-------------|------------------------|------------------------------------------------------------------------------|--------------------------------------------------------------------------|
-| NHS Number            |       | [NHS Number](StructureDefinition-NHSIdentifier.html)  | 0..1        | [PID](hl7v2.html#pid)  | [ServiceRequest](StructureDefinition-ServiceRequest.html).subject.identifier | [Patient](StructureDefinition-Patient.html) |
-| Medical Record Number |       | [Medical Record Number](StructureDefinition-MedicalRecordNumber.html) | 0..1        | [PID](hl7v2.html#pid)  | [ServiceRequest](StructureDefinition-ServiceRequest.html).subject.identifier | [Patient](StructureDefinition-Patient.html) |
+| Name                  | LOINC | Value Set / Data Type                                                 | Cardinality | HL7 v2 OML_O21 Message | HL7 FHIR [ServiceRequest](StructureDefinition-ServiceRequest.html) | HL7 FHIR Resource (Message + RESTful)       |
+|-----------------------|-------|-----------------------------------------------------------------------|-------------|------------------------|--------------------------------------------------------------------|---------------------------------------------|
+| NHS Number            |       | [NHS Number](StructureDefinition-NHSIdentifier.html)                  | 0..1        | [PID](hl7v2.html#pid)  | ServiceRequest.subject.identifier                                  | [Patient](StructureDefinition-Patient.html) |
+| Medical Record Number |       | [Medical Record Number](StructureDefinition-MedicalRecordNumber.html) | 0..1        | [PID](hl7v2.html#pid)  | ServiceRequest.subject.identifier                                  | [Patient](StructureDefinition-Patient.html) |
 {:.grid}
 
 <span class="badge badge-info">Hospital Spell</span>
 
 Treat as mandatory for reflex or subcontracted orders.
 
-| Name                                  | LOINC   | Value Set / Data Type                                                                       | Cardinality | HL7 v2 OML_O21 Message   | HL7 FHIR ServiceRequest                                                        | HL7 FHIR Resource (Message + RESTful)                                        |
+| Name                                  | LOINC   | Value Set / Data Type                                                                       | Cardinality | HL7 v2 OML_O21 Message   | HL7 FHIR [ServiceRequest](StructureDefinition-ServiceRequest.html)                                                       | HL7 FHIR Resource (Message + RESTful)                                        |
 |---------------------------------------|---------|---------------------------------------------------------------------------------------------|-------------|--------------------------|--------------------------------------------------------------------------------|------------------------------------------------------------------------------|
 | Hospital Service                      |         | [Service](ValueSet-service.html)                                                            | 0..1        | [PV1](hl7v2.html#pv1)-10 |                                                                                | Encounter.serviceType                                                        | 
-| Case Identification or Account Number | 56797-4 | [HospitalProviderSpellIdentifier](StructureDefinition-HospitalProviderSpellIdentifier.html) | 0..1        | [PV1](hl7v2.html#pv1)-19 | [ServiceRequest](StructureDefinition-ServiceRequest.html).encounter.identifier | Encounter.identifier [HospitalSpell](StructureDefinition-HospitalSpell.html) |
+| Case Identification or Account Number | 56797-4 | [HospitalProviderSpellIdentifier](StructureDefinition-HospitalProviderSpellIdentifier.html) | 0..1        | [PV1](hl7v2.html#pv1)-19 | ServiceRequest.encounter.identifier | Encounter.identifier [HospitalSpell](StructureDefinition-HospitalSpell.html) |
 {:.grid}
 
+<div class="alert alert-info" role="alert">
+<b><a href="StructureDefinition-DiagnosticReport.html" _target="_blank">DiagnosticReport</a> 
+</div>
 
 <span class="badge badge-primary">Diagnostic Workflow</span>
 
-| Name                     | LOINC   | Value Set / Data Type                                                              | Cardinality | HL7 v2 ORU_RO1 Message                   | HL7 FHIR DiagnosticReport                                                              | HL7 FHIR Resource (RESTful)                               |
-|--------------------------|---------|------------------------------------------------------------------------------------|-------------|------------------------------------------|----------------------------------------------------------------------------------------|-----------------------------------------------------------|
-| Order Identifier         |         | [Order Identifier](StructureDefinition-OrderIdentifier.html)              | 1..1        | [ORC](hl7v2.html#orc)-2                  | [DiagnosticReport](StructureDefinition-DiagnosticReport.html).basedOn                  | [ServiceRequest](StructureDefinition-ServiceRequest.html) |
-| Report Identifier        |         | [Report Identifier](StructureDefinition-ReportIdentifier.html)                     | 1..1        | [OBR](hl7v2.html#obr)-3                  | [DiagnosticReport](StructureDefinition-DiagnosticReport.html).identifier[ReportNumber] |                                                           |
-| (Order) Procedure Code   |         | See below                                                                          | 1..1        | [OBR](hl7v2.html#obr)-4                  | [DiagnosticReport](StructureDefinition-DiagnosticReport.html).code                     |                                                           |
-| Report date              |         |                                                                                    | 1..1        | [OBR](hl7v2.html#obr)-7                  | [DiagnosticReport](StructureDefinition-DiagnosticReport.html).effectiveDateTime        |                                                           |
-| Results Interpreter      |         | [England Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html) | 0..*        | [OBR](hl7v2.html#obr)-32 and OBR-33      | [DiagnosticReport](StructureDefinition-DiagnosticReport.html).resultsInterpreter       | [Practitioner](StructureDefinition-Practitioner.html)     |                                                                                            
-| Performer (operator)     |         | [England Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html) | 1..*        | [OBR](hl7v2.html#obr)-34                 | [DiagnosticReport](StructureDefinition-DiagnosticReport.html).performer[operator]      | [Practitioner](StructureDefinition-Practitioner.html)     |
-| Performer (organisation) |         | [Organisation Code](StructureDefinition-OrganisationCode.html)                     | 1..*        |                                          | [DiagnosticReport](StructureDefinition-DiagnosticReport.html).performer[organization]  | [Organizaton](StructureDefinition-Organization.html)       |
-| Specimen                 | 80398-1 | See [Genomic Test Order - Specimen](Questionnaire-GenomicTestOrder.html#specimen)  | 0..1        | [SPM](hl7v2.html#spm)                    | [DiagnosticReport](StructureDefinition-DiagnosticReport.html).specimen.identifier                 | [Specimen](StructureDefinition-Specimen.html)             |
-| Results                  |         | Domain specific - see below                                                        | 0..*        | [OBX](hl7v2.html#obx)                    | [DiagnosticReport](StructureDefinition-DiagnosticReport.html).results                  | Varies                                                    |   
-| Narrative Report         |         | Domain specific - see below                                                        | 0..*        | [OBX (type=ED)](hl7v2.html#obx-type--ed) | [DiagnosticReport](StructureDefinition-DiagnosticReport.html).presentedForm            |                                                           |
+| Name                     | LOINC   | Value Set / Data Type                                                              | Cardinality | HL7 v2 ORU_RO1 Message                   | HL7 FHIR [DiagnosticReport](StructureDefinition-DiagnosticReport.html) | HL7 FHIR Resource (RESTful)                               |
+|--------------------------|---------|------------------------------------------------------------------------------------|-------------|------------------------------------------|------------------------------------------------------------------------|-----------------------------------------------------------|
+| Order Identifier         |         | [Order Identifier](StructureDefinition-OrderIdentifier.html)                       | 1..1        | [ORC](hl7v2.html#orc)-2                  | DiagnosticReport.basedOn                                               | [ServiceRequest](StructureDefinition-ServiceRequest.html) |
+| Report Identifier        |         | [Report Identifier](StructureDefinition-ReportIdentifier.html)                     | 1..1        | [OBR](hl7v2.html#obr)-3                  | DiagnosticReport.identifier[ReportNumber]                              |                                                           |
+| (Order) Procedure Code   |         | See below                                                                          | 1..1        | [OBR](hl7v2.html#obr)-4                  | [DiagnosticReport.code                                                 |                                                           |
+| Report date              |         |                                                                                    | 1..1        | [OBR](hl7v2.html#obr)-7                  | DiagnosticReport.effectiveDateTime                                     |                                                           |
+| Results Interpreter      |         | [England Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html) | 0..*        | [OBR](hl7v2.html#obr)-32 and OBR-33      | DiagnosticReport.resultsInterpreter                                    | [Practitioner](StructureDefinition-Practitioner.html)     |                                                                                            
+| Performer (operator)     |         | [England Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html) | 1..*        | [OBR](hl7v2.html#obr)-34                 | DiagnosticReport.performer[operator]                                   | [Practitioner](StructureDefinition-Practitioner.html)     |
+| Performer (organisation) |         | [Organisation Code](StructureDefinition-OrganisationCode.html)                     | 1..*        |                                          | DiagnosticReport.performer[organization]                               | [Organizaton](StructureDefinition-Organization.html)      |
+| Specimen                 | 80398-1 | See [Genomic Test Order - Specimen](Questionnaire-GenomicTestOrder.html#specimen)  | 0..1        | [SPM](hl7v2.html#spm)                    | DiagnosticReport.specimen.identifier                                   | [Specimen](StructureDefinition-Specimen.html)             |
+| Results                  |         | Domain specific - see below                                                        | 0..*        | [OBX](hl7v2.html#obx)                    | DiagnosticReport.results                                               | Varies                                                    |   
+| Narrative Report         |         | Domain specific - see below                                                        | 0..*        | [OBX (type=ED)](hl7v2.html#obx-type--ed) | DiagnosticReport.presentedForm                                         |                                                           |
 {:.grid}
 
 <span class="badge badge-primary">Genomic Observation </span>
@@ -66,11 +69,7 @@ Treat as mandatory for reflex or subcontracted orders.
 | (Order) Procedure Code - Genomic Test Code |         | [Genomic Test Code](ValueSet-GenomicTestCodes.html)                                         | 1..1        | [OBR](hl7v2.html#obr)-4             | [DiagnosticReport](StructureDefinition-DiagnosticReport.html).code                      |                                                           |
 {:.grid}
 
-<div class="alert alert-info" role="alert">
-<b>HL7 FHIR Genomic Reporting:</b> <a href="https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-genomic-report.html" _target="_blank">Genomic Report</a> 
-<br/>
-<b>Localised (NW Genomics) version:</b> <a href="StructureDefinition-DiagnosticReport.html" _target="_blank">DiagnosticReport</a> 
-</div>
+
 
 ### Results Mapping
 
@@ -119,19 +118,8 @@ This is for elaboration and subject to change.
 
 <span class="badge badge-primary">Genomic Observation </span>
 
-See also [HL7 Genomic Reporting - Genomic Study](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-genomic-study.html)
-
-| Name                                        | LOINC             | Value Set / Data Type                                                                                                            | Example   | Cardinality | HL7 v2 OBX-4 | FHIR Profile                                                                                                                  |
-|---------------------------------------------|-------------------|---------------------------------------------------------------------------------------------------------------------|-----------|-------------|------------|-------------------------------------------------------------------------------------------------------------------------------|
-| Analysis method [Type]                      | Might be 81304-8  | [Genomic Study Type ValueSet](https://build.fhir.org/ig/HL7/genomics-reporting/ValueSet-genomic-study-type-vs.html) | SNP Array | 0..1        |            | [Genomic Study](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-genomic-study.html).code  |
-| Gene disease assessed / Clinical Indication | 51967-8           |                                                                                                                     |           | 1..1        | 1.a        | [Genomic Study](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-genomic-study.html).reasonCode                                                                    |
-| Genomic Test Outcome                        | TESTCOME (NWGMSA) | [Genomic Test Outcome Codes](ValueSet-GenomicTestOutcomeCodes.html)                                                 |           |             |            | [Genomic Study](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-genomic-study.html).outcome                                                                       |                                                                                                                                                                                 |
-{:.grid}
-
 <div class="alert alert-info" role="alert">
-<b>HL7 FHIR Genomic Reporting:</b> <a href="https://hl7.org/fhir/uv/genomics-reporting/StructureDefinition-genomic-study.html" _target="_blank">Genomic Study</a> 
-<br/>
-<b>Localised (NW Genomics) version:</b> <a href="StructureDefinition-GenomicStudy.html" _target="_blank">Procedure Genomic Study</a> 
+<a href="StructureDefinition-GenomicStudy.html" _target="_blank">Procedure Genomic Study</a> 
 </div>
 
 #### Genomic Study Analysis
@@ -139,8 +127,6 @@ See also [HL7 Genomic Reporting - Genomic Study](https://build.fhir.org/ig/HL7/g
 <div class="alert alert-danger" role="alert">
 This is for elaboration and subject to change.
 </div>
-
-
 
 TBC - This includes Gene studied [ID] (48018-6) and Gene mutations tested (36908-2). Maybe a requirement from oncology.
 This appears to be part of [FHIR R6 GenomicStudy](https://build.fhir.org/genomicstudy.html)
@@ -168,29 +154,16 @@ This appears to be part of [FHIR R6 GenomicStudy](https://build.fhir.org/genomic
 <a href="StructureDefinition-Variant.html" _target="_blank">Variant (Observation)</a> 
 </div>
 
-
 ### Implications
 
 Description: [Genomic Implications](https://build.fhir.org/ig/HL7/genomics-reporting/general.html#genomic-implications)
 
 #### Diagnostic Implication
 
-<div class="alert alert-danger" role="alert">
-This is for elaboration and subject to change.
-</div>
-
 <span class="badge badge-primary">Genomic Observation </span>
 
-| Name                                                   | LOINC   | Value Set / Data Type                                                                                                                                                                                                                                           | Example        | Cardinality | HL7 v2 OBX-4 | FHIR Observation Profile                                                                                                                                    |
-|--------------------------------------------------------|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|-------------|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Genetic sequence variation clinical significance [Imp] | 53037-8 | [ACMG_Clinical significance of genetic variation](https://loinc.org/LL4034-6)                                                                                                                                                                                   | Pathogenic    | 0..1        | 2a           | [Diagnostic Implication](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-diagnostic-implication.html).component[clinical-significance] |
-| Probable Associated Phenotype                          | 81259-4 | NHS England [Genomic Clinical Indication Codes](ValueSet-GenomicClinicalIndicationCodes.html) <br/> ?? [SNOMED Genomic Disorder Carrier](ValueSet-GenomicDisorderCarrier.html) <br/> ?? [SNOMED Genetic Finding Detected](ValueSet-GenomicFindingDetected.html) | Lynch syndrome | 0..1        | 2a           | [Diagnostic Implication](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-diagnostic-implication.html).component[predicted-phenotype]   |
-{:.grid}
-
 <div class="alert alert-info" role="alert">
-<b>HL7 FHIR Genomic Reporting:</b> <a href="https://hl7.org/fhir/uv/genomics-reporting/StructureDefinition-diagnostic-implication.html" _target="_blank">Diagnostic Implication</a> 
-<br/>
-<b>Localised (NW Genomics) version:</b> <a href="StructureDefinition-DiagnosticImplication.html" _target="_blank">Diagnostic Implication (Observation)</a> 
+<a href="StructureDefinition-DiagnosticImplication.html" _target="_blank">Diagnostic Implication (Observation)</a> 
 </div>
 
 ## Examples

@@ -2,6 +2,9 @@
 This is currently being elaborated and subject to change.
 </div>
 
+<div class="alert alert-info" role="alert">
+<b>HL7 FHIR Genomic Reporting:</b> <a href="https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-variant.html" _target="_blank">Variant</a>
+</div>
 
 ## Reference
 
@@ -94,6 +97,4 @@ MOCKUP
 {:.grid}
 
 
-<div class="alert alert-info" role="alert">
-<b>HL7 FHIR Genomic Reporting:</b> <a href="https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-variant.html" _target="_blank">Variant</a>
-</div>
+
