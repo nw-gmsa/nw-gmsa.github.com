@@ -124,9 +124,6 @@ pages:
   filler-order.md:
     title: Filler Order
     generation: markdown
-  reportable-variants.md:
-    title: Reportable Variant
-    generation: markdown
   GenomicTestReport.md:
     title: Genomic Test Report
     generation: markdown
@@ -267,7 +264,7 @@ menu:
    ## Genomic Test Report (Composition): StructureDefinition-Composition-GenomicReport.html
     Genomic Test Report: GenomicTestReport.html
     Laboratory Analyte Result: StructureDefinition-LaboratoryAnalyteResult.html
-    Reportable Variant: reportable-variants.html
+    Reportable Variant: StructureDefinition-Variant.html
   Artefacts (Volume 4):
     HL7 FHIR R4: artifacts.html
     HL7 v2.5.1: hl7v2.html

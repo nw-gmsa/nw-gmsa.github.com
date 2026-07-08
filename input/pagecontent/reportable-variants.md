@@ -1,6 +1,3 @@
-<div class="alert alert-danger" role="alert">
-This is currently being elaborated and subject to change.
-</div>
 
 ## Overview 
 
