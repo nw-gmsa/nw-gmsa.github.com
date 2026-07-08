@@ -37,6 +37,7 @@ curl -sSf tx.fhir.org > /dev/null
 
 if [ $? -ne 0 ] ; then
   echo "Offline (or the terminology server is down), unable to update.  Exiting"
+  exit 1
 fi
 
 if [ ! -d "$input_cache_path" ] ; then
