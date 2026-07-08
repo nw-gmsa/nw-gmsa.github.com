@@ -42,34 +42,11 @@ Treat as mandatory for reflex or subcontracted orders.
 | Case Identification or Account Number | 56797-4 | [HospitalProviderSpellIdentifier](StructureDefinition-HospitalProviderSpellIdentifier.html) | 0..1        | [PV1](hl7v2.html#pv1)-19 | ServiceRequest.encounter.identifier | Encounter.identifier [HospitalSpell](StructureDefinition-HospitalSpell.html) |
 {:.grid}
 
-<div class="alert alert-info" role="alert">
-<b><a href="StructureDefinition-DiagnosticReport.html" _target="_blank">DiagnosticReport</a> 
-</div>
-
 <span class="badge badge-primary">Diagnostic Workflow</span>
 
-| Name                     | LOINC   | Value Set / Data Type                                                              | Cardinality | HL7 v2 ORU_RO1 Message                   | HL7 FHIR [DiagnosticReport](StructureDefinition-DiagnosticReport.html) | HL7 FHIR Resource (RESTful)                               |
-|--------------------------|---------|------------------------------------------------------------------------------------|-------------|------------------------------------------|------------------------------------------------------------------------|-----------------------------------------------------------|
-| Order Identifier         |         | [Order Identifier](StructureDefinition-OrderIdentifier.html)                       | 1..1        | [ORC](hl7v2.html#orc)-2                  | DiagnosticReport.basedOn                                               | [ServiceRequest](StructureDefinition-ServiceRequest.html) |
-| Report Identifier        |         | [Report Identifier](StructureDefinition-ReportIdentifier.html)                     | 1..1        | [OBR](hl7v2.html#obr)-3                  | DiagnosticReport.identifier[ReportNumber]                              |                                                           |
-| (Order) Procedure Code   |         | See below                                                                          | 1..1        | [OBR](hl7v2.html#obr)-4                  | [DiagnosticReport.code                                                 |                                                           |
-| Report date              |         |                                                                                    | 1..1        | [OBR](hl7v2.html#obr)-7                  | DiagnosticReport.effectiveDateTime                                     |                                                           |
-| Results Interpreter      |         | [England Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html) | 0..*        | [OBR](hl7v2.html#obr)-32 and OBR-33      | DiagnosticReport.resultsInterpreter                                    | [Practitioner](StructureDefinition-Practitioner.html)     |                                                                                            
-| Performer (operator)     |         | [England Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html) | 1..*        | [OBR](hl7v2.html#obr)-34                 | DiagnosticReport.performer[operator]                                   | [Practitioner](StructureDefinition-Practitioner.html)     |
-| Performer (organisation) |         | [Organisation Code](StructureDefinition-OrganisationCode.html)                     | 1..*        |                                          | DiagnosticReport.performer[organization]                               | [Organizaton](StructureDefinition-Organization.html)      |
-| Specimen                 | 80398-1 | See [Genomic Test Order - Specimen](Questionnaire-GenomicTestOrder.html#specimen)  | 0..1        | [SPM](hl7v2.html#spm)                    | DiagnosticReport.specimen.identifier                                   | [Specimen](StructureDefinition-Specimen.html)             |
-| Results                  |         | Domain specific - see below                                                        | 0..*        | [OBX](hl7v2.html#obx)                    | DiagnosticReport.results                                               | Varies                                                    |   
-| Narrative Report         |         | Domain specific - see below                                                        | 0..*        | [OBX (type=ED)](hl7v2.html#obx-type--ed) | DiagnosticReport.presentedForm                                         |                                                           |
-{:.grid}
-
-<span class="badge badge-primary">Genomic Observation </span>
-
-| Name                           | LOINC   | Value Set / Data Type                                                                       | Cardinality | HL7 v2 ORU_RO1 Message              | HL7 FHIR DiagnosticReport                                                               | HL7 FHIR Resource (RESTful)                               |
-|--------------------------------|---------|---------------------------------------------------------------------------------------------|-------------|-------------------------------------|-----------------------------------------------------------------------------------------|-----------------------------------------------------------|
-| (Order) Procedure Code - Genomic Test Code |         | [Genomic Test Code](ValueSet-GenomicTestCodes.html)                                         | 1..1        | [OBR](hl7v2.html#obr)-4             | [DiagnosticReport](StructureDefinition-DiagnosticReport.html).code                      |                                                           |
-{:.grid}
-
-
+<div class="alert alert-info" role="alert">
+<a href="StructureDefinition-DiagnosticReport.html" _target="_blank">DiagnosticReport</a> 
+</div>
 
 ### Results Mapping
 
@@ -112,10 +89,6 @@ Description: [Genomic Study](https://build.fhir.org/ig/HL7/genomics-reporting/ge
 
 #### Genomic Study
 
-<div class="alert alert-danger" role="alert">
-This is for elaboration and subject to change.
-</div>
-
 <span class="badge badge-primary">Genomic Observation </span>
 
 <div class="alert alert-info" role="alert">
@@ -123,10 +96,6 @@ This is for elaboration and subject to change.
 </div>
 
 #### Genomic Study Analysis
-
-<div class="alert alert-danger" role="alert">
-This is for elaboration and subject to change.
-</div>
 
 TBC - This includes Gene studied [ID] (48018-6) and Gene mutations tested (36908-2). Maybe a requirement from oncology.
 This appears to be part of [FHIR R6 GenomicStudy](https://build.fhir.org/genomicstudy.html)
