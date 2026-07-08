@@ -6,19 +6,46 @@ This is currently being elaborated and subject to change.
 
 1. [openEHR Laboratory analyte result](https://ckm.openehr.org/ckm/archetypes/1013.1.2881)
 
-## Use Case
+## Overview
 
 > BCR-ABL1 concentration testing is used to monitor the amount of the fusion gene (Philadelphia chromosome) in chronic myeloid leukemia (CML) patients, with results typically reported on an International Scale (%IS) to measure treatment response.
 
-> [Designing an interoperable solution to support pharmacogenomic-guided prescribing in primary care: an implementer report](https://informatics.bmj.com/content/bmjhci/32/1/e101163.full.pdf)
+```mermaid
+graph
 
-## Process Flow 
+analysis["Analytical Phase (Testing)"]
+report["Post-Analytical Phase (Interpretation & Reporting)"]
+placer[Order Placer]
 
-See [Test Results Management (LAB-5)](LTW.html#test-results-management-lab-5)
+analysis --> |Laboratory Analyte Result| report
+report --> |Genomic Report| placer  
+
+  classDef green fill:#D5E8D4;
+  class placer green
+```
+
+### Analytical Phase (Testing)
+
+This is the core stage where the targeted substance (analyte) is actually measured.
+- Calibration & Quality Control (QC): Before testing patient samples, laboratory technicians calibrate the instrument and run Quality Control materials with known values to ensure the equipment is operating perfectly.
+- Analysis: The processed sample is placed into an automated analyzer. Depending on the analyte, the machine uses techniques like mass spectrometry, chromatography, or colorimetric spectroscopy to quantify or detect the substance.
+- Validation: The instrument produces raw data which is processed and mathematically converted into a meaningful concentration.
+
+Output: [Laboratory Analyte Result](#laboaratory-analyte-result)
+
+### Post-Analytical Phase (Interpretation & Reporting)
+
+Once the analyzer generates a value, the results must be evaluated and distributed to the requesting physician or client.
+- Verification: The laboratory scientist reviews the result against the laboratory's reference ranges (what is considered "normal") and validates the data quality.
+- Reporting: The final validated result is transmitted to the clinician's health record or client file.
+- Critical Action: If the analyte is at a dangerously abnormal level, immediate protocols (e.g., direct calls to the doctor) are enacted.Would you like to know more about how a specific clinical test (like a Comprehensive Metabolic Panel or Complete Blood Count) works, or are you interested in a specific analytical technology (like Mass Spectrometry)?
+
+Output: [Genomic Test Report](Questionnaire-GenomicTestReport.html)
+Process Flow: [Test Results Management (LAB-5)](LTW.html#test-results-management-lab-5)
 
 ## Data Mapping
 
-### Result
+### Laboaratory Analyte Result
 
 | Data Element                                                     | HL7 v2 R32                              | LOINC / SNOMED | openEHR                  | HL7 FHIR                                                               | iGene              | Example                           |
 |------------------------------------------------------------------|-----------------------------------------|----------------|--------------------------|------------------------------------------------------------------------|--------------------|-----------------------------------|
