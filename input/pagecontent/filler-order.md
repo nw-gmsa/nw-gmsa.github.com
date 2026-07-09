@@ -56,6 +56,7 @@ erDiagram
     string PatientGivenName
     string PatientFamilyName
     date DateOfBirth
+    string PostCode
     code AdministrativeSex
   }
 
@@ -97,6 +98,7 @@ See [Patient](StructureDefinition-Patient.html)
 | string     | PatientFamilyName          |                                             | Patient.name.family                              |
 | date       | DateOfBirth                |                                             | Patient.birthDate                                |
 | code       | AdministrativeSex          |                                             | Patient.gender                                   |
+| string     | PostCode                   |                                             | Patient.address.postalCode                       |
 {:.grid}
 
 ### Hospital Spell
@@ -111,18 +113,19 @@ See [Patient](StructureDefinition-Patient.html)
 
 See also [Test Order](Questionnaire-GenomicTestOrder.html). The Original Order is distinguised from the Filler Order by value of intent, .
 
-| Type       | Name                       | Description                         | FHIR [ServiceRequest](StructureDefinition-ServiceRequest.html) |
-|------------|----------------------------|-------------------------------------|----------------------------------------------------------------|
-| identifier | PlacerOrderNumber          |                                     | ServiceRequest.identifier (type = PLAC)                        |
-| identifier | FillerOrderNumber          |                                     | ServiceRequest.identifier (type = FILL)                        |
-| code       |                            |                                     | ServiceRequest.intent (code = original-order)                  | 
-| code       | NGTDTestCode               | NGTD code for test                  | ServiceRequest.code                                            |
-| string     | ClinicalDetails            | Referrer clinical notes             | ServiceRequest.note                                            |
-| code       | RequestingOrganisationCode | ODS code of requesting organisation | ServiceRequest.requester (ODS Code)                            |
-| code       | Performer                  |                                     | ServiceRequest.performer (fixed ODS code = 699X0)              |
-| reference  | Specimen                   |                                     | ServiceRequest.specimen                                        |
-| reference  | Patient                    |                                     | ServiceRequest.subject                                         |
-| reference | Hospital Spell | | ServiceRequest.encounter (Hospital Spell) |
+| Type       | Name                            | Description                         | FHIR [ServiceRequest](StructureDefinition-ServiceRequest.html) |
+|------------|---------------------------------|-------------------------------------|----------------------------------------------------------------|
+| identifier | PlacerOrderNumber               |                                     | ServiceRequest.identifier (type = PLAC)                        |
+| identifier | FillerOrderNumber               |                                     | ServiceRequest.identifier (type = FILL)                        |
+| code       |                                 |                                     | ServiceRequest.intent (code = original-order)                  | 
+| code       | NGTDTestCode                    | NGTD code for test                  | ServiceRequest.code                                            |
+| string     | ClinicalDetails                 | Referrer clinical notes             | ServiceRequest.note                                            |
+| code       | RequestingOrganisationCode      | ODS code of requesting organisation | ServiceRequest.requester (ODS Code)                            |
+| code       | Performer                       |                                     | ServiceRequest.performer (fixed ODS code = 699X0)              |
+| reference  | Specimen                        |                                     | ServiceRequest.specimen                                        |
+| reference  | Patient                         |                                     | ServiceRequest.subject                                         |
+| reference  | Hospital Spell                  |                                     | ServiceRequest.encounter (Hospital Spell)                      |
+| code       | Clinical Indication Code (CITT) |                                     | ServiceRequest.reasonCode                                      | 
 {:.grid}
 
 ### Filler Order
