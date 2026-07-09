@@ -1,3 +1,24 @@
+## Class Diagram
+
+```mermaid
+classDiagram
+
+Observation <|-- GenomicStudy : implements
+Observation <|-- GenomicObservation
+GenomicObservation <|-- GenomicFinding 
+GenomicObservation <|-- GenomicAnotation
+
+GenomicFinding <|-- Variant :implements
+GenomicFinding <|-- Haplotype :implements
+GenomicFinding <|-- Genotype :implements
+
+GenomicAnotation <|-- DiagnosticImplication :implements
+GenomicAnotation <|-- TherapeuticImplication :implements
+```
+
+## Entity Relationships
+
+
 ```mermaid
 erDiagram
 
@@ -6,20 +27,20 @@ DiagnosticImplication
 TherapeuticImplication
 GenomicStudy
 Genotype
-Halotype
+Haplotype
 
 DiagnosticImplication ||--|{ Variant : "hasMember"
 TherapeuticImplication ||--|{ Variant : "hasMember"
 
-Genotype ||--|{ Halotype : "derivedFrom"
-Halotype ||--|{ Variant : "derivedFrom"
+Genotype ||--|{ Haplotype : "derivedFrom"
+Haplotype ||--|{ Variant : "derivedFrom"
 ```
 
-| Type      | Name                                                                     |
-|-----------|--------------------------------------------------------------------------|
-| Finding   | [Variant](StructureDefinition-Variant.html)                              | 
-|           | Halotype                             |
-|           | [Genotype](StructureDefinition-Genotype.html)                            |
-| Anotation | [DiagnosticImplication](StructureDefinition-DiagnosticImplication.html)  | 
-|           | [TherapeuticImplication](StructureDefinition-TherapeuticImplication.html) | 
+| Type              | Name                                                                      |
+|-------------------|---------------------------------------------------------------------------|
+| Genomic Finding   | [Variant](StructureDefinition-Variant.html)                               | 
+|                   | [Haplotype](StructureDefinition-Haplotype.html)                           |
+|                   | [Genotype](StructureDefinition-Genotype.html)                             |
+| Genomic Anotation | [DiagnosticImplication](StructureDefinition-DiagnosticImplication.html)   | 
+|                   | [TherapeuticImplication](StructureDefinition-TherapeuticImplication.html) | 
 {:.grid}
