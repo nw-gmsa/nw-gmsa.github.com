@@ -6,14 +6,14 @@ classDiagram
 Observation <|-- GenomicStudy : implements
 Observation <|-- GenomicObservation
 GenomicObservation <|-- GenomicFinding 
-GenomicObservation <|-- GenomicAnotation
+GenomicObservation <|-- GenomicImplication
 
 GenomicFinding <|-- Variant :implements
 GenomicFinding <|-- Haplotype :implements
 GenomicFinding <|-- Genotype :implements
 
-GenomicAnotation <|-- DiagnosticImplication :implements
-GenomicAnotation <|-- TherapeuticImplication :implements
+GenomicImplication <|-- DiagnosticImplication :implements
+GenomicImplication <|-- TherapeuticImplication :implements
 ```
 
 ## Entity Relationships
@@ -36,11 +36,11 @@ Genotype ||--|{ Haplotype : "derivedFrom"
 Haplotype ||--|{ Variant : "derivedFrom"
 ```
 
-| Type              | Name                                                                      |
-|-------------------|---------------------------------------------------------------------------|
-| Genomic Finding   | [Variant](StructureDefinition-Variant.html)                               | 
-|                   | [Haplotype](StructureDefinition-Haplotype.html)                           |
-|                   | [Genotype](StructureDefinition-Genotype.html)                             |
-| Genomic Anotation | [DiagnosticImplication](StructureDefinition-DiagnosticImplication.html)   | 
-|                   | [TherapeuticImplication](StructureDefinition-TherapeuticImplication.html) | 
+| Type                | Name                                                                      |
+|---------------------|---------------------------------------------------------------------------|
+| Genomic Finding     | [Variant](StructureDefinition-Variant.html)                               | 
+|                     | [Haplotype](StructureDefinition-Haplotype.html)                           |
+|                     | [Genotype](StructureDefinition-Genotype.html)                             |
+| Genomic Implication | [DiagnosticImplication](StructureDefinition-DiagnosticImplication.html)   | 
+|                     | [TherapeuticImplication](StructureDefinition-TherapeuticImplication.html) | 
 {:.grid}
