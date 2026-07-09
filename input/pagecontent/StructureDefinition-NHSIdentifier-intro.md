@@ -51,3 +51,29 @@ Format: NNNNNNNNNN, values include a checksum, details can be found in [NHS NUMB
 | England and Wales | ttps://fhir.nhs.uk/Id/nhs-number |
 | Scotland          | urn:oid:2.16.840.1.113883.2.1.3.2.4.16.53 |
 | Northern Ireland   | https://fhir.nhs.uk/Id/hsc-number         |  
+
+## Example
+
+### HL7 v2 CX
+
+```aiignore
+9449305552^^^^NH
+```
+
+### HL7 FHIR Identifier
+
+```json
+{
+  "use" : "official",
+  "type" : {
+    "coding" : [
+      {
+        "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+        "code" : "NH"
+      }
+    ]
+  },
+  "system" : "https://fhir.nhs.uk/Id/nhs-number",
+  "value" : "9449305552"
+}
+```

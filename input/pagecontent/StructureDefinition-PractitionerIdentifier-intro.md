@@ -33,3 +33,20 @@ Format
 | Dietician prescriber (HCPC)	      | DTNNNNNN  | DT012345 |
 | Paramedic prescriber (HCPC)	      | PANNNNNN  | PA054321 |
 {:.grid}
+
+## Example 
+
+### HL7 v2 XCN
+
+```aiignore
+C3456789^Darwin^Samuel^^^Dr^^^GMC
+```
+
+### HL7 FHIR Identifier 
+
+```json
+{
+      "system" : "https://fhir.hl7.org.uk/Id/gmc-number",
+      "value" : "C3456789"
+}
+```
