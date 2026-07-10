@@ -31,6 +31,9 @@ Description: "Ned Liverpool Lynch Syndrome"
 
 * subject = Reference(Patient-Liverpool)
 * subject.display = "Ned LIVERPOOL"
+* subject.identifier
+  * system = "https://fhir.nhs.uk/Id/nhs-number"
+  * value = "9737383206"
 
 * encounter.identifier
   * value = "66717"
@@ -61,7 +64,7 @@ Description: "Ned Liverpool Lynch Syndrome"
 
 * conclusion = "Normal - no action"
 
-* result[+],reference = "urn:uuid:6beb613f-d303-42af-b025-86e8e0872061"
-* result[+],reference = "urn:uuid:0878c5de-c22f-4e31-841a-a82ad31c93aa"
-* result[+],reference = "urn:uuid:8385c2fd-313d-4fd5-b98e-d5ea4bae6f99"
-* result[+],reference = "urn:uuid:4490c092-c78c-480a-8cb7-653b70113fd5"
+* result[+].reference = "urn:uuid:6beb613f-d303-42af-b025-86e8e0872061"
+* result[+].reference = "urn:uuid:0878c5de-c22f-4e31-841a-a82ad31c93aa"
+* result[+].reference = "urn:uuid:8385c2fd-313d-4fd5-b98e-d5ea4bae6f99"
+* result[+].reference = "urn:uuid:4490c092-c78c-480a-8cb7-653b70113fd5"

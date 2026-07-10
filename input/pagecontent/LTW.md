@@ -13,13 +13,13 @@ Diagnostic testing (Laboratory Testing Workflow) is a supporting workflow that i
 graph TD;
 
     A[Assessment]-->|Creates Observations| B;
-    A--> |Orders| T;
-    T[Diagnostic Testing<br/>Laboratory Test Workflow] --> |Diagnostic Report| A
+    A--> |"Orders (LAB-1)"| T;
+    T[Diagnostic Testing<br/>Laboratory Test Workflow] --> |"Diagnostic Report (LAB-3)"| A
     B[Diagnosis]-->|Creates Condition| C;
     C[Plan]-->|Creates Goals and Tasks| D;
     D[Implement/Interventions]-->|Actions Tasks| E;
-    D --> |Orders| T;
-    T --> |Diagnostic Report| D
+    D --> |"Orders (LAB-1)"| T;
+    T --> |"Diagnostic Report (LAB-3)"| D
     E[Evaluate]--> |Reviews Care| A;
     
     click T Questionnaire-GenomicTestOrder.html
@@ -119,21 +119,7 @@ The processes above are described in more detail in:
 - [Use Case 1: Genomic Test Order](#use-case-genomic-test-order) for the order
 - [Use Case 2: Genomic Test Report](#use-case-genomic-test-report) for the report
 
-From a high-level perspective, the process is 
-
-```mermaid
-sequenceDiagram
-
-participant EPR  as Order Placer
-participant LIMS as Order Filler
-
-note over EPR,LIMS: IHE LAB-1 Laboratory Order
-EPR ->> LIMS: Send Laboratory Order O21
-LIMS ->> LIMS: Perform Tests
-note over EPR,LIMS: IHE LAB-3 Laboratory Report
-LIMS ->> EPR: Send Laboratory Report R01
-```
-
+From a high-level perspective, the process is shown below:
 Where the `Order Placer` sends the **Laboratory Order** to the `Order Filler`, the lab performs the test and then sends the **Laboratory Report** back to the `Order Placer`. However, variations can exist such as the order is updated or the order is entered directly on the `Order Filler`system (these are currently out of scope).
 
 ```mermaid

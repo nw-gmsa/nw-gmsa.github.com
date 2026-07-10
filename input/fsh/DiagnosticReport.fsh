@@ -170,7 +170,7 @@ Description:    """
 
 //* result[diagnostic-implication] only Reference(DiagnosticImplication)
 
-* presentedForm 1..* MS
+* presentedForm 0..* MS
 * presentedForm only NWAttachment
 
 * conclusionCode 0..*
