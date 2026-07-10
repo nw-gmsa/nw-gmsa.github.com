@@ -3,6 +3,83 @@
 
 1. [IHE Pathology and Laboratory Medicine (PaLM) Technical Framework - Volume 1](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol1.pdf) HL7 v2
 
+## Overview
+
+### Clinical Process
+
+Diagnostic testing (Laboratory Testing Workflow) is a supporting workflow that is embedded within the wider clinical care pathway rather than a separate process. The laboratory or diagnostic service is used whenever the clinical team needs additional evidence to make, confirm, monitor, or review a diagnosis and treatment plan.
+
+```mermaid
+graph TD;
+
+    A[Assessment]-->|Creates Observations| B;
+    A--> |Orders| T;
+    T[Diagnostic Testing<br/>Laboratory Test Workflow] --> |Diagnostic Report| A
+    B[Diagnosis]-->|Creates Condition| C;
+    C[Plan]-->|Creates Goals and Tasks| D;
+    D[Implement/Interventions]-->|Actions Tasks| E;
+    D --> |Orders| T;
+    T --> |Diagnostic Report| D
+    E[Evaluate]--> |Reviews Care| A;
+    
+    click T Questionnaire-GenomicTestOrder.html
+    click AN GenomicTestReport.html
+    click S ExampleScenario-BiopsyProcedure.html
+
+    classDef purple fill:#E1D5E7;
+
+    classDef yellow fill:#FFF2CC;
+    classDef pink fill:#F8CECC
+    classDef green fill:#D5E8D4;
+    classDef blue fill:#DAE8FC;
+    classDef orange fill:#FFE6CC;
+
+    class A pink
+    class B yellow
+    class C green
+    class D blue
+    class E orange
+
+    class O,S,T,AN purple
+```
+
+### Diagnostic Testing
+
+The diagnostic testing begins when the Order Placer creates a laboratory order after determining that diagnostic testing is required. At the same time, the requesting organisation arranges for the patient's specimen to be collected. The laboratory order (LAB-1) is transmitted electronically to the laboratory, while the physical specimen is collected and transported to the testing facility.
+
+Within the Order Filler, the laboratory receives both the electronic order and the specimen. Laboratory staff perform the requested tests, validate the results, and produce a diagnostic report. Once authorised, the laboratory sends the completed laboratory report (LAB-3) back to the requesting clinical system.
+
+```mermaid
+graph 
+    subgraph OrderPlacer;
+        T["Create Order "]
+        T --> |Arranges| S[Specimen Collection] 
+    end
+    subgraph OrderFiller
+        AN["Performs Tests"]
+         AN --> P["Writes Report"];
+    end
+    T --> |"Sends Laboratory Order (LAB-1)"| AN;
+    S --> |Sends Specimen| AN;
+   
+    P --> |"Sends Laboratory Report (LAB-3)"| OrderPlacer;
+```
+
+### Perform Tests
+
+Order Filler generates one or more Work Orders (LAB-4). A work order contains the operational instructions needed by the diagnostic equipment, such as the specimen identifier, requested tests, analyser configuration, priority, and quality control requirements. These work orders are transmitted to the appropriate laboratory instruments or automation manager, which routes specimens and schedules testing across one or more analysers.
+
+The Diagnostic Equipment performs the requested analytical procedures and measures the required biomarkers or characteristics of the specimen. Once testing is complete, the instrument returns the measured values as Test Results (LAB-5) to the Order Filler. These results typically include quantitative or qualitative observations together with instrument identifiers, measurement units, reference ranges, flags indicating abnormal values, quality control information, and timestamps.
+
+```mermaid
+graph 
+    OrderFiller
+    DiagnosticEquipment
+
+    OrderFiller --> |"Work Order (LAB-4)"| DiagnosticEquipment["DiagnosticEquipment<br/>(Automation Manager)"]
+    DiagnosticEquipment --> |"Test Results (LAB-5)"| OrderFiller
+```
+
 ## Actors and Transactions
 
 | Actor                                                           | Definition                                                                                  |
@@ -552,7 +629,7 @@ Note: Event trigger definitions based on [NHS England HL7 v2 ADT Message Specifi
 
 It is common for this requirement to be answered by:
 
-- [IHE Patient Administration Management (PAM)](https://profiles.ihe.net/ITI/TF/Volume1/ch-14.html)//HL7 v2 ADT Patient Encounter Management (A02, A08 and A12)
+- [IHE Patient Administration Management (PAM)](https://profiles.ihe.net/ITI/TF/Volume1/ch-14.html)//HL7 v2 ADT Patient Encounter Management (A02, A08, and A12)
   - (Denmark) HL7 FHIR version [DK MedCom HospitalNotification](https://medcomfhir.dk/ig/hospitalnotification/)
 
 
