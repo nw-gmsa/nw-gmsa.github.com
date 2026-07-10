@@ -415,8 +415,8 @@ The Laboratory Report acts as the bridge between these two worlds. It references
 <p class="figureTitle">Genomic Report Example</p> 
 <br clear="all">
 
-> Note: FHIR Document / Clinical Document Architecture
-> 
+##### FHIR Document / Clinical Document Architecture
+
 > The FHIR DiagnosticReport illustrated above is well suited to workflow-based information exchange, where structured clinical data is exchanged between systems and individual observations can be processed, queried, and acted upon. However, it may be less suitable for document sharing use cases, such as IHE XDS/MHD or the NHS England National Record Locator (NRL), where the laboratory report is exchanged as a complete clinical document. In these scenarios, the preferred approach is a FHIR Document (the FHIR equivalent of a Clinical Document Architecture (CDA) document), which packages the report into a self-contained, attested document with a Composition resource as its root. This preserves the report as a legal and clinical record while still allowing structured data to be included. 
 > 
 > Further details are available in the Document Perspective section of the HL7 Europe Laboratory Implementation Guide: [HL7 Europe Laboratory Report](https://build.fhir.org/ig/hl7-eu/laboratory/index.html)
