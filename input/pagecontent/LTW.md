@@ -322,6 +322,16 @@ After submitting the original order, the sample will be collected and sent to th
 
 ### Process Flow
 
+A report is created by the clinical practice and sent to the order result tracker.
+
+<figure>
+{%include LTW-usecase-2-activity.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">Genomics Test Report Activity</p>
+</figure>
+<br clear="all">
+
+#### Technical Process Flow
+
 ```mermaid
 graph TD;
 
@@ -357,29 +367,7 @@ graph TD;
 
 ```
 
-### Use Case: Genomic Test Report
-
-A report is created by the clinical practice and sent to the order result tracker.
-
-
-#### Genomic Test Report Description
-
-<figure>
-{%include LTW-usecase-2-activity.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">Genomics Test Report Activity</p>
-</figure>
-<br clear="all">
-
-#### Send/Share Genomic Test Report
-
-<img style="padding:3px;width:95%;" src="LaboratoryReportExplainedPage1.drawio.png" alt="Genomic Report Page 1"/>
-<br clear="all">
-
-<img style="padding:3px;width:95%;" src="LaboratoryReportExplainedPage2.drawio.png" alt="Genomic Report Page 2"/>
-<br clear="all">
-<p class="figureTitle">Genomic Report Example</p> 
-<br clear="all">
-
+#### Main Process Flow
 
 ```mermaid
 sequenceDiagram
@@ -409,9 +397,6 @@ TIE ->> EPR: Task complete notification\n(Can be an email notification)
 
 ```
 
-
-#### Main Process Flow
-
 - Optional Preliminary Report Stage
   - Perform Diagnostic Test → Write Preliminary Report (Order Filler).
   - Send (Preliminary) Genomic Test Report IHE LAB-3 from the Order Filler to the Intermediary (RIE).
@@ -427,11 +412,14 @@ TIE ->> EPR: Task complete notification\n(Can be an email notification)
   - When all tests in the order are complete, a Task Complete Notification is sent to the Order Placer.
     - This notification can be sent via email or another messaging system.
 
-### Use Case Summary
+#### Unstructured and Structured Reports Mapping
 
-<img style="padding:3px;width:95%;" src="Order Entry.drawio.png" alt="Genomic Order and Report Summary"/>
+<img style="padding:3px;width:95%;" src="LaboratoryReportExplainedPage1.drawio.png" alt="Genomic Report Page 1"/>
 <br clear="all">
-<p class="figureTitle">Genomic Order and Report Summary</p> 
+
+<img style="padding:3px;width:95%;" src="LaboratoryReportExplainedPage2.drawio.png" alt="Genomic Report Page 2"/>
+<br clear="all">
+<p class="figureTitle">Genomic Report Example</p> 
 <br clear="all">
 
 ## Filler Order Management (LAB-2)
