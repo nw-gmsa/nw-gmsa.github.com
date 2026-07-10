@@ -47,6 +47,8 @@ graph TD;
 
 The diagnostic testing begins when the Order Placer creates a laboratory order after determining that diagnostic testing is required. At the same time, the requesting organisation arranges for the patient's specimen to be collected. The laboratory order (LAB-1) is transmitted electronically to the laboratory, while the physical specimen is collected and transported to the testing facility.
 
+When an order has been entered manually, or when the Specimen arrives at the laboratory, a laboratory filler order (LAB-2) is generated.
+
 Within the Order Filler, the laboratory receives both the electronic order and the specimen. Laboratory staff perform the requested tests, validate the results, and produce a diagnostic report. Once authorised, the laboratory sends the completed laboratory report (LAB-3) back to the requesting clinical system.
 
 ```mermaid
@@ -57,11 +59,14 @@ graph
     end
     subgraph OrderFiller
         AN["Performs Tests"]
-         AN --> P["Writes Report"];
+
+        AN --> P["Writes Report"];
     end
+    FM[Filler Order Managmennt]
+
     T --> |"Sends Laboratory Order (LAB-1)"| AN;
     S --> |Sends Specimen| AN;
-   
+    AN --> |"Sends Laboratory Filler Order (LAB-2)"| FM;
     P --> |"Sends Laboratory Report (LAB-3)"| OrderPlacer;
 ```
 
@@ -91,6 +96,7 @@ graph
 | Laboratory Report (Clinical Document)                           | See [Clinical Document](ActorDefinition-ClinicalDocument.html)                              | 
 | [Intermediary](ActorDefinition-Intermediary.html)                               | E.g. Regional or Trust Integration Engine                                                   |
 | Automation Manager | Often software associated with analysers and Laboratory Analytical Workflow (IHE LAW)       |
+| Filler Order Management | Software used to manage the orders. This may be the Order Placer.                  |
 {:.grid}
 
 See also Ref A `Section 3 Laboratory Testing Workflow (LTW) Profile` for detailed description of actors.
