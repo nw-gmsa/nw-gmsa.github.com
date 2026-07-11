@@ -23,7 +23,7 @@ graph TD;
     E[Evaluate]--> |Reviews Care| A;
     
     click T Questionnaire-GenomicTestOrder.html
-    click AN GenomicTestReport.html
+    click AN StructureDefinition-DiagnosticReport.html
     click S ExampleScenario-BiopsyProcedure.html
 
     classDef purple fill:#E1D5E7;
@@ -305,7 +305,7 @@ After submitting the original order, the sample will be collected and sent to th
 ### Laboratory Report (LAB-3)
 
 <div class="alert alert-info" role="alert">
-<b>Domain Archetype:</b> <a href="GenomicTestReport.html" _target="_blank">Genomic Test Report</a> 
+<b>Domain Archetype:</b> <a href="StructureDefinition-DiagnosticReport.html" _target="_blank">Genomic Test Report</a> 
 </div>
 
 <div class="alert alert-info" role="alert">
@@ -436,7 +436,7 @@ It is envisaged this design will also extend to Laboratory Reports (R01).
 
 <div class="alert alert-info" role="alert">
 <b>Domain Archetype:</b> <a href="Questionnaire-GenomicTestOrder.html" _target="_blank">Genomic Test Order</a> 
-<b>Domain Archetype:</b> <a href="GenomicTestReport.html" _target="_blank">Genomic Test Report</a> 
+<b>Domain Archetype:</b> <a href="StructureDefinition-DiagnosticReport.html" _target="_blank">Genomic Test Report</a> 
 </div>
 
 <div class="alert alert-info" role="alert">
@@ -521,7 +521,7 @@ Device ->> LIMS: Send Test Results Management LAB-5 R22/R32
 ### Work Order Management (LAB-4)
 
 <div class="alert alert-info" role="alert">
-<b>Domain Archetype:</b> <a href="filler-order.html" _target="_blank">Filler Order</a> 
+<b>Domain Archetype:</b> <a href="diagnostic-core.html#filler-order" _target="_blank">Diagnostic Core - Filler Order</a> 
 </div>
 
 #### Process Flow

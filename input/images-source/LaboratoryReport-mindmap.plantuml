@@ -25,8 +25,8 @@ title "Genomic Laboratory Report"
 **** [[StructureDefinition-ReportIdentifier.html Report Identifier]]
 **** Performer
 **** Results Interpreter
-**** Conclusion (Clinical Indication)
 *** Results Genomic
+**** Conclusion (Clinical Indication)
 **** Genomic Analysis Narrative Report (PDF) [[StructureDefinition-NWAttachment.html Attachment]]
 **** [[#laboratory-analyte-result Laboratory Analyte Result]]
 **** Finding

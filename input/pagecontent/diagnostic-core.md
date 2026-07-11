@@ -87,7 +87,9 @@ erDiagram
 
 ### Patient 
 
-See [Patient](StructureDefinition-Patient.html)
+<div class="alert alert-info" role="alert">
+<a href="StructureDefinition-Patient.html" _target="_blank">Patient</a> 
+</div>
 
 | Type       | Name                       | Description                                 | FHIR [Patient](StructureDefinition-Patient.html) |
 |------------|----------------------------|---------------------------------------------|--------------------------------------------------|
@@ -103,6 +105,9 @@ See [Patient](StructureDefinition-Patient.html)
 
 ### Hospital Spell
 
+<div class="alert alert-info" role="alert">
+<a href="StructureDefinition-HospitalSpell.html" _target="_blank">Hospital Spell</a> 
+</div>
 
 | Type       | Name                                                                                        | Description                       | FHIR [Hospital Spell](StructureDefinition-HospitalSpell.html) |
 |------------|---------------------------------------------------------------------------------------------|-----------------------------------|---------------------------------------------------------------|
@@ -156,7 +161,9 @@ See also [Test Order](Questionnaire-GenomicTestOrder.html). The Original Order i
 
 ### Specimen 
 
-See also [Test Order - Specimen](Questionnaire-GenomicTestOrder.html#specimen)
+<div class="alert alert-info" role="alert">
+<a href="StructureDefinition-Specimen.html" _target="_blank">Specimen</a> 
+</div>
 
 | Type       | Name                        | Description             | FHIR [Specimen](StructureDefinition-Specimen.html)       |
 |------------|-----------------------------|-------------------------|----------------------------------------------------------|
@@ -172,7 +179,9 @@ See also [Test Order - Specimen](Questionnaire-GenomicTestOrder.html#specimen)
 
 ### Diagnostic Report
 
-See also [Test Report](Questionnaire-GenomicTestReport.html)
+<div class="alert alert-info" role="alert">
+<a href="StructureDefinition-DiagnosticReport.html" _target="_blank">DiagnosticReport</a> 
+</div>
 
 | Type       | Name                    | Description | FHIR [DiagnosticReport](StructureDefinition-DiagnosticReport.html)                           |
 |------------|-------------------------|-------------|----------------------------------------------------------------------------------------------|

@@ -60,7 +60,7 @@ sequenceDiagram
 ### Sub Order Management (LAB-35)
 
 <div class="alert alert-info" role="alert">
-<b>Domain Archetype:</b> <a href="filler-order.html" _target="_blank">Filler Order</a> 
+<b>Domain Archetype:</b> <a href="diagnostic-core.html#filler-order" _target="_blank">Diagnostic Core - Filler Order</a> 
 </div>
 
 <div class="alert alert-info" role="alert">
@@ -70,7 +70,7 @@ sequenceDiagram
 ### Sub-order Results Delivery (LAB-36)
 
 <div class="alert alert-info" role="alert">
-<b>Domain Archetype:</b> <a href="GenomicTestReport.html" _target="_blank">Genomic Test Report</a> 
+<b>Domain Archetype:</b> <a href="StructureDefinition-DiagnosticReport.html" _target="_blank">Genomic Test Report</a> 
 </div>
 
 <div class="alert alert-info" role="alert">

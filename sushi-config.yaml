@@ -121,11 +121,8 @@ pages:
   exchange.md:
     title: Architecture - Enterprise Integration Patterns (EIP)
     generation: markdown
-  filler-order.md:
-    title: Filler Order
-    generation: markdown
-  GenomicTestReport.md:
-    title: Genomic Test Report
+  diagnostic-core.md:
+    title: Diagnostic Core
     generation: markdown
     #  LAB-1.md:
     #   title: Placer Order Management [LAB-1]
@@ -258,11 +255,11 @@ menu:
 ##    Work Order Management [LAB-4]: LAB-4.html
 ##    Test Results Management [LAB-5]: LAB-5.html
   Data Models (Volume 3):
-    Diagnostic Core: filler-order.html
+    Diagnostic Core: diagnostic-core.html
   ##  Overview - Data Contracts: data-intro.html
     Genomic Test Order (Template): Questionnaire-GenomicTestOrder.html
    ## Genomic Test Report (Composition): StructureDefinition-Composition-GenomicReport.html
-    Genomic Test Report: GenomicTestReport.html
+    Genomic Test Report: StructureDefinition-DiagnosticReport.html
     Laboratory Analyte Result: StructureDefinition-LaboratoryAnalyteResult.html
     Reportable Variant: StructureDefinition-Variant.html
   Artefacts (Volume 4):
