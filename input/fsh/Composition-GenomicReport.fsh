@@ -83,13 +83,13 @@ Description:    """
 * section[Narrative].entry ^short = "Procedure Narrative"
 * section[Narrative].entry only Reference(DiagnosticReport or DocumentReference)
 
-* section[GenomicFinding] ^short = "Finding"
-* section[GenomicFinding].title = "Finding"
+* section[GenomicFinding] ^short = "Findings"
+* section[GenomicFinding].title = "Findings"
 * section[GenomicFinding].code = $loinc#59776-5 "Findings"
 * section[GenomicFinding].entry only Reference(Observation)
 
-* section[GenomicImplication] ^short = "Implication"
-* section[GenomicImplication].title = "Implication"
+* section[GenomicImplication] ^short = "Implications"
+* section[GenomicImplication].title = "Implications"
 * section[GenomicImplication].code = $loinc#59768-2 "Procedure indications Imp"
 * section[GenomicImplication].entry only Reference(Observation)
 

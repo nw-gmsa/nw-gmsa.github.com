@@ -44,7 +44,7 @@ Usage: #example
   * entry[+].reference = "urn:uuid:4490c092-c78c-480a-8cb7-653b70113fd5"
 
 * section[+]
-  * title = "Implication"
+  * title = "Implications"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Genomics Implications</li></ul></div>"
   * code = $loinc#59768-2 "Procedure indications Imp"
