@@ -18,9 +18,9 @@ Description: "Based on HL7 LRI Example 3 (Ref 5.9.1.3)"
     * display = "Variables that apply to the overall study"
     * system = $loinc
 
-* performer[+] = Reference(59577028-8fcc-4554-8b43-988561d41d9c)
+* performer[+].reference = "urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c"
 
-* subject = Reference(Patient-Liverpool)
+* subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
 * subject.display = "Ned LIVERPOOL"
 
 * component[0].code = $loinc#51967-8 "Genetic disease assessed [ID]"

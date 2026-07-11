@@ -19,7 +19,7 @@ Description: "evidenced by pathology diagnostic testing"
     * system = $sct
 
 
-* subject = Reference(Patient-Liverpool)
+* subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
 * subject.display = "Ned LIVERPOOL"
 
 * evidence[+]

@@ -29,7 +29,7 @@ Description: "Ned Liverpool Lynch Syndrome"
 //* code.coding[+] = $sct#4241000179101 "Laboratory report"
 * code.coding[+] = $sct#1054161000000101 "Genetic report"
 
-* subject = Reference(Patient-Liverpool)
+* subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
 * subject.display = "Ned LIVERPOOL"
 * subject.identifier
   * system = "https://fhir.nhs.uk/Id/nhs-number"
@@ -57,7 +57,8 @@ Description: "Ned Liverpool Lynch Syndrome"
 //  * extension[performerFunction].valueCodeableConcept.coding = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#SPRF
 
 * resultsInterpreter[author]
-  * type = "Practitioner"
+  * type = "PractitionerRole"
+  * reference = "urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c"
   * identifier.system = "https://fhir.hl7.org.uk/Id/gmc-number"
   * identifier.value = "C1234567"
   * display = "FICTITIOUS, Ralph"

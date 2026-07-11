@@ -11,7 +11,7 @@ Description: "FamilyMemberHistory - Ricky LEEDS"
 * identifier[0].value = "9321087654"
 
 * patient = Reference(Patient-Liverpool)
-* patient.display = "Nedl LIVERPOOL"
+* patient.display = "Ned LIVERPOOL"
 
 * relationship = http://terminology.hl7.org/CodeSystem/v3-RoleCode#SON "natural son"
 

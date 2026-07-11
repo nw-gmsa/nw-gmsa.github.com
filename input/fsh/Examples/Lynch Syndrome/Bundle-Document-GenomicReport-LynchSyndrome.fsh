@@ -26,7 +26,7 @@ Usage: #example
 
 * title = "Composition Genomics Report Lynch Syndrome"
 
-* subject = Reference(Patient-Liverpool)
+* subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
 * subject.display = "Ned LIVERPOOL"
 
 * encounter.identifier
@@ -54,6 +54,8 @@ Usage: #example
 * insert EntryDocument("urn:uuid:c55a7dc6-9b29-4cd6-ab8f-9aea594aabde", Composition-GenomicsReport-LynchSyndrome)
 * insert EntryDocument("urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd", Patient-Liverpool)
 * insert EntryDocument("urn:uuid:c64139e7-f02d-409c-bf34-75e8bf23bc80", DiagnosticReportGenomicsReportLS)
+//  Performer
+* insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)
 // Observation
 * insert EntryDocument("urn:uuid:6beb613f-d303-42af-b025-86e8e0872061", 6beb613f-d303-42af-b025-86e8e0872061)
 * insert EntryDocument("urn:uuid:0878c5de-c22f-4e31-841a-a82ad31c93aa", 0878c5de-c22f-4e31-841a-a82ad31c93aa)

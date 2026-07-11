@@ -13,10 +13,10 @@ Description: "TODO"
 
 * code = $sct#86259008 "Biopsy of liver"
 
-* asserter = Reference(59577028-8fcc-4554-8b43-988561d41d9c)
+* asserter.reference = "urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c"
 
-* subject = Reference(Patient-Liverpool)
-* subject.display = "Nedl LIVERPOOL"
+* subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
+* subject.display = "Ned LIVERPOOL"
 
 * reasonCode[+]
   * coding[+]

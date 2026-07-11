@@ -19,8 +19,8 @@ Description: "evidenced by genomic diagnostic testing"
     * system = $sct
 
 
-* subject = Reference(Patient-Liverpool)
-* subject.display = "Nedl LIVERPOOL"
+* subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
+* subject.display = "Ned LIVERPOOL"
 
 * evidence[+]
   * detail[+] = Reference(6beb613f-d303-42af-b025-86e8e0872061)

@@ -19,12 +19,12 @@ Description: "Based on HL7 LRI Example 3 (Ref 5.9.1.3)"
     * system = "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs"
 
 
-* performer[+] = Reference(59577028-8fcc-4554-8b43-988561d41d9c)
+* performer[+].reference = "urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c"
 
-* derivedFrom = Reference(8385c2fd-313d-4fd5-b98e-d5ea4bae6f99)
+* derivedFrom.reference = "urn:uuid:8385c2fd-313d-4fd5-b98e-d5ea4bae6f99"
 
-* subject = Reference(Patient-Liverpool)
-* subject.display = "Nedl LIVERPOOL"
+* subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
+* subject.display = "Ned LIVERPOOL"
 
 * component[0].code = $loinc#53037-8 "Genetic variation clinical significance [Imp]"
 * component[=].valueCodeableConcept = $loinc#LA6668-3 "Pathogenic"
