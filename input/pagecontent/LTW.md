@@ -22,7 +22,7 @@ graph TD;
     T --> |"Diagnostic Report (LAB-3)"| D
     E[Evaluate]--> |Reviews Care| A;
     
-    click T Questionnaire-GenomicTestOrder.html
+    click T StructureDefinition-ServiceRequest.html
     click AN StructureDefinition-DiagnosticReport.html
     click S ExampleScenario-BiopsyProcedure.html
 
@@ -149,7 +149,7 @@ sequenceDiagram
 ### Laboratory Order (LAB-1)
 
 <div class="alert alert-info" role="alert">
-<b>Domain Archetype:</b> <a href="Questionnaire-GenomicTestOrder.html" _target="_blank">Genomic Test Order</a> 
+<b>Domain Archetype:</b> <a href="StructureDefinition-ServiceRequest.html" _target="_blank">Genomic Test Order</a> 
 </div>
 
 <div class="alert alert-info" role="alert">
@@ -252,7 +252,7 @@ The FHIR exchange style used [FHIR Message](https://hl7.org/fhir/R4/messaging.ht
 
 > At present, the NW GLH Laboratory Information Management System (LIMS) will not support HL7 FHIR. The Regional Integration Exchange (RIE) will perform conversion between v2 and FHIR formats.
 
-This message is an [aggregate (DDD)](https://martinfowler.com/bliki/DDD_Aggregate.html)/[archetype](https://en.wikipedia.org/wiki/Archetype_(information_science)) and so is a collection of FHIR Resources (similar to v2 segements) which is described in [Genomic Test Order](Questionnaire-GenomicTestOrder.html).
+This message is an [aggregate (DDD)](https://martinfowler.com/bliki/DDD_Aggregate.html)/[archetype](https://en.wikipedia.org/wiki/Archetype_(information_science)) and so is a collection of FHIR Resources (similar to v2 segements) which is described in [Genomic Test Order](StructureDefinition-ServiceRequest.html).
 
 
 ###### Communicating Ask at Order Entry questions and prior results
@@ -435,7 +435,7 @@ LAB-2 is aimed at sending a copy of the order back to the Order Placer, and this
 It is envisaged this design will also extend to Laboratory Reports (R01). 
 
 <div class="alert alert-info" role="alert">
-<b>Domain Archetype:</b> <a href="Questionnaire-GenomicTestOrder.html" _target="_blank">Genomic Test Order</a> 
+<b>Domain Archetype:</b> <a href="StructureDefinition-ServiceRequest.html" _target="_blank">Genomic Test Order</a> 
 <b>Domain Archetype:</b> <a href="StructureDefinition-DiagnosticReport.html" _target="_blank">Genomic Test Report</a> 
 </div>
 

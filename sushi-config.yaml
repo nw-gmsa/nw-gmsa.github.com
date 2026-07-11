@@ -257,9 +257,9 @@ menu:
   Data Models (Volume 3):
     Diagnostic Core: diagnostic-core.html
   ##  Overview - Data Contracts: data-intro.html
-    Genomic Test Order (Template): Questionnaire-GenomicTestOrder.html
+    Genomic Test Order (ServiceRequest): StructureDefinition-ServiceRequest.html
    ## Genomic Test Report (Composition): StructureDefinition-Composition-GenomicReport.html
-    Genomic Test Report: StructureDefinition-DiagnosticReport.html
+    Genomic Test Report (DiagnosticReport: StructureDefinition-DiagnosticReport.html
     Laboratory Analyte Result: StructureDefinition-LaboratoryAnalyteResult.html
     Reportable Variant: StructureDefinition-Variant.html
   Artefacts (Volume 4):

@@ -116,7 +116,11 @@ erDiagram
 
 ### Original Order
 
-See also [Test Order](Questionnaire-GenomicTestOrder.html). The Original Order is distinguised from the Filler Order by value of intent, .
+<div class="alert alert-info" role="alert">
+<a href="StructureDefinition-ServiceRequest.html" _target="_blank">ServiceRequest</a> 
+</div>
+
+The Original Order is distinguised from the Filler Order by value of intent, .
 
 | Type       | Name                            | Description                         | FHIR [ServiceRequest](StructureDefinition-ServiceRequest.html) |
 |------------|---------------------------------|-------------------------------------|----------------------------------------------------------------|
@@ -134,6 +138,10 @@ See also [Test Order](Questionnaire-GenomicTestOrder.html). The Original Order i
 {:.grid}
 
 ### Filler Order
+
+<div class="alert alert-info" role="alert">
+<a href="StructureDefinition-ServiceRequest.html" _target="_blank">ServiceRequest</a> 
+</div>
 
 | Type       | Name                       | Description                         | FHIR [ServiceRequest](StructureDefinition-ServiceRequest.html) |
 |------------|----------------------------|-------------------------------------|----------------------------------------------------------------|

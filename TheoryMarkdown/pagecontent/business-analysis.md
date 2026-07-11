@@ -27,7 +27,7 @@ graph TD;
     D[Implement/Interventions]-->|Actions Tasks| E;
     E[Evaluate]--> |Reviews Care| A;
     
-    click T Questionnaire-GenomicTestOrder.html
+    click T StructureDefinition-ServiceRequest.html
     click AN GenomicTestReport.html
     click S ExampleScenario-BiopsyProcedure.html
 
@@ -251,7 +251,7 @@ graph TD;
         AN["<b>Order Filler</b><br/>Diagnostic Testing<br/>LIMS iGene"] --> |4a. Sends Laboratory Report<br/>LAB-3 HL7 v2 ORU_R01| RIE;
         RIE[Regional Orchestration Engine] --> |4b. Sends Laboratory Report<br/>LAB-3 HL7 v2 ORU_R01| TIE;
     end 
-    click T Questionnaire-GenomicTestOrder.html
+    click T StructureDefinition-ServiceRequest.html
     click AN GenomicTestReport.html
     click S ExampleScenario-BiopsyProcedure.html
 
