@@ -87,3 +87,6 @@ Note: it is likely that source systems will use ORM_01 and not include specimen 
 <div class="alert alert-info" role="alert">
 <a href="Questionnaire-GenomicTestOrder.html" _target="_blank">Questionnaire - Genomic Test Order</a> 
 </div>
+
+<br clear="all"> 
+
