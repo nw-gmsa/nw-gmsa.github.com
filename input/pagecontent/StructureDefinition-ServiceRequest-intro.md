@@ -76,6 +76,10 @@ Treat as mandatory for reflex or subcontracted orders.
 <a href="StructureDefinition-Specimen.html" _target="_blank">Specimen</a> 
 </div>
 
+| Name                      | LOINC   | Value Set / Data Type                                                         | Cardinality | HL7 v2 OML_O21 Message   | HL7 FHIR ServiceRequest |
+|---------------------------|---------|-------------------------------------------------------------------------------|-------------|--------------------------|-------------------------|
+| Specimen ID               | 80398-1 |                                                                               | 0..*        |  | ServiceRequest.specimen | 
+
 Note: it is likely that source systems will use ORM_01 and not include specimen details. In this case it is suggested that the specimen details are captured as 'Ask at Order Entry Questions' and so provided as OBX segments.
 
 ## Order Entry Questions
