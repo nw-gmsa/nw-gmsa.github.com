@@ -68,6 +68,13 @@ Treat as mandatory for reflex or subcontracted orders.
 | (Order) Procedure Code - Genomic Test Code            | [Genomic Test Directory](ValueSet-GenomicTestCodes.html)                | 1..1        | [OBR](hl7v2.html#obr)-4 | ServiceRequest.code       |                               
 {:.grid}
 
+
+## Order Entry Questions
+
+<div class="alert alert-info" role="alert">
+<a href="Questionnaire-GenomicTestOrder.html" _target="_blank">Questionnaire - Genomic Test Order</a> 
+</div>
+
 ## Specimen
 
 <span class="badge badge-primary">Diagnostic</span>
@@ -82,11 +89,4 @@ Treat as mandatory for reflex or subcontracted orders.
 
 Note: it is likely that source systems will use ORM_01 and not include specimen details. In this case it is suggested that the specimen details are captured as 'Ask at Order Entry Questions' and so provided as OBX segments.
 
-## Order Entry Questions
-
-<div class="alert alert-info" role="alert">
-<a href="Questionnaire-GenomicTestOrder.html" _target="_blank">Questionnaire - Genomic Test Order</a> 
-</div>
-
-<br clear="all"> 
 
