@@ -10,25 +10,24 @@ title "Genomic Laboratory Order"
 ** Hospital Spell
 *** Case identification / Account Number [[StructureDefinition-HospitalProviderSpellIdentifier.html Hospital Provider Spell Identifier]]
 *** Service Type [[ValueSet-service.html Service]]
-** Laboratory Order
-*** Order Details
-**** [[StructureDefinition-OrderIdentifier.html Order Identifier (Placer)]]
-**** Filler Order Number
-**** [[StructureDefinition-OrderGroupNumber.html Order Group Number]]
-**** Ordering Facility [[StructureDefinition-OrganisationCode.html Organisation Code]]
-**** Ordering Practitioner
-**** Reason Code
-***** Gene disease assessed [[CodeSystem-GenomicClinicalIndication.html Clinical Indication]]
-**** [[https://www.datadictionary.nhs.uk/data_elements/local_treatment_category_code.html (Order) Procedure Code]]
-***** Genomic Test Code [[CodeSystem-GenomicTestCode.html Test Directory Code]]
-**** Notes
-**** [[#specimen Specimen]]
-***** Specimen Id
-***** [[StructureDefinition-SpecimenAccessionNumber.html Accession Number]]
-***** [[StructureDefinition-ShipmentTrackingNumber.html Shipment Tracking number]]
-*** [[#order-entry-questions Order Entry Questions]] Genomic\n(Supporting Information)
-**** Consent
-**** Pregnant
-**** Consanguineous union
+** Order Details
+*** [[StructureDefinition-OrderIdentifier.html Order Identifier (Placer)]]
+*** Filler Order Number
+*** [[StructureDefinition-OrderGroupNumber.html Order Group Number]]
+*** Ordering Facility [[StructureDefinition-OrganisationCode.html Organisation Code]]
+*** Ordering Practitioner
+*** Reason Code
+**** Gene disease assessed [[CodeSystem-GenomicClinicalIndication.html Clinical Indication]]
+*** [[https://www.datadictionary.nhs.uk/data_elements/local_treatment_category_code.html (Order) Procedure Code]]
+**** Genomic Test Code [[CodeSystem-GenomicTestCode.html Test Directory Code]]
+*** Notes
+** [[#order-entry-questions Order Entry Questions]] Genomic\n(Supporting Information)
+*** Consent
+*** Pregnant
+*** Consanguineous union
+** [[#specimen Specimen]]
+*** Specimen Id
+*** [[StructureDefinition-SpecimenAccessionNumber.html Accession Number]]
+*** [[StructureDefinition-ShipmentTrackingNumber.html Shipment Tracking number]]
 
 @endmindmap

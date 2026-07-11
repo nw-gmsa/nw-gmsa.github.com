@@ -10,35 +10,34 @@ title "Genomic Laboratory Report"
 ** Hospital Spell
 *** Case identification / Account Number [[StructureDefinition-HospitalProviderSpellIdentifier.html Hospital Provider Spell Identifier]]
 *** Service Type [[ValueSet-service.html Service]]
-** Laboratory Report
-*** [[Questionnaire-GenomicTestOrder.html Order Details]]
-**** [[StructureDefinition-OrderIdentifier.html Order Identifier (Placer)]]
-**** Filler Order Number
-**** Ordering Facility [[StructureDefinition-OrganisationCode.html Organisation Code]]
-**** Reason Code
-***** Gene disease assessed [[CodeSystem-GenomicClinicalIndication.html Clinical Indication]]
-**** [[https://www.datadictionary.nhs.uk/data_elements/local_treatment_category_code.html (Order) Procedure Code]]
-***** Genomic Test Code [[CodeSystem-GenomicTestCode.html Test Directory Code]]
-**** [[StructureDefinition-Specimen.html Specimen]]
-***** Accession Number
-*** Test Details
-**** [[StructureDefinition-ReportIdentifier.html Report Identifier]]
-**** Performer
-**** Results Interpreter
-*** Results Genomic
-**** Conclusion (Clinical Indication)
-**** Genomic Analysis Narrative Report (PDF) [[StructureDefinition-NWAttachment.html Attachment]]
-**** [[#laboratory-analyte-result Laboratory Analyte Result]]
-**** Finding
-***** [[#reportable-variant Variant]]
-**** Implication
-***** [[#diagnostic-implication Diagnostic Implication]]
-***** [[#implications Therapeutic Implication]] ProgressRX
-*** [[#genomic-study Genomic Study/Method]]
-**** Gene disease assessed / Clinical Indication
-**** Analysis method [Type]
-**** NHS England Genomics Test Outcome
-**** [[#genomic-study-analysis Genomic Study Analysis]]
-***** Regions Studied / Gene mutations tested
+** [[Questionnaire-GenomicTestOrder.html Order Details]]
+*** [[StructureDefinition-OrderIdentifier.html Order Identifier (Placer)]]
+*** Filler Order Number
+*** Ordering Facility [[StructureDefinition-OrganisationCode.html Organisation Code]]
+*** Reason Code
+**** Gene disease assessed [[CodeSystem-GenomicClinicalIndication.html Clinical Indication]]
+*** [[https://www.datadictionary.nhs.uk/data_elements/local_treatment_category_code.html (Order) Procedure Code]]
+**** Genomic Test Code [[CodeSystem-GenomicTestCode.html Test Directory Code]]
+*** [[StructureDefinition-Specimen.html Specimen]]
+**** Accession Number
+** Test Details
+*** [[StructureDefinition-ReportIdentifier.html Report Identifier]]
+*** Performer
+*** Results Interpreter
+** Results Genomic
+*** Conclusion (Clinical Indication)
+*** Genomic Analysis Narrative Report (PDF) [[StructureDefinition-NWAttachment.html Attachment]]
+*** [[#laboratory-analyte-result Laboratory Analyte Result]]
+*** Finding
+**** [[#reportable-variant Variant]]
+*** Implication
+**** [[#diagnostic-implication Diagnostic Implication]]
+**** [[#implications Therapeutic Implication]] ProgressRX
+** [[#genomic-study Genomic Study/Method]]
+*** Gene disease assessed / Clinical Indication
+*** Analysis method [Type]
+*** NHS England Genomics Test Outcome
+*** [[#genomic-study-analysis Genomic Study Analysis]]
+**** Regions Studied / Gene mutations tested
 
 @endmindmap
