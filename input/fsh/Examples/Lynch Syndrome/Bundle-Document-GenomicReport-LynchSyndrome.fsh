@@ -5,7 +5,7 @@ Description: "Composition - Genomics Report LynchSyndrome"
 Usage: #example
 
 * identifier
-  * value = "c55a7dc6-9b29-4cd6-ab8f-9aea594aabde"
+  * value = "98763a9b-98d4-4cfc-b760-1db086ec52a1"
   * system = "http://www.acme.org/diagnosticreport/identifiers"
   * assigner.identifier.system = $ods-code
   * assigner.identifier.value = "699X0"
