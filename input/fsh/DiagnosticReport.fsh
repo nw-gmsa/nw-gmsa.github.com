@@ -151,7 +151,7 @@ Description:    """
 * specimen 0..* MS
 * specimen only Reference(Specimen)
 
-//* result only Reference(Observation)
+* result only Reference(Observation)
 
 
 //* result ^slicing.discriminator.type = #profile
