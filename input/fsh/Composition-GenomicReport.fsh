@@ -56,13 +56,6 @@ Description:    """
 * section.code.coding.code 1..1
 
 
-//* section ^slicing.discriminator[0].type = #value
-//* section ^slicing.discriminator[=].path = "code"
-//* section ^slicing.ordered = false
-//* section ^slicing.rules = #open
-//* section ^short = "Sections composing the report"
-//* section ^definition = "The root of the sections that make up the report."
-//* section.text 1.. MS
 * section contains
     Order 0..* MS
     and Specimen 0..* MS
@@ -71,11 +64,6 @@ Description:    """
     and GenomicImplication 0..* MS
     and RecommendedActions 0..* MS
 
-//* section[InformationRecipient] ^short = "Information Recipient"
-//* section[InformationRecipient].title = "Information Recipient"
-//* section[InformationRecipient].code = $loinc#59772-4 	"Planned procedure Narrative"
-//* section[InformationRecipient].entry ^short = "Order"
-//* section[InformationRecipient].entry only Reference(Organization)
 
 * section[Order] ^short = "Laboratory Order"
 * section[Order].title = "Laboratory Order"
@@ -98,12 +86,12 @@ Description:    """
 * section[GenomicFinding] ^short = "Finding"
 * section[GenomicFinding].title = "Finding"
 * section[GenomicFinding].code = $loinc#59776-5 "Findings"
-//* section[GenomicFinding].entry only Reference(Variant or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/haplotype or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/genotype or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/sequence-phase-relationship)
+* section[GenomicFinding].entry only Reference(Observation)
 
 * section[GenomicImplication] ^short = "Implication"
 * section[GenomicImplication].title = "Implication"
 * section[GenomicImplication].code = $loinc#59768-2 "Procedure indications Imp"
-//* section[GenomicImplication].entry only Reference(DiagnosticImplication or TherapeuticImplication or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/molecular-consequence)
+* section[GenomicImplication].entry only Reference(Observation)
 
 * section[RecommendedActions] ^short = "Recommended Actions"
 * section[RecommendedActions].title = "Recommended Actions"
