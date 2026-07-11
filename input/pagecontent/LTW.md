@@ -122,8 +122,8 @@ Initially only the IHE `LAB-1` and `LAB-3` is in focus. Later stages will includ
 
 The processes above are described in more detail in:
 
-- [Use Case 1: Genomic Test Order](#use-case-genomic-test-order) for the order
-- [Use Case 2: Genomic Test Report](#use-case-genomic-test-report) for the report
+- [Process Flow: Genomic Test Order](#process-flow) for the order
+- [Process Flow: Genomic Test Report](#process-flow-1) for the report
 
 From a high-level perspective, the process is shown below:
 Where the `Order Placer` sends the **Laboratory Order** to the `Order Filler`, the lab performs the test and then sends the **Laboratory Report** back to the `Order Placer`. However, variations can exist such as the order is updated or the order is entered directly on the `Order Filler`system (these are currently out of scope).
@@ -157,6 +157,24 @@ sequenceDiagram
 </div>
 
 #### Process Flow
+
+An order is created by the clinical practice and placed to the laboratory.
+
+```mermaid
+graph LR 
+    S[Select Genomic Test Order Form];
+    C[Complete Genomic Test Order Form];
+    G[Submit Genomic Test Order Form];
+    F[Form Data Extraction]
+    Specimen[Specimen Collection]
+
+    S --> C
+    C --> |Form| F
+    F --> |Test Order| G
+    C --> |Arrange| Specimen
+```
+
+##### Technical Process Flow
 
 ```mermaid
 graph TD;
@@ -192,24 +210,6 @@ graph TD;
     class RIE,GDP,PubSub pink;
     class OR green;
 
-```
-
-#### Use Case: Genomic Test Order
-
-An order is created by the clinical practice and placed to the laboratory.
-
-```mermaid
-graph LR 
-    S[Select Genomic Test Order Form];
-    C[Complete Genomic Test Order Form];
-    G[Submit Genomic Test Order Form];
-    F[Form Data Extraction]
-    Specimen[Specimen Collection]
-
-    S --> C
-    C --> |Form| F
-    F --> |Test Order| G
-    C --> |Arrange| Specimen
 ```
 
 ##### Select Genomic Test Order Form

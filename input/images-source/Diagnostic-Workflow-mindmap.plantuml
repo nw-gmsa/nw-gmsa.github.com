@@ -2,9 +2,9 @@
 
 
 *  <b>Diagnostic Workflow</b>
-** [[Questionnaire-GenomicTestOrder.html Laboratory Test Order (OML_O21)\nGenomic Test Order]]
+** Order Managment (LAB-1 and LAB-2)
 *** [[StructureDefinition-ServiceRequest.html Service Request (ORC)]]
-** [[GenomicTestReport.html Laboratory Test Report (ORU_R01)\nGenomic Test Report]]
+** Order Results Management (LAB-3)
 *** [[StructureDefinition-DiagnosticReport.html Diagnostic Report (OBR)]]
 ** Sample Management\nSpecimen Event Tracking
 *** [[StructureDefinition-Specimen.html Specimen (SPM)]]

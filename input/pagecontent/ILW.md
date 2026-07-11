@@ -153,7 +153,7 @@ graph TD;
 <p class="figureTitle">Genomic LTW Business Process - Use Case 3</p> 
 <br clear="all">
 
-In this use case the original order is raised by the `Order Placer` and sent to a Pathology LIMS (`Pathology Order Filler`). The Pathology LIMS follows the processes outlined in [Use Case 1: Genomic Test Order](LTW.html#use-case-genomic-test-order) and [Use Case 2: Genomic Test Report](LTW.html#use-case-genomic-test-report) for pathology testing.  
+In this use case the original order is raised by the `Order Placer` and sent to a Pathology LIMS (`Pathology Order Filler`). The Pathology LIMS follows the processes outlined in [Process Flow: Genomic Test Order](LTW.html#process-flow) and [Process Flow: Genomic Test Report](LTW.html#process-flow-1) for pathology testing.  
 As part of this testing, the clinical process requires a genomics test to be performed.
 This genomics process is largely the same except for:
 - The order is sent as one interaction as the sample does not need to be collected.
