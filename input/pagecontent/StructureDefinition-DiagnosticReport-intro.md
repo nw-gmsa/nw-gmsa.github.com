@@ -15,10 +15,6 @@
 
 ## Domain Archetype
 
-<div class="alert alert-danger" role="alert">
-This is currently being elaborated and subject to change.
-</div>
-
 <figure>
 {%include LaboratoryReport-mindmap.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Laboratory Report - MindMap</p>
