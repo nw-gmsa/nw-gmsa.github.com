@@ -43,8 +43,6 @@ Treat as mandatory for reflex or subcontracted orders.
 | Case Identification or Account Number | 56797-4 | [HospitalProviderSpellIdentifier](StructureDefinition-HospitalProviderSpellIdentifier.html) | 0..1        | [PV1](hl7v2.html#pv1)-19 | [ServiceRequest](StructureDefinition-ServiceRequest.html).encounter.identifier | Encounter.identifier [HospitalSpell](StructureDefinition-HospitalSpell.html) |
 {:.grid}
 
-
-
 <span class="badge badge-primary">Diagnostic Workflow</span>
 
 | Name                        | LOINC | Value Set / Data Type                                                              | Cardinality | HL7 v2 OML_O21 Message            | HL7 FHIR [ServiceRequest](StructureDefinition-ServiceRequest.html)                                                                                                                                        | HL7 FHIR Resource (Message + RESTful)                                                  |
@@ -74,6 +72,10 @@ Treat as mandatory for reflex or subcontracted orders.
 ## Specimen
 
 <span class="badge badge-primary">Diagnostic</span>
+
+<div class="alert alert-info" role="alert">
+<a href="StructureDefinition-Specimen.html" _target="_blank">Specimen</a> 
+</div>
 
 | Name                      | LOINC   | Value Set / Data Type                                                         | Cardinality | HL7 v2 OML_O21 Message   | HL7 FHIR ServiceRequest | HL7 FHIR [Specimen](StructureDefinition-Specimen.html)                           |
 |---------------------------|---------|-------------------------------------------------------------------------------|-------------|--------------------------|-------------------------|----------------------------------------------------------------------------------|
