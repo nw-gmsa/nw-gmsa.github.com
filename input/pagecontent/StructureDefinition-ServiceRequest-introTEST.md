@@ -22,7 +22,7 @@
 
 ## Diagnostic Order
 
-<span class="badge badge-info">Patient Demographics</span>
+### Patient Demographics
 
 
 | Name                  | Value Set / Data Type                                                 | Cardinality | HL7 v2 OML_O21 Message   | HL7 FHIR ServiceRequest                                     | HL7 FHIR Resource (Message + RESTful)                                       |
@@ -33,7 +33,7 @@
 | Postcode              | [Postcode](StructureDefinition-Postcode.html)                         | 0..1        | [PID](hl7v2.html#pid)-11 |                                                             | [Patient](StructureDefinition-Patient.html).address.postalCode              |
 {:.grid}
 
-<span class="badge badge-info">Hospital Spell</span>
+### Hospital Spell
 
 Treat as mandatory for reflex or subcontracted orders.
 
@@ -43,7 +43,7 @@ Treat as mandatory for reflex or subcontracted orders.
 | Case Identification or Account Number | [HospitalProviderSpellIdentifier](StructureDefinition-HospitalProviderSpellIdentifier.html) | 0..1        | [PV1](hl7v2.html#pv1)-19 | ServiceRequest.encounter.identifier | Encounter.identifier [HospitalSpell](StructureDefinition-HospitalSpell.html) |
 {:.grid}
 
-<span class="badge badge-primary">Diagnostic Workflow</span>
+### Diagnostic Workflow
 
 | Name                        | Value Set / Data Type                                                              | Cardinality | HL7 v2 OML_O21 Message            | HL7 FHIR ServiceRequest                                                                                                           | 
 |-----------------------------|------------------------------------------------------------------------------------|-------------|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
@@ -61,7 +61,7 @@ Treat as mandatory for reflex or subcontracted orders.
 | Specimen                    | See Specimen below                                                                 | 0..*        | [SPM](hl7v2.html#spm)             | ServiceRequest.specimen.identifier                                                                                                |                                                                                               
 {:.grid}
 
-<span class="badge badge-primary">Diagnostic Genomics</span>
+### Diagnostic Genomics
 
 | Name                                                  | Value Set / Data Type                                                   | Cardinality | HL7 v2 OML_O21 Message  | HL7 FHIR ServiceRequest   | 
 |-------------------------------------------------------|-------------------------------------------------------------------------|-------------|-------------------------|---------------------------|
@@ -69,15 +69,14 @@ Treat as mandatory for reflex or subcontracted orders.
 {:.grid}
 
 
-## Order Entry Questions
+### Order Entry Questions
 
 <div class="alert alert-info" role="alert">
 <a href="Questionnaire-GenomicTestOrder.html" _target="_blank">Questionnaire - Genomic Test Order</a> 
 </div>
 
-## Specimen
+### Specimen
 
-<span class="badge badge-primary">Diagnostic</span>
 
 <div class="alert alert-info" role="alert">
 <a href="StructureDefinition-Specimen.html" _target="_blank">Specimen</a> 
