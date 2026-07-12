@@ -115,6 +115,9 @@ pages:
   data-intro.md:
     title: Overview - Data Contracts
     generation: markdown
+  ServiceRequest.md:
+    title: ServiceRequest
+    generation: markdown
   architecture.md:
     title: Architecture
     generation: markdown
@@ -257,7 +260,7 @@ menu:
   Data Models (Volume 3):
     Diagnostic Core: diagnostic-core.html
   ##  Overview - Data Contracts: data-intro.html
-    Genomic Test Order (ServiceRequest): StructureDefinition-ServiceRequest.html
+    Genomic Test Order (ServiceRequest): ServiceRequest.html
    ## Genomic Test Report (Composition): StructureDefinition-Composition-GenomicReport.html
     Genomic Test Report (DiagnosticReport: StructureDefinition-DiagnosticReport.html
     Laboratory Analyte Result: StructureDefinition-LaboratoryAnalyteResult.html

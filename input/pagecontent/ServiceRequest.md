@@ -14,6 +14,10 @@
 
 ## Domain Archetype
 
+<div class="alert alert-info" role="alert">
+<a href="StructureDefinition-ServiceRequest.html" _target="_blank">ServiceRequest</a> 
+</div>
+
 <figure>
 {%include Laboratory-Order-mindmap.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Genomic Test Order Sections</p>
