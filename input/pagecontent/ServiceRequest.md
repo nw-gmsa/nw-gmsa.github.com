@@ -1,6 +1,3 @@
-<div class="alert alert-info" role="alert">
-<b>HL7 v2 Segment:</b> <a href="hl7v2.html#orc" _target="_blank">ORC</a>
-</div>
 
 ## Reference
 
@@ -16,6 +13,10 @@
 
 <div class="alert alert-info" role="alert">
 <a href="StructureDefinition-ServiceRequest.html" _target="_blank">ServiceRequest</a> 
+</div>
+
+<div class="alert alert-info" role="alert">
+<b>HL7 v2 Segment:</b> <a href="hl7v2.html#orc" _target="_blank">ORC</a>
 </div>
 
 <figure>
