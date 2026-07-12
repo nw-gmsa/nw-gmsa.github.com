@@ -12,7 +12,7 @@
 ## Domain Archetype
 
 <div class="alert alert-info" role="alert">
-<a href="StructureDefinition-ServiceRequest.html" _target="_blank">ServiceRequest</a> 
+<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-ServiceRequest.html" _target="_blank">ServiceRequest</a> 
 </div>
 
 <div class="alert alert-info" role="alert">
@@ -84,7 +84,7 @@ Treat as mandatory for reflex or subcontracted orders.
 
 
 <div class="alert alert-info" role="alert">
-<a href="StructureDefinition-Specimen.html" _target="_blank">Specimen</a> 
+<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-Specimen.html" _target="_blank">Specimen</a> 
 </div>
 
 | Name                      | LOINC   | Value Set / Data Type                                                         | Cardinality | HL7 v2 OML_O21 Message   | HL7 FHIR ServiceRequest |

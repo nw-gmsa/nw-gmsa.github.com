@@ -110,7 +110,7 @@ Description: [Genomic Study](https://build.fhir.org/ig/HL7/genomics-reporting/ge
 <span class="badge badge-primary">Genomic Observation </span>
 
 <div class="alert alert-info" role="alert">
-<a href="StructureDefinition-GenomicStudy.html" _target="_blank">Procedure Genomic Study</a> 
+<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-GenomicStudy.html" _target="_blank">Procedure Genomic Study</a> 
 </div>
 
 #### Genomic Study Analysis
@@ -132,13 +132,13 @@ This appears to be part of [FHIR R6 GenomicStudy](https://build.fhir.org/genomic
 #### Laboratory Analyte Result
 
 <div class="alert alert-info" role="alert">
-<a href="StructureDefinition-LaboratoryAnalyteResult.html" _target="_blank">Laboratory Analyte Result (Observation)</a> 
+<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-LaboratoryAnalyteResult.html" _target="_blank">Laboratory Analyte Result (Observation)</a> 
 </div>
 
 #### Reportable Variant
 
 <div class="alert alert-info" role="alert">
-<a href="StructureDefinition-Variant.html" _target="_blank">Variant (Observation)</a> 
+<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-Variant.html" _target="_blank">Variant (Observation)</a> 
 </div>
 
 ### Implications
@@ -150,7 +150,7 @@ Description: [Genomic Implications](https://build.fhir.org/ig/HL7/genomics-repor
 <span class="badge badge-primary">Genomic Observation </span>
 
 <div class="alert alert-info" role="alert">
-<a href="StructureDefinition-DiagnosticImplication.html" _target="_blank">Diagnostic Implication (Observation)</a> 
+<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-DiagnosticImplication.html" _target="_blank">Diagnostic Implication (Observation)</a> 
 </div>
 
 ## Examples

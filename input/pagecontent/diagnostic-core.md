@@ -88,7 +88,10 @@ erDiagram
 ### Patient 
 
 <div class="alert alert-info" role="alert">
-<a href="StructureDefinition-Patient.html" _target="_blank">Patient</a> 
+<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-Patient.html" _target="_blank">Patient</a> 
+</div>
+<div class="alert alert-info" role="alert">
+<b>HL7 v2 Segment:</b> <a href="hl7v2.html#pid" _target="_blank">PID</a>
 </div>
 
 | Type       | Name                       | Description                                 | FHIR [Patient](StructureDefinition-Patient.html) |
@@ -106,7 +109,10 @@ erDiagram
 ### Hospital Spell
 
 <div class="alert alert-info" role="alert">
-<a href="StructureDefinition-HospitalSpell.html" _target="_blank">Hospital Spell</a> 
+<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-HospitalSpell.html" _target="_blank">Hospital Spell</a> 
+</div>
+<div class="alert alert-info" role="alert">
+<b>HL7 v2 Segment:</b> <a href="hl7v2.html#pv1" _target="_blank">PV1</a>
 </div>
 
 | Type       | Name                                                                                        | Description                       | FHIR [Hospital Spell](StructureDefinition-HospitalSpell.html) |
@@ -117,7 +123,10 @@ erDiagram
 ### Original Order
 
 <div class="alert alert-info" role="alert">
-<a href="StructureDefinition-ServiceRequest.html" _target="_blank">ServiceRequest</a> 
+<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-ServiceRequest.html" _target="_blank">ServiceRequest</a> 
+</div>
+<div class="alert alert-info" role="alert">
+<b>HL7 v2 Segment:</b> <a href="hl7v2.html#orc" _target="_blank">ORC</a>
 </div>
 
 The Original Order is distinguised from the Filler Order by value of intent, .
@@ -140,7 +149,10 @@ The Original Order is distinguised from the Filler Order by value of intent, .
 ### Filler Order
 
 <div class="alert alert-info" role="alert">
-<a href="StructureDefinition-ServiceRequest.html" _target="_blank">ServiceRequest</a> 
+<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-ServiceRequest.html" _target="_blank">ServiceRequest</a> 
+</div>
+<div class="alert alert-info" role="alert">
+<b>HL7 v2 Segment:</b> <a href="hl7v2.html#orc" _target="_blank">ORC</a>
 </div>
 
 | Type       | Name                       | Description                         | FHIR [ServiceRequest](StructureDefinition-ServiceRequest.html) |
@@ -170,7 +182,10 @@ The Original Order is distinguised from the Filler Order by value of intent, .
 ### Specimen 
 
 <div class="alert alert-info" role="alert">
-<a href="StructureDefinition-Specimen.html" _target="_blank">Specimen</a> 
+<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-Specimen.html" _target="_blank">Specimen</a> 
+</div>
+<div class="alert alert-info" role="alert">
+<b>HL7 v2 Segment:</b> <a href="hl7v2.html#spm" _target="_blank">SPM</a>
 </div>
 
 | Type       | Name                        | Description             | FHIR [Specimen](StructureDefinition-Specimen.html)       |
@@ -188,7 +203,10 @@ The Original Order is distinguised from the Filler Order by value of intent, .
 ### Diagnostic Report
 
 <div class="alert alert-info" role="alert">
-<a href="StructureDefinition-DiagnosticReport.html" _target="_blank">DiagnosticReport</a> 
+<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-DiagnosticReport.html" _target="_blank">DiagnosticReport</a> 
+</div>
+<div class="alert alert-info" role="alert">
+<b>HL7 v2 Segment:</b> <a href="hl7v2.html#obr" _target="_blank">OBR</a>
 </div>
 
 | Type       | Name                    | Description | FHIR [DiagnosticReport](StructureDefinition-DiagnosticReport.html)                           |
