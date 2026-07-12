@@ -77,7 +77,7 @@ Treat as mandatory for reflex or subcontracted orders.
 ### Order Entry Questions
 
 <div class="alert alert-info" role="alert">
-<b>HL7 FHIR Quesionnaire:</b> <a href="Questionnaire-GenomicTestOrder.html" _target="_blank">Genomic Test Order</a> 
+<b>HL7 FHIR Questionnaire:</b> <a href="Questionnaire-GenomicTestOrder.html" _target="_blank">Genomic Test Order</a> 
 </div>
 
 ### Specimen
