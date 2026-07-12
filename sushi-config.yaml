@@ -116,7 +116,7 @@ pages:
     title: Overview - Data Contracts
     generation: markdown
   ServiceRequest.md:
-    title: ServiceRequest
+    title: ServiceRequest Introduction
     generation: markdown
   architecture.md:
     title: Architecture
