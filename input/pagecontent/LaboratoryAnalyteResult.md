@@ -8,6 +8,10 @@ This is currently being elaborated and subject to change.
 
 ## Overview
 
+<div class="alert alert-info" role="alert">
+<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-LaboratoryAnalyteResult.html" _target="_blank">Laboratory Analyte Result</a> 
+</div>
+
 > BCR-ABL1 concentration testing is used to monitor the amount of the fusion gene (Philadelphia chromosome) in chronic myeloid leukemia (CML) patients, with results typically reported on an International Scale (%IS) to measure treatment response.
 
 ```mermaid

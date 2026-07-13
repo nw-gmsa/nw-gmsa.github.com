@@ -122,7 +122,7 @@ pages:
     title: DiagnosticReport Introduction
     generation: markdown
   LaboratoryAnalyteResult.md:
-    title: LaboratoryAnalyteResult Introduction
+    title: Laboratory Analyte Result Introduction
     generation: markdown
   architecture.md:
     title: Architecture

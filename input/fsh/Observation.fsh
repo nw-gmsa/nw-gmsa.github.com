@@ -31,7 +31,6 @@ Description:    """
 * status ^short = "Observation Status  (HL7 v2 OBX-11)"
 
 * subject only Reference(Patient)
-* subject 1..1 MS
 * subject.reference 1..1 MS
 * subject.identifier only NHSIdentifier
 
