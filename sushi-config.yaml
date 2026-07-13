@@ -118,6 +118,9 @@ pages:
   ServiceRequest.md:
     title: ServiceRequest Introduction
     generation: markdown
+  DiagnosticReport.md:
+    title: DiagnosticReport Introduction
+    generation: markdown
   architecture.md:
     title: Architecture
     generation: markdown
@@ -262,7 +265,7 @@ menu:
   ##  Overview - Data Contracts: data-intro.html
     Genomic Test Order (ServiceRequest): ServiceRequest.html
    ## Genomic Test Report (Composition): StructureDefinition-Composition-GenomicReport.html
-    Genomic Test Report (DiagnosticReport: StructureDefinition-DiagnosticReport.html
+    Genomic Test Report (DiagnosticReport: DiagnosticReport.html
     Laboratory Analyte Result: StructureDefinition-LaboratoryAnalyteResult.html
     Reportable Variant: StructureDefinition-Variant.html
   Artefacts (Volume 4):
