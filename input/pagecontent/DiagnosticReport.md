@@ -113,8 +113,6 @@ Description: [Genomic Study](https://build.fhir.org/ig/HL7/genomics-reporting/ge
 
 #### Genomic Study
 
-<span class="badge badge-primary">Genomic Observation </span>
-
 <div class="alert alert-info" role="alert">
 <b>HL7 FHIR Profile:</b> <a href="StructureDefinition-GenomicStudy.html" _target="_blank">Procedure Genomic Study</a> 
 </div>
@@ -133,7 +131,6 @@ This appears to be part of [FHIR R6 GenomicStudy](https://build.fhir.org/genomic
 
 ### Findings / Observations
 
-<span class="badge badge-primary">Genomic Observation </span>
 
 #### Laboratory Analyte Result
 
@@ -152,8 +149,6 @@ This appears to be part of [FHIR R6 GenomicStudy](https://build.fhir.org/genomic
 Description: [Genomic Implications](https://build.fhir.org/ig/HL7/genomics-reporting/general.html#genomic-implications)
 
 #### Diagnostic Implication
-
-<span class="badge badge-primary">Genomic Observation </span>
 
 <div class="alert alert-info" role="alert">
 <b>HL7 FHIR Profile:</b> <a href="StructureDefinition-DiagnosticImplication.html" _target="_blank">Diagnostic Implication (Observation)</a> 
