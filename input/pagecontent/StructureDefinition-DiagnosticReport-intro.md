@@ -1,6 +1,6 @@
 See [DiagnosticReport](DiagnosticReport.html) for detailed notes.
 
-## References
+### References
 
 - [HL7 Lab Results Interface (LRI), Release 1 from May 2017](https://confluence.hl7.org/download/attachments/25559919/2018%2004%2003%20-%20V2%20LRI%20-%20Ch.%205%20CG%20and%20Code%20System%20Tables.pdf?api=v2) (HL7 v2,5,1)
 - HL7 International [Genomics Reporting Implementation Guide](https://build.fhir.org/ig/HL7/genomics-reporting/index.html) (HL7 FHIR)
@@ -11,7 +11,7 @@ See [DiagnosticReport](DiagnosticReport.html) for detailed notes.
 - [NHS England Genomics DiagnosticReport](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/FHIRAssets/Profiles/All-Profiles/UKCore-DiagnosticReport) use text descriptions only, not the rendered profile.
 - [HL7 Europe Core - DiagnosticReport](https://hl7.eu/fhir/base/2.0.0-ballot/StructureDefinition-diagnosticReport-eu-core.html)
 
-## Domain Archetype
+### Domain Archetype
 
 <figure>
 {%include LaboratoryReport-mindmap.svg%}
