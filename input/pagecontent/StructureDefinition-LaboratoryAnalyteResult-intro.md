@@ -45,6 +45,10 @@ Process Flow: [Test Results Management (LAB-5)](LTW.html#test-results-management
 
 ## Data Mapping
 
+<figure>
+{%include LaboratoryAnalyteResult-mindmap.svg%}
+</figure>
+
 ### Laboaratory Analyte Result
 
 | openEHR                  | Data Element                                                     | HL7 v2 R32                              | LOINC / SNOMED    | HL7 FHIR                                                               | iGene                                     | Example            |
@@ -56,7 +60,6 @@ Process Flow: [Test Results Management (LAB-5)](LTW.html#test-results-management
 |                          | [Test Code](ValueSet-GenomicTestCodes.html)                      | OBR-4 Universalserviceidentifier        | Recommended       |                                                                       DiagnosticReport.code                     |                    | BCRABL                            |   
 | Result Status            | Result Status                                                    | OBR-25 ResultStatus                     |                   | DiagnosticReport.status                                                |                                           | F                  |
 | **Result**               |                                                                  |                                         |                   | DiagnosticReport.result referencing Observation                        |                                           |                    |
-| - Variant                |                                                                  |                                         |                   | Observation.derivedFrom(Variant) - BCR::ABL Major (e14a2/e13a2)        |                                           |                    |
 | Analysis performed time  | - Test Start DateTime                                            | TQ1-7 Startdatetime                     |                   | Observation.effectivePeriod.start and DiagnosticReport.effectivePeriod |                                           |                    |
 | Analysis performed time  | - Test End DateTime                                              | TQ1-8 Enddatetime                       |                   | Observation.effectivePeriod.end and DiagnosticReport.effectivePeriod   |                                           |                    |
 |                          | - Performer                                                      | OBX-16 ResponsibleObserver              |                   |                                                                         Observation.performer                     |                    |                                   |

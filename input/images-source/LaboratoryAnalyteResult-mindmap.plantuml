@@ -1,0 +1,26 @@
+@startmindmap
+
+title "Laboratory Analyte Result"
+
+* Laboratory Analyte Result
+** Patient Demographics
+*** Patient identifier(s)
+** Order Details
+*** Filler Order Number
+*** Test Code
+** Test Details
+*** Report Identifier
+*** Result Status
+*** Analysis performed time
+*** Analyte code and name
+*** Reference range guidance
+** Result
+*** Analyte result (coded)
+**** Value
+**** Unit
+**** Value Absent Reason
+**** Analyte result detail (coded)
+***** Value
+***** Unit
+
+@endmindmap
