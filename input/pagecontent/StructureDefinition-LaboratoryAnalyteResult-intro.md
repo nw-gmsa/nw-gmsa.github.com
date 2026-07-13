@@ -47,7 +47,9 @@ Process Flow: [Test Results Management (LAB-5)](LTW.html#test-results-management
 
 <figure>
 {%include LaboratoryAnalyteResult-mindmap.svg%}
+<p>Laboratory Analyte Result</p>
 </figure>
+<br clear="all">
 
 ### Laboratory Analyte Result
 

@@ -1,9 +1,11 @@
-
+<div class="alert alert-danger" role="alert">
+This is currently being elaborated and subject to change.
+</div>
 
 See [ServiceRequest](ServiceRequest.html) for detailed notes.
 
 
-#### Reference
+## Reference
 
 - [HL7 Europe Laboratory Report - ServiceRequest: Laboratory Order](https://build.fhir.org/ig/hl7-eu/laboratory/StructureDefinition-ServiceRequest-eu-lab.html)
 - HL7 Europe [ServiceRequest: Laboratory Order](https://build.fhir.org/ig/hl7-eu/laboratory/StructureDefinition-ServiceRequest-eu-lab.html)
@@ -13,9 +15,9 @@ See [ServiceRequest](ServiceRequest.html) for detailed notes.
 - Prior Results (Oncology)
     - HL7 USA [minimal Common Oncology Data Elements (mCODE) Implementation Guide - Assessment](https://build.fhir.org/ig/HL7/fhir-mCODE-ig/group-assessment.html)
 
-#### Diagnostic Order
+## Diagnostic Order
 
-##### Patient Demographics
+### Patient Demographics
 
 | Name                  | Value Set / Data Type                                                 | Cardinality | HL7 v2 OML_O21 Message   | HL7 FHIR ServiceRequest                                     | HL7 FHIR Resource (Message + RESTful)                                       |
 |-----------------------|-----------------------------------------------------------------------|-------------|--------------------------|-------------------------------------------------------------|-----------------------------------------------------------------------------|
@@ -25,3 +27,4 @@ See [ServiceRequest](ServiceRequest.html) for detailed notes.
 | Postcode              | [Postcode](StructureDefinition-Postcode.html)                         | 0..1        | [PID](hl7v2.html#pid)-11 |                                                             | [Patient](StructureDefinition-Patient.html).address.postalCode              |
 {:.grid}
 
+<p>test</p>
