@@ -24,10 +24,10 @@ title "Genomic Laboratory Report"
 *** [[StructureDefinition-ReportIdentifier.html Report Identifier]]
 *** Performer
 *** Results Interpreter
-** Results
-*** Conclusion (related to Gene disease assessed)
-*** NHS England Genomics Test Outcome
-*** Genomic Analysis Narrative Report (PDF) [[StructureDefinition-NWAttachment.html Attachment]]
+** Conclusion (related to Gene disease assessed)
+** NHS England Genomics Test Outcome
+** Genomic Analysis Narrative Report (PDF) [[StructureDefinition-NWAttachment.html Attachment]]
+** [[StructureDefinition-Observation.html Results (Observations]]
 *** [[#laboratory-analyte-result Laboratory Analyte Result]]
 *** Finding
 **** [[#reportable-variant Variant]]
