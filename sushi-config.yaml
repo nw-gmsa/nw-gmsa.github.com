@@ -121,6 +121,9 @@ pages:
   DiagnosticReport.md:
     title: DiagnosticReport Introduction
     generation: markdown
+  LaboratoryAnalyteResult.md:
+    title: LaboratoryAnalyteResult Introduction
+    generation: markdow
   architecture.md:
     title: Architecture
     generation: markdown
@@ -266,7 +269,7 @@ menu:
     Genomic Test Order (ServiceRequest): ServiceRequest.html
    ## Genomic Test Report (Composition): StructureDefinition-Composition-GenomicReport.html
     Genomic Test Report (DiagnosticReport): DiagnosticReport.html
-    Laboratory Analyte Result: StructureDefinition-LaboratoryAnalyteResult.html
+    Laboratory Analyte Result: LaboratoryAnalyteResult.html
     Reportable Variant: StructureDefinition-Variant.html
   Artefacts (Volume 4):
     HL7 FHIR R4: artifacts.html
