@@ -123,7 +123,7 @@ pages:
     generation: markdown
   LaboratoryAnalyteResult.md:
     title: LaboratoryAnalyteResult Introduction
-    generation: markdow
+    generation: markdown
   architecture.md:
     title: Architecture
     generation: markdown
