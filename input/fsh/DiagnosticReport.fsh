@@ -96,10 +96,10 @@ Description:    """
 * code.coding ^slicing.description = "Slice based on the system"
 * code.coding ^slicing.ordered = false
 * code.coding contains
-   GenomicTestDirectory 1..1 MS and UKCoreReportCode 1..1 MS
+   ProcedureCodeGenomicTestDirectory 1..1 MS and UKCoreReportCode 1..1 MS
 
-* code.coding[GenomicTestDirectory] ^short = "Genomic Test Directory"
-* code.coding[GenomicTestDirectory].system = $GTD
+* code.coding[ProcedureCodeGenomicTestDirectory] ^short = "Procedure code - Genomic Test Directory"
+* code.coding[ProcedureCodeGenomicTestDirectory].system = $GTD
 
 * code.coding[UKCoreReportCode] ^short = "UKCore Report Codes"
 * code.coding[UKCoreReportCode].system = $sct
