@@ -15,7 +15,5 @@ See [DiagnosticReport](DiagnosticReport.html) for detailed notes.
 
 <figure>
 {%include LaboratoryReport-mindmap.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">Laboratory Report - MindMap</p>
 </figure>
-<br clear="all">
 

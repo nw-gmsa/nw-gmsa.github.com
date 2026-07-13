@@ -24,19 +24,18 @@ title "Genomic Laboratory Report"
 *** [[StructureDefinition-ReportIdentifier.html Report Identifier]]
 *** Performer
 *** Results Interpreter
-** Results Genomic
-*** Conclusion (Clinical Indication)
+** Results
+*** Conclusion (related to Gene disease assessed)
+*** NHS England Genomics Test Outcome
 *** Genomic Analysis Narrative Report (PDF) [[StructureDefinition-NWAttachment.html Attachment]]
 *** [[#laboratory-analyte-result Laboratory Analyte Result]]
 *** Finding
 **** [[#reportable-variant Variant]]
 *** Implication
 **** [[#diagnostic-implication Diagnostic Implication]]
-**** [[#implications Therapeutic Implication]] ProgressRX
+**** [[#implications Therapeutic Implication]]
 ** [[#genomic-study Genomic Study/Method]]
-*** Gene disease assessed / Clinical Indication
 *** Analysis method [Type]
-*** NHS England Genomics Test Outcome
 *** [[#genomic-study-analysis Genomic Study Analysis]]
 **** Regions Studied / Gene mutations tested
 

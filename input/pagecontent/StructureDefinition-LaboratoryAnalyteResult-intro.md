@@ -49,7 +49,7 @@ Process Flow: [Test Results Management (LAB-5)](LTW.html#test-results-management
 {%include LaboratoryAnalyteResult-mindmap.svg%}
 </figure>
 
-### Laboaratory Analyte Result
+### Laboratory Analyte Result
 
 | openEHR                  | Data Element                                                     | HL7 v2 R32                              | LOINC / SNOMED    | HL7 FHIR                                                               | iGene                                     | Example            |
 |--------------------------|------------------------------------------------------------------|-----------------------------------------|-------------------|------------------------------------------------------------------------|-------------------------------------------|--------------------|
