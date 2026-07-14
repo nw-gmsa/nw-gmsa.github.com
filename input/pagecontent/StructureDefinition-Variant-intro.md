@@ -91,7 +91,8 @@ This section relates to [NHS England Genomic Testing Reporting Specification](ht
 |-----------------------------------------------------------------|-------------------|--------------------|-------------|
 | 431 TARGET DETECTED AT A LEVEL REQUIRING CLINICAL ACTION<br/>EGFR1 variant detected in a ctDNA sample in a NSCLC patient | HGNC:3236 (EGFR1) | LA9633-4 (Present) |             |
 | 432 NO TARGET DETECTED OR TARGET DETECTED BELOW A LEVEL REQUIRING CLINICAL ACTION | HGNC:3236 (EGFR1) | LA9634-2 (Absent)  |             |
-| 971 FAILURE | HGNC:3236 (EGFR1) | *No call* | errro       |
+| 971 FAILURE | HGNC:3236 (EGFR1) | *No call* | error       |
+{:.grid}
 
 ### Detailed Variant
 
