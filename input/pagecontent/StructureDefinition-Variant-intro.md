@@ -10,6 +10,7 @@ This is currently being elaborated and subject to change.
 
 - HL7 FHIR Genomic Reporting [Variant](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-variant.html)
 - HL7 v2 [Lab Result Interface (LRI)](https://confluence.hl7.org/download/attachments/25559919/2018%2004%2003%20-%20V2%20LRI%20-%20Ch.%205%20CG%20and%20Code%20System%20Tables.pdf?api=v2) Section 2 Discrete genetic variant panel
+- GA4GH [Genetic Variation Formats (VCF)](https://www.ga4gh.org/product/genetic-variation-formats-vcf/)
 
 ## Overview
 
@@ -72,17 +73,27 @@ The computational outputs are reviewed by Genomic Clinical Scientists or laborat
 
 MOCKUP
 
-### Result Summary
+### Summary Variant
 
-| Name                                    | LOINC   | Value Set / Data Type                        | Cardinality | HL7 v2 OBX-4 | FHIR Observation Profile            | Example            |
-|-----------------------------------------|---------|----------------------------------------------|-------------|--------------|-------------------------------------|--------------------|
-| Genetic variant assessment              | 69548-6 |                                              | 1..1        | 2            | Observation.code                    | 69548-6            |
-| Genetic analysis overall interpretation | 51968-6 | [Variant Assess](https://loinc.org/LL1971-2) | 0..1        | 2a           | Observation.valueCodeableConcept    | Present            | 
-| Gene studied [ID]                       | 48018-6 |                                              | 0..1        | 2a           | Observation.component[gene-studied] | HGNC:21497 (ACAD9) |
-| Variant analysis method [Type]             | 81304-8 | [Structural variant analysis method](https://loinc.org/LL4048-6)                                                                                           | 0..1        | 2a           | Observation.method                                       | SNP Array                   | 
+
+| Name                                    | LOINC   | Value Set / Data Type                                            | Cardinality | HL7 v2 OBX-4 | FHIR Observation Profile            | Example            |
+|-----------------------------------------|---------|------------------------------------------------------------------|-------------|--------------|-------------------------------------|--------------------|
+| Genetic variant assessment              | 69548-6 |                                                                  | 1..1        | 2            | Observation.code                    | 69548-6            |
+| Genetic analysis overall interpretation | 51968-6 | [Variant Assess](https://loinc.org/LL1971-2)                     | 0..1        | 2a           | Observation.valueCodeableConcept    | LA9633-4 (Present) | 
+|                                         |         |                                                                  | 0..1        |              | Observation.dataAbsent              | error              | 
+| Gene studied [ID]                       | 48018-6 |                                                                  | 0..1        | 2a           | Observation.component[gene-studied] | HGNC:21497 (ACAD9) |
+| Variant analysis method [Type]          | 81304-8 | [Structural variant analysis method](https://loinc.org/LL4048-6) | 0..1        | 2a           | Observation.method                  | SNP Array          | 
 {:.grid}
 
-### Result Detail
+This section relates to [NHS England Genomic Testing Reporting Specification](https://www.england.nhs.uk/publication/genomics-testing-reporting-specification/) **Test Outcome Code**. The main difference is NHS England codes are split into a combination of variant and assessment, e.g.
+
+| NHS England Test Outcome Code                                   | Gene Studued      | Assessment         | Data Absent |
+|-----------------------------------------------------------------|-------------------|--------------------|-------------|
+| 431 TARGET DETECTED AT A LEVEL REQUIRING CLINICAL ACTION<br/>EGFR1 variant detected in a ctDNA sample in a NSCLC patient | HGNC:3236 (EGFR1) | LA9633-4 (Present) |             |
+| 432 NO TARGET DETECTED OR TARGET DETECTED BELOW A LEVEL REQUIRING CLINICAL ACTION | HGNC:3236 (EGFR1) | LA9634-2 (Absent)  |             |
+| 971 FAILURE | HGNC:3236 (EGFR1) | *No call* | errro       |
+
+### Detailed Variant
 
 | Name                                       | LOINC   | Value Set / Data Type                                                                                                                                      | Cardinality | HL7 v2 OBX-4 | FHIR Observation Profile                                 | Example                     |
 |--------------------------------------------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|--------------|----------------------------------------------------------|-----------------------------|
