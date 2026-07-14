@@ -80,18 +80,18 @@ MOCKUP
 |-----------------------------------------|---------|------------------------------------------------------------------|-------------|--------------|-------------------------------------|--------------------|
 | Genetic variant assessment              | 69548-6 |                                                                  | 1..1        | 2            | Observation.code                    | 69548-6            |
 | Genetic analysis overall interpretation | 51968-6 | [Variant Assess](https://loinc.org/LL1971-2)                     | 0..1        | 2a           | Observation.valueCodeableConcept    | LA9633-4 (Present) | 
-|                                         |         |                                                                  | 0..1        |              | Observation.dataAbsent              | error              | 
+|                                         |         |                                                                  | 0..1        |              | Observation.dataAbsentReason              | error              | 
 | Gene studied [ID]                       | 48018-6 |                                                                  | 0..1        | 2a           | Observation.component[gene-studied] | HGNC:21497 (ACAD9) |
 | Variant analysis method [Type]          | 81304-8 | [Structural variant analysis method](https://loinc.org/LL4048-6) | 0..1        | 2a           | Observation.method                  | SNP Array          | 
 {:.grid}
 
 This section relates to [NHS England Genomic Testing Reporting Specification](https://www.england.nhs.uk/publication/genomics-testing-reporting-specification/) **Test Outcome Code**. The main difference is NHS England codes are split into a combination of variant and assessment, e.g.
 
-| NHS England Test Outcome Code                                   | Gene Studued      | Assessment         | Data Absent |
-|-----------------------------------------------------------------|-------------------|--------------------|-------------|
-| 431 TARGET DETECTED AT A LEVEL REQUIRING CLINICAL ACTION<br/>EGFR1 variant detected in a ctDNA sample in a NSCLC patient | HGNC:3236 (EGFR1) | LA9633-4 (Present) |             |
-| 432 NO TARGET DETECTED OR TARGET DETECTED BELOW A LEVEL REQUIRING CLINICAL ACTION | HGNC:3236 (EGFR1) | LA9634-2 (Absent)  |             |
-| 971 FAILURE | HGNC:3236 (EGFR1) | *No call* | error       |
+| NHS England Test Outcome Code                                   | Gene Studued      | Assessment         | Data Absent Reason |
+|-----------------------------------------------------------------|-------------------|--------------------|--------------------|
+| 431 TARGET DETECTED AT A LEVEL REQUIRING CLINICAL ACTION<br/>EGFR1 variant detected in a ctDNA sample in a NSCLC patient | HGNC:3236 (EGFR1) | LA9633-4 (Present) |                    |
+| 432 NO TARGET DETECTED OR TARGET DETECTED BELOW A LEVEL REQUIRING CLINICAL ACTION | HGNC:3236 (EGFR1) | LA9634-2 (Absent)  |                    |
+| 971 FAILURE | HGNC:3236 (EGFR1) | *No call* | error              |
 {:.grid}
 
 ### Detailed Variant
