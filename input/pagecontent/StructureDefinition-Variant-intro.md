@@ -11,6 +11,7 @@ This is currently being elaborated and subject to change.
 - HL7 FHIR Genomic Reporting [Variant](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-variant.html)
 - HL7 v2 [Lab Result Interface (LRI)](https://confluence.hl7.org/download/attachments/25559919/2018%2004%2003%20-%20V2%20LRI%20-%20Ch.%205%20CG%20and%20Code%20System%20Tables.pdf?api=v2) Section 2 Discrete genetic variant panel
 - GA4GH [Genetic Variation Formats (VCF)](https://www.ga4gh.org/product/genetic-variation-formats-vcf/)
+- openEHR [Genomic variant result](https://ckm.openehr.org/ckm/archetypes/1013.1.3759)
 
 ## Overview
 
