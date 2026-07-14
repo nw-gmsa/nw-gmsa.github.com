@@ -85,7 +85,7 @@ MOCKUP
 | Variant analysis method [Type]          | 81304-8 | [Structural variant analysis method](https://loinc.org/LL4048-6) | 0..1        | 2a           | Observation.method                  | SNP Array          | 
 {:.grid}
 
-This section relates to [NHS England Genomic Testing Reporting Specification](https://www.england.nhs.uk/publication/genomics-testing-reporting-specification/) **Test Outcome Code**. The main difference is NHS England codes are split into a combination of variant and assessment, e.g.
+This section relates to [NHS England Genomic Testing Reporting Specification](https://www.england.nhs.uk/publication/genomics-testing-reporting-specification/) **Test Outcome Code**. The main difference is NHS England codes are split into a combination of variant, assessment, and data absent reason, e.g.
 
 | NHS England Test Outcome Code                                   | Gene Studued      | Assessment         | Data Absent Reason |
 |-----------------------------------------------------------------|-------------------|--------------------|--------------------|
