@@ -4,6 +4,32 @@ Diagnostic testing is essential to modern clinical care, offering objective info
 
 Genomic diagnostic testing contributes to this process by examining a patient’s DNA or RNA to detect genetic variations that influence disease susceptibility, diagnosis, treatment choices, and prognosis. By delivering highly specific and personalised insights, genomic testing improves the accuracy and effectiveness of clinical management.
 
+```mermaid
+graph LR
+
+placerS["Order Placer<br/>(EHR)"]
+
+subgraph OrderFiller 
+  LaboratoryWorkflow
+  CDS[Decision Support]
+  report["Final Clinical Review and Reporting<br/>(LIMS iGene)"]
+  LaboratoryWorkflow --> |Laboratory Analyte Result| report
+  LaboratoryWorkflow --> |GA4GH?| CDS  
+  CDS --> |"Test Results<br/>HL7 Genomic Report<br/>(and LRI)"| report
+end
+placer["Order Placer<br/>(EHR)"]
+
+placerS --> |Genomic Order| LaboratoryWorkflow
+
+report --> |Genomic Report| placer  
+
+placer -->  Act[Act on Genomic Results]
+
+  classDef green fill:#D5E8D4;
+  class placer,placerS green
+```
+
+A Genomic Order is initiated by the Order Placer (EHR) and sent to the Order Filler, where the Laboratory Workflow manages the test process. Laboratory analyte results are generated and may be combined with Decision Support, including GA4GH-based inputs, to aid interpretation. The resulting Test Results are represented as an HL7 Genomic Report (and LRI) and reviewed during Final Clinical Review and Reporting (LIMS iGene). A validated Genomic Report is then returned to the Order Placer (EHR), enabling clinicians to Act on Genomic Results in patient care.
 
 <!--<img style="padding:3px;width:80%;" src="NWGenomicsOverview.png" alt="NW Genomics Overview"/>
 <br clear="all">-->
