@@ -44,6 +44,8 @@ ObservationPanel o|--|{ SimpleObservation : "hasMember"
 ObservationPanel o|--|{ LaboratoryAnalyte : "hasMember"
 ```
 
+### Logical Models
+
 | Type                                                                                                | Use                                                                                                                                                                           | value | hasMember | component |
 |-----------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------|-----------|-----------|
 | Simple Observation                                                                                  | Simple observations with code and values                                                                                                                                      | &#10004;      | &#x274c;          |           |
@@ -51,3 +53,14 @@ ObservationPanel o|--|{ LaboratoryAnalyte : "hasMember"
 | [Genomic Observation](StructureDefinition-GenomicObservation.html)                                  | Used for Genomic Results e.g. Variants and Diagnostic Implications                                                                                                            |       | &#x274c;          | &#10004;            |
 | [Observation Panel](StructureDefinition-Observation-Panel.html)                                     | Used to group Laboratory Results (also known as battery results) e.g. Full Blood Count (FBC) and Ask At Order Questions. In HL7 v2 this is similar to the use of OBR segments |&#x274c;       |  &#10004;         |  &#x274c;         |
 {:.grid}
+
+| Type                | Name                                                                      |
+|---------------------|---------------------------------------------------------------------------|
+| Observation Panel | [Genomic Study](StructureDefinition-GenomicStudyPanel.html)               |
+| Genomic Finding     | [Variant](StructureDefinition-Variant.html)                               | 
+|                     | [Haplotype](StructureDefinition-Haplotype.html)                           |
+|                     | [Genotype](StructureDefinition-Genotype.html)                             |
+| Genomic Implication | [DiagnosticImplication](StructureDefinition-DiagnosticImplication.html)   | 
+|                     | [TherapeuticImplication](StructureDefinition-TherapeuticImplication.html) | 
+{:.grid}
+
