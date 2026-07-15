@@ -21,6 +21,6 @@ Description: "TODO"
 * subject = Reference(Patient-Sheffield)
 * subject.display = "Theon SHEFFIELD"
 
-* hasMember[+] = Reference(51968-6-ctDNA)
+* hasMember[+] = Reference(51968-6-ctDNA-failed)
 
 
