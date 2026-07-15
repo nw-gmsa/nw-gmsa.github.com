@@ -13,9 +13,9 @@ subgraph OrderFiller
   LaboratoryWorkflow
   CDS[Decision Support]
   report["Final Clinical Review and Reporting<br/>(LIMS iGene)"]
-  LaboratoryWorkflow --> |Laboratory Analyte Result| report
+  LaboratoryWorkflow --> |Genomic Test Results<br/>Laboratory Analyte Result| report
   LaboratoryWorkflow --> |GA4GH?| CDS  
-  CDS --> |"Test Results<br/>HL7 Genomic Report<br/>(and LRI)"| report
+  CDS --> |"Genomic Test Results<br/>HL7 Genomic Report<br/>(and LRI)"| report
 end
 placer["Order Placer<br/>(EHR)"]
 
