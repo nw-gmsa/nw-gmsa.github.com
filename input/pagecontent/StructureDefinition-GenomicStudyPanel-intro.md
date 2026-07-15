@@ -11,10 +11,10 @@
 Extract, full list can be found in [Variables that apply to the overall study](https://loinc.org/81306-3)
 
 
-| Name                                                                      | LOINC   | Value Set / Data Type                                                                                                | Cardinality | HL7 v2 OBX-4 | HL7 FHIR               | Example | 
-|---------------------------------------------------------------------------|---------|----------------------------------------------------------------------------------------------------------------------|-------------|--------------|------------------------|---------|
-|                                                                           | 81306-3 |                                                                                                                      |             | | Observation.code       |  |
-| Gene disease assessed / Clinical Indication                               | 51967-8 | [Genomic Clinical Indication Codes](ValueSet-GenomicClinicalIndicationCodes.html)                                                                                | 0..1        |              | Observation.hasMemeber | |
-| Discrete variation analysis overall interpretation / Genomic Test Outcome | 51968-6 | [Genomic Test Outcome Codes](ValueSet-GenomicTestOutcomeCodes.html) and [Variant Assess](https://loinc.org/LL1971-2) | 1..1        |              |    Observation.hasMemeber                    | |
+| Name                                                                      | LOINC   | Value Set / Data Type                                                                                                | Cardinality | HL7 v2 OBX-4 | HL7 FHIR              | Example                     | 
+|---------------------------------------------------------------------------|---------|----------------------------------------------------------------------------------------------------------------------|-------------|--------------|-----------------------|-----------------------------|
+| Variables that apply to the overall study                                                                          | 81306-3 |                                                                                                                      | 1..1        |              | Observation.code      |                             |
+| Gene disease assessed / Clinical Indication                               | 51967-8 | [Genomic Clinical Indication Codes](ValueSet-GenomicClinicalIndicationCodes.html)                                                                                | 0..1        | 1            | Observation.hasMember | M4                          |
+| Discrete variation analysis overall interpretation / Genomic Test Outcome | 51968-6 | [Genomic Test Outcome Codes](ValueSet-GenomicTestOutcomeCodes.html) and [Variant Assess](https://loinc.org/LL1971-2) | 1..1        | 1            |    Observation.hasMember                   | LA9633-4 (Present) / 431 (TARGET DETECTED AT A LEVEL REQUIRING CLINICAL ACTION) |
 {:.grid}
 
