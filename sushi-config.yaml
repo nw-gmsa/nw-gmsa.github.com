@@ -315,7 +315,7 @@ groups:
     description: "Laboratory Report Structured Examples"
     resources:
       - Bundle/FHIRDocumentGeneticReportBundle
-      - Bunlde/FHIRDocumentGeneticReportBundle2
+      - Bundle/FHIRDocumentGeneticReportBundle2
       - Composition/Composition-GenomicsReport-OctaviaCHISLETT
       - Composition/Composition-GenomicsReport-LynchSyndrome
       - Observation/6beb613f-d303-42af-b025-86e8e0872061
