@@ -3,17 +3,17 @@
 ```mermaid
 classDiagram
 
-Observation <|-- GenomicStudy : implements
+
 Observation <|-- GenomicObservation
 GenomicObservation <|-- GenomicFinding 
-GenomicObservation <|-- GenomicImplication
+GenomicObservation <|-- GenomicAnotation
 
 GenomicFinding <|-- Variant :implements
-GenomicFinding <|-- Haplotype :implements
+GenomicFinding <|-- Halotype :implements
 GenomicFinding <|-- Genotype :implements
 
-GenomicImplication <|-- DiagnosticImplication :implements
-GenomicImplication <|-- TherapeuticImplication :implements
+GenomicAnotation <|-- DiagnosticImplication :implements
+GenomicAnotation <|-- TherapeuticImplication :implements
 ```
 
 ## Entity Relationships

@@ -11,10 +11,23 @@
 ```mermaid
 classDiagram
 
-Observation <|-- SimpleObservation : implements
+
 Observation <|-- ObservationPanel : implements
 Observation <|-- LaboratoryAnalyte : implements
 Observation <|-- GenomicObservation : implements
+ObservationPanel <|-- GenomicStudy : implements
+
+GenomicObservation <|-- GenomicFinding 
+GenomicObservation <|-- GenomicAnotation
+
+GenomicFinding <|-- Variant :implements
+GenomicFinding <|-- Halotype :implements
+GenomicFinding <|-- Genotype :implements
+
+GenomicAnotation <|-- DiagnosticImplication :implements
+GenomicAnotation <|-- TherapeuticImplication :implements
+
+GenomicStudy <|-- SimpleObservation : extends
 ```
 
 ## Entity Relationships
