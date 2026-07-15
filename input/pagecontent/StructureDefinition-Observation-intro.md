@@ -18,14 +18,14 @@ Observation <|-- GenomicObservation : implements
 ObservationPanel <|-- GenomicStudy : implements
 
 GenomicObservation <|-- GenomicFinding 
-GenomicObservation <|-- GenomicAnotation
+GenomicObservation <|-- GenomicAnnotation
 
 GenomicFinding <|-- Variant :implements
-GenomicFinding <|-- Halotype :implements
+GenomicFinding <|-- Haplotype :implements
 GenomicFinding <|-- Genotype :implements
 
-GenomicAnotation <|-- DiagnosticImplication :implements
-GenomicAnotation <|-- TherapeuticImplication :implements
+GenomicAnnotation <|-- DiagnosticImplication :implements
+GenomicAnnotation <|-- TherapeuticImplication :implements
 
 GenomicStudy *-- SimpleObservation : extends
 ```
