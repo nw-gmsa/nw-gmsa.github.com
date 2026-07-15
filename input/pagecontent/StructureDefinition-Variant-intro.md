@@ -22,6 +22,9 @@ The step-by-step process operates as follows:
 ```mermaid
 graph
 
+placerS[Order Placer]
+LaboratoryWorkflow
+
 subgraph CDS[Decision Support]
 analysis[Primary and Secondary Analysis]
 filtering["Annotation and Prioritisation (Filtering)"]
@@ -32,6 +35,8 @@ action[Actionability and Clinical Matching]
 report[Final Clinical Review and Reporting]
 placer[Order Placer]
 
+placerS --> |Genomic Order| LaboratoryWorkflow
+LaboratoryWorkflow --> |GA4GH?| analysis
 analysis --> filtering
 filtering --> classification
 classification -.-> |for background info.| action
@@ -40,7 +45,7 @@ action -.->  report
 report --> |Genomic Report| placer  
 
   classDef green fill:#D5E8D4;
-  class placer green
+  class placer,placerS green
 ```
 
 ### Primary and Secondary Analysis
