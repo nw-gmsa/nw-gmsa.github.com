@@ -27,7 +27,7 @@ GenomicFinding <|-- Genotype :implements
 GenomicAnotation <|-- DiagnosticImplication :implements
 GenomicAnotation <|-- TherapeuticImplication :implements
 
-GenomicStudy <|-- SimpleObservation : extends
+GenomicStudy *-- SimpleObservation : extends
 ```
 
 ## Entity Relationships
