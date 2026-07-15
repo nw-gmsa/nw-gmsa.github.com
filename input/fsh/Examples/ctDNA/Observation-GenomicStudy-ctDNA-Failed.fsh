@@ -1,6 +1,6 @@
 Instance: GenomicStudy-ctDNA-Failed
 InstanceOf: GenomicStudyPanel
-Title: "Genomic Study Panel - ctDNA"
+Title: "Genomic Study Panel - ctDNA 971 Failed"
 Description: "TODO"
 
 * identifier[+].value = "a93777a8-63d1-49ae-91d8-dcb8779d72b2"
@@ -22,6 +22,7 @@ Description: "TODO"
 * subject.display = "Theon SHEFFIELD"
 
 * hasMember[+] = Reference(51967-8-ctDNA)
-* hasMember[+] = Reference(51968-6-ctDNA)
+* hasMember[+] = Reference(51968-6-ctDNA-failed)
+
 
 
