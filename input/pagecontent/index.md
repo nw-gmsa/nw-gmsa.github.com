@@ -23,7 +23,7 @@ placerS --> |Genomic Order| LaboratoryWorkflow
 
 report --> |Genomic Report| placer  
 
-placer -->  Act[Act on Genomic Results]
+placer -->  Act[Patient Care<br/>Act on Genomic Results]
 
   classDef green fill:#D5E8D4;
   class placer,placerS green
