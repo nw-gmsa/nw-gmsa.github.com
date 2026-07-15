@@ -21,7 +21,7 @@ Description: "TODO"
 * subject = Reference(Patient-Sheffield)
 * subject.display = "Theon SHEFFIELD"
 
-* valueCodeableConcept.coding[+] = $loinc#LA9633-4 "Present"
+//* valueCodeableConcept.coding[+] = $loinc#LA9633-4 "Present"
 * valueCodeableConcept.coding[+] = https://fhir.nwgenomics.nhs.uk/CodeSystem/GenomicTestOutcomeCode#431 "TARGET DETECTED AT A LEVEL REQUIRING CLINICAL ACTION"
 
 
