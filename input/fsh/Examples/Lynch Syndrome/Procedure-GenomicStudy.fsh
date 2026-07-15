@@ -1,5 +1,5 @@
 Instance: f0036554-cd1a-463c-ac8a-d891ca409af9
-InstanceOf: GenomicStudy
+InstanceOf: Procedure
 Title: "Genomic Study - Lynch Syndrome"
 Description: "Based on HL7 LRI Example 3 (Ref 5.9.1.3)"
 

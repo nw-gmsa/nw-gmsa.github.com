@@ -8,3 +8,4 @@ Description:    """
 
 * value[x] 0..0
 * hasMember 1..* MS
+* component 0..0

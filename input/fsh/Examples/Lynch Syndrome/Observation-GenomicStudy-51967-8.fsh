@@ -1,9 +1,9 @@
-Instance: 0878c5de-c22f-4e31-841a-a82ad31c93aa
-InstanceOf: GenomicStudyPanel
-Title: "Genomic Study (Panel) - Lynch Syndrome"
+Instance: 53227665-9af2-4150-9891-40fa60dbfc0c
+InstanceOf: Observation
+Title: "Genomic Study (Panel) - Lynch Syndrome Genetic Disease"
 Description: "Based on HL7 LRI Example 3 (Ref 5.9.1.3)"
 
-* identifier[+].value = "0878c5de-c22f-4e31-841a-a82ad31c93aa"
+* identifier[+].value = "53227665-9af2-4150-9891-40fa60dbfc0c"
 
 * status = #final
 
@@ -12,17 +12,12 @@ Description: "Based on HL7 LRI Example 3 (Ref 5.9.1.3)"
 * category[geCategory] = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
 //* category[laboratory] = http://terminology.hl7.org/CodeSystem/observation-category#laboratory
 
-* code
-  * coding[+]
-    * code = #81306-3
-    * display = "Variables that apply to the overall study"
-    * system = $loinc
-
 * performer[+].reference = "urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c"
 
 * subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
 * subject.display = "Ned LIVERPOOL"
 
-* hasMember[+] = Reference(53227665-9af2-4150-9891-40fa60dbfc0c)
+* code = $loinc#51967-8 "Genetic disease assessed [ID]"
+* valueCodeableConcept = $GCC#R210 "Inherited MMR deficiency (Lynch syndrome)"
 
 

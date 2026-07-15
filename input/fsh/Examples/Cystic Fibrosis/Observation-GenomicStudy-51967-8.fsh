@@ -1,9 +1,9 @@
-Instance: 7b362aa5-41a7-4168-94b4-f12dff0dfb2b
-InstanceOf: GenomicStudyPanel
-Title: "Genomic Study (Panel) - Cystic Fibrosis"
+Instance: 5cbd1e0e-d0dd-4df2-9f8c-caa2a1785982
+InstanceOf: Observation
+Title: "Genomic Study (Panel) - Cystic Fibrosis  Genetic Disease"
 Description: "Based on HL7 LRI Example 1 (Ref 5.9.1.2)"
 
-* identifier[+].value = "7b362aa5-41a7-4168-94b4-f12dff0dfb2b"
+* identifier[+].value = "5cbd1e0e-d0dd-4df2-9f8c-caa2a1785982"
 
 
 * status = #final
@@ -13,15 +13,10 @@ Description: "Based on HL7 LRI Example 1 (Ref 5.9.1.2)"
 * category[geCategory] = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
 //* category[laboratory] = http://terminology.hl7.org/CodeSystem/observation-category#laboratory
 
-* code
-  * coding[+]
-    * code = #81306-3
-    * display = "Variables that apply to the overall study"
-    * system = $loinc
-
 * performer[+] = Reference(59577028-8fcc-4554-8b43-988561d41d9c)
 
 * subject = Reference(Patient-Lancaster)
 * subject.display = "Jaime LANCASTER"
 
-* hasMember[+] = Reference(5cbd1e0e-d0dd-4df2-9f8c-caa2a1785982)
+* code = $loinc#51967-8 "Genetic disease assessed [ID]"
+* valueCodeableConcept = $GCC#R185 "Cystic fibrosis carrier"
