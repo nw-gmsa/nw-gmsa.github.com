@@ -314,6 +314,10 @@ groups:
     name: "Example: Laboratory Report Structured"
     description: "Laboratory Report Structured Examples"
     resources:
+      - Bundle/FHIRDocumentGeneticReportBundle
+      - Bunlde/FHIRDocumentGeneticReportBundle2
+      - Composition/Composition-GenomicsReport-OctaviaCHISLETT
+      - Composition/Composition-GenomicsReport-LynchSyndrome
       - Observation/6beb613f-d303-42af-b025-86e8e0872061
       - Observation/8385c2fd-313d-4fd5-b98e-d5ea4bae6f99
       - Procedure/7b362aa5-41a7-4168-94b4-f12dff0dfb2a
@@ -324,8 +328,6 @@ groups:
     name: "Example: Ask at Order Entry questions and prior results"
     description: "Ask at Order Entry questions and prior results"
     resources:
-      - Bundle/FHIRDocumentGeneticReportBundle
-      - Composition/Composition-GenomicsReport-OctaviaCHISLETT
       - Observation/EPIC-OBR-1
       - Observation/OBX-GenomicReferralCategory
       - Observation/OBX-SupervisingClinician
