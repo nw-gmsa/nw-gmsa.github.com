@@ -47,7 +47,7 @@ Usage: #example
 
 Instance: FHIRDocumentGeneticReportBundle
 InstanceOf: BundleDocument
-Title:       "Bundle `Document` - Genomics Report"
+Title:       "Bundle `Document` - Genomics Report Targeted Variant"
 Description:  "FHIR Document Genomics Report for Jack Dawkins"
 Usage: #example
 * insert DocumentBundle("1d7155e8-b5b8-4406-adda-01a474d5ff6c", "2024-10-13T10:33:00+00:00")

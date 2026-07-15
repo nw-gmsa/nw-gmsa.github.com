@@ -14,7 +14,7 @@ Usage: #example
 
 * status = #final
 //* type = $sct#1054161000000101 "Genetic report"
-* type.coding[+] = $GTD#R240.1
+* type.coding[+] = $GTD#R210.2
 * type.coding[+] = $sct#1054161000000101 "Genetic report"
 //* type.coding[+] = $sct#4241000179101 "Laboratory report"
 
@@ -54,7 +54,7 @@ Usage: #example
 
 Instance: FHIRDocumentGeneticReportBundle2
 InstanceOf: BundleDocument
-Title:       "Bundle `Document` - Genomics Report"
+Title:       "Bundle `Document` - Genomics Report Inherited MMR deficiency (Lynch syndrome)"
 Description:  "FHIR Document Genomics Report for Ned Liverpool"
 Usage: #example
 * insert DocumentBundle("e51f87e6-f43f-4c7a-b475-23b784e2b852", "2024-10-13T10:33:00+00:00")

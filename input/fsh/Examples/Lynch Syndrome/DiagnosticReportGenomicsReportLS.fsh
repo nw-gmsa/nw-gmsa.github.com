@@ -25,7 +25,7 @@ Description: "Ned Liverpool Lynch Syndrome"
 * status = #final
 * category[Genetics] = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
 
-* code.coding[+] = $GTD#R240.1
+* code.coding[+] = $GTD#R210.2
 //* code.coding[+] = $sct#4241000179101 "Laboratory report"
 * code.coding[+] = $sct#1054161000000101 "Genetic report"
 
