@@ -1,9 +1,9 @@
-Instance: GenomicStudy-ctDNA-Failed
-InstanceOf: GenomicStudyPanel
-Title: "Genomic Study Panel - ctDNA"
+Instance: 51967-8-ctDNA
+InstanceOf: Observation
+Title: "Discrete variation analysis overall interpretation - ctDNA"
 Description: "TODO"
 
-* identifier[+].value = "a93777a8-63d1-49ae-91d8-dcb8779d72b2"
+* identifier[+].value = "583acda5-4e59-42e4-8d94-1329a8bb759a"
 
 * status = #final
 
@@ -14,14 +14,14 @@ Description: "TODO"
 
 * code
   * coding[+]
-    * code = #81306-3
-    * display = "Variables that apply to the overall study"
+    * code = #51967-8
+    * display = "Genetic disease(s) assessed"
     * system = $loinc
 
 * subject = Reference(Patient-Sheffield)
 * subject.display = "Theon SHEFFIELD"
 
-* hasMember[+] = Reference(51967-8-ctDNA)
-* hasMember[+] = Reference(51968-6-ctDNA)
+* valueCodeableConcept = https://fhir.nwgenomics.nhs.uk/CodeSystem/GenomicClinicalIndication#M4
+
 
 
