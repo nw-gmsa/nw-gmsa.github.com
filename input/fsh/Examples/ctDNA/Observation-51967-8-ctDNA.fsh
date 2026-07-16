@@ -15,7 +15,7 @@ Description: "TODO"
 * code
   * coding[+]
     * code = #51967-8
-    * display = "Genetic disease(s) assessed"
+    * display = "Gene dis assessed"
     * system = $loinc
 
 * subject.reference = "urn:uuid:2160525b-0168-4f40-8ebf-9b053052a62c"

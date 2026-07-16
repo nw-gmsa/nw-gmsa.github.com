@@ -545,7 +545,7 @@ SNOMED
 LOINC (from HL7 International)
 
 ```53577-3^Reason for study^LN```
-```51967-8^Genetic disease(s) assessed^LN```
+```51967-8^Genetic disease assessed [ID]^LN```
 ```48018-6^Gene studied^LN```
 
 ### CX 

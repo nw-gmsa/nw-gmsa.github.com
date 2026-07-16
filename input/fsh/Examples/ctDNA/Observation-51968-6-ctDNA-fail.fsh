@@ -22,6 +22,6 @@ Description: "TODO"
 * subject.display = "Theon SHEFFIELD"
 
 * dataAbsentReason.coding[+] = $loinc#LA9664-9 "Failure"
-* dataAbsentReason.coding[+] = https://fhir.nwgenomics.nhs.uk/CodeSystem/GenomicTestOutcomeCode#971 "FAILED"
+* dataAbsentReason.coding[+] = https://fhir.nwgenomics.nhs.uk/CodeSystem/GenomicTestOutcomeCode#971 "FAILURE"
 * dataAbsentReason.coding[+] = http://terminology.hl7.org/CodeSystem/data-absent-reason#error "Error"
 

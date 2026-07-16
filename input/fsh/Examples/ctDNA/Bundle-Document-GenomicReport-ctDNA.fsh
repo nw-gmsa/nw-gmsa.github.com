@@ -4,6 +4,8 @@ Title: "Composition - Genomics Report ctDNA"
 Description: "Composition - Genomics Report ctDNA"
 Usage: #example
 
+* extension
+
 * identifier
   * value = "T26-59XG"
   * system = "https://fhir.nwgenomics.nhs.uk/iGene/ReportIdentifier"
@@ -33,20 +35,27 @@ Usage: #example
   * value = "9737873858"
 
 * section[+]
+  * title = "Presented Format"
+  * text.status = #generated
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Presented Form</li></ul></div>"
+  * code = $loinc#77599-9
+  * entry[+].reference = "urn:uuid:13028359-6a38-4dff-8978-55a57dbdfb56"
+  * entry[+].reference = "urn:uuid:d6eeedd1-92d3-45b9-bf33-6401e804425f"
+
+* section[+]
   * title = "Findings"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Genomics Findings</li></ul></div>"
   * code = $loinc#59776-5 "Findings"
-  * entry[+].reference = "urn:uuid:8385c2fd-313d-4fd5-b98e-d5ea4bae6f99"
-  * entry[+].reference = "urn:uuid:4490c092-c78c-480a-8cb7-653b70113fd5"
+  * entry[+].reference = "urn:uuid:f80f704c-b2b2-4912-ac6f-e62aaadd4ff0"
+
 
 * section[+]
   * title = "Implications"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Genomics Implications</li></ul></div>"
   * code = $loinc#59768-2 "Procedure indications Imp"
-  * entry[+].reference = "urn:uuid:6beb613f-d303-42af-b025-86e8e0872061"
-  * entry[+].reference = "urn:uuid:0878c5de-c22f-4e31-841a-a82ad31c93aa"
+
 
 
 Instance: FHIRDocumentGeneticReportBundle-ctDNA
