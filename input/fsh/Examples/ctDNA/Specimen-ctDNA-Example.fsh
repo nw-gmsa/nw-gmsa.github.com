@@ -5,32 +5,26 @@ Description: "TODO"
 
 * meta.versionId = "1.0"
 
-* identifier[PlacerSpecimenNumber]
-  * value = "25GEN-029GN00001"
-  * system = "http://www.acme.org/specimen/Beaker"
-  * type = $v2-0203#PLAC
+* identifier[FillerSpecimenNumber]
+  * value = "S26-1K1Q"
+  * system = "https://fhir.nwgenomics.nhs.uk/Identifier/IGENE-SpecimenIdentifier"
+  * type = $v2-0203#FILL
   * assigner.identifier.system = $ods-code
-  * assigner.identifier.value = "R0A"
-
-* accessionIdentifier.type = $v2-0203#ACSN
-* accessionIdentifier.value = "1001166717"
-* accessionIdentifier.system = "http://www.example.org/specimen/accession"
-* accessionIdentifier.assigner.identifier.system = $ods-code
-* accessionIdentifier.assigner.identifier.value = "699X0"
+  * assigner.identifier.value = "699X0"
 
 * status = #available
 
-* subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
-* subject.display = "Octavia CHISLETT"
+* subject.reference = "urn:uuid:2160525b-0168-4f40-8ebf-9b053052a62c"
+* subject.display = "Theon SHEFFIELD"
 * subject.identifier
-  * system = $nhs-number
-  * value = "9449305552"
+  * system = "https://fhir.nhs.uk/Id/nhs-number"
+  * value = "9737873858"
 
-* collection.collectedDateTime = "2025-01-29T10:37:26+00:00"
+* collection.collectedDateTime = "2026-06-29"
 
 * type
   * coding[+]
-    * code = #258580003
-    * display = "Whole blood specimen"
+    * code = #119297000
+    * display = "Blood specimen"
     * system = $sct
 

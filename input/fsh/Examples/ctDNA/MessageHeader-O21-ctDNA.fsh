@@ -33,3 +33,4 @@ Usage: #example
 * insert EntryDocument("urn:uuid:72d8c754-ebd0-4e3c-b6e1-4d99cadb7f50", MessageHeaderO21ctDNA)
 * insert EntryDocument("urn:uuid:2160525b-0168-4f40-8ebf-9b053052a62c", Patient-Sheffield)
 * insert EntryDocument("urn:uuid:6e26d6b3-490e-4348-9d6c-37281567d6ec", ServiceRequest-ctDNA)
+* insert EntryDocument("urn:uuid:b930b4c4-327a-4728-8bb9-f90061914cc5", Specimen-ctDNA)

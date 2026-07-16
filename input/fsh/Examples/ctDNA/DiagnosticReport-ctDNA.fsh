@@ -37,12 +37,10 @@ Description: "Diagnostic Report ctDNA Example"
 * resultsInterpreter[author]
   * display = "Jonathan Edgerley"
 
-* result[+].reference = ""urn:uuid:f80f704c-b2b2-4912-ac6f-e62aaadd4ff0""
+* result[+].reference = "urn:uuid:f80f704c-b2b2-4912-ac6f-e62aaadd4ff0"
 
 * presentedForm[+]
   * contentType = #application/pdf
   * language = #en-GB
   * url = "urn:uuid:d6eeedd1-92d3-45b9-bf33-6401e804425f"
-  * size = 43272
   * title = "ctDNA Genomic Report for Theon Sheffield"
-  * creation = "2023-11-24"
