@@ -4,7 +4,6 @@
 classDiagram
 
 
-Observation <|-- GenomicObservation
 GenomicObservation <|-- GenomicFinding 
 GenomicObservation <|-- GenomicAnnotation
 
@@ -25,14 +24,14 @@ erDiagram
 Variant
 DiagnosticImplication
 TherapeuticImplication
-GenomicStudy
 Genotype
 Haplotype
 
-DiagnosticImplication ||--|{ Variant : "hasMember"
-TherapeuticImplication ||--|{ Variant : "hasMember"
+DiagnosticImplication ||--|{ Variant : "derivedFrom"
+TherapeuticImplication ||--|{ Variant : "derivedFrom"
 
 Genotype ||--|{ Haplotype : "derivedFrom"
+Genotype ||--|{ Variant : "derivedFrom"
 Haplotype ||--|{ Variant : "derivedFrom"
 ```
 
