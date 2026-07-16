@@ -270,7 +270,7 @@ menu:
    ## Genomic Test Report (Composition): StructureDefinition-Composition-GenomicReport.html
     Genomic Test Report (DiagnosticReport): DiagnosticReport.html
     Laboratory Analyte Result: LaboratoryAnalyteResult.html
-    Reportable Variant: StructureDefinition-Variant.html
+    Observations: StructureDefinition-Observation.html
   Artefacts (Volume 4):
     HL7 FHIR R4: artifacts.html
     HL7 v2.5.1: hl7v2.html

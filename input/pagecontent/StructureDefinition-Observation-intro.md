@@ -15,7 +15,7 @@ classDiagram
 BaseObservation <|-- ObservationPanel : implements
 BaseObservation <|-- LaboratoryAnalyte : implements
 BaseObservation <|-- GenomicObservation : implements
-ObservationPanel <|-- GenomicStudy : implements
+ObservationPanel <|-- GenomicStudyPanel : implements
 
 GenomicObservation <|-- GenomicFinding 
 GenomicObservation <|-- GenomicImplication
@@ -29,7 +29,7 @@ GenomicImplication <|-- TherapeuticImplication :implements
 GenomicImplication <|-- GenomicAnnotation :implements
 GenomicImplication <|-- MolecularConsequence :implements
 
-GenomicStudy *-- Observation : member
+GenomicStudyPanel *-- Observation : member
 
 class ObservationPanel {
     code
@@ -72,7 +72,7 @@ class LaboratoryAnalyte {
 
 | Type                | Name                                                                      |
 |---------------------|---------------------------------------------------------------------------|
-| Observation Panel   | [Genomic Study](StructureDefinition-GenomicStudyPanel.html)               |
+| Observation Panel   | [Genomic Study Panel](StructureDefinition-GenomicStudyPanel.html)         |
 | Genomic Finding     | [Variant](StructureDefinition-Variant.html)                               | 
 |                     | [Haplotype](StructureDefinition-Haplotype.html)                           |
 |                     | [Genotype](StructureDefinition-Genotype.html)                             |

@@ -1,19 +1,4 @@
-## Class Diagram
 
-```mermaid
-classDiagram
-
-
-GenomicObservation <|-- GenomicFinding 
-GenomicObservation <|-- GenomicAnnotation
-
-GenomicFinding <|-- Variant :implements
-GenomicFinding <|-- Haplotype :implements
-GenomicFinding <|-- Genotype :implements
-
-GenomicAnnotation <|-- DiagnosticImplication :implements
-GenomicAnnotation <|-- TherapeuticImplication :implements
-```
 
 ## Entity Relationships
 
