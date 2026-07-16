@@ -18,7 +18,7 @@ Description: "TODO"
     * display = "Genetic disease(s) assessed"
     * system = $loinc
 
-* subject = Reference(Patient-Sheffield)
+* subject.reference = "urn:uuid:2160525b-0168-4f40-8ebf-9b053052a62c"
 * subject.display = "Theon SHEFFIELD"
 
 * valueCodeableConcept = https://fhir.nwgenomics.nhs.uk/CodeSystem/GenomicClinicalIndication#M4

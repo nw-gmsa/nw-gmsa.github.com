@@ -1,7 +1,7 @@
 Profile:        GenomicStudyPanel
 Parent:         ObservationPanel
 Id:             GenomicStudyPanel
-Title:          "Genomic Study (Observation Panel)"
+Title:          "Genomic Study Panel"
 Description:    """
 `Diagnostic - Genomics`
 """

@@ -7,7 +7,7 @@ Description: "TODO"
 
 * status = #final
 
-* effectiveDateTime = "2026-07-13T10:37:26+00:00"
+* effectiveDateTime = "2025-10-14T10:37:26+00:00"
 
 * category[geCategory] = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
 //* category[laboratory] = http://terminology.hl7.org/CodeSystem/observation-category#laboratory
@@ -18,10 +18,10 @@ Description: "TODO"
     * display = "Variables that apply to the overall study"
     * system = $loinc
 
-* subject = Reference(Patient-Sheffield)
+* subject.reference = "urn:uuid:2160525b-0168-4f40-8ebf-9b053052a62c"
 * subject.display = "Theon SHEFFIELD"
 
-* hasMember[+] = Reference(51967-8-ctDNA)
-* hasMember[+] = Reference(51968-6-ctDNA)
+* hasMember[+].reference = "urn:uuid:cd491a5f-62ec-4f6b-904f-206bae2c9b20"
+* hasMember[+].reference = "urn:uuid:b3b6b20f-8e5a-432c-8155-579dc4d60a09"
 
 

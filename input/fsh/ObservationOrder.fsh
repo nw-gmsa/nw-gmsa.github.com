@@ -3,7 +3,7 @@ Parent:         http://hl7.org/fhir/StructureDefinition/Observation
 Id:             ObservationOrder
 Title:          "Observation Order"
 Description:    """
-`Diagnostic - Core` for use with test orders.
+`Diagnostic - Core` for use with test orders. Does not define categories
 """
 
 //* ^keyword[+] = #core "Core"
