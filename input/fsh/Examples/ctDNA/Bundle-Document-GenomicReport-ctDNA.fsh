@@ -37,7 +37,7 @@ Usage: #example
 * section[+]
   * title = "Presented Format"
   * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Presented Form</li></ul></div>"
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Presented Form</li></ul> This is a PDF document which holds the narrative which ideally would be contained in this Composition resource.</div>"
   * code = $loinc#77599-9
   * entry[+].reference = "urn:uuid:13028359-6a38-4dff-8978-55a57dbdfb56"
   * entry[+].reference = "urn:uuid:d6eeedd1-92d3-45b9-bf33-6401e804425f"

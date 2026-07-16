@@ -7,6 +7,9 @@ Description:    """
 `Diagnostic - Laboratory`
 """
 
+* extension[diagnosticReport]
+  * valueReference.reference = "urn:uuid:0a6ad8ec-b069-4a65-8c65-c7569d8413e3"
+
 * identifier 1..1 MS
 * identifier only CorrelationIdentifier
 
@@ -50,7 +53,7 @@ Description:    """
 //* section.text MS
 * section.title 1..1
 * section.code 1..1
-* section.code from http://hl7.org/fhir/ValueSet/doc-section-codes
+//* section.code from http://hl7.org/fhir/ValueSet/doc-section-codes
 * section.code.coding 1..*
 * section.code.coding.system 1..1
 * section.code.coding.code 1..1
