@@ -12,10 +12,11 @@ Description: "Diagnostic Report ctDNA Example"
   * assigner.identifier.value = "699X0"
 
 * basedOn[OrderIdentifier]
-  * value = "T26-59XG"
-  * system = "https://fhir.nwgenomics.nhs.uk/iGene/ReportIdentifier"
-  * assigner.identifier.system = $ods-code
-  * assigner.identifier.value = "699X0"
+  * identifier.value = "T26-59XG"
+  * identifier.system = "https://fhir.nwgenomics.nhs.uk/iGene/ReportIdentifier"
+  * identifier.assigner.identifier.system = $ods-code
+  * identifier.assigner.identifier.value = "699X0"
+  * identifier.type = $v2-0203#FILL
   * type = "ServiceRequest"
   * reference = "urn:uuid:6e26d6b3-490e-4348-9d6c-37281567d6ec"
 
