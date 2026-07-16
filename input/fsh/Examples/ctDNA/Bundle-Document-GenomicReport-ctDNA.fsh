@@ -45,7 +45,7 @@ Usage: #example
 * section[+]
   * title = "Findings"
   * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Genomics Findings</li></ul></div>"
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Genomics Findings</li></ul>See PDF</div>"
   * code = $loinc#59776-5 "Findings"
   * entry[+].reference = "urn:uuid:f80f704c-b2b2-4912-ac6f-e62aaadd4ff0"
 
@@ -53,7 +53,7 @@ Usage: #example
 * section[+]
   * title = "Implications"
   * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Genomics Implications</li></ul></div>"
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Genomics Implications</li></ul>See PDF</div>"
   * code = $loinc#59768-2 "Procedure indications Imp"
 
 
