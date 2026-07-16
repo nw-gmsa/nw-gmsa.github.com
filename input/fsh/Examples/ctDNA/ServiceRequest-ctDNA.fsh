@@ -12,11 +12,11 @@ Description: "TODO"
 * identifier[OrderIdentifier].assigner.identifier.value = "699X0"
 
 * requisition
-  * identifier[OrderIdentifier].type = $v2-0203#PGN
-  * identifier[OrderIdentifier].value = "R26-15AY"
-  * identifier[OrderIdentifier].system = "https://fhir.nwgenomics.nhs.uk/Identifier/IGENE-ReferralIdentifier"
-  * identifier[OrderIdentifier].assigner.identifier.system = $ods-code
-  * identifier[OrderIdentifier].assigner.identifier.value = "699X0"
+  * type = $v2-0203#PGN
+  * value = "R26-15AY"
+  * system = "https://fhir.nwgenomics.nhs.uk/Identifier/IGENE-ReferralIdentifier"
+  * assigner.identifier.system = $ods-code
+  * assigner.identifier.value = "699X0"
 
 * status = #active
 * intent = #order
