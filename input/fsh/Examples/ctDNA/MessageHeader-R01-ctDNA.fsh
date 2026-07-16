@@ -27,7 +27,7 @@ Usage: #example
 
 Instance: GenomicsReportMessage-ctDNA
 InstanceOf: BundleMessage
-Title:       "Bundle 'Message' - Genomics Report ctDNA"
+Title:       "Bundle 'Message' - Genomics Report ctDNA R01"
 Description:  "Genomics Report ctDNA"
 Usage: #example
 * insert MessageBundle("urn:uuid:306502f1-96b2-420f-b13a-2bfc174bc8f4", "2025-10-14T15:59:16+00:00")
