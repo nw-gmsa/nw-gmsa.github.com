@@ -12,9 +12,9 @@
 classDiagram
 
 
-Observation <|-- ObservationPanel : implements
-Observation <|-- LaboratoryAnalyte : implements
-Observation <|-- GenomicObservation : implements
+BaseObservation <|-- ObservationPanel : implements
+BaseObservation <|-- LaboratoryAnalyte : implements
+BaseObservation <|-- GenomicObservation : implements
 ObservationPanel <|-- GenomicStudy : implements
 
 GenomicObservation <|-- GenomicFinding 
@@ -27,40 +27,54 @@ GenomicFinding <|-- Genotype :implements
 GenomicAnnotation <|-- DiagnosticImplication :implements
 GenomicAnnotation <|-- TherapeuticImplication :implements
 
-GenomicStudy *-- SimpleObservation : extends
+GenomicStudy *-- Observation : member
+
+class ObservationPanel {
+    code
+    hasMember
+}
+
+class Observation {
+    code
+    value
+    dataAbsentReason
+}
+
+class GenomicObservation {
+    code
+    value
+    dataAbsentReason
+    component
+}
+
+
+class LaboratoryAnalyte {
+    code
+    value
+    dataAbsentReason
+    component
+}
 ```
 
-## Entity Relationships
 
-```mermaid
-erDiagram
-
-SimpleObservation
-LaboratoryAnalyte
-ObservationPanel
-GenomicObservation
-
-ObservationPanel o|--|{ SimpleObservation : "hasMember"
-ObservationPanel o|--|{ LaboratoryAnalyte : "hasMember"
-```
 
 ### Logical Models
 
 | Type                                                                                                | Use                                                                                                                                                                           | value | hasMember | component |
 |-----------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------|-----------|-----------|
-| Simple Observation                                                                                  | Simple observations with code and values                                                                                                                                      | &#10004;      | &#x274c;          |           |
+| Observation                                                                                  | Observations with code and values                                                                                                                                             | &#10004;      | &#x274c;          |           |
 | Component Observation [Laboratory Analyte Result](StructureDefinition-LaboratoryAnalyteResult.html) | Used for transmission of results from analysers to LIMS                                                                                                                       | &#10004;      | &#x274c;        | &#10004;            |
 | [Genomic Observation](StructureDefinition-GenomicObservation.html)                                  | Used for Genomic Results e.g. Variants and Diagnostic Implications                                                                                                            |       | &#x274c;          | &#10004;            |
 | [Observation Panel](StructureDefinition-Observation-Panel.html)                                     | Used to group Laboratory Results (also known as battery results) e.g. Full Blood Count (FBC) and Ask At Order Questions. In HL7 v2 this is similar to the use of OBR segments |&#x274c;       |  &#10004;         |  &#x274c;         |
 {:.grid}
 
-| Type                | Name                                                                      |
-|---------------------|---------------------------------------------------------------------------|
-| Observation Panel | [Genomic Study](StructureDefinition-GenomicStudyPanel.html)               |
-| Genomic Finding     | [Variant](StructureDefinition-Variant.html)                               | 
-|                     | [Haplotype](StructureDefinition-Haplotype.html)                           |
-|                     | [Genotype](StructureDefinition-Genotype.html)                             |
-| Genomic Implication | [DiagnosticImplication](StructureDefinition-DiagnosticImplication.html)   | 
-|                     | [TherapeuticImplication](StructureDefinition-TherapeuticImplication.html) | 
+| Type               | Name                                                                      |
+|--------------------|---------------------------------------------------------------------------|
+| Observation Panel  | [Genomic Study](StructureDefinition-GenomicStudyPanel.html)               |
+| Genomic Finding    | [Variant](StructureDefinition-Variant.html)                               | 
+|                    | [Haplotype](StructureDefinition-Haplotype.html)                           |
+|                    | [Genotype](StructureDefinition-Genotype.html)                             |
+| Genomic Annotation | [DiagnosticImplication](StructureDefinition-DiagnosticImplication.html)   | 
+|                    | [TherapeuticImplication](StructureDefinition-TherapeuticImplication.html) | 
 {:.grid}
 
