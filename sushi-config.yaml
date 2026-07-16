@@ -286,7 +286,6 @@ groups:
     name: "Example: Laboratory Order"
     description: "Laboratory Order Examples"
     resources:
-      - Binary/0a898233-763c-405d-8172-8c4f07e6e636
       - Bundle/GenomicsOrderMessageReplyOk
       - Bundle/GenomicsOrderMessageAttachment
       - Bundle/GenomicsOrderMessageCodedEntries
@@ -305,7 +304,6 @@ groups:
     name: "Example: Laboratory Report"
     description: "Laboratory Report Examples"
     resources:
-      - Binary/d6eeedd1-92d3-45b9-bf33-6401e804425f
       - Bundle/GenomicsReportMessage
       - DiagnosticReport/DiagnosticReportGenomicsReport
       - DocumentReference/94bf65ba-cd6c-4601-b339-6d547f424646
@@ -316,6 +314,7 @@ groups:
     resources:
       - Bundle/GenomicsOrderMessage-ctDNA
       - Bundle/GenomicsReportMessage-ctDNA
+      - Bundle/FHIRDocumentGeneticReportBundle-ctDNA
   -ex-example-structured-laboratory-report:
     name: "Example: Laboratory Report Structured"
     description: "Laboratory Report Structured Examples"
