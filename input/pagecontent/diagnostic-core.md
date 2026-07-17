@@ -129,21 +129,21 @@ erDiagram
 <b>HL7 v2 Segment:</b> <a href="hl7v2.html#orc" _target="_blank">ORC</a>
 </div>
 
-The Original Order is distinguised from the Filler Order by value of intent, .
+The original order is the order sent from the Order Placer to the Order Filler; in IHE Laboratory Testing Workflow this is the key entity in [LAB-1](LTW.html#diagnostic-testing)
 
-| Type       | Name                            | Description                         | FHIR [ServiceRequest](StructureDefinition-ServiceRequest.html) |
-|------------|---------------------------------|-------------------------------------|----------------------------------------------------------------|
-| identifier | PlacerOrderNumber               |                                     | ServiceRequest.identifier (type = PLAC)                        |
-| identifier | FillerOrderNumber               |                                     | ServiceRequest.identifier (type = FILL)                        |
-| code       |                                 |                                     | ServiceRequest.intent (code = original-order)                  | 
-| code       | NGTDTestCode                    | NGTD code for test                  | ServiceRequest.code                                            |
-| string     | ClinicalDetails                 | Referrer clinical notes             | ServiceRequest.note                                            |
-| code       | RequestingOrganisationCode      | ODS code of requesting organisation | ServiceRequest.requester (ODS Code)                            |
-| code       | Performer                       |                                     | ServiceRequest.performer (fixed ODS code = 699X0)              |
-| reference  | Specimen                        |                                     | ServiceRequest.specimen                                        |
-| reference  | Patient                         |                                     | ServiceRequest.subject                                         |
-| reference  | Hospital Spell                  |                                     | ServiceRequest.encounter (Hospital Spell)                      |
-| code       | Clinical Indication Code (CITT) |                                     | ServiceRequest.reasonCode                                      | 
+| Type       | Name                                          | Description                         | FHIR [ServiceRequest](StructureDefinition-ServiceRequest.html) |
+|------------|-----------------------------------------------|-------------------------------------|----------------------------------------------------------------|
+| identifier | PlacerOrderNumber                             |                                     | ServiceRequest.identifier (type = PLAC)                        |
+| identifier | FillerOrderNumber                             |                                     | ServiceRequest.identifier (type = FILL)                        |
+| code       |                                               |                                     | ServiceRequest.intent (code = original-order)                  | 
+| code       | Procedure Code - NGTDTestCode                 | NGTD code for test                  | ServiceRequest.code                                            |
+| string     | ClinicalDetails                               | Referrer clinical notes             | ServiceRequest.note                                            |
+| code       | RequestingOrganisationCode                    | ODS code of requesting organisation | ServiceRequest.requester (ODS Code)                            |
+| code       | Performer                                     |                                     | ServiceRequest.performer (fixed ODS code = 699X0)              |
+| reference  | Specimen                                      |                                     | ServiceRequest.specimen                                        |
+| reference  | Patient                                       |                                     | ServiceRequest.subject                                         |
+| reference  | Hospital Spell                                |                                     | ServiceRequest.encounter (Hospital Spell)                      |
+| code       | Reason Code - Clinical Indication Code (CITT) |                                     | ServiceRequest.reasonCode                                      | 
 {:.grid}
 
 ### Filler Order
@@ -155,18 +155,20 @@ The Original Order is distinguised from the Filler Order by value of intent, .
 <b>HL7 v2 Segment:</b> <a href="hl7v2.html#orc" _target="_blank">ORC</a>
 </div>
 
-| Type       | Name                       | Description                         | FHIR [ServiceRequest](StructureDefinition-ServiceRequest.html) |
-|------------|----------------------------|-------------------------------------|----------------------------------------------------------------|
-| code       | OrderStatus                | Order/test status                   | ServiceRequest.status                                          |
-| date       | TestOrderDate              |                                     | ServiceRequest.authoredOn                                      |
-| identifier | TestAccessionIdentifier    |                                     | ServiceRequest.identifier                                      |
-| code       | NGTDTestCode               | NGTD code for test                  | ServiceRequest.code                                            |
-| code       | RequestingOrganisationCode | ODS code of requesting organisation | ServiceRequest.requester (fixed ODS code = 699X0)              |
-| code       | Performer                  |                                     | ServiceRequest.performer (ODS Code)                            |
-| reference  | Specimen                   |                                     | ServiceRequest.specimen                                        |
-| reference  | Patient                    |                                     | ServiceRequest.subject                                         |
-| reference  | OriginalOrder              |                                     | ServiceRequest.requisition and ServiceRequest.basedOn          |
-| reference | Hospital Spell | | ServiceRequest.encounter (Hospital Spell) |
+In IHE Laboratory Testing Workflow, this is the key entity in [LAB-4](LTW.html#work-order-and-test-result-management-lab-4-and-lab-5)
+
+| Type       | Name                          | Description                         | FHIR [ServiceRequest](StructureDefinition-ServiceRequest.html) |
+|------------|-------------------------------|-------------------------------------|----------------------------------------------------------------|
+| code       | OrderStatus                   | Order/test status                   | ServiceRequest.status                                          |
+| date       | TestOrderDate                 |                                     | ServiceRequest.authoredOn                                      |
+| identifier | TestAccessionIdentifier       |                                     | ServiceRequest.identifier                                      |
+| code       | Procedure Code - NGTDTestCode | NGTD code for test                  | ServiceRequest.code                                            |
+| code       | RequestingOrganisationCode    | ODS code of requesting organisation | ServiceRequest.requester (fixed ODS code = 699X0)              |
+| code       | Performer                     |                                     | ServiceRequest.performer (ODS Code)                            |
+| reference  | Specimen                      |                                     | ServiceRequest.specimen                                        |
+| reference  | Patient                       |                                     | ServiceRequest.subject                                         |
+| reference  | OriginalOrder                 |                                     | ServiceRequest.requisition and ServiceRequest.basedOn          |
+| reference | Hospital Spell                | | ServiceRequest.encounter (Hospital Spell) |
 {:.grid}
 
 #### Filler Order Intent
@@ -209,12 +211,17 @@ The Original Order is distinguised from the Filler Order by value of intent, .
 <b>HL7 v2 Segment:</b> <a href="hl7v2.html#obr" _target="_blank">OBR</a>
 </div>
 
-| Type       | Name                    | Description | FHIR [DiagnosticReport](StructureDefinition-DiagnosticReport.html)                           |
-|------------|-------------------------|-------------|----------------------------------------------------------------------------------------------|
-| identifier | TestAccessionIdentifier |             | DiagnosticReport.identifier                                                                  |
-| reference  | FillerOrder             |             | DiagnosticReport.basedOn (FillerOrder)                                                       |
-| reference  | Patient                 |             | DiagnosticReport.subject                                                                     |
-| code       | NGTDTestCode            |             | DiagnosticReport.code (system = https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory) |
-| date       | ReportStatusDateTime    |             | DiagnosticReport.effectiveDateTime                                                           |
-| reference  | Hospital Spell          |             | ServiceRequest.encounter (Hospital Spell)                                                    |
+This is the key entity for the reports/results which are generated when the Placer Order and Filler Order are fulfilled, which are [LAB-3](LTW.html#laboratory-report-lab-3) and [LAB-4](LTW.html#test-results-management-lab-5) respectively.
+
+| Type          | Name                                    | Description | FHIR [DiagnosticReport](StructureDefinition-DiagnosticReport.html)                           |
+|---------------|-----------------------------------------|-------------|----------------------------------------------------------------------------------------------|
+| identifier    | TestAccessionIdentifier                 |             | DiagnosticReport.identifier                                                                  |
+| reference     | FillerOrder                             |             | DiagnosticReport.basedOn (FillerOrder)                                                       |
+| reference     | Patient                                 |             | DiagnosticReport.subject                                                                     |
+| code          | Procedure Code - NGTDTestCode           |             | DiagnosticReport.code (system = https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory) |
+| date          | ReportStatusDateTime                    |             | DiagnosticReport.effectiveDateTime                                                           |
+| reference     | Hospital Spell - Account Number         |             | ServiceRequest.encounter (Hospital Spell)                                                    |
+| code | Conclusion Code - [Test Outcome Code](ValueSet-GenomicTestOutcomeCodes.html) 
+| result        | See [Observations](StructureDefinition-Observation.html)                                        |             |                                      | 
+| presentedForm | See [DocumentReference](StructureDefinition-DocumentReference.html)                                          |             |                         |
 {:.grid}
