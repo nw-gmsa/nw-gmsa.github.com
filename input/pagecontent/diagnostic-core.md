@@ -211,7 +211,7 @@ In IHE Laboratory Testing Workflow, this is the key entity in [LAB-4](LTW.html#w
 <b>HL7 v2 Segment:</b> <a href="hl7v2.html#obr" _target="_blank">OBR</a>
 </div>
 
-This is the key entity for the reports/results which are generated when the Placer Order and Filler Order are fulfilled, which are [LAB-3](LTW.html#laboratory-report-lab-3) and [LAB-4](LTW.html#test-results-management-lab-5) respectively.
+This is the key entity for the reports/results which are generated when the Placer Order and Filler Order are fulfilled, which are [LAB-3](LTW.html#laboratory-report-lab-3) and [LAB-5](LTW.html#test-results-management-lab-5) respectively.
 
 | Type          | Name                                    | Description | FHIR [DiagnosticReport](StructureDefinition-DiagnosticReport.html)                           |
 |---------------|-----------------------------------------|-------------|----------------------------------------------------------------------------------------------|
