@@ -18,8 +18,8 @@ graph TD;
     B[Diagnosis]-->|Creates Condition| C;
     C[Plan]-->|Creates Goals and Tasks| D;
     D[Implement/Interventions]-->|Actions Tasks| E;
-    D --> |"Orders (LAB-1)"| T;
-    T --> |"Diagnostic Report (LAB-3)"| D
+    D --> |"Monitoring<br/>Orders (LAB-1)"| T;
+    T --> |"Monitoring<br/>Diagnostic Report (LAB-3)"| D
     E[Evaluate]--> |Reviews Care| A;
     
     click T StructureDefinition-ServiceRequest.html
