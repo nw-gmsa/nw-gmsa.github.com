@@ -4,6 +4,8 @@ Title: "Composition - Genomics Report Octavia CHISLETT"
 Description: "Composition - Genomics Report Octavia CHISLETT"
 Usage: #example
 
+* extension[diagnosticReport].valueReference.reference = "urn:uuid:c64139e7-f02d-409c-bf34-75e8bf23bc80"
+
 * identifier
   * value = "25edee2b-add8-4522-9fa2-1ee8f229bd75"
   * system = "http://www.acme.org/diagnosticreport/identifiers"
