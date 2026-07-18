@@ -4,7 +4,8 @@ Title: "Composition - Genomics Report ctDNA"
 Description: "Composition - Genomics Report ctDNA"
 Usage: #example
 
-* extension[diagnosticReport].valueReference.reference = "urn:uuid:0a6ad8ec-b069-4a65-8c65-c7569d8413e3"
+* extension[diagnosticReport]
+  * valueReference.reference = "urn:uuid:0a6ad8ec-b069-4a65-8c65-c7569d8413e3"
 
 * identifier
   * value = "T26-59XG"
