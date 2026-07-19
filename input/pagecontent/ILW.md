@@ -24,6 +24,33 @@ See Ref 1 for details.
 <p class="figureTitle">IHE ILW Summary</p> 
 <br clear="all">
 
+```mermaid
+graph TD;
+
+    OrderPlacer
+
+    subgraph OrderFiller;
+        
+
+        OrderManagment --> WriteReport
+    end
+
+    ExtOrderPlacer[External OrderFiller] 
+    OrderManagment --> |"Laboratory Order LAB-35"| ExtOrderPlacer
+    ExtOrderPlacer --> |Laboratory Report LAB-36| OrderManagment 
+
+    OrderPlacer --> |Laboratory Order LAB-1| OrderFiller
+    WriteReport --> |Laboratory Report LAB-3| OrderPlacer
+
+    classDef purple fill:#E1D5E7;
+
+    classDef yellow fill:#FFF2CC;
+    classDef pink fill:#F8CECC
+    classDef green fill:#D5E8D4;
+    classDef blue fill:#DAE8FC;
+    classDef orange fill:#FFE6CC;
+
+```
 
 ## Sub-orders LAB-35 and LAB-36
 

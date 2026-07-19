@@ -472,6 +472,34 @@ class OrderFiller,OrderPlacer yellow
 
 ## Work Order and Test Result Management LAB-4 and LAB-5
 
+```mermaid
+graph TD;
+
+    OrderPlacer
+
+    subgraph OrderFiller;
+        
+        OrderManagment --> |LAB-4| AutomationManager
+        AutomationManager --> |LAB-5| OrderManagment 
+        OrderManagment --> WriteReport
+    end
+
+    ExtOrderPlacer[External AutomationManager] 
+    OrderManagment --> |"Work Order LAB-4 (sub-contract)"| ExtOrderPlacer
+    ExtOrderPlacer --> |Test Results LAB-5| OrderManagment 
+
+    OrderPlacer --> |Laboratory Order LAB-1| OrderFiller
+    WriteReport --> |Laboratory Report LAB-3| OrderPlacer
+
+    classDef purple fill:#E1D5E7;
+
+    classDef yellow fill:#FFF2CC;
+    classDef pink fill:#F8CECC
+    classDef green fill:#D5E8D4;
+    classDef blue fill:#DAE8FC;
+    classDef orange fill:#FFE6CC;
+```
+
 In Progress
 
 ```mermaid
