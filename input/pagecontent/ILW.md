@@ -25,7 +25,7 @@ See Ref 1 for details.
 <br clear="all">
 
 ```mermaid
-graph TD;
+graph LR;
 
     OrderPlacer
 
