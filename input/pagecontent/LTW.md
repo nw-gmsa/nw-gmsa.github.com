@@ -479,13 +479,13 @@ graph TD;
 
     subgraph OrderFiller;
         
-        OrderManagment --> |LAB-4| AutomationManager
-        AutomationManager --> |LAB-5| OrderManagment 
+        OrderManagment --> |Work Order LAB-4| AutomationManager
+        AutomationManager --> |Test Results LAB-5| OrderManagment 
         OrderManagment --> WriteReport
     end
 
     ExtOrderPlacer[External AutomationManager] 
-    OrderManagment --> |"Work Order LAB-4 (sub-contract)"| ExtOrderPlacer
+    OrderManagment --> |"Work Order LAB-4"| ExtOrderPlacer
     ExtOrderPlacer --> |Test Results LAB-5| OrderManagment 
 
     OrderPlacer --> |Laboratory Order LAB-1| OrderFiller

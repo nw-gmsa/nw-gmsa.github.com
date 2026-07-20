@@ -36,7 +36,7 @@ graph TD;
     end
 
     ExtOrderPlacer[External OrderFiller] 
-    OrderManagment --> |"Laboratory Order LAB-35"| ExtOrderPlacer
+    OrderManagment --> |"Laboratory Order LAB-35<br/>reflex or sub-contract"| ExtOrderPlacer
     ExtOrderPlacer --> |Laboratory Report LAB-36| OrderManagment 
 
     OrderPlacer --> |Laboratory Order LAB-1| OrderFiller
