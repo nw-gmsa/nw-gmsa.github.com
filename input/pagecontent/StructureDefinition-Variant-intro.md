@@ -91,6 +91,7 @@ MOCKUP
 | Variant analysis method [Type]          | 81304-8 | [Structural variant analysis method](https://loinc.org/LL4048-6) | 0..1        | 2a           | Observation.method                  | SNP Array          | 
 {:.grid}
 
+<!-- 
 This section relates to [NHS England Genomic Testing Reporting Specification](https://www.england.nhs.uk/publication/genomics-testing-reporting-specification/) **Test Outcome Code**. The main difference is NHS England codes are split into a combination of variant, assessment, and data absent reason, e.g.
 
 | NHS England Test Outcome Code                                   | Gene Studued      | Assessment         | Data Absent Reason |
@@ -99,6 +100,7 @@ This section relates to [NHS England Genomic Testing Reporting Specification](ht
 | 432 NO TARGET DETECTED OR TARGET DETECTED BELOW A LEVEL REQUIRING CLINICAL ACTION | HGNC:3236 (EGFR1) | LA9634-2 (Absent)  |                    |
 | 971 FAILURE | HGNC:3236 (EGFR1) | *No call* | error              |
 {:.grid}
+--> 
 
 ### Detailed Variant
 
