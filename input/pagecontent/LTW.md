@@ -413,12 +413,17 @@ A laboratory report contains both structured and unstructured information, and t
 
 The Laboratory Report acts as the bridge between these two worlds. It references the structured observations for computer processing, clinical decision support, analytics, and interoperability, while also linking to the complete unstructured report that clinicians view as the authoritative laboratory document. This approach ensures that systems can exchange computable data without losing the rich narrative and legal record contained in the original laboratory report.
 
+##### Laboratory Report with FHIR and V2 Mappings
+
 <img style="padding:3px;width:95%;" src="LaboratoryReportExplainedPage1.drawio.png" alt="Genomic Report Page 1"/>
 <br clear="all">
 
-<img style="padding:3px;width:95%;" src="LaboratoryReportExplainedPage2.drawio.png" alt="Genomic Report Page 2"/>
+<img style="padding:3px;width:95%;" src="LaboratoryReportExplainedPage2.drawio.png" alt="Genomic Report Page 1"/>
 <br clear="all">
-<p class="figureTitle">Genomic Report Example</p> 
+
+##### Laboratory Report with detailed FHIR Mappings
+
+<img style="padding:3px;width:95%;" src="LaboratoryReportExplained.drawio.png" alt="Genomic Report Page 1"/>
 <br clear="all">
 
 ##### FHIR Document / Clinical Document Architecture
@@ -428,6 +433,11 @@ The Laboratory Report acts as the bridge between these two worlds. It references
 > Further details are available in the Document Perspective section of the HL7 Europe Laboratory Implementation Guide: [HL7 Europe Laboratory Report](https://build.fhir.org/ig/hl7-eu/laboratory/index.html)
 >
 > NW Genomics example [FHIR Document - Genomic Report](Bundle-FHIRDocumentGeneticReportBundle2.html)
+
+##### Laboratory Report with FHIR Composition Mappings 
+
+<img style="padding:3px;width:95%;" src="LaboratoryReportDocumentExplained.drawio.png" alt="Genomic Report Page 1"/>
+<br clear="all">
  
 ## Filler Order Management (LAB-2)
 
