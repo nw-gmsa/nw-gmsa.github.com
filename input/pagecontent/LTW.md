@@ -232,9 +232,10 @@ How this is implemented will vary between different NHS organisations and system
 
 ##### Complete Genomic Test Order Form
 
-These forms may (/will?) will have a computable definition called an [template (FHIR Questionnaire)](https://hl7.org/fhir/R4/questionnaire.html) which will list the technical content requirements for the form. At present only one archetype has been defined:
+These forms may (/will?) will have a computable definition called an [template (FHIR Questionnaire)](https://hl7.org/fhir/R4/questionnaire.html) which will list the technical content requirements for the form. 
 
-- [NW GMSA Genomics Test Order Panel](Questionnaire-GenomicTestOrder.html)
+- See [NW GMSA Genomics Test Order Panel](Questionnaire-GenomicTestOrder.html) for a FHIR Questionnaire definition of the form.
+  - For details `on the wire` format see [ServiceRequest](ServiceRequest.html#diagnostic-order) 
 
 This archetype definition can also support [HL7 Structured Data Capture](https://build.fhir.org/ig/HL7/sdc/index.html) should the Order Placer system support these features.
 
