@@ -29,6 +29,43 @@
 
 ### Diagnostic Report
 
+#### Unstructured and Structured Laboratory Reports
+
+A laboratory report contains both structured and unstructured information, and they complement each other rather than replace one another.
+
+- Structured data consists of discrete, machine-readable elements such as the patient, specimen, request, observations (test results), identifiers, and reporting clinician. In HL7 FHIR these are represented by resources such as Patient, Specimen, ServiceRequest, Observation, Practitioner, and DiagnosticReport. In HL7 v2 these correspond to segments such as PID, SPM, ORC, OBR, and OBX.
+- Unstructured data is the human-readable laboratory report (typically a PDF) that includes the full clinical interpretation, comments, formatting, signatures, and contextual information that may not be represented as discrete data. In FHIR this is attached to the DiagnosticReport.presentedForm (or referenced via DocumentReference), while in HL7 v2 it is commonly carried in OBX segments using encapsulated data (ED).
+
+The Laboratory Report acts as the bridge between these two worlds. It references the structured observations for computer processing, clinical decision support, analytics, and interoperability, while also linking to the complete unstructured report that clinicians view as the authoritative laboratory document. This approach ensures that systems can exchange computable data without losing the rich narrative and legal record contained in the original laboratory report.
+
+##### Laboratory Report with FHIR and V2 Mappings
+
+<img style="padding:3px;width:95%;" src="LaboratoryReportExplainedPage1.drawio.png" alt="Genomic Report Page 1"/>
+<br clear="all">
+
+<img style="padding:3px;width:95%;" src="LaboratoryReportExplainedPage2.drawio.png" alt="Genomic Report Page 1"/>
+<br clear="all">
+
+##### Laboratory Report with detailed FHIR Mappings
+
+<img style="padding:3px;width:95%;" src="LaboratoryReportExplained.drawio.png" alt="Genomic Report Page 1"/>
+<br clear="all">
+
+##### FHIR Document / Clinical Document Architecture
+
+> The FHIR DiagnosticReport illustrated above is well suited to workflow-based information exchange, where structured clinical data is exchanged between systems and individual observations can be processed, queried, and acted upon. However, it may be less suitable for document sharing use cases, such as IHE XDS/MHD or the NHS England National Record Locator (NRL), where the laboratory report is exchanged as a complete clinical document. In these scenarios, the preferred approach is a FHIR Document (the FHIR equivalent of a Clinical Document Architecture (CDA) document), which packages the report into a self-contained, attested document with a Composition resource as its root. This preserves the report as a legal and clinical record while still allowing structured data to be included.
+>
+> Further details are available in the Document Perspective section of the HL7 Europe Laboratory Implementation Guide: [HL7 Europe Laboratory Report](https://build.fhir.org/ig/hl7-eu/laboratory/index.html)
+>
+> NW Genomics example [FHIR Document - Genomic Report](Bundle-FHIRDocumentGeneticReportBundle2.html)
+
+##### Laboratory Report with FHIR Composition Mappings
+
+<img style="padding:3px;width:95%;" src="LaboratoryReportDocumentExplained.drawio.png" alt="Genomic Report Page 1"/>
+<br clear="all">
+
+### Detailed Model
+
 Metadata is data that applies to the patient's entire clinical pathway and so it extends beyond diagnostic tests.
 Test detail tends to be common across all diagnostic tests in a patient's pathway, not just genomics.
 
