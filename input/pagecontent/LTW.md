@@ -187,7 +187,7 @@ graph TD;
     end
 
     RIE["Regional Orchestration Engine (RIE)"]
-    GDP["Genomic Data Platform"]
+    GDP["Genomic Data Platform<br/>(FHIR Repository)"]
     PubSub["Subscription Service (Future?)"]
 
     subgraph OrderFiller;
@@ -198,11 +198,11 @@ graph TD;
 
     SpecimenCollection[Specimen Collection] --> |3. Sends Specimen| OrderFiller
     OR --> |HL7 FHIR Message O21| RIE
-    RIE --> |"Update<br/>FHIR RESTful PUT/POST (inc Transaction)"| GDP
+    RIE -.-> |"Update<br/>FHIR RESTful PUT/POST (inc Transaction)"| GDP
     RIE --> |HL7 v2 O21| iGene
     RIE --> GOMS
     GOMS --> ExtLIMS
-    GDP --> |O21 Event Notification| PubSub
+    GDP -.-> |O21 Event Notification| PubSub
     
     classDef green fill:#D5E8D4;
     classDef yellow fill:#FFF2CC;
@@ -341,15 +341,15 @@ graph TD;
 
     end
      RIE["Regional Orchestration Engine (RIE)"]
-     GDP["Genomic Data Platform"]
+     GDP["Genomic Data Platform<br/>(FHIR Repository)"]
     PubSub["Subscription Service (Future?)"]
 
     RIE --> |HL7 v2 R01| OR
-    RIE --> |"Update<br/>FHIR RESTful PUT/POST (inc Transaction)"| GDP
+    RIE -.-> |"Update<br/>FHIR RESTful PUT/POST (inc Transaction)"| GDP
     iGene --> |HL7 v2 R01| RIE
     GOMS --> RIE
     ExtLIMS --> GOMS
-    GDP --> |R01 Event Notification| PubSub
+    GDP -.-> |R01 Event Notification| PubSub
     
     classDef green fill:#D5E8D4;
     classDef yellow fill:#FFF2CC;
@@ -580,11 +580,11 @@ subgraph OrderFiller["Automation Manager"];
     ExtLIMS[External GMSA/LIMS]
 end 
 
-GDP["Genomic Data Platform"]
+GDP["Genomic Data Platform<br/>(FHIR Repository)"]
 PubSub["Subscription Service (Future?)"]
 
 RIE4 --> |"Update<br/>FHIR RESTful PUT/POST (inc Transaction)"| GDP
-GDP --> |O21 Event Notification| PubSub
+GDP -.-> |O21 Event Notification| PubSub
 
 iGene --> |"Work Order Management (LAB-4)<br/>Worksheet (iGene CSV export)"| RIE4
 GDP <--> |"Work Order Management (LAB-4)<br/>HL7 QBP Query"| Cepheid
@@ -613,37 +613,38 @@ class GDP,RIE4,PubSub,VCFFHIR pink;
 ```mermaid
 graph TD
 
-subgraph GenomicLIMS["Order Filler"];
+  subgraph GenomicLIMS["Order Filler"];
     iGene[LIMS<br/>IGene]
-end
+  end
 
-subgraph Analyser["Automation Manager"];
+  subgraph Analyser["Automation Manager"];
     Cepheid[Analyser - Cepheid]
     StarLIMS[LIMS - StarLIMS]
     ExtLIMS[External GMSA/LIMS]
-    GOMS["NHS England Genomic Order Management System"] 
+    GOMS["NHS England Genomic Order Management System"]
     ExtLIMS --> GOMS
-end
+  end
 
 
-RIE["Regional Orchestration Engine (RIE)"]
+  RIE["Regional Orchestration Engine (RIE)"]
 
-GDP["Genomic Data Platform"]
-PubSub["Subscription Service (Future?)"]
+  GDP["Genomic Data Platform<br/>(FHIR Repository)"]
+  PubSub["Subscription Service (Future?)"]
 
-RIE --> |"Update<br/>FHIR RESTful PUT/POST (inc Transaction)"| GDP
-GDP --> |R01 or R32 Event Notification| PubSub
+  RIE -.-> |"Update<br/>FHIR RESTful PUT/POST (inc Transaction)"| GDP
+  GDP -.-> |R01 or R32 Event Notification| PubSub
 
-Cepheid --> |"Test Results Management (LAB-5/LAB-32)<br/>Lab Reports HL7 ORU_R32"| RIE
-StarLIMS --> |"Test Results Management (LAB-5)<br/>SQL data-pipeline"| RIE
-GOMS --> RIE
+  Cepheid --> |"Test Results Management (LAB-5/LAB-32)<br/>ASTM"| RIE
+  StarLIMS --> |"Test Results Management (LAB-5)<br/>FHIR RESTful PUT/POST"| GDP
+  GDP --> |"Event Triggers (StarLIMS only)"| RIE
+  GOMS --> RIE
 
-RIE --> |"Test Results Management (LAB-5)<br/>CSV Import"| iGene
+  RIE --> |"Test Results Management (LAB-5)<br/>CSV Import"| iGene
 
-classDef purple fill:#E1D5E7;
-classDef pink fill:#F8CECC;
+  classDef purple fill:#E1D5E7;
+  classDef pink fill:#F8CECC;
 
-class GDP,RIE,PubSub pink;
+  class GDP,RIE,PubSub pink;
 ```
 
 In Progress
