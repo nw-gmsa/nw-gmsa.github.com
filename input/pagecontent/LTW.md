@@ -401,10 +401,10 @@ RIE[RIE Message Distribution]
 OrderPlacer[Order Placer or Interested Party]
 
 OrderFiller --> GDP
-GDP --> |O21 Event Trigger| PubSub
+GDP -.-> |O21 Event Trigger| PubSub
 GDP --> |O21 Event Trigger| RIE
 RIE --> |HL7 v2 OML_O21| OrderPlacer
-PubSub --> |Event Notification| OrderPlacer
+PubSub -.-> |Event Notification| OrderPlacer
 
 classDef purple fill:#E1D5E7;
 classDef pink fill:#F8CECC;
