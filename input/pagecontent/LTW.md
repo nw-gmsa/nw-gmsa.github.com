@@ -563,15 +563,15 @@ graph TD
 
   RIE["Regional Orchestration Engine (RIE)"]
 
-  GDP["Genomic Data Platform<br/>(FHIR Repository)"]
+  GDP["Genomic Data Platform<br/>(FHIR Respository)"]
   PubSub["Subscription Service (Future?)"]
 
   RIE -.-> |"Update<br/>FHIR RESTful PUT/POST (inc Transaction)"| GDP
   GDP -.-> |R01 or R32 Event Notification| PubSub
 
   Cepheid --> |"Test Results Management (LAB-5/LAB-32)<br/>ASTM"| RIE
-  StarLIMS --> |"Test Results Management (LAB-5)<br/>FHIR RESTful PUT/POST"| GDP
-  GDP --> |"Event Triggers (StarLIMS only)"| RIE
+  StarLIMS --> |"Test Results Management (LAB-5)<br/>FHIR RESTful PUT/POST and Queries"| GDP
+  GDP <--> |"Event Triggers and Queries (StarLIMS only)"| RIE
   GOMS --> RIE
 
   RIE --> |"Test Results Management (LAB-5)<br/>CSV Import"| iGene
