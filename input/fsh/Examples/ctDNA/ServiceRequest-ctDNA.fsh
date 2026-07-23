@@ -7,7 +7,7 @@ Description: "TODO"
 
 * identifier[OrderIdentifier].type = $v2-0203#FILL
 * identifier[OrderIdentifier].value = "T26-59XG"
-* identifier[OrderIdentifier].system = "https://fhir.nwgenomics.nhs.uk/Identifier/IGENE-TestIdentifier"
+* identifier[OrderIdentifier].system = "https://fhir.nwgenomics.nhs.uk/iGene/ReportIdentifier"
 * identifier[OrderIdentifier].assigner.identifier.system = $ods-code
 * identifier[OrderIdentifier].assigner.identifier.value = "699X0"
 
