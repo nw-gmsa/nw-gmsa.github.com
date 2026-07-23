@@ -7,7 +7,7 @@ Description: "TODO"
 
 * identifier[FillerSpecimenNumber]
   * value = "S26-1K1Q"
-  * system = "https://fhir.nwgenomics.nhs.uk/Identifier/IGENE-SpecimenIdentifier"
+  * system = "https://fhir.nwgenomics.nhs.uk/iGene/SpecimenIdentifier"
   * type = $v2-0203#FILL
   * assigner.identifier.system = $ods-code
   * assigner.identifier.value = "699X0"

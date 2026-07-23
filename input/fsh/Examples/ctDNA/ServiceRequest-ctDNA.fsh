@@ -14,7 +14,7 @@ Description: "TODO"
 * requisition
   * type = $v2-0203#PGN
   * value = "R26-15AY"
-  * system = "https://fhir.nwgenomics.nhs.uk/Identifier/IGENE-ReferralIdentifier"
+  * system = "https://fhir.nwgenomics.nhs.uk/iGene/ReferralIdentifier"
   * assigner.identifier.system = $ods-code
   * assigner.identifier.value = "699X0"
 
