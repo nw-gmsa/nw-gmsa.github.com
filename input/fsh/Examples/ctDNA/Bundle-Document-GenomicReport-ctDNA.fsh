@@ -1,6 +1,6 @@
 Instance: Composition-GenomicsReport-ctDNA
 InstanceOf: CompositionGenomicReport
-Title: "Composition - Genomics Report ctDNA"
+Title: "Composition - Genomics Report ctDNA UGR"
 Description: "Composition - Genomics Report ctDNA"
 Usage: #example
 

@@ -26,7 +26,7 @@ Usage: #example
 
 Instance: GenomicsOrderMessage-ctDNA
 InstanceOf: BundleMessage
-Title:       "Bundle 'Message' - Genomics Order ctDNA"
+Title:       "Bundle 'Message' - Genomics Order ctDNA O21"
 Description:  "Genomics Order ctDNA"
 Usage: #example
 * insert MessageBundle("urn:uuid:1aa724a8-981e-488e-9e6b-7a73e7c3c07a", "2025-10-14T15:59:16+00:00")

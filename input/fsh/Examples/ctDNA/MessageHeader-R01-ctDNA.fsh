@@ -1,6 +1,6 @@
 Instance: MessageHeaderR01ctDNA
 InstanceOf: MessageHeader
-Title: "Message Header - Genomic Order ctDNA"
+Title: "Message Header - Genomic Order ctDNA R01"
 Description: "TODO"
 Usage: #example
 
