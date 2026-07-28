@@ -220,7 +220,7 @@ In IHE Laboratory Testing Workflow, this is the key entity in [LAB-4](LTW.html#w
 | code       | SpecimenTypeCode            |                         | Specimen.type                                            |
 | date       | SpecimenDispatchDate        |                         |                                                          |
 | date       | SpecimenTakenDateTime       | Collection date/time    | Specimen.collection.collectedDateTime                    |
-| date       | SpecimenReceivedDateTime    | Received date/time      |                                                          |
+| date       | SpecimenReceivedDateTime    | Received date/time      | Specimen.receivedTime                                               |
 {:.grid}
 
 ### Diagnostic Report
@@ -234,15 +234,15 @@ In IHE Laboratory Testing Workflow, this is the key entity in [LAB-4](LTW.html#w
 
 This is the key entity for the reports/results which are generated when the Placer Order and Filler Order are fulfilled, which are [LAB-3](LTW.html#laboratory-report-lab-3) and [LAB-5](LTW.html#test-results-management-lab-5) respectively.
 
-| Type          | Name                                    | Description | FHIR [DiagnosticReport](StructureDefinition-DiagnosticReport.html)                           |
-|---------------|-----------------------------------------|-------------|----------------------------------------------------------------------------------------------|
-| identifier    | TestAccessionIdentifier                 |             | DiagnosticReport.identifier                                                                  |
-| reference     | FillerOrder                             |             | DiagnosticReport.basedOn (FillerOrder)                                                       |
-| reference     | Patient                                 |             | DiagnosticReport.subject                                                                     |
-| code          | Procedure Code - NGTDTestCode           |             | DiagnosticReport.code (system = https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory) |
-| date          | ReportStatusDateTime                    |             | DiagnosticReport.effectiveDateTime                                                           |
-| reference     | Hospital Spell - Account Number         |             | ServiceRequest.encounter (Hospital Spell)                                                    |
-| code | Conclusion Code - [Test Outcome Code](ValueSet-GenomicTestOutcomeCodes.html) 
-| result        | See [Observations](StructureDefinition-Observation.html)                                        |             |                                      | 
-| presentedForm | See [DocumentReference](StructureDefinition-DocumentReference.html)                                          |             |                         |
+| Type          | Name                                                                         | Description | FHIR [DiagnosticReport](StructureDefinition-DiagnosticReport.html)                          |
+|---------------|------------------------------------------------------------------------------|-------------|---------------------------------------------------------------------------------------------|
+| identifier    | TestAccessionIdentifier                                                      |             | DiagnosticReport.identifier                                                                 |
+| reference     | FillerOrder                                                                  |             | DiagnosticReport.basedOn (FillerOrder)                                                      |
+| reference     | Patient                                                                      |             | DiagnosticReport.subject                                                                    |
+| code          | Procedure Code - NGTDTestCode                                                |             | DiagnosticReport.code (system = https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory) |
+| date          | ReportStatusDateTime                                                         |             | DiagnosticReport.effectiveDateTime                                                          |
+| reference     | Hospital Spell - Account Number                                              |             | DiagnosticReport.encounter (Hospital Spell)                                                 |
+| code          | Conclusion Code - [Test Outcome Code](ValueSet-GenomicTestOutcomeCodes.html) |             | DiagnosticReport.conclusionCode                                                             |
+| result        | See [Observations](StructureDefinition-Observation.html)                     |             | DiagnosticReport.result                                                                     | 
+| presentedForm | See [DocumentReference](StructureDefinition-DocumentReference.html)          |             | DiagnosticReport.presentedForm                                                              |
 {:.grid}
