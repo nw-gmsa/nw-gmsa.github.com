@@ -15,73 +15,63 @@ In software design, these areas are often referred to as [domains](https://en.wi
 ```mermaid
 erDiagram
 
-  OriginalOrder ||--|{ FillerOrder : "has (FillerOrderNumber = FillerGroupNumber)"
-  OriginalOrder ||--|{ Specimen : contains
-  FillerOrder ||--|{ Specimen : contains
-  Patient ||--|{ OriginalOrder : "NHSNumber or PatientAccessionIdentifier"
-  Patient ||--|{ FillerOrder : "NHSNumber or PatientAccessionIdentifier" 
-  Patient ||--|{ DiagnosticReport : "NHSNumber or PatientAccessionIdentifier" 
-  OriginalOrder ||--|{ DiagnosticReport : contains
-  HospitalSpell ||--|{ OriginalOrder : "HospitalSpellProviderIdentifier"
-  HospitalSpell ||--|{ FillerOrder : "HospitalSpellProviderIdentifier" 
-  HospitalSpell ||--|{ DiagnosticReport : "HospitalSpellProviderIdentifier" 
+    ServiceRequest ||--|{ Specimen : contains
+    Patient ||--|{ ServiceRequest : "NHSNumber or PatientAccessionIdentifier"
 
-  OriginalOrder {
-    identifier PlacerOrderNumber
-    identifier FillerOrderNumber
-    code NGTDTestCode
-    code RequestingOrganisationCode
-    reference Specimen
-    reference Patient
-     reference HospitalSpellProviderIdentifier
-  }
+    Patient ||--|{ DiagnosticReport : "NHSNumber or PatientAccessionIdentifier"
+    ServiceRequest ||--|{ DiagnosticReport : contains
+    HospitalSpell ||--|{ ServiceRequest : "HospitalSpellProviderIdentifier"
 
-  FillerOrder {
-    code OrderStatus
-    date TestOrderDate
-    identifier TestAccessionIdentifier
-    code NGTDTestCode
-    string ClinicalDetails
-    code Performer
-    reference Specimen
-    reference Patient
-    reference OriginalOrder
-     reference HospitalSpellProviderIdentifier
-  }
+    HospitalSpell ||--|{ DiagnosticReport : "HospitalSpellProviderIdentifier"
 
-  Patient {
-    identifier NHSNumber
-    identifier HospitalNumber
-    identifier PatientAccessionIdentifier
-    string PatientGivenName
-    string PatientFamilyName
-    date DateOfBirth
-    string PostCode
-    code AdministrativeSex
-  }
+    ServiceRequest {
+        identifier PlacerOrderNumber
+        identifier FillerOrderNumber
+        identifier TestAccessionIdentifier
+        date TestOrderDate
+        code NGTDTestCode
+        code RequestingOrganisationCode
+        string ClinicalDetails
+        code Performer
+        reference Specimen
+        reference Patient
+        reference HospitalSpellProviderIdentifier
+    }
 
-  Specimen {
-    identifier SpecimenAccessionIdentifier
-    identifier ShipmentTrackingNumber
-    identifier FMIIdentifier
-    reference Patient
-    code SpecimenTypeCode
-    date SpecimenDispatchDate
-    date SpecimenTakenDateTime
-    date SpecimenReceivedDateTime
-  }
 
-  DiagnosticReport {
-    identifier TestAccessionIdentifier
-    reference FillerOrder
-    reference Patient
-    code NGTDTestCode
-    date ReportStatusDateTime
-    reference HospitalSpellProviderIdentifier
-  }
-  HospitalSpell {
-    identifier HospitalSpellProviderIdentifier
-  }
+    Patient {
+        identifier NHSNumber
+        identifier HospitalNumber
+        identifier PatientAccessionIdentifier
+        string PatientGivenName
+        string PatientFamilyName
+        date DateOfBirth
+        string PostCode
+        code AdministrativeSex
+    }
+
+    Specimen {
+        identifier SpecimenAccessionIdentifier
+        identifier ShipmentTrackingNumber
+        identifier FMIIdentifier
+        reference Patient
+        code SpecimenTypeCode
+        date SpecimenDispatchDate
+        date SpecimenTakenDateTime
+        date SpecimenReceivedDateTime
+    }
+
+    DiagnosticReport {
+        identifier TestAccessionIdentifier
+        reference FillerOrder
+        reference Patient
+        code NGTDTestCode
+        date ReportStatusDateTime
+        reference HospitalSpellProviderIdentifier
+    }
+    HospitalSpell {
+        identifier HospitalSpellProviderIdentifier
+    }
 ```
 
 
@@ -120,7 +110,7 @@ erDiagram
 | identifier | [HospitalSpellProviderIdentifier](StructureDefinition-HospitalProviderSpellIdentifier.html) | Identifier from ordering hospital | Encounter.identifier (type = AN)                              |
 {:.grid}
 
-### Original Order
+### ServiceRequest (Order)
 
 <div class="alert alert-info" role="alert">
 <b>HL7 FHIR Profile:</b> <a href="StructureDefinition-ServiceRequest.html" _target="_blank">ServiceRequest</a> 
@@ -146,7 +136,7 @@ The original order is the order sent from the Order Placer to the Order Filler; 
 | code       | Reason Code - Clinical Indication Code (CITT) |                                     | ServiceRequest.reasonCode                                      | 
 {:.grid}
 
-### Filler Order
+#### Filler Order
 
 <div class="alert alert-info" role="alert">
 <b>HL7 FHIR Profile:</b> <a href="StructureDefinition-ServiceRequest.html" _target="_blank">ServiceRequest</a> 
@@ -154,6 +144,37 @@ The original order is the order sent from the Order Placer to the Order Filler; 
 <div class="alert alert-info" role="alert">
 <b>HL7 v2 Segment:</b> <a href="hl7v2.html#orc" _target="_blank">ORC</a>
 </div>
+
+ServiceRequest may also be split into two logical entities called `OriginalOrder` and `FillerOrder`. The former represents the order received by the Order Filler from the Order Placer, and the latter is orders the `Order Filler` creates to fulfil that order. These are often also called `reflex`, `work-order` or `sub-contract` orders.
+
+```mermaid
+erDiagram
+
+    OriginalOrder ||--|{ FillerOrder : "has (FillerOrderNumber = FillerGroupNumber)"
+
+    OriginalOrder {
+        identifier PlacerOrderNumber
+        identifier FillerOrderNumber
+        code NGTDTestCode
+        code RequestingOrganisationCode
+        reference Specimen
+        reference Patient
+        reference HospitalSpellProviderIdentifier
+    }
+
+    FillerOrder {
+        code OrderStatus
+        date TestOrderDate
+        identifier TestAccessionIdentifier
+        code NGTDTestCode
+        string ClinicalDetails
+        code Performer
+        reference Specimen
+        reference Patient
+        reference OriginalOrder
+        reference HospitalSpellProviderIdentifier
+    }
+```
 
 In IHE Laboratory Testing Workflow, this is the key entity in [LAB-4](LTW.html#work-order-and-test-result-management-lab-4-and-lab-5)
 
