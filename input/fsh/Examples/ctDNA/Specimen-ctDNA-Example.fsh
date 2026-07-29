@@ -21,7 +21,7 @@ Description: "TODO"
   * value = "9737873858"
 
 * collection.collectedDateTime = "2026-06-29"
-
+* receivedTime = "2026-06-30"
 * type
   * coding[+]
     * code = #119297000
