@@ -47,7 +47,7 @@ Usage: #example
 * section[+]
   * title = "Findings"
   * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Genomics Findings</li></ul>See PDF</div>"
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Genomics Findings</li></ul>TODO data from variant and regions studied to be rendered here. For now (phase 1) see PDF, the references to structured data should be ignored.</div>"
   * code = $loinc#59776-5 "Findings"
   * entry[+].reference = "urn:uuid:00c22e97-a226-4845-b17a-e24ec1f4f77a"
   * entry[+].reference = "urn:uuid:a151b1ed-5aef-4c36-af50-987cfbd5bad4"
