@@ -16,7 +16,10 @@ Description: "TODO"
   * coding[+]
     * code = #BCR
     * system = "https://fhir.nwgenomics.nhs.uk/CodeSystem/Cepheid"
-
+  * coding[+]
+    * code = #69380-4
+    * system = $loinc
+    * display = "t(9;22)(q34.1;q11)(ABL1,BCR) b2a2+b3a2 fusion transcript/control transcript (International Scale) [# Ratio] in Blood or Tissue by Molecular genetics method"
 
 
 * referenceRange[+].text = "0.0030 to 55.00"
