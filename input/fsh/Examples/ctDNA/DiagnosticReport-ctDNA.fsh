@@ -45,7 +45,7 @@ Description: "Diagnostic Report ctDNA Example"
 * resultsInterpreter[author]
   * display = "Jonathan Edgerley"
 
-//* result[+].reference = "urn:uuid:f80f704c-b2b2-4912-ac6f-e62aaadd4ff0"
+* result[+].reference = "urn:uuid:00c22e97-a226-4845-b17a-e24ec1f4f77a"
 
 * conclusionCode[+] = https://fhir.nwgenomics.nhs.uk/CodeSystem/GenomicTestOutcomeCode#431 "TARGET DETECTED AT A LEVEL REQUIRING CLINICAL ACTION"
 

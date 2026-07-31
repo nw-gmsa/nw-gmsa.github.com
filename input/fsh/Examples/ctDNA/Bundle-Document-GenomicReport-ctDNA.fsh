@@ -49,7 +49,7 @@ Usage: #example
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Genomics Findings</li></ul>See PDF</div>"
   * code = $loinc#59776-5 "Findings"
-//  * entry[+].reference = "urn:uuid:f80f704c-b2b2-4912-ac6f-e62aaadd4ff0"
+  * entry[+].reference = "urn:uuid:00c22e97-a226-4845-b17a-e24ec1f4f77a"
 
 
 * section[+]
@@ -71,8 +71,10 @@ Usage: #example
 * insert EntryDocument("urn:uuid:6e26d6b3-490e-4348-9d6c-37281567d6ec", ServiceRequest-ctDNA)
 * insert EntryDocument("urn:uuid:b930b4c4-327a-4728-8bb9-f90061914cc5", Specimen-ctDNA)
 * insert EntryDocument("urn:uuid:0a6ad8ec-b069-4a65-8c65-c7569d8413e3", DiagnosticReport-ctDNA)
+* insert EntryDocument("urn:uuid:00c22e97-a226-4845-b17a-e24ec1f4f77a", variant-egfr)
 //* insert EntryDocument("urn:uuid:f80f704c-b2b2-4912-ac6f-e62aaadd4ff0", GenomicStudy-ctDNA)
 //* insert EntryDocument("urn:uuid:cd491a5f-62ec-4f6b-904f-206bae2c9b20", 51967-8-ctDNA)
 //* insert EntryDocument("urn:uuid:b3b6b20f-8e5a-432c-8155-579dc4d60a09", 51968-6-ctDNA)
 * insert EntryDocument("urn:uuid:13028359-6a38-4dff-8978-55a57dbdfb56",DocumentReference-ctDNA)
 * insert EntryDocument("urn:uuid:d6eeedd1-92d3-45b9-bf33-6401e804425f",Binary-Sample)
+
