@@ -17,13 +17,13 @@ The overall status of the order is tracked using a `Task`, which is updated as w
 ```mermaid
 graph TD
     LaboratoryOrder --> CreateTask[Create Task]
-    CreateTask --> |"'Process Genomic Test Request'<br/> Task (accepted)"| AutomationMananger[Automation Mananger] 
+    CreateTask --> |"'Process Genomic Test Request'<br/> Task (accepted)"| AutomationManager[Automation Manager] 
 
-    UpdateTask --> |"'Process Genomic Test Request'<br/>Task (in-progress)"| AutomationMananger
+    UpdateTask --> |"'Process Genomic Test Request'<br/>Task (in-progress)"| AutomationManager
     LaboratoryReport --> IsOrderComplete{Is Order Complete?}
     IsOrderComplete --> |Yes| CompleteTask
     IsOrderComplete -->  |No| UpdateTask[Update Task]
-    CompleteTask -->  |"'Process Genomic Test Request'<br/>Task (completed)"| AutomationMananger
+    CompleteTask -->  |"'Process Genomic Test Request'<br/>Task (completed)"| AutomationManager
 ```
 
 - When the order is first received, a Task is created to represent it, and its status is set to `accepted`.
@@ -32,7 +32,7 @@ graph TD
 
 ### Data Model
 
-This model is based on a merge of NHS England Genomcis and [AU eRequesting Task Diagnostic Request](https://build.fhir.org/ig/hl7au/au-fhir-erequesting/StructureDefinition-au-erequesting-task-diagnosticrequest.html).
+This model is based on a merge of NHS England Genomics and [AU eRequesting Task Diagnostic Request](https://build.fhir.org/ig/hl7au/au-fhir-erequesting/StructureDefinition-au-erequesting-task-diagnosticrequest.html).
 
 | FHIR Task element                     | Value Set / Data Type                                                                                                                           | Cardinality | Reference                                                 |
 |---------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------|
@@ -45,8 +45,9 @@ This model is based on a merge of NHS England Genomcis and [AU eRequesting Task 
 | code (NHS England Genomics)                    | `Process Genomic Test Request` (https://fhir.nhs.uk/CodeSystem/task-code-genomics)                                                              | 1..1        |                                                           |
 | focus                                 |                                                                                                                                                 | 1..1        | [ServiceRequest](StructureDefinition-ServiceRequest.html) |
 | for                                   | identifier [NHS Number](StructureDefinition-NHSIdentifier.html)                                                                                 | 1..1        | [Patient](StructureDefinition-Patient.html)               |
-| requester                             | identifier [Organisation Code ](StructureDefinition-OrganisationCode.html)                                                                      | 1..1        | Preferred [Organization][StructureDefinition-Organization.html]     |
-| owner                                 | identifier [Organisation Code ](StructureDefinition-OrganisationCode.html)                                                                      | 0..1        | Preferred [Organization][StructureDefinition-Organization.html]     |
+
+| requester                             | identifier [Organisation Code ](StructureDefinition-OrganisationCode.html)                                                                      | 1..1        | Preferred [Organization](StructureDefinition-Organization.html)     |
+| owner                                 | identifier [Organisation Code ](StructureDefinition-OrganisationCode.html)                                                                      | 0..1        | Preferred [Organization](StructureDefinition-Organization.html)     |
 {:.grid}
 
 No SNOMED codes for genomic diagnostic testing found, codes are potentially children of `386053000 Evaluation procedure` 
@@ -70,11 +71,11 @@ Testing cannot begin until a specimen has been collected. Activities such as bio
 ```mermaid
 graph TD
     LaboratoryOrder[Laboratory Order] --> CreateTask[Create Task]
-    CreateTask --> |"'Specimen Collection'<br/> Task (requested)"| AutomationMananger[Automation Mananger] 
+    CreateTask --> |"'Specimen Collection'<br/> Task (requested)"| AutomationManager[Automation Manager] 
     Facility[Specimen Collection/Laboratory Facility] --> UpdateTask
-    UpdateTask[Update Task] --> |"'Specimen Collection'<br/>Task(as indicated by event)"| AutomationMananger
+    UpdateTask[Update Task] --> |"'Specimen Collection'<br/>Task(as indicated by event)"| AutomationManager
     LaboratoryReport[Laboratory Report] --> CompleteTask
-    CompleteTask --> |"'Specimen Collection'<br/>Task (completed)"| AutomationMananger
+    CompleteTask --> |"'Specimen Collection'<br/>Task (completed)"| AutomationManager
 ```
 
 - When an order is received with Specimen Collection, a Task is created to represent it.
@@ -82,7 +83,7 @@ graph TD
 
 ### Data Model
 
-This model is based on a merge of NHS England Genomcis and AU eRequesting.
+This model is based on a merge of NHS England Genomics and AU eRequesting.
 
 | FHIR Task element                            | Value Set / Data Type                                                                                                                         | Cardinality | Reference                                                       |
 |----------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------|
@@ -96,8 +97,8 @@ This model is based on a merge of NHS England Genomcis and AU eRequesting.
 | code (NHS England Genomics)                  | `Sample Processing` (https://fhir.nhs.uk/CodeSystem/task-code-genomics). See note below about SNOMED code                                     | 1..1        |                                                                 |
 | focus                                        |                                                                                                                                               | 1..1        | [Specimen](StructureDefinition-Specimen.html)                   |
 | for                                          | identifier [NHS Number](StructureDefinition-NHSIdentifier.html)                                                                                   | 1..1        | [Patient](StructureDefinition-Patient.html)                     |
-| requester                                    | identifier [Organisation Code ](StructureDefinition-OrganisationCode.html)                                                                    | 1..1        | Preferred [Organization][StructureDefinition-Organization.html] |
-| owner                                        | identifier [Organisation Code ](StructureDefinition-OrganisationCode.html)                                                                    | 0..1        | Preferred [Organization][StructureDefinition-Organization.html]           |
+| requester                                    | identifier [Organisation Code ](StructureDefinition-OrganisationCode.html)                                                                    | 1..1        | Preferred [Organization](StructureDefinition-Organization.html) |
+| owner                                        | identifier [Organisation Code ](StructureDefinition-OrganisationCode.html)                                                                    | 0..1        | Preferred [Organization](StructureDefinition-Organization.html)           |
 {:.grid}
 
 SNOMED codes for specimen collection exist, e.g. `2620001000004108 Specimen collection procedure`.

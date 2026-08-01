@@ -25,7 +25,7 @@ Used in HL7 v2 ORC, SPM and OBR, and FHIR ServiceRequest, Specimen and Diagnosti
 | Namespace Id      | 1..1        | ROA-EPI                           | 699X0-iGene    |                     | EI.2                                                     | This field is ODS code plus an existing Id for a system or a newly allocated one. The system is specified by the assigning authority/NHS Trust                                                                              |
 | Universal Id      | 0..1        | urn:oid:1.2.840.114350.1.13.861.1.7.2.798268 | https://fhir.north-west.england.nhs.uk/iGene/ReportNumber               | Identifier.system   | EI.3                                                     | The example used here is a generic value, NHS Trusts should supply actual value. Systems with a HL7 FHIR RESTful API e.g. EPIC and Meditech may have provided this value, the values in HL7 v2 and FHIR should be the same. |
 | Universal Id Type | 0..1        | URI                               | URI            |                     | EI.4 fixed value `URI`                                   |                                                                                                                                                                                                                             |
-| Identifier Type Code | 1..1        | PLAC                              | FILL           | Identifier.type     | n/a - identifiers use seperate fields in HL7 v2 Messages |                                                                                                                                                                                                                             |
+| Identifier Type Code | 1..1        | PLAC                              | FILL           | Identifier.type     | n/a - identifiers use separate fields in HL7 v2 Messages |                                                                                                                                                                                                                             |
 {:.grid}
 
 #### Example
@@ -79,7 +79,7 @@ HL7 FHIR
         ],
 ```
 
-where ROA is the ODS code for Manchester University NHS Foundation Trust and 699XO is the ODS code from NW Region GLH
+where ROA is the ODS code for Manchester University NHS Foundation Trust and 699X0 is the ODS code from NW Region GLH
 
 ### [HL7 v2 CX - Extended Composite ID with Check Digit](https://hl7-definition.caristix.com/v2/HL7v2.5.1/DataTypes/CX)
 

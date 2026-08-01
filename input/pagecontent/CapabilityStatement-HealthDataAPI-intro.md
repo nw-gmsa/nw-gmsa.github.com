@@ -5,6 +5,6 @@ This is currently being elaborated and subject to change.
 Examples and API documentation can be found on:
 
 - [Patient Matching (PDQm)](PDQm.html)
-- [Document Exchanage (MHD)](MHD.html)
+- [Document Exchange (MHD)](MHD.html)
 - [Resource access (QEDm)](QEDm.html)
 - [Authorisation (IUA)](IUA.html)

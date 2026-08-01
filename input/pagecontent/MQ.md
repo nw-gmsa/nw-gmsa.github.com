@@ -118,7 +118,7 @@ end
 ### Search - Checking an Inbox (FHIR)
 
 <div class="alert alert-success" role="alert">
-GET [base]/Bundle?[parameter]=[value]]
+GET [base]/Bundle?[parameter]=[value]
 </div>
 
 

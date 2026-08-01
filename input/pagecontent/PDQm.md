@@ -53,7 +53,7 @@ GET [base]/Patient/{id}
 ### Search
 
 <div class="alert alert-success" role="alert">
-GET [base]/Patient?[parameter]=[value]]
+GET [base]/Patient?[parameter]=[value]
 </div>
 
 

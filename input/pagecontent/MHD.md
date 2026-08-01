@@ -107,7 +107,7 @@ GET [base]/DocumentReference/{id}
 #### Search
 
 <div class="alert alert-success" role="alert">
-GET [base]/DocumentReference?[parameter]=[value]]
+    GET [base]/DocumentReference?[parameter]=[value]
 </div>
 
 | Parameter    | Type      | Search                                                       | Note                                     |

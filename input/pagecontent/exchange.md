@@ -12,7 +12,7 @@ DocumentWorkflow[<b>Document Workflow</b><br/><br/>e.g. IHE XDW]
 
 DataSharig["<b>Data/Resource Sharing<br/>EURIDICE Resource Exchange</b><br/><br/> HL7 IPA/IHE QEDm, NHS England Care Connect API (FHIR RESTful Query API)"]
 ResourceEventNotifications[<b>Resource Event Notifications</b><br/><br/>e.g. FHIR Subscription and NHSE MNS]
-ConversationalMessaging[<b>Conversational Workflow</b><br/><b>Cross Organisation Task based Workflow</b><br/><br/>e.g. FHIR Workflow, NHSE Electroinc Prescription Service and Genomic Order Management System]
+ConversationalMessaging[<b>Conversational Workflow</b><br/><b>Cross Organisation Task based Workflow</b><br/><br/>e.g. FHIR Workflow, NHSE Electronic Prescription Service and Genomic Order Management System]
 
 DocumentMessaging --> DocumentSharing
 DocumentSharing --> DocumentEventNotifications
@@ -81,7 +81,7 @@ classDiagram
         DiagnosticReport 
         Patient 
         Specimen 
-        Observeration 
+        Observation 
         PractitionerRole
     }
 
@@ -89,7 +89,7 @@ classDiagram
         DiagnosticReport 
         Patient 
         Specimen 
-        Observeration 
+        Observation 
         PractitionerRole
     }
 ```
@@ -160,7 +160,7 @@ See [NHS England National Record Locator](https://digital.nhs.uk/services/nation
 
 Electronic Document Management (EDM) is a common practice for storing and sharing documents across healthcare systems and common formats for the documents are often PDF. In diagnostics this is not desirable and so instead a document format called [Clinical Document Architecture (CDA)](https://en.wikipedia.org/wiki/Clinical_Document_Architecture), in HL7 FHIR this is known as [FHIR Document](https://hl7.org/fhir/R4/documents.html)
 
-This is described in [IHE https://wiki.ihe.net/index.php/Sharing_Laboratory_Reports](https://wiki.ihe.net/index.php/Sharing_Laboratory_Reports [HL7 Europe Laboratory Report](https://build.fhir.org/ig/hl7-eu/laboratory/), [NHS England Pathology](https://simplifier.net/guide/pathology-fhir-implementation-guide/Home/Design/How-to-Construct-Bundles?version=0.4.0) is a based on this but it using [Document Messaging](#document-messaging), the EU is likely to use [Document Sharing](#document-sharing).
+This is described in [IHE Sharing Laboratory Reports](https://wiki.ihe.net/index.php/Sharing_Laboratory_Reports) and [HL7 Europe Laboratory Report](https://build.fhir.org/ig/hl7-eu/laboratory/). [NHS England Pathology](https://simplifier.net/guide/pathology-fhir-implementation-guide/Home/Design/How-to-Construct-Bundles?version=0.4.0) is based on this but uses [Document Messaging](#document-messaging); the EU is likely to use [Document Sharing](#document-sharing).
 
 ## Clinical Document Architecture (FHIR Document/CDA)
 
@@ -176,7 +176,7 @@ classDiagram
         DiagnosticReport 
         Patient 
         Specimen 
-        Observeration 
+        Observation 
         PractitionerRole
         Practitioner
         Organization 

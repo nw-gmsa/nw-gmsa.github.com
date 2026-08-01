@@ -51,7 +51,7 @@ GET [base]/Condition/{id}
 ### Search
 
 <div class="alert alert-success" role="alert">
-GET [base]/Condition?[parameter]=[value]]
+1GET [base]/Condition?[parameter]=[value]
 </div>
 
 
@@ -102,7 +102,7 @@ GET [base]/DiagnosticReport/{id}
 ### Search
 
 <div class="alert alert-success" role="alert">
-GET [base]/DiagnosticReport?[parameter]=[value]]
+GET [base]/DiagnosticReport?[parameter]=[value]
 </div>
 
 | Parameter    | Type      | Search                                                            | Note                                                                                                                                             |
@@ -169,7 +169,7 @@ GET [base]/Encounter/{id}
 ### Search
 
 <div class="alert alert-success" role="alert">
-GET [base]/Encounter?[parameter]=[value]]
+GET [base]/Encounter?[parameter]=[value]
 </div>
 
 | Parameter    | Type      | Search                                               | Note                                                |
@@ -221,7 +221,7 @@ GET [base]/Observation/{id}
 ### Search
 
 <div class="alert alert-success" role="alert">
-GET [base]/Observation?[parameter]=[value]]
+GET [base]/Observation?[parameter]=[value]
 </div>
 
 | Parameter    | Type      | Search                                                      | Note                                                                                                       |
@@ -289,13 +289,13 @@ GET [base]/ServiceRequest/{id}
 ### Search 
 
 <div class="alert alert-success" role="alert">
-GET [base]/ServiceRequest?[parameter]=[value]]
+GET [base]/ServiceRequest?[parameter]=[value]
 </div>
 
 | Parameter                                 | Type      | Search                                                    | Note                                                                                                       |
 |-------------------------------------------|-----------|-----------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
 | _lastUpdated                              | date      | GET [base]/ServiceRequest?_lastUpdated=[date]             | Date the resource was last updated                                                                         |
-| identifier                                | token     | GET [base]/ServiceRequest?identifier=[[system&#124;][code] | Identifiers assigned to this order                                                                         |
+| identifier                                | token     | GET [base]/ServiceRequest?identifier=[system&#124;][code] | Identifiers assigned to this order                                                                         |
 | patient                                   | reference | GET [base]/ServiceRequest?patient=[id]                    | `id` is the logical id of the patient on the server which can be obtained by a [Patient](PDQm.html) query. |
 | [assigner](SearchParameter-assigner.html) | token | GET [base]/ServiceRequest?assigner=[system&#124;][code]   | Assigning Authority (ODS Code) for identifiers assigned to this order                                      |
 | code                                      | token | GET [base]/ServiceRequest?code=[system&#124;][code]       | What is being requested/ordered                                                                            |
@@ -350,7 +350,7 @@ GET [base]/Specimen/{id}
 ### Search
 
 <div class="alert alert-success" role="alert">
-GET [base]/Specimen?[parameter]=[value]]
+GET [base]/Specimen?[parameter]=[value]
 </div>
 
 | Parameter    | Type      | Search                                           | Note                                                                                                      |
@@ -395,7 +395,7 @@ GET [base]/Task/{id}
 ### Search
 
 <div class="alert alert-success" role="alert">
-GET [base]/Task?[parameter]=[value]]
+GET [base]/Task?[parameter]=[value]
 </div>
 
 | Parameter            | Type      | Search                                                    | Note                                                                                                      |
