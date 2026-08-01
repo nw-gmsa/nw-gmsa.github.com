@@ -23,7 +23,7 @@ The step-by-step process operates as follows:
 graph
 
 placerS[Order Placer]
-LaboratoryWorkflow
+LaboratoryWorkflow[Laboratory Workflow]
 
 subgraph CDS[Decision Support]
 analysis[Primary and Secondary Analysis]
@@ -77,18 +77,15 @@ The computational outputs are reviewed by Genomic Clinical Scientists or laborat
 
 ## Reportable Variant
 
-MOCKUP
-
 ### Summary Variant
 
-
 | Name                                    | LOINC   | Value Set / Data Type                                            | Cardinality | HL7 v2 OBX-4 | FHIR Observation Profile            | Example            |
-|-----------------------------------------|---------|------------------------------------------------------------------|-------------|--------------|-------------------------------------|--------------------|
+| --------------------------------------- | ------- | ---------------------------------------------------------------- | ----------- | ------------ | ----------------------------------- | ------------------ |
 | Genetic variant assessment              | 69548-6 |                                                                  | 1..1        | 2            | Observation.code                    | 69548-6            |
-| Genetic analysis overall interpretation | 51968-6 | [Variant Assess](https://loinc.org/LL1971-2)                     | 0..1        | 2a           | Observation.valueCodeableConcept    | LA9633-4 (Present) | 
-|                                         |         |                                                                  | 0..1        |              | Observation.dataAbsentReason              | error              | 
+| Genetic analysis overall interpretation | 51968-6 | [Variant Assess](https://loinc.org/LL1971-2)                     | 0..1        | 2a           | Observation.valueCodeableConcept    | LA9633-4 (Present) |
+|                                         |         |                                                                  | 0..1        |              | Observation.dataAbsentReason        | error              |
 | Gene studied [ID]                       | 48018-6 |                                                                  | 0..1        | 2a           | Observation.component[gene-studied] | HGNC:21497 (ACAD9) |
-| Variant analysis method [Type]          | 81304-8 | [Structural variant analysis method](https://loinc.org/LL4048-6) | 0..1        | 2a           | Observation.method                  | SNP Array          | 
+| Variant analysis method [Type]          | 81304-8 | [Structural variant analysis method](https://loinc.org/LL4048-6) | 0..1        | 2a           | Observation.method                  | SNP Array          |
 {:.grid}
 
 <!-- 
@@ -105,15 +102,15 @@ This section relates to [NHS England Genomic Testing Reporting Specification](ht
 ### Detailed Variant
 
 | Name                                       | LOINC   | Value Set / Data Type                                                                                                                                      | Cardinality | HL7 v2 OBX-4 | FHIR Observation Profile                                 | Example                     |
-|--------------------------------------------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|--------------|----------------------------------------------------------|-----------------------------|
+| ------------------------------------------ | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ------------ | -------------------------------------------------------- | --------------------------- |
 | Genomic DNA change g.HGVS                  | 81290-9 |                                                                                                                                                            | 0..1        | 2a           | Observation.component[genomic-hgvs]                      | NC_000003.11:g.128625063C>T |
 | Transcript reference sequence [Identifier] | 51958-7 |                                                                                                                                                            | 0..1        | 2a           | Observation.component[representative-transcript-ref-seq] | NM_014049.4                 |
 | Genomic source class [Type]                | 48002-0 | [Genetic variant source](https://loinc.org/LL378-1)                                                                                                        | 0..1        | 2a           | Observation.component[genomic-source-class]              | Somatic                     |
 | DNA change type                            | 48019-4 | [LOINC DNA change type](https://loinc.org/48019-4) or [DNA Change Type](https://build.fhir.org/ig/HL7/genomics-reporting/ValueSet-dna-change-type-vs.html) | 0..1        | 2a           | Observation.component[coding-change-type]                | Substitution                |
 | Allelic state                              | 53034-5 | [Genetic variant allelic state](https://loinc.org/LL381-5)                                                                                                 | 0..1        | 2a           | Observation.component[allelic-state]                     | Heterozygous                |
 | Genomic ref allele [ID]                    | 69547-8 |                                                                                                                                                            | 0..1        | 2a           | Observation.component[ref-allele]                        | C                           |
-| Allelic phase                              | 82120-7 | [Allelic phase](https://loinc.org/LL4025-4)                                                                                                                | 0..1        | 2a           | See 94186-4 below?                                       | Maternal                    |
-| Origin of germline genetic variant [Type]  | 94186-4 | [Origin of Genetic Variance](https://loinc.org/LL5489-1)                                                                                                   | 0..1        | - n/a        | Observation.component[variant-inheritance]               | Maternal                    | 
+| Allelic phase                              | 82120-7 | [Allelic phase](https://loinc.org/LL4025-4)                                                                                                                | 0..1        | 2a           | See Origin of genetic variant (94186-4) below            | Maternal                    |
+| Origin of germline genetic variant [Type]  | 94186-4 | [Origin of Genetic Variance](https://loinc.org/LL5489-1)                                                                                                   | 0..1        | n/a          | Observation.component[variant-inheritance]               | Maternal                    |
 {:.grid}
 
 

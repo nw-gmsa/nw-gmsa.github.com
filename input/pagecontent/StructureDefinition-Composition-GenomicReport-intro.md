@@ -23,7 +23,9 @@
 
 ### Structured Report
 
-TODO - This will include a modernisation to core FHIR concepts such as  FHIR Workflow, FHIR Subscription and FHIR RESTful.
+<div class="alert alert-danger" role="alert">
+This section is currently being elaborated and subject to change. It will include a modernisation to core FHIR concepts such as FHIR Workflow, FHIR Subscription and FHIR RESTful.
+</div>
 
 
 > **DRAFT FOR ELABORATION PURPOSES**

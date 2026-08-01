@@ -23,5 +23,5 @@ This is currently being elaborated and subject to change.
 | Message ID                  | entity[message] |                         | HL7 V2 MSH-10 Message Control ID (HL7 FHIR) RESTful HTTP Header: X-Correlation-ID     |
 | RESTful Query               | entity[restful]             |                         | also known as `data` in IHE BALP                                                      |
 | Patient                     | entity[patient]           | NHS Number              | Patient reference plus NHS Number                                                     |
-| Outcome | outcome || 
+| Outcome                     | outcome                   |                          |                                                                                       |
 {:.grid}

@@ -85,7 +85,9 @@ end
 
 ### Rate Limiting
 
-TODO 
+<div class="alert alert-danger" role="alert">
+This section is currently being elaborated and subject to change.
+</div>
 
 ### Identification and Authentication
 
@@ -184,7 +186,9 @@ consumer --> |"Retrieve ATNA Audit Event [ITI-81]"| repository
 
 ### Patient Consent
 
-TODO See [IHE Privacy Consent on FHIR (PCF)](https://profiles.ihe.net/ITI/PCF/volume-1.html)
+<div class="alert alert-danger" role="alert">
+This section is currently being elaborated and subject to change. See <a href="https://profiles.ihe.net/ITI/PCF/volume-1.html" _target="_blank">IHE Privacy Consent on FHIR (PCF)</a>.
+</div>
 
 ### Data Security
 

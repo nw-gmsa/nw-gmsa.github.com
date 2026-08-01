@@ -4,8 +4,6 @@ This is currently being elaborated and subject to change.
 
 ## Use Case 
 
-TODO
-
 ## Process Flow 
 
 See [Work Order Management (LAB-4)](LTW.html#work-order-management-lab-4)

@@ -1,4 +1,4 @@
-
+  
 ## References 
 
 1. [IHE Pathology and Laboratory Medicine (PaLM) Technical Framework - Volume 1](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol1.pdf) HL7 v2
@@ -23,8 +23,6 @@ graph TD;
     E[Evaluate]--> |Reviews Care| A;
     
     click T StructureDefinition-ServiceRequest.html
-    click AN StructureDefinition-DiagnosticReport.html
-    click S ExampleScenario-BiopsyProcedure.html
 
     classDef purple fill:#E1D5E7;
 
@@ -40,7 +38,7 @@ graph TD;
     class D blue
     class E orange
 
-    class O,S,T,AN purple
+    class T purple
 ```
 
 ### Diagnostic Testing
@@ -62,7 +60,7 @@ graph
 
         AN --> P["Writes Report"];
     end
-    FM[Filler Order Managmennt]
+    FM[Filler Order Management]
 
     T --> |"Sends Laboratory Order (LAB-1)"| AN;
     S --> |Sends Specimen| AN;
@@ -78,7 +76,7 @@ The Diagnostic Equipment performs the requested analytical procedures and measur
 
 ```mermaid
 graph 
-    OrderFiller
+    OrderFiller[Order Filler]
     DiagnosticEquipment
 
     OrderFiller --> |"Work Order (LAB-4)"| DiagnosticEquipment["DiagnosticEquipment<br/>(Automation Manager)"]
@@ -87,19 +85,18 @@ graph
 
 ## Actors and Transactions
 
-| Actor                                                           | Definition                                                                                  |
-|-----------------------------------------------------------------|---------------------------------------------------------------------------------------------|
-| [Order Placer](ActorDefinition-OrderPlacer.html)                | Commonly known as the Electronic Patient Record (EPR) System or Order Communications System |
-| [Order Filler](ActorDefinition-OrderFiller.html)                | Genomic Laboratory Hub (GLH), Laboratory Information System (LIMS)                          |
-| [Automation Manager](ActorDefinition-AutomationManager.html)    | Performed by Laboratory Information System (LIMS)                                           |
-| [Order Result Tracker](ActorDefinition-OrderResultTracker.html) | This is often provided by Electronic Patient Record (EPR) Systems                           |
-| Laboratory Report (Clinical Document)                           | See [Clinical Document](ActorDefinition-ClinicalDocument.html)                              | 
-| [Intermediary](ActorDefinition-Intermediary.html)                               | E.g. Regional or Trust Integration Engine                                                   |
-| Automation Manager | Often software associated with analysers and Laboratory Analytical Workflow (IHE LAW)       |
-| Filler Order Management | Software used to manage the orders. This may be the Order Placer.                  |
+| Actor                                                           | Definition                                                                                                                                          |
+| --------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Order Placer](ActorDefinition-OrderPlacer.html)                | Commonly known as the Electronic Patient Record (EPR) System or Order Communications System                                                         |
+| [Order Filler](ActorDefinition-OrderFiller.html)                | Genomic Laboratory Hub (GLH), Laboratory Information System (LIMS)                                                                                  |
+| [Automation Manager](ActorDefinition-AutomationManager.html)    | Often software associated with analysers and Laboratory Analytical Workflow (IHE LAW); may be performed by the Laboratory Information System (LIMS) |
+| [Order Result Tracker](ActorDefinition-OrderResultTracker.html) | This is often provided by Electronic Patient Record (EPR) Systems                                                                                   |
+| Laboratory Report (Clinical Document)                           | See [Clinical Document](ActorDefinition-ClinicalDocument.html)                                                                                      |
+| [Intermediary](ActorDefinition-Intermediary.html)               | E.g. Regional or Trust Integration Engine                                                                                                           |
+| Filler Order Management                                         | Software used to manage the orders. This may be the Order Placer.                                                                                   |
 {:.grid}
 
-See also Ref A `Section 3 Laboratory Testing Workflow (LTW) Profile` for detailed description of actors.
+See also Reference 1, `Section 3 Laboratory Testing Workflow (LTW) Profile`, for detailed description of actors.
 
 <figure>
 {%include LTW-component.svg%}
@@ -107,7 +104,7 @@ See also Ref A `Section 3 Laboratory Testing Workflow (LTW) Profile` for detaile
 </figure>
 <br clear="all">
 
-Initially only the IHE `LAB-1` and `LAB-3` is in focus. Later stages will include the use of [Genomic Order Management Service](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir).
+Initially only the IHE `LAB-1` and `LAB-3` are in focus. Later stages will include the use of [Genomic Order Management Service](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir).
 
 ## Laboratory Order and Report LAB-1 and LAB-3
 
@@ -122,11 +119,11 @@ Initially only the IHE `LAB-1` and `LAB-3` is in focus. Later stages will includ
 
 The processes above are described in more detail in:
 
-- [Process Flow: Genomic Test Order](#process-flow) for the order
-- [Process Flow: Genomic Test Report](#process-flow-1) for the report
+- [Process Flow: Genomic Test Order](#lab-1-process-flow) for the order
+- [Process Flow: Genomic Test Report](#lab-3-process-flow) for the report
 
 From a high-level perspective, the process is shown below:
-Where the `Order Placer` sends the **Laboratory Order** to the `Order Filler`, the lab performs the test and then sends the **Laboratory Report** back to the `Order Placer`. However, variations can exist such as the order is updated or the order is entered directly on the `Order Filler`system (these are currently out of scope).
+Where the `Order Placer` sends the **Laboratory Order** to the `Order Filler`, the lab performs the test and then sends the **Laboratory Report** back to the `Order Placer`. However, variations can exist such as the order is updated or the order is entered directly on the `Order Filler` system (these are currently out of scope).
 
 ```mermaid
 sequenceDiagram
@@ -156,7 +153,7 @@ sequenceDiagram
 <b>Interaction:</b> <a href="MQ.html" _target="_blank">Message Exchange</a> LAB-1
 </div>
 
-#### Process Flow
+#### LAB-1 Process Flow
 
 An order is created by the clinical practice and placed to the laboratory.
 
@@ -232,7 +229,7 @@ How this is implemented will vary between different NHS organisations and system
 
 ##### Complete Genomic Test Order Form
 
-These forms may (/will?) will have a computable definition called an [template (FHIR Questionnaire)](https://hl7.org/fhir/R4/questionnaire.html) which will list the technical content requirements for the form. 
+These forms will have a computable definition called a [template (FHIR Questionnaire)](https://hl7.org/fhir/R4/questionnaire.html) which will list the technical content requirements for the form. 
 
 - See [NW GMSA Genomics Test Order Panel](Questionnaire-GenomicTestOrder.html) for a FHIR Questionnaire definition of the form.
   - For details `on the wire` format see [ServiceRequest](ServiceRequest.html#diagnostic-order) 
@@ -282,7 +279,7 @@ After submitting the original order, the sample will be collected and sent to th
 <b>Interaction:</b> <a href="MQ.html" _target="_blank">Message Exchange</a> LAB-3
 </div>
 
-### Process Flow
+### LAB-3 Process Flow
 
 A report is created by the clinical practice and sent to the order result tracker.
 
@@ -388,7 +385,7 @@ It is envisaged this design will also extend to Laboratory Reports (R01).
 <b>Interaction:</b> <a href="MQ.html" _target="_blank">Message Exchange</a> LAB-2
 </div>
 
-### Process Flow
+### LAB-2 Process Flow
 
 ```mermaid
 graph TD
@@ -420,7 +417,7 @@ class OrderFiller,OrderPlacer yellow
 ```mermaid
 graph TD;
 
-    OrderPlacer
+    OrderPlacer[Order Placer]
 
     subgraph OrderFiller;
         
@@ -445,7 +442,9 @@ graph TD;
     classDef orange fill:#FFE6CC;
 ```
 
-In Progress
+<div class="alert alert-danger" role="alert">
+This section is currently being elaborated and subject to change.
+</div>
 
 ```mermaid
 sequenceDiagram
@@ -475,7 +474,7 @@ sequenceDiagram
     LIMS ->> clinician: Sends Laboratory Report
 ```
 
-### usecase 
+### Use Case
 
 > BCR-ABL1 concentration testing (M84.2) is used to monitor the amount of the fusion gene (Philadelphia chromosome) in chronic myeloid leukemia (CML) patients, with results typically reported on an International Scale (%IS) to measure treatment response.
 
@@ -497,7 +496,7 @@ Device ->> LIMS: Send Test Results Management LAB-5 R22/R32
 <b>Domain Archetype:</b> <a href="diagnostic-core.html#filler-order" _target="_blank">Diagnostic Core - Filler Order</a> 
 </div>
 
-#### Process Flow
+#### LAB-4 Process Flow
 
 ```mermaid
 graph TD
@@ -508,7 +507,7 @@ end
 
 RIE4["RIE Workflow Orchestration"]
 
-subgraph OrderFiller["Automation Manager"];
+subgraph Analyser["Automation Manager"];
     Cepheid[Analyser - Cepheid]
     StarLIMS[LIMS - StarLIMS]
     GOMS["NHS England Genomic Order Management System"] 
@@ -530,7 +529,7 @@ GOMS --> ExtLIMS
 classDef purple fill:#E1D5E7;
 classDef pink fill:#F8CECC;
 
-class GDP,RIE4,PubSub,VCFFHIR pink;
+class GDP,RIE4,PubSub pink;
 ```
 
 ### Test Results Management (LAB-5)
@@ -543,7 +542,7 @@ class GDP,RIE4,PubSub,VCFFHIR pink;
 <b>Interaction:</b> <a href="MQ.html" _target="_blank">Message Exchange</a> LAB-5
 </div>
 
-#### Process Flow
+#### LAB-5 Process Flow
 
 ```mermaid
 graph TD
@@ -582,7 +581,9 @@ graph TD
   class GDP,RIE,PubSub pink;
 ```
 
-In Progress
+<div class="alert alert-danger" role="alert">
+This section is currently being elaborated and subject to change.
+</div>
 
 ## Security Considerations
 

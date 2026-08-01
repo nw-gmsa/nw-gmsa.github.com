@@ -90,7 +90,9 @@ Content-Type: application/hl7-v2+er7
 
 ## Receive Message – Synchronous Messaging
 
-TODO
+<div class="alert alert-danger" role="alert">
+This section is currently being elaborated and subject to change.
+</div>
 
 ## Receive Message – Asynchronous Messaging
 

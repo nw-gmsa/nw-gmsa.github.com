@@ -11,8 +11,8 @@ This is currently being elaborated and subject to change.
 
 | Actor                                               | Definition                                                                                                                                                                                             |
 |-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Requestor](ActorDefinition-Requestor.html)         | A hospital laboratory that subcontracts a part of an Order or of an Order Group to another laboratory, e.g. Pathology or HODS. Is known in IHE TLW as [Order Placer](ActorDefinition-OrderPlacer.html) |
-| [Subcontractor](ActorDefinition-Subcontractor.html) | Receives Sub-orders, acknowledges specimen arrival and sends back results fulfilling these Sub-orders, e.g. Genomics. Is known in IHE TLW as [Order Filler](ActorDefinition-OrderFiller.html)                                                           |
+| [Requestor](ActorDefinition-Requestor.html)         | A hospital laboratory that subcontracts a part of an Order or of an Order Group to another laboratory, e.g. Pathology or HODS. Is known in IHE LTW as [Order Placer](ActorDefinition-OrderPlacer.html) |
+| [Subcontractor](ActorDefinition-Subcontractor.html) | Receives Sub-orders, acknowledges specimen arrival and sends back results fulfilling these Sub-orders, e.g. Genomics. Is known in IHE LTW as [Order Filler](ActorDefinition-OrderFiller.html)                                                           |
 {:.grid}
 
 ## Overview
@@ -32,12 +32,12 @@ graph LR;
     subgraph OrderFiller;
         
 
-        OrderManagment --> WriteReport
+        OrderManagement --> WriteReport
     end
 
     ExtOrderPlacer[External OrderFiller] 
-    OrderManagment --> |"Laboratory Order LAB-35<br/>reflex or sub-contract"| ExtOrderPlacer
-    ExtOrderPlacer --> |Laboratory Report LAB-36| OrderManagment 
+    OrderManagement --> |"Laboratory Order LAB-35<br/>reflex or sub-contract"| ExtOrderPlacer
+    ExtOrderPlacer --> |Laboratory Report LAB-36| OrderManagement 
 
     OrderPlacer --> |Laboratory Order LAB-1| OrderFiller
     WriteReport --> |Laboratory Report LAB-3| OrderPlacer
@@ -109,9 +109,9 @@ sequenceDiagram
 
 The current IHE ILW specification relies on HL7 v2.x, HL7 v3, and IHE XDS. Several modernization paths are available, most of which focus on adopting FHIR, updating relevant IHE profiles, and shifting from Clinical Documents (HL7 CDA and FHIR Documents) to IHE QEDm for data exchange.
 
-<img style="padding:3px;width:80%;" src="ILW and FHIR.drawio.png" alt="IHE ILW Modernistion with FHIR"/>
+<img style="padding:3px;width:80%;" src="ILW and FHIR.drawio.png" alt="IHE ILW Modernisation with FHIR"/>
 <br clear="all">
-<p class="figureTitle">IHE ILW Modernistion with FHIR</p> 
+<p class="figureTitle">IHE ILW Modernisation with FHIR</p> 
 <br clear="all">
 
 ## Scenarios
@@ -180,7 +180,7 @@ graph TD;
 <p class="figureTitle">Genomic LTW Business Process - Use Case 3</p> 
 <br clear="all">
 
-In this use case the original order is raised by the `Order Placer` and sent to a Pathology LIMS (`Pathology Order Filler`). The Pathology LIMS follows the processes outlined in [Process Flow: Genomic Test Order](LTW.html#process-flow) and [Process Flow: Genomic Test Report](LTW.html#process-flow-1) for pathology testing.  
+In this use case the original order is raised by the `Order Placer` and sent to a Pathology LIMS (`Pathology Order Filler`). The Pathology LIMS follows the processes outlined in [Process Flow: Genomic Test Order](LTW.html#lab-1-process-flow) and [Process Flow: Genomic Test Report](LTW.html#lab-3-process-flow) for pathology testing.  
 As part of this testing, the clinical process requires a genomics test to be performed.
 This genomics process is largely the same except for:
 - The order is sent as one interaction as the sample does not need to be collected.
@@ -220,15 +220,15 @@ LIMSP ->> EPR: Send Laboratory Report R01 (LAB-3)
 - Optional Path 1 – Genomic Order created by original order placer
     - Condition: [Genomic Order created by original order placer].
     - Note: The same specimen can be reused for multiple tests.
-    - Step 3: Order Placer submits a Genomic Order O21 (LAB-2) to Order Filler (Genomics).
+    - Step 3: Order Placer submits a Genomic Order O21 (LAB-1) to Order Filler (Genomics).
     - Step 4: Specimen is sent from Order Placer to Genomics.
     - Step 5: Order Filler (Genomics) sends a Genomic Report R01 (LAB-3) back to the Order Placer.
 - Optional Path 2 – Genomic Order created by Pathology
     - Condition: [Order Filler (Pathology) creates Genomic Order].
     - Note: The same specimen can be reused for multiple tests.
-    - Step 6: Order Filler (Pathology) submits a Genomic Order O21 (LAB-2) to Order Filler (Genomics).
+    - Step 6: Order Filler (Pathology) submits a Genomic Order O21 (LAB-35) to Order Filler (Genomics).
     - Step 7: Specimen is sent from Pathology to Genomics.
-    - Step 8: Order Filler (Genomics) sends a Genomic Report R01 (LAB-3) to Order Filler (Pathology).
+    - Step 8: Order Filler (Genomics) sends a Genomic Report R01 (LAB-36) to Order Filler (Pathology).
     - Step 9: Pathology sends the Genomic Report R01 (LAB-3) to the Order Placer.
 
 #### Diagnostic Cancer Pathways
@@ -315,7 +315,7 @@ LIMS ->> EPR: Send Laboratory Report R01 (LAB-3)
 
 ## Options 
 
-Variations on the basic TLW scenario. 
+Variations on the basic LTW scenario. 
 
 Order Order Placer MUST include Ordering Facility (ODS Code) if the Order Filler is outside the organisation (i.e. ICS Pathology Lab or Regional Genomics Lab).
 Order Filler MUST respond with a Report Identifier and the Order Identifier (if supplied in the Order) in the laboratory report.
@@ -382,7 +382,7 @@ sequenceDiagram
     OrderFillerPathology -->> OrderPlacer: Returns Report (Report Identifier 2, Order Identifier 1, Order Identifier 2, Visit/Spell Number A  and Specimen Accession Number X)
 ```
 
-### Sub Contact 
+### Sub Contract 
 
 Genomic Lab sub contracts to another Genomics Lab for testing.
 
