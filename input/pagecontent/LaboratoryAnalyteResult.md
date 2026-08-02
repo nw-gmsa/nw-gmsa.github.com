@@ -42,7 +42,7 @@ Output: [Laboratory Analyte Result](#laboratory-analyte-result)
 Once the analyzer generates a value, the results must be evaluated and distributed to the requesting physician or client.
 - Verification: The laboratory scientist reviews the result against the laboratory's reference ranges (what is considered "normal") and validates the data quality.
 - Reporting: The final validated result is transmitted to the clinician's health record or client file.
-2- Critical Action: If the analyte is at a dangerously abnormal level, immediate protocols (e.g., direct calls to the doctor) are enacted.
+- Critical Action: If the analyte is at a dangerously abnormal level, immediate protocols (e.g., direct calls to the doctor) are enacted.
 
 Output: [Genomic Test Report](StructureDefinition-DiagnosticReport.html)
 Process Flow: [Test Results Management (LAB-5)](LTW.html#test-results-management-lab-5)

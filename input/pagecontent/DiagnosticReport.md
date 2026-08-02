@@ -148,7 +148,7 @@ A more detailed mapping of the results section of the laboratory report, see [Ge
 
 Description: [Genomic Study](https://build.fhir.org/ig/HL7/genomics-reporting/general.html#genomic-study)
 
-#### Genomic Study
+#### Genomic Study (Procedure)
 
 <div class="alert alert-info" role="alert">
 <b>HL7 FHIR Profile:</b> <a href="StructureDefinition-GenomicStudy.html" _target="_blank">Procedure Genomic Study</a> 

@@ -45,7 +45,6 @@ This model is based on a merge of NHS England Genomics and [AU eRequesting Task 
 | code (NHS England Genomics)                    | `Process Genomic Test Request` (https://fhir.nhs.uk/CodeSystem/task-code-genomics)                                                              | 1..1        |                                                           |
 | focus                                 |                                                                                                                                                 | 1..1        | [ServiceRequest](StructureDefinition-ServiceRequest.html) |
 | for                                   | identifier [NHS Number](StructureDefinition-NHSIdentifier.html)                                                                                 | 1..1        | [Patient](StructureDefinition-Patient.html)               |
-
 | requester                             | identifier [Organisation Code ](StructureDefinition-OrganisationCode.html)                                                                      | 1..1        | Preferred [Organization](StructureDefinition-Organization.html)     |
 | owner                                 | identifier [Organisation Code ](StructureDefinition-OrganisationCode.html)                                                                      | 0..1        | Preferred [Organization](StructureDefinition-Organization.html)     |
 {:.grid}

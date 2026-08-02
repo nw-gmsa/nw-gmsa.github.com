@@ -51,7 +51,7 @@ GET [base]/Condition/{id}
 ### Search
 
 <div class="alert alert-success" role="alert">
-1GET [base]/Condition?[parameter]=[value]
+GET [base]/Condition?[parameter]=[value]
 </div>
 
 
