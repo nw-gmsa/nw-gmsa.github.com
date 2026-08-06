@@ -37,6 +37,35 @@ provider --> |Respond| consumer
 
 [Document Exchange [MHD]](MHD.html) - Defines exchange of Documents, which we use to exchange FHIR document content.
 
+### Publish Document 
+
+NW Genomics support:
+
+- [HL7 v2 MDM_T02](MHD.html#document-publish)
+- [IHE-105 Simplified Publish (HL7 FHIR)](https://hl7.eu/fhir/health-data-api/1.0.0-ballot/en/document-exchange.html#iti-105-simplified-publish).
+
+```mermaid
+sequenceDiagram
+
+    participant LIMS as Order Filler<br/>LIMS 
+    participant Provider as Document Producer<br/>(Regional Orchestration Engine)
+    participant Consumer as Document Consumer
+
+    note over LIMS,Provider: IHE LAB-3 Laboratory Report
+    LIMS ->> Provider: Sends Laboratory Report
+
+    opt IHE ITI-105 Simplified Publish
+        Note over Consumer,Provider:ITI-105 Simplified Publish
+        Provider->>Consumer: HL7 v2 MDM_T02 Message
+        Consumer-->>Provider: Response HL7 v2 ACK
+    end 
+    opt HL7 v2 MDM_T02
+         Note over Consumer,Provider:Original document <br/>notification and content
+        Provider->>Consumer: POST /DocumentReference
+        Consumer-->>Provider: Response OperationOutcome
+    end 
+```
+
 ## Resource Exchange
 
 ```mermaid
