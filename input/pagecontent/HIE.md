@@ -56,13 +56,13 @@ sequenceDiagram
 
     opt IHE ITI-105 Simplified Publish
         Note over Consumer,Provider:ITI-105 Simplified Publish
-        Provider->>Consumer: HL7 v2 MDM_T02 Message
-        Consumer-->>Provider: Response HL7 v2 ACK
+        Provider->>Consumer: POST /DocumentReference
+        Consumer-->>Provider: Response OperationOutcome
     end 
     opt HL7 v2 MDM_T02
          Note over Consumer,Provider:Original document <br/>notification and content
-        Provider->>Consumer: POST /DocumentReference
-        Consumer-->>Provider: Response OperationOutcome
+        Provider->>Consumer: HL7 v2 MDM_T02 Message
+        Consumer-->>Provider: Response HL7 v2 ACK
     end 
 ```
 
