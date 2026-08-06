@@ -705,25 +705,25 @@ Manchester Royal Infirmary^^R0A02^^^ODS^R0A
 
 | Format                                                                                           | 
 |--------------------------------------------------------------------------------------------------|
-| [Original Hl7 v2 OML_O21](https://github.com/nw-gmsa/Testing/tree/main/Input/V2/O21)             |
-| [FHIR Message O21](https://github.com/nw-gmsa/Testing/tree/main/Output/FHIR/O21)                 |
 | [North West Genomics HL7 v2 OML_O21](https://github.com/nw-gmsa/Testing/tree/main/Output/V2/O21) |
+| [FHIR Message O21](https://github.com/nw-gmsa/Testing/tree/main/Output/FHIR/O21)                 |
+| [Original Hl7 v2 OML_O21](https://github.com/nw-gmsa/Testing/tree/main/Input/V2/O21)             |
 {:.grid}
 
 ### ORU_R01 Unsolicited transmission of an observation message
 
 | Format                                                                                           | 
 |--------------------------------------------------------------------------------------------------|
-| [Original Hl7 v2 ORU_R01](https://github.com/nw-gmsa/Testing/tree/main/Input/V2/R01)             |
-| [FHIR Message R01](https://github.com/nw-gmsa/Testing/tree/main/Output/FHIR/R01)                 |
 | [North West Genomics HL7 v2 ORU_R01](https://github.com/nw-gmsa/Testing/tree/main/Output/V2/R01) |
+| [FHIR Message R01](https://github.com/nw-gmsa/Testing/tree/main/Output/FHIR/R01)                 |
+| [Original Hl7 v2 ORU_R01](https://github.com/nw-gmsa/Testing/tree/main/Input/V2/R01)             |
 {:.grid}
 
 ### MDM_T02 Original document notification and content
 
 | Format                                                                                           | 
 |--------------------------------------------------------------------------------------------------|
-| Source message is ORU_R01                                                                        |
-| [FHIR Message T02](https://github.com/nw-gmsa/Testing/tree/main/Output/FHIR/T02)                 |
 | [North West Genomics HL7 v2 MDM_T02](https://github.com/nw-gmsa/Testing/tree/main/Output/V2/T02) |
+| [FHIR Message T02](https://github.com/nw-gmsa/Testing/tree/main/Output/FHIR/T02)                 |
+| Original message is ORU_R01                                                                      |
 {:.grid}
