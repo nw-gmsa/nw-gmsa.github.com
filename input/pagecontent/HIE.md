@@ -26,14 +26,29 @@ HL7 SMART Backend Services - Defines authorization in FHIR. We use the SMART Bac
 ```mermaid
 graph LR
 
-publisher[Document Publisher]
-provider[Document Access Provider]
-consumer[Document Consumer]
+    publisher[Document Publisher]
+    subgraph provider[Document Access Provider]
+        registry[Document Registry]
+        repository[Document Repository]
+    end
+    consumer[Document Consumer]
 
-publisher --> |Publish Document| provider
-consumer --> |Request Documents| provider
-provider --> |Respond| consumer
+    publisher --> |"Publish Document<br/><br/>Simplified Publish [ITI-105 HL7 FHIR]<br/>Original document notification and content [HL7 v2 MDM_T02]"| provider
+    consumer --> |"Find Documents<br/><br/>Find Document References [ITI-67 HL7 FHIR]<br/>Registry Stored Query [ITI-18 XDS]"| registry
+    consumer --> |"Retrieves Documents<br/><br/>Retrieve Document [ITI-68]<br/>Retrieve Document Set [ITI-43 XDS]"| repository
+    registry --> consumer
+    repository -->  consumer
 ```
+
+The IHE XDS/MHD document-sharing pattern used in health information exchange, has three actor roles:
+
+- Document Publisher — pushes documents into the system using either the FHIR-based Simplified Publish (ITI-105) transaction or the older HL7 v2 MDM_T02 notification.
+- Document Access Provider — a grouping of two services:
+  - Document Registry, which indexes document metadata and answers queries (Find Document References ITI-67 in FHIR, or the older Registry Stored Query ITI-18 in XDS).
+  - Document Repository, which stores and serves the actual document content (Retrieve Document ITI-68 in FHIR, or Retrieve Document Set ITI-43 in XDS).
+-Document Consumer — queries the registry to find documents and retrieves them from the repository.
+
+In short: a publisher submits documents into the registry/repository, and a consumer discovers them via the registry then fetches the content from the repository — with each interaction supporting both a modern FHIR transaction and its older HL7v2/XDS equivalent.
 
 [Document Exchange [MHD]](MHD.html) - Defines exchange of Documents, which we use to exchange FHIR document content.
 
