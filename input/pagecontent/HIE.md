@@ -86,13 +86,13 @@ sequenceDiagram
 ```mermaid
 graph LR
 
-publisher["Workflow Exchange (i.e. IHE LTW)<br/>Bioninformatics Pipelines"]
-provider[Resource Access Provider<br/><br/>Genomic Data Platform]
-consumer[Resource/Data Consumer]
+  publisher["Workflow Exchange (i.e. IHE LTW)<br/>Bioninformatics Pipelines"]
+  provider[Resource Access Provider<br/><br/>Genomic Data Platform]
+  consumer[Resource/Data Consumer]
 
-publisher -->  provider
-consumer --> |Request Resources| provider
-provider --> |Respond| consumer
+  publisher --> |Publish Report<br/><br/>IHE LAB-3<br/>HL7 v2 ORU_R01| provider
+  consumer --> |Request Resources| provider
+  provider --> |Respond| consumer
 ```
 
 [Resource Access [IPA/QEDm]](QEDm.html) - using HL7 International Patient Access (IPA), aligned with IHE Query for Existing Data for Mobile (QEDm) — for querying individual FHIR resources such as conditions, medications, and observations
