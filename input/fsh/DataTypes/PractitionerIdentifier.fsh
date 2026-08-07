@@ -17,7 +17,7 @@ Description:     """
 //* ^keyword[+] = #NHSDataDictionary "NHS Data Dictionary"
 
 * system 1..1
-* system from PractitionerIdentifiers
+* system from PractitionerIdentifiers (extensible)
 * value 1..1
 //* type = $v2-0203#LN (exactly)
 
