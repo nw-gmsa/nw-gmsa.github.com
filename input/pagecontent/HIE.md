@@ -46,7 +46,7 @@ The IHE XDS/MHD document-sharing pattern used in health information exchange, ha
 - Document Access Provider — a grouping of two services:
   - Document Registry, which indexes document metadata and answers queries (Find Document References ITI-67 in FHIR, or the older Registry Stored Query ITI-18 in XDS).
   - Document Repository, which stores and serves the actual document content (Retrieve Document ITI-68 in FHIR, or Retrieve Document Set ITI-43 in XDS).
--Document Consumer — queries the registry to find documents and retrieves them from the repository.
+- Document Consumer — queries the registry to find documents and retrieves them from the repository.
 
 In short: a publisher submits documents into the registry/repository, and a consumer discovers them via the registry then fetches the content from the repository — with each interaction supporting both a modern FHIR transaction and its older HL7v2/XDS equivalent.
 
