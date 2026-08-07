@@ -11,7 +11,7 @@
 ```mermaid
 erDiagram
 
-GenomicStudy o|--|{ Observation : "hasMember"
+GenomicStudy
 ```
 
 ## Data 
