@@ -23,6 +23,8 @@ Description: "Based on HL7 LRI Example 3 (Ref 5.9.1.3)"
 * subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
 * subject.display = "Ned LIVERPOOL"
 
-* hasMember[+] = Reference(53227665-9af2-4150-9891-40fa60dbfc0c)
+* component[+]
+  * code = $loinc#51967-8 "Genetic disease assessed [ID]"
+  * valueCodeableConcept = $GCC#R210 "Inherited MMR deficiency (Lynch syndrome)"
 
 

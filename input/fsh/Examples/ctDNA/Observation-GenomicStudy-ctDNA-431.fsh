@@ -21,7 +21,20 @@ Description: "TODO"
 * subject.reference = "urn:uuid:2160525b-0168-4f40-8ebf-9b053052a62c"
 * subject.display = "Theon SHEFFIELD"
 
-* hasMember[+].reference = "urn:uuid:cd491a5f-62ec-4f6b-904f-206bae2c9b20"
-* hasMember[+].reference = "urn:uuid:b3b6b20f-8e5a-432c-8155-579dc4d60a09"
+* component[+]
+  * code
+    * coding[+]
+      * code = #51967-8
+      * display = "Gene dis assessed"
+      * system = $loinc
+  * valueCodeableConcept.coding[+] = https://fhir.nwgenomics.nhs.uk/CodeSystem/GenomicClinicalIndication#M4
+
+* component[+]
+  * code
+    * coding[+]
+      * code = #51968-6
+      * display = "Discrete variation analysis overall interpretation"
+      * system = $loinc
+  * valueCodeableConcept.coding[+] = $loinc#LA9664-9 "Failure"
 
 

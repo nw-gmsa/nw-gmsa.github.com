@@ -21,8 +21,23 @@ Description: "TODO"
 * subject = Reference(Patient-Sheffield)
 * subject.display = "Theon SHEFFIELD"
 
-* hasMember[+] = Reference(51967-8-ctDNA)
-* hasMember[+] = Reference(51968-6-ctDNA-failed)
+* component[+]
+  * code
+    * coding[+]
+      * code = #51967-8
+      * display = "Gene dis assessed"
+      * system = $loinc
+  * valueCodeableConcept.coding[+] = https://fhir.nwgenomics.nhs.uk/CodeSystem/GenomicClinicalIndication#M4
+
+* component[+]
+  * code
+    * coding[+]
+      * code = #51968-6
+      * display = "Discrete variation analysis overall interpretation"
+      * system = $loinc
+  * valueCodeableConcept.coding[+] = https://fhir.nwgenomics.nhs.uk/CodeSystem/GenomicTestOutcomeCode#431 "TARGET DETECTED AT A LEVEL REQUIRING CLINICAL ACTION"
+
+
 
 
 

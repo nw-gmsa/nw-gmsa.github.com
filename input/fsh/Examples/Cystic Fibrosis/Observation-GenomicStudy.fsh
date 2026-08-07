@@ -24,4 +24,6 @@ Description: "Based on HL7 LRI Example 1 (Ref 5.9.1.2)"
 * subject = Reference(Patient-Lancaster)
 * subject.display = "Jaime LANCASTER"
 
-* hasMember[+] = Reference(5cbd1e0e-d0dd-4df2-9f8c-caa2a1785982)
+* component[+]
+  * code = $loinc#51967-8 "Genetic disease assessed [ID]"
+  * valueCodeableConcept = $GCC#R185 "Cystic fibrosis carrier"
