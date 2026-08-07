@@ -1,5 +1,5 @@
 Profile:        GenomicStudyPanel
-Parent:         ObservationPanel
+Parent:         GenomicObservation
 Id:             GenomicStudyPanel
 Title:          "Genomic Study Panel"
 Description:    """
