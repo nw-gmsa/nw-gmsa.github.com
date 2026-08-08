@@ -57,13 +57,6 @@ The diagram below shows how an IHE LAB-3 / HL7 v2 ORU_R01 laboratory report is t
 - [HL7 v2 MDM_T02](MHD.html#document-publish)
 - [IHE-105 Simplified Publish (HL7 FHIR)](https://hl7.eu/fhir/health-data-api/1.0.0-ballot/en/document-exchange.html#iti-105-simplified-publish)
 
-The document content, for either transaction, can be:
-
-- PDF
-- [HL7 Europe Laboratory Report](https://build.fhir.org/ig/hl7-eu/laboratory/) FHIR Document
-
-Using a HL7 Europe Laboratory Report FHIR Document to share laboratory reports is a modernisation of [IHE Sharing Laboratory Reports (XD-LAB)](https://wiki.ihe.net/index.php/Sharing_Laboratory_Reports), replacing HL7 Clinical Document Architecture (CDA) with a HL7 FHIR Document.
-
 ```mermaid
 sequenceDiagram
 
@@ -84,6 +77,45 @@ sequenceDiagram
     Provider->>Consumer: HL7 v2 MDM_T02 Message
     Consumer-->>Provider: Response HL7 v2 ACK
   end
+```
+
+The document content, for either transaction, can be:
+
+- Unstructured - PDF
+- Structured - [HL7 Europe Laboratory Report](https://build.fhir.org/ig/hl7-eu/laboratory/) FHIR Document
+  - Note the content of the structured report is similar to IHE LAB-3 / HL7 v2 ORU_R01 laboratory report, with the addition of a composition which may also contain a html version of the PDF report.
+
+Using a HL7 Europe Laboratory Report FHIR Document to share laboratory reports is a modernisation of [IHE Sharing Laboratory Reports (XD-LAB)](https://wiki.ihe.net/index.php/Sharing_Laboratory_Reports), replacing HL7 Clinical Document Architecture (CDA) with a HL7 FHIR Document.
+
+```mermaid
+classDiagram
+
+class DocumentReference
+
+namespace Unstructured {
+    class BinaryPDF
+}
+
+namespace Structured {
+    class Composition
+    class DiagnosticRepoort
+    class Patient
+    class ServiceRequest
+    class Specimen
+    class BinaryPDF2
+    class Observation
+}
+
+DocumentReference --> BinaryPDF
+DocumentReference --> Composition
+
+Composition o-- Patient
+Composition o-- DiagnosticRepoort
+Composition o-- ServiceRequest
+Composition o-- Specimen
+Composition o-- BinaryPDF2
+Composition o-- Observation
+DiagnosticRepoort o-- Observation
 ```
 
 ## Resource Exchange
