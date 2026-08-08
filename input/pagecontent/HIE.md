@@ -84,7 +84,7 @@ sequenceDiagram
   participant Consumer as Document Access Provider<br/>Document Consumer
 
   note over LIMS,Publisher: IHE LAB-3 Laboratory Report
-  LIMS ->> Publisher: Sends Laboratory Report
+  LIMS ->> Publisher: Sends Laboratory Report<br/>HL7 v2 ORU_R01
   Publisher ->> Publisher: Transform message
   opt IHE ITI-105 Simplified Publish
     Note over Consumer,Publisher:ITI-105 Simplified Publish
@@ -165,10 +165,10 @@ sequenceDiagram
   participant Provider as Resource Access Provider
 
   note over LIMS,Publisher: IHE LAB-3 Laboratory Report
-  LIMS ->> Publisher: Sends Laboratory Report
+  LIMS ->> Publisher: Sends Laboratory Report<br/>HL7 v2 ORU_R01
   opt HL7 v2 ORU_R01
     note over Publisher,Provider: Original message passed through unchanged
-    Publisher ->> Provider: Sends Laboratory Report
+    Publisher ->> Provider: Sends Laboratory Report<br/>HL7 v2 ORU_R01
     Provider ->> Provider: Process message
   end
   opt HL7 FHIR RESTful
