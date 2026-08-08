@@ -8,6 +8,25 @@ This specification also conforms to HL7 UK Core.
 
 Process flows and background information are the same as [EU Health Data API](https://hl7.eu/fhir/health-data-api/1.0.0-ballot/en/index.html) and so are not repeated here.
 
+## Actors
+
+The table below summarises the actors referenced throughout this page.
+
+| Actor                    | Definition                                                                                                                                                                                                                 |
+|--------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Order Filler (LIMS)      | The laboratory information system that places the original order and produces the IHE LAB-3 / HL7 v2 ORU_R01 laboratory report.                                                                                            |
+| Document Publisher       | The Regional Orchestration Engine, transforming the IHE LAB-3 / HL7 v2 ORU_R01 laboratory report and pushing it to a Document Consumer or Document Access Provider, using ITI-105 Simplified Publish or HL7 v2 MDM_T02.    |
+| Document Access Provider | A grouping of the Document Registry and Document Repository, indexing document metadata and serving document content to Document Consumers. Other names include Electronic Document Management Systems (EDMS) and IHE XDS. |
+| Document Registry        | Indexes document metadata and answers queries (Find Document References ITI-67 in FHIR, or the older Registry Stored Query ITI-18 in XDS). NHS England National Record Locator is a Document Registry.                     |
+| Document Repository      | Stores and serves the actual document content (Retrieve Document ITI-68 in FHIR, or Retrieve Document Set ITI-43 in XDS).                                                                                                  |
+| Document Consumer        | Queries the Document Registry to find documents and retrieves them from the Document Repository.                                                                                                                           |
+| Resource Publisher       | The Regional Orchestration Engine, parsing the IHE LAB-3 / HL7 v2 ORU_R01 laboratory report and populating individual FHIR resources in the Resource Access Provider.                                                      |
+| Resource Access Provider | The Genomic Data Platform, storing FHIR resources populated by the Resource Publisher and serving them to Resource/Data Consumers. Other examples include Shared Care Records and NHS England Patient Data Manager.        |
+| Resource/Data Consumer   | Requests and retrieves individual FHIR resources, such as conditions, medications, and observations, from the Resource Access Provider.                                                                                    |
+{:.grid}
+
+Note: the Document Publisher and Resource Publisher are logical roles played by the same Regional Orchestration Engine — the former publishes whole documents, the latter populates individual FHIR resources.
+
 ## API Security
 
 See also [API Security](api-security.html)
@@ -61,21 +80,21 @@ The diagram below shows how an IHE LAB-3 / HL7 v2 ORU_R01 laboratory report is t
 sequenceDiagram
 
   participant LIMS as Order Filler<br/>LIMS
-  participant Provider as Document Publisher<br/>(Regional Orchestration Engine)
+  participant Publisher as Document Publisher<br/>(Regional Orchestration Engine)
   participant Consumer as Document Access Provider<br/>Document Consumer
 
-  note over LIMS,Provider: IHE LAB-3 Laboratory Report
-  LIMS ->> Provider: Sends Laboratory Report
-  Provider ->> Provider: Transform message
+  note over LIMS,Publisher: IHE LAB-3 Laboratory Report
+  LIMS ->> Publisher: Sends Laboratory Report
+  Publisher ->> Publisher: Transform message
   opt IHE ITI-105 Simplified Publish
-    Note over Consumer,Provider:ITI-105 Simplified Publish
-    Provider->>Consumer: POST /DocumentReference
-    Consumer-->>Provider: Response OperationOutcome
+    Note over Consumer,Publisher:ITI-105 Simplified Publish
+    Publisher->>Consumer: POST /DocumentReference
+    Consumer-->>Publisher: Response OperationOutcome
   end
   opt HL7 v2 MDM_T02
-    Note over Consumer,Provider:Original document <br/>notification and content
-    Provider->>Consumer: HL7 v2 MDM_T02 Message
-    Consumer-->>Provider: Response HL7 v2 ACK
+    Note over Consumer,Publisher:Original document <br/>notification and content
+    Publisher->>Consumer: HL7 v2 MDM_T02 Message
+    Consumer-->>Publisher: Response HL7 v2 ACK
   end
 ```
 
@@ -85,7 +104,7 @@ The document content, for either transaction, can be:
 - Structured — [HL7 Europe Laboratory Report](https://build.fhir.org/ig/hl7-eu/laboratory/) FHIR Document
   - The content of the structured report is similar to the IHE LAB-3 / HL7 v2 ORU_R01 laboratory report, with the addition of a Composition, which may also contain an HTML version of the PDF report.
 
-Using a HL7 Europe Laboratory Report FHIR Document to share laboratory reports is a modernisation of [IHE Sharing Laboratory Reports (XD-LAB)](https://wiki.ihe.net/index.php/Sharing_Laboratory_Reports), replacing HL7 Clinical Document Architecture (CDA) with a HL7 FHIR Document.
+Using an HL7 Europe Laboratory Report FHIR Document to share laboratory reports is a modernisation of [IHE Sharing Laboratory Reports (XD-LAB)](https://wiki.ihe.net/index.php/Sharing_Laboratory_Reports), replacing HL7 Clinical Document Architecture (CDA) with an HL7 FHIR Document.
 
 ```mermaid
 classDiagram
@@ -136,6 +155,7 @@ graph LR
 
 The diagram below shows how an IHE LAB-3 / HL7 v2 ORU_R01 laboratory report is used to populate resources in the Resource Access Provider. The internal processing uses a combination of FHIR RESTful interactions and FHIR Transactions.
 This method of sharing results is aimed at populating a FHIR repository for resource/data consumers. The order placer (hospital) will typically prefer the more traditional method of receiving structured laboratory reports: a direct, point-to-point HL7 v2 ORU_R01 feed into their own LIMS/EPR, rather than retrieving results via this resource-population flow.
+The "Process message" step represents the point at which the received message is parsed to persist or share individual resources.
 
 ```mermaid
 sequenceDiagram
@@ -146,11 +166,35 @@ sequenceDiagram
 
   note over LIMS,Publisher: IHE LAB-3 Laboratory Report
   LIMS ->> Publisher: Sends Laboratory Report
-
-  note over Publisher,Provider: Internal Processing
-  loop For each resource and/or FHIR Transaction
-    Publisher ->> Provider: Check for existing resource
-    Publisher ->> Provider: Create or update resource
+  opt HL7 v2 ORU_R01
+    note over Publisher,Provider: Original message passed through unchanged
+    Publisher ->> Provider: Sends Laboratory Report
+    Provider ->> Provider: Process message
   end
+  opt HL7 FHIR RESTful
+    note over Publisher,Provider: Publisher parses the message and populates resources
+    loop For each resource and/or FHIR Transaction
+      Publisher ->> Provider: Check for existing resource
+      Publisher ->> Provider: Create or update resource
+    end
+  end
+```
+
+### Sharing Laboratory Reports (Resource and Document)
+
+When the document format is an HL7 Europe Laboratory Report FHIR Document, the Resource and Document sharing methods described above can be combined. As noted previously, the FHIR Document contains the same clinical content as the IHE LAB-3 / HL7 v2 ORU_R01 message, so it can be processed in the same way to persist or share individual resources.
+
+```mermaid
+sequenceDiagram
+
+  participant Publisher as Document Publisher
+  participant Provider as Document Access Provider
+  participant RProvider as Resource Access Provider
+
+  Note over Publisher,Provider:ITI-105 Simplified Publish
+  Publisher->>Provider: POST /DocumentReference
+  Provider-->>Publisher: Response OperationOutcome
+  Provider ->> RProvider: HL7 Europe Laboratory Report<br/>FHIR Document
+  RProvider ->> RProvider: Process document
 ```
 
