@@ -117,7 +117,7 @@ sequenceDiagram
   LIMS ->> Publisher: Sends Laboratory Report
 
   note over Publisher,Provider: Internal Processing
-  loop For each resource
+  loop For each resource and/or FHIR Transaction
     Publisher ->> Provider: Check for existing resource
     Publisher ->> Provider: Create or update resource
   end
