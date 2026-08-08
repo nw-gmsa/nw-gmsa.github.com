@@ -35,12 +35,12 @@ graph LR
     consumer --> |"Find Documents<br/><br/>Find Document References [ITI-67 HL7 FHIR]<br/>Registry Stored Query [ITI-18 XDS]"| registry
     consumer --> |"Retrieves Documents<br/><br/>Retrieve Document [ITI-68]<br/>Retrieve Document Set [ITI-43 XDS]"| repository
     registry --> consumer
-    repository -->  consumer
+    repository --> consumer
 ```
 
 [Document Exchange [MHD]](MHD.html) - Defines exchange of Documents, which we use to exchange FHIR document content.
 
-The IHE XDS/MHD document-sharing pattern used in health information exchange, has three actor roles:
+The IHE XDS/MHD document-sharing pattern used in health information exchange has three actor roles:
 
 - Document Publisher — pushes documents into the system using either the FHIR-based Simplified Publish (ITI-105) transaction or the older HL7 v2 MDM_T02 notification.
 - Document Access Provider — a grouping of two services:
@@ -55,7 +55,7 @@ In short: a publisher submits documents into the registry/repository, and a cons
 The diagram below shows how an IHE LAB-3 / HL7 v2 ORU_R01 laboratory report is transformed by the Document Publisher and pushed on to a Document Consumer or Document Access Provider, using one of two supported publish transactions:
 
 - [HL7 v2 MDM_T02](MHD.html#document-publish)
-- [IHE-105 Simplified Publish (HL7 FHIR)](https://hl7.eu/fhir/health-data-api/1.0.0-ballot/en/document-exchange.html#iti-105-simplified-publish)
+- [ITI-105 Simplified Publish (HL7 FHIR)](https://hl7.eu/fhir/health-data-api/1.0.0-ballot/en/document-exchange.html#iti-105-simplified-publish)
 
 ```mermaid
 sequenceDiagram
@@ -81,9 +81,9 @@ sequenceDiagram
 
 The document content, for either transaction, can be:
 
-- Unstructured - PDF
-- Structured - [HL7 Europe Laboratory Report](https://build.fhir.org/ig/hl7-eu/laboratory/) FHIR Document
-  - Note the content of the structured report is similar to IHE LAB-3 / HL7 v2 ORU_R01 laboratory report, with the addition of a composition which may also contain a html version of the PDF report.
+- Unstructured — PDF
+- Structured — [HL7 Europe Laboratory Report](https://build.fhir.org/ig/hl7-eu/laboratory/) FHIR Document
+  - The content of the structured report is similar to the IHE LAB-3 / HL7 v2 ORU_R01 laboratory report, with the addition of a Composition, which may also contain an HTML version of the PDF report.
 
 Using a HL7 Europe Laboratory Report FHIR Document to share laboratory reports is a modernisation of [IHE Sharing Laboratory Reports (XD-LAB)](https://wiki.ihe.net/index.php/Sharing_Laboratory_Reports), replacing HL7 Clinical Document Architecture (CDA) with a HL7 FHIR Document.
 
@@ -98,11 +98,11 @@ namespace Unstructured {
 
 namespace Structured {
     class Composition
-    class DiagnosticRepoort
+    class DiagnosticReport
     class Patient
     class ServiceRequest
     class Specimen
-    class BinaryPDF2
+    class BinaryPDF2["BinaryPDF"]
     class Observation
 }
 
@@ -110,12 +110,12 @@ DocumentReference --> BinaryPDF
 DocumentReference --> Composition
 
 Composition o-- Patient
-Composition o-- DiagnosticRepoort
+Composition o-- DiagnosticReport
 Composition o-- ServiceRequest
 Composition o-- Specimen
 Composition o-- BinaryPDF2
 Composition o-- Observation
-DiagnosticRepoort o-- Observation
+DiagnosticReport o-- Observation
 ```
 
 ## Resource Exchange
@@ -135,6 +135,7 @@ graph LR
 ### Sharing Laboratory Reports (Resource)
 
 The diagram below shows how an IHE LAB-3 / HL7 v2 ORU_R01 laboratory report is used to populate resources in the Resource Access Provider. The internal processing uses a combination of FHIR RESTful interactions and FHIR Transactions.
+This method of sharing results is aimed at populating a FHIR repository for resource/data consumers. The order placer (hospital) will typically prefer the more traditional method of receiving structured laboratory reports: a direct, point-to-point HL7 v2 ORU_R01 feed into their own LIMS/EPR, rather than retrieving results via this resource-population flow.
 
 ```mermaid
 sequenceDiagram
