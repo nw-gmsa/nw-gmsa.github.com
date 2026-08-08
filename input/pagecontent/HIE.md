@@ -10,9 +10,7 @@ Process flows and background information are the same as [EU Health Data API](ht
 
 ## API Security
 
-See [API Security](api-security.html)
-
-### Authorization
+See also [API Security](api-security.html)
 
 HL7 SMART Backend Services - Defines authorization in FHIR. We use the SMART Backend Services profile for system-system authorization, and FHIR scopes.
 [Authorisation [IUA]](IUA.html) - Defines authorization and access control actors and mechanisms. We use the actors and transactions model.
