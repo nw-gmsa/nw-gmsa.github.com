@@ -8,7 +8,7 @@ This specification also conforms to HL7 UK Core.
 
 Process flows and background information are the same as [EU Health Data API](https://hl7.eu/fhir/health-data-api/1.0.0-ballot/en/index.html) and so are not repeated here.
 
-## API Security 
+## API Security
 
 See [API Security](api-security.html)
 
@@ -40,6 +40,8 @@ graph LR
     repository -->  consumer
 ```
 
+[Document Exchange [MHD]](MHD.html) - Defines exchange of Documents, which we use to exchange FHIR document content.
+
 The IHE XDS/MHD document-sharing pattern used in health information exchange, has three actor roles:
 
 - Document Publisher — pushes documents into the system using either the FHIR-based Simplified Publish (ITI-105) transaction or the older HL7 v2 MDM_T02 notification.
@@ -50,35 +52,40 @@ The IHE XDS/MHD document-sharing pattern used in health information exchange, ha
 
 In short: a publisher submits documents into the registry/repository, and a consumer discovers them via the registry then fetches the content from the repository — with each interaction supporting both a modern FHIR transaction and its older HL7v2/XDS equivalent.
 
-[Document Exchange [MHD]](MHD.html) - Defines exchange of Documents, which we use to exchange FHIR document content.
+### Sharing Laboratory Reports (Document)
 
-### Publish Document 
-
-NW Genomics support:
+The diagram below shows how an IHE LAB-3 / HL7 v2 ORU_R01 laboratory report is transformed by the Document Publisher and pushed on to a Document Consumer or Document Access Provider, using one of two supported publish transactions:
 
 - [HL7 v2 MDM_T02](MHD.html#document-publish)
-- [IHE-105 Simplified Publish (HL7 FHIR)](https://hl7.eu/fhir/health-data-api/1.0.0-ballot/en/document-exchange.html#iti-105-simplified-publish).
+- [IHE-105 Simplified Publish (HL7 FHIR)](https://hl7.eu/fhir/health-data-api/1.0.0-ballot/en/document-exchange.html#iti-105-simplified-publish)
+
+The document content, for either transaction, can be:
+
+- PDF
+- [HL7 Europe Laboratory Report](https://build.fhir.org/ig/hl7-eu/laboratory/) FHIR Document
+
+Using a HL7 Europe Laboratory Report FHIR Document to share laboratory reports is a modernisation of [IHE Sharing Laboratory Reports (XD-LAB)](https://wiki.ihe.net/index.php/Sharing_Laboratory_Reports), replacing HL7 Clinical Document Architecture (CDA) with a HL7 FHIR Document.
 
 ```mermaid
 sequenceDiagram
 
-    participant LIMS as Order Filler<br/>LIMS 
-    participant Provider as Document Producer<br/>(Regional Orchestration Engine)
-    participant Consumer as Document Consumer
+  participant LIMS as Order Filler<br/>LIMS
+  participant Provider as Document Publisher<br/>(Regional Orchestration Engine)
+  participant Consumer as Document Access Provider<br/>Document Consumer
 
-    note over LIMS,Provider: IHE LAB-3 Laboratory Report
-    LIMS ->> Provider: Sends Laboratory Report
-
-    opt IHE ITI-105 Simplified Publish
-        Note over Consumer,Provider:ITI-105 Simplified Publish
-        Provider->>Consumer: POST /DocumentReference
-        Consumer-->>Provider: Response OperationOutcome
-    end 
-    opt HL7 v2 MDM_T02
-         Note over Consumer,Provider:Original document <br/>notification and content
-        Provider->>Consumer: HL7 v2 MDM_T02 Message
-        Consumer-->>Provider: Response HL7 v2 ACK
-    end 
+  note over LIMS,Provider: IHE LAB-3 Laboratory Report
+  LIMS ->> Provider: Sends Laboratory Report
+  Provider ->> Provider: Transform message
+  opt IHE ITI-105 Simplified Publish
+    Note over Consumer,Provider:ITI-105 Simplified Publish
+    Provider->>Consumer: POST /DocumentReference
+    Consumer-->>Provider: Response OperationOutcome
+  end
+  opt HL7 v2 MDM_T02
+    Note over Consumer,Provider:Original document <br/>notification and content
+    Provider->>Consumer: HL7 v2 MDM_T02 Message
+    Consumer-->>Provider: Response HL7 v2 ACK
+  end
 ```
 
 ## Resource Exchange
@@ -86,13 +93,33 @@ sequenceDiagram
 ```mermaid
 graph LR
 
-  publisher["Workflow Exchange (i.e. IHE LTW)<br/>Bioninformatics Pipelines"]
   provider[Resource Access Provider<br/><br/>Genomic Data Platform]
   consumer[Resource/Data Consumer]
 
-  publisher --> |Publish Report<br/><br/>IHE LAB-3<br/>HL7 v2 ORU_R01| provider
   consumer --> |Request Resources| provider
   provider --> |Respond| consumer
 ```
 
 [Resource Access [IPA/QEDm]](QEDm.html) - using HL7 International Patient Access (IPA), aligned with IHE Query for Existing Data for Mobile (QEDm) — for querying individual FHIR resources such as conditions, medications, and observations
+
+### Sharing Laboratory Reports (Resource)
+
+The diagram below shows how an IHE LAB-3 / HL7 v2 ORU_R01 laboratory report is used to populate resources in the Resource Access Provider. The internal processing uses a combination of FHIR RESTful interactions and FHIR Transactions.
+
+```mermaid
+sequenceDiagram
+
+  participant LIMS as Order Filler<br/>LIMS
+  participant Publisher as Resource Publisher<br/>(Regional Orchestration Engine)
+  participant Provider as Resource Access Provider
+
+  note over LIMS,Publisher: IHE LAB-3 Laboratory Report
+  LIMS ->> Publisher: Sends Laboratory Report
+
+  note over Publisher,Provider: Internal Processing
+  loop For each resource
+    Publisher ->> Provider: Check for existing resource
+    Publisher ->> Provider: Create or update resource
+  end
+```
+
