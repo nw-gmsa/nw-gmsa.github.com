@@ -38,6 +38,17 @@ HL7 SMART Backend Services - Defines authorization in FHIR. We use the SMART Bac
 
 [Patient Identity Matching [PDQm]](PDQm.html) - Defines how a client can perform patient lookup given demographics against a server.
 
+```mermaid
+graph
+
+  source[Patient Identity Source]
+  consumer[Patient Demographics Consumer]
+  mpi[Patient Demographics Supplier<br/>Patient Identity Registry<br/>]
+
+  source --> |"PIXm Mobile Patient Identity Feed [ITI-93]<br/>PIX Patient Identity Feed [ITI-8]"| mpi
+  consumer --> |"PDQm Mobile Patient Demographics Query [ITI-78]"| mpi
+```
+
 ## Document Exchange
 
 ```mermaid
@@ -142,7 +153,7 @@ DiagnosticReport o-- Observation
 ```mermaid
 graph LR
 
-  provider[Resource Access Provider<br/><br/>Genomic Data Platform]
+  provider[ Resource Access Provider<br/><br/>Genomic Data Platform]
   consumer[Resource/Data Consumer]
 
   consumer --> |Request Resources| provider
