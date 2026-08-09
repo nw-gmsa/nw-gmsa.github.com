@@ -12,17 +12,20 @@ Process flows and background information are the same as [EU Health Data API](ht
 
 The table below summarises the actors referenced throughout this page.
 
-| Actor                    | Definition                                                                                                                                                                                                                 |
-|--------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Order Filler (LIMS)      | The laboratory information system that places the original order and produces the IHE LAB-3 / HL7 v2 ORU_R01 laboratory report.                                                                                            |
-| Document Publisher       | The Regional Orchestration Engine, transforming the IHE LAB-3 / HL7 v2 ORU_R01 laboratory report and pushing it to a Document Consumer or Document Access Provider, using ITI-105 Simplified Publish or HL7 v2 MDM_T02.    |
-| Document Access Provider | A grouping of the Document Registry and Document Repository, indexing document metadata and serving document content to Document Consumers. Other names include Electronic Document Management Systems (EDMS) and IHE XDS. |
-| Document Registry        | Indexes document metadata and answers queries (Find Document References ITI-67 in FHIR, or the older Registry Stored Query ITI-18 in XDS). NHS England National Record Locator is a Document Registry.                     |
-| Document Repository      | Stores and serves the actual document content (Retrieve Document ITI-68 in FHIR, or Retrieve Document Set ITI-43 in XDS).                                                                                                  |
-| Document Consumer        | Queries the Document Registry to find documents and retrieves them from the Document Repository.                                                                                                                           |
-| Resource Publisher       | The Regional Orchestration Engine, parsing the IHE LAB-3 / HL7 v2 ORU_R01 laboratory report and populating individual FHIR resources in the Resource Access Provider.                                                      |
-| Resource Access Provider | The Genomic Data Platform, storing FHIR resources populated by the Resource Publisher and serving them to Resource/Data Consumers. Other examples include Shared Care Records and NHS England Patient Data Manager.        |
-| Resource/Data Consumer   | Requests and retrieves individual FHIR resources, such as conditions, medications, and observations, from the Resource Access Provider.                                                                                    |
+| Actor                                                     | Definition                                                                                                                                                                                                                                                                                                             |
+|-----------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Patient Identity Source                                   | Feeds patient identity data into the Patient Identity Registry (PIX Patient Identity Feed ITI-8, or the mobile equivalent PIXm ITI-93). The NHS England HL7 v2 standard for this feed is the [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws). |
+| Patient Demographics Consumer                             | Queries the Patient Identity Registry for patient demographics (PDQm Mobile Patient Demographics Query ITI-78). This is roughly equivalent to the [NHS Personal Demographics Service - FHIR API](https://digital.nhs.uk/developer/api-catalogue/personal-demographics-service-fhir).                                   |
+| Patient Demographics Supplier / Patient Identity Registry | The master patient index, receiving identity feeds from the Patient Identity Source and answering demographics queries from Patient Demographics Consumers. In NHS England this is the Spine; in NHS Trusts it is typically the Patient Administration System (PAS).                                                   |
+| Order Filler (LIMS)                                       | The laboratory information system that places the original order and produces the IHE LAB-3 / HL7 v2 ORU_R01 laboratory report.                                                                                                                                                                                        |
+| Document Publisher                                        | The Regional Orchestration Engine, transforming the IHE LAB-3 / HL7 v2 ORU_R01 laboratory report and pushing it to a Document Consumer or Document Access Provider, using ITI-105 Simplified Publish or HL7 v2 MDM_T02.                                                                                                |
+| Document Access Provider                                  | A grouping of the Document Registry and Document Repository, indexing document metadata and serving document content to Document Consumers. Other names include Electronic Document Management Systems (EDMS) and IHE XDS.                                                                                             |
+| Document Registry                                         | Indexes document metadata and answers queries (Find Document References ITI-67 in FHIR, or the older Registry Stored Query ITI-18 in XDS). NHS England National Record Locator is a Document Registry.                                                                                                                 |
+| Document Repository                                       | Stores and serves the actual document content (Retrieve Document ITI-68 in FHIR, or Retrieve Document Set ITI-43 in XDS).                                                                                                                                                                                              |
+| Document Consumer                                         | Queries the Document Registry to find documents and retrieves them from the Document Repository.                                                                                                                                                                                                                       |
+| Resource Publisher                                        | The Regional Orchestration Engine, parsing the IHE LAB-3 / HL7 v2 ORU_R01 laboratory report and populating individual FHIR resources in the Resource Access Provider.                                                                                                                                                  |
+| Resource Access Provider                                  | The Genomic Data Platform, storing FHIR resources populated by the Resource Publisher and serving them to Resource/Data Consumers. Other examples include Shared Care Records and NHS England Patient Data Manager.                                                                                                    |
+| Resource/Data Consumer                                    | Requests and retrieves individual FHIR resources, such as conditions, medications, and observations, from the Resource Access Provider.                                                                                                                                                                                |
 {:.grid}
 
 Note: the Document Publisher and Resource Publisher are logical roles played by the same Regional Orchestration Engine — the former publishes whole documents, the latter populates individual FHIR resources.
@@ -39,11 +42,11 @@ HL7 SMART Backend Services - Defines authorization in FHIR. We use the SMART Bac
 [Patient Identity Matching [PDQm]](PDQm.html) - Defines how a client can perform patient lookup given demographics against a server.
 
 ```mermaid
-graph
+graph LR
 
   source[Patient Identity Source]
   consumer[Patient Demographics Consumer]
-  mpi[Patient Demographics Supplier<br/>Patient Identity Registry<br/>]
+  mpi[Patient Demographics Supplier<br/>Patient Identity Registry]
 
   source --> |"PIXm Mobile Patient Identity Feed [ITI-93]<br/>PIX Patient Identity Feed [ITI-8]"| mpi
   consumer --> |"PDQm Mobile Patient Demographics Query [ITI-78]"| mpi
@@ -153,7 +156,7 @@ DiagnosticReport o-- Observation
 ```mermaid
 graph LR
 
-  provider[ Resource Access Provider<br/><br/>Genomic Data Platform]
+  provider[Resource Access Provider<br/><br/>Genomic Data Platform]
   consumer[Resource/Data Consumer]
 
   consumer --> |Request Resources| provider
