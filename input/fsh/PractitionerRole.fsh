@@ -8,7 +8,7 @@ Description:    """
 //* ^keyword[+] = #core "Core"
 //* ^keyword[+] = #cds "Care Directory"
 
-* practitioner 1..1 MS
+* practitioner 0..1 MS
 //* practitioner.identifier 1..1
 * practitioner.identifier only PractitionerIdentifier
 * practitioner.identifier.value MS
