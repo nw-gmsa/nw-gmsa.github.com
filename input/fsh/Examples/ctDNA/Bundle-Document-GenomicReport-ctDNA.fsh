@@ -70,6 +70,8 @@ Usage: #example
 * insert EntryDocument("urn:uuid:4bc6be60-53d2-4143-8239-f3e2d257e61f", Composition-GenomicsReport-ctDNA)
 * insert EntryDocument("urn:uuid:2160525b-0168-4f40-8ebf-9b053052a62c", Patient-Sheffield)
 * insert EntryDocument("urn:uuid:6e26d6b3-490e-4348-9d6c-37281567d6ec", ServiceRequest-ctDNA)
+// Reqyester PractitionerRole
+* insert EntryDocument("urn:uuid:4446ab81-35ef-49cb-b2fe-1d6f1a0dcc02", 4446ab81-35ef-49cb-b2fe-1d6f1a0dcc02)
 * insert EntryDocument("urn:uuid:b930b4c4-327a-4728-8bb9-f90061914cc5", Specimen-ctDNA)
 * insert EntryDocument("urn:uuid:0a6ad8ec-b069-4a65-8c65-c7569d8413e3", DiagnosticReport-ctDNA)
 * insert EntryDocument("urn:uuid:00c22e97-a226-4845-b17a-e24ec1f4f77a", variant-egfr)
