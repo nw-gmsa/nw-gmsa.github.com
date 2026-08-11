@@ -28,7 +28,7 @@ Description: "TODO"
 * code = $test-directory#M4.14
 
 * requester
-  * type = #Organization
+  * type = #PractitionerRole
   * identifier.system = $ods-code
   * identifier.value = "RHQ"
   * reference = "urn:uuid:4446ab81-35ef-49cb-b2fe-1d6f1a0dcc02"
