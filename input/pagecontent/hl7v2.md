@@ -424,6 +424,12 @@ OBX|3|CE|281269004^High infection risk sample^SNM3|||||||||||20250129103726+0000
 OBX|4|ST|230016^Test Type^https://fhir.nwgenomics.nhs.uk/CodeSystem/MFTQuestionIds||Diagnostic Screen/Test|||||||||20250129103726+0000
 ```
 
+Genomic Genomic Test Outcome Codes Example - this is mapped to DiagnosticReport.conclusionCode in FHIR.
+
+```
+OBX|2|CE|51968-6^^LN|1|432^NO TARGET DETECTED OR TARGET DETECTED BELOW A LEVEL REQUIRING CLINICAL ACTION|||||||||20260604200000+0000
+```
+
 > FHIR Resource Example: [Consanguinity (value type=CE)](Observation-OBX-Consanguinity.html)
 > 
 > FHIR Resource Example: [Order Tracking Number (value type=ST)](Observation-OBX-OrderTrackingNumber.html)
