@@ -14,6 +14,9 @@ Description:    """
 
 * code = $loinc#69548-6
 
+* method 1..1
+* valueCodeableConcept 1..1
+
 * component contains gene-studied 0..*
   and representative-transcript-ref-seq 0..*
 
@@ -30,8 +33,19 @@ Description:    """
 * component[representative-transcript-ref-seq].code ^short = "51958-7"
 * component[representative-transcript-ref-seq] ^short = "Reference Transcript"
 * component[representative-transcript-ref-seq] ^definition = "NCBI's RefSeq ('NM_...'), Ensembl ('ENST...'), and LRG ('LRG...' plus 't1' to indicate transcript)"
-//* component[representative-transcript-ref-seq].value[x] only CodeableConcept or Quantity
-//* component[representative-transcript-ref-seq].value[x] ^binding.strength = #example
-//* component[representative-transcript-ref-seq].value[x] ^binding.description = "Multiple bindings acceptable (NCBI or LRG)"
-//* component[representative-transcript-ref-seq].value[x] 1..1
-//* component[representative-transcript-ref-seq].value[x] ^short = "Versioned transcript reference sequence identifier"
+
+//48002-0
+//48013-7
+//92822-6
+//69547-8
+//69551-0
+//48019-4
+//51958-7
+//48004-6
+//48005-3
+//81290-9
+//53037-8
+//94186-4
+//81254-5
+//81258-6
+//53034-5

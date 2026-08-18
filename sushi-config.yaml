@@ -236,6 +236,9 @@ resources:
     name: Bundle 'Message' - Filler Order Message
     description: Example Filler Order Message for internal or external LIMS
     exampleBoolean: true
+  Observation/igene-seqv1:
+    name: Variant DSS BRCA1
+    description: Variant DSS BRCA1
 menu:
   Home: index.html
   Analysis and Design (Volume 1) :
