@@ -75,8 +75,8 @@ sequenceDiagram
     participant iGene as iGene
 
     iGene->>RIE: ORU_R01 (iGene format)
-    RIE->>CTIE: ORU_R01 (transformed, LAB-3)
-    CTIE->>CM: ORU_R01 (LAB-3)
+    RIE->>CTIE: ORU_R01 (NW Genomics HL7 v2 standard - LAB-3)
+    CTIE->>CM: ORU_R01 
 
     Note over CTIE,RIE: Used to test firewall and inform RIE-to-Clatterbridge reports feed
 ```
