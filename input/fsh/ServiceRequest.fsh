@@ -22,7 +22,7 @@ Description:    """
 * identifier ^slicing.description = "Slice based on the type"
 * identifier ^slicing.ordered = false
 * identifier contains
-  OrderIdentifier 0..1 MS
+  OrderIdentifier 0..* MS
 
 * identifier[OrderIdentifier] only OrderIdentifier
 * identifier[OrderIdentifier] ^short = "Identifier assigned by the Order Placer. (HL7 v2 ORC-2/OBR-2 Placer Order Number and GS1 )"
