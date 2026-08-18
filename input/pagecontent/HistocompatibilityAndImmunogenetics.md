@@ -63,25 +63,7 @@ HL7 v2.5.1 was chosen as the version for the standard, as it uses a model compat
 
 The NW Genomics RIE will handle the necessary transformations between the NW HL7 standard and Histotrac's HL7 v2 format.
 
-This separation of responsibilities enables modular delivery. For example, the reporting flow from NW Genomics to Clatterbridge can be implemented and tested independently — which is useful for validating the firewall between NW Genomics (hosted by MFT) and Clatterbridge.
 
-This modularity also allows components to be reused across other projects. For instance, the iGene Genomic Reports feed into the RIE for Clatterbridge has already been built, and — being nearly identical to the Histotrac reports flow — can be used both to test the firewall and to inform development of the NW Genomics RIE-to-Clatterbridge reports feed.
-
-```mermaid
-sequenceDiagram
-    participant CM as Clatterbridge Meditech (EPR)
-    participant CTIE as Clatterbridge TIE
-    participant RIE as NW Genomics RIE
-    participant iGene as iGene
-
-    iGene->>RIE: ORU_R01 (iGene format)
-    RIE->>CTIE: ORU_R01 (NW Genomics HL7 v2 standard - LAB-3)
-    CTIE->>CM: ORU_R01 
-
-    Note over CTIE,RIE: Used to test firewall and inform RIE-to-Clatterbridge reports feed
-```
-
-It has not yet been decided, from a business process perspective, whether HODS will be replaced as the order comms system. It is desired that orders originating from Meditech are reinstated.
 
 ```mermaid
 sequenceDiagram
@@ -101,3 +83,42 @@ sequenceDiagram
     Note over CTIE,RIE: Data contract: NW Genomics HL7 v2 standard
     Note over RIE,Histotrac: RIE performs HL7 transformation
 ```
+
+This separation of responsibilities enables modular delivery. For example, the reporting flow from NW Genomics to Clatterbridge can be implemented and tested independently — which is useful for validating the firewall between NW Genomics (hosted by MFT) and Clatterbridge.
+
+This modularity also allows components to be reused across other projects. For instance, the iGene Genomic Reports feed into the RIE for Clatterbridge has already been built, and — being nearly identical to the Histotrac reports flow — can be used both to test the firewall and to inform development of the NW Genomics RIE-to-Clatterbridge reports feed.
+
+```mermaid
+sequenceDiagram
+    participant CM as Clatterbridge Meditech (EPR)
+    participant CTIE as Clatterbridge TIE
+    participant RIE as NW Genomics RIE
+    participant iGene as iGene
+
+    iGene->>RIE: ORU_R01 (iGene format)
+    RIE->>CTIE: ORU_R01 (NW Genomics HL7 v2 standard - LAB-3)
+    CTIE->>CM: ORU_R01 
+
+    Note over CTIE,RIE: Used to test firewall and inform RIE-to-Clatterbridge reports feed
+```
+
+### Outstanding Issues
+
+1. It has not yet been decided, from a business process perspective, whether HODS will be replaced as the order comms system. It is desired that orders originating from Meditech are reinstated.
+2. The proposed payload is unstructured. The original payload contained structured data
+
+| Data Item            | Data Type    | Code  | Example                                               |
+|----------------------|--------------|-------|-------------------------------------------------------|
+| Test Method          | NTE/string   | -     | Chimerism analysis by STR technique.                  |
+| Device               | NTE/string   | -     | Test performed using Promega GenePrint 24 kit.        |
+| Average % chimerism  | OBX/quantity | STR   | 100%                                                  | 
+| Informative Markers  | OBX/string   | IM    | D13S317 PENTA E CSF1PO PENTA D D21S11 D8S1179 D12S391 |
+| Range                | OBX/string   | RANGE | NA                                                    |
+| CV                   | OBX/string   | CV    | NA                                                    |
+| Extraction Method    | OBX/string   | EXT   | DNA extracted from peripheral blood leukocyte         |
+| % Purity             | OBX/quantity | PURE  | 87%                                                   |
+| Time post transplant | OBX/string   | POST  | 2YR 7 MONTHS                                          |
+| Date of transplant   | OBX/string   | DTP   | 2024-01-10                                            |
+| Donor ID             | OBX/string   | DID   | 6939 DKM0 0096 2141 100                               |
+
+3. The full narrative report will be in PDF format (this was not present in the original process), the provisional UK SNOMED CT of `909871000000100 Histocompatibility and immunogenetics` will be used.	
