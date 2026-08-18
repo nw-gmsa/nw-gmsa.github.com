@@ -121,4 +121,4 @@ sequenceDiagram
 | Date of transplant   | OBX/string   | DTP   | 2024-01-10                                            |
 | Donor ID             | OBX/string   | DID   | 6939 DKM0 0096 2141 100                               |
 
-3. The full narrative report will be in PDF format (this was not present in the original process), the provisional UK SNOMED CT of `909871000000100 Histocompatibility and immunogenetics` will be used.	
+3. The full narrative report will be in PDF format (this was not present in the original process), the provisional UK SNOMED CT of `909871000000100 Histocompatibility and immunogenetics` will be used (this is from NHS Scotland standards).	
