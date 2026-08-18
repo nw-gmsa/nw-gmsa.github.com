@@ -7,7 +7,7 @@ Chimerism testing at Clatterbridge originally worked as follows:
 1. Clatterbridge (Meditech EPR) sent an ORM_O01 message to the Clatterbridge TIE, which forwarded it to the LUFT TIE, which in turn forwarded it to the iLab LIMS.
 2. Once testing was complete, Clatterbridge (Meditech EPR) received a structured ORU_R01 message back from iLab, routed via the LUFT TIE and then the Clatterbridge TIE.
 
-This closed-loop process corresponds to the IHE Laboratory Testing Workflow, in which the ORM_O01 message is referred to as LAB-1 and the ORU_R01 message as LAB-3.
+This closed-loop process corresponds to the IHE Laboratory Testing Workflow.
 
 ```mermaid
 sequenceDiagram
@@ -16,13 +16,13 @@ sequenceDiagram
     participant LTIE as LUFT TIE
     participant iLab as iLab LIMS
 
-    CM->>CTIE: ORM_O01 (LAB-1)
-    CTIE->>LTIE: ORM_O01 (LAB-1)
-    LTIE->>iLab: ORM_O01 (LAB-1)
+     CM->>CTIE: ORM_O01
+    CTIE->>LTIE: ORM_O01
+    LTIE->>iLab: ORM_O01
     Note over iLab: Testing performed
-    iLab->>LTIE: ORU_R01 (LAB-3)
-    LTIE->>CTIE: ORU_R01 (LAB-3)
-    CTIE->>CM: ORU_R01 (LAB-3)
+    iLab->>LTIE: ORU_R01
+    LTIE->>CTIE: ORU_R01
+    CTIE->>CM: ORU_R01
 ```
 
 ## Interim Process
@@ -46,8 +46,8 @@ sequenceDiagram
 
 The current project aims to re-establish electronic ordering and reporting. The new message flows are:
 
-- Clatterbridge Meditech → Clatterbridge TIE → NW Genomics Regional Integration Engine (RIE) → Histotrac — still an ORM_O01 message, though no longer classified as LAB-35 due to the involvement of a regional integration engine.
-- Histotrac → NW Genomics Regional Integration Engine → Clatterbridge TIE → Clatterbridge Meditech — still an ORU_R01 message, classified as LAB-36.
+- Clatterbridge Meditech → Clatterbridge TIE → NW Genomics Regional Integration Engine (RIE) → Histotrac — still an ORM_O01 message, though no longer classified as LAB-1 due to the involvement of a regional integration engine.
+- Histotrac → NW Genomics Regional Integration Engine → Clatterbridge TIE → Clatterbridge Meditech — still an ORU_R01 message, classified as LAB-3.
 
 Communication between the Clatterbridge TIE and the NW RIE will follow the NW Genomics HL7 v2 standard — a data contract shared across NHS Trusts in the North West. NW Genomics will not build Trust-specific transformations; instead, the standard is designed collectively to meet the needs of all participating NHS organisations. 
 
@@ -75,8 +75,8 @@ sequenceDiagram
     participant iGene as iGene
 
     iGene->>RIE: ORU_R01 (iGene format)
-    RIE->>CTIE: ORU_R01 (transformed, LAB-36)
-    CTIE->>CM: ORU_R01 (LAB-36)
+    RIE->>CTIE: ORU_R01 (transformed, LAB-3)
+    CTIE->>CM: ORU_R01 (LAB-3)
 
     Note over CTIE,RIE: Used to test firewall and inform RIE-to-Clatterbridge reports feed
 ```
@@ -91,11 +91,11 @@ sequenceDiagram
     participant Histotrac as Histotrac
 
     CM->>CTIE: ORM_O01
-    CTIE->>RIE: ORM_O01 (NW Genomics HL7 v2 standard - LAB-35)
+    CTIE->>RIE: ORM_O01 (NW Genomics HL7 v2 standard - LAB-1)
     RIE->>Histotrac: ORM_O01 (transformed to Histotrac HL7 v2)
     Note over Histotrac: Testing performed
     Histotrac->>RIE: ORU_R01 (Histotrac HL7 v2)
-    RIE->>CTIE: ORU_R01 (NW Genomics HL7 v2 standard - LAB-36)
+    RIE->>CTIE: ORU_R01 (NW Genomics HL7 v2 standard - LAB-3)
     CTIE->>CM: ORU_R01
 
     Note over CTIE,RIE: Data contract: NW Genomics HL7 v2 standard
