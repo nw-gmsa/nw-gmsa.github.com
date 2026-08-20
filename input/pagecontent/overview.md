@@ -1,5 +1,7 @@
 # NW Genomics Regional Integration Engine (RIE)
 
+> **This design was strongly influenced by IHE Laboratory Testing Workflow (TLW) and IHE Inter Laboratory Workflow (ILW) use cases and analysis, and many of the interactions do follow these profiles.**
+
 ## Overview (non-technical)
 
 Think of the Regional Integration Engine (RIE) as a **post office for genomic test information** across North West Genomics.
@@ -34,6 +36,25 @@ flowchart LR
     Portal -. Future - Test requests .-> RIE
     RIE -- Test requests --> Labs
 ```
+
+### Future potential
+
+The RIE is also capable of interfacing to National Genomic Order Comms systems. This will allow users to create genomic orders via a portal or via 3rd party apps.
+
+Potentially the RIE will be able to make use of this system for out of region orders, both incoming and outgoing.
+
+Note: the RIE already has FHIR to V2 conversion capabilities which could be used to send reports to NHS Trusts, which may be a cost saving for NHS Trusts.
+
+### Why this is different from a typical integration
+
+Most NHS integrations connect an EPR directly to a LIMS, one pair at a time. The RIE works differently.
+
+By sitting in the middle, the RIE hides the different HL7 LIMS variants used internally by North West Genomics and provides a single, consistent interface — this makes it much simpler for NHS Trusts to interoperate. The reverse is also true: North West Genomics doesn't need to work with multiple HL7 EPR standards from each Trust, since a single standard HL7 format is used instead.
+
+Transformation to each Trust's EPR and each lab's LIMS still has to happen — but it's done by TIE (Trust Integration Engine) developers who are already familiar with those standards, for example NHS Trust developers for EPR HL7, and North West Genomics developers for LIMS.
+
+This use of HL7/FHIR standards is also called a "Canonical Model" or "Data Contracts". It is neither an EPR standard nor a LIMS standard — it is a standard agreed between NHS Trusts and Diagnostics Services.
+
 
 ## Technical detail
 
