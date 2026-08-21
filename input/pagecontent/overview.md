@@ -98,6 +98,7 @@ flowchart LR
         L1[LIMS iGene<br/>HL7 flavour A]
         L2[LIMS StarLIMS<br/>HL7 flavour B]
         L3[LIMS Histotrac<br/>HL7 flavour C]
+        L4[LIMS Shire<br/>Haemato-Oncology]
     end
 
     subgraph TestResults["Analysers and Analytic Processing"]
@@ -111,7 +112,7 @@ flowchart LR
     end
 
     subgraph Trusts["NHS Trusts - direct HL7"]
-        TR1[MFT]
+        TR1["Manchester Foundation Trust (MFT)<br/>EPIC and HODS"]
         TR2[Alder Hey]
         TR3[Liverpool Women's]
         TR4[Clatterbridge<br/>Immunology test requests +<br/>Genomic and Immunology reports]
@@ -140,7 +141,8 @@ flowchart LR
     L1 -- Reports V2 --> RIE
     L2 -. Potential - Reports .-> RIE
     L3 -- Reports V2 --> RIE
-    RIE -- "NW Diagnostic Core Standard reports (ORU_R01) Genomics" --> TR1
+    L4 -- Haemato-Oncology Reports V2 --> RIE
+    RIE -- "NW Diagnostic Core Standard reports (ORU_R01)<br/>Genomics and Haemato-Oncology" --> TR1
     RIE -- "NW Diagnostic Core Standard reports (ORU_R01) Genomics" --> TR2
     RIE -- "NW Diagnostic Core Standard reports (ORU_R01) Genomics" --> TR3
     RIE -- "NW Diagnostic Core Standard reports (ORU_R01)<br/>Genomics and Immunology" --> TR4
