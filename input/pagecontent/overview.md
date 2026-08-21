@@ -298,7 +298,25 @@ erDiagram
     }
 ```
 
+##### Shared Care Record Feeds - Wire tap on LAB-3/ORU_R01
+
 > **Note:** The DocumentReference + attachment currently forms the basis for interactions with shared care record providers (i.e. this is what is used to generate MDM_T02 for GMCR).
+
+The same LAB-3 report is also the source for the MDM_T02 feed sent to shared care record providers, currently GMCR, with Lancashire & South Cumbria and the NHS England Unified Genomic Care Record (UGR) Phase 1 planned as future recipients of the same feed.
+
+```mermaid
+flowchart LR
+    RIE["RIE<br/>(receives LAB-3 report as<br/>DocumentReference + PDF)"]
+    Transform["Transform to<br/>HL7 MDM_T02"]
+    GMCR["Greater Manchester<br/>Care Record (GMCR)<br/>cancer only"]
+    LSC["Lancashire & South Cumbria<br/>Shared Care Record"]
+    UGR["NHS England Unified Genomic<br/>Care Record (UGR) - Phase 1"]
+
+    RIE -- "LAB-3 Report<br/>(DocumentReference + PDF)" --> Transform
+    Transform -- "MDM_T02" --> GMCR
+    Transform -. "Future - IHE ITI-105 (FHIR)?" .-> LSC
+    Transform -. "Future - FHIR?" .-> UGR
+```
 
 #### Genomic Model - Filler Order (LAB-4) and Reports (LAB-5)
 
