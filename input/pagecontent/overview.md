@@ -84,7 +84,7 @@ The RIE connects to multiple internal LIMS systems — including iGene, StarLIMS
 
 Reports are also sent to shared care record providers using HL7 MDM_T02 (the HL7 v2 message type for sending a document, such as a PDF report), currently for the Greater Manchester Care Record (GMCR) — this feed is cancer only. Similar services are likely to be provided to Lancashire and South Cumbria, and to the national Unified Genomic Care Record.
 
-The RIE also exchanges NW standard orders and reports with North East and Yorkshire Genomics, as a peer Genomic Laboratory Hub — ctDNA metadata only, with results removed.
+The RIE also exchanges NW Diagnostic Core Standard orders and reports with North East and Yorkshire Genomics, as a peer Genomic Laboratory Hub — ctDNA metadata only, with results removed.
 
 > **Note:** Test Results and Work Orders also flow via the RIE, this is not shown in the diagram to aid clarity.
 
@@ -140,14 +140,14 @@ flowchart LR
     L1 -- Reports --> RIE
     L2 -. Potential - Reports .-> RIE
     L3 -- Reports --> RIE
-    RIE -- "NW standard reports (ORU_R01) Genomics" --> TR1
-    RIE -- "NW standard reports (ORU_R01) Genomics" --> TR2
-    RIE -- "NW standard reports (ORU_R01) Genomics" --> TR3
-    RIE -- "NW standard reports (ORU_R01)<br/>Genomics and Immunology" --> TR4
+    RIE -- "NW Diagnostic Core Standard reports (ORU_R01) Genomics" --> TR1
+    RIE -- "NW Diagnostic Core Standard reports (ORU_R01) Genomics" --> TR2
+    RIE -- "NW Diagnostic Core Standard reports (ORU_R01) Genomics" --> TR3
+    RIE -- "NW Diagnostic Core Standard reports (ORU_R01)<br/>Genomics and Immunology" --> TR4
 
-    TR1 -- "NW Standard Orders Genomics (V2 OML_O21 or FHIR O21)" --> RIE
-    TR2 -- "NW Standard Orders Genomics (V2 OML_O21 or FHIR O21)" --> RIE
-    TR3 -- "NW Standard Orders Genomics (V2 OML_O21 or FHIR O21)" --> RIE
+    TR1 -- "NW Diagnostic Core Standard Orders Genomics (V2 OML_O21 or FHIR O21)" --> RIE
+    TR2 -- "NW Diagnostic Core Standard Orders Genomics (V2 OML_O21 or FHIR O21)" --> RIE
+    TR3 -- "NW Diagnostic Core Standard Orders Genomics (V2 OML_O21 or FHIR O21)" --> RIE
     TR4 -- Immunology test requests --> RIE
     RIE -- Orders --> L1
     RIE -. Potential - Orders .-> L2
@@ -162,7 +162,7 @@ flowchart LR
     RIE -. Likely future .-> SCR2
     RIE -. Likely future .-> SCR3
 
-    RIE <-. NW Standard Orders and Reports<br/>ctDNA metadata only - results removed .-> NEY
+    RIE <-. NW Diagnostic Core Standard Orders and Reports<br/>ctDNA metadata only - results removed .-> NEY
 ```
 
 ## Design
@@ -253,6 +253,14 @@ erDiagram
 
 Codes tend to follow the NHS England Data Dictionary and include ODS and SNOMED CT concepts. LOINC is also used where it is more practical to do so — codes often don't exist in SNOMED CT, and LOINC is more widely supported by LIMS and EPR systems.
 
+> The NW Diagnostic Core tends to be used between [bounded contexts](https://martinfowler.com/bliki/BoundedContext.html) which are generally between NHS Trusts, ICS/Regions and North West Genomics.
+>
+> In Data Engineering terms, this is also known as a [Data Contract](https://en.wikipedia.org/wiki/Data_contract).
+>
+> The main aim for both is to reduce the need for 'anti-corruption layers' which often exist in HL7 v2 and (UK) FHIR to transform between different models used by EPRs.
+>
+> This should not be confused with UK Core which is a base HL7 standard.
+
 #### Genomic Model - Placer Order and Reports
 
 The genomic-specific data model builds on the Diagnostic Core (the main model used for interactions IHE LTW LAB-1 and LAB-3), which is very similar to de-facto models used in other diagnostic services such as imaging or pathology.
@@ -290,7 +298,7 @@ erDiagram
     }
 ```
 
-> **Note:** The DocumentReference + attachment currently for the basis for interactions with shared care record providers (i.e. this is what is used to generate MDM_T02 for GMCR)
+> **Note:** The DocumentReference + attachment currently forms the basis for interactions with shared care record providers (i.e. this is what is used to generate MDM_T02 for GMCR).
 
 #### Genomic Model - Filler Order and Reports
 
@@ -340,8 +348,8 @@ erDiagram
 
 This is a placeholder for future work, probably NHS England Unified Genomics Care Record phase II.
 
-In Domain Driven Design this is a pattern called Aggregate, which collates multiple events into a single entity. This is already a feature of the design above, the placer order cascades into multuple hierarchical entities.
+In Domain Driven Design this is a pattern called Aggregate, which collates multiple events into a single entity. This is already a feature of the design above, the placer order cascades into multiple hierarchical entities.
 
-In health informatics this is a pattern called Composition, this focuses on the output format which in FHIR is called a FHIR Document (and in HL7 v3 Clinical Document Architeture).
+In health informatics this is a pattern called Composition; it focuses on the output format, which in FHIR is called a FHIR Document (and in HL7 v3 Clinical Document Architecture).
 
 
