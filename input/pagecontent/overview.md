@@ -132,14 +132,14 @@ flowchart LR
 
     NEY[North East and Yorkshire<br/>Genomics]
 
-    CEP -- Test results --> L1
-    ODSS -- Test results --> L1
+    CEP -- Test results ASTM --> L1
+    ODSS -- Test results FHIR --> L1
 
-    L1 -- Work Orders --> L2
+    L1 -- Work Orders FHIR + CSV --> L2
 
-    L1 -- Reports --> RIE
+    L1 -- Reports V2 --> RIE
     L2 -. Potential - Reports .-> RIE
-    L3 -- Reports --> RIE
+    L3 -- Reports V2 --> RIE
     RIE -- "NW Diagnostic Core Standard reports (ORU_R01) Genomics" --> TR1
     RIE -- "NW Diagnostic Core Standard reports (ORU_R01) Genomics" --> TR2
     RIE -- "NW Diagnostic Core Standard reports (ORU_R01) Genomics" --> TR3
@@ -149,20 +149,38 @@ flowchart LR
     TR2 -- "NW Diagnostic Core Standard Orders Genomics (V2 OML_O21 or FHIR O21)" --> RIE
     TR3 -- "NW Diagnostic Core Standard Orders Genomics (V2 OML_O21 or FHIR O21)" --> RIE
     TR4 -- Immunology test requests --> RIE
-    RIE -- Orders --> L1
+    RIE -- Orders V2 --> L1
     RIE -. Potential - Orders .-> L2
-    RIE -- Orders --> L3
+    RIE -- Orders V2 --> L3
 
     RIE <-. Future - Potential interface - Orders .-> NOC
 
     TG1 -. Future - Orders .-> NOC
     TG2 -. Future - Orders .-> NOC
 
-    RIE -- MDM_T02 reports - cancer only --> SCR1
+    RIE -- V2 MDM_T02 reports - cancer only --> SCR1
     RIE -. Likely future .-> SCR2
     RIE -. Likely future .-> SCR3
 
     RIE <-. NW Diagnostic Core Standard Orders and Reports<br/>ctDNA metadata only - results removed .-> NEY
+```
+
+### FHIR Repository
+
+The RIE using a wire-tap, populates a FHIR repository from the events passing through it. This FHIR Repository is also used to enhance events passing through the RIE, such as adding an account number or order placer number to a report.
+
+```mermaid
+flowchart LR
+    Inbound["Inbound event<br/>(order or report)"]
+    RIE["RIE<br/>Message Processing"]
+    Outbound["Outbound event<br/>(enriched)"]
+    FHIRRepo[("FHIR Repository")]
+
+    Inbound --> RIE
+    RIE -- "1. Wire-tap copy of event" --> FHIRRepo
+    RIE -- "2. Lookup enrichment data<br/>e.g. Account Number,<br/>Placer Order Number" --> FHIRRepo
+    FHIRRepo -- "3. Return enrichment data" --> RIE
+    RIE --> Outbound
 ```
 
 ## Design
