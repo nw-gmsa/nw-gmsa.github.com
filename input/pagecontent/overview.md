@@ -380,7 +380,7 @@ erDiagram
     }
 ```
 
-#### Sub-Contracted Order (LAB-35) and Reports (LAB-36)
+#### Sub-Contracted and Reflex Orders (LAB-35) and Reports (LAB-36)
 
 In most cases, a sub-contracted order will be very similar to a placer order. This is where an order has been received and is then passed on to a sub-contracted lab.
 
@@ -406,6 +406,29 @@ flowchart LR
     GOMS -. "Future - Sub-Contracted Order (LAB-35)" .-> OtherRegion
     OtherRegion -. "Future - Report (LAB-36)" .-> GOMS
     GOMS -. "Future - Report (LAB-36)" .-> Referring
+```
+
+##### Reflex Order
+
+A reflex order is a different kind of sub-contracted order: rather than forwarding on the original placer order unchanged, a laboratory raises a brand new order that is **triggered by the result of its own testing** — for example, a positive screening result that automatically triggers a confirmatory or additional test.
+
+The key difference from a standard sub-contracted order (LAB-35/LAB-36) is what the new order is basedOn: a sub-contracted order is basedOn the original placer order, whereas a reflex order is basedOn the Diagnostic Report/Observation that triggered it. The reflex test itself may be performed in the same lab or passed on to another lab as a further sub-contracted order.
+
+In everyday terms: the lab tests a sample, sees a result that needs following up, and — without waiting for the referrer to ask — places its own new order for further testing, quoting the original report as the reason.
+
+```mermaid
+flowchart LR
+    Trust["NHS Trust / EPR"]
+    Lab["Testing LIMS"]
+    Decision{"Result triggers<br/>reflex testing?"}
+    ReflexLab["Reflex Testing LIMS<br/>(same lab or sub-contracted)"]
+
+    Trust -- "1. Placer Order (LAB-1)" --> Lab
+    Lab -- "2. Initial testing" --> Decision
+    Decision -- "No" --> Lab
+    Decision -- "Yes - 3. Reflex Order<br/>basedOn initial report" --> ReflexLab
+    ReflexLab -- "4. Reflex Report" --> Lab
+    Lab -- "5. Combined Report (LAB-3)" --> Trust
 ```
 
 #### Future Composition / Aggregated Laboratory Report
