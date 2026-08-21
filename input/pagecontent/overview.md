@@ -217,7 +217,7 @@ Although unsolicited reports are supported, the default design is built around m
 - **Placer Order Number** — links specific referrals between an NHS Trust and a LIMS.
 - **NHS Number**
 - **Medical Record Number** (also known as Hospital Number or NHS England Local Patient Identifier)
-- **Requested Procedure Code** — for the Genomics Test Directory Code.
+- **Requested Procedure Code** — the Genomics Test Directory Code.
 
 In everyday terms: a patient has a referral (Service Request), which leads to a specimen being collected and a report being produced.
 
@@ -247,7 +247,7 @@ erDiagram
     DIAGNOSTIC_REPORT {
         string Report_Identifier
         string Status
-        string Conclusion
+        string Conclusion ""
     }
 ```
 
@@ -261,7 +261,7 @@ Codes tend to follow the NHS England Data Dictionary and include ODS and SNOMED 
 >
 > This should not be confused with UK Core which is a base HL7 standard.
 
-#### Genomic Model - Placer Order and Reports
+#### Genomic Model - Placer Order (LAB-1) and Reports (LAB-3)
 
 The genomic-specific data model builds on the Diagnostic Core (the main model used for interactions IHE LTW LAB-1 and LAB-3), which is very similar to de-facto models used in other diagnostic services such as imaging or pathology.
 At present this model is mostly unstructured, using a PDF attachment (in FHIR this is DocumentReference + Binary, and in HL7 v2 this is OBX type ED).
@@ -294,13 +294,13 @@ erDiagram
     DIAGNOSTIC_REPORT {
         string Report_Identifier
         string Status
-        string Conclusion
+        string Conclusion "NHSE Genomic Test Outcome"
     }
 ```
 
 > **Note:** The DocumentReference + attachment currently forms the basis for interactions with shared care record providers (i.e. this is what is used to generate MDM_T02 for GMCR).
 
-#### Genomic Model - Filler Order and Reports
+#### Genomic Model - Filler Order (LAB-4) and Reports (LAB-5)
 
 The interactions between the LIMS and Analysers/Analytic Processors (LAB-4 and LAB-5) add detailed genomic data models. These are referred to here as filler orders, with the simpler LAB-1 and LAB-3 referred to as placer orders.
 
@@ -314,8 +314,8 @@ erDiagram
     FILLER_SERVICE_REQUEST ||--o{ SPECIMEN : "requests collection of"
 
     FILLER_SERVICE_REQUEST ||--o{ DIAGNOSTIC_REPORT : "is basis for"
-    SPECIMEN ||--o{ OBSERVATION : "subject of"
-    OBSERVATION }o--|| DIAGNOSTIC_REPORT : "result of"
+    SPECIMEN ||--o{ OBSERVATION_REPORTABLE_VARIANT : "subject of"
+    OBSERVATION_REPORTABLE_VARIANT }o--|| DIAGNOSTIC_REPORT : "result of"
 
     SERVICE_REQUEST {
         string Placer_Order_Number "LAB-1, from EPR/Trust"
@@ -332,16 +332,44 @@ erDiagram
         string Specimen_Type
         string Collected_DateTime
     }
-    OBSERVATION {
+    OBSERVATION_REPORTABLE_VARIANT {
         string Observation_Code
         string Value
-        string Reportable_Variant "Omics DSS: HL7 Genomics Reporting IG"
+        string components
     }
     DIAGNOSTIC_REPORT {
         string Report_Identifier
         string Status
         string Conclusion
     }
+```
+
+#### Sub-Contracted Order (LAB-35) and Reports (LAB-36)
+
+In most cases, a sub-contracted order will be very similar to a placer order. This is where an order has been received and is then passed on to a sub-contracted lab.
+
+North West Genomics is moving towards all orders being placed in the master LIMS (iGene) and then passed onto other LIMS such as StarLIMS, which was the master LIMS for Liverpool GLH.
+The implication of this is that orders for other regional Genomics services will initially be placed in iGene, and will then be passed onto other LIMS. Logically this is a potential role for the NHS England Genomic Order Management System (GOMS), acting as an Order Comms system for NHS Trusts.
+
+In everyday terms: the referring lab (e.g. iGene) creates its own order based on the original placer order, and sends it to the performing lab (e.g. StarLIMS), which returns a report against that same order.
+
+```mermaid
+flowchart LR
+    Trust["NHS Trust / EPR"]
+    Referring["Referring LIMS<br/>e.g. iGene"]
+    Performing["Performing LIMS<br/>e.g. StarLIMS<br/>(sub-contracted lab)"]
+    GOMS["NHS England Genomic<br/>Order Management Service (GOMS)"]
+    OtherRegion["Other Regional<br/>Genomics LIMS"]
+
+    Trust -- "1. Placer Order (LAB-1)" --> Referring
+    Referring -- "2. Sub-Contracted Order (LAB-35)<br/>basedOn placer order" --> Performing
+    Performing -- "3. Report (LAB-36)" --> Referring
+    Referring -- "4. Report (LAB-3)" --> Trust
+
+    Referring -. "Future - Sub-Contracted Order (LAB-35)" .-> GOMS
+    GOMS -. "Future - Sub-Contracted Order (LAB-35)" .-> OtherRegion
+    OtherRegion -. "Future - Report (LAB-36)" .-> GOMS
+    GOMS -. "Future - Report (LAB-36)" .-> Referring
 ```
 
 #### Future Composition / Aggregated Laboratory Report
