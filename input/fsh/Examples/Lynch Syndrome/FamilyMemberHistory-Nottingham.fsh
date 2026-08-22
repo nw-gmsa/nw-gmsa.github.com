@@ -1,7 +1,7 @@
 Instance: c76b8bc2-ec36-4ce1-a2ea-8c57215115e2
 InstanceOf: FamilyMemberHistory
-Title: "FamilyMemberHistory - Sarah-Jane Nottingham"
-Description: "FamilyMemberHistory - Sarah-Jane Nottingham"
+Title: "FamilyMemberHistory - Lyarra Nottingham"
+Description: "FamilyMemberHistory - Lyarra Nottingham"
 
 * status = #partial
 
@@ -10,7 +10,7 @@ Description: "FamilyMemberHistory - Sarah-Jane Nottingham"
 
 * relationship = http://terminology.hl7.org/CodeSystem/v3-RoleCode#MTH "mother"
 
-* name = "Sarah-Jane Nottingham"
+* name = "Lyarra Nottingham"
 
 * bornDate = "1924-01-05"
 
