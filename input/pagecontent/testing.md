@@ -108,7 +108,7 @@ In HL7 [Lab Results Interface (LRI)](https://confluence.hl7.org/download/attachm
   - [PDF Laboratory Report](https://github.com/nw-gmsa/Testing/blob/main/Output/PDF/R01/LRI-GeneVariant-4.txt.pdf)
   - **PROOF OF CONCEPT** [HL7 v2 ORU_R01 LRI](https://github.com/nw-gmsa/Testing/blob/main/Output/V2/R01/LRI-GeneVariant-4.txt)
   - **PROOF OF CONCEPT** [HL7 FHIR Message R01 Genomic Reporting](https://github.com/nw-gmsa/Testing/blob/main/Output/FHIR/R01/LRI-GeneVariant-4.txt.json)
-- Example 5 Learning Disability (R377) - 9737383346 Hodor TAMESIDE
+- Example 5 Learning Disability (R377) - 9737383397 Hodor TAMESIDE
   - [HL7 v2 MDM_T02](https://github.com/nw-gmsa/Testing/blob/main/Outpyt/V2/TO2/MDM_T02_LRI-GeneVariant-5.txt)
   - [PDF Laboratory Report](https://github.com/nw-gmsa/Testing/blob/main/Output/PDF/R01/LRI-GeneVariant-5.txt.pdf)
   - **PROOF OF CONCEPT** [HL7 v2 ORU_R01 LRI](https://github.com/nw-gmsa/Testing/blob/main/Outpyt/V2/R01/LRI-GeneVariant-5.txt)
