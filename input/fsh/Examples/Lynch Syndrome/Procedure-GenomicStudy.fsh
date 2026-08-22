@@ -16,7 +16,7 @@ Description: "Based on HL7 LRI Example 3 (Ref 5.9.1.3)"
 * asserter.reference = "urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c"
 
 * subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
-* subject.display = "Nedl LIVERPOOL"
+* subject.display = "Ned LIVERPOOL"
 
 * reasonCode[+]
   * coding[+]

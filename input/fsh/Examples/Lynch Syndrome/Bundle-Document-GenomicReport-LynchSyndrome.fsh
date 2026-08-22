@@ -50,6 +50,8 @@ Usage: #example
   * code = $loinc#59768-2 "Procedure indications Imp"
   * entry[+].reference = "urn:uuid:6beb613f-d303-42af-b025-86e8e0872061"
   * entry[+].reference = "urn:uuid:0878c5de-c22f-4e31-841a-a82ad31c93aa"
+  * entry[+].reference = "urn:uuid:f0036554-cd1a-463c-ac8a-d891ca409af9"
+  * entry[+].reference = "urn:uuid:d6c19529-a64e-476b-b896-303abec26a79"
 
 
 Instance: FHIRDocumentGeneticReportBundle2
@@ -68,3 +70,7 @@ Usage: #example
 * insert EntryDocument("urn:uuid:0878c5de-c22f-4e31-841a-a82ad31c93aa", 0878c5de-c22f-4e31-841a-a82ad31c93aa)
 * insert EntryDocument("urn:uuid:8385c2fd-313d-4fd5-b98e-d5ea4bae6f99", 8385c2fd-313d-4fd5-b98e-d5ea4bae6f99)
 * insert EntryDocument("urn:uuid:4490c092-c78c-480a-8cb7-653b70113fd5", 4490c092-c78c-480a-8cb7-653b70113fd5)
+// Procedure
+* insert EntryDocument("urn:uuid:f0036554-cd1a-463c-ac8a-d891ca409af9", f0036554-cd1a-463c-ac8a-d891ca409af9)
+// Condition
+* insert EntryDocument("urn:uuid:d6c19529-a64e-476b-b896-303abec26a79", d6c19529-a64e-476b-b896-303abec26a79)
