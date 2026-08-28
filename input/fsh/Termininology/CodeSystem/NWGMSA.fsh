@@ -53,3 +53,7 @@ Bucket for local codes
 * #230039 "Is the Person Ordering the Test the Referring Clinician"
 * #GENEAP "GENETICS TEST PERFORMABLE"
 * #unknown "Unknown"
+
+// Identifier Type (local, HL7 v2 Table 0203 Z-code)
+
+* #ZCID "Container Identifier"
