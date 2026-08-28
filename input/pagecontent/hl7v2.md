@@ -486,6 +486,10 @@ Specimen Type is SNOMED CT, not HL7 v2 Table 0487, for conversion to SNOMED see 
 {:.grid}
 
 <div class="alert alert-info" role="alert">
+<b>Container Identifier:</b> Where a specimen container (e.g. a tube or pot) needs to be identified separately from the specimen itself, use an identifier with Identifier Type Code <a href="ValueSet-NWIdentifierType.html">ZCID "Container Identifier"</a>. This is a local (Z) code, as HL7 v2 Table 0203 has no equivalent concept. In FHIR this maps directly to the dedicated <code>Specimen.container.identifier</code> element, so no identifier type code is needed on the FHIR side.
+</div>
+
+<div class="alert alert-info" role="alert">
 <b>v2 to FHIR Conversion:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-spm-to-specimen.html" _target="_blank">SPM to FHIR Specimen</a> 
 <br/>
 <b>FHIR Profile:</b> <a href="StructureDefinition-Specimen.html" _target="_blank">Specimen</a> 
