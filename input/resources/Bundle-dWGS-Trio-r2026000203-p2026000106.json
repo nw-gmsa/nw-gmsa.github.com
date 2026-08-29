@@ -1,0 +1,383 @@
+{
+  "resourceType": "Bundle",
+  "id": "dWGS-Trio-r2026000203-p2026000106",
+  "meta": {
+    "profile": [
+      "https://fhir.nwgenomics.nhs.uk/StructureDefinition/BundleMessage"
+    ]
+  },
+  "identifier": {
+    "value": "urn:uuid:a2775d19-8d42-4f35-b102-62992041c2d7"
+  },
+  "timestamp": "2026-08-28T11:45:57+00:00",
+  "type": "message",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:ef86bfd4-5ec0-4796-a407-e8109a307dad",
+      "resource": {
+        "resourceType": "MessageHeader",
+        "eventCoding": {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0003",
+          "code": "O21"
+        },
+        "sender": {
+          "identifier": {
+            "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+            "value": "699D0"
+          }
+        },
+        "destination": [
+          {
+            "endpoint": "https://fhir.nwgenomics.nhs.uk/Endpoint/RIE",
+            "receiver": {
+              "identifier": {
+                "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+                "value": "699X0"
+              }
+            }
+          }
+        ],
+        "source": {
+          "endpoint": "https://fhir.nwgenomics.nhs.uk/Endpoint/NEYGenomics",
+          "software": "NE&Y Genomics"
+        },
+        "focus": [
+          {
+            "reference": "urn:uuid:81202ddd-f468-4660-a1ce-d9f110b07edd"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:80ffc609-c0f9-417d-b575-0c729434addc",
+      "resource": {
+        "resourceType": "Patient",
+        "identifier": [
+          {
+            "system": "https://fhir.nhs.uk/Id/nhs-number",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NH"
+                }
+              ]
+            },
+            "value": "9999999514"
+          },
+          {
+            "assigner": {
+              "identifier": {
+                "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+                "value": "8J834"
+              }
+            },
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PI"
+                }
+              ]
+            },
+            "value": "p2026000106"
+          }
+        ],
+        "name": [
+          {
+            "family": "Editestpatient",
+            "given": [
+              "Six"
+            ]
+          }
+        ],
+        "birthDate": "1988-01-14"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:619b4dab-65f5-44e6-8e65-e3be3d00b0bf",
+      "resource": {
+        "resourceType": "Specimen",
+        "identifier": [
+          {
+            "assigner": {
+              "identifier": {
+                "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+                "value": "RNN"
+              }
+            },
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PLAC"
+                }
+              ]
+            },
+            "value": "RNN-P0003"
+          },
+          {
+            "assigner": {
+              "identifier": {
+                "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+                "value": "699D0"
+              }
+            },
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "FILL"
+                }
+              ]
+            },
+            "value": "YNE26-P0006"
+          },
+          {
+            "assigner": {
+              "identifier": {
+                "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+                "value": "699D0"
+              }
+            },
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "STN"
+                }
+              ]
+            },
+            "value": "NEY-CONSIGN-2026-105"
+          }
+        ],
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "258580003",
+              "display": "Whole blood specimen (specimen)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:80ffc609-c0f9-417d-b575-0c729434addc"
+        },
+        "collection": {
+          "collectedDateTime": "2026-08-18T00:00:00+00:00"
+        },
+        "receivedTime": "2026-08-20T00:00:00+00:00",
+        "container": [
+          {
+            "identifier": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "https://fhir.nwgenomics.nhs.uk/CodeSystem/NWGMSA",
+                      "code": "ZCID"
+                    }
+                  ]
+                },
+                "value": "FX000000006"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:d61ee0cc-4cc8-482c-97e9-f6f6b1853086",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "exam"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "text": "Family Structure"
+        },
+        "subject": {
+          "reference": "urn:uuid:80ffc609-c0f9-417d-b575-0c729434addc"
+        },
+        "valueCodeableConcept": {
+          "text": "Trio"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:e94acc04-02ec-47a1-89cb-c2f851eecdce",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "exam"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "text": "Participant Type"
+        },
+        "subject": {
+          "reference": "urn:uuid:80ffc609-c0f9-417d-b575-0c729434addc"
+        },
+        "valueCodeableConcept": {
+          "text": "Family Member"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:81202ddd-f468-4660-a1ce-d9f110b07edd",
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "status": "active",
+        "intent": "filler-order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "116148004"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory",
+              "code": "R27.3"
+            }
+          ]
+        },
+        "requisition": {
+          "assigner": {
+            "identifier": {
+              "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+              "value": "699D0"
+            }
+          },
+          "value": "r2026000203"
+        },
+        "identifier": [
+          {
+            "assigner": {
+              "identifier": {
+                "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+                "value": "8J834"
+              }
+            },
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "FILL"
+                }
+              ]
+            },
+            "value": "r2026000203-p2026000106"
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:80ffc609-c0f9-417d-b575-0c729434addc"
+        },
+        "requester": {
+          "display": "Sheffield Diagnostic Genetics Service (NE&Y Genomics)",
+          "identifier": {
+            "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+            "value": "699D0"
+          },
+          "type": "Organization"
+        },
+        "specimen": [
+          {
+            "reference": "urn:uuid:619b4dab-65f5-44e6-8e65-e3be3d00b0bf",
+            "type": "Specimen"
+          }
+        ],
+        "supportingInfo": [
+          {
+            "reference": "urn:uuid:d61ee0cc-4cc8-482c-97e9-f6f6b1853086",
+            "type": "Observation"
+          },
+          {
+            "reference": "urn:uuid:e94acc04-02ec-47a1-89cb-c2f851eecdce",
+            "type": "Observation"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:890c0a5b-1f08-4881-935a-0fb17925941b",
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "name": [
+          {
+            "family": "Brough",
+            "given": [
+              "Gilly"
+            ]
+          }
+        ],
+        "patient": {
+          "reference": "urn:uuid:80ffc609-c0f9-417d-b575-0c729434addc",
+          "type": "Patient"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "SIB",
+                "display": "sibling"
+              }
+            ]
+          }
+        ],
+        "birthDate": "1989-07-01"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f05338f0-1711-4db3-9b8d-d4274be2d7e5",
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "name": [
+          {
+            "family": "Editestpatient",
+            "given": [
+              "Thirteen"
+            ]
+          }
+        ],
+        "patient": {
+          "reference": "urn:uuid:80ffc609-c0f9-417d-b575-0c729434addc",
+          "type": "Patient"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "FTH",
+                "display": "father"
+              }
+            ]
+          }
+        ],
+        "birthDate": "1960-01-01"
+      }
+    }
+  ]
+}

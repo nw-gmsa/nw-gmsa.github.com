@@ -106,6 +106,9 @@ pages:
   hl7v2.md:
     title: HL7 v2 Standards
     generation: markdown
+  dWGS.md:
+    title: Whole Genome Sequencing (WGS)
+    generation: markdown
   testing.md:
     title: Testing
     generation: markdown
@@ -236,6 +239,30 @@ resources:
     name: Bundle 'Message' - Filler Order Message
     description: Example Filler Order Message for internal or external LIMS
     exampleBoolean: true
+  Bundle/dWGS-Singleton-r2026000201:
+    name: dWGS Sub-order - Singleton
+    description: Distributed WGS (dWGS) LAB-35 sub-order from NE&Y Genomics (RGL) to NW Genomics (SGL) - a Singleton (Proband only) referral
+    exampleBoolean: true
+  Bundle/dWGS-Duo-r2026000202-p2026000102:
+    name: dWGS Sub-order - Duo (Proband)
+    description: Distributed WGS (dWGS) LAB-35 sub-order - the Proband half of a Duo referral (see dWGS-Duo-r2026000202-p2026000103 for the Family Member)
+    exampleBoolean: true
+  Bundle/dWGS-Duo-r2026000202-p2026000103:
+    name: dWGS Sub-order - Duo (Family Member)
+    description: Distributed WGS (dWGS) LAB-35 sub-order - the Family Member half of a Duo referral (see dWGS-Duo-r2026000202-p2026000102 for the Proband)
+    exampleBoolean: true
+  Bundle/dWGS-Trio-r2026000203-p2026000104:
+    name: dWGS Sub-order - Trio (Proband)
+    description: Distributed WGS (dWGS) LAB-35 sub-order - the Proband member of a Trio referral (see dWGS-Trio-r2026000203-p2026000105/106 for the two Family Members)
+    exampleBoolean: true
+  Bundle/dWGS-Trio-r2026000203-p2026000105:
+    name: dWGS Sub-order - Trio (Family Member 1)
+    description: Distributed WGS (dWGS) LAB-35 sub-order - a Family Member of a Trio referral (see dWGS-Trio-r2026000203-p2026000104 for the Proband)
+    exampleBoolean: true
+  Bundle/dWGS-Trio-r2026000203-p2026000106:
+    name: dWGS Sub-order - Trio (Family Member 2)
+    description: Distributed WGS (dWGS) LAB-35 sub-order - a Family Member of a Trio referral (see dWGS-Trio-r2026000203-p2026000104 for the Proband)
+    exampleBoolean: true
   Observation/igene-seqv1:
     name: Variant DSS BRCA1
     description: Variant DSS BRCA1
@@ -245,6 +272,7 @@ menu:
  ##   Design Overview: design.html
     Laboratory Testing Workflow (LTW): LTW.html
     Inter-Laboratory Workflow (ILW): ILW.html
+    Distributed Whole Genome Sequencing (dWGS): dWGS.html
     Health Data API (EURDICE): HIE.html
     API Security: api-security.html
     ##Health Document Sharing (MHDS) and Sharing Laboratory Reports (XD-LAB): MHDS.html
@@ -363,3 +391,13 @@ groups:
     resources:
       - DocumentReference/Y05868-d783361d-83fa-438f-977c-601f30ef5ceb
       - DocumentReference/Y05868-75c254c0-d2cf-43ee-8a83-926af3f302bb
+  -ex-example-dwgs:
+    name: "Example: Distributed WGS (dWGS) Sub-contracted Order"
+    description: "LAB-35 sub-orders from a Requesting Genomic Laboratory (RGL) to a Sequencing Genomic Laboratory (SGL), covering Singleton, Duo and Trio family structures"
+    resources:
+      - Bundle/dWGS-Singleton-r2026000201
+      - Bundle/dWGS-Duo-r2026000202-p2026000102
+      - Bundle/dWGS-Duo-r2026000202-p2026000103
+      - Bundle/dWGS-Trio-r2026000203-p2026000104
+      - Bundle/dWGS-Trio-r2026000203-p2026000105
+      - Bundle/dWGS-Trio-r2026000203-p2026000106
