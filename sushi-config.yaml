@@ -130,6 +130,24 @@ pages:
   LaboratoryAnalyteResult.md:
     title: Laboratory Analyte Result Introduction
     generation: markdown
+  BCRABLMonitoring.md:
+    title: "Use Case: BCR-ABL Monitoring"
+    generation: markdown
+  HaematoOncologyPathway.md:
+    title: "Use Case: Haemato-Oncology Diagnostic Pathway"
+    generation: markdown
+  CancerNOS.md:
+    title: "Use Case: Cancer NOS"
+    generation: markdown
+  HowToGuides.md:
+    title: How-to Guides
+    generation: markdown
+  reportable-variants.md:
+    title: "Use Case: OMICS DSS Result Integration"
+    generation: markdown
+  overview.md:
+    title: "Use Case: Regional Integration Engine (RIE)"
+    generation: markdown
   architecture.md:
     title: Architecture
     generation: markdown
@@ -303,7 +321,6 @@ menu:
  ##   Design Overview: design.html
     Laboratory Testing Workflow (LTW): LTW.html
     Inter-Laboratory Workflow (ILW): ILW.html
-    Distributed Whole Genome Sequencing (dWGS): dWGS.html
     Health Data API (EURDICE): HIE.html
     API Security: api-security.html
     ##Health Document Sharing (MHDS) and Sharing Laboratory Reports (XD-LAB): MHDS.html
@@ -337,11 +354,25 @@ menu:
     HL7 FHIR R4: artifacts.html
     HL7 v2.5.1: hl7v2.html
     IHE XDS.b/MHD: StructureDefinition-DocumentReference.html
+  Use Cases:
+    Distributed WGS (dWGS): dWGS.html
+    Histocompatibility and Immunogenetics: HistocompatibilityAndImmunogenetics.html
+    BCR-ABL Monitoring (Cepheid ASTM to iGene): BCRABLMonitoring.html
+    Haemato-Oncology Diagnostic Pathway (Shire to HODS): HaematoOncologyPathway.html
+    Cheshire and Merseyside (Pathology to Genomics Reflex): HaematoOncologyPathway.html#use-case-genomic-test-order-following-on-from-pathology-test-order
+    Cancer NOS (Colorectal and Children's Cancer Pathways): CancerNOS.html
+    OMICS DSS Result Integration: reportable-variants.html
+    Regional Orders and Reports (Alder Hey, MFT, Liverpool): overview.html
+    Greater Manchester Care Record (GMCR): overview.html#shared-care-record-feeds---wire-tap-on-lab-3orur01
+    Lancashire and South Cumbria Genomic Reports: overview.html#shared-care-record-feeds---wire-tap-on-lab-3orur01
+    ctDNA NHS England Unified Genomic Record Phase 1: overview.html#shared-care-record-feeds---wire-tap-on-lab-3orur01
+    NE&Y Management Information (ctDNA): overview.html#technical-detail
   Development:
     Environments and Testing: testing.html
     Support: support.html
     Architecture: architecture.html
     Enterprise Integration Patterns (EIP): exchange.html
+    How-to Guides: HowToGuides.html
 
 groups:
   -ex-example-laboratory-order:

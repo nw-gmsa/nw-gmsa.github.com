@@ -12,40 +12,12 @@ This is currently being elaborated and subject to change.
 <b>HL7 FHIR Profile:</b> <a href="StructureDefinition-LaboratoryAnalyteResult.html" _target="_blank">Laboratory Analyte Result</a> 
 </div>
 
-> BCR-ABL1 concentration testing is used to monitor the amount of the fusion gene (Philadelphia chromosome) in chronic myeloid leukemia (CML) patients, with results typically reported on an International Scale (%IS) to measure treatment response.
-
-```mermaid
-graph
-
-analysis["Analytical Phase (Testing)"]
-report["Post-Analytical Phase (Interpretation & Reporting)"]
-placer[Order Placer]
-
-analysis --> |Laboratory Analyte Result| report
-report --> |Genomic Report| placer  
-
-  classDef green fill:#D5E8D4;
-  class placer green
-```
-
-### Analytical Phase (Testing)
-
-This is the core stage where the targeted substance (analyte) is actually measured.
-- Calibration & Quality Control (QC): Before testing patient samples, laboratory technicians calibrate the instrument and run Quality Control materials with known values to ensure the equipment is operating perfectly.
-- Analysis: The processed sample is placed into an automated analyzer. Depending on the analyte, the machine uses techniques like mass spectrometry, chromatography, or colorimetric spectroscopy to quantify or detect the substance.
-- Validation: The instrument produces raw data which is processed and mathematically converted into a meaningful concentration.
-
-Output: [Laboratory Analyte Result](#laboratory-analyte-result)
-
-### Post-Analytical Phase (Interpretation & Reporting)
-
-Once the analyzer generates a value, the results must be evaluated and distributed to the requesting physician or client.
-- Verification: The laboratory scientist reviews the result against the laboratory's reference ranges (what is considered "normal") and validates the data quality.
-- Reporting: The final validated result is transmitted to the clinician's health record or client file.
-- Critical Action: If the analyte is at a dangerously abnormal level, immediate protocols (e.g., direct calls to the doctor) are enacted.
-
-Output: [Genomic Test Report](StructureDefinition-DiagnosticReport.html)
-Process Flow: [Test Results Management (LAB-5)](LTW.html#test-results-management-lab-5)
+A Laboratory Analyte Result carries a single measured/detected substance (analyte)
+from the analytical phase of testing through to the `Observation` referenced by
+`DiagnosticReport.result`. See [BCR-ABL Monitoring](BCRABLMonitoring.html) for a
+worked use case of this profile - BCR-ABL1 quantification for chronic myeloid
+leukaemia (CML) monitoring, from a Cepheid-class ASTM-communicating analyser through
+to iGene.
 
 ## Data Mapping
 
@@ -80,27 +52,7 @@ Rows marked with `↳` in the Data Element column are sub-elements of the **Resu
 |                          | ↳ Device Identifier                                              | ?? OBX-18 EquipmentInstanceIdentifier   |                   |                                                                         Observation.device                        |                    |                                   |
 {:.grid}
 
-
 ### Result Detail
 
-These entries are expressed in Observation.component
-
-#### BCRABL
-
-Possible LOINC Codes for BCR-ABL:
-
-- [69380-4](https://loinc.org/69380-4/) t(9;22)(q34.1;q11)(ABL1,BCR) b2a2+b3a2 fusion transcript/control transcript (International Scale) [# Ratio] in Blood or Tissue by Molecular genetics method
-
-| Data Element     | Local Code    | LOINC | SNOMED | iGene                      | Data Type | Unit    | Example |
-|------------------|---------------|-------|--------|----------------------------|-----------|---------|---------|
-| MR                         | MR               |       |        | MR                         | String    |      | 4.52    |
-| ABL_Analyte_Result         | ??               |       |        | ABL_Analyte_Result         | String    |      | ?? PASS |
-| ABL_Ct                     | ABL&Ct           |       |        | ABL_Ct                     | String    |      | 12.2    |
-| ABL_EndPt                  | ABL&EndPt        |       |        | ABL_EndPt                  | String    |      | 434     |
-| ABL_Probe_Check_Result     | ABL&             |       |        | ABL_Probe_Check_Result     | String    |      | PASS    |
-| BCR-ABL_Analyte_Result     | BCR-ABL&         |       |        | BCR-ABL_Analyte_Result     | String    |      | POS     |
-| BCR-ABL_Ct                 | BCR-ABL&Ct       |       |        | BCR-ABL_Ct                 | String    |      | 30.3    |
-| BCR-ABL_EndPt              | BCR-ABL&EndPt    |       |        | BCR-ABL_EndPt              | String    |      | 164     |
-| BCR-ABL_Probe_Check_Result | ??               |       |        | BCR-ABL_Probe_Check_Result | String    |      | ?? PASS     |
-| BCR-ABL_Target_Delta_Ct    | BCR-ABL&Delta Ct |       |        | BCR-ABL_Target_Delta_Ct    | String    |      | -18.1        |
-{:.grid}
+These entries are expressed in `Observation.component` - see [BCR-ABL
+Monitoring](BCRABLMonitoring.html#result-detail) for a worked example.
