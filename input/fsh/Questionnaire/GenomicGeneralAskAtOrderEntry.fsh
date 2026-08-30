@@ -1,6 +1,6 @@
 Instance: GenomicGeneralAskAtOrderEntry
 InstanceOf: NWQuestionnaire
-Title: "NW Genomic General Test Order"
+Title: "NW Genomic General Ask At Order Questions"
 Description: """
 The default **Ask At Order Entry Questions** used alongside the [common core order
 form](Questionnaire-GenomicTestOrder.html) for order/test types that do not have their
@@ -11,7 +11,7 @@ have been extracted here so the core form stays generic to every order/test type
 """
 Usage:  #definition
 
-* title = "NW Genomic General Test Order"
+* title = "NW Genomic General Ask At Order Questions"
 * status = #draft
 * url = "https://fhir.nwgenomics.nhs.uk/Questionnaire/GenomicGeneralAskAtOrderEntry"
 
