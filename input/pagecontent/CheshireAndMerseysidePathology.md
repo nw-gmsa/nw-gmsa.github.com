@@ -11,11 +11,11 @@ This is for information/analysis purposes only and is not a planned piece of wor
 
 ## Actors
 
-| Actor                       | Role                                    | System (example)                        |
-|--------------------------------|----------------------------------------|-----------------------------------------|
-| Order Placer                    | Referring clinician                      | MFT EPIC                                  |
-| Order Filler (Pathology)        | Pathology laboratory                     | MFT EPIC Beaker or CFT Shire               |
-| Order Filler (Genomics)         | Genomics laboratory                      | iGene                                     |
+| IHE Actor                                                                                                            | Role                                    | System (example)                        |
+|---------------------------------------------------------------------------------------------------------------------------|----------------------------------------|-----------------------------------------|
+| [Order Placer](ActorDefinition-OrderPlacer.html)                                                                            | Referring clinician                      | MFT EPIC                                  |
+| [Order Filler](ActorDefinition-OrderFiller.html) (receiving `LAB-1`) / [Requestor](ActorDefinition-Requestor.html) (ILW, if sending `LAB-35`) | Pathology laboratory                     | MFT EPIC Beaker or CFT Shire               |
+| [Order Filler](ActorDefinition-OrderFiller.html) / [Subcontractor](ActorDefinition-Subcontractor.html) (ILW, if reflexed)   | Genomics laboratory                      | iGene                                     |
 {:.grid}
 
 ## Transactions

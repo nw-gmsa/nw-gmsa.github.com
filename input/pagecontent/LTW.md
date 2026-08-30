@@ -153,6 +153,14 @@ sequenceDiagram
 <b>Interaction:</b> <a href="MQ.html" _target="_blank">Message Exchange</a> LAB-1
 </div>
 
+Used by these Use Cases:
+- [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html)
+- [Haemato-Oncology Diagnostic Pathway](HaematoOncologyPathway.html)
+- [Cheshire and Merseyside Pathology](CheshireAndMerseysidePathology.html)
+- [Cancer NOS](CancerNOS.html)
+- [Regional Integration Engine (RIE)](overview.html)
+- [StarLIMS / iGene Integration](starLIMS.html)
+
 #### LAB-1 Process Flow
 
 An order is created by the clinical practice and placed to the laboratory.
@@ -278,6 +286,14 @@ After submitting the original order, the sample will be collected and sent to th
 <div class="alert alert-info" role="alert">
 <b>Interaction:</b> <a href="MQ.html" _target="_blank">Message Exchange</a> LAB-3
 </div>
+
+Used by these Use Cases:
+- [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html)
+- [Haemato-Oncology Diagnostic Pathway](HaematoOncologyPathway.html)
+- [Cheshire and Merseyside Pathology](CheshireAndMerseysidePathology.html)
+- [Cancer NOS](CancerNOS.html)
+- [Regional Integration Engine (RIE)](overview.html) - including the [Shared Care Record Feeds](overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01) wire-tap to GMCR, Lancashire and South Cumbria, and the NHS England Unified Genomic Record
+- [StarLIMS / iGene Integration](starLIMS.html)
 
 ### LAB-3 Process Flow
 
@@ -496,6 +512,11 @@ Device ->> LIMS: Send Test Results Management LAB-5 R22/R32
 <b>Domain Archetype:</b> <a href="diagnostic-core.html#filler-order" _target="_blank">Diagnostic Core - Filler Order</a> 
 </div>
 
+Used by these Use Cases:
+- [OMICS DSS Result Integration](reportable-variants.html)
+- [Regional Integration Engine (RIE)](overview.html)
+- [StarLIMS / iGene Integration](starLIMS.html)
+
 #### LAB-4 Process Flow
 
 ```mermaid
@@ -541,6 +562,11 @@ class GDP,RIE4,PubSub pink;
 <div class="alert alert-info" role="alert">
 <b>Interaction:</b> <a href="MQ.html" _target="_blank">Message Exchange</a> LAB-5
 </div>
+
+Used by these Use Cases:
+- [BCR-ABL Monitoring (Cepheid ASTM to iGene)](BCRABLMonitoring.html)
+- [OMICS DSS Result Integration](reportable-variants.html)
+- [Regional Integration Engine (RIE)](overview.html)
 
 #### LAB-5 Process Flow
 

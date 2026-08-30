@@ -14,11 +14,11 @@ NW Genomics — StarLIMS / iGene Integration.
 
 ## Actors
 
-| Actor              | Role                                                              |
-|------------------------|--------------------------------------------------------------------|
-| iGene                    | Order Filler (master LIMS) - orders and specimens are clerked in, reports distributed to NHS Trusts |
-| Regional Integration Engine (RIE) / FHIR Repository | Picks up work order CSV exports, stores Patient/ServiceRequest/Specimen, generates results CSV |
-| StarLIMS                  | Sub-Contractor - Liverpool GLH satellite LIMS, tests managed here      |
+| IHE Actor                                                                                       | Role                                                              |
+|------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------|
+| [Order Filler](ActorDefinition-OrderFiller.html)                                                       | iGene (master LIMS) - orders and specimens are clerked in, reports distributed to NHS Trusts |
+| [Intermediary](ActorDefinition-Intermediary.html) / [Resource Access Provider](ActorDefinition-ResourceAccessProvider.html) | Regional Integration Engine (RIE) / FHIR Repository - picks up work order CSV exports, stores Patient/ServiceRequest/Specimen, generates results CSV |
+| [Subcontractor](ActorDefinition-Subcontractor.html) (ILW)                                              | StarLIMS - Liverpool GLH satellite LIMS, tests managed here      |
 {:.grid}
 
 ## Transactions

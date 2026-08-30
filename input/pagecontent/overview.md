@@ -32,25 +32,25 @@ NW Genomics Regional Integration Engine (RIE).
 
 ## Actors
 
-| Actor                                    | Role                                                            |
-|-----------------------------------------------|-------------------------------------------------------------------|
-| LIMS iGene                                       | Internal LIMS - master LIMS                                        |
-| LIMS StarLIMS                                     | Internal LIMS - Liverpool GLH satellite LIMS                        |
-| LIMS Histotrac                                    | Internal LIMS - Histocompatibility and Immunogenetics                |
-| LIMS Shire                                        | Internal LIMS - Haemato-Oncology                                    |
-| Cepheid                                           | Analyser - test results via ASTM                                     |
-| Omics DSS                                         | Analytic Processing - test results via FHIR                          |
-| Regional Integration Engine (RIE)                 | Message distribution and transformation hub ("post office")          |
-| Manchester Foundation Trust (MFT)                 | NHS Trust - direct HL7 (EPIC and HODS)                                |
-| Alder Hey                                         | NHS Trust - direct HL7                                               |
-| Liverpool Women's                                 | NHS Trust - direct HL7                                               |
-| Clatterbridge                                     | NHS Trust - direct HL7 (Immunology test requests + Genomic and Immunology reports) |
-| NHS Trusts via GMS Order Comms                    | NHS Trust - electronic or web portal, not direct HL7 to the RIE       |
-| National Genomic Order Comms                      | National ordering system / web portal (future interface)             |
-| Greater Manchester Care Record (GMCR)             | Shared Care Record Provider - cancer only                             |
-| Lancashire & South Cumbria                        | Shared Care Record Provider - in elaboration                          |
-| National Unified Genomic Care Record (UGR)        | Shared Care Record Provider - in elaboration                          |
-| North East and Yorkshire (NE&Y) Genomics          | Peer Genomic Laboratory Hub - ctDNA metadata only, results removed    |
+| IHE Actor                                                                | Role                                                            |
+|-------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| [Order Filler](ActorDefinition-OrderFiller.html)                                 | LIMS iGene - internal LIMS, master LIMS                             |
+| [Subcontractor](ActorDefinition-Subcontractor.html) (ILW)                        | LIMS StarLIMS - internal LIMS, Liverpool GLH satellite LIMS         |
+| [Order Filler](ActorDefinition-OrderFiller.html)                                 | LIMS Histotrac - internal LIMS, Histocompatibility and Immunogenetics |
+| [Order Filler](ActorDefinition-OrderFiller.html)                                 | LIMS Shire - internal LIMS, Haemato-Oncology                        |
+| [Automation Manager](ActorDefinition-AutomationManager.html)                     | Cepheid - analyser, test results via ASTM                            |
+| [Automation Manager](ActorDefinition-AutomationManager.html)                     | Omics DSS - analytic processing, test results via FHIR               |
+| [Intermediary](ActorDefinition-Intermediary.html)                              | Regional Integration Engine (RIE) - message distribution and transformation hub ("post office") |
+| [Order Placer](ActorDefinition-OrderPlacer.html)                                 | Manchester Foundation Trust (MFT) - NHS Trust, direct HL7 (EPIC and HODS) |
+| [Order Placer](ActorDefinition-OrderPlacer.html)                                 | Alder Hey - NHS Trust, direct HL7                                    |
+| [Order Placer](ActorDefinition-OrderPlacer.html)                                 | Liverpool Women's - NHS Trust, direct HL7                            |
+| [Order Placer](ActorDefinition-OrderPlacer.html)                                 | Clatterbridge - NHS Trust, direct HL7 (Immunology test requests + Genomic and Immunology reports) |
+| [Order Placer](ActorDefinition-OrderPlacer.html) (via GMS Order Comms)           | NHS Trusts - electronic or web portal, not direct HL7 to the RIE       |
+| [Automation Manager](ActorDefinition-AutomationManager.html)                     | National Genomic Order Comms - national ordering system / web portal (future interface, GOMS) |
+| [Document Consumer](ActorDefinition-DocumentConsumer.html)                       | Greater Manchester Care Record (GMCR) - Shared Care Record Provider, cancer only |
+| [Document Consumer](ActorDefinition-DocumentConsumer.html)                       | Lancashire & South Cumbria - Shared Care Record Provider, in elaboration |
+| [Document Consumer](ActorDefinition-DocumentConsumer.html)                       | National Unified Genomic Care Record (UGR) - Shared Care Record Provider, in elaboration |
+| [Requestor](ActorDefinition-Requestor.html) / [Subcontractor](ActorDefinition-Subcontractor.html) (ILW, peer exchange) | North East and Yorkshire (NE&Y) Genomics - peer Genomic Laboratory Hub, ctDNA metadata only, results removed |
 {:.grid}
 
 ## Transactions

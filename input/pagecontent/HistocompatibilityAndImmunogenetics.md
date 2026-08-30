@@ -13,13 +13,12 @@ Clatterbridge Chimerism Testing - process overview.
 
 ## Actors
 
-| Actor                              | Role                                    | System                                    |
-|--------------------------------------|----------------------------------------|-----------------------------------------------|
-| Order Placer                         | Referring clinician / EPR              | Clatterbridge Meditech (EPR)                   |
-| Trust Integration Engine             | Message routing                        | Clatterbridge TIE                              |
-| Regional Integration Engine          | Message transformation and routing hub | NW Genomics Regional Integration Engine (RIE)  |
-| Order Filler                         | Testing laboratory                     | Histotrac (NW Genomics / MFT) - previously iLab LIMS (via LUFT TIE) |
-| Order Comms (interim, manual only)   | Manual order entry                     | HODS                                           |
+| IHE Actor                                                | Role                                    | System                                    |
+|-------------------------------------------------------------|----------------------------------------|-----------------------------------------------|
+| [Order Placer](ActorDefinition-OrderPlacer.html)               | Referring clinician / EPR              | Clatterbridge Meditech (EPR)                   |
+| [Intermediary](ActorDefinition-Intermediary.html)             | Message routing                        | Clatterbridge TIE, LUFT TIE (historical), NW Genomics Regional Integration Engine (RIE) (future) |
+| [Order Filler](ActorDefinition-OrderFiller.html)                | Testing laboratory                     | Histotrac (NW Genomics / MFT) - previously iLab LIMS |
+| [Order Placer](ActorDefinition-OrderPlacer.html) (interim, manual only) | Manual order entry                     | HODS                                           |
 {:.grid}
 
 ## Transactions

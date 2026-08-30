@@ -142,8 +142,8 @@ pages:
   CancerNOS.md:
     title: "Use Case: Cancer NOS"
     generation: markdown
-  HowToGuides.md:
-    title: How-to Guides
+  DeveloperGuides.md:
+    title: Developer Guides
     generation: markdown
   reportable-variants.md:
     title: "Use Case: OMICS DSS Result Integration"
@@ -379,7 +379,7 @@ menu:
     Support: support.html
     Architecture: architecture.html
     Enterprise Integration Patterns (EIP): exchange.html
-    How-to Guides: HowToGuides.html
+    Developer Guides: DeveloperGuides.html
 
 groups:
   -ex-example-laboratory-order:

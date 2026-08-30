@@ -17,11 +17,11 @@ occur around cancer, and cancer referrals bring their own notification patterns.
 
 ## Actors
 
-| Actor                            | Role                                    |
-|-------------------------------------|------------------------------------------|
-| Primary Treatment Centre (PTC)        | Requests testing, acts on results          |
-| Community Nurse / POSCU               | Specimen collection, notification relay    |
-| Laboratory                            | Performs testing, writes laboratory report |
+| IHE Actor                                                                                                                   | Role                                    |
+|----------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|
+| [Order Placer](ActorDefinition-OrderPlacer.html) / [Order Result Tracker](ActorDefinition-OrderResultTracker.html) | Primary Treatment Centre (PTC) - requests testing, acts on results |
+| *(no IHE actor defined for this role yet)*                                                                                          | Community Nurse / POSCU - specimen collection, notification relay |
+| [Order Filler](ActorDefinition-OrderFiller.html)                                                                                     | Laboratory - performs testing, writes laboratory report |
 {:.grid}
 
 ## Transactions

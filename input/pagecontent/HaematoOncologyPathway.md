@@ -10,12 +10,12 @@ This is currently being elaborated and subject to change.
 
 ## Actors
 
-| Actor                      | Role                                                     |
-|--------------------------------|----------------------------------------------------------|
-| Order Placer                     | Referring clinician / EPR                                 |
-| Order Filler (HODS)               | Haemato-oncology order comms system - orchestrates pathology and genomics reflex testing for a single referral |
-| Order Filler (Pathology)          | Pathology laboratory                                       |
-| Order Filler (Genomics)           | Genomics laboratory                                         |
+| IHE Actor                                                                                                                        | Role                                                     |
+|---------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------|
+| [Order Placer](ActorDefinition-OrderPlacer.html)                                                                                          | Referring clinician / EPR                                 |
+| [Order Filler](ActorDefinition-OrderFiller.html) (receiving `LAB-1`) / [Requestor](ActorDefinition-Requestor.html) (ILW, sending `LAB-35`) | HODS - haemato-oncology order comms system, orchestrates pathology and genomics reflex testing for a single referral |
+| [Subcontractor](ActorDefinition-Subcontractor.html) (ILW)                                                                                 | Pathology laboratory                                       |
+| [Subcontractor](ActorDefinition-Subcontractor.html) (ILW)                                                                                 | Genomics laboratory                                         |
 {:.grid}
 
 ## Transactions

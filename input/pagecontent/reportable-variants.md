@@ -11,26 +11,25 @@ DSS and iGene Integration Overview.
 
 ## Actors
 
-| Actor              | Role                                                    |
-|------------------------|----------------------------------------------------------|
-| iGene                    | Master LIMS - creates the work order, ultimate destination for processed results |
-| DLIMS                     | Satellite LIMS - performs the test against the work order  |
-| Omics DSS                 | Processes DLIMS test results, linked to work order metadata |
-| FHIR Repository            | Stores the work order and the resulting FHIR Genomics Report |
-| Regional Integration Engine (RIE) | Transforms the FHIR Genomics Report into iGene's CSV format |
+| IHE Actor                                                                | Role                                                    |
+|-------------------------------------------------------------------------------|----------------------------------------------------------|
+| [Order Filler](ActorDefinition-OrderFiller.html)                                 | iGene - master LIMS, creates the work order, ultimate destination for processed results |
+| [Automation Manager](ActorDefinition-AutomationManager.html)                     | DLIMS - satellite LIMS, performs the test against the work order  |
+| [Automation Manager](ActorDefinition-AutomationManager.html)                     | Omics DSS - processes DLIMS test results, linked to work order metadata |
+| [Resource Access Provider](ActorDefinition-ResourceAccessProvider.html)          | FHIR Repository - stores the work order and the resulting FHIR Genomics Report |
+| [Intermediary](ActorDefinition-Intermediary.html)                              | Regional Integration Engine (RIE) - transforms the FHIR Genomics Report into iGene's CSV format |
 {:.grid}
 
 ## Transactions
 
-| Transaction                         | Description                                             | Direction                          |
-|-----------------------------------------|----------------------------------------------------------|---------------------------------------|
-| Work Order Created                        | iGene creates a work order for DLIMS                        | iGene → DLIMS                          |
-| Test Results                              | DLIMS sends test results for processing                     | DLIMS → Omics DSS                      |
-| Work Order metadata export (proposed)     | Mirrors the StarLIMS export pattern                          | iGene → FHIR Repository                |
-| Work Order metadata read (proposed)       | So results can be linked back to the originating work order | Omics DSS → FHIR Repository            |
-| FHIR Genomics Report (proposed)           | Processed output converted and linked to the Work Order     | Omics DSS → FHIR Repository            |
-| CSV transform (proposed)                  | Results + linked Work Order metadata transformed for iGene  | FHIR Repository → RIE → iGene          |
-| Processed Output (current, being replaced)| Direct send of processed output                              | Omics DSS → iGene                      |
+| Transaction                                | Description                                             | Direction                          |
+|-----------------------------------------------|----------------------------------------------------------|---------------------------------------|
+| `LAB-4`                                          | Work order created for DLIMS                                | iGene → DLIMS                          |
+| `LAB-5` (current, being replaced)                | DLIMS test results sent for processing, then processed output sent directly to iGene | DLIMS → Omics DSS → iGene |
+| FHIR RESTful create (proposed)                   | Work Order metadata export, mirrors the StarLIMS export pattern | iGene → FHIR Repository                |
+| FHIR RESTful read (proposed)                     | Work Order metadata read, so results can be linked back to the originating work order | Omics DSS → FHIR Repository |
+| `LAB-5` / FHIR RESTful create (proposed)         | Processed output converted to a FHIR Genomics Report and linked to the Work Order | Omics DSS → FHIR Repository |
+| CSV transform (proposed)                         | Results + linked Work Order metadata transformed for iGene  | FHIR Repository → RIE → iGene          |
 {:.grid}
 
 ## Current Process

@@ -10,19 +10,19 @@ This is currently being elaborated and subject to change.
 
 ## Actors
 
-| Actor          | Role                                    | System                          |
-|-------------------|---------------------------------------|--------------------------------------|
-| Analyser           | Performs the analytical phase (testing) | Cepheid GeneXpert (ASTM-communicating) |
-| Order Filler       | Laboratory Information Management System | iGene                              |
-| Order Placer        | Requesting clinician (treatment response monitoring) | Requesting Trust EPR       |
+| IHE Actor                                          | Role                                    | System                          |
+|--------------------------------------------------------|---------------------------------------|--------------------------------------|
+| [Automation Manager](ActorDefinition-AutomationManager.html) | Performs the analytical phase (testing) | Cepheid GeneXpert (ASTM-communicating) |
+| [Order Filler](ActorDefinition-OrderFiller.html)           | Laboratory Information Management System | iGene                              |
+| [Order Placer](ActorDefinition-OrderPlacer.html)           | Requesting clinician (treatment response monitoring) | Requesting Trust EPR       |
 {:.grid}
 
 ## Transactions
 
-| Transaction                      | Description                                   |
-|--------------------------------------|----------------------------------------------|
-| Laboratory Analyte Result (LAB-5) | Analyser → Order Filler (analytical result)     |
-| Genomic Report                    | Order Filler → Order Placer (validated report)  |
+| Transaction | Description                                   |
+|-------------|------------------------------------------------|
+| `LAB-5`     | Automation Manager → Order Filler (analytical result) |
+| `LAB-3`     | Order Filler → Order Placer (validated report)  |
 {:.grid}
 
 ## Current Process

@@ -94,6 +94,13 @@ sequenceDiagram
 <b>Interaction:</b> <a href="MQ.html" _target="_blank">Message Exchange</a> LAB-35
 </div>
 
+Used by these Use Cases:
+- [Distributed WGS (dWGS)](dWGS.html)
+- [Haemato-Oncology Diagnostic Pathway](HaematoOncologyPathway.html)
+- [Cheshire and Merseyside Pathology](CheshireAndMerseysidePathology.html)
+- [Regional Integration Engine (RIE)](overview.html)
+- [StarLIMS / iGene Integration](starLIMS.html)
+
 ### Sub-order Results Delivery (LAB-36)
 
 <div class="alert alert-info" role="alert">
@@ -103,6 +110,12 @@ sequenceDiagram
 <div class="alert alert-info" role="alert">
 <b>Interaction:</b> <a href="MQ.html" _target="_blank">Message Exchange</a> LAB-36
 </div>
+
+Used by these Use Cases:
+- [Distributed WGS (dWGS)](dWGS.html)
+- [Haemato-Oncology Diagnostic Pathway](HaematoOncologyPathway.html)
+- [Regional Integration Engine (RIE)](overview.html)
+- [StarLIMS / iGene Integration](starLIMS.html)
 
 
 ### Modernisation
