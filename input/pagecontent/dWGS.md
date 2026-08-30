@@ -165,33 +165,21 @@ originally received at the GLH (blood/tissue, before extraction); `dispatched_sa
 describes the extracted DNA sent onward. The worked examples below carry both as
 identifiers/values on a single `Specimen` resource rather than two linked resources.
 
-### Example QuestionnaireResponse
+### Examples
 
-Each row of the source manifest (`Input/dWGS.csv`) is represented as a
-`QuestionnaireResponse` answering [dWGS Sub-Order
-Manifest](Questionnaire-dWGSSubOrder.html), one per referral participant:
+Each row of the source manifest (`Input/dWGS.csv`) gives one referral participant,
+shown below in three forms: the `QuestionnaireResponse` answering [dWGS Sub-Order
+Manifest](Questionnaire-dWGSSubOrder.html), the `LAB-35` sub-order `Bundle` it was
+extracted into (same referrals and participants as [Worked
+examples](#worked-examples)), and the HL7 v2 `OML^O21` equivalent of that same Bundle
+(from [nw-gmsa/Testing](https://github.com/nw-gmsa/Testing/tree/main/Output/V2/O21)):
 
-| Referral       | Participant                          | Example                                                                                                 |
-|----------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------|
-| `r2026000201`  | Proband (`p2026000101`)               | [QuestionnaireResponse-dWGS-Singleton-r2026000201-p2026000101](QuestionnaireResponse-dWGS-Singleton-r2026000201-p2026000101.html) |
-| `r2026000202`  | Proband (`p2026000102`)               | [QuestionnaireResponse-dWGS-Duo-r2026000202-p2026000102](QuestionnaireResponse-dWGS-Duo-r2026000202-p2026000102.html)             |
-| `r2026000202`  | Family Member (`p2026000103`)         | [QuestionnaireResponse-dWGS-Duo-r2026000202-p2026000103](QuestionnaireResponse-dWGS-Duo-r2026000202-p2026000103.html)             |
-| `r2026000203`  | Proband (`p2026000104`)               | [QuestionnaireResponse-dWGS-Trio-r2026000203-p2026000104](QuestionnaireResponse-dWGS-Trio-r2026000203-p2026000104.html)           |
-| `r2026000203`  | Family Member (`p2026000105`)         | [QuestionnaireResponse-dWGS-Trio-r2026000203-p2026000105](QuestionnaireResponse-dWGS-Trio-r2026000203-p2026000105.html)           |
-| `r2026000203`  | Family Member (`p2026000106`)         | [QuestionnaireResponse-dWGS-Trio-r2026000203-p2026000106](QuestionnaireResponse-dWGS-Trio-r2026000203-p2026000106.html)           |
-{:.grid}
-
-### Example FHIR Laboratory Order Messages
-
-The `LAB-35` sub-order `Bundle` each `QuestionnaireResponse` above was extracted into -
-same referrals and participants as [Worked examples](#worked-examples):
-
-| Referral       | Participant                          | Example                                                                                                 |
-|----------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------|
-| `r2026000201`  | Proband (`p2026000101`)               | [Bundle-dWGS-Singleton-r2026000201](Bundle-dWGS-Singleton-r2026000201.html)                              |
-| `r2026000202`  | Proband (`p2026000102`)               | [Bundle-dWGS-Duo-r2026000202-p2026000102](Bundle-dWGS-Duo-r2026000202-p2026000102.html)                   |
-| `r2026000202`  | Family Member (`p2026000103`)         | [Bundle-dWGS-Duo-r2026000202-p2026000103](Bundle-dWGS-Duo-r2026000202-p2026000103.html)                   |
-| `r2026000203`  | Proband (`p2026000104`)               | [Bundle-dWGS-Trio-r2026000203-p2026000104](Bundle-dWGS-Trio-r2026000203-p2026000104.html)                 |
-| `r2026000203`  | Family Member (`p2026000105`)         | [Bundle-dWGS-Trio-r2026000203-p2026000105](Bundle-dWGS-Trio-r2026000203-p2026000105.html)                 |
-| `r2026000203`  | Family Member (`p2026000106`)         | [Bundle-dWGS-Trio-r2026000203-p2026000106](Bundle-dWGS-Trio-r2026000203-p2026000106.html)                 |
+| Referral       | Participant                    | QuestionnaireResponse                                                                                                             | FHIR Laboratory Order Message                                                             | HL7 v2 Example                                                                                                        |
+|----------------|---------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
+| `r2026000201`  | Proband (`p2026000101`)         | [QuestionnaireResponse-dWGS-Singleton-r2026000201-p2026000101](QuestionnaireResponse-dWGS-Singleton-r2026000201-p2026000101.html)   | [Bundle-dWGS-Singleton-r2026000201](Bundle-dWGS-Singleton-r2026000201.html)                    | [dWGS_r2026000201.txt](https://github.com/nw-gmsa/Testing/blob/main/Output/V2/O21/dWGS_r2026000201.txt)                 |
+| `r2026000202`  | Proband (`p2026000102`)         | [QuestionnaireResponse-dWGS-Duo-r2026000202-p2026000102](QuestionnaireResponse-dWGS-Duo-r2026000202-p2026000102.html)               | [Bundle-dWGS-Duo-r2026000202-p2026000102](Bundle-dWGS-Duo-r2026000202-p2026000102.html)         | [dWGS_r2026000202_p2026000102.txt](https://github.com/nw-gmsa/Testing/blob/main/Output/V2/O21/dWGS_r2026000202_p2026000102.txt) |
+| `r2026000202`  | Family Member (`p2026000103`)   | [QuestionnaireResponse-dWGS-Duo-r2026000202-p2026000103](QuestionnaireResponse-dWGS-Duo-r2026000202-p2026000103.html)               | [Bundle-dWGS-Duo-r2026000202-p2026000103](Bundle-dWGS-Duo-r2026000202-p2026000103.html)         | [dWGS_r2026000202_p2026000103.txt](https://github.com/nw-gmsa/Testing/blob/main/Output/V2/O21/dWGS_r2026000202_p2026000103.txt) |
+| `r2026000203`  | Proband (`p2026000104`)         | [QuestionnaireResponse-dWGS-Trio-r2026000203-p2026000104](QuestionnaireResponse-dWGS-Trio-r2026000203-p2026000104.html)             | [Bundle-dWGS-Trio-r2026000203-p2026000104](Bundle-dWGS-Trio-r2026000203-p2026000104.html)       | [dWGS_r2026000203_p2026000104.txt](https://github.com/nw-gmsa/Testing/blob/main/Output/V2/O21/dWGS_r2026000203_p2026000104.txt) |
+| `r2026000203`  | Family Member (`p2026000105`)   | [QuestionnaireResponse-dWGS-Trio-r2026000203-p2026000105](QuestionnaireResponse-dWGS-Trio-r2026000203-p2026000105.html)             | [Bundle-dWGS-Trio-r2026000203-p2026000105](Bundle-dWGS-Trio-r2026000203-p2026000105.html)       | [dWGS_r2026000203_p2026000105.txt](https://github.com/nw-gmsa/Testing/blob/main/Output/V2/O21/dWGS_r2026000203_p2026000105.txt) |
+| `r2026000203`  | Family Member (`p2026000106`)   | [QuestionnaireResponse-dWGS-Trio-r2026000203-p2026000106](QuestionnaireResponse-dWGS-Trio-r2026000203-p2026000106.html)             | [Bundle-dWGS-Trio-r2026000203-p2026000106](Bundle-dWGS-Trio-r2026000203-p2026000106.html)       | [dWGS_r2026000203_p2026000106.txt](https://github.com/nw-gmsa/Testing/blob/main/Output/V2/O21/dWGS_r2026000203_p2026000106.txt) |
 {:.grid}

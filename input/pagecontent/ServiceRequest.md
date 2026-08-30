@@ -112,8 +112,25 @@ Treat as mandatory for reflex or subcontracted orders.
 ### Order Entry Questions
 
 <div class="alert alert-info" role="alert">
-<b>HL7 FHIR Questionnaire:</b> <a href="Questionnaire-GenomicTestOrder.html" _target="_blank">Genomic Test Order</a> 
+<b>HL7 FHIR Questionnaire (common core):</b> <a href="Questionnaire-GenomicTestOrder.html" _target="_blank">Genomic Test Order</a> 
 </div>
+
+[Genomic Test Order](Questionnaire-GenomicTestOrder.html) above is the **common core**
+order form: the Patient, Healthcare Professional, Test Request and Specimen fields
+shared by every order, regardless of test type, mapping onto the standardised
+[HL7 v2 OML_O21](hl7v2.html#oml_o21-laboratory-order) message and its FHIR equivalent,
+the [FHIR Message O21](MessageDefinition-laboratory-order.html).
+
+Ask At Order Entry questions vary by order/test type, so they are **not** part of the
+common core - each order/test type instead uses its own Ask At Order Entry
+Questionnaire alongside it:
+
+| Order/Test Type                          | Ask At Order Entry Questionnaire                                                                                     |
+|-------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| General (default)                          | [NW Genomic General Test Order](Questionnaire-GenomicGeneralAskAtOrderEntry.html)                                     |
+| Distributed WGS (dWGS) sub-contracted order| [dWGS Sub-Order Manifest](Questionnaire-dWGSSubOrder.html) - see [dWGS](dWGS.html#ask-at-order-entry-the-dwgs-digital-manifest) |
+| Histocompatibility and Immunogenetics      | [Histocompatibility and Immunogenetics Ask At Order Entry](Questionnaire-HistocompatibilityAskAtOrderEntry.html) - see [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html#ask-at-order-entry-questions) |
+{:.grid}
 
 ### Specimen
 

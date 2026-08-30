@@ -3,6 +3,14 @@ InstanceOf: NWQuestionnaire
 Title: "North West Genomics Test Order"
 Description: """
 The aim of this is to support conversion of multiple Genomic Order Forms from several NHS Trusts to HL7 v2 and/or FHIR.
+
+This is the **common core** order form: the Patient, Healthcare Professional, Test
+Request and Specimen fields shared by every order, regardless of test type - these map
+onto the standardised [HL7 v2 OML_O21](hl7v2.html#oml_o21-laboratory-order) message and
+its FHIR equivalent, the [FHIR Message O21](MessageDefinition-laboratory-order.html).
+Ask At Order Entry questions, which vary by order/test type, are **not** part of this
+core form - see [Order Entry Questions](ServiceRequest.html#order-entry-questions) for
+the separate, order-type-specific Questionnaire to use alongside this one.
 """
 Usage:  #definition
 
@@ -616,119 +624,11 @@ Usage:  #definition
       * type = #string
 
 
-* item[+]
-  * type = #group
-  * linkId = "AskAtOrderEntry"
-  * text = "Ask At Order Entry Questions"
-
-// Patient	Patient is from consanguinous union?
-
-  * item[+]
-    * type = #choice
-    * code[+] = $sct#842009 "Consanguinity"
-    * linkId = "SNM/842009"
-    * text = "Patient is from consanguineous union?"
-    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
-    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-    * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
-  * item[+]
-    * type = #choice
-    * linkId = "SNM/74996004-pathology-report"
-    * text = "Confirm that a pathology report will be provided alongside the sample."
-    * code[+] = $sct#74996004 "Confirmation of"
-    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
-    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-    * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
-
-// Patient	Does this test relate to an ongoing pregnancy?
-
-
-//  * item[+]
-//    * type = #choice
-//    * linkId = "SNM/77386006"
-//    * text = "Does this test relate to an ongoing pregnancy?"
-//    * code[+] = $sct#77386006 "Pregnancy"
-//    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
-//    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-//    * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
-//    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
-
-
-// Patient	Neonatal/Prenatal/Neither
-
-  * item[+]
-    * type = #choice
-    * linkId = "SNM/118185001"
-    * text = "Neonatal/Prenatal/Neither?"
-    * code[+] = $sct#118185001 "Finding related to pregnancy"
-    * answerOption[+].valueCoding = $sct#77386006 "Pregnancy"
-    * answerOption[+].valueCoding = $sct#255407002 "Neonatal"
-    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
-    * item[+]
-      * type = #group
-      * linkId = "pregnant"
-      * text = "Pregnant"
-      * enableWhen[+]
-        * question = "SNM/118185001"
-        * operator = #=
-        * answerCoding = $sct#77386006
-
-//Patient	Does this test relate to a pregnancy with > 1 fetus?
-
-      * item[+]
-        * type = #string
-        * linkId = "SNM/370386005"
-        * code[+] = $sct#370386005 "Ultrasound scan - multiple fetus"
-        * text = "Does this test relate to a pregnancy with > 1 fetus?"
-        * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
-        * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-        * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
-        * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
-
-// Patient	Patient expected delivery date
-
-      * item[+]
-        * type = #date
-        * linkId = "SNM/161714006"
-        * code[+] = $sct#161714006 "Estimated date of delivery"
-        * text = "Patient expected delivery date"
-        * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueDateTime"
-
-// Patient	Patient gestation
-
-      * item[+]
-        * type = #integer
-        * linkId = "SNM/598151000005105"
-        // * code[+] = $sct#598151000005105 "Gestational age"
-        * code[+] = $sct#57036006 "Fetal gestational age"
-        * extension[unit].valueCoding = $ucum#wk "Wk"
-        * text = "Patient gestation"
-        * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
-
-// Patient	Is this test for a deceased infant or pregnancy loss
-
-  * item[+]
-    * type = #choice
-    * linkId = "SNM/17369002"
-    * text = "Is this test for a pregnancy loss?"
-    * code[+] = $sct#17369002 "Miscarriage"
-    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
-    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-    * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
-
-  * item[+]
-    * type = #choice
-    * linkId = "SNM/419099009"
-    * text = "Is this test for a deceased infant?"
-    * code[+] = $sct#419099009 "Dead"
-    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
-    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-    * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
+// Ask At Order Entry Questions have moved to a per-order-type Questionnaire - see
+// GenomicGeneralAskAtOrderEntry ("NW Genomic General Test Order") for the default set
+// (Consanguinity, pathology report confirmation, pregnancy/neonatal, deceased infant),
+// dWGSSubOrder for distributed WGS, or HistocompatibilityAskAtOrderEntry for
+// Histocompatibility and Immunogenetics. See ServiceRequest.html#order-entry-questions.
 
 //* item[+]
 //  * type = #group

@@ -122,3 +122,47 @@ sequenceDiagram
 | Donor ID             | OBX/string   | DID   | 6939 DKM0 0096 2141 100                               |
 
 3. The full narrative report will be in PDF format (this was not present in the original process), the provisional UK SNOMED CT of `909871000000100 Histocompatibility and immunogenetics` will be used (this is from NHS Scotland standards).	
+
+## Ask At Order Entry Questions
+
+<div class="alert alert-info" role="alert">
+<b>FHIR Questionnaire:</b> <a href="Questionnaire-HistocompatibilityAskAtOrderEntry.html">Histocompatibility and Immunogenetics Ask At Order Entry</a>
+</div>
+
+Histocompatibility and Immunogenetics orders use the same [common core order
+form](ServiceRequest.html) as every other order/test type
+([HL7 v2 OML_O21](hl7v2.html#oml_o21-laboratory-order) /
+[FHIR Message O21](MessageDefinition-laboratory-order.html)), with their own
+**Ask At Order Entry Questionnaire** for the questions specific to this test type - see
+[Order Entry Questions](ServiceRequest.html#order-entry-questions).
+
+These questions were extracted from a live Histotrac `ORM^O01` order for an HLA
+Antibody Screening (Transplant) test: five `NTE` segments, each carrying comment type
+`OSQ` and a local `Label:->Value` convention in `NTE-3`:
+
+```
+NTE|1||Patient Test(s):->HLA ANTIBODY SCREENING (TRANSPLANT)|OSQ
+NTE|2||HLA Type:->Patient|OSQ
+NTE|3||Patient type:->Renal|OSQ
+NTE|4||Organ:->Kidney|OSQ
+NTE|5||Specimen source->Blood|OSQ
+```
+
+### Field mapping: NTE → FHIR
+
+| NTE Label         | Example Value                        | FHIR Field                                                             |
+|--------------------|----------------------------------------|--------------------------------------------------------------------------|
+| Patient Test(s)    | HLA ANTIBODY SCREENING (TRANSPLANT)   | ServiceRequest.code (restates OBR-4, not a new mapping)                  |
+| HLA Type           | Patient                                | Observation.valueCodeableConcept (via ServiceRequest.supportingInfo)     |
+| Patient type       | Renal                                  | Observation.valueCodeableConcept (via ServiceRequest.supportingInfo)     |
+| Organ              | Kidney                                 | Observation.valueCodeableConcept (via ServiceRequest.supportingInfo, low confidence - no confirmed SNOMED CT mapping yet) |
+| Specimen source    | Blood                                  | Specimen.type (SNOMED CT coding)                                        |
+{:.grid}
+
+### Examples
+
+| Source                                                                                                                       | Example                                                                                                            |
+|--------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| HL7 v2 `ORM^O01` (original)                                                                                                     | [histotrac-MFT.txt](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/O01/histotrac-MFT.txt)                       |
+| FHIR `QuestionnaireResponse` answering [Histocompatibility and Immunogenetics Ask At Order Entry](Questionnaire-HistocompatibilityAskAtOrderEntry.html) | [QuestionnaireResponse-HistocompatibilityAskAtOrderEntry-HLAAS](QuestionnaireResponse-HistocompatibilityAskAtOrderEntry-HLAAS.html) |
+{:.grid}
