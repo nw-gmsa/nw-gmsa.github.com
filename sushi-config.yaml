@@ -323,6 +323,20 @@ resources:
     description: Variant DSS BRCA1
 menu:
   Home: index.html
+  Use Cases:
+    Distributed WGS (dWGS): dWGS.html
+    Histocompatibility and Immunogenetics: HistocompatibilityAndImmunogenetics.html
+    BCR-ABL Monitoring (Cepheid ASTM to iGene): BCRABLMonitoring.html
+    Haemato-Oncology Diagnostic Pathway (Shire to HODS): HaematoOncologyPathway.html
+    Cheshire and Merseyside (Pathology to Genomics Reflex): CheshireAndMerseysidePathology.html
+    Cancer NOS (Colorectal and Children's Cancer Pathways): CancerNOS.html
+    OMICS DSS Result Integration: reportable-variants.html
+    Regional Orders and Reports (Alder Hey, MFT, Liverpool): overview.html
+    Greater Manchester Care Record (GMCR): overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01
+    Lancashire and South Cumbria Genomic Reports: overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01
+    ctDNA NHS England Unified Genomic Record Phase 1: overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01
+    NE&Y Management Information (ctDNA): overview.html#technical-detail
+    StarLIMS / iGene Integration: starLIMS.html
   Analysis and Design (Volume 1) :
  ##   Design Overview: design.html
     Laboratory Testing Workflow (LTW): LTW.html
@@ -360,20 +374,6 @@ menu:
     HL7 FHIR R4: artifacts.html
     HL7 v2.5.1: hl7v2.html
     IHE XDS.b/MHD: StructureDefinition-DocumentReference.html
-  Use Cases:
-    Distributed WGS (dWGS): dWGS.html
-    Histocompatibility and Immunogenetics: HistocompatibilityAndImmunogenetics.html
-    BCR-ABL Monitoring (Cepheid ASTM to iGene): BCRABLMonitoring.html
-    Haemato-Oncology Diagnostic Pathway (Shire to HODS): HaematoOncologyPathway.html
-    Cheshire and Merseyside (Pathology to Genomics Reflex): CheshireAndMerseysidePathology.html
-    Cancer NOS (Colorectal and Children's Cancer Pathways): CancerNOS.html
-    OMICS DSS Result Integration: reportable-variants.html
-    Regional Orders and Reports (Alder Hey, MFT, Liverpool): overview.html
-    Greater Manchester Care Record (GMCR): overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01
-    Lancashire and South Cumbria Genomic Reports: overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01
-    ctDNA NHS England Unified Genomic Record Phase 1: overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01
-    NE&Y Management Information (ctDNA): overview.html#technical-detail
-    StarLIMS / iGene Integration: starLIMS.html
   Development:
     Environments and Testing: testing.html
     Support: support.html
