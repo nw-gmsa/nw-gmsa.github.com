@@ -151,6 +151,9 @@ pages:
   overview.md:
     title: "Use Case: Regional Integration Engine (RIE)"
     generation: markdown
+  starLIMS.md:
+    title: "Use Case: StarLIMS / iGene Integration"
+    generation: markdown
   architecture.md:
     title: Architecture
     generation: markdown
@@ -370,6 +373,7 @@ menu:
     Lancashire and South Cumbria Genomic Reports: overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01
     ctDNA NHS England Unified Genomic Record Phase 1: overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01
     NE&Y Management Information (ctDNA): overview.html#technical-detail
+    StarLIMS / iGene Integration: starLIMS.html
   Development:
     Environments and Testing: testing.html
     Support: support.html
