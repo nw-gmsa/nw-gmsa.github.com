@@ -109,6 +109,9 @@ pages:
   dWGS.md:
     title: Whole Genome Sequencing (WGS)
     generation: markdown
+  HistocompatibilityAndImmunogenetics.md:
+    title: Histocompatibility and Immunogenetics
+    generation: markdown
   testing.md:
     title: Testing
     generation: markdown
