@@ -37,7 +37,7 @@ See also [API Security](api-security.html)
 HL7 SMART Backend Services - Defines authorization in FHIR. We use the SMART Backend Services profile for system-system authorization, and FHIR scopes.
 [Authorisation [IUA]](IUA.html) - Defines authorization and access control actors and mechanisms. We use the actors and transactions model.
 
-## Patient Identity Matching
+## Patient Identity Matching (ITI-78)
 
 [Patient Identity Matching [PDQm]](PDQm.html) - Defines how a client can perform patient lookup given demographics against a server.
 
@@ -52,7 +52,7 @@ graph LR
   consumer --> |"PDQm Mobile Patient Demographics Query [ITI-78]"| mpi
 ```
 
-## Document Exchange
+## Document Exchange (MHD)
 
 ```mermaid
 graph LR
@@ -83,7 +83,10 @@ The IHE XDS/MHD document-sharing pattern used in health information exchange has
 
 In short: a publisher submits documents into the registry/repository, and a consumer discovers them via the registry then fetches the content from the repository — with each interaction supporting both a modern FHIR transaction and its older HL7v2/XDS equivalent.
 
-### Sharing Laboratory Reports (Document)
+### Sharing Laboratory Reports (Document) (ITI-105 and MDM_T02)
+
+Used by these Use Cases:
+- [Regional Integration Engine (RIE)](overview.html) - including the [Shared Care Record Feeds](overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01) wire-tap to GMCR, Lancashire and South Cumbria, and the NHS England Unified Genomic Record
 
 The diagram below shows how an IHE LAB-3 / HL7 v2 ORU_R01 laboratory report is transformed by the Document Publisher and pushed on to a Document Consumer or Document Access Provider, using one of two supported publish transactions:
 
@@ -151,7 +154,7 @@ Composition o-- Observation
 DiagnosticReport o-- Observation
 ```
 
-## Resource Exchange
+## Resource Exchange (PCC-44)
 
 ```mermaid
 graph LR
@@ -166,6 +169,10 @@ graph LR
 [Resource Access [IPA/QEDm]](QEDm.html) - using HL7 International Patient Access (IPA), aligned with IHE Query for Existing Data for Mobile (QEDm) — for querying individual FHIR resources such as conditions, medications, and observations
 
 ### Sharing Laboratory Reports (Resource)
+
+Used by these Use Cases:
+- [OMICS DSS Result Integration](reportable-variants.html)
+- [StarLIMS / iGene Integration](starLIMS.html)
 
 The diagram below shows how an IHE LAB-3 / HL7 v2 ORU_R01 laboratory report is used to populate resources in the Resource Access Provider. The internal processing uses a combination of FHIR RESTful interactions and FHIR Transactions.
 This method of sharing results is aimed at populating a FHIR repository for resource/data consumers. The order placer (hospital) will typically prefer the more traditional method of receiving structured laboratory reports: a direct, point-to-point HL7 v2 ORU_R01 feed into their own LIMS/EPR, rather than retrieving results via this resource-population flow.
@@ -194,7 +201,7 @@ sequenceDiagram
   end
 ```
 
-### Sharing Laboratory Reports (Resource and Document)
+### Sharing Laboratory Reports (Resource and Document)  (ITI-105 plus XD-LAB)
 
 When the document format is an HL7 Europe Laboratory Report FHIR Document, the Resource and Document sharing methods described above can be combined. As noted previously, the FHIR Document contains the same clinical content as the IHE LAB-3 / HL7 v2 ORU_R01 message, so it can be processed in the same way to persist or share individual resources.
 
