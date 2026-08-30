@@ -3,8 +3,8 @@ This is currently being elaborated and subject to change.
 </div>
 
 Cancer (Not Otherwise Specified) diagnostic and notification pathways that cut
-across the [Cheshire and Merseyside](HaematoOncologyPathway.html#use-case-genomic-test-order-following-on-from-pathology-test-order)
-and [Haemato-Oncology](HaematoOncologyPathway.html#haematological-malignancy-diagnostic-services)
+across the [Cheshire and Merseyside Pathology](CheshireAndMerseysidePathology.html)
+and [Haemato-Oncology Diagnostic Pathway](HaematoOncologyPathway.html#haematological-malignancy-diagnostic-services)
 use cases - a genomics test following on from a pathology test order can often
 occur around cancer, and cancer referrals bring their own notification patterns.
 

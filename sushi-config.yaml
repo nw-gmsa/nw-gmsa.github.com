@@ -136,6 +136,9 @@ pages:
   HaematoOncologyPathway.md:
     title: "Use Case: Haemato-Oncology Diagnostic Pathway"
     generation: markdown
+  CheshireAndMerseysidePathology.md:
+    title: "Use Case: Cheshire and Merseyside Pathology"
+    generation: markdown
   CancerNOS.md:
     title: "Use Case: Cancer NOS"
     generation: markdown
@@ -359,13 +362,13 @@ menu:
     Histocompatibility and Immunogenetics: HistocompatibilityAndImmunogenetics.html
     BCR-ABL Monitoring (Cepheid ASTM to iGene): BCRABLMonitoring.html
     Haemato-Oncology Diagnostic Pathway (Shire to HODS): HaematoOncologyPathway.html
-    Cheshire and Merseyside (Pathology to Genomics Reflex): HaematoOncologyPathway.html#use-case-genomic-test-order-following-on-from-pathology-test-order
+    Cheshire and Merseyside (Pathology to Genomics Reflex): CheshireAndMerseysidePathology.html
     Cancer NOS (Colorectal and Children's Cancer Pathways): CancerNOS.html
     OMICS DSS Result Integration: reportable-variants.html
     Regional Orders and Reports (Alder Hey, MFT, Liverpool): overview.html
-    Greater Manchester Care Record (GMCR): overview.html#shared-care-record-feeds---wire-tap-on-lab-3orur01
-    Lancashire and South Cumbria Genomic Reports: overview.html#shared-care-record-feeds---wire-tap-on-lab-3orur01
-    ctDNA NHS England Unified Genomic Record Phase 1: overview.html#shared-care-record-feeds---wire-tap-on-lab-3orur01
+    Greater Manchester Care Record (GMCR): overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01
+    Lancashire and South Cumbria Genomic Reports: overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01
+    ctDNA NHS England Unified Genomic Record Phase 1: overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01
     NE&Y Management Information (ctDNA): overview.html#technical-detail
   Development:
     Environments and Testing: testing.html
