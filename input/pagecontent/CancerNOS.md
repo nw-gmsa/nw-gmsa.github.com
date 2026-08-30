@@ -1,5 +1,5 @@
 <div class="alert alert-danger" role="alert">
-This is currently being elaborated and subject to change.
+This is for information/analysis purposes only and is not a planned piece of work.
 </div>
 
 Cancer (Not Otherwise Specified) diagnostic and notification pathways that cut
