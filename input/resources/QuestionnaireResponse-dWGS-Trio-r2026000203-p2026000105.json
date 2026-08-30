@@ -1,0 +1,405 @@
+{
+  "resourceType": "QuestionnaireResponse",
+  "id": "dWGS-Trio-r2026000203-p2026000105",
+  "meta": {
+    "profile": [
+      "https://fhir.nwgenomics.nhs.uk/StructureDefinition/QuestionnaireResponse"
+    ]
+  },
+  "questionnaire": "https://fhir.nwgenomics.nhs.uk/Questionnaire/dWGSSubOrder",
+  "status": "completed",
+  "subject": {
+    "display": "Thirteen Editestpatient",
+    "identifier": {
+      "system": "https://fhir.nhs.uk/Id/nhs-number",
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "NH"
+          }
+        ]
+      },
+      "value": "9999999581"
+    }
+  },
+  "authored": "2026-08-20T00:00:00+00:00",
+  "item": [
+    {
+      "linkId": "Referral",
+      "text": "Referral / Sub-Order",
+      "item": [
+        {
+          "linkId": "dWGS/referral_id",
+          "text": "Original Order Placer Group Number (Referral ID)",
+          "answer": [
+            {
+              "valueString": "r2026000203"
+            }
+          ]
+        },
+        {
+          "linkId": "dWGS/clinical_indication_test_type_id",
+          "text": "Test Code",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory",
+                "code": "R27.3"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "dWGS/ordering_entity_id",
+          "text": "Original Ordering Facility Code",
+          "answer": [
+            {
+              "valueString": "RNN"
+            }
+          ]
+        },
+        {
+          "linkId": "dWGS/glh_laboratory_id",
+          "text": "Filler Order Ordering Facility Code (GLH)",
+          "answer": [
+            {
+              "valueString": "699D0"
+            }
+          ]
+        },
+        {
+          "linkId": "dWGS/retrospective_sample",
+          "text": "Retrospective Sample Flag",
+          "answer": [
+            {
+              "valueString": "New"
+            }
+          ]
+        },
+        {
+          "linkId": "dWGS/approved_by",
+          "text": "Approved By",
+          "answer": [
+            {
+              "valueString": "Duty Scientist on behalf of NEY GMS"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "Patient",
+      "text": "Patient",
+      "item": [
+        {
+          "linkId": "LN/45392-8",
+          "text": "Patient first name",
+          "answer": [
+            {
+              "valueString": "Thirteen"
+            }
+          ]
+        },
+        {
+          "linkId": "LN/45394-4",
+          "text": "Patient surname",
+          "answer": [
+            {
+              "valueString": "Editestpatient"
+            }
+          ]
+        },
+        {
+          "linkId": "LN/21112-8",
+          "text": "Date of birth",
+          "answer": [
+            {
+              "valueDate": "1960-01-01"
+            }
+          ]
+        },
+        {
+          "linkId": "LN/89061-6",
+          "text": "NHS Number",
+          "answer": [
+            {
+              "valueString": "9999999581"
+            }
+          ]
+        },
+        {
+          "linkId": "dWGS/patient_ngis_id",
+          "text": "Patient Identifier (NGIS)",
+          "answer": [
+            {
+              "valueString": "p2026000105"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "AskAtOrderEntry",
+      "text": "Ask At Order Entry Questions",
+      "item": [
+        {
+          "linkId": "NOS/FamilyStructure",
+          "text": "Family Structure",
+          "answer": [
+            {
+              "valueString": "Trio"
+            }
+          ]
+        },
+        {
+          "linkId": "NOS/ParticipantType",
+          "text": "Participant Type",
+          "answer": [
+            {
+              "valueString": "Family Member"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "PrimarySpecimen",
+      "text": "Primary Specimen (as received by GLH)",
+      "item": [
+        {
+          "linkId": "dWGS/primary_sample_received_date",
+          "text": "Sample Received Date",
+          "answer": [
+            {
+              "valueDateTime": "2026-08-20T00:00:00+00:00"
+            }
+          ]
+        },
+        {
+          "linkId": "dWGS/primary_sample_id_as_received_by_glh",
+          "text": "Received Sample Identifier",
+          "answer": [
+            {
+              "valueString": "RNN-P0002"
+            }
+          ]
+        },
+        {
+          "linkId": "dWGS/primary_sample_id_in_glh_lims",
+          "text": "LIMS Sample Identifier",
+          "answer": [
+            {
+              "valueString": "YNE26-P0005"
+            }
+          ]
+        },
+        {
+          "linkId": "dWGS/primary_sample_type",
+          "text": "Sample Type",
+          "answer": [
+            {
+              "valueString": "Germline sample"
+            }
+          ]
+        },
+        {
+          "linkId": "LN/66746-9",
+          "text": "Sample Material Type",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "http://snomed.info/sct",
+                "code": "258580003",
+                "display": "Whole blood specimen (specimen)"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "LN/33882-2",
+          "text": "Specimen Collection Date",
+          "answer": [
+            {
+              "valueDateTime": "2026-08-18T00:00:00+00:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "DispatchedSpecimen",
+      "text": "Dispatched Specimen (extracted DNA sent onward)",
+      "item": [
+        {
+          "linkId": "dWGS/dispatched_sample_id_in_glh_lims",
+          "text": "Dispatched Sample Identifier",
+          "answer": [
+            {
+              "valueString": "D26-2004"
+            }
+          ]
+        },
+        {
+          "linkId": "dWGS/dispatched_sample_lsid",
+          "text": "Specimen Barcode",
+          "answer": [
+            {
+              "valueString": "FX000000005"
+            }
+          ]
+        },
+        {
+          "linkId": "dWGS/dispatched_sample_type",
+          "text": "Dispatched Sample Type",
+          "answer": [
+            {
+              "valueString": "Germline sample"
+            }
+          ]
+        },
+        {
+          "linkId": "dWGS/dispatched_sample_state",
+          "text": "Dispatched Material Type",
+          "answer": [
+            {
+              "valueString": "258566005|Deoxyribonucleic acid specimen (specimen)"
+            }
+          ]
+        },
+        {
+          "linkId": "dWGS/dispatched_sample_volume_ul",
+          "text": "Sample Volume (uL)",
+          "answer": [
+            {
+              "valueDecimal": 120.0
+            }
+          ]
+        },
+        {
+          "linkId": "dWGS/dna_extraction_protocol",
+          "text": "DNA Extraction Method",
+          "answer": [
+            {
+              "valueString": "Qiagen"
+            }
+          ]
+        },
+        {
+          "linkId": "dWGS/glh_sample_consignment_number",
+          "text": "Consignment Number",
+          "answer": [
+            {
+              "valueString": "NEY-CONSIGN-2026-104"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "LaboratoryQC",
+      "text": "Laboratory QC and Logistics",
+      "item": [
+        {
+          "linkId": "dWGS/laboratory_remaining_volume_banked_ul",
+          "text": "Remaining Banked Volume (uL)",
+          "answer": [
+            {
+              "valueDecimal": 400.0
+            }
+          ]
+        },
+        {
+          "linkId": "dWGS/glh_concentration_ng_ul",
+          "text": "DNA Concentration (ng/uL)",
+          "answer": [
+            {
+              "valueDecimal": 85.5
+            }
+          ]
+        },
+        {
+          "linkId": "dWGS/glh_od260_280",
+          "text": "DNA Purity (OD260/280)",
+          "answer": [
+            {
+              "valueDecimal": 1.85
+            }
+          ]
+        },
+        {
+          "linkId": "dWGS/glh_din_value",
+          "text": "DNA Integrity Number",
+          "answer": [
+            {
+              "valueDecimal": 8.2
+            }
+          ]
+        },
+        {
+          "linkId": "dWGS/glh_percentage_dna_over_23kb",
+          "text": "DNA Fragment Size (% over 23kb)",
+          "answer": [
+            {
+              "valueDecimal": 92.0
+            }
+          ]
+        },
+        {
+          "linkId": "dWGS/glh_qc_status",
+          "text": "QC Status",
+          "answer": [
+            {
+              "valueString": "Pass"
+            }
+          ]
+        },
+        {
+          "linkId": "dWGS/glh_sample_dispatch_date",
+          "text": "Dispatch Date",
+          "answer": [
+            {
+              "valueDate": "2026-08-26"
+            }
+          ]
+        },
+        {
+          "linkId": "dWGS/plating_organisation",
+          "text": "Plating Organisation",
+          "answer": [
+            {
+              "valueString": "699X0"
+            }
+          ]
+        },
+        {
+          "linkId": "dWGS/gmc_rack_id",
+          "text": "Rack Identifier",
+          "answer": [
+            {
+              "valueString": "RACK-2026-01"
+            }
+          ]
+        },
+        {
+          "linkId": "dWGS/gmc_rack_well",
+          "text": "Rack Well Position",
+          "answer": [
+            {
+              "valueString": "A05"
+            }
+          ]
+        },
+        {
+          "linkId": "dWGS/prolonged_sample_storage",
+          "text": "Sample Storage Method",
+          "answer": [
+            {
+              "valueString": "Frozen"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1877,7 +1877,7 @@ HL7 v2 CodeSystem : England-GenomicTestDirectory
 * #R264.1 "Identity testing (Identity testing)"
 * #R265.1 "Chromosomal mosaicism â€“ karyotype / Targeted Chromosome Analysis (Karyotype)"
 * #R268.1 "Kagami-Ogata syndrome paternal uniparental disomy 14 (Methylation testing)"
-* #R27.3, "Paediatric disorders (WGS)"
+* #R27.3 "Paediatric disorders (WGS)"
 * #R270.1 "Smith-Lemli-Opitz syndrome (Single gene sequencing >=10 amplicons)"
 * #R270.2 "Smith-Lemli-Opitz syndrome (MLPA or equivalent)"
 * #R271.1 "Neuronal ceroid lipofuscinosis type 2 (Single gene sequencing >=10 amplicons)"

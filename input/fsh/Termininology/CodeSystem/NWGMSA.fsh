@@ -44,6 +44,11 @@ Bucket for local codes
 
 * #TESTOUTCOME "NHS England Genomics Test Outcome"
 
+// dWGS Ask at Order Entry Codes
+
+* #FamilyStructure "Family Structure"
+* #ParticipantType "Participant Type"
+
 * #230056 "What Type of Referral Do You Require?"
 * #230016 "Test Type"
 * #231284 "Please Select R240 Test(s):"
