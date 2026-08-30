@@ -26,6 +26,16 @@ For information on `Genomic Tests on the bowel cancer cells`, see [macmillan.org
 <p class="figureTitle">Colorectal Cancer Diagnostics and Patient Referrals</p> 
 <br clear="all">
 
+<div class="alert alert-info" role="alert">
+<b>Example Scenario:</b> <a href="ExampleScenario-BiopsyProcedure.html">Collect Specimen - Biopsy Procedure</a>
+</div>
+
+[ExampleScenario-BiopsyProcedure](ExampleScenario-BiopsyProcedure.html) documents
+the specimen collection process (day case admission, biopsy procedure) for a real
+patient on this Colorectal Cancer pathway in the North Midlands - background
+information on how the specimen behind a genomic test order is actually obtained,
+not itself part of this genomic specification.
+
 ## NHS North West Children Cancer Example
 
 <img style="padding:3px;width:95%;" src="OrderCommunicationAndNotifications.drawio.png" alt="Order Communication and Notifications"/>
