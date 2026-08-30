@@ -4,7 +4,7 @@ Title: "CodeSystem for Chimerism Testing (OBX-3 local codes)"
 Description: """
 Local OBX-3 sub-identifier codes used by the Clatterbridge chimerism testing
 payload - see [Histocompatibility and Immunogenetics - Chimerism Testing Result
-Panel](HistocompatibilityAndImmunogenetics.html#chimerism-testing-result-panel).
+Panel (Future?)](HistocompatibilityAndImmunogenetics.html#chimerism-testing-result-panel-future).
 """
 
 * ^name = "Chimerism"
