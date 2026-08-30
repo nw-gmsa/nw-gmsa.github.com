@@ -8,6 +8,10 @@ This is currently being elaborated and subject to change.
 <b>Domain Archetype:</b> <a href="StructureDefinition-LaboratoryAnalyteResult.html" _target="_blank">Laboratory Analyte Result</a>
 </div>
 
+<div class="alert alert-info" role="alert">
+<b>FHIR Questionnaire (Result Panel):</b> <a href="Questionnaire-BCRABLResultPanel.html">BCR-ABL Monitoring Result Panel</a>
+</div>
+
 > BCR-ABL1 concentration testing is used to monitor the amount of the fusion gene (Philadelphia chromosome) in chronic myeloid leukemia (CML) patients, with results typically reported on an International Scale (%IS) to measure treatment response.
 
 This use case reflects BCR-ABL1 quantification performed on an ASTM-communicating
@@ -51,7 +55,10 @@ Process Flow: [Test Results Management (LAB-5)](LTW.html#test-results-management
 
 See [Laboratory Analyte Result - Data Mapping](LaboratoryAnalyteResult.html#data-mapping)
 for the full field mapping (openEHR / HL7 v2 / LOINC-SNOMED / FHIR / iGene) this use
-case populates. These entries are expressed in `Observation.component`.
+case populates. These entries are expressed in `Observation.component`, structured as
+the [BCR-ABL Monitoring Result Panel](Questionnaire-BCRABLResultPanel.html)
+Questionnaire - its `item.definition`/`item.code` values are inferred directly from
+this IG's own `Observation-BCRABL-Valid`/`Observation-BCRABL-Invalid` examples.
 
 ### BCRABL
 
