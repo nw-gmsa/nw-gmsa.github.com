@@ -2,11 +2,35 @@
 This is for information/analysis purposes only and is not a planned piece of work.
 </div>
 
-A pathology LIMS (e.g. CFT's Shire) reflexes a genomics order as part of a wider
-diagnostic pathway - see [Inter Laboratory Workflow (ILW)](ILW.html) for the
-generic sub-order/reflex pattern this follows (`LAB-35`/`LAB-36`), and
-[Haemato-Oncology Diagnostic Pathway](HaematoOncologyPathway.html) for the
-related HODS-orchestrated scenario.
+## References
+
+1. [Inter Laboratory Workflow (ILW)](ILW.html) - the generic sub-order/reflex pattern this follows (`LAB-35`/`LAB-36`)
+2. [Haemato-Oncology Diagnostic Pathway](HaematoOncologyPathway.html) - the related HODS-orchestrated scenario
+3. [Cancer NOS - Colorectal Cancer Diagnostic Pathways](CancerNOS.html#diagnostic-cancer-pathways) - this use case can often occur around cancer
+4. LAB-40 HL7 v2.9 SET <a href="https://wiki.ihe.net/index.php/Specimen_Event_Tracking" _target="_blank">IHE Specimen Event Tracking (SET)</a> and <a href="https://hl7-definition.caristix.com/v2/HL7v2.7/TriggerEvents/OSM_R26" _target="_blank">Hl7 v2.7 OSM_R26 Unsolicited Specimen Shipment Manifest Message</a>
+
+## Actors
+
+| Actor                       | Role                                    | System (example)                        |
+|--------------------------------|----------------------------------------|-----------------------------------------|
+| Order Placer                    | Referring clinician                      | MFT EPIC                                  |
+| Order Filler (Pathology)        | Pathology laboratory                     | MFT EPIC Beaker or CFT Shire               |
+| Order Filler (Genomics)         | Genomics laboratory                      | iGene                                     |
+{:.grid}
+
+## Transactions
+
+| Transaction | Description                          | Direction                                    |
+|-------------|-----------------------------------------|------------------------------------------------|
+| `LAB-1`     | Laboratory Order (Pathology)              | Order Placer → Order Filler (Pathology)          |
+| `LAB-3`     | Laboratory Report (Pathology)             | Order Filler (Pathology) → Order Placer          |
+| `LAB-1`     | Laboratory Order (Genomics, if placed directly by Order Placer) | Order Placer → Order Filler (Genomics) |
+| `LAB-35`    | Genomic Reflex Order (if placed by Pathology) | Order Filler (Pathology) → Order Filler (Genomics) |
+| `LAB-36`    | Genomic Report (reflex)                   | Order Filler (Genomics) → Order Filler (Pathology) |
+| `LAB-3`     | Laboratory Report (Genomics, either path) | Order Filler (Genomics or Pathology) → Order Placer |
+{:.grid}
+
+## Current Process
 
 ### Use Case: Genomic Test Order following on from Pathology Test Order
 
@@ -91,3 +115,16 @@ LIMSP ->> EPR: Send Laboratory Report R01 (LAB-3)
 
 This use case can often occur around cancer - see [Cancer NOS](CancerNOS.html#diagnostic-cancer-pathways)
 for the Colorectal Cancer diagnostic pathway example.
+
+## Future Process
+
+No distinct future-state changes are currently defined for this pathway.
+
+## Data Models
+
+- [ServiceRequest](StructureDefinition-ServiceRequest.html) - `LAB-1` placer orders and `LAB-35` reflex sub-order
+- [DiagnosticReport](StructureDefinition-DiagnosticReport.html) - `LAB-3`/`LAB-36` reports
+
+## Examples
+
+No example resources are published yet for this scenario.

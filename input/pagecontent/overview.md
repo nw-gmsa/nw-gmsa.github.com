@@ -1,4 +1,8 @@
-# NW Genomics Regional Integration Engine (RIE)
+<div class="alert alert-danger" role="alert">
+This is currently being elaborated and subject to change.
+</div>
+
+NW Genomics Regional Integration Engine (RIE).
 
 <details>
 <summary><strong>Glossary of terms used on this page</strong></summary>
@@ -17,7 +21,49 @@
 
 </details>
 
-## Overview (non-technical)
+## References
+
+1. [Diagnostic Core](diagnostic-core.html)
+2. [HL7 Genomics Reporting IG](https://build.fhir.org/ig/HL7/genomics-reporting/)
+3. [StarLIMS / iGene Integration](starLIMS.html)
+4. [Canonical Data Model](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CanonicalDataModel.html) pattern
+5. [Data Contract](https://en.wikipedia.org/wiki/Data_contract)
+6. [Bounded Context](https://martinfowler.com/bliki/BoundedContext.html)
+
+## Actors
+
+| Actor                                    | Role                                                            |
+|-----------------------------------------------|-------------------------------------------------------------------|
+| LIMS iGene                                       | Internal LIMS - master LIMS                                        |
+| LIMS StarLIMS                                     | Internal LIMS - Liverpool GLH satellite LIMS                        |
+| LIMS Histotrac                                    | Internal LIMS - Histocompatibility and Immunogenetics                |
+| LIMS Shire                                        | Internal LIMS - Haemato-Oncology                                    |
+| Cepheid                                           | Analyser - test results via ASTM                                     |
+| Omics DSS                                         | Analytic Processing - test results via FHIR                          |
+| Regional Integration Engine (RIE)                 | Message distribution and transformation hub ("post office")          |
+| Manchester Foundation Trust (MFT)                 | NHS Trust - direct HL7 (EPIC and HODS)                                |
+| Alder Hey                                         | NHS Trust - direct HL7                                               |
+| Liverpool Women's                                 | NHS Trust - direct HL7                                               |
+| Clatterbridge                                     | NHS Trust - direct HL7 (Immunology test requests + Genomic and Immunology reports) |
+| NHS Trusts via GMS Order Comms                    | NHS Trust - electronic or web portal, not direct HL7 to the RIE       |
+| National Genomic Order Comms                      | National ordering system / web portal (future interface)             |
+| Greater Manchester Care Record (GMCR)             | Shared Care Record Provider - cancer only                             |
+| Lancashire & South Cumbria                        | Shared Care Record Provider - in elaboration                          |
+| National Unified Genomic Care Record (UGR)        | Shared Care Record Provider - in elaboration                          |
+| North East and Yorkshire (NE&Y) Genomics          | Peer Genomic Laboratory Hub - ctDNA metadata only, results removed    |
+{:.grid}
+
+## Transactions
+
+| Transaction                                          | Description                                                  |
+|-----------------------------------------------------------|---------------------------------------------------------------|
+| `ORU_R01`                                                   | Test report/result delivery                                     |
+| `OML_O21` / FHIR `O21`                                      | Laboratory order placement                                       |
+| `MDM_T02`                                                   | Document delivery (e.g. PDF report) to a shared care record       |
+| NW Diagnostic Core Standard Orders and Reports (ctDNA metadata only, results removed) | Peer exchange with NE&Y Genomics |
+{:.grid}
+
+## Current Process
 
 Think of the Regional Integration Engine (RIE) as a **post office for genomic test information** across North West Genomics.
 
@@ -52,14 +98,6 @@ flowchart LR
     RIE -- Test requests --> Labs
 ```
 
-### Future potential
-
-The RIE is also capable of interfacing to National Genomic Order Comms systems. This will allow users to create genomic orders via a portal or via 3rd party apps.
-
-Potentially the RIE will be able to make use of this system for out of region orders, both incoming and outgoing.
-
-Note: the RIE already has FHIR to V2 conversion capabilities which could be used to send reports to NHS Trusts, which may be a cost saving for NHS Trusts.
-
 ### Why this is different from a typical integration
 
 Most NHS integrations connect an EPR directly to a LIMS, one pair at a time. The RIE works differently.
@@ -72,7 +110,7 @@ This use of HL7/FHIR standards is also called a "Canonical Model" or "Data Contr
 
 > **The sections below (Technical detail, Design, Data model) are written for architects and technical readers. If you just needed the summary, you can stop here.**
 
-## Technical detail
+### Technical detail
 
 The NW Genomics Regional Integration Engine (RIE) acts as a central messaging hub — effectively a "post office" — for North West Genomics.
 
@@ -88,7 +126,7 @@ The RIE also exchanges NW Diagnostic Core Standard orders and reports with North
 
 > **Note:** Test Results and Work Orders also flow via the RIE, this is not shown in the diagram to aid clarity.
 
-### Technical diagram
+#### Technical diagram
 
 The diagram below labels each flow with its HL7 v2 message type: `ORU_R01` delivers a result/report, `OML_O21` places a laboratory order, and `MDM_T02` sends a document such as a PDF report.
 
@@ -167,7 +205,7 @@ flowchart LR
     RIE <-. NW Diagnostic Core Standard Orders and Reports<br/>ctDNA metadata only - results removed .-> NEY
 ```
 
-### FHIR Repository
+#### FHIR Repository
 
 The RIE using a wire-tap, populates a FHIR repository from the events passing through it. This FHIR Repository is also used to enhance events passing through the RIE, such as adding an account number or order placer number to a report.
 
@@ -185,7 +223,45 @@ flowchart LR
     RIE --> Outbound
 ```
 
-## Design
+## Future Process
+
+The RIE is also capable of interfacing to National Genomic Order Comms systems. This will allow users to create genomic orders via a portal or via 3rd party apps.
+
+Potentially the RIE will be able to make use of this system for out of region orders, both incoming and outgoing.
+
+Note: the RIE already has FHIR to V2 conversion capabilities which could be used to send reports to NHS Trusts, which may be a cost saving for NHS Trusts.
+
+North West Genomics is moving towards all orders being placed in the master LIMS (iGene) and then passed onto other LIMS such as StarLIMS, which was the master LIMS for Liverpool GLH.
+The implication of this is that orders for other regional Genomics services will initially be placed in iGene, and will then be passed onto other LIMS. Logically this is a potential role for the NHS England Genomic Order Management System (GOMS), acting as an Order Comms system for NHS Trusts.
+
+```mermaid
+flowchart LR
+    Trust["NHS Trust / EPR"]
+    Referring["Referring LIMS<br/>e.g. iGene"]
+    Performing["Performing LIMS<br/>e.g. StarLIMS<br/>(sub-contracted lab)"]
+    GOMS["NHS England Genomic<br/>Order Management Service (GOMS)"]
+    OtherRegion["Other Regional<br/>Genomics LIMS"]
+
+    Trust -- "1. Placer Order (LAB-1)" --> Referring
+    Referring -- "2. Sub-Contracted Order (LAB-35)<br/>basedOn placer order" --> Performing
+    Performing -- "3. Report (LAB-36)" --> Referring
+    Referring -- "4. Report (LAB-3)" --> Trust
+
+    Referring -. "Future - Sub-Contracted Order (LAB-35)" .-> GOMS
+    GOMS -. "Future - Sub-Contracted Order (LAB-35)" .-> OtherRegion
+    OtherRegion -. "Future - Report (LAB-36)" .-> GOMS
+    GOMS -. "Future - Report (LAB-36)" .-> Referring
+```
+
+### Future Composition / Aggregated Laboratory Report
+
+This is a placeholder for future work, probably NHS England Unified Genomics Care Record phase II.
+
+In Domain Driven Design this is a pattern called Aggregate, which collates multiple events into a single entity. This is already a feature of the design above, the placer order cascades into multiple hierarchical entities.
+
+In health informatics this is a pattern called Composition; it focuses on the output format, which in FHIR is called a FHIR Document (and in HL7 v3 Clinical Document Architecture).
+
+## Data Models
 
 The design generally follows Domain Driven Design principles, plus related data engineering principles such as Data Mesh and Data Contracts. The domain split follows IHE profiles as follows:
 
@@ -225,9 +301,7 @@ flowchart LR
     RIE -- Test requests --> Labs
 ```
 
-### Data model
-
-#### Diagnostic Core
+### Diagnostic Core
 
 The data models used in these interactions follow a core canonical model ([nw-gmsa.github.io/en/diagnostic-core.html](https://nw-gmsa.github.io/en/diagnostic-core.html)) which is documented as a series of HL7 FHIR profiles and can be implemented in HL7 v2, ASTM, FHIR and other formats.
 
@@ -281,7 +355,7 @@ Codes tend to follow the NHS England Data Dictionary and include ODS and SNOMED 
 >
 > This should not be confused with UK Core which is a base HL7 standard.
 
-#### Genomic Model - Placer Order (LAB-1) and Reports (LAB-3)
+### Genomic Model - Placer Order (LAB-1) and Reports (LAB-3)
 
 The genomic-specific data model builds on the Diagnostic Core (the main model used for interactions IHE LTW LAB-1 and LAB-3), which is very similar to de-facto models used in other diagnostic services such as imaging or pathology.
 At present this model is mostly unstructured, using a PDF attachment (in FHIR this is DocumentReference + Binary, and in HL7 v2 this is OBX type ED).
@@ -338,7 +412,7 @@ flowchart LR
     Transform -. "Future - FHIR?" .-> UGR
 ```
 
-#### Genomic Model - Filler Order (LAB-4) and Reports (LAB-5)
+### Genomic Model - Filler Order (LAB-4) and Reports (LAB-5)
 
 The interactions between the LIMS and Analysers/Analytic Processors (LAB-4 and LAB-5) add detailed genomic data models. These are referred to here as filler orders, with the simpler LAB-1 and LAB-3 referred to as placer orders.
 
@@ -382,35 +456,13 @@ erDiagram
     }
 ```
 
-#### Sub-Contracted and Reflex Orders (LAB-35) and Reports (LAB-36)
+### Sub-Contracted and Reflex Orders (LAB-35) and Reports (LAB-36)
 
 In most cases, a sub-contracted order will be very similar to a placer order. This is where an order has been received and is then passed on to a sub-contracted lab.
 
-North West Genomics is moving towards all orders being placed in the master LIMS (iGene) and then passed onto other LIMS such as StarLIMS, which was the master LIMS for Liverpool GLH.
-The implication of this is that orders for other regional Genomics services will initially be placed in iGene, and will then be passed onto other LIMS. Logically this is a potential role for the NHS England Genomic Order Management System (GOMS), acting as an Order Comms system for NHS Trusts.
-
 In everyday terms: the referring lab (e.g. iGene) creates its own order based on the original placer order, and sends it to the performing lab (e.g. StarLIMS), which returns a report against that same order.
 
-```mermaid
-flowchart LR
-    Trust["NHS Trust / EPR"]
-    Referring["Referring LIMS<br/>e.g. iGene"]
-    Performing["Performing LIMS<br/>e.g. StarLIMS<br/>(sub-contracted lab)"]
-    GOMS["NHS England Genomic<br/>Order Management Service (GOMS)"]
-    OtherRegion["Other Regional<br/>Genomics LIMS"]
-
-    Trust -- "1. Placer Order (LAB-1)" --> Referring
-    Referring -- "2. Sub-Contracted Order (LAB-35)<br/>basedOn placer order" --> Performing
-    Performing -- "3. Report (LAB-36)" --> Referring
-    Referring -- "4. Report (LAB-3)" --> Trust
-
-    Referring -. "Future - Sub-Contracted Order (LAB-35)" .-> GOMS
-    GOMS -. "Future - Sub-Contracted Order (LAB-35)" .-> OtherRegion
-    OtherRegion -. "Future - Report (LAB-36)" .-> GOMS
-    GOMS -. "Future - Report (LAB-36)" .-> Referring
-```
-
-##### Reflex Order
+#### Reflex Order
 
 A reflex order is a different kind of sub-contracted order: rather than forwarding on the original placer order unchanged, a laboratory raises a brand new order that is **triggered by the result of its own testing** — for example, a positive screening result that automatically triggers a confirmatory or additional test.
 
@@ -433,12 +485,6 @@ flowchart LR
     Lab -- "5. Combined Report (LAB-3)" --> Trust
 ```
 
-#### Future Composition / Aggregated Laboratory Report
+## Examples
 
-This is a placeholder for future work, probably NHS England Unified Genomics Care Record phase II.
-
-In Domain Driven Design this is a pattern called Aggregate, which collates multiple events into a single entity. This is already a feature of the design above, the placer order cascades into multiple hierarchical entities.
-
-In health informatics this is a pattern called Composition; it focuses on the output format, which in FHIR is called a FHIR Document (and in HL7 v3 Clinical Document Architecture).
-
-
+No example resources are published yet for this scenario.

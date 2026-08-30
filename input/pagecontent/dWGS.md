@@ -2,7 +2,32 @@
 This is currently being elaborated and subject to change.
 </div>
 
-## Overview
+## References
+
+1. [Inter-Laboratory Workflow (ILW) - Sub-orders LAB-35 and LAB-36](ILW.html#sub-orders-lab-35-and-lab-36)
+2. [laboratory-order MessageDefinition](MessageDefinition-laboratory-order.html)
+3. [HL7 v2 Standards](hl7v2.html)
+4. NHS England `RGL to SGL SOP` (37-field national digital manifest, Appendix 3) - referenced by name only, not publicly linked
+
+## Actors
+
+| IHE Actor (ILW)                                     | Role in dWGS                                    | System (worked examples)             |
+|-------------------------------------------------------|----------------------------------------------------|------------------------------------------|
+| [Requestor](ActorDefinition-Requestor.html) (Order Placer) | Requesting Genomic Laboratory (RGL)             | NE&Y Genomics                            |
+| [Subcontractor](ActorDefinition-Subcontractor.html) (Order Filler) | Sequencing Genomic Laboratory (SGL)     | NW Genomics (iGene)                      |
+{:.grid}
+
+## Transactions
+
+| Transaction | Description                          | Direction         |
+|-------------|-----------------------------------------|------------------------|
+| `LAB-1`     | Laboratory Order (original clinical order, upstream of this sub-order) | Test Ordering Entity → RGL |
+| `LAB-35`    | Sub-order Management (sample + digital manifest) | RGL → SGL          |
+| `LAB-36`    | Sub-order Results Delivery (sequencing result)   | SGL → RGL          |
+| `LAB-3` / `LAB-5` | Laboratory Report (downstream of this sub-order) | RGL → Test Ordering Entity |
+{:.grid}
+
+## Current Process
 
 Whole Genome Sequencing (WGS) for rare and inherited disease is being moved by NHS
 England from a single centralised laboratory to a **distributed model (dWGS)**: each
@@ -32,7 +57,7 @@ flowchart TD
     OF -- "LAB-3 / LAB-5<br/>laboratory report" --> OP
 ```
 
-## Singleton, Duo and Trio testing
+### Singleton, Duo and Trio testing
 
 A WGS referral tests one or more people together as a single family group, so that
 variants found in the person affected by the suspected condition (the **Proband**) can
@@ -64,26 +89,27 @@ own identifier.
 <b>FHIR Profile:</b> <a href="StructureDefinition-ServiceRequest.html">ServiceRequest</a>
 </div>
 
-## Worked examples
-
-The dWGS example Bundles cover one referral of each family structure, sent as `LAB-35`
-sub-orders from a Requesting Genomic Laboratory to NW Genomics acting as Sequencing
-Genomic Laboratory:
-
-| Referral       | Family Structure | Participants                                                                                                                                                                          |
-|----------------|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `r2026000201`  | Singleton         | Proband (`p2026000101`) - [Bundle-dWGS-Singleton-r2026000201](Bundle-dWGS-Singleton-r2026000201.html)                                                                                  |
-| `r2026000202`  | Duo               | Proband (`p2026000102`) - [Bundle-dWGS-Duo-r2026000202-p2026000102](Bundle-dWGS-Duo-r2026000202-p2026000102.html) <br/> Family Member (`p2026000103`) - [Bundle-dWGS-Duo-r2026000202-p2026000103](Bundle-dWGS-Duo-r2026000202-p2026000103.html) |
-| `r2026000203`  | Trio              | Proband (`p2026000104`) - [Bundle-dWGS-Trio-r2026000203-p2026000104](Bundle-dWGS-Trio-r2026000203-p2026000104.html) <br/> Family Member (`p2026000105`) - [Bundle-dWGS-Trio-r2026000203-p2026000105](Bundle-dWGS-Trio-r2026000203-p2026000105.html) <br/> Family Member (`p2026000106`) - [Bundle-dWGS-Trio-r2026000203-p2026000106](Bundle-dWGS-Trio-r2026000203-p2026000106.html) |
-{:.grid}
-
 Each example also demonstrates identifying the **specimen container** separately from
 the specimen itself, using the local `ZCID` "Container Identifier" code from
 [NW IdentifierType](ValueSet-NWIdentifierType.html) on `Specimen.container.identifier.type`
 - see the [Container Identifier note](hl7v2.html#spm) on the HL7 v2 SPM segment page for
 why this is only needed as a type code on the HL7 v2 side.
 
-## Ask at Order Entry: the dWGS digital manifest
+## Future Process
+
+No distinct future-state changes are currently defined for this pathway beyond what
+`RGL to SGL SOP v0.4` and the worked examples above already describe - this section
+will be populated as NHS England's national dWGS rollout matures.
+
+## Data Models
+
+- [ServiceRequest](StructureDefinition-ServiceRequest.html) - the `LAB-35` sub-order, `requisition` shared across a family's participants
+- [Specimen](StructureDefinition-Specimen.html) - primary and dispatched specimen identifiers on a single resource
+- [Patient](StructureDefinition-Patient.html) - NHS number and NGIS participant identifier
+- [dWGS Sub-Order Manifest](Questionnaire-dWGSSubOrder.html) - the Ask at Order Entry Questionnaire for this manifest
+- [NW IdentifierType](ValueSet-NWIdentifierType.html) - the `ZCID` container identifier type code
+
+### Ask at Order Entry: the dWGS digital manifest
 
 <div class="alert alert-info" role="alert">
 <b>FHIR Questionnaire:</b> <a href="Questionnaire-dWGSSubOrder.html">dWGS Sub-Order Manifest</a>
@@ -106,7 +132,7 @@ manifest's main Ask at Order Entry questions: enumerated-string answers with no
 NW-GMSA-confirmed coding system, carried as `Observation.valueCodeableConcept` (text
 only) referenced from `ServiceRequest.supportingInfo`.
 
-### Field mapping: CSV → HL7 v2 → FHIR
+#### Field mapping: CSV → HL7 v2 → FHIR
 
 The table below is the full 42-field mapping (37 national fields plus 5 local
 extension fields), consistent with `dWGSSubOrder`'s `item.definition` values. Where the
@@ -165,17 +191,28 @@ originally received at the GLH (blood/tissue, before extraction); `dispatched_sa
 describes the extracted DNA sent onward. The worked examples below carry both as
 identifiers/values on a single `Specimen` resource rather than two linked resources.
 
-### Examples
+## Examples
+
+The dWGS example Bundles cover one referral of each family structure, sent as `LAB-35`
+sub-orders from a Requesting Genomic Laboratory to NW Genomics acting as Sequencing
+Genomic Laboratory:
+
+| Referral       | Family Structure | Participants                                                                                                                                                                          |
+|----------------|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `r2026000201`  | Singleton         | Proband (`p2026000101`) - [Bundle-dWGS-Singleton-r2026000201](Bundle-dWGS-Singleton-r2026000201.html)                                                                                  |
+| `r2026000202`  | Duo               | Proband (`p2026000102`) - [Bundle-dWGS-Duo-r2026000202-p2026000102](Bundle-dWGS-Duo-r2026000202-p2026000102.html) <br/> Family Member (`p2026000103`) - [Bundle-dWGS-Duo-r2026000202-p2026000103](Bundle-dWGS-Duo-r2026000202-p2026000103.html) |
+| `r2026000203`  | Trio              | Proband (`p2026000104`) - [Bundle-dWGS-Trio-r2026000203-p2026000104](Bundle-dWGS-Trio-r2026000203-p2026000104.html) <br/> Family Member (`p2026000105`) - [Bundle-dWGS-Trio-r2026000203-p2026000105](Bundle-dWGS-Trio-r2026000203-p2026000105.html) <br/> Family Member (`p2026000106`) - [Bundle-dWGS-Trio-r2026000203-p2026000106](Bundle-dWGS-Trio-r2026000203-p2026000106.html) |
+{:.grid}
 
 Each row of the source manifest (`Input/dWGS.csv`) gives one referral participant,
 shown below in three forms: the `QuestionnaireResponse` answering [dWGS Sub-Order
 Manifest](Questionnaire-dWGSSubOrder.html), the `LAB-35` sub-order `Bundle` it was
-extracted into (same referrals and participants as [Worked
-examples](#worked-examples)), and the HL7 v2 `OML^O21` equivalent of that same Bundle
-(from [nw-gmsa/Testing](https://github.com/nw-gmsa/Testing/tree/main/Output/V2/O21)):
+extracted into (same referrals and participants as the table above), and the HL7 v2
+`OML^O21` equivalent of that same Bundle (from
+[nw-gmsa/Testing](https://github.com/nw-gmsa/Testing/tree/main/Output/V2/O21)):
 
 | Referral       | Participant                    | QuestionnaireResponse                                                                                                             | FHIR Laboratory Order Message                                                             | HL7 v2 Example                                                                                                        |
-|----------------|---------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
+|----------------|---------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
 | `r2026000201`  | Proband (`p2026000101`)         | [QuestionnaireResponse-dWGS-Singleton-r2026000201-p2026000101](QuestionnaireResponse-dWGS-Singleton-r2026000201-p2026000101.html)   | [Bundle-dWGS-Singleton-r2026000201](Bundle-dWGS-Singleton-r2026000201.html)                    | [dWGS_r2026000201.txt](https://github.com/nw-gmsa/Testing/blob/main/Output/V2/O21/dWGS_r2026000201.txt)                 |
 | `r2026000202`  | Proband (`p2026000102`)         | [QuestionnaireResponse-dWGS-Duo-r2026000202-p2026000102](QuestionnaireResponse-dWGS-Duo-r2026000202-p2026000102.html)               | [Bundle-dWGS-Duo-r2026000202-p2026000102](Bundle-dWGS-Duo-r2026000202-p2026000102.html)         | [dWGS_r2026000202_p2026000102.txt](https://github.com/nw-gmsa/Testing/blob/main/Output/V2/O21/dWGS_r2026000202_p2026000102.txt) |
 | `r2026000202`  | Family Member (`p2026000103`)   | [QuestionnaireResponse-dWGS-Duo-r2026000202-p2026000103](QuestionnaireResponse-dWGS-Duo-r2026000202-p2026000103.html)               | [Bundle-dWGS-Duo-r2026000202-p2026000103](Bundle-dWGS-Duo-r2026000202-p2026000103.html)         | [dWGS_r2026000202_p2026000103.txt](https://github.com/nw-gmsa/Testing/blob/main/Output/V2/O21/dWGS_r2026000202_p2026000103.txt) |

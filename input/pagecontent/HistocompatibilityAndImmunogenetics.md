@@ -1,6 +1,41 @@
-# Clatterbridge Chimerism Testing — Process Overview
+<div class="alert alert-danger" role="alert">
+This is currently being elaborated and subject to change.
+</div>
 
-## Original Process
+Clatterbridge Chimerism Testing - process overview.
+
+## References
+
+1. [HL7 FHIR Genomics Reporting - Histocompatibility and Immunogenetic Reporting](http://hl7.org/fhir/uv/genomics-reporting/histocompatibility.html) (a dependency of this IG)
+2. [ServiceRequest - Order Entry Questions](ServiceRequest.html#order-entry-questions)
+3. [HL7 v2 OML_O21](hl7v2.html#oml_o21-laboratory-order)
+4. Original Histotrac `ORM^O01` order (HLA Antibody Screening) - [histotrac-MFT.txt](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/O01/histotrac-MFT.txt)
+
+## Actors
+
+| Actor                              | Role                                    | System                                    |
+|--------------------------------------|----------------------------------------|-----------------------------------------------|
+| Order Placer                         | Referring clinician / EPR              | Clatterbridge Meditech (EPR)                   |
+| Trust Integration Engine             | Message routing                        | Clatterbridge TIE                              |
+| Regional Integration Engine          | Message transformation and routing hub | NW Genomics Regional Integration Engine (RIE)  |
+| Order Filler                         | Testing laboratory                     | Histotrac (NW Genomics / MFT) - previously iLab LIMS (via LUFT TIE) |
+| Order Comms (interim, manual only)   | Manual order entry                     | HODS                                           |
+{:.grid}
+
+## Transactions
+
+| Transaction                    | Description               | Direction                                                    |
+|-----------------------------------|-------------------------------|--------------------------------------------------------------|
+| `ORM_O01` (historical)             | Laboratory order               | Clatterbridge Meditech → Clatterbridge TIE → LUFT TIE → iLab LIMS |
+| `ORU_R01` (historical)             | Laboratory report               | iLab LIMS → LUFT TIE → Clatterbridge TIE → Clatterbridge Meditech |
+| Manual order entry (interim, no electronic transaction) | Order comms | Clatterbridge User → HODS → Histotrac |
+| `ORM_O01` / `LAB-1` (future)       | Laboratory order               | Clatterbridge Meditech → Clatterbridge TIE → RIE → Histotrac  |
+| `ORU_R01` / `LAB-3` (future)       | Laboratory report               | Histotrac → RIE → Clatterbridge TIE → Clatterbridge Meditech  |
+{:.grid}
+
+## Current Process
+
+### Historical Background (Original Process, now retired)
 
 Chimerism testing at Clatterbridge originally worked as follows:
 
@@ -25,7 +60,7 @@ sequenceDiagram
     CTIE->>CM: ORU_R01
 ```
 
-## Interim Process
+### Current State (Interim Process)
 
 Following organisational restructuring, testing was transferred to North West Genomics (hosted by Manchester Foundation Trust). As part of this change, Histotrac replaced iLab as the testing system. The electronic exchange of results was discontinued, and HODS was adopted as an interim order comms system for Clatterbridge users to submit lab orders.
 
@@ -62,8 +97,6 @@ HL7 v2.5.1 was chosen as the version for the standard, as it uses a model compat
 > **Note:** The Data Contract only exists between NHS Trusts and NW Genomics — it does not apply to local integrations with EPR or LIMS systems. See also the [Canonical Data Model](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CanonicalDataModel.html) pattern.
 
 The NW Genomics RIE will handle the necessary transformations between the NW HL7 standard and Histotrac's HL7 v2 format.
-
-
 
 ```mermaid
 sequenceDiagram
@@ -132,7 +165,9 @@ sequenceDiagram
 
 3. The full narrative report will be in PDF format (this was not present in the original process), the provisional UK SNOMED CT of `909871000000100 Histocompatibility and immunogenetics` will be used (this is from NHS Scotland standards).	
 
-## Ask At Order Entry Questions
+## Data Models
+
+### Ask At Order Entry Questions
 
 <div class="alert alert-info" role="alert">
 <b>FHIR Questionnaire:</b> <a href="Questionnaire-HistocompatibilityAskAtOrderEntry.html">Histocompatibility and Immunogenetics Ask At Order Entry</a>
@@ -157,7 +192,7 @@ NTE|4||Organ:->Kidney|OSQ
 NTE|5||Specimen source->Blood|OSQ
 ```
 
-### Field mapping: NTE → FHIR
+#### Field mapping: NTE → FHIR
 
 | NTE Label         | Example Value                        | FHIR Field                                                             |
 |--------------------|----------------------------------------|--------------------------------------------------------------------------|
@@ -168,10 +203,11 @@ NTE|5||Specimen source->Blood|OSQ
 | Specimen source    | Blood                                  | Specimen.type (SNOMED CT coding)                                        |
 {:.grid}
 
-### Examples
+## Examples
 
 | Source                                                                                                                       | Example                                                                                                            |
 |--------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
 | HL7 v2 `ORM^O01` (original)                                                                                                     | [histotrac-MFT.txt](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/O01/histotrac-MFT.txt)                       |
 | FHIR `QuestionnaireResponse` answering [Histocompatibility and Immunogenetics Ask At Order Entry](Questionnaire-HistocompatibilityAskAtOrderEntry.html) | [QuestionnaireResponse-HistocompatibilityAskAtOrderEntry-HLAAS](QuestionnaireResponse-HistocompatibilityAskAtOrderEntry-HLAAS.html) |
+| FHIR `Questionnaire` (Result Panel) - [Chimerism Testing Result Panel](Questionnaire-ChimerismResultPanel.html) | See [Outstanding Issues](#outstanding-issues) above for the source data table |
 {:.grid}

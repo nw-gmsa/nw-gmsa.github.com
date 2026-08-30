@@ -1,6 +1,36 @@
-# NW Genomics — StarLIMS / iGene Integration
+<div class="alert alert-danger" role="alert">
+This is currently being elaborated and subject to change.
+</div>
 
-## Current Situation
+NW Genomics — StarLIMS / iGene Integration.
+
+## References
+
+1. [Inter Laboratory Workflow (ILW) - Sub-orders LAB-35 and LAB-36](ILW.html#sub-orders-lab-35-and-lab-36)
+2. [Diagnostic Core](diagnostic-core.html)
+3. [Regional Integration Engine (RIE)](overview.html)
+4. [FHIR Validation](testing.html#fhir-validation)
+5. [nw-gmsa.github.io/en/index.html](https://nw-gmsa.github.io/en/index.html) - the North West "data contract" all FHIR Repository resources must conform to
+
+## Actors
+
+| Actor              | Role                                                              |
+|------------------------|--------------------------------------------------------------------|
+| iGene                    | Order Filler (master LIMS) - orders and specimens are clerked in, reports distributed to NHS Trusts |
+| Regional Integration Engine (RIE) / FHIR Repository | Picks up work order CSV exports, stores Patient/ServiceRequest/Specimen, generates results CSV |
+| StarLIMS                  | Sub-Contractor - Liverpool GLH satellite LIMS, tests managed here      |
+{:.grid}
+
+## Transactions
+
+| Transaction    | Description                                              | Direction               |
+|--------------------|-------------------------------------------------------------|-----------------------------|
+| `LAB-1`/`LAB-3`      | Orders/specimens clerked into iGene; reports distributed to NHS Trusts | NHS Trusts ↔ iGene            |
+| `LAB-4`              | Work orders generated for StarLIMS tests                       | iGene → StarLIMS (via RIE, CSV export) |
+| `LAB-35`/`LAB-36`    | Sub-order and result (StarLIMS as Sub-Contractor, iGene as Order Filler) | iGene ↔ StarLIMS               |
+{:.grid}
+
+## Current Process
 
 North West Genomics was formed from two Genomic Laboratory Hubs — one in Manchester and one in Liverpool. Many tests for Liverpool hospitals were historically processed in Liverpool using StarLIMS at the Liverpool GLH.
 
@@ -9,7 +39,7 @@ The move to a single organisation includes consolidating onto one master LIMS, i
 - Orders and specimens are clerked into iGene. Most orders arrive on paper, though a growing number of NHS Trusts in the region now send electronic orders (IHE LAB-1). Some tests are allocated to satellite LIMS, and these are referred to as work orders.
 - Reports still originate from a variety of LIMS in multiple formats, though this is also being centralised in iGene. NW Genomics is moving towards electronic transmission (HL7 ORU / IHE LAB-3, with FHIR Laboratory Report support planned) to return reports to NHS Trusts.
 
-## Proposed Solution
+## Future Process
 
 Work orders are currently entered into StarLIMS manually; this process will be automated. The data transferred includes patient demographics (NHS number, gender, date of birth, name), order details (placer and filler order numbers), and specimen information (type and identifier). Results will flow from StarLIMS to iGene, and from there be distributed to NHS hospitals.
 
@@ -41,9 +71,7 @@ flowchart LR
     RIE --> OF2
 ```
 
-The data model in the FHIR Repository conforms to a North West "data contract", which is documented at [nw-gmsa.github.io/en/index.html](https://nw-gmsa.github.io/en/index.html). All resources must pass FHIR Validation using this implementation guide. Details on how to test resources against the FHIR profiles can be found at [nw-gmsa.github.io/en/testing.html#fhir-validation](https://nw-gmsa.github.io/en/testing.html#fhir-validation).
-
-## Orders
+### Orders
 
 The initial design for handling work orders is as follows:
 
@@ -62,7 +90,7 @@ flowchart TD
     E -->|Patient, ServiceRequest,<br/>Specimen resources| F[StarLIMS SQL database<br/>updated with Work Orders]
 ```
 
-## Results
+### Results
 
 The results workflow has not yet been designed, but the expectation is that a process will copy results from the StarLIMS SQL database into the FHIR Repository, after which the RIE will generate a CSV file for import into iGene.
 
@@ -75,3 +103,13 @@ flowchart TD
 ```
 
 > **Note:** the Results process is anticipated, not yet finalised.
+
+## Data Models
+
+- [ServiceRequest](StructureDefinition-ServiceRequest.html) - work orders (placer and filler order numbers)
+- [Specimen](StructureDefinition-Specimen.html) - specimen type and identifier
+- [Patient](StructureDefinition-Patient.html) - NHS number, gender, date of birth, name
+
+## Examples
+
+No example resources are published yet for this scenario.

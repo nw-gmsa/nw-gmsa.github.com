@@ -8,14 +8,40 @@ and [Haemato-Oncology Diagnostic Pathway](HaematoOncologyPathway.html#haematolog
 use cases - a genomics test following on from a pathology test order can often
 occur around cancer, and cancer referrals bring their own notification patterns.
 
-## Diagnostic Cancer Pathways
+## References
+
+1. [Getting It Right First Time (GIRFT) Best Practice Timed Diagnostic Cancer pathways](https://gettingitrightfirsttime.co.uk/wp-content/uploads/2024/03/BestPracticeTimedDiagnosticCancerPathwayssummary-guide-March-24-V3.pdf)
+2. [macmillan.org.uk - Genomic Tests on the bowel cancer cells](https://www.macmillan.org.uk/cancer-information-and-support/bowel-cancer/tests-on-the-bowel-cancer-cells)
+3. [NICE DG27 Molecular testing strategies for Lynch syndrome in people with colorectal cancer](https://www.nice.org.uk/guidance/dg27)
+4. [Inherited MMR deficiency (Lynch syndrome) - R210](DiagnosticReport.html#inherited-mmr-deficiency-lynch-syndrome---r210)
+
+## Actors
+
+| Actor                            | Role                                    |
+|-------------------------------------|------------------------------------------|
+| Primary Treatment Centre (PTC)        | Requests testing, acts on results          |
+| Community Nurse / POSCU               | Specimen collection, notification relay    |
+| Laboratory                            | Performs testing, writes laboratory report |
+{:.grid}
+
+## Transactions
+
+This page is cross-cutting narrative rather than its own transaction set - see the
+`LAB-1`/`LAB-3`/`LAB-35`/`LAB-36` transactions on
+[Cheshire and Merseyside Pathology](CheshireAndMerseysidePathology.html) and
+[Haemato-Oncology Diagnostic Pathway](HaematoOncologyPathway.html) for the
+underlying genomics ordering transactions these cancer pathways occur within.
+
+## Current Process
+
+### Diagnostic Cancer Pathways
 
 <img style="padding:3px;width:20%;" src="cancer-diagnostics.png" alt="Cancer Diagnostics"/>
 <br clear="all">
 <p class="figureTitle">Cancer Diagnostics</p> 
 <br clear="all">
 
-### Colorectal Cancer—Diagnostic Pathways Example
+#### Colorectal Cancer—Diagnostic Pathways Example
 
 The details of this are beyond the scope of this guide, for more details see [Getting It Right First Time (GIRFT) Best Practice Timed Diagnostic Cancer pathways ](https://gettingitrightfirsttime.co.uk/wp-content/uploads/2024/03/BestPracticeTimedDiagnosticCancerPathwayssummary-guide-March-24-V3.pdf)
 
@@ -32,24 +58,14 @@ For information on `Genomic Tests on the bowel cancer cells`, see [macmillan.org
 <p class="figureTitle">Colorectal Cancer Diagnostics and Patient Referrals</p> 
 <br clear="all">
 
-<div class="alert alert-info" role="alert">
-<b>Example Scenario:</b> <a href="ExampleScenario-BiopsyProcedure.html">Collect Specimen - Biopsy Procedure</a>
-</div>
-
-[ExampleScenario-BiopsyProcedure](ExampleScenario-BiopsyProcedure.html) documents
-the specimen collection process (day case admission, biopsy procedure) for a real
-patient on this Colorectal Cancer pathway in the North Midlands - background
-information on how the specimen behind a genomic test order is actually obtained,
-not itself part of this genomic specification.
-
-## NHS North West Children Cancer Example
+### NHS North West Children Cancer Example
 
 <img style="padding:3px;width:95%;" src="OrderCommunicationAndNotifications.drawio.png" alt="Order Communication and Notifications"/>
 <br clear="all">
 <p class="figureTitle">Genomic Order Notifications - Use Case 4</p> 
 <br clear="all">
 
-### As is Process
+#### As is Process
 
 (From North West Children Cancer. This is centred around laboratory tests, genomic tests will have similar notification systems)
 
@@ -65,3 +81,23 @@ not itself part of this genomic specification.
     - Community Nurse or POSCU sends results in a different format (via telephone or re-writes the results out)
 - PTC may edit a child's prescription on regimen in light of blood results and may need to recall a patient into hospital for additional tests
 - If prescription is amended then PTC must notify POSCU
+
+## Future Process
+
+No distinct future-state changes are currently defined for these pathways.
+
+## Data Models
+
+- [Inherited MMR deficiency (Lynch syndrome) - R210](DiagnosticReport.html#inherited-mmr-deficiency-lynch-syndrome---r210) - Genomics, Patient Care and Genetic Counseling examples (Diagnostic Implication, Condition, FamilyMemberHistory)
+
+## Examples
+
+<div class="alert alert-info" role="alert">
+<b>Example Scenario:</b> <a href="ExampleScenario-BiopsyProcedure.html">Collect Specimen - Biopsy Procedure</a>
+</div>
+
+[ExampleScenario-BiopsyProcedure](ExampleScenario-BiopsyProcedure.html) documents
+the specimen collection process (day case admission, biopsy procedure) for a real
+patient on this Colorectal Cancer pathway in the North Midlands - background
+information on how the specimen behind a genomic test order is actually obtained,
+not itself part of this genomic specification.
