@@ -137,32 +137,7 @@ sequenceDiagram
 ### Outstanding Issues
 
 1. It has not yet been decided, from a business process perspective, whether HODS will be replaced as the order comms system. It is desired that orders originating from Meditech are reinstated.
-2. The proposed payload is unstructured. The original payload contained structured data.
-   See [HL7 FHIR Genomics Reporting - Histocompatibility and Immunogenetic
-   Reporting](http://hl7.org/fhir/uv/genomics-reporting/histocompatibility.html) (a
-   dependency of this IG) for the international FHIR pattern this could structure onto -
-   a `DiagnosticReport` (Genomic Report) referencing per-gene `Genotype Observation`s,
-   each of which can reference `Haplotype Observation`s and the `MolecularSequence`
-   evidence behind them. That page profiles HLA allele genotyping specifically, though,
-   not STR-based chimerism analysis - most rows below have no direct fit and are noted
-   as such rather than forced onto it.
-
-| Data Item            | Data Type    | Code  | Example                                               | FHIR Genomic Report Field |
-|----------------------|--------------|-------|--------------------------------------------------------|----------------------------|
-| Test Method          | NTE/string   | -     | Chimerism analysis by STR technique.                  | `DiagnosticReport.method` - not profiled by the Histocompatibility Reporting page (candidate only) |
-| Device               | NTE/string   | -     | Test performed using Promega GenePrint 24 kit.        | `Device` referenced from `DiagnosticReport`/`Observation` - not profiled by the Histocompatibility Reporting page |
-| Average % chimerism  | OBX/quantity | STR   | 100%                                                  | `Observation.valueQuantity` referenced from `DiagnosticReport.result` - the same result-referencing shape as `Genotype Observation`, generalised to a percentage rather than an assigned allele (low confidence - that profile is defined for allele assignments, not chimerism %) |
-| Informative Markers  | OBX/string   | IM    | D13S317 PENTA E CSF1PO PENTA D D21S11 D8S1179 D12S391 | `MolecularSequence` (the STR loci examined) - the same role as the sequence evidence a `Haplotype Observation` references, but for STR loci rather than HLA alleles |
-| Range                | OBX/string   | RANGE | NA                                                    | `Observation.referenceRange` |
-| CV                   | OBX/string   | CV    | NA                                                    | `Observation.component` (QC metric) - not profiled by the Histocompatibility Reporting page |
-| Extraction Method    | OBX/string   | EXT   | DNA extracted from peripheral blood leukocyte         | `Specimen.collection.method` - the same field dWGS's `dna_extraction_protocol` uses, see [dWGS field mapping](dWGS.html#field-mapping-csv--hl7-v2--fhir) |
-| % Purity             | OBX/quantity | PURE  | 87%                                                   | Specimen quality `Observation` - not profiled by the Histocompatibility Reporting page |
-| Time post transplant | OBX/string   | POST  | 2YR 7 MONTHS                                          | `Observation` referenced from `ServiceRequest.supportingInfo` - the Ask At Order Entry pattern used elsewhere in this IG (dWGS's Family Structure/Participant Type, this page's [Ask At Order Entry Questions](#ask-at-order-entry-questions)) |
-| Date of transplant   | OBX/string   | DTP   | 2024-01-10                                            | `Procedure.performedDateTime` (the transplant event) - outside the Histocompatibility Reporting page's scope, which starts from the genotyping result, not the clinical transplant history |
-| Donor ID             | OBX/string   | DID   | 6939 DKM0 0096 2141 100                               | `Specimen.identifier` / donor `Patient` reference - the same identifier-on-Specimen pattern dWGS uses for its `PLAC`/`FILL` identifiers |
-{:.grid}
-
-3. The full narrative report will be in PDF format (this was not present in the original process), the provisional UK SNOMED CT of `909871000000100 Histocompatibility and immunogenetics` will be used (this is from NHS Scotland standards).	
+2. The full narrative report will be in PDF format (this was not present in the original process), the provisional UK SNOMED CT of `909871000000100 Histocompatibility and immunogenetics` will be used (this is from NHS Scotland standards).	
 
 ## Data Models
 
@@ -202,11 +177,42 @@ NTE|5||Specimen source->Blood|OSQ
 | Specimen source    | Blood                                  | Specimen.type (SNOMED CT coding)                                        |
 {:.grid}
 
+### Chimerism Testing Result Panel (Future?)
+
+<div class="alert alert-info" role="alert">
+<b>FHIR Questionnaire (Result Panel):</b> <a href="Questionnaire-ChimerismResultPanel.html">Chimerism Testing Result Panel</a>
+</div>
+
+The proposed payload is unstructured. The original payload contained structured data.
+See [HL7 FHIR Genomics Reporting - Histocompatibility and Immunogenetic
+Reporting](http://hl7.org/fhir/uv/genomics-reporting/histocompatibility.html) (a
+dependency of this IG) for the international FHIR pattern this could structure onto -
+a `DiagnosticReport` (Genomic Report) referencing per-gene `Genotype Observation`s,
+each of which can reference `Haplotype Observation`s and the `MolecularSequence`
+evidence behind them. That page profiles HLA allele genotyping specifically, though,
+not STR-based chimerism analysis - most rows below have no direct fit and are noted
+as such rather than forced onto it.
+
+| Data Item            | Data Type    | Code  | Example                                               | FHIR Genomic Report Field |
+|----------------------|--------------|-------|--------------------------------------------------------|----------------------------|
+| Test Method          | NTE/string   | -     | Chimerism analysis by STR technique.                  | `DiagnosticReport.method` - not profiled by the Histocompatibility Reporting page (candidate only) |
+| Device               | NTE/string   | -     | Test performed using Promega GenePrint 24 kit.        | `Device` referenced from `DiagnosticReport`/`Observation` - not profiled by the Histocompatibility Reporting page |
+| Average % chimerism  | OBX/quantity | STR   | 100%                                                  | `Observation.valueQuantity` referenced from `DiagnosticReport.result` - the same result-referencing shape as `Genotype Observation`, generalised to a percentage rather than an assigned allele (low confidence - that profile is defined for allele assignments, not chimerism %) |
+| Informative Markers  | OBX/string   | IM    | D13S317 PENTA E CSF1PO PENTA D D21S11 D8S1179 D12S391 | `MolecularSequence` (the STR loci examined) - the same role as the sequence evidence a `Haplotype Observation` references, but for STR loci rather than HLA alleles |
+| Range                | OBX/string   | RANGE | NA                                                    | `Observation.referenceRange` |
+| CV                   | OBX/string   | CV    | NA                                                    | `Observation.component` (QC metric) - not profiled by the Histocompatibility Reporting page |
+| Extraction Method    | OBX/string   | EXT   | DNA extracted from peripheral blood leukocyte         | `Specimen.collection.method` - the same field dWGS's `dna_extraction_protocol` uses, see [dWGS field mapping](dWGS.html#field-mapping-csv--hl7-v2--fhir) |
+| % Purity             | OBX/quantity | PURE  | 87%                                                   | Specimen quality `Observation` - not profiled by the Histocompatibility Reporting page |
+| Time post transplant | OBX/string   | POST  | 2YR 7 MONTHS                                          | `Observation` referenced from `ServiceRequest.supportingInfo` - the Ask At Order Entry pattern used elsewhere in this IG (dWGS's Family Structure/Participant Type, this page's [Ask At Order Entry Questions](#ask-at-order-entry-questions)) |
+| Date of transplant   | OBX/string   | DTP   | 2024-01-10                                            | `Procedure.performedDateTime` (the transplant event) - outside the Histocompatibility Reporting page's scope, which starts from the genotyping result, not the clinical transplant history |
+| Donor ID             | OBX/string   | DID   | 6939 DKM0 0096 2141 100                               | `Specimen.identifier` / donor `Patient` reference - the same identifier-on-Specimen pattern dWGS uses for its `PLAC`/`FILL` identifiers |
+{:.grid}
+
 ## Examples
 
 | Source                                                                                                                       | Example                                                                                                            |
 |--------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
 | HL7 v2 `ORM^O01` (original)                                                                                                     | [histotrac-MFT.txt](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/O01/histotrac-MFT.txt)                       |
 | FHIR `QuestionnaireResponse` answering [Histocompatibility and Immunogenetics Ask At Order Entry](Questionnaire-HistocompatibilityAskAtOrderEntry.html) | [QuestionnaireResponse-HistocompatibilityAskAtOrderEntry-HLAAS](QuestionnaireResponse-HistocompatibilityAskAtOrderEntry-HLAAS.html) |
-| FHIR `Questionnaire` (Result Panel) - [Chimerism Testing Result Panel](Questionnaire-ChimerismResultPanel.html) | See [Outstanding Issues](#outstanding-issues) above for the source data table |
+| FHIR `Questionnaire` (Result Panel) - [Chimerism Testing Result Panel](Questionnaire-ChimerismResultPanel.html) | See [Chimerism Testing Result Panel](#chimerism-testing-result-panel) above for the source data table |
 {:.grid}

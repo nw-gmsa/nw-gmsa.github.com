@@ -3,9 +3,9 @@ InstanceOf: NWQuestionnaire
 Title: "Chimerism Testing Result Panel"
 Description: """
 Result panel for STR-based chimerism testing (Clatterbridge post-transplant
-monitoring) - see [Histocompatibility and Immunogenetics - Outstanding
-Issues](HistocompatibilityAndImmunogenetics.html#outstanding-issues) for the
-source data table this Questionnaire structures.
+monitoring) - see [Histocompatibility and Immunogenetics - Chimerism Testing
+Result Panel](HistocompatibilityAndImmunogenetics.html#chimerism-testing-result-panel)
+for the source data table this Questionnaire structures.
 
 The payload described there is currently unstructured `NTE`/`OBX` text, with no
 FHIR mapping yet - `item.definition` values here are the same candidate
