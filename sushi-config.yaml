@@ -266,6 +266,34 @@ resources:
     name: dWGS Sub-order - Trio (Family Member 2)
     description: Distributed WGS (dWGS) LAB-35 sub-order - a Family Member of a Trio referral (see dWGS-Trio-r2026000203-p2026000104 for the Proband)
     exampleBoolean: true
+  QuestionnaireResponse/dWGS-Singleton-r2026000201-p2026000101:
+    name: dWGS Manifest Response - Singleton
+    description: QuestionnaireResponse answering dWGS Sub-Order Manifest for the Singleton referral's Proband, sourced from Input/dWGS.csv
+    exampleBoolean: true
+  QuestionnaireResponse/dWGS-Duo-r2026000202-p2026000102:
+    name: dWGS Manifest Response - Duo (Proband)
+    description: QuestionnaireResponse answering dWGS Sub-Order Manifest for the Proband half of a Duo referral (see dWGS-Duo-r2026000202-p2026000103 for the Family Member)
+    exampleBoolean: true
+  QuestionnaireResponse/dWGS-Duo-r2026000202-p2026000103:
+    name: dWGS Manifest Response - Duo (Family Member)
+    description: QuestionnaireResponse answering dWGS Sub-Order Manifest for the Family Member half of a Duo referral (see dWGS-Duo-r2026000202-p2026000102 for the Proband)
+    exampleBoolean: true
+  QuestionnaireResponse/dWGS-Trio-r2026000203-p2026000104:
+    name: dWGS Manifest Response - Trio (Proband)
+    description: QuestionnaireResponse answering dWGS Sub-Order Manifest for the Proband member of a Trio referral (see dWGS-Trio-r2026000203-p2026000105/106 for the two Family Members)
+    exampleBoolean: true
+  QuestionnaireResponse/dWGS-Trio-r2026000203-p2026000105:
+    name: dWGS Manifest Response - Trio (Family Member 1)
+    description: QuestionnaireResponse answering dWGS Sub-Order Manifest for a Family Member of a Trio referral (see dWGS-Trio-r2026000203-p2026000104 for the Proband)
+    exampleBoolean: true
+  QuestionnaireResponse/dWGS-Trio-r2026000203-p2026000106:
+    name: dWGS Manifest Response - Trio (Family Member 2)
+    description: QuestionnaireResponse answering dWGS Sub-Order Manifest for a Family Member of a Trio referral (see dWGS-Trio-r2026000203-p2026000104 for the Proband)
+    exampleBoolean: true
+  QuestionnaireResponse/HistocompatibilityAskAtOrderEntry-HLAAS:
+    name: Histocompatibility Ask At Order Entry Response - HLA Antibody Screening
+    description: QuestionnaireResponse answering Histocompatibility and Immunogenetics Ask At Order Entry, sourced from a live Histotrac ORM^O01 HLA Antibody Screening (Transplant) order
+    exampleBoolean: true
   Observation/igene-seqv1:
     name: Variant DSS BRCA1
     description: Variant DSS BRCA1
@@ -404,3 +432,14 @@ groups:
       - Bundle/dWGS-Trio-r2026000203-p2026000104
       - Bundle/dWGS-Trio-r2026000203-p2026000105
       - Bundle/dWGS-Trio-r2026000203-p2026000106
+      - QuestionnaireResponse/dWGS-Singleton-r2026000201-p2026000101
+      - QuestionnaireResponse/dWGS-Duo-r2026000202-p2026000102
+      - QuestionnaireResponse/dWGS-Duo-r2026000202-p2026000103
+      - QuestionnaireResponse/dWGS-Trio-r2026000203-p2026000104
+      - QuestionnaireResponse/dWGS-Trio-r2026000203-p2026000105
+      - QuestionnaireResponse/dWGS-Trio-r2026000203-p2026000106
+  -ex-example-histocompatibility:
+    name: "Example: Histocompatibility and Immunogenetics Ask At Order Entry"
+    description: "QuestionnaireResponse answering Histocompatibility and Immunogenetics Ask At Order Entry, sourced from a live Histotrac ORM^O01 HLA Antibody Screening (Transplant) order"
+    resources:
+      - QuestionnaireResponse/HistocompatibilityAskAtOrderEntry-HLAAS
