@@ -219,4 +219,6 @@ as such rather than forced onto it.
 
 ## Developer Guides
 
-No [Developer Guides](DeveloperGuides.html) notebook covers this use case yet.
+- [10 - Histocompatibility and Immunogenetics: HL7 v2 to and from the NW Standard](https://github.com/nw-gmsa/Testing/blob/main/notebooks/10-histocompatibility-immunogenetics-hl7v2-nw-standard.ipynb) - hand-builds the field-level conversion a Trust Integration Engine (TIE) does to turn Clatterbridge's Meditech-originated order into the shared [NW HL7 v2 standard](hl7v2.html)
+
+See [Developer Guides](DeveloperGuides.html) for the full notebook series.
