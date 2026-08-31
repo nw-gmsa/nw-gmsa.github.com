@@ -14,13 +14,13 @@ NW Genomics — StarLIMS / iGene Integration.
 
 ## Actors
 
-| IHE Actor                                                                                       | Role                                                              |
-|------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------|
-| [Order Placer](ActorDefinition-OrderPlacer.html)                                                       | NHS Trusts - send Laboratory Orders (LAB-1), receive Laboratory Reports (LAB-3) |
-| [Order Filler](ActorDefinition-OrderFiller.html)                                                       | iGene (master LIMS) - orders and specimens are clerked in, reports distributed to NHS Trusts |
-| [Intermediary](ActorDefinition-Intermediary.html) / [Resource Access Provider](ActorDefinition-ResourceAccessProvider.html) | Regional Integration Engine (RIE) / FHIR Repository - picks up work order CSV exports, stores Patient/ServiceRequest/Specimen, generates reports CSV (existing sub-contracting path) |
-| [Intermediary](ActorDefinition-Intermediary.html) / [Resource Access Provider](ActorDefinition-ResourceAccessProvider.html) (future) | Regional Integration Engine (RIE) / FHIR Repository - inspects and routes Laboratory Orders (LAB-1) and Laboratory Reports (LAB-3) between NHS Trusts and iGene/StarLIMS, based on order metadata such as Test Directory Code |
-| [Subcontractor](ActorDefinition-Subcontractor.html) (ILW) / [Order Filler](ActorDefinition-OrderFiller.html) (future) | StarLIMS - Liverpool GLH satellite LIMS, tests managed here. Sub-Contractor for iGene-routed work orders (existing); Order Filler for orders routed here directly by the RIE (future) |
+| IHE Actor                                                                                                                   | Role                                                                                                                                                                                                        |
+|-----------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Order Placer](ActorDefinition-OrderPlacer.html)                                                                            | NHS Trusts - send Laboratory Orders (LAB-1), receive Laboratory Reports (LAB-3)                                                                                                                             |
+| [Order Filler](ActorDefinition-OrderFiller.html)                                                                            | iGene (master LIMS) - orders and specimens are clerked in, reports distributed to NHS Trusts                                                                                                                |
+| [Resource Access Provider](ActorDefinition-ResourceAccessProvider.html) / [Intermediary](ActorDefinition-Intermediary.html) | FHIR Repository + Regional Integration Engine (RIE) - picks up work order CSV exports, stores Patient/ServiceRequest/Specimen, generates reports CSV (existing sub-contracting path)                                                         |
+| [Intermediary](ActorDefinition-Intermediary.html)                                                                           | Regional Integration Engine (RIE) - inspects and routes Laboratory Orders (LAB-1) and Laboratory Reports (LAB-3) between NHS Trusts and iGene/StarLIMS, based on order metadata such as Test Directory Code |
+| [Subcontractor](ActorDefinition-Subcontractor.html) (ILW) / [Order Filler](ActorDefinition-OrderFiller.html) (future)       | StarLIMS - Liverpool GLH satellite LIMS, tests managed here. Sub-Contractor for iGene-routed work orders (existing); Order Filler for orders routed here directly by the RIE (future)                       |
 {:.grid}
 
 ## Transactions
@@ -53,6 +53,10 @@ Two future developments are planned for StarLIMS integration:
 
 <div class="alert alert-info" role="alert">
 This is a future development.
+</div>
+
+<div class="alert alert-info" role="alert">
+<b>Use Case:</b> This extends the existing <a href="overview.html">Regional Integration Engine (RIE)</a> use case. Today, that use case only covers Laboratory Orders (LAB-1) routed from NHS Trusts to iGene, and Laboratory Reports (LAB-3) routed from iGene back to NHS Trusts. This development adds StarLIMS as a second routing destination/source alongside iGene.
 </div>
 
 Today, NHS Trusts (Order Placer) send Laboratory Orders (LAB-1) to iGene (Order Filler), and iGene alone decides - internally - which orders to sub-contract to StarLIMS (see Sub-Contracted Orders below). As a further future development, the RIE will sit in the LAB-1/LAB-3 path itself: it will receive Laboratory Orders directly from NHS Trusts, inspect order metadata such as the Test Directory Code, and route each order to whichever system - iGene or StarLIMS - is the correct Order Filler for that test.
