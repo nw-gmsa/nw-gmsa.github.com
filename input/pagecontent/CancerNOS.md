@@ -1,5 +1,5 @@
 <div class="alert alert-danger" role="alert">
-This is for information/analysis purposes only and is not a planned piece of work.
+This is for information/analysis purposes only and is not a planned piece of work. It is not clinically validated and does not represent actual service behaviour.
 </div>
 
 Cancer Background Information for Use Cases is a high-level page that pulls
