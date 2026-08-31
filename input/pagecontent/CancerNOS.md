@@ -1,5 +1,5 @@
 <div class="alert alert-danger" role="alert">
-This is for information/analysis purposes only and is not a planned piece of work.
+This is for information/analysis purposes only and is not a planned piece of work. It is not clinically validated and does not represent actual service behaviour.
 </div>
 
 Cancer Background Information for Use Cases is a high-level page that pulls
@@ -58,6 +58,9 @@ flowchart LR
     D -.-> D1["Colorectal Cancer<br/>diagnostic pathway"]
     T -.-> T1["NHS North West<br/>Children Cancer"]
     A -.-> A1["ctDNA monitoring<br/>pathway"]
+
+    classDef blue fill:#DAE8FC;
+    class T,A blue
 ```
 
 ### Diagnosis
@@ -102,6 +105,14 @@ request, before the next step begins:
 - The link between **Genomics Testing and Genetic Counselling** is itself another referral (again potentially IHE 360X / HL7 v2 `REF_I12`), and may include orders for other family members (consultands), not just the patient (proband), as described in [Distributed WGS (dWGS)](dWGS.html)'s Family Structure/Participant Type pattern. This referral cannot use eRS in the same way the initial GP referral does - eRS is only available to GPs, so a referral from Genomics/Genetic Counselling (a hospital-based service) to arrange counselling has to use a different mechanism.
 - Planning and monitoring of treatment is often coordinated by a **Multi-Disciplinary Team (MDT)**, drawing on the pathology and genomics reports above, who may produce a **Care Plan**.
 
+
+This still follows the generic clinical process (Assessment, Diagnosis, Plan,
+Implement, Evaluate - "ADPIE") described in [LTW - Clinical
+Process](LTW.html#clinical-process), with diagnostic testing (colonoscopy,
+imaging, pathology, genomics) as the embedded supporting workflow each time
+more evidence is needed. The diagram below uses the same colour scheme as
+that ADPIE diagram, so the two can be read side by side:
+
 ```mermaid
 flowchart LR
     GP["GP"] -->|"Referral via NHS eRS<br/>(IHE 360X / REF_I12)"| Hosp["Hospital<br/>outpatient clinic"]
@@ -123,6 +134,18 @@ flowchart LR
     Path -.->|"ITI-105"| SCR
     Gen -.->|"ITI-105"| SCR
     Couns -.->|"ITI-105"| SCR
+
+    classDef purple fill:#E1D5E7;
+    classDef yellow fill:#FFF2CC;
+    classDef pink fill:#F8CECC;
+    classDef green fill:#D5E8D4;
+    classDef blue fill:#DAE8FC;
+    classDef orange fill:#FFE6CC;
+
+    class GP,Hosp pink
+    class Colo,Img,Path,Gen purple
+    class Couns yellow
+    class MDT,Plan green
 ```
 
 Each closed-loop referral above only shares its report with the two parties
@@ -151,6 +174,104 @@ For information on `Genomic Tests on the bowel cancer cells`, see [macmillan.org
 <p class="figureTitle">Colorectal Cancer Diagnostics and Patient Referrals</p> 
 <br clear="all">
 -->
+
+##### Genetic Counselling Referral Across Regions
+
+The genetic counselling referral above assumes the patient and their at-risk
+relatives (consultands) all live in the same catchment as the diagnosing
+genomics/genetics service. In practice a relative may live under a different
+regional clinical genetics service - for example, a patient diagnosed in
+Liverpool whose relatives live in Nottingham and Leeds. There is no national
+system linking clinical genetics services across regions for this, so the
+diagnosing service instead sends a **family letter** - a clinical letter
+summarising the variant, the inheritance pattern and the relatives thought to
+be at risk - to each relative's GP or directly to the regional genetics
+service covering them, inviting a local referral for [cascade (predictive)
+testing](https://www.macmillan.org.uk/cancer-information-and-support/worried-about-cancer/causes-and-risk-factors/what-is-genetic-counselling).
+A relative within the diagnosing service's own catchment (e.g. another
+relative living locally in Liverpool) is typically seen directly by that
+service instead.
+
+```mermaid
+flowchart LR
+    LivG["Liverpool Clinical<br/>Genetics (diagnosing service)"] -->|"Family letter"| NottG["Nottingham Regional<br/>Genetics Service"]
+    NottG -->|"Cascade/predictive<br/>test arranged locally"| RelN["Mother<br/>(Nottingham)"]
+    LivG -->|"Family letter"| LeedsG["Leeds Regional<br/>Genetics Service"]
+    LeedsG -->|"Cascade/predictive<br/>test arranged locally"| RelL["Son<br/>(Leeds)"]
+    LivG -->|"Seen directly -<br/>same catchment"| RelLiv["Other relative<br/>(Liverpool)"]
+```
+
+This inter-service handoff is an informal clinical convention rather than a
+defined referral pathway or transaction: the family letter travels by
+NHS.net secure email or dictated hospital correspondence (the same generic
+mechanisms as any inter-trust referral), not via eRS or a genetics-specific
+message type, and it does not carry structured/coded variant data - the
+receiving service re-keys the details to order the relative's targeted
+single-variant test. It also falls outside the shared care record feeds
+described below, since those are regional/ICB-scoped and won't bridge two
+different clinical genetics services.
+
+<div class="alert alert-info" role="alert">
+<b>User Story:</b> As the clinical genetics team following up a Lynch
+syndrome diagnosis, we want the patient's family member history to identify
+relatives living under different regional genetics services, so we can send
+each one a family letter inviting local cascade testing - even though no
+shared system links the two services' records.
+</div>
+
+This is already the scenario modelled by the [Inherited MMR deficiency (Lynch
+syndrome) - R210](DiagnosticReport.html#inherited-mmr-deficiency-lynch-syndrome---r210)
+worked example: [Patient LIVERPOOL](Patient-Patient-Liverpool.html) is
+diagnosed with Lynch syndrome from a [genomic
+study](Procedure-f0036554-cd1a-463c-ac8a-d891ca409af9.html), a [diagnostic
+implication](Observation-6beb613f-d303-42af-b025-86e8e0872061.html) and an
+[NTHL1 variant](Observation-8385c2fd-313d-4fd5-b98e-d5ea4bae6f99.html),
+recorded as a [Condition](Condition-c8f82825-e4cb-4e1f-b728-3fd2808e93db.html).
+The same example already includes two FamilyMemberHistory resources for
+consultands under different regional genetics services - a [mother in
+Nottingham](FamilyMemberHistory-c76b8bc2-ec36-4ce1-a2ea-8c57215115e2.html) and
+a [son in Leeds](FamilyMemberHistory-074ea905-8d91-452c-af3c-15b5b860fdb2.html)
+- which is exactly the geographically-dispersed-family scenario the
+  cross-region referral above describes.
+
+##### Ongoing Clinical Process (ADPIE)
+
+What happens after the genetic counselling referral (and any cascade testing)
+is not a separate genomics-specific process - it is the same generic clinical
+process described in [LTW - Clinical Process](LTW.html#clinical-process):
+Assessment, Diagnosis, Plan, Implement/Interventions, Evaluate ("ADPIE"),
+cycling round again as needed. Diagnostic testing - including the
+colonoscopy, imaging, pathology and genomics steps above - is the supporting
+workflow embedded within that cycle whenever the clinical team needs more
+evidence.
+
+```mermaid
+graph TD;
+
+    A[Assessment]-->|Creates Observations| B;
+    A--> |"Orders (LAB-1)"| T;
+    T[Diagnostic Testing<br/>colonoscopy, imaging,<br/>pathology, genomics] --> |"Diagnostic Report (LAB-3)"| A
+    B[Diagnosis<br/>e.g. Lynch syndrome confirmed]-->|Creates Condition| C;
+    C[Plan<br/>MDT / Care Plan]-->|Creates Goals and Tasks| D;
+    D[Implement/Interventions<br/>e.g. surveillance, surgery]-->|Actions Tasks| E;
+    D --> |"Monitoring<br/>Orders (LAB-1)"| T;
+    T --> |"Monitoring<br/>Diagnostic Report (LAB-3)"| D
+    E[Evaluate]--> |Reviews Care| A;
+
+    classDef purple fill:#E1D5E7;
+    classDef yellow fill:#FFF2CC;
+    classDef pink fill:#F8CECC;
+    classDef green fill:#D5E8D4;
+    classDef blue fill:#DAE8FC;
+    classDef orange fill:#FFE6CC;
+
+    class A pink
+    class B yellow
+    class C green
+    class D blue
+    class E orange
+    class T purple
+```
 
 ### Treatment
 
@@ -226,6 +347,9 @@ This is a simplified view of the [ctDNA NHS England Unified Genomic Record
 (UGR)](ctDNAUGR.html) use case, framed as a patient follow-up pathway rather
 than a system integration:
 
+This follows the same [ADPIE clinical process](LTW.html#clinical-process) as
+the colorectal pathway above, using the same colour scheme:
+
 ```mermaid
 flowchart LR
     A["Treatment finishes"] --> B["Follow-up blood test<br/>('liquid biopsy')"]
@@ -235,6 +359,16 @@ flowchart LR
     E --> F["Further scans or<br/>tests arranged"]
     E --> MDT["Multi-Disciplinary<br/>Team (MDT)"]
     MDT --> Plan["Care Plan"]
+
+    classDef purple fill:#E1D5E7;
+    classDef pink fill:#F8CECC;
+    classDef green fill:#D5E8D4;
+    classDef orange fill:#FFE6CC;
+
+    class B,C,F purple
+    class E pink
+    class D orange
+    class MDT,Plan green
 ```
 
 As with the colorectal pathway above, planning and monitoring of ongoing or
