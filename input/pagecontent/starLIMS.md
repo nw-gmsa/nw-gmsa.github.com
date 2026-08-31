@@ -11,6 +11,7 @@ NW Genomics — StarLIMS / iGene Integration.
 3. [Regional Integration Engine (RIE)](overview.html)
 4. [FHIR Validation](testing.html#fhir-validation)
 5. [nw-gmsa.github.io/en/index.html](https://nw-gmsa.github.io/en/index.html) - the North West "data contract" all FHIR Repository resources must conform to
+6. [02 - Work Orders: A Worked Example](https://github.com/nw-gmsa/Testing/blob/main/notebooks/02-work-orders-worked-example.ipynb) - worked example of retrieving orders from the Resource Access Provider (FHIR Repository), the mechanism used by both the existing sub-contracting path and the future RIE-routed path (see [Developer Guides](DeveloperGuides.html))
 
 ## Actors
 
@@ -62,6 +63,8 @@ This is a future development.
 Today, NHS Trusts (Order Placer) send Laboratory Orders (LAB-1) to iGene (Order Filler), and iGene alone decides - internally - which orders to sub-contract to StarLIMS (see Sub-Contracted Orders below). As a further future development, the RIE will sit in the LAB-1/LAB-3 path itself: it will receive Laboratory Orders directly from NHS Trusts, inspect order metadata such as the Test Directory Code, and route each order to whichever system - iGene or StarLIMS - is the correct Order Filler for that test.
 
 The existing sub-contracting process from iGene to StarLIMS is unaffected and continues to exist alongside this - it is, in effect, a second, iGene-internal routing step for orders the RIE has already routed to iGene.
+
+For StarLIMS, the mechanism for receiving these RIE-routed orders is the same as receiving iGene's sub-contracted orders today: StarLIMS picks them up by querying the Resource Access Provider (FHIR Repository), as described in [Overall Workflow (Sub-Contracted Orders)](#overall-workflow-sub-contracted-orders) below - there is no new, bespoke integration for the NHS Trust-routed case. The two are distinguished in the FHIR Repository by `ServiceRequest.intent`: RIE-routed Laboratory Orders (LAB-1) use `order`, while iGene's sub-contracted orders (LAB-35) use `filler-order`.
 
 Laboratory Reports follow the same pattern in reverse. The process that populates the FHIR Repository from a Laboratory Report is unchanged (see Subcontracted Laboratory Report below for the sub-contracting case); what's new is that the RIE also acts as a router, forwarding each Laboratory Report on to the NHS Trust that originally placed the order.
 
