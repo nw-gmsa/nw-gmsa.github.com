@@ -119,6 +119,18 @@ flowchart LR
     MDT --> Plan["Care Plan"]
 ```
 
+Each closed-loop referral above only shares its report with the two parties
+involved. Ideally, every report on this pathway - hospital/discharge reports,
+the report from genetic counselling, laboratory reports, and imaging reports -
+would instead be visible to all clinicians currently involved in the
+patient's care, and to any consultant who sees the patient in future. This is
+best achieved via shared care record systems, such as the [Lancashire and
+South Cumbria Genomic Reports](overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01)
+and [Greater Manchester Care Record (GMCR)](overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01)
+feeds, and the [National Record Locator (NRL)](ctDNAUGR.html) service - this
+group of shared care record systems is associated with the IHE XDS, MHD and
+MHDS profiles (see [Health Data API (EURDICE)](HIE.html)).
+
 This elaboration also relates to [Inherited MMR deficiency (Lynch syndrome) -
 R210](DiagnosticReport.html#inherited-mmr-deficiency-lynch-syndrome---r210), a
 genomic test that can be requested on this pathway - see that section for the
