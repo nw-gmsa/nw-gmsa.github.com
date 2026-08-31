@@ -1,0 +1,209 @@
+{
+  "resourceType": "QuestionnaireResponse",
+  "id": "GenomicTestOrder-OctaviaCHISLETT",
+  "meta": {
+    "profile": [
+      "https://fhir.nwgenomics.nhs.uk/StructureDefinition/QuestionnaireResponse"
+    ]
+  },
+  "questionnaire": "https://fhir.nwgenomics.nhs.uk/Questionnaire/GenomicTestOrder",
+  "status": "completed",
+  "subject": {
+    "display": "Octavia CHISLETT",
+    "identifier": {
+      "system": "https://fhir.nhs.uk/Id/nhs-number",
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "NH"
+          }
+        ]
+      },
+      "value": "9449305552"
+    }
+  },
+  "authored": "2025-01-29T10:37:26+00:00",
+  "item": [
+    {
+      "linkId": "Patient",
+      "text": "Patient",
+      "item": [
+        { "linkId": "LN/45394-4", "text": "Patient surname", "answer": [ { "valueString": "CHISLETT" } ] },
+        { "linkId": "LN/45392-8", "text": "Patient first name", "answer": [ { "valueString": "Octavia" } ] },
+        { "linkId": "LN/21112-8", "text": "Date of birth", "answer": [ { "valueDate": "2008-09-20" } ] },
+        {
+          "linkId": "LN/56799-0",
+          "text": "Address",
+          "item": [
+            { "linkId": "HL7/PID-11-1", "text": "Address Line", "answer": [ { "valueString": "1 RAVENSFIELD GARDENS" } ] },
+            { "linkId": "HL7/PID-11-3", "text": "City", "answer": [ { "valueString": "EPSOM" } ] },
+            { "linkId": "LN/45401-7", "text": "Postcode", "answer": [ { "valueString": "KT19 0ST" } ] }
+          ]
+        },
+        {
+          "linkId": "LN/46098-0",
+          "text": "Sex registered at birth",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "http://hl7.org/fhir/administrative-gender",
+                "code": "female",
+                "display": "Female"
+              }
+            }
+          ]
+        },
+        { "linkId": "LN/89061-6", "text": "NHS Number", "answer": [ { "valueString": "9449305552" } ] },
+        { "linkId": "LN/76435-7", "text": "Hospital Number (Medical Record Number)", "answer": [ { "valueString": "633" } ] },
+        { "linkId": "LN/56797-4", "text": "Account Number (Episode or Stay Number)", "answer": [ { "valueString": "1001166717" } ] },
+        { "linkId": "LN/89009-5", "text": "Location", "answer": [ { "valueString": "R0A09" } ] }
+      ]
+    },
+    {
+      "linkId": "HealthcareProfessional",
+      "text": "Healthcare Professional",
+      "item": [
+        { "linkId": "LN/18705-4", "text": "Referring Clinician Name", "answer": [ { "valueString": "Dr Samuel Darwin" } ] },
+        {
+          "linkId": "LN/18707-0",
+          "text": "Referring Clinician Current Speciality",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "https://fhir.hl7.org.uk/CodeSystem/UKCore-PracticeSettingCode",
+                "code": "100"
+              }
+            }
+          ]
+        },
+        { "linkId": "LN/46608-6", "text": "Referring Clinician Professional Identifier", "answer": [ { "valueString": "C3456789" } ] },
+        { "linkId": "LN/89058-2", "text": "Email", "answer": [ { "valueString": "charu" } ] },
+        { "linkId": "HL7/ORC-21", "text": "Referring Organisation ODS Code / Ordering Facility", "answer": [ { "valueString": "R0A" } ] }
+      ]
+    },
+    {
+      "linkId": "TestRequest",
+      "text": "Test Request",
+      "item": [
+        {
+          "linkId": "SNM/15220000",
+          "text": "Test Category",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "https://fhir.nwgenomics.nhs.uk/CodeSystem/NWGMSA",
+                "code": "RareAndInheritedDiseasesGeneticTesting",
+                "display": "Rare and inherited diseases Genetic Testing (procedure)"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "HL7/OBR-4-r",
+          "text": "Test Code (Rare and inherited diseases)",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory",
+                "code": "R240.1",
+                "display": "Diagnostic testing for known variant(s) (Targeted variant testing)"
+              }
+            },
+            {
+              "valueCoding": {
+                "system": "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory",
+                "code": "R242.1",
+                "display": "Predictive testing for known familial variant(s) (Targeted variant testing)"
+              }
+            }
+          ]
+        },
+        { "linkId": "LN/106194-4", "text": "Test request ID/Order ID", "answer": [ { "valueString": "1601737" } ] },
+        {
+          "linkId": "Consent",
+          "text": "Consent",
+          "item": [
+            {
+              "linkId": "LN/19826-7",
+              "text": "Has consent has been obtained for tests (Y/N)",
+              "answer": [
+                {
+                  "valueCoding": { "system": "http://loinc.org", "code": "LA33-6", "display": "Yes" }
+                }
+              ]
+            },
+            {
+              "linkId": "LN/75520-7",
+              "text": "Has consent has been obtained for DNA storage (Y/N)",
+              "answer": [
+                {
+                  "valueCoding": { "system": "http://loinc.org", "code": "LA33-6", "display": "Yes" }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "linkId": "PatientClinicalInformation",
+          "text": "Patient Clinical Information",
+          "item": [
+            {
+              "linkId": "LN/51967-8",
+              "text": "CITT code (Specific disease suspected/reason for testing)",
+              "answer": [
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "363349007",
+                    "display": "Malignant tumour of stomach"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "Specimen",
+      "text": "Specimen/Biopsy",
+      "item": [
+        { "linkId": "LN/80398-1", "text": "Specimen ID Number", "answer": [ { "valueString": "25GEN-029GN00001" } ] },
+        { "linkId": "Specimen/accessionIdentifier", "text": "Lab DNA Number (If Known)", "answer": [ { "valueString": "1001166717" } ] },
+        { "linkId": "LN/80398-1-ODS", "text": "Pathology Laboratory Hospital/Trust ID (for Path Lab Sample/Stored DNA)", "answer": [ { "valueString": "699X0" } ] },
+        { "linkId": "LN/33882-2", "text": "Specimen Collection Date", "answer": [ { "valueDateTime": "2025-01-29T10:37:26+00:00" } ] },
+        {
+          "linkId": "LN/66746-9",
+          "text": "Specimen Type",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "http://snomed.info/sct",
+                "code": "258580003",
+                "display": "Whole blood specimen"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "SNM/281269004",
+          "text": "High Infection Risk?",
+          "answer": [
+            {
+              "valueCoding": { "system": "http://loinc.org", "code": "LA32-8", "display": "No" }
+            }
+          ]
+        },
+        {
+          "linkId": "OrderTracking",
+          "text": "Audit (Specimen Tracking)",
+          "item": [
+            { "linkId": "NOS/SampleReceived", "text": "Date and time sample received in lab", "answer": [ { "valueDate": "2025-02-01" } ] },
+            { "linkId": "LN/97209-1", "text": "Tracking number", "answer": [ { "valueString": "UK3096580215" } ] }
+          ]
+        }
+      ]
+    }
+  ]
+}

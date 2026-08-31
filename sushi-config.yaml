@@ -363,6 +363,14 @@ resources:
     name: Genomic General Ask At Order Entry Response - Octavia CHISLETT
     description: QuestionnaireResponse answering the default Genomic General Ask At Order Entry Questionnaire, sourced from the existing ServiceRequestGenomicsOrderCodedEntries order (test code R240.1) and its free-text note
     exampleBoolean: true
+  QuestionnaireResponse/GenomicTestOrder-OctaviaCHISLETT:
+    name: North West Genomics Test Order Response - Octavia CHISLETT
+    description: QuestionnaireResponse answering the common core North West Genomics Test Order form, sourced from the existing ServiceRequestGenomicsOrderCodedEntries order and its associated Patient, PractitionerRole and Specimen resources
+    exampleBoolean: true
+  QuestionnaireResponse/GenomicTestOrder-TheonSHEFFIELD:
+    name: North West Genomics Test Order Response - Theon SHEFFIELD
+    description: QuestionnaireResponse answering the common core North West Genomics Test Order form, sourced from the existing ServiceRequest-ctDNA order (test code M4.14) and its associated Patient, PractitionerRole and Specimen resources
+    exampleBoolean: true
   Observation/igene-seqv1:
     name: Variant DSS BRCA1
     description: Variant DSS BRCA1
@@ -503,6 +511,8 @@ groups:
       - Observation/EPIC-OBX-11
       - Bundle/748683741
       - QuestionnaireResponse/GenomicGeneralAskAtOrderEntry-OctaviaCHISLETT
+      - QuestionnaireResponse/GenomicTestOrder-OctaviaCHISLETT
+      - QuestionnaireResponse/GenomicTestOrder-TheonSHEFFIELD
   -ex-example-NHS-Genomics-Medicine-Service:
     name: "Example: NHS England Genomics Order Management Service"
     description: "NHS England Genomics Order Management Service"

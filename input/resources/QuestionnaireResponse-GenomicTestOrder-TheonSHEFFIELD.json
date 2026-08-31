@@ -1,0 +1,157 @@
+{
+  "resourceType": "QuestionnaireResponse",
+  "id": "GenomicTestOrder-TheonSHEFFIELD",
+  "meta": {
+    "profile": [
+      "https://fhir.nwgenomics.nhs.uk/StructureDefinition/QuestionnaireResponse"
+    ]
+  },
+  "questionnaire": "https://fhir.nwgenomics.nhs.uk/Questionnaire/GenomicTestOrder",
+  "status": "completed",
+  "subject": {
+    "display": "Theon SHEFFIELD",
+    "identifier": {
+      "system": "https://fhir.nhs.uk/Id/nhs-number",
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "NH"
+          }
+        ]
+      },
+      "value": "9737873858"
+    }
+  },
+  "item": [
+    {
+      "linkId": "Patient",
+      "text": "Patient",
+      "item": [
+        { "linkId": "LN/45394-4", "text": "Patient surname", "answer": [ { "valueString": "SHEFFIELD" } ] },
+        { "linkId": "LN/45392-8", "text": "Patient first name", "answer": [ { "valueString": "Theon" } ] },
+        { "linkId": "LN/21112-8", "text": "Date of birth", "answer": [ { "valueDate": "1986-09-12" } ] },
+        {
+          "linkId": "LN/56799-0",
+          "text": "Address",
+          "item": [
+            { "linkId": "HL7/PID-11-1", "text": "Address Line", "answer": [ { "valueString": "SPITAL STREET" } ] },
+            { "linkId": "HL7/PID-11-3", "text": "City", "answer": [ { "valueString": "SHEFFIELD" } ] },
+            { "linkId": "LN/45401-7", "text": "Postcode", "answer": [ { "valueString": "S3 9LB" } ] }
+          ]
+        },
+        {
+          "linkId": "LN/46098-0",
+          "text": "Sex registered at birth",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "http://hl7.org/fhir/administrative-gender",
+                "code": "male",
+                "display": "Male"
+              }
+            }
+          ]
+        },
+        { "linkId": "LN/89061-6", "text": "NHS Number", "answer": [ { "valueString": "9737873858" } ] },
+        { "linkId": "LN/76435-7", "text": "Hospital Number (Medical Record Number)", "answer": [ { "valueString": "336292" } ] },
+        {
+          "linkId": "HL7/PD1-3",
+          "text": "GP Surgery (ODS Code)",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+                "code": "C88622",
+                "display": "Sheffield Medical Centre"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "HealthcareProfessional",
+      "text": "Healthcare Professional",
+      "item": [
+        { "linkId": "LN/18705-4", "text": "Referring Clinician Name", "answer": [ { "valueString": "Sheffield Lung Doctor" } ] },
+        {
+          "linkId": "LN/18707-0",
+          "text": "Referring Clinician Current Speciality",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "https://fhir.hl7.org.uk/CodeSystem/UKCore-PracticeSettingCode",
+                "code": "100"
+              }
+            }
+          ]
+        },
+        { "linkId": "LN/46608-6", "text": "Referring Clinician Professional Identifier", "answer": [ { "valueString": "C9999998" } ] },
+        { "linkId": "HL7/ORC-21", "text": "Referring Organisation ODS Code / Ordering Facility", "answer": [ { "valueString": "RHQ" } ] }
+      ]
+    },
+    {
+      "linkId": "TestRequest",
+      "text": "Test Request",
+      "item": [
+        {
+          "linkId": "SNM/15220000",
+          "text": "Test Category",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "https://fhir.nwgenomics.nhs.uk/CodeSystem/NWGMSA",
+                "code": "CancerGeneticTesting",
+                "display": "Cancer Genetic Testing (procedure)"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "HL7/OBR-4-c",
+          "text": "Test Code (Cancer)",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory",
+                "code": "M4.14",
+                "display": "Non-Small Cell Lung Cancer, Multi-target ctDNA combined Multi-target NGS panel"
+              }
+            }
+          ]
+        },
+        { "linkId": "LN/106194-4", "text": "Test request ID/Order ID", "answer": [ { "valueString": "T26-59XG" } ] }
+      ]
+    },
+    {
+      "linkId": "Specimen",
+      "text": "Specimen/Biopsy",
+      "item": [
+        { "linkId": "LN/80398-1", "text": "Specimen ID Number", "answer": [ { "valueString": "S26-1K1Q" } ] },
+        { "linkId": "LN/80398-1-ODS", "text": "Pathology Laboratory Hospital/Trust ID (for Path Lab Sample/Stored DNA)", "answer": [ { "valueString": "699X0" } ] },
+        { "linkId": "LN/33882-2", "text": "Specimen Collection Date", "answer": [ { "valueDateTime": "2026-06-29" } ] },
+        {
+          "linkId": "LN/66746-9",
+          "text": "Specimen Type",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "http://snomed.info/sct",
+                "code": "119297000",
+                "display": "Blood specimen"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "OrderTracking",
+          "text": "Audit (Specimen Tracking)",
+          "item": [
+            { "linkId": "NOS/SampleReceived", "text": "Date and time sample received in lab", "answer": [ { "valueDate": "2026-06-30" } ] }
+          ]
+        }
+      ]
+    }
+  ]
+}
