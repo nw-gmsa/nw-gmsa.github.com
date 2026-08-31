@@ -16,18 +16,21 @@ NW Genomics — StarLIMS / iGene Integration.
 
 | IHE Actor                                                                                       | Role                                                              |
 |------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------|
+| [Order Placer](ActorDefinition-OrderPlacer.html)                                                       | NHS Trusts - send Laboratory Orders (LAB-1), receive Laboratory Reports (LAB-3) |
 | [Order Filler](ActorDefinition-OrderFiller.html)                                                       | iGene (master LIMS) - orders and specimens are clerked in, reports distributed to NHS Trusts |
-| [Intermediary](ActorDefinition-Intermediary.html) / [Resource Access Provider](ActorDefinition-ResourceAccessProvider.html) | Regional Integration Engine (RIE) / FHIR Repository - picks up work order CSV exports, stores Patient/ServiceRequest/Specimen, generates results CSV |
-| [Subcontractor](ActorDefinition-Subcontractor.html) (ILW)                                              | StarLIMS - Liverpool GLH satellite LIMS, tests managed here      |
+| [Intermediary](ActorDefinition-Intermediary.html) / [Resource Access Provider](ActorDefinition-ResourceAccessProvider.html) | Regional Integration Engine (RIE) / FHIR Repository - picks up work order CSV exports, stores Patient/ServiceRequest/Specimen, generates reports CSV (existing sub-contracting path) |
+| [Intermediary](ActorDefinition-Intermediary.html) (future) | Regional Integration Engine (RIE) - inspects and routes Laboratory Orders (LAB-1) and Laboratory Reports (LAB-3) between NHS Trusts and iGene/StarLIMS, based on order metadata such as Test Directory Code |
+| [Subcontractor](ActorDefinition-Subcontractor.html) (ILW) / [Order Filler](ActorDefinition-OrderFiller.html) (future) | StarLIMS - Liverpool GLH satellite LIMS, tests managed here. Sub-Contractor for iGene-routed work orders (existing); Order Filler for orders routed here directly by the RIE (future) |
 {:.grid}
 
 ## Transactions
 
 | Transaction    | Description                                              | Direction               |
 |--------------------|-------------------------------------------------------------|-----------------------------|
-| `LAB-1`/`LAB-3`      | Orders/specimens clerked into iGene; reports distributed to NHS Trusts | NHS Trusts ↔ iGene            |
+| `LAB-1`/`LAB-3` (current)      | Orders/specimens clerked into iGene; reports distributed to NHS Trusts | NHS Trusts ↔ iGene            |
+| `LAB-1`/`LAB-3` (future, routed) | RIE inspects order metadata (e.g. Test Directory Code) and routes Laboratory Orders to iGene or StarLIMS as Order Filler; routes Laboratory Reports back to the originating NHS Trust | NHS Trusts ↔ RIE ↔ iGene/StarLIMS |
 | `LAB-4`              | Work orders generated for StarLIMS tests                       | iGene → StarLIMS (via RIE, CSV export) |
-| `LAB-35`/`LAB-36`    | Sub-order and result (StarLIMS as Sub-Contractor, iGene as Order Filler) | iGene ↔ StarLIMS               |
+| `LAB-35`/`LAB-36`    | Sub-order and Laboratory Report (StarLIMS as Sub-Contractor, iGene as Order Filler) | iGene ↔ StarLIMS               |
 {:.grid}
 
 ## Current Process
@@ -41,13 +44,53 @@ The move to a single organisation includes consolidating onto one master LIMS, i
 
 ## Future Process
 
-Work orders are currently entered into StarLIMS manually; this process will be automated. The data transferred includes patient demographics (NHS number, gender, date of birth, name), order details (placer and filler order numbers), and specimen information (type and identifier). Results will flow from StarLIMS to iGene, and from there be distributed to NHS hospitals.
+Two future developments are planned for StarLIMS integration:
 
-The overall design is broadly the same as the IHE Inter Laboratory Workflow, with StarLIMS acting as the Sub-Contractor and iGene acting as the Order Filler. The order process described above corresponds to transaction LAB-35, and the result process corresponds to LAB-36.
+- **Order and Report Routing** - the Regional Integration Engine (RIE) will receive Laboratory Orders (LAB-1) directly from NHS Trusts and route each one to iGene or StarLIMS, in addition to the existing sub-contracting path from iGene.
+- **Automated Sub-Contracted Orders** - the existing sub-contracting path, where iGene routes selected work orders to StarLIMS, moves from manual entry to an automated feed.
+
+### Order and Report Routing
+
+<div class="alert alert-info" role="alert">
+This is a future development.
+</div>
+
+Today, NHS Trusts (Order Placer) send Laboratory Orders (LAB-1) to iGene (Order Filler), and iGene alone decides - internally - which orders to sub-contract to StarLIMS (see Sub-Contracted Orders below). As a further future development, the RIE will sit in the LAB-1/LAB-3 path itself: it will receive Laboratory Orders directly from NHS Trusts, inspect order metadata such as the Test Directory Code, and route each order to whichever system - iGene or StarLIMS - is the correct Order Filler for that test.
+
+The existing sub-contracting process from iGene to StarLIMS is unaffected and continues to exist alongside this - it is, in effect, a second, iGene-internal routing step for orders the RIE has already routed to iGene.
+
+Laboratory Reports follow the same pattern in reverse. The process that populates the FHIR Repository from a Laboratory Report is unchanged (see Subcontracted Laboratory Report below for the sub-contracting case); what's new is that the RIE also acts as a router, forwarding each Laboratory Report on to the NHS Trust that originally placed the order.
+
+```mermaid
+flowchart LR
+    OP["NHS Trusts<br/>Order Placer"]
+
+    subgraph RIE["Regional Integration Engine (RIE)"]
+        R1{"Inspect order metadata<br/>e.g. Test Directory Code"}
+    end
+
+    IGENE["iGene<br/>Order Filler"]
+    STARLIMS["StarLIMS<br/>Order Filler"]
+
+    OP -->|"LAB-1: Laboratory Order"| RIE
+    R1 -->|Routed Order| IGENE
+    R1 -->|Routed Order| STARLIMS
+    IGENE -->|"LAB-3: Laboratory Report"| RIE
+    STARLIMS -->|"LAB-3: Laboratory Report"| RIE
+    RIE -->|Routed Report| OP
+
+    IGENE -.->|"Sub-Contracted Orders<br/>LAB-35/LAB-36 - existing, unchanged"| STARLIMS
+```
+
+### Automated Sub-Contracted Orders
+
+Work orders are currently entered into StarLIMS manually; this process will be automated. The data transferred includes patient demographics (NHS number, gender, date of birth, name), order details (placer and filler order numbers), and specimen information (type and identifier). Reports will flow from StarLIMS to iGene, and from there be distributed to NHS hospitals.
+
+The overall design is broadly the same as the IHE Inter Laboratory Workflow, with StarLIMS acting as the Sub-Contractor and iGene acting as the Order Filler. The order process described above corresponds to transaction LAB-35, and the report process corresponds to LAB-36.
 
 This fits inside the IHE Laboratory Testing Workflow, as illustrated at [nw-gmsa.github.io/en/ILW.html#sub-orders-lab-35-and-lab-36](https://nw-gmsa.github.io/en/ILW.html#sub-orders-lab-35-and-lab-36).
 
-### Overall Workflow
+### Overall Workflow (Sub-Contracted Orders)
 
 ```mermaid
 flowchart LR
@@ -57,21 +100,21 @@ flowchart LR
     end
 
     subgraph RIE["Regional Integration Engine / FHIR Repository"]
-        R1[(FHIR Repository<br/>Patient, ServiceRequest,<br/>Specimen, Results)]
+        R1[(FHIR Repository<br/>Patient, ServiceRequest,<br/>Specimen, Reports)]
     end
 
     subgraph SC["StarLIMS — Sub-Contractor"]
         SC1[Work Orders received<br/>tests managed in StarLIMS]
-        SC2[Results produced<br/>in StarLIMS]
+        SC2[Reports produced<br/>in StarLIMS]
     end
 
     OF1 -->|LAB-35: Sub-Order<br/>CSV export - daily| RIE
     RIE --> SC1
-    SC2 -->|LAB-36: Sub-Order Result<br/>CSV| RIE
+    SC2 -->|LAB-36: Sub-Order Report<br/>CSV| RIE
     RIE --> OF2
 ```
 
-### Orders
+### Subcontracted Orders
 
 The initial design for handling work orders is as follows:
 
@@ -90,19 +133,19 @@ flowchart TD
     E -->|Patient, ServiceRequest,<br/>Specimen resources| F[StarLIMS SQL database<br/>updated with Work Orders]
 ```
 
-### Results
+### Subcontracted Laboratory Report
 
-The results workflow has not yet been designed, but the expectation is that a process will copy results from the StarLIMS SQL database into the FHIR Repository, after which the RIE will generate a CSV file for import into iGene.
+The reports workflow has not yet been designed, but the expectation is that a process will copy reports from the StarLIMS SQL database into the FHIR Repository, after which the RIE will generate a CSV file for import into iGene.
 
 ```mermaid
 flowchart TD
-    A[(StarLIMS SQL database)] --> B[Process copies Results<br/>from StarLIMS SQL]
-    B --> C[(FHIR Repository updated<br/>with Results)]
+    A[(StarLIMS SQL database)] --> B[Process copies Reports<br/>from StarLIMS SQL]
+    B --> C[(FHIR Repository updated<br/>with Reports)]
     C --> D[Regional Integration Engine<br/>RIE generates CSV file]
-    D --> E[iGene imports<br/>Results CSV]
+    D --> E[iGene imports<br/>Reports CSV]
 ```
 
-> **Note:** the Results process is anticipated, not yet finalised.
+> **Note:** the Reports process is anticipated, not yet finalised.
 
 ## Data Models
 
