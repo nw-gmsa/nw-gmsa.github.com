@@ -151,6 +151,9 @@ pages:
   GenomicOrderManagementService.md:
     title: "Use Case: NHS England Genomic Order Management Service (GOMS)"
     generation: markdown
+  ctDNAUGR.md:
+    title: "Use Case: ctDNA NHS England Unified Genomic Record (UGR)"
+    generation: markdown
   overview.md:
     title: "Use Case: Regional Integration Engine (RIE)"
     generation: markdown
@@ -211,15 +214,15 @@ resources:
     name: Genomic Report Ovarian Carcinoma Diagnostic Implication Example
     description: Genomic Report Ovarian Carcinoma Diagnostic Implication Example
     exampleBoolean: true
-  Bundle/Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example:
+  Bundle/NonWGSTestOrderForm-CancerSolidTumor-Example:
     name: Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example
     description: See [Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle#Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example)
     exampleBoolean: true
-  Bundle/Bundle-NonWGSTestOrderForm-FetalScenario-Example:
+  Bundle/NonWGSTestOrderForm-FetalScenario-Example:
     name: Bundle-NonWGSTestOrderForm-FetalScenario-Example
     description: See [Bundle-NonWGSTestOrderForm-FetalScenario-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle#Bundle-NonWGSTestOrderForm-FetalScenario-Example)
     exampleBoolean: true
-  Bundle/Bundle-NonWGSTestOrderForm-Reanalysis-Example:
+  Bundle/NonWGSTestOrderForm-Reanalysis-Example:
     name: Bundle-Bundle-NonWGSTestOrderForm-Reanalysis-Example
     description: See [Bundle-Bundle-NonWGSTestOrderForm-Reanalysis-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/ServiceRequest?version=0.4.3#ServiceRequest-NonWGSTestOrderForm-ReAnalysis-Example-duplicate-2)
   Bundle/NonWGSScenario3-FetusAsProband-Example-FetusA:
@@ -363,6 +366,10 @@ resources:
     name: OMICS DSS ctDNA Test Results (R01)
     description: NW-GMSA R01 Test Results message produced from a GA4GH VCF/Phenopacket by the "05 - Test Results - GA4GH VCF to FHIR Genomics Reporting" notebook, covering a ctDNA Non-Small Cell Lung Cancer multi-target panel (sequence variant, individual and multiple copy number variants, structural variant)
     exampleBoolean: true
+  Bundle/ctdna9737383222-eulab-document:
+    name: ctDNA UGR Phase 2 - EU Laboratory Report FHIR Document
+    description: HL7 Europe Laboratory Report FHIR Document (Composition-led Bundle, type document) produced from the same ctDNA source data by the "06 - EU Laboratory Report - FHIR Messages to a FHIR Document" notebook, combining the Laboratory Report with its Reportable Variant Observations for the NHS England Unified Genomic Record (UGR) Phase 2
+    exampleBoolean: true
 menu:
   Home: index.html
   Use Cases:
@@ -377,7 +384,7 @@ menu:
     Regional Orders and Reports (Alder Hey, MFT, Liverpool): overview.html
     Greater Manchester Care Record (GMCR): overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01
     Lancashire and South Cumbria Genomic Reports: overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01
-    ctDNA NHS England Unified Genomic Record Phase 1: overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01
+    ctDNA NHS England Unified Genomic Record (UGR): ctDNAUGR.html
     NE&Y Management Information (ctDNA): overview.html#technical-detail
     StarLIMS / iGene Integration: starLIMS.html
   Analysis and Design (Volume 1) :
@@ -494,9 +501,9 @@ groups:
     name: "Example: NHS England Genomics Order Management Service"
     description: "NHS England Genomics Order Management Service"
     resources:
-      - Bundle/Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example
-      - Bundle/Bundle-NonWGSTestOrderForm-FetalScenario-Example
-      - Bundle/Bundle-NonWGSTestOrderForm-Reanalysis-Example
+      - Bundle/NonWGSTestOrderForm-CancerSolidTumor-Example
+      - Bundle/NonWGSTestOrderForm-FetalScenario-Example
+      - Bundle/NonWGSTestOrderForm-Reanalysis-Example
       - Bundle/NonWGSScenario3-FetusAsProband-Example-FetusA
       - Bundle/NonWGSScenario4-ProbandWithMultipleFetus-Example-FetusA
       - Bundle/NonWGSScenario4-ProbandWithMultipleFetus-Example-FetusB
@@ -538,3 +545,8 @@ groups:
     description: "NW-GMSA R01 Test Results message produced from a GA4GH VCF/Phenopacket by the 05 - Test Results notebook"
     resources:
       - Bundle/ctdna9737383222-testresults
+  -ex-example-ctdna-ugr:
+    name: "Example: ctDNA NHS England Unified Genomic Record (UGR)"
+    description: "Phase 2 HL7 Europe Laboratory Report FHIR Document, combining the Laboratory Report with its Reportable Variant Observations"
+    resources:
+      - Bundle/ctdna9737383222-eulab-document

@@ -396,7 +396,7 @@ erDiagram
 
 > **Note:** The DocumentReference + attachment currently forms the basis for interactions with shared care record providers (i.e. this is what is used to generate MDM_T02 for GMCR).
 
-The same LAB-3 report is also the source for the MDM_T02 feed sent to shared care record providers, currently GMCR, with Lancashire & South Cumbria and the NHS England Unified Genomic Care Record (UGR) Phase 1 planned as future recipients of the same feed.
+The same LAB-3 report is also the source for the MDM_T02 feed sent to shared care record providers, currently GMCR, with Lancashire & South Cumbria and the NHS England Unified Genomic Care Record (UGR) Phase 1 planned as future recipients of the same feed. See [ctDNA NHS England Unified Genomic Record (UGR)](ctDNAUGR.html) for the two planned UGR phases in detail.
 
 ```mermaid
 flowchart LR

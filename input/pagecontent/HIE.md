@@ -86,7 +86,8 @@ In short: a publisher submits documents into the registry/repository, and a cons
 ### Sharing Laboratory Reports (Document) (ITI-105 and MDM_T02)
 
 Used by these Use Cases:
-- [Regional Integration Engine (RIE)](overview.html) - including the [Shared Care Record Feeds](overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01) wire-tap to GMCR, Lancashire and South Cumbria, and the NHS England Unified Genomic Record
+- [Regional Integration Engine (RIE)](overview.html) - including the [Shared Care Record Feeds](overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01) wire-tap to GMCR and Lancashire and South Cumbria
+- [ctDNA NHS England Unified Genomic Record (UGR)](ctDNAUGR.html) - Phase 1 (`DiagnosticReport` + PDF)
 
 The diagram below shows how an IHE LAB-3 / HL7 v2 ORU_R01 laboratory report is transformed by the Document Publisher and pushed on to a Document Consumer or Document Access Provider, using one of two supported publish transactions:
 

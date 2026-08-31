@@ -5,57 +5,57 @@
       "https://fhir.nwgenomics.nhs.uk/StructureDefinition/BundleMessage"
     ]
   },
-  "id": "Bundle-NonWGSTestOrderForm-FetalScenario-Example",
-  "identifier" : {
-    "system" : "https://tools.ietf.org/html/rfc4122",
-    "value" : "b9df1c3a-2335-4ddc-a901-e0a0a44d9c19"
+  "id": "NonWGSTestOrderForm-FetalScenario-Example",
+  "identifier": {
+    "system": "https://tools.ietf.org/html/rfc4122",
+    "value": "b9df1c3a-2335-4ddc-a901-e0a0a44d9c19"
   },
-  "type" : "message",
-  "timestamp" : "2024-10-13T10:33:00+00:00",
-  "entry":  [
+  "type": "message",
+  "timestamp": "2024-10-13T10:33:00+00:00",
+  "entry": [
     {
-      "fullUrl" : "urn:uuid:b9df1c3a-2335-4ddc-a901-e0a0a44d9c19",
-      "resource" : {
-        "resourceType" : "MessageHeader",
-        "id" : "MessageHeaderGenomicOrderFetal",
-        "meta" : {
-          "lastUpdated" : "2025-01-29T10:39:26+00:00"
+      "fullUrl": "urn:uuid:b9df1c3a-2335-4ddc-a901-e0a0a44d9c19",
+      "resource": {
+        "resourceType": "MessageHeader",
+        "id": "MessageHeaderGenomicOrderFetal",
+        "meta": {
+          "lastUpdated": "2025-01-29T10:39:26+00:00"
         },
-        "text" : {
-          "status" : "generated",
-          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"MessageHeader_MessageHeaderGenomicOrder\"> </a><p class=\"res-header-id\"><b>Generated Narrative: MessageHeader MessageHeaderGenomicOrder</b></p><a name=\"MessageHeaderGenomicOrder\"> </a><a name=\"hcMessageHeaderGenomicOrder\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Last updated: 2025-01-29 10:39:26+0000</p></div><p><b>event</b>: <a href=\"http://terminology.hl7.org/6.2.0/CodeSystem-v2-0003.html#v2-0003-O21\">eventType O21</a>: OML - Laboratory order</p><h3>Destinations</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Endpoint</b></td><td><b>Receiver</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"https://simplifier.net/resolve?scope=fhir.r4.ukcore.stu3.currentbuild@0.0.19-pre-release&amp;canonical=https://simplifier.net/guide/ukcoreversionhistory/http://www.acme.org/endpoint/LIMS\">http://www.acme.org/endpoint/LIMS</a></td><td>NORTH WEST GLH (Identifier: <code>https://fhir.nhs.uk/Id/ods-organization-code</code>/699X0)</td></tr></table><p><b>sender</b>: MANCHESTER UNIVERSITY NHS FOUNDATION TRUST (Identifier: <code>https://fhir.nhs.uk/Id/ods-organization-code</code>/R0A)</p><h3>Sources</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Software</b></td><td><b>Endpoint</b></td></tr><tr><td style=\"display: none\">*</td><td>MFT Epic</td><td><a href=\"https://simplifier.net/resolve?scope=fhir.r4.ukcore.stu3.currentbuild@0.0.19-pre-release&amp;canonical=https://simplifier.net/guide/ukcoreversionhistory/http://www.acme.org/endpoint/HIVE\">http://www.acme.org/endpoint/HIVE</a></td></tr></table><p><b>focus</b>: <a href=\"Bundle-GenomicsOrderMessageAttachment.html#urn-uuid-54b526e9-60a7-4602-9cb3-50ab3be7b564\">Bundle: identifier = https://tools.ietf.org/html/rfc4122#9612365d-52a4-4fab-87e7-8a09d753f095; type = message; timestamp = 2024-10-13 10:33:00+0000</a></p></div>"
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"MessageHeader_MessageHeaderGenomicOrder\"> </a><p class=\"res-header-id\"><b>Generated Narrative: MessageHeader MessageHeaderGenomicOrder</b></p><a name=\"MessageHeaderGenomicOrder\"> </a><a name=\"hcMessageHeaderGenomicOrder\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Last updated: 2025-01-29 10:39:26+0000</p></div><p><b>event</b>: <a href=\"http://terminology.hl7.org/6.2.0/CodeSystem-v2-0003.html#v2-0003-O21\">eventType O21</a>: OML - Laboratory order</p><h3>Destinations</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Endpoint</b></td><td><b>Receiver</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"https://simplifier.net/resolve?scope=fhir.r4.ukcore.stu3.currentbuild@0.0.19-pre-release&amp;canonical=https://simplifier.net/guide/ukcoreversionhistory/http://www.acme.org/endpoint/LIMS\">http://www.acme.org/endpoint/LIMS</a></td><td>NORTH WEST GLH (Identifier: <code>https://fhir.nhs.uk/Id/ods-organization-code</code>/699X0)</td></tr></table><p><b>sender</b>: MANCHESTER UNIVERSITY NHS FOUNDATION TRUST (Identifier: <code>https://fhir.nhs.uk/Id/ods-organization-code</code>/R0A)</p><h3>Sources</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Software</b></td><td><b>Endpoint</b></td></tr><tr><td style=\"display: none\">*</td><td>MFT Epic</td><td><a href=\"https://simplifier.net/resolve?scope=fhir.r4.ukcore.stu3.currentbuild@0.0.19-pre-release&amp;canonical=https://simplifier.net/guide/ukcoreversionhistory/http://www.acme.org/endpoint/HIVE\">http://www.acme.org/endpoint/HIVE</a></td></tr></table><p><b>focus</b>: <a href=\"Bundle-GenomicsOrderMessageAttachment.html#urn-uuid-54b526e9-60a7-4602-9cb3-50ab3be7b564\">Bundle: identifier = https://tools.ietf.org/html/rfc4122#9612365d-52a4-4fab-87e7-8a09d753f095; type = message; timestamp = 2024-10-13 10:33:00+0000</a></p></div>"
         },
-        "eventCoding" : {
-          "system" : "http://terminology.hl7.org/CodeSystem/v2-0003",
-          "code" : "O21"
+        "eventCoding": {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0003",
+          "code": "O21"
         },
-        "destination" : [
+        "destination": [
           {
-            "endpoint" : "http://www.acme.org/endpoint/LIMS",
-            "receiver" : {
-              "identifier" : {
-                "system" : "https://fhir.nhs.uk/Id/ods-organization-code",
-                "value" : "RJZ"
+            "endpoint": "http://www.acme.org/endpoint/LIMS",
+            "receiver": {
+              "identifier": {
+                "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+                "value": "RJZ"
               },
-              "display" : "KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST"
+              "display": "KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST"
             }
           }
         ],
-        "sender" : {
-          "identifier" : {
-            "system" : "https://fhir.nhs.uk/Id/ods-organization-code",
-            "value" : "RAX"
+        "sender": {
+          "identifier": {
+            "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+            "value": "RAX"
           },
-          "display" : "Kingston Hospital NHS Foundation Trust"
+          "display": "Kingston Hospital NHS Foundation Trust"
         },
-        "source" : {
-          "software" : "MFT Epic",
-          "endpoint" : "http://www.acme.org/endpoint/HIVE"
+        "source": {
+          "software": "MFT Epic",
+          "endpoint": "http://www.acme.org/endpoint/HIVE"
         },
-        "focus" : [
+        "focus": [
           {
-            "reference" : "http://example.org/fhir/ServiceRequest/ServiceRequest-NonWGSTestOrderForm-FetalScenario-Example",
-            "type" : "ServiceRequest"
+            "reference": "http://example.org/fhir/ServiceRequest/ServiceRequest-NonWGSTestOrderForm-FetalScenario-Example",
+            "type": "ServiceRequest"
           }
         ]
       }
@@ -79,9 +79,9 @@
           },
           "display": "Kingston Hospital NHS Foundation Trust"
         },
-        "specialty":  [
+        "specialty": [
           {
-            "coding":  [
+            "coding": [
               {
                 "system": "https://fhir.hl7.org.uk/CodeSystem/UKCore-PracticeSettingCode",
                 "code": "311",
@@ -90,7 +90,7 @@
             ]
           }
         ],
-        "telecom":  [
+        "telecom": [
           {
             "system": "phone",
             "value": "02068457781"
@@ -102,7 +102,7 @@
           {
             "system": "email",
             "value": "clinicalgeneticskingston@nhs.net",
-            "extension":  [
+            "extension": [
               {
                 "url": "http://hl7.org/fhir/StructureDefinition/contactpoint-comment",
                 "valueString": "reporting"
@@ -112,7 +112,7 @@
           {
             "system": "email",
             "value": "fetalmedicinekingston@nhs.net",
-            "extension":  [
+            "extension": [
               {
                 "url": "http://hl7.org/fhir/StructureDefinition/contactpoint-comment",
                 "valueString": "reporting"
@@ -122,7 +122,7 @@
           {
             "system": "email",
             "value": "gptestpracticekingston@nhs.net",
-            "extension":  [
+            "extension": [
               {
                 "url": "http://hl7.org/fhir/StructureDefinition/contactpoint-comment",
                 "valueString": "reporting"
@@ -137,11 +137,11 @@
       "resource": {
         "resourceType": "Patient",
         "id": "Patient-RyanneBoulder-Example",
-        "extension":  [
+        "extension": [
           {
             "url": "https://fhir.hl7.org.uk/StructureDefinition/Extension-UKCore-BirthSex",
             "valueCodeableConcept": {
-              "coding":  [
+              "coding": [
                 {
                   "system": "http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender",
                   "code": "F",
@@ -153,7 +153,7 @@
           {
             "url": "https://fhir.hl7.org.uk/StructureDefinition/Extension-UKCore-EthnicCategory",
             "valueCodeableConcept": {
-              "coding":  [
+              "coding": [
                 {
                   "system": "https://fhir.hl7.org.uk/CodeSystem/UKCore-EthnicCategoryEngland",
                   "code": "A",
@@ -163,15 +163,15 @@
             }
           }
         ],
-        "identifier":  [
+        "identifier": [
           {
             "system": "https://fhir.nhs.uk/Id/nhs-number",
             "value": "9449307687",
-            "extension":  [
+            "extension": [
               {
                 "url": "https://fhir.hl7.org.uk/StructureDefinition/Extension-UKCore-NHSNumberVerificationStatus",
                 "valueCodeableConcept": {
-                  "coding":  [
+                  "coding": [
                     {
                       "system": "https://fhir.hl7.org.uk/CodeSystem/UKCore-NHSNumberVerificationStatusEngland",
                       "version": "2.2.0",
@@ -194,9 +194,9 @@
             }
           }
         ],
-        "name":  [
+        "name": [
           {
-            "given":  [
+            "given": [
               "Ryanne"
             ],
             "family": "Boulder"
@@ -204,9 +204,9 @@
         ],
         "birthDate": "1980-09-02",
         "deceasedBoolean": false,
-        "address":  [
+        "address": [
           {
-            "line":  [
+            "line": [
               "53 Eastwick Pack Avenue",
               "Leatherhead",
               "Surrey"
@@ -214,7 +214,7 @@
             "postalCode": "KT23 3NP"
           }
         ],
-        "generalPractitioner":  [
+        "generalPractitioner": [
           {
             "identifier": {
               "system": "https://fhir.hl7.org.uk/Id/gmp-number",
@@ -230,7 +230,7 @@
             "display": "anywhere place"
           }
         ],
-        "link":  [
+        "link": [
           {
             "other": {
               "reference": "RelatedPerson/RelatedPerson-RyanneBoulder-Example"
@@ -245,7 +245,7 @@
       "resource": {
         "resourceType": "Patient",
         "id": "Patient-FoetusOfRyanneBoulder-Example",
-        "identifier":  [
+        "identifier": [
           {
             "system": "http://www.acme.org/patient/identifier",
             "value": "FT-RWT13521",
@@ -265,7 +265,7 @@
       "resource": {
         "resourceType": "Patient",
         "id": "Patient-RyanneBoulderPartner-Example",
-        "identifier":  [
+        "identifier": [
           {
             "system": "http://www.acme.org/patient/identifier",
             "value": "P-RWT13521",
@@ -278,7 +278,7 @@
           }
         ],
         "gender": "unknown",
-        "link":  [
+        "link": [
           {
             "other": {
               "reference": "RelatedPerson/RelatedPerson-RyanneBoulderPartner-Example"
@@ -295,7 +295,7 @@
         "id": "Observation-GenomicEthnicity-Example",
         "status": "preliminary",
         "code": {
-          "coding":  [
+          "coding": [
             {
               "system": "http://snomed.info/sct",
               "code": "723621000000103",
@@ -318,11 +318,11 @@
       "resource": {
         "resourceType": "ServiceRequest",
         "id": "ServiceRequest-NonWGSTestOrderForm-FetalScenario-Example",
-        "extension":  [
+        "extension": [
           {
             "url": "https://fhir.hl7.org.uk/StructureDefinition/Extension-UKCore-Coverage",
             "valueCodeableConcept": {
-              "coding":  [
+              "coding": [
                 {
                   "system": "https://fhir.hl7.org.uk/CodeSystem/UKCore-FundingCategory",
                   "code": "nhs-england",
@@ -334,9 +334,9 @@
         ],
         "status": "active",
         "intent": "order",
-        "category":  [
+        "category": [
           {
-            "coding":  [
+            "coding": [
               {
                 "system": "https://fhir.hl7.org.uk/CodeSystem/UKCore-GenomeSequencingCategory",
                 "code": "rare-disease-non-wgs",
@@ -347,7 +347,7 @@
         ],
         "priority": "urgent",
         "code": {
-          "coding":  [
+          "coding": [
             {
               "system": "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory",
               "code": "R21",
@@ -372,9 +372,9 @@
         "requester": {
           "reference": "PractitionerRole/PractitionerRole-LoisLaneKingstonClinicalGenetics-Example"
         },
-        "reasonCode":  [
+        "reasonCode": [
           {
-            "coding":  [
+            "coding": [
               {
                 "system": "https://fhir.nhs.uk/CodeSystem/reasonfortesting-genomics",
                 "code": "staging-or-prognosis",
@@ -383,7 +383,7 @@
             ]
           }
         ],
-        "supportingInfo":  [
+        "supportingInfo": [
           {
             "reference": "Observation/Observation-HistoryOfFetalLoss-Example"
           },
@@ -427,7 +427,7 @@
             "reference": "Specimen/Specimen-RyanneBoulderSaliva-Example"
           }
         ],
-        "note":  [
+        "note": [
           {
             "text": "Samples are to be provided at a later date"
           },
@@ -447,7 +447,7 @@
         "id": "Observation-HistoryOfFetalLoss-Example",
         "status": "final",
         "code": {
-          "coding":  [
+          "coding": [
             {
               "system": "http://snomed.info/sct",
               "code": "161743003",
@@ -474,7 +474,7 @@
         "id": "Observation-PregnancyConfirmation-Example",
         "status": "final",
         "code": {
-          "coding":  [
+          "coding": [
             {
               "system": "http://snomed.info/sct",
               "code": "77386006",
@@ -489,10 +489,10 @@
             "value": "9449307687"
           }
         },
-        "component":  [
+        "component": [
           {
             "code": {
-              "coding":  [
+              "coding": [
                 {
                   "system": "http://snomed.info/sct",
                   "code": "720451000000102",
@@ -503,7 +503,7 @@
           },
           {
             "code": {
-              "coding":  [
+              "coding": [
                 {
                   "system": "http://snomed.info/sct",
                   "code": "226081000000107",
@@ -520,7 +520,7 @@
           },
           {
             "code": {
-              "coding":  [
+              "coding": [
                 {
                   "system": "http://snomed.info/sct",
                   "code": "161714006",
@@ -541,7 +541,7 @@
         "id": "Observation-NonConsanguinousUnion-Example",
         "status": "final",
         "code": {
-          "coding":  [
+          "coding": [
             {
               "system": "http://snomed.info/sct",
               "code": "160475008",
@@ -551,17 +551,16 @@
         },
         "subject": {
           "reference": "Patient/Patient-FoetusOfRyanneBoulder-Example",
-          "identifier":
-            {
-              "system": "http://www.acme.org/patient/identifier",
-              "value": "FT-RWT13521",
-              "assigner": {
-                "identifier": {
-                  "system": "https://fhir.nhs.uk/Id/ods-organization-code",
-                  "value": "RAX"
-                }
+          "identifier": {
+            "system": "http://www.acme.org/patient/identifier",
+            "value": "FT-RWT13521",
+            "assigner": {
+              "identifier": {
+                "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+                "value": "RAX"
               }
             }
+          }
         },
         "effectiveDateTime": "2023-09-25",
         "valueBoolean": false
@@ -574,7 +573,7 @@
         "id": "Observation-NoTransplant-Example",
         "status": "final",
         "code": {
-          "coding":  [
+          "coding": [
             {
               "system": "http://snomed.info/sct",
               "code": "416128008",
@@ -583,7 +582,7 @@
           ]
         },
         "valueCodeableConcept": {
-          "coding":  [
+          "coding": [
             {
               "system": "http://snomed.info/sct",
               "code": "263903005",
@@ -608,7 +607,7 @@
         "id": "Observation-NoFirstTrimesterFetalAnomalies-Example",
         "status": "final",
         "code": {
-          "coding":  [
+          "coding": [
             {
               "system": "http://snomed.info/sct",
               "code": "609520005",
@@ -624,10 +623,10 @@
             "value": "9449307687"
           }
         },
-        "component":  [
+        "component": [
           {
             "code": {
-              "coding":  [
+              "coding": [
                 {
                   "system": "http://snomed.info/sct",
                   "code": "255246003",
@@ -648,7 +647,7 @@
         "id": "Observation-NoSecondTrimesterFetalAnomalies-Example",
         "status": "final",
         "code": {
-          "coding":  [
+          "coding": [
             {
               "system": "http://snomed.info/sct",
               "code": "609520005",
@@ -664,10 +663,10 @@
             "value": "9449307687"
           }
         },
-        "component":  [
+        "component": [
           {
             "code": {
-              "coding":  [
+              "coding": [
                 {
                   "system": "http://snomed.info/sct",
                   "code": "255247007",
@@ -688,7 +687,7 @@
         "id": "Procedure-InVitroFertilisation-Example",
         "status": "completed",
         "code": {
-          "coding":  [
+          "coding": [
             {
               "system": "http://snomed.info/sct",
               "code": "52637005",
@@ -703,7 +702,7 @@
           }
         },
         "performedDateTime": "2023-09-25",
-        "note":  [
+        "note": [
           {
             "text": "Woman`s own egg"
           }
@@ -715,7 +714,7 @@
       "resource": {
         "resourceType": "Specimen",
         "id": "Specimen-BloodEDTA-Example",
-        "identifier":  [
+        "identifier": [
           {
             "system": "https://fhir.kingstonhospital.nhs.uk/Id/specimenId",
             "value": "ROA-69050-216738"
@@ -723,7 +722,7 @@
         ],
         "status": "unavailable",
         "type": {
-          "coding":  [
+          "coding": [
             {
               "system": "http://snomed.info/sct",
               "code": "445295009",
@@ -738,7 +737,7 @@
             "value": "9449307687"
           }
         },
-        "request":  [
+        "request": [
           {
             "reference": "ServiceRequest/ServiceRequest-NonWGSTestOrderForm-FetalScenario-Example"
           }
@@ -750,7 +749,7 @@
       "resource": {
         "resourceType": "Specimen",
         "id": "Specimen-RyanneBoulderSaliva-Example",
-        "identifier":  [
+        "identifier": [
           {
             "system": "https://fhir.kingstonhospital.nhs.uk/Id/specimenId",
             "value": "ROA-69050-216739"
@@ -758,7 +757,7 @@
         ],
         "status": "available",
         "type": {
-          "coding":  [
+          "coding": [
             {
               "system": "http://snomed.info/sct",
               "code": "119342007",
@@ -773,12 +772,12 @@
             "value": "9449307687"
           }
         },
-        "container":  [
+        "container": [
           {
             "description": "Container:ROA-69050-216739 contains Saliva for Mother"
           }
         ],
-        "request":  [
+        "request": [
           {
             "reference": "ServiceRequest/ServiceRequest-NonWGSTestOrderForm-FetalScenario-Example"
           }
@@ -790,7 +789,7 @@
       "resource": {
         "resourceType": "RelatedPerson",
         "id": "RelatedPerson-RyanneBoulder-Example",
-        "identifier":  [
+        "identifier": [
           {
             "system": "https://fhir.nhs.uk/Id/nhs-number",
             "value": "9449307687"
@@ -809,9 +808,9 @@
             }
           }
         },
-        "relationship":  [
+        "relationship": [
           {
-            "coding":  [
+            "coding": [
               {
                 "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
                 "code": "NMTHF",
@@ -827,7 +826,7 @@
       "resource": {
         "resourceType": "RelatedPerson",
         "id": "RelatedPerson-RyanneBoulderPartner-Example",
-        "identifier":  [
+        "identifier": [
           {
             "system": "http://www.acme.org/patient/identifier",
             "value": "P-RWT13521",
@@ -852,9 +851,9 @@
             }
           }
         },
-        "relationship":  [
+        "relationship": [
           {
-            "coding":  [
+            "coding": [
               {
                 "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
                 "code": "NFTHF",
