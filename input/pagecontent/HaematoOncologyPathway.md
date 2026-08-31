@@ -6,7 +6,7 @@ This is currently being elaborated and subject to change.
 
 1. [Inter Laboratory Workflow (ILW) - Sub-orders LAB-35 and LAB-36](ILW.html#sub-orders-lab-35-and-lab-36)
 2. [Cheshire and Merseyside Pathology](CheshireAndMerseysidePathology.html) - the related pathology-LIMS (CFT Shire) reflex scenario without HODS orchestration
-3. [Cancer NOS - NHS North West Children Cancer Example](CancerNOS.html#nhs-north-west-children-cancer-example)
+3. [Cancer Background Information for Use Cases - NHS North West Children Cancer Example](CancerNOS.html#nhs-north-west-children-cancer-example)
 
 ## Actors
 

@@ -6,7 +6,7 @@ This is for information/analysis purposes only and is not a planned piece of wor
 
 1. [Inter Laboratory Workflow (ILW)](ILW.html) - the generic sub-order/reflex pattern this follows (`LAB-35`/`LAB-36`)
 2. [Haemato-Oncology Diagnostic Pathway](HaematoOncologyPathway.html) - the related HODS-orchestrated scenario
-3. [Cancer NOS - Colorectal Cancer Diagnostic Pathways](CancerNOS.html#diagnostic-cancer-pathways) - this use case can often occur around cancer
+3. [Cancer Background Information for Use Cases - Colorectal Cancer Diagnostic Pathways](CancerNOS.html#diagnostic-cancer-pathways) - this use case can often occur around cancer
 4. LAB-40 HL7 v2.9 SET <a href="https://wiki.ihe.net/index.php/Specimen_Event_Tracking" _target="_blank">IHE Specimen Event Tracking (SET)</a> and <a href="https://hl7-definition.caristix.com/v2/HL7v2.7/TriggerEvents/OSM_R26" _target="_blank">Hl7 v2.7 OSM_R26 Unsolicited Specimen Shipment Manifest Message</a>
 
 ## Actors
@@ -113,7 +113,7 @@ LIMSP ->> EPR: Send Laboratory Report R01 (LAB-3)
     - Step 8: Order Filler (Genomics) sends a Genomic Report R01 (LAB-36) to Order Filler (Pathology).
     - Step 9: Pathology sends the Genomic Report R01 (LAB-3) to the Order Placer.
 
-This use case can often occur around cancer - see [Cancer NOS](CancerNOS.html#diagnostic-cancer-pathways)
+This use case can often occur around cancer - see [Cancer Background Information for Use Cases](CancerNOS.html#diagnostic-cancer-pathways)
 for the Colorectal Cancer diagnostic pathway example.
 
 ## Future Process

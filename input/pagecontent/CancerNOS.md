@@ -2,9 +2,10 @@
 This is for information/analysis purposes only and is not a planned piece of work.
 </div>
 
-Cancer (Not Otherwise Specified) is a high-level use case that pulls together
-several of this IG's other diagnostic testing and treatment-monitoring use
-cases - a genomics test following on from a pathology test order can often
+Cancer Background Information for Use Cases is a high-level page that pulls
+together several of this IG's other diagnostic testing and
+treatment-monitoring use cases - a genomics test following on from a
+pathology test order can often
 occur around cancer, and cancer referrals bring their own notification
 patterns. Rather than a single pathway, this page follows the same simple
 three-stage structure Macmillan Cancer Support uses on
@@ -98,7 +99,7 @@ request, before the next step begins:
 - The **colonoscopy** itself may also generate a separate Imaging Report, alongside the biopsy specimen sent for pathology.
 - **Colonoscopy to Pathology** follows this IG's own pattern: a Laboratory Order (`LAB-1`) is placed with the pathology lab, and a Laboratory Report (`LAB-3`) is returned.
 - **Pathology to Genomics** follows the same pattern again: a Laboratory Order (`LAB-1`) is placed with the genomics lab, and a Laboratory Report (`LAB-3`) is returned.
-- The link between **Genomics Testing and Genetic Counselling** is itself another referral, similar in kind to the GP's eRS referral - and may include orders for other family members (consultands), not just the patient (proband), as described in [Distributed WGS (dWGS)](dWGS.html)'s Family Structure/Participant Type pattern.
+- The link between **Genomics Testing and Genetic Counselling** is itself another referral, and may include orders for other family members (consultands), not just the patient (proband), as described in [Distributed WGS (dWGS)](dWGS.html)'s Family Structure/Participant Type pattern. This referral cannot use eRS in the same way the initial GP referral does - eRS is only available to GPs, so a referral from Genomics/Genetic Counselling (a hospital-based service) to arrange counselling has to use a different mechanism.
 - Planning and monitoring of treatment is often coordinated by a **Multi-Disciplinary Team (MDT)**, drawing on the pathology and genomics reports above, who may produce a **Care Plan**.
 
 ```mermaid
@@ -111,7 +112,7 @@ flowchart LR
     Path -->|"Laboratory Report (LAB-3)"| Colo
     Path -->|"Laboratory Order (LAB-1)"| Gen["Genomics"]
     Gen -->|"Laboratory Report (LAB-3)"| Path
-    Gen -->|"Referral, like eRS -<br/>may include family/<br/>consultand orders"| Couns["Genetic Counselling"]
+    Gen -->|"Referral, not via eRS -<br/>may include family/<br/>consultand orders"| Couns["Genetic Counselling"]
     Path --> MDT["Multi-Disciplinary<br/>Team (MDT)"]
     Gen --> MDT
     MDT --> Plan["Care Plan"]
