@@ -1,0 +1,87 @@
+{
+  "resourceType": "QuestionnaireResponse",
+  "id": "GenomicGeneralAskAtOrderEntry-OctaviaCHISLETT",
+  "meta": {
+    "profile": [
+      "https://fhir.nwgenomics.nhs.uk/StructureDefinition/QuestionnaireResponse"
+    ]
+  },
+  "questionnaire": "https://fhir.nwgenomics.nhs.uk/Questionnaire/GenomicGeneralAskAtOrderEntry",
+  "status": "completed",
+  "subject": {
+    "display": "Octavia CHISLETT",
+    "identifier": {
+      "system": "https://fhir.nhs.uk/Id/nhs-number",
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "NH"
+          }
+        ]
+      },
+      "value": "9449305552"
+    }
+  },
+  "authored": "2025-01-29T00:00:00+00:00",
+  "item": [
+    {
+      "linkId": "AskAtOrderEntry",
+      "text": "Ask At Order Entry Questions",
+      "item": [
+        {
+          "linkId": "SNM/842009",
+          "text": "Patient is from consanguineous union?",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "http://loinc.org",
+                "code": "LA4489-6",
+                "display": "Unknown"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "SNM/118185001",
+          "text": "Neonatal/Prenatal/Neither?",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "http://loinc.org",
+                "code": "LA32-8",
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "SNM/17369002",
+          "text": "Is this test for a pregnancy loss?",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "http://loinc.org",
+                "code": "LA32-8",
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "SNM/419099009",
+          "text": "Is this test for a deceased infant?",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "http://loinc.org",
+                "code": "LA32-8",
+                "display": "No"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -359,6 +359,10 @@ resources:
     name: Histocompatibility Ask At Order Entry Response - HLA Antibody Screening
     description: QuestionnaireResponse answering Histocompatibility and Immunogenetics Ask At Order Entry, sourced from a live Histotrac ORM^O01 HLA Antibody Screening (Transplant) order
     exampleBoolean: true
+  QuestionnaireResponse/GenomicGeneralAskAtOrderEntry-OctaviaCHISLETT:
+    name: Genomic General Ask At Order Entry Response - Octavia CHISLETT
+    description: QuestionnaireResponse answering the default Genomic General Ask At Order Entry Questionnaire, sourced from the existing ServiceRequestGenomicsOrderCodedEntries order (test code R240.1) and its free-text note
+    exampleBoolean: true
   Observation/igene-seqv1:
     name: Variant DSS BRCA1
     description: Variant DSS BRCA1
@@ -498,6 +502,7 @@ groups:
       - Observation/EPIC-OBX-10
       - Observation/EPIC-OBX-11
       - Bundle/748683741
+      - QuestionnaireResponse/GenomicGeneralAskAtOrderEntry-OctaviaCHISLETT
   -ex-example-NHS-Genomics-Medicine-Service:
     name: "Example: NHS England Genomics Order Management Service"
     description: "NHS England Genomics Order Management Service"
