@@ -224,5 +224,6 @@ extracted into (same referrals and participants as the table above), and the HL7
 ## Developer Guides
 
 - [08 - Subcontracted Laboratory Order from an External GLH](https://github.com/nw-gmsa/Testing/blob/main/notebooks/08-subcontracted-laboratory-order-from-external-glh.ipynb) - builds a `LAB-35` sub-order manifest and Bundle for a distributed WGS referral from an external Requesting Genomic Laboratory, the source of the examples above
+- [11 - Order Entry Forms: Questionnaire to a FHIR O21](https://github.com/nw-gmsa/Testing/blob/main/notebooks/11-order-entry-forms-questionnaire-to-fhir-o21.ipynb) - builds a FHIR Message `O21` `Bundle` from a completed `QuestionnaireResponse` answering [dWGS Sub-Order Manifest](Questionnaire-dWGSSubOrder.html), and explains how the same extracted answers become an HL7 v2 `O21` instead
 
 See [Developer Guides](DeveloperGuides.html) for the full notebook series.
