@@ -56,6 +56,8 @@ Events and workflow are coordinated via [FHIR `Task`](https://hl7.org/fhir/R4/wo
 3. The RIE converts this Bundle into an HL7 v2 `OML_O21`/`ORM_O01` order.
 4. From there, the process is the same as any other order: delivered to iGene and handled via the processes already described in [overview.md](overview.html).
 
+> **Note:** Orders retrieved from GOMS currently focus on the proband (the child, in a family/trio scenario) - orders for other family members (parents / consultands) are excluded. This is because NW Genomics' LIMS does not currently support representing consultand orders. Such orders may instead relate to a different pathway - general genetic services referred by an NHS Trust to NW Services, rather than the diagnostic services this IG otherwise covers - but this has not yet been analysed, so this may not be correct.
+
 ```mermaid
 sequenceDiagram
     participant OP as Other NHS Trust / GMSA<br/>Order Placer
