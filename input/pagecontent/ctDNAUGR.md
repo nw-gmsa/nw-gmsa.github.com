@@ -9,7 +9,7 @@ ctDNA reports to the NHS England Unified Genomic Record (UGR) - future integrati
 1. NHS England - ctDNA UGR Solution Design (internal NHS England document, not publicly linked)
 2. [06 - EU Laboratory Report: FHIR Messages to a FHIR Document](https://github.com/nw-gmsa/Testing/blob/main/notebooks/06-eu-laboratory-report-fhir-document.ipynb) - Phase 2 worked example
 3. [Regional Integration Engine (RIE) - Shared Care Record Feeds](overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01) - the existing wire-tap this reuses
-4. [HIE - Sharing Laboratory Reports (Document)](HIE.html#sharing-laboratory-reports-document) - the IHE ITI-105/MDM_T02 pattern Phase 1 resembles
+4. [HIE - Sharing Laboratory Reports (Document)](HIE.html#sharing-laboratory-reports-document-iti-105-and-mdm_t02) - the IHE ITI-105/MDM_T02 pattern Phase 1 resembles
 5. [OMICS DSS Result Integration](reportable-variants.html) - source of the Reportable Variant Observations Phase 2 combines with the report
 6. [nw-gmsa/Testing - ctdna9737383222-eulab-document.json](https://github.com/nw-gmsa/Testing/blob/main/Input/FHIR/R01/ctdna9737383222-eulab-document.json) - Phase 2 example
 
