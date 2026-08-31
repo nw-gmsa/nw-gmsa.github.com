@@ -95,17 +95,17 @@ Underneath that simplified view, each step is really a **closed-loop referral** 
 a request goes out, and a report or result comes back to whoever made the
 request, before the next step begins:
 
-- The **GP referral** is most likely made via the [NHS e-Referral Service (eRS)](https://digital.nhs.uk/services/e-referral-service). The resulting hospital outpatient/clinic report is returned to the GP via [MESH](https://digital.nhs.uk/services/message-exchange-for-social-care-and-health-mesh) (in the "Kettering" EDT/XML format many GP systems still expect) or, increasingly, the NHS England Transfer of Care standard.
+- The **GP referral** is most likely made via the [NHS e-Referral Service (eRS)](https://digital.nhs.uk/services/e-referral-service) - referrals like this are generally linked to IHE 360X and HL7 v2 `REF_I12`. The resulting hospital outpatient/clinic report is returned to the GP via [MESH](https://digital.nhs.uk/services/message-exchange-for-social-care-and-health-mesh) (in the "Kettering" EDT/XML format many GP systems still expect) or, increasingly, the NHS England Transfer of Care standard. Discharge summaries and hospital reports sent this way often use HL7 v2 `MDM_T02` or `ORU_R01`.
 - The **colonoscopy** itself may also generate a separate Imaging Report, alongside the biopsy specimen sent for pathology - following the equivalent IHE Radiology transactions, Imaging Order (`RAD-2`, `OMG^O19`) and Imaging Report (`RAD-28`, `ORU_R01`).
 - **Colonoscopy to Pathology** follows this IG's own pattern: a Laboratory Order (`LAB-1`) is placed with the pathology lab, and a Laboratory Report (`LAB-3`) is returned.
 - **Pathology to Genomics** follows the same pattern again: a Laboratory Order (`LAB-1`) is placed with the genomics lab, and a Laboratory Report (`LAB-3`) is returned.
-- The link between **Genomics Testing and Genetic Counselling** is itself another referral, and may include orders for other family members (consultands), not just the patient (proband), as described in [Distributed WGS (dWGS)](dWGS.html)'s Family Structure/Participant Type pattern. This referral cannot use eRS in the same way the initial GP referral does - eRS is only available to GPs, so a referral from Genomics/Genetic Counselling (a hospital-based service) to arrange counselling has to use a different mechanism.
+- The link between **Genomics Testing and Genetic Counselling** is itself another referral (again potentially IHE 360X / HL7 v2 `REF_I12`), and may include orders for other family members (consultands), not just the patient (proband), as described in [Distributed WGS (dWGS)](dWGS.html)'s Family Structure/Participant Type pattern. This referral cannot use eRS in the same way the initial GP referral does - eRS is only available to GPs, so a referral from Genomics/Genetic Counselling (a hospital-based service) to arrange counselling has to use a different mechanism.
 - Planning and monitoring of treatment is often coordinated by a **Multi-Disciplinary Team (MDT)**, drawing on the pathology and genomics reports above, who may produce a **Care Plan**.
 
 ```mermaid
 flowchart LR
-    GP["GP"] -->|"Referral via NHS<br/>e-Referral Service (eRS)"| Hosp["Hospital<br/>outpatient clinic"]
-    Hosp -->|"Hospital report<br/>(MESH/Kettering XML or<br/>NHS Transfer of Care)"| GP
+    GP["GP"] -->|"Referral via NHS eRS<br/>(IHE 360X / REF_I12)"| Hosp["Hospital<br/>outpatient clinic"]
+    Hosp -->|"Hospital report<br/>(MESH/Kettering XML or<br/>NHS Transfer of Care -<br/>MDM_T02 / ORU_R01)"| GP
     Hosp --> Colo["Colonoscopy"]
     Colo -->|"Imaging Order (RAD-2)<br/>OMG^O19"| Img["Imaging"]
     Img -->|"Imaging Report (RAD-28)<br/>ORU_R01"| Colo
@@ -113,7 +113,7 @@ flowchart LR
     Path -->|"Laboratory Report (LAB-3)"| Colo
     Path -->|"Laboratory Order (LAB-1)"| Gen["Genomics"]
     Gen -->|"Laboratory Report (LAB-3)"| Path
-    Gen -->|"Referral, not via eRS -<br/>may include family/<br/>consultand orders"| Couns["Genetic Counselling"]
+    Gen -->|"Referral, not via eRS<br/>(IHE 360X / REF_I12) -<br/>may include family/<br/>consultand orders"| Couns["Genetic Counselling"]
     Path --> MDT["Multi-Disciplinary<br/>Team (MDT)"]
     Gen --> MDT
     MDT --> Plan["Care Plan"]
