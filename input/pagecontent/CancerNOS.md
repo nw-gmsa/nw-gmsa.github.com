@@ -102,6 +102,57 @@ request, before the next step begins:
 - The link between **Genomics Testing and Genetic Counselling** is itself another referral (again potentially IHE 360X / HL7 v2 `REF_I12`), and may include orders for other family members (consultands), not just the patient (proband), as described in [Distributed WGS (dWGS)](dWGS.html)'s Family Structure/Participant Type pattern. This referral cannot use eRS in the same way the initial GP referral does - eRS is only available to GPs, so a referral from Genomics/Genetic Counselling (a hospital-based service) to arrange counselling has to use a different mechanism.
 - Planning and monitoring of treatment is often coordinated by a **Multi-Disciplinary Team (MDT)**, drawing on the pathology and genomics reports above, who may produce a **Care Plan**.
 
+
+```mermaid
+flowchart LR
+    GP["GP"] -->|"Referral via NHS eRS<br/>(IHE 360X / REF_I12)"| Hosp["Hospital<br/>outpatient clinic"]
+    Hosp -->|"Hospital report<br/>(MESH/Kettering XML or<br/>NHS Transfer of Care -<br/>MDM_T02 / ORU_R01)"| GP
+    Hosp --> Colo["Colonoscopy"]
+    Colo -->|"Imaging Order (RAD-2)<br/>OMG^O19"| Img["Imaging"]
+    Img -->|"Imaging Report (RAD-28)<br/>ORU_R01"| Colo
+    Colo -->|"Laboratory Order (LAB-1)"| Path["Pathology"]
+    Path -->|"Laboratory Report (LAB-3)"| Colo
+    Path -->|"Laboratory Order (LAB-1)"| Gen["Genomics"]
+    Gen -->|"Laboratory Report (LAB-3)"| Path
+    Gen -->|"Referral, not via eRS<br/>(IHE 360X / REF_I12) -<br/>may include family/<br/>consultand orders"| Couns["Genetic Counselling"]
+    Path --> MDT["Multi-Disciplinary<br/>Team (MDT)"]
+    Gen --> MDT
+    MDT --> Plan["Care Plan"]
+
+    Hosp -.->|"ITI-105"| SCR["Shared Care Record<br/>e.g. GMCR, Lancashire<br/>and South Cumbria"]
+    Img -.->|"ITI-105"| SCR
+    Path -.->|"ITI-105"| SCR
+    Gen -.->|"ITI-105"| SCR
+    Couns -.->|"ITI-105"| SCR
+```
+
+Each closed-loop referral above only shares its report with the two parties
+involved. Ideally, every report on this pathway - hospital/discharge reports,
+the report from genetic counselling, laboratory reports, and imaging reports -
+would instead be visible to all clinicians currently involved in the
+patient's care, and to any consultant who sees the patient in future. This is
+best achieved via shared care record systems, such as the [Lancashire and
+South Cumbria Genomic Reports](overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01)
+and [Greater Manchester Care Record (GMCR)](overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01)
+feeds, and the [National Record Locator (NRL)](ctDNAUGR.html) service - this
+group of shared care record systems is associated with the IHE XDS, MHD and
+MHDS profiles (see [Health Data API (EURDICE)](HIE.html)).
+
+This elaboration also relates to [Inherited MMR deficiency (Lynch syndrome) -
+R210](DiagnosticReport.html#inherited-mmr-deficiency-lynch-syndrome---r210), a
+genomic test that can be requested on this pathway - see that section for the
+full set of Genomics, Patient Care and Genetic Counseling examples (Diagnostic
+Implication, Condition, FamilyMemberHistory, etc.) built around it.
+
+For information on `Genomic Tests on the bowel cancer cells`, see [macmillan.org.uk](https://www.macmillan.org.uk/cancer-information-and-support/bowel-cancer/tests-on-the-bowel-cancer-cells) and [NICE DG27 Molecular testing strategies for Lynch syndrome in people with colorectal cancer](https://www.nice.org.uk/guidance/dg27)
+
+<!--
+<img style="padding:3px;width:90%;" src="ERIC.drawio.png" alt="Colorectal Cancer Diagnostics and Patient Referrals"/>
+<br clear="all">
+<p class="figureTitle">Colorectal Cancer Diagnostics and Patient Referrals</p> 
+<br clear="all">
+-->
+
 ##### Genetic Counselling Referral Across Regions
 
 The genetic counselling referral above assumes the patient and their at-risk
@@ -159,57 +210,8 @@ consultands under different regional genetics services - a [mother in
 Nottingham](FamilyMemberHistory-c76b8bc2-ec36-4ce1-a2ea-8c57215115e2.html) and
 a [son in Leeds](FamilyMemberHistory-074ea905-8d91-452c-af3c-15b5b860fdb2.html)
 - which is exactly the geographically-dispersed-family scenario the
-cross-region referral above describes.
+  cross-region referral above describes.
 
-```mermaid
-flowchart LR
-    GP["GP"] -->|"Referral via NHS eRS<br/>(IHE 360X / REF_I12)"| Hosp["Hospital<br/>outpatient clinic"]
-    Hosp -->|"Hospital report<br/>(MESH/Kettering XML or<br/>NHS Transfer of Care -<br/>MDM_T02 / ORU_R01)"| GP
-    Hosp --> Colo["Colonoscopy"]
-    Colo -->|"Imaging Order (RAD-2)<br/>OMG^O19"| Img["Imaging"]
-    Img -->|"Imaging Report (RAD-28)<br/>ORU_R01"| Colo
-    Colo -->|"Laboratory Order (LAB-1)"| Path["Pathology"]
-    Path -->|"Laboratory Report (LAB-3)"| Colo
-    Path -->|"Laboratory Order (LAB-1)"| Gen["Genomics"]
-    Gen -->|"Laboratory Report (LAB-3)"| Path
-    Gen -->|"Referral, not via eRS<br/>(IHE 360X / REF_I12) -<br/>may include family/<br/>consultand orders"| Couns["Genetic Counselling"]
-    Path --> MDT["Multi-Disciplinary<br/>Team (MDT)"]
-    Gen --> MDT
-    MDT --> Plan["Care Plan"]
-
-    Hosp -.->|"ITI-105"| SCR["Shared Care Record<br/>e.g. GMCR, Lancashire<br/>and South Cumbria"]
-    Img -.->|"ITI-105"| SCR
-    Path -.->|"ITI-105"| SCR
-    Gen -.->|"ITI-105"| SCR
-    Couns -.->|"ITI-105"| SCR
-```
-
-Each closed-loop referral above only shares its report with the two parties
-involved. Ideally, every report on this pathway - hospital/discharge reports,
-the report from genetic counselling, laboratory reports, and imaging reports -
-would instead be visible to all clinicians currently involved in the
-patient's care, and to any consultant who sees the patient in future. This is
-best achieved via shared care record systems, such as the [Lancashire and
-South Cumbria Genomic Reports](overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01)
-and [Greater Manchester Care Record (GMCR)](overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01)
-feeds, and the [National Record Locator (NRL)](ctDNAUGR.html) service - this
-group of shared care record systems is associated with the IHE XDS, MHD and
-MHDS profiles (see [Health Data API (EURDICE)](HIE.html)).
-
-This elaboration also relates to [Inherited MMR deficiency (Lynch syndrome) -
-R210](DiagnosticReport.html#inherited-mmr-deficiency-lynch-syndrome---r210), a
-genomic test that can be requested on this pathway - see that section for the
-full set of Genomics, Patient Care and Genetic Counseling examples (Diagnostic
-Implication, Condition, FamilyMemberHistory, etc.) built around it.
-
-For information on `Genomic Tests on the bowel cancer cells`, see [macmillan.org.uk](https://www.macmillan.org.uk/cancer-information-and-support/bowel-cancer/tests-on-the-bowel-cancer-cells) and [NICE DG27 Molecular testing strategies for Lynch syndrome in people with colorectal cancer](https://www.nice.org.uk/guidance/dg27)
-
-<!--
-<img style="padding:3px;width:90%;" src="ERIC.drawio.png" alt="Colorectal Cancer Diagnostics and Patient Referrals"/>
-<br clear="all">
-<p class="figureTitle">Colorectal Cancer Diagnostics and Patient Referrals</p> 
-<br clear="all">
--->
 
 ### Treatment
 
