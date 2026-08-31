@@ -156,6 +156,9 @@ DiagnosticReport o-- Observation
 
 ## Resource Exchange (PCC-44)
 
+Used by these Use Cases:
+- [NHS England Genomic Order Management Service (GOMS)](GenomicOrderManagementService.html) - the RIE retrieves Laboratory Orders exposed by GOMS this way
+
 ```mermaid
 graph LR
 

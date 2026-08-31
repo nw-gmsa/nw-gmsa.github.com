@@ -131,37 +131,7 @@ The current IHE ILW specification relies on HL7 v2.x, HL7 v3, and IHE XDS. Sever
 
 ### NHS England Genomic Order Management Service FHIR API
 
-- [NHS England - Genomic Order Management Service FHIR API](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) a [FHIR Workflow](https://hl7.org/fhir/R4/workflow.html) based service for managing orders and results at a national level.
-
-```mermaid
-sequenceDiagram
-
-participant EPR as Order Placer
-participant RIE as Regional Orchestration Engine
-participant LIMSP as Order Filler for LAB-1<br/>Order Placer for LAB-35<br/>(North West GMSA)
-participant LIMSG as Order Filler<br/>(other GMSA via GOMS)
-
-EPR ->> RIE: Submit Laboratory Order O21 (LAB-1)
-
-RIE ->> LIMSP: Submit Genomic Order O21 (LAB-1)
-
-opt Other GMSA Order (Sub Contract)
-
-note over RIE,LIMSG: IHE LAB-35 Sub-order Management
-
-LIMSP ->> RIE: Submit Sub-Contract Order O21 (LAB-35)
-RIE ->> LIMSG: Submit Sub-Contract Order O21 (LAB-35)<br/>Using Genomic Order Management Service API
-
-note over RIE,LIMSG: IHE LAB-36 Sub-order Results Delivery
-
-LIMSG ->> RIE: Send Laboratory Report R01 (LAB-36)<br/>Using Genomic Order Management Service API
-RIE -->> LIMSP: Send Laboratory Report R01 (LAB-36)<br/>Using Genomic Order Management Service API
-
-RIE ->> EPR: Send Laboratory Report R01 (LAB-3)
-end
-```
-
-
+See [NHS England Genomic Order Management Service (GOMS)](GenomicOrderManagementService.html) for the future use of the [GOMS FHIR API](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) to deliver sub-contracted orders (LAB-35) to, and receive results (LAB-36) from, other GMSAs.
 
 See [Haemato-Oncology Diagnostic Pathway](HaematoOncologyPathway.html) for the
 CFT Shire → HODS-orchestrated reflex use case (pathology test order following on

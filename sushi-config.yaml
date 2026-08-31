@@ -148,6 +148,9 @@ pages:
   reportable-variants.md:
     title: "Use Case: OMICS DSS Result Integration"
     generation: markdown
+  GenomicOrderManagementService.md:
+    title: "Use Case: NHS England Genomic Order Management Service (GOMS)"
+    generation: markdown
   overview.md:
     title: "Use Case: Regional Integration Engine (RIE)"
     generation: markdown
@@ -219,6 +222,41 @@ resources:
   Bundle/Bundle-NonWGSTestOrderForm-Reanalysis-Example:
     name: Bundle-Bundle-NonWGSTestOrderForm-Reanalysis-Example
     description: See [Bundle-Bundle-NonWGSTestOrderForm-Reanalysis-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/ServiceRequest?version=0.4.3#ServiceRequest-NonWGSTestOrderForm-ReAnalysis-Example-duplicate-2)
+  Bundle/NonWGSScenario3-FetusAsProband-Example-FetusA:
+    name: Bundle-NonWGSScenario3-FetusAsProband-Example-FetusA
+    description: See [Bundle-NonWGSScenario3-FetusAsProband-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle#Bundle-NonWGSScenario3-FetusAsProband-Example)
+    exampleBoolean: true
+  Bundle/NonWGSScenario4-ProbandWithMultipleFetus-Example-FetusA:
+    name: Bundle-NonWGSScenario4-ProbandWithMultipleFetus-Example-FetusA
+    description: See [Bundle-NonWGSScenario4-ProbandWithMultipleFetus-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle#Bundle-NonWGSScenario4-ProbandWithMultipleFetus-Example)
+    exampleBoolean: true
+  Bundle/NonWGSScenario4-ProbandWithMultipleFetus-Example-FetusB:
+    name: Bundle-NonWGSScenario4-ProbandWithMultipleFetus-Example-FetusB
+    description: See [Bundle-NonWGSScenario4-ProbandWithMultipleFetus-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle#Bundle-NonWGSScenario4-ProbandWithMultipleFetus-Example)
+    exampleBoolean: true
+  Bundle/Bundle-NonWGSScenario5-ProductsofConception-Example:
+    name: Bundle-NonWGSScenario5-ProductsofConception-Example
+    description: See [Bundle-NonWGSScenario5-ProductsofConception-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle#Bundle-NonWGSScenario5-ProductsofConception-Example)
+    exampleBoolean: true
+  Bundle/Bundle-NonWGSTestOrderForm-Example:
+    name: Bundle-NonWGSTestOrderForm-Example
+    description: See [Bundle-NonWGSTestOrderForm-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle#Bundle-NonWGSTestOrderForm-Example)
+    exampleBoolean: true
+  Bundle/Bundle-NonWGSTestOrderFormQRPatientExtensions-Example:
+    name: Bundle-NonWGSTestOrderFormQRPatientExtensions-Example
+    description: See [Bundle-NonWGSTestOrderFormQRPatientExtensions-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle#Bundle-NonWGSTestOrderFormQRPatientExtensions-Example)
+    exampleBoolean: true
+  Bundle/Bundle-WGSTestOrderForm-Example:
+    name: Bundle-WGSTestOrderForm-Example
+    description: See [Bundle-WGSTestOrderForm-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle#Bundle-WGSTestOrderForm-Example)
+    exampleBoolean: true
+  Bundle/UKCore-Bundle-MichaelJonesRequest-Example-Minimal:
+    name: UKCore-Bundle-MichaelJonesRequest-Example (minimal)
+    description: See the [FHIR Genomics Implementation Guide](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle) on Simplifier - a minimal-population variant of the MichaelJonesRequest example
+    exampleBoolean: true
+  Bundle/UKCore-Bundle-MichaelJonesRequest-Example:
+    name: UKCore-Bundle-MichaelJonesRequest-Example (v3 message)
+    description: See the [FHIR Genomics Implementation Guide](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle) on Simplifier - the fully-populated FHIR message variant of the MichaelJonesRequest example
     exampleBoolean: true
   NamingSystem/nhs-number-namingsystem:
     name: NHS Number
@@ -335,6 +373,7 @@ menu:
     Cheshire and Merseyside (Pathology to Genomics Reflex): CheshireAndMerseysidePathology.html
     Cancer NOS (Colorectal and Children's Cancer Pathways): CancerNOS.html
     OMICS DSS Result Integration: reportable-variants.html
+    NHS England Genomic Order Management Service (GOMS): GenomicOrderManagementService.html
     Regional Orders and Reports (Alder Hey, MFT, Liverpool): overview.html
     Greater Manchester Care Record (GMCR): overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01
     Lancashire and South Cumbria Genomic Reports: overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01
@@ -458,6 +497,15 @@ groups:
       - Bundle/Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example
       - Bundle/Bundle-NonWGSTestOrderForm-FetalScenario-Example
       - Bundle/Bundle-NonWGSTestOrderForm-Reanalysis-Example
+      - Bundle/NonWGSScenario3-FetusAsProband-Example-FetusA
+      - Bundle/NonWGSScenario4-ProbandWithMultipleFetus-Example-FetusA
+      - Bundle/NonWGSScenario4-ProbandWithMultipleFetus-Example-FetusB
+      - Bundle/Bundle-NonWGSScenario5-ProductsofConception-Example
+      - Bundle/Bundle-NonWGSTestOrderForm-Example
+      - Bundle/Bundle-NonWGSTestOrderFormQRPatientExtensions-Example
+      - Bundle/Bundle-WGSTestOrderForm-Example
+      - Bundle/UKCore-Bundle-MichaelJonesRequest-Example-Minimal
+      - Bundle/UKCore-Bundle-MichaelJonesRequest-Example
   -ex-nrl:
     name: "Example: NHS England National Record Locator Service"
     description: "NHS England National Record Locator Service"
