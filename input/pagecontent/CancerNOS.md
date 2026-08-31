@@ -103,6 +103,13 @@ request, before the next step begins:
 - Planning and monitoring of treatment is often coordinated by a **Multi-Disciplinary Team (MDT)**, drawing on the pathology and genomics reports above, who may produce a **Care Plan**.
 
 
+This still follows the generic clinical process (Assessment, Diagnosis, Plan,
+Implement, Evaluate - "ADPIE") described in [LTW - Clinical
+Process](LTW.html#clinical-process), with diagnostic testing (colonoscopy,
+imaging, pathology, genomics) as the embedded supporting workflow each time
+more evidence is needed. The diagram below uses the same colour scheme as
+that ADPIE diagram, so the two can be read side by side:
+
 ```mermaid
 flowchart LR
     GP["GP"] -->|"Referral via NHS eRS<br/>(IHE 360X / REF_I12)"| Hosp["Hospital<br/>outpatient clinic"]
@@ -124,6 +131,18 @@ flowchart LR
     Path -.->|"ITI-105"| SCR
     Gen -.->|"ITI-105"| SCR
     Couns -.->|"ITI-105"| SCR
+
+    classDef purple fill:#E1D5E7;
+    classDef yellow fill:#FFF2CC;
+    classDef pink fill:#F8CECC;
+    classDef green fill:#D5E8D4;
+    classDef blue fill:#DAE8FC;
+    classDef orange fill:#FFE6CC;
+
+    class GP,Hosp pink
+    class Colo,Img,Path,Gen purple
+    class Couns yellow
+    class MDT,Plan green
 ```
 
 Each closed-loop referral above only shares its report with the two parties
@@ -212,6 +231,44 @@ a [son in Leeds](FamilyMemberHistory-074ea905-8d91-452c-af3c-15b5b860fdb2.html)
 - which is exactly the geographically-dispersed-family scenario the
   cross-region referral above describes.
 
+##### Ongoing Clinical Process (ADPIE)
+
+What happens after the genetic counselling referral (and any cascade testing)
+is not a separate genomics-specific process - it is the same generic clinical
+process described in [LTW - Clinical Process](LTW.html#clinical-process):
+Assessment, Diagnosis, Plan, Implement/Interventions, Evaluate ("ADPIE"),
+cycling round again as needed. Diagnostic testing - including the
+colonoscopy, imaging, pathology and genomics steps above - is the supporting
+workflow embedded within that cycle whenever the clinical team needs more
+evidence.
+
+```mermaid
+graph TD;
+
+    A[Assessment]-->|Creates Observations| B;
+    A--> |"Orders (LAB-1)"| T;
+    T[Diagnostic Testing<br/>colonoscopy, imaging,<br/>pathology, genomics] --> |"Diagnostic Report (LAB-3)"| A
+    B[Diagnosis<br/>e.g. Lynch syndrome confirmed]-->|Creates Condition| C;
+    C[Plan<br/>MDT / Care Plan]-->|Creates Goals and Tasks| D;
+    D[Implement/Interventions<br/>e.g. surveillance, surgery]-->|Actions Tasks| E;
+    D --> |"Monitoring<br/>Orders (LAB-1)"| T;
+    T --> |"Monitoring<br/>Diagnostic Report (LAB-3)"| D
+    E[Evaluate]--> |Reviews Care| A;
+
+    classDef purple fill:#E1D5E7;
+    classDef yellow fill:#FFF2CC;
+    classDef pink fill:#F8CECC;
+    classDef green fill:#D5E8D4;
+    classDef blue fill:#DAE8FC;
+    classDef orange fill:#FFE6CC;
+
+    class A pink
+    class B yellow
+    class C green
+    class D blue
+    class E orange
+    class T purple
+```
 
 ### Treatment
 
@@ -287,6 +344,9 @@ This is a simplified view of the [ctDNA NHS England Unified Genomic Record
 (UGR)](ctDNAUGR.html) use case, framed as a patient follow-up pathway rather
 than a system integration:
 
+This follows the same [ADPIE clinical process](LTW.html#clinical-process) as
+the colorectal pathway above, using the same colour scheme:
+
 ```mermaid
 flowchart LR
     A["Treatment finishes"] --> B["Follow-up blood test<br/>('liquid biopsy')"]
@@ -296,6 +356,16 @@ flowchart LR
     E --> F["Further scans or<br/>tests arranged"]
     E --> MDT["Multi-Disciplinary<br/>Team (MDT)"]
     MDT --> Plan["Care Plan"]
+
+    classDef purple fill:#E1D5E7;
+    classDef pink fill:#F8CECC;
+    classDef green fill:#D5E8D4;
+    classDef orange fill:#FFE6CC;
+
+    class B,C,F purple
+    class E pink
+    class D orange
+    class MDT,Plan green
 ```
 
 As with the colorectal pathway above, planning and monitoring of ongoing or
