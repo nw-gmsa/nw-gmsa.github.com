@@ -117,6 +117,12 @@ flowchart LR
     Path --> MDT["Multi-Disciplinary<br/>Team (MDT)"]
     Gen --> MDT
     MDT --> Plan["Care Plan"]
+
+    Hosp -.->|"ITI-105"| SCR["Shared Care Record<br/>e.g. GMCR, Lancashire<br/>and South Cumbria"]
+    Img -.->|"ITI-105"| SCR
+    Path -.->|"ITI-105"| SCR
+    Gen -.->|"ITI-105"| SCR
+    Couns -.->|"ITI-105"| SCR
 ```
 
 Each closed-loop referral above only shares its report with the two parties
