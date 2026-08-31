@@ -58,6 +58,9 @@ flowchart LR
     D -.-> D1["Colorectal Cancer<br/>diagnostic pathway"]
     T -.-> T1["NHS North West<br/>Children Cancer"]
     A -.-> A1["ctDNA monitoring<br/>pathway"]
+
+    classDef blue fill:#DAE8FC;
+    class T,A blue
 ```
 
 ### Diagnosis
