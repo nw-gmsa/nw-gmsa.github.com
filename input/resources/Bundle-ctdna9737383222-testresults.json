@@ -1,6 +1,11 @@
 {
   "resourceType": "Bundle",
   "id": "ctdna9737383222-testresults",
+  "meta": {
+    "profile": [
+      "https://fhir.nwgenomics.nhs.uk/StructureDefinition/BundleMessage"
+    ]
+  },
   "identifier": {
     "value": "urn:uuid:5adedb78-2232-417b-8563-5e14f83126b0"
   },
