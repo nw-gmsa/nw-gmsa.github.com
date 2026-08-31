@@ -107,24 +107,25 @@ request, before the next step begins:
 The genetic counselling referral above assumes the patient and their at-risk
 relatives (consultands) all live in the same catchment as the diagnosing
 genomics/genetics service. In practice a relative may live under a different
-regional clinical genetics service - for example, a variant identified in
-Nottingham with relatives in Leeds and north Nottinghamshire. There is no
-national system linking clinical genetics services across regions for this,
-so the diagnosing service instead sends a **family letter** - a clinical
-letter summarising the variant, the inheritance pattern and the relatives
-thought to be at risk - to the relative's GP or directly to the regional
-genetics service covering that relative, inviting a local referral for
-[cascade (predictive) testing](https://www.macmillan.org.uk/cancer-information-and-support/worried-about-cancer/causes-and-risk-factors/what-is-genetic-counselling).
-Relatives within the diagnosing service's own catchment (e.g. north
-Nottinghamshire relatives of a Nottingham-diagnosed variant) are typically
-seen directly by that service instead.
+regional clinical genetics service - for example, a patient diagnosed in
+Liverpool whose relatives live in Nottingham and Leeds. There is no national
+system linking clinical genetics services across regions for this, so the
+diagnosing service instead sends a **family letter** - a clinical letter
+summarising the variant, the inheritance pattern and the relatives thought to
+be at risk - to each relative's GP or directly to the regional genetics
+service covering them, inviting a local referral for [cascade (predictive)
+testing](https://www.macmillan.org.uk/cancer-information-and-support/worried-about-cancer/causes-and-risk-factors/what-is-genetic-counselling).
+A relative within the diagnosing service's own catchment (e.g. another
+relative living locally in Liverpool) is typically seen directly by that
+service instead.
 
 ```mermaid
 flowchart LR
-    NG["Nottingham Clinical<br/>Genetics (diagnosing service)"] -->|"Family letter -<br/>variant, inheritance,<br/>relatives at risk"| GP["Relative's GP<br/>(Leeds)"]
-    NG -->|"Family letter"| LG["Leeds Regional<br/>Genetics Service"]
-    LG -->|"Cascade/predictive<br/>test arranged locally"| RelL["Relative<br/>(Leeds)"]
-    NG -->|"Seen directly -<br/>same catchment"| RelN["Relative<br/>(North Notts)"]
+    LivG["Liverpool Clinical<br/>Genetics (diagnosing service)"] -->|"Family letter"| NottG["Nottingham Regional<br/>Genetics Service"]
+    NottG -->|"Cascade/predictive<br/>test arranged locally"| RelN["Mother<br/>(Nottingham)"]
+    LivG -->|"Family letter"| LeedsG["Leeds Regional<br/>Genetics Service"]
+    LeedsG -->|"Cascade/predictive<br/>test arranged locally"| RelL["Son<br/>(Leeds)"]
+    LivG -->|"Seen directly -<br/>same catchment"| RelLiv["Other relative<br/>(Liverpool)"]
 ```
 
 This inter-service handoff is an informal clinical convention rather than a
