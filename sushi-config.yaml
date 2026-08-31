@@ -321,6 +321,10 @@ resources:
   Observation/igene-seqv1:
     name: Variant DSS BRCA1
     description: Variant DSS BRCA1
+  Bundle/ctdna9737383222-testresults:
+    name: OMICS DSS ctDNA Test Results (R01)
+    description: NW-GMSA R01 Test Results message produced from a GA4GH VCF/Phenopacket by the "05 - Test Results - GA4GH VCF to FHIR Genomics Reporting" notebook, covering a ctDNA Non-Small Cell Lung Cancer multi-target panel (sequence variant, individual and multiple copy number variants, structural variant)
+    exampleBoolean: true
 menu:
   Home: index.html
   Use Cases:
@@ -481,3 +485,8 @@ groups:
     description: "QuestionnaireResponse answering Histocompatibility and Immunogenetics Ask At Order Entry, sourced from a live Histotrac ORM^O01 HLA Antibody Screening (Transplant) order"
     resources:
       - QuestionnaireResponse/HistocompatibilityAskAtOrderEntry-HLAAS
+  -ex-example-omics-dss:
+    name: "Example: OMICS DSS Result Integration"
+    description: "NW-GMSA R01 Test Results message produced from a GA4GH VCF/Phenopacket by the 05 - Test Results notebook"
+    resources:
+      - Bundle/ctdna9737383222-testresults
