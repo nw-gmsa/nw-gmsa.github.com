@@ -1,5 +1,5 @@
 <div class="alert alert-danger" role="alert">
-This is currently being elaborated and subject to change.
+This is for information and analysis purposes only and is not in active development.
 </div>
 
 NHS England Genomic Order Management Service (GOMS) FHIR API - future integration.
