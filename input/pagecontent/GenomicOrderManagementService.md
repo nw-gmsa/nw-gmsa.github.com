@@ -13,6 +13,9 @@ NHS England Genomic Order Management Service (GOMS) FHIR API - future integratio
 5. [Regional Integration Engine (RIE)](overview.html)
 6. [HIE - Resource Exchange (PCC-44)](HIE.html#resource-exchange-pcc-44)
 7. [Inter Laboratory Workflow (ILW) - Sub-orders LAB-35 and LAB-36](ILW.html#sub-orders-lab-35-and-lab-36)
+8. [FHIR Workflow](https://hl7.org/fhir/R4/workflow.html) - the `Task`-based event and coordination model GOMS uses
+9. [Enterprise Integration Patterns - Conversation Patterns](https://www.enterpriseintegrationpatterns.com/patterns/conversation/) - the pattern family this `Task`-based coordination follows
+10. [StarLIMS / iGene Integration](starLIMS.html) - uses the same FHIR Workflow / `Task` polling method
 
 ## Actors
 
@@ -30,6 +33,7 @@ NHS England Genomic Order Management Service (GOMS) FHIR API - future integratio
 
 | Transaction                                                          | Description                                                                                    | Direction              |
 |--------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|----------------------------|
+| FHIR RESTful `GET /Task` (polling)                                       | RIE polls GOMS for new/updated `Task` resources, since Task events are not yet distributed as push notifications | RIE → GOMS                  |
 | PCC-44 (Resource Exchange) / FHIR RESTful read                           | RIE retrieves the FHIR Transaction Bundle representing a Laboratory Order (plus other GOMS interactions) | GOMS → RIE                  |
 | FHIR Transaction Bundle → HL7 v2 `OML_O21`/`ORM_O01` (LAB-1 equivalent)   | RIE converts the retrieved Bundle into an HL7 v2 order for delivery to an internal LIMS             | RIE → iGene                 |
 | HL7 v2 `OML_O21`/`ORM_O01` → FHIR Message O21 → FHIR Transaction (future) | Reverse of the above: NW Genomics sub-contracts an order out; RIE converts it to a FHIR Message and then a FHIR Transaction Bundle, and posts it to GOMS | iGene → RIE → GOMS |
@@ -45,9 +49,12 @@ There is currently no integration with GOMS. Laboratory Orders for the North Wes
 
 GOMS exposes Laboratory Orders and related resources (e.g. `Patient`, `ServiceRequest`) via a FHIR RESTful API. As described in notebook [09 - LIMS Integration with the Genomic Order Management Service](https://github.com/nw-gmsa/Testing/blob/main/notebooks/09-genomic-order-management-fhir-to-hl7v2-for-lims.ipynb), the process starts from a FHIR Transaction Bundle:
 
-1. The RIE retrieves the relevant resources from GOMS using [PCC-44 (Resource Exchange)](HIE.html#resource-exchange-pcc-44) interactions (and other interactions defined in the GOMS API), assembling them into a FHIR Transaction Bundle.
-2. The RIE converts this Bundle into an HL7 v2 `OML_O21`/`ORM_O01` order.
-3. From there, the process is the same as any other order: delivered to iGene and handled via the processes already described in [overview.md](overview.html).
+Events and workflow are coordinated via [FHIR `Task`](https://hl7.org/fhir/R4/workflow.html) resources rather than messaging - GOMS's incorporation of the national service into FHIR Workflow. In Enterprise Integration Patterns terms, this is a [Conversation](https://www.enterpriseintegrationpatterns.com/patterns/conversation/) pattern. At present, `Task` events are not distributed as push notifications, so they must instead be retrieved via polling (`GET /Task`) - the same method already used to retrieve StarLIMS work orders from the FHIR Repository (see [StarLIMS / iGene Integration](starLIMS.html)), as demonstrated in notebook [02 - Work Orders: A Worked Example](https://github.com/nw-gmsa/Testing/blob/main/notebooks/02-work-orders-worked-example.ipynb).
+
+1. The RIE polls GOMS for new/updated `Task` resources (`GET /Task`).
+2. For each relevant `Task`, the RIE retrieves the linked resources from GOMS using [PCC-44 (Resource Exchange)](HIE.html#resource-exchange-pcc-44) interactions (and other interactions defined in the GOMS API), assembling them into a FHIR Transaction Bundle.
+3. The RIE converts this Bundle into an HL7 v2 `OML_O21`/`ORM_O01` order.
+4. From there, the process is the same as any other order: delivered to iGene and handled via the processes already described in [overview.md](overview.html).
 
 ```mermaid
 sequenceDiagram
@@ -57,6 +64,10 @@ sequenceDiagram
     participant iGene as iGene<br/>Order Filler
 
     OP ->> GOMS: Places Laboratory Order<br/>(FHIR RESTful)
+    loop Polling - no Task events distributed yet
+        RIE ->> GOMS: GET /Task
+        GOMS -->> RIE: New/updated Task resources
+    end
     RIE ->> GOMS: PCC-44 - retrieve order resources<br/>(FHIR Transaction Bundle)
     GOMS -->> RIE: FHIR Transaction Bundle
     RIE ->> RIE: Convert Bundle to HL7 v2
