@@ -102,6 +102,64 @@ request, before the next step begins:
 - The link between **Genomics Testing and Genetic Counselling** is itself another referral (again potentially IHE 360X / HL7 v2 `REF_I12`), and may include orders for other family members (consultands), not just the patient (proband), as described in [Distributed WGS (dWGS)](dWGS.html)'s Family Structure/Participant Type pattern. This referral cannot use eRS in the same way the initial GP referral does - eRS is only available to GPs, so a referral from Genomics/Genetic Counselling (a hospital-based service) to arrange counselling has to use a different mechanism.
 - Planning and monitoring of treatment is often coordinated by a **Multi-Disciplinary Team (MDT)**, drawing on the pathology and genomics reports above, who may produce a **Care Plan**.
 
+##### Genetic Counselling Referral Across Regions
+
+The genetic counselling referral above assumes the patient and their at-risk
+relatives (consultands) all live in the same catchment as the diagnosing
+genomics/genetics service. In practice a relative may live under a different
+regional clinical genetics service - for example, a variant identified in
+Nottingham with relatives in Leeds and north Nottinghamshire. There is no
+national system linking clinical genetics services across regions for this,
+so the diagnosing service instead sends a **family letter** - a clinical
+letter summarising the variant, the inheritance pattern and the relatives
+thought to be at risk - to the relative's GP or directly to the regional
+genetics service covering that relative, inviting a local referral for
+[cascade (predictive) testing](https://www.macmillan.org.uk/cancer-information-and-support/worried-about-cancer/causes-and-risk-factors/what-is-genetic-counselling).
+Relatives within the diagnosing service's own catchment (e.g. north
+Nottinghamshire relatives of a Nottingham-diagnosed variant) are typically
+seen directly by that service instead.
+
+```mermaid
+flowchart LR
+    NG["Nottingham Clinical<br/>Genetics (diagnosing service)"] -->|"Family letter -<br/>variant, inheritance,<br/>relatives at risk"| GP["Relative's GP<br/>(Leeds)"]
+    NG -->|"Family letter"| LG["Leeds Regional<br/>Genetics Service"]
+    LG -->|"Cascade/predictive<br/>test arranged locally"| RelL["Relative<br/>(Leeds)"]
+    NG -->|"Seen directly -<br/>same catchment"| RelN["Relative<br/>(North Notts)"]
+```
+
+This inter-service handoff is an informal clinical convention rather than a
+defined referral pathway or transaction: the family letter travels by
+NHS.net secure email or dictated hospital correspondence (the same generic
+mechanisms as any inter-trust referral), not via eRS or a genetics-specific
+message type, and it does not carry structured/coded variant data - the
+receiving service re-keys the details to order the relative's targeted
+single-variant test. It also falls outside the shared care record feeds
+described below, since those are regional/ICB-scoped and won't bridge two
+different clinical genetics services.
+
+<div class="alert alert-info" role="alert">
+<b>User Story:</b> As the clinical genetics team following up a Lynch
+syndrome diagnosis, we want the patient's family member history to identify
+relatives living under different regional genetics services, so we can send
+each one a family letter inviting local cascade testing - even though no
+shared system links the two services' records.
+</div>
+
+This is already the scenario modelled by the [Inherited MMR deficiency (Lynch
+syndrome) - R210](DiagnosticReport.html#inherited-mmr-deficiency-lynch-syndrome---r210)
+worked example: [Patient LIVERPOOL](Patient-Patient-Liverpool.html) is
+diagnosed with Lynch syndrome from a [genomic
+study](Procedure-f0036554-cd1a-463c-ac8a-d891ca409af9.html), a [diagnostic
+implication](Observation-6beb613f-d303-42af-b025-86e8e0872061.html) and an
+[NTHL1 variant](Observation-8385c2fd-313d-4fd5-b98e-d5ea4bae6f99.html),
+recorded as a [Condition](Condition-c8f82825-e4cb-4e1f-b728-3fd2808e93db.html).
+The same example already includes two FamilyMemberHistory resources for
+consultands under different regional genetics services - a [mother in
+Nottingham](FamilyMemberHistory-c76b8bc2-ec36-4ce1-a2ea-8c57215115e2.html) and
+a [son in Leeds](FamilyMemberHistory-074ea905-8d91-452c-af3c-15b5b860fdb2.html)
+- which is exactly the geographically-dispersed-family scenario the
+cross-region referral above describes.
+
 ```mermaid
 flowchart LR
     GP["GP"] -->|"Referral via NHS eRS<br/>(IHE 360X / REF_I12)"| Hosp["Hospital<br/>outpatient clinic"]
