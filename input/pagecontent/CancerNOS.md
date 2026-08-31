@@ -69,10 +69,12 @@ that could run in the family.
 
 #### Diagnostic Cancer Pathways
 
+<!--
 <img style="padding:3px;width:20%;" src="cancer-diagnostics.png" alt="Cancer Diagnostics"/>
 <br clear="all">
 <p class="figureTitle">Cancer Diagnostics</p> 
 <br clear="all">
+-->
 
 ##### Colorectal Cancer—Diagnostic Pathways Example
 
@@ -123,10 +125,12 @@ Implication, Condition, FamilyMemberHistory, etc.) built around it.
 
 For information on `Genomic Tests on the bowel cancer cells`, see [macmillan.org.uk](https://www.macmillan.org.uk/cancer-information-and-support/bowel-cancer/tests-on-the-bowel-cancer-cells) and [NICE DG27 Molecular testing strategies for Lynch syndrome in people with colorectal cancer](https://www.nice.org.uk/guidance/dg27)
 
+<!--
 <img style="padding:3px;width:90%;" src="ERIC.drawio.png" alt="Colorectal Cancer Diagnostics and Patient Referrals"/>
 <br clear="all">
 <p class="figureTitle">Colorectal Cancer Diagnostics and Patient Referrals</p> 
 <br clear="all">
+-->
 
 ### Treatment
 
@@ -143,12 +147,17 @@ and the laboratory matters just as much as the test itself.
 > a genomic one - it is included as background information to illustrate the
 > wider testing and notification processes a child on a cancer pathway goes
 > through. The blood testing processes used for adults may not be as
-> distributed as this example.
+> distributed as this example. The blood test itself may also link into ctDNA
+> testing, which likewise starts with a blood sample - see the
+> [ctDNA Monitoring Pathway](#ctdna-monitoring-pathway) under After Treatment
+> below.
 
+<!--
 <img style="padding:3px;width:95%;" src="OrderCommunicationAndNotifications.drawio.png" alt="Order Communication and Notifications"/>
 <br clear="all">
 <p class="figureTitle">Genomic Order Notifications - Use Case 4</p> 
 <br clear="all">
+-->
 
 The diagram below is a simplified view of the same as-is process, showing how a
 blood test result reaches everyone who needs to see it and act on it:
