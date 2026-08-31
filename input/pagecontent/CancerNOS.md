@@ -88,6 +88,33 @@ flowchart LR
     E --> G["Result helps plan<br/>treatment"]
 ```
 
+Underneath that simplified view, each step is really a **closed-loop referral** -
+a request goes out, and a report or result comes back to whoever made the
+request, before the next step begins:
+
+- The **GP referral** is most likely made via the [NHS e-Referral Service (eRS)](https://digital.nhs.uk/services/e-referral-service). The resulting hospital outpatient/clinic report is returned to the GP via [MESH](https://digital.nhs.uk/services/message-exchange-for-social-care-and-health-mesh) (in the "Kettering" EDT/XML format many GP systems still expect) or, increasingly, the NHS England Transfer of Care standard.
+- The **colonoscopy** itself may also generate a separate Imaging Report, alongside the biopsy specimen sent for pathology.
+- **Colonoscopy to Pathology** follows this IG's own pattern: a Laboratory Order (`LAB-1`) is placed with the pathology lab, and a Laboratory Report (`LAB-3`) is returned.
+- **Pathology to Genomics** follows the same pattern again: a Laboratory Order (`LAB-1`) is placed with the genomics lab, and a Laboratory Report (`LAB-3`) is returned.
+- The link between **Genomics Testing and Genetic Counselling** is itself another referral, similar in kind to the GP's eRS referral - and may include orders for other family members (consultands), not just the patient (proband), as described in [Distributed WGS (dWGS)](dWGS.html)'s Family Structure/Participant Type pattern.
+- Planning and monitoring of treatment is often coordinated by a **Multi-Disciplinary Team (MDT)**, drawing on the pathology and genomics reports above, who may produce a **Care Plan**.
+
+```mermaid
+flowchart LR
+    GP["GP"] -->|"Referral via NHS<br/>e-Referral Service (eRS)"| Hosp["Hospital<br/>outpatient clinic"]
+    Hosp -->|"Hospital report<br/>(MESH/Kettering XML or<br/>NHS Transfer of Care)"| GP
+    Hosp --> Colo["Colonoscopy"]
+    Colo --> Img["Imaging Report"]
+    Colo -->|"Laboratory Order (LAB-1)"| Path["Pathology"]
+    Path -->|"Laboratory Report (LAB-3)"| Colo
+    Path -->|"Laboratory Order (LAB-1)"| Gen["Genomics"]
+    Gen -->|"Laboratory Report (LAB-3)"| Path
+    Gen -->|"Referral, like eRS -<br/>may include family/<br/>consultand orders"| Couns["Genetic Counselling"]
+    Path --> MDT["Multi-Disciplinary<br/>Team (MDT)"]
+    Gen --> MDT
+    MDT --> Plan["Care Plan"]
+```
+
 This elaboration also relates to [Inherited MMR deficiency (Lynch syndrome) -
 R210](DiagnosticReport.html#inherited-mmr-deficiency-lynch-syndrome---r210), a
 genomic test that can be requested on this pathway - see that section for the
@@ -111,6 +138,12 @@ results flowing quickly and accurately between the hospital, community teams
 and the laboratory matters just as much as the test itself.
 
 #### NHS North West Children Cancer Example
+
+> **Note:** This example is a pathology (blood test) example, not necessarily
+> a genomic one - it is included as background information to illustrate the
+> wider testing and notification processes a child on a cancer pathway goes
+> through. The blood testing processes used for adults may not be as
+> distributed as this example.
 
 <img style="padding:3px;width:95%;" src="OrderCommunicationAndNotifications.drawio.png" alt="Order Communication and Notifications"/>
 <br clear="all">
@@ -171,7 +204,13 @@ flowchart LR
     C -->|"None found"| D["Continue routine<br/>follow-up care"]
     C -->|"Found"| E["Specialist review -<br/>possible early sign<br/>cancer is returning"]
     E --> F["Further scans or<br/>tests arranged"]
+    E --> MDT["Multi-Disciplinary<br/>Team (MDT)"]
+    MDT --> Plan["Care Plan"]
 ```
+
+As with the colorectal pathway above, planning and monitoring of ongoing or
+follow-up treatment is often coordinated by a Multi-Disciplinary Team (MDT),
+who may produce a Care Plan in response to the ctDNA result.
 
 The underlying test result is a genomic report produced by NW Genomics and
 shared nationally via the [ctDNA NHS England Unified Genomic Record
