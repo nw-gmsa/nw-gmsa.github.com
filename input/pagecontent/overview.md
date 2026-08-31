@@ -487,7 +487,10 @@ flowchart LR
 
 ## Examples
 
-No example resources are published yet for this scenario.
+FHIR examples for the Laboratory Order (LAB-1) and Laboratory Report (LAB-3) interactions described above:
+
+- [Example: Laboratory Order](artifacts.html#example-laboratory-order) - LAB-1 examples in FHIR format
+- [Example: Laboratory Report](artifacts.html#example-laboratory-report) - LAB-3 examples in FHIR format
 
 ## Developer Guides
 

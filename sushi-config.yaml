@@ -441,6 +441,7 @@ groups:
       - Bundle/GenomicsOrderMessageCodedEntries
       - Bundle/GenomicsOrderSearchSet
       - Bundle/Bundle-Message-FillerOrder
+      - Bundle/Bundle-Message-FillerOrder-K1S6S
       - DocumentReference/a293b4a6-e46b-4402-9b2b-d9517afc7137
       - Encounter/984b8a89-4194-4eb4-a7ea-ca8049ebeea3
       - MessageHeader/MessageHeaderGenomicOrder
@@ -546,7 +547,8 @@ groups:
     resources:
       - Bundle/ctdna9737383222-testresults
   -ex-example-ctdna-ugr:
-    name: "Example: ctDNA NHS England Unified Genomic Record (UGR)"
-    description: "Phase 2 HL7 Europe Laboratory Report FHIR Document, combining the Laboratory Report with its Reportable Variant Observations"
+    name: "Example: FHIR Document (incl. ctDNA NHS England Unified Genomic Record (UGR))"
+    description: "FHIR Document (Bundle type document) examples, including the Phase 2 HL7 Europe Laboratory Report FHIR Document combining the Laboratory Report with its Reportable Variant Observations"
     resources:
       - Bundle/ctdna9737383222-eulab-document
+      - Bundle/OriginalDocumentMessage
