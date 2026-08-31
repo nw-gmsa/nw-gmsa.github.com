@@ -96,7 +96,7 @@ a request goes out, and a report or result comes back to whoever made the
 request, before the next step begins:
 
 - The **GP referral** is most likely made via the [NHS e-Referral Service (eRS)](https://digital.nhs.uk/services/e-referral-service). The resulting hospital outpatient/clinic report is returned to the GP via [MESH](https://digital.nhs.uk/services/message-exchange-for-social-care-and-health-mesh) (in the "Kettering" EDT/XML format many GP systems still expect) or, increasingly, the NHS England Transfer of Care standard.
-- The **colonoscopy** itself may also generate a separate Imaging Report, alongside the biopsy specimen sent for pathology.
+- The **colonoscopy** itself may also generate a separate Imaging Report, alongside the biopsy specimen sent for pathology - following the equivalent IHE Radiology transactions, Imaging Order (`RAD-2`, `OMG^O19`) and Imaging Report (`RAD-28`, `ORU_R01`).
 - **Colonoscopy to Pathology** follows this IG's own pattern: a Laboratory Order (`LAB-1`) is placed with the pathology lab, and a Laboratory Report (`LAB-3`) is returned.
 - **Pathology to Genomics** follows the same pattern again: a Laboratory Order (`LAB-1`) is placed with the genomics lab, and a Laboratory Report (`LAB-3`) is returned.
 - The link between **Genomics Testing and Genetic Counselling** is itself another referral, and may include orders for other family members (consultands), not just the patient (proband), as described in [Distributed WGS (dWGS)](dWGS.html)'s Family Structure/Participant Type pattern. This referral cannot use eRS in the same way the initial GP referral does - eRS is only available to GPs, so a referral from Genomics/Genetic Counselling (a hospital-based service) to arrange counselling has to use a different mechanism.
@@ -107,7 +107,8 @@ flowchart LR
     GP["GP"] -->|"Referral via NHS<br/>e-Referral Service (eRS)"| Hosp["Hospital<br/>outpatient clinic"]
     Hosp -->|"Hospital report<br/>(MESH/Kettering XML or<br/>NHS Transfer of Care)"| GP
     Hosp --> Colo["Colonoscopy"]
-    Colo --> Img["Imaging Report"]
+    Colo -->|"Imaging Order (RAD-2)<br/>OMG^O19"| Img["Imaging"]
+    Img -->|"Imaging Report (RAD-28)<br/>ORU_R01"| Colo
     Colo -->|"Laboratory Order (LAB-1)"| Path["Pathology"]
     Path -->|"Laboratory Report (LAB-3)"| Colo
     Path -->|"Laboratory Order (LAB-1)"| Gen["Genomics"]
