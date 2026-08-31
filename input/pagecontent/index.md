@@ -31,11 +31,13 @@ placer -->  Act[Patient Care<br/>Act on Genomic Results]
 
 A Genomic Order is initiated by the Order Placer (EHR) and sent to the Order Filler, where the Laboratory Workflow manages the test process. Laboratory analyte results are generated and may be combined with Decision Support, including GA4GH-based inputs, to aid interpretation. The resulting Test Results are represented as an HL7 Genomic Report (and LRI) and reviewed during Final Clinical Review and Reporting (LIMS iGene). A validated Genomic Report is then returned to the Order Placer (EHR), enabling clinicians to Act on Genomic Results in patient care.
 
-<!--<img style="padding:3px;width:80%;" src="NWGenomicsOverview.png" alt="NW Genomics Overview"/>
-<br clear="all">-->
+<!--
+<img style="padding:3px;width:80%;" src="NWGenomicsOverview.png" alt="NW Genomics Overview"/>
+<br clear="all">
 
 <img style="padding:3px;width:80%;" src="NWGenomicsTechnicalOverview.png" alt="NW Genomics Technical Overview"/>
 <br clear="all">
+-->
 
 NHS North West Genomics is a new regional NHS service that consolidates clinical genomic testing across the North West of England. Although the service is delivered regionally, it also processes genomic test requests from across the UK. The service is hosted by Manchester University NHS Foundation Trust.
 
