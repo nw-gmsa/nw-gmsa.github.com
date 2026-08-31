@@ -101,3 +101,7 @@ the specimen collection process (day case admission, biopsy procedure) for a rea
 patient on this Colorectal Cancer pathway in the North Midlands - background
 information on how the specimen behind a genomic test order is actually obtained,
 not itself part of this genomic specification.
+
+## Developer Guides
+
+No [Developer Guides](DeveloperGuides.html) notebook covers this use case yet.

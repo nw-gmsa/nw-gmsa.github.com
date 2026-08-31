@@ -220,3 +220,9 @@ extracted into (same referrals and participants as the table above), and the HL7
 | `r2026000203`  | Family Member (`p2026000105`)   | [QuestionnaireResponse-dWGS-Trio-r2026000203-p2026000105](QuestionnaireResponse-dWGS-Trio-r2026000203-p2026000105.html)             | [Bundle-dWGS-Trio-r2026000203-p2026000105](Bundle-dWGS-Trio-r2026000203-p2026000105.html)       | [dWGS_r2026000203_p2026000105.txt](https://github.com/nw-gmsa/Testing/blob/main/Output/V2/O21/dWGS_r2026000203_p2026000105.txt) |
 | `r2026000203`  | Family Member (`p2026000106`)   | [QuestionnaireResponse-dWGS-Trio-r2026000203-p2026000106](QuestionnaireResponse-dWGS-Trio-r2026000203-p2026000106.html)             | [Bundle-dWGS-Trio-r2026000203-p2026000106](Bundle-dWGS-Trio-r2026000203-p2026000106.html)       | [dWGS_r2026000203_p2026000106.txt](https://github.com/nw-gmsa/Testing/blob/main/Output/V2/O21/dWGS_r2026000203_p2026000106.txt) |
 {:.grid}
+
+## Developer Guides
+
+- [08 - Subcontracted Laboratory Order from an External GLH](https://github.com/nw-gmsa/Testing/blob/main/notebooks/08-subcontracted-laboratory-order-from-external-glh.ipynb) - builds a `LAB-35` sub-order manifest and Bundle for a distributed WGS referral from an external Requesting Genomic Laboratory, the source of the examples above
+
+See [Developer Guides](DeveloperGuides.html) for the full notebook series.

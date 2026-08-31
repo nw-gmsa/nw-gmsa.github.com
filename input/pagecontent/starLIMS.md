@@ -163,3 +163,9 @@ flowchart TD
 ## Examples
 
 No example resources are published yet for this scenario.
+
+## Developer Guides
+
+- [02 - Work Orders: A Worked Example](https://github.com/nw-gmsa/Testing/blob/main/notebooks/02-work-orders-worked-example.ipynb) - worked example of retrieving orders from the Resource Access Provider (FHIR Repository), the mechanism used by both the existing sub-contracting path and the future RIE-routed path
+
+See [Developer Guides](DeveloperGuides.html) for the full notebook series.

@@ -118,3 +118,7 @@ this IG's own `Observation-BCRABL-Valid`/`Observation-BCRABL-Invalid` examples.
 | [Observation-BCRABL-Valid](Observation-BCRABL-Valid.html)   | A normal result - `valueQuantity` populated                     |
 | [Observation-BCRABL-Invalid](Observation-BCRABL-Invalid.html) | An out-of-range result - `dataAbsentReason` populated instead of `valueQuantity` |
 {:.grid}
+
+## Developer Guides
+
+No [Developer Guides](DeveloperGuides.html) notebook covers this use case yet.

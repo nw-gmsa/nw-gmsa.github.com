@@ -91,3 +91,7 @@ section will be populated as the HODS orchestration workflow above is formalised
 ## Examples
 
 No example resources are published yet for this scenario.
+
+## Developer Guides
+
+No [Developer Guides](DeveloperGuides.html) notebook covers this use case yet.

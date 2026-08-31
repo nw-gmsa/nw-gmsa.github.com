@@ -216,3 +216,7 @@ as such rather than forced onto it.
 | FHIR `QuestionnaireResponse` answering [Histocompatibility and Immunogenetics Ask At Order Entry](Questionnaire-HistocompatibilityAskAtOrderEntry.html) | [QuestionnaireResponse-HistocompatibilityAskAtOrderEntry-HLAAS](QuestionnaireResponse-HistocompatibilityAskAtOrderEntry-HLAAS.html) |
 | FHIR `Questionnaire` (Result Panel) - [Chimerism Testing Result Panel](Questionnaire-ChimerismResultPanel.html) | See [Chimerism Testing Result Panel (Future?)](#chimerism-testing-result-panel-future) above for the source data table |
 {:.grid}
+
+## Developer Guides
+
+No [Developer Guides](DeveloperGuides.html) notebook covers this use case yet.
