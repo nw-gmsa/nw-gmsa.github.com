@@ -110,8 +110,8 @@ Example order Bundles sourced from the [FHIR Genomics Implementation Guide](http
 | [Bundle-NonWGSScenario4-ProbandWithMultipleFetus-Example-FetusA](Bundle-NonWGSScenario4-ProbandWithMultipleFetus-Example-FetusA.html)    | Proband with multiple fetuses - Fetus A                                          |
 | [Bundle-NonWGSScenario4-ProbandWithMultipleFetus-Example-FetusB](Bundle-NonWGSScenario4-ProbandWithMultipleFetus-Example-FetusB.html)    | Proband with multiple fetuses - Fetus B                                          |
 | [Bundle-NonWGSScenario5-ProductsofConception-Example](Bundle-NonWGSScenario5-ProductsofConception-Example.html)                          | Products of conception scenario                                                  |
-| [UKCore-Bundle-MichaelJonesRequest-Example (minimal)](UKCore-Bundle-MichaelJonesRequest-Example-Minimal.html)                            | UK Core request example, minimally populated                                     |
-| [UKCore-Bundle-MichaelJonesRequest-Example (v3 message)](UKCore-Bundle-MichaelJonesRequest-Example.html)                                 | UK Core request example, as a fully-populated FHIR message                       |
+| [UKCore-Bundle-MichaelJonesRequest-Example (minimal)](Bundle-UKCore-MichaelJonesRequest-Example-Minimal.html)                            | UK Core request example, minimally populated                                     |
+| [UKCore-Bundle-MichaelJonesRequest-Example (v3 message)](Bundle-UKCore-MichaelJonesRequest-Example.html)                                 | UK Core request example, as a fully-populated FHIR message                       |
 {:.grid}
 
 > **Note:** the three `NonWGSTestOrderForm` examples above (base, CancerSolidTumor, FetalScenario, Reanalysis) were previously adapted with North West-specific organisation/sender details; the remaining examples are otherwise unmodified copies of the Simplifier source, with only an `id` (where missing) and the `BundleMessage` profile added for consistency with this IG's other message Bundle examples.

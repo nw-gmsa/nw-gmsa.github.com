@@ -1,6 +1,6 @@
 {
   "resourceType": "Bundle",
-  "id": "Bundle-NonWGSTestOrderForm-Example",
+  "id": "NonWGSTestOrderForm-Example",
   "meta": {
     "profile": [
       "https://fhir.nwgenomics.nhs.uk/StructureDefinition/BundleMessage"

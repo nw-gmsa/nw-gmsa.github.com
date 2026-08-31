@@ -1,6 +1,6 @@
 {
   "resourceType": "Bundle",
-  "id": "UKCore-Bundle-MichaelJonesRequest-Example-Minimal",
+  "id": "UKCore-MichaelJonesRequest-Example-Minimal",
   "meta": {
     "profile": [
       "https://fhir.nwgenomics.nhs.uk/StructureDefinition/BundleMessage"

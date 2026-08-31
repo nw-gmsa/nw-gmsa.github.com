@@ -1,6 +1,6 @@
 {
   "resourceType": "Bundle",
-  "id": "Bundle-NonWGSScenario5-ProductsofConception-Example",
+  "id": "NonWGSScenario5-ProductsofConception-Example",
   "meta": {
     "profile": [
       "https://fhir.nwgenomics.nhs.uk/StructureDefinition/BundleMessage"
