@@ -293,7 +293,7 @@ Used by these Use Cases:
 - [Haemato-Oncology Diagnostic Pathway](HaematoOncologyPathway.html)
 - [Cheshire and Merseyside Pathology](CheshireAndMerseysidePathology.html)
 - [Cancer Background Information for Use Cases](CancerNOS.html)
-- [Regional Integration Engine (RIE)](overview.html) - including the [Shared Care Record Feeds](overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01) wire-tap to GMCR, Lancashire and South Cumbria, and the NHS England Unified Genomic Record
+- [Regional Integration Engine (RIE)](overview.html) - including the wire-tap to [Greater Manchester Care Record (GMCR)](GMCR.html), Lancashire and South Cumbria, and the NHS England Unified Genomic Record
 - [StarLIMS / iGene Integration](starLIMS.html)
 - [NE&Y Management Information (ctDNA)](NEYManagementInformation.html) - wire-tapped, converted to a FHIR Message R01 with the PDF removed
 

@@ -165,8 +165,8 @@ the report from genetic counselling, laboratory reports, and imaging reports -
 would instead be visible to all clinicians currently involved in the
 patient's care, and to any consultant who sees the patient in future. This is
 best achieved via shared care record systems, such as the [Lancashire and
-South Cumbria Genomic Reports](overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01)
-and [Greater Manchester Care Record (GMCR)](overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01)
+South Cumbria Genomic Reports](GMCR.html#lancashire-and-south-cumbria)
+and [Greater Manchester Care Record (GMCR)](GMCR.html)
 feeds, and the [National Record Locator (NRL)](ctDNAUGR.html) service - this
 group of shared care record systems is associated with the IHE XDS, MHD and
 MHDS profiles (see [Health Data API (EURDICE)](HIE.html)).
