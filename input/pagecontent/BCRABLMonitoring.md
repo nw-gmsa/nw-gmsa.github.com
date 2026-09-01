@@ -8,6 +8,39 @@ This is currently being elaborated and subject to change.
 2. [Test Results Management (LAB-5)](LTW.html#test-results-management-lab-5)
 3. [69380-4](https://loinc.org/69380-4/) t(9;22)(q34.1;q11)(ABL1,BCR) b2a2+b3a2 fusion transcript/control transcript (International Scale) [# Ratio] in Blood or Tissue by Molecular genetics method
 
+## Clinical Pathway Overview
+
+### What is being tested
+
+BCR-ABL1 fusion transcript (Philadelphia chromosome) quantification is used to
+monitor how well a patient with Chronic Myeloid Leukaemia (CML) is responding to
+tyrosine kinase inhibitor (TKI) treatment. The result is reported as a ratio on the
+International Scale (%IS), so results from different laboratories can be compared
+directly.
+
+### The end-to-end clinical journey
+
+1. **Patient on treatment** - a patient diagnosed with CML is established on TKI therapy and needs regular monitoring of their response.
+2. **Sample taken** - a blood sample is collected at the scheduled monitoring interval.
+3. **Order sent** - the requesting clinician's EPR sends the monitoring request to the laboratory.
+4. **Testing performed** - the sample is analysed on a Cepheid GeneXpert analyser. *(`LAB-5`, Automation Manager → Order Filler.)*
+5. **Result reported** - the %IS result reaches the requesting clinician. *(`LAB-3`.)*
+6. **Clinical decision** - the clinician tracks the %IS trend over successive tests to confirm the treatment is working, or to detect early signs of resistance/relapse and consider a change of therapy.
+
+```mermaid
+flowchart LR
+    A[Patient established<br/>on TKI treatment] --> B[Sample taken at<br/>monitoring interval]
+    B --> C[Order sent to<br/>laboratory]
+    C --> D[BCR-ABL1<br/>quantification]
+    D --> E[%IS result reported<br/>to clinician]
+    E --> F[Trend reviewed -<br/>continue or<br/>change treatment]
+```
+
+### Why this matters for developers
+
+- The result is a %IS ratio (LOINC `69380-4`), carried as a [Laboratory Analyte Result](StructureDefinition-LaboratoryAnalyteResult.html) `Observation`, not a plain numeric value on its own - see [Result Detail](#result-detail) below for how the underlying `BCR-ABL`/`BCR-ABL Ct`/`ABL`/`%MR` components map onto it.
+- Because clinicians compare each result against previous ones to judge the trend, consistent mapping of the %IS value (rather than raw Ct/control values) is what actually drives the clinical decision.
+
 ## Actors
 
 | IHE Actor                                          | Role                                    | System                          |

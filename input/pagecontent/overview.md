@@ -30,6 +30,40 @@ NW Genomics Regional Integration Engine (RIE).
 5. [Data Contract](https://en.wikipedia.org/wiki/Data_contract)
 6. [Bounded Context](https://martinfowler.com/bliki/BoundedContext.html)
 
+## Clinical Pathway Overview
+
+### What is being tested
+
+This page isn't about one specific clinical test - it describes the underlying
+regional infrastructure (the RIE) that every genomic test order and report passes
+through, whatever the clinical indication. It sits between NHS Trusts and NW
+Genomics' laboratory systems, and between NW Genomics and shared care
+record/national systems.
+
+### The end-to-end clinical journey
+
+1. **Order placed** - a clinician at an NHS Trust orders a genomic test for a patient.
+2. **Order reaches the lab** - the order reaches NW Genomics, with the RIE translating formats/routing it to the right laboratory system as needed.
+3. **Testing performed** - the appropriate laboratory system carries out the test.
+4. **Report compiled** - a report is produced from the test result.
+5. **Report reaches the clinician** - the RIE routes the report back to the ordering clinician, and, where relevant, also shares a copy with the patient's wider shared care record so any future care team can see it.
+6. **Clinical decision** - the referring clinician acts on the result.
+
+```mermaid
+flowchart LR
+    A[Clinician orders<br/>genomic test] --> B[Order reaches lab<br/>via RIE]
+    B --> C[Testing<br/>performed]
+    C --> D[Report<br/>compiled]
+    D --> E[Report reaches<br/>clinician via RIE]
+    D -.-> F[Copy to shared<br/>care record]
+    E --> G[Clinical decision]
+```
+
+### Why this matters for developers
+
+- Every genomic order/report use case in this IG - whatever the specific test - relies on the RIE for the underlying message translation/routing described here; the use-case-specific pages describe what varies (test type, actors, message format), this page describes the shared plumbing.
+- The RIE's "wire-tap" pattern - copying a report onward to a shared care record or peer system as it passes through - is a general capability reused by several other use cases, see [Shared Care Record Feeds](#shared-care-record-feeds---wire-tap-on-lab-3oru_r01) below.
+
 ## Actors
 
 | IHE Actor                                                                | Role                                                            |

@@ -18,6 +18,51 @@ or testing party.
 7. [Bundle-GenomicsReportMessage-ctDNA](Bundle-GenomicsReportMessage-ctDNA.html) - example FHIR Message R01 (PDF removed)
 8. [nw-gmsa/Testing - Input](https://github.com/nw-gmsa/Testing/tree/main/Input) - `NEYctDNA.csv` and `NorthEnglandctDNA100.csv`, examples of the iGene CSV export
 
+## Clinical Pathway Overview
+
+This page documents copies of ctDNA laboratory orders and reports flowing to NE&Y for management information - not the clinical pathway itself. This section gives project staff and developers the clinical context behind those messages: why the test is ordered, what the data fields mean clinically, and why NE&Y receives order/report metadata rather than full clinical content.
+
+### What is being tested
+
+`NGTDTestCode` on each order identifies one of two ctDNA panels from the NHS National Genomic Test Directory:
+
+| Test Code | Cancer type | Panel | Clinical purpose |
+|---|---|---|---|
+| **M4.14** | Non-small cell lung cancer (NSCLC) | Combined small-variant + structural-variant ctDNA NGS panel (EGFR, ALK, BRAF, KRAS, MET exon 14 skipping/CNV, ROS1, RET, NTRK1-3) | Identify an actionable driver mutation/fusion to select first-line targeted therapy - typically when tissue is unavailable or insufficient, or run alongside tissue NGS to reduce time-to-treatment. Also used at disease progression to detect acquired resistance mutations (e.g. EGFR T790M/C797S) and guide the next line of targeted therapy. |
+| **M3.13** | Breast cancer | ctDNA NGS panel (ESR1) | Detect acquired ESR1 resistance mutations in HR+/HER2- advanced breast cancer patients progressing on an aromatase inhibitor, to guide a switch to an ESR1-directed treatment (e.g. a fulvestrant-based regimen or an oral SERD). |
+{:.grid}
+
+Both are blood-based ("liquid biopsy") tests: a plasma sample is used instead of, or alongside, a tumour tissue biopsy, because ctDNA shed by the tumour into the bloodstream can be sequenced non-invasively and turned around faster than a repeat tissue biopsy.
+
+### The end-to-end clinical journey
+
+1. **Patient identified** - an oncologist/respiratory physician at an NE&Y Trust identifies a patient with suspected or confirmed advanced NSCLC, or HR+/HER2- advanced breast cancer progressing on endocrine therapy, who needs molecular profiling to choose or change systemic treatment.
+2. **Blood sample taken** - a blood specimen is drawn at the Trust, instead of or alongside a tissue biopsy.
+3. **Order + specimen sent to the lab** - the Trust sends the paper order and specimen to NW Genomics. *(This is the Order Placer → Order Filler step - LAB-1 - in the technical process below.)*
+4. **Diagnostic testing** - NW Genomics extracts cell-free DNA and runs the relevant NGS panel. *(Order Filler internal processing, between LAB-2 and LAB-3.)*
+5. **Result reported back to the Trust** - a diagnostic report is issued to the ordering clinician. *(LAB-3, `ORU_R01`.)*
+6. **Clinical decision** - the Trust's MDT reviews the result: an actionable variant triggers starting or switching to a matched targeted therapy; no actionable variant means falling back to standard chemo-immunotherapy or other endocrine options.
+
+```mermaid
+flowchart LR
+    A[Patient identified<br/>for ctDNA testing] --> B[Blood sample taken<br/>at NHS Trust]
+    B --> C[Order + specimen<br/>sent to NW Genomics]
+    C --> D[Diagnostic testing<br/>NW Genomics / iGene]
+    D --> E[Report returned<br/>to Trust]
+    E --> F[MDT treatment<br/>decision]
+    C -.->|"copy via RIE (O21)"| G[NE&Y Management<br/>Portal]
+    E -.->|"copy via RIE (R01, PDF removed)"| G
+```
+
+Steps 3 and 5 are where this IG's process attaches: iGene's daily CSV export is converted by the RIE into FHIR O21/R01 messages, and copies are routed to NE&Y. **NE&Y Genomics is not the ordering clinician and plays no part in the step 6 treatment decision** - it receives copies of the order and report purely for regional management information (test volumes, turnaround times, activity by Trust) via its Management Portal. This is why the RIE strips the PDF/clinical content before forwarding the report copy (R01): NE&Y needs to know *that* a test happened and *when* it was reported, not the clinical result itself.
+
+### Why this matters for developers
+
+- `NGTDTestCode`/`NGTDTestName` (`M4.14`/`M3.13`) map to `ServiceRequest.code` in the O21 message - this identifies which panel was ordered, and is the field most likely to expand as new NGTD ctDNA panels are added to the Test Directory.
+- `ObservationResultStatus = F` on a CSV row means the report has been finalised in iGene - this is what should trigger treating a LAB-3 `ORU_R01`/R01 copy as a completed test; anything not yet `F` is still in progress.
+- The timestamp fields (`SpecimenTakenDateTime`, `SpecimenReceivedDateTime`, `ObservationDateTime`, `ReportStatusDateTime`) are what NE&Y's Management Portal uses to calculate turnaround time - their accuracy in the daily CSV export matters more for this management-information use case than it does for the Trust's own clinical use, where the report itself remains the authoritative record.
+- Because this flow is copy/management-information only, any change here must preserve the exclusion of clinical content (the PDF/`presentedForm`) from the R01 copy - that's an information governance requirement, not just a technical convenience.
+
 ## Actors
 
 | IHE Actor                                                                | Role                                                                                                          |

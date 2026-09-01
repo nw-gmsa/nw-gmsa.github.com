@@ -13,6 +13,38 @@ NW Genomics — StarLIMS / iGene Integration.
 5. [nw-gmsa.github.io/en/index.html](https://nw-gmsa.github.io/en/index.html) - the North West "data contract" all FHIR Repository resources must conform to
 6. [02 - Work Orders: A Worked Example](https://github.com/nw-gmsa/Testing/blob/main/notebooks/02-work-orders-worked-example.ipynb) - worked example of retrieving orders from the Resource Access Provider (FHIR Repository), the mechanism used by both the existing sub-contracting path and the future RIE-routed path (see [Developer Guides](DeveloperGuides.html))
 
+## Clinical Pathway Overview
+
+### What is being tested
+
+This use case isn't about a specific clinical test - it's about how a test
+allocated to StarLIMS (the Liverpool GLH's satellite LIMS) gets its order and
+result moved correctly between iGene (the master LIMS) and StarLIMS, so which
+system actually processes the test stays invisible to the referring clinician.
+
+### The end-to-end clinical journey
+
+1. **Order placed** - a clinician orders a genomic test, the same way regardless of which LIMS will eventually process it.
+2. **Order clerked into iGene** - the order is entered into the master LIMS.
+3. **Test allocated to StarLIMS** - some tests are work-ordered to StarLIMS for processing.
+4. **Testing performed** - StarLIMS carries out the test.
+5. **Result flows back** - the result returns to iGene, and from there to the ordering clinician.
+6. **Clinical decision** - the clinician acts on the result, without needing to know which LIMS actually ran it.
+
+```mermaid
+flowchart LR
+    A[Clinician<br/>orders test] --> B[Order clerked<br/>into iGene]
+    B --> C[Test allocated to<br/>StarLIMS]
+    C --> D[Testing<br/>performed]
+    D --> E[Result flows back<br/>through iGene]
+    E --> F[Clinician<br/>acts on result]
+```
+
+### Why this matters for developers
+
+- Whether a test runs on iGene or StarLIMS is purely an internal allocation decision - it should never be visible in what the referring clinician receives.
+- A "work order" is a different concept from the original Laboratory Order (`LAB-1`): the work order is the internal routing of a specific test to whichever system (StarLIMS or otherwise) will actually process it.
+
 ## Actors
 
 | IHE Actor                                                                                                                   | Role                                                                                                                                                                                                        |

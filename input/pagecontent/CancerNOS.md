@@ -25,6 +25,17 @@ use cases.
 5. [Inherited MMR deficiency (Lynch syndrome) - R210](DiagnosticReport.html#inherited-mmr-deficiency-lynch-syndrome---r210)
 6. [ctDNA NHS England Unified Genomic Record (UGR)](ctDNAUGR.html) - the source of the After Treatment ctDNA monitoring pathway below
 
+## Clinical Pathway Overview
+
+This page illustrates three separate clinical pathways, each showing where
+genomic/genetic testing fits within a patient's wider cancer journey - see
+[Current Process](#current-process) below for the full Diagnosis/Treatment/After
+Treatment breakdown of each:
+
+- **Diagnosis** - the Colorectal Cancer diagnostic pathway, where a genomic test on the tumour sample can confirm the diagnosis and identify an inherited condition (Lynch syndrome).
+- **Treatment** - the NHS North West Children Cancer example, illustrating how laboratory results (genomic tests follow a similar pattern) reach everyone who needs to act on them during ongoing treatment.
+- **After Treatment** - a ctDNA monitoring pathway, using a follow-up blood test to look for early signs the cancer may be returning.
+
 ## Actors
 
 | IHE Actor                                                                                                                   | Role                                    |

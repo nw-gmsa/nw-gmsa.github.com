@@ -13,6 +13,36 @@ ctDNA reports to the NHS England Unified Genomic Record (UGR) - future integrati
 5. [OMICS DSS Result Integration](reportable-variants.html) - source of the Reportable Variant Observations Phase 2 combines with the report
 6. [nw-gmsa/Testing - ctdna9737383222-eulab-document.json](https://github.com/nw-gmsa/Testing/blob/main/Input/FHIR/R01/ctdna9737383222-eulab-document.json) - Phase 2 example
 
+## Clinical Pathway Overview
+
+### What is being tested
+
+This page is about making a **copy** of an existing ctDNA report discoverable
+nationally - it isn't about the test itself. The underlying test is the same
+ctDNA (circulating tumour DNA) blood test used to select or monitor targeted
+cancer treatment (for example the M4.14 Non-Small Cell Lung Cancer panel) - see
+[NE&Y Management Information (ctDNA)](NEYManagementInformation.html#what-is-being-tested)
+for the clinical detail of what that test looks for.
+
+### The end-to-end clinical journey
+
+1. **ctDNA test carried out** - a patient has ctDNA testing as part of cancer diagnosis, treatment selection or monitoring, following the same journey as any other ctDNA test.
+2. **Report reaches the ordering clinician** - NW Genomics reports the result as usual.
+3. **Copy shared to the national UGR** - a copy of the report is also shared to the NHS England Unified Genomic Record: as a PDF with a discovery pointer (Phase 1), or as a structured FHIR Document combining the report with its Reportable Variants (Phase 2).
+4. **Discoverable elsewhere** - if the patient is later seen at a different NHS organisation, an authorised clinician there - not just the original ordering team - can discover and view the report via the National Record Locator.
+
+```mermaid
+flowchart LR
+    A[ctDNA test carried out] --> B[Report reaches<br/>ordering clinician]
+    B --> C[Copy shared to<br/>national UGR]
+    C --> D[Discoverable by other<br/>NHS organisations<br/>via NRL]
+```
+
+### Why this matters for developers
+
+- This is a **copy/sharing** mechanism layered on top of the existing report - it doesn't change how the test is ordered or reported to the originating clinician.
+- Phase 1 shares only the PDF and minimal metadata; Phase 2 additionally shares the structured Reportable Variant data - see [Future Process](#future-process) below for what that difference means for a receiving clinician.
+
 ## Actors
 
 | IHE Actor                                                                | Role                                                                                                          |

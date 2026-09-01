@@ -11,6 +11,40 @@ Clatterbridge Chimerism Testing - process overview.
 3. [HL7 v2 OML_O21](hl7v2.html#oml_o21-laboratory-order)
 4. Original Histotrac `ORM^O01` order (HLA Antibody Screening) - [histotrac-MFT.txt](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/O01/histotrac-MFT.txt)
 
+## Clinical Pathway Overview
+
+### What is being tested
+
+| Test | Clinical purpose |
+|---|---|
+| HLA Antibody Screening | Checks a transplant candidate's or recipient's blood for antibodies against donor HLA types, to assess compatibility and rejection risk before or after a solid organ transplant (e.g. kidney) |
+| Chimerism (STR) testing | After a stem cell/bone marrow transplant, tracks the proportion of donor vs recipient DNA in the patient's blood over time, to monitor how well the donor cells have engrafted |
+{:.grid}
+
+### The end-to-end clinical journey
+
+1. **Patient identified** - the transplant team, or a renal/haematology clinician, identifies a transplant candidate needing HLA compatibility screening, or a post-transplant patient needing chimerism monitoring.
+2. **Sample taken** - a blood sample is collected.
+3. **Order sent** - the referring clinician's EPR sends the order to the testing laboratory. *(This is the Order Placer → Order Filler step in the technical process below.)*
+4. **Testing performed** - HLA antibody screening or STR-based chimerism analysis is carried out.
+5. **Result reported** - the report reaches the referring clinician/transplant team.
+6. **Clinical decision** - the transplant team uses the HLA result to assess compatibility/rejection risk before transplant, or uses the chimerism trend to decide whether to adjust immunosuppression or investigate possible graft failure/relapse.
+
+```mermaid
+flowchart LR
+    A[Transplant candidate<br/>or recipient identified] --> B[Blood sample taken]
+    B --> C[Order sent to<br/>testing laboratory]
+    C --> D[HLA screening or<br/>chimerism analysis]
+    D --> E[Result reported to<br/>transplant team]
+    E --> F[Compatibility /<br/>engraftment decision]
+```
+
+### Why this matters for developers
+
+- HLA screening data (HLA Type, Patient type, Organ, Specimen source) currently arrives as free-text `NTE` segments on the order - see [Ask At Order Entry Questions](#ask-at-order-entry-questions) for how these map onto structured Ask At Order Entry answers.
+- Chimerism results are currently unstructured local `OBX`/`NTE` codes (`STR`/`IM`/`RANGE`/`CV`/`EXT`/`PURE`/`POST`/`DTP`/`DID`) - see [Chimerism Testing Result Panel (Future?)](#chimerism-testing-result-panel-future) for the proposed structured data model.
+- The interim manual order-entry step via HODS is a temporary workaround while electronic ordering/reporting is re-established - not the target state.
+
 ## Actors
 
 | IHE Actor                                                | Role                                    | System                                    |

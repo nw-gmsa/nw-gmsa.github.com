@@ -17,6 +17,38 @@ NHS England Genomic Order Management Service (GOMS) FHIR API - future integratio
 9. [Enterprise Integration Patterns - Conversation Patterns](https://www.enterpriseintegrationpatterns.com/patterns/conversation/) - the pattern family this `Task`-based coordination follows
 10. [StarLIMS / iGene Integration](starLIMS.html) - uses the same FHIR Workflow / `Task` polling method
 
+## Clinical Pathway Overview
+
+### What is being tested
+
+GOMS itself isn't a specific clinical test - it's a national "order comms" system
+that lets a clinician (or another Genomic Medicine Service Alliance) place a
+genomics test order without needing to know in advance which laboratory will
+actually perform it, and receive the report back the same way.
+
+### The end-to-end clinical journey
+
+1. **Clinical need identified** - a clinician, potentially outside the North West, decides a patient needs a genomics test.
+2. **Order placed via GOMS** - the order is placed through the national service rather than directly into a specific laboratory's LIMS.
+3. **Order routed to a laboratory** - GOMS routes the order to whichever laboratory (e.g. NW Genomics) is designated to perform that test.
+4. **Testing performed**.
+5. **Report routed back** - the report reaches the ordering clinician via GOMS.
+6. **Clinical decision** - the clinician acts on the result.
+
+```mermaid
+flowchart LR
+    A[Clinician identifies<br/>need for genomics test] --> B[Order placed<br/>via GOMS]
+    B --> C[Order routed to<br/>performing laboratory]
+    C --> D[Testing<br/>performed]
+    D --> E[Report routed back<br/>via GOMS]
+    E --> F[Clinical decision]
+```
+
+### Why this matters for developers
+
+- GOMS decouples *who ordered the test* from *who performs it*, similar in spirit to how iGene/StarLIMS allocation is invisible to the clinician (see [StarLIMS / iGene Integration](starLIMS.html)), but at a national rather than regional scale.
+- Orders currently focus on the proband only - see the note under [Receiving Orders from GOMS (LAB-1)](#receiving-orders-from-goms-lab-1) below for the known gap around family/consultand orders.
+
 ## Actors
 
 | IHE Actor                                                                | Role                                                                                                                    |

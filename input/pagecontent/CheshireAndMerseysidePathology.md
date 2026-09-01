@@ -9,6 +9,41 @@ This is for information/analysis purposes only and is not a planned piece of wor
 3. [Cancer Background Information for Use Cases - Colorectal Cancer Diagnostic Pathways](CancerNOS.html#diagnostic-cancer-pathways) - this use case can often occur around cancer
 4. LAB-40 HL7 v2.9 SET <a href="https://wiki.ihe.net/index.php/Specimen_Event_Tracking" _target="_blank">IHE Specimen Event Tracking (SET)</a> and <a href="https://hl7-definition.caristix.com/v2/HL7v2.7/TriggerEvents/OSM_R26" _target="_blank">Hl7 v2.7 OSM_R26 Unsolicited Specimen Shipment Manifest Message</a>
 
+## Clinical Pathway Overview
+
+### What is being tested
+
+A genomic/molecular test that follows on from a pathology result - typically a
+tumour biopsy where the histology findings indicate that genomic testing is now
+needed (e.g. to identify a targetable mutation). Rather than the referring clinician
+placing a separate genomics order, the pathology laboratory reflexes the sample
+onward for genomic testing.
+
+### The end-to-end clinical journey
+
+1. **Patient presents** - a clinician orders a pathology test (e.g. on a biopsy) for a suspected condition, often cancer.
+2. **Sample taken** - the tissue/blood sample is collected and sent for pathology.
+3. **Pathology testing performed** - the pathology laboratory examines the sample. *(`LAB-1`/`LAB-3`.)*
+4. **Genomic reflex, if indicated** - based on the pathology finding, the sample is reflexed on for genomic testing, either by the pathology lab or (less commonly) ordered directly by the clinician. *(`LAB-35`/`LAB-36`, or a separate `LAB-1`.)*
+5. **Genomic testing performed**.
+6. **Report reaches the clinician** - either via the pathology laboratory or directly from genomics. *(`LAB-3`.)*
+7. **Clinical decision** - diagnosis and treatment planning is informed by the combined pathology and genomic result.
+
+```mermaid
+flowchart LR
+    A[Pathology test ordered<br/>e.g. biopsy] --> B[Sample taken]
+    B --> C[Pathology<br/>testing]
+    C -->|Reflexed if indicated| D[Genomic<br/>testing]
+    C --> E[Report reaches<br/>clinician]
+    D --> E
+    E --> F[Diagnosis and<br/>treatment planning]
+```
+
+### Why this matters for developers
+
+- The genomic order can arrive **two ways**: reflexed from pathology (`LAB-35`/`LAB-36`) or placed directly by the clinician (`LAB-1`) - both must be supported, see the Transactions table below.
+- The reflex path reuses the ILW sub-order pattern even though pathology and genomics sit within the same NW region, rather than different Genomic Laboratory Hubs - this is a reflex-within-region use of the sub-order pattern, not a genuine external sub-contract.
+
 ## Actors
 
 | IHE Actor                                                                                                            | Role                                    | System (example)                        |

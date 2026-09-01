@@ -8,6 +8,42 @@ This is currently being elaborated and subject to change.
 2. [Cheshire and Merseyside Pathology](CheshireAndMerseysidePathology.html) - the related pathology-LIMS (CFT Shire) reflex scenario without HODS orchestration
 3. [Cancer Background Information for Use Cases - NHS North West Children Cancer Example](CancerNOS.html#nhs-north-west-children-cancer-example)
 
+## Clinical Pathway Overview
+
+### What is being tested
+
+A single referral for suspected haematological malignancy (blood cancer) triggers
+both a pathology assessment (e.g. blood film or bone marrow morphology) and, where
+indicated, genomic/molecular testing - without the referring clinician needing to
+place two separate orders. Genomic testing here typically looks for the specific
+chromosomal/molecular abnormalities that confirm a haematological malignancy
+subtype and guide treatment choice.
+
+### The end-to-end clinical journey
+
+1. **Patient presents** - a clinician sees a patient with findings suggestive of a blood cancer (e.g. an abnormal blood count) and places a single haemato-oncology referral.
+2. **Sample taken** - a blood or bone marrow sample is collected.
+3. **Pathology assessment** - the referral is orchestrated to the pathology laboratory first. *(A `LAB-35` reflex order.)*
+4. **Genomic reflex, if indicated** - based on the pathology findings and local protocol, a further reflex order is placed with the genomics laboratory. *(Another `LAB-35` reflex order.)*
+5. **Combined report** - pathology and genomic results are brought together into a single report back to the referring clinician. *(`LAB-3`.)*
+6. **Clinical decision** - the haematology MDT confirms the diagnosis and subtype, and plans treatment accordingly.
+
+```mermaid
+flowchart LR
+    A[Suspected blood cancer -<br/>single referral placed] --> B[Sample taken]
+    B --> C[Pathology<br/>assessment]
+    C -->|If indicated| D[Genomic reflex<br/>testing]
+    C --> E[Combined report to<br/>referring clinician]
+    D --> E
+    E --> F[Haematology MDT -<br/>diagnosis and<br/>treatment plan]
+```
+
+### Why this matters for developers
+
+- One referral becomes **two separate sub-orders** (pathology, then genomics) orchestrated by HODS - not a single combined order - see the Transactions table below.
+- The genomic reflex order is **conditional**, triggered by the pathology result/local protocol, not by the original referring clinician - this reflex decision logic sits inside HODS/pathology and isn't modelled by this IG.
+- The report the referring clinician ultimately receives is a single **combined** `LAB-3` report, not two separate pathology and genomics reports.
+
 ## Actors
 
 | IHE Actor                                                                                                                        | Role                                                     |

@@ -9,6 +9,48 @@ This is currently being elaborated and subject to change.
 3. [HL7 v2 Standards](hl7v2.html)
 4. NHS England `RGL to SGL SOP` (37-field national digital manifest, Appendix 3) - referenced by name only, not publicly linked
 
+## Clinical Pathway Overview
+
+### What is being tested
+
+Whole Genome Sequencing (WGS) is used to look for the genetic cause of a suspected
+rare or inherited condition. Rather than testing one gene at a time, WGS reads a
+patient's entire genome, so it can find variants anywhere - useful when the clinical
+picture doesn't point to one specific gene, or when a targeted test has already come
+back negative. Testing one or more close relatives alongside the patient (the
+**Proband**) makes it much easier to tell which variants are relevant:
+
+| Family Structure | Clinical purpose |
+|---|---|
+| Singleton | Used when relatives' samples aren't available, or aren't expected to help interpretation |
+| Duo | Comparing against one relative (usually a parent) narrows down candidate variants |
+| Trio | Comparing against both biological parents can directly identify a *de novo* (new, not inherited) variant - the strongest design for rare/inherited disease |
+{:.grid}
+
+### The end-to-end clinical journey
+
+1. **Patient identified** - a clinician suspects a rare or inherited genetic condition and decides WGS is the right test, including whether parental/relative samples should be tested alongside the patient.
+2. **Samples taken** - a blood/DNA sample is taken from the patient (proband) and, for a Duo or Trio, from the relevant relatives too.
+3. **Referral submitted** - the Requesting Genomic Laboratory (RGL) submits the sample(s) and a digital manifest to whichever Sequencing Genomic Laboratory (SGL) is doing the sequencing - which may be a different region's laboratory. *(This is the `LAB-35` sub-order in the technical process below.)*
+4. **Sequencing performed** - the SGL sequences the sample(s) and returns the result to the RGL. *(`LAB-36`.)*
+5. **Report issued** - the RGL's report reaches the original ordering clinician. *(`LAB-3`/`LAB-5`.)*
+6. **Clinical decision** - the clinical/genetics team interprets any variants found, discusses the result with the patient and family, and may refer relatives for genetic counselling or cascade testing.
+
+```mermaid
+flowchart LR
+    A[Patient/family<br/>identified for WGS] --> B[Samples taken -<br/>proband +/- relatives]
+    B --> C[Referral to SGL<br/>for sequencing]
+    C --> D[Sequencing<br/>performed]
+    D --> E[Report reaches<br/>ordering clinician]
+    E --> F[Clinical review -<br/>may lead to genetic<br/>counselling referral]
+```
+
+### Why this matters for developers
+
+- **Family Structure**/**Participant Type** are what distinguish a Singleton, Duo or Trio referral - see [Singleton, Duo and Trio testing](#singleton-duo-and-trio-testing) below for how these are represented.
+- Each participant is submitted as their own **separate** sub-order (own `Patient`, `Specimen`, `ServiceRequest`) - not combined into one message - linked together only by a shared requisition number.
+- Family Structure/Participant Type are asked at order entry precisely so the SGL knows, before sequencing starts, how many samples to expect for one referral and how to interpret them together.
+
 ## Actors
 
 | IHE Actor (ILW)                                     | Role in dWGS                                    | System (worked examples)             |

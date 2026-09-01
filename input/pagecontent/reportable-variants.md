@@ -9,6 +9,37 @@ DSS and iGene Integration Overview.
 1. [HL7 Genomic Reporting standard](https://build.fhir.org/ig/HL7/genomics-reporting/)
 2. [StarLIMS / iGene Integration](starLIMS.html) - the work order metadata export pattern this mirrors
 
+## Clinical Pathway Overview
+
+### What is being tested
+
+This use case isn't a specific clinical test in its own right - it's the pipeline
+that turns a genomic laboratory's raw molecular testing output (from a satellite
+LIMS, "DLIMS") into the structured, reportable genomic variants used in a patient's
+genomic report. Any DLIMS-processed molecular/NGS test - for example a cancer or
+rare disease gene panel - uses this same pattern.
+
+### The end-to-end clinical journey
+
+1. **Work order created** - iGene generates a work order for a specific molecular test as part of processing a patient's sample.
+2. **Test performed** - DLIMS carries out the test against the work order.
+3. **Bioinformatics processing** - Omics DSS processes the DLIMS output into discrete, reportable variants, linked back to the originating work order.
+4. **Report compiled** - iGene incorporates the reportable variants into the patient's genomic report.
+5. **Clinical decision** - the reporting clinical scientist/clinician reviews the reportable variants to interpret and finalise the report for the referring clinician.
+
+```mermaid
+flowchart LR
+    A[Work order created<br/>in iGene] --> B[Test performed<br/>by DLIMS]
+    B --> C[Bioinformatics<br/>processing - Omics DSS]
+    C --> D[Reportable variants<br/>compiled into report]
+    D --> E[Clinical scientist<br/>reviews and finalises]
+```
+
+### Why this matters for developers
+
+- Reportable variants follow the [HL7 Genomics Reporting IG](https://build.fhir.org/ig/HL7/genomics-reporting/)'s discrete `Observation` pattern - not a single free-text result - see [Variant (Reportable Variant)](StructureDefinition-Variant.html).
+- The FHIR Repository is the intermediate handoff point between Omics DSS and iGene - Omics DSS doesn't write results back to iGene directly, see [Future Process](#future-process) below.
+
 ## Actors
 
 | IHE Actor                                                                | Role                                                    |
