@@ -58,7 +58,7 @@ Description:    """
 * collection.collected[x] only dateTime
 * collection.collectedDateTime 0..1 MS
 * collection.bodySite MS
-* collection.bodySite from SpecimenBodySite (preferred)
+//* collection.bodySite from SpecimenBodySite (preferred)
 * collection.quantity MS
 
 * type MS
