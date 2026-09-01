@@ -98,6 +98,13 @@ flowchart LR
     RIE -- "Orders V2" --> L1[LIMS iGene]
 ```
 
+<div class="alert alert-info" role="alert">
+The RIE does not currently route orders between multiple LIMS - iGene is the
+only destination today. The RIE is designed to support multiple LIMS, with
+routing by Test Code and other order metadata, but this routing capability is
+not yet in use.
+</div>
+
 ### Report Process and Technical Diagram
 
 Reports flow back from the RIE to each Trust as `ORU_R01`, NW Standard - see
