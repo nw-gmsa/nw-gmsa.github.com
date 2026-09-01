@@ -72,25 +72,6 @@
                 "coding": [
                     {
                         "system": "http://loinc.org",
-                        "code": "48013-7"
-                    }
-                ]
-            },
-            "valueCodeableConcept": {
-                "coding": [
-                    {
-                        "system": "http://www.genenames.org",
-                        "code": "HGNC:1100",
-                        "display": "BRCA1"
-                    }
-                ]
-            }
-        },
-        {
-            "code": {
-                "coding": [
-                    {
-                        "system": "http://loinc.org",
                         "code": "53034-5",
                         "display": "Allelic state"
                     }

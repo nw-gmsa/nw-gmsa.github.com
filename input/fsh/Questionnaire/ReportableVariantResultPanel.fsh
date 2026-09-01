@@ -187,9 +187,7 @@ Usage:  #definition
         LRI row B.9, OBX type CWE, R/O/C = C, [0..1]. FHIR Variant profile slice:
         `genomic-ref-seq`. iGene: rolled into the free-text Genomic_coordinates field
         (all four variant types). Used by NTHL1 and all four ctDNA Bundle
-        Observations. `Observation-BRCA1` also carries this code, but its value is an
-        HGNC gene coding, not a genomic reference sequence - likely a data-entry
-        error in that older example.
+        Observations.
         """
         * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 

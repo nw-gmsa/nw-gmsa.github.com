@@ -208,11 +208,6 @@ Three gaps are not yet resolved:
   B.13, B.7, B.10) - no example yet confirms how these decompose into, or recombine
   into, `81262-8`.
 
-**BRCA1 note:** `Observation-BRCA1` also carries a component coded `48013-7`
-(Genomic Reference Sequence, B.9) whose value is actually an HGNC gene coding - this
-looks like a data-entry error in that older example rather than a genuine second
-usage pattern for that code.
-
 ### Result Panel: Elements Not Included
 
 LRI's Discrete Variant Panel (Table 5-2/5-3) defines further rows, and the HL7
@@ -295,6 +290,24 @@ This raises two open questions, neither resolved by any current example:
   candidates include order of detection, clinical significance, or allelic frequency,
   but none is confirmed.
 
+### Outstanding Issues
+
+1. **Should the `Variant` profile and Result Panel be restructured around iGene's
+   own five variant-type categories** (Sequence Variant / Intragenic CNV / Multigenic
+   CNV / Structural Variant / Loss of Heterozygosity), rather than the current single
+   generic Discrete Variant Panel that mirrors LRI? Arguments for: it would make the
+   [CSV mapping](#mapping-to-the-igene-csv) above more direct, since "which iGene slot
+   type is this" is currently an inferred classification, not a modelled field -
+   codifying it as (for example) a required `Variant Category` component would remove
+   that ambiguity, and would also give Loss of Heterozygosity - which has no home in
+   either LRI or the international FHIR profile - a proper place to live. Arguments
+   against: it would diverge from both LRI's Discrete Variant Panel and the
+   international HL7 Genomics Reporting Variant profile, both of which treat simple
+   and structural variants (and, implicitly, CNVs) as one panel distinguished by which
+   components are populated, not by a separate profile or panel per type; LOH would
+   also need a new international-profile-shaped home to slot into, or acceptance that
+   it stays iGene-specific. Not yet resolved either way.
+
 ## Examples
 
 | Source                                                                                                                    | Example                                                                                                                       |
@@ -302,6 +315,17 @@ This raises two open questions, neither resolved by any current example:
 | GA4GH VCF (input) - see the [VCF v4.3 specification](https://samtools.github.io/hts-specs/VCFv4.3.pdf)                   | [igene_example_data.vcf](https://github.com/nw-gmsa/Testing/blob/main/Input/DSS/VCF/igene_example_data.vcf)                    |
 | GA4GH Phenopacket (input) - see the [Phenopacket schema documentation](https://phenopacket-schema.readthedocs.io/en/latest/) | [igene_example_data.phenopacket.json](https://github.com/nw-gmsa/Testing/blob/main/Input/DSS/VCF/igene_example_data.phenopacket.json) |
 | FHIR `Bundle` (NW-GMSA `R01` Test Results message) - produced from the VCF/Phenopacket above by notebook [05 - Test Results: GA4GH VCF to FHIR Genomics Reporting](https://github.com/nw-gmsa/Testing/blob/main/notebooks/05-test-results-from-vcf.ipynb) | [Bundle-ctdna9737383222-testresults](Bundle-ctdna9737383222-testresults.html) |
+{:.grid}
+
+The four `Variant` Observations inside that Bundle are also extracted as standalone
+[Variant](StructureDefinition-Variant.html) examples, for individual reference:
+
+| Variant Type          | Example                                                                        |
+|------------------------|----------------------------------------------------------------------------------|
+| Sequence (small) variant | [Observation-ctdna9737383222-seqv1](Observation-ctdna9737383222-seqv1.html) (`BRCA1` deletion) |
+| Intragenic copy number variant | [Observation-ctdna9737383222-icnv1](Observation-ctdna9737383222-icnv1.html) (`FBN1` exon deletion) |
+| Multigenic copy number variant | [Observation-ctdna9737383222-mcnv1](Observation-ctdna9737383222-mcnv1.html) (Xq22.1-q28 deletion) |
+| Structural variant     | [Observation-ctdna9737383222-sv1](Observation-ctdna9737383222-sv1.html)          |
 {:.grid}
 
 ## Developer Guides
