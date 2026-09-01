@@ -2,7 +2,7 @@
 This is currently being elaborated and subject to change.
 </div>
 
-Regional Orders and Reports: how Alder Hey, Manchester Foundation Trust (MFT) and Liverpool Women's send genomic test orders directly to NW Genomics, and receive reports back, via the [Regional Integration Engine (RIE)](overview.html).
+iGene Orders and Reports: how Alder Hey, Manchester Foundation Trust (MFT) and Liverpool Women's send genomic test orders directly to NW Genomics, and receive reports back, via the [Regional Integration Engine (RIE)](overview.html).
 
 ## References
 
@@ -44,6 +44,7 @@ flowchart LR
 
 - This use case describes the **NHS Trust side** of the relationship: which Trusts integrate directly, what they send, and how their TIE converts to the NW Standard before the order ever reaches the RIE.
 - For what happens once the order or report is with the RIE (validation, enrichment, LIMS routing, shared care record wire-tap), see [Regional Integration Engine (RIE) - Current Process](overview.html#current-process) - this use case does not repeat that detail.
+- iGene is the Order Filler for these Trusts today, but not necessarily the system that performs every test: iGene may sub-contract work out to other labs (see [Regional Integration Engine (RIE) - Sub-Contracted and Reflex Orders](overview.html#sub-contracted-and-reflex-orders-lab-35-and-reports-lab-36)), and the RIE may in future route some orders directly to StarLIMS instead of iGene - StarLIMS was the main LIMS for the Liverpool GLH, and iGene the main LIMS for the Manchester GLH, before the two merged into a single North West Genomics service. See [StarLIMS / iGene Integration](starLIMS.html) for that routing.
 
 ## Actors
 

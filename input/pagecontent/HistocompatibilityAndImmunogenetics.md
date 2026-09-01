@@ -79,10 +79,10 @@ This closed-loop process corresponds to the IHE Laboratory Testing Workflow.
 
 ```mermaid
 sequenceDiagram
-    participant CM as Clatterbridge Meditech (EPR)
-    participant CTIE as Clatterbridge TIE
-    participant LTIE as LUFT TIE
-    participant iLab as iLab LIMS
+    participant CM as Clatterbridge Meditech (EPR)<br/>Order Placer
+    participant CTIE as Clatterbridge TIE<br/>Intermediary
+    participant LTIE as LUFT TIE<br/>Intermediary
+    participant iLab as iLab LIMS<br/>Order Filler
 
      CM->>CTIE: ORM_O01
     CTIE->>LTIE: ORM_O01
@@ -99,9 +99,9 @@ Following organisational restructuring, testing was transferred to North West Ge
 
 ```mermaid
 sequenceDiagram
-    participant User as Clatterbridge User
-    participant HODS as HODS (Order Comms)
-    participant Histotrac as Histotrac (NW Genomics / MFT)
+    participant User as Clatterbridge User<br/>Order Placer (interim, manual)
+    participant HODS as HODS (Order Comms)<br/>Order Placer (interim, manual)
+    participant Histotrac as Histotrac (NW Genomics / MFT)<br/>Order Filler
 
     User->>HODS: Manual order entry
     Note over HODS,Histotrac: No electronic order exchange
@@ -115,7 +115,7 @@ sequenceDiagram
 The current project aims to re-establish electronic ordering and reporting. The new message flows are:
 
 - Clatterbridge Meditech → Clatterbridge TIE → NW Genomics Regional Integration Engine (RIE) → Histotrac — still an ORM_O01 message, though no longer classified as LAB-1 due to the involvement of a regional integration engine.
-- Histotrac → NW Genomics Regional Integration Engine → Clatterbridge TIE → Clatterbridge Meditech — still an ORU_R01 message, classified as LAB-3.
+- Histotrac → NW Genomics Regional Integration Engine → Clatterbridge TIE → Clatterbridge Meditech — still an ORU_R01 message, classified as LAB-3. See [Regional Integration Engine (RIE) - Report Process](overview.html#report-process) for how the RIE validates, enriches and routes this report before it reaches Clatterbridge.
 
 Communication between the Clatterbridge TIE and the NW RIE will follow the NW Genomics HL7 v2 standard — a data contract shared across NHS Trusts in the North West. NW Genomics will not build Trust-specific transformations; instead, the standard is designed collectively to meet the needs of all participating NHS organisations. 
 
@@ -133,10 +133,10 @@ The NW Genomics RIE will handle the necessary transformations between the NW HL7
 
 ```mermaid
 sequenceDiagram
-    participant CM as Clatterbridge Meditech (EPR)
-    participant CTIE as Clatterbridge TIE
-    participant RIE as NW Genomics RIE
-    participant Histotrac as Histotrac
+    participant CM as Clatterbridge Meditech (EPR)<br/>Order Placer
+    participant CTIE as Clatterbridge TIE<br/>Intermediary
+    participant RIE as NW Genomics RIE<br/>Intermediary
+    participant Histotrac as Histotrac<br/>Order Filler
 
     CM->>CTIE: ORM_O01
     CTIE->>RIE: ORM_O01 (NW Genomics HL7 v2 standard - LAB-1)
@@ -152,14 +152,14 @@ sequenceDiagram
 
 This separation of responsibilities enables modular delivery. For example, the reporting flow from NW Genomics to Clatterbridge can be implemented and tested independently — which is useful for validating the firewall between NW Genomics (hosted by MFT) and Clatterbridge.
 
-This modularity also allows components to be reused across other projects. For instance, the iGene Genomic Reports feed into the RIE for Clatterbridge has already been built, and — being nearly identical to the Histotrac reports flow — can be used both to test the firewall and to inform development of the NW Genomics RIE-to-Clatterbridge reports feed.
+This modularity also allows components to be reused across other projects. For instance, the iGene Genomic Reports feed into the RIE for Clatterbridge has already been built, and — being nearly identical to the Histotrac reports flow — can be used both to test the firewall and to inform development of the NW Genomics RIE-to-Clatterbridge reports feed. Genomic Reports from iGene to Clatterbridge follow exactly the same [Report Process](overview.html#report-process) as the Histotrac reports flow above - only the originating LIMS differs.
 
 ```mermaid
 sequenceDiagram
-    participant CM as Clatterbridge Meditech (EPR)
-    participant CTIE as Clatterbridge TIE
-    participant RIE as NW Genomics RIE
-    participant iGene as iGene
+    participant CM as Clatterbridge Meditech (EPR)<br/>Order Placer
+    participant CTIE as Clatterbridge TIE<br/>Intermediary
+    participant RIE as NW Genomics RIE<br/>Intermediary
+    participant iGene as iGene<br/>Order Filler
 
     iGene->>RIE: ORU_R01 (iGene format)
     RIE->>CTIE: ORU_R01 (NW Genomics HL7 v2 standard - LAB-3)

@@ -46,6 +46,7 @@ flowchart LR
 | IHE Actor                                          | Role                                    | System                          |
 |--------------------------------------------------------|---------------------------------------|--------------------------------------|
 | [Automation Manager](ActorDefinition-AutomationManager.html) | Performs the analytical phase (testing) | Cepheid GeneXpert (ASTM-communicating) |
+| [Intermediary](ActorDefinition-Intermediary.html)          | Converts Cepheid's ASTM result to the NW Standard, routes it, and converts it to a CSV for iGene's import | Regional Integration Engine (RIE)  |
 | [Order Filler](ActorDefinition-OrderFiller.html)           | Laboratory Information Management System | iGene                              |
 | [Order Placer](ActorDefinition-OrderPlacer.html)           | Requesting clinician (treatment response monitoring) | Requesting Trust EPR       |
 {:.grid}
@@ -54,7 +55,7 @@ flowchart LR
 
 | Transaction | Description                                   |
 |-------------|------------------------------------------------|
-| `LAB-5`     | Automation Manager → Order Filler (analytical result) |
+| `LAB-5`     | Automation Manager → Order Filler (analytical result), via the RIE (ASTM → HL7 v2 `R32` NW Standard → FHIR Message `R32` → CSV) |
 | `LAB-3`     | Order Filler → Order Placer (validated report)  |
 {:.grid}
 
@@ -86,6 +87,31 @@ report --> |Genomic Report| placer
 
   classDef green fill:#D5E8D4;
   class placer green
+```
+
+### Technical Process (Cepheid to iGene)
+
+Between the analyser and iGene, the Regional Integration Engine (RIE) converts
+and routes the result:
+
+1. Cepheid sends an ASTM Result message to the RIE.
+2. The RIE converts this to an HL7 v2 `R32` message (NW Standard).
+3. The RIE transforms this into a FHIR Message `R32`.
+4. The RIE routes the message.
+5. The RIE's Cepheid handler converts this into a CSV file for iGene to import.
+
+```mermaid
+sequenceDiagram
+    participant Cepheid as Cepheid GeneXpert<br/>Automation Manager
+    participant RIE as Regional Integration Engine (RIE)<br/>Intermediary
+    participant iGene as iGene<br/>Order Filler
+
+    Cepheid ->> RIE: ASTM Result message
+    RIE ->> RIE: Convert to HL7 v2 R32 message (NW Standard)
+    RIE ->> RIE: Transform to FHIR Message R32
+    RIE ->> RIE: Route message
+    RIE ->> RIE: Cepheid handler converts to CSV
+    RIE ->> iGene: CSV import
 ```
 
 ### Analytical Phase (Testing)

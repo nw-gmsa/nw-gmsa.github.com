@@ -75,7 +75,7 @@ flowchart LR
 | [Automation Manager](ActorDefinition-AutomationManager.html)                     | Cepheid - analyser, test results via ASTM                            |
 | [Automation Manager](ActorDefinition-AutomationManager.html)                     | Omics DSS - analytic processing, test results via FHIR               |
 | [Intermediary](ActorDefinition-Intermediary.html)                              | Regional Integration Engine (RIE) - message distribution and transformation hub ("post office") |
-| [Order Placer](ActorDefinition-OrderPlacer.html)                                 | NHS Trusts sending direct HL7 orders to the RIE - see [Regional Orders and Reports (Alder Hey, MFT, Liverpool)](RegionalOrdersAndReports.html) for the named Trusts and their specific integrations |
+| [Order Placer](ActorDefinition-OrderPlacer.html)                                 | NHS Trusts sending direct HL7 orders to the RIE - see [iGene Orders and Reports (Alder Hey, MFT, Liverpool)](RegionalOrdersAndReports.html) for the named Trusts and their specific integrations |
 | [Order Placer](ActorDefinition-OrderPlacer.html) (via GMS Order Comms)           | NHS Trusts - electronic or web portal, not direct HL7 to the RIE       |
 | [Automation Manager](ActorDefinition-AutomationManager.html)                     | National Genomic Order Comms - national ordering system / web portal (future interface, GOMS) |
 | [Document Consumer](ActorDefinition-DocumentConsumer.html)                       | Greater Manchester Care Record (GMCR) and Lancashire & South Cumbria - Shared Care Record Providers, see [Greater Manchester Care Record (GMCR)](GMCR.html) for their own use case |
@@ -144,7 +144,7 @@ This use of HL7/FHIR standards is also called a "Canonical Model" or "Data Contr
 
 1. **Order entered in the EPR** - the order form is based on the core requirements in [ServiceRequest](ServiceRequest.html), plus the [Ask At Order Entry Questions](Questionnaire-GenomicGeneralAskAtOrderEntry.html) (or a per-test-type equivalent).
 2. **Exported to the Trust Integration Engine (TIE)** - the order is exported in the Trust's own local HL7 v2 flavour, `ORM_O01`.
-3. **Converted to the NW Standard** - either within the Trust's own TIE, or by a separate conversion service the TIE calls out to; either way the Trust-specific `ORM_O01` becomes either a FHIR Message O21 or an HL7 v2 `OML_O21`, both NW Standard. See [Regional Orders and Reports (Alder Hey, MFT, Liverpool)](RegionalOrdersAndReports.html#order-process) for how specific Trusts do this conversion today.
+3. **Converted to the NW Standard** - either within the Trust's own TIE, or by a separate conversion service the TIE calls out to; either way the Trust-specific `ORM_O01` becomes either a FHIR Message O21 or an HL7 v2 `OML_O21`, both NW Standard. See [iGene Orders and Reports (Alder Hey, MFT, Liverpool)](RegionalOrdersAndReports.html#order-process) for how specific Trusts do this conversion today.
 4. **Sent to the RIE** - the order (as HL7 v2 or FHIR, depending on the route above) is sent to the Regional Integration Engine.
 5. **Validated and enriched** - the RIE checks the payload for validity, including a PDS check (NHS England PDS FHIR API) and an organisation code check (NHS England ODT API, the successor to the ODS API). This can add further patient demographic and organisation details to the message.
 6. **Routed to a LIMS** - at present the RIE sends the order to iGene; in future this may be routed to other LIMS such as StarLIMS or Histotrac.
@@ -221,7 +221,7 @@ The RIE also sends copies of NW Diagnostic Core Standard ctDNA orders and report
 
 #### Technical diagram
 
-The diagram below labels each flow with its HL7 v2 message type: `ORU_R01` delivers a result/report, `OML_O21` places a laboratory order, and `MDM_T02` sends a document such as a PDF report. The NHS Trusts sending direct HL7 orders are shown here generically - see [Regional Orders and Reports (Alder Hey, MFT, Liverpool)](RegionalOrdersAndReports.html) for the diagram naming the specific Trusts and how each one integrates.
+The diagram below labels each flow with its HL7 v2 message type: `ORU_R01` delivers a result/report, `OML_O21` places a laboratory order, and `MDM_T02` sends a document such as a PDF report. The NHS Trusts sending direct HL7 orders are shown here generically - see [iGene Orders and Reports (Alder Hey, MFT, Liverpool)](RegionalOrdersAndReports.html) for the diagram naming the specific Trusts and how each one integrates.
 
 ```mermaid
 flowchart LR
@@ -242,7 +242,7 @@ flowchart LR
         T[Message Distribution and Transform to<br/>standardised HL7]
     end
 
-    subgraph Trusts["NHS Trusts - direct HL7<br/>(see Regional Orders and Reports)"]
+    subgraph Trusts["NHS Trusts - direct HL7<br/>(see iGene Orders and Reports)"]
         TR1[Trust A]
         TR2[Trust B]
         TR3[Trust C]

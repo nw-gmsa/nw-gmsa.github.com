@@ -33,7 +33,7 @@ actually perform it, and receive the report back the same way.
 3. **Order routed to a laboratory** - GOMS routes the order to whichever laboratory (e.g. NW Genomics) is designated to perform that test.
 4. **Testing performed**.
 5. **Report routed back** - the report reaches the ordering clinician via GOMS.
-6. **Clinical decision** - the clinician acts on the result.
+6. **Clinical decision** - the clinician acts on the result, likely as part of a Multi-Disciplinary Team (MDT) discussion rather than alone.
 
 ```mermaid
 flowchart LR

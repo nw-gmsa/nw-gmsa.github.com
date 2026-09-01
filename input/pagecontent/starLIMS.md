@@ -161,7 +161,7 @@ The initial design for handling work orders is as follows:
 2. Work orders for StarLIMS are generated, with specific tests managed within StarLIMS.
 3. Work orders are exported as CSV files on a daily basis.
 4. The regional integration engine (RIE) picks up these files and stores them in the FHIR Repository as Patient, ServiceRequest, and Specimen resources. Details of this data model are available at [nw-gmsa.github.io/en/diagnostic-core.html](https://nw-gmsa.github.io/en/diagnostic-core.html).
-5. A process then updates the StarLIMS SQL database with the work orders.
+5. A StarLIMS Import process polls the FHIR Repository for new work orders, and imports them directly into the StarLIMS SQL database.
 
 ```mermaid
 flowchart TD
@@ -169,19 +169,25 @@ flowchart TD
     B --> C[Work Orders exported<br/>as CSV - daily]
     C --> D[Regional Integration Engine<br/>RIE picks up CSV files]
     D --> E[(FHIR Repository)]
-    E -->|Patient, ServiceRequest,<br/>Specimen resources| F[StarLIMS SQL database<br/>updated with Work Orders]
+    E -.->|StarLIMS Import process polls<br/>for new Work Orders| F[StarLIMS SQL database<br/>updated with Work Orders]
 ```
 
 ### Subcontracted Laboratory Report
 
-The reports workflow has not yet been designed, but the expectation is that a process will copy reports from the StarLIMS SQL database into the FHIR Repository, after which the RIE will generate a CSV file for import into iGene.
+Once results have been produced in StarLIMS, a StarLIMS Export process (in the
+RIE, or an external process - probably developed in Python for both) extracts
+the report from StarLIMS via SQL (and other sources, if required). This output
+is converted to a FHIR Laboratory Report Message `R01`, and sent to the RIE -
+from there it is handled the same way as reports from iGene or Histotrac, as
+described in [Regional Integration Engine (RIE) - Report
+Process](overview.html#report-process).
 
 ```mermaid
 flowchart TD
-    A[(StarLIMS SQL database)] --> B[Process copies Reports<br/>from StarLIMS SQL]
-    B --> C[(FHIR Repository updated<br/>with Reports)]
-    C --> D[Regional Integration Engine<br/>RIE generates CSV file]
-    D --> E[iGene imports<br/>Reports CSV]
+    A[(StarLIMS SQL database)] --> B[StarLIMS Export process<br/>extracts report via SQL<br/>- and other sources if required]
+    B --> C[Converted to FHIR<br/>Laboratory Report Message R01]
+    C --> D[Sent to Regional<br/>Integration Engine RIE]
+    D --> E["Handled as any other report<br/>(see RIE Report Process)"]
 ```
 
 > **Note:** the Reports process is anticipated, not yet finalised.

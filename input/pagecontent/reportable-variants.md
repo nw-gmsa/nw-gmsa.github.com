@@ -98,6 +98,41 @@ flowchart TD
     style D fill:#f8f9fa,stroke:#868e96
 ```
 
+### Detailed Process Flow
+
+1. iGene exports work orders for DLIMS - this export does not go to DLIMS directly.
+2. The RIE imports the file and stores it in the FHIR Repository.
+3. Once the results have been produced by DLIMS, Omics DSS processes the output.
+4. This output is converted to a FHIR Genomic Report.
+5. These resources are matched with the DLIMS work order stored in the FHIR Repository, and a FHIR Message R01 (Test Result) is produced.
+6. This is either stored directly in the FHIR Repository, or sent to the Regional Integration Engine.
+7. The RIE will then convert this into a CSV file to be imported into iGene LIMS.
+
+```mermaid
+sequenceDiagram
+    participant iGene as iGene<br/>Order Filler
+    participant RIE as Regional Integration Engine (RIE)<br/>Intermediary
+    participant FHIRRepo as FHIR Repository<br/>Resource Access Provider
+    participant DLIMS as DLIMS<br/>Automation Manager
+    participant DSS as Omics DSS<br/>Automation Manager
+
+    iGene ->> RIE: 1. Export Work Order for DLIMS<br/>(does not go to DLIMS directly)
+    RIE ->> FHIRRepo: 2. Import and store Work Order
+    Note over DLIMS: Test performed by DLIMS
+    DSS ->> DSS: 3. Process DLIMS output
+    DSS ->> DSS: 4. Convert to FHIR Genomic Report
+    DSS ->> FHIRRepo: Retrieve linked DLIMS Work Order
+    FHIRRepo -->> DSS: DLIMS Work Order
+    DSS ->> DSS: 5. Match to Work Order,<br/>produce FHIR Message R01 (Test Result)
+    alt Stored directly
+        DSS ->> FHIRRepo: 6. Store FHIR Message R01
+    else Sent to RIE
+        DSS ->> RIE: 6. FHIR Message R01
+        RIE ->> RIE: 7. Convert to CSV
+        RIE ->> iGene: Import CSV
+    end
+```
+
 ## Data Models
 
 - [ServiceRequest (Work Order)](StructureDefinition-ServiceRequest.html) - the DLIMS work order exported to the FHIR Repository

@@ -43,6 +43,7 @@ flowchart LR
 - One referral becomes **two separate sub-orders** (pathology, then genomics) orchestrated by HODS - not a single combined order - see the Transactions table below.
 - The genomic reflex order is **conditional**, triggered by the pathology result/local protocol, not by the original referring clinician - this reflex decision logic sits inside HODS/pathology and isn't modelled by this IG.
 - The report the referring clinician ultimately receives is a single **combined** `LAB-3` report, not two separate pathology and genomics reports.
+- The pathology reflex order goes to **Shire LIMS**, but this order is not believed to be electronic today - see [Current Process](#current-process).
 
 ## Actors
 
@@ -50,7 +51,7 @@ flowchart LR
 |---------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------|
 | [Order Placer](ActorDefinition-OrderPlacer.html)                                                                                          | Referring clinician / EPR                                 |
 | [Order Filler](ActorDefinition-OrderFiller.html) (receiving `LAB-1`) / [Requestor](ActorDefinition-Requestor.html) (ILW, sending `LAB-35`) | HODS - haemato-oncology order comms system, orchestrates pathology and genomics reflex testing for a single referral |
-| [Subcontractor](ActorDefinition-Subcontractor.html) (ILW)                                                                                 | Pathology laboratory                                       |
+| [Subcontractor](ActorDefinition-Subcontractor.html) (ILW)                                                                                 | Pathology laboratory - **Shire LIMS**. The `LAB-35` order to Shire is not believed to be electronic today - see [Current Process](#current-process) |
 | [Subcontractor](ActorDefinition-Subcontractor.html) (ILW)                                                                                 | Genomics laboratory                                         |
 {:.grid}
 
@@ -59,8 +60,8 @@ flowchart LR
 | Transaction | Description                          | Direction                          |
 |-------------|------------------------------------------|-------------------------------------|
 | `LAB-1`     | Laboratory Order                          | Order Placer → Order Filler (HODS)   |
-| `LAB-35`    | Pathology Reflex Order                    | Order Filler (HODS) → Order Filler (Pathology) |
-| `LAB-36`    | Pathology Report                          | Order Filler (Pathology) → Order Filler (HODS) |
+| `LAB-35` (not believed to be electronic) | Pathology Reflex Order | Order Filler (HODS) → Order Filler (Pathology - Shire LIMS) |
+| `LAB-36`    | Pathology Report                          | Order Filler (Pathology - Shire LIMS) → Order Filler (HODS) |
 | `LAB-35`    | Genomic Reflex Order                      | Order Filler (HODS) → Order Filler (Genomics)  |
 | `LAB-36`    | Genomic Report                            | Order Filler (Genomics) → Order Filler (HODS)  |
 | `LAB-3`     | Laboratory Report (combined)              | Order Filler (HODS) → Order Placer   |
@@ -75,6 +76,12 @@ reflex testing for a single referral - see [Inter Laboratory Workflow
 Pathology](CheshireAndMerseysidePathology.html) for the related pathology-LIMS
 (CFT Shire) reflex scenario without HODS orchestration.
 
+The pathology laboratory here is **Shire LIMS**, the same LIMS as the Cheshire
+and Merseyside scenario. Unlike the genomics reflex order, the pathology
+reflex order (`LAB-35`) from HODS to Shire is not believed to be an electronic
+transaction today - it is shown in the sequence diagram below as such, pending
+confirmation.
+
 ### Haematological Malignancy Diagnostic Services
 
 ```mermaid
@@ -83,7 +90,7 @@ sequenceDiagram
 
 participant EPR as Order Placer
 participant LIMS as Order Filler (HODS)
-participant LIMSP as Order Filler (Pathology)
+participant LIMSP as Order Filler (Pathology - Shire LIMS)
 participant LIMSG as Order Filler (Genomics)
 
 
@@ -92,7 +99,7 @@ EPR ->> LIMS: Submit Laboratory Order O21 (LAB-1)
 opt Order Filler (HODS) creates Pathology Order
 
 
-    LIMS ->> LIMSP: Submit Pathology Reflex Order O21 (LAB-35)
+    LIMS -->> LIMSP: Pathology Reflex Order (LAB-35) - not believed to be electronic today
     LIMS -->> LIMSP: Send Specimen (not a technical interaction)
     LIMSP -->> LIMSP : Performs Test
     LIMSP ->> LIMS: Send Pathology Report R01 (LAB-36)

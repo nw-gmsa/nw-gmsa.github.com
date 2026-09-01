@@ -161,7 +161,7 @@ pages:
     title: "Use Case: Regional Integration Engine (RIE)"
     generation: markdown
   RegionalOrdersAndReports.md:
-    title: "Use Case: Regional Orders and Reports (Alder Hey, MFT, Liverpool)"
+    title: "Use Case: iGene Orders and Reports (Alder Hey, MFT, Liverpool)"
     generation: markdown
   GMCR.md:
     title: "Use Case: Greater Manchester Care Record (GMCR)"
@@ -394,6 +394,10 @@ resources:
 menu:
   Home: index.html
   Use Cases:
+    Regional Integration Engine (RIE): overview.html
+    iGene Orders and Reports (Alder Hey, MFT, Liverpool): RegionalOrdersAndReports.html
+    Greater Manchester Care Record (GMCR): GMCR.html
+    Lancashire and South Cumbria Genomic Reports: GMCR.html#lancashire-and-south-cumbria
     Distributed WGS (dWGS): dWGS.html
     Histocompatibility and Immunogenetics: HistocompatibilityAndImmunogenetics.html
     BCR-ABL Monitoring (Cepheid ASTM to iGene): BCRABLMonitoring.html
@@ -402,10 +406,6 @@ menu:
     Cancer Background Information for Use Cases : CancerNOS.html
     OMICS DSS Result Integration: reportable-variants.html
     NHS England Genomic Order Management Service (GOMS): GenomicOrderManagementService.html
-    Regional Integration Engine (RIE): overview.html
-    Regional Orders and Reports (Alder Hey, MFT, Liverpool): RegionalOrdersAndReports.html
-    Greater Manchester Care Record (GMCR): GMCR.html
-    Lancashire and South Cumbria Genomic Reports: GMCR.html#lancashire-and-south-cumbria
     ctDNA NHS England Unified Genomic Record (UGR): ctDNAUGR.html
     NE&Y Management Information (ctDNA): NEYManagementInformation.html
     StarLIMS / iGene Integration: starLIMS.html
