@@ -151,6 +151,9 @@ pages:
   GenomicOrderManagementService.md:
     title: "Use Case: NHS England Genomic Order Management Service (GOMS)"
     generation: markdown
+  NEYManagementInformation.md:
+    title: "Use Case: NE&Y Management Information (ctDNA)"
+    generation: markdown
   ctDNAUGR.md:
     title: "Use Case: ctDNA NHS England Unified Genomic Record (UGR)"
     generation: markdown
@@ -397,7 +400,7 @@ menu:
     Greater Manchester Care Record (GMCR): overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01
     Lancashire and South Cumbria Genomic Reports: overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01
     ctDNA NHS England Unified Genomic Record (UGR): ctDNAUGR.html
-    NE&Y Management Information (ctDNA): overview.html#technical-detail
+    NE&Y Management Information (ctDNA): NEYManagementInformation.html
     StarLIMS / iGene Integration: starLIMS.html
   Analysis and Design (Volume 1) :
  ##   Design Overview: design.html

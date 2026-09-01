@@ -50,7 +50,7 @@ NW Genomics Regional Integration Engine (RIE).
 | [Document Consumer](ActorDefinition-DocumentConsumer.html)                       | Greater Manchester Care Record (GMCR) - Shared Care Record Provider, cancer only |
 | [Document Consumer](ActorDefinition-DocumentConsumer.html)                       | Lancashire & South Cumbria - Shared Care Record Provider, in elaboration |
 | [Document Consumer](ActorDefinition-DocumentConsumer.html)                       | National Unified Genomic Care Record (UGR) - Shared Care Record Provider, in elaboration |
-| [Requestor](ActorDefinition-Requestor.html) / [Subcontractor](ActorDefinition-Subcontractor.html) (ILW, peer exchange) | North East and Yorkshire (NE&Y) Genomics - peer Genomic Laboratory Hub, ctDNA metadata only, results removed |
+| [Order Result Tracker](ActorDefinition-OrderResultTracker.html) | North East and Yorkshire (NE&Y) Genomics - receives copies of ctDNA order/report messages for their Management Portal, not itself the ordering or testing party - see [NE&Y Management Information (ctDNA)](NEYManagementInformation.html) |
 {:.grid}
 
 ## Transactions
@@ -60,7 +60,7 @@ NW Genomics Regional Integration Engine (RIE).
 | `ORU_R01`                                                   | Test report/result delivery                                     |
 | `OML_O21` / FHIR `O21`                                      | Laboratory order placement                                       |
 | `MDM_T02`                                                   | Document delivery (e.g. PDF report) to a shared care record       |
-| NW Diagnostic Core Standard Orders and Reports (ctDNA metadata only, results removed) | Peer exchange with NE&Y Genomics |
+| NW Diagnostic Core Standard Orders and Reports (ctDNA metadata only, results removed) | Copies sent to NE&Y Genomics for their Management Portal |
 {:.grid}
 
 ## Current Process
@@ -122,7 +122,7 @@ The RIE connects to multiple internal LIMS systems — including iGene, StarLIMS
 
 Reports are also sent to shared care record providers using HL7 MDM_T02 (the HL7 v2 message type for sending a document, such as a PDF report), currently for the Greater Manchester Care Record (GMCR) — this feed is cancer only. Similar services are likely to be provided to Lancashire and South Cumbria, and to the national Unified Genomic Care Record.
 
-The RIE also exchanges NW Diagnostic Core Standard orders and reports with North East and Yorkshire Genomics, as a peer Genomic Laboratory Hub — ctDNA metadata only, with results removed.
+The RIE also sends copies of NW Diagnostic Core Standard ctDNA orders and reports to North East and Yorkshire Genomics, for their own regional Management Portal — NE&Y is not the ordering or testing party here, just a recipient of copies (results/clinical content removed from the report copy). See [NE&Y Management Information (ctDNA)](NEYManagementInformation.html) for the full process.
 
 > **Note:** Test Results and Work Orders also flow via the RIE, this is not shown in the diagram to aid clarity.
 

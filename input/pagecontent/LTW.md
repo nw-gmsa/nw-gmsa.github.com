@@ -160,6 +160,7 @@ Used by these Use Cases:
 - [Cancer Background Information for Use Cases](CancerNOS.html)
 - [Regional Integration Engine (RIE)](overview.html)
 - [StarLIMS / iGene Integration](starLIMS.html)
+- [NE&Y Management Information (ctDNA)](NEYManagementInformation.html) - paper-based, no electronic LAB-1 transaction
 
 #### LAB-1 Process Flow
 
@@ -294,6 +295,7 @@ Used by these Use Cases:
 - [Cancer Background Information for Use Cases](CancerNOS.html)
 - [Regional Integration Engine (RIE)](overview.html) - including the [Shared Care Record Feeds](overview.html#shared-care-record-feeds---wire-tap-on-lab-3oru_r01) wire-tap to GMCR, Lancashire and South Cumbria, and the NHS England Unified Genomic Record
 - [StarLIMS / iGene Integration](starLIMS.html)
+- [NE&Y Management Information (ctDNA)](NEYManagementInformation.html) - wire-tapped, converted to a FHIR Message R01 with the PDF removed
 
 ### LAB-3 Process Flow
 
@@ -400,6 +402,9 @@ It is envisaged this design will also extend to Laboratory Reports (R01).
 <div class="alert alert-info" role="alert">
 <b>Interaction:</b> <a href="MQ.html" _target="_blank">Message Exchange</a> LAB-2
 </div>
+
+Used by these Use Cases:
+- [NE&Y Management Information (ctDNA)](NEYManagementInformation.html) - the FHIR Message O21 converted daily from the iGene CSV export
 
 ### LAB-2 Process Flow
 
