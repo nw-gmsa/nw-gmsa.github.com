@@ -4,7 +4,7 @@ This is currently being elaborated and subject to change.
 
 ## References
 
-1. [Laboratory Analyte Result - Data Mapping](LaboratoryAnalyteResult.html#data-mapping)
+1. [Laboratory Analyte Result - Data Mapping](StructureDefinition-LaboratoryAnalyteResult.html#data-mapping)
 2. [Test Results Management (LAB-5)](LTW.html#test-results-management-lab-5)
 3. [69380-4](https://loinc.org/69380-4/) t(9;22)(q34.1;q11)(ABL1,BCR) b2a2+b3a2 fusion transcript/control transcript (International Scale) [# Ratio] in Blood or Tissue by Molecular genetics method
 
@@ -121,7 +121,7 @@ This is the core stage where the targeted substance (analyte) is actually measur
 - Analysis: The processed sample is placed into an automated analyzer. Depending on the analyte, the machine uses techniques like mass spectrometry, chromatography, or colorimetric spectroscopy to quantify or detect the substance.
 - Validation: The instrument produces raw data which is processed and mathematically converted into a meaningful concentration.
 
-Output: [Laboratory Analyte Result](LaboratoryAnalyteResult.html)
+Output: [Laboratory Analyte Result](StructureDefinition-LaboratoryAnalyteResult.html)
 
 ### Post-Analytical Phase (Interpretation & Reporting)
 
@@ -147,7 +147,7 @@ brought onto the same pattern.
 
 ### Result Detail
 
-See [Laboratory Analyte Result - Data Mapping](LaboratoryAnalyteResult.html#data-mapping)
+See [Laboratory Analyte Result - Data Mapping](StructureDefinition-LaboratoryAnalyteResult.html#data-mapping)
 for the full field mapping (openEHR / HL7 v2 / LOINC-SNOMED / FHIR / iGene) this use
 case populates. These entries are expressed in `Observation.component`, structured as
 the [BCR-ABL Monitoring Result Panel](Questionnaire-BCRABLResultPanel.html)

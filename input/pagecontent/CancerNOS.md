@@ -22,7 +22,7 @@ use cases.
 2. [Getting It Right First Time (GIRFT) Best Practice Timed Diagnostic Cancer pathways](https://gettingitrightfirsttime.co.uk/wp-content/uploads/2024/03/BestPracticeTimedDiagnosticCancerPathwayssummary-guide-March-24-V3.pdf)
 3. [macmillan.org.uk - Genomic Tests on the bowel cancer cells](https://www.macmillan.org.uk/cancer-information-and-support/bowel-cancer/tests-on-the-bowel-cancer-cells)
 4. [NICE DG27 Molecular testing strategies for Lynch syndrome in people with colorectal cancer](https://www.nice.org.uk/guidance/dg27)
-5. [Inherited MMR deficiency (Lynch syndrome) - R210](DiagnosticReport.html#inherited-mmr-deficiency-lynch-syndrome---r210)
+5. [Inherited MMR deficiency (Lynch syndrome) - R210](StructureDefinition-DiagnosticReport.html#inherited-mmr-deficiency-lynch-syndrome---r210)
 6. [ctDNA NHS England Unified Genomic Record (UGR)](ctDNAUGR.html) - the source of the After Treatment ctDNA monitoring pathway below
 
 ## Clinical Pathway Overview
@@ -172,7 +172,7 @@ group of shared care record systems is associated with the IHE XDS, MHD and
 MHDS profiles (see [Health Data API (EURDICE)](HIE.html)).
 
 This elaboration also relates to [Inherited MMR deficiency (Lynch syndrome) -
-R210](DiagnosticReport.html#inherited-mmr-deficiency-lynch-syndrome---r210), a
+R210](StructureDefinition-DiagnosticReport.html#inherited-mmr-deficiency-lynch-syndrome---r210), a
 genomic test that can be requested on this pathway - see that section for the
 full set of Genomics, Patient Care and Genetic Counseling examples (Diagnostic
 Implication, Condition, FamilyMemberHistory, etc.) built around it.
@@ -231,7 +231,7 @@ shared system links the two services' records.
 </div>
 
 This is already the scenario modelled by the [Inherited MMR deficiency (Lynch
-syndrome) - R210](DiagnosticReport.html#inherited-mmr-deficiency-lynch-syndrome---r210)
+syndrome) - R210](StructureDefinition-DiagnosticReport.html#inherited-mmr-deficiency-lynch-syndrome---r210)
 worked example: [Patient LIVERPOOL](Patient-Patient-Liverpool.html) is
 diagnosed with Lynch syndrome from a [genomic
 study](Procedure-f0036554-cd1a-463c-ac8a-d891ca409af9.html), a [diagnostic
@@ -400,7 +400,7 @@ itself a future integration - see [ctDNA NHS England Unified Genomic Record
 
 ## Data Models
 
-- [Inherited MMR deficiency (Lynch syndrome) - R210](DiagnosticReport.html#inherited-mmr-deficiency-lynch-syndrome---r210) - Genomics, Patient Care and Genetic Counseling examples (Diagnostic Implication, Condition, FamilyMemberHistory)
+- [Inherited MMR deficiency (Lynch syndrome) - R210](StructureDefinition-DiagnosticReport.html#inherited-mmr-deficiency-lynch-syndrome---r210) - Genomics, Patient Care and Genetic Counseling examples (Diagnostic Implication, Condition, FamilyMemberHistory)
 
 ## Examples
 

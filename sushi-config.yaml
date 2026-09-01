@@ -121,12 +121,6 @@ pages:
   data-intro.md:
     title: Overview - Data Contracts
     generation: markdown
-  DiagnosticReport.md:
-    title: DiagnosticReport Introduction
-    generation: markdown
-  LaboratoryAnalyteResult.md:
-    title: Laboratory Analyte Result Introduction
-    generation: markdown
   BCRABLMonitoring.md:
     title: "Use Case: BCR-ABL Monitoring"
     generation: markdown
@@ -436,8 +430,8 @@ menu:
   ##  Overview - Data Contracts: data-intro.html
     Genomic Test Order: Questionnaire-GenomicTestOrder.html
    ## Genomic Test Report (Composition): StructureDefinition-Composition-GenomicReport.html
-    Genomic Test Report (DiagnosticReport): DiagnosticReport.html
-    Laboratory Analyte Result: LaboratoryAnalyteResult.html
+    Genomic Test Report (DiagnosticReport): StructureDefinition-DiagnosticReport.html
+    Laboratory Analyte Result: StructureDefinition-LaboratoryAnalyteResult.html
     Observations: StructureDefinition-Observation.html
   Artefacts (Volume 4):
     HL7 FHIR R4: artifacts.html
