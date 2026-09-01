@@ -6,7 +6,7 @@ Description: """
 **Ask At Order Entry Questions** used alongside the [common core order
 form](Questionnaire-GenomicTestOrder.html) for Histocompatibility and Immunogenetics
 orders (SNOMED CT `909871000000100`) - see
-[Order Entry Questions](ServiceRequest.html#order-entry-questions) and
+[Order Entry Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions) and
 [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html#ask-at-order-entry-questions).
 
 Extracted from the `NTE` segments (each carrying HL7 v2 Table 0105-style comment type

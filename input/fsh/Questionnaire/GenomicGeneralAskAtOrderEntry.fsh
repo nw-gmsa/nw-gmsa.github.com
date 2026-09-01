@@ -5,7 +5,7 @@ Description: """
 The default **Ask At Order Entry Questions** used alongside the [common core order
 form](Questionnaire-GenomicTestOrder.html) for order/test types that do not have their
 own dedicated Ask At Order Entry Questionnaire - see
-[Order Entry Questions](ServiceRequest.html#order-entry-questions). These questions
+[Order Entry Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). These questions
 were originally part of [GenomicTestOrder](Questionnaire-GenomicTestOrder.html) and
 have been extracted here so the core form stays generic to every order/test type.
 """
