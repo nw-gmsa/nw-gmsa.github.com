@@ -172,6 +172,7 @@ sequenceDiagram
 
 1. It has not yet been decided, from a business process perspective, whether HODS will be replaced as the order comms system. It is desired that orders originating from Meditech are reinstated.
 2. The full narrative report will be in PDF format (this was not present in the original process), the provisional UK SNOMED CT of `909871000000100 Histocompatibility and immunogenetics` will be used (this is from NHS Scotland standards).	
+3. NW Genomics would prefer the order to use `OML_O21` rather than `ORM_O01`, to future-proof the exchange - specifically so it can carry an `SPM` (Specimen) segment. See [Specimen - Domain Archetype](StructureDefinition-Specimen.html#domain-archetype) for the specimen fields this would carry; the main fields needed here are Specimen ID and Specimen Type.
 
 ## Data Models
 
