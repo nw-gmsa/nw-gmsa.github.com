@@ -51,9 +51,9 @@ flowchart LR
 | IHE Actor                                          | Role                                                                                              |
 |---------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
 | [Order Placer](ActorDefinition-OrderPlacer.html)         | Manchester Foundation Trust (MFT) - NHS Trust, direct HL7 (EPIC and HODS)                              |
-| [Order Placer](ActorDefinition-OrderPlacer.html)         | Alder Hey - NHS Trust, direct HL7                                                                       |
-| [Order Placer](ActorDefinition-OrderPlacer.html)         | Liverpool Women's - NHS Trust, direct HL7                                                               |
-| [Order Placer](ActorDefinition-OrderPlacer.html)         | Clatterbridge - NHS Trust, direct HL7 (Immunology test requests + Genomic and Immunology reports)       |
+| [Order Placer](ActorDefinition-OrderPlacer.html)         | Alder Hey - NHS Trust, direct HL7 (EPR: Meditech)                                                       |
+| [Order Placer](ActorDefinition-OrderPlacer.html)         | Liverpool Women's - NHS Trust, direct HL7 (EPR: Meditech)                                               |
+| [Order Placer](ActorDefinition-OrderPlacer.html)         | Clatterbridge - NHS Trust, direct HL7 (EPR: Meditech) (Immunology test requests + Genomic and Immunology reports) |
 | [Intermediary](ActorDefinition-Intermediary.html)        | Regional Integration Engine (RIE) - see [Regional Integration Engine (RIE)](overview.html) for its own use case detail |
 | [Order Filler](ActorDefinition-OrderFiller.html)         | LIMS iGene - internal LIMS, master LIMS                                                                 |
 {:.grid}
@@ -81,13 +81,13 @@ Order Process](overview.html#order-process) for what happens from here
 onwards. How each Trust converts that local `ORM_O01` into the NW Standard
 before sending it to the RIE differs:
 
-- **Alder Hey** and **Liverpool Women's** - the TIE sends the order to a Docker service (built using Apache Camel and HAPI FHIR) which converts the local `ORM_O01` into a FHIR Message O21 (NW Standard).
+- **Alder Hey** and **Liverpool Women's** - the EPR is Meditech; the TIE sends the order to a Docker service (built using Apache Camel and HAPI FHIR) which converts the local `ORM_O01` into a FHIR Message O21 (NW Standard).
 - **Manchester Foundation Trust (MFT)** - the conversion from local `ORM_O01` to the NW HL7 Standard happens within the MFT TIE itself.
 
 ```mermaid
 flowchart LR
     subgraph AH["Alder Hey / Liverpool Women's"]
-        EPR1[EPR] --> TIE1[TIE] --> Conv["Docker service<br/>(Apache Camel + HAPI FHIR)"]
+        EPR1["EPR (Meditech)"] --> TIE1[TIE] --> Conv["Docker service<br/>(Apache Camel + HAPI FHIR)"]
     end
     subgraph MFT["Manchester Foundation Trust (MFT)"]
         EPR2["EPR (EPIC, HODS)"] --> TIE2["TIE<br/>(converts internally)"]
@@ -102,7 +102,8 @@ Reports flow back from the RIE to each Trust as `ORU_R01`, NW Standard - see
 [Regional Integration Engine (RIE) - Report Process](overview.html#report-process)
 for the RIE-side detail (LIMS conversion, PDS/ODT validation and enrichment,
 ODS-code routing). The diagram below shows the four Trusts covered by this use
-case alongside the RIE and its internal LIMS.
+case alongside the RIE and its internal LIMS - for each Trust the report
+flows from the RIE to the Trust's TIE and on to the Trust's EPR.
 
 ```mermaid
 flowchart LR
@@ -115,24 +116,24 @@ flowchart LR
         T[Message Distribution and Transform to<br/>standardised HL7]
     end
 
-    subgraph Trusts["NHS Trusts - direct HL7"]
-        TR1["Manchester Foundation Trust (MFT)<br/>EPIC and HODS"]
-        TR2[Alder Hey]
-        TR3[Liverpool Women's]
-        TR4[Clatterbridge<br/>Immunology test requests +<br/>Genomic and Immunology reports]
+    subgraph TR1G["Manchester Foundation Trust (MFT)"]
+        TIE1[TIE] --> EPR1["EPR (EPIC and HODS)"]
+    end
+    subgraph TR2G["Alder Hey"]
+        TIE2[TIE] --> EPR2["EPR (Meditech)"]
+    end
+    subgraph TR3G["Liverpool Women's"]
+        TIE3[TIE] --> EPR3["EPR (Meditech)"]
+    end
+    subgraph TR4G["Clatterbridge<br/>Immunology test requests +<br/>Genomic and Immunology reports"]
+        TIE4[TIE] --> EPR4["EPR (Meditech)"]
     end
 
     L1 -- Reports V2 --> RIE
-    RIE -- "NW Diagnostic Core Standard reports (ORU_R01)<br/>Genomics and Haemato-Oncology" --> TR1
-    RIE -- "NW Diagnostic Core Standard reports (ORU_R01) Genomics" --> TR2
-    RIE -- "NW Diagnostic Core Standard reports (ORU_R01) Genomics" --> TR3
-    RIE -- "NW Diagnostic Core Standard reports (ORU_R01)<br/>Genomics and Immunology" --> TR4
-
-    TR1 -- "NW Diagnostic Core Standard Orders Genomics (V2 OML_O21 or FHIR O21)" --> RIE
-    TR2 -- "NW Diagnostic Core Standard Orders Genomics (V2 OML_O21 or FHIR O21)" --> RIE
-    TR3 -- "NW Diagnostic Core Standard Orders Genomics (V2 OML_O21 or FHIR O21)" --> RIE
-    TR4 -- Immunology test requests --> RIE
-    RIE -- Orders V2 --> L1
+    RIE -- "NW Diagnostic Core Standard reports (ORU_R01)<br/>Genomics and Haemato-Oncology" --> TIE1
+    RIE -- "NW Diagnostic Core Standard reports (ORU_R01) Genomics" --> TIE2
+    RIE -- "NW Diagnostic Core Standard reports (ORU_R01) Genomics" --> TIE3
+    RIE -- "NW Diagnostic Core Standard reports (ORU_R01)<br/>Genomics and Immunology" --> TIE4
 ```
 
 ## Future Process
