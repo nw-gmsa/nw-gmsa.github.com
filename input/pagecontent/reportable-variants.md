@@ -158,25 +158,34 @@ profile, and the iGene field it rolls up into. Only elements genuinely populated
 at least one current example are modelled - see [Result Panel: Elements Not
 Included](#result-panel-elements-not-included) below for the rest.
 
-| LRI Row | LOINC                                     | HL7 v2 OBX (Type, R/O/C, Card.) | FHIR Variant Component | iGene Field                        | Used By                                                                | Example                          |
-|---------|--------------------------------------------|----------------------------------|--------------------------|--------------------------------------|--------------------------------------------------------------------------|-----------------------------------|
-| B.3     | 48018-6 Gene studied [ID]                  | CWE, C, [0..1]                    | `gene-studied` *(this IG's own addition)* | Description (SEQV/ICNV), Gene(s) (LOH) | NTHL1, CFTR, EGFR-ctDNA, ctDNA Bundle (small variant, intragenic CNV)     | `BRCA1` (ctDNA Bundle small variant) |
-| B.4     | 51958-7 Transcript reference sequence [ID] | CWE, C, [0..1]                    | `representative-transcript-ref-seq` | Description (SEQV/ICNV)              | NTHL1, CFTR, ctDNA Bundle (small variant)                                 | `NM_007294.3`                     |
-| B.5     | 48004-6 DNA change (c.HGVS)                | CWE, C, [0..1]                    | `representative-coding-hgvs` | Description (SEQV/ICNV)              | EGFR-ctDNA, BRCA1, ctDNA Bundle (small variant)                           | `c.68_69del`                      |
-| B.6     | 48005-3 Amino acid change (pHGVS)          | CWE, C, [0..1]                    | `representative-protein-hgvs` | Description (SEQV only)              | ctDNA Bundle (small variant)                                              | `p.(Glu23ValfsTer17)`             |
-| B.7     | 48019-4 DNA change [Type]                  | CWE, O, [0..1]                    | `coding-change-type`     | *(not discrete - within Description/Genomic_coordinates)* | NTHL1, CFTR, EGFR-ctDNA, ctDNA Bundle (all four)          | `deletion`                        |
-| B.9     | 48013-7 Genomic reference sequence [ID]    | CWE, C, [0..1]                    | `genomic-ref-seq`        | Genomic_coordinates (all)             | NTHL1, ctDNA Bundle (all four)                                            | `NC_000017.10`                    |
-| B.10    | 81290-9 Genomic DNA change (gHGVS)         | CWE, C, [0..1]                    | `genomic-hgvs`           | Genomic_coordinates (all)             | ctDNA Bundle (all four)                                                   | `g.41276047_41276048del`          |
-| B.11    | 69547-8 Genomic ref allele [ID]            | ST, C, [0..1]                     | `ref-allele`             | *(not discrete)*                      | NTHL1, CFTR, ctDNA Bundle (all four)                                      | `TCT`                             |
-| B.12    | 81254-5 Genomic allele start-end           | NR, C, [0..1]                     | `exact-start-end`        | *(not discrete)*                      | ctDNA Bundle (small variant)                                              | `41276046` (low bound only)       |
-| B.13    | 69551-0 Genomic alt allele [ID]            | ST, C, [0..1]                     | `alt-allele`             | *(not discrete)*                      | ctDNA Bundle (intragenic CNV, multi-gene CNV, structural variant)         | `<DEL>` (symbolic ALT)            |
-| B.17    | 48001-2 Cytogenetic (chromosome) location  | CWE, O, [0..1]                    | *(open-slice - see note below; not the profile's Cytogenomic Nomenclature slice)* | Description (MCNV), Genomic_coordinates (others) | ctDNA Bundle (multi-gene CNV) | `Xq22.1-q28`                      |
-| B.18    | 48002-0 Genomic source class [Type]        | CNE, R, [0..*]                    | `genomic-source-class`   | *(not discrete)*                      | NTHL1, CFTR, EGFR-ctDNA, ctDNA Bundle (small variant, intragenic CNV, multi-gene CNV) | `Germline`         |
-| B.20    | 53037-8 Genetic variation clinical significance [Imp] | CNE, O, [0..1]        | *(not a named slice - open-slice, matches every example)* | Classification (all)                  | ctDNA Bundle (all four)                                                   | `Pathogenic`                      |
-| B.23    | 53034-5 Allelic state                      | CNE, C, [0..1]                    | `allelic-state`          | State/Zygosity/Copy-number state (all except LOH) | NTHL1, CFTR, BRCA1, ctDNA Bundle (small variant)              | `Heterozygous`                    |
-| B.24    | 81258-6 Allelic Frequency [NFr]            | NM, C, [0..1]                     | `sample-allelic-frequency` | Level/VAF % (all except LOH)         | EGFR-ctDNA, ctDNA Bundle (all four)                                       | `0.33` (fraction) / `42` (EGFR-ctDNA, %) |
-| B.28 *(Table 5-3)* | 82155-3 Genomic structural variant copy number | NM, O, [0..1], sub-ID 2a.1 | `copy-number`      | *(not discrete)*                      | ctDNA Bundle (intragenic CNV, multi-gene CNV)                             | `1`                                |
-| B.32 *(Table 5-3)* | 81302-2 Structural variant inner start and end | NR, O, [0..1], sub-ID 2a.1 | `inner-start-end`  | *(not discrete)*                      | ctDNA Bundle (intragenic CNV, multi-gene CNV, structural variant)         | `48797221-48802366` (intragenic CNV) |
+All example values below are taken from a single variant - the small-variant
+Observation (`ctdna9737383222-seqv1`, a `BRCA1` deletion) in
+[Bundle-ctdna9737383222-testresults](Bundle-ctdna9737383222-testresults.html) - so
+they show one coherent, real result rather than a patchwork from different examples.
+Rows marked N/A are structural/CNV-specific and don't apply to this simple variant;
+see the [mapping table's own examples](Bundle-ctdna9737383222-testresults.html) for
+the intragenic-CNV, multi-gene-CNV and structural-variant Observations in the same
+Bundle if a worked CNV/SV example is needed.
+
+| LRI Row | LOINC                                     | HL7 v2 OBX (Type, R/O/C, Card.) | FHIR Variant Component | iGene Field                        | Example                          |
+|---------|--------------------------------------------|----------------------------------|--------------------------|--------------------------------------|-----------------------------------|
+| B.3     | 48018-6 Gene studied [ID]                  | CWE, C, [0..1]                    | `gene-studied` *(this IG's own addition)* | Description (SEQV/ICNV), Gene(s) (LOH) | `BRCA1`                    |
+| B.4     | 51958-7 Transcript reference sequence [ID] | CWE, C, [0..1]                    | `representative-transcript-ref-seq` | Description (SEQV/ICNV)              | `NM_007294.3`                     |
+| B.5     | 48004-6 DNA change (c.HGVS)                | CWE, C, [0..1]                    | `representative-coding-hgvs` | Description (SEQV/ICNV)              | `c.68_69del`                      |
+| B.6     | 48005-3 Amino acid change (pHGVS)          | CWE, C, [0..1]                    | `representative-protein-hgvs` | Description (SEQV only)              | `p.(Glu23ValfsTer17)`             |
+| B.7     | 48019-4 DNA change [Type]                  | CWE, O, [0..1]                    | `coding-change-type`     | *(not discrete - within Description/Genomic_coordinates)* | `deletion`                        |
+| B.9     | 48013-7 Genomic reference sequence [ID]    | CWE, C, [0..1]                    | `genomic-ref-seq`        | Genomic_coordinates (all)             | `NC_000017.10`                    |
+| B.10    | 81290-9 Genomic DNA change (gHGVS)         | CWE, C, [0..1]                    | `genomic-hgvs`           | Genomic_coordinates (all)             | `g.41276047_41276048del`          |
+| B.11    | 69547-8 Genomic ref allele [ID]            | ST, C, [0..1]                     | `ref-allele`             | *(not discrete)*                      | `TCT`                             |
+| B.12    | 81254-5 Genomic allele start-end           | NR, C, [0..1]                     | `exact-start-end`        | *(not discrete)*                      | `41276046` (low bound only)       |
+| B.13    | 69551-0 Genomic alt allele [ID]            | ST, C, [0..1]                     | `alt-allele`             | *(not discrete)*                      | `T`                                |
+| B.17    | 48001-2 Cytogenetic (chromosome) location  | CWE, O, [0..1]                    | *(open-slice - see note below; not the profile's Cytogenomic Nomenclature slice)* | Description (MCNV), Genomic_coordinates (others) | N/A - CNV-specific |
+| B.18    | 48002-0 Genomic source class [Type]        | CNE, R, [0..*]                    | `genomic-source-class`   | *(not discrete)*                      | `Germline`                        |
+| B.20    | 53037-8 Genetic variation clinical significance [Imp] | CNE, O, [0..1]        | *(not a named slice - open-slice, matches every example)* | Classification (all)                  | `Pathogenic`                      |
+| B.23    | 53034-5 Allelic state                      | CNE, C, [0..1]                    | `allelic-state`          | State/Zygosity/Copy-number state (all except LOH) | `Heterozygous`             |
+| B.24    | 81258-6 Allelic Frequency [NFr]            | NM, C, [0..1]                     | `sample-allelic-frequency` | Level/VAF % (all except LOH)         | `0.33`                             |
+| B.28 *(Table 5-3)* | 82155-3 Genomic structural variant copy number | NM, O, [0..1], sub-ID 2a.1 | `copy-number`      | *(not discrete)*                      | N/A - CNV-specific                 |
+| B.32 *(Table 5-3)* | 81302-2 Structural variant inner start and end | NR, O, [0..1], sub-ID 2a.1 | `inner-start-end`  | *(not discrete)*                      | N/A - CNV/SV-specific              |
 {:.grid}
 
 Three gaps are not yet resolved:
