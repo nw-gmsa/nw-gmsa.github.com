@@ -233,6 +233,46 @@ originally received at the GLH (blood/tissue, before extraction); `dispatched_sa
 describes the extracted DNA sent onward. The worked examples below carry both as
 identifiers/values on a single `Specimen` resource rather than two linked resources.
 
+#### Outstanding Issues
+
+`dWGSSubOrder` declares `derivedFrom` [Genomic Test
+Order](Questionnaire-GenomicTestOrder.html) with derivation type `extends`, but
+checking it against the base Questionnaire raises some open questions about
+whether it is a clean extension:
+
+1. **Duplicated patient identifiers.** `dWGSSubOrder` re-declares its own
+   `Patient` group with `patient_forename`/`patient_surname`/NHS number/date of
+   birth, using the **same** `linkId`s and LOINC codes as the equivalent items
+   already in the base Questionnaire (e.g. `LN/45392-8`, `LN/45394-4`,
+   `LN/89061-6`). If both Questionnaires are completed for the same order (as
+   the base's own description implies - Ask At Order Entry Questionnaires are
+   used "alongside" the core form, not instead of it), this is the same data
+   captured twice. Conversely, `dWGSSubOrder`'s `Patient` group is missing the
+   base's `required` Hospital Number item, and it has no `HealthcareProfessional`
+   group at all, even though the base marks Referring Clinician Name/Specialty/
+   Professional Identifier as `required = true`.
+2. **Two different "Order Group Number" concepts.** The base Questionnaire's
+   `pedigreeNumber` item is labelled "G Number (Pedigree Number) - **Order Group
+   Number**" and maps to `Patient.identifier:PedigreeNumber`. `dWGSSubOrder`'s
+   `referral_id` item is labelled "Original Order Placer **Group Number** (Referral
+   ID)" and maps to `ServiceRequest.requisition` instead. Both use "Order Group
+   Number" in their text, but map to different resources/fields with no stated
+   relationship between them - it isn't clear whether a dWGS order should
+   populate one, both, or whether they are meant to be the same value.
+3. **Test codes don't exist in the base Questionnaire's Test Code lists.**
+   The base Questionnaire's Test Code item only appears via three
+   `enableWhen`-gated branches, each tied to a Test Category answer
+   (`RareAndInheritedDiseasesGeneticTesting`, `HaemoglobinopathyGeneticTesting`,
+   `CancerGeneticTesting` - see [OrderCategory](ValueSet-order-category.html)).
+   There is no Test Category option for Whole Genome Sequencing/dWGS at all, so
+   none of the base's three Test Code branches can ever fire for a dWGS order.
+   `dWGSSubOrder` works around this with its own separate
+   `clinical_indication_test_type_id` item, bound to the much broader
+   [GenomicTestCodes](ValueSet-GenomicTestCodes.html) value set (every code in
+   the Genomic Test Directory plus local NW codes) rather than one of the
+   base's curated lists - so this isn't really an extension of the base's Test
+   Code question, it's a replacement of it with a differently-scoped one.
+
 ## Examples
 
 The dWGS example Bundles cover one referral of each family structure, sent as `LAB-35`
