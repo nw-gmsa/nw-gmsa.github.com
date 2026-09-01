@@ -93,9 +93,18 @@ flowchart LR
     subgraph MFT["Manchester Foundation Trust (MFT)"]
         EPR2["EPR (EPIC, HODS)"] --> TIE2["TIE<br/>(converts internally)"]
     end
-    Conv -- "FHIR Message O21<br/>(NW Standard)" --> RIE[("Regional Integration<br/>Engine (RIE)")]
+    Conv -- "FHIR Message O21<br/>(NW Standard)" --> RIE
     TIE2 -- "NW HL7 Standard<br/>ORM_O01" --> RIE
-    RIE -- "Orders V2" --> L1[LIMS iGene]
+
+    subgraph LIMS["Internal LIMS Systems"]
+        L1[LIMS iGene<br/>HL7 flavour A]
+    end
+
+    subgraph RIE["NW Genomics Regional Integration Engine"]
+        direction TB
+        T[Message Distribution and Transform to<br/>individual LIMS HL7]
+    end
+    RIE -- "Orders V2" --> L1
 ```
 
 <div class="alert alert-info" role="alert">
