@@ -8,6 +8,8 @@ DSS and iGene Integration Overview.
 
 1. [HL7 Genomic Reporting standard](https://build.fhir.org/ig/HL7/genomics-reporting/)
 2. [StarLIMS / iGene Integration](starLIMS.html) - the work order metadata export pattern this mirrors
+3. [HL7 Lab Results Interface (LRI), Release 1 from May 2017](https://confluence.hl7.org/download/attachments/25559919/2018%2004%2003%20-%20V2%20LRI%20-%20Ch.%205%20CG%20and%20Code%20System%20Tables.pdf?api=v2) - source for the NTHL1 and CFTR variant examples the [Result Panel](#result-panel) below is partly built from
+4. `iGene Custom Fields Master Dataset - Updated 13-Aug-26.xlsx`, "Variant Level Data" sheet (internal iGene specification document, not publicly linked) - the original iGene field spec and LOINC crosswalk the [Result Panel](#result-panel) below is otherwise built from
 
 ## Clinical Pathway Overview
 
@@ -138,6 +140,89 @@ sequenceDiagram
 - [ServiceRequest (Work Order)](StructureDefinition-ServiceRequest.html) - the DLIMS work order exported to the FHIR Repository
 - [DiagnosticReport](StructureDefinition-DiagnosticReport.html) - the FHIR Genomics Report Omics DSS produces
 - [Variant (Reportable Variant)](StructureDefinition-Variant.html) - the discrete result Observations, following the [HL7 Genomics Reporting IG](https://build.fhir.org/ig/HL7/genomics-reporting/)
+
+### Result Panel
+
+<div class="alert alert-info" role="alert">
+<b>FHIR Questionnaire (Result Panel):</b> <a href="Questionnaire-ReportableVariantResultPanel.html">Reportable Variant Result Panel</a>
+</div>
+
+iGene models five variant types, each as a fixed, repeating set of custom fields -
+`SEQV1`-`SEQV10` (sequence variants), `ICNV1`-`ICNV3` (intragenic copy number
+variants), `MCNV1`-`MCNV3` (multigenic copy number variants), `SV1`-`SV3` (structural
+variants) and `LOH1`-`LOH2` (loss of heterozygosity) - per the "Variant Level Data"
+sheet of iGene's own custom field spec (see [References](#references)). The table
+below models each variant type's field set once (the `N` suffix is iGene's own
+repetition scheme, not a distinct concept the panel needs to repeat), cross-checked
+against this IG's current `Variant` examples: [Variant -
+NTHL1](Observation-8385c2fd-313d-4fd5-b98e-d5ea4bae6f99.html) and [Variant -
+CFTR](Observation-bca547c1-78a5-41be-8cfc-03c05805ac85.html) (both based on [HL7
+LRI](#references) examples), `Observation-EGFR-Variant-ctDNA`, `Observation-BRCA1`,
+and the four `Variant` Observations (a small variant, an intragenic CNV, a multi-gene
+CNV and a structural variant) in
+[Bundle-ctdna9737383222-testresults](Bundle-ctdna9737383222-testresults.html).
+
+| iGene Field           | Sequence Variant                          | Intragenic CNV                            | Multigenic CNV                    | Structural Variant                        | Loss of Heterozygosity |
+|------------------------|---------------------------------------------|-----------------------------------------------|---------------------------------------|-----------------------------------------------|----------------------------|
+| **Description**       | 51958-7 + 48018-6 + 48004-6 + 48005-3 (one free-text field, all four components) | 51958-7 + 48018-6 + 48004-6 (no amino acid change) | 48001-2 only (chromosome band, no gene/transcript) | 81262-8 "Complex variant HGVS name" *(gap - see below)* | 48018-6 (Gene(s)) |
+| **State**              | 53034-5 Allelic State (Zygosity)             | 53034-5 Allelic State (Copy-number state)     | 53034-5 Allelic State (Copy-number state) | 53034-5 Allelic State (Copy-number state)     | No LOINC (LOH Y/N)     |
+| **Inheritance**        | No LOINC - ctDNA Bundle uses 94186-4 instead | No LOINC - ctDNA Bundle uses 94186-4 instead  | No LOINC - ctDNA Bundle uses 94186-4 instead | No LOINC                                       | - (not an iGene field) |
+| **Level (VAF %)**      | 81258-6 Sample Allelic Frequency             | 81258-6 Sample Allelic Frequency               | 81258-6 Sample Allelic Frequency       | 81258-6 Sample Allelic Frequency               | - (not an iGene field) |
+| **Genomic_coordinates**| 48001-2 + 81290-9 (one free-text field)      | 48001-2 + 81290-9 (one free-text field)        | 48001-2 + 81290-9 (one free-text field) | 48001-2 + 81290-9 (one free-text field)        | - (not an iGene field) |
+| **Classification**    | 53037-8 Clinical Significance                | 53037-8 Clinical Significance                  | 53037-8 Clinical Significance          | 53037-8 Clinical Significance                  | - (not an iGene field) |
+| **Evidence**           | No LOINC - free text                         | No LOINC - free text                           | No LOINC - free text                   | No LOINC - free text                           | - (not an iGene field) |
+{:.grid}
+
+Two gaps are not yet resolved:
+
+- **Loss of Heterozygosity** has no current FHIR example at all - its two fields are
+  modelled from the iGene spec alone.
+- **Structural Variant**: iGene expects one `81262-8` "Complex variant HGVS name"
+  field, but the ctDNA Bundle's structural-variant Observation instead spreads the
+  same information across several discrete components (Genomic Reference Sequence
+  `48013-7`, Coordinate System `92822-6`, Genomic Ref/Alt Allele `69547-8`/`69551-0`,
+  DNA Change Type `48019-4`, Genomic DNA Change `81290-9`) - no example yet confirms
+  how these decompose into, or recombine into, `81262-8`.
+
+Beyond these coarse iGene fields, the underlying FHIR `Variant` Observations also
+carry several more granular components that iGene's own free-text `Description`/
+`Genomic_coordinates` fields summarise rather than exposing individually - Genomic
+Reference Sequence (`48013-7`), Coordinate System (`92822-6`), Genomic Ref/Alt Allele
+(`69547-8`/`69551-0`), DNA Change Type (`48019-4`), Genomic Source Class (`48002-0`),
+Origin of Germline Genetic Variant (`94186-4`), Genomic Allele Start-End (`81254-5`)
+and Structural Variant Inner Start-End (`81302-2`) - these don't need their own
+Result Panel items, since iGene has no discrete field for them, but they remain
+significant to the underlying FHIR data model. See [Result Panel: Elements Not
+Included](#result-panel-elements-not-included) below for the further HL7 Genomics
+Reporting Variant profile elements that neither iGene nor any current example uses at
+all.
+
+### Result Panel: Elements Not Included
+
+The HL7 Genomics Reporting [Variant
+profile](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-variant.html)
+defines further component slices that neither iGene's own field spec nor any current
+example populates - these are deliberately left out of the [Result Panel](#result-panel)
+above, since they aren't needed for the iGene feed today:
+
+| Data Element                                | LOINC / Code               |
+|-----------------------------------------------|-----------------------------|
+| Outer Start-End                               | 81301-4                     |
+| Cytogenomic Nomenclature (ISCN)               | 81291-7                     |
+| Protein Reference Sequence                    | `protein-ref-seq` (local TBD codesystem) |
+| Allelic Read Depth                            | 82121-5                     |
+| Evidential Basis for Variant Inheritance      | 82309-6                     |
+| Variation Code                                | 81252-9                     |
+| Variant Confidence Status                     | `variant-confidence-status` (local TBD codesystem) |
+| Repeat Motif                                  | `repeat-motif` (local TBD codesystem) |
+| Repeat Number                                 | `repeat-number` (local TBD codesystem) |
+| Clinical Conclusion (`conclusion-string`, inherited from [Genomic Observation](StructureDefinition-GenomicObservation.html)) | `conclusion-string` (local TBD codesystem) |
+{:.grid}
+
+If a future DLIMS/Omics DSS feed starts populating any of these (for example, read
+depth or a repeat-expansion result), or iGene's own spec adds a discrete field for
+one, the corresponding item should move up into the [Result Panel](#result-panel)
+above, following the same "only what is currently used" rule.
 
 ## Examples
 
