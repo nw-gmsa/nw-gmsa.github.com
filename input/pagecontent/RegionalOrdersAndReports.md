@@ -79,7 +79,8 @@ Each Trust exports its order from its EPR to its own Trust Integration Engine
 (TIE) as a local HL7 v2 `ORM_O01` - see [Regional Integration Engine (RIE) -
 Order Process](overview.html#order-process) for what happens from here
 onwards. How each Trust converts that local `ORM_O01` into the NW Standard
-before sending it to the RIE differs:
+before sending it to the RIE differs. The RIE then forwards the order to the
+destination LIMS (iGene) as a V2 order:
 
 - **Alder Hey** and **Liverpool Women's** - the EPR is Meditech; the TIE sends the order to a Docker service (built using Apache Camel and HAPI FHIR) which converts the local `ORM_O01` into a FHIR Message O21 (NW Standard).
 - **Manchester Foundation Trust (MFT)** - the conversion from local `ORM_O01` to the NW HL7 Standard happens within the MFT TIE itself.
@@ -94,6 +95,7 @@ flowchart LR
     end
     Conv -- "FHIR Message O21<br/>(NW Standard)" --> RIE[("Regional Integration<br/>Engine (RIE)")]
     TIE2 -- "NW HL7 Standard<br/>ORM_O01" --> RIE
+    RIE -- "Orders V2" --> L1[LIMS iGene]
 ```
 
 ### Report Process and Technical Diagram
