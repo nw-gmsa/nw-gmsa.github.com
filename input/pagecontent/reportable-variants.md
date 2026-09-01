@@ -158,25 +158,25 @@ profile, and the iGene field it rolls up into. Only elements genuinely populated
 at least one current example are modelled - see [Result Panel: Elements Not
 Included](#result-panel-elements-not-included) below for the rest.
 
-| LRI Row | LOINC                                     | HL7 v2 OBX (Type, R/O/C, Card.) | FHIR Variant Component | iGene Field                        | Used By                                                                |
-|---------|--------------------------------------------|----------------------------------|--------------------------|--------------------------------------|--------------------------------------------------------------------------|
-| B.3     | 48018-6 Gene studied [ID]                  | CWE, C, [0..1]                    | `gene-studied` *(this IG's own addition)* | Description (SEQV/ICNV), Gene(s) (LOH) | NTHL1, CFTR, EGFR-ctDNA, ctDNA Bundle (small variant, intragenic CNV)     |
-| B.4     | 51958-7 Transcript reference sequence [ID] | CWE, C, [0..1]                    | `representative-transcript-ref-seq` | Description (SEQV/ICNV)              | NTHL1, CFTR, ctDNA Bundle (small variant)                                 |
-| B.5     | 48004-6 DNA change (c.HGVS)                | CWE, C, [0..1]                    | `representative-coding-hgvs` | Description (SEQV/ICNV)              | EGFR-ctDNA, BRCA1, ctDNA Bundle (small variant)                           |
-| B.6     | 48005-3 Amino acid change (pHGVS)          | CWE, C, [0..1]                    | `representative-protein-hgvs` | Description (SEQV only)              | ctDNA Bundle (small variant)                                              |
-| B.7     | 48019-4 DNA change [Type]                  | CWE, O, [0..1]                    | `coding-change-type`     | *(not discrete - within Description/Genomic_coordinates)* | NTHL1, CFTR, EGFR-ctDNA, ctDNA Bundle (all four)          |
-| B.9     | 48013-7 Genomic reference sequence [ID]    | CWE, C, [0..1]                    | `genomic-ref-seq`        | Genomic_coordinates (all)             | NTHL1, ctDNA Bundle (all four)                                            |
-| B.10    | 81290-9 Genomic DNA change (gHGVS)         | CWE, C, [0..1]                    | `genomic-hgvs`           | Genomic_coordinates (all)             | ctDNA Bundle (all four)                                                   |
-| B.11    | 69547-8 Genomic ref allele [ID]            | ST, C, [0..1]                     | `ref-allele`             | *(not discrete)*                      | NTHL1, CFTR, ctDNA Bundle (all four)                                      |
-| B.12    | 81254-5 Genomic allele start-end           | NR, C, [0..1]                     | `exact-start-end`        | *(not discrete)*                      | ctDNA Bundle (small variant)                                              |
-| B.13    | 69551-0 Genomic alt allele [ID]            | ST, C, [0..1]                     | `alt-allele`             | *(not discrete)*                      | ctDNA Bundle (intragenic CNV, multi-gene CNV, structural variant)         |
-| B.17    | 48001-2 Cytogenetic (chromosome) location  | CWE, O, [0..1]                    | *(open-slice - see note below; not the profile's Cytogenomic Nomenclature slice)* | Description (MCNV), Genomic_coordinates (others) | ctDNA Bundle (multi-gene CNV) |
-| B.18    | 48002-0 Genomic source class [Type]        | CNE, R, [0..*]                    | `genomic-source-class`   | *(not discrete)*                      | NTHL1, CFTR, EGFR-ctDNA, ctDNA Bundle (small variant, intragenic CNV, multi-gene CNV) |
-| B.20    | 53037-8 Genetic variation clinical significance [Imp] | CNE, O, [0..1]        | *(not a named slice - open-slice, matches every example)* | Classification (all)                  | ctDNA Bundle (all four)                                                   |
-| B.23    | 53034-5 Allelic state                      | CNE, C, [0..1]                    | `allelic-state`          | State/Zygosity/Copy-number state (all except LOH) | NTHL1, CFTR, BRCA1, ctDNA Bundle (small variant)              |
-| B.24    | 81258-6 Allelic Frequency [NFr]            | NM, C, [0..1]                     | `sample-allelic-frequency` | Level/VAF % (all except LOH)         | EGFR-ctDNA, ctDNA Bundle (all four)                                       |
-| B.28 *(Table 5-3)* | 82155-3 Genomic structural variant copy number | NM, O, [0..1], sub-ID 2a.1 | `copy-number`      | *(not discrete)*                      | ctDNA Bundle (intragenic CNV, multi-gene CNV)                             |
-| B.32 *(Table 5-3)* | 81302-2 Structural variant inner start and end | NR, O, [0..1], sub-ID 2a.1 | `inner-start-end`  | *(not discrete)*                      | ctDNA Bundle (intragenic CNV, multi-gene CNV, structural variant)         |
+| LRI Row | LOINC                                     | HL7 v2 OBX (Type, R/O/C, Card.) | FHIR Variant Component | iGene Field                        | Used By                                                                | Example                          |
+|---------|--------------------------------------------|----------------------------------|--------------------------|--------------------------------------|--------------------------------------------------------------------------|-----------------------------------|
+| B.3     | 48018-6 Gene studied [ID]                  | CWE, C, [0..1]                    | `gene-studied` *(this IG's own addition)* | Description (SEQV/ICNV), Gene(s) (LOH) | NTHL1, CFTR, EGFR-ctDNA, ctDNA Bundle (small variant, intragenic CNV)     | `BRCA1` (ctDNA Bundle small variant) |
+| B.4     | 51958-7 Transcript reference sequence [ID] | CWE, C, [0..1]                    | `representative-transcript-ref-seq` | Description (SEQV/ICNV)              | NTHL1, CFTR, ctDNA Bundle (small variant)                                 | `NM_007294.3`                     |
+| B.5     | 48004-6 DNA change (c.HGVS)                | CWE, C, [0..1]                    | `representative-coding-hgvs` | Description (SEQV/ICNV)              | EGFR-ctDNA, BRCA1, ctDNA Bundle (small variant)                           | `c.68_69del`                      |
+| B.6     | 48005-3 Amino acid change (pHGVS)          | CWE, C, [0..1]                    | `representative-protein-hgvs` | Description (SEQV only)              | ctDNA Bundle (small variant)                                              | `p.(Glu23ValfsTer17)`             |
+| B.7     | 48019-4 DNA change [Type]                  | CWE, O, [0..1]                    | `coding-change-type`     | *(not discrete - within Description/Genomic_coordinates)* | NTHL1, CFTR, EGFR-ctDNA, ctDNA Bundle (all four)          | `deletion`                        |
+| B.9     | 48013-7 Genomic reference sequence [ID]    | CWE, C, [0..1]                    | `genomic-ref-seq`        | Genomic_coordinates (all)             | NTHL1, ctDNA Bundle (all four)                                            | `NC_000017.10`                    |
+| B.10    | 81290-9 Genomic DNA change (gHGVS)         | CWE, C, [0..1]                    | `genomic-hgvs`           | Genomic_coordinates (all)             | ctDNA Bundle (all four)                                                   | `g.41276047_41276048del`          |
+| B.11    | 69547-8 Genomic ref allele [ID]            | ST, C, [0..1]                     | `ref-allele`             | *(not discrete)*                      | NTHL1, CFTR, ctDNA Bundle (all four)                                      | `TCT`                             |
+| B.12    | 81254-5 Genomic allele start-end           | NR, C, [0..1]                     | `exact-start-end`        | *(not discrete)*                      | ctDNA Bundle (small variant)                                              | `41276046` (low bound only)       |
+| B.13    | 69551-0 Genomic alt allele [ID]            | ST, C, [0..1]                     | `alt-allele`             | *(not discrete)*                      | ctDNA Bundle (intragenic CNV, multi-gene CNV, structural variant)         | `<DEL>` (symbolic ALT)            |
+| B.17    | 48001-2 Cytogenetic (chromosome) location  | CWE, O, [0..1]                    | *(open-slice - see note below; not the profile's Cytogenomic Nomenclature slice)* | Description (MCNV), Genomic_coordinates (others) | ctDNA Bundle (multi-gene CNV) | `Xq22.1-q28`                      |
+| B.18    | 48002-0 Genomic source class [Type]        | CNE, R, [0..*]                    | `genomic-source-class`   | *(not discrete)*                      | NTHL1, CFTR, EGFR-ctDNA, ctDNA Bundle (small variant, intragenic CNV, multi-gene CNV) | `Germline`         |
+| B.20    | 53037-8 Genetic variation clinical significance [Imp] | CNE, O, [0..1]        | *(not a named slice - open-slice, matches every example)* | Classification (all)                  | ctDNA Bundle (all four)                                                   | `Pathogenic`                      |
+| B.23    | 53034-5 Allelic state                      | CNE, C, [0..1]                    | `allelic-state`          | State/Zygosity/Copy-number state (all except LOH) | NTHL1, CFTR, BRCA1, ctDNA Bundle (small variant)              | `Heterozygous`                    |
+| B.24    | 81258-6 Allelic Frequency [NFr]            | NM, C, [0..1]                     | `sample-allelic-frequency` | Level/VAF % (all except LOH)         | EGFR-ctDNA, ctDNA Bundle (all four)                                       | `0.33` (fraction) / `42` (EGFR-ctDNA, %) |
+| B.28 *(Table 5-3)* | 82155-3 Genomic structural variant copy number | NM, O, [0..1], sub-ID 2a.1 | `copy-number`      | *(not discrete)*                      | ctDNA Bundle (intragenic CNV, multi-gene CNV)                             | `1`                                |
+| B.32 *(Table 5-3)* | 81302-2 Structural variant inner start and end | NR, O, [0..1], sub-ID 2a.1 | `inner-start-end`  | *(not discrete)*                      | ctDNA Bundle (intragenic CNV, multi-gene CNV, structural variant)         | `48797221-48802366` (intragenic CNV) |
 {:.grid}
 
 Three gaps are not yet resolved:
@@ -244,6 +244,47 @@ If a future DLIMS/Omics DSS feed starts populating any of these (for example, re
 depth or a repeat-expansion result), or iGene's own spec adds a discrete field for
 one, the corresponding item should move up into the [Result Panel](#result-panel)
 above, following the same "only what is currently used" rule.
+
+### Mapping to the iGene CSV
+
+The Result Panel above describes the *discrete variant* shape on the FHIR side - one
+`Observation` per variant, repeated as many times as needed. iGene's own import is
+expected to be a **flat CSV file**, not a repeating FHIR-style structure: iGene's
+"Variant Level Data" spec names each field with a fixed slot prefix (`SEQV1_`...
+`SEQV10_`, `ICNV1_`...`ICNV3_`, `MCNV1_`...`MCNV3_`, `SV1_`...`SV3_`, `LOH1_`,
+`LOH2_`), which reads as one row per report/order with up to 21 variants' worth of
+columns (10 + 3 + 3 + 3 + 2), rather than one row per variant.
+
+Converting the Result Panel's repeating Discrete Variant Panel Observations into that
+flat shape means the RIE (or whatever produces the CSV) must, for each `DiagnosticReport`:
+
+1. **Classify** each Variant Observation by type - Simple Variant vs Structural
+   Variant (LRI's Variant Category, row B.1, not currently populated by any example -
+   see [Result Panel: Elements Not Included](#result-panel-elements-not-included)),
+   further split into iGene's Sequence Variant / Intragenic CNV / Multigenic CNV /
+   Structural Variant / Loss of Heterozygosity buckets. None of the current examples
+   populate a field that makes this classification explicit - it would need to be
+   inferred (for example, from which components are populated, or from Genomic
+   Source Class/DNA Change Type).
+2. **Assign a slot number** within that type, in order (first Sequence Variant found
+   becomes `SEQV1`, second becomes `SEQV2`, and so on).
+3. **Populate that slot's seven flat columns** (`Description`, `State`, `Inheritance`,
+   `Level`, `Genomic_coordinates`, `Classification`, `Evidence` - or just `Description`/
+   `State` for LOH) from the Result Panel items, per the [mapping table](#result-panel)
+   above - for example, `SEQV1_Description` is the concatenation of that variant's
+   Transcript Reference Sequence (B.4), Gene Studied (B.3), DNA Change c.HGVS (B.5)
+   and Amino Acid Change p.HGVS (B.6).
+
+This raises two open questions, neither resolved by any current example:
+
+- **Slot capacity**: iGene has a fixed maximum per type (10 Sequence Variants, 3 of
+  each CNV type, 3 Structural Variants, 2 LOH results). A report with more variants
+  of one type than iGene has slots for cannot be fully represented in the CSV as
+  currently specified.
+- **Slot ordering**: iGene's spec doesn't state what determines slot order (e.g.
+  `SEQV1` vs `SEQV2`) when a report has more than one variant of the same type -
+  candidates include order of detection, clinical significance, or allelic frequency,
+  but none is confirmed.
 
 ## Examples
 
