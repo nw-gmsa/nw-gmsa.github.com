@@ -139,14 +139,15 @@ sequenceDiagram
     participant Histotrac as Histotrac<br/>Order Filler
 
     CM->>CTIE: ORM_O01
+    Note over CTIE,RIE: Data contract: NW Genomics HL7 v2 standard
     CTIE->>RIE: ORM_O01 (NW Genomics HL7 v2 standard - LAB-1)
     RIE->>Histotrac: ORM_O01 (transformed to Histotrac HL7 v2)
     Note over Histotrac: Testing performed
     Histotrac->>RIE: ORU_R01 (Histotrac HL7 v2)
+    Note over CTIE,RIE: Data contract: NW Genomics HL7 v2 standard
     RIE->>CTIE: ORU_R01 (NW Genomics HL7 v2 standard - LAB-3)
     CTIE->>CM: ORU_R01
 
-    Note over CTIE,RIE: Data contract: NW Genomics HL7 v2 standard
     Note over RIE,Histotrac: RIE performs HL7 transformation
 ```
 
