@@ -49,6 +49,10 @@ Usage:  #definition
 * title = "Histocompatibility and Immunogenetics Ask At Order Entry"
 * status = #draft
 * url = "https://fhir.nwgenomics.nhs.uk/Questionnaire/HistocompatibilityAskAtOrderEntry"
+* derivedFrom = "https://fhir.nwgenomics.nhs.uk/Questionnaire/GenomicTestOrder"
+* derivedFrom.extension[+]
+  * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-derivationType"
+  * valueCoding = http://hl7.org/fhir/questionnaire-derivationType#extends
 
 * extension[+]
   * url = "http://hl7.org/fhir/StructureDefinition/artifact-versionAlgorithm"

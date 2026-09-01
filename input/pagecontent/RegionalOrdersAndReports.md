@@ -7,7 +7,7 @@ iGene Orders and Reports: how Alder Hey, Manchester Foundation Trust (MFT) and L
 ## References
 
 1. [Regional Integration Engine (RIE)](overview.html) - the message-processing and routing infrastructure this use case relies on
-2. [ServiceRequest](ServiceRequest.html)
+2. [Genomic Test Order](Questionnaire-GenomicTestOrder.html)
 3. [Ask At Order Entry Questions](Questionnaire-GenomicGeneralAskAtOrderEntry.html)
 4. [LTW - Laboratory Order (LAB-1)](LTW.html#laboratory-order-lab-1) / [Laboratory Report (LAB-3)](LTW.html#laboratory-report-lab-3)
 5. [Diagnostic Core](diagnostic-core.html)

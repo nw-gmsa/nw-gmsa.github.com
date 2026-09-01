@@ -7,7 +7,7 @@ Clatterbridge Chimerism Testing - process overview.
 ## References
 
 1. [HL7 FHIR Genomics Reporting - Histocompatibility and Immunogenetic Reporting](http://hl7.org/fhir/uv/genomics-reporting/histocompatibility.html) (a dependency of this IG)
-2. [ServiceRequest - Order Entry Questions](ServiceRequest.html#order-entry-questions)
+2. [Genomic Test Order - Order Entry Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions)
 3. [HL7 v2 OML_O21](hl7v2.html#oml_o21-laboratory-order)
 4. Original Histotrac `ORM^O01` order (HLA Antibody Screening) - [histotrac-MFT.txt](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/O01/histotrac-MFT.txt)
 
@@ -183,11 +183,11 @@ sequenceDiagram
 </div>
 
 Histocompatibility and Immunogenetics orders use the same [common core order
-form](ServiceRequest.html) as every other order/test type
+form](Questionnaire-GenomicTestOrder.html) as every other order/test type
 ([HL7 v2 OML_O21](hl7v2.html#oml_o21-laboratory-order) /
 [FHIR Message O21](MessageDefinition-laboratory-order.html)), with their own
 **Ask At Order Entry Questionnaire** for the questions specific to this test type - see
-[Order Entry Questions](ServiceRequest.html#order-entry-questions).
+[Order Entry Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions).
 
 These questions were extracted from a live Histotrac `ORM^O01` order for an HLA
 Antibody Screening (Transplant) test: five `NTE` segments, each carrying comment type

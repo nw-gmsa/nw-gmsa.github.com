@@ -1,3 +1,8 @@
+This Questionnaire describes the common requirement for a Genomic Order,
+which is now extended by Ask At Order Entry Questionnaires. Which set of
+these extension questionnaires is used depends on the order/test type
+(`ServiceRequest.code`) - see [Order Entry Questions](#order-entry-questions)
+below.
 
 ## Reference
 
@@ -111,11 +116,7 @@ Treat as mandatory for reflex or subcontracted orders.
 
 ### Order Entry Questions
 
-<div class="alert alert-info" role="alert">
-<b>HL7 FHIR Questionnaire (common core):</b> <a href="Questionnaire-GenomicTestOrder.html" _target="_blank">Genomic Test Order</a> 
-</div>
-
-[Genomic Test Order](Questionnaire-GenomicTestOrder.html) above is the **common core**
+This Genomic Test Order Questionnaire (defined below) is the **common core**
 order form: the Patient, Healthcare Professional, Test Request and Specimen fields
 shared by every order, regardless of test type, mapping onto the standardised
 [HL7 v2 OML_O21](hl7v2.html#oml_o21-laboratory-order) message and its FHIR equivalent,
@@ -123,7 +124,7 @@ the [FHIR Message O21](MessageDefinition-laboratory-order.html).
 
 Ask At Order Entry questions vary by order/test type, so they are **not** part of the
 common core - each order/test type instead uses its own Ask At Order Entry
-Questionnaire alongside it:
+Questionnaire, which `derivedFrom`/extends this common core Questionnaire:
 
 | Order/Test Type                          | Ask At Order Entry Questionnaire                                                                                     |
 |-------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
@@ -139,9 +140,16 @@ Questionnaire alongside it:
 <b>HL7 FHIR Profile:</b> <a href="StructureDefinition-Specimen.html" _target="_blank">Specimen</a> 
 </div>
 
-| Name                      | LOINC   | Value Set / Data Type                                                         | Cardinality | HL7 v2 OML_O21 Message   | HL7 FHIR ServiceRequest |
-|---------------------------|---------|-------------------------------------------------------------------------------|-------------|--------------------------|-------------------------|
-| Specimen ID               | 80398-1 |                                                                               | 0..*        |  | ServiceRequest.specimen | 
+| Name                      | LOINC   | Value Set / Data Type                                                         | Cardinality | HL7 v2 OML_O21 Message   | HL7 FHIR [Specimen](StructureDefinition-Specimen.html) |
+|---------------------------|---------|-------------------------------------------------------------------------------|-------------|--------------------------|--------------------------------------------------------|
+| Specimen ID               | 80398-1 |                                                                               | 0..*        | [SPM](hl7v2.html#spm)-2  | Specimen.identifier[PlacerSpecimenNumber]              |
+| Specimen Type             |         | [Specimen Type](ValueSet-specimen-type.html)                                  | 1..1        | [SPM](hl7v2.html#spm)-4  | Specimen.type                                          |
+| Specimen Source Site      |         | [Specimen Body Site](ValueSet-specimen-bodysite.html)                         | 0..1        | [SPM](hl7v2.html#spm)-8  | Specimen.collection.bodySite                           |
+| Specimen Accession Number | 80398-1 | [Specimen Accession Number](StructureDefinition-SpecimenAccessionNumber.html) | 0..*        | [SPM](hl7v2.html#spm)-30 | Specimen.accessionIdentifier                           |
+| Shipment Tracking Number  | 97209-1 | [Shipment Tracking Number](StructureDefinition-ShipmentTrackingNumber.html)   | 0..*        | [SPM](hl7v2.html#spm)-32 | Specimen.identifier[ShipmentTrackingNumber]            | 
+| Specimen Collection Date  |         |                                                                               | 0..1        | [SPM](hl7v2.html#spm)-17 | Specimen.collection.collectedDateTime                  |
+| Specimen Received Date    |         |                                                                               | 0..1        | [SPM](hl7v2.html#spm)-18 | Specimen.receivedTime                                  |
+{:.grid}
 
 Note: it is likely that source systems will use ORM_01 and not include specimen details. In this case it is suggested that the specimen details are captured as 'Ask at Order Entry Questions' and so provided as OBX segments.
 

@@ -162,7 +162,7 @@ manifest**: NHS England's `RGL to SGL SOP` defines 37 national manifest fields
 (Appendix 3), and a Requesting Genomic Laboratory may add further local-extension
 fields for the Sequencing Genomic Laboratory's benefit - the worked examples on this
 page add 5. Together these are the same "Ask at Order Entry" pattern used by the
-[core Genomic Test Order](ServiceRequest.html#order-entry-questions) form: additional
+[core Genomic Test Order](Questionnaire-GenomicTestOrder.html#order-entry-questions) form: additional
 questions captured at the point of ordering, modelled as an [SDC
 Questionnaire](Questionnaire-dWGSSubOrder.html) with an `item.definition` on each item
 that has a confirmed FHIR mapping, following the same convention as [Genomic Test

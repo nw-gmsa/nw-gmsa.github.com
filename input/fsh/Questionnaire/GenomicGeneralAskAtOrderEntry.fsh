@@ -14,6 +14,10 @@ Usage:  #definition
 * title = "NW Genomic General Ask At Order Questions"
 * status = #draft
 * url = "https://fhir.nwgenomics.nhs.uk/Questionnaire/GenomicGeneralAskAtOrderEntry"
+* derivedFrom = "https://fhir.nwgenomics.nhs.uk/Questionnaire/GenomicTestOrder"
+* derivedFrom.extension[+]
+  * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-derivationType"
+  * valueCoding = http://hl7.org/fhir/questionnaire-derivationType#extends
 
 * extension[+]
   * url = "http://hl7.org/fhir/StructureDefinition/artifact-versionAlgorithm"
