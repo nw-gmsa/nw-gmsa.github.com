@@ -3,47 +3,49 @@ InstanceOf: NWQuestionnaire
 Title: "Reportable Variant Result Panel"
 Description: """
 Result panel for a [Variant (Reportable Variant)](StructureDefinition-Variant.html)
-`Observation`, following the HL7 Genomics Reporting IG's
+`Observation`, structured around the HL7 v2 [Lab Results Interface (LRI)](https://confluence.hl7.org/download/attachments/25559919/2018%2004%2003%20-%20V2%20LRI%20-%20Ch.%205%20CG%20and%20Code%20System%20Tables.pdf?api=v2)'s
+own **Discrete Variant Panel** (LOINC `81250-3`, LRI Chapter 5 Table 5-2, plus the
+Structural Variant Addenda in Table 5-3) - the same panel the NTHL1 and CFTR examples
+are based on. LRI already defines this as a single panel covering both simple and
+structural variants; this Questionnaire follows that same single-panel structure
+rather than iGene's separate per-variant-type field sets, mapping each item to both
+its LRI `OBX` row and its corresponding component in the HL7 Genomics Reporting IG's
 [Variant](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-variant.html)
-profile, the [HL7 Lab Results Interface (LRI)](https://confluence.hl7.org/download/attachments/25559919/2018%2004%2003%20-%20V2%20LRI%20-%20Ch.%205%20CG%20and%20Code%20System%20Tables.pdf?api=v2)
-examples it is based on, and iGene's own custom field spec for variants
-(`NotGit/iGene Custom Fields Master Dataset - Updated 13-Aug-26.xlsx`, "Variant Level
-Data" sheet) - see [OMICS DSS Result Integration](reportable-variants.html).
+profile. See [OMICS DSS Result Integration](reportable-variants.html) for the full
+LRI/FHIR/iGene three-way mapping table.
 
-iGene models five variant types, each as a fixed, repeating set of custom fields
-(`SEQV1`-`SEQV10` for sequence variants, `ICNV1`-`ICNV3` for intragenic copy number
-variants, `MCNV1`-`MCNV3` for multigenic copy number variants, `SV1`-`SV3` for
-structural variants, `LOH1`-`LOH2` for loss of heterozygosity) - this panel models
-each variant type's field set once; the `N` suffix is iGene's own repetition scheme
-for "up to N variants of this type per report", not a distinct concept the panel needs
-to repeat.
-
-`item.definition`/`item.code` are inferred from iGene's own LOINC crosswalk for each
-field, cross-checked against this IG's current `Variant` examples: [Variant -
-NTHL1](Observation-8385c2fd-313d-4fd5-b98e-d5ea4bae6f99.html) and [Variant -
-CFTR](Observation-bca547c1-78a5-41be-8cfc-03c05805ac85.html) (both based on HL7 LRI
-examples), `Observation-EGFR-Variant-ctDNA`, `Observation-BRCA1`, and the four
+`item.definition`/`item.code` are cross-checked against this IG's current `Variant`
+examples: [Variant - NTHL1](Observation-8385c2fd-313d-4fd5-b98e-d5ea4bae6f99.html) and
+[Variant - CFTR](Observation-bca547c1-78a5-41be-8cfc-03c05805ac85.html) (both based on
+LRI examples), `Observation-EGFR-Variant-ctDNA`, `Observation-BRCA1`, and the four
 `Variant` Observations (a small variant, an intragenic CNV, a multi-gene CNV and a
 structural variant) in
-[Bundle-ctdna9737383222-testresults](Bundle-ctdna9737383222-testresults.html) - only
-elements genuinely populated by at least one of these examples are modelled, since
-these are the only elements needed for the iGene feed. See [OMICS DSS Result
-Integration - Result Panel: Elements Not
-Included](reportable-variants.html#result-panel-elements-not-included) for the
-HL7 Genomics Reporting Variant profile elements deliberately left out because no
-current example populates them.
+[Bundle-ctdna9737383222-testresults](Bundle-ctdna9737383222-testresults.html), plus
+iGene's own custom field spec for variants (`NotGit/iGene Custom Fields Master
+Dataset - Updated 13-Aug-26.xlsx`, "Variant Level Data" sheet) - only elements
+genuinely populated by at least one of these is modelled, since these are the only
+elements needed for the iGene feed. See [OMICS DSS Result Integration - Result
+Panel: Elements Not Included](reportable-variants.html#result-panel-elements-not-included)
+for the LRI/FHIR elements deliberately left out because no current example populates
+them.
 
-**Two known gaps, not yet resolved:**
-- **Loss of Heterozygosity** is one of iGene's five variant types, but no current
-  example produces LOH result data at all - its two fields are modelled here from the
-  iGene spec alone, unconfirmed against any FHIR example.
+**Known gaps between iGene, LRI and the FHIR profile, not yet resolved:**
+- **Loss of Heterozygosity** is one of iGene's five variant types, but has **no
+  corresponding row anywhere in LRI's Discrete Variant Panel** - LRI's closest concept,
+  Allelic State (`53034-5`, row B.23), does not offer an LOH answer option. No current
+  FHIR example produces LOH data either.
+- **Coordinate System [Type]** (`92822-6`) and **Origin of Germline Genetic Variant
+  [Type]** (`94186-4`), both used by the ctDNA Bundle examples, have **no row in LRI's
+  Discrete Variant Panel** - LRI's closest concept to the latter is Allelic Phase
+  (`82120-7`, row B.26), a different LOINC code whose answer list happens to include
+  Maternal/Paternal as two of several "sets of variants in cis" options, not a
+  dedicated parent-of-origin field.
 - **Structural Variant**: iGene expects a single `Complex variant HGVS name` field
-  (LOINC `81262-8`), but the current worked example
-  (`Bundle-ctdna9737383222-testresults`'s structural-variant Observation) does not
-  populate `81262-8` at all - it instead spreads the same information across several
-  discrete components (`48013-7`, `92822-6`, `69547-8`, `69551-0`, `48019-4`,
-  `81290-9`). This panel models iGene's own field, but the mapping from the example
-  data to it is not yet confirmed.
+  (LOINC `81262-8` - itself an LRI Complex Variant Panel code, row C.2, not part of the
+  Discrete Variant Panel at all), but the ctDNA Bundle's structural-variant Observation
+  does not populate `81262-8` - it uses several Discrete Variant Panel components
+  instead (Genomic Reference Sequence, Coordinate System, Genomic Ref/Alt Allele, DNA
+  Change Type, Genomic DNA Change).
 """
 Usage:  #definition
 
@@ -56,407 +58,466 @@ Usage:  #definition
   * url = "http://hl7.org/fhir/StructureDefinition/artifact-versionAlgorithm"
   * valueCoding = http://hl7.org/fhir/version-algorithm#semver
 
-// Sequence Variant (iGene SEQV1-SEQV10) - confirmed against NTHL1, CFTR, EGFR-ctDNA, BRCA1, ctDNA Bundle small-variant example
-
 * item[+]
   * type = #group
-  * linkId = "SequenceVariant"
-  * text = "Sequence Variant"
+  * linkId = "DiscreteVariantPanel"
+  * code[+] = $loinc#81250-3 "Discrete genetic variant panel"
+  * text = "Discrete Variant Panel"
   * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation"
+  * repeats = true
+  * item[+]
+    * linkId = "DiscreteVariantPanel-designNote"
+    * type = #display
+    * text = "LRI Table 5-2 row B - repeats for each discrete variant reported (OBX-4 sub-ID \"2a\", incrementing per repeat)."
+    * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+// Transcript Specification (LRI B.3-B.8)
 
   * item[+]
-    * type = #string
-    * linkId = "iGene/SEQV_Description"
-    * code[+] = $loinc#51958-7 "Transcript reference sequence [ID]"
-    * code[+] = $loinc#48018-6 "Gene studied [ID]"
-    * code[+] = $loinc#48004-6 "DNA change (c.HGVS)"
-    * code[+] = $loinc#48005-3 "Amino acid change (pHGVS)"
-    * text = "HGVS description"
+    * type = #group
+    * linkId = "TranscriptSpecification"
+    * text = "Transcript Specification"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component"
+
+    * item[+]
+      * type = #choice
+      * linkId = "LRI/B.3"
+      * code[+] = $loinc#48018-6 "Gene studied [ID]"
+      * text = "Gene Studied"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
+      * item[+]
+        * linkId = "LRI/B.3-designNote"
+        * type = #display
+        * text = """
+        LRI row B.3, OBX type CWE, R/O/C = C, [0..1]. FHIR Variant profile: this IG's
+        own `gene-studied` addition (not one of the international profile's named
+        slices). iGene: rolled into the free-text Description field (SEQV/ICNV) or the
+        Gene(s) field (LOH). Used by NTHL1, CFTR, EGFR-ctDNA, and the ctDNA Bundle's
+        small-variant and intragenic-CNV Observations.
+        """
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+    * item[+]
+      * type = #choice
+      * linkId = "LRI/B.4"
+      * code[+] = $loinc#51958-7 "Transcript reference sequence [ID]"
+      * text = "Transcript Reference Sequence"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
+      * item[+]
+        * linkId = "LRI/B.4-designNote"
+        * type = #display
+        * text = """
+        LRI row B.4, OBX type CWE, R/O/C = C, [0..1]. FHIR Variant profile slice:
+        `representative-transcript-ref-seq`. iGene: rolled into the free-text
+        Description field (SEQV/ICNV). Used by NTHL1, CFTR and the ctDNA Bundle's
+        small-variant Observation.
+        """
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+    * item[+]
+      * type = #choice
+      * linkId = "LRI/B.5"
+      * code[+] = $loinc#48004-6 "DNA change (c.HGVS)"
+      * text = "DNA Change (c.HGVS)"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
+      * item[+]
+        * linkId = "LRI/B.5-designNote"
+        * type = #display
+        * text = """
+        LRI row B.5, OBX type CWE, R/O/C = C, [0..1]. FHIR Variant profile slice:
+        `representative-coding-hgvs`. iGene: rolled into the free-text Description
+        field (SEQV/ICNV). Used by EGFR-ctDNA, BRCA1 and the ctDNA Bundle's
+        small-variant Observation.
+        """
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+    * item[+]
+      * type = #choice
+      * linkId = "LRI/B.6"
+      * code[+] = $loinc#48005-3 "Amino acid change (pHGVS)"
+      * text = "Amino Acid Change (pHGVS)"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
+      * item[+]
+        * linkId = "LRI/B.6-designNote"
+        * type = #display
+        * text = """
+        LRI row B.6, OBX type CWE, R/O/C = C, [0..1]. FHIR Variant profile slice:
+        `representative-protein-hgvs`. iGene: rolled into the free-text Description
+        field (SEQV only - ICNV's Description omits this). Used only by the ctDNA
+        Bundle's small-variant Observation.
+        """
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+    * item[+]
+      * type = #choice
+      * linkId = "LRI/B.7"
+      * code[+] = $loinc#48019-4 "DNA change [Type]"
+      * text = "DNA Change Type"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
+      * item[+]
+        * linkId = "LRI/B.7-designNote"
+        * type = #display
+        * text = """
+        LRI row B.7, OBX type CWE, R/O/C = O, [0..1]. FHIR Variant profile slice:
+        `coding-change-type`. Not a discrete iGene field - summarised within iGene's
+        free-text Description/Genomic_coordinates fields. Used by every current
+        example (Sequence Ontology or LOINC answer coding, e.g. duplication,
+        deletion, substitution, copy_number_variation).
+        """
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+// Genomic Specification (LRI B.9-B.13)
+
+  * item[+]
+    * type = #group
+    * linkId = "GenomicSpecification"
+    * text = "Genomic Specification"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component"
+
+    * item[+]
+      * type = #choice
+      * linkId = "LRI/B.9"
+      * code[+] = $loinc#48013-7 "Genomic reference sequence [ID]"
+      * text = "Genomic Reference Sequence"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
+      * item[+]
+        * linkId = "LRI/B.9-designNote"
+        * type = #display
+        * text = """
+        LRI row B.9, OBX type CWE, R/O/C = C, [0..1]. FHIR Variant profile slice:
+        `genomic-ref-seq`. iGene: rolled into the free-text Genomic_coordinates field
+        (all four variant types). Used by NTHL1 and all four ctDNA Bundle
+        Observations. `Observation-BRCA1` also carries this code, but its value is an
+        HGNC gene coding, not a genomic reference sequence - likely a data-entry
+        error in that older example.
+        """
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+    * item[+]
+      * type = #choice
+      * linkId = "LRI/B.10"
+      * code[+] = $loinc#81290-9 "Genomic DNA change (gHGVS)"
+      * text = "Genomic DNA Change (gHGVS)"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
+      * item[+]
+        * linkId = "LRI/B.10-designNote"
+        * type = #display
+        * text = """
+        LRI row B.10, OBX type CWE, R/O/C = C, [0..1]. FHIR Variant profile slice:
+        `genomic-hgvs`. iGene: rolled into the free-text Genomic_coordinates field
+        (all four variant types). Used by all four ctDNA Bundle Observations - not by
+        NTHL1/CFTR, where it is commented out pending a confirmed mapping.
+        """
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+    * item[+]
+      * type = #string
+      * linkId = "LRI/B.11"
+      * code[+] = $loinc#69547-8 "Genomic ref allele [ID]"
+      * text = "Genomic Ref Allele"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueString"
+      * item[+]
+        * linkId = "LRI/B.11-designNote"
+        * type = #display
+        * text = """
+        LRI row B.11, OBX type ST, R/O/C = C, [0..1]. FHIR Variant profile slice:
+        `ref-allele`. Not a discrete iGene field - summarised within iGene's
+        Genomic_coordinates field. Used by NTHL1, CFTR and all four ctDNA Bundle
+        Observations.
+        """
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+    * item[+]
+      * type = #string
+      * linkId = "LRI/B.12"
+      * code[+] = $loinc#81254-5 "Genomic allele start-end"
+      * text = "Genomic Allele Start-End"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueRange"
+      * item[+]
+        * linkId = "LRI/B.12-designNote"
+        * type = #display
+        * text = """
+        LRI row B.12, OBX type NR, R/O/C = C, [0..1]. FHIR Variant profile slice:
+        `exact-start-end`. Not a discrete iGene field. Used only by the ctDNA
+        Bundle's small-variant Observation - a Range with only the low bound
+        populated.
+        """
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+    * item[+]
+      * type = #string
+      * linkId = "LRI/B.13"
+      * code[+] = $loinc#69551-0 "Genomic alt allele [ID]"
+      * text = "Genomic Alt Allele"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueString"
+      * item[+]
+        * linkId = "LRI/B.13-designNote"
+        * type = #display
+        * text = """
+        LRI row B.13, OBX type ST, R/O/C = C, [0..1]. FHIR Variant profile slice:
+        `alt-allele`. Not a discrete iGene field - summarised within iGene's
+        Genomic_coordinates field. Used by the ctDNA Bundle's intragenic-CNV,
+        multi-gene-CNV and structural-variant Observations (as symbolic ALT alleles,
+        e.g. "<DEL>") - not by the small-variant Observation, NTHL1 or CFTR.
+        """
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+// Other possible attributes (LRI B.17-B.18)
+
+  * item[+]
+    * type = #group
+    * linkId = "OtherAttributes"
+    * text = "Other Attributes"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component"
+
+    * item[+]
+      * type = #string
+      * linkId = "LRI/B.17"
+      * code[+] = $loinc#48001-2 "Cytogenetic (chromosome) location"
+      * text = "Cytogenetic (Chromosome) Location"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
+      * item[+]
+        * linkId = "LRI/B.17-designNote"
+        * type = #display
+        * text = """
+        LRI row B.17, OBX type CWE, R/O/C = O, [0..1]. Not one of the international
+        FHIR Variant profile's named component slices (its closest named slice,
+        Cytogenomic Nomenclature 81291-7, is actually a different LRI field - Table
+        5-1 row A.11, part of the report-level Master Panel, not this Discrete
+        Variant Panel) - captured here as an open-slice addition, consistent with
+        GenomicObservation's open component slicing. iGene: this is the sole field
+        for the Multigenic CNV Description, and part of the Genomic_coordinates
+        field for the other three variant types. Used only by the ctDNA Bundle's
+        multi-gene-CNV Observation (e.g. "Xq22.1-q28").
+        """
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+    * item[+]
+      * type = #choice
+      * linkId = "LRI/B.18"
+      * code[+] = $loinc#48002-0 "Genomic source class [Type]"
+      * text = "Genomic Source Class"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
+      * item[+]
+        * linkId = "LRI/B.18-designNote"
+        * type = #display
+        * text = """
+        LRI row B.18, OBX type CNE, R/O/C = R (required when present), [0..*]. FHIR
+        Variant profile slice: `genomic-source-class`. Not a discrete iGene field.
+        Used by NTHL1, CFTR, EGFR-ctDNA and the ctDNA Bundle's small-variant,
+        intragenic-CNV and multi-gene-CNV Observations (Germline or Somatic) - not
+        by the structural-variant Observation.
+        """
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+// Interpretations (LRI B.20)
+
+  * item[+]
+    * type = #group
+    * linkId = "Interpretations"
+    * text = "Interpretations"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component"
+
+    * item[+]
+      * type = #choice
+      * linkId = "LRI/B.20"
+      * code[+] = $loinc#53037-8 "Genetic variation clinical significance [Imp]"
+      * text = "Classification"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
+      * item[+]
+        * linkId = "LRI/B.20-designNote"
+        * type = #display
+        * text = """
+        LRI row B.20 (LRI names it "Genetic sequence variation clinical
+        significance"), OBX type CNE, R/O/C = O, [0..1]. FHIR Variant profile: not
+        one of the profile's own component slices (the profile relies on the generic
+        `Observation.interpretation`/`valueCodeableConcept` pattern for this) -
+        modelled here as an open-slice component to match how every current example
+        actually carries it. iGene: this is the Classification field for all four
+        variant types. Used by all four ctDNA Bundle Observations (e.g.
+        "Pathogenic").
+        """
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+// Allelic State/Phase Information (LRI B.23-B.24)
+
+  * item[+]
+    * type = #group
+    * linkId = "AllelicStatePhase"
+    * text = "Allelic State/Phase Information"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component"
+
+    * item[+]
+      * type = #choice
+      * linkId = "LRI/B.23"
+      * code[+] = $loinc#53034-5 "Allelic state"
+      * text = "Allelic State"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
+      * item[+]
+        * linkId = "LRI/B.23-designNote"
+        * type = #display
+        * text = """
+        LRI row B.23, OBX type CNE, R/O/C = C, [0..1], answer list LL381-5
+        (Heteroplasmic/Homoplasmic/Homozygous/Heterozygous/Hemizygous - no "Loss of
+        Heterozygosity" option). FHIR Variant profile slice: `allelic-state`. iGene:
+        the Zygosity/Copy-number state field for all five variant types (iGene's LOH
+        "State" field has no LOINC code and is a different concept - LRI has no LOH
+        answer here). Used by NTHL1, CFTR, BRCA1 and the ctDNA Bundle's small-variant
+        Observation (Heterozygous).
+        """
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+    * item[+]
+      * type = #decimal
+      * linkId = "LRI/B.24"
+      * code[+] = $loinc#81258-6 "Allelic Frequency [NFr]"
+      * text = "Allelic Frequency"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueQuantity"
+      * item[+]
+        * linkId = "LRI/B.24-designNote"
+        * type = #display
+        * text = """
+        LRI row B.24 (LRI names it "Allelic Frequency [NFr]", the FHIR profile and
+        our examples call it "Sample variant allelic frequency [NFr]" - same LOINC
+        code, slightly different display text), OBX type NM, R/O/C = C, [0..1]. FHIR
+        Variant profile slice: `sample-allelic-frequency`. iGene: the Level (VAF %)
+        field for the four variant types that have one (not LOH). Used by EGFR-ctDNA
+        (as a percentage) and all four ctDNA Bundle Observations (as a decimal
+        fraction) - the units differ between the two sources.
+        """
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+// Structural Variant Addenda (LRI Table 5-3, B.28 and B.32)
+
+  * item[+]
+    * type = #group
+    * linkId = "StructuralVariantAddenda"
+    * code[+] = $loinc#81297-4 "Structural variant addendum panel"
+    * text = "Structural Variant Addenda"
     * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component"
     * item[+]
-      * linkId = "iGene/SEQV_Description-designNote"
+      * linkId = "StructuralVariantAddenda-designNote"
+      * type = #display
+      * text = "LRI Table 5-3 - part of the same Discrete Variant Panel in the HL7 v2 message, shown as a separate table in LRI purely for visual separation of structural-variant-only attributes."
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+    * item[+]
+      * type = #decimal
+      * linkId = "LRI/B.28"
+      * code[+] = $loinc#82155-3 "Genomic structural variant copy number"
+      * text = "Genomic Structural Variant Copy Number"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueQuantity"
+      * item[+]
+        * linkId = "LRI/B.28-designNote"
+        * type = #display
+        * text = """
+        LRI row B.28, OBX type NM, R/O/C = O, [0..1], OBX-4 sub-ID "2a.1". FHIR
+        Variant profile slice: `copy-number`. Not a discrete iGene field - the
+        closest iGene concept is the Copy-number state dropdown (Allelic State,
+        B.23), which is a category not a number. Used by the ctDNA Bundle's
+        intragenic-CNV and multi-gene-CNV Observations - not the structural-variant
+        (translocation-style) Observation, where a copy number doesn't apply.
+        """
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+    * item[+]
+      * type = #string
+      * linkId = "LRI/B.32"
+      * code[+] = $loinc#81302-2 "Structural variant inner start and end"
+      * text = "Structural Variant Inner Start-End"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueRange"
+      * item[+]
+        * linkId = "LRI/B.32-designNote"
+        * type = #display
+        * text = """
+        LRI row B.32, OBX type NR, R/O/C = O, [0..1], OBX-4 sub-ID "2a.1". FHIR
+        Variant profile slice: `inner-start-end`. Not a discrete iGene field -
+        summarised within iGene's Genomic_coordinates field. Used by the ctDNA
+        Bundle's intragenic-CNV, multi-gene-CNV and structural-variant Observations.
+        """
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+// FHIR/iGene concepts with no LRI Discrete Variant Panel row at all
+
+  * item[+]
+    * type = #group
+    * linkId = "NoLRIEquivalent"
+    * text = "FHIR/iGene Elements With No LRI Discrete Variant Panel Row"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component"
+    * item[+]
+      * linkId = "NoLRIEquivalent-designNote"
+      * type = #display
+      * text = "These are used by a current FHIR example and/or iGene, but have no row anywhere in LRI's Discrete Variant Panel (Table 5-2/5-3) - see the Description's gap notes."
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+    * item[+]
+      * type = #choice
+      * linkId = "FHIR/CoordinateSystem"
+      * code[+] = $loinc#92822-6 "Genomic coordinate system [Type]"
+      * text = "Coordinate System"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
+      * item[+]
+        * linkId = "FHIR/CoordinateSystem-designNote"
+        * type = #display
+        * text = """
+        No LRI row. FHIR Variant profile slice: `coordinate-system`. Not a discrete
+        iGene field - summarised within iGene's Genomic_coordinates field. Used by
+        all four ctDNA Bundle Observations (1-based character counting).
+        """
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+    * item[+]
+      * type = #choice
+      * linkId = "FHIR/OriginOfGermlineVariant"
+      * code[+] = $loinc#94186-4 "Origin of germline genetic variant [Type]"
+      * text = "Origin of Germline Genetic Variant"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
+      * item[+]
+        * linkId = "FHIR/OriginOfGermlineVariant-designNote"
+        * type = #display
+        * text = """
+        No dedicated LRI row - the closest LRI concept is Allelic Phase (82120-7, row
+        B.26), whose answer list happens to include Maternal/Paternal among several
+        "set of variants in cis" options, not a dedicated parent-of-origin field.
+        FHIR Variant profile slice: `variant-inheritance`. iGene: this is the
+        Inheritance field for the four variant types that have one (not LOH), though
+        iGene's own spec gives it no LOINC code. Used by the ctDNA Bundle's
+        small-variant, intragenic-CNV and multi-gene-CNV Observations (Maternal) -
+        not the structural-variant Observation.
+        """
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+// Loss of Heterozygosity - iGene-only concept, no LRI or current FHIR example support
+
+  * item[+]
+    * type = #group
+    * linkId = "LossOfHeterozygosity"
+    * text = "Loss of Heterozygosity (iGene-only, unconfirmed)"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation"
+    * item[+]
+      * linkId = "LossOfHeterozygosity-designNote"
       * type = #display
       * text = """
-      iGene's single free-text field (e.g. "NM_007294.3(BRCA1):c.68_69del
-      p.(Glu23ValfsTer17)") covers four separate FHIR Variant components at once:
-      Reference Transcript (51958-7), Gene Studied (48018-6), DNA Change c.HGVS
-      (48004-6) and Amino Acid Change pHGVS (48005-3). NTHL1/CFTR populate the first
-      two; the ctDNA Bundle's small-variant Observation populates all four
-      individually - this field is the concatenation iGene expects.
+      One of iGene's five variant types (`LOH1`-`LOH2`), but with no corresponding
+      row anywhere in LRI's Discrete Variant Panel and no current FHIR example
+      producing LOH result data - modelled from iGene's own spec alone.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
-  * item[+]
-    * type = #choice
-    * linkId = "iGene/SEQV_State"
-    * code[+] = $loinc#53034-5 "Allelic state"
-    * text = "Zygosity"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
     * item[+]
-      * linkId = "iGene/SEQV_State-designNote"
-      * type = #display
-      * text = "Used by NTHL1, CFTR, BRCA1 and the ctDNA Bundle's small-variant Observation (Heterozygous)."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+      * type = #string
+      * linkId = "iGene/LOH_Description"
+      * code[+] = $loinc#48018-6 "Gene studied [ID]"
+      * text = "Gene(s)"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
 
-  * item[+]
-    * type = #string
-    * linkId = "iGene/SEQV_Inheritance"
-    * text = "Inheritance"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
     * item[+]
-      * linkId = "iGene/SEQV_Inheritance-designNote"
-      * type = #display
-      * text = "No LOINC code in iGene's own spec (\"None\"). Modelled in the ctDNA Bundle's small-variant Observation as Origin of Germline Genetic Variant (LOINC 94186-4, e.g. Maternal)."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
-  * item[+]
-    * type = #decimal
-    * linkId = "iGene/SEQV_Level"
-    * code[+] = $loinc#81258-6 "Sample variant allelic frequency [NFr]"
-    * text = "VAF (%)"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueQuantity"
-    * item[+]
-      * linkId = "iGene/SEQV_Level-designNote"
-      * type = #display
-      * text = "Used by EGFR-ctDNA (as a percentage) and the ctDNA Bundle's small-variant Observation (as a decimal fraction) - the units differ between the two sources."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
-  * item[+]
-    * type = #string
-    * linkId = "iGene/SEQV_Genomic_coordinates"
-    * code[+] = $loinc#48001-2 "Cytogenetic (chromosome) location"
-    * code[+] = $loinc#81290-9 "Genomic DNA change (gHGVS)"
-    * text = "Genomic coordinates"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component"
-    * item[+]
-      * linkId = "iGene/SEQV_Genomic_coordinates-designNote"
-      * type = #display
-      * text = """
-      iGene's single free-text field (e.g. "Chr17(GRCh37):g.41276047_41276048del")
-      covers both a cytogenetic chromosome reference and the gHGVS genomic DNA change
-      (81290-9) - the ctDNA Bundle's small-variant Observation populates 81290-9
-      directly, plus Genomic Reference Sequence (48013-7), Coordinate System
-      (92822-6), Genomic Ref/Alt Allele (69547-8/69551-0) and Genomic Allele
-      Start-End (81254-5) as separate components this single iGene field summarises.
-      """
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
-  * item[+]
-    * type = #choice
-    * linkId = "iGene/SEQV_Classification"
-    * code[+] = $loinc#53037-8 "Genetic variation clinical significance [Imp]"
-    * text = "Classification"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
-    * item[+]
-      * linkId = "iGene/SEQV_Classification-designNote"
-      * type = #display
-      * text = "Used by all four ctDNA Bundle Observations (e.g. Pathogenic)."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
-  * item[+]
-    * type = #string
-    * linkId = "iGene/SEQV_Evidence"
-    * text = "Classification Evidence"
-    * item[+]
-      * linkId = "iGene/SEQV_Evidence-designNote"
-      * type = #display
-      * text = "No LOINC code in iGene's own spec, and not populated by any current example - free text summary of the evidence behind the Classification above."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
-// Intragenic Copy Number Variant (iGene ICNV1-ICNV3) - confirmed against ctDNA Bundle intragenic-CNV example
-
-* item[+]
-  * type = #group
-  * linkId = "IntragenicCNV"
-  * text = "Intragenic Copy Number Variant"
-  * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation"
-
-  * item[+]
-    * type = #string
-    * linkId = "iGene/ICNV_Description"
-    * code[+] = $loinc#51958-7 "Transcript reference sequence [ID]"
-    * code[+] = $loinc#48018-6 "Gene studied [ID]"
-    * code[+] = $loinc#48004-6 "DNA change (c.HGVS)"
-    * text = "Description"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component"
-    * item[+]
-      * linkId = "iGene/ICNV_Description-designNote"
-      * type = #display
-      * text = "iGene's free-text field (e.g. \"NM_000138.4(FBN1):exon 13 to exon 15del\") covers the same three components as the Sequence Variant Description, minus Amino Acid Change - confirmed against the ctDNA Bundle's intragenic-CNV Observation."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
-  * item[+]
-    * type = #choice
-    * linkId = "iGene/ICNV_State"
-    * code[+] = $loinc#53034-5 "Allelic state"
-    * text = "Copy-number state"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
-    * item[+]
-      * linkId = "iGene/ICNV_State-designNote"
-      * type = #display
-      * text = "iGene example value \"Single-copy loss (1 copy)\" - not yet confirmed against a populated Allelic State component in the ctDNA Bundle's intragenic-CNV Observation, which does not carry this component."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
-  * item[+]
-    * type = #string
-    * linkId = "iGene/ICNV_Inheritance"
-    * text = "Inheritance"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
-    * item[+]
-      * linkId = "iGene/ICNV_Inheritance-designNote"
-      * type = #display
-      * text = "No LOINC code in iGene's own spec. Modelled in the ctDNA Bundle's intragenic-CNV Observation as Origin of Germline Genetic Variant (94186-4)."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
-  * item[+]
-    * type = #decimal
-    * linkId = "iGene/ICNV_Level"
-    * code[+] = $loinc#81258-6 "Sample variant allelic frequency [NFr]"
-    * text = "VAF (%)"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueQuantity"
-    * item[+]
-      * linkId = "iGene/ICNV_Level-designNote"
-      * type = #display
-      * text = "Used by the ctDNA Bundle's intragenic-CNV Observation (as a decimal fraction)."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
-  * item[+]
-    * type = #string
-    * linkId = "iGene/ICNV_Genomic_coordinates"
-    * code[+] = $loinc#48001-2 "Cytogenetic (chromosome) location"
-    * code[+] = $loinc#81290-9 "Genomic DNA change (gHGVS)"
-    * text = "Genomic coordinates"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component"
-    * item[+]
-      * linkId = "iGene/ICNV_Genomic_coordinates-designNote"
-      * type = #display
-      * text = "Same combined field as Sequence Variant - the ctDNA Bundle's intragenic-CNV Observation populates 81290-9 directly, plus Genomic Reference Sequence, Coordinate System, Ref/Alt Allele and Structural Variant Inner Start-End (81302-2) as separate components."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
-  * item[+]
-    * type = #choice
-    * linkId = "iGene/ICNV_Classification"
-    * code[+] = $loinc#53037-8 "Genetic variation clinical significance [Imp]"
-    * text = "Classification"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
-    * item[+]
-      * linkId = "iGene/ICNV_Classification-designNote"
-      * type = #display
-      * text = "Used by the ctDNA Bundle's intragenic-CNV Observation (Pathogenic)."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
-  * item[+]
-    * type = #string
-    * linkId = "iGene/ICNV_Evidence"
-    * text = "Classification Evidence"
-    * item[+]
-      * linkId = "iGene/ICNV_Evidence-designNote"
-      * type = #display
-      * text = "No LOINC code in iGene's own spec, and not populated by any current example."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
-// Multigenic Copy Number Variant (iGene MCNV1-MCNV3) - confirmed against ctDNA Bundle multi-gene-CNV example
-
-* item[+]
-  * type = #group
-  * linkId = "MultigenicCNV"
-  * text = "Multigenic Copy Number Variant"
-  * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation"
-
-  * item[+]
-    * type = #string
-    * linkId = "iGene/MCNV_Description"
-    * code[+] = $loinc#48001-2 "Cytogenetic (chromosome) location"
-    * text = "Cytogenetic location"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
-    * item[+]
-      * linkId = "iGene/MCNV_Description-designNote"
-      * type = #display
-      * text = "Unlike Sequence Variant/Intragenic CNV, this field maps to a single component (chromosome band, e.g. \"Xq22.1-q28\") since a multigenic CNV isn't anchored to one gene/transcript - confirmed against the ctDNA Bundle's multi-gene-CNV Observation, the only example to populate 48001-2 as a standalone component."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
-  * item[+]
-    * type = #choice
-    * linkId = "iGene/MCNV_State"
-    * code[+] = $loinc#53034-5 "Allelic state"
-    * text = "Copy-number state"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
-    * item[+]
-      * linkId = "iGene/MCNV_State-designNote"
-      * type = #display
-      * text = "iGene example value \"Single-copy loss (1 copy)\" - not yet confirmed against a populated Allelic State component in the ctDNA Bundle's multi-gene-CNV Observation, which does not carry this component."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
-  * item[+]
-    * type = #string
-    * linkId = "iGene/MCNV_Inheritance"
-    * text = "Inheritance"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
-    * item[+]
-      * linkId = "iGene/MCNV_Inheritance-designNote"
-      * type = #display
-      * text = "No LOINC code in iGene's own spec. Modelled in the ctDNA Bundle's multi-gene-CNV Observation as Origin of Germline Genetic Variant (94186-4)."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
-  * item[+]
-    * type = #decimal
-    * linkId = "iGene/MCNV_Level"
-    * code[+] = $loinc#81258-6 "Sample variant allelic frequency [NFr]"
-    * text = "VAF (%)"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueQuantity"
-    * item[+]
-      * linkId = "iGene/MCNV_Level-designNote"
-      * type = #display
-      * text = "Used by the ctDNA Bundle's multi-gene-CNV Observation (as a decimal fraction)."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
-  * item[+]
-    * type = #string
-    * linkId = "iGene/MCNV_Genomic_coordinates"
-    * code[+] = $loinc#48001-2 "Cytogenetic (chromosome) location"
-    * code[+] = $loinc#81290-9 "Genomic DNA change (gHGVS)"
-    * text = "Genomic coordinates"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component"
-    * item[+]
-      * linkId = "iGene/MCNV_Genomic_coordinates-designNote"
-      * type = #display
-      * text = "The ctDNA Bundle's multi-gene-CNV Observation populates 81290-9 directly, plus Genomic Reference Sequence, Coordinate System, Ref/Alt Allele and Structural Variant Inner Start-End (81302-2) as separate components."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
-  * item[+]
-    * type = #choice
-    * linkId = "iGene/MCNV_Classification"
-    * code[+] = $loinc#53037-8 "Genetic variation clinical significance [Imp]"
-    * text = "Classification"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
-    * item[+]
-      * linkId = "iGene/MCNV_Classification-designNote"
-      * type = #display
-      * text = "Used by the ctDNA Bundle's multi-gene-CNV Observation (Pathogenic)."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
-  * item[+]
-    * type = #string
-    * linkId = "iGene/MCNV_Evidence"
-    * text = "Classification Evidence"
-    * item[+]
-      * linkId = "iGene/MCNV_Evidence-designNote"
-      * type = #display
-      * text = "No LOINC code in iGene's own spec, and not populated by any current example."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
-// Structural Variant (iGene SV1-SV3) - iGene expects a single HGVS field (81262-8) not yet confirmed against any example
-
-* item[+]
-  * type = #group
-  * linkId = "StructuralVariant"
-  * text = "Structural Variant"
-  * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation"
-
-  * item[+]
-    * type = #string
-    * linkId = "iGene/SV_Description"
-    * code[+] = $loinc#81262-8 "Complex variant HGVS name"
-    * text = "HGVS description"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
-    * item[+]
-      * linkId = "iGene/SV_Description-designNote"
-      * type = #display
-      * text = """
-      Not yet confirmed against any current example: the ctDNA Bundle's
-      structural-variant Observation does not populate 81262-8, instead carrying
-      Genomic Reference Sequence (48013-7), Coordinate System (92822-6), Genomic
-      Ref/Alt Allele (69547-8/69551-0) and DNA Change Type (48019-4) as separate
-      components. See the Description's "Structural Variant" gap note.
-      """
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
-  * item[+]
-    * type = #choice
-    * linkId = "iGene/SV_State"
-    * code[+] = $loinc#53034-5 "Allelic state"
-    * text = "Copy-number state"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
-    * item[+]
-      * linkId = "iGene/SV_State-designNote"
-      * type = #display
-      * text = "Not populated by the ctDNA Bundle's structural-variant Observation, which carries no Allelic State component."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
-  * item[+]
-    * type = #decimal
-    * linkId = "iGene/SV_Level"
-    * code[+] = $loinc#81258-6 "Sample variant allelic frequency [NFr]"
-    * text = "VAF (%)"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueQuantity"
-    * item[+]
-      * linkId = "iGene/SV_Level-designNote"
-      * type = #display
-      * text = "Used by the ctDNA Bundle's structural-variant Observation (as a decimal fraction)."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
-  * item[+]
-    * type = #string
-    * linkId = "iGene/SV_Genomic_coordinates"
-    * code[+] = $loinc#48001-2 "Cytogenetic (chromosome) location"
-    * code[+] = $loinc#81290-9 "Genomic DNA change (gHGVS)"
-    * text = "Genomic coordinates"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component"
-    * item[+]
-      * linkId = "iGene/SV_Genomic_coordinates-designNote"
-      * type = #display
-      * text = "The ctDNA Bundle's structural-variant Observation populates 81290-9 directly, plus Genomic Reference Sequence, Coordinate System, Ref/Alt Allele and Structural Variant Inner Start-End (81302-2) as separate components."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
-  * item[+]
-    * type = #choice
-    * linkId = "iGene/SV_Classification"
-    * code[+] = $loinc#53037-8 "Genetic variation clinical significance [Imp]"
-    * text = "Classification"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
-    * item[+]
-      * linkId = "iGene/SV_Classification-designNote"
-      * type = #display
-      * text = "Used by the ctDNA Bundle's structural-variant Observation (Pathogenic)."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
-  * item[+]
-    * type = #string
-    * linkId = "iGene/SV_Evidence"
-    * text = "Classification Evidence"
-    * item[+]
-      * linkId = "iGene/SV_Evidence-designNote"
-      * type = #display
-      * text = "No LOINC code in iGene's own spec, and not populated by any current example."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
-// Loss of Heterozygosity (iGene LOH1-LOH2) - no current FHIR example produces this variant type at all
-
-* item[+]
-  * type = #group
-  * linkId = "LossOfHeterozygosity"
-  * text = "Loss of Heterozygosity"
-  * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation"
-
-  * item[+]
-    * type = #string
-    * linkId = "iGene/LOH_Description"
-    * code[+] = $loinc#48018-6 "Gene studied [ID]"
-    * text = "Gene(s)"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
-    * item[+]
-      * linkId = "iGene/LOH_Description-designNote"
-      * type = #display
-      * text = "No current example produces Loss of Heterozygosity result data - modelled from iGene's own spec alone, unconfirmed against any FHIR example."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
-  * item[+]
-    * type = #choice
-    * linkId = "iGene/LOH_State"
-    * text = "Loss of heterozygosity (LOH)"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
-    * item[+]
-      * linkId = "iGene/LOH_State-designNote"
-      * type = #display
-      * text = "No LOINC code in iGene's own spec (\"None\"); iGene example value \"Significant LOH\". No current example produces this."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+      * type = #choice
+      * linkId = "iGene/LOH_State"
+      * text = "Loss of Heterozygosity (LOH)"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
+      * item[+]
+        * linkId = "iGene/LOH_State-designNote"
+        * type = #display
+        * text = "No LOINC code in iGene's own spec (\"None\"); iGene example value \"Significant LOH\". Not a value LRI's Allelic State (B.23) answer list supports."
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help

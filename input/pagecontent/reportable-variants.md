@@ -147,76 +147,97 @@ sequenceDiagram
 <b>FHIR Questionnaire (Result Panel):</b> <a href="Questionnaire-ReportableVariantResultPanel.html">Reportable Variant Result Panel</a>
 </div>
 
-iGene models five variant types, each as a fixed, repeating set of custom fields -
-`SEQV1`-`SEQV10` (sequence variants), `ICNV1`-`ICNV3` (intragenic copy number
-variants), `MCNV1`-`MCNV3` (multigenic copy number variants), `SV1`-`SV3` (structural
-variants) and `LOH1`-`LOH2` (loss of heterozygosity) - per the "Variant Level Data"
-sheet of iGene's own custom field spec (see [References](#references)). The table
-below models each variant type's field set once (the `N` suffix is iGene's own
-repetition scheme, not a distinct concept the panel needs to repeat), cross-checked
-against this IG's current `Variant` examples: [Variant -
-NTHL1](Observation-8385c2fd-313d-4fd5-b98e-d5ea4bae6f99.html) and [Variant -
-CFTR](Observation-bca547c1-78a5-41be-8cfc-03c05805ac85.html) (both based on [HL7
-LRI](#references) examples), `Observation-EGFR-Variant-ctDNA`, `Observation-BRCA1`,
-and the four `Variant` Observations (a small variant, an intragenic CNV, a multi-gene
-CNV and a structural variant) in
-[Bundle-ctdna9737383222-testresults](Bundle-ctdna9737383222-testresults.html).
+The [HL7 LRI](#references) already defines a single **Discrete Variant Panel**
+(LOINC `81250-3`, LRI Chapter 5 Table 5-2, plus the Structural Variant Addenda in
+Table 5-3) covering both simple and structural variants - the same panel the NTHL1
+and CFTR examples are based on. Rather than iGene's separate per-variant-type field
+sets, the Result Panel Questionnaire is structured around this one LRI panel, with
+each item mapped to its LRI `OBX` row, its component in the HL7 Genomics Reporting
+IG's [Variant](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-variant.html)
+profile, and the iGene field it rolls up into. Only elements genuinely populated by
+at least one current example are modelled - see [Result Panel: Elements Not
+Included](#result-panel-elements-not-included) below for the rest.
 
-| iGene Field           | Sequence Variant                          | Intragenic CNV                            | Multigenic CNV                    | Structural Variant                        | Loss of Heterozygosity |
-|------------------------|---------------------------------------------|-----------------------------------------------|---------------------------------------|-----------------------------------------------|----------------------------|
-| **Description**       | 51958-7 + 48018-6 + 48004-6 + 48005-3 (one free-text field, all four components) | 51958-7 + 48018-6 + 48004-6 (no amino acid change) | 48001-2 only (chromosome band, no gene/transcript) | 81262-8 "Complex variant HGVS name" *(gap - see below)* | 48018-6 (Gene(s)) |
-| **State**              | 53034-5 Allelic State (Zygosity)             | 53034-5 Allelic State (Copy-number state)     | 53034-5 Allelic State (Copy-number state) | 53034-5 Allelic State (Copy-number state)     | No LOINC (LOH Y/N)     |
-| **Inheritance**        | No LOINC - ctDNA Bundle uses 94186-4 instead | No LOINC - ctDNA Bundle uses 94186-4 instead  | No LOINC - ctDNA Bundle uses 94186-4 instead | No LOINC                                       | - (not an iGene field) |
-| **Level (VAF %)**      | 81258-6 Sample Allelic Frequency             | 81258-6 Sample Allelic Frequency               | 81258-6 Sample Allelic Frequency       | 81258-6 Sample Allelic Frequency               | - (not an iGene field) |
-| **Genomic_coordinates**| 48001-2 + 81290-9 (one free-text field)      | 48001-2 + 81290-9 (one free-text field)        | 48001-2 + 81290-9 (one free-text field) | 48001-2 + 81290-9 (one free-text field)        | - (not an iGene field) |
-| **Classification**    | 53037-8 Clinical Significance                | 53037-8 Clinical Significance                  | 53037-8 Clinical Significance          | 53037-8 Clinical Significance                  | - (not an iGene field) |
-| **Evidence**           | No LOINC - free text                         | No LOINC - free text                           | No LOINC - free text                   | No LOINC - free text                           | - (not an iGene field) |
+| LRI Row | LOINC                                     | HL7 v2 OBX (Type, R/O/C, Card.) | FHIR Variant Component | iGene Field                        | Used By                                                                |
+|---------|--------------------------------------------|----------------------------------|--------------------------|--------------------------------------|--------------------------------------------------------------------------|
+| B.3     | 48018-6 Gene studied [ID]                  | CWE, C, [0..1]                    | `gene-studied` *(this IG's own addition)* | Description (SEQV/ICNV), Gene(s) (LOH) | NTHL1, CFTR, EGFR-ctDNA, ctDNA Bundle (small variant, intragenic CNV)     |
+| B.4     | 51958-7 Transcript reference sequence [ID] | CWE, C, [0..1]                    | `representative-transcript-ref-seq` | Description (SEQV/ICNV)              | NTHL1, CFTR, ctDNA Bundle (small variant)                                 |
+| B.5     | 48004-6 DNA change (c.HGVS)                | CWE, C, [0..1]                    | `representative-coding-hgvs` | Description (SEQV/ICNV)              | EGFR-ctDNA, BRCA1, ctDNA Bundle (small variant)                           |
+| B.6     | 48005-3 Amino acid change (pHGVS)          | CWE, C, [0..1]                    | `representative-protein-hgvs` | Description (SEQV only)              | ctDNA Bundle (small variant)                                              |
+| B.7     | 48019-4 DNA change [Type]                  | CWE, O, [0..1]                    | `coding-change-type`     | *(not discrete - within Description/Genomic_coordinates)* | NTHL1, CFTR, EGFR-ctDNA, ctDNA Bundle (all four)          |
+| B.9     | 48013-7 Genomic reference sequence [ID]    | CWE, C, [0..1]                    | `genomic-ref-seq`        | Genomic_coordinates (all)             | NTHL1, ctDNA Bundle (all four)                                            |
+| B.10    | 81290-9 Genomic DNA change (gHGVS)         | CWE, C, [0..1]                    | `genomic-hgvs`           | Genomic_coordinates (all)             | ctDNA Bundle (all four)                                                   |
+| B.11    | 69547-8 Genomic ref allele [ID]            | ST, C, [0..1]                     | `ref-allele`             | *(not discrete)*                      | NTHL1, CFTR, ctDNA Bundle (all four)                                      |
+| B.12    | 81254-5 Genomic allele start-end           | NR, C, [0..1]                     | `exact-start-end`        | *(not discrete)*                      | ctDNA Bundle (small variant)                                              |
+| B.13    | 69551-0 Genomic alt allele [ID]            | ST, C, [0..1]                     | `alt-allele`             | *(not discrete)*                      | ctDNA Bundle (intragenic CNV, multi-gene CNV, structural variant)         |
+| B.17    | 48001-2 Cytogenetic (chromosome) location  | CWE, O, [0..1]                    | *(open-slice - see note below; not the profile's Cytogenomic Nomenclature slice)* | Description (MCNV), Genomic_coordinates (others) | ctDNA Bundle (multi-gene CNV) |
+| B.18    | 48002-0 Genomic source class [Type]        | CNE, R, [0..*]                    | `genomic-source-class`   | *(not discrete)*                      | NTHL1, CFTR, EGFR-ctDNA, ctDNA Bundle (small variant, intragenic CNV, multi-gene CNV) |
+| B.20    | 53037-8 Genetic variation clinical significance [Imp] | CNE, O, [0..1]        | *(not a named slice - open-slice, matches every example)* | Classification (all)                  | ctDNA Bundle (all four)                                                   |
+| B.23    | 53034-5 Allelic state                      | CNE, C, [0..1]                    | `allelic-state`          | State/Zygosity/Copy-number state (all except LOH) | NTHL1, CFTR, BRCA1, ctDNA Bundle (small variant)              |
+| B.24    | 81258-6 Allelic Frequency [NFr]            | NM, C, [0..1]                     | `sample-allelic-frequency` | Level/VAF % (all except LOH)         | EGFR-ctDNA, ctDNA Bundle (all four)                                       |
+| B.28 *(Table 5-3)* | 82155-3 Genomic structural variant copy number | NM, O, [0..1], sub-ID 2a.1 | `copy-number`      | *(not discrete)*                      | ctDNA Bundle (intragenic CNV, multi-gene CNV)                             |
+| B.32 *(Table 5-3)* | 81302-2 Structural variant inner start and end | NR, O, [0..1], sub-ID 2a.1 | `inner-start-end`  | *(not discrete)*                      | ctDNA Bundle (intragenic CNV, multi-gene CNV, structural variant)         |
 {:.grid}
 
-Two gaps are not yet resolved:
+Three gaps are not yet resolved:
 
-- **Loss of Heterozygosity** has no current FHIR example at all - its two fields are
-  modelled from the iGene spec alone.
-- **Structural Variant**: iGene expects one `81262-8` "Complex variant HGVS name"
-  field, but the ctDNA Bundle's structural-variant Observation instead spreads the
-  same information across several discrete components (Genomic Reference Sequence
-  `48013-7`, Coordinate System `92822-6`, Genomic Ref/Alt Allele `69547-8`/`69551-0`,
-  DNA Change Type `48019-4`, Genomic DNA Change `81290-9`) - no example yet confirms
-  how these decompose into, or recombine into, `81262-8`.
+- **Loss of Heterozygosity** is one of iGene's five variant types, but has **no
+  corresponding row anywhere in LRI's Discrete Variant Panel** - LRI's closest
+  concept, Allelic State (B.23), has no LOH answer option. No current FHIR example
+  produces LOH data either.
+- **Coordinate System [Type] (`92822-6`)** and **Origin of Germline Genetic Variant
+  [Type] (`94186-4`)**, both used by the ctDNA Bundle examples (and mapped to the
+  FHIR profile's `coordinate-system` and `variant-inheritance` slices respectively),
+  have **no row in LRI's Discrete Variant Panel**. LRI's closest concept to the
+  latter is Allelic Phase (`82120-7`, row B.26) - a different LOINC code whose answer
+  list happens to include Maternal/Paternal among several "set of variants in cis"
+  options, not a dedicated parent-of-origin field.
+- **Structural Variant**: iGene expects a single `81262-8` "Complex variant HGVS
+  name" field (itself an LRI *Complex* Variant Panel code, row C.2 - not part of the
+  Discrete Variant Panel at all), but the ctDNA Bundle's structural-variant
+  Observation instead uses several Discrete Variant Panel components (B.9, B.11,
+  B.13, B.7, B.10) - no example yet confirms how these decompose into, or recombine
+  into, `81262-8`.
 
-Beyond these coarse iGene fields, the underlying FHIR `Variant` Observations also
-carry several more granular components that iGene's own free-text `Description`/
-`Genomic_coordinates` fields summarise rather than exposing individually - Genomic
-Reference Sequence (`48013-7`), Coordinate System (`92822-6`), Genomic Ref/Alt Allele
-(`69547-8`/`69551-0`), DNA Change Type (`48019-4`), Genomic Source Class (`48002-0`),
-Origin of Germline Genetic Variant (`94186-4`), Genomic Allele Start-End (`81254-5`)
-and Structural Variant Inner Start-End (`81302-2`) - these don't need their own
-Result Panel items, since iGene has no discrete field for them, but they remain
-significant to the underlying FHIR data model. See [Result Panel: Elements Not
-Included](#result-panel-elements-not-included) below for the further HL7 Genomics
-Reporting Variant profile elements that neither iGene nor any current example uses at
-all.
+**BRCA1 note:** `Observation-BRCA1` also carries a component coded `48013-7`
+(Genomic Reference Sequence, B.9) whose value is actually an HGNC gene coding - this
+looks like a data-entry error in that older example rather than a genuine second
+usage pattern for that code.
 
 ### Result Panel: Elements Not Included
 
-The HL7 Genomics Reporting [Variant
+LRI's Discrete Variant Panel (Table 5-2/5-3) defines further rows, and the HL7
+Genomics Reporting [Variant
 profile](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-variant.html)
-defines further component slices that neither iGene's own field spec nor any current
-example populates - these are deliberately left out of the [Result Panel](#result-panel)
-above, since they aren't needed for the iGene feed today:
+defines further component slices, that neither iGene's own field spec nor any
+current example populates - these are deliberately left out of the [Result
+Panel](#result-panel) above, since they aren't needed for the iGene feed today:
 
-| Data Element                                | LOINC / Code               |
-|-----------------------------------------------|-----------------------------|
-| Outer Start-End                               | 81301-4                     |
-| Cytogenomic Nomenclature (ISCN)               | 81291-7                     |
-| Protein Reference Sequence                    | `protein-ref-seq` (local TBD codesystem) |
-| Allelic Read Depth                            | 82121-5                     |
-| Evidential Basis for Variant Inheritance      | 82309-6                     |
-| Variation Code                                | 81252-9                     |
-| Variant Confidence Status                     | `variant-confidence-status` (local TBD codesystem) |
-| Repeat Motif                                  | `repeat-motif` (local TBD codesystem) |
-| Repeat Number                                 | `repeat-number` (local TBD codesystem) |
-| Clinical Conclusion (`conclusion-string`, inherited from [Genomic Observation](StructureDefinition-GenomicObservation.html)) | `conclusion-string` (local TBD codesystem) |
+| Data Element                                | LRI Row | LOINC / Code               |
+|-----------------------------------------------|---------|-----------------------------|
+| Variant category (Simple/Structural)          | B.1     | 83005-9                     |
+| Discrete genetic variant [ID] - LRI's own preferred single-field alternative to the fully-decomposed rows above | B.2 | 81252-9 |
+| Amino acid change [Type]                      | B.8     | 48006-1                     |
+| Haplotype name                                | B.14    | 84414-2                     |
+| dbSNP [ID]                                    | B.15    | 81255-2                     |
+| CIGAR [ID]                                    | B.16    | 81257-8                     |
+| Variant analysis method [Type]                | B.19    | 81304-8                     |
+| Genetic variant Assessment                    | B.21    | 69548-6                     |
+| Probable Associated Phenotype                 | B.22    | 81259-4                     |
+| Allelic read depth                            | B.25    | 82121-5                     |
+| Allelic phase                                 | B.26    | 82120-7                     |
+| Basis for allelic phase [Type]                | B.27    | 82309-6                     |
+| Genomic structural variant reported arrCGH [Ratio] | B.29 *(Table 5-3)* | 81299-0        |
+| Structural variant [Length]                   | B.30 *(Table 5-3)* | 81300-6            |
+| Structural variant outer start and end        | B.31 *(Table 5-3)* | 81301-4            |
+| Cytogenomic Nomenclature (ISCN) - LRI Table 5-1 row A.11 (report-level Master Panel, not the Discrete Variant Panel) | - | 81291-7 |
+| Protein Reference Sequence *(FHIR profile only, no LRI row)* | -       | `protein-ref-seq` (local TBD codesystem) |
+| Variation Code *(FHIR profile only, no LRI row)* | -      | 81252-9 (same code as B.2, different FHIR slice name) |
+| Evidential Basis for Variant Inheritance *(FHIR profile only, no LRI row)* | - | 82309-6 (same code as B.27) |
+| Variant Confidence Status *(FHIR profile only, no LRI row)* | -      | `variant-confidence-status` (local TBD codesystem) |
+| Repeat Motif *(FHIR profile only, no LRI row)* | -       | `repeat-motif` (local TBD codesystem) |
+| Repeat Number *(FHIR profile only, no LRI row)* | -      | `repeat-number` (local TBD codesystem) |
+| Clinical Conclusion (`conclusion-string`, inherited from [Genomic Observation](StructureDefinition-GenomicObservation.html)) | - | `conclusion-string` (local TBD codesystem) |
 {:.grid}
 
 If a future DLIMS/Omics DSS feed starts populating any of these (for example, read
