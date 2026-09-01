@@ -75,10 +75,7 @@ flowchart LR
 | [Automation Manager](ActorDefinition-AutomationManager.html)                     | Cepheid - analyser, test results via ASTM                            |
 | [Automation Manager](ActorDefinition-AutomationManager.html)                     | Omics DSS - analytic processing, test results via FHIR               |
 | [Intermediary](ActorDefinition-Intermediary.html)                              | Regional Integration Engine (RIE) - message distribution and transformation hub ("post office") |
-| [Order Placer](ActorDefinition-OrderPlacer.html)                                 | Manchester Foundation Trust (MFT) - NHS Trust, direct HL7 (EPIC and HODS) |
-| [Order Placer](ActorDefinition-OrderPlacer.html)                                 | Alder Hey - NHS Trust, direct HL7                                    |
-| [Order Placer](ActorDefinition-OrderPlacer.html)                                 | Liverpool Women's - NHS Trust, direct HL7                            |
-| [Order Placer](ActorDefinition-OrderPlacer.html)                                 | Clatterbridge - NHS Trust, direct HL7 (Immunology test requests + Genomic and Immunology reports) |
+| [Order Placer](ActorDefinition-OrderPlacer.html)                                 | NHS Trusts sending direct HL7 orders to the RIE - see [Regional Orders and Reports (Alder Hey, MFT, Liverpool)](RegionalOrdersAndReports.html) for the named Trusts and their specific integrations |
 | [Order Placer](ActorDefinition-OrderPlacer.html) (via GMS Order Comms)           | NHS Trusts - electronic or web portal, not direct HL7 to the RIE       |
 | [Automation Manager](ActorDefinition-AutomationManager.html)                     | National Genomic Order Comms - national ordering system / web portal (future interface, GOMS) |
 | [Document Consumer](ActorDefinition-DocumentConsumer.html)                       | Greater Manchester Care Record (GMCR) - Shared Care Record Provider, cancer only |
@@ -144,6 +141,87 @@ This use of HL7/FHIR standards is also called a "Canonical Model" or "Data Contr
 
 > **The sections below (Technical detail, Design, Data model) are written for architects and technical readers. If you just needed the summary, you can stop here.**
 
+### Order Process
+
+1. **Order entered in the EPR** - the order form is based on the core requirements in [ServiceRequest](ServiceRequest.html), plus the [Ask At Order Entry Questions](Questionnaire-GenomicGeneralAskAtOrderEntry.html) (or a per-test-type equivalent).
+2. **Exported to the Trust Integration Engine (TIE)** - the order is exported in the Trust's own local HL7 v2 flavour, `ORM_O01`.
+3. **Converted to the NW Standard** - either within the Trust's own TIE, or by a separate conversion service the TIE calls out to; either way the Trust-specific `ORM_O01` becomes either a FHIR Message O21 or an HL7 v2 `OML_O21`, both NW Standard. See [Regional Orders and Reports (Alder Hey, MFT, Liverpool)](RegionalOrdersAndReports.html#order-process) for how specific Trusts do this conversion today.
+4. **Sent to the RIE** - the order (as HL7 v2 or FHIR, depending on the route above) is sent to the Regional Integration Engine.
+5. **Validated and enriched** - the RIE checks the payload for validity, including a PDS check (NHS England PDS FHIR API) and an organisation code check (NHS England ODT API, the successor to the ODS API). This can add further patient demographic and organisation details to the message.
+6. **Routed to a LIMS** - at present the RIE sends the order to iGene; in future this may be routed to other LIMS such as StarLIMS or Histotrac.
+7. **Converted to the destination LIMS's HL7 flavour** - the order is converted into the HL7 v2 flavour that LIMS expects.
+8. **Sent to the LIMS**.
+
+```mermaid
+sequenceDiagram
+    participant EPR as NHS Trust EPR
+    participant TIE as Trust Integration<br/>Engine (TIE)
+    participant Conv as Conversion service<br/>(within or alongside the TIE)
+    participant RIE as Regional Integration<br/>Engine (RIE)
+    participant PDS as NHS England PDS/ODT<br/>FHIR APIs
+    participant LIMS as LIMS<br/>(iGene, future StarLIMS/Histotrac)
+
+    EPR ->> TIE: Order entered<br/>(ServiceRequest + Ask At Order Entry)
+    TIE ->> TIE: Export as local HL7 v2 ORM_O01
+    TIE ->> Conv: ORM_O01
+    Conv ->> RIE: NW Standard order<br/>(FHIR Message O21 or HL7 v2 OML_O21)
+    RIE ->> PDS: PDS check / ODT organisation check
+    PDS -->> RIE: Patient demographics /<br/>organisation details
+    RIE ->> RIE: Convert to destination<br/>LIMS's HL7 flavour
+    RIE ->> LIMS: Order (HL7 v2)
+```
+
+### Report Process
+
+1. **LIMS sends the report** - the LIMS (StarLIMS, Shire, iGene or Histotrac) sends an HL7 `ORU_R01` report to the RIE.
+2. **Converted to the NW Standard** - the RIE converts the HL7 v2 from that LIMS's own HL7 standard into a NW Standard FHIR Message R01.
+3. **Validated and enriched** - as with orders, the RIE checks the payload for validity, including a PDS check and an organisation code check (NHS England ODT API), which can add further patient demographic and organisation details.
+4. **Routed to the NHS Trust** - the message is routed by the RIE to the relevant NHS Trust as HL7 v2 `ORU_R01` (NW Standard), based on ODS code.
+5. **Delivered into the EPR (or an EDMS)** - the NHS Trust converts the `ORU_R01` into the HL7 version its EPR supports and sends it on via its TIE. Alternatively, since the content is a PDF, the NHS Trust may instead choose to send the report to a local Electronic Document Management System (EDMS).
+
+```mermaid
+sequenceDiagram
+    participant LIMS as LIMS<br/>(StarLIMS, Shire, iGene, Histotrac)
+    participant RIE as Regional Integration<br/>Engine (RIE)
+    participant PDS as NHS England PDS/ODT<br/>FHIR APIs
+    participant TIE as NHS Trust<br/>Integration Engine (TIE)
+    participant EPR as NHS Trust EPR<br/>or local EDMS
+
+    LIMS ->> RIE: HL7 v2 ORU_R01<br/>(LIMS's own flavour)
+    RIE ->> RIE: Convert to NW Standard<br/>FHIR Message R01
+    RIE ->> PDS: PDS check / ODT organisation check
+    PDS -->> RIE: Patient demographics /<br/>organisation details
+    RIE ->> TIE: HL7 v2 ORU_R01 (NW Standard)<br/>routed by ODS code
+    TIE ->> EPR: Converted to local<br/>HL7 version, or to EDMS (PDF)
+```
+
+### Shared Care Records (Wire-tap)
+
+For reports, the RIE will [wire-tap](https://www.enterpriseintegrationpatterns.com/patterns/messaging/WireTap.html)
+the `ORU_R01` to send a copy of the report to a Shared Care Record. For the
+Greater Manchester Care Record (GMCR), this involves:
+
+1. Converting the `ORU_R01` to an `MDM_T02` message (NW Standard).
+2. Filtering to only include patients who have a postcode in Greater Manchester, or who have a GP registered with GMCR (identified by the GP practice's ODS code, "QOP ODS").
+3. Filtering out non-cancer reports (using the Test Codes carried in the `DiagnosticReport`).
+4. Converting the message to the GraphNet-specific flavour of HL7.
+5. Sending the `MDM_T02` message to GraphNet.
+
+Lancashire and South Cumbria, and the NHS England Unified Genomic Record Phase 1,
+will follow a similar process - see [ctDNA NHS England Unified Genomic Record
+(UGR)](ctDNAUGR.html) for the UGR-specific detail.
+
+```mermaid
+flowchart LR
+    RIE["RIE<br/>(receives LAB-3 report,<br/>ORU_R01)"] -->|"1. Convert to MDM_T02"| Conv["MDM_T02<br/>(NW Standard)"]
+    Conv -->|"2. Filter: Greater<br/>Manchester postcode<br/>or GMCR GP (QOP ODS)"| F1{"In GMCR<br/>catchment?"}
+    F1 -->|No| Drop1(["Not sent"])
+    F1 -->|Yes| F2{"3. Cancer<br/>Test Code?"}
+    F2 -->|No| Drop2(["Not sent"])
+    F2 -->|Yes| Conv2["4. Convert to<br/>GraphNet HL7 flavour"]
+    Conv2 -->|"5. Send MDM_T02"| GMCR["GraphNet<br/>(GMCR)"]
+```
+
 ### Technical detail
 
 The NW Genomics Regional Integration Engine (RIE) acts as a central messaging hub — effectively a "post office" — for North West Genomics.
@@ -162,7 +240,7 @@ The RIE also sends copies of NW Diagnostic Core Standard ctDNA orders and report
 
 #### Technical diagram
 
-The diagram below labels each flow with its HL7 v2 message type: `ORU_R01` delivers a result/report, `OML_O21` places a laboratory order, and `MDM_T02` sends a document such as a PDF report.
+The diagram below labels each flow with its HL7 v2 message type: `ORU_R01` delivers a result/report, `OML_O21` places a laboratory order, and `MDM_T02` sends a document such as a PDF report. The NHS Trusts sending direct HL7 orders are shown here generically - see [Regional Orders and Reports (Alder Hey, MFT, Liverpool)](RegionalOrdersAndReports.html) for the diagram naming the specific Trusts and how each one integrates.
 
 ```mermaid
 flowchart LR
@@ -183,11 +261,11 @@ flowchart LR
         T[Message Distribution and Transform to<br/>standardised HL7]
     end
 
-    subgraph Trusts["NHS Trusts - direct HL7"]
-        TR1["Manchester Foundation Trust (MFT)<br/>EPIC and HODS"]
-        TR2[Alder Hey]
-        TR3[Liverpool Women's]
-        TR4[Clatterbridge<br/>Immunology test requests +<br/>Genomic and Immunology reports]
+    subgraph Trusts["NHS Trusts - direct HL7<br/>(see Regional Orders and Reports)"]
+        TR1[Trust A]
+        TR2[Trust B]
+        TR3[Trust C]
+        TR4[Trust D]
     end
 
     subgraph TrustsGMS["NHS Trusts - via GMS Order Comms"]
@@ -214,15 +292,15 @@ flowchart LR
     L2 -. Potential - Reports .-> RIE
     L3 -- Reports V2 --> RIE
     L4 -- Haemato-Oncology Reports V2 --> RIE
-    RIE -- "NW Diagnostic Core Standard reports (ORU_R01)<br/>Genomics and Haemato-Oncology" --> TR1
-    RIE -- "NW Diagnostic Core Standard reports (ORU_R01) Genomics" --> TR2
-    RIE -- "NW Diagnostic Core Standard reports (ORU_R01) Genomics" --> TR3
-    RIE -- "NW Diagnostic Core Standard reports (ORU_R01)<br/>Genomics and Immunology" --> TR4
+    RIE -- "NW Diagnostic Core Standard reports (ORU_R01)" --> TR1
+    RIE -- "NW Diagnostic Core Standard reports (ORU_R01)" --> TR2
+    RIE -- "NW Diagnostic Core Standard reports (ORU_R01)" --> TR3
+    RIE -- "NW Diagnostic Core Standard reports (ORU_R01)" --> TR4
 
-    TR1 -- "NW Diagnostic Core Standard Orders Genomics (V2 OML_O21 or FHIR O21)" --> RIE
-    TR2 -- "NW Diagnostic Core Standard Orders Genomics (V2 OML_O21 or FHIR O21)" --> RIE
-    TR3 -- "NW Diagnostic Core Standard Orders Genomics (V2 OML_O21 or FHIR O21)" --> RIE
-    TR4 -- Immunology test requests --> RIE
+    TR1 -- "NW Diagnostic Core Standard Orders (V2 OML_O21 or FHIR O21)" --> RIE
+    TR2 -- "NW Diagnostic Core Standard Orders (V2 OML_O21 or FHIR O21)" --> RIE
+    TR3 -- "NW Diagnostic Core Standard Orders (V2 OML_O21 or FHIR O21)" --> RIE
+    TR4 -- "NW Diagnostic Core Standard Orders (V2 OML_O21 or FHIR O21)" --> RIE
     RIE -- Orders V2 --> L1
     RIE -. Potential - Orders .-> L2
     RIE -- Orders V2 --> L3
