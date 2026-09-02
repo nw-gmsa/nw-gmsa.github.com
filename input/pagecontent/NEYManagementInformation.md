@@ -199,7 +199,6 @@ which FHIR Message actually carries it.
 
 | CSV Column                          | Description                                                        | Type      | R01 FHIR Mapping                                                     |
 |----------------------------------------|--------------------------------------------------------------------|-----------|-------------------------------------------------------------------------|
-| `PatientAccessionIdentifier`           | iGene's internal patient accession number                          | string    | `Patient.identifier` (PatientIdentifier)                                |
 | `NHSNumber`                            | Patient's NHS Number                                                | string    | `Patient.identifier` (NHS Number) - also echoed on `DiagnosticReport.subject.identifier`/`ServiceRequest.subject.identifier` |
 | `HospitalNumber`                       | Patient's hospital/medical record number                            | string    | `Patient.identifier` (MedicalRecordNumber)                              |
 | `PatientFamilyName`                    | Patient's surname                                                   | string    | `Patient.name.family`                                                   |
