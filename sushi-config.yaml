@@ -116,7 +116,7 @@ pages:
     title: Whole Genome Sequencing (WGS)
     generation: markdown
   HistocompatibilityAndImmunogenetics.md:
-    title: Histocompatibility and Immunogenetics
+    title: "Use Case: Histocompatibility and Immunogenetics (Clatterbridge to Histotrac)"
     generation: markdown
   testing.md:
     title: Testing
@@ -131,7 +131,7 @@ pages:
     title: "Use Case: BCR-ABL Monitoring"
     generation: markdown
   HaematoOncologyPathway.md:
-    title: "Use Case: Cytogenetics and Haemato-Oncology Diagnostic Pathway"
+    title: "Use Case: Cytogenetics and Haemato-Oncology Diagnostic Pathway (Shire to HODS)"
     generation: markdown
   CheshireAndMerseysidePathology.md:
     title: "Use Case: Cheshire and Merseyside Pathology"
@@ -149,7 +149,7 @@ pages:
     title: "Use Case: NHS England Genomic Order Management Service (GOMS)"
     generation: markdown
   NEYManagementInformation.md:
-    title: "Use Case: NE&Y Management Information (ctDNA)"
+    title: "Use Case: ctDNA Management Information (NW to NE&Y Genomics)"
     generation: markdown
   ctDNAUGR.md:
     title: "Use Case: ctDNA NHS England Unified Genomic Record (UGR)"
@@ -408,7 +408,7 @@ menu:
     Greater Manchester Care Record (GMCR): GMCR.html
     Lancashire and South Cumbria Genomic Reports: GMCR.html#lancashire-and-south-cumbria
     Distributed WGS (dWGS): dWGS.html
-    Histocompatibility and Immunogenetics: HistocompatibilityAndImmunogenetics.html
+    Histocompatibility and Immunogenetics (Clatterbridge to Histotrac): HistocompatibilityAndImmunogenetics.html
     BCR-ABL Monitoring (Cepheid ASTM to iGene): BCRABLMonitoring.html
     Cytogenetics and Haemato-Oncology Diagnostic Pathway (Shire to HODS): HaematoOncologyPathway.html
     Cheshire and Merseyside (Pathology to Genomics Reflex): CheshireAndMerseysidePathology.html
@@ -416,7 +416,7 @@ menu:
     OMICS DSS Result Integration: reportable-variants.html
     NHS England Genomic Order Management Service (GOMS): GenomicOrderManagementService.html
     ctDNA NHS England Unified Genomic Record (UGR): ctDNAUGR.html
-    NE&Y Management Information (ctDNA): NEYManagementInformation.html
+    ctDNA Management Information (NW to NE&Y Genomics): NEYManagementInformation.html
     StarLIMS / iGene Integration: starLIMS.html
   Analysis and Design (Volume 1) :
  ##   Design Overview: design.html
