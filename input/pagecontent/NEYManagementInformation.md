@@ -131,7 +131,7 @@ No distinct future-state changes are currently defined for this process.
 - [DiagnosticReport](StructureDefinition-DiagnosticReport.html) - the Laboratory Report, carried in the FHIR Message R01 without its `presentedForm` PDF attachment
 - [Message Exchange [MQ]](MQ.html) - the FHIR Messaging pattern both O21 and R01 use
 
-### CSV Column Reference
+### Laboratory Order O21 Mapping
 
 <div class="alert alert-info" role="alert">
 <b>FHIR Questionnaire:</b> <a href="Questionnaire-NEYctDNAExport.html">NE&Y ctDNA Export (iGene CSV)</a>
@@ -181,7 +181,7 @@ column, since this is the same underlying order data.
 a published identifier system - see the Questionnaire's own item design notes for
 detail.
 
-### R01 Mapping
+### Laboratory Report R01 Mapping
 
 <div class="alert alert-info" role="alert">
 <b>FHIR Message R01:</b> <a href="Bundle-GenomicsReportMessage-ctDNA.html">Bundle-GenomicsReportMessage-ctDNA</a>
