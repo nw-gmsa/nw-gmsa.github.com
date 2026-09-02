@@ -16,26 +16,27 @@ This is currently being elaborated and subject to change.
 ### What is being tested
 
 A single referral for suspected haematological malignancy (blood cancer) triggers
-both a pathology assessment (e.g. blood film or bone marrow morphology) and, where
-indicated, genomic/molecular testing - without the referring clinician needing to
-place two separate orders. Genomic testing here typically looks for the specific
-chromosomal/molecular abnormalities that confirm a haematological malignancy
-subtype and guide treatment choice.
+a **cytogenetic assessment** - karyotyping and/or FISH, performed by the pathology
+laboratory (Shire LIMS) and returned as a **Cytogenetic Genomic Report** - and,
+where indicated, further **molecular genomic testing** by a separate genomics
+laboratory, without the referring clinician needing to place two separate orders.
+Together these identify the specific chromosomal/molecular abnormalities that
+confirm a haematological malignancy subtype and guide treatment choice.
 
 ### The end-to-end clinical journey
 
 1. **Patient presents** - a clinician sees a patient with findings suggestive of a blood cancer (e.g. an abnormal blood count) and places a single haemato-oncology referral.
 2. **Sample taken** - a blood or bone marrow sample is collected.
-3. **Pathology assessment** - the referral is orchestrated to the pathology laboratory first. *(A `LAB-35` reflex order.)*
-4. **Genomic reflex, if indicated** - based on the pathology findings and local protocol, a further reflex order is placed with the genomics laboratory. *(Another `LAB-35` reflex order.)*
-5. **Combined report** - pathology and genomic results are brought together into a single report back to the referring clinician. *(`LAB-3`.)*
+3. **Cytogenetic assessment** - the referral is orchestrated to the pathology laboratory (Shire LIMS) first, which returns a **Cytogenetic Genomic Report** (karyotype/FISH). *(A `LAB-35` reflex order.)*
+4. **Molecular genomic reflex, if indicated** - based on the cytogenetic findings and local protocol, a further reflex order is placed with the genomics laboratory. *(Another `LAB-35` reflex order.)*
+5. **Combined report** - the cytogenetic and molecular genomic results are brought together into a single report back to the referring clinician. *(`LAB-3`.)*
 6. **Clinical decision** - the haematology MDT confirms the diagnosis and subtype, and plans treatment accordingly.
 
 ```mermaid
 flowchart LR
     A[Suspected blood cancer -<br/>single referral placed] --> B[Sample taken]
-    B --> C[Pathology<br/>assessment]
-    C -->|If indicated| D[Genomic reflex<br/>testing]
+    B --> C[Cytogenetic assessment<br/>(Shire LIMS) -<br/>Cytogenetic Genomic Report]
+    C -->|If indicated| D[Molecular genomic<br/>reflex testing]
     C --> E[Combined report to<br/>referring clinician]
     D --> E
     E --> F[Haematology MDT -<br/>diagnosis and<br/>treatment plan]
@@ -43,20 +44,21 @@ flowchart LR
 
 ### Why this matters for developers
 
-- One referral becomes **two separate sub-orders** (pathology, then genomics) orchestrated by HODS - not a single combined order - see the Transactions table below.
-- The genomic reflex order is **conditional**, triggered by the pathology result/local protocol, not by the original referring clinician - this reflex decision logic sits inside HODS/pathology and isn't modelled by this IG.
-- The report the referring clinician ultimately receives is a single **combined** `LAB-3` report, not two separate pathology and genomics reports.
-- The pathology reflex order goes to **Shire LIMS**, but this order is not believed to be electronic today - see [Current Process](#current-process).
-- The combined `LAB-3` report back to the referring clinician is also not believed to be sent as HL7 `ORU_R01`/`LAB-3` today. Of the transactions in this pathway, only the Shire → HODS pathology report (`LAB-36`) is confirmed electronic - see [Current Process](#current-process).
+- One referral becomes **two separate sub-orders** (cytogenetics, then molecular genomics) orchestrated by HODS - not a single combined order - see the Transactions table below.
+- The **Shire → HODS report (`LAB-36`) is a Cytogenetic Genomic Report** (karyotype/FISH), not a general pathology/morphology result - see [Data Models](#data-models) below for what this content actually contains and how it could be modelled.
+- The molecular genomic reflex order is **conditional**, triggered by the cytogenetic result/local protocol, not by the original referring clinician - this reflex decision logic sits inside HODS/pathology and isn't modelled by this IG.
+- The report the referring clinician ultimately receives is a single **combined** `LAB-3` report, not two separate cytogenetic and molecular genomic reports.
+- The cytogenetics reflex order goes to **Shire LIMS**, but this order is not believed to be electronic today - see [Current Process](#current-process).
+- The combined `LAB-3` report back to the referring clinician is also not believed to be sent as HL7 `ORU_R01`/`LAB-3` today. Of the transactions in this pathway, only the Shire → HODS Cytogenetic Genomic Report (`LAB-36`) is confirmed electronic - see [Current Process](#current-process).
 
 ## Actors
 
 | IHE Actor                                                                                                                        | Role                                                     |
 |---------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------|
 | [Order Placer](ActorDefinition-OrderPlacer.html)                                                                                          | Referring clinician / EPR                                 |
-| [Order Filler](ActorDefinition-OrderFiller.html) (receiving `LAB-1`) / [Requestor](ActorDefinition-Requestor.html) (ILW, sending `LAB-35`) | HODS - haemato-oncology order comms system, orchestrates pathology and genomics reflex testing for a single referral |
-| [Subcontractor](ActorDefinition-Subcontractor.html) (ILW)                                                                                 | Pathology laboratory - **Shire LIMS**. The `LAB-35` order to Shire is not believed to be electronic today - see [Current Process](#current-process) |
-| [Subcontractor](ActorDefinition-Subcontractor.html) (ILW)                                                                                 | Genomics laboratory                                         |
+| [Order Filler](ActorDefinition-OrderFiller.html) (receiving `LAB-1`) / [Requestor](ActorDefinition-Requestor.html) (ILW, sending `LAB-35`) | HODS - haemato-oncology order comms system, orchestrates cytogenetics and molecular genomics reflex testing for a single referral |
+| [Subcontractor](ActorDefinition-Subcontractor.html) (ILW)                                                                                 | Pathology laboratory (cytogenetics) - **Shire LIMS**, MFT's cellular pathology LIMS. Returns a **Cytogenetic Genomic Report** (`LAB-36`). The `LAB-35` order to Shire is not believed to be electronic today - see [Current Process](#current-process) |
+| [Subcontractor](ActorDefinition-Subcontractor.html) (ILW)                                                                                 | Genomics laboratory (molecular)                              |
 {:.grid}
 
 ## Transactions
@@ -64,35 +66,35 @@ flowchart LR
 | Transaction | Description                          | Direction                          |
 |-------------|------------------------------------------|-------------------------------------|
 | `LAB-1`     | Laboratory Order                          | Order Placer → Order Filler (HODS)   |
-| `LAB-35` (not believed to be electronic) | Pathology Reflex Order | Order Filler (HODS) → Order Filler (Pathology - Shire LIMS) |
-| `LAB-36`    | Pathology Report                          | Order Filler (Pathology - Shire LIMS) → Order Filler (HODS) |
-| `LAB-35`    | Genomic Reflex Order                      | Order Filler (HODS) → Order Filler (Genomics)  |
-| `LAB-36`    | Genomic Report                            | Order Filler (Genomics) → Order Filler (HODS)  |
+| `LAB-35` (not believed to be electronic) | Cytogenetics Reflex Order | Order Filler (HODS) → Order Filler (Pathology - Shire LIMS) |
+| `LAB-36`    | **Cytogenetic Genomic Report**             | Order Filler (Pathology - Shire LIMS) → Order Filler (HODS) |
+| `LAB-35`    | Molecular Genomic Reflex Order            | Order Filler (HODS) → Order Filler (Genomics)  |
+| `LAB-36`    | Molecular Genomic Report                  | Order Filler (Genomics) → Order Filler (HODS)  |
 | `LAB-3` (not believed to be electronic today) | Laboratory Report (combined) | Order Filler (HODS) → Order Placer   |
 {:.grid}
 
-Only the Shire → HODS pathology report (`LAB-36`) above is confirmed as an
-electronic transaction today; the electronic status of the genomic reflex
-order/report (`LAB-35`/`LAB-36` to/from the genomics laboratory) has not been
-separately confirmed for this pathway.
+Only the Shire → HODS Cytogenetic Genomic Report (`LAB-36`) above is confirmed as
+an electronic transaction today; the electronic status of the molecular genomic
+reflex order/report (`LAB-35`/`LAB-36` to/from the genomics laboratory) has not
+been separately confirmed for this pathway.
 
 ## Current Process
 
-A haemato-oncology order comms system (HODS) orchestrates pathology and genomics
-reflex testing for a single referral - see [Inter Laboratory Workflow
-(ILW)](ILW.html) for the generic sub-order/reflex pattern this follows
+A haemato-oncology order comms system (HODS) orchestrates cytogenetics and
+molecular genomics reflex testing for a single referral - see [Inter Laboratory
+Workflow (ILW)](ILW.html) for the generic sub-order/reflex pattern this follows
 (`LAB-35`/`LAB-36`), and [Cheshire and Merseyside
 Pathology](CheshireAndMerseysidePathology.html) for the related pathology-LIMS
 (CFT Shire) reflex scenario without HODS orchestration.
 
-The pathology laboratory here is **Shire LIMS**, the same LIMS as the Cheshire
-and Merseyside scenario. The pathology reflex order (`LAB-35`) from HODS to
-Shire is not believed to be an electronic transaction today, and the combined
-report (`LAB-3`) from HODS back to the referring clinician is also not
-believed to be sent electronically (as HL7 `ORU_R01`) today - both are shown
-in the sequence diagram below as such, pending confirmation. Of the
-transactions in this pathway, only the Shire → HODS pathology report
-(`LAB-36`) is confirmed electronic.
+The cytogenetics laboratory here is **Shire LIMS** (MFT's cellular pathology
+LIMS), the same LIMS as the Cheshire and Merseyside scenario. The Cytogenetics
+Reflex Order (`LAB-35`) from HODS to Shire is not believed to be an electronic
+transaction today, and the combined report (`LAB-3`) from HODS back to the
+referring clinician is also not believed to be sent electronically (as HL7
+`ORU_R01`) today - both are shown in the sequence diagram below as such,
+pending confirmation. Of the transactions in this pathway, only the Shire →
+HODS Cytogenetic Genomic Report (`LAB-36`) is confirmed electronic.
 
 ### Haematological Malignancy Diagnostic Services
 
@@ -108,22 +110,22 @@ participant LIMSG as Order Filler (Genomics)
 
 EPR ->> LIMS: Submit Laboratory Order O21 (LAB-1)
 
-opt Order Filler (HODS) creates Pathology Order
+opt Order Filler (HODS) creates Cytogenetics Order
 
 
-    LIMS -->> LIMSP: Pathology Reflex Order (LAB-35) - not believed to be electronic today
+    LIMS -->> LIMSP: Cytogenetics Reflex Order (LAB-35) - not believed to be electronic today
     LIMS -->> LIMSP: Send Specimen (not a technical interaction)
     LIMSP -->> LIMSP : Performs Test
-    LIMSP ->> LIMS: Send Pathology Report R01 (LAB-36)
+    LIMSP ->> LIMS: Send Cytogenetic Genomic Report R01 (LAB-36)
 end
 
-opt Order Filler (HODS) creates Genomic Order
+opt Order Filler (HODS) creates Molecular Genomic Order
 
    
-    LIMS ->> LIMSG: Submit Genomic Reflex Order O21 (LAB-35)
+    LIMS ->> LIMSG: Submit Molecular Genomic Reflex Order O21 (LAB-35)
     LIMSP -->> LIMSG: Send Specimen (unsure of workflow)
     LIMSG -->> LIMSG : Performs Test
-    LIMSG ->> LIMS: Send Genomic Report R01 (LAB-36)
+    LIMSG ->> LIMS: Send Molecular Genomic Report R01 (LAB-36)
 end
 LIMS -->> LIMS: Write Report
 LIMS -->> EPR: Send Laboratory Report R01 (LAB-3) - not believed to be electronic today
@@ -139,8 +141,9 @@ No distinct future-state changes are currently defined for the order/report
 orchestration in this pathway - this section will be populated as the HODS
 orchestration workflow above is formalised.
 
-However, the genomic content of the Shire → HODS `LAB-36` report is itself a
-candidate for future modelling. The sample messages for this pathway
+However, the genomic content of the Shire → HODS `LAB-36` **Cytogenetic Genomic
+Report** is itself a candidate for future modelling. The sample messages for this
+pathway
 ([Shire-1](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/R01/Shire-1.txt),
 [Shire-2](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/R01/Shire-2.txt))
 carry cytogenetic/molecular findings for suspected MDS and AML - a karyotype
@@ -171,11 +174,13 @@ published as this page's [Examples](#examples).
 
 ### Future genomic data model (proposed)
 
-The genomics laboratory's `LAB-36` result (and any genomic content folded
+Shire's `LAB-36` **Cytogenetic Genomic Report** (and any genomic content folded
 into the combined `LAB-3` report) is a candidate for restructuring in place
 of the current free-text `OBX|FT|CYTO` pattern seen in the [sample Shire
-messages](https://github.com/nw-gmsa/Testing/tree/main/Input/V2/R01). Two
-complementary sources were reviewed for this:
+messages](https://github.com/nw-gmsa/Testing/tree/main/Input/V2/R01) - note
+this is the pathology laboratory's (Shire's) report, not the separate
+molecular genomics laboratory's `LAB-36`. Two complementary sources were
+reviewed for this:
 
 **HL7 FHIR Genomics Reporting IG.** As of this IG's current build, the [HL7
 FHIR Genomics Reporting Implementation
@@ -217,9 +222,10 @@ adoption.)*
 Candidate direction, to be confirmed with the genomics and pathology
 laboratories:
 
-- **`DiagnosticReport`** as the container for the genomic result, distinct
-  from the pathology `DiagnosticReport`, with `DiagnosticReport.conclusion`
-  carrying the free-text interpretive summary (e.g. *"Complex abnormal
+- **`DiagnosticReport`** as the container for the Cytogenetic Genomic Report,
+  distinct from any other, general cellular pathology `DiagnosticReport` Shire
+  may also issue, with `DiagnosticReport.conclusion` carrying the free-text
+  interpretive summary (e.g. *"Complex abnormal
   hyperdiploid karyotype ... consistent with AML"*) and
   `DiagnosticReport.conclusionCode` carrying a coded diagnosis/impression
   (e.g. SNOMED CT MDS/AML) where the laboratory is willing to commit to one.
