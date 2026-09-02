@@ -44,6 +44,7 @@ flowchart LR
 - The genomic reflex order is **conditional**, triggered by the pathology result/local protocol, not by the original referring clinician - this reflex decision logic sits inside HODS/pathology and isn't modelled by this IG.
 - The report the referring clinician ultimately receives is a single **combined** `LAB-3` report, not two separate pathology and genomics reports.
 - The pathology reflex order goes to **Shire LIMS**, but this order is not believed to be electronic today - see [Current Process](#current-process).
+- The combined `LAB-3` report back to the referring clinician is also not believed to be sent as HL7 `ORU_R01`/`LAB-3` today. Of the transactions in this pathway, only the Shire → HODS pathology report (`LAB-36`) is confirmed electronic - see [Current Process](#current-process).
 
 ## Actors
 
@@ -64,8 +65,13 @@ flowchart LR
 | `LAB-36`    | Pathology Report                          | Order Filler (Pathology - Shire LIMS) → Order Filler (HODS) |
 | `LAB-35`    | Genomic Reflex Order                      | Order Filler (HODS) → Order Filler (Genomics)  |
 | `LAB-36`    | Genomic Report                            | Order Filler (Genomics) → Order Filler (HODS)  |
-| `LAB-3`     | Laboratory Report (combined)              | Order Filler (HODS) → Order Placer   |
+| `LAB-3` (not believed to be electronic today) | Laboratory Report (combined) | Order Filler (HODS) → Order Placer   |
 {:.grid}
+
+Only the Shire → HODS pathology report (`LAB-36`) above is confirmed as an
+electronic transaction today; the electronic status of the genomic reflex
+order/report (`LAB-35`/`LAB-36` to/from the genomics laboratory) has not been
+separately confirmed for this pathway.
 
 ## Current Process
 
@@ -77,10 +83,13 @@ Pathology](CheshireAndMerseysidePathology.html) for the related pathology-LIMS
 (CFT Shire) reflex scenario without HODS orchestration.
 
 The pathology laboratory here is **Shire LIMS**, the same LIMS as the Cheshire
-and Merseyside scenario. Unlike the genomics reflex order, the pathology
-reflex order (`LAB-35`) from HODS to Shire is not believed to be an electronic
-transaction today - it is shown in the sequence diagram below as such, pending
-confirmation.
+and Merseyside scenario. The pathology reflex order (`LAB-35`) from HODS to
+Shire is not believed to be an electronic transaction today, and the combined
+report (`LAB-3`) from HODS back to the referring clinician is also not
+believed to be sent electronically (as HL7 `ORU_R01`) today - both are shown
+in the sequence diagram below as such, pending confirmation. Of the
+transactions in this pathway, only the Shire → HODS pathology report
+(`LAB-36`) is confirmed electronic.
 
 ### Haematological Malignancy Diagnostic Services
 
@@ -114,7 +123,7 @@ opt Order Filler (HODS) creates Genomic Order
     LIMSG ->> LIMS: Send Genomic Report R01 (LAB-36)
 end
 LIMS -->> LIMS: Write Report
-LIMS ->> EPR: Send Laboratory Report R01 (LAB-3)
+LIMS -->> EPR: Send Laboratory Report R01 (LAB-3) - not believed to be electronic today
 ```
 
 This pathway can also apply to children's cancer referrals - see [Cancer
