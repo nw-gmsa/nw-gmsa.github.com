@@ -27,7 +27,10 @@ Usage: #example
 
 * method = $loinc#LA26398-0 "Sequencing"
 
-* component[0].code = $loinc#48018-6 "Gene studied [ID]"
+* component[0].code = $loinc#83005-9 "Variant category"
+* component[=].valueCodeableConcept = IGeneVariantCategory#SEQV "Sequence Variant"
+
+* component[+].code = $loinc#48018-6 "Gene studied [ID]"
 * component[=].valueCodeableConcept = $genenames#HGNC:1100 "BRCA1"
 
 * component[+].code = $loinc#48002-0 "Genomic source class [Type]"

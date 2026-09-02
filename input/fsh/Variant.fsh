@@ -17,8 +17,15 @@ Description:    """
 * method 1..1 MS
 * valueCodeableConcept MS
 
-* component contains gene-studied 0..*
+* component contains variant-category 0..1
+  and gene-studied 0..*
   and representative-transcript-ref-seq 0..*
+
+* component[variant-category] ^short = "Variant Category (iGene)"
+* component[variant-category] ^definition = "Which of iGene's five variant-type categories (Sequence Variant, Intragenic CNV, Multigenic CNV, Structural Variant, Loss of Heterozygosity) this discrete variant belongs to - an IG-specific extension of LRI's own 'Variant category' (LOINC 83005-9), whose answer list only distinguishes Simple Variant vs Structural Variant. See https://fhir.nwgenomics.nhs.uk/reportable-variants.html#outstanding-issues."
+* component[variant-category].code = $loinc#83005-9
+* component[variant-category].code ^short = "83005-9"
+* component[variant-category].valueCodeableConcept from IGeneVariantCategoryVS (extensible)
 
 * component[gene-studied] ^short = "Gene Studied"
 * component[gene-studied] ^definition = "The gene(s) on which the variant is located."

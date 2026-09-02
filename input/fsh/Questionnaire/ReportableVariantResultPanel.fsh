@@ -71,6 +71,29 @@ Usage:  #definition
     * text = "LRI Table 5-2 row B - repeats for each discrete variant reported (OBX-4 sub-ID \"2a\", incrementing per repeat)."
     * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
+  * item[+]
+    * type = #choice
+    * linkId = "LRI/B.1"
+    * code[+] = $loinc#83005-9 "Variant category"
+    * text = "Variant Category"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
+    * item[+]
+      * linkId = "LRI/B.1-designNote"
+      * type = #display
+      * text = """
+      LRI row B.1, OBX type CWE, R/O/C = O, [0..1]. LRI's own answer list (LL4165-8)
+      only distinguishes Simple Variant vs Structural Variant - not granular enough to
+      route a variant to the correct iGene slot type. Resolved: this IG binds this
+      component to its own [IGeneVariantCategory](CodeSystem-IGeneVariantCategory.html)
+      value set instead (`SEQV`/`ICNV`/`MCNV`/`SV`/`LOH`), making the classification
+      that used to be inferred (see [OMICS DSS Result
+      Integration](reportable-variants.html#outstanding-issues)) an explicit, coded
+      value - the FHIR Variant profile has no named slice for this at all, so it is
+      modelled here as an open-slice component, same as `Variant.component:variant-category`.
+      Populated by every current example.
+      """
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
 // Transcript Specification (LRI B.3-B.8)
 
   * item[+]

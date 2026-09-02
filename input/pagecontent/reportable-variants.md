@@ -226,6 +226,7 @@ Bundle if a worked CNV/SV example is needed.
 
 | LRI Row | LOINC                                     | HL7 v2 OBX (Type, R/O/C, Card.) | FHIR Variant Component | iGene Field                        | Example                          |
 |---------|--------------------------------------------|----------------------------------|--------------------------|--------------------------------------|-----------------------------------|
+| B.1     | 83005-9 Variant category                   | CWE, O, [0..1]                    | *(open-slice - LRI's own answer list only distinguishes Simple/Structural; this IG binds it to [IGeneVariantCategory](CodeSystem-IGeneVariantCategory.html) instead)* | *(is)* the iGene slot type | `SEQV` |
 | B.3     | 48018-6 Gene studied [ID]                  | CWE, C, [0..1]                    | `gene-studied` *(this IG's own addition)* | Description (SEQV/ICNV), Gene(s) (LOH) | `BRCA1`                    |
 | B.4     | 51958-7 Transcript reference sequence [ID] | CWE, C, [0..1]                    | `representative-transcript-ref-seq` | Description (SEQV/ICNV)              | `NM_007294.3`                     |
 | B.5     | 48004-6 DNA change (c.HGVS)                | CWE, C, [0..1]                    | `representative-coding-hgvs` | Description (SEQV/ICNV)              | `c.68_69del`                      |
@@ -276,7 +277,6 @@ Panel](#result-panel) above, since they aren't needed for the iGene feed today:
 
 | Data Element                                | LRI Row | LOINC / Code               |
 |-----------------------------------------------|---------|-----------------------------|
-| Variant category (Simple/Structural)          | B.1     | 83005-9                     |
 | Discrete genetic variant [ID] - LRI's own preferred single-field alternative to the fully-decomposed rows above | B.2 | 81252-9 |
 | Amino acid change [Type]                      | B.8     | 48006-1                     |
 | Haplotype name                                | B.14    | 84414-2                     |
@@ -319,14 +319,14 @@ columns (10 + 3 + 3 + 3 + 2), rather than one row per variant.
 Converting the Result Panel's repeating Discrete Variant Panel Observations into that
 flat shape means the RIE (or whatever produces the CSV) must, for each `DiagnosticReport`:
 
-1. **Classify** each Variant Observation by type - Simple Variant vs Structural
-   Variant (LRI's Variant Category, row B.1, not currently populated by any example -
-   see [Result Panel: Elements Not Included](#result-panel-elements-not-included)),
-   further split into iGene's Sequence Variant / Intragenic CNV / Multigenic CNV /
-   Structural Variant / Loss of Heterozygosity buckets. None of the current examples
-   populate a field that makes this classification explicit - it would need to be
-   inferred (for example, from which components are populated, or from Genomic
-   Source Class/DNA Change Type).
+1. **Classify** each Variant Observation by type, using the coded `Variant Category`
+   component (LRI row B.1, `83005-9`, bound to
+   [IGeneVariantCategory](CodeSystem-IGeneVariantCategory.html) - see [Outstanding
+   Issues](#outstanding-issues) above) directly into iGene's Sequence Variant /
+   Intragenic CNV / Multigenic CNV / Structural Variant bucket. Every current
+   `Variant` example now populates this, so classification is an explicit, coded
+   value rather than an inference from which other components happen to be
+   populated.
 2. **Assign a slot number** within that type, in order (first Sequence Variant found
    becomes `SEQV1`, second becomes `SEQV2`, and so on).
 3. **Populate that slot's seven flat columns** (`Description`, `State`, `Inheritance`,
@@ -352,17 +352,20 @@ This raises two open questions, neither resolved by any current example:
 1. **Should the `Variant` profile and Result Panel be restructured around iGene's
    own five variant-type categories** (Sequence Variant / Intragenic CNV / Multigenic
    CNV / Structural Variant / Loss of Heterozygosity), rather than the current single
-   generic Discrete Variant Panel that mirrors LRI? Arguments for: it would make the
-   [CSV mapping](#mapping-to-the-igene-csv) above more direct, since "which iGene slot
-   type is this" is currently an inferred classification, not a modelled field -
-   codifying it as (for example) a required `Variant Category` component would remove
-   that ambiguity. Arguments against: it would diverge from both LRI's Discrete
-   Variant Panel and the international HL7 Genomics Reporting Variant profile, both of
-   which treat simple and structural variants (and, implicitly, CNVs) as one panel
-   distinguished by which components are populated, not by a separate profile or panel
-   per type. Not yet resolved for Sequence Variant / Intragenic CNV / Multigenic CNV /
-   Structural Variant - see item 2 below for the Loss of Heterozygosity part of this
-   question, which **has** been decided.
+   generic Discrete Variant Panel that mirrors LRI? **Partially decided:** rather than
+   a full restructure into five separate profiles/panels (which would diverge from
+   both LRI's Discrete Variant Panel and the international HL7 Genomics Reporting
+   Variant profile, both of which treat simple and structural variants, and implicitly
+   CNVs, as one panel distinguished by which components are populated), this IG adds a
+   coded `Variant Category` component (LRI row B.1, LOINC `83005-9`) to `Variant`,
+   bound to a new [IGeneVariantCategory](CodeSystem-IGeneVariantCategory.html)
+   CodeSystem/value set (`SEQV`/`ICNV`/`MCNV`/`SV`/`LOH`) - an IG-specific extension of
+   LRI's own answer list for that row, which only distinguishes Simple Variant vs
+   Structural Variant. This makes "which iGene slot type is this" an explicit, coded
+   value on the single panel, addressing the [CSV mapping](#mapping-to-the-igene-csv)
+   ambiguity above without a structural profile split - see every current `Variant`
+   example, which now populates it. See item 2 below for the separate Loss of
+   Heterozygosity decision.
 
 2. **Decided: Loss of Heterozygosity is modelled as a separate [Molecular
    Consequence](StructureDefinition-MolecularConsequence.html) Observation**, not as a

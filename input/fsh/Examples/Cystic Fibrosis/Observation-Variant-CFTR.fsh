@@ -27,7 +27,10 @@ Description: "Based on HL7 LRI Example 2 (Ref 5.9.1.2)"
 // validation issues * method = $loinc#LLA26398-0 "Sequencing"
 * method = $sct#264896000 "Nucleic acid analysis"
 
-* component[0].code = $loinc#48018-6 "Gene studied [ID]"
+* component[0].code = $loinc#83005-9 "Variant category"
+* component[=].valueCodeableConcept = IGeneVariantCategory#SEQV "Sequence Variant"
+
+* component[+].code = $loinc#48018-6 "Gene studied [ID]"
 * component[=].valueCodeableConcept = $genenames#HGNC:1884 "CFTR"
 
 * component[+].code = $loinc#51958-7 "Transcript reference sequence [ID]"

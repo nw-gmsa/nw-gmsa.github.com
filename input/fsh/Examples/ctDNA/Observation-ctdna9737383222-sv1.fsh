@@ -28,7 +28,10 @@ Usage: #example
 
 * method = $loinc#LA26398-0 "Sequencing"
 
-* component[0].code = $loinc#48013-7 "Genomic reference sequence [ID]"
+* component[0].code = $loinc#83005-9 "Variant category"
+* component[=].valueCodeableConcept = IGeneVariantCategory#SV "Structural Variant"
+
+* component[+].code = $loinc#48013-7 "Genomic reference sequence [ID]"
 * component[=].valueCodeableConcept = $refseq#NC_000023.10
 
 * component[+].code = $loinc#92822-6 "Genomic coordinate system [Type]"

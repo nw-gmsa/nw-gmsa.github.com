@@ -25,7 +25,10 @@ Description: "TODO"
 
 * method.text = "Digital PCR (BEAMing / OncoBEAM platform). NOTE: unlike 'Sequencing' (LOINC LA26398-0), the standard LOINC/SNOMED CT answer lists referenced by this IG do not currently include a dedicated coded answer for 'digital PCR' — captured here as free text pending a suitable coded term (e.g. a local or SNOMED CT extension) being agreed with your terminology team."
 
-* component[0].code = $loinc#48018-6 "Gene studied [ID]"
+* component[0].code = $loinc#83005-9 "Variant category"
+* component[=].valueCodeableConcept = IGeneVariantCategory#SEQV "Sequence Variant"
+
+* component[+].code = $loinc#48018-6 "Gene studied [ID]"
 * component[=].valueCodeableConcept = $genenames#HGNC:3236 "EGFR"
 
 * component[+].code = $loinc#48004-6 "DNA change (c.HGVS)"

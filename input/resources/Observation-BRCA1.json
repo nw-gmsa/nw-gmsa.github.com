@@ -2,7 +2,7 @@
     "resourceType": "Observation",
     "meta": {
         "profile": [
-            "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Observation-Variant"
+            "https://fhir.nwgenomics.nhs.uk/StructureDefinition/Variant"
         ]
     },
     "id": "brca1-variant",
@@ -67,6 +67,26 @@
         ]
     },
     "component": [
+        {
+            "code": {
+                "coding": [
+                    {
+                        "system": "http://loinc.org",
+                        "code": "83005-9",
+                        "display": "Variant category"
+                    }
+                ]
+            },
+            "valueCodeableConcept": {
+                "coding": [
+                    {
+                        "system": "https://fhir.nwgenomics.nhs.uk/CodeSystem/IGeneVariantCategory",
+                        "code": "SEQV",
+                        "display": "Sequence Variant"
+                    }
+                ]
+            }
+        },
         {
             "code": {
                 "coding": [
