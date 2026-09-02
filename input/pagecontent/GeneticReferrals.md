@@ -397,6 +397,27 @@ Notes on this diagram:
   API does link a booked `ReferralRequest` directly to an `Appointment`, but
   scheduling remains [out of scope](#scheduling-out-of-scope) for this page.
 
+#### Missing Key Fields (eRS)
+
+Checked against the [common data items](#referral-data-model) above, eRS's own
+published `ReferralRequest` examples do **not** carry the following - i.e. these are
+gaps against the [Target Referral Model](#target-referral-model), not things eRS
+happens to model differently:
+
+| Common Data Item                | Present in eRS's `ReferralRequest`?                                                                 |
+|------------------------------------|-----------------------------------------------------------------------------------------------------------|
+| Patient - MRN                      | No - only the NHS Number identifier is carried on `subject`                                              |
+| Patient Account/Episode Number     | No                                                                                                        |
+| Referring provider/organisation    | No, not on the referral itself - only a bare commissioning-organisation `Identifier`. The referring clinician (`PractitionerRole`) appears elsewhere in eRS's API (e.g. Advice and Guidance) but was not found linked to `ReferralRequest` |
+| Service/test requested (as a code) | Not as a single code - eRS instead uses a `specialty` + `clinicType` pair, a different shape to a generic `ServiceRequest.code` |
+| Reason for referral (coded)        | No - only unstructured clinical information via an attached `DocumentReference` (the referral letter), not a coded `reasonCode`/`Condition` |
+| Visit/encounter context            | No                                                                                                        |
+{:.grid}
+
+What eRS *does* carry beyond the common data items list: `ReferralPriority`,
+`ReferralState` (a fuller workflow-state model than a plain FHIR `status`), and the
+`ClinicalInfoFirstSubmitted`/`eReferralPathwayStart` timestamps.
+
 ### Mapping to NHS Booking and Referral Standard (BaRS)
 
 [NHS Booking and Referral Standard
@@ -416,19 +437,40 @@ carrying a `Bundle` of standard UK Core resources, with a `ServiceRequest` as th
 `ServiceRequest`, `Patient` (`UKCore-Patient`), `Encounter`, `Location`,
 `Organization`, `Practitioner`, `PractitionerRole`, `Observation`, `Flag`,
 `MedicationStatement`, `AllergyIntolerance`, `QuestionnaireResponse` and `Consent`
-(all standard [UK Core](https://simplifier.net/hl7fhirukcorer4) profiles). Which
-specific `ServiceRequest`/`Bundle` fields carry which data item (referral reason,
-priority, referring clinician, etc.) is left to be defined per BaRS use case (e.g. its
-published `referraltopharmacy` use case) rather than fixed by BaRS itself.
+(all standard [UK Core](https://simplifier.net/hl7fhirukcorer4) profiles).
 
-**Practical conclusion:** unlike eRS (or `REF_I12`), BaRS has no ready-made mapping
-row to add to the table above - it provides the raw UK Core building blocks
-(`ServiceRequest`, `Patient`, `Organization`, `Practitioner`/`PractitionerRole`,
-`Encounter`) a genetics-referral use case could be built from, but none of this IG's
-common data items (Order Number/UBRN-equivalent, referral priority/status, reason for
-referral) are pre-defined by BaRS the way they are by eRS. If a genetics referral
-were ever built on BaRS, this IG would need to define its own `MessageDefinition`,
-in the same way BaRS's existing use cases (e.g. `referraltopharmacy`) each do.
+#### BaRS `ServiceRequest` Field Mapping
+
+Unlike eRS's `ReferralRequest`/`ServiceRequest`, BaRS defines no referral-specific
+extensions at all - but its own published `ServiceRequest` example (profile
+`BARSServiceRequest-request-validation`) does populate a set of plain FHIR elements,
+which can still be mapped against the same common data items:
+
+| Common Data Item                     | BaRS `ServiceRequest` Field                                                                 |
+|-----------------------------------------|----------------------------------------------------------------------------------------------------|
+| Patient - NHS Number, MRN               | `subject` (reference) - resolves to a `Patient` resource elsewhere in the `Bundle`; identifiers are on that `Patient`, not on `ServiceRequest` itself |
+| Patient Account/Episode Number          | `encounter` (reference to an `Encounter` elsewhere in the `Bundle`)                                   |
+| Referral (order) identifier             | *(no `identifier` populated in the published example - the message's own correlation is instead carried on `MessageHeader`/`basedOn`)* |
+| Referral identifier - eRS-specific (UBRN) | Not applicable - no BaRS equivalent found                                                          |
+| Referral status                         | `status` (e.g. `active`)                                                                            |
+| Referral priority                       | *(no `priority` populated in the published example)*                                                |
+| Service/test requested                  | *(no `code` populated in the published example - what is being requested is implied by context/`basedOn` rather than a `ServiceRequest.code`)* |
+| Reason for referral                     | `supportingInfo` (reference, e.g. "Rejected Services - Patient Choice in Service Selection - Details" in the published example) - a reference, not a coded `reasonCode` |
+| Referring provider/organisation         | `requester` (reference)                                                                             |
+| Referred-to provider/service            | `performer` (reference, array)                                                                      |
+| Visit/encounter context                 | `encounter`                                                                                          |
+| *(no equivalent common data item)*      | `category` - coded `referral` ("Transfer of Care"), system `https://fhir.nhs.uk/CodeSystem/message-category-servicerequest` - **the same code system eRS's own newer R4 `ServiceRequest` endpoint uses** for the same purpose |
+| *(no equivalent common data item)*      | `occurrencePeriod`, `authoredOn` - referral timing, with no `REF_I12`/eRS equivalent shown above     |
+{:.grid}
+
+**Practical conclusion:** BaRS's `ServiceRequest` does carry plain FHIR fields for
+several common data items (status, subject/encounter references, requester,
+performer, a reference-based reason) - so it is not entirely unmapped, correcting an
+earlier version of this page. What it lacks, unlike eRS or `REF_I12`, is anything
+referral-*specific*: no identifier akin to the UBRN or Order Number, no priority, and
+no coded service/test-requested or reason-for-referral - these would all need to be
+added by whichever `MessageDefinition` a genetics referral use case defined on top of
+BaRS, in the same way BaRS's existing use cases (e.g. `referraltopharmacy`) each do.
 
 ## Clinical Scenarios
 
