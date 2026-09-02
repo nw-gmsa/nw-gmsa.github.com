@@ -2,8 +2,8 @@
 This is for information and analysis purposes only and is not in active development.
 </div>
 
-Genetic Counselling Referral: a closed-loop referral pattern - similar in concept to
-IHE 360X - for referring a patient (or an at-risk relative) into a clinical
+Genetic Referrals: a closed-loop referral pattern - similar in concept to IHE
+360X - for referring a patient (or an at-risk relative) into a clinical
 genetics/genomics service for genetic counselling and, where appropriate, testing.
 This covers both directions a referral into North West genomics can arise:
 
@@ -26,14 +26,15 @@ LAB-1 and LAB-3](LTW.html#laboratory-order-and-report-lab-1-and-lab-3).
 1. IHE PCC Technical Framework Supplement - [360X: Closed Loop Referrals](https://www.ihe.net/uploadedFiles/Documents/PCC/IHE_PCC_Suppl_360X.pdf) - the closed-loop referral profile this pattern is analogous to (not itself adopted here)
 2. HL7 v2 `REF_I12` (Patient Referral) - one model for the referral message, used as the basis for the [Referral Data Model](#referral-data-model) below
 3. NHS [e-Referral Service (eRS)](https://digital.nhs.uk/services/e-referral-service) / [FHIR API](https://digital.nhs.uk/developer/api-catalogue/e-referral-service-fhir) - the service GPs use today to refer into secondary care, including regional clinical genetics services; the other basis for the [Referral Data Model](#referral-data-model) below
-4. HL7 v2 `ORU_R01` - a possible model for the report/clinic letter back, already used elsewhere in this IG for hospital reports (see [Cancer Background Information for Use Cases](CancerNOS.html))
-5. [HL7 Europe Hospital Discharge Report (HDR)](https://build.fhir.org/ig/hl7-eu/hdr/) - a possible FHIR-native alternative for the report/clinic letter back
-6. [Manchester Centre for Genomic Medicine - Clinical Services](https://www.mangen.co.uk/healthcare-professionals/clinical-genomic-services/)
-7. [Liverpool Centre for Genomic Medicine (LCGM)](https://www.uhliverpool.nhs.uk/services/service-finder/liverpool-centre-genomic-medicine-lcgm)
-8. [NHS England FHIR Genomics Implementation Guide - Clinical Scenarios](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinical-Scenarios?version=0.5.3) - may contain scenarios relevant to this pattern
-9. [Cancer Background Information for Use Cases - Genetic Counselling Referral Across Regions](CancerNOS.html#genetic-counselling-referral-across-regions) - the worked narrative example this page generalises
-10. Macmillan - [What is genetic counselling?](https://www.macmillan.org.uk/cancer-information-and-support/worried-about-cancer/causes-and-risk-factors/what-is-genetic-counselling) - background on cascade/predictive testing
-11. [Diagnostic Core](diagnostic-core.html) - the identifier profiles reused in the [Referral Data Model](#referral-data-model) below
+4. NHS England [Booking and Referral Standard (BaRS) - FHIR API](https://digital.nhs.uk/developer/api-catalogue/booking-and-referral-fhir/v1.0.7) - a possible alternative to eRS; checked for referral-specific data modelling in the [Mapping to NHS Booking and Referral Standard (BaRS)](#mapping-to-nhs-booking-and-referral-standard-bars) section below
+5. HL7 v2 `ORU_R01` - a possible model for the report/clinic letter back, already used elsewhere in this IG for hospital reports (see [Cancer Background Information for Use Cases](CancerNOS.html))
+6. [HL7 Europe Hospital Discharge Report (HDR)](https://build.fhir.org/ig/hl7-eu/hdr/) - a possible FHIR-native alternative for the report/clinic letter back
+7. [Manchester Centre for Genomic Medicine - Clinical Services](https://www.mangen.co.uk/healthcare-professionals/clinical-genomic-services/)
+8. [Liverpool Centre for Genomic Medicine (LCGM)](https://www.uhliverpool.nhs.uk/services/service-finder/liverpool-centre-genomic-medicine-lcgm)
+9. [NHS England FHIR Genomics Implementation Guide - Clinical Scenarios](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinical-Scenarios?version=0.5.3) - may contain scenarios relevant to this pattern
+10. [Cancer Background Information for Use Cases - Genetic Counselling Referral Across Regions](CancerNOS.html#genetic-counselling-referral-across-regions) - the worked narrative example this page generalises
+11. Macmillan - [What is genetic counselling?](https://www.macmillan.org.uk/cancer-information-and-support/worried-about-cancer/causes-and-risk-factors/what-is-genetic-counselling) - background on cascade/predictive testing
+12. [Diagnostic Core](diagnostic-core.html) - the identifier profiles reused in the [Referral Data Model](#referral-data-model) below
 
 ## Overview
 
@@ -41,6 +42,19 @@ This page is **not** about diagnostic genomic testing itself - that is covered b
 [Laboratory Testing Workflow (LTW)](LTW.html) and the use cases built on it. It is
 about the **clinical referral workflow** that brings a patient or relative into a
 genomics/clinical genetics service in the first place, whichever of these starts it:
+
+### Terminology
+
+This page uses two genetics-specific terms that may not be familiar outside a
+clinical genetics context:
+
+- **Proband** - the patient in whom a genetic condition or pathogenic variant is
+  first identified, or in whom one is suspected - the starting point of the
+  referral/testing process.
+- **Consultand** - a relative of the proband being counselled and/or tested as a
+  result (e.g. for cascade/predictive testing), as distinct from the proband
+  themselves. The same distinction is used in [Distributed WGS
+  (dWGS)](dWGS.html)'s Family Structure/Participant Type pattern.
 
 - A pathogenic variant is **found** in a patient (the proband), and at-risk relatives
   need to be offered genetic counselling and predictive/cascade testing;
@@ -115,6 +129,15 @@ in an earlier version of this page) because it is, in practice, the primary rout
 which patients first reach these services. eRS assigns each referral a **Unique
 Booking Reference Number (UBRN)**, which the receiving service uses to identify and
 triage it.
+
+eRS's [FHIR API](https://digital.nhs.uk/developer/api-catalogue/e-referral-service-fhir)
+currently represents the referral as a `ReferralRequest` resource (STU3), profiled
+as `eRS-ReferralRequest-1`; a newer `ServiceRequest`-based (R4) endpoint is in
+development, on which the UBRN appears explicitly as
+`ServiceRequest.identifier` (system `https://fhir.nhs.uk/Id/UBRN`), with
+`intent = order` and `category` coded `referral` (system
+`https://fhir.nhs.uk/CodeSystem/message-category-servicerequest`) - see the [FHIR
+Resource Model](#ers-fhir-resource-model) below.
 
 **Not in scope here:** eRS's own booking/scheduling functions (see [Scheduling (Out
 of Scope)](#scheduling-out-of-scope) below) - only the referral itself, and the data
@@ -194,6 +217,91 @@ It is not a proposal to build either interface - it exists so that a future
 `ServiceRequest`-based referral profile, if ever built, can reuse identifiers this IG
 already defines rather than inventing new ones.
 
+### eRS FHIR Resource Model
+
+The diagram below sketches how eRS's own FHIR API relates the resources involved in
+a referral, taken from the worked examples published in [eRS's FHIR API
+catalogue](https://digital.nhs.uk/developer/api-catalogue/e-referral-service-fhir).
+It uses the current (STU3) `ReferralRequest` resource name; the same shape applies to
+the newer `ServiceRequest`-based (R4) endpoint once it is generally available.
+
+```mermaid
+erDiagram
+    ReferralRequest {
+        string status
+        string intent
+        Identifier ersRequestId_UBRN
+    }
+    Patient {
+        Identifier nhsNumber
+    }
+    Organization {
+        Identifier odsCode
+    }
+    PractitionerRole {
+        string businessFunction
+    }
+    Practitioner {
+        Identifier sdsUserId
+    }
+    DocumentReference {
+        string type
+        Attachment content
+    }
+    List {
+        string mode
+    }
+    HealthcareService {
+        string name
+        Identifier ersServiceId
+    }
+    Appointment {
+        string status
+        dateTime start
+        dateTime end
+    }
+    Slot {
+        string status
+        dateTime start
+    }
+    Schedule {
+        string actor
+    }
+
+    ReferralRequest }o--|| Patient : subject
+    ReferralRequest ||--o{ DocumentReference : supportingInfo
+    ReferralRequest ||--o| List : shortlist
+    List }o--o{ HealthcareService : candidateService
+    ReferralRequest }o--|| Organization : "commissioning org (identifier only)"
+    ReferralRequest ||--o| Appointment : "booked (if directly bookable)"
+    Appointment ||--o{ Slot : slot
+    Slot }o--|| Schedule : schedule
+    Appointment }o--|| HealthcareService : atService
+    Appointment }o--|| Patient : participant
+    PractitionerRole }o--|| Practitioner : practitioner
+    PractitionerRole }o--|| Organization : organization
+```
+
+Notes on this diagram:
+
+- `ReferralRequest.subject` and `Appointment.participant` reference the `Patient` by
+  NHS Number identifier only (`http://fhir.nhs.net/Id/nhs-number` in STU3,
+  `https://fhir.nhs.uk/Id/nhs-number` in R4) - not a full `Patient` resource.
+- The candidate/chosen service (`List` entries, and `Appointment`'s service
+  participant) is likewise identified rather than fully represented, by an
+  `ers-service` identifier or an ODS site code, corresponding to a `HealthcareService`.
+- The commissioning organisation on `ReferralRequest` is carried as a bare
+  `Identifier` (ODS organisation code) via an extension, not a full `Organization`
+  reference - shown here as a relationship to `Organization` for clarity.
+- `PractitionerRole` (linking a `Practitioner` and an `Organization`, e.g. with
+  business function `REFERRING_CLINICIAN`) is how eRS identifies "who" elsewhere in
+  its API (e.g. Advice and Guidance/Communication) - it is not shown wired directly
+  into the `ReferralRequest` example above because that relationship was not found in
+  the published examples.
+- `Appointment`/`Slot`/`Schedule` are shown for completeness, since a booked
+  `ReferralRequest` references its `Appointment` directly - but booking itself
+  remains [out of scope](#scheduling-out-of-scope) for this page.
+
 | Common Data Item                     | `REF_I12` Segment.Field                              | FHIR Resource.Element                              | This IG's Profile (if reused)                                                             |
 |-----------------------------------------|-----------------------------------------------------------|-----------------------------------------------------------|--------------------------------------------------------------------------------------------------|
 | Patient - NHS Number                    | `PID-3` (identifier, NHS Number assigning authority)       | `Patient.identifier` (NHS Number system)                    | [NHSIdentifier](StructureDefinition-NHSIdentifier.html)                                            |
@@ -201,7 +309,7 @@ already defines rather than inventing new ones.
 | Patient - name, date of birth, sex, address | `PID-5`, `PID-7`, `PID-8`, `PID-11`                     | `Patient.name`, `.birthDate`, `.gender`, `.address`          | Not specific to referral - standard `Patient` demographics                                        |
 | Patient Account/Episode Number          | `PID-18` (Patient Account Number)                          | `Encounter.identifier`, or `Account.identifier`               | [HospitalProviderSpellIdentifier](StructureDefinition-HospitalProviderSpellIdentifier.html)        |
 | Referral (order) identifier             | `RF1-6` (Originating Referral Identifier)                    | `ServiceRequest.identifier`                                 | [OrderIdentifier](StructureDefinition-OrderIdentifier.html)                                        |
-| Referral identifier - eRS-specific      | *(no `REF_I12` equivalent)*                                 | `ServiceRequest.identifier` (UBRN system)                    | Not currently modelled - a new identifier profile, analogous to `OrderIdentifier`, would be needed if eRS referrals were represented |
+| Referral identifier - eRS-specific      | *(no `REF_I12` equivalent)*                                 | `ServiceRequest.identifier` (system `https://fhir.nhs.uk/Id/UBRN`) | Not currently modelled - a new identifier profile, analogous to `OrderIdentifier`, would be needed if eRS referrals were represented |
 | Referral status                         | `RF1-1` (Referral Status)                                   | `ServiceRequest.status`                                     | Standard FHIR status code, not separately profiled                                                |
 | Referral priority                       | `RF1-2` (Referral Priority)                                 | `ServiceRequest.priority`                                   | Standard FHIR priority code, not separately profiled                                              |
 | Service/test requested                  | `RF1-4` (Referral Type)                                     | `ServiceRequest.code`                                        | Not currently modelled for this use case - would need a genetics-referral-specific code system/ValueSet |
@@ -224,11 +332,44 @@ Notes on this sketch:
   `PractitionerRole`, `Organization`, `HealthcareService`, `Encounter`, `Condition`)
   are the standard FHIR building blocks generally used to represent a referral, and
   are consistent with how eRS's own FHIR API and this IG's existing
-  [ServiceRequest](StructureDefinition-ServiceRequest.html) profile are built - the
-  precise resource profiles used internally by eRS's FHIR API are NHS Digital's own
-  and are not reproduced here.
+  [ServiceRequest](StructureDefinition-ServiceRequest.html) profile are built - see
+  the [eRS FHIR Resource Model](#ers-fhir-resource-model) above for how eRS itself
+  relates them; those are NHS Digital's own profiles and are not adopted here.
 - Nothing in this table has been built as a profile in this IG - see [Data
   Models](#data-models) below.
+
+### Mapping to NHS Booking and Referral Standard (BaRS)
+
+[NHS Booking and Referral Standard
+(BaRS)](https://digital.nhs.uk/developer/api-catalogue/booking-and-referral-fhir/v1.0.7)
+is NHS England's other FHIR-based referral mechanism, intended as a general-purpose
+alternative to eRS for non-GP referral pathways. Checking its published
+`CapabilityStatement` and `MessageDefinition` resources directly: **BaRS defines no
+referral-specific data model of its own** - there is no BaRS equivalent of eRS's
+UBRN, `ReferralPriority`, `ReferralState` or `Shortlist` extensions, and no
+referral-specific identifier system was found anywhere in its published API
+documentation.
+
+What BaRS does define is a generic FHIR Messaging pattern (`POST /$process-message`)
+carrying a `Bundle` of standard UK Core resources, with a `ServiceRequest` as the
+`MessageHeader.focus` - for example, its `casetransfer` message profile
+(`BARSServiceRequest-request-casetransfer`) requires exactly one each of:
+`ServiceRequest`, `Patient` (`UKCore-Patient`), `Encounter`, `Location`,
+`Organization`, `Practitioner`, `PractitionerRole`, `Observation`, `Flag`,
+`MedicationStatement`, `AllergyIntolerance`, `QuestionnaireResponse` and `Consent`
+(all standard [UK Core](https://simplifier.net/hl7fhirukcorer4) profiles). Which
+specific `ServiceRequest`/`Bundle` fields carry which data item (referral reason,
+priority, referring clinician, etc.) is left to be defined per BaRS use case (e.g. its
+published `referraltopharmacy` use case) rather than fixed by BaRS itself.
+
+**Practical conclusion:** unlike eRS (or `REF_I12`), BaRS has no ready-made mapping
+row to add to the table above - it provides the raw UK Core building blocks
+(`ServiceRequest`, `Patient`, `Organization`, `Practitioner`/`PractitionerRole`,
+`Encounter`) a genetics-referral use case could be built from, but none of this IG's
+common data items (Order Number/UBRN-equivalent, referral priority/status, reason for
+referral) are pre-defined by BaRS the way they are by eRS. If a genetics referral
+were ever built on BaRS, this IG would need to define its own `MessageDefinition`,
+in the same way BaRS's existing use cases (e.g. `referraltopharmacy`) each do.
 
 ## Clinical Scenarios
 

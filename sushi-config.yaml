@@ -85,8 +85,8 @@ pages:
   SpecimenTransportationAndManagement.md:
     title: "Specimen Transportation and Management"
     generation: markdown
-  GeneticCounsellingReferral.md:
-    title: "Genetic Counselling Referral"
+  GeneticReferrals.md:
+    title: "Genetic Referrals"
     generation: markdown
   HIE.md:
     title: Health Data API (HIE/EURDICE)
@@ -411,7 +411,7 @@ menu:
     Laboratory Testing Workflow (LTW): LTW.html
     Inter-Laboratory Workflow (ILW): ILW.html
     Specimen Transportation and Management: SpecimenTransportationAndManagement.html
-    Genetic Counselling Referral: GeneticCounsellingReferral.html
+    Genetic Referrals: GeneticReferrals.html
     Health Data API (EURDICE): HIE.html
     API Security: api-security.html
     ##Health Document Sharing (MHDS) and Sharing Laboratory Reports (XD-LAB): MHDS.html

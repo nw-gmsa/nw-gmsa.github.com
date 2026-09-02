@@ -220,8 +220,8 @@ message type, and it does not carry structured/coded variant data - the
 receiving service re-keys the details to order the relative's targeted
 single-variant test. It also falls outside the shared care record feeds
 described below, since those are regional/ICB-scoped and won't bridge two
-different clinical genetics services. See [Genetic Counselling
-Referral](GeneticCounsellingReferral.html) for an information/analysis-only look
+different clinical genetics services. See [Genetic
+Referrals](GeneticReferrals.html) for an information/analysis-only look
 at what a more structured, closed-loop version of this referral (and its report
 back) could look like.
 
