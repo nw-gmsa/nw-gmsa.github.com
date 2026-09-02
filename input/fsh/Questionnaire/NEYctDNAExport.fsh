@@ -14,9 +14,10 @@ while the report/result columns (`ReportStatusDateTime`, `ReportIdentifier`,
 `ObservationResultStatus`, `ObservationDateTime`, `ObservationIdentifierCode`,
 `ObservationIdentifierDescription`) instead populate the separate FHIR Message R01
 Laboratory Report ([Bundle-GenomicsReportMessage-ctDNA](Bundle-GenomicsReportMessage-ctDNA.html),
-itself based on an HL7 v2 `ORU^R01`, not O21). See [ctDNA Management Information - CSV
-Column Reference](NEYManagementInformation.html#csv-column-reference) for the O21-only
-columns and [R01 Mapping](NEYManagementInformation.html#r01-mapping) for the
+itself based on an HL7 v2 `ORU^R01`, not O21). See [ctDNA Management Information -
+Laboratory Order O21 Mapping](NEYManagementInformation.html#laboratory-order-o21-mapping)
+for the O21-only columns and [Laboratory Report R01
+Mapping](NEYManagementInformation.html#laboratory-report-r01-mapping) for the
 report/result columns - the two markdown tables split this Questionnaire's items by
 which FHIR Message actually carries them, even though all items live on this one
 Questionnaire.

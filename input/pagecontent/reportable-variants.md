@@ -142,7 +142,7 @@ sequenceDiagram
 - [Variant (Reportable Variant)](StructureDefinition-Variant.html) - the discrete result Observations, following the [HL7 Genomics Reporting IG](https://build.fhir.org/ig/HL7/genomics-reporting/)
 - [Molecular Consequence](StructureDefinition-MolecularConsequence.html) - a separate `derivedFrom` Observation for a variant's downstream effect, including Loss of Heterozygosity - see [Outstanding Issues](#outstanding-issues) below
 
-### CSV Column Reference
+### Work Order CSV from iGene
 
 <div class="alert alert-info" role="alert">
 <b>FHIR Questionnaire:</b> <a href="Questionnaire-StarLIMSSampleDataExport.html">StarLIMS Sample Data Export (iGene CSV)</a>
@@ -151,14 +151,16 @@ sequenceDiagram
 The proposed DLIMS work order metadata export (see [Future Process](#future-process)
 above, "mirroring the process already used for StarLIMS") is expected to reuse the same
 CSV shape as iGene's existing StarLIMS work order export - see [StarLIMS / iGene
-Integration - CSV Column Reference](starLIMS.html#csv-column-reference) for the full
-column-by-column description and FHIR mapping table, and
+Integration - Work Order CSV Export from iGene](starLIMS.html#work-order-csv-export-from-igene)
+for the full column-by-column description and FHIR mapping table, and
 [StarLIMSSampleData.csv](https://github.com/nw-gmsa/Testing/blob/main/Input/StarLIMSSampleData.csv)
 for an example file. Not duplicated here to avoid the two tables drifting apart -
 DLIMS/Omics DSS work orders carry the same underlying order/patient/specimen data as a
 StarLIMS work order, just a different downstream processor.
 
-### iGene Variant Types
+### Test Result 
+
+#### iGene Variant Types
 
 iGene's own custom field spec (see [References](#references)) splits reportable
 variants into five types, each with its own repeating set of custom fields -
@@ -214,7 +216,7 @@ is why iGene buckets them into separate repeating slots rather than one flat lis
   is captured in [Outstanding Issues](#outstanding-issues) below. LOH is the sharpest
   case, since it has no home in either standard at all.
 
-### Result Panel
+#### Result Panel
 
 <div class="alert alert-info" role="alert">
 <b>FHIR Questionnaire (Result Panel):</b> <a href="Questionnaire-ReportableVariantResultPanel.html">Reportable Variant Result Panel</a>
@@ -282,7 +284,7 @@ Three gaps are not yet resolved:
   B.13, B.7, B.10) - no example yet confirms how these decompose into, or recombine
   into, `81262-8`.
 
-### Result Panel: Elements Not Included
+#### Result Panel: Elements Not Included
 
 LRI's Discrete Variant Panel (Table 5-2/5-3) defines further rows, and the HL7
 Genomics Reporting [Variant
@@ -322,7 +324,7 @@ depth or a repeat-expansion result), or iGene's own spec adds a discrete field f
 one, the corresponding item should move up into the [Result Panel](#result-panel)
 above, following the same "only what is currently used" rule.
 
-### Mapping to the iGene CSV
+#### Mapping to the iGene CSV
 
 The Result Panel above describes the *discrete variant* shape on the FHIR side - one
 `Observation` per variant, repeated as many times as needed. iGene's own import is

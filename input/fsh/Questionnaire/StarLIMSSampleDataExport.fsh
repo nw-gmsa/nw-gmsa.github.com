@@ -15,9 +15,10 @@ column's values coerce to, and `definition` the FHIR field the column populates 
 imported - many of these reuse the exact same field as the equivalent item already
 defined on [Genomic Test Order](Questionnaire-GenomicTestOrder.html), since a
 sub-contracted work order carries the same underlying data as any other order. See
-[StarLIMS / iGene Integration - CSV Column Reference](starLIMS.html#csv-column-reference)
-for a simple description of each column plus its FHIR mapping (also reused, unchanged,
-by [OMICS DSS Result Integration](reportable-variants.html#csv-column-reference)), and
+[StarLIMS / iGene Integration - Work Order CSV Export from
+iGene](starLIMS.html#work-order-csv-export-from-igene) for a simple description of each
+column plus its FHIR mapping (also reused, unchanged, by [OMICS DSS Result
+Integration](reportable-variants.html#work-order-csv-from-igene)), and
 [StarLIMSSampleData.csv](https://github.com/nw-gmsa/Testing/blob/main/Input/StarLIMSSampleData.csv)
 for the source file this was extracted from.
 

@@ -198,7 +198,7 @@ flowchart TD
 - [Specimen](StructureDefinition-Specimen.html) - specimen type and identifier
 - [Patient](StructureDefinition-Patient.html) - NHS number, gender, date of birth, name
 
-### CSV Column Reference
+### Work Order CSV Export from iGene
 
 <div class="alert alert-info" role="alert">
 <b>FHIR Questionnaire:</b> <a href="Questionnaire-StarLIMSSampleDataExport.html">StarLIMS Sample Data Export (iGene CSV)</a>
@@ -208,7 +208,7 @@ The daily work-order CSV export from iGene (step 3 of [Subcontracted
 Orders](#subcontracted-orders) above) has the shape below - see
 [StarLIMSSampleData.csv](https://github.com/nw-gmsa/Testing/blob/main/Input/StarLIMSSampleData.csv)
 for a full example file. This same export shape/pattern is reused by [OMICS DSS Result
-Integration](reportable-variants.html#csv-column-reference) for DLIMS work order
+Integration](reportable-variants.html#work-order-csv-from-igene) for DLIMS work order
 metadata.
 
 | CSV Column                  | Description                                                        | Type      | FHIR Mapping                                                        |

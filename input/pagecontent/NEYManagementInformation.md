@@ -141,8 +141,8 @@ The daily iGene CSV export (step 3 of [Current Process](#current-process) above)
 the shape below - see [NEYctDNA.csv](https://github.com/nw-gmsa/Testing/blob/main/Input/NEYctDNA.csv)
 for a full example file. This table covers only the columns that populate the FHIR
 Message O21 Laboratory Order - the same CSV's report/result columns instead populate
-the separate FHIR Message R01 Laboratory Report, covered in [R01
-Mapping](#r01-mapping) below. Many columns here reuse the same FHIR mapping as the
+the separate FHIR Message R01 Laboratory Report, covered in [Laboratory Report R01
+Mapping](#laboratory-report-r01-mapping) below. Many columns here reuse the same FHIR mapping as the
 equivalent [StarLIMS Sample Data Export](Questionnaire-StarLIMSSampleDataExport.html)
 column, since this is the same underlying order data.
 
@@ -193,8 +193,9 @@ Unlike the O21 order above, the R01 Laboratory Report is actually based on an HL
 worked example this table is grounded in - it carries `MessageHeader`, `Patient`,
 `DiagnosticReport`, `ServiceRequest` and `PractitionerRole`, but not the `Specimen`
 resource `ServiceRequest.specimen` references). The table below uses the same CSV
-column names and descriptions as [CSV Column Reference](#csv-column-reference) above,
-so the two tables can be read side by side to see where each column lands depending on
+column names and descriptions as [Laboratory Order O21
+Mapping](#laboratory-order-o21-mapping) above, so the two tables can be read side by
+side to see where each column lands depending on
 which FHIR Message actually carries it.
 
 | CSV Column                          | Description                                                        | Type      | R01 FHIR Mapping                                                     |
@@ -247,7 +248,7 @@ Three things the worked example surfaces that aren't yet resolved:
   current example references a `Specimen` by URN, but that `Specimen` resource isn't
   one of the Bundle's entries - so none of the five Specimen-mapped columns above are
   actually resolvable from the R01 message as currently constructed, only from the O21
-  order (see [CSV Column Reference](#csv-column-reference) above).
+  order (see [Laboratory Order O21 Mapping](#laboratory-order-o21-mapping) above).
 
 ## Examples
 
