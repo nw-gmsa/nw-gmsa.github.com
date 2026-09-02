@@ -313,6 +313,14 @@ resources:
     name: Bundle 'Message' - Filler Order Message
     description: Example Filler Order Message for internal or external LIMS
     exampleBoolean: true
+  Bundle/Shire1StructuredR01:
+    name: Shire Cytogenetics Report R01 - Future Structured Example
+    description: Illustrative future-state structured FHIR equivalent of the Shire-1 LAB-36 cytogenetics R01 message (Haemato-Oncology Diagnostic Pathway), converted from the raw HL7 v2 sample
+    exampleBoolean: true
+  Bundle/Shire2StructuredR01:
+    name: Shire Cytogenetics Report R01 - Future Structured Example (FISH)
+    description: Illustrative future-state structured FHIR equivalent of the Shire-2 LAB-36 cytogenetics R01 message (Haemato-Oncology Diagnostic Pathway), including a FISH panel result, converted from the raw HL7 v2 sample
+    exampleBoolean: true
   Bundle/dWGS-Singleton-r2026000201:
     name: dWGS Sub-order - Singleton
     description: Distributed WGS (dWGS) LAB-35 sub-order from NE&Y Genomics (RGL) to NW Genomics (SGL) - a Singleton (Proband only) referral

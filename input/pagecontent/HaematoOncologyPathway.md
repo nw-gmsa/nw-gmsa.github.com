@@ -8,7 +8,8 @@ This is currently being elaborated and subject to change.
 2. [Cheshire and Merseyside Pathology](CheshireAndMerseysidePathology.html) - the related pathology-LIMS (CFT Shire) reflex scenario without HODS orchestration
 3. [Cancer Background Information for Use Cases - NHS North West Children Cancer Example](CancerNOS.html#nhs-north-west-children-cancer-example)
 4. [HL7 FHIR Genomics Reporting Implementation Guide](https://hl7.org/fhir/uv/genomics-reporting/) - see [Future Process](#future-process) and [Data Models](#data-models) below
-5. Sample Shire `LAB-36` cytogenetics messages: [Shire-1](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/R01/Shire-1.txt), [Shire-2](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/R01/Shire-2.txt)
+5. Sample Shire `LAB-36` cytogenetics messages: [Shire-1](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/R01/Shire-1.txt), [Shire-2](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/R01/Shire-2.txt) - raw HL7 v2, today's actual format
+6. The same two messages, illustrating a **future structured** FHIR equivalent: [Shire-1-structured](https://github.com/nw-gmsa/Testing/blob/main/Output/FHIR/R01/Shire-1-structured.json), [Shire-2-structured](https://github.com/nw-gmsa/Testing/blob/main/Output/FHIR/R01/Shire-2-structured.json) - published in this IG as [Examples](#examples) below
 
 ## Clinical Pathway Overview
 
@@ -159,7 +160,9 @@ A future state for this pathway should consider re-expressing these results
 as discrete, coded FHIR resources rather than a single narrative block, so
 that findings such as "7q deletion" or "trisomy 8" are computable rather than
 requiring text-mining of `OBX-5`. See [Data Models](#data-models) below for a
-proposed direction.
+proposed direction, and [Developer Guide 12](DeveloperGuides.html) for a
+worked build of that conversion against these two messages, whose output is
+published as this page's [Examples](#examples).
 
 ## Data Models
 
@@ -253,10 +256,29 @@ This is additive to, not a replacement for, the existing
 [ServiceRequest](StructureDefinition-ServiceRequest.html)/[DiagnosticReport](StructureDefinition-DiagnosticReport.html)
 models already listed above for the order/report envelope.
 
+[Developer Guide 12](DeveloperGuides.html) builds this conversion by hand against
+`Shire-1.txt`/`Shire-2.txt`, and its output is published below as this page's
+[Examples](#examples) - a first illustrative pass, using LOINC `62356-1` (ISCN
+expression), `62389-2` (master panel) and `62367-8` (FISH panel) from the table
+above, rather than a laboratory-agreed final shape.
+
 ## Examples
 
-No example resources are published yet for this scenario.
+Illustrative **future structured** FHIR equivalents of the raw HL7 v2 `LAB-36`
+messages in [References](#references) above - not today's actual format (see
+[Current Process](#current-process)), and not yet agreed with the genomics
+laboratory (see [Future genomic data model](#future-genomic-data-model-proposed)
+above):
+
+| Example | Source message | Content |
+|---|---|---|
+| [Bundle/Shire1StructuredR01](Bundle-Shire1StructuredR01.html) | [Shire-1.txt](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/R01/Shire-1.txt) | A single karyotype finding (20q deletion, MDS) as a coded `62356-1` `Observation` under a `62389-2` master panel, with a `33893-9` `DiagnosticReport` |
+| [Bundle/Shire2StructuredR01](Bundle-Shire2StructuredR01.html) | [Shire-2.txt](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/R01/Shire-2.txt) | As above, plus a `62367-8` FISH panel result (complex hyperdiploid AML karyotype) |
+{:.grid}
 
 ## Developer Guides
 
-No [Developer Guides](DeveloperGuides.html) notebook covers this use case yet.
+[Developer Guide 12 - Haemato-Oncology Cytogenetics: From Free-Text HL7 v2 to
+Structured Observations](DeveloperGuides.html) builds the conversion above by hand
+against the two sample messages, and is the source of the [Examples](#examples)
+published on this page.
