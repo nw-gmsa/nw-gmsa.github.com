@@ -217,6 +217,117 @@ It is not a proposal to build either interface - it exists so that a future
 `ServiceRequest`-based referral profile, if ever built, can reuse identifiers this IG
 already defines rather than inventing new ones.
 
+
+| Common Data Item                     | `REF_I12` Segment.Field                              | FHIR Resource.Element                              | This IG's Profile (if reused)                                                             |
+|-----------------------------------------|-----------------------------------------------------------|-----------------------------------------------------------|--------------------------------------------------------------------------------------------------|
+| Patient - NHS Number                    | `PID-3` (identifier, NHS Number assigning authority)       | `Patient.identifier` (NHS Number system)                    | [NHSIdentifier](StructureDefinition-NHSIdentifier.html)                                            |
+| Patient - Medical Record Number (MRN)   | `PID-3` (identifier, MRN assigning authority)               | `Patient.identifier` (MRN system)                            | [MedicalRecordNumber](StructureDefinition-MedicalRecordNumber.html)                                |
+| Patient - name, date of birth, sex, address | `PID-5`, `PID-7`, `PID-8`, `PID-11`                     | `Patient.name`, `.birthDate`, `.gender`, `.address`          | Not specific to referral - standard `Patient` demographics                                        |
+| Patient Account/Episode Number          | `PID-18` (Patient Account Number)                          | `Encounter.identifier`, or `Account.identifier`               | [HospitalProviderSpellIdentifier](StructureDefinition-HospitalProviderSpellIdentifier.html)        |
+| Referral (order) identifier             | `RF1-6` (Originating Referral Identifier)                    | `ServiceRequest.identifier`                                 | [OrderIdentifier](StructureDefinition-OrderIdentifier.html)                                        |
+| Referral identifier - eRS-specific      | *(no `REF_I12` equivalent)*                                 | `ServiceRequest.identifier` (system `https://fhir.nhs.uk/Id/UBRN`) | Not currently modelled - a new identifier profile, analogous to `OrderIdentifier`, would be needed if eRS referrals were represented |
+| Referral status                         | `RF1-1` (Referral Status)                                   | `ServiceRequest.status`                                     | Standard FHIR status code, not separately profiled                                                |
+| Referral priority                       | `RF1-2` (Referral Priority)                                 | `ServiceRequest.priority`                                   | Standard FHIR priority code, not separately profiled                                              |
+| Service/test requested                  | `RF1-4` (Referral Type)                                     | `ServiceRequest.code`                                        | Not currently modelled for this use case - would need a genetics-referral-specific code system/ValueSet |
+| Reason for referral                     | `RF1-12` (Reason for Referral), `DG1` (Diagnosis)             | `ServiceRequest.reasonCode`, or `Condition`                   | Not currently modelled for this use case                                                          |
+| Referring provider/organisation         | `PRD` (role = Referring Provider)                            | `Practitioner`/`PractitionerRole`, `Organization`             | Analogous to [Order Placer](ActorDefinition-OrderPlacer.html)                                       |
+| Referred-to provider/service            | `PRD` (role = Referred-to Provider)                          | `Practitioner`/`PractitionerRole`, `Organization`, `HealthcareService` | Analogous to [Order Filler](ActorDefinition-OrderFiller.html)                                       |
+| Visit/encounter context (if any)        | `PV1`                                                       | `Encounter`                                                  | Not currently modelled for this use case                                                          |
+{:.grid}
+
+Notes on this sketch:
+
+- `REF_I12`'s `PID-18` (Patient Account Number) is the v2 field that corresponds to
+  this IG's existing Account/Episode Number identifier - it is **not** the v2 `ACC`
+  segment, which is unrelated (Accident information).
+- eRS's own referral identifier, the UBRN, has no `REF_I12` equivalent - it is an
+  eRS-specific concept that would need its own identifier profile if this pathway
+  were ever modelled in FHIR, following the same pattern as the existing
+  [OrderIdentifier](StructureDefinition-OrderIdentifier.html).
+- The FHIR resource types listed (`ServiceRequest`, `Patient`, `Practitioner`/
+  `PractitionerRole`, `Organization`, `HealthcareService`, `Encounter`, `Condition`)
+  are the standard FHIR building blocks generally used to represent a referral, and
+  are consistent with how eRS's own FHIR API and this IG's existing
+  [ServiceRequest](StructureDefinition-ServiceRequest.html) profile are built - see
+  the [eRS FHIR Resource Model](#ers-fhir-resource-model) above for how eRS itself
+  relates them; those are NHS Digital's own profiles and are not adopted here.
+- Nothing in this table has been built as a profile in this IG - see [Data
+  Models](#data-models) below.
+
+### Target Referral Model
+
+The diagram below is the FHIR resource model implied by the mapping table above -
+**this is likely the model this IG would actually build**, if a genetics referral
+profile were taken forward, as distinct from [eRS's own resource
+model](#ers-fhir-resource-model) below (which documents an external API, not a
+target for this IG).
+
+```mermaid
+erDiagram
+    ServiceRequest {
+        Identifier orderNumber "OrderIdentifier"
+        Identifier ubrn "not yet profiled in this IG"
+        code status
+        code priority
+        CodeableConcept code "service/test requested - not yet profiled"
+        CodeableConcept reasonCode "not yet profiled"
+    }
+    Patient {
+        Identifier nhsNumber "NHSIdentifier"
+        Identifier mrn "MedicalRecordNumber"
+        HumanName name
+        date birthDate
+        code gender
+        Address address
+    }
+    Encounter {
+        Identifier accountNumber "HospitalProviderSpellIdentifier"
+    }
+    Condition {
+        CodeableConcept code "reason for referral - not yet profiled"
+    }
+    PractitionerRole {
+        CodeableConcept code "e.g. Referring Clinician"
+    }
+    Practitioner {
+        HumanName name
+    }
+    Organization {
+        string name
+        Identifier odsCode
+    }
+    HealthcareService {
+        string name
+    }
+
+    ServiceRequest }o--|| Patient : subject
+    ServiceRequest }o--o| Encounter : encounter
+    Encounter }o--|| Patient : subject
+    ServiceRequest }o--|| PractitionerRole : "requester (referring provider)"
+    ServiceRequest }o--o{ PractitionerRole : "performer (referred-to clinician)"
+    ServiceRequest }o--o{ HealthcareService : "performer (referred-to service)"
+    ServiceRequest ||--o| Condition : reasonReference
+    PractitionerRole }o--|| Practitioner : practitioner
+    PractitionerRole }o--|| Organization : organization
+```
+
+Notes on this diagram:
+
+- `ServiceRequest` carries two distinct identifiers - the Order Number (already
+  covered by [OrderIdentifier](StructureDefinition-OrderIdentifier.html)) and, only
+  where the referral originated via eRS, the UBRN (not yet profiled - see [Notes on
+  this sketch](#referral-data-model) above).
+- `requester` and `performer` are kept separate because the mapping table
+  distinguishes "Referring provider/organisation" from "Referred-to
+  provider/service" - the former is modelled as a single required `PractitionerRole`,
+  the latter as zero-or-many, and may be a clinician (`PractitionerRole`) or a
+  service (`HealthcareService`) directly, per the table.
+- `Condition` is only needed if the reason for referral is a coded/structured
+  reference rather than inline text on `ServiceRequest.reasonCode` - both options are
+  shown in the mapping table above.
+- None of this has been built as a profile in this IG yet - see [Data
+  Models](#data-models) below.
+
 ### eRS FHIR Resource Model
 
 The diagram below sketches how eRS's own FHIR API relates the resources involved in
@@ -255,41 +366,25 @@ erDiagram
         string name
         Identifier ersServiceId
     }
-    Appointment {
-        string status
-        dateTime start
-        dateTime end
-    }
-    Slot {
-        string status
-        dateTime start
-    }
-    Schedule {
-        string actor
-    }
+    
 
     ReferralRequest }o--|| Patient : subject
     ReferralRequest ||--o{ DocumentReference : supportingInfo
     ReferralRequest ||--o| List : shortlist
     List }o--o{ HealthcareService : candidateService
     ReferralRequest }o--|| Organization : "commissioning org (identifier only)"
-    ReferralRequest ||--o| Appointment : "booked (if directly bookable)"
-    Appointment ||--o{ Slot : slot
-    Slot }o--|| Schedule : schedule
-    Appointment }o--|| HealthcareService : atService
-    Appointment }o--|| Patient : participant
     PractitionerRole }o--|| Practitioner : practitioner
     PractitionerRole }o--|| Organization : organization
 ```
 
 Notes on this diagram:
 
-- `ReferralRequest.subject` and `Appointment.participant` reference the `Patient` by
-  NHS Number identifier only (`http://fhir.nhs.net/Id/nhs-number` in STU3,
-  `https://fhir.nhs.uk/Id/nhs-number` in R4) - not a full `Patient` resource.
-- The candidate/chosen service (`List` entries, and `Appointment`'s service
-  participant) is likewise identified rather than fully represented, by an
-  `ers-service` identifier or an ODS site code, corresponding to a `HealthcareService`.
+- `ReferralRequest.subject` references the `Patient` by NHS Number identifier only
+  (`http://fhir.nhs.net/Id/nhs-number` in STU3, `https://fhir.nhs.uk/Id/nhs-number`
+  in R4) - not a full `Patient` resource.
+- The candidate services in the shortlist `List` are likewise identified rather than
+  fully represented, by an `ers-service` identifier, corresponding to a
+  `HealthcareService`.
 - The commissioning organisation on `ReferralRequest` is carried as a bare
   `Identifier` (ODS organisation code) via an extension, not a full `Organization`
   reference - shown here as a relationship to `Organization` for clarity.
@@ -298,45 +393,9 @@ Notes on this diagram:
   its API (e.g. Advice and Guidance/Communication) - it is not shown wired directly
   into the `ReferralRequest` example above because that relationship was not found in
   the published examples.
-- `Appointment`/`Slot`/`Schedule` are shown for completeness, since a booked
-  `ReferralRequest` references its `Appointment` directly - but booking itself
-  remains [out of scope](#scheduling-out-of-scope) for this page.
-
-| Common Data Item                     | `REF_I12` Segment.Field                              | FHIR Resource.Element                              | This IG's Profile (if reused)                                                             |
-|-----------------------------------------|-----------------------------------------------------------|-----------------------------------------------------------|--------------------------------------------------------------------------------------------------|
-| Patient - NHS Number                    | `PID-3` (identifier, NHS Number assigning authority)       | `Patient.identifier` (NHS Number system)                    | [NHSIdentifier](StructureDefinition-NHSIdentifier.html)                                            |
-| Patient - Medical Record Number (MRN)   | `PID-3` (identifier, MRN assigning authority)               | `Patient.identifier` (MRN system)                            | [MedicalRecordNumber](StructureDefinition-MedicalRecordNumber.html)                                |
-| Patient - name, date of birth, sex, address | `PID-5`, `PID-7`, `PID-8`, `PID-11`                     | `Patient.name`, `.birthDate`, `.gender`, `.address`          | Not specific to referral - standard `Patient` demographics                                        |
-| Patient Account/Episode Number          | `PID-18` (Patient Account Number)                          | `Encounter.identifier`, or `Account.identifier`               | [HospitalProviderSpellIdentifier](StructureDefinition-HospitalProviderSpellIdentifier.html)        |
-| Referral (order) identifier             | `RF1-6` (Originating Referral Identifier)                    | `ServiceRequest.identifier`                                 | [OrderIdentifier](StructureDefinition-OrderIdentifier.html)                                        |
-| Referral identifier - eRS-specific      | *(no `REF_I12` equivalent)*                                 | `ServiceRequest.identifier` (system `https://fhir.nhs.uk/Id/UBRN`) | Not currently modelled - a new identifier profile, analogous to `OrderIdentifier`, would be needed if eRS referrals were represented |
-| Referral status                         | `RF1-1` (Referral Status)                                   | `ServiceRequest.status`                                     | Standard FHIR status code, not separately profiled                                                |
-| Referral priority                       | `RF1-2` (Referral Priority)                                 | `ServiceRequest.priority`                                   | Standard FHIR priority code, not separately profiled                                              |
-| Service/test requested                  | `RF1-4` (Referral Type)                                     | `ServiceRequest.code`                                        | Not currently modelled for this use case - would need a genetics-referral-specific code system/ValueSet |
-| Reason for referral                     | `RF1-12` (Reason for Referral), `DG1` (Diagnosis)             | `ServiceRequest.reasonCode`, or `Condition`                   | Not currently modelled for this use case                                                          |
-| Referring provider/organisation         | `PRD` (role = Referring Provider)                            | `Practitioner`/`PractitionerRole`, `Organization`             | Analogous to [Order Placer](ActorDefinition-OrderPlacer.html)                                       |
-| Referred-to provider/service            | `PRD` (role = Referred-to Provider)                          | `Practitioner`/`PractitionerRole`, `Organization`, `HealthcareService` | Analogous to [Order Filler](ActorDefinition-OrderFiller.html)                                       |
-| Visit/encounter context (if any)        | `PV1`                                                       | `Encounter`                                                  | Not currently modelled for this use case                                                          |
-{:.grid}
-
-Notes on this sketch:
-
-- `REF_I12`'s `PID-18` (Patient Account Number) is the v2 field that corresponds to
-  this IG's existing Account/Episode Number identifier - it is **not** the v2 `ACC`
-  segment, which is unrelated (Accident information).
-- eRS's own referral identifier, the UBRN, has no `REF_I12` equivalent - it is an
-  eRS-specific concept that would need its own identifier profile if this pathway
-  were ever modelled in FHIR, following the same pattern as the existing
-  [OrderIdentifier](StructureDefinition-OrderIdentifier.html).
-- The FHIR resource types listed (`ServiceRequest`, `Patient`, `Practitioner`/
-  `PractitionerRole`, `Organization`, `HealthcareService`, `Encounter`, `Condition`)
-  are the standard FHIR building blocks generally used to represent a referral, and
-  are consistent with how eRS's own FHIR API and this IG's existing
-  [ServiceRequest](StructureDefinition-ServiceRequest.html) profile are built - see
-  the [eRS FHIR Resource Model](#ers-fhir-resource-model) above for how eRS itself
-  relates them; those are NHS Digital's own profiles and are not adopted here.
-- Nothing in this table has been built as a profile in this IG - see [Data
-  Models](#data-models) below.
+- Booking (`Appointment`/`Slot`/`Schedule`) is omitted from this diagram - eRS's own
+  API does link a booked `ReferralRequest` directly to an `Appointment`, but
+  scheduling remains [out of scope](#scheduling-out-of-scope) for this page.
 
 ### Mapping to NHS Booking and Referral Standard (BaRS)
 
@@ -402,9 +461,10 @@ Not yet modelled in this IG - no `ServiceRequest`/`DiagnosticReport` profile
 currently represents a genetics referral or its report specifically (the existing
 [ServiceRequest](StructureDefinition-ServiceRequest.html)/[DiagnosticReport](StructureDefinition-DiagnosticReport.html)
 profiles are scoped to diagnostic laboratory orders/reports, per [Diagnostic
-Core](diagnostic-core.html)). The [Referral Data Model](#referral-data-model) sketch
-above is the starting point for what such a profile would reuse from this IG's
-existing identifiers. If this pattern were taken forward, the natural starting point
-would be a `ServiceRequest` for the referral (category distinguishing it from a
-laboratory order) and a `DiagnosticReport` or `Composition`-led FHIR Document for the
-report, following the same closed-loop shape as LAB-1/LAB-3.
+Core](diagnostic-core.html)). The [Target Referral Model](#target-referral-model)
+sketched above is the most likely starting point were this profile ever built,
+reusing this IG's existing identifiers (`OrderIdentifier`, `NHSIdentifier`,
+`MedicalRecordNumber`, `HospitalProviderSpellIdentifier`) alongside a small number of
+not-yet-profiled elements (the UBRN identifier, referral priority/status/reason). The
+report side would separately need a `DiagnosticReport` or `Composition`-led FHIR
+Document, following the same closed-loop shape as LAB-1/LAB-3.
