@@ -37,6 +37,7 @@ Bucket for local codes
 * #GeneticistDepartmentEmail "Clinical Geneticist department email"
 * #RODToFollow "ROD attached or to follow"
 * #InfectionRiskDetails "High infection Risk Details"
+* #VariantReinterpretationReason "Reason For Variant Re-Interpretation Request"
 * #SampleSent "Date and time sample sent"
 * #TransportUsed "Transport used"
 * #SampleSentTo "Sample sent to"

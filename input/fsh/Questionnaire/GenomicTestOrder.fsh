@@ -373,46 +373,6 @@ Usage:  #definition
 
   * item[+]
     * type = #group
-    * linkId = "Consent"
-    * text = "Consent"
-
-// Consent	Has consent has been obtained for tests (Y/N)
-
-    * item[+]
-      * type = #choice
-      * linkId = "LN/19826-7"
-      * code[+] = $sct#309370004 "Consent status"
-      * code[+] = $loinc#19826-7 "Informed consent obtained"
-      * code[+] = $loinc#59284-0 "Consent Document"
-      * text = "Has consent has been obtained for tests (Y/N)"
-      * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
-      * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
-
-// Consent	Has consent has been obtained for DNA storage (Y/N)
-
-    * item[+]
-      * type = #choice
-      * linkId = "LN/75520-7"
-      * text = "Has consent has been obtained for DNA storage (Y/N)"
-      * code[+] = $loinc#75520-7 "Biobank specimens are stored and available for research"
-      * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
-      * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
-
-// Consent	ROD attached or to follow
-
-    * item[+]
-      * type = #choice
-      * linkId = "NOS/RODToFollow"
-      * code[+] = $nwgmsa#RODToFollow
-      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
-      * text = "ROD attached or to follow"
-      * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
-      * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-      * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
-  * item[+]
-    * type = #group
     * linkId = "PatientClinicalInformation"
     * text = "Patient Clinical Information"
 
@@ -434,14 +394,6 @@ Usage:  #definition
       * type = #string
       * linkId = "HL7/NTE-1"
       * text = "Relevant clinical information and family history"
-      * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.note"
-
-// Patient clinical information	Reason For Variant Re-Interpretation Request
-
-    * item[+]
-      * type = #string
-      * linkId = "HL7/NTE-2"
-      * text = "Reason For Variant Re-Interpretation Request"
       * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.note"
 
 * item[+]
@@ -526,27 +478,6 @@ Usage:  #definition
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
-//Raw specimen/biopsy (Directly obtained from patient)	Specimin High Infection risk?
-
-  * item[+]
-    * linkId = "SNM/281269004"
-    * code[+] = $sct#281269004 "High infection risk sample"
-    * text = "High Infection Risk?"
-    * type = #choice
-    * required = false
-    * repeats = false
-    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
-    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
-
-//  Raw specimen/biopsy (Directly obtained from patient)	Specimin High infection Risk Details
-  * item[+]
-    * linkId = "NOS/InfectionRiskDetails"
-    * code[+] = $nwgmsa#InfectionRiskDetails
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueString"
-    * text = "High infection Risk Details"
-    * type = #string
-
   * item[+]
     * linkId = "LN/74384-9"
     * code[+] = $sct#434711009 "Specimen container"
@@ -626,7 +557,8 @@ Usage:  #definition
 
 // Ask At Order Entry Questions have moved to a per-order-type Questionnaire - see
 // GenomicGeneralAskAtOrderEntry ("NW Genomic General Test Order") for the default set
-// (Consanguinity, pathology report confirmation, pregnancy/neonatal, deceased infant),
+// (Consanguinity, pathology report confirmation, pregnancy/neonatal, deceased infant,
+// Consent, Reason For Variant Re-Interpretation Request, High Infection Risk),
 // dWGSSubOrder for distributed WGS, or HLATestsTransplantAskAtOrderEntry /
 // ChimerismTestingAskAtOrderEntry for Histocompatibility and Immunogenetics (one per
 // Hive order screen). See Questionnaire-GenomicTestOrder.html#order-entry-questions.

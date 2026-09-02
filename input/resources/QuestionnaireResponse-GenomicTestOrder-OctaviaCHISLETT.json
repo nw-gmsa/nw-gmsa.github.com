@@ -121,30 +121,6 @@
         },
         { "linkId": "LN/106194-4", "text": "Test request ID/Order ID", "answer": [ { "valueString": "1601737" } ] },
         {
-          "linkId": "Consent",
-          "text": "Consent",
-          "item": [
-            {
-              "linkId": "LN/19826-7",
-              "text": "Has consent has been obtained for tests (Y/N)",
-              "answer": [
-                {
-                  "valueCoding": { "system": "http://loinc.org", "code": "LA33-6", "display": "Yes" }
-                }
-              ]
-            },
-            {
-              "linkId": "LN/75520-7",
-              "text": "Has consent has been obtained for DNA storage (Y/N)",
-              "answer": [
-                {
-                  "valueCoding": { "system": "http://loinc.org", "code": "LA33-6", "display": "Yes" }
-                }
-              ]
-            }
-          ]
-        },
-        {
           "linkId": "PatientClinicalInformation",
           "text": "Patient Clinical Information",
           "item": [
@@ -183,15 +159,6 @@
                 "code": "258580003",
                 "display": "Whole blood specimen"
               }
-            }
-          ]
-        },
-        {
-          "linkId": "SNM/281269004",
-          "text": "High Infection Risk?",
-          "answer": [
-            {
-              "valueCoding": { "system": "http://loinc.org", "code": "LA32-8", "display": "No" }
             }
           ]
         },
