@@ -140,6 +140,7 @@ sequenceDiagram
 - [ServiceRequest (Work Order)](StructureDefinition-ServiceRequest.html) - the DLIMS work order exported to the FHIR Repository
 - [DiagnosticReport](StructureDefinition-DiagnosticReport.html) - the FHIR Genomics Report Omics DSS produces
 - [Variant (Reportable Variant)](StructureDefinition-Variant.html) - the discrete result Observations, following the [HL7 Genomics Reporting IG](https://build.fhir.org/ig/HL7/genomics-reporting/)
+- [Molecular Consequence](StructureDefinition-MolecularConsequence.html) - a separate `derivedFrom` Observation for a variant's downstream effect, including Loss of Heterozygosity - see [Outstanding Issues](#outstanding-issues) below
 
 ### iGene Variant Types
 
@@ -171,7 +172,11 @@ is why iGene buckets them into separate repeating slots rather than one flat lis
   it's a *state* where one parental copy of a region is lost or indistinguishable
   from the other, often reported in cancer alongside a point mutation on the other
   allele (a classic "two-hit" tumour-suppressor finding). That's why it's the odd one
-  out with only 2 fields (Gene(s), and a yes/no-ish LOH flag) rather than the usual 7.
+  out with only 2 fields (Gene(s), and a yes/no-ish LOH flag) rather than the usual 7
+  - and why this IG models it as a separate [Molecular
+  Consequence](StructureDefinition-MolecularConsequence.html) Observation,
+  `derivedFrom` the variant it accompanies, rather than folding it into `Variant`
+  itself - see [Outstanding Issues](#outstanding-issues) below.
 
 **How they interrelate:**
 
@@ -351,14 +356,30 @@ This raises two open questions, neither resolved by any current example:
    [CSV mapping](#mapping-to-the-igene-csv) above more direct, since "which iGene slot
    type is this" is currently an inferred classification, not a modelled field -
    codifying it as (for example) a required `Variant Category` component would remove
-   that ambiguity, and would also give Loss of Heterozygosity - which has no home in
-   either LRI or the international FHIR profile - a proper place to live. Arguments
-   against: it would diverge from both LRI's Discrete Variant Panel and the
-   international HL7 Genomics Reporting Variant profile, both of which treat simple
-   and structural variants (and, implicitly, CNVs) as one panel distinguished by which
-   components are populated, not by a separate profile or panel per type; LOH would
-   also need a new international-profile-shaped home to slot into, or acceptance that
-   it stays iGene-specific. Not yet resolved either way.
+   that ambiguity. Arguments against: it would diverge from both LRI's Discrete
+   Variant Panel and the international HL7 Genomics Reporting Variant profile, both of
+   which treat simple and structural variants (and, implicitly, CNVs) as one panel
+   distinguished by which components are populated, not by a separate profile or panel
+   per type. Not yet resolved for Sequence Variant / Intragenic CNV / Multigenic CNV /
+   Structural Variant - see item 2 below for the Loss of Heterozygosity part of this
+   question, which **has** been decided.
+
+2. **Decided: Loss of Heterozygosity is modelled as a separate [Molecular
+   Consequence](StructureDefinition-MolecularConsequence.html) Observation**, not as a
+   component (or extension) on `Variant` itself. This follows the HL7 Genomics
+   Reporting IG's own
+   [Molecular Consequence](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-molecular-consequence.html)
+   profile: a `derivedFrom` reference back to the `Variant` it is the consequence of,
+   with a `functional-effect` component coded from Sequence Ontology (`SO_0001786`
+   `loss_of_heterozygosity`, among other possible values such as loss/gain of
+   function) - see [Molecular Consequence - Loss of Heterozygosity
+   (BRCA1)](Observation-ctdna9737383222-seqv1-loh.html) for a worked example,
+   representing the classic germline-mutation-plus-somatic-LOH "two-hit" finding at
+   the same locus as [Variant - ctDNA Small Variant
+   (BRCA1)](Observation-ctdna9737383222-seqv1.html). This fits the case where LOH is
+   the consequence of an already-reported variant cleanly, but doesn't fit iGene's
+   broader usage, which allows LOH to be reported standalone for a gene/region with no
+   companion variant required - that gap remains open.
 
 ## Examples
 
@@ -378,6 +399,7 @@ The four `Variant` Observations inside that Bundle are also extracted as standal
 | Intragenic copy number variant | [Observation-ctdna9737383222-icnv1](Observation-ctdna9737383222-icnv1.html) (`FBN1` exon deletion) |
 | Multigenic copy number variant | [Observation-ctdna9737383222-mcnv1](Observation-ctdna9737383222-mcnv1.html) (Xq22.1-q28 deletion) |
 | Structural variant     | [Observation-ctdna9737383222-sv1](Observation-ctdna9737383222-sv1.html)          |
+| Molecular Consequence - Loss of Heterozygosity | [Observation-ctdna9737383222-seqv1-loh](Observation-ctdna9737383222-seqv1-loh.html) (`derivedFrom` the sequence variant above) |
 {:.grid}
 
 ## Developer Guides

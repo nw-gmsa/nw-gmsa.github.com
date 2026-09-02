@@ -490,15 +490,21 @@ Usage:  #definition
   * item[+]
     * type = #group
     * linkId = "LossOfHeterozygosity"
-    * text = "Loss of Heterozygosity (iGene-only, unconfirmed)"
+    * text = "Loss of Heterozygosity (iGene fields, mapped to a separate Molecular Consequence Observation)"
     * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation"
     * item[+]
       * linkId = "LossOfHeterozygosity-designNote"
       * type = #display
       * text = """
-      One of iGene's five variant types (`LOH1`-`LOH2`), but with no corresponding
-      row anywhere in LRI's Discrete Variant Panel and no current FHIR example
-      producing LOH result data - modelled from iGene's own spec alone.
+      One of iGene's five variant types (`LOH1`-`LOH2`), with no corresponding row
+      anywhere in LRI's Discrete Variant Panel. Decided: this IG models LOH as a
+      separate [Molecular Consequence](StructureDefinition-MolecularConsequence.html)
+      Observation, `derivedFrom` the `Variant` it accompanies, with a
+      `functional-effect` component coded `SO_0001786 loss_of_heterozygosity` -
+      see [Observation-ctdna9737383222-seqv1-loh](Observation-ctdna9737383222-seqv1-loh.html)
+      for a worked example - rather than as items directly on this Discrete Variant
+      Panel. The two items below describe iGene's own flat fields for reference, not
+      how this IG models them.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
