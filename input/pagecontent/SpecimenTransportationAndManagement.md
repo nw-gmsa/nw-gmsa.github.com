@@ -8,6 +8,14 @@ electronic [Laboratory Order (LAB-1)](LTW.html#laboratory-order-lab-1) message.
 Generally this is a manual process at present and does not feature in automated
 interactions.
 
+<div class="alert alert-warning" role="alert">
+<b>Known gap:</b> the process described below is a generic/vendor-neutral
+description, using common laboratory/logistics terminology rather than any single
+Trust's own procedure. It has not yet been aligned with Manchester Foundation
+Trust's actual specimen shipment procedure (courier, packaging/labelling
+conventions, specimen reception process) - that alignment is left for a future pass.
+</div>
+
 ## References
 
 1. IHE PaLM Technical Framework Supplement - [Specimen Event Tracking (SET)](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_Suppl_SET.pdf) - a specification for tracking specimen progress along this process (not adopted here - background/reference only)
@@ -29,37 +37,42 @@ and its paperwork alone).
 
 ```mermaid
 flowchart TD
-    A[Laboratory Order created<br/>- may be sent electronically] --> B[Specimen taken<br/>- may include a biopsy]
-    B --> C[Specimen packaged]
-    C --> D[Specimen shipped -<br/>tracking number assigned]
-    D --> E[Specimen received by<br/>laboratory sample reception]
-    E --> F{Order already<br/>received electronically?}
-    F -->|No| G[Order entered onto LIMS<br/>from specimen/paperwork -<br/>barcodes assist]
-    F -->|Yes| H[Order reconciled with<br/>specimen on LIMS]
+    A["Test request created<br/>(Laboratory Order) -<br/>may be sent electronically"] --> B[Specimen collected<br/>- may include a biopsy]
+    B --> C[Specimen container<br/>packaged for transport]
+    C --> D[Package shipped -<br/>tracking number assigned]
+    D --> E[Package received at<br/>laboratory specimen reception]
+    E --> F{Test request already<br/>received electronically?}
+    F -->|No| G[Test request transcribed<br/>onto LIMS from specimen/<br/>paperwork - barcodes assist]
+    F -->|Yes| H[Test request reconciled<br/>with specimen on LIMS]
     G --> H
 ```
 
 ## Current Process
 
 This is generally a manual process today, and does not feature in automated
-interactions:
+interactions. The terms below follow common laboratory/logistics usage, with the
+equivalent term used elsewhere in this IG noted in brackets where it differs:
 
-1. **Laboratory Order is created** - this can be sent electronically (see
-   [Laboratory Order (LAB-1)](LTW.html#laboratory-order-lab-1)).
-2. **Specimen is taken**, which may include a biopsy.
-3. **Specimen is packaged**.
-4. **Specimen is shipped and assigned a tracking number.** The specimen is normally
-   shipped with a printed copy of the laboratory order. Key identifiers - patient
-   [NHS Number](StructureDefinition-NHSIdentifier.html),
-   [MRN](StructureDefinition-MedicalRecordNumber.html), [Order Placer
-   Number](StructureDefinition-OrderIdentifier.html), [Account
-   Number](StructureDefinition-HospitalProviderSpellIdentifier.html), Specimen Number
-   (see [Specimen](StructureDefinition-Specimen.html)) and [Shipment Tracking
-   Number](StructureDefinition-ShipmentTrackingNumber.html) - are normally printed as
-   barcodes on the printed order or the shipping container.
-5. **Specimen is received** by the laboratory's sample reception.
-6. **If the order has not been received electronically**, it is entered onto the
-   LIMS from the specimen and its paperwork - barcodes normally assist with this.
+1. **A test request is created** (a laboratory order, or requisition - see
+   [Laboratory Order (LAB-1)](LTW.html#laboratory-order-lab-1)). This can be sent
+   electronically, ahead of the specimen, or printed and sent with it.
+2. **A specimen is collected** from the patient (which may include a biopsy) into a
+   labelled specimen container.
+3. **The specimen container is packaged** for transport, generally alongside a
+   printed copy of the test request.
+4. **The package is shipped and given a tracking number.** Key identifiers -
+   patient [NHS Number](StructureDefinition-NHSIdentifier.html), [hospital/medical
+   record number (MRN)](StructureDefinition-MedicalRecordNumber.html), [order/
+   requisition number](StructureDefinition-OrderIdentifier.html), [episode/account
+   number](StructureDefinition-HospitalProviderSpellIdentifier.html), the specimen's
+   own identifier (see [Specimen](StructureDefinition-Specimen.html)), and the
+   [shipment tracking
+   number](StructureDefinition-ShipmentTrackingNumber.html) itself - are normally
+   printed as barcodes on the test request paperwork and/or the shipping package.
+5. **The package is received** at the laboratory (specimen reception/accessioning).
+6. **If the test request has not already arrived electronically**, it is transcribed
+   onto the LIMS from the specimen and its paperwork - barcodes normally speed this
+   up by letting reception scan rather than re-key each identifier.
 
 ### Key Identifiers
 
@@ -88,9 +101,26 @@ automated - not adopted here.
 ## Barcoding (GS1 UK Healthcare)
 
 [GS1 UK Healthcare](https://www.gs1uk.org/industries/healthcare) publishes UK
-barcode standards (e.g. GS1 DataMatrix / GS1-128) that could be used to encode the
-[key identifiers](#key-identifiers) above on the printed order or shipping
-container, so they can be scanned rather than re-keyed - not mandated here.
+barcode standards (typically carried in a GS1 DataMatrix or GS1-128 symbol) that
+could be used to encode the [key identifiers](#key-identifiers) above on the test
+request paperwork or shipping package, so they can be scanned rather than re-keyed -
+not mandated here. GS1 identifies people, places and things using a small number of
+standard identification keys, each with its own numeric Application Identifier (AI,
+shown in brackets) inside the barcode:
+
+| Key Identifier            | GS1 Identifier                                                                                   | Notes                                                                                                    |
+|------------------------------|-------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
+| NHS Number (patient)         | **GSRN - Recipient** `AI (8018)` - Global Service Relation Number, identifying the patient as recipient of the service | Printed on a [GS1-compliant patient wristband](https://www.gs1uk.org/industries/healthcare/people) under the NHS Scan4Safety programme; the NHS Number itself is the local reference the GSRN resolves to, not encoded directly |
+| Ordering organisation (Account Number context) | **GSRN - Provider** `AI (8017)` - identifies the organisation/service providing the test | Less commonly implemented than the recipient GSRN in current NHS deployments |
+| Hospital/Medical Record Number (MRN) | *(no dedicated AI)*                                                                     | Held locally behind the GSRN-Recipient linkage above, rather than encoded as its own GS1 key            |
+| Order/Requisition Number     | *(no dedicated AI - see note)*                                                                     | GS1's [GDTI](https://ref.gs1.org/ai/253) `AI (253)` (Global Document Type Identifier) could identify the test request *document* itself, but is not commonly used for this in UK pathology; more often carried as free text/local barcode alongside the GS1 keys above |
+| Episode/Account Number       | *(no dedicated AI)*                                                                     | As above - a local identifier, not a distinct GS1 key                                                    |
+| Specimen Number              | **GIAI** `AI (8004)` - Global Individual Asset Identifier                                          | [GS1 UK's own pathology guidance](https://www.gs1uk.org/sites/default/files/The_Management_of_Pathology_using_GS1_Standards.pdf) recommends a GIAI per specimen carrier (tube, slide, etc.), assigned when the specimen is taken or the carrier manufactured, and unchanged as it passes between laboratories |
+| Shipment Tracking Number     | **SSCC** `AI (00)` - Serial Shipping Container Code                                               | GS1's standard identifier for a logistic unit (the shipping package) - a natural fit for a specimen shipment's own tracking number |
+| Specimen Accession Number    | *(reuses GIAI, if barcoded at all)*                                                                | Usually assigned by the LIMS after receipt rather than printed as a fresh barcode - if the laboratory does re-label at that point, it would typically reuse the same GIAI identifier scheme as the original Specimen Number |
+{:.grid}
+
+Only NHS Number (via GSRN-Recipient) and Specimen Number (via GIAI) have well-established, GS1 UK-documented healthcare mappings; the remaining identifiers are locally-defined numbers that GS1 UK Healthcare does not itself standardise a barcode for - they would typically continue to be carried as plain text or a locally-agreed barcode alongside the GS1 keys above.
 
 ## Data Models
 
