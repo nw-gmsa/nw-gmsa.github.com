@@ -84,16 +84,16 @@ erDiagram
 <b>HL7 v2 Segment:</b> <a href="hl7v2.html#pid" _target="_blank">PID</a>
 </div>
 
-| Type       | Name                       | Description                                 | FHIR [Patient](StructureDefinition-Patient.html) |
+| Type       | Name                       | Description                                | FHIR [Patient](StructureDefinition-Patient.html) |
 |------------|----------------------------|---------------------------------------------|--------------------------------------------------|
-| identifier | NHSNumber                  | Primary patient identifier                  | Patient.identifier (type=NH)                     |
-| identifier | HospitalNumber             | Referring organisation local MRN identifier | Patient.identifier (type=MR)                     |
-| identifier | PatientAccessionIdentifier | LIMS Patient identifier                     | Patient.identifier (type=PI)                     |
-| string     | PatientGivenName           |                                             | Patient.name.given                               |
-| string     | PatientFamilyName          |                                             | Patient.name.family                              |
-| date       | DateOfBirth                |                                             | Patient.birthDate                                |
-| code       | AdministrativeSex          |                                             | Patient.gender                                   |
-| string     | PostCode                   |                                             | Patient.address.postalCode                       |
+| identifier | NHSNumber                  | Patient's NHS Number                        | Patient.identifier (type=NH)                     |
+| identifier | HospitalNumber             | Patient's hospital/medical record number    | Patient.identifier (type=MR)                     |
+| identifier | PatientAccessionIdentifier | iGene's internal patient accession number   | Patient.identifier (type=PI)                     |
+| string     | PatientGivenName           | Patient's first name                        | Patient.name.given                               |
+| string     | PatientFamilyName          | Patient's surname                           | Patient.name.family                              |
+| date       | DateOfBirth                | Patient's date of birth                     | Patient.birthDate                                |
+| code       | AdministrativeSex          | Sex registered at birth                     | Patient.gender                                   |
+| string     | PostCode                   | Patient's postcode                          | Patient.address.postalCode                       |
 {:.grid}
 
 ### Hospital Spell
@@ -105,9 +105,9 @@ erDiagram
 <b>HL7 v2 Segment:</b> <a href="hl7v2.html#pv1" _target="_blank">PV1</a>
 </div>
 
-| Type       | Name                                                                                        | Description                       | FHIR [Hospital Spell](StructureDefinition-HospitalSpell.html) |
-|------------|---------------------------------------------------------------------------------------------|-----------------------------------|---------------------------------------------------------------|
-| identifier | [HospitalSpellProviderIdentifier](StructureDefinition-HospitalProviderSpellIdentifier.html) | Identifier from ordering hospital | Encounter.identifier (type = AN)                              |
+| Type       | Name                                                                                        | Description                                                          | FHIR [Hospital Spell](StructureDefinition-HospitalSpell.html) |
+|------------|---------------------------------------------------------------------------------------------|-----------------------------------------------------------------------|---------------------------------------------------------------|
+| identifier | [HospitalSpellProviderIdentifier](StructureDefinition-HospitalProviderSpellIdentifier.html) | Identifier for the hospital spell/episode the order was placed under | Encounter.identifier (type = AN)                              |
 {:.grid}
 
 ### ServiceRequest (Order)
@@ -121,19 +121,19 @@ erDiagram
 
 The original order is the order sent from the Order Placer to the Order Filler; in IHE Laboratory Testing Workflow this is the key entity in [LAB-1](LTW.html#diagnostic-testing)
 
-| Type       | Name                                          | Description                         | FHIR [ServiceRequest](StructureDefinition-ServiceRequest.html) |
-|------------|-----------------------------------------------|-------------------------------------|----------------------------------------------------------------|
-| identifier | PlacerOrderNumber                             |                                     | ServiceRequest.identifier (type = PLAC)                        |
-| identifier | FillerOrderNumber                             |                                     | ServiceRequest.identifier (type = FILL)                        |
-| code       |                                               |                                     | ServiceRequest.intent (code = original-order)                  | 
-| code       | Procedure Code - NGTDTestCode                 | NGTD code for test                  | ServiceRequest.code                                            |
-| string     | ClinicalDetails                               | Referrer clinical notes             | ServiceRequest.note                                            |
-| code       | RequestingOrganisationCode                    | ODS code of requesting organisation | ServiceRequest.requester (ODS Code)                            |
-| code       | Performer                                     |                                     | ServiceRequest.performer (fixed ODS code = 699X0)              |
-| reference  | Specimen                                      |                                     | ServiceRequest.specimen                                        |
-| reference  | Patient                                       |                                     | ServiceRequest.subject                                         |
-| reference  | Hospital Spell                                |                                     | ServiceRequest.encounter (Hospital Spell)                      |
-| code       | Reason Code - Clinical Indication Code (CITT) |                                     | ServiceRequest.reasonCode                                      | 
+| Type       | Name                                          | Description                                  | FHIR [ServiceRequest](StructureDefinition-ServiceRequest.html) |
+|------------|-----------------------------------------------|------------------------------------------------|----------------------------------------------------------------|
+| identifier | PlacerOrderNumber                             | Order identifier assigned by the ordering Trust | ServiceRequest.identifier (type = PLAC)                        |
+| identifier | FillerOrderNumber                             | Order identifier assigned by iGene (the lab)    | ServiceRequest.identifier (type = FILL)                        |
+| code       |                                               |                                                 | ServiceRequest.intent (code = original-order)                  | 
+| code       | Procedure Code - NGTDTestCode                 | NHS England Genomic Test Directory test code    | ServiceRequest.code                                            |
+| string     | ClinicalDetails                               | Free-text clinical details/history              | ServiceRequest.note                                            |
+| code       | RequestingOrganisationCode                    | Requesting Trust's ODS code                     | ServiceRequest.requester (ODS Code)                            |
+| code       | Performer                                     |                                                 | ServiceRequest.performer (fixed ODS code = 699X0)              |
+| reference  | Specimen                                      |                                                 | ServiceRequest.specimen                                        |
+| reference  | Patient                                       |                                                 | ServiceRequest.subject                                         |
+| reference  | Hospital Spell                                |                                                 | ServiceRequest.encounter (Hospital Spell)                      |
+| code       | Reason Code - Clinical Indication Code (CITT) |                                                 | ServiceRequest.reasonCode                                      | 
 {:.grid}
 
 #### Filler Order
@@ -178,17 +178,17 @@ erDiagram
 
 In IHE Laboratory Testing Workflow, this is the key entity in [LAB-4](LTW.html#work-order-and-test-result-management-lab-4-and-lab-5)
 
-| Type       | Name                          | Description                         | FHIR [ServiceRequest](StructureDefinition-ServiceRequest.html) |
-|------------|-------------------------------|-------------------------------------|----------------------------------------------------------------|
-| code       | OrderStatus                   | Order/test status                   | ServiceRequest.status                                          |
-| date       | TestOrderDate                 |                                     | ServiceRequest.authoredOn                                      |
-| identifier | TestAccessionIdentifier       |                                     | ServiceRequest.identifier                                      |
-| code       | Procedure Code - NGTDTestCode | NGTD code for test                  | ServiceRequest.code                                            |
-| code       | RequestingOrganisationCode    | ODS code of requesting organisation | ServiceRequest.requester (fixed ODS code = 699X0)              |
-| code       | Performer                     |                                     | ServiceRequest.performer (ODS Code)                            |
-| reference  | Specimen                      |                                     | ServiceRequest.specimen                                        |
-| reference  | Patient                       |                                     | ServiceRequest.subject                                         |
-| reference  | OriginalOrder                 |                                     | ServiceRequest.requisition and ServiceRequest.basedOn          |
+| Type       | Name                          | Description                                | FHIR [ServiceRequest](StructureDefinition-ServiceRequest.html) |
+|------------|-------------------------------|-----------------------------------------------|----------------------------------------------------------------|
+| code       | OrderStatus                   | Order's current status in iGene                | ServiceRequest.status                                          |
+| date       | TestOrderDate                 | Date/time the test was ordered                 | ServiceRequest.authoredOn                                      |
+| identifier | TestAccessionIdentifier       | iGene's test-level accession number            | ServiceRequest.identifier                                      |
+| code       | Procedure Code - NGTDTestCode | NHS England Genomic Test Directory test code   | ServiceRequest.code                                            |
+| code       | RequestingOrganisationCode    | Requesting Trust's ODS code                    | ServiceRequest.requester (fixed ODS code = 699X0)              |
+| code       | Performer                     |                                                | ServiceRequest.performer (ODS Code)                            |
+| reference  | Specimen                      |                                                | ServiceRequest.specimen                                        |
+| reference  | Patient                       |                                                | ServiceRequest.subject                                         |
+| reference  | OriginalOrder                 |                                                | ServiceRequest.requisition and ServiceRequest.basedOn          |
 | reference | Hospital Spell                | | ServiceRequest.encounter (Hospital Spell) |
 {:.grid}
 
@@ -213,14 +213,14 @@ In IHE Laboratory Testing Workflow, this is the key entity in [LAB-4](LTW.html#w
 
 | Type       | Name                        | Description             | FHIR [Specimen](StructureDefinition-Specimen.html)       |
 |------------|-----------------------------|-------------------------|----------------------------------------------------------|
-| identifier | SpecimenAccessionIdentifier |                         | Specimen.identifier                                      |
-| identifier | ShipmentTrackingNumber      | Courier tracking number | Specimen.identifier[ShipmentTrackingNumber] (type = STN) |
-| identifier | FMIIdentifier               |                         | Specimen.container.identifier                            |
+| identifier | SpecimenAccessionIdentifier | Specimen's lab accession/DNA number                | Specimen.identifier                                      |
+| identifier | ShipmentTrackingNumber      | Courier tracking number for the dispatched specimen | Specimen.identifier[ShipmentTrackingNumber] (type = STN) |
+| identifier | FMIIdentifier               | Purpose not yet confirmed                          | Specimen.container.identifier                            |
 | reference  | Patient                     |                         | Specimen.subject                                         |
-| code       | SpecimenTypeCode            |                         | Specimen.type                                            |
-| date       | SpecimenDispatchDate        |                         |                                                          |
-| date       | SpecimenTakenDateTime       | Collection date/time    | Specimen.collection.collectedDateTime                    |
-| date       | SpecimenReceivedDateTime    | Received date/time      | Specimen.receivedTime                                               |
+| code       | SpecimenTypeCode            | Coded specimen type                                | Specimen.type                                            |
+| date       | SpecimenDispatchDate        | Date/time the specimen was dispatched              |                                                          |
+| date       | SpecimenTakenDateTime       | Date/time the specimen was taken from the patient  | Specimen.collection.collectedDateTime                    |
+| date       | SpecimenReceivedDateTime    | Date/time the specimen was received in the lab     | Specimen.receivedTime                                               |
 {:.grid}
 
 ### Diagnostic Report
@@ -236,11 +236,11 @@ This is the key entity for the reports/results which are generated when the Plac
 
 | Type          | Name                                                                         | Description | FHIR [DiagnosticReport](StructureDefinition-DiagnosticReport.html)                          |
 |---------------|------------------------------------------------------------------------------|-------------|---------------------------------------------------------------------------------------------|
-| identifier    | TestAccessionIdentifier                                                      |             | DiagnosticReport.identifier                                                                 |
+| identifier    | TestAccessionIdentifier                                                      | iGene's test-level accession number | DiagnosticReport.identifier                                                                 |
 | reference     | FillerOrder                                                                  |             | DiagnosticReport.basedOn (FillerOrder)                                                      |
 | reference     | Patient                                                                      |             | DiagnosticReport.subject                                                                    |
-| code          | Procedure Code - NGTDTestCode                                                |             | DiagnosticReport.code (system = https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory) |
-| date          | ReportStatusDateTime                                                         |             | DiagnosticReport.effectiveDateTime                                                          |
+| code          | Procedure Code - NGTDTestCode                                                | NHS England Genomic Test Directory test code | DiagnosticReport.code (system = https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory) |
+| date          | ReportStatusDateTime                                                         | Date/time the report status was last updated | DiagnosticReport.effectiveDateTime                                                          |
 | reference     | Hospital Spell - Account Number                                              |             | DiagnosticReport.encounter (Hospital Spell)                                                 |
 | code          | Conclusion Code - [Test Outcome Code](ValueSet-GenomicTestOutcomeCodes.html) |             | DiagnosticReport.conclusionCode                                                             |
 | result        | See [Observations](StructureDefinition-Observation.html)                     |             | DiagnosticReport.result                                                                     | 
