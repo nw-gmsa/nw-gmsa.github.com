@@ -142,6 +142,22 @@ sequenceDiagram
 - [Variant (Reportable Variant)](StructureDefinition-Variant.html) - the discrete result Observations, following the [HL7 Genomics Reporting IG](https://build.fhir.org/ig/HL7/genomics-reporting/)
 - [Molecular Consequence](StructureDefinition-MolecularConsequence.html) - a separate `derivedFrom` Observation for a variant's downstream effect, including Loss of Heterozygosity - see [Outstanding Issues](#outstanding-issues) below
 
+### CSV Column Reference
+
+<div class="alert alert-info" role="alert">
+<b>FHIR Questionnaire:</b> <a href="Questionnaire-StarLIMSSampleDataExport.html">StarLIMS Sample Data Export (iGene CSV)</a>
+</div>
+
+The proposed DLIMS work order metadata export (see [Future Process](#future-process)
+above, "mirroring the process already used for StarLIMS") is expected to reuse the same
+CSV shape as iGene's existing StarLIMS work order export - see [StarLIMS / iGene
+Integration - CSV Column Reference](starLIMS.html#csv-column-reference) for the full
+column-by-column description and FHIR mapping table, and
+[StarLIMSSampleData.csv](https://github.com/nw-gmsa/Testing/blob/main/Input/StarLIMSSampleData.csv)
+for an example file. Not duplicated here to avoid the two tables drifting apart -
+DLIMS/Omics DSS work orders carry the same underlying order/patient/specimen data as a
+StarLIMS work order, just a different downstream processor.
+
 ### iGene Variant Types
 
 iGene's own custom field spec (see [References](#references)) splits reportable

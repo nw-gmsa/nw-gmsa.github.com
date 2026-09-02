@@ -131,6 +131,61 @@ No distinct future-state changes are currently defined for this process.
 - [DiagnosticReport](StructureDefinition-DiagnosticReport.html) - the Laboratory Report, carried in the FHIR Message R01 without its `presentedForm` PDF attachment
 - [Message Exchange [MQ]](MQ.html) - the FHIR Messaging pattern both O21 and R01 use
 
+### CSV Column Reference
+
+<div class="alert alert-info" role="alert">
+<b>FHIR Questionnaire:</b> <a href="Questionnaire-NEYctDNAExport.html">NE&Y ctDNA Export (iGene CSV)</a>
+</div>
+
+The daily iGene CSV export (step 3 of [Current Process](#current-process) above) has
+the shape below - see [NEYctDNA.csv](https://github.com/nw-gmsa/Testing/blob/main/Input/NEYctDNA.csv)
+for a full example file. A report row carries both order fields and report/result
+fields together - many columns reuse the same FHIR mapping as the equivalent
+[StarLIMS Sample Data Export](Questionnaire-StarLIMSSampleDataExport.html) column,
+since this is the same underlying order data plus report/result-specific columns that
+export doesn't carry.
+
+| CSV Column                          | Description                                                        | Type      | FHIR Mapping                                                        |
+|----------------------------------------|--------------------------------------------------------------------|-----------|-------------------------------------------------------------------------|
+| `PatientAccessionIdentifier`           | iGene's internal patient accession number                          | string    | `Patient.identifier` (PatientIdentifier)                                |
+| `NHSNumber`                            | Patient's NHS Number                                                | string    | `Patient.identifier` (NHS Number)                                       |
+| `HospitalNumber`                       | Patient's hospital/medical record number                            | string    | `Patient.identifier` (MedicalRecordNumber)                              |
+| `PatientFamilyName`                    | Patient's surname                                                   | string    | `Patient.name.family`                                                   |
+| `PatientGivenName`                     | Patient's first name                                                | string    | `Patient.name.given`                                                    |
+| `DateOfBirth`                          | Patient's date of birth                                             | date      | `Patient.birthDate`                                                     |
+| `AdministrativeSex`                    | Sex registered at birth                                             | string    | `Patient.gender`                                                        |
+| `PostCode`                             | Patient's postcode                                                  | string    | `Patient.address.postalCode`                                            |
+| `HospitalSpellIdentifier`              | Identifier for the hospital spell/episode the order was placed under | string  | `ServiceRequest.encounter.identifier` (HospitalProviderSpellIdentifier) |
+| `OrderingProviderIdentifier`           | Ordering clinician's professional identifier                        | string    | `PractitionerRole.practitioner.identifier.value`                        |
+| `OrderingProviderName`                 | Ordering clinician's name                                           | string    | `PractitionerRole.practitioner.display`                                 |
+| `RequestingOrganisationCode`           | Requesting Trust's ODS code                                         | string    | `PractitionerRole.organization.identifier.value`                        |
+| `RequestingOrganisationName`           | Requesting Trust's name                                             | string    | `PractitionerRole.organization.display`                                 |
+| `PlacerOrderNumber`                    | Order identifier assigned by the ordering Trust                     | string    | `ServiceRequest.identifier` (OrderIdentifier, type=PLAC)                |
+| `FMIIdentifier`                        | Blank on every current example row - purpose not yet confirmed      | string    | `ServiceRequest.identifier` *(TBD)*                                     |
+| `FillerOrderNumber`                    | Order identifier assigned by iGene (the lab)                        | string    | `ServiceRequest.identifier` (OrderIdentifier, type=FILL)                |
+| `OrderStatus`                          | Order's current status in iGene                                     | string    | `ServiceRequest.status`                                                 |
+| `ReportStatusDateTime`                 | Date/time the report status was last updated                        | dateTime  | `DiagnosticReport.issued`                                               |
+| `ReportIdentifier`                     | Report's identifier, once issued                                    | string    | `DiagnosticReport.identifier` (ReportIdentifier)                        |
+| `NGTDTestCode`                         | NHS England Genomic Test Directory test code                        | string    | `ServiceRequest.code`                                                   |
+| `NGTDTestName`                         | NHS England Genomic Test Directory test/package name                | string    | `ServiceRequest.code.coding.display`                                    |
+| `TestCode`                             | Local iGene short test code (e.g. `ctDNA_M4`)                       | string    | `ServiceRequest.code.coding` *(second coding, local system TBD)*        |
+| `TestAccessionIdentifier`              | iGene's test-level accession number                                 | string    | `ServiceRequest.identifier` *(system TBD)*                              |
+| `TestOrderDate`                        | Date/time the test was ordered                                      | dateTime  | `ServiceRequest.authoredOn`                                             |
+| `ObservationResultStatus`              | Result status (`F` = finalised)                                     | string    | `DiagnosticReport.status`                                               |
+| `ObservationDateTime`                  | Date/time the result was observed/produced                          | dateTime  | `Observation.effectiveDateTime`                                         |
+| `ObservationIdentifierCode`            | Code identifying which result/analyte this row represents           | string    | `Observation.code.coding.code`                                          |
+| `ObservationIdentifierDescription`     | Display name for the result/analyte code above                      | string    | `Observation.code.coding.display`                                       |
+| `SpecimenTakenDateTime`                | Date/time the specimen was taken from the patient                   | dateTime  | `Specimen.collection.collectedDateTime`                                 |
+| `SpecimenReceivedDateTime`             | Date/time the specimen was received in the lab                      | dateTime  | `Specimen.receivedTime`                                                 |
+| `SpecimenAccessionIdentifier`          | Specimen's lab accession number                                     | string    | `Specimen.accessionIdentifier`                                          |
+| `SpecimenTypeCode`                     | Coded specimen type (e.g. `SAMPLE: BL`)                              | string    | `Specimen.type.coding.code`                                             |
+| `SpecimenTypeDescription`              | Specimen type, free text (e.g. Blood)                                | string    | `Specimen.type.coding.display`                                          |
+{:.grid}
+
+`FMIIdentifier`, `TestCode` and `TestAccessionIdentifier` are not yet confirmed against
+a published identifier system - see the Questionnaire's own item design notes for
+detail.
+
 ## Examples
 
 | Example                                                                          | Description                                                                 |

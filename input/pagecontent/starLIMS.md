@@ -198,6 +198,54 @@ flowchart TD
 - [Specimen](StructureDefinition-Specimen.html) - specimen type and identifier
 - [Patient](StructureDefinition-Patient.html) - NHS number, gender, date of birth, name
 
+### CSV Column Reference
+
+<div class="alert alert-info" role="alert">
+<b>FHIR Questionnaire:</b> <a href="Questionnaire-StarLIMSSampleDataExport.html">StarLIMS Sample Data Export (iGene CSV)</a>
+</div>
+
+The daily work-order CSV export from iGene (step 3 of [Subcontracted
+Orders](#subcontracted-orders) above) has the shape below - see
+[StarLIMSSampleData.csv](https://github.com/nw-gmsa/Testing/blob/main/Input/StarLIMSSampleData.csv)
+for a full example file. This same export shape/pattern is reused by [OMICS DSS Result
+Integration](reportable-variants.html#csv-column-reference) for DLIMS work order
+metadata.
+
+| CSV Column                  | Description                                                        | Type      | FHIR Mapping                                                        |
+|-------------------------------|--------------------------------------------------------------------|-----------|-------------------------------------------------------------------------|
+| `PatientAccessionIdentifier`  | iGene's internal patient accession number                          | string    | `Patient.identifier` (PatientIdentifier)                                |
+| `NHSNumber`                   | Patient's NHS Number                                                | string    | `Patient.identifier` (NHS Number)                                       |
+| `PatientGivenName`            | Patient's first name                                                | string    | `Patient.name.given`                                                    |
+| `PatientFamilyName`           | Patient's surname                                                   | string    | `Patient.name.family`                                                   |
+| `DateOfBirth`                 | Patient's date of birth                                             | date      | `Patient.birthDate`                                                     |
+| `AdministrativeSex`           | Sex registered at birth                                             | string    | `Patient.gender`                                                        |
+| `PostCode`                    | Patient's postcode                                                  | string    | `Patient.address.postalCode`                                            |
+| `HospitalSpellIdentifier`     | Identifier for the hospital spell/episode the order was placed under | string  | `ServiceRequest.encounter.identifier` (HospitalProviderSpellIdentifier) |
+| `PlacerOrderNumber`           | Order identifier assigned by the ordering Trust                     | string    | `ServiceRequest.identifier` (OrderIdentifier, type=PLAC)                |
+| `HospitalNumber`              | Patient's hospital/medical record number                            | string    | `Patient.identifier` (MedicalRecordNumber)                              |
+| `FillerOrderNumber`           | Order identifier assigned by iGene (the lab)                        | string    | `ServiceRequest.identifier` (OrderIdentifier, type=FILL)                |
+| `TestAccessionIdentifier`     | iGene's test-level accession number                                 | string    | `ServiceRequest.identifier` *(system TBD)*                              |
+| `TestOrderDate`               | Date/time the test was ordered                                      | dateTime  | `ServiceRequest.authoredOn`                                             |
+| `NGTDTestCode`                | NHS England Genomic Test Directory test code                        | string    | `ServiceRequest.code`                                                   |
+| `NGTDTestName`                | NHS England Genomic Test Directory test/package name                | string    | `ServiceRequest.code.coding.display`                                    |
+| `OrderStatus`                 | Order's current status in iGene (e.g. Dispatched)                   | string    | `ServiceRequest.status`                                                 |
+| `SpecimenDispatchDate`        | Date/time the specimen was dispatched to StarLIMS                   | dateTime  | `Observation.valueDateTime` (via `ServiceRequest.supportingInfo`)       |
+| `ShipmentTrackingNumber`      | Courier tracking number for the dispatched specimen                 | string    | `Specimen.identifier` (ShipmentTrackingNumber)                          |
+| `DatasetTargetOrganisation`   | Destination the dataset/specimen was sent to                        | string    | `Observation.valueString` (via `ServiceRequest.supportingInfo`)         |
+| `SpecimenAccessionIdentifier` | Specimen's lab accession/DNA number                                 | string    | `Specimen.accessionIdentifier`                                          |
+| `SpecimenTypeDescription`     | Specimen type, free text (e.g. Blood, Tissue)                       | string    | `Specimen.type.coding.display`                                          |
+| `SpecimenTakenDateTime`       | Date/time the specimen was taken from the patient                   | dateTime  | `Specimen.collection.collectedDateTime`                                 |
+| `ClinicalDetails`             | Free-text clinical details/history (redacted in example data)       | string    | `ServiceRequest.note`                                                   |
+| `OrderingProviderIdentifier`  | Ordering clinician's professional identifier                        | string    | `PractitionerRole.practitioner.identifier.value`                        |
+| `OrderingProviderName`        | Ordering clinician's name                                           | string    | `PractitionerRole.practitioner.display`                                 |
+| `RequestingOrganisationCode`  | Requesting Trust's ODS code                                         | string    | `PractitionerRole.organization.identifier.value`                        |
+| `RequestingOrganisationName`  | Requesting Trust's name                                             | string    | `PractitionerRole.organization.display`                                 |
+{:.grid}
+
+`TestAccessionIdentifier`, and the `PLAC`/`FILL` split on `PlacerOrderNumber`/
+`FillerOrderNumber`, are not yet confirmed against a published identifier system - see
+the Questionnaire's own item design notes for detail.
+
 ## Examples
 
 No example resources are published yet for this scenario.
