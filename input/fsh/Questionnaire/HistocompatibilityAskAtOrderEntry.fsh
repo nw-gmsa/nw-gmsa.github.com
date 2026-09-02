@@ -66,26 +66,34 @@ Usage:  #definition
 // NTE|1 Patient Test(s):->HLA ANTIBODY SCREENING (TRANSPLANT)
 
   * item[+]
-    * type = #string
+    * type = #choice
     * linkId = "HistoIG/patient_test"
     * text = "Patient Test(s)"
+    * repeats = true
+    * answerOption[+].valueCoding = $nwgmsa#HLATypingAntibodyScreening "HLA Typing + Antibody Screening"
+    * answerOption[+].valueCoding = $nwgmsa#HLAAntibodyScreening "HLA Antibody Screening"
+    * answerOption[+].valueCoding = $nwgmsa#HLATypeRecipient "HLA Type Recipient"
+    * answerOption[+].valueCoding = $nwgmsa#DSA "DSA"
+    * answerOption[+].valueCoding = $nwgmsa#HLAAutoXM "HLA Auto XM"
     * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.code"
     * item[+]
       * linkId = "HistoIG/patient_test-designNote"
       * type = #display
-      * text = "Histotrac NTE-3 (CommentType=OSQ): restates the OBR-4 test name, not a new mapping."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-    * item[+]
-      * linkId = "HistoIG/patient_test-openQuestion"
-      * type = #display
-      * text = "Open question: does a standard code set for this test name already exist (MFT local code, NHS England Genomic Test Directory, or elsewhere)? If confirmed, this item should become #choice bound to that code system instead of free text."
+      * text = """
+      Histotrac NTE-3 (CommentType=OSQ): restates the OBR-4 test name, not a new
+      mapping. Confirmed as this fixed 5-value checklist (`repeats = true`, since the
+      Hive UI presents them as checkboxes - more than one may be selected per order)
+      from the Hive/Histotrac order-entry UI, shown identically regardless of Patient
+      Type (Stem cell or Renal) - coded locally against the `NWGMSA` CodeSystem.
+      """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
     * item[+]
       * linkId = "HistoIG/patient_test-reference"
       * type = #display
       * text = """
-      No MFT/NHS England code set was found for this test name specifically, but LOINC
-      has panels the Histotrac test catalogue could map onto: 102092-4 (HLA-ABDR typing
+      No MFT/NHS England code set was found for these five specific test names, but
+      LOINC has panels the Histotrac test catalogue could map onto if a coded
+      alternative to the local `NWGMSA` codes is wanted: 102092-4 (HLA-ABDR typing
       panel), 96615-0/96629-1 (HLA-A/B/C class I typing, high/low resolution), 94492-6
       (HLA-DQA1/DQB1 typing), 72905-3 (Neutrophil Ab and HLA Ab screen panel), 94428-0
       (HLA class I and II IgG panel), and 80737-0 (Calculated panel reactive antibody).
@@ -97,69 +105,60 @@ Usage:  #definition
 // NTE|2 HLA Type:->Patient
 
   * item[+]
-    * type = #string
+    * type = #choice
     * linkId = "HistoIG/hla_type"
     * text = "HLA Type"
     * required = true
+    * answerOption[+].valueCoding = $nwgmsa#Patient "Patient"
+    * answerOption[+].valueCoding = $nwgmsa#Donor "Donor"
     * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
     * item[+]
       * linkId = "HistoIG/hla_type-designNote"
       * type = #display
       * text = """
-      Whose HLA is being typed, e.g. "Patient" or "Donor" - carried as an Observation
-      referenced from ServiceRequest.supportingInfo, the same Ask at Order Entry
-      pattern used by dWGS's Family Structure/Participant Type. Text-only, no
-      NW-GMSA-confirmed coding system exists.
-      """
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-    * item[+]
-      * linkId = "HistoIG/hla_type-openQuestion"
-      * type = #display
-      * text = """
-      Open question: is this a fixed list of values (e.g. Patient/Donor), and if so
-      what is the full list? For the Clatterbridge <-> NW Genomics exchange, the
-      preference is to carry this on an OBX segment (a discrete, coded observation)
-      rather than free text - Histotrac itself will still receive it as an NTE
-      segment, so the RIE would need to transform the OBX into the NTE format
-      Histotrac expects.
+      Whose HLA is being typed - carried as an Observation referenced from
+      ServiceRequest.supportingInfo, the same Ask at Order Entry pattern used by
+      dWGS's Family Structure/Participant Type. Confirmed as a 2-value list (Patient,
+      Donor) from the Hive/Histotrac order-entry UI screenshots - coded locally
+      against the `NWGMSA` CodeSystem as no NHSBT/NHS England-published
+      FHIR/LOINC/SNOMED binding exists.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
     * item[+]
       * linkId = "HistoIG/hla_type-reference"
       * type = #display
       * text = """
-      Confirmed as a fixed national list, not free text: NHSBT's INF136 (Table 2) names
-      a national request form "H&I Organ Transplant (Patients and Donors)" (FRM1008),
-      and its sample-requirements table lists "HLA type of patient, donors or family
-      members" for Solid Organ Transplantation - so the full list is at least
-      Patient/Donor/Family Member, not just Patient/Donor. A separate national form,
-      "H&I Haematopoietic Stem Cell Transplantation (Recipients & Donors)" (FRM1010),
-      uses Recipient/Donor instead of Patient/Donor for that transplant type. No
-      NHSBT-published FHIR/LOINC/SNOMED binding exists for either.
+      NHSBT's INF136 (Table 2) names a national request form "H&I Organ Transplant
+      (Patients and Donors)" (FRM1008), and its sample-requirements table lists "HLA
+      type of patient, donors or family members" for Solid Organ Transplantation -
+      wider than the Patient/Donor pair the Hive UI actually offers. A separate
+      national form, "H&I Haematopoietic Stem Cell Transplantation (Recipients &
+      Donors)" (FRM1010), uses Recipient/Donor instead of Patient/Donor for that
+      transplant type. No NHSBT-published FHIR/LOINC/SNOMED binding exists for either,
+      and Hive does not appear to expose a Family Member/Recipient option here.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 // NTE|3 Patient type:->Renal
 
   * item[+]
-    * type = #string
+    * type = #choice
     * linkId = "HistoIG/patient_type"
     * text = "Patient Type"
+    * answerOption[+].valueCoding = $nwgmsa#StemCell "Stem cell"
+    * answerOption[+].valueCoding = $nwgmsa#Renal "Renal"
+    * answerOption[+].valueCoding = $nwgmsa#Thoracic "Thoracic"
     * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
     * item[+]
       * linkId = "HistoIG/patient_type-designNote"
       * type = #display
-      * text = "Transplant context, e.g. \"Renal\" - carried as an Observation referenced from ServiceRequest.supportingInfo."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-    * item[+]
-      * linkId = "HistoIG/patient_type-openQuestion"
-      * type = #display
       * text = """
-      Open question: is this a fixed list of values (e.g. Renal, Liver, Cardiac...),
-      and if so what is the full list? For the Clatterbridge <-> NW Genomics exchange,
-      the preference is to carry this on an OBX segment rather than free text -
-      Histotrac itself will still receive it as an NTE segment, so the RIE would need
-      to transform the OBX into the NTE format Histotrac expects.
+      Transplant context - carried as an Observation referenced from
+      ServiceRequest.supportingInfo. Confirmed as a 3-value list (Stem cell, Renal,
+      Thoracic) from the Hive/Histotrac order-entry UI - coded locally against the
+      `NWGMSA` CodeSystem. When Patient Type is "Renal" the Hive UI also shows an
+      Organ picker (see `HistoIG/organ` below); no Organ field is shown for Stem
+      cell/Thoracic.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
     * item[+]
@@ -168,11 +167,10 @@ Usage:  #definition
       * text = """
       NHSBT's INF136 (4.5.1) describes 24-hour on-call cover for "renal and, where
       appropriate, cardiothoracic transplantation" as the two Solid Organ
-      Transplantation categories with routine H&I on-call support - consistent with a
-      small fixed list (at least Renal, Cardiothoracic). The same section notes HLA
-      matching is "not normally a primary consideration" for other transplant types
-      (cardiothoracic, liver, etc.), which may still appear as a Patient Type value
-      even without on-call cover. No NHSBT/NHS England LOINC/SNOMED binding was found
+      Transplantation categories with routine H&I on-call support, and the Hive UI's
+      "Thoracic" option lines up with that "cardiothoracic" wording (not "Cardiac").
+      Stem cell is a third category the Hive UI groups here rather than treating as a
+      separate transplant type. No NHSBT/NHS England LOINC/SNOMED binding was found
       for this field.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
@@ -180,38 +178,40 @@ Usage:  #definition
 // NTE|4 Organ:->Kidney
 
   * item[+]
-    * type = #string
+    * type = #choice
     * linkId = "HistoIG/organ"
     * text = "Organ"
+    * answerOption[+].valueCoding = $nwgmsa#Kidney "Kidney"
+    * answerOption[+].valueCoding = $nwgmsa#Pancreas "Pancreas"
+    * answerOption[+].valueCoding = $nwgmsa#Islets "Islets"
+    * answerOption[+].valueCoding = $nwgmsa#SimultaneousPancreasKidney "Simultaneous Pancreas/Kidney"
+    * answerOption[+].valueCoding = $nwgmsa#SimultaneousIsletKidney "Simultaneous Islet/Kidney"
     * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
     * item[+]
       * linkId = "HistoIG/organ-designNote"
       * type = #display
-      * text = "The organ relevant to the transplant, e.g. \"Kidney\" - carried as an Observation referenced from ServiceRequest.supportingInfo. No confirmed SNOMED CT mapping yet - low confidence, free text only."
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-    * item[+]
-      * linkId = "HistoIG/organ-openQuestion"
-      * type = #display
       * text = """
-      Open question: is this a fixed list of values? The preference is to use SNOMED CT
-      body site codes from the FHIR body-site value set
-      (https://hl7.org/fhir/R4/valueset-body-site.html), as this aligns with EU/UK
-      standards, rather than free text. For the Clatterbridge <-> NW Genomics exchange,
-      the preference is to carry this on an OBX segment - Histotrac itself will still
-      receive it as an NTE segment, so the RIE would need to transform the OBX into the
-      NTE format Histotrac expects.
+      The organ relevant to the transplant - carried as an Observation referenced from
+      ServiceRequest.supportingInfo. Confirmed as this 5-value list (plus a free-text
+      "Other" box, not modelled here) from the Hive/Histotrac order-entry UI, only shown
+      there when Patient Type is "Renal" - coded locally against the `NWGMSA`
+      CodeSystem, since two of the five values (the two "Simultaneous..." combination
+      transplants) are not themselves single SNOMED CT body-site concepts.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
     * item[+]
       * linkId = "HistoIG/organ-reference"
       * type = #display
       * text = """
-      Besides the generic FHIR body-site value set, NHS Digital publishes a UK-specific
-      alternative: the "Solid organ transplant codes" (ORGTRANSP_COD) SNOMED CT (UK
-      Edition) reference set, part of the NHS Digital Primary Care Domain Refsets
-      (~364 codes, https://www.opencodelists.org/codelist/nhsd-primary-care-domain-refsets/orgtransp_cod/) -
-      covering NHSBT's six national organ transplant groups (kidney, pancreas, heart,
-      lung, liver, small bowel), a closer domain fit than the generic body-site set.
+      For the three single-organ values (Kidney, Pancreas, Islets), SNOMED CT body-site
+      codes from the FHIR body-site value set (https://hl7.org/fhir/R4/valueset-body-site.html)
+      or NHS Digital's UK-specific "Solid organ transplant codes" (ORGTRANSP_COD)
+      reference set (part of the NHS Digital Primary Care Domain Refsets, ~364 codes,
+      https://www.opencodelists.org/codelist/nhsd-primary-care-domain-refsets/orgtransp_cod/)
+      remain candidate future bindings if a coded alternative to the local `NWGMSA`
+      codes is wanted. Neither source has a single code for a combination transplant
+      such as "Simultaneous Pancreas/Kidney", which is why the local coding keeps all
+      five Hive values together as one list rather than splitting by source.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
@@ -223,17 +223,21 @@ Usage:  #definition
     * code[+] = $loinc#66746-9 "Specimen Type"
     * code[+] = $sct#123038009 "Specimen"
     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type.coding.code"
-    * answerValueSet = Canonical(SpecimenType)
+    * answerOption[+].valueCoding = $nwgmsa#HistoBlood "Blood"
+    * answerOption[+].valueCoding = $nwgmsa#HistoBuccal "Buccal"
+    * answerOption[+].valueCoding = $nwgmsa#HistoOther "Other"
     * text = "Specimen Source"
     * item[+]
-      * linkId = "LN/66746-9-openQuestion"
+      * linkId = "LN/66746-9-designNote"
       * type = #display
       * text = """
-      This already uses the EU/UK/NW-compatible [Specimen Type](ValueSet-specimen-type.html)
-      value set - we may need to pick a subset of its codes for this specific exchange.
-      For the Clatterbridge <-> NW Genomics exchange, the preference is to carry this on
-      an SPM segment - Histotrac itself will still receive it as an NTE segment, so the
-      RIE would need to transform the SPM into the NTE format Histotrac expects.
+      Confirmed as this 3-value list (Blood, Buccal, plus a free-text "Other" box, not
+      modelled here) from the Hive/Histotrac order-entry UI's HLA panel - narrower than
+      the EU/UK/NW-compatible [Specimen Type](ValueSet-specimen-type.html) value set
+      previously bound here (`answerValueSet = Canonical(SpecimenType)`), so this item
+      now uses local `NWGMSA` codes to match what Hive actually offers for this
+      exchange. The separate Chimerism testing order screen in Hive instead offers
+      "Blood (PB)"/"Bone Marrow (BM)" - not yet modelled in this Questionnaire.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
     * item[+]
@@ -242,9 +246,11 @@ Usage:  #definition
       * text = """
       NHSBT's INF136 Table 5 (sample requirements) shows nearly every H&I test uses
       peripheral blood (EDTA and/or clotted, varying by test), with spleen/lymph node
-      as the exception for deceased-donor crossmatching - a narrow subset of the
-      SpecimenType value set (e.g. whole blood, plasma/serum specimen) would likely
-      cover this exchange, consistent with the subset dWGS already uses. No dedicated
-      NHS-published specimen-type binding specific to H&I was found.
+      as the exception for deceased-donor crossmatching - consistent with Hive's Blood
+      option. If a coded alternative to the local `NWGMSA` codes is wanted, the
+      [Specimen Type](ValueSet-specimen-type.html) value set remains a candidate binding
+      (e.g. whole blood, plasma/serum specimen for Blood; a buccal swab specimen code
+      for Buccal). No dedicated NHS-published specimen-type binding specific to H&I was
+      found.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help

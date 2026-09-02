@@ -62,3 +62,29 @@ Bucket for local codes
 // Identifier Type (local, HL7 v2 Table 0203 Z-code)
 
 * #ZCID "Container Identifier"
+
+// Histocompatibility and Immunogenetics Ask At Order Entry Codes (from Hive/Histotrac
+// order-entry UI - see Questionnaire-HistocompatibilityAskAtOrderEntry.html)
+
+* #Patient "Patient"
+* #Donor "Donor"
+
+* #StemCell "Stem cell"
+* #Renal "Renal"
+* #Thoracic "Thoracic"
+
+* #Kidney "Kidney"
+* #Pancreas "Pancreas"
+* #Islets "Islets"
+* #SimultaneousPancreasKidney "Simultaneous Pancreas/Kidney"
+* #SimultaneousIsletKidney "Simultaneous Islet/Kidney"
+
+* #HLATypingAntibodyScreening "HLA Typing + Antibody Screening"
+* #HLAAntibodyScreening "HLA Antibody Screening"
+* #HLATypeRecipient "HLA Type Recipient"
+* #DSA "DSA"
+* #HLAAutoXM "HLA Auto XM"
+
+* #HistoBlood "Blood"
+* #HistoBuccal "Buccal"
+* #HistoOther "Other"
