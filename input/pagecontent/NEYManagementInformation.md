@@ -62,6 +62,7 @@ Steps 3 and 5 are where this IG's process attaches: iGene's daily CSV export is 
 - `ObservationResultStatus = F` on a CSV row means the report has been finalised in iGene - this is what should trigger treating a LAB-3 `ORU_R01`/R01 copy as a completed test; anything not yet `F` is still in progress.
 - The timestamp fields (`SpecimenTakenDateTime`, `SpecimenReceivedDateTime`, `ObservationDateTime`, `ReportStatusDateTime`) are what NE&Y's Management Portal uses to calculate turnaround time - their accuracy in the daily CSV export matters more for this management-information use case than it does for the Trust's own clinical use, where the report itself remains the authoritative record.
 - Because this flow is copy/management-information only, any change here must preserve the exclusion of clinical content (the PDF/`presentedForm`) from the R01 copy - that's an information governance requirement, not just a technical convenience.
+- The RIE → NHS Trust leg of LAB-3 (`ORU_R01`) is a **logical interaction only at present** - the RIE's conversion of that same report into the R01 copy for NE&Y is real, but in practice the Trust itself currently receives the report as a PDF via NHS.net secure email, not as an electronic HL7 v2 message. Don't assume the Trust-facing leg is already electronic when building against this flow.
 
 ## Actors
 
@@ -69,7 +70,7 @@ Steps 3 and 5 are where this IG's process attaches: iGene's daily CSV export is 
 |-------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------|
 | [Order Placer](ActorDefinition-OrderPlacer.html)                                 | NHS Trust (North East or Yorkshire) - sends the order and specimen, paper-based                                |
 | [Order Filler](ActorDefinition-OrderFiller.html)                                 | NW Genomics (iGene) - clerks in the order and performs the diagnostic testing                                  |
-| [Intermediary](ActorDefinition-Intermediary.html)                              | Regional Integration Engine (RIE) - converts the daily CSV export into a FHIR Message O21, wire-taps LAB-3/`ORU_R01` into a FHIR Message R01 (with clinical content/PDF removed), and routes copies of both to NE&Y via AWS SQS |
+| [Intermediary](ActorDefinition-Intermediary.html)                              | Regional Integration Engine (RIE) - converts the daily CSV export into a FHIR Message O21, relays LAB-3/`ORU_R01` on to the NHS Trust, converts that same report into a FHIR Message R01 (with clinical content/PDF removed), and routes copies of both the O21 and R01 to NE&Y via AWS SQS |
 | [Order Result Tracker](ActorDefinition-OrderResultTracker.html)                  | NE&Y Genomics / NE&Y Management Portal - receives copies of order and report messages for regional management visibility; not itself the ordering or testing party |
 {:.grid}
 
@@ -81,8 +82,9 @@ Steps 3 and 5 are where this IG's process attaches: iGene's daily CSV export is 
 | Manual entry + daily CSV export                                          | NW Genomics Specimen Management manually enters the order into iGene; a daily extraction job exports it as a CSV file | iGene → RIE                |
 | CSV → FHIR Message O21 (LAB-2)                                           | RIE converts the CSV export into a FHIR Message O21                                                | RIE (internal)             |
 | FHIR Message O21 copy, via AWS SQS                                       | RIE sends a copy of the O21 message to NE&Y for their Management Portal                            | RIE → NE&Y (AWS SQS)       |
-| HL7 v2 `ORU_R01` (LAB-3)                                                 | NW Genomics sends the diagnostic report to the NHS Trust                                           | NW Genomics → NHS Trust    |
-| FHIR Message R01 copy (PDF/clinical content removed), via AWS SQS        | RIE wire-taps the LAB-3 report, strips the PDF/clinical content, and sends a copy to NE&Y           | RIE → NE&Y (AWS SQS)       |
+| HL7 v2 `ORU_R01` (LAB-3)                                                 | NW Genomics sends the diagnostic report to the RIE                                                 | iGene → RIE                |
+| HL7 v2 `ORU_R01` (LAB-3) - **logical interaction, not yet electronic**   | RIE relays the diagnostic report on to the NHS Trust. In practice, at present, this leg is not an electronic transaction: the report reaches the Trust as a PDF sent via NHS.net secure email | RIE → NHS Trust            |
+| FHIR Message R01 copy (PDF/clinical content removed), via AWS SQS        | RIE converts the same LAB-3 report into a FHIR Message R01, strips the PDF/clinical content, and sends a copy to NE&Y | RIE → NE&Y (AWS SQS)       |
 {:.grid}
 
 ## Current Process
@@ -93,7 +95,7 @@ Steps 3 and 5 are where this IG's process attaches: iGene's daily CSV export is 
 4. The Regional Integration Engine (RIE) converts the CSV export into a FHIR Message O21 (LAB-2).
 5. A copy of this FHIR Message O21 is sent to NE&Y Genomics via AWS SQS, for processing into the NE&Y Management Portal.
 6. NW Genomics carries out the diagnostic testing.
-7. The resulting report is sent to the NHS Trust as HL7 v2 `ORU_R01` (LAB-3). The RIE wire-taps a copy of this and converts it into a FHIR Message R01, removing the clinical content (the PDF), and sends this copy to NE&Y via AWS SQS, again for processing into the NE&Y Management Portal.
+7. The resulting report (HL7 v2 `ORU_R01`, LAB-3) is sent from NW Genomics to the RIE, which relays it on to the NHS Trust - **this NHS Trust leg is currently a logical interaction only: in practice, the Trust receives the report as a PDF via NHS.net secure email, not as an electronic HL7 v2 message.** The RIE also converts this same report into a FHIR Message R01, removing the clinical content (the PDF), and sends this copy to NE&Y via AWS SQS, again for processing into the NE&Y Management Portal.
 
 ```mermaid
 sequenceDiagram
@@ -103,14 +105,19 @@ sequenceDiagram
     participant RIE as Regional Integration<br/>Engine (RIE)<br/>Intermediary
     participant NEY as NE&Y Genomics<br/>Management Portal<br/>Order Result Tracker
 
+    note over Trust,NEY: Laboratory Order
     Trust ->> SpecMgmt: Paper Order + Specimen<br/>(LAB-1 equivalent)
     SpecMgmt ->> iGene: Manually entered
     iGene ->> RIE: Daily CSV export
     RIE ->> RIE: Convert CSV to<br/>FHIR Message O21 (LAB-2)
     RIE ->> NEY: Copy of FHIR Message O21<br/>via AWS SQS
+    note over Trust,NEY: Diagnostic Testing
     iGene ->> iGene: Diagnostic testing
-    iGene ->> Trust: Laboratory Report<br/>HL7 v2 ORU_R01 (LAB-3)
-    RIE ->> RIE: Wire-tap LAB-3, convert to<br/>FHIR Message R01,<br/>remove PDF/clinical content
+    note over Trust,NEY: Laboratory Report
+    iGene ->> RIE: Laboratory Report<br/>HL7 v2 ORU_R01 (LAB-3)
+    RIE -->> Trust: Laboratory Report<br/>HL7 v2 ORU_R01 (LAB-3)<br/>(logical - see note)
+    note right of Trust: Logical interaction only at present -<br/>in practice, PDF via NHS.net secure email
+    RIE ->> RIE: Wire-tapped conversion of LAB-3 to<br/>FHIR Message R01,<br/>remove PDF/clinical content
     RIE ->> NEY: Copy of FHIR Message R01<br/>via AWS SQS
 ```
 
