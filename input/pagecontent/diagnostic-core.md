@@ -31,6 +31,7 @@ erDiagram
         date TestOrderDate
         code NGTDTestCode
         code RequestingOrganisationCode
+        code OrderingProviderIdentifier
         string ClinicalDetails
         code Performer
         reference Specimen
@@ -128,7 +129,8 @@ The original order is the order sent from the Order Placer to the Order Filler; 
 | code       |                                               |                                                 | ServiceRequest.intent (code = original-order)                  | 
 | code       | Procedure Code - NGTDTestCode                 | NHS England Genomic Test Directory test code    | ServiceRequest.code                                            |
 | string     | ClinicalDetails                               | Free-text clinical details/history              | ServiceRequest.note                                            |
-| code       | RequestingOrganisationCode                    | Requesting Trust's ODS code                     | ServiceRequest.requester (ODS Code)                            |
+| code       | OrderingProviderIdentifier                    | Ordering clinician's professional identifier    | ServiceRequest.requester (PractitionerRole.practitioner.identifier) |
+| code       | RequestingOrganisationCode                    | Requesting Trust's ODS code                     | ServiceRequest.requester (PractitionerRole.organization.identifier, ODS Code) |
 | code       | Performer                                     |                                                 | ServiceRequest.performer (fixed ODS code = 699X0)              |
 | reference  | Specimen                                      |                                                 | ServiceRequest.specimen                                        |
 | reference  | Patient                                       |                                                 | ServiceRequest.subject                                         |
@@ -184,7 +186,7 @@ In IHE Laboratory Testing Workflow, this is the key entity in [LAB-4](LTW.html#w
 | date       | TestOrderDate                 | Date/time the test was ordered                 | ServiceRequest.authoredOn                                      |
 | identifier | TestAccessionIdentifier       | iGene's test-level accession number            | ServiceRequest.identifier                                      |
 | code       | Procedure Code - NGTDTestCode | NHS England Genomic Test Directory test code   | ServiceRequest.code                                            |
-| code       | RequestingOrganisationCode    | Requesting Trust's ODS code                    | ServiceRequest.requester (fixed ODS code = 699X0)              |
+| code       | RequestingOrganisationCode    | Requesting Trust's ODS code                    | ServiceRequest.requester (PractitionerRole.organization.identifier, fixed ODS code = 699X0) |
 | code       | Performer                     |                                                | ServiceRequest.performer (ODS Code)                            |
 | reference  | Specimen                      |                                                | ServiceRequest.specimen                                        |
 | reference  | Patient                       |                                                | ServiceRequest.subject                                         |

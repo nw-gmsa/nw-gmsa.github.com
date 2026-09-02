@@ -171,6 +171,98 @@ Models](overview.html#data-models) for the full detail, including the Account
 Number, Placer Order Number, NHS Number and Requested Procedure Code
 identifiers these Trusts' orders and reports carry.
 
+- [ServiceRequest](StructureDefinition-ServiceRequest.html) - the Laboratory Order, carried in the FHIR Message O21
+- [DiagnosticReport](StructureDefinition-DiagnosticReport.html) - the Laboratory Report, carried in the FHIR Message R01
+- [Message Exchange [MQ]](MQ.html) - the FHIR Messaging pattern both O21 and R01 use
+
+The field-by-field data model for both messages is the same one already
+established for [ctDNA Management Information (NW to NE&Y
+Genomics)](NEYManagementInformation.html) - these Trusts' own direct orders
+and reports use the identical fields, not just the ctDNA copy NE&Y receives.
+Reproduced below (for IG purposes, so this use case has its own worked
+mapping) rather than only linked, since the two may drift for different
+reasons over time - see
+[NEYManagementInformation.html](NEYManagementInformation.html#laboratory-order-o21-mapping)
+if this page's copy ever needs reconciling against the original.
+
+### Laboratory Order O21 Mapping
+
+| Field                                  | Description                                                        | Type      | FHIR Mapping                                                        |
+|----------------------------------------|--------------------------------------------------------------------|-----------|-------------------------------------------------------------------------|
+| `PatientAccessionIdentifier`           | iGene's internal patient accession number                          | string    | `Patient.identifier` (PatientIdentifier)                                |
+| `NHSNumber`                            | Patient's NHS Number                                                | string    | `Patient.identifier` (NHS Number)                                       |
+| `HospitalNumber`                       | Patient's hospital/medical record number                            | string    | `Patient.identifier` (MedicalRecordNumber)                              |
+| `PatientFamilyName`                    | Patient's surname                                                   | string    | `Patient.name.family`                                                   |
+| `PatientGivenName`                     | Patient's first name                                                | string    | `Patient.name.given`                                                    |
+| `DateOfBirth`                          | Patient's date of birth                                             | date      | `Patient.birthDate`                                                     |
+| `AdministrativeSex`                    | Sex registered at birth                                             | string    | `Patient.gender`                                                        |
+| `PostCode`                             | Patient's postcode                                                  | string    | `Patient.address.postalCode`                                            |
+| `HospitalSpellIdentifier`              | Identifier for the hospital spell/episode the order was placed under | string  | `ServiceRequest.encounter.identifier` (HospitalProviderSpellIdentifier) |
+| `OrderingProviderIdentifier`           | Ordering clinician's professional identifier                        | string    | `PractitionerRole.practitioner.identifier.value`                        |
+| `OrderingProviderName`                 | Ordering clinician's name                                           | string    | `PractitionerRole.practitioner.display`                                 |
+| `RequestingOrganisationCode`           | Requesting Trust's ODS code                                         | string    | `PractitionerRole.organization.identifier.value`                        |
+| `RequestingOrganisationName`           | Requesting Trust's name                                             | string    | `PractitionerRole.organization.display`                                 |
+| `PlacerOrderNumber`                    | Order identifier assigned by the ordering Trust                     | string    | `ServiceRequest.identifier` (OrderIdentifier, type=PLAC)                |
+| `FMIIdentifier`                        | Blank on every current example row - purpose not yet confirmed      | string    | `ServiceRequest.identifier` *(TBD)*                                     |
+| `FillerOrderNumber`                    | Order identifier assigned by iGene (the lab)                        | string    | `ServiceRequest.identifier` (OrderIdentifier, type=FILL)                |
+| `OrderStatus`                          | Order's current status in iGene                                     | string    | `ServiceRequest.status`                                                 |
+| `NGTDTestCode`                         | NHS England Genomic Test Directory test code                        | string    | `ServiceRequest.code`                                                   |
+| `NGTDTestName`                         | NHS England Genomic Test Directory test/package name                | string    | `ServiceRequest.code.coding.display`                                    |
+| `TestCode`                             | Local iGene short test code (e.g. `ctDNA_M4`)                       | string    | `ServiceRequest.code.coding` *(second coding, local system TBD)*        |
+| `TestAccessionIdentifier`              | iGene's test-level accession number                                 | string    | `ServiceRequest.identifier` *(system TBD)*                              |
+| `TestOrderDate`                        | Date/time the test was ordered                                      | dateTime  | `ServiceRequest.authoredOn`                                             |
+| `SpecimenTakenDateTime`                | Date/time the specimen was taken from the patient                   | dateTime  | `Specimen.collection.collectedDateTime`                                 |
+| `SpecimenReceivedDateTime`             | Date/time the specimen was received in the lab                      | dateTime  | `Specimen.receivedTime`                                                 |
+| `SpecimenAccessionIdentifier`          | Specimen's lab accession number                                     | string    | `Specimen.accessionIdentifier`                                          |
+| `SpecimenTypeCode`                     | Coded specimen type (e.g. `SAMPLE: BL`)                              | string    | `Specimen.type.coding.code`                                             |
+| `SpecimenTypeDescription`              | Specimen type, free text (e.g. Blood)                                | string    | `Specimen.type.coding.display`                                          |
+{:.grid}
+
+### Laboratory Report R01 Mapping
+
+Same underlying model as [Laboratory Order O21
+Mapping](#laboratory-order-o21-mapping) above, with one addition: unlike NE&Y's
+management-information copy (which strips the clinical PDF), the Laboratory
+Report these Trusts receive carries the full Narrative Report.
+
+| Field                                  | Description                                                        | Type      | FHIR Mapping                                                         |
+|----------------------------------------|--------------------------------------------------------------------|-----------|-------------------------------------------------------------------------|
+| `NHSNumber`                            | Patient's NHS Number                                                | string    | `Patient.identifier` (NHS Number) - also echoed on `DiagnosticReport.subject.identifier`/`ServiceRequest.subject.identifier` |
+| `HospitalNumber`                       | Patient's hospital/medical record number                            | string    | `Patient.identifier` (MedicalRecordNumber)                              |
+| `PatientFamilyName`                    | Patient's surname                                                   | string    | `Patient.name.family`                                                   |
+| `PatientGivenName`                     | Patient's first name                                                | string    | `Patient.name.given`                                                    |
+| `DateOfBirth`                          | Patient's date of birth                                             | date      | `Patient.birthDate`                                                     |
+| `AdministrativeSex`                    | Sex registered at birth                                             | string    | `Patient.gender`                                                        |
+| `PostCode`                             | Patient's postcode                                                  | string    | `Patient.address.postalCode`                                            |
+| `HospitalSpellIdentifier`              | Identifier for the hospital spell/episode the order was placed under | string  | `ServiceRequest.encounter.identifier` (HospitalProviderSpellIdentifier) |
+| `OrderingProviderIdentifier`           | Ordering clinician's professional identifier                        | string    | `PractitionerRole.practitioner.identifier.value`                        |
+| `OrderingProviderName`                 | Ordering clinician's name                                           | string    | `PractitionerRole.practitioner.display`                                 |
+| `RequestingOrganisationCode`           | Requesting Trust's ODS code                                         | string    | `PractitionerRole.organization.identifier.value`                        |
+| `RequestingOrganisationName`           | Requesting Trust's name                                             | string    | `PractitionerRole.organization.display`                                 |
+| `PlacerOrderNumber`                    | Order identifier assigned by the ordering Trust                     | string    | `ServiceRequest.identifier` (OrderIdentifier, type=PLAC)                |
+| `FillerOrderNumber`                    | Order identifier assigned by iGene (the lab)                        | string    | `ServiceRequest.identifier` (OrderIdentifier, type=FILL), echoed on `DiagnosticReport.basedOn` |
+| `OrderStatus`                          | Order's current status in iGene                                     | string    | `ServiceRequest.status`                                                 |
+| `ReportStatusDateTime`                 | Date/time the report status was last updated                        | dateTime  | `DiagnosticReport.issued`                                               |
+| `ReportIdentifier`                     | Report's identifier, once issued                                    | string    | `DiagnosticReport.identifier` (ReportIdentifier)                        |
+| `NGTDTestCode`                         | NHS England Genomic Test Directory test code                        | string    | `DiagnosticReport.code.coding`                                          |
+| `NGTDTestName`                         | NHS England Genomic Test Directory test/package name                | string    | `DiagnosticReport.code.coding.display`                                  |
+| `TestCode`                             | Local iGene short test code (e.g. `ctDNA_M4`)                       | string    | `DiagnosticReport.code.coding` *(second coding, local system TBD)*      |
+| `TestAccessionIdentifier`              | iGene's test-level accession number                                 | string    | `DiagnosticReport.identifier` / `ServiceRequest.identifier` *(system TBD)* |
+| `TestOrderDate`                        | Date/time the test was ordered                                      | dateTime  | `ServiceRequest.authoredOn`                                             |
+| `ObservationResultStatus`              | Result status (`F` = finalised)                                     | string    | `DiagnosticReport.status`                                               |
+| `ObservationDateTime`                  | Date/time the result was observed/produced                          | dateTime  | `DiagnosticReport.effectiveDateTime`                                    |
+| `ObservationIdentifierCode`            | Code identifying which result/analyte this row represents           | string    | `Observation.code.coding.code` (on the individual result Observation referenced from `DiagnosticReport.result`) |
+| `ObservationIdentifierDescription`     | Display name for the result/analyte code above                      | string    | `Observation.code.coding.display`                                       |
+| `Narrative Report`                     | The clinical PDF narrative report - not stripped for these Trusts, unlike NE&Y's management-information copy | Attachment | `DiagnosticReport.presentedForm`                                        |
+{:.grid}
+
+See [ctDNA Management Information - Laboratory Report R01
+Mapping](NEYManagementInformation.html#laboratory-report-r01-mapping) for the
+open questions the worked ctDNA example surfaces against this same model
+(identifier ambiguity between `FillerOrderNumber`/`TestAccessionIdentifier`/
+`ReportIdentifier`, and `Specimen` not currently being included in the R01
+Bundle) - not repeated here since they aren't specific to this use case.
+
 ## Examples
 
 FHIR examples for the Laboratory Order (LAB-1) and Laboratory Report (LAB-3)
