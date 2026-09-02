@@ -7,6 +7,8 @@ This is currently being elaborated and subject to change.
 1. [Inter Laboratory Workflow (ILW) - Sub-orders LAB-35 and LAB-36](ILW.html#sub-orders-lab-35-and-lab-36)
 2. [Cheshire and Merseyside Pathology](CheshireAndMerseysidePathology.html) - the related pathology-LIMS (CFT Shire) reflex scenario without HODS orchestration
 3. [Cancer Background Information for Use Cases - NHS North West Children Cancer Example](CancerNOS.html#nhs-north-west-children-cancer-example)
+4. [HL7 FHIR Genomics Reporting Implementation Guide](https://hl7.org/fhir/uv/genomics-reporting/) - see [Future Process](#future-process) and [Data Models](#data-models) below
+5. Sample Shire `LAB-36` cytogenetics messages: [Shire-1](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/R01/Shire-1.txt), [Shire-2](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/R01/Shire-2.txt)
 
 ## Clinical Pathway Overview
 
@@ -132,13 +134,124 @@ West Children Cancer notification example.
 
 ## Future Process
 
-No distinct future-state changes are currently defined for this pathway - this
-section will be populated as the HODS orchestration workflow above is formalised.
+No distinct future-state changes are currently defined for the order/report
+orchestration in this pathway - this section will be populated as the HODS
+orchestration workflow above is formalised.
+
+However, the genomic content of the Shire → HODS `LAB-36` report is itself a
+candidate for future modelling. The sample messages for this pathway
+([Shire-1](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/R01/Shire-1.txt),
+[Shire-2](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/R01/Shire-2.txt))
+carry cytogenetic/molecular findings for suspected MDS and AML - a karyotype
+(ISCN nomenclature) and, in Shire-2, a FISH result - but represent them
+entirely as narrative free text: every line of the report is a separate
+`OBX|n|FT|CYTO||...` segment, `OBR-4` (Universal Service Identifier) is not
+populated with a coded test name, and there is no structured representation
+of the abnormal karyotype, the FISH probe/assay used, or the proportion of
+cells affected (e.g. "93 out of 100 interphase cells"). Report amendments are
+also represented only as an inline text marker (`-Amendment 14/10/20` in
+Shire-2) rather than as a distinct report/observation status. This is genomic
+reporting in substance but does not currently align with the HL7 [FHIR
+Genomics Reporting Implementation
+Guide](https://hl7.org/fhir/uv/genomics-reporting/).
+
+A future state for this pathway should consider re-expressing these results
+as discrete, coded FHIR resources rather than a single narrative block, so
+that findings such as "7q deletion" or "trisomy 8" are computable rather than
+requiring text-mining of `OBX-5`. See [Data Models](#data-models) below for a
+proposed direction.
 
 ## Data Models
 
 - [ServiceRequest](StructureDefinition-ServiceRequest.html) - `LAB-1` placer order and `LAB-35` reflex sub-orders
 - [DiagnosticReport](StructureDefinition-DiagnosticReport.html) - `LAB-36` reflex results and the combined `LAB-3` report
+
+### Future genomic data model (proposed)
+
+The genomics laboratory's `LAB-36` result (and any genomic content folded
+into the combined `LAB-3` report) is a candidate for restructuring in place
+of the current free-text `OBX|FT|CYTO` pattern seen in the [sample Shire
+messages](https://github.com/nw-gmsa/Testing/tree/main/Input/V2/R01). Two
+complementary sources were reviewed for this:
+
+**HL7 FHIR Genomics Reporting IG.** As of this IG's current build, the [HL7
+FHIR Genomics Reporting Implementation
+Guide](https://hl7.org/fhir/uv/genomics-reporting/)'s own [Cytogenomic
+Reporting](https://build.fhir.org/ig/HL7/genomics-reporting/cytogenomics.html)
+section states that the Clinical Genomics work group is still reviewing this
+use case and has not yet prioritised it - there is currently no finalised,
+balloted profile for karyotype/FISH results. An earlier (2018, work-in-progress,
+never balloted) draft of the IG sketched four candidate observation shapes -
+*Chromosome analysis G-banding panel*, *Chromosome analysis FISH panel*,
+*Copy Number Change* (a structural-variant finding), and *Chromosome Analysis
+Overall Interpretation* - but marked them incomplete
+("TODO - detailed explanation of these observations") and they were not
+carried forward. **Building against this IG's cytogenomics content today
+would mean building against an acknowledged gap, not a stable target.**
+
+**LOINC cytogenetics panels.** LOINC already publishes a mature, granular
+panel structure for exactly this content, which maps more directly onto
+today's `OBX` segments than waiting on the FHIR IG to mature:
+
+| LOINC code | Panel/result |
+|------------|--------------|
+| `62389-2`  | Chromosome analysis master panel |
+| `62386-8`  | Chromosome analysis summary panel |
+| `77314-3`  | Chromosome analysis basic associated observations panel - Blood or Tissue by Cytogenetics |
+| `62356-1`  | Chromosome analysis result in ISCN expression |
+| `62349-6`  | Chromosome analysis panel - Blood [from Fetus] by G-banded *(a non-fetal, blood/bone-marrow equivalent should be selected for this pathway)* |
+| `62367-8`  | Chromosome analysis panel by FISH |
+| `50684-0`  | Chromosome analysis.interphase [Interpretation] in Blood by FISH Narrative |
+| `62343-9`  | Chromosome analysis copy number change panel by Microarray |
+| `82255-1`  | Marker and derivative chromosome analysis in Blood or Tissue Document by Cytogenetics |
+{:.grid}
+
+*(Codes sourced from [loinc.org](https://loinc.org/) search; the exact panel
+members and the correct non-fetal specimen variant should be confirmed
+against the full LOINC hierarchy and with the genomics laboratory before
+adoption.)*
+
+Candidate direction, to be confirmed with the genomics and pathology
+laboratories:
+
+- **`DiagnosticReport`** as the container for the genomic result, distinct
+  from the pathology `DiagnosticReport`, with `DiagnosticReport.conclusion`
+  carrying the free-text interpretive summary (e.g. *"Complex abnormal
+  hyperdiploid karyotype ... consistent with AML"*) and
+  `DiagnosticReport.conclusionCode` carrying a coded diagnosis/impression
+  (e.g. SNOMED CT MDS/AML) where the laboratory is willing to commit to one.
+- **`Specimen`** identifying blood vs. bone marrow, referenced by the
+  report, rather than left as an uncoded OBR field.
+- **Discrete `Observation` resources per finding, coded to the LOINC panel
+  members above**, one per karyotype/FISH result rather than one per line
+  of prose, for example:
+  - an `Observation` coded `62356-1` (ISCN expression) carrying the
+    karyotype string (e.g. `46,XY,del(20)(q*q*)[]`) as a structured value,
+    with the plain-language description as `Observation.note` rather than
+    the sole representation of the finding;
+  - a separate `Observation` per FISH probe/locus tested, coded under the
+    `62367-8` FISH panel (e.g. a 7q36.1 deletion probe), with
+    `Observation.method` for the assay/probe set used (e.g. Cytocell
+    MyProbe [Del(7q) Plus]), and a component for the count/percentage of
+    cells positive (e.g. "93/100 interphase cells") as a quantity rather
+    than embedded in a sentence;
+  - individual cytogenetic findings (e.g. monosomy 7, trisomy 8, 12p loss)
+    as their own coded Observations grouped via `Observation.hasMember`
+    under the `62389-2` master panel (or `DiagnosticReport.result`), so
+    each can be queried independently rather than only as part of one long
+    karyotype string.
+- **`DiagnosticReport.status = corrected`**, with a linked `Provenance`
+  history for amendments, replacing the current inline `-Amendment <date>`
+  text markers seen in Shire-2.
+- SNOMED CT codes for the coded diagnosis/impression, and confirmation of
+  the exact LOINC panel members to use, are not yet selected and should be
+  agreed with the genomics laboratory as this model is developed - this
+  section records a proposed resource shape and starting-point codes, not a
+  final specification.
+
+This is additive to, not a replacement for, the existing
+[ServiceRequest](StructureDefinition-ServiceRequest.html)/[DiagnosticReport](StructureDefinition-DiagnosticReport.html)
+models already listed above for the order/report envelope.
 
 ## Examples
 
