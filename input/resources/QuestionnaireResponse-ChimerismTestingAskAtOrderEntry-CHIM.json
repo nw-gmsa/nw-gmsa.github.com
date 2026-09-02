@@ -1,0 +1,61 @@
+{
+  "resourceType": "QuestionnaireResponse",
+  "id": "ChimerismTestingAskAtOrderEntry-CHIM",
+  "meta": {
+    "profile": [
+      "https://fhir.nwgenomics.nhs.uk/StructureDefinition/QuestionnaireResponse"
+    ]
+  },
+  "questionnaire": "https://fhir.nwgenomics.nhs.uk/Questionnaire/ChimerismTestingAskAtOrderEntry",
+  "status": "completed",
+  "subject": {
+    "display": "Wythenshawe Lyanna",
+    "identifier": {
+      "system": "https://fhir.nhs.uk/Id/nhs-number",
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "NH"
+          }
+        ]
+      },
+      "value": "9999999638"
+    }
+  },
+  "authored": "2026-01-09T11:50:30+00:00",
+  "item": [
+    {
+      "linkId": "AskAtOrderEntry",
+      "text": "Ask At Order Entry Questions",
+      "item": [
+        {
+          "linkId": "ChimIG/specimen_source",
+          "text": "Specimen Source",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "https://fhir.nwgenomics.nhs.uk/CodeSystem/NWGMSA",
+                "code": "ChimerismBloodPB",
+                "display": "Blood (PB)"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "ChimIG/patient_test",
+          "text": "Patient Test(s)",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "https://fhir.nwgenomics.nhs.uk/CodeSystem/NWGMSA",
+                "code": "ChimerismPeripheralBlood",
+                "display": "Chimerism Peripheral Blood"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

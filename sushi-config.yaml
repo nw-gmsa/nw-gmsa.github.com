@@ -373,6 +373,10 @@ resources:
     name: HLA Tests - Transplant Ask At Order Entry Response - HLA Antibody Screening
     description: QuestionnaireResponse answering HLA Tests - Transplant Ask At Order Entry, sourced from a live Histotrac ORM^O01 HLA Antibody Screening (Transplant) order
     exampleBoolean: true
+  QuestionnaireResponse/ChimerismTestingAskAtOrderEntry-CHIM:
+    name: Chimerism Testing Blood (PB) Ask At Order Entry Response
+    description: QuestionnaireResponse answering Chimerism Testing Blood (PB) Ask At Order Entry, sourced from a live Histotrac ORM^O01 Chimerism Testing (Performable) order
+    exampleBoolean: true
   QuestionnaireResponse/GenomicGeneralAskAtOrderEntry-OctaviaCHISLETT:
     name: Genomic General Ask At Order Entry Response - Octavia CHISLETT
     description: QuestionnaireResponse answering the default Genomic General Ask At Order Entry Questionnaire, sourced from the existing ServiceRequestGenomicsOrderCodedEntries order (test code R240.1) and its free-text note
@@ -572,6 +576,11 @@ groups:
     description: "QuestionnaireResponse answering HLA Tests - Transplant Ask At Order Entry, sourced from a live Histotrac ORM^O01 HLA Antibody Screening (Transplant) order"
     resources:
       - QuestionnaireResponse/HLATestsTransplantAskAtOrderEntry-HLAAS
+  -ex-example-chimerism-order:
+    name: "Example: Chimerism Testing Blood (PB) Ask At Order Entry"
+    description: "QuestionnaireResponse answering Chimerism Testing Blood (PB) Ask At Order Entry, sourced from a live Histotrac ORM^O01 Chimerism Testing (Performable) order"
+    resources:
+      - QuestionnaireResponse/ChimerismTestingAskAtOrderEntry-CHIM
   -ex-example-omics-dss:
     name: "Example: OMICS DSS Result Integration"
     description: "NW-GMSA R01 Test Results message produced from a GA4GH VCF/Phenopacket by the 05 - Test Results notebook"

@@ -12,10 +12,11 @@ screen within Histocompatibility and Immunogenetics orders (SNOMED CT
 For the sibling HLA testing order screen, see
 [HLA Tests - Transplant Ask At Order Entry](Questionnaire-HLATestsTransplantAskAtOrderEntry.html).
 
-Unlike the HLA Tests - Transplant screen, no live Histotrac `NTE` example order for
-this screen has yet been seen - the two items below are inferred directly from the
-Hive/Histotrac "Chimerism Testing Blood (PB)" order-entry UI screenshot, following the
-same `NTE` `Label:->Value` convention this Questionnaire family otherwise uses. See also
+Extracted from the `NTE` segments of a live Histotrac `ORM^O01` order for a Chimerism
+Testing (Performable) test - see the worked
+[example](HistocompatibilityAndImmunogenetics.html#chimerism-testing-ask-at-order-entry)
+for the full message. Unlike HLA Tests - Transplant, this order carries only two `NTE`
+segments, and in the reverse order (Specimen Source before Patient Test(s)). See also
 [Chimerism Testing Result Panel](Questionnaire-ChimerismResultPanel.html) for the
 (separate) structured *result* payload this order eventually produces.
 
@@ -47,48 +48,6 @@ Usage:  #definition
   * linkId = "AskAtOrderEntry"
   * text = "Ask At Order Entry Questions"
 
-// Patient Test(s):->Chimerism Peripheral Blood
-
-  * item[+]
-    * type = #choice
-    * linkId = "ChimIG/patient_test"
-    * text = "Patient Test(s)"
-    * repeats = true
-    * answerOption[+].valueCoding = $nwgmsa#ChimerismPeripheralBlood "Chimerism Peripheral Blood"
-    * answerOption[+].valueCoding = $nwgmsa#ChimerismCD3 "Chimerism CD3"
-    * answerOption[+].valueCoding = $nwgmsa#ChimerismCD15 "Chimerism CD15"
-    * answerOption[+].valueCoding = $nwgmsa#ChimerismCD19 "Chimerism CD19"
-    * answerOption[+].valueCoding = $nwgmsa#ChimerismLineageOther "Chimerism Lineage Other"
-    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.code"
-    * item[+]
-      * linkId = "ChimIG/patient_test-designNote"
-      * type = #display
-      * text = """
-      Which chimerism panel/lineage is being tested - the same Ask At Order Entry
-      pattern as `HistoIG/patient_test` on
-      [HLA Tests - Transplant](Questionnaire-HLATestsTransplantAskAtOrderEntry.html)
-      (`repeats = true`, since the Hive UI presents them as checkboxes - more than one
-      may be selected per order). Confirmed as this fixed 5-value checklist from the
-      Hive/Histotrac order-entry UI - coded locally against the `NWGMSA` CodeSystem, as
-      no NHSBT/NHS England-published FHIR/LOINC/SNOMED binding exists.
-      """
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-    * item[+]
-      * linkId = "ChimIG/patient_test-reference"
-      * type = #display
-      * text = """
-      No MFT/NHS England code set was found for these five specific test names. LOINC
-      has short tandem repeat (STR)/chimerism-adjacent panels (e.g. `48018-6` Gene
-      studied, engraftment-monitoring local codes used elsewhere in genetics
-      laboratories) but no exact match for a CD3/CD15/CD19 lineage-specific chimerism
-      checklist was confirmed - a candidate future binding if a coded alternative to
-      the local `NWGMSA` codes is wanted. See also this IG's existing
-      [Chimerism](CodeSystem-Chimerism.html) CodeSystem, which covers the *result*
-      payload's OBX-3 sub-identifiers (STR/IM/RANGE/CV/EXT/PURE/POST/DTP/DID) rather
-      than these order-entry test-selection values.
-      """
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
 // Specimen Source :->Blood (PB)
 
   * item[+]
@@ -117,7 +76,9 @@ Usage:  #definition
       Order](Questionnaire-GenomicTestOrder.html)'s own `LN/66746-9` Specimen Type
       item - the IG Publisher's Questionnaire derivation validator does not support a
       `derivedFrom`/`extends` item reusing a base item's linkId while also declaring
-      more than one `answerOption`.
+      more than one `answerOption`. Ordered first (before Patient Test(s)) to match
+      `NTE|1` in the live Histotrac order - the reverse of HLA Tests - Transplant, where
+      Patient Test(s) comes first.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
     * item[+]
@@ -131,5 +92,51 @@ Usage:  #definition
       binding (e.g. whole blood specimen for Blood (PB); bone marrow specimen for Bone
       Marrow (BM)). No dedicated NHS-published specimen-type binding specific to H&I
       chimerism testing was found.
+      """
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+// Patient Test(s):->Chimerism Peripheral Blood (PB)
+
+  * item[+]
+    * type = #choice
+    * linkId = "ChimIG/patient_test"
+    * text = "Patient Test(s)"
+    * repeats = true
+    * answerOption[+].valueCoding = $nwgmsa#ChimerismPeripheralBlood "Chimerism Peripheral Blood"
+    * answerOption[+].valueCoding = $nwgmsa#ChimerismCD3 "Chimerism CD3"
+    * answerOption[+].valueCoding = $nwgmsa#ChimerismCD15 "Chimerism CD15"
+    * answerOption[+].valueCoding = $nwgmsa#ChimerismCD19 "Chimerism CD19"
+    * answerOption[+].valueCoding = $nwgmsa#ChimerismLineageOther "Chimerism Lineage Other"
+    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.code"
+    * item[+]
+      * linkId = "ChimIG/patient_test-designNote"
+      * type = #display
+      * text = """
+      Which chimerism panel/lineage is being tested - the same Ask At Order Entry
+      pattern as `HistoIG/patient_test` on
+      [HLA Tests - Transplant](Questionnaire-HLATestsTransplantAskAtOrderEntry.html)
+      (`repeats = true`, since the Hive UI presents them as checkboxes - more than one
+      may be selected per order). Confirmed as this fixed 5-value checklist from the
+      Hive/Histotrac order-entry UI - coded locally against the `NWGMSA` CodeSystem, as
+      no NHSBT/NHS England-published FHIR/LOINC/SNOMED binding exists. Ordered second
+      (after Specimen Source) to match `NTE|2` in the live Histotrac order, whose
+      NTE-3 value carries a `(PB)` suffix ("Chimerism Peripheral Blood (PB)") the Hive
+      checkbox label itself doesn't show - the same OBR-4-restatement behaviour as HLA
+      Tests - Transplant's Patient Test(s) item.
+      """
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+    * item[+]
+      * linkId = "ChimIG/patient_test-reference"
+      * type = #display
+      * text = """
+      No MFT/NHS England code set was found for these five specific test names. LOINC
+      has short tandem repeat (STR)/chimerism-adjacent panels (e.g. `48018-6` Gene
+      studied, engraftment-monitoring local codes used elsewhere in genetics
+      laboratories) but no exact match for a CD3/CD15/CD19 lineage-specific chimerism
+      checklist was confirmed - a candidate future binding if a coded alternative to
+      the local `NWGMSA` codes is wanted. See also this IG's existing
+      [Chimerism](CodeSystem-Chimerism.html) CodeSystem, which covers the *result*
+      payload's OBX-3 sub-identifiers (STR/IM/RANGE/CV/EXT/PURE/POST/DTP/DID) rather
+      than these order-entry test-selection values.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help

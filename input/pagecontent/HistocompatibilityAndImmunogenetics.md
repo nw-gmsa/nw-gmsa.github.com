@@ -9,7 +9,8 @@ Clatterbridge Chimerism Testing - process overview.
 1. [HL7 FHIR Genomics Reporting - Histocompatibility and Immunogenetic Reporting](http://hl7.org/fhir/uv/genomics-reporting/histocompatibility.html) (a dependency of this IG)
 2. [Genomic Test Order - Order Entry Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions)
 3. [HL7 v2 OML_O21](hl7v2.html#oml_o21-laboratory-order)
-4. Original Histotrac `ORM^O01` order (HLA Antibody Screening) - [histotrac-MFT.txt](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/O01/histotrac-MFT.txt)
+4. Original Histotrac `ORM^O01` order (HLA Antibody Screening) - [histotrac-MFT-HLA.txt](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/O01/histotrac-MFT-HLA.txt)
+5. Original Histotrac `ORM^O01` order (Chimerism Testing) - [histotrac-MFT-chimerism.txt](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/O01/histotrac-MFT-chimerism.txt)
 
 ## Clinical Pathway Overview
 
@@ -176,6 +177,7 @@ sequenceDiagram
 3. NW Genomics would prefer the order to use `OML_O21` rather than `ORM_O01`, to future-proof the exchange - specifically so it can carry an `SPM` (Specimen) segment. See [Specimen - Domain Archetype](StructureDefinition-Specimen.html#domain-archetype) for the specimen fields this would carry; the main fields needed here are Specimen ID and Specimen Type.
 4. **`HLATestsTransplantAskAtOrderEntry`'s "Patient Test(s)" question conflicts with the base Questionnaire's Test Code.** [HLATestsTransplantAskAtOrderEntry](Questionnaire-HLATestsTransplantAskAtOrderEntry.html) declares `derivedFrom` [Genomic Test Order](Questionnaire-GenomicTestOrder.html) with derivation type `extends`, and its own `patient_test` item ("Patient Test(s)") maps to `ServiceRequest.code` - the same single-cardinality FHIR element the base Questionnaire's own Test Code item also maps to. There is no `enableWhen` linking the two, so it is unclear which item is meant to actually populate `ServiceRequest.code` for a Histocompatibility order. The same conflict applies to [ChimerismTestingAskAtOrderEntry](Questionnaire-ChimerismTestingAskAtOrderEntry.html)'s own `patient_test` item.
 5. **No Test Category or Test Code exists for Histocompatibility and Immunogenetics in the base Questionnaire.** The base's Test Category item ([OrderCategory](ValueSet-order-category.html)) only offers Rare and Inherited Disease, Storage of Specimen, Pre-Natal, Haemoglobinopathy and Cancer Genetic Testing - there is no Histocompatibility/Immunogenetics category, so none of the base's three `enableWhen`-gated Test Code branches can ever fire for this order type. This matches the [Patient Test(s)](Questionnaire-HLATestsTransplantAskAtOrderEntry.html) item's own open question: no NHS England Genomic Test Directory code was found for H&I test names, since H&I is not part of that directory.
+6. **TODO: decide whether `ServiceRequest.code`/Patient Test(s) should move from local codes to a national code system.** Both AskAtOrderEntry Questionnaires' Patient Test(s) items are currently coded locally against the `NWGMSA` CodeSystem (five HLA test values, five Chimerism test values), since no confirmed national binding was found during initial research - see each Questionnaire's own `patient_test-reference` design note ([HLA Tests - Transplant](Questionnaire-HLATestsTransplantAskAtOrderEntry.html), [Chimerism Testing Blood (PB)](Questionnaire-ChimerismTestingAskAtOrderEntry.html)) for candidate LOINC panels already identified for the HLA side. Now that there are two separate local code lists doing the same job for two different test families, it's worth a deliberate decision rather than leaving both as local by default: confirm whether a national code system (LOINC, SNOMED CT, or an NHSBT-published binding once one exists) should replace either or both lists, or whether local coding is the right long-term answer here because H&I sits outside NHS England's Genomic Test Directory.
 
 ## Data Models
 
@@ -226,22 +228,23 @@ NTE|5||Specimen source->Blood|OSQ
 <b>FHIR Questionnaire:</b> <a href="Questionnaire-ChimerismTestingAskAtOrderEntry.html">Chimerism Testing Blood (PB) Ask At Order Entry</a>
 </div>
 
-Unlike HLA Tests - Transplant above, no live Histotrac `NTE` example order for the
-"Chimerism Testing Blood (PB)" screen has yet been seen - the two items below are
-inferred directly from the Hive/Histotrac order-entry UI screenshot, following the
-same `NTE` `Label:->Value` convention this Questionnaire family otherwise uses:
+These questions were extracted from a live Histotrac `ORM^O01` order for a Chimerism
+Testing (Performable) test - see
+[histotrac-MFT-chimerism.txt](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/O01/histotrac-MFT-chimerism.txt).
+Unlike HLA Tests - Transplant above, this order carries only two `NTE` segments, and in
+the reverse order (Specimen Source before Patient Test(s)):
 
 ```
-NTE|1||Patient Test(s):->Chimerism Peripheral Blood|OSQ (inferred, not yet confirmed against a live order)
-NTE|2||Specimen Source:->Blood (PB)|OSQ (inferred, not yet confirmed against a live order)
+NTE|1||Specimen Source :->Blood (PB)|OSQ
+NTE|2||Patient Test(s):->Chimerism Peripheral Blood (PB)|OSQ
 ```
 
 #### Field mapping: Chimerism NTE → FHIR
 
-| NTE Label         | Example Value                | FHIR Field                                                             |
-|--------------------|---------------------------------|--------------------------------------------------------------------------|
-| Patient Test(s)    | Chimerism Peripheral Blood     | ServiceRequest.code (restates OBR-4, not a new mapping)                  |
-| Specimen Source    | Blood (PB)                     | Specimen.type (local `NWGMSA` coding - Blood (PB) or Bone Marrow (BM))   |
+| NTE Label         | Example Value                        | FHIR Field                                                             |
+|--------------------|------------------------------------------|--------------------------------------------------------------------------|
+| Specimen Source    | Blood (PB)                              | Specimen.type (local `NWGMSA` coding - Blood (PB) or Bone Marrow (BM))   |
+| Patient Test(s)    | Chimerism Peripheral Blood (PB)         | ServiceRequest.code (restates OBR-4 `CHIMBTP^CHIMERISM TESTING - PERFORMABLE`, not a new mapping - note the live `NTE-3` value carries a `(PB)` suffix the Hive checkbox label itself doesn't show, the same OBR-4-restatement behaviour as HLA Tests - Transplant's Patient Test(s) above) |
 {:.grid}
 
 This is the order-entry counterpart to the [Chimerism Testing Result Panel](#chimerism-testing-result-panel-future)
@@ -283,8 +286,10 @@ as such rather than forced onto it.
 
 | Source                                                                                                                       | Example                                                                                                            |
 |--------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
-| HL7 v2 `ORM^O01` (original)                                                                                                     | [histotrac-MFT.txt](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/O01/histotrac-MFT.txt)                       |
+| HL7 v2 `ORM^O01` (original, HLA Antibody Screening)                                                                             | [histotrac-MFT-HLA.txt](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/O01/histotrac-MFT-HLA.txt)               |
 | FHIR `QuestionnaireResponse` answering [HLA Tests - Transplant Ask At Order Entry](Questionnaire-HLATestsTransplantAskAtOrderEntry.html) | [QuestionnaireResponse-HLATestsTransplantAskAtOrderEntry-HLAAS](QuestionnaireResponse-HLATestsTransplantAskAtOrderEntry-HLAAS.html) |
+| HL7 v2 `ORM^O01` (original, Chimerism Testing)                                                                                  | [histotrac-MFT-chimerism.txt](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/O01/histotrac-MFT-chimerism.txt)   |
+| FHIR `QuestionnaireResponse` answering [Chimerism Testing Blood (PB) Ask At Order Entry](Questionnaire-ChimerismTestingAskAtOrderEntry.html) | [QuestionnaireResponse-ChimerismTestingAskAtOrderEntry-CHIM](QuestionnaireResponse-ChimerismTestingAskAtOrderEntry-CHIM.html) |
 | FHIR `Questionnaire` (Result Panel) - [Chimerism Testing Result Panel](Questionnaire-ChimerismResultPanel.html) | See [Chimerism Testing Result Panel (Future?)](#chimerism-testing-result-panel-future) above for the source data table |
 {:.grid}
 
