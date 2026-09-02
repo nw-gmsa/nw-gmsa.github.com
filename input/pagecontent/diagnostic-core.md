@@ -87,9 +87,9 @@ erDiagram
 
 | Type       | Name                       | Description                                | FHIR [Patient](StructureDefinition-Patient.html) |
 |------------|----------------------------|---------------------------------------------|--------------------------------------------------|
-| identifier | NHSNumber                  | Patient's NHS Number                        | Patient.identifier (type=NH)                     |
-| identifier | HospitalNumber             | Patient's hospital/medical record number    | Patient.identifier (type=MR)                     |
-| identifier | PatientAccessionIdentifier | iGene's internal patient accession number   | Patient.identifier (type=PI)                     |
+| identifier | NHSNumber                  | Patient's NHS Number - see [NHS Identifier](StructureDefinition-NHSIdentifier.html) | Patient.identifier (type=NH)                     |
+| identifier | HospitalNumber             | Patient's hospital/medical record number - see [Medical Record Number](StructureDefinition-MedicalRecordNumber.html) | Patient.identifier (type=MR)                     |
+| identifier | PatientAccessionIdentifier | iGene's internal patient accession number - see [Patient Identifier](StructureDefinition-PatientIdentifier.html) | Patient.identifier (type=PI)                     |
 | string     | PatientGivenName           | Patient's first name                        | Patient.name.given                               |
 | string     | PatientFamilyName          | Patient's surname                           | Patient.name.family                              |
 | date       | DateOfBirth                | Patient's date of birth                     | Patient.birthDate                                |
@@ -124,13 +124,13 @@ The original order is the order sent from the Order Placer to the Order Filler; 
 
 | Type       | Name                                          | Description                                  | FHIR [ServiceRequest](StructureDefinition-ServiceRequest.html) |
 |------------|-----------------------------------------------|------------------------------------------------|----------------------------------------------------------------|
-| identifier | PlacerOrderNumber                             | Order identifier assigned by the ordering Trust | ServiceRequest.identifier (type = PLAC)                        |
-| identifier | FillerOrderNumber                             | Order identifier assigned by iGene (the lab)    | ServiceRequest.identifier (type = FILL)                        |
+| identifier | PlacerOrderNumber                             | Order identifier assigned by the ordering Trust - see [Order Identifier](StructureDefinition-OrderIdentifier.html) | ServiceRequest.identifier (type = PLAC)                        |
+| identifier | FillerOrderNumber                             | Order identifier assigned by iGene (the lab) - see [Order Identifier](StructureDefinition-OrderIdentifier.html) | ServiceRequest.identifier (type = FILL)                        |
 | code       |                                               |                                                 | ServiceRequest.intent (code = original-order)                  | 
 | code       | Procedure Code - NGTDTestCode                 | NHS England Genomic Test Directory test code    | ServiceRequest.code                                            |
 | string     | ClinicalDetails                               | Free-text clinical details/history              | ServiceRequest.note                                            |
-| code       | OrderingProviderIdentifier                    | Ordering clinician's professional identifier    | ServiceRequest.requester (PractitionerRole.practitioner.identifier) |
-| code       | RequestingOrganisationCode                    | Requesting Trust's ODS code                     | ServiceRequest.requester (PractitionerRole.organization.identifier, ODS Code) |
+| code       | OrderingProviderIdentifier                    | Ordering clinician's professional identifier - see [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html) | ServiceRequest.requester (PractitionerRole.practitioner.identifier) |
+| code       | RequestingOrganisationCode                    | Requesting Trust's ODS code - see [Organisation Code](StructureDefinition-OrganisationCode.html) | ServiceRequest.requester (PractitionerRole.organization.identifier, ODS Code) |
 | code       | Performer                                     |                                                 | ServiceRequest.performer (fixed ODS code = 699X0)              |
 | reference  | Specimen                                      |                                                 | ServiceRequest.specimen                                        |
 | reference  | Patient                                       |                                                 | ServiceRequest.subject                                         |
@@ -186,7 +186,7 @@ In IHE Laboratory Testing Workflow, this is the key entity in [LAB-4](LTW.html#w
 | date       | TestOrderDate                 | Date/time the test was ordered                 | ServiceRequest.authoredOn                                      |
 | identifier | TestAccessionIdentifier       | iGene's test-level accession number            | ServiceRequest.identifier                                      |
 | code       | Procedure Code - NGTDTestCode | NHS England Genomic Test Directory test code   | ServiceRequest.code                                            |
-| code       | RequestingOrganisationCode    | Requesting Trust's ODS code                    | ServiceRequest.requester (PractitionerRole.organization.identifier, fixed ODS code = 699X0) |
+| code       | RequestingOrganisationCode    | Requesting Trust's ODS code - see [Organisation Code](StructureDefinition-OrganisationCode.html) | ServiceRequest.requester (PractitionerRole.organization.identifier, fixed ODS code = 699X0) |
 | code       | Performer                     |                                                | ServiceRequest.performer (ODS Code)                            |
 | reference  | Specimen                      |                                                | ServiceRequest.specimen                                        |
 | reference  | Patient                       |                                                | ServiceRequest.subject                                         |
@@ -215,8 +215,8 @@ In IHE Laboratory Testing Workflow, this is the key entity in [LAB-4](LTW.html#w
 
 | Type       | Name                        | Description             | FHIR [Specimen](StructureDefinition-Specimen.html)       |
 |------------|-----------------------------|-------------------------|----------------------------------------------------------|
-| identifier | SpecimenAccessionIdentifier | Specimen's lab accession/DNA number                | Specimen.identifier                                      |
-| identifier | ShipmentTrackingNumber      | Courier tracking number for the dispatched specimen | Specimen.identifier[ShipmentTrackingNumber] (type = STN) |
+| identifier | SpecimenAccessionIdentifier | Specimen's lab accession/DNA number - see [Specimen Accession Number](StructureDefinition-SpecimenAccessionNumber.html) | Specimen.identifier                                      |
+| identifier | ShipmentTrackingNumber      | Courier tracking number for the dispatched specimen - see [Shipment Tracking Number](StructureDefinition-ShipmentTrackingNumber.html) | Specimen.identifier[ShipmentTrackingNumber] (type = STN) |
 | identifier | FMIIdentifier               | Purpose not yet confirmed                          | Specimen.container.identifier                            |
 | reference  | Patient                     |                         | Specimen.subject                                         |
 | code       | SpecimenTypeCode            | Coded specimen type - normally SNOMED coded using the [Specimen Type](ValueSet-specimen-type.html) value set | Specimen.type |
@@ -238,7 +238,7 @@ This is the key entity for the reports/results which are generated when the Plac
 
 | Type          | Name                                                                         | Description | FHIR [DiagnosticReport](StructureDefinition-DiagnosticReport.html)                          |
 |---------------|------------------------------------------------------------------------------|-------------|---------------------------------------------------------------------------------------------|
-| identifier    | TestAccessionIdentifier                                                      | iGene's test-level accession number | DiagnosticReport.identifier                                                                 |
+| identifier    | TestAccessionIdentifier                                                      | iGene's test-level accession number - see [Report Identifier](StructureDefinition-ReportIdentifier.html) | DiagnosticReport.identifier                                                                 |
 | reference     | FillerOrder                                                                  |             | DiagnosticReport.basedOn (FillerOrder)                                                      |
 | reference     | Patient                                                                      |             | DiagnosticReport.subject                                                                    |
 | code          | Procedure Code - NGTDTestCode                                                | NHS England Genomic Test Directory test code | DiagnosticReport.code (system = https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory) |

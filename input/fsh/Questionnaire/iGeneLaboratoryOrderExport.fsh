@@ -282,6 +282,11 @@ Usage:  #definition
     * linkId = "SpecimenTypeCode"
     * text = "SpecimenTypeCode"
     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type.coding.code"
+    * item[+]
+      * linkId = "SpecimenTypeCode-designNote"
+      * type = #display
+      * text = "Normally SNOMED coded using the [Specimen Type](ValueSet-specimen-type.html) value set."
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
   * item[+]
     * type = #string
     * linkId = "SpecimenTypeDescription"

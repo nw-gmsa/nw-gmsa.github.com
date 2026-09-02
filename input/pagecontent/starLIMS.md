@@ -213,32 +213,32 @@ metadata.
 
 | CSV Column                  | Description                                                        | Type      | FHIR Mapping                                                        |
 |-------------------------------|--------------------------------------------------------------------|-----------|-------------------------------------------------------------------------|
-| `PatientAccessionIdentifier`  | iGene's internal patient accession number                          | string    | `Patient.identifier` (PatientIdentifier)                                |
-| `NHSNumber`                   | Patient's NHS Number                                                | string    | `Patient.identifier` (NHS Number)                                       |
+| `PatientAccessionIdentifier`  | iGene's internal patient accession number - see [Patient Identifier](StructureDefinition-PatientIdentifier.html) | string    | `Patient.identifier` (PatientIdentifier)                                |
+| `NHSNumber`                   | Patient's NHS Number - see [NHS Identifier](StructureDefinition-NHSIdentifier.html) | string    | `Patient.identifier` (NHS Number)                                       |
 | `PatientGivenName`            | Patient's first name                                                | string    | `Patient.name.given`                                                    |
 | `PatientFamilyName`           | Patient's surname                                                   | string    | `Patient.name.family`                                                   |
 | `DateOfBirth`                 | Patient's date of birth                                             | date      | `Patient.birthDate`                                                     |
 | `AdministrativeSex`           | Sex registered at birth                                             | string    | `Patient.gender`                                                        |
 | `PostCode`                    | Patient's postcode                                                  | string    | `Patient.address.postalCode`                                            |
-| `HospitalSpellIdentifier`     | Identifier for the hospital spell/episode the order was placed under | string  | `ServiceRequest.encounter.identifier` (HospitalProviderSpellIdentifier) |
-| `PlacerOrderNumber`           | Order identifier assigned by the ordering Trust                     | string    | `ServiceRequest.identifier` (OrderIdentifier, type=PLAC)                |
-| `HospitalNumber`              | Patient's hospital/medical record number                            | string    | `Patient.identifier` (MedicalRecordNumber)                              |
-| `FillerOrderNumber`           | Order identifier assigned by iGene (the lab)                        | string    | `ServiceRequest.identifier` (OrderIdentifier, type=FILL)                |
+| `HospitalSpellIdentifier`     | Identifier for the hospital spell/episode the order was placed under - see [Hospital Provider Spell Identifier](StructureDefinition-HospitalProviderSpellIdentifier.html) | string  | `ServiceRequest.encounter.identifier` (HospitalProviderSpellIdentifier) |
+| `PlacerOrderNumber`           | Order identifier assigned by the ordering Trust - see [Order Identifier](StructureDefinition-OrderIdentifier.html) | string    | `ServiceRequest.identifier` (OrderIdentifier, type=PLAC)                |
+| `HospitalNumber`              | Patient's hospital/medical record number - see [Medical Record Number](StructureDefinition-MedicalRecordNumber.html) | string    | `Patient.identifier` (MedicalRecordNumber)                              |
+| `FillerOrderNumber`           | Order identifier assigned by iGene (the lab) - see [Order Identifier](StructureDefinition-OrderIdentifier.html) | string    | `ServiceRequest.identifier` (OrderIdentifier, type=FILL)                |
 | `TestAccessionIdentifier`     | iGene's test-level accession number                                 | string    | `ServiceRequest.identifier` *(system TBD)*                              |
 | `TestOrderDate`               | Date/time the test was ordered                                      | dateTime  | `ServiceRequest.authoredOn`                                             |
 | `NGTDTestCode`                | NHS England Genomic Test Directory test code                        | string    | `ServiceRequest.code`                                                   |
 | `NGTDTestName`                | NHS England Genomic Test Directory test/package name                | string    | `ServiceRequest.code.coding.display`                                    |
 | `OrderStatus`                 | Order's current status in iGene (e.g. Dispatched)                   | string    | `ServiceRequest.status`                                                 |
 | `SpecimenDispatchDate`        | Date/time the specimen was dispatched to StarLIMS                   | dateTime  | `Observation.valueDateTime` (via `ServiceRequest.supportingInfo`)       |
-| `ShipmentTrackingNumber`      | Courier tracking number for the dispatched specimen                 | string    | `Specimen.identifier` (ShipmentTrackingNumber)                          |
+| `ShipmentTrackingNumber`      | Courier tracking number for the dispatched specimen - see [Shipment Tracking Number](StructureDefinition-ShipmentTrackingNumber.html) | string    | `Specimen.identifier` (ShipmentTrackingNumber)                          |
 | `DatasetTargetOrganisation`   | Destination the dataset/specimen was sent to                        | string    | `Observation.valueString` (via `ServiceRequest.supportingInfo`)         |
-| `SpecimenAccessionIdentifier` | Specimen's lab accession/DNA number                                 | string    | `Specimen.accessionIdentifier`                                          |
+| `SpecimenAccessionIdentifier` | Specimen's lab accession/DNA number - see [Specimen Accession Number](StructureDefinition-SpecimenAccessionNumber.html) | string    | `Specimen.accessionIdentifier`                                          |
 | `SpecimenTypeDescription`     | Specimen type, free text (e.g. Blood, Tissue)                       | string    | `Specimen.type.coding.display`                                          |
 | `SpecimenTakenDateTime`       | Date/time the specimen was taken from the patient                   | dateTime  | `Specimen.collection.collectedDateTime`                                 |
 | `ClinicalDetails`             | Free-text clinical details/history (redacted in example data)       | string    | `ServiceRequest.note`                                                   |
-| `OrderingProviderIdentifier`  | Ordering clinician's professional identifier                        | string    | `PractitionerRole.practitioner.identifier.value`                        |
+| `OrderingProviderIdentifier`  | Ordering clinician's professional identifier - see [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html) | string    | `PractitionerRole.practitioner.identifier.value`                        |
 | `OrderingProviderName`        | Ordering clinician's name                                           | string    | `PractitionerRole.practitioner.display`                                 |
-| `RequestingOrganisationCode`  | Requesting Trust's ODS code                                         | string    | `PractitionerRole.organization.identifier.value`                        |
+| `RequestingOrganisationCode`  | Requesting Trust's ODS code - see [Organisation Code](StructureDefinition-OrganisationCode.html) | string    | `PractitionerRole.organization.identifier.value`                        |
 | `RequestingOrganisationName`  | Requesting Trust's name                                             | string    | `PractitionerRole.organization.display`                                 |
 {:.grid}
 
