@@ -141,6 +141,58 @@ sequenceDiagram
 - [DiagnosticReport](StructureDefinition-DiagnosticReport.html) - the FHIR Genomics Report Omics DSS produces
 - [Variant (Reportable Variant)](StructureDefinition-Variant.html) - the discrete result Observations, following the [HL7 Genomics Reporting IG](https://build.fhir.org/ig/HL7/genomics-reporting/)
 
+### iGene Variant Types
+
+iGene's own custom field spec (see [References](#references)) splits reportable
+variants into five types, each with its own repeating set of custom fields -
+`SEQV1`-`SEQV10` (Sequence Variant), `ICNV1`-`ICNV3` (Intragenic Copy Number
+Variant), `MCNV1`-`MCNV3` (Multigenic Copy Number Variant), `SV1`-`SV3` (Structural
+Variant) and `LOH1`-`LOH2` (Loss of Heterozygosity). These are different *kinds* of
+genomic change that can all appear on the same report - not different tests - which
+is why iGene buckets them into separate repeating slots rather than one flat list.
+
+- **Sequence Variant (SEQV)** - a small change at a specific point in a gene:
+  substitution, insertion, deletion, indel. Anchored to a transcript, e.g. `BRCA1
+  c.68_69del` - the "classic point mutation."
+- **Intragenic CNV (ICNV)** - a copy-number change (usually a loss) still contained
+  *within one gene* - e.g. deletion of exons 13-15 of `FBN1`. Still gene/transcript-
+  anchored (its Description field combines transcript+gene+HGVS, the same shape as
+  SEQV), but describes exon-level gain/loss rather than a single base change.
+- **Multigenic CNV (MCNV)** - a copy-number change spanning a *larger region covering
+  multiple genes* or a chromosome band, e.g. loss of `Xq22.1-q28`. No longer anchored
+  to one gene, so its Description field is just the cytogenetic location, not a
+  transcript+HGVS string.
+- **Structural Variant (SV)** - large-scale rearrangements (translocations,
+  inversions, complex events) that aren't necessarily a simple copy-number gain/loss
+  - could be balanced. iGene gives it only one free-text HGVS-style field and drops
+  the Inheritance field entirely (parent-of-origin isn't typically assessed for
+  these).
+- **Loss of Heterozygosity (LOH)** - not really a "variant" in the same sense at all:
+  it's a *state* where one parental copy of a region is lost or indistinguishable
+  from the other, often reported in cancer alongside a point mutation on the other
+  allele (a classic "two-hit" tumour-suppressor finding). That's why it's the odd one
+  out with only 2 fields (Gene(s), and a yes/no-ish LOH flag) rather than the usual 7.
+
+**How they interrelate:**
+
+- They are **not mutually exclusive** - a single report commonly carries findings
+  from more than one type at once (e.g. one SEQV plus LOH at the same locus).
+- They form a rough **scale of scope**: SEQV (single base/small indel) → ICNV (whole
+  gene, exon-level) → MCNV (multiple genes/chromosome band) → SV (large
+  rearrangement, not necessarily copy-number). LOH sits outside that scale entirely.
+- They share the **same 7-field shape** (Description/State/Inheritance/Level/
+  Genomic_coordinates/Classification/Evidence) because iGene applies one generic
+  reporting workflow to all of them - what narrows as scope widens is what goes
+  *into* the Description field.
+- Crucially, **neither LRI nor the international FHIR Variant profile treats these as
+  five separate things at all** - they are all just the same single Discrete Variant
+  Panel/Observation, distinguished only by *which components happen to be
+  populated* (an SV row has ref/alt allele and DNA change type but no allelic state;
+  an MCNV row has cytogenetic location but no gene). iGene is the only place that
+  formally splits them into five field-groups - the tension this raises with LRI/FHIR
+  is captured in [Outstanding Issues](#outstanding-issues) below. LOH is the sharpest
+  case, since it has no home in either standard at all.
+
 ### Result Panel
 
 <div class="alert alert-info" role="alert">
