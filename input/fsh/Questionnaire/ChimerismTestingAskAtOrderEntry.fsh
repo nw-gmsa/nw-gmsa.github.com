@@ -93,7 +93,7 @@ Usage:  #definition
 
   * item[+]
     * type = #choice
-    * linkId = "LN/66746-9"
+    * linkId = "ChimIG/specimen_source"
     * code[+] = $loinc#66746-9 "Specimen Type"
     * code[+] = $sct#123038009 "Specimen"
     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type.coding.code"
@@ -101,22 +101,27 @@ Usage:  #definition
     * answerOption[+].valueCoding = $nwgmsa#ChimerismBoneMarrowBM "Bone Marrow (BM)"
     * text = "Specimen Source"
     * item[+]
-      * linkId = "LN/66746-9-designNote"
+      * linkId = "ChimIG/specimen_source-designNote"
       * type = #display
       * text = """
       Confirmed as this 2-value list (Blood (PB), Bone Marrow (BM)) from the
       Hive/Histotrac order-entry UI's Chimerism panel - a different list from the
       Blood/Buccal/Other list [HLA Tests -
       Transplant](Questionnaire-HLATestsTransplantAskAtOrderEntry.html) uses for the
-      same `LN/66746-9` linkId/question code, since the two order screens offer
+      same underlying `code` (LOINC `66746-9`), since the two order screens offer
       different specimen-source options in Hive. Coded locally against the
       `NWGMSA` CodeSystem rather than the EU/UK/NW-compatible
       [Specimen Type](ValueSet-specimen-type.html) value set, to match what Hive
-      actually offers for this exchange.
+      actually offers for this exchange. Deliberately given its own
+      `ChimIG/specimen_source` linkId rather than reusing the base [Genomic Test
+      Order](Questionnaire-GenomicTestOrder.html)'s own `LN/66746-9` Specimen Type
+      item - the IG Publisher's Questionnaire derivation validator does not support a
+      `derivedFrom`/`extends` item reusing a base item's linkId while also declaring
+      more than one `answerOption`.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
     * item[+]
-      * linkId = "LN/66746-9-reference"
+      * linkId = "ChimIG/specimen_source-reference"
       * type = #display
       * text = """
       Post-transplant chimerism monitoring conventionally uses peripheral blood, with

@@ -222,7 +222,7 @@ Usage:  #definition
 
   * item[+]
     * type = #choice
-    * linkId = "LN/66746-9"
+    * linkId = "HistoIG/specimen_source"
     * code[+] = $loinc#66746-9 "Specimen Type"
     * code[+] = $sct#123038009 "Specimen"
     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type.coding.code"
@@ -231,7 +231,7 @@ Usage:  #definition
     * answerOption[+].valueCoding = $nwgmsa#HistoOther "Other"
     * text = "Specimen Source"
     * item[+]
-      * linkId = "LN/66746-9-designNote"
+      * linkId = "HistoIG/specimen_source-designNote"
       * type = #display
       * text = """
       Confirmed as this 3-value list (Blood, Buccal, plus a free-text "Other" box, not
@@ -240,11 +240,18 @@ Usage:  #definition
       previously bound here (`answerValueSet = Canonical(SpecimenType)`), so this item
       now uses local `NWGMSA` codes to match what Hive actually offers for this
       exchange. The separate [Chimerism Testing Blood (PB)](Questionnaire-ChimerismTestingAskAtOrderEntry.html)
-      order screen in Hive instead offers "Blood (PB)"/"Bone Marrow (BM)".
+      order screen in Hive instead offers "Blood (PB)"/"Bone Marrow (BM)". Deliberately
+      given its own `HistoIG/specimen_source` linkId rather than reusing the base
+      [Genomic Test Order](Questionnaire-GenomicTestOrder.html)'s own `LN/66746-9`
+      Specimen Type item (same `code`/LOINC `66746-9`, so the semantic link is kept via
+      `code`) - the two questions are asked at different points for different purposes
+      in Hive, and the IG Publisher's Questionnaire derivation validator does not
+      support a `derivedFrom`/`extends` item reusing a base item's linkId while also
+      declaring more than one `answerOption`.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
     * item[+]
-      * linkId = "LN/66746-9-reference"
+      * linkId = "HistoIG/specimen_source-reference"
       * type = #display
       * text = """
       NHSBT's INF136 Table 5 (sample requirements) shows nearly every H&I test uses

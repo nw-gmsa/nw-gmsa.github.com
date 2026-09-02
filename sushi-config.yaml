@@ -369,9 +369,9 @@ resources:
     name: dWGS Manifest Response - Trio (Family Member 2)
     description: QuestionnaireResponse answering dWGS Sub-Order Manifest for a Family Member of a Trio referral (see dWGS-Trio-r2026000203-p2026000104 for the Proband)
     exampleBoolean: true
-  QuestionnaireResponse/HistocompatibilityAskAtOrderEntry-HLAAS:
-    name: Histocompatibility Ask At Order Entry Response - HLA Antibody Screening
-    description: QuestionnaireResponse answering Histocompatibility and Immunogenetics Ask At Order Entry, sourced from a live Histotrac ORM^O01 HLA Antibody Screening (Transplant) order
+  QuestionnaireResponse/HLATestsTransplantAskAtOrderEntry-HLAAS:
+    name: HLA Tests - Transplant Ask At Order Entry Response - HLA Antibody Screening
+    description: QuestionnaireResponse answering HLA Tests - Transplant Ask At Order Entry, sourced from a live Histotrac ORM^O01 HLA Antibody Screening (Transplant) order
     exampleBoolean: true
   QuestionnaireResponse/GenomicGeneralAskAtOrderEntry-OctaviaCHISLETT:
     name: Genomic General Ask At Order Entry Response - Octavia CHISLETT
@@ -568,10 +568,10 @@ groups:
       - QuestionnaireResponse/dWGS-Trio-r2026000203-p2026000105
       - QuestionnaireResponse/dWGS-Trio-r2026000203-p2026000106
   -ex-example-histocompatibility:
-    name: "Example: Histocompatibility and Immunogenetics Ask At Order Entry"
-    description: "QuestionnaireResponse answering Histocompatibility and Immunogenetics Ask At Order Entry, sourced from a live Histotrac ORM^O01 HLA Antibody Screening (Transplant) order"
+    name: "Example: HLA Tests - Transplant Ask At Order Entry"
+    description: "QuestionnaireResponse answering HLA Tests - Transplant Ask At Order Entry, sourced from a live Histotrac ORM^O01 HLA Antibody Screening (Transplant) order"
     resources:
-      - QuestionnaireResponse/HistocompatibilityAskAtOrderEntry-HLAAS
+      - QuestionnaireResponse/HLATestsTransplantAskAtOrderEntry-HLAAS
   -ex-example-omics-dss:
     name: "Example: OMICS DSS Result Integration"
     description: "NW-GMSA R01 Test Results message produced from a GA4GH VCF/Phenopacket by the 05 - Test Results notebook"
