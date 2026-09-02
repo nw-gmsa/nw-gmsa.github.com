@@ -175,15 +175,34 @@ identifiers these Trusts' orders and reports carry.
 - [DiagnosticReport](StructureDefinition-DiagnosticReport.html) - the Laboratory Report, carried in the FHIR Message R01
 - [Message Exchange [MQ]](MQ.html) - the FHIR Messaging pattern both O21 and R01 use
 
-The field-by-field data model for both messages is the same one already
-established for [ctDNA Management Information (NW to NE&Y
-Genomics)](NEYManagementInformation.html) - these Trusts' own direct orders
-and reports use the identical fields, not just the ctDNA copy NE&Y receives.
-Reproduced below (for IG purposes, so this use case has its own worked
-mapping) rather than only linked, since the two may drift for different
-reasons over time - see
+<div class="alert alert-info" role="alert">
+<b>FHIR Questionnaires:</b> <a href="Questionnaire-GenomicTestOrder.html">Genomic Test Order</a> + <a href="Questionnaire-GenomicGeneralAskAtOrderEntry.html">NW Genomic General Test Order</a>
+</div>
+
+These two Questionnaires are the actual **LAB-1** data model for this use
+case, in both HL7 v2 (`ORM_O01`/NW Standard) and FHIR (Message O21) form -
+[Genomic Test Order](Questionnaire-GenomicTestOrder.html) for the common
+core order fields, [NW Genomic General Test
+Order](Questionnaire-GenomicGeneralAskAtOrderEntry.html) for the default Ask
+At Order Entry questions (Consent, infection risk, pregnancy/neonatal, etc.)
+these four Trusts use. This is what Alder Hey, MFT, Liverpool Women's and
+Clatterbridge's own EPR/TIE actually sends, described in [Order
+Process](#order-process) above.
+
+The **Laboratory Order O21 Mapping** table below is a different thing,
+despite the name and heavy field overlap: it's the shape of
+[iGene Laboratory Order Export](Questionnaire-iGeneLaboratoryOrderExport.html), which
+documents **LAB-2** - iGene's own daily CSV re-export of an order *after* it has been
+received (via LAB-1) or manually entered, not the LAB-1 message itself. It's
+reproduced here (for IG purposes, so this use case has its own worked
+mapping, rather than only a link that may drift from
 [NEYManagementInformation.html](NEYManagementInformation.html#laboratory-order-o21-mapping)
-if this page's copy ever needs reconciling against the original.
+over time) because most of its fields still apply once an order from these
+Trusts reaches iGene. There's an open TODO to look at whether the LAB-1
+model (GenomicTestOrder/GenomicGeneralAskAtOrderEntry) and this LAB-2 model
+(iGeneLaboratoryOrderExport/iGeneWorkOrderExport) should eventually be merged into
+one - not attempted here, since the two currently serve different stages of
+the same order's journey.
 
 ### Laboratory Order O21 Mapping
 
@@ -214,7 +233,7 @@ if this page's copy ever needs reconciling against the original.
 | `SpecimenTakenDateTime`                | Date/time the specimen was taken from the patient                   | dateTime  | `Specimen.collection.collectedDateTime`                                 |
 | `SpecimenReceivedDateTime`             | Date/time the specimen was received in the lab                      | dateTime  | `Specimen.receivedTime`                                                 |
 | `SpecimenAccessionIdentifier`          | Specimen's lab accession number                                     | string    | `Specimen.accessionIdentifier`                                          |
-| `SpecimenTypeCode`                     | Coded specimen type (e.g. `SAMPLE: BL`)                              | string    | `Specimen.type.coding.code`                                             |
+| `SpecimenTypeCode`                     | Coded specimen type (e.g. `SAMPLE: BL`) - normally SNOMED coded using the [Specimen Type](ValueSet-specimen-type.html) value set | string | `Specimen.type.coding.code` |
 | `SpecimenTypeDescription`              | Specimen type, free text (e.g. Blood)                                | string    | `Specimen.type.coding.display`                                          |
 {:.grid}
 

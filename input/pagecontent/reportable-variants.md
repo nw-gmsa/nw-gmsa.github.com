@@ -145,7 +145,7 @@ sequenceDiagram
 ### Work Order CSV from iGene
 
 <div class="alert alert-info" role="alert">
-<b>FHIR Questionnaire:</b> <a href="Questionnaire-StarLIMSSampleDataExport.html">StarLIMS Sample Data Export (iGene CSV)</a>
+<b>FHIR Questionnaire:</b> <a href="Questionnaire-iGeneWorkOrderExport.html">iGene Work Order Export (CSV)</a>
 </div>
 
 The proposed DLIMS work order metadata export (see [Future Process](#future-process)

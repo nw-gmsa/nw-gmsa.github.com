@@ -134,7 +134,7 @@ No distinct future-state changes are currently defined for this process.
 ### Laboratory Order O21 Mapping
 
 <div class="alert alert-info" role="alert">
-<b>FHIR Questionnaire:</b> <a href="Questionnaire-NEYctDNAExport.html">NE&Y ctDNA Export (iGene CSV)</a>
+<b>FHIR Questionnaire:</b> <a href="Questionnaire-iGeneLaboratoryOrderExport.html">iGene Laboratory Order Export (CSV)</a>
 </div>
 
 The daily iGene CSV export (step 3 of [Current Process](#current-process) above) has
@@ -143,7 +143,7 @@ for a full example file. This table covers only the columns that populate the FH
 Message O21 Laboratory Order - the same CSV's report/result columns instead populate
 the separate FHIR Message R01 Laboratory Report, covered in [Laboratory Report R01
 Mapping](#laboratory-report-r01-mapping) below. Many columns here reuse the same FHIR mapping as the
-equivalent [StarLIMS Sample Data Export](Questionnaire-StarLIMSSampleDataExport.html)
+equivalent [iGene Work Order Export](Questionnaire-iGeneWorkOrderExport.html)
 column, since this is the same underlying order data.
 
 | CSV Column                          | Description                                                        | Type      | FHIR Mapping                                                        |
@@ -173,7 +173,7 @@ column, since this is the same underlying order data.
 | `SpecimenTakenDateTime`                | Date/time the specimen was taken from the patient                   | dateTime  | `Specimen.collection.collectedDateTime`                                 |
 | `SpecimenReceivedDateTime`             | Date/time the specimen was received in the lab                      | dateTime  | `Specimen.receivedTime`                                                 |
 | `SpecimenAccessionIdentifier`          | Specimen's lab accession number                                     | string    | `Specimen.accessionIdentifier`                                          |
-| `SpecimenTypeCode`                     | Coded specimen type (e.g. `SAMPLE: BL`)                              | string    | `Specimen.type.coding.code`                                             |
+| `SpecimenTypeCode`                     | Coded specimen type (e.g. `SAMPLE: BL`) - normally SNOMED coded using the [Specimen Type](ValueSet-specimen-type.html) value set | string | `Specimen.type.coding.code` |
 | `SpecimenTypeDescription`              | Specimen type, free text (e.g. Blood)                                | string    | `Specimen.type.coding.display`                                          |
 {:.grid}
 

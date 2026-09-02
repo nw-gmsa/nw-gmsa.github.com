@@ -219,7 +219,7 @@ In IHE Laboratory Testing Workflow, this is the key entity in [LAB-4](LTW.html#w
 | identifier | ShipmentTrackingNumber      | Courier tracking number for the dispatched specimen | Specimen.identifier[ShipmentTrackingNumber] (type = STN) |
 | identifier | FMIIdentifier               | Purpose not yet confirmed                          | Specimen.container.identifier                            |
 | reference  | Patient                     |                         | Specimen.subject                                         |
-| code       | SpecimenTypeCode            | Coded specimen type                                | Specimen.type                                            |
+| code       | SpecimenTypeCode            | Coded specimen type - normally SNOMED coded using the [Specimen Type](ValueSet-specimen-type.html) value set | Specimen.type |
 | date       | SpecimenDispatchDate        | Date/time the specimen was dispatched              |                                                          |
 | date       | SpecimenTakenDateTime       | Date/time the specimen was taken from the patient  | Specimen.collection.collectedDateTime                    |
 | date       | SpecimenReceivedDateTime    | Date/time the specimen was received in the lab     | Specimen.receivedTime                                               |

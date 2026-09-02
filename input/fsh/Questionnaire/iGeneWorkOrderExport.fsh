@@ -1,14 +1,15 @@
-Instance: StarLIMSSampleDataExport
+Instance: iGeneWorkOrderExport
 
 InstanceOf: NWQuestionnaire
-Title: "StarLIMS Sample Data Export (iGene CSV)"
+Title: "iGene Work Order Export (CSV)"
 Description: """
 Represents the flat-file shape of `StarLIMSSampleData.csv`, iGene's daily CSV export
 of work orders sub-contracted to StarLIMS (the Liverpool GLH satellite LIMS) - see
 [StarLIMS / iGene Integration](starLIMS.html#subcontracted-orders). The same export
 shape/pattern is reused by the [OMICS DSS Result
 Integration](reportable-variants.html) use case for DLIMS work order metadata (see
-that page's Future Process) - one row per sub-contracted test.
+that page's Future Process) - one row per sub-contracted test, named for iGene (the
+common source) rather than StarLIMS specifically, since it isn't StarLIMS-specific.
 
 Each item's `linkId` is the literal CSV column header, `type` the FHIR datatype the
 column's values coerce to, and `definition` the FHIR field the column populates once
@@ -31,9 +32,9 @@ naturally cluster.
 """
 Usage:  #definition
 
-* title = "StarLIMS Sample Data Export (iGene CSV)"
+* title = "iGene Work Order Export (CSV)"
 * status = #draft
-* url = "https://fhir.nwgenomics.nhs.uk/Questionnaire/StarLIMSSampleDataExport"
+* url = "https://fhir.nwgenomics.nhs.uk/Questionnaire/iGeneWorkOrderExport"
 
 * extension[+]
   * url = "http://hl7.org/fhir/StructureDefinition/artifact-versionAlgorithm"

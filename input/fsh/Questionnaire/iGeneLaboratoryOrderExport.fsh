@@ -1,7 +1,7 @@
-Instance: NEYctDNAExport
+Instance: iGeneLaboratoryOrderExport
 
 InstanceOf: NWQuestionnaire
-Title: "NE&Y ctDNA Export (iGene CSV)"
+Title: "iGene Laboratory Order Export (CSV)"
 Description: """
 Represents the flat-file shape of `NEYctDNA.csv`, iGene's daily CSV export of ctDNA
 orders and reports copied to NE&Y Genomics for regional management information - see
@@ -20,13 +20,16 @@ for the O21-only columns and [Laboratory Report R01
 Mapping](NEYManagementInformation.html#laboratory-report-r01-mapping) for the
 report/result columns - the two markdown tables split this Questionnaire's items by
 which FHIR Message actually carries them, even though all items live on this one
-Questionnaire.
+Questionnaire. Named for iGene (the common source) rather than NE&Y/ctDNA
+specifically, since the shape isn't NE&Y- or ctDNA-specific - it's the same LAB-2
+CSV re-export pattern [iGene Work Order Export](Questionnaire-iGeneWorkOrderExport.html)
+documents for StarLIMS/DLIMS work orders, just with ctDNA report/result columns added.
 
 Each item's `linkId` is the literal CSV column header, `type` the FHIR datatype the
 column's values coerce to, and `definition` the FHIR field the column populates once
 converted into the relevant FHIR Message - many of these reuse the exact same field as
 the equivalent item already defined on [Genomic Test Order](Questionnaire-GenomicTestOrder.html)
-or [StarLIMS Sample Data Export](Questionnaire-StarLIMSSampleDataExport.html), since
+or [iGene Work Order Export](Questionnaire-iGeneWorkOrderExport.html), since
 this is the same underlying order data plus report/result-specific columns those don't
 carry. See [NEYctDNA.csv](https://github.com/nw-gmsa/Testing/blob/main/Input/NEYctDNA.csv)
 for the source file this was extracted from.
@@ -37,9 +40,9 @@ export shape, not a human-facing order-entry form.
 """
 Usage:  #definition
 
-* title = "NE&Y ctDNA Export (iGene CSV)"
+* title = "iGene Laboratory Order Export (CSV)"
 * status = #draft
-* url = "https://fhir.nwgenomics.nhs.uk/Questionnaire/NEYctDNAExport"
+* url = "https://fhir.nwgenomics.nhs.uk/Questionnaire/iGeneLaboratoryOrderExport"
 
 * extension[+]
   * url = "http://hl7.org/fhir/StructureDefinition/artifact-versionAlgorithm"
