@@ -139,11 +139,12 @@ No distinct future-state changes are currently defined for this process.
 
 The daily iGene CSV export (step 3 of [Current Process](#current-process) above) has
 the shape below - see [NEYctDNA.csv](https://github.com/nw-gmsa/Testing/blob/main/Input/NEYctDNA.csv)
-for a full example file. A report row carries both order fields and report/result
-fields together - many columns reuse the same FHIR mapping as the equivalent
-[StarLIMS Sample Data Export](Questionnaire-StarLIMSSampleDataExport.html) column,
-since this is the same underlying order data plus report/result-specific columns that
-export doesn't carry.
+for a full example file. This table covers only the columns that populate the FHIR
+Message O21 Laboratory Order - the same CSV's report/result columns instead populate
+the separate FHIR Message R01 Laboratory Report, covered in [R01
+Mapping](#r01-mapping) below. Many columns here reuse the same FHIR mapping as the
+equivalent [StarLIMS Sample Data Export](Questionnaire-StarLIMSSampleDataExport.html)
+column, since this is the same underlying order data.
 
 | CSV Column                          | Description                                                        | Type      | FHIR Mapping                                                        |
 |----------------------------------------|--------------------------------------------------------------------|-----------|-------------------------------------------------------------------------|
@@ -164,17 +165,11 @@ export doesn't carry.
 | `FMIIdentifier`                        | Blank on every current example row - purpose not yet confirmed      | string    | `ServiceRequest.identifier` *(TBD)*                                     |
 | `FillerOrderNumber`                    | Order identifier assigned by iGene (the lab)                        | string    | `ServiceRequest.identifier` (OrderIdentifier, type=FILL)                |
 | `OrderStatus`                          | Order's current status in iGene                                     | string    | `ServiceRequest.status`                                                 |
-| `ReportStatusDateTime`                 | Date/time the report status was last updated                        | dateTime  | `DiagnosticReport.issued`                                               |
-| `ReportIdentifier`                     | Report's identifier, once issued                                    | string    | `DiagnosticReport.identifier` (ReportIdentifier)                        |
 | `NGTDTestCode`                         | NHS England Genomic Test Directory test code                        | string    | `ServiceRequest.code`                                                   |
 | `NGTDTestName`                         | NHS England Genomic Test Directory test/package name                | string    | `ServiceRequest.code.coding.display`                                    |
 | `TestCode`                             | Local iGene short test code (e.g. `ctDNA_M4`)                       | string    | `ServiceRequest.code.coding` *(second coding, local system TBD)*        |
 | `TestAccessionIdentifier`              | iGene's test-level accession number                                 | string    | `ServiceRequest.identifier` *(system TBD)*                              |
 | `TestOrderDate`                        | Date/time the test was ordered                                      | dateTime  | `ServiceRequest.authoredOn`                                             |
-| `ObservationResultStatus`              | Result status (`F` = finalised)                                     | string    | `DiagnosticReport.status`                                               |
-| `ObservationDateTime`                  | Date/time the result was observed/produced                          | dateTime  | `Observation.effectiveDateTime`                                         |
-| `ObservationIdentifierCode`            | Code identifying which result/analyte this row represents           | string    | `Observation.code.coding.code`                                          |
-| `ObservationIdentifierDescription`     | Display name for the result/analyte code above                      | string    | `Observation.code.coding.display`                                       |
 | `SpecimenTakenDateTime`                | Date/time the specimen was taken from the patient                   | dateTime  | `Specimen.collection.collectedDateTime`                                 |
 | `SpecimenReceivedDateTime`             | Date/time the specimen was received in the lab                      | dateTime  | `Specimen.receivedTime`                                                 |
 | `SpecimenAccessionIdentifier`          | Specimen's lab accession number                                     | string    | `Specimen.accessionIdentifier`                                          |
@@ -185,6 +180,81 @@ export doesn't carry.
 `FMIIdentifier`, `TestCode` and `TestAccessionIdentifier` are not yet confirmed against
 a published identifier system - see the Questionnaire's own item design notes for
 detail.
+
+### R01 Mapping
+
+<div class="alert alert-info" role="alert">
+<b>FHIR Message R01:</b> <a href="Bundle-GenomicsReportMessage-ctDNA.html">Bundle-GenomicsReportMessage-ctDNA</a>
+</div>
+
+Unlike the O21 order above, the R01 Laboratory Report is actually based on an HL7 v2
+`ORU^R01` message, converted into a FHIR `DiagnosticReport`-led Bundle (see
+[Bundle-GenomicsReportMessage-ctDNA](Bundle-GenomicsReportMessage-ctDNA.html) for the
+worked example this table is grounded in - it carries `MessageHeader`, `Patient`,
+`DiagnosticReport`, `ServiceRequest` and `PractitionerRole`, but not the `Specimen`
+resource `ServiceRequest.specimen` references). The table below uses the same CSV
+column names and descriptions as [CSV Column Reference](#csv-column-reference) above,
+so the two tables can be read side by side to see where each column lands depending on
+which FHIR Message actually carries it.
+
+| CSV Column                          | Description                                                        | Type      | R01 FHIR Mapping                                                     |
+|----------------------------------------|--------------------------------------------------------------------|-----------|-------------------------------------------------------------------------|
+| `PatientAccessionIdentifier`           | iGene's internal patient accession number                          | string    | `Patient.identifier` (PatientIdentifier)                                |
+| `NHSNumber`                            | Patient's NHS Number                                                | string    | `Patient.identifier` (NHS Number) - also echoed on `DiagnosticReport.subject.identifier`/`ServiceRequest.subject.identifier` |
+| `HospitalNumber`                       | Patient's hospital/medical record number                            | string    | `Patient.identifier` (MedicalRecordNumber)                              |
+| `PatientFamilyName`                    | Patient's surname                                                   | string    | `Patient.name.family`                                                   |
+| `PatientGivenName`                     | Patient's first name                                                | string    | `Patient.name.given`                                                    |
+| `DateOfBirth`                          | Patient's date of birth                                             | date      | `Patient.birthDate`                                                     |
+| `AdministrativeSex`                    | Sex registered at birth                                             | string    | `Patient.gender`                                                        |
+| `PostCode`                             | Patient's postcode                                                  | string    | `Patient.address.postalCode`                                            |
+| `HospitalSpellIdentifier`              | Identifier for the hospital spell/episode the order was placed under | string  | `ServiceRequest.encounter.identifier` (HospitalProviderSpellIdentifier) *(not populated in current example)* |
+| `OrderingProviderIdentifier`           | Ordering clinician's professional identifier                        | string    | `PractitionerRole.practitioner.identifier.value`                        |
+| `OrderingProviderName`                 | Ordering clinician's name                                           | string    | `PractitionerRole.practitioner.display`                                 |
+| `RequestingOrganisationCode`           | Requesting Trust's ODS code                                         | string    | `PractitionerRole.organization.identifier.value`                        |
+| `RequestingOrganisationName`           | Requesting Trust's name                                             | string    | `PractitionerRole.organization.display`                                 |
+| `PlacerOrderNumber`                    | Order identifier assigned by the ordering Trust                     | string    | `ServiceRequest.identifier` (OrderIdentifier, type=PLAC) *(not present in current example - see note below)* |
+| `FMIIdentifier`                        | Blank on every current example row - purpose not yet confirmed      | string    | *(not present in current example)*                                      |
+| `FillerOrderNumber`                    | Order identifier assigned by iGene (the lab)                        | string    | `ServiceRequest.identifier` (OrderIdentifier, type=FILL), echoed on `DiagnosticReport.basedOn` (see note below) |
+| `OrderStatus`                          | Order's current status in iGene                                     | string    | `ServiceRequest.status`                                                 |
+| `ReportStatusDateTime`                 | Date/time the report status was last updated                        | dateTime  | `DiagnosticReport.issued` *(not yet populated in current example)*      |
+| `ReportIdentifier`                     | Report's identifier, once issued                                    | string    | `DiagnosticReport.identifier` (ReportIdentifier) (see note below)       |
+| `NGTDTestCode`                         | NHS England Genomic Test Directory test code                        | string    | `DiagnosticReport.code.coding`                                          |
+| `NGTDTestName`                         | NHS England Genomic Test Directory test/package name                | string    | `DiagnosticReport.code.coding.display`                                  |
+| `TestCode`                             | Local iGene short test code (e.g. `ctDNA_M4`)                       | string    | *(not present in current example)*                                      |
+| `TestAccessionIdentifier`              | iGene's test-level accession number                                 | string    | *(system TBD - see note below)*                                         |
+| `TestOrderDate`                        | Date/time the test was ordered                                      | dateTime  | `ServiceRequest.authoredOn` *(not yet populated in current example)*    |
+| `ObservationResultStatus`              | Result status (`F` = finalised)                                     | string    | `DiagnosticReport.status`                                               |
+| `ObservationDateTime`                  | Date/time the result was observed/produced                          | dateTime  | `DiagnosticReport.effectiveDateTime`                                    |
+| `ObservationIdentifierCode`            | Code identifying which result/analyte this row represents           | string    | `Observation.code.coding.code` (on the individual result Observation referenced from `DiagnosticReport.result`, not itself included in the example Bundle) |
+| `ObservationIdentifierDescription`     | Display name for the result/analyte code above                      | string    | `Observation.code.coding.display` (as above)                            |
+| `SpecimenTakenDateTime`                | Date/time the specimen was taken from the patient                   | dateTime  | `Specimen.collection.collectedDateTime` *(Specimen not included in current example - see note below)* |
+| `SpecimenReceivedDateTime`             | Date/time the specimen was received in the lab                      | dateTime  | `Specimen.receivedTime` *(as above)*                                     |
+| `SpecimenAccessionIdentifier`          | Specimen's lab accession number                                     | string    | `Specimen.accessionIdentifier` *(as above)*                              |
+| `SpecimenTypeCode`                     | Coded specimen type (e.g. `SAMPLE: BL`)                              | string    | `Specimen.type.coding.code` *(as above)*                                 |
+| `SpecimenTypeDescription`              | Specimen type, free text (e.g. Blood)                                | string    | `Specimen.type.coding.display` *(as above)*                              |
+{:.grid}
+
+Three things the worked example surfaces that aren't yet resolved:
+
+- **`FillerOrderNumber`/`TestAccessionIdentifier`/`ReportIdentifier` may collapse onto
+  a single value.** In the current example, `DiagnosticReport.identifier`
+  (`ReportIdentifier`), `DiagnosticReport.basedOn` (type=FILL) and
+  `ServiceRequest.identifier` (`OrderIdentifier`, type=FILL) are all populated with the
+  *same* value (`T26-59XG`), which looks like a `TestAccessionIdentifier`-shaped value
+  (the `T26-...` prefix) rather than the `FillerOrderNumber`-shaped value (`R26-...`)
+  seen in the CSV's own `FillerOrderNumber` column for the same order. Whether
+  `FillerOrderNumber`, `TestAccessionIdentifier` and `ReportIdentifier` are meant to be
+  three distinct identifiers or the same one reused three ways isn't confirmed by any
+  current example.
+- **The `R26-...`-shaped value instead appears on `ServiceRequest.requisition`** (type
+  `PGN`, Placer Group Number) in the current example, not on any `identifier` slice
+  distinguishing it as `PlacerOrderNumber`. No `PLAC`-typed identifier is present in
+  this example at all.
+- **`Specimen` is referenced but not included.** `ServiceRequest.specimen` in the
+  current example references a `Specimen` by URN, but that `Specimen` resource isn't
+  one of the Bundle's entries - so none of the five Specimen-mapped columns above are
+  actually resolvable from the R01 message as currently constructed, only from the O21
+  order (see [CSV Column Reference](#csv-column-reference) above).
 
 ## Examples
 

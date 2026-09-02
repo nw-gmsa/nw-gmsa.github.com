@@ -7,20 +7,28 @@ Represents the flat-file shape of `NEYctDNA.csv`, iGene's daily CSV export of ct
 orders and reports copied to NE&Y Genomics for regional management information - see
 [ctDNA Management Information (NW to NE&Y
 Genomics)](NEYManagementInformation.html#current-process). One row per test; a report
-row carries both order fields and report/result fields together.
+row carries both order fields and report/result fields together, so this Questionnaire
+models the full row - the order-only columns populate the FHIR Message O21 Laboratory
+Order ([Bundle-GenomicsOrderMessage-ctDNA](Bundle-GenomicsOrderMessage-ctDNA.html)),
+while the report/result columns (`ReportStatusDateTime`, `ReportIdentifier`,
+`ObservationResultStatus`, `ObservationDateTime`, `ObservationIdentifierCode`,
+`ObservationIdentifierDescription`) instead populate the separate FHIR Message R01
+Laboratory Report ([Bundle-GenomicsReportMessage-ctDNA](Bundle-GenomicsReportMessage-ctDNA.html),
+itself based on an HL7 v2 `ORU^R01`, not O21). See [ctDNA Management Information - CSV
+Column Reference](NEYManagementInformation.html#csv-column-reference) for the O21-only
+columns and [R01 Mapping](NEYManagementInformation.html#r01-mapping) for the
+report/result columns - the two markdown tables split this Questionnaire's items by
+which FHIR Message actually carries them, even though all items live on this one
+Questionnaire.
 
 Each item's `linkId` is the literal CSV column header, `type` the FHIR datatype the
 column's values coerce to, and `definition` the FHIR field the column populates once
-converted into the FHIR Message O21 ([Bundle-GenomicsOrderMessage-ctDNA](Bundle-GenomicsOrderMessage-ctDNA.html))
-or R01 ([Bundle-GenomicsReportMessage-ctDNA](Bundle-GenomicsReportMessage-ctDNA.html)) -
-many of these reuse the exact same field as the equivalent item already defined on
-[Genomic Test Order](Questionnaire-GenomicTestOrder.html) or [StarLIMS Sample Data
-Export](Questionnaire-StarLIMSSampleDataExport.html), since this is the same underlying
-order data plus report/result-specific columns those don't carry. See [ctDNA Management
-Information - CSV Column Reference](NEYManagementInformation.html#csv-column-reference)
-for a simple description of each column plus its FHIR mapping, and
-[NEYctDNA.csv](https://github.com/nw-gmsa/Testing/blob/main/Input/NEYctDNA.csv) for the
-source file this was extracted from.
+converted into the relevant FHIR Message - many of these reuse the exact same field as
+the equivalent item already defined on [Genomic Test Order](Questionnaire-GenomicTestOrder.html)
+or [StarLIMS Sample Data Export](Questionnaire-StarLIMSSampleDataExport.html), since
+this is the same underlying order data plus report/result-specific columns those don't
+carry. See [NEYctDNA.csv](https://github.com/nw-gmsa/Testing/blob/main/Input/NEYctDNA.csv)
+for the source file this was extracted from.
 
 Unlike the Ask At Order Entry Questionnaires elsewhere in this IG, this is not a
 `derivedFrom`/`extends` Questionnaire - it documents an existing system-to-system CSV
@@ -222,12 +230,22 @@ Usage:  #definition
     * type = #dateTime
     * linkId = "ObservationDateTime"
     * text = "ObservationDateTime"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.effectiveDateTime"
+    * definition = "http://hl7.org/fhir/StructureDefinition/DiagnosticReport#DiagnosticReport.effectiveDateTime"
+    * item[+]
+      * linkId = "ObservationDateTime-designNote"
+      * type = #display
+      * text = "Populated on DiagnosticReport.effectiveDateTime in the current worked example - see R01 Mapping on NEYManagementInformation.html for detail, including why this isn't the individual result Observation's own effectiveDateTime."
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
   * item[+]
     * type = #string
     * linkId = "ObservationIdentifierCode"
     * text = "ObservationIdentifierCode"
     * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.code.coding.code"
+    * item[+]
+      * linkId = "ObservationIdentifierCode-designNote"
+      * type = #display
+      * text = "On the individual result Observation referenced from DiagnosticReport.result, not DiagnosticReport itself."
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
   * item[+]
     * type = #string
     * linkId = "ObservationIdentifierDescription"
