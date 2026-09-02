@@ -1,12 +1,12 @@
 {
   "resourceType": "QuestionnaireResponse",
-  "id": "HistocompatibilityAskAtOrderEntry-HLAAS",
+  "id": "HLATestsTransplantAskAtOrderEntry-HLAAS",
   "meta": {
     "profile": [
       "https://fhir.nwgenomics.nhs.uk/StructureDefinition/QuestionnaireResponse"
     ]
   },
-  "questionnaire": "https://fhir.nwgenomics.nhs.uk/Questionnaire/HistocompatibilityAskAtOrderEntry",
+  "questionnaire": "https://fhir.nwgenomics.nhs.uk/Questionnaire/HLATestsTransplantAskAtOrderEntry",
   "status": "completed",
   "subject": {
     "display": "Sansa Manchester",
@@ -34,7 +34,11 @@
           "text": "Patient Test(s)",
           "answer": [
             {
-              "valueString": "HLA ANTIBODY SCREENING (TRANSPLANT)"
+              "valueCoding": {
+                "system": "https://fhir.nwgenomics.nhs.uk/CodeSystem/NWGMSA",
+                "code": "HLAAntibodyScreening",
+                "display": "HLA Antibody Screening"
+              }
             }
           ]
         },
@@ -43,7 +47,11 @@
           "text": "HLA Type",
           "answer": [
             {
-              "valueString": "Patient"
+              "valueCoding": {
+                "system": "https://fhir.nwgenomics.nhs.uk/CodeSystem/NWGMSA",
+                "code": "Patient",
+                "display": "Patient"
+              }
             }
           ]
         },
@@ -52,7 +60,11 @@
           "text": "Patient Type",
           "answer": [
             {
-              "valueString": "Renal"
+              "valueCoding": {
+                "system": "https://fhir.nwgenomics.nhs.uk/CodeSystem/NWGMSA",
+                "code": "Renal",
+                "display": "Renal"
+              }
             }
           ]
         },
@@ -61,7 +73,11 @@
           "text": "Organ",
           "answer": [
             {
-              "valueString": "Kidney"
+              "valueCoding": {
+                "system": "https://fhir.nwgenomics.nhs.uk/CodeSystem/NWGMSA",
+                "code": "Kidney",
+                "display": "Kidney"
+              }
             }
           ]
         },
@@ -71,9 +87,9 @@
           "answer": [
             {
               "valueCoding": {
-                "system": "http://snomed.info/sct",
-                "code": "258580003",
-                "display": "Whole blood specimen (specimen)"
+                "system": "https://fhir.nwgenomics.nhs.uk/CodeSystem/NWGMSA",
+                "code": "HistoBlood",
+                "display": "Blood"
               }
             }
           ]

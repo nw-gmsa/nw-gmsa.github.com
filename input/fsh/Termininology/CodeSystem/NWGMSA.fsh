@@ -63,8 +63,8 @@ Bucket for local codes
 
 * #ZCID "Container Identifier"
 
-// Histocompatibility and Immunogenetics Ask At Order Entry Codes (from Hive/Histotrac
-// order-entry UI - see Questionnaire-HistocompatibilityAskAtOrderEntry.html)
+// HLA Tests - Transplant Ask At Order Entry Codes (from Hive/Histotrac order-entry UI
+// - see Questionnaire-HLATestsTransplantAskAtOrderEntry.html)
 
 * #Patient "Patient"
 * #Donor "Donor"
@@ -88,3 +88,15 @@ Bucket for local codes
 * #HistoBlood "Blood"
 * #HistoBuccal "Buccal"
 * #HistoOther "Other"
+
+// Chimerism Testing Blood (PB) Ask At Order Entry Codes (from Hive/Histotrac
+// order-entry UI - see Questionnaire-ChimerismTestingAskAtOrderEntry.html)
+
+* #ChimerismBloodPB "Blood (PB)"
+* #ChimerismBoneMarrowBM "Bone Marrow (BM)"
+
+* #ChimerismPeripheralBlood "Chimerism Peripheral Blood"
+* #ChimerismCD3 "Chimerism CD3"
+* #ChimerismCD15 "Chimerism CD15"
+* #ChimerismCD19 "Chimerism CD19"
+* #ChimerismLineageOther "Chimerism Lineage Other"

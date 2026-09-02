@@ -174,23 +174,28 @@ sequenceDiagram
 1. It has not yet been decided, from a business process perspective, whether HODS will be replaced as the order comms system. It is desired that orders originating from Meditech are reinstated.
 2. The full narrative report will be in PDF format (this was not present in the original process), the provisional UK SNOMED CT of `909871000000100 Histocompatibility and immunogenetics` will be used (this is from NHS Scotland standards).	
 3. NW Genomics would prefer the order to use `OML_O21` rather than `ORM_O01`, to future-proof the exchange - specifically so it can carry an `SPM` (Specimen) segment. See [Specimen - Domain Archetype](StructureDefinition-Specimen.html#domain-archetype) for the specimen fields this would carry; the main fields needed here are Specimen ID and Specimen Type.
-4. **`HistocompatibilityAskAtOrderEntry`'s "Patient Test(s)" question conflicts with the base Questionnaire's Test Code.** [HistocompatibilityAskAtOrderEntry](Questionnaire-HistocompatibilityAskAtOrderEntry.html) declares `derivedFrom` [Genomic Test Order](Questionnaire-GenomicTestOrder.html) with derivation type `extends`, and its own `patient_test` item ("Patient Test(s)") maps to `ServiceRequest.code` - the same single-cardinality FHIR element the base Questionnaire's own Test Code item also maps to. There is no `enableWhen` linking the two, so it is unclear which item is meant to actually populate `ServiceRequest.code` for a Histocompatibility order.
-5. **No Test Category or Test Code exists for Histocompatibility and Immunogenetics in the base Questionnaire.** The base's Test Category item ([OrderCategory](ValueSet-order-category.html)) only offers Rare and Inherited Disease, Storage of Specimen, Pre-Natal, Haemoglobinopathy and Cancer Genetic Testing - there is no Histocompatibility/Immunogenetics category, so none of the base's three `enableWhen`-gated Test Code branches can ever fire for this order type. This matches the [Patient Test(s)](Questionnaire-HistocompatibilityAskAtOrderEntry.html) item's own open question: no NHS England Genomic Test Directory code was found for H&I test names, since H&I is not part of that directory.
+4. **`HLATestsTransplantAskAtOrderEntry`'s "Patient Test(s)" question conflicts with the base Questionnaire's Test Code.** [HLATestsTransplantAskAtOrderEntry](Questionnaire-HLATestsTransplantAskAtOrderEntry.html) declares `derivedFrom` [Genomic Test Order](Questionnaire-GenomicTestOrder.html) with derivation type `extends`, and its own `patient_test` item ("Patient Test(s)") maps to `ServiceRequest.code` - the same single-cardinality FHIR element the base Questionnaire's own Test Code item also maps to. There is no `enableWhen` linking the two, so it is unclear which item is meant to actually populate `ServiceRequest.code` for a Histocompatibility order. The same conflict applies to [ChimerismTestingAskAtOrderEntry](Questionnaire-ChimerismTestingAskAtOrderEntry.html)'s own `patient_test` item.
+5. **No Test Category or Test Code exists for Histocompatibility and Immunogenetics in the base Questionnaire.** The base's Test Category item ([OrderCategory](ValueSet-order-category.html)) only offers Rare and Inherited Disease, Storage of Specimen, Pre-Natal, Haemoglobinopathy and Cancer Genetic Testing - there is no Histocompatibility/Immunogenetics category, so none of the base's three `enableWhen`-gated Test Code branches can ever fire for this order type. This matches the [Patient Test(s)](Questionnaire-HLATestsTransplantAskAtOrderEntry.html) item's own open question: no NHS England Genomic Test Directory code was found for H&I test names, since H&I is not part of that directory.
 
 ## Data Models
 
 ### Ask At Order Entry Questions
 
-<div class="alert alert-info" role="alert">
-<b>FHIR Questionnaire:</b> <a href="Questionnaire-HistocompatibilityAskAtOrderEntry.html">Histocompatibility and Immunogenetics Ask At Order Entry</a>
-</div>
-
 Histocompatibility and Immunogenetics orders use the same [common core order
 form](Questionnaire-GenomicTestOrder.html) as every other order/test type
 ([HL7 v2 OML_O21](hl7v2.html#oml_o21-laboratory-order) /
 [FHIR Message O21](MessageDefinition-laboratory-order.html)), with their own
-**Ask At Order Entry Questionnaire** for the questions specific to this test type - see
-[Order Entry Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions).
+**Ask At Order Entry Questionnaire** per Hive order screen for the questions specific to
+that screen - see [Order Entry Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions).
+There are two such screens/Questionnaires: [HLA Tests -
+Transplant](#hla-tests-transplant-ask-at-order-entry) below, and [Chimerism Testing
+Ask At Order Entry](#chimerism-testing-ask-at-order-entry) further down the page.
+
+#### HLA Tests - Transplant Ask At Order Entry
+
+<div class="alert alert-info" role="alert">
+<b>FHIR Questionnaire:</b> <a href="Questionnaire-HLATestsTransplantAskAtOrderEntry.html">HLA Tests - Transplant Ask At Order Entry</a>
+</div>
 
 These questions were extracted from a live Histotrac `ORM^O01` order for an HLA
 Antibody Screening (Transplant) test: five `NTE` segments, each carrying comment type
@@ -204,7 +209,7 @@ NTE|4||Organ:->Kidney|OSQ
 NTE|5||Specimen source->Blood|OSQ
 ```
 
-#### Field mapping: NTE → FHIR
+##### Field mapping: HLA Tests NTE → FHIR
 
 | NTE Label         | Example Value                        | FHIR Field                                                             |
 |--------------------|----------------------------------------|--------------------------------------------------------------------------|
@@ -214,6 +219,34 @@ NTE|5||Specimen source->Blood|OSQ
 | Organ              | Kidney                                 | Observation.valueCodeableConcept (via ServiceRequest.supportingInfo, low confidence - no confirmed SNOMED CT mapping yet) |
 | Specimen source    | Blood                                  | Specimen.type (SNOMED CT coding)                                        |
 {:.grid}
+
+### Chimerism Testing Ask At Order Entry
+
+<div class="alert alert-info" role="alert">
+<b>FHIR Questionnaire:</b> <a href="Questionnaire-ChimerismTestingAskAtOrderEntry.html">Chimerism Testing Blood (PB) Ask At Order Entry</a>
+</div>
+
+Unlike HLA Tests - Transplant above, no live Histotrac `NTE` example order for the
+"Chimerism Testing Blood (PB)" screen has yet been seen - the two items below are
+inferred directly from the Hive/Histotrac order-entry UI screenshot, following the
+same `NTE` `Label:->Value` convention this Questionnaire family otherwise uses:
+
+```
+NTE|1||Patient Test(s):->Chimerism Peripheral Blood|OSQ (inferred, not yet confirmed against a live order)
+NTE|2||Specimen Source:->Blood (PB)|OSQ (inferred, not yet confirmed against a live order)
+```
+
+#### Field mapping: Chimerism NTE → FHIR
+
+| NTE Label         | Example Value                | FHIR Field                                                             |
+|--------------------|---------------------------------|--------------------------------------------------------------------------|
+| Patient Test(s)    | Chimerism Peripheral Blood     | ServiceRequest.code (restates OBR-4, not a new mapping)                  |
+| Specimen Source    | Blood (PB)                     | Specimen.type (local `NWGMSA` coding - Blood (PB) or Bone Marrow (BM))   |
+{:.grid}
+
+This is the order-entry counterpart to the [Chimerism Testing Result Panel](#chimerism-testing-result-panel-future)
+below - this section covers what is asked when the test is *ordered*, that section
+covers the structured *result* payload once testing is complete.
 
 ### Chimerism Testing Result Panel (Future?)
 
@@ -251,7 +284,7 @@ as such rather than forced onto it.
 | Source                                                                                                                       | Example                                                                                                            |
 |--------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
 | HL7 v2 `ORM^O01` (original)                                                                                                     | [histotrac-MFT.txt](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/O01/histotrac-MFT.txt)                       |
-| FHIR `QuestionnaireResponse` answering [Histocompatibility and Immunogenetics Ask At Order Entry](Questionnaire-HistocompatibilityAskAtOrderEntry.html) | [QuestionnaireResponse-HistocompatibilityAskAtOrderEntry-HLAAS](QuestionnaireResponse-HistocompatibilityAskAtOrderEntry-HLAAS.html) |
+| FHIR `QuestionnaireResponse` answering [HLA Tests - Transplant Ask At Order Entry](Questionnaire-HLATestsTransplantAskAtOrderEntry.html) | [QuestionnaireResponse-HLATestsTransplantAskAtOrderEntry-HLAAS](QuestionnaireResponse-HLATestsTransplantAskAtOrderEntry-HLAAS.html) |
 | FHIR `Questionnaire` (Result Panel) - [Chimerism Testing Result Panel](Questionnaire-ChimerismResultPanel.html) | See [Chimerism Testing Result Panel (Future?)](#chimerism-testing-result-panel-future) above for the source data table |
 {:.grid}
 

@@ -627,8 +627,9 @@ Usage:  #definition
 // Ask At Order Entry Questions have moved to a per-order-type Questionnaire - see
 // GenomicGeneralAskAtOrderEntry ("NW Genomic General Test Order") for the default set
 // (Consanguinity, pathology report confirmation, pregnancy/neonatal, deceased infant),
-// dWGSSubOrder for distributed WGS, or HistocompatibilityAskAtOrderEntry for
-// Histocompatibility and Immunogenetics. See Questionnaire-GenomicTestOrder.html#order-entry-questions.
+// dWGSSubOrder for distributed WGS, or HLATestsTransplantAskAtOrderEntry /
+// ChimerismTestingAskAtOrderEntry for Histocompatibility and Immunogenetics (one per
+// Hive order screen). See Questionnaire-GenomicTestOrder.html#order-entry-questions.
 
 //* item[+]
 //  * type = #group

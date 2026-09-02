@@ -130,7 +130,8 @@ Questionnaire, which `derivedFrom`/extends this common core Questionnaire:
 |-------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
 | General (default)                          | [NW Genomic General Test Order](Questionnaire-GenomicGeneralAskAtOrderEntry.html)                                     |
 | Distributed WGS (dWGS) sub-contracted order| [dWGS Sub-Order Manifest](Questionnaire-dWGSSubOrder.html) - see [dWGS](dWGS.html#ask-at-order-entry-the-dwgs-digital-manifest) |
-| Histocompatibility and Immunogenetics      | [Histocompatibility and Immunogenetics Ask At Order Entry](Questionnaire-HistocompatibilityAskAtOrderEntry.html) - see [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html#ask-at-order-entry-questions) |
+| Histocompatibility and Immunogenetics - HLA Tests (Transplant) | [HLA Tests - Transplant Ask At Order Entry](Questionnaire-HLATestsTransplantAskAtOrderEntry.html) - see [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html#ask-at-order-entry-questions) |
+| Histocompatibility and Immunogenetics - Chimerism Testing | [Chimerism Testing Blood (PB) Ask At Order Entry](Questionnaire-ChimerismTestingAskAtOrderEntry.html) - see [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html#chimerism-testing-ask-at-order-entry) |
 {:.grid}
 
 ### Specimen

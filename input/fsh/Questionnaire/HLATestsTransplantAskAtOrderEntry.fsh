@@ -1,13 +1,16 @@
-Instance: HistocompatibilityAskAtOrderEntry
+Instance: HLATestsTransplantAskAtOrderEntry
 
 InstanceOf: NWQuestionnaire
-Title: "Histocompatibility and Immunogenetics Ask At Order Entry"
+Title: "HLA Tests - Transplant Ask At Order Entry"
 Description: """
 **Ask At Order Entry Questions** used alongside the [common core order
-form](Questionnaire-GenomicTestOrder.html) for Histocompatibility and Immunogenetics
-orders (SNOMED CT `909871000000100`) - see
+form](Questionnaire-GenomicTestOrder.html) for the "HLA Tests - Transplant" order
+screen within Histocompatibility and Immunogenetics orders (SNOMED CT
+`909871000000100`) - see
 [Order Entry Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions) and
 [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html#ask-at-order-entry-questions).
+For the sibling Chimerism testing order screen, see
+[Chimerism Testing Blood (PB) Ask At Order Entry](Questionnaire-ChimerismTestingAskAtOrderEntry.html).
 
 Extracted from the `NTE` segments (each carrying HL7 v2 Table 0105-style comment type
 `OSQ`) of a live Histotrac `ORM^O01` order - see the worked
@@ -46,9 +49,9 @@ LOINC panels and UK code lists relevant to that specific question.
 """
 Usage:  #definition
 
-* title = "Histocompatibility and Immunogenetics Ask At Order Entry"
+* title = "HLA Tests - Transplant Ask At Order Entry"
 * status = #draft
-* url = "https://fhir.nwgenomics.nhs.uk/Questionnaire/HistocompatibilityAskAtOrderEntry"
+* url = "https://fhir.nwgenomics.nhs.uk/Questionnaire/HLATestsTransplantAskAtOrderEntry"
 * derivedFrom = "https://fhir.nwgenomics.nhs.uk/Questionnaire/GenomicTestOrder"
 * derivedFrom.extension[+]
   * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-derivationType"
@@ -236,8 +239,8 @@ Usage:  #definition
       the EU/UK/NW-compatible [Specimen Type](ValueSet-specimen-type.html) value set
       previously bound here (`answerValueSet = Canonical(SpecimenType)`), so this item
       now uses local `NWGMSA` codes to match what Hive actually offers for this
-      exchange. The separate Chimerism testing order screen in Hive instead offers
-      "Blood (PB)"/"Bone Marrow (BM)" - not yet modelled in this Questionnaire.
+      exchange. The separate [Chimerism Testing Blood (PB)](Questionnaire-ChimerismTestingAskAtOrderEntry.html)
+      order screen in Hive instead offers "Blood (PB)"/"Bone Marrow (BM)".
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
     * item[+]
