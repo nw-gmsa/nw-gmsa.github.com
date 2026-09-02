@@ -213,7 +213,6 @@ which FHIR Message actually carries it.
 | `RequestingOrganisationCode`           | Requesting Trust's ODS code                                         | string    | `PractitionerRole.organization.identifier.value`                        |
 | `RequestingOrganisationName`           | Requesting Trust's name                                             | string    | `PractitionerRole.organization.display`                                 |
 | `PlacerOrderNumber`                    | Order identifier assigned by the ordering Trust                     | string    | `ServiceRequest.identifier` (OrderIdentifier, type=PLAC) *(not present in current example - see note below)* |
-| `FMIIdentifier`                        | Blank on every current example row - purpose not yet confirmed      | string    | *(not present in current example)*                                      |
 | `FillerOrderNumber`                    | Order identifier assigned by iGene (the lab)                        | string    | `ServiceRequest.identifier` (OrderIdentifier, type=FILL), echoed on `DiagnosticReport.basedOn` (see note below) |
 | `OrderStatus`                          | Order's current status in iGene                                     | string    | `ServiceRequest.status`                                                 |
 | `ReportStatusDateTime`                 | Date/time the report status was last updated                        | dateTime  | `DiagnosticReport.issued` *(not yet populated in current example)*      |
