@@ -142,6 +142,62 @@ sequenceDiagram
 - [Variant (Reportable Variant)](StructureDefinition-Variant.html) - the discrete result Observations, following the [HL7 Genomics Reporting IG](https://build.fhir.org/ig/HL7/genomics-reporting/)
 - [Molecular Consequence](StructureDefinition-MolecularConsequence.html) - a separate `derivedFrom` Observation for a variant's downstream effect, including Loss of Heterozygosity - see [Outstanding Issues](#outstanding-issues) below
 
+In everyday terms: the work order above leads to a specimen and a report, and the report is
+the hub everything else hangs off - it's the one resource that both the work order/specimen
+side and the variant results side both relate back to.
+
+```mermaid
+erDiagram
+    SERVICE_REQUEST ||--o{ SPECIMEN : "requests collection of"
+    SERVICE_REQUEST ||--o{ DIAGNOSTIC_REPORT : "is basis for"
+    SPECIMEN ||--o{ DIAGNOSTIC_REPORT : "is basis for"
+    DIAGNOSTIC_REPORT ||--o{ VARIANT : "result - SEQV/ICNV/MCNV/SV"
+    DIAGNOSTIC_REPORT ||--o{ MOLECULAR_CONSEQUENCE : "result - LOH"
+    VARIANT ||--o| MOLECULAR_CONSEQUENCE : "derivedFrom - accompanying LOH finding"
+
+    SERVICE_REQUEST {
+        string Placer_Order_Number
+        string Filler_Order_Number
+        string Requested_Procedure_Code "NGTD Test Code"
+    }
+    SPECIMEN {
+        string Specimen_Accession_Identifier
+        string Specimen_Type
+        string Specimen_Taken_DateTime
+    }
+    DIAGNOSTIC_REPORT {
+        string Report_Identifier
+        string Status
+        string Conclusion
+    }
+    VARIANT {
+        string Variant_Category "iGene type - SEQV/ICNV/MCNV/SV, LRI B.1"
+        string Gene_Studied
+        string DNA_Change_cHGVS
+        string Classification
+    }
+    MOLECULAR_CONSEQUENCE {
+        string Gene "iGene type - LOH"
+        string LOH_State
+    }
+```
+
+`DiagnosticReport.result` is annotated above with the specific iGene variant
+type(s) each relationship carries, since that's what ultimately decides which
+of the [five iGene variant types](#igene-variant-types) a result becomes when
+converted to the flat CSV shape in [Mapping to the iGene
+CSV](#mapping-to-the-igene-csv) below:
+
+- Four of the five - **Sequence Variant (SEQV)**, **Intragenic CNV (ICNV)**,
+  **Multigenic CNV (MCNV)** and **Structural Variant (SV)** - are `Variant`
+  Observations referenced directly from `DiagnosticReport.result`, distinguished
+  from one another by the coded Variant Category component (LRI row B.1).
+- The fifth, **Loss of Heterozygosity (LOH)**, is a `Molecular Consequence`
+  Observation rather than a `Variant` - also referenced from
+  `DiagnosticReport.result` in its own right, and `derivedFrom` the `Variant` it
+  accompanies (see [iGene Variant Types](#igene-variant-types) above for why LOH
+  doesn't fit the `Variant` shape the other four share).
+
 ### Work Order CSV from iGene
 
 <div class="alert alert-info" role="alert">
@@ -152,11 +208,46 @@ The proposed DLIMS work order metadata export (see [Future Process](#future-proc
 above, "mirroring the process already used for StarLIMS") is expected to reuse the same
 CSV shape as iGene's existing StarLIMS work order export - see [StarLIMS / iGene
 Integration - Work Order CSV Export from iGene](starLIMS.html#work-order-csv-export-from-igene)
-for the full column-by-column description and FHIR mapping table, and
+for the canonical version of this table (kept there to avoid the two drifting apart) and
 [StarLIMSSampleData.csv](https://github.com/nw-gmsa/Testing/blob/main/Input/StarLIMSSampleData.csv)
-for an example file. Not duplicated here to avoid the two tables drifting apart -
-DLIMS/Omics DSS work orders carry the same underlying order/patient/specimen data as a
-StarLIMS work order, just a different downstream processor.
+for an example file. DLIMS/Omics DSS work orders carry the same underlying
+order/patient/specimen data as a StarLIMS work order, just a different downstream
+processor:
+
+| CSV Column                  | Description                                                        | Type      | FHIR Mapping                                                        |
+|-------------------------------|--------------------------------------------------------------------|-----------|-------------------------------------------------------------------------|
+| `PatientAccessionIdentifier`  | iGene's internal patient accession number - see [Patient Identifier](StructureDefinition-PatientIdentifier.html) | string    | `Patient.identifier` (PatientIdentifier)                                |
+| `NHSNumber`                   | Patient's NHS Number - see [NHS Identifier](StructureDefinition-NHSIdentifier.html) | string    | `Patient.identifier` (NHS Number)                                       |
+| `PatientGivenName`            | Patient's first name                                                | string    | `Patient.name.given`                                                    |
+| `PatientFamilyName`           | Patient's surname                                                   | string    | `Patient.name.family`                                                   |
+| `DateOfBirth`                 | Patient's date of birth                                             | date      | `Patient.birthDate`                                                     |
+| `AdministrativeSex`           | Sex registered at birth                                             | string    | `Patient.gender`                                                        |
+| `PostCode`                    | Patient's postcode                                                  | string    | `Patient.address.postalCode`                                            |
+| `HospitalSpellIdentifier`     | Identifier for the hospital spell/episode the order was placed under - see [Hospital Provider Spell Identifier](StructureDefinition-HospitalProviderSpellIdentifier.html) | string  | `ServiceRequest.encounter.identifier` (HospitalProviderSpellIdentifier) |
+| `PlacerOrderNumber`           | Order identifier assigned by the ordering Trust - see [Order Identifier](StructureDefinition-OrderIdentifier.html) | string    | `ServiceRequest.identifier` (OrderIdentifier, type=PLAC)                |
+| `HospitalNumber`              | Patient's hospital/medical record number - see [Medical Record Number](StructureDefinition-MedicalRecordNumber.html) | string    | `Patient.identifier` (MedicalRecordNumber)                              |
+| `FillerOrderNumber`           | Order identifier assigned by iGene (the lab) - see [Order Identifier](StructureDefinition-OrderIdentifier.html) | string    | `ServiceRequest.identifier` (OrderIdentifier, type=FILL)                |
+| `TestAccessionIdentifier`     | iGene's test-level accession number                                 | string    | `ServiceRequest.identifier` *(system TBD)*                              |
+| `TestOrderDate`               | Date/time the test was ordered                                      | dateTime  | `ServiceRequest.authoredOn`                                             |
+| `NGTDTestCode`                | NHS England Genomic Test Directory test code                        | string    | `ServiceRequest.code`                                                   |
+| `NGTDTestName`                | NHS England Genomic Test Directory test/package name                | string    | `ServiceRequest.code.coding.display`                                    |
+| `OrderStatus`                 | Order's current status in iGene (e.g. Dispatched)                   | string    | `ServiceRequest.status`                                                 |
+| `SpecimenDispatchDate`        | Date/time the specimen was dispatched to StarLIMS                   | dateTime  | `Observation.valueDateTime` (via `ServiceRequest.supportingInfo`)       |
+| `ShipmentTrackingNumber`      | Courier tracking number for the dispatched specimen - see [Shipment Tracking Number](StructureDefinition-ShipmentTrackingNumber.html) | string    | `Specimen.identifier` (ShipmentTrackingNumber)                          |
+| `DatasetTargetOrganisation`   | Destination the dataset/specimen was sent to                        | string    | `Observation.valueString` (via `ServiceRequest.supportingInfo`)         |
+| `SpecimenAccessionIdentifier` | Specimen's lab accession/DNA number - see [Specimen Accession Number](StructureDefinition-SpecimenAccessionNumber.html) | string    | `Specimen.accessionIdentifier`                                          |
+| `SpecimenTypeDescription`     | Specimen type, free text (e.g. Blood, Tissue)                       | string    | `Specimen.type.coding.display`                                          |
+| `SpecimenTakenDateTime`       | Date/time the specimen was taken from the patient                   | dateTime  | `Specimen.collection.collectedDateTime`                                 |
+| `ClinicalDetails`             | Free-text clinical details/history (redacted in example data)       | string    | `ServiceRequest.note`                                                   |
+| `OrderingProviderIdentifier`  | Ordering clinician's professional identifier - see [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html) | string    | `PractitionerRole.practitioner.identifier.value`                        |
+| `OrderingProviderName`        | Ordering clinician's name                                           | string    | `PractitionerRole.practitioner.display`                                 |
+| `RequestingOrganisationCode`  | Requesting Trust's ODS code - see [Organisation Code](StructureDefinition-OrganisationCode.html) | string    | `PractitionerRole.organization.identifier.value`                        |
+| `RequestingOrganisationName`  | Requesting Trust's name                                             | string    | `PractitionerRole.organization.display`                                 |
+{:.grid}
+
+`TestAccessionIdentifier`, and the `PLAC`/`FILL` split on `PlacerOrderNumber`/
+`FillerOrderNumber`, are not yet confirmed against a published identifier system - see
+the Questionnaire's own item design notes for detail.
 
 ### Test Result 
 
