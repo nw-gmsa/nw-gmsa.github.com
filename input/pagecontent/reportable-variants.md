@@ -85,7 +85,8 @@ flowchart TD
     A[iGene: Work Order Created] -->|for DLIMS| B[DLIMS: Test Performed]
     A -.->|<b>Proposed process</b><br/>DLIMS Work Order metadata export<br/>same process as StarLIMS| F
 
-    B -->|Test Results| C[Omics DSS]
+    B -->|Test Data| C[Omics DSS]
+    B -->|<b>Proposed solution to #3</b><br/>Laboratory Results ORU_R01 or equivalent| F
     C -->|Processes Results,<br/>linked to Work Order metadata| D[Processed Output]
     F -.->|<b>Proposed process</b><br/>Omics DSS reads<br/>Work Order metadata| C
 
@@ -105,6 +106,7 @@ flowchart TD
 1. iGene exports work orders for DLIMS - this export does not go to DLIMS directly.
 2. The RIE imports the file and stores it in the FHIR Repository.
 3. Once the results have been produced by DLIMS, Omics DSS processes the output.
+   a. In addition DLIMS may also send out Laboratory Reports. This likely holds the metadata we need to solve Outstanding Issues #3 below
 4. This output is converted to a FHIR Genomic Report.
 5. These resources are matched with the DLIMS work order stored in the FHIR Repository, and a FHIR Message R01 (Test Result) is produced.
 6. This is either stored directly in the FHIR Repository, or sent to the Regional Integration Engine.
