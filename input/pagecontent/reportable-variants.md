@@ -144,10 +144,16 @@ sequenceDiagram
 
 In everyday terms: the work order above leads to a specimen and a report, and the report is
 the hub everything else hangs off - it's the one resource that both the work order/specimen
-side and the variant results side both relate back to.
+side and the variant results side both relate back to. The patient sits behind all five
+resources as their common `subject`, rather than only being reachable via the work order.
 
 ```mermaid
 erDiagram
+    PATIENT ||--o{ SERVICE_REQUEST : "subject"
+    PATIENT ||--o{ SPECIMEN : "subject"
+    PATIENT ||--o{ DIAGNOSTIC_REPORT : "subject"
+    PATIENT ||--o{ VARIANT : "subject"
+    PATIENT ||--o{ MOLECULAR_CONSEQUENCE : "subject"
     SERVICE_REQUEST ||--o{ SPECIMEN : "requests collection of"
     SERVICE_REQUEST ||--o{ DIAGNOSTIC_REPORT : "is basis for"
     SPECIMEN ||--o{ DIAGNOSTIC_REPORT : "is basis for"
@@ -155,6 +161,10 @@ erDiagram
     DIAGNOSTIC_REPORT ||--o{ MOLECULAR_CONSEQUENCE : "result - LOH"
     VARIANT ||--o| MOLECULAR_CONSEQUENCE : "derivedFrom - accompanying LOH finding"
 
+    PATIENT {
+        string NHS_Number
+        string Medical_Record_Number
+    }
     SERVICE_REQUEST {
         string Placer_Order_Number
         string Filler_Order_Number
