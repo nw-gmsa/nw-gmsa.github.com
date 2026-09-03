@@ -1,4 +1,3 @@
-# How To Engineer (scale and deliver) Interoperability
 
 <div class="alert alert-info" role="alert">
 <b>This Implementation Guide is, in several areas, a core standard for the English NHS</b> - the same role played by <a href="https://www.hl7.org/fhir/us/core/" target="_blank">US Core</a> in the US, or <a href="https://build.fhir.org/ig/hl7au/au-fhir-core/" target="_blank">AU Core</a> in Australia. Where that's the case, the Use Case format below isn't just project documentation for one local integration - it's how the underlying shared standard itself gets engineered, agreed and scaled across the region, not just delivered for a single project.
