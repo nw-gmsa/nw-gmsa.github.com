@@ -14,7 +14,7 @@
 
 > **DRAFT FOR ELABORATION PURPOSES**
 
-<figure>
+<figure style="overflow-x:auto;">
 {%include LaboratoryReportComposition-mindmap.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Laboratory Report - Map</p>
 </figure>

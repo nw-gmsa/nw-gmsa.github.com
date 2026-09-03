@@ -15,7 +15,7 @@
 <b>HL7 v2 Segment:</b> <a href="hl7v2.html#obr" _target="_blank">OBR</a>
 </div>
 
-<figure>
+<figure style="overflow-x:auto;">
 {%include LaboratoryReport-mindmap.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Laboratory Report - MindMap</p>
 </figure>

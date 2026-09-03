@@ -244,17 +244,17 @@ Usage:  #definition
     * type = #string
     * linkId = "ObservationIdentifierCode"
     * text = "ObservationIdentifierCode"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.code.coding.code"
+    * definition = "http://hl7.org/fhir/StructureDefinition/DiagnosticReport#DiagnosticReport.conclusionCode.coding:GenomicTestOutcomeCode.code"
     * item[+]
       * linkId = "ObservationIdentifierCode-designNote"
       * type = #display
-      * text = "On the individual result Observation referenced from DiagnosticReport.result, not DiagnosticReport itself."
+      * text = "Also known as the Genomics Test Outcome - see Genomic Test Outcome Codes and R01 Mapping on NEYManagementInformation.html for detail."
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
   * item[+]
     * type = #string
     * linkId = "ObservationIdentifierDescription"
     * text = "ObservationIdentifierDescription"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.code.coding.display"
+    * definition = "http://hl7.org/fhir/StructureDefinition/DiagnosticReport#DiagnosticReport.conclusionCode.coding:GenomicTestOutcomeCode.display"
 
 * item[+]
   * type = #group

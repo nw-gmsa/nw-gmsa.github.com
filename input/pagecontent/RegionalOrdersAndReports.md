@@ -270,8 +270,8 @@ Report these Trusts receive carries the full Narrative Report.
 | `TestOrderDate`                        | Date/time the test was ordered                                      | dateTime  | `ServiceRequest.authoredOn`                                             |
 | `ObservationResultStatus`              | Result status (`F` = finalised)                                     | string    | `DiagnosticReport.status`                                               |
 | `ObservationDateTime`                  | Date/time the result was observed/produced                          | dateTime  | `DiagnosticReport.effectiveDateTime`                                    |
-| `ObservationIdentifierCode`            | Code identifying which result/analyte this row represents           | string    | `Observation.code.coding.code` (on the individual result Observation referenced from `DiagnosticReport.result`) |
-| `ObservationIdentifierDescription`     | Display name for the result/analyte code above                      | string    | `Observation.code.coding.display`                                       |
+| `ObservationIdentifierCode`            | Code identifying the result outcome - also known as the Genomics Test Outcome, see [Genomic Test Outcome Codes](ValueSet-GenomicTestOutcomeCodes.html) | string    | `DiagnosticReport.conclusionCode.coding.code`                            |
+| `ObservationIdentifierDescription`     | Display name for the result/analyte code above                      | string    | `DiagnosticReport.conclusionCode.coding.display`                        |
 | `Narrative Report`                     | The clinical PDF narrative report - not stripped for these Trusts, unlike NE&Y's management-information copy | Attachment | `DiagnosticReport.presentedForm`                                        |
 {:.grid}
 

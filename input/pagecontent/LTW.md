@@ -98,7 +98,7 @@ graph
 
 See also Reference 1, `Section 3 Laboratory Testing Workflow (LTW) Profile`, for detailed description of actors.
 
-<figure>
+<figure style="overflow-x:auto;">
 {%include LTW-component.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">IHE LTW Actor Diagram</p>
 </figure>
@@ -301,7 +301,7 @@ Used by these Use Cases:
 
 A report is created by the clinical practice and sent to the order result tracker.
 
-<figure>
+<figure style="overflow-x:auto;">
 {%include LTW-usecase-2-activity.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Genomics Test Report Activity</p>
 </figure>

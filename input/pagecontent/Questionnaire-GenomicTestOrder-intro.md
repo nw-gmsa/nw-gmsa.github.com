@@ -24,7 +24,7 @@ below.
 <b>HL7 v2 Segment:</b> <a href="hl7v2.html#orc" _target="_blank">ORC</a>
 </div>
 
-<figure>
+<figure style="overflow-x:auto;">
 {%include Laboratory-Order-mindmap.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Genomic Test Order Sections</p>
 </figure>

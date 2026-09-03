@@ -17,7 +17,7 @@ to iGene.
 
 ## Data Mapping
 
-<figure>
+<figure style="overflow-x:auto;">
 {%include LaboratoryAnalyteResult-mindmap.svg%}
 </figure>
 

@@ -1,6 +1,6 @@
 ## Overview 
 
-<figure>
+<figure style="overflow-x:auto;">
 {%include Diagnostic-Workflow-mindmap.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Diagnostic Workflow - MindMap</p>
 </figure>
@@ -62,7 +62,7 @@ In genomics, all these **archetype** definitions are interrelated and **designed
 
 ### Genomic Ordering and Reporting (Right Side)
 
-<figure>
+<figure style="overflow-x:auto;">
 {%include LTW-model.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Archetypes High Level Model</p>
 </figure>

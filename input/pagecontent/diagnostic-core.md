@@ -4,7 +4,7 @@ This implementation guide primarily focuses on the **Diagnostic Workflow** and h
 
 In software design, these areas are often referred to as [domains](https://en.wikipedia.org/wiki/Domain-driven_design). The **Genomic Diagnostic Workflow** operates across several of these domains — in software architecture terms, this is known as a [bounded context](https://martinfowler.com/bliki/BoundedContext.html).
 
-<figure>
+<figure style="overflow-x:auto;">
 {%include Diagnostic-Workflow-mindmap.svg%}
 <p id="fX.X.X.X-X" class="figureTitle">Diagnostic Workflow - MindMap</p>
 </figure>
