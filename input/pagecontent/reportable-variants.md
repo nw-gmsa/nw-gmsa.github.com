@@ -118,21 +118,26 @@ sequenceDiagram
     participant DLIMS as DLIMS<br/>Automation Manager
     participant DSS as Omics DSS<br/>Automation Manager
 
+    note over iGene, FHIRRepo: Work Order
     iGene ->> RIE: 1. Export Work Order for DLIMS<br/>(does not go to DLIMS directly)
     RIE ->> FHIRRepo: 2. Import and store Work Order
-    Note over DLIMS: Test performed by DLIMS
-    DSS ->> DSS: 3. Process DLIMS output
+    Note over DLIMS: Test performed
+    DLIMS ->> DSS: 3. Test output
+    DSS ->> DSS: 3a. Process test output
+    Note over iGene,DSS: Test Result
     DSS ->> DSS: 4. Convert to FHIR Genomic Report
     DSS ->> FHIRRepo: Retrieve linked DLIMS Work Order
     FHIRRepo -->> DSS: DLIMS Work Order
     DSS ->> DSS: 5. Match to Work Order,<br/>produce FHIR Message R01 (Test Result)
     alt Stored directly
-        DSS ->> FHIRRepo: 6. Store FHIR Message R01
+        DSS ->> FHIRRepo: 6. Store FHIR Resources
+        RIE ->> FHIRRepo: 6a. Poll for Test Result
     else Sent to RIE
         DSS ->> RIE: 6. FHIR Message R01
-        RIE ->> RIE: 7. Convert to CSV
-        RIE ->> iGene: Import CSV
-    end
+    end    
+    RIE ->> RIE: 7. Convert to CSV
+    RIE ->> iGene: Import CSV
+
 ```
 
 ## Data Models
