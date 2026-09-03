@@ -146,6 +146,12 @@ In everyday terms: the work order above leads to a specimen and a report, and th
 the hub everything else hangs off - it's the one resource that both the work order/specimen
 side and the variant results side both relate back to. The patient sits behind all five
 resources as their common `subject`, rather than only being reachable via the work order.
+Each entity below is also tagged with **which of the two feeds actually populates it** - see
+[Current Process](#current-process) and [Future Process](#future-process) above for the
+two-stage flow this reflects: `Patient`/`ServiceRequest`/`Specimen` arrive first, in the
+**Work Order** CSV export from iGene; `DiagnosticReport`/`Variant`/`Molecular Consequence`
+are added later, once DLIMS testing is complete and Omics DSS converts its output into the
+**Test Result** (a FHIR Genomic Report matched back to that same work order).
 
 ```mermaid
 erDiagram
@@ -162,31 +168,37 @@ erDiagram
     VARIANT ||--o| MOLECULAR_CONSEQUENCE : "derivedFrom - accompanying LOH finding"
 
     PATIENT {
+        string Source "Work Order - iGene CSV export"
         string NHS_Number
         string Medical_Record_Number
     }
     SERVICE_REQUEST {
+        string Source "Work Order - iGene CSV export"
         string Placer_Order_Number
         string Filler_Order_Number
         string Requested_Procedure_Code "NGTD Test Code"
     }
     SPECIMEN {
+        string Source "Work Order - iGene CSV export"
         string Specimen_Accession_Identifier
         string Specimen_Type
         string Specimen_Taken_DateTime
     }
     DIAGNOSTIC_REPORT {
+        string Source "Test Result - Omics DSS FHIR Genomic Report"
         string Report_Identifier
         string Status
         string Conclusion
     }
     VARIANT {
+        string Source "Test Result - Omics DSS FHIR Genomic Report"
         string Variant_Category "iGene type - SEQV/ICNV/MCNV/SV, LRI B.1"
         string Gene_Studied
         string DNA_Change_cHGVS
         string Classification
     }
     MOLECULAR_CONSEQUENCE {
+        string Source "Test Result - Omics DSS FHIR Genomic Report"
         string Gene "iGene type - LOH"
         string LOH_State
     }
