@@ -2,9 +2,6 @@ Profile:        VisitNumber
 Parent:         CorrelationIdentifier
 Id:             VisitNumber
 Title:          "Visit Number"
-Description:     """
-`Patient Administration` HL7 IdentifierType: **VN** Visit Number
-"""
 
 * ^purpose = """
 ## Mapping

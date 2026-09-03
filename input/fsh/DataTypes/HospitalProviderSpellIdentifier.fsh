@@ -2,11 +2,6 @@ Profile:        HospitalProviderSpellIdentifier
 Parent:         CorrelationIdentifier
 Id:             HospitalProviderSpellIdentifier
 Title:          "Hospital Provider Spell Identifier"
-Description:     """
-`Patient Administration` HL7 IdentifierType: **AN** Account Number
-'NHS Data Model and Dictionary' [HOSPITAL PROVIDER SPELL IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_identifier.html)
-Accession ID
-"""
 
 * ^purpose = """
 ## Mapping

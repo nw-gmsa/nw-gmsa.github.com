@@ -2,9 +2,6 @@ Profile:        GenomicsPedigreeNumber
 Parent:         CorrelationIdentifier
 Id:             GenomicsPedigreeNumber
 Title:          "Genomics Pedigree Number"
-Description:     """
-`Patient Administration`
-"""
 
 * ^purpose = """
 ## Mapping

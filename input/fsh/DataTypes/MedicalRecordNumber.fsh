@@ -2,10 +2,6 @@ Profile:        MedicalRecordNumber
 Parent:         CorrelationIdentifier
 Id:             MedicalRecordNumber
 Title:          "Medical Record Number"
-Description:     """
-`Patient Administration` HL7 IdentifierType: **MR** Medical record number
-'NHS Data Model and Dictionary'  [LOCAL PATIENT IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/local_patient_identifier__extended_.html)
-"""
 
 * ^purpose = """
 ## Mapping

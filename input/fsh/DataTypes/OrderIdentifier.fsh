@@ -2,9 +2,6 @@ Profile:        OrderIdentifier
 Parent:         CorrelationIdentifier
 Id:             OrderIdentifier
 Title:          "Order Identifier"
-Description:     """
-`Diagnostic Workflow` HL7 IdentifierType: Placer/Filler Identifier
-"""
 
 * ^purpose = """
 ## Mapping

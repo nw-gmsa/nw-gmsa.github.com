@@ -3,9 +3,7 @@ Parent:         CorrelationIdentifier
 Id:             PatientIdentifier
 Title:          "Patient Identifier"
 Description:     """
-`Patient Administration` HL7 IdentifierType: **PI** Patient Identifier
-`NHS Data Model and Dictionary`  [LOCAL PATIENT IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/local_patient_identifier__extended_.html)
-[NHS England Canonical Data Model](https://future.nhs.uk/DataArchitecture/groupHome) Not applicable, use MedicalRecordNumber only.
+Not applicable per the NHS England Canonical Data Model - use [Medical Record Number](StructureDefinition-MedicalRecordNumber.html) instead.
 """
 
 * ^purpose = """

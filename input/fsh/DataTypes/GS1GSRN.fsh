@@ -2,12 +2,6 @@ Profile:        GS1GSRN
 Parent:         CorrelationIdentifier
 Id:             GS1GSRN
 Title:          "GS1 Global Service Relation Number (GSRN)"
-Description:     """
-`Patient Administration` HL7 IdentifierType: **PI** Patient Identifier
-'NHS Data Model and Dictionary'  [GS1 Global Service Relation Number](https://www.datadictionary.nhs.uk/supporting_information/gs1_global_service_relation_number.html)
-[GS1 Pathology](https://gs1hospital.gs1.org/pathology/)
-GS1 Code 8018
-"""
 
 * type = $v2-0203#PN (exactly)
 

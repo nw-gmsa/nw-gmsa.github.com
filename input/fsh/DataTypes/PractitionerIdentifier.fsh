@@ -2,9 +2,6 @@ Profile:        PractitionerIdentifier
 Parent:         http://hl7.org/fhir/StructureDefinition/Identifier
 Id:             PractitionerIdentifier
 Title:          "Practitioner Identifier"
-Description:     """
-'Care Directory' 'NHS Data Model and Dictionary' [CONSULTANT CODE](https://www.datadictionary.nhs.uk/data_elements/consultant_code.html) and [GENERAL MEDICAL PRACTITIONER PPD CODE](https://www.datadictionary.nhs.uk/attributes/general_medical_practitioner_ppd_code.html).
-"""
 
 * ^purpose = """
 ## Mapping

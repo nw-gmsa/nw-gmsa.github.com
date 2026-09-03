@@ -2,9 +2,6 @@ Profile:        ShipmentTrackingNumber
 Parent:         CorrelationIdentifier
 Id:             ShipmentTrackingNumber
 Title:          "Shipment Tracking Number"
-Description:     """
-`Diagnostic Workflow` HL7 IdentifierType: **STN** Shipment Tracking Number
-"""
 
 * ^purpose = """
 ## Mapping

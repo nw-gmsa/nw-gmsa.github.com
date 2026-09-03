@@ -2,9 +2,6 @@ Profile:        OrganisationCode
 Parent:         CorrelationIdentifier
 Id:             OrganisationCode
 Title:          "Organisation Code"
-Description:     """
-`Patient Administration` 'NHS Data Model and Dictionary' [ORGANISATION_CODE](https://www.datadictionary.nhs.uk/attributes/organisation_code.html)
-"""
 
 * ^purpose = """
 ## Mapping

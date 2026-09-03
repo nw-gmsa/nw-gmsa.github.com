@@ -2,9 +2,6 @@ Profile:        OrderGroupNumber
 Parent:         CorrelationIdentifier
 Id:             OrderGroupNumber
 Title:          "Order Group Number"
-Description:     """
-`Diagnostic Workflow` HL7 IdentifierType: **PGN** Placer Group Number
-"""
 
 * ^purpose = """
 ## Mapping
