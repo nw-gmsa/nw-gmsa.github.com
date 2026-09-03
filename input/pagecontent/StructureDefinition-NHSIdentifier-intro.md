@@ -1,3 +1,11 @@
+## NHS Data Dictionary and Model
+
+- England/Wales: [NHS NUMBER](https://www.datadictionary.nhs.uk/attributes/nhs_number.html)
+- Northern Ireland: [HEALTH AND CARE NUMBER](https://www.datadictionary.nhs.uk/data_elements/health_and_care_number.html)
+- Scotland: [COMMUNITY HEALTH INDEX NUMBER](https://www.datadictionary.nhs.uk/attributes/community_health_index_number.html)
+
+**Ubiquitous terms:** NHS Number, NHS No, NHS ID; CHI Number (Scotland); H&C Number (Northern Ireland).
+
 ## Mapping 
 
 - **HL7 FHIR** Patient.identifier (type = NH)

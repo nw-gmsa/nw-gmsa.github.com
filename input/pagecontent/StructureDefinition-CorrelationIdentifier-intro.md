@@ -1,3 +1,16 @@
+## NHS Data Dictionary and Model
+
+This is a generic base pattern (parent of every other identifier data type in
+this IG), not one specific NHS Data Dictionary item - see the individual
+identifier profiles it underpins (e.g.
+[NHS Identifier](StructureDefinition-NHSIdentifier.html),
+[Medical Record Number](StructureDefinition-MedicalRecordNumber.html),
+[Order Identifier](StructureDefinition-OrderIdentifier.html)) for their own NHS
+Data Dictionary entries.
+
+**Ubiquitous terms:** Correlation ID, Message ID, Reference Number - the generic
+concept, not any single named identifier.
+
 ## Reference
 
 - [Rule 3: Reference Other Aggregates by Identity (Implementing Domain Driven Design)](https://www.archi-lab.io/infopages/ddd/aggregate-design-rules-vernon.html#rule-3-reference-other-aggregates-by-identity) 
