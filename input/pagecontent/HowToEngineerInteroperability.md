@@ -510,13 +510,17 @@ FHIR just to solve the same problem again (moving version within a single
 standard is uncommon enough on its own). FHIR tends to earn its place
 instead by solving problems in a genuinely new way - such as querying via a
 RESTful API - rather than as a like-for-like replacement for an
-already-working message-based interaction. The data model behind HL7 v2 is,
-in many workflow interactions, quite mature and well understood by the
-people running them; a blanket move away from HL7 v2 risks discarding that
-understanding along with the messages themselves. This has happened more
-than once with message-based interactions - moves to FHIR RESTful driven
-more by ideology than by a problem FHIR actually solves and HL7 v2 doesn't
-have tended to carry a correspondingly high failure rate.
+already-working message-based interaction. FHIR RESTful **read-only query**
+approaches, in particular, tend to work quite well precisely because they're
+solving that kind of new problem - exposing data for lookup - rather than
+re-implementing an existing message-based workflow. The data model behind
+HL7 v2 is, in many workflow interactions, quite mature and well understood
+by the people running them; a blanket move away from HL7 v2 risks discarding
+that understanding along with the messages themselves. This has happened
+more than once with message-based interactions - moves to replace a working
+HL7 v2 message-based interaction with FHIR RESTful, driven more by ideology
+than by a problem FHIR actually solves and HL7 v2 doesn't, have tended to
+carry a correspondingly high failure rate.
 
 All four patterns above are, in one way or another, failures to properly
 build out - or properly combine - the same underlying layers:
