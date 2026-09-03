@@ -248,3 +248,9 @@ This is the key entity for the reports/results which are generated when the Plac
 | result        | See [Observations](StructureDefinition-Observation.html)                     |             | DiagnosticReport.result                                                                     | 
 | presentedForm | See [DocumentReference](StructureDefinition-DocumentReference.html)          |             | DiagnosticReport.presentedForm                                                              |
 {:.grid}
+
+<figure style="overflow-x:auto;">
+{%include LaboratoryReport-mindmap.svg%}
+<p id="fX.X.X.X-X" class="figureTitle">Laboratory Report - MindMap</p>
+</figure>
+<br clear="all">
