@@ -1,4 +1,3 @@
-<div class="alert alert-danger" role="alert">
 This is currently being elaborated and subject to change.
 </div>
 
@@ -281,6 +280,15 @@ above):
 | [Bundle/Shire1StructuredR01](Bundle-Shire1StructuredR01.html) | [Shire-1.txt](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/R01/Shire-1.txt) | A single karyotype finding (20q deletion, MDS) as a coded `62356-1` `Observation` under a `62389-2` master panel, with a `33893-9` `DiagnosticReport` |
 | [Bundle/Shire2StructuredR01](Bundle-Shire2StructuredR01.html) | [Shire-2.txt](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/R01/Shire-2.txt) | As above, plus a `62367-8` FISH panel result (complex hyperdiploid AML karyotype) |
 {:.grid}
+
+## Security Considerations
+
+Includes:
+
+- OAuth2 Standard for [Authorisation](api-security.html#authorisation---oauth2)
+  - including use of JWT access tokens and future support for [SMART-on-FHIR Scopes](api-security.html#scopes)
+- FHIR AuditEvent/IHE BALP for [Audit Logging](api-security.html#audit-logging)
+- TLS for [Transport Security/Encryption](api-security.html#encryption)
 
 ## Developer Guides
 

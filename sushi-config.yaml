@@ -76,8 +76,8 @@ pages:
   index.md:
     title: Home
     generation: markdown
-  HowToReadTheUseCase.md:
-    title: "How to Read the Use Case"
+  HowToEngineerInteroperability.md:
+    title: "How To Engineer (scale and deliver) Interoperability"
     generation: markdown
   LTW.md:
     title: Laboratory Testing Workflow (LTW)
@@ -460,7 +460,7 @@ menu:
     HL7 v2.5.1: hl7v2.html
     IHE XDS.b/MHD: StructureDefinition-DocumentReference.html
   Development:
-    How to Read the Use Case: HowToReadTheUseCase.html
+    How To Engineer (scale and deliver) Interoperability: HowToEngineerInteroperability.html
     Environments and Testing: testing.html
     Support: support.html
     Architecture: architecture.html

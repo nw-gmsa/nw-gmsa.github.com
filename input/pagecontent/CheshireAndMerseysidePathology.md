@@ -164,6 +164,15 @@ No distinct future-state changes are currently defined for this pathway.
 
 No example resources are published yet for this scenario.
 
+## Security Considerations
+
+Includes:
+
+- OAuth2 Standard for [Authorisation](api-security.html#authorisation---oauth2)
+  - including use of JWT access tokens and future support for [SMART-on-FHIR Scopes](api-security.html#scopes)
+- FHIR AuditEvent/IHE BALP for [Audit Logging](api-security.html#audit-logging)
+- TLS for [Transport Security/Encryption](api-security.html#encryption)
+
 ## Developer Guides
 
 No [Developer Guides](DeveloperGuides.html) notebook covers this use case yet.

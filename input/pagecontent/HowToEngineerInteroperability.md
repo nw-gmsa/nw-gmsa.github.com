@@ -1,4 +1,8 @@
-# How to Read the Use Case
+# How To Engineer (scale and deliver) Interoperability
+
+<div class="alert alert-info" role="alert">
+<b>This Implementation Guide is, in several areas, a core standard for the English NHS</b> - the same role played by <a href="https://www.hl7.org/fhir/us/core/" target="_blank">US Core</a> in the US, or <a href="https://build.fhir.org/ig/hl7au/au-fhir-core/" target="_blank">AU Core</a> in Australia. Where that's the case, the Use Case format below isn't just project documentation for one local integration - it's how the underlying shared standard itself gets engineered, agreed and scaled across the region, not just delivered for a single project.
+</div>
 
 The Use Case format used in this project is deliberately structured so that different sections support different stages of the project — and, importantly, different people involved in the project.
 
@@ -12,7 +16,7 @@ flowchart LR
     B --> G["Process model"]
     A --> C["Information<br/>requirements"]
     C --> D["Data model"]
-    G --> E["Interoperability mapping<br/>(incl. technical/interoperability<br/>data modelling)"]
+    G --> E["Interoperability Data Model<br/>(incl. V2/FHIR/XDS/ASTM<br/>etc mapping)"]
     D --> E
     E --> F["Implementation"]
 ```
@@ -20,11 +24,12 @@ flowchart LR
 `Workflow requirements → Process model` and `Information requirements → Data
 model` run **concurrently**, both stemming from the Clinical Pathway - they
 aren't a strict sequence, and in practice inform each other as they're
-developed. Both then feed into `Interoperability mapping`, which is also
-where the **technical/interoperability data model** (the HL7 v2 Message
-Definition, XDS Document Entry or FHIR Profile) gets built - see [Documenting
-the Data Model](#documenting-the-data-model) below for why that technical
-model is related to, but not the same as, the data model that feeds it.
+developed. Both then feed into the **`Interoperability Data Model`** - the
+HL7 v2 Message Definition, XDS Document Entry, FHIR Profile or ASTM mapping
+that the agreed data model gets mapped onto, normally produced by a Senior
+Integration Specialist/Software Engineer - see [Documenting the Data
+Model](#documenting-the-data-model) below for why that technical model is
+related to, but not the same as, the data model that feeds it.
 
 This split matters because the two branches tend to draw on different
 existing bodies of work. **Workflow requirements** generally align with
@@ -35,7 +40,7 @@ requirements**, on the other hand, tend to align more with **openEHR and FHIR
 profiles**, the tools clinical informatics uses to model the content of a
 clinical record independently of how it's exchanged. Because these two
 branches often come from different disciplines and different prior art, the
-**rejoin at `Interoperability mapping`** - where the workflow side and the
+**rejoin at the `Interoperability Data Model`** - where the workflow side and the
 information side have to be reconciled into one technical/interoperability
 data model - is the step most likely to surface a genuine disagreement
 between them, and is worth paying deliberate attention to rather than
@@ -153,8 +158,8 @@ Our preference in this IG is a **computable data model**, expressed in one of:
 whichever of these forms, the data model still has to be mapped onto whatever
 technical mechanism actually carries it between systems - an HL7 v2 Message
 Definition (segments/fields), an XDS Document Entry (document metadata
-attributes), or a FHIR Profile (a `StructureDefinition`). That mapping is what
-the "HL7 v2 / FHIR mappings" section below is for.
+attributes), a FHIR Profile (a `StructureDefinition`), or an ASTM mapping.
+That mapping is what the "Interoperability Data Model" section below is for.
 
 These are **related, but they are not the same thing**, and treating them as
 interchangeable causes real problems: a FHIR Profile constrains a specific
@@ -166,8 +171,16 @@ independent data model behind it, is exactly the trap explored later in
 [Examples of Common Interoperability Project
 Problems](#examples-of-common-interoperability-project-problems).
 
-### HL7 v2 / FHIR mappings
+### Interoperability Data Model
 **How does the agreed model become something developers can implement?**
+
+This is the **technical/interoperability data model** - the HL7 v2 Message
+Definition, FHIR Profile, XDS Document Entry, ASTM mapping (or other
+technical mechanism) that the agreed data model gets mapped onto. It's
+normally produced by a **Senior Integration Specialist/Software Engineer**,
+since it requires both the standards knowledge to map onto HL7 v2/FHIR/XDS/
+ASTM correctly and a working understanding of the agreed data model it's
+built from.
 
 The mappings therefore refer back to the data model rather than becoming the primary definition of the information.
 
@@ -179,6 +192,24 @@ This gives developers something much more useful than a collection of FHIR profi
 Only at this point are we primarily talking to developers.
 
 The examples, mappings, message structures, APIs and implementation guidance can therefore be treated as the final implementation layer rather than the starting point.
+
+### Security Considerations
+**What does this Use Case need from authentication, authorisation, audit and consent?**
+
+Where a Use Case has security guidance beyond the IG-wide baseline - for
+example a transaction that needs a particular OAuth2 scope, an audit event
+type, or a consent check - it should be called out in its own **Security
+Considerations** section, placed after `Examples` and before `Developer
+Guides`, rather than left implicit in the transaction descriptions.
+
+That section should **link to the [API Security](api-security.html) page**
+for the underlying mechanism (encryption, authorisation, audit logging,
+patient consent) rather than restating it, and only describe what is
+specific to this Use Case. See [Laboratory Testing Workflow
+(LTW)](LTW.html#security-considerations) for an example of this pattern.
+
+If a Use Case has no security requirements beyond the IG-wide baseline
+already documented on the API Security page, this section can be omitted.
 
 ## The General Structure of a Use Case Page
 
@@ -199,6 +230,7 @@ section where a use case is too small to need the split.
 | Future Process | What is changing, or proposed to change? | Business analysts, architects, clinical informatics |
 | Data Models | What information needs to be exchanged, described independently of HL7 v2/FHIR? | Clinical informatics, business analysts |
 | Examples | Worked, real (or realistic) instances of the data model | Developers, interoperability specialists |
+| Security Considerations | What does this Use Case need from authentication, authorisation, audit and consent, beyond the IG-wide baseline? (optional - see [API Security](api-security.html)) | Architects, interoperability specialists, developers |
 | Developer Guides | Step-by-step, hands-on implementation guidance (notebooks, worked builds) | Developers |
 {:.grid}
 
@@ -248,9 +280,9 @@ The same Use Case can therefore be read differently by different people.
 | Business Analyst | Actors, processes and data model |
 | Clinical Informatics | Clinical meaning and data model |
 | Solution Architect | Process, transactions, models and architecture |
-| Interoperability Developer | Transactions, mappings and examples |
+| Interoperability Developer | Transactions, interoperability data model and examples |
 | Software Developer | FHIR/v2 structures, APIs, examples and developer guides |
-| Data Engineer | Data models, mappings and implementation examples |
+| Data Engineer | Data models, interoperability data model and implementation examples |
 
 The important point is that **these aren't separate documents describing different solutions**.
 
@@ -264,7 +296,7 @@ That may change the information requirements.
 
 That may change the data model.
 
-The HL7 v2 and FHIR mappings can then be updated to reflect the agreed model.
+The interoperability data model (HL7 v2, FHIR, XDS or ASTM mappings) can then be updated to reflect the agreed model.
 
 The developer implementation follows from those decisions.
 
@@ -280,7 +312,7 @@ The Use Case format is therefore trying to maintain a clear separation between t
 flowchart TD
     Why["<b>1. Why?</b><br/>What clinical or operational<br/>problem are we trying to solve?<br/><br/>Clinical pathway, purpose<br/>and business context"]
     What["<b>2. What?</b><br/>What needs to happen and<br/>what information is required?<br/><br/>Workflow, actors, transactions,<br/>information requirements<br/>and data models"]
-    How["<b>3. How?</b><br/>How do we implement it<br/>between systems?<br/><br/>HL7 v2, FHIR, IHE transactions,<br/>APIs, mappings, examples<br/>and developer guidance"]
+    How["<b>3. How?</b><br/>How do we implement it<br/>between systems?<br/><br/>Interoperability Data Model<br/>HL7 v2, FHIR, IHE transactions,<br/>APIs, mappings, examples<br/>and developer guidance"]
     Why --> What --> How
 ```
 
@@ -292,7 +324,7 @@ This separation allows each discipline to contribute its expertise without makin
 
 **The data model defines what information is needed.**
 
-**The interoperability mappings define how that information is exchanged.**
+**The interoperability data model defines how that information is exchanged.**
 
 **The developer guide defines how to implement it.**
 
@@ -382,6 +414,44 @@ A model can accurately describe a prescription, laboratory result or clinical ob
 
 That process is often what the interoperability project actually needs to solve.
 
+### Three common data modelling failure patterns
+
+In practice, most NHS interoperability projects that struggle with their data
+model fall into one of three patterns, depending on which discipline is
+driving the work and whether the workflow side and the semantic side ever
+actually get reconciled into a single [Interoperability Data
+Model](#interoperability-data-model).
+
+**Semantic-only modelling** tends to occur when a project focuses on clinical
+informatics data needs only. The workflow side still carries genuine NHS
+interoperability requirements of its own - including the practitioner and
+organisational data needed to support the workflow, not just the clinical
+content - and those requirements don't go away just because they weren't
+modelled. In an ideal world the two are married together via an
+Interoperability Data Model, as above. This pattern is quite common on large
+NHS programmes, where the clinical data model gets significant investment but
+the workflow/transactional side it needs to travel inside doesn't get the
+same rigour.
+
+**Workflow-only modelling** tends to occur on local NHS projects, which will
+often lean on supplier HL7 standards for the workflow/transactional side. A
+semantic model may still be present, but tends to be localised to that one
+supplier or site rather than shared - properly modelling and funding a shared
+semantic model needs additional funding and resourcing that a local project
+may not have. At times it's simply easier to switch to a PDF/document-based
+exchange than to invest in that structured semantic model.
+
+**Bypassing semantic and interoperability data modelling entirely** is often
+caused by building directly against base models from HL7 v2, FHIR or UK Core
+(this doesn't include the common English NHS interoperability data models
+this IG is built on, e.g. [Diagnostic Core](diagnostic-core.html)). Base
+standards define what's possible to represent, not what a specific NHS
+workflow actually needs - building directly against them skips the step
+where the workflow and information requirements are agreed and reconciled,
+which is exactly the trap explored in [Examples of Common Interoperability
+Project Problems](#examples-of-common-interoperability-project-problems)
+above.
+
 ## Why the Clinical Pathway matters to developers
 
 This is why the Clinical Pathway Overview should not be treated as optional background reading for technical staff.
@@ -417,7 +487,7 @@ flowchart TD
     B --> C["Current and<br/>future process"]
     A --> D["Information<br/>requirements"]
     D --> E["Data model"]
-    C --> F["HL7 v2 / FHIR mapping"]
+    C --> F["Interoperability<br/>Data Model"]
     E --> F
     F --> G["Examples"]
     G --> H["Developer implementation"]
@@ -425,8 +495,8 @@ flowchart TD
 
 `Actors and workflow → Current and future process` and `Information
 requirements → Data model` run **concurrently**, the same as in the first
-diagram above - both then feed into the `HL7 v2 / FHIR mapping` layer, where
-the IHE/HL7 v2-aligned workflow side and the openEHR/FHIR-profile-aligned
+diagram above - both then feed into the `Interoperability Data Model` layer,
+where the IHE/HL7 v2-aligned workflow side and the openEHR/FHIR-profile-aligned
 information side have to be reconciled (see the note on the first diagram).
 
 Each layer provides the context needed to understand the next one.

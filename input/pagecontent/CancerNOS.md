@@ -417,6 +417,15 @@ patient on this Colorectal Cancer pathway in the North Midlands - background
 information on how the specimen behind a genomic test order is actually obtained,
 not itself part of this genomic specification.
 
+## Security Considerations
+
+Includes:
+
+- OAuth2 Standard for [Authorisation](api-security.html#authorisation---oauth2)
+  - including use of JWT access tokens and future support for [SMART-on-FHIR Scopes](api-security.html#scopes)
+- FHIR AuditEvent/IHE BALP for [Audit Logging](api-security.html#audit-logging)
+- TLS for [Transport Security/Encryption](api-security.html#encryption)
+
 ## Developer Guides
 
 No [Developer Guides](DeveloperGuides.html) notebook covers this use case yet.

@@ -293,6 +293,15 @@ as such rather than forced onto it.
 | FHIR `Questionnaire` (Result Panel) - [Chimerism Testing Result Panel](Questionnaire-ChimerismResultPanel.html) | See [Chimerism Testing Result Panel (Future?)](#chimerism-testing-result-panel-future) above for the source data table |
 {:.grid}
 
+## Security Considerations
+
+Includes:
+
+- OAuth2 Standard for [Authorisation](api-security.html#authorisation---oauth2)
+  - including use of JWT access tokens and future support for [SMART-on-FHIR Scopes](api-security.html#scopes)
+- FHIR AuditEvent/IHE BALP for [Audit Logging](api-security.html#audit-logging)
+- TLS for [Transport Security/Encryption](api-security.html#encryption)
+
 ## Developer Guides
 
 - [10 - Histocompatibility and Immunogenetics: HL7 v2 to and from the NW Standard](https://github.com/nw-gmsa/Testing/blob/main/notebooks/10-histocompatibility-immunogenetics-hl7v2-nw-standard.ipynb) - hand-builds the field-level conversion a Trust Integration Engine (TIE) does to turn Clatterbridge's Meditech-originated order into the shared [NW HL7 v2 standard](hl7v2.html)

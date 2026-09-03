@@ -126,6 +126,15 @@ No example is published yet for the `MDM_T02` feed itself. See [Example:
 Laboratory Report](artifacts.html#example-laboratory-report) for the LAB-3
 report this feed is wire-tapped from.
 
+## Security Considerations
+
+Includes:
+
+- OAuth2 Standard for [Authorisation](api-security.html#authorisation---oauth2)
+  - including use of JWT access tokens and future support for [SMART-on-FHIR Scopes](api-security.html#scopes)
+- FHIR AuditEvent/IHE BALP for [Audit Logging](api-security.html#audit-logging)
+- TLS for [Transport Security/Encryption](api-security.html#encryption)
+
 ## Developer Guides
 
 - [04 - Reports: HL7 v2 `ORU^R01` into FHIR](https://github.com/nw-gmsa/Testing/blob/main/notebooks/04-laboratory-report-fhir-from-hl7v2.ipynb) - converts a lab's own HL7 v2 report into a FHIR `R01` Message, and on to the `MDM_T02` document feed this page describes

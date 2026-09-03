@@ -358,6 +358,15 @@ which FHIR Message actually carries it.
 | [NorthEnglandctDNA100.csv](https://github.com/nw-gmsa/Testing/blob/main/Input/NorthEnglandctDNA100.csv) | Further example of the daily iGene CSV export                                |
 {:.grid}
 
+## Security Considerations
+
+Includes:
+
+- OAuth2 Standard for [Authorisation](api-security.html#authorisation---oauth2)
+  - including use of JWT access tokens and future support for [SMART-on-FHIR Scopes](api-security.html#scopes)
+- FHIR AuditEvent/IHE BALP for [Audit Logging](api-security.html#audit-logging)
+- TLS for [Transport Security/Encryption](api-security.html#encryption)
+
 ## Developer Guides
 
 - [03 - Orders: Building a FHIR Order Message from a CSV](https://github.com/nw-gmsa/Testing/blob/main/notebooks/03-laboratory-order-from-csv.ipynb) - builds the FHIR Message O21 `Bundle` from a row of `Input/NEYctDNA.csv`

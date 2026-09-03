@@ -510,3 +510,13 @@ reusing this IG's existing identifiers (`OrderIdentifier`, `NHSIdentifier`,
 not-yet-profiled elements (the UBRN identifier, referral priority/status/reason). The
 report side would separately need a `DiagnosticReport` or `Composition`-led FHIR
 Document, following the same closed-loop shape as LAB-1/LAB-3.
+
+## Security Considerations
+
+Includes:
+
+- OAuth2 Standard for [Authorisation](api-security.html#authorisation---oauth2)
+  - including use of JWT access tokens and future support for [SMART-on-FHIR Scopes](api-security.html#scopes)
+- FHIR AuditEvent/IHE BALP for [Audit Logging](api-security.html#audit-logging)
+- TLS for [Transport Security/Encryption](api-security.html#encryption)
+

@@ -161,6 +161,15 @@ Example order Bundles sourced from the [FHIR Genomics Implementation Guide](http
 
 > **Note:** the three `NonWGSTestOrderForm` examples above (base, CancerSolidTumor, FetalScenario, Reanalysis) were previously adapted with North West-specific organisation/sender details; the remaining examples are otherwise unmodified copies of the Simplifier source, with only an `id` (where missing) and the `BundleMessage` profile added for consistency with this IG's other message Bundle examples.
 
+## Security Considerations
+
+Includes:
+
+- OAuth2 Standard for [Authorisation](api-security.html#authorisation---oauth2)
+  - including use of JWT access tokens and future support for [SMART-on-FHIR Scopes](api-security.html#scopes)
+- FHIR AuditEvent/IHE BALP for [Audit Logging](api-security.html#audit-logging)
+- TLS for [Transport Security/Encryption](api-security.html#encryption)
+
 ## Developer Guides
 
 - [09 - LIMS Integration with the Genomic Order Management Service](https://github.com/nw-gmsa/Testing/blob/main/notebooks/09-genomic-order-management-fhir-to-hl7v2-for-lims.ipynb) - converts a FHIR order from GOMS into the HL7 v2 this region's LIMS expects

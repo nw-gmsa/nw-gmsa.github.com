@@ -423,6 +423,15 @@ The four `Variant` Observations inside that Bundle are also extracted as standal
 | Molecular Consequence - Loss of Heterozygosity | [Observation-ctdna9737383222-seqv1-loh](Observation-ctdna9737383222-seqv1-loh.html) (`derivedFrom` the sequence variant above) |
 {:.grid}
 
+## Security Considerations
+
+Includes:
+
+- OAuth2 Standard for [Authorisation](api-security.html#authorisation---oauth2)
+  - including use of JWT access tokens and future support for [SMART-on-FHIR Scopes](api-security.html#scopes)
+- FHIR AuditEvent/IHE BALP for [Audit Logging](api-security.html#audit-logging)
+- TLS for [Transport Security/Encryption](api-security.html#encryption)
+
 ## Developer Guides
 
 - [02 - Work Orders: A Worked Example](https://github.com/nw-gmsa/Testing/blob/main/notebooks/02-work-orders-worked-example.ipynb) - retrieving the DLIMS Work Orders from the FHIR Repository, the metadata Omics DSS links its results back to

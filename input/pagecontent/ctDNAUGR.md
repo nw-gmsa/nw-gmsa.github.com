@@ -133,6 +133,15 @@ The `DocumentReference` NRL pointer is a national NHS England resource, register
 
 No Phase 1 example (`DiagnosticReport` with embedded PDF) is published yet for this scenario.
 
+## Security Considerations
+
+Includes:
+
+- OAuth2 Standard for [Authorisation](api-security.html#authorisation---oauth2)
+  - including use of JWT access tokens and future support for [SMART-on-FHIR Scopes](api-security.html#scopes)
+- FHIR AuditEvent/IHE BALP for [Audit Logging](api-security.html#audit-logging)
+- TLS for [Transport Security/Encryption](api-security.html#encryption)
+
 ## Developer Guides
 
 - [06 - EU Laboratory Report: FHIR Messages to a FHIR Document](https://github.com/nw-gmsa/Testing/blob/main/notebooks/06-eu-laboratory-report-fhir-document.ipynb) - builds the Phase 2 FHIR Document from the same ctDNA source data as notebooks 04/05

@@ -303,6 +303,15 @@ extracted into (same referrals and participants as the table above), and the HL7
 | `r2026000203`  | Family Member (`p2026000106`)   | [QuestionnaireResponse-dWGS-Trio-r2026000203-p2026000106](QuestionnaireResponse-dWGS-Trio-r2026000203-p2026000106.html)             | [Bundle-dWGS-Trio-r2026000203-p2026000106](Bundle-dWGS-Trio-r2026000203-p2026000106.html)       | [dWGS_r2026000203_p2026000106.txt](https://github.com/nw-gmsa/Testing/blob/main/Output/V2/O21/dWGS_r2026000203_p2026000106.txt) |
 {:.grid}
 
+## Security Considerations
+
+Includes:
+
+- OAuth2 Standard for [Authorisation](api-security.html#authorisation---oauth2)
+  - including use of JWT access tokens and future support for [SMART-on-FHIR Scopes](api-security.html#scopes)
+- FHIR AuditEvent/IHE BALP for [Audit Logging](api-security.html#audit-logging)
+- TLS for [Transport Security/Encryption](api-security.html#encryption)
+
 ## Developer Guides
 
 - [08 - Subcontracted Laboratory Order from an External GLH](https://github.com/nw-gmsa/Testing/blob/main/notebooks/08-subcontracted-laboratory-order-from-external-glh.ipynb) - builds a `LAB-35` sub-order manifest and Bundle for a distributed WGS referral from an external Requesting Genomic Laboratory, the source of the examples above

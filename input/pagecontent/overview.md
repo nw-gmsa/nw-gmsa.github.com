@@ -574,6 +574,15 @@ FHIR examples for the Laboratory Order (LAB-1) and Laboratory Report (LAB-3) int
 - [Example: Laboratory Order](artifacts.html#example-laboratory-order) - LAB-1 examples in FHIR format
 - [Example: Laboratory Report](artifacts.html#example-laboratory-report) - LAB-3 examples in FHIR format
 
+## Security Considerations
+
+Includes:
+
+- OAuth2 Standard for [Authorisation](api-security.html#authorisation---oauth2)
+  - including use of JWT access tokens and future support for [SMART-on-FHIR Scopes](api-security.html#scopes)
+- FHIR AuditEvent/IHE BALP for [Audit Logging](api-security.html#audit-logging)
+- TLS for [Transport Security/Encryption](api-security.html#encryption)
+
 ## Developer Guides
 
 - [02 - Work Orders: A Worked Example](https://github.com/nw-gmsa/Testing/blob/main/notebooks/02-work-orders-worked-example.ipynb) - finding a laboratory's current work orders (`Task`-based filtering) for Liverpool GLH (ODS `K1S6S`), one of the regional LIMS the RIE integrates
