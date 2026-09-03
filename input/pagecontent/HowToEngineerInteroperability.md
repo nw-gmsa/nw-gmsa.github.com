@@ -441,6 +441,50 @@ semantic model needs additional funding and resourcing that a local project
 may not have. At times it's simply easier to switch to a PDF/document-based
 exchange than to invest in that structured semantic model.
 
+Workflow-only modelling is often the **default** outcome of HL7 v2
+integrations specifically. The basic data elements needed to turn that into a
+shared Interoperability Data Model are usually already present in the
+message, but end up modelled slightly differently on each point-to-point
+integration - which segment/field a given piece of information lands in, or
+which local code system it uses, varies from site to site. This is a large
+part of why HL7 v2 is often criticised as "not really a standard" - but, as
+this IG tries to demonstrate, it can be, following similar prior work done by
+Digital Health and Care Wales. FHIR doesn't automatically solve this either -
+in many cases it can make the problem worse, since FHIR's own flexibility
+(extensions, profiling, slicing) makes it just as easy for two systems to
+represent the same information differently. Where FHIR is used more
+consistently - for example, across many US EPR systems - it's usually
+because those systems are built against a shared, mandated interoperability
+data model such as **US Core**, not because FHIR is inherently more
+standardised than HL7 v2.
+
+This IG deliberately doesn't try to solve that problem from scratch. The
+Yorkshire and Humber Care Record has already done considerable work
+standardising FHIR for that region, and where possible we've followed it and
+married it to the Welsh work above. Separately, HL7
+Europe has started work on a core FHIR IG, which we've used as the base for
+FHIR in this guide. In effect, the HL7 v2/FHIR work in this guide is built by
+layering **EU + Wales + Yorkshire and Humber + North West Genomics** work on
+top of one another, rather than starting again from the base HL7 v2/FHIR
+standards - which is exactly the kind of reuse [Check for Existing Patterns
+Before Modelling New
+Ones](#check-for-existing-patterns-before-modelling-new-ones) above
+recommends doing at a regional/national level too, not only within this IG.
+
+On a practical level, that layering follows a general **Base → Core (Interoperability Model) →
+Specialty (Semantic Model)** modelling pattern: a base standard (HL7 v2/FHIR) is constrained
+into a national/regional **Core** model (US Core, or the
+EU/Wales/Yorkshire and Humber work layered together above), which is then
+constrained further into **Specialty models** for a specific clinical
+domain - and "specialty" here includes the **semantic** (clinical content)
+model, not just the technical/interoperability one. This IG follows that
+same Base → Core → Specialty pattern for genomics.
+
+<div class="alert alert-danger" role="alert">
+At the time of writing, the semantic models specific to genomics are still
+being developed alongside this IG.
+</div>
+
 **Bypassing semantic and interoperability data modelling entirely** is often
 caused by building directly against base models from HL7 v2, FHIR or UK Core
 (this doesn't include the common English NHS interoperability data models
