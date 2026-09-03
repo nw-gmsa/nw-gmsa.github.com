@@ -496,6 +496,25 @@ which is exactly the trap explored in [Examples of Common Interoperability
 Project Problems](#examples-of-common-interoperability-project-problems)
 above.
 
+All three patterns above are ultimately failures to properly build out one or
+more layers of the same underlying pattern:
+
+```mermaid
+flowchart LR
+    Base["<b>Base</b><br/>HL7 v2 / FHIR"]
+    Core["<b>Core</b><br/>(Interoperability Model)<br/>e.g. US Core, or the<br/>EU + Wales + Yorkshire<br/>and Humber work above"]
+    Specialty["<b>Specialty</b><br/>(Semantic Model)<br/>e.g. this IG's genomics<br/>models - in progress"]
+
+    Base --> Core --> Specialty
+```
+
+**Semantic-only modelling** effectively jumps straight from Base to
+Specialty's semantic content without a shared Core to reconcile it against.
+**Workflow-only modelling** stalls at Base or Core and never reaches a
+Specialty semantic model at all. **Bypassing modelling entirely** implements
+directly against Base (or a generic Core such as UK Core), without building
+out a Specialty model for the workflow actually being solved.
+
 ## Why the Clinical Pathway matters to developers
 
 This is why the Clinical Pathway Overview should not be treated as optional background reading for technical staff.
