@@ -3,3 +3,13 @@
     border-color: #eed3d7;
     color: #b94a48;
 }
+
+/* Embedded PlantUML/mindmap SVGs (see the <figure style="overflow-x:auto;">
+   wrapper pattern in pagecontent) carry a hard-coded inline width/height
+   from their generator - override it so the diagram scales down to fit its
+   container instead of always rendering at its full fixed pixel size. */
+figure svg {
+    max-width: 100% !important;
+    width: auto !important;
+    height: auto !important;
+}
