@@ -17,6 +17,21 @@ sequential structure, even though the two branches within it run
 concurrently and inform each other rather than being agreed once and never
 revisited.
 
+**A note on "top down".** In summary, this approach is top down - but not in
+the usual sense of management or central NHS organisations (the
+"penthouse") passing instructions down to the "engine rooms" actually
+delivering the work. The analogy is borrowed from Gregor Hohpe's [Architect
+Elevator](https://architectelevator.com/). Here, "top" means the
+**practitioner** - who is focused on the patient, the real top of this whole
+process - and "top down" means starting there and riding the elevator down
+through every floor in between: workflow, information requirements, data
+model, Interoperability Data Model, and only then implementation. Skipping
+floors - whether that's the penthouse handing instructions straight to the
+engine room, or a developer being handed a technical instruction with none
+of the floors in between - is exactly the trap explored in [Examples of
+Common Interoperability Project
+Problems](#examples-of-common-interoperability-project-problems) below.
+
 The Use Case format used in this project is deliberately structured so that different sections support different stages of the project — and, importantly, different people involved in the project.
 
 It is **not intended to be a technical specification written solely for developers**.
