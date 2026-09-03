@@ -6,8 +6,6 @@ Description:     """
 Only traced NHS Number **SHOULD** be used, un-traced NHS Numbers **MUST** be clearly indicated.
 """
 
-* ^purpose = """
-"""
 //* ^keyword[+] = #NHSDataDictionary "NHS Data Dictionary"
 
 * extension contains https://fhir.hl7.org.uk/StructureDefinition/Extension-UKCore-NHSNumberVerificationStatus named nhsNumberVerificationStatus 0..1

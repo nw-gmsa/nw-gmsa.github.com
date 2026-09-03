@@ -6,9 +6,6 @@ Description:     """
 Core Data Contract for FHIR Identifier, v2 CX and EI
 """
 
-* ^purpose = """
-"""
-
 * type 0..1 MS
 * type from NWIdentifierType
 * system 0..1 MS

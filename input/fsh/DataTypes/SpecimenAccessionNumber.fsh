@@ -6,9 +6,6 @@ Description:     """
 Uniquely identifies a Specimen across multiple laboratory systems.
 """
 
-* ^purpose = """
-"""
-
 //* ^keyword[+] = #NHSDataDictionary "NHS Data Dictionary"
 
 * type = $v2-0203#ACSN

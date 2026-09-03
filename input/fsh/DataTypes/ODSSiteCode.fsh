@@ -3,13 +3,6 @@ Parent:         http://hl7.org/fhir/StructureDefinition/Identifier
 Id:             OrganisationSiteIdentifier
 Title:          "Organisation Site Identifier"
 
-* ^purpose = """
-## Mapping
-
-- **HL7 FHIR** Location.identifier
-- **HL7 v2** Facility (PL.5)
-"""
-
 //* ^keyword[+] = #NHSDataDictionary "NHS Data Dictionary"
 
 * system 1..1
