@@ -131,6 +131,93 @@ No distinct future-state changes are currently defined for this process.
 - [DiagnosticReport](StructureDefinition-DiagnosticReport.html) - the Laboratory Report, carried in the FHIR Message R01 without its `presentedForm` PDF attachment
 - [Message Exchange [MQ]](MQ.html) - the FHIR Messaging pattern both O21 and R01 use
 
+### How the Two Event Messages Link Together
+
+If you haven't worked with **HL7 v2/FHIR Messaging "events"** before: an event
+message (`Bundle.type = message`) is a **self-contained, standalone package**,
+not a delta or update against some shared state the receiver is assumed to
+already hold. Its `MessageHeader.eventCoding` says what kind of event this is
+(`O21` = a laboratory order, `R01` = a laboratory report), and
+`MessageHeader.focus` points to the one resource that *is* the event (the
+`ServiceRequest` for O21, the `DiagnosticReport` for R01). Everything else in
+the Bundle exists to support that focus resource.
+
+This matters here because the O21 and R01 for the *same* laboratory order are
+sent as two **separate, independent messages**, at different times - the order
+copy as soon as it's entered in iGene, the report copy once testing is
+finalised, potentially days or weeks later. There is no FHIR `Reference`
+spanning across the two Bundles, because event messages don't work that way -
+each one has to stand on its own.
+
+**Why the R01 re-declares Patient and ServiceRequest instead of just
+referencing them.** In principle, since NE&Y already saw the order in the
+earlier O21, the R01 could just carry a bare identifier rather than the
+patient's name/DOB and the ServiceRequest's details all over again. HL7 v2
+`ORU_R01` (and its FHIR Messaging equivalent) doesn't work that way, because it
+is explicitly designed to also support an **unsolicited result** - a
+laboratory reporting a result for an order the receiving system never saw in
+the first place. To support that case, every R01 has to be self-sufficient:
+full Patient and order-identifying content, not just a thin reference.
+**In this NE&Y flow specifically, an unsolicited R01 should never actually
+happen** - the RIE always generates the O21 from the same underlying iGene
+order before the R01 is ever produced - but the message shape is the same
+either way, because it follows the general-purpose HL7 v2/FHIR Messaging
+pattern, not a flow-specific shortcut.
+
+**How the two events are linked in practice.** Because there's no cross-Bundle
+FHIR reference, correlating the O21 and R01 for the same order is done by
+matching **business identifiers** that both Bundles carry - primarily the
+Placer/Filler Order Number on `ServiceRequest.identifier` (see the note under
+[Laboratory Report R01 Mapping](#laboratory-report-r01-mapping) on exactly
+which identifier is present in the current example) and the patient's NHS
+Number. This is a standard integration-engine pattern - correlate by business
+identifier, not by FHIR reference - not something specific to this IG.
+
+**How the report references the order and specimen.** Inside the R01 Bundle
+itself, `DiagnosticReport.basedOn` references the `ServiceRequest` included in
+that same Bundle - a normal in-Bundle FHIR reference, since both resources are
+present together. `ServiceRequest.specimen`, in turn, references a `Specimen` -
+but as noted under [Laboratory Report R01
+Mapping](#laboratory-report-r01-mapping) below, the current worked example's
+`Specimen` reference is **dangling**: the `Specimen` resource itself isn't one
+of the R01 Bundle's entries, so it can't actually be resolved from the report
+message alone, only from the earlier O21.
+
+```mermaid
+flowchart TB
+    subgraph O21["FHIR Message O21 - event: Laboratory Order"]
+        direction TB
+        MH1["MessageHeader<br/>eventCoding = O21"]
+        SR1["ServiceRequest<br/>identifier: Placer/Filler<br/>Order Number"]
+        P1["Patient"]
+        PR1["PractitionerRole"]
+        SP1["Specimen"]
+        MH1 -->|focus| SR1
+        SR1 -->|subject| P1
+        SR1 -->|specimen| SP1
+        SR1 -->|requester| PR1
+    end
+
+    subgraph R01["FHIR Message R01 - event: Laboratory Report"]
+        direction TB
+        MH2["MessageHeader<br/>eventCoding = R01"]
+        DR["DiagnosticReport<br/>(new)"]
+        SR2["ServiceRequest<br/>re-declared - same Placer/<br/>Filler Order Number"]
+        P2["Patient<br/>re-declared"]
+        PR2["PractitionerRole<br/>re-declared"]
+        SP2["Specimen<br/>referenced only - not<br/>included in this Bundle"]
+        MH2 -->|focus| DR
+        DR -->|basedOn| SR2
+        DR -->|subject| P2
+        SR2 -->|specimen, dangling| SP2
+        SR2 -->|requester| PR2
+    end
+
+    SR1 -.->|"linked by matching business<br/>identifiers - not a FHIR reference,<br/>these are separate messages"| SR2
+
+    style SP2 stroke-dasharray: 5 5
+```
+
 ### Laboratory Order O21 Mapping
 
 <div class="alert alert-info" role="alert">
