@@ -520,7 +520,7 @@ that understanding along with the messages themselves. This has happened
 more than once with message-based interactions - moves to replace a working
 HL7 v2 message-based interaction with FHIR RESTful, driven more by ideology
 than by a problem FHIR actually solves and HL7 v2 doesn't, have tended to
-carry a correspondingly high failure rate.
+carry a correspondingly high failure/slow delivery rate.
 
 All four patterns above are, in one way or another, failures to properly
 build out - or properly combine - the same underlying layers:
