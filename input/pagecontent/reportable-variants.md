@@ -545,6 +545,22 @@ This raises two open questions, neither resolved by any current example:
    report) directly from data already available to DSS, rather than through the
    referral-number/patient-lookup chain above.
 
+   **As a potential second, complementary solution:** have **DLIMS send its lab
+   report through the Regional Integration Engine (RIE)**, the same route the Work
+   Order already travels (see [Future Process](#future-process) above), rather than
+   relying on the lookup chain above at all. The RIE already holds a copy of the Work
+   Order once iGene exports it, keyed by identifiers iGene itself assigned; if that
+   Work Order also carries the DLIMS Lab Number (per the first proposed direction
+   above), the RIE could match a DLIMS-originated report straight back to the correct
+   Work Order/Test ID itself - without Omics DSS needing to hold, or reconstruct via
+   iGene's `Patient`/`PatientDetails` tables, any patient-identifiable information at
+   all. This would need to sit alongside, not replace, the Omics DSS-produced FHIR
+   Genomic Report already described in [Future Process](#future-process) - DLIMS's own
+   report would need to be reconciled with (or feed into) that same report, not run as
+   a second, independent path to iGene. This is one option, not a decided design -
+   the options for resolving this linkage still need to be identified and compared
+   before one is chosen.
+
 ## Examples
 
 | Source                                                                                                                    | Example                                                                                                                       |
