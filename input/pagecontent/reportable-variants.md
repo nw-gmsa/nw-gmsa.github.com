@@ -520,6 +520,31 @@ This raises two open questions, neither resolved by any current example:
    broader usage, which allows LOH to be reported standalone for a gene/region with no
    companion variant required - that gap remains open.
 
+3. **The Data Model doesn't yet capture how a DSS result gets matched back to the
+   correct iGene Test ID** - needed to look up (and populate) iGene's own test-level
+   custom fields (see [iGene Variant Types](#igene-variant-types) above) from a
+   DSS-produced result. Omics DSS itself only holds the **DLIMS Lab Number**, patient
+   name and worksheet - it doesn't currently hold enough patient-identifiable
+   information to look the patient up in iGene directly (there's no NHS Number held in
+   DSS). The workaround in use today is a multi-step manual/semi-manual lookup:
+     1. Look up the iGene referral number from DLIMS, using the DLIMS Lab Number.
+     2. Use that referral number (which may or may not be the referral for the current
+        test) to look up the patient in iGene's `Patient`/`PatientDetails` tables.
+     3. Use that patient ID to list every test linked to the patient - if the correct
+        one can't be determined automatically, this is where human interaction is
+        currently needed to select it.
+     4. Once the correct Test ID is confirmed, use it to look up (and populate)
+        iGene's test-level custom fields.
+
+   **Proposed direction (not yet decided or reflected in the [Data
+   Models](#data-models) erDiagram above):** carry the **DLIMS Lab Number** itself into
+   the Data Model, most naturally as an identifier on `Specimen` rather than `Patient`
+   or `ServiceRequest` - since a single patient can have multiple specimens/samples,
+   `Specimen` is the level a lab-assigned sample number actually belongs at. That would
+   let a DSS result be linked back to the correct specimen (and from there, order and
+   report) directly from data already available to DSS, rather than through the
+   referral-number/patient-lookup chain above.
+
 ## Examples
 
 | Source                                                                                                                    | Example                                                                                                                       |
