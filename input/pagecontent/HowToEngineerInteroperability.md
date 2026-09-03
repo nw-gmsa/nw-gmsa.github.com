@@ -414,10 +414,10 @@ A model can accurately describe a prescription, laboratory result or clinical ob
 
 That process is often what the interoperability project actually needs to solve.
 
-### Three common data modelling failure patterns
+### Four common data modelling failure patterns
 
 In practice, most NHS interoperability projects that struggle with their data
-model fall into one of three patterns, depending on which discipline is
+model fall into one of four patterns, depending on which discipline is
 driving the work and whether the workflow side and the semantic side ever
 actually get reconciled into a single [Interoperability Data
 Model](#interoperability-data-model).
@@ -496,8 +496,30 @@ which is exactly the trap explored in [Examples of Common Interoperability
 Project Problems](#examples-of-common-interoperability-project-problems)
 above.
 
-All three patterns above are ultimately failures to properly build out one or
-more layers of the same underlying pattern:
+**Modelling in one standard only** treats HL7 v2, FHIR, XDS and ASTM as
+competing choices rather than as technical mechanisms that are expected to
+work together. On a practical level, most interoperability standards
+already convert between each other - XDS commonly converts to/from HL7 v2 or
+FHIR, HL7 v2 commonly converts to/from FHIR, and so on. That conversion also
+has to cope with older and newer versions of the same standard, or of
+different standards, coexisting in the same live estate - this is normal in
+a live implementation, not a defect that needs fixing: if it ain't broke,
+don't fix it. So, for example, if a system and an NHS Trust already have a
+working HL7 v2 interaction, they're unlikely to move that interaction to
+FHIR just to solve the same problem again (moving version within a single
+standard is uncommon enough on its own). FHIR tends to earn its place
+instead by solving problems in a genuinely new way - such as querying via a
+RESTful API - rather than as a like-for-like replacement for an
+already-working message-based interaction. The data model behind HL7 v2 is,
+in many workflow interactions, quite mature and well understood by the
+people running them; a blanket move away from HL7 v2 risks discarding that
+understanding along with the messages themselves. This has happened more
+than once with message-based interactions - moves to FHIR RESTful driven
+more by ideology than by a problem FHIR actually solves and HL7 v2 doesn't
+have tended to carry a correspondingly high failure rate.
+
+All four patterns above are, in one way or another, failures to properly
+build out - or properly combine - the same underlying layers:
 
 ```mermaid
 flowchart LR
@@ -513,7 +535,11 @@ Specialty's semantic content without a shared Core to reconcile it against.
 **Workflow-only modelling** stalls at Base or Core and never reaches a
 Specialty semantic model at all. **Bypassing modelling entirely** implements
 directly against Base (or a generic Core such as UK Core), without building
-out a Specialty model for the workflow actually being solved.
+out a Specialty model for the workflow actually being solved. **Modelling in
+one standard only** sits across all three layers - it discards a working
+Base/Core/Specialty stack built in one standard (typically HL7 v2) in favour
+of rebuilding the same stack in another (typically FHIR), rather than
+converting between the two where they're already expected to interoperate.
 
 ## Why the Clinical Pathway matters to developers
 
