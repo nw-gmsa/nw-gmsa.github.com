@@ -4,6 +4,19 @@
 <b>This Implementation Guide is, in several areas, a core standard for the English NHS</b> - the same role played by <a href="https://www.hl7.org/fhir/us/core/" target="_blank">US Core</a> in the US, or <a href="https://build.fhir.org/ig/hl7au/au-fhir-core/" target="_blank">AU Core</a> in Australia. Where that's the case, the Use Case format below isn't just project documentation for one local integration - it's how the underlying shared standard itself gets engineered, agreed and scaled across the region, not just delivered for a single project.
 </div>
 
+None of this is new. The Use Case format and the layered Base → Core →
+Specialty pattern described below largely restate long-established
+principles from **Domain Driven Design**, **Data Mesh**, **Data Contracts**,
+**IHE methodology** and **Enterprise Integration Patterns** - this IG doesn't
+invent a new approach, it applies established ones to NHS genomics
+interoperability. Basic software delivery approaches such as **waterfall**
+are still evident too: within a single Use Case, the Clinical Pathway →
+Workflow/Information requirements → Data model → Interoperability Data Model
+→ Implementation progression shown below is itself a phased, broadly
+sequential structure, even though the two branches within it run
+concurrently and inform each other rather than being agreed once and never
+revisited.
+
 The Use Case format used in this project is deliberately structured so that different sections support different stages of the project — and, importantly, different people involved in the project.
 
 It is **not intended to be a technical specification written solely for developers**.
