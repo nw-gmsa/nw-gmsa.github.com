@@ -40,6 +40,11 @@ Usage:  #definition
     * answerOption[+].valueCoding = $nwgmsa#VariantReviewReasonTimeElapsed
     * answerOption[+].valueCoding = $nwgmsa#VariantReviewReasonUrgent
     * answerOption[+].valueCoding = $nwgmsa#VariantReviewReasonFormalClassification
+    * item[+]
+      * linkId = "NOS/VariantReviewReason-designNote"
+      * type = #display
+      * text = "Covers similar ground to Reason For Variant Re-Interpretation Request in NW Genomic General Ask At Order Questions (NOS/VariantReinterpretationReason), which is a single free-text field - this form's four named reasons are kept as their own coded item rather than reused, since they are specific eligibility criteria for requesting a review, not a general free-text reason."
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
   * item[+]
     * type = #string

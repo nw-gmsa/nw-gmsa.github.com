@@ -260,12 +260,30 @@ Ask At Order Entry questions vary by order/test type, so they are **not** part o
 common core - each order/test type instead uses its own Ask At Order Entry
 Questionnaire, which `derivedFrom`/extends this common core Questionnaire:
 
+These Ask At Order Entry Questionnaires originated within this IG, modelling
+an existing digital order-entry screen rather than a paper form:
+
 | Order/Test Type                          | Ask At Order Entry Questionnaire                                                                                     |
 |-------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
 | General (default)                          | [NW Genomic General Test Order](Questionnaire-GenomicGeneralAskAtOrderEntry.html)                                     |
 | Distributed WGS (dWGS) sub-contracted order| [dWGS Sub-Order Manifest](Questionnaire-dWGSSubOrder.html) - see [dWGS](dWGS.html#ask-at-order-entry-the-dwgs-digital-manifest) |
 | Histocompatibility and Immunogenetics - HLA Tests (Transplant) | [HLA Tests - Transplant Ask At Order Entry](Questionnaire-HLATestsTransplantAskAtOrderEntry.html) - see [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html#ask-at-order-entry-questions) |
 | Histocompatibility and Immunogenetics - Chimerism Testing | [Chimerism Testing Blood (PB) Ask At Order Entry](Questionnaire-ChimerismTestingAskAtOrderEntry.html) - see [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html#chimerism-testing-ask-at-order-entry) |
+{:.grid}
+
+The Ask At Order Entry Questionnaires below instead originated from
+comparing this Questionnaire against the NW GLH's own [paper test request
+forms](https://mft.nhs.uk/nwglh/documents/test-request-forms/) - see [NW GLH
+Paper Test Request Forms](#nw-glh-paper-test-request-forms) below for that
+comparison. Where a paper form's own question turns out to already be
+covered by [NW Genomic General Test
+Order](Questionnaire-GenomicGeneralAskAtOrderEntry.html) (e.g. gestation of
+pregnancy), the paper-form Questionnaire carries a design note saying so
+rather than silently duplicating it - both remain independent Ask At Order
+Entry Questionnaires, since exactly one applies per order:
+
+| Order/Test Type                          | Ask At Order Entry Questionnaire                                                                                     |
+|-------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
 | Cancer - Solid Tumour (HRD and Tumour BRCA) | [HRD and Tumour BRCA Ask At Order Entry](Questionnaire-HRDTumourBRCAAskAtOrderEntry.html) |
 | Cancer - Haematology Oncology | [Haemato-Oncology Ask At Order Entry](Questionnaire-HaematoOncologyAskAtOrderEntry.html) |
 | Rare and Inherited Disease (generic) | [Rare Disease Genomic Testing Ask At Order Entry](Questionnaire-RareDiseaseGenomicAskAtOrderEntry.html) |
@@ -280,9 +298,7 @@ Questionnaire, which `derivedFrom`/extends this common core Questionnaire:
 
 #### NW GLH Paper Test Request Forms
 
-The nine rows above the divider in the table already covered digital
-order-entry screens (dWGS, Histocompatibility/Chimerism); the ten below it
-are the NW GLH's own [paper test request
+The ten forms above are the NW GLH's own [paper test request
 forms](https://mft.nhs.uk/nwglh/documents/test-request-forms/), each
 compared directly against this Questionnaire below using the same fields
 every paper order form needs to identify: NHS Number, Medical Record Number,

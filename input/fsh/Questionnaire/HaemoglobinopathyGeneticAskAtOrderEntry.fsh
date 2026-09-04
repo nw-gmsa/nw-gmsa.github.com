@@ -44,6 +44,11 @@ Usage:  #definition
   * linkId = "NOS/AntenatalPatient"
   * text = "Antenatal patient?"
   * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueBoolean"
+  * item[+]
+    * linkId = "NOS/AntenatalPatient-designNote"
+    * type = #display
+    * text = "Same underlying question as Neonatal/Prenatal/Neither in NW Genomic General Ask At Order Questions (SNM/118185001), simplified to yes/no here since the paper form does not distinguish a neonatal case."
+    * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 * item[+]
   * type = #integer
@@ -56,6 +61,11 @@ Usage:  #definition
     * operator = #=
     * answerBoolean = true
   * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
+  * item[+]
+    * linkId = "SNM/598151000005105-genetic-haem-designNote"
+    * type = #display
+    * text = "Same question (and code) as Patient gestation in NW Genomic General Ask At Order Questions (SNM/598151000005105) - repeated here because exactly one Ask At Order Entry Questionnaire applies per order, not because this is new content."
+    * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 * item[+]
   * type = #group

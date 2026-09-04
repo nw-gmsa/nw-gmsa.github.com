@@ -50,6 +50,11 @@ Usage:  #definition
     * extension[unit].valueCoding = $ucum#wk "Wk"
     * text = "Gestation of pregnancy"
     * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
+    * item[+]
+      * linkId = "SNM/598151000005105-prenatal-haem-designNote"
+      * type = #display
+      * text = "Same question (and code) as Patient gestation in NW Genomic General Ask At Order Questions (SNM/598151000005105) - repeated here because exactly one Ask At Order Entry Questionnaire applies per order, not because this is new content."
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
   * item[+]
     * type = #date
@@ -57,6 +62,11 @@ Usage:  #definition
     * code[+] = $sct#161714006 "Estimated date of delivery"
     * text = "Estimated date of delivery (EDD)"
     * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueDateTime"
+    * item[+]
+      * linkId = "SNM/161714006-prenatal-haem-designNote"
+      * type = #display
+      * text = "Same question (and code) as Patient expected delivery date in NW Genomic General Ask At Order Questions (SNM/161714006) - repeated here because exactly one Ask At Order Entry Questionnaire applies per order, not because this is new content."
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
   * item[+]
     * type = #dateTime
