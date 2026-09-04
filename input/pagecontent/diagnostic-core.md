@@ -19,66 +19,18 @@ to the episode of care they belong to.
 
 ```mermaid
 erDiagram
-
-    ServiceRequest ||--|{ Specimen : contains
-    Patient ||--|{ ServiceRequest : "NHSNumber or PatientAccessionIdentifier"
-
-    Patient ||--|{ DiagnosticReport : "NHSNumber or PatientAccessionIdentifier"
-    ServiceRequest ||--|{ DiagnosticReport : contains
-    HospitalSpell ||--|{ ServiceRequest : "HospitalSpellProviderIdentifier"
-
-    HospitalSpell ||--|{ DiagnosticReport : "HospitalSpellProviderIdentifier"
-
-    ServiceRequest {
-        identifier PlacerOrderNumber
-        identifier FillerOrderNumber
-        identifier TestAccessionIdentifier
-        date TestOrderDate
-        code NGTDTestCode
-        code RequestingOrganisationCode
-        code OrderingProviderIdentifier
-        string ClinicalDetails
-        code Performer
-        reference Specimen
-        reference Patient
-        reference HospitalSpellProviderIdentifier
-    }
-
-
-    Patient {
-        identifier NHSNumber
-        identifier HospitalNumber
-        identifier PatientAccessionIdentifier
-        string PatientGivenName
-        string PatientFamilyName
-        date DateOfBirth
-        string PostCode
-        code AdministrativeSex
-    }
-
-    Specimen {
-        identifier SpecimenAccessionIdentifier
-        identifier ShipmentTrackingNumber
-        identifier FMIIdentifier
-        reference Patient
-        code SpecimenTypeCode
-        date SpecimenDispatchDate
-        date SpecimenTakenDateTime
-        date SpecimenReceivedDateTime
-    }
-
-    DiagnosticReport {
-        identifier TestAccessionIdentifier
-        reference FillerOrder
-        reference Patient
-        code NGTDTestCode
-        date ReportStatusDateTime
-        reference HospitalSpellProviderIdentifier
-    }
-    HospitalSpell {
-        identifier HospitalSpellProviderIdentifier
-    }
+    Patient ||--|{ ServiceRequest : places
+    HospitalSpell ||--o{ ServiceRequest : links
+    ServiceRequest ||--o{ Specimen : contains
+    ServiceRequest ||--|{ DiagnosticReport : produces
+    Patient ||--|{ DiagnosticReport : subject
+    HospitalSpell ||--o{ DiagnosticReport : links
 ```
+
+This is deliberately a **high-level (level 1) view** - just the entities and
+how they relate. Field-level (level 2) diagrams, showing the actual
+attributes each entity carries, are on the two archetype Questionnaire pages
+below.
 
 ## Archetype Questionnaires
 
@@ -104,7 +56,9 @@ flowchart LR
   questions are added by **Ask At Order Entry Questionnaires**, which
   `derivedFrom`/extend this common core - see [Order Entry
   Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions) for
-  the full list.
+  the full list. `ServiceRequest` itself also splits into `OriginalOrder` and
+  `FillerOrder` - see [Original Order and Filler
+  Order](Questionnaire-GenomicTestOrder.html#original-order-and-filler-order).
 - **[Genomic Test Report](Questionnaire-GenomicTestReport.html)** - the common
   core report metadata (patient, order/report identifiers, dates, status,
   conclusion, performers) shared by every report. Individual test findings are
@@ -116,58 +70,3 @@ flowchart LR
 Each archetype's own page carries the field-by-field detail this summary page
 doesn't: which [HL7 FHIR profile](artifacts.html) and [HL7 v2
 segment](hl7v2.html) each field maps onto, ready to implement against.
-
-### Original Order and Filler Order
-
-`ServiceRequest` may also be split into two logical entities called
-`OriginalOrder` and `FillerOrder`. The former represents the order received by
-the Order Filler from the Order Placer, and the latter is orders the `Order
-Filler` creates to fulfil that order. These are often also called `reflex`,
-`work-order` or `sub-contract` orders - both are structurally the same
-[Genomic Test Order](Questionnaire-GenomicTestOrder.html) archetype, just
-created by a different actor.
-
-```mermaid
-erDiagram
-
-    OriginalOrder ||--|{ FillerOrder : "has (FillerOrderNumber = FillerGroupNumber)"
-
-    OriginalOrder {
-        identifier PlacerOrderNumber
-        identifier FillerOrderNumber
-        code NGTDTestCode
-        code RequestingOrganisationCode
-        reference Specimen
-        reference Patient
-        reference HospitalSpellProviderIdentifier
-    }
-
-    FillerOrder {
-        code OrderStatus
-        date TestOrderDate
-        identifier TestAccessionIdentifier
-        code NGTDTestCode
-        string ClinicalDetails
-        code Performer
-        reference Specimen
-        reference Patient
-        reference OriginalOrder
-        reference HospitalSpellProviderIdentifier
-    }
-```
-
-In IHE Laboratory Testing Workflow, the Original Order is the key entity in
-[LAB-1](LTW.html#diagnostic-testing), and the Filler Order is the key entity
-in [LAB-4](LTW.html#work-order-and-test-result-management-lab-4-and-lab-5) -
-see [Genomic Test Order](Questionnaire-GenomicTestOrder.html) for the
-field-by-field mapping both share.
-
-#### Filler Order Intent
-
-| Type                | Description                                                                                                                                                     | IHE PALM | Created by   | Original Order Intent | Filler Order Intent   |
-|---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|--------------|----------------------------------------|-----------------------|
-| Laboratory Order    | A request for one or more laboratory investigations submitted by the requesting clinician or system.                                                            | LAB-1    | Order Placer | order / reflex                         |                       | 
-| Work Order          | A subordinate order created by the laboratory to organise and fulfil part of the overall Laboratory Order.                                                      | LAB-4    | Order Filler |                                        | instance-order       | 
-| Subcontracted Order | A laboratory order forwarded to another laboratory for fulfilment, for example when a specialised test is referred to an external provider.                     | LAB-35   | Order Filler |                                        | filler-order |
-| Reflex Order        | A new order created automatically by the Order Filler based on previous test results, for example when pathology findings automatically trigger a genomic test. | LAB-35   | Order Filler |                                        | reflex                | 
-{:.grid}

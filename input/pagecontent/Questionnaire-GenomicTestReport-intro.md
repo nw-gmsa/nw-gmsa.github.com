@@ -28,11 +28,65 @@ Order](Questionnaire-GenomicTestOrder.html) on the order side.
 <b>HL7 v2 Segment:</b> <a href="hl7v2.html#obr" _target="_blank">OBR</a>
 </div>
 
-<figure style="overflow-x:auto;">
-{%include LaboratoryReport-mindmap.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">Laboratory Report - MindMap</p>
-</figure>
-<br clear="all">
+This is a **level 2** (field-level) view of the [basic model](diagnostic-core.html#entity-relationship-diagram)
+introduced in Diagnostic Core, showing the entities and key attributes a
+Genomic Test Report actually carries:
+
+```mermaid
+erDiagram
+    Patient ||--|{ DiagnosticReport : subject
+    HospitalSpell ||--o{ DiagnosticReport : encounter
+    ServiceRequest |o--o{ DiagnosticReport : "basedOn (optional)"
+    DiagnosticReport }o--o{ PractitionerRole : "performer / resultsInterpreter"
+    PractitionerRole }o--|| Organization : organization
+    DiagnosticReport ||--o{ Specimen : specimen
+    DiagnosticReport ||--o{ Observation : "result (Report Panels)"
+
+    Patient {
+        Identifier nhsNumber
+        Identifier medicalRecordNumber
+    }
+
+    HospitalSpell {
+        Identifier hospitalProviderSpellIdentifier
+    }
+
+    ServiceRequest {
+        Identifier orderIdentifier "Placer/Filler Order Number"
+    }
+
+    DiagnosticReport {
+        Identifier reportIdentifier
+        code code "Procedure/Test Code"
+        dateTime effectiveDateTime "Report Date"
+        code status "Report Status"
+        string conclusion
+        CodeableConcept conclusionCode "Outcome"
+    }
+
+    PractitionerRole {
+        Identifier practitionerIdentifier
+    }
+
+    Organization {
+        Identifier organisationCode
+    }
+
+    Specimen {
+        Identifier specimenId
+        Identifier accessionIdentifier
+    }
+
+    Observation {
+        code code "Panel-specific finding"
+    }
+```
+
+`ServiceRequest` is shown as **optional** (`basedOn`) because it is only
+present for a **closed-loop** report - one answering a specific prior order
+the reporting system already knows about. An **unsolicited** report,
+produced without a matching order ever having been received, has no order to
+reference - see [Order Reference](#order-reference) below.
 
 ### Diagnostic Report
 
@@ -117,9 +171,38 @@ Treat as mandatory for reflex or subcontracted orders.
 <b>HL7 v2 Segment:</b> <a href="hl7v2.html#obr" _target="_blank">OBR</a>
 </div>
 
+##### Order Reference
+
+<div class="alert alert-info" role="alert">
+<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-ServiceRequest.html" _target="_blank">ServiceRequest</a> 
+</div>
+<div class="alert alert-info" role="alert">
+<b>HL7 v2 Segment:</b> <a href="hl7v2.html#orc" _target="_blank">ORC</a>
+</div>
+
+`DiagnosticReport.basedOn` references the `ServiceRequest` (order, per
+[Genomic Test Order](Questionnaire-GenomicTestOrder.html)) that this report
+answers, carried in HL7 v2 as `ORC-2`/`ORC-3` (see the Order Number row
+below).
+
+- **Closed-loop referral:** where the reporting system already holds the
+  original order (e.g. it filled that order itself, or was told about it via
+  a prior [LAB-1](LTW.html#laboratory-order-lab-1)), `basedOn` is populated
+  and this section is present.
+- **Unsolicited report:** `ORU_R01` (and its FHIR Message equivalent) is
+  explicitly designed to also support reporting a result for an order the
+  receiving system never saw in the first place. In that case there is no
+  `ServiceRequest` to reference, `basedOn` is absent, and this section - and
+  the Order Number row below - simply doesn't apply.
+
+See [ctDNA Management Information - How the Two Event Messages Link
+Together](NEYManagementInformation.html#how-the-two-event-messages-link-together)
+for a fuller worked explanation of solicited vs unsolicited reports in this
+IG.
+
 | Name                     | Description                                                                                                                           | Value Set / Data Type                                                                          | Cardinality | HL7 v2 ORU_RO1 Message                   | HL7 FHIR [DiagnosticReport](StructureDefinition-DiagnosticReport.html) | HL7 FHIR Resource (RESTful)                               |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|-------------|------------------------------------------|------------------------------------------------------------------------|-----------------------------------------------------------|
-| Order Number             | The Unique order number assigned by the Order Placer (order comms or EHR), that requested the report.                                 | [Order Identifier](StructureDefinition-OrderIdentifier.html)                                   | 1..1        | [ORC](hl7v2.html#orc)-2                  | DiagnosticReport.basedOn                                               | [ServiceRequest](StructureDefinition-ServiceRequest.html) |
+| Order Number             | The Unique order number assigned by the Order Placer (order comms or EHR), that requested the report - absent for an unsolicited report, see [Order Reference](#order-reference) above. | [Order Identifier](StructureDefinition-OrderIdentifier.html)                                   | 0..1        | [ORC](hl7v2.html#orc)-2                  | DiagnosticReport.basedOn                                               | [ServiceRequest](StructureDefinition-ServiceRequest.html) |
 | Report Number            | Identifies the report, assigned by Order Filler (LIMS)                                                                                | [Report Identifier](StructureDefinition-ReportIdentifier.html)                                 | 1..1        | [OBR](hl7v2.html#obr)-3                  | DiagnosticReport.identifier[ReportNumber]                              |                                                             |
 | (Order) Procedure Code   | For Genomics this is Test Directory Code. (For Radiology this is NICIP code)                                                          | See below                                                                                      | 1..1        | [OBR](hl7v2.html#obr)-4                  | DiagnosticReport.code                                                  |                                                             |
 | Account(/Visit) Number   | Assigned by the Order Placer where it is known as spell or episode id. It is used by all diagnostics to link tests to a spell/episode | [Hospital Provider Spell Identifier](StructureDefinition-HospitalProviderSpellIdentifier.html) |             | PV1-19                                   | DiagnosticReport.encounter                                             |                                                             |
@@ -136,13 +219,27 @@ Treat as mandatory for reflex or subcontracted orders.
 {:.grid}
 
 
-### Results
+## Results
 
-<div class="alert alert-danger" role="alert">
-This is for elaboration and subject to change.
-</div>
+`DiagnosticReport.result` (see [Detailed Model](#detailed-model) above) is
+where the individual findings of a test live. This is specific to genomics
+and focused on the requirements of general clinicians, not genomic
+specialists, so this section will tend to be an extract of the wider
+[Genomics Reporting Implementation
+Guide](https://build.fhir.org/ig/HL7/genomics-reporting/general.html) rather
+than a complete restatement of it. It divides into two parts:
 
-Results section is specific to genomics and is focused on the requirements of general clinicians, not genomic specialists. For this reason this section will tend to be an extract of the wider genomics reporting specifications.
+- **[Report Panels](#report-panels)** - the computable data models (FHIR
+  Questionnaires) this IG has built for specific kinds of result, each
+  `derivedFrom`/extended from [Genomic Test
+  Report](Questionnaire-GenomicTestReport.html) the same way Ask At Order
+  Entry Questionnaires extend [Genomic Test
+  Order](Questionnaire-GenomicTestOrder.html).
+- **[Genomic Results](#genomic-results)** - the underlying HL7 FHIR Genomics
+  Reporting profiles and resources those panels (and this IG's other genomic
+  content) are built from. Some of these are also modelled as a Report Panel
+  Questionnaire above - where that's the case, the table below says so rather
+  than repeating the same content twice.
 
 ```mermaid
 classDiagram
@@ -162,63 +259,50 @@ classDiagram
     Variant <|..|> TherapeuticImplication
 ```
 
-A more detailed mapping of the results section of the laboratory report, see [Genomics Reporting Implementation Guide](https://build.fhir.org/ig/HL7/genomics-reporting/general.html)
+### Report Panels
 
+[Genomic Test Report](Questionnaire-GenomicTestReport.html) only models the
+report-level metadata common to every report (patient, order/report
+identifiers, dates, status, conclusion, performers) - its `/Results` group
+deliberately doesn't model individual test findings inline. Instead, each
+individual result is carried under `DiagnosticReport.result` as a separate,
+panel-specific Questionnaire, one per kind of test - each documenting the
+discrete fields a particular result type needs, in the same
+Questionnaire-as-computable-data-model style as [Genomic Test
+Report](Questionnaire-GenomicTestReport.html) and [Genomic Test
+Order](Questionnaire-GenomicTestOrder.html) themselves (see [How To Engineer
+(scale and deliver)
+Interoperability](HowToEngineerInteroperability.html#documenting-the-data-model)).
 
-| Name              | LOINC   | Value Set / Data Type | Example | Cardinality | HL7 v2 ORU_RO1 Message                   | HL7 v2 OBX-4 | HL7 FHIR Resource (RESTful)                                                                                                                                                     |
-|-------------------|---------|----------|---------|-------------|------------------------------------------|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Narrative Report  | 51969-4 |          |         | 1..1        | [OBX (type=ED)](hl7v2.html#obx-type--ed) | 1            | DiagnosticReport.presentedForm [Attachment](StructureDefinition-NWAttachment.html) and Binary                                                                                   |
-| Gene studied [ID] | 48018-6 |          | ACAD9   | 0..1        | [OBX](hl7v2.html#obx)                    | 1.a          | [Observation](StructureDefinition-Observation.html) Profile [Variant](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-variant.html).component:gene-studied |
+| Report Panel Questionnaire | Code | Used In | Status |
+|---|---|---|---|
+| [Reportable Variant Result Panel](Questionnaire-ReportableVariantResultPanel.html) | LOINC `81250-3` "Discrete genetic variant panel" | [OMICS DSS Result Integration](reportable-variants.html) | Grounded in real `Variant` examples |
+| [BCR-ABL Monitoring Result Panel](Questionnaire-BCRABLResultPanel.html) | LOINC `69380-4` "BCR-ABL1 fusion transcript ... [# Ratio] ... (International Scale)" | [BCR-ABL Monitoring](BCRABLMonitoring.html) | Grounded in real `Observation` examples |
+| [Chimerism Testing Result Panel](Questionnaire-ChimerismResultPanel.html) | Local code (STR-based chimerism testing) | [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html) | Candidate mapping, not yet confirmed against a real example - see the Questionnaire's own description |
 {:.grid}
 
-### Genomic Study
+New result types should follow this pattern - add a new panel Questionnaire
+(rather than extending [Genomic Test
+Report](Questionnaire-GenomicTestReport.html) itself), and list it in the
+table above.
 
-Description: [Genomic Study](https://build.fhir.org/ig/HL7/genomics-reporting/general.html#genomic-study)
+### Genomic Results
 
-#### Genomic Study (Procedure)
+The underlying HL7 FHIR profiles/resources this IG's genomic results are
+built from - either directly, or (where noted) via one of the [Report
+Panels](#report-panels) above:
 
-<div class="alert alert-info" role="alert">
-<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-GenomicStudy.html" _target="_blank">Procedure Genomic Study</a> 
-</div>
-
-#### Genomic Study Analysis
-
-<div class="alert alert-danger" role="alert">
-This section is currently being elaborated and subject to change. It is expected to include Gene studied [ID] (48018-6) and Gene mutations tested (36908-2), possibly as a requirement from oncology.
-</div>
-This appears to be part of [FHIR R6 GenomicStudy](https://build.fhir.org/genomicstudy.html)
-
-| Name                        | LOINC   | Value Set / Data Type                               | Example | Cardinality | HL7 v2 OBX-4 | FHIR Observation Profile                                                                                                                                   |
-|-----------------------------|---------|-----------------------------------------------------|---------|-------------|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| regions                     |         |                                                     |         |             |              | [Genomic Study Analysis ](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-genomic-study-analysis.html).extension[regions]             |
-| Genomic source class [Type] | 48002-0 | [Genetic variant source](https://loinc.org/LL378-1) | Somatic | 0..1        |            | [Genomic Study Analysis](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-genomic-study-analysis.html).extension[genomic-source-class] |
-| specimen                    |         |                                                     |         |             |           | [Genomic Study Analysis](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-genomic-study-analysis.html).extension[specimen]             |
+| Genomic Result | Code | Used In | Report Panel |
+|---|---|---|---|
+| [Genomic Study (Procedure)](StructureDefinition-GenomicStudy.html) - [description](https://build.fhir.org/ig/HL7/genomics-reporting/general.html#genomic-study) | - | [Examples](#examples) below (Lynch syndrome, cystic fibrosis carrier) | *(none yet)* |
+| [Genomic Study Analysis](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-genomic-study-analysis.html) (extension on Genomic Study) | LOINC `48002-0` "Genomic source class [Type]" | Not yet confirmed against a real example | *(none yet)* |
+| [Laboratory Analyte Result (Observation)](StructureDefinition-LaboratoryAnalyteResult.html) | - | [BCR-ABL Monitoring](BCRABLMonitoring.html) | [BCR-ABL Monitoring Result Panel](Questionnaire-BCRABLResultPanel.html) |
+| [Reportable Variant (Observation)](StructureDefinition-Variant.html) | LOINC `48018-6` "Gene studied [ID]" (component) | [OMICS DSS Result Integration](reportable-variants.html) | [Reportable Variant Result Panel](Questionnaire-ReportableVariantResultPanel.html) |
+| [Molecular Consequence (Observation)](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-molecular-consequence.html) | Sequence Ontology (`functional-effect`), e.g. `SO_0001786` loss_of_heterozygosity | [OMICS DSS Result Integration](reportable-variants.html) - see [Outstanding Issues](reportable-variants.html#outstanding-issues) for why Loss of Heterozygosity is modelled this way | [Reportable Variant Result Panel](Questionnaire-ReportableVariantResultPanel.html) |
+| [Diagnostic Implication (Observation)](StructureDefinition-DiagnosticImplication.html) - [description](https://build.fhir.org/ig/HL7/genomics-reporting/general.html#genomic-implications) | - | [Examples](#examples) below (Lynch syndrome, cystic fibrosis carrier) | *(none yet)* |
+| [Histocompatibility and Immunogenetic Reporting](https://hl7.org/fhir/uv/genomics-reporting/histocompatibility.html) | - | [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html) | [Chimerism Testing Result Panel](Questionnaire-ChimerismResultPanel.html) (candidate mapping by analogy, not confirmed - see the Questionnaire's own description) |
+| Cytogenetic Genomic Report *(this IG's own future/proposed model - no balloted HL7 profile exists yet)* | LOINC cytogenetics panels, e.g. `62389-2` (master panel), `62356-1` (ISCN), `62367-8` (FISH) | [Haemato-Oncology Diagnostic Pathway - Future genomic data model (proposed)](HaematoOncologyPathway.html#future-genomic-data-model-proposed) | *(none yet - proposed direction only)* |
 {:.grid}
-
-### Findings / Observations
-
-
-#### Laboratory Analyte Result
-
-<div class="alert alert-info" role="alert">
-<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-LaboratoryAnalyteResult.html" _target="_blank">Laboratory Analyte Result (Observation)</a> 
-</div>
-
-#### Reportable Variant
-
-<div class="alert alert-info" role="alert">
-<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-Variant.html" _target="_blank">Variant (Observation)</a> 
-</div>
-
-### Implications
-
-Description: [Genomic Implications](https://build.fhir.org/ig/HL7/genomics-reporting/general.html#genomic-implications)
-
-#### Diagnostic Implication
-
-<div class="alert alert-info" role="alert">
-<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-DiagnosticImplication.html" _target="_blank">Diagnostic Implication (Observation)</a> 
-</div>
 
 ## Examples
 
@@ -250,30 +334,3 @@ HL7 LRI (Ref A) Example 3 (5.9.1.3)  - SIMPLE VARIANT – MUTATION ANALYSIS WITH
 - [Genomic Study - Cystic fibrosis carrier testing](Procedure-7b362aa5-41a7-4168-94b4-f12dff0dfb2a.html) <span class="badge badge-primary">Genomics</span>
 - [Diagnostic Implication - Cystic Fibrosis Carrier](Observation-a954a98c-f427-4968-9022-8b760de66628.html) <span class="badge badge-primary">Genomics</span>
 - [Variant CFTR](Observation-bca547c1-78a5-41be-8cfc-03c05805ac85.html) <span class="badge badge-primary">Genomics</span>
-
-## Report Panels
-
-[Genomic Test Report](Questionnaire-GenomicTestReport.html) only models the
-report-level metadata common to every report (patient, order/report
-identifiers, dates, status, conclusion, performers) - its `/Results` group
-deliberately doesn't model individual test findings inline. Instead, each
-individual result is carried under `DiagnosticReport.result` as a separate,
-panel-specific Questionnaire, one per kind of test - each documenting the
-discrete fields a particular result type needs, in the same
-Questionnaire-as-computable-data-model style as [Genomic Test
-Report](Questionnaire-GenomicTestReport.html) and [Genomic Test
-Order](Questionnaire-GenomicTestOrder.html) themselves (see [How To Engineer
-(scale and deliver)
-Interoperability](HowToEngineerInteroperability.html#documenting-the-data-model)).
-
-| Report Panel Questionnaire | Code | Used In | Status |
-|---|---|---|---|
-| [Reportable Variant Result Panel](Questionnaire-ReportableVariantResultPanel.html) | LOINC `81250-3` "Discrete genetic variant panel" | [OMICS DSS Result Integration](reportable-variants.html) | Grounded in real `Variant` examples |
-| [BCR-ABL Monitoring Result Panel](Questionnaire-BCRABLResultPanel.html) | LOINC `69380-4` "BCR-ABL1 fusion transcript ... [# Ratio] ... (International Scale)" | [BCR-ABL Monitoring](BCRABLMonitoring.html) | Grounded in real `Observation` examples |
-| [Chimerism Testing Result Panel](Questionnaire-ChimerismResultPanel.html) | Local code (STR-based chimerism testing) | [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html) | Candidate mapping, not yet confirmed against a real example - see the Questionnaire's own description |
-{:.grid}
-
-New result types should follow this pattern - add a new panel Questionnaire
-(rather than extending [Genomic Test
-Report](Questionnaire-GenomicTestReport.html) itself), and list it in the
-table above.

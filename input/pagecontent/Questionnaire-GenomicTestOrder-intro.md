@@ -33,11 +33,62 @@ Report](Questionnaire-GenomicTestReport.html) on the report side.
 <b>HL7 v2 Segment:</b> <a href="hl7v2.html#orc" _target="_blank">ORC</a>
 </div>
 
-<figure style="overflow-x:auto;">
-{%include Laboratory-Order-mindmap.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">Genomic Test Order Sections</p>
-</figure>
-<br clear="all"> 
+This is a **level 2** (field-level) view of the [basic model](diagnostic-core.html#entity-relationship-diagram)
+introduced in Diagnostic Core, showing the entities and key attributes a
+Genomic Test Order actually carries:
+
+```mermaid
+erDiagram
+    Patient ||--|{ ServiceRequest : subject
+    HospitalSpell ||--o{ ServiceRequest : encounter
+    ServiceRequest ||--o{ Specimen : specimen
+    ServiceRequest }o--|| PractitionerRole : requester
+    PractitionerRole }o--|| Organization : organization
+    ServiceRequest }o--o{ Condition : reasonCode
+
+    Patient {
+        Identifier nhsNumber
+        Identifier medicalRecordNumber
+        date birthDate
+        string postalCode
+    }
+
+    HospitalSpell {
+        Identifier hospitalProviderSpellIdentifier
+        code serviceType
+    }
+
+    ServiceRequest {
+        Identifier orderIdentifier "Placer"
+        Identifier orderFillerNumber "Filler"
+        Identifier orderGroupNumber
+        code code "Procedure/Test Code"
+        dateTime authoredOn
+        string note "Clinical Details"
+    }
+
+    PractitionerRole {
+        Identifier practitionerIdentifier "Ordering Practitioner"
+    }
+
+    Organization {
+        Identifier organisationCode "Ordering Facility"
+    }
+
+    Specimen {
+        Identifier specimenId
+        CodeableConcept type
+        CodeableConcept bodySite
+        Identifier accessionIdentifier
+        Identifier shipmentTrackingNumber
+        dateTime collectedDateTime
+        dateTime receivedTime
+    }
+
+    Condition {
+        CodeableConcept code "Suspected Condition"
+    }
+```
 
 ## Diagnostic Order
 
@@ -142,6 +193,59 @@ Treat as mandatory for reflex or subcontracted orders.
 | (Order) Procedure Code - Genomic Test Code            | [Genomic Test Directory](ValueSet-GenomicTestCodes.html)                | 1..1        | [OBR](hl7v2.html#obr)-4 | ServiceRequest.code       |                               
 {:.grid}
 
+### Original Order and Filler Order
+
+`ServiceRequest` may also be split into two logical entities called
+`OriginalOrder` and `FillerOrder`. The former represents the order received by
+the Order Filler from the Order Placer, and the latter is orders the `Order
+Filler` creates to fulfil that order. These are often also called `reflex`,
+`work-order` or `sub-contract` orders - both are structurally the same
+Genomic Test Order archetype above, just created by a different actor.
+
+```mermaid
+erDiagram
+
+    OriginalOrder ||--|{ FillerOrder : "has (FillerOrderNumber = FillerGroupNumber)"
+
+    OriginalOrder {
+        identifier PlacerOrderNumber
+        identifier FillerOrderNumber
+        code NGTDTestCode
+        code RequestingOrganisationCode
+        reference Specimen
+        reference Patient
+        reference HospitalSpellProviderIdentifier
+    }
+
+    FillerOrder {
+        code OrderStatus
+        date TestOrderDate
+        identifier TestAccessionIdentifier
+        code NGTDTestCode
+        string ClinicalDetails
+        code Performer
+        reference Specimen
+        reference Patient
+        reference OriginalOrder
+        reference HospitalSpellProviderIdentifier
+    }
+```
+
+In IHE Laboratory Testing Workflow, the Original Order is the key entity in
+[LAB-1](LTW.html#diagnostic-testing), and the Filler Order is the key entity
+in [LAB-4](LTW.html#work-order-and-test-result-management-lab-4-and-lab-5) -
+both share the field-by-field mapping in [Diagnostic
+Workflow](#diagnostic-workflow) above.
+
+#### Filler Order Intent
+
+| Type                | Description                                                                                                                                                     | IHE PALM | Created by   | Original Order Intent | Filler Order Intent   |
+|---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|--------------|----------------------------------------|-----------------------|
+| Laboratory Order    | A request for one or more laboratory investigations submitted by the requesting clinician or system.                                                            | LAB-1    | Order Placer | order / reflex                         |                       | 
+| Work Order          | A subordinate order created by the laboratory to organise and fulfil part of the overall Laboratory Order.                                                      | LAB-4    | Order Filler |                                        | instance-order       | 
+| Subcontracted Order | A laboratory order forwarded to another laboratory for fulfilment, for example when a specialised test is referred to an external provider.                     | LAB-35   | Order Filler |                                        | filler-order |
+| Reflex Order        | A new order created automatically by the Order Filler based on previous test results, for example when pathology findings automatically trigger a genomic test. | LAB-35   | Order Filler |                                        | reflex                | 
+{:.grid}
 
 ### Order Entry Questions
 

@@ -34,7 +34,7 @@ confirm a haematological malignancy subtype and guide treatment choice.
 ```mermaid
 flowchart LR
     A[Suspected blood cancer -<br/>single referral placed] --> B[Sample taken]
-    B --> C[Cytogenetic assessment<br/>(Shire LIMS) -<br/>Cytogenetic Genomic Report]
+    B --> C["Cytogenetic assessment<br/>(Shire LIMS) -<br/>Cytogenetic Genomic Report"]
     C -->|If indicated| D[Molecular genomic<br/>reflex testing]
     C --> E[Combined report to<br/>referring clinician]
     D --> E

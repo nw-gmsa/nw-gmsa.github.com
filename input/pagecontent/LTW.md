@@ -514,7 +514,7 @@ Device ->> LIMS: Send Test Results Management LAB-5 R22/R32
 ### Work Order Management (LAB-4)
 
 <div class="alert alert-info" role="alert">
-<b>Domain Archetype:</b> <a href="diagnostic-core.html#original-order-and-filler-order" _target="_blank">Diagnostic Core - Filler Order</a> 
+<b>Domain Archetype:</b> <a href="Questionnaire-GenomicTestOrder.html#original-order-and-filler-order" _target="_blank">Genomic Test Order - Filler Order</a> 
 </div>
 
 Used by these Use Cases:
