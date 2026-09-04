@@ -26,6 +26,15 @@ Missed](Questionnaire-GenomicTestOrder.html#common-fields-we-may-have-missed)
 for the same open question (no confirmed FHIR CodeSystem binding for HPO
 exists anywhere in this IG yet).
 
+The real `HP:0000000` codes for all 38 terms **have** since been confirmed
+against the Genomics England terminology server
+(`https://ontoserver.aws.gel.ac/fhir`) - see [GMSWGSGuideHPOTermsToSCT
+ConceptMap](ConceptMap-GMSWGSGuideHPOTermsToSCT.html), which maps each
+confirmed HPO code to SNOMED CT (22 of 38 resolved; the rest are not in
+that server's own `sct-to-hpo` map). This CodeSystem's own codes remain the
+local slugs above, not the confirmed HPO codes - replacing them is a
+separate decision not made here.
+
 Real usage should resolve terms against the live HPO ontology (canonically
 `http://purl.obolibrary.org/obo/hp.owl`) rather than being limited to this
 list - the source form itself says as much. This CodeSystem exists only so
