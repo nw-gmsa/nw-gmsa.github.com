@@ -148,84 +148,115 @@ will be populated as NHS England's national dWGS rollout matures.
 - [ServiceRequest](StructureDefinition-ServiceRequest.html) - the `LAB-35` sub-order, `requisition` shared across a family's participants
 - [Specimen](StructureDefinition-Specimen.html) - primary and dispatched specimen identifiers on a single resource
 - [Patient](StructureDefinition-Patient.html) - NHS number and NGIS participant identifier
-- [dWGS Sub-Order Manifest](Questionnaire-dWGSSubOrder.html) - the Ask at Order Entry Questionnaire for this manifest
+- [dWGS Sub-Order Manifest](Questionnaire-dWGSSubOrder.html) - the CSV manifest description (all 42 fields)
+- [dWGS Ask At Order Entry Questions](Questionnaire-dWGSAskAtOrderEntry.html) - the Ask At Order Entry Questionnaire, `derivedFrom`/extending [Genomic Test Order](Questionnaire-GenomicTestOrder.html)
 - [NW IdentifierType](ValueSet-NWIdentifierType.html) - the `ZCID` container identifier type code
 
 ### Ask at Order Entry: the dWGS digital manifest
 
 <div class="alert alert-info" role="alert">
-<b>FHIR Questionnaire:</b> <a href="Questionnaire-dWGSSubOrder.html">dWGS Sub-Order Manifest</a>
+<b>FHIR Questionnaire:</b> <a href="Questionnaire-dWGSAskAtOrderEntry.html">dWGS Ask At Order Entry Questions</a> (Ask At Order Entry) and <a href="Questionnaire-dWGSSubOrder.html">dWGS Sub-Order Manifest</a> (CSV manifest description)
 </div>
 
 A `LAB-35` sub-order like the worked examples above is built from a **digital
 manifest**: NHS England's `RGL to SGL SOP` defines 37 national manifest fields
 (Appendix 3), and a Requesting Genomic Laboratory may add further local-extension
 fields for the Sequencing Genomic Laboratory's benefit - the worked examples on this
-page add 5. Together these are the same "Ask at Order Entry" pattern used by the
-[core Genomic Test Order](Questionnaire-GenomicTestOrder.html#order-entry-questions) form: additional
-questions captured at the point of ordering, modelled as an [SDC
-Questionnaire](Questionnaire-dWGSSubOrder.html) with an `item.definition` on each item
-that has a confirmed FHIR mapping, following the same convention as [Genomic Test
-Order](Questionnaire-GenomicTestOrder.html).
+page add 5. This IG models the manifest as **two** separate Questionnaires, not one:
+
+- **[dWGS Sub-Order Manifest](Questionnaire-dWGSSubOrder.html)** - a **CSV manifest
+  description**, not an Ask At Order Entry Questionnaire. It documents all 42 fields
+  the RGL actually sends, including several also asked by the [core Genomic Test
+  Order](Questionnaire-GenomicTestOrder.html#order-entry-questions) form (Patient
+  name/DOB/NHS number, Specimen Type, Specimen Collection Date) - correctly, since it
+  describes the complete manifest structure rather than an incremental set of
+  order-entry questions layered on top of the core form.
+- **[dWGS Ask At Order Entry Questions](Questionnaire-dWGSAskAtOrderEntry.html)** -
+  the genuinely additional questions, `derivedFrom`/extending [Genomic Test
+  Order](Questionnaire-GenomicTestOrder.html) the same way every other Ask At Order
+  Entry Questionnaire does (see [Order Entry
+  Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions)). It carries
+  every manifest field **except** the six that duplicate the common core exactly -
+  see [Field mapping](#field-mapping-csv--hl7-v2--fhir) below for which is which, and
+  [Outstanding Issues (resolved by this split)](#outstanding-issues-resolved-by-this-split)
+  for why the manifest previously declared `derivedFrom` itself and the confusion that
+  caused.
 
 The two fields specific to dWGS - **Family Structure** and **Participant Type** (see
-[Singleton, Duo and Trio testing](#singleton-duo-and-trio-testing) above) - are this
-manifest's main Ask at Order Entry questions: enumerated-string answers with no
-NW-GMSA-confirmed coding system, carried as `Observation.valueCodeableConcept` (text
-only) referenced from `ServiceRequest.supportingInfo`.
+[Singleton, Duo and Trio testing](#singleton-duo-and-trio-testing) above) - are
+`dWGS Ask At Order Entry Questions`' main Ask at Order Entry questions: enumerated-string
+answers with no NW-GMSA-confirmed coding system, carried as
+`Observation.valueCodeableConcept` (text only) referenced from
+`ServiceRequest.supportingInfo`. Unlike [Genetic Clinical Referral -
+Consultand](Questionnaire-GeneticReferralConsultand.html), which references a
+*second* individual (the consultand) from the proband's own `ServiceRequest`, a Duo
+or Trio's Family Member is **not** referenced from the Proband's sub-order at all -
+each participant (Proband and every Family Member) is submitted as their own
+completely separate sub-order, tied together only by a shared requisition number
+(see [The end-to-end clinical journey](#the-end-to-end-clinical-journey) above). There
+is no equivalent here to Consultand's `RelatedPerson`/`ServiceRequest.supportingInfo`
+cross-reference - see [Comparison with WGS Local Test
+Order](#comparison-with-wgs-local-test-order) below for a closer relative that *does*
+use that pattern.
 
 #### Field mapping: CSV → HL7 v2 → FHIR
 
 The table below is the full 42-field mapping (37 national fields plus 5 local
-extension fields), consistent with `dWGSSubOrder`'s `item.definition` values. Where the
-`FHIR Field` column is blank, the field is carried in the manifest and in the
-`dWGSSubOrder` Questionnaire but has no confirmed FHIR mapping yet - a genuine open
-question for a future pass, not an oversight.
+extension fields). The **Modelled In** column shows which Questionnaire(s) each field
+appears in: every field is part of [dWGS Sub-Order
+Manifest](Questionnaire-dWGSSubOrder.html) (the complete manifest description); most
+are also part of [dWGS Ask At Order
+Entry](Questionnaire-dWGSAskAtOrderEntry.html), except the six marked **Genomic Test
+Order (base)**, which duplicate a common-core item exactly (same `linkId` and code)
+and so are asked once, by the core form, rather than repeated in the Ask At Order
+Entry Questionnaire. Where the `FHIR Field` column is blank, the field is carried in
+the manifest but has no confirmed FHIR mapping yet - a genuine open question for a
+future pass, not an oversight.
 
-| CSV Field | Common Name | Cardinality | Type | HL7 v2 Field | FHIR Field |
-|-----------|-------------|-------------|------|--------------|------------|
-| `referral_id` | Original Order Placer Group Number | MUST | String | OBX-5 (OBX-3=NGIS_REFERRAL_ID) | ServiceRequest.requisition |
-| `clinical_indication_test_type_id` | Test Code | OPTIONAL | String | OBR-4.1 | ServiceRequest.code.coding (England-GenomicTestDirectory) |
-| `patient_nhs_number` | NHS Number | OPTIONAL | String | PID-3 (NH) | Patient.identifier (NHS number) |
-| `patient_ngis_id` | Patient Identifier | MUST | String | PID-3 (NGIS) | Patient.identifier.assigner (Genomics England, ODS 8J834) |
-| `patient_date_of_birth` | Date Of Birth | OPTIONAL | Date | PID-7.1 | Patient.birthDate |
-| `ordering_entity_id` | Original Ordering Facility Code | OPTIONAL | Code (ODS Code) | ORC-21 | Specimen.identifier (as received) assigner |
-| `glh_laboratory_id` | Filler Order Ordering Facility Code | MUST | Code (ODS Code) | ORC-21 | ServiceRequest.requester / requisition assigner / Specimen.identifier (LIMS) assigner |
-| `primary_sample_received_date` | Sample Received Date | OPTIONAL | Date | SPM-18 (primary SPM) | Specimen.receivedTime (primary specimen) |
-| `primary_sample_id_as_received_by_glh` | Received Sample Identifier | OPTIONAL | String | SPM-2.1 (primary SPM) | Specimen.identifier (as received) |
-| `primary_sample_id_in_glh_lims` | LIMS Sample Identifier | OPTIONAL | String | SPM-2.2 (primary SPM) | Specimen.identifier (GLH LIMS) |
-| `primary_sample_type` | Sample Type | MUST | Code (Specimen Type SNOMED CT) | SPM-11 (primary SPM, low confidence) | Specimen.type / extension (germline vs tumour, low confidence) |
-| `primary_sample_state` | Sample Material Type | MUST | Code (Specimen Type SNOMED CT) | SPM-4.1 (primary SPM) | Specimen.type (SNOMED CT coding) |
-| `received_sample_topography` | Sample Topography | MUST (cancer only) | String | SPM-8 (primary SPM, cancer only) | Specimen.bodySite (cancer only) |
-| `received_sample_morphology` | Sample Morphology | OPTIONAL | String | - | - |
-| `received_sample_tumour_content_%` | Tumour Content | MUST (cancer only) | Number | - | - |
-| `received_sample_comments` | Sample Comments | OPTIONAL | String | - | - |
-| `received_sample_collection_date` | Specimen Collection Date | OPTIONAL | Date | SPM-17 | Specimen.collection.collectedDateTime |
-| `dispatched_sample_id_in_glh_lims` | Dispatched Sample Identifier | OPTIONAL | String | - | - |
-| `dispatched_sample_lsid` | Specimen Barcode | MUST | String | SPM-2.1 (type=ZCID) and OBX-5 (OBX-3=DISPATCHED_SAMPLE_LSID) | Specimen.container.identifier |
-| `dispatched_sample_type` | Dispatched Sample Type | MUST | Code (Specimen Type SNOMED CT) | - | - |
-| `dispatched_sample_state` | Dispatched Material Type | MUST | Code (Specimen Type SNOMED CT) | SPM-4.1 (dispatched SPM, not built in this worked example) | Specimen.type (not built - single Specimen only carries primary_sample_state) |
-| `dispatched_sample_volume_(ul)` | Sample Volume | OPTIONAL | Number | SPM-12 | Specimen.collection.quantity |
-| `laboratory_remaining_volume_banked_(ul)` | Remaining Banked Volume | OPTIONAL | Number | - | - |
-| `glh_concentration_(ng/ul)` | DNA Concentration | OPTIONAL | Number | - | - |
-| `glh_od260/280` | DNA Purity | OPTIONAL | Number | - | - |
-| `glh_din_value` | DNA Integrity Number | OPTIONAL | Number | - | - |
-| `glh_percentage_DNA_over_23kb` | DNA Fragment Size | OPTIONAL | Number | - | - |
-| `glh_qc_status` | QC Status | OPTIONAL | String | - | - |
-| `glh_sample_dispatch_date` | Dispatch Date | OPTIONAL | Date | - | - |
-| `glh_sample_consignment_number` | Consignment Number | OPTIONAL | String | SPM-32 | Specimen.identifier (type=STN) |
-| `plating_organisation` | Plating Organisation | OPTIONAL | Enum | - | - |
-| `gmc_rack_id` | Rack Identifier | OPTIONAL | String | - | - |
-| `gmc_rack_well` | Rack Well Position | OPTIONAL | String (pattern) | - | - |
-| `dna_extraction_protocol` | DNA Extraction Method | OPTIONAL | String | SPM-7 | Specimen.collection.method |
-| `prolonged_sample_storage` | Sample Storage Method | OPTIONAL | String | - | - |
-| `retrospective_sample` | Retrospective Sample Flag | OPTIONAL | Enum | (no clean v2 field) | ServiceRequest.intent (reflex-order when Retrospective) |
-| `approved_by` | Approved By | OPTIONAL | String | - | - |
-| `patient_forename` | Forename | MUST | String | PID-5.2 | Patient.name.given |
-| `patient_surname` | Surname | MUST | String | PID-5.1 | Patient.name.family |
-| `family_structure` | Family Structure | MUST | Enumerated string | OBX-5 (OBX-3=FAMILY_STRUCTURE) | Observation (via ServiceRequest.supportingInfo) |
-| `participant_type` | Participant Type | MUST | Enumerated string | OBX-5 (OBX-3=PARTICIPANT_TYPE) | Observation (via ServiceRequest.supportingInfo) |
-| `clinical_information` | Clinical Information | OPTIONAL | String | NTE-3 | ServiceRequest.note |
+| CSV Field | Common Name | Cardinality | Type | HL7 v2 Field | FHIR Field | Modelled In |
+|-----------|-------------|-------------|------|--------------|------------|-------------|
+| `referral_id` | Original Order Placer Group Number | MUST | String | OBX-5 (OBX-3=NGIS_REFERRAL_ID) | ServiceRequest.requisition | dWGS Ask At Order Entry |
+| `clinical_indication_test_type_id` | Test Code | OPTIONAL | String | OBR-4.1 | ServiceRequest.code.coding (England-GenomicTestDirectory) | dWGS Ask At Order Entry |
+| `patient_nhs_number` | NHS Number | OPTIONAL | String | PID-3 (NH) | Patient.identifier (NHS number) | **Genomic Test Order (base)** |
+| `patient_ngis_id` | Patient Identifier | MUST | String | PID-3 (NGIS) | Patient.identifier.assigner (Genomics England, ODS 8J834) | dWGS Ask At Order Entry |
+| `patient_date_of_birth` | Date Of Birth | OPTIONAL | Date | PID-7.1 | Patient.birthDate | **Genomic Test Order (base)** |
+| `ordering_entity_id` | Original Ordering Facility Code | OPTIONAL | Code (ODS Code) | ORC-21 | Specimen.identifier (as received) assigner | dWGS Ask At Order Entry |
+| `glh_laboratory_id` | Filler Order Ordering Facility Code | MUST | Code (ODS Code) | ORC-21 | ServiceRequest.requester / requisition assigner / Specimen.identifier (LIMS) assigner | dWGS Ask At Order Entry |
+| `primary_sample_received_date` | Sample Received Date | OPTIONAL | Date | SPM-18 (primary SPM) | Specimen.receivedTime (primary specimen) | dWGS Ask At Order Entry |
+| `primary_sample_id_as_received_by_glh` | Received Sample Identifier | OPTIONAL | String | SPM-2.1 (primary SPM) | Specimen.identifier (as received) | dWGS Ask At Order Entry |
+| `primary_sample_id_in_glh_lims` | LIMS Sample Identifier | OPTIONAL | String | SPM-2.2 (primary SPM) | Specimen.identifier (GLH LIMS) | dWGS Ask At Order Entry |
+| `primary_sample_type` | Sample Type | MUST | Code (Specimen Type SNOMED CT) | SPM-11 (primary SPM, low confidence) | Specimen.type / extension (germline vs tumour, low confidence) | dWGS Ask At Order Entry |
+| `primary_sample_state` | Sample Material Type | MUST | Code (Specimen Type SNOMED CT) | SPM-4.1 (primary SPM) | Specimen.type (SNOMED CT coding) | **Genomic Test Order (base)** |
+| `received_sample_topography` | Sample Topography | MUST (cancer only) | String | SPM-8 (primary SPM, cancer only) | Specimen.bodySite (cancer only) | dWGS Ask At Order Entry |
+| `received_sample_morphology` | Sample Morphology | OPTIONAL | String | - | - | dWGS Ask At Order Entry |
+| `received_sample_tumour_content_%` | Tumour Content | MUST (cancer only) | Number | - | - | dWGS Ask At Order Entry |
+| `received_sample_comments` | Sample Comments | OPTIONAL | String | - | - | dWGS Ask At Order Entry |
+| `received_sample_collection_date` | Specimen Collection Date | OPTIONAL | Date | SPM-17 | Specimen.collection.collectedDateTime | **Genomic Test Order (base)** |
+| `dispatched_sample_id_in_glh_lims` | Dispatched Sample Identifier | OPTIONAL | String | - | - | dWGS Ask At Order Entry |
+| `dispatched_sample_lsid` | Specimen Barcode | MUST | String | SPM-2.1 (type=ZCID) and OBX-5 (OBX-3=DISPATCHED_SAMPLE_LSID) | Specimen.container.identifier | dWGS Ask At Order Entry |
+| `dispatched_sample_type` | Dispatched Sample Type | MUST | Code (Specimen Type SNOMED CT) | - | - | dWGS Ask At Order Entry |
+| `dispatched_sample_state` | Dispatched Material Type | MUST | Code (Specimen Type SNOMED CT) | SPM-4.1 (dispatched SPM, not built in this worked example) | Specimen.type (not built - single Specimen only carries primary_sample_state) | dWGS Ask At Order Entry |
+| `dispatched_sample_volume_(ul)` | Sample Volume | OPTIONAL | Number | SPM-12 | Specimen.collection.quantity | dWGS Ask At Order Entry |
+| `laboratory_remaining_volume_banked_(ul)` | Remaining Banked Volume | OPTIONAL | Number | - | - | dWGS Ask At Order Entry |
+| `glh_concentration_(ng/ul)` | DNA Concentration | OPTIONAL | Number | - | - | dWGS Ask At Order Entry |
+| `glh_od260/280` | DNA Purity | OPTIONAL | Number | - | - | dWGS Ask At Order Entry |
+| `glh_din_value` | DNA Integrity Number | OPTIONAL | Number | - | - | dWGS Ask At Order Entry |
+| `glh_percentage_DNA_over_23kb` | DNA Fragment Size | OPTIONAL | Number | - | - | dWGS Ask At Order Entry |
+| `glh_qc_status` | QC Status | OPTIONAL | String | - | - | dWGS Ask At Order Entry |
+| `glh_sample_dispatch_date` | Dispatch Date | OPTIONAL | Date | - | - | dWGS Ask At Order Entry |
+| `glh_sample_consignment_number` | Consignment Number | OPTIONAL | String | SPM-32 | Specimen.identifier (type=STN) | dWGS Ask At Order Entry |
+| `plating_organisation` | Plating Organisation | OPTIONAL | Enum | - | - | dWGS Ask At Order Entry |
+| `gmc_rack_id` | Rack Identifier | OPTIONAL | String | - | - | dWGS Ask At Order Entry |
+| `gmc_rack_well` | Rack Well Position | OPTIONAL | String (pattern) | - | - | dWGS Ask At Order Entry |
+| `dna_extraction_protocol` | DNA Extraction Method | OPTIONAL | String | SPM-7 | Specimen.collection.method | dWGS Ask At Order Entry |
+| `prolonged_sample_storage` | Sample Storage Method | OPTIONAL | String | - | - | dWGS Ask At Order Entry |
+| `retrospective_sample` | Retrospective Sample Flag | OPTIONAL | Enum | (no clean v2 field) | ServiceRequest.intent (reflex-order when Retrospective) | dWGS Ask At Order Entry |
+| `approved_by` | Approved By | OPTIONAL | String | - | - | dWGS Ask At Order Entry |
+| `patient_forename` | Forename | MUST | String | PID-5.2 | Patient.name.given | **Genomic Test Order (base)** |
+| `patient_surname` | Surname | MUST | String | PID-5.1 | Patient.name.family | **Genomic Test Order (base)** |
+| `family_structure` | Family Structure | MUST | Enumerated string | OBX-5 (OBX-3=FAMILY_STRUCTURE) | Observation (via ServiceRequest.supportingInfo) | dWGS Ask At Order Entry |
+| `participant_type` | Participant Type | MUST | Enumerated string | OBX-5 (OBX-3=PARTICIPANT_TYPE) | Observation (via ServiceRequest.supportingInfo) | dWGS Ask At Order Entry |
+| `clinical_information` | Clinical Information | OPTIONAL | String | NTE-3 | ServiceRequest.note | dWGS Ask At Order Entry |
 {:.grid}
 
 **Two specimens, not one**: `primary_sample_*` fields describe the specimen as
@@ -233,45 +264,68 @@ originally received at the GLH (blood/tissue, before extraction); `dispatched_sa
 describes the extracted DNA sent onward. The worked examples below carry both as
 identifiers/values on a single `Specimen` resource rather than two linked resources.
 
-#### Outstanding Issues
+#### Comparison with WGS Local Test Order
 
-`dWGSSubOrder` declares `derivedFrom` [Genomic Test
+[WGS Local Test Order Ask At Order
+Entry](Questionnaire-WGSLocalTestOrderAskAtOrderEntry.html) is the closest relative
+to `dWGS Ask At Order Entry` in this IG - both structure a WGS-specific order beyond
+the common core, and both distinguish a Proband from a Family Member. They model
+genuinely different pathways, though, not the same one twice:
+
+| Aspect | dWGS Ask At Order Entry | WGS Local Test Order Ask At Order Entry |
+|---|---|---|
+| Source | NHS England `RGL to SGL SOP` digital manifest (Appendix 3) | NW GLH paper [Genetic Testing Request Form - WGS](Questionnaire-WGSLocalTestOrderAskAtOrderEntry.html#summary) |
+| Pathway | **Sub-contracted**: a Requesting Genomic Laboratory sends the sample onward to a different Sequencing Genomic Laboratory (`LAB-35`) | **Local**: samples sent directly to a NW GLH site, no cross-laboratory sub-contracting implied |
+| Proband/Family Member representation | Each participant is a wholly **separate** sub-order (own `Patient`, `Specimen`, `ServiceRequest`), linked only by a shared requisition number - no direct reference between them | A **single** sub-order whose own Patient group is completed for whichever individual's specimen is being sent; only the Family Member pathway adds a `ServiceRequest.supportingInfo` reference to the pre-existing Proband |
+| Family Structure (Singleton/Duo/Trio) | Explicit, structured field (`NOS/FamilyStructure`) | Not captured - the paper form only distinguishes Proband vs Family Member, not how many participants make up the referral |
+| Specimen model | **Two** specimens per participant (primary as received + dispatched extracted DNA), both on one `Specimen` resource | **One** specimen per participant |
+| Cancer WGS fields | Sample Topography, Sample Morphology, Tumour Content (%) | Neoplastic Cell Content (%) only - see the [design note](Questionnaire-dWGSAskAtOrderEntry.html) on `dWGS/received_sample_tumour_content_pct` |
+| Laboratory QC/logistics fields | Extensive - DNA concentration/purity/integrity/fragment size, rack position, plating organisation, consignment tracking | None - a local order form has no equivalent, since NW Genomics is both the referring and the testing laboratory |
+{:.grid}
+
+Both ultimately request the same underlying test (Whole Genome Sequencing for rare
+and inherited disease or cancer), so a future harmonisation could reasonably ask
+whether NW GLH's local paper pathway should adopt some of the digital manifest's
+structure (Family Structure, in particular) rather than remaining two independently
+evolved Questionnaires - noted here as an open question, not a decision.
+
+#### Outstanding Issues (resolved by this split)
+
+Until this split, `dWGSSubOrder` declared `derivedFrom` [Genomic Test
 Order](Questionnaire-GenomicTestOrder.html) with derivation type `extends`, but
-checking it against the base Questionnaire raises some open questions about
-whether it is a clean extension:
+checking it against the base Questionnaire raised open questions about whether it was
+a clean extension. Recorded here for the design history, followed by how the split
+into [dWGS Sub-Order Manifest](Questionnaire-dWGSSubOrder.html) (manifest
+description, no `derivedFrom`) and [dWGS Ask At Order
+Entry](Questionnaire-dWGSAskAtOrderEntry.html) (the genuine extension) resolves each:
 
-1. **Duplicated patient identifiers.** `dWGSSubOrder` re-declares its own
+1. **Duplicated patient identifiers.** `dWGSSubOrder` re-declared its own
    `Patient` group with `patient_forename`/`patient_surname`/NHS number/date of
    birth, using the **same** `linkId`s and LOINC codes as the equivalent items
    already in the base Questionnaire (e.g. `LN/45392-8`, `LN/45394-4`,
-   `LN/89061-6`). If both Questionnaires are completed for the same order (as
-   the base's own description implies - Ask At Order Entry Questionnaires are
-   used "alongside" the core form, not instead of it), this is the same data
-   captured twice. Conversely, `dWGSSubOrder`'s `Patient` group is missing the
-   base's `required` Hospital Number item, and it has no `HealthcareProfessional`
-   group at all, even though the base marks Referring Clinician Name/Specialty/
-   Professional Identifier as `required = true`.
+   `LN/89061-6`). **Resolved**: `dWGSSubOrder` keeps these (it is a complete
+   manifest description, not an incremental form), but `dWGSAskAtOrderEntry`
+   omits them entirely - see the six fields marked **Genomic Test Order (base)**
+   in the [field mapping](#field-mapping-csv--hl7-v2--fhir) above.
 2. **Two different "Order Group Number" concepts.** The base Questionnaire's
    `pedigreeNumber` item is labelled "G Number (Pedigree Number) - **Order Group
    Number**" and maps to `Patient.identifier:PedigreeNumber`. `dWGSSubOrder`'s
    `referral_id` item is labelled "Original Order Placer **Group Number** (Referral
-   ID)" and maps to `ServiceRequest.requisition` instead. Both use "Order Group
-   Number" in their text, but map to different resources/fields with no stated
-   relationship between them - it isn't clear whether a dWGS order should
-   populate one, both, or whether they are meant to be the same value.
+   ID)" and maps to `ServiceRequest.requisition` instead. **Not fully resolved** -
+   both terms still appear, and no relationship between the two values is stated;
+   `dWGSAskAtOrderEntry`'s own `referral_id` item now carries a design note flagging
+   this explicitly rather than leaving it implicit.
 3. **Test codes don't exist in the base Questionnaire's Test Code lists.**
    The base Questionnaire's Test Code item only appears via three
    `enableWhen`-gated branches, each tied to a Test Category answer
    (`RareAndInheritedDiseasesGeneticTesting`, `HaemoglobinopathyGeneticTesting`,
-   `CancerGeneticTesting` - see [OrderCategory](ValueSet-order-category.html)).
-   There is no Test Category option for Whole Genome Sequencing/dWGS at all, so
-   none of the base's three Test Code branches can ever fire for a dWGS order.
-   `dWGSSubOrder` works around this with its own separate
-   `clinical_indication_test_type_id` item, bound to the much broader
-   [GenomicTestCodes](ValueSet-GenomicTestCodes.html) value set (every code in
-   the Genomic Test Directory plus local NW codes) rather than one of the
-   base's curated lists - so this isn't really an extension of the base's Test
-   Code question, it's a replacement of it with a differently-scoped one.
+   `CancerGeneticTesting` - see [OrderCategory](ValueSet-order-category.html)), and
+   there is no Test Category option for Whole Genome Sequencing/dWGS at all.
+   **Resolved by framing, not by adding a WGS category**: `dWGSAskAtOrderEntry`'s
+   `clinical_indication_test_type_id` item is documented as deliberately filling
+   that gap against the broader [GenomicTestCodes](ValueSet-GenomicTestCodes.html)
+   value set, rather than silently presenting as a peer of the base's three
+   category-gated branches.
 
 ## Examples
 

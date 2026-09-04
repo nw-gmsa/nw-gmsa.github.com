@@ -8,8 +8,10 @@ core order form](Questionnaire-GenomicTestOrder.html) - see [Order Entry
 Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). This
 form is unusual among the paper forms in naming **two** patients (maternal
 and paternal) rather than one - the common core's own Patient group is
-completed for the mother (the proband/referral subject), and this
-Questionnaire adds a reference to the father.
+completed for the mother (the referral's own registered patient - not a
+"proband" in the classical sense, since prenatal carrier testing doesn't
+imply an already-affected index case), and this Questionnaire adds a
+reference to the father.
 """
 Usage:  #definition
 
@@ -36,6 +38,11 @@ Usage:  #definition
     * text = "Paternal details (name, DOB, NHS/hospital number, if known)"
     * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.supportingInfo"
     * extension[referenceProfile].valueCanonical = "http://hl7.org/fhir/StructureDefinition/Patient"
+    * item[+]
+      * linkId = "NOS/PaternalPatient-designNote"
+      * type = #display
+      * text = "Same ServiceRequest.supportingInfo pattern used by Genetic Clinical Referral - Consultand (RelatedPerson) to reference a second individual, but this references a full Patient rather than a RelatedPerson: the paper form asks for the father's own NHS/hospital number, i.e. he is (or can become) an independently registered patient in his own right, not just a named relative known only through the mother's record. The mother remains this ServiceRequest's own subject throughout - unlike WGS Local Test Order Ask At Order Entry, there is no pathway where the roles swap."
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
   * item[+]
     * type = #string

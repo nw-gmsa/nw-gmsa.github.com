@@ -54,6 +54,24 @@ Usage:  #definition
       * question = "NOS/WGSPathway"
       * operator = #=
       * answerCoding = $nwgmsa#WGSPathwayRareDiseaseFamilyMember
+    * item[+]
+      * linkId = "NOS/ProbandReference-designNote"
+      * type = #display
+      * text = """
+      Same ServiceRequest.supportingInfo pattern used by Genetic Clinical
+      Referral - Consultand (RelatedPerson) to reference a second individual,
+      but the roles are reversed from that Questionnaire: there, the base
+      ServiceRequest's own Patient is always the proband, and the relative is
+      the supportingInfo reference. Here, when the Family Member pathway is
+      selected, this ServiceRequest's own common-core Patient group is
+      completed for the FAMILY MEMBER whose specimen this particular order
+      carries - it is this item, not the base Patient group, that names the
+      proband. A Patient reference is used rather than RelatedPerson because
+      the proband already exists as an independently registered patient with
+      their own separate WGS referral (this item only links the two), not a
+      person known solely through this family member's record.
+      """
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
   * item[+]
     * type = #quantity
