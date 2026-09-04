@@ -281,7 +281,7 @@ After submitting the original order, the sample will be collected and sent to th
 ### Laboratory Report (LAB-3)
 
 <div class="alert alert-info" role="alert">
-<b>Domain Archetype:</b> <a href="StructureDefinition-DiagnosticReport.html" _target="_blank">Genomic Test Report</a> 
+<b>Domain Archetype:</b> <a href="Questionnaire-GenomicTestReport.html" _target="_blank">Genomic Test Report</a> 
 </div>
 
 <div class="alert alert-info" role="alert">
@@ -396,7 +396,7 @@ It is envisaged this design will also extend to Laboratory Reports (R01).
 
 <div class="alert alert-info" role="alert">
 <b>Domain Archetype:</b> <a href="StructureDefinition-ServiceRequest.html" _target="_blank">Genomic Test Order</a> 
-<b>Domain Archetype:</b> <a href="StructureDefinition-DiagnosticReport.html" _target="_blank">Genomic Test Report</a> 
+<b>Domain Archetype:</b> <a href="Questionnaire-GenomicTestReport.html" _target="_blank">Genomic Test Report</a> 
 </div>
 
 <div class="alert alert-info" role="alert">

@@ -40,13 +40,20 @@ Usage:  #definition
     * linkId = "LN/56797-4"
     * code[+] = $loinc#56797-4
     * text = "Account Number (Episode or Stay Number)"
-    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.encounter.identifier.value"
+    * definition = "http://hl7.org/fhir/StructureDefinition/DiagnosticReport#DiagnosticReport.encounter.identifier.value"
     * required = false
     * item[+]
       * linkId = "LN/56797-4-designNote"
       * type = #display
       * text = "PV1-19 (also known as stay number)"
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+  * item[+]
+    * type = #choice
+    * linkId = "HL7/PV1-10"
+    * text = "Hospital Service"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Encounter#Encounter.serviceType"
+    * answerValueSet = Canonical(Service)
+    * required = false
 
 
 * item[+]
@@ -80,6 +87,44 @@ Usage:  #definition
     * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.organization.identifier.value"
     * text = "Referring Organisation ODS Code / Ordering Facility"
   * item[+]
+    * type = #dateTime
+    * linkId = "HL7/OBR-7"
+    * definition = "http://hl7.org/fhir/StructureDefinition/DiagnosticReport#DiagnosticReport.effectiveDateTime"
+    * text = "Report Date"
+    * required = true
+  * item[+]
+    * type = #choice
+    * linkId = "HL7/OBR-25"
+    * definition = "http://hl7.org/fhir/StructureDefinition/DiagnosticReport#DiagnosticReport.status"
+    * text = "Report Status"
+    * answerValueSet = "http://hl7.org/fhir/ValueSet/diagnostic-report-status"
+    * required = true
+  * item[+]
+    * type = #string
+    * linkId = "HL7/OBR-32"
+    * definition = "http://hl7.org/fhir/StructureDefinition/DiagnosticReport#DiagnosticReport.resultsInterpreter"
+    * text = "Results Interpreter"
+    * item[+]
+      * linkId = "HL7/OBR-32-designNote"
+      * type = #display
+      * text = "OBR-32 (Principal) and OBR-33 (Assistant) - see Practitioner Identifier."
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+  * item[+]
+    * type = #string
+    * linkId = "HL7/OBR-34"
+    * definition = "http://hl7.org/fhir/StructureDefinition/DiagnosticReport#DiagnosticReport.performer:operator"
+    * text = "Performer (Operator/Technician)"
+  * item[+]
+    * type = #string
+    * linkId = "DiagnosticReport/performer-organization"
+    * definition = "http://hl7.org/fhir/StructureDefinition/DiagnosticReport#DiagnosticReport.performer:organization"
+    * text = "Performer (Organisation)"
+    * item[+]
+      * linkId = "DiagnosticReport/performer-organization-designNote"
+      * type = #display
+      * text = "The organisation that produced the report - see Organisation Code. No dedicated HL7 v2 field identified for this element."
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+  * item[+]
     * type = #group
     * linkId = "Specimen"
     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen"
@@ -108,9 +153,14 @@ Usage:  #definition
     * type = #choice
     * linkId = "HL7/OBR-4-r"
     * code[+] = $loinc#29300-1
-    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.code"
+    * definition = "http://hl7.org/fhir/StructureDefinition/DiagnosticReport#DiagnosticReport.code"
     * text = "Test Code"
     * required = false
+    * item[+]
+      * linkId = "HL7/OBR-4-r-designNote"
+      * type = #display
+      * text = "OBR-4, carried on the report. The same code is carried on the order as ServiceRequest.code - see Genomic Test Order."
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 * item[+]
   * type = #group
   * linkId = "/Results"
@@ -123,14 +173,24 @@ Usage:  #definition
     * type = #string
     * definition = "http://hl7.org/fhir/StructureDefinition/DiagnosticReport#DiagnosticReport.presentedForm"
   * item[+]
-    * type = #group
-    * code = $loinc#81250-3 "Simple var pnl"
-    * linkId = "/81250-3"
-    * text = "Simple var pnl"
+    * linkId = "DiagnosticReport/conclusion"
+    * text = "Conclusion"
+    * type = #string
+    * definition = "http://hl7.org/fhir/StructureDefinition/DiagnosticReport#DiagnosticReport.conclusion"
     * item[+]
-      * linkId = "/81306-3/TESTOUTCOME"
-      * code = $nwgmsa#TESTOUTCOME "NHS England Genomics Test Outcome"
-      * text = "NHS England Genomics Test Outcome"
-      * type = #choice
-      * answerValueSet = Canonical(GenomicTestOutcomeCodes)
-      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
+      * linkId = "DiagnosticReport/conclusion-designNote"
+      * type = #display
+      * text = "Free-text interpretive summary. No dedicated LOINC/OBX code identified for this element - see the Outcome item below for the coded equivalent."
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+  * item[+]
+    * linkId = "/81306-3/TESTOUTCOME"
+    * code = $nwgmsa#TESTOUTCOME "NHS England Genomics Test Outcome"
+    * text = "Outcome (NHS England Genomics Test Outcome)"
+    * type = #choice
+    * answerValueSet = Canonical(GenomicTestOutcomeCodes)
+    * definition = "http://hl7.org/fhir/StructureDefinition/DiagnosticReport#DiagnosticReport.conclusionCode.coding:GenomicTestOutcomeCode"
+  * item[+]
+    * linkId = "/Results/ReportPanels"
+    * type = #display
+    * text = "Individual test results are carried as separate, panel-specific Questionnaires nested under DiagnosticReport.result - see Report Panels below for the full list (e.g. Reportable Variant Result Panel, BCR-ABL Monitoring Result Panel, Chimerism Testing Result Panel)."
+    * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help

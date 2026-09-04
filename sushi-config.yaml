@@ -452,7 +452,7 @@ menu:
   ##  Overview - Data Contracts: data-intro.html
     Genomic Test Order: Questionnaire-GenomicTestOrder.html
    ## Genomic Test Report (Composition): StructureDefinition-Composition-GenomicReport.html
-    Genomic Test Report (DiagnosticReport): StructureDefinition-DiagnosticReport.html
+    Genomic Test Report: Questionnaire-GenomicTestReport.html
     Laboratory Analyte Result: StructureDefinition-LaboratoryAnalyteResult.html
     Observations: StructureDefinition-Observation.html
   Artefacts (Volume 4):

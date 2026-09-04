@@ -279,8 +279,8 @@ check whether it already exists in:
   Referrals](GeneticReferrals.html).
 - **Data Models (Volume 3)** - identifiers, resources and profiles already
   defined, e.g. [Diagnostic Core](diagnostic-core.html), [Genomic Test
-  Order](Questionnaire-GenomicTestOrder.html), [Genomic Test Report
-  (DiagnosticReport)](StructureDefinition-DiagnosticReport.html), [Laboratory
+  Order](Questionnaire-GenomicTestOrder.html), [Genomic Test
+  Report](Questionnaire-GenomicTestReport.html), [Laboratory
   Analyte Result](StructureDefinition-LaboratoryAnalyteResult.html).
 
 This checking step matters for more than tidiness:

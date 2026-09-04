@@ -217,3 +217,30 @@ HL7 LRI (Ref A) Example 3 (5.9.1.3)  - SIMPLE VARIANT – MUTATION ANALYSIS WITH
 - [Genomic Study - Cystic fibrosis carrier testing](Procedure-7b362aa5-41a7-4168-94b4-f12dff0dfb2a.html) <span class="badge badge-primary">Genomics</span>
 - [Diagnostic Implication - Cystic Fibrosis Carrier](Observation-a954a98c-f427-4968-9022-8b760de66628.html) <span class="badge badge-primary">Genomics</span>
 - [Variant CFTR](Observation-bca547c1-78a5-41be-8cfc-03c05805ac85.html) <span class="badge badge-primary">Genomics</span>
+
+## Report Panels
+
+[Genomic Test Report](Questionnaire-GenomicTestReport.html) only models the
+report-level metadata common to every report (patient, order/report
+identifiers, dates, status, conclusion, performers) - its `/Results` group
+deliberately doesn't model individual test findings inline. Instead, each
+individual result is carried under `DiagnosticReport.result` as a separate,
+panel-specific Questionnaire, one per kind of test - each documenting the
+discrete fields a particular result type needs, in the same
+Questionnaire-as-computable-data-model style as [Genomic Test
+Report](Questionnaire-GenomicTestReport.html) and [Genomic Test
+Order](Questionnaire-GenomicTestOrder.html) themselves (see [How To Engineer
+(scale and deliver)
+Interoperability](HowToEngineerInteroperability.html#documenting-the-data-model)).
+
+| Report Panel Questionnaire | Code | Used In | Status |
+|---|---|---|---|
+| [Reportable Variant Result Panel](Questionnaire-ReportableVariantResultPanel.html) | LOINC `81250-3` "Discrete genetic variant panel" | [OMICS DSS Result Integration](reportable-variants.html) | Grounded in real `Variant` examples |
+| [BCR-ABL Monitoring Result Panel](Questionnaire-BCRABLResultPanel.html) | LOINC `69380-4` "BCR-ABL1 fusion transcript ... [# Ratio] ... (International Scale)" | [BCR-ABL Monitoring](BCRABLMonitoring.html) | Grounded in real `Observation` examples |
+| [Chimerism Testing Result Panel](Questionnaire-ChimerismResultPanel.html) | Local code (STR-based chimerism testing) | [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html) | Candidate mapping, not yet confirmed against a real example - see the Questionnaire's own description |
+{:.grid}
+
+New result types should follow this pattern - add a new panel Questionnaire
+(rather than extending [Genomic Test
+Report](Questionnaire-GenomicTestReport.html) itself), and list it in the
+table above.
