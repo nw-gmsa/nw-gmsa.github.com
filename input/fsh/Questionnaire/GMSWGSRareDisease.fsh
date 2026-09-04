@@ -355,23 +355,20 @@ Usage:  #definition
       * type = #display
       * text = """
       Mandatory - at least one HPO term is required, and WGS analysis and
-      interpretation cannot commence without them. No confirmed FHIR
-      CodeSystem binding exists in this IG for the Human Phenotype Ontology
-      itself (canonically http://purl.obolibrary.org/obo/hp.owl) yet -
-      DiagnosticImplication.fsh's own predicted-phenotype component
-      mentions HPO only as one of several acceptable free-text-bound
-      terminologies, not a formal binding.
+      interpretation cannot commence without them.
 
       The form's own page 2 offers a "guide, not exhaustive" list of 38
       example terms grouped by specialty (Cardiology, Immunology,
       Ophthalmology, Renal, Developmental, Neurology) - rendered as an
-      image, not selectable text or coded values, so it carries no HPO IDs.
-      That list is reproduced as local codes only in GMSWGSGuideHPOTerms
-      (deliberately not asserting HP:0000000-style IDs, which would need
-      confirming term-by-term against https://hpo.jax.org rather than
-      being guessed) and bound below as #open-choice, so those 38 terms are
-      offered as quick picks without preventing free-text entry of any
-      other HPO term.
+      image on the form itself, not selectable text or coded values.
+      GMSWGSGuideHPOTermsVS reproduces that same list, but as real HPO
+      codes (http://purl.obolibrary.org/obo/hp.owl, release 20191108),
+      confirmed term-by-term against the Genomics England terminology
+      server (https://ontoserver.aws.gel.ac/fhir) via CodeSystem/$lookup
+      rather than guessed - see GMSWGSGuideHPOTermsToSCT for the SNOMED CT
+      mapping built from that same verification pass. Bound below as
+      #open-choice, so those 38 terms are offered as quick picks without
+      preventing entry of any other HPO term/code not in this guide list.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 

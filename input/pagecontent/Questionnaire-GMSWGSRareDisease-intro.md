@@ -40,7 +40,7 @@ the distributed sub-contracted WGS pathway, which resolves the same
 | Specific rare disease suspected/confirmed | Free text | Not yet mapped |
 | Life status | Alive/Deceased | `Patient.deceasedBoolean` |
 | Family member(s) to be tested | Repeating group (name, DOB, sex, NHS number/postcode, life status, status, ethnicity, relationship), each with its own nested Sample sub-group | `ServiceRequest.supportingInfo` -> `RelatedPerson`, repeating group |
-| HPO Terms | Term (offered from a [38-term guide list](CodeSystem-GMSWGSGuideHPOTerms.html), or free text) + Present/Absent/Unknown, repeating, **mandatory** | `Condition.code` (`#open-choice`) / `Condition.verificationStatus` |
+| HPO Terms | Term (offered from a [38-term guide list](ValueSet-GMSWGSGuideHPOTermsVS.html), real HPO codes, or free text) + Present/Absent/Unknown, repeating, **mandatory** | `Condition.code` (`#open-choice`) / `Condition.verificationStatus` |
 | Main contact | Name/department/phone/email, if different from responsible clinician | Not yet mapped |
 {:.grid}
 

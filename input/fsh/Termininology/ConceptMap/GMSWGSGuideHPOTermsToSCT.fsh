@@ -3,7 +3,7 @@ InstanceOf: ConceptMap
 Title: "GMS WGS Guide HPO Terms to SNOMED CT"
 Description: """
 HPO (Human Phenotype Ontology) to SNOMED CT mapping for the 38 terms in
-[GMSWGSGuideHPOTerms](CodeSystem-GMSWGSGuideHPOTerms.html) - see
+[GMSWGSGuideHPOTermsVS](ValueSet-GMSWGSGuideHPOTermsVS.html) - see
 [Questionnaire-GMSWGSRareDisease](Questionnaire-GMSWGSRareDisease.html)'s
 `NOS/HPOTerm` item.
 
