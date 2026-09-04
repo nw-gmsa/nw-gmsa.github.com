@@ -13,7 +13,9 @@ and paternal) rather than one - the common core's own Patient group is
 completed for the mother (the referral's own registered patient - not a
 "proband" in the classical sense, since prenatal carrier testing doesn't
 imply an already-affected index case), and this Questionnaire adds a
-reference to the father.
+reference to the father via the same NK1-shaped `RelatedPerson` group as
+[NW Genomic General Ask At Order Questions - Related Individual
+(NK1)](Questionnaire-GenomicGeneralAskAtOrderEntry.html).
 """
 Usage:  #definition
 
@@ -35,16 +37,103 @@ Usage:  #definition
   * text = "Ask At Order Entry Questions"
 
   * item[+]
-    * type = #reference
-    * linkId = "NOS/PaternalPatient"
-    * text = "Paternal details (name, DOB, NHS/hospital number, if known)"
-    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.supportingInfo"
-    * extension[referenceProfile].valueCanonical = "http://hl7.org/fhir/StructureDefinition/Patient"
+    * type = #group
+    * linkId = "NOS/RelatedIndividual"
+    * text = "Paternal details (Related Individual, NK1)"
+    * repeats = true
+    * definition = "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson"
     * item[+]
-      * linkId = "NOS/PaternalPatient-designNote"
+      * linkId = "NOS/RelatedIndividual-designNote"
       * type = #display
-      * text = "Same ServiceRequest.supportingInfo pattern used by Genetic Clinical Referral - Consultand (RelatedPerson) to reference a second individual, but this references a full Patient rather than a RelatedPerson: the paper form asks for the father's own NHS/hospital number, i.e. he is (or can become) an independently registered patient in his own right, not just a named relative known only through the mother's record. The mother remains this ServiceRequest's own subject throughout - unlike WGS Local Test Order Ask At Order Entry, there is no pathway where the roles swap."
+      * text = """
+      Same NK1-shaped RelatedPerson group as NW Genomic General Ask At
+      Order Questions' own Related Individual (NK1) group
+      (NOS/RelatedIndividual) and Genetic Clinical Referral - Consultand,
+      used here under its Consultand role - the mother remains this
+      ServiceRequest's own subject throughout, unlike WGS Local Test
+      Order's NOS/Proband, so there is no pathway where the roles swap.
+      RelatedPerson.identifier already accommodates the father's own
+      NHS/hospital number when known, the same paper-form fields
+      previously modelled as a full Patient reference - no detail is lost
+      by using the shared shape instead.
+      """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+// Related Individual	Role (always Consultand on this form)
+
+    * item[+]
+      * type = #choice
+      * linkId = "NOS/RelatedIndividualRole"
+      * code[+] = $nwgmsa#RelatedIndividualRole
+      * text = "Role"
+      * required = true
+      * answerOption[+].valueCoding = $nwgmsa#RoleConsultand
+
+// Related Individual	Name
+
+    * item[+]
+      * type = #string
+      * linkId = "HL7/NK1-2"
+      * text = "Name"
+      * required = true
+      * definition = "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.name"
+
+// Related Individual	Relationship to mother
+
+    * item[+]
+      * type = #choice
+      * linkId = "HL7/NK1-3"
+      * text = "Relationship"
+      * required = true
+      * definition = "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.relationship"
+      * answerValueSet = "https://fhir.hl7.org.uk/ValueSet/UKCore-PersonRelationshipType"
+
+// Related Individual	Administrative sex
+
+    * item[+]
+      * type = #choice
+      * linkId = "HL7/NK1.15"
+      * text = "Administrative Sex"
+      * definition = "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.gender"
+      * answerValueSet = "http://hl7.org/fhir/ValueSet/administrative-gender"
+
+// Related Individual	Date of birth
+
+    * item[+]
+      * type = #date
+      * linkId = "HL7/NK1-16"
+      * text = "Date of Birth"
+      * definition = "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.birthDate"
+
+// Related Individual	NHS Number, if known
+
+    * item[+]
+      * type = #string
+      * linkId = "LN/89061-6"
+      * code[+] = $loinc#89061-6
+      * text = "NHS Number (if known)"
+      * required = false
+      * definition = "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.identifier:nhsNumber"
+
+// Related Individual	Hospital/Medical Record Number, if known
+
+    * item[+]
+      * type = #string
+      * linkId = "LN/76435-7"
+      * code[+] = $loinc#76435-7
+      * text = "Hospital Number (Medical Record Number), if known"
+      * required = false
+      * definition = "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.identifier:MedicalRecordNumber"
+
+// Related Individual	Link back to this order's own Patient (the mother)
+
+    * item[+]
+      * type = #reference
+      * linkId = "NOS/RelatedIndividual-patient"
+      * text = "This order's own Patient (the mother)"
+      * required = true
+      * definition = "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.patient"
+      * extension[referenceProfile].valueCanonical = "http://hl7.org/fhir/StructureDefinition/Patient"
 
   * item[+]
     * type = #string

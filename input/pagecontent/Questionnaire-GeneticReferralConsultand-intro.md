@@ -8,10 +8,20 @@ Referral](Questionnaire-GeneticClinicalReferral.html) the same way an Ask At
 Order Entry Questionnaire extends [Genomic Test
 Order](Questionnaire-GenomicTestOrder.html) - see [Genetic Clinical Referral -
 Order Entry Questions](Questionnaire-GeneticClinicalReferral.html#order-entry-questions).
-It structures a single named **consultand** (an at-risk relative of the
-proband, per [Genetic Referrals](GeneticReferrals.html)'s Proband/Consultand
+It structures a repeating **Related Individual (NK1)** group - the same
+NK1-shaped `RelatedPerson` group as [NW Genomic General Ask At Order
+Questions](Questionnaire-GenomicGeneralAskAtOrderEntry.html)'s own
+`NOS/RelatedIndividual`, generalised from this Questionnaire's original
+Consultand-only shape. A **Role** item states which direction each entry
+is: usually a named **consultand** (an at-risk relative of the proband, per
+[Genetic Referrals](GeneticReferrals.html)'s Proband/Consultand
 terminology) being referred alongside or instead of the proband, referenced
-from `ServiceRequest.supportingInfo` on the referral itself.
+from `ServiceRequest.supportingInfo` on the referral itself - but it can
+also name the **proband**, the reverse direction, for the (currently
+theoretical) case of a referral whose own Patient is itself a family member
+rather than the proband, the same pattern [WGS Local Test
+Order](Questionnaire-WGSLocalTestOrderAskAtOrderEntry.html)'s `NOS/Proband`
+uses on a lab order.
 
 **Scope note:** this is deliberately narrow. General family history - the
 wider pedigree, who else in the family is affected - stays in the
@@ -32,9 +42,10 @@ v2 `NK1` segment.
 
 ```mermaid
 erDiagram
-    RelatedPerson }o--|| Patient : "patient (the proband)"
+    RelatedPerson }o--|| Patient : "patient (proband, usually)"
 
     RelatedPerson {
+        CodeableConcept role "Consultand or Proband"
         HumanName name "NK1-2"
         CodeableConcept relationship "NK1-3"
         code gender "NK1.15"
@@ -51,16 +62,20 @@ erDiagram
 
 `RelatedPerson.patient` always references the *same* `Patient` as [Genetic
 Clinical Referral](Questionnaire-GeneticClinicalReferral.html)'s own Patient
-group - the proband. A consultand's own NHS Number/Medical Record Number is
-only completed if they are themselves already a patient somewhere (e.g.
-already known to the referring service) - it is not required, since many
-consultands named at referral time won't yet have any record of their own.
+group. When Role = Consultand (the usual case), that Patient is the
+proband and this group names a relative of theirs. When Role = Proband,
+that Patient is instead a family member, and this group names the original
+proband. A named individual's own NHS Number/Medical Record Number is only
+completed if they are themselves already a patient somewhere (e.g. already
+known to the referring service) - it is not required, since many named at
+referral time won't yet have any record of their own.
 
 ## Field Mapping
 
 | Name | HL7 v2 | Value Set / Data Type | FHIR `RelatedPerson` |
 |---|---|---|---|
-| Consultand Name | `NK1-2` | - | `RelatedPerson.name` |
+| Role (Consultand or Proband) | - | Local (`NWGMSA` `RoleConsultand`/`RoleProband`) | - (discriminator only) |
+| Name | `NK1-2` | - | `RelatedPerson.name` |
 | Relationship to Proband | `NK1-3` | [UKCorePersonRelationshipType](https://simplifier.net/hl7fhirukcorer4/valueset-ukcore-personrelationshiptype) | `RelatedPerson.relationship` |
 | Administrative Sex | `NK1.15` | [AdministrativeGender](http://hl7.org/fhir/ValueSet/administrative-gender) | `RelatedPerson.gender` |
 | Date of Birth | `NK1-16` | - | `RelatedPerson.birthDate` |
@@ -78,6 +93,9 @@ neither is yet the confirmed convention for this specific Questionnaire.
 
 - [Genetic Clinical Referral](Questionnaire-GeneticClinicalReferral.html) -
   the common core this Questionnaire extends
+- [NW Genomic General Ask At Order Questions](Questionnaire-GenomicGeneralAskAtOrderEntry.html) -
+  the same NK1-shaped `RelatedPerson` group (`NOS/RelatedIndividual`) this
+  Questionnaire's shape was generalised to match
 - [RelatedPerson](StructureDefinition-RelatedPerson.html) - the FHIR profile
   this Questionnaire structures
 - [Genetic Referrals](GeneticReferrals.html) - the narrative use case,
