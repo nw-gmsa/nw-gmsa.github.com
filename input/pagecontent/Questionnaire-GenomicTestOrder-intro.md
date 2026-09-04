@@ -45,6 +45,7 @@ erDiagram
     ServiceRequest }o--|| PractitionerRole : requester
     PractitionerRole }o--|| Organization : organization
     ServiceRequest }o--o{ Condition : reasonCode
+    ServiceRequest ||--o{ Observation : supportingInfo
 
     Patient {
         Identifier nhsNumber

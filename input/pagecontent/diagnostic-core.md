@@ -32,7 +32,21 @@ erDiagram
     ServiceRequest ||--o{ AskAtOrderQuestions : "extended by"
     DiagnosticReport ||--o{ ReportPanels : "extended by"
     DiagnosticReport ||--o{ Results : "extended by"
+
+    classDef orderAggregate fill:#FFE6CC,stroke:#D79B00,stroke-width:2px
+    classDef reportAggregate fill:#DAE8FC,stroke:#6C8EBF,stroke-width:2px
+    class ServiceRequest orderAggregate
+    class AskAtOrderQuestions orderAggregate
+    class DiagnosticReport reportAggregate
+    class ReportPanels reportAggregate
+    class Results reportAggregate
 ```
+
+`ServiceRequest` (orange) and `DiagnosticReport` (blue) are shown in
+different colours as the two separate **aggregates** (in the [Domain-Driven
+Design](https://martinfowler.com/bliki/DDD_Aggregate.html) sense) this model
+is built around - each with its own extension mechanism, shown in the same
+colour as the aggregate it extends.
 
 This is deliberately a **high-level (level 1) view** - just the entities and
 how they relate. Field-level (level 2) diagrams, showing the actual
@@ -56,6 +70,31 @@ flowchart LR
     O --> FHIRV2O["FHIR ServiceRequest /<br/>HL7 v2 OML_O21"]
     R --> FHIRV2R["FHIR DiagnosticReport /<br/>HL7 v2 ORU_R01"]
 ```
+
+Answering an Ask At Order Entry or Report Panel Questionnaire produces
+`Observation` resources - the same resource type on both sides, just
+referenced back from a different aggregate:
+
+```mermaid
+erDiagram
+    AskAtOrderQuestions ||--o{ Observation : "answers become"
+    ServiceRequest ||--o{ Observation : supportingInfo
+    ReportPanels ||--o{ Observation : "answers become"
+    Results ||--o{ Observation : "are also"
+    DiagnosticReport ||--o{ Observation : result
+```
+
+- On the order side, an Ask At Order Entry answer becomes an `Observation`,
+  which the order references via `ServiceRequest.supportingInfo` - see the
+  [Observation](Questionnaire-GenomicTestOrder.html#domain-archetype) entity
+  on that page's own level-2 diagram.
+- On the report side, a Report Panel finding is also an `Observation`, which
+  the report references via `DiagnosticReport.result`. [Genomic
+  Results](Questionnaire-GenomicTestReport.html#genomic-results) (the
+  underlying HL7 FHIR Genomics Reporting profiles) are themselves `Observation`
+  resources too, and are referenced from `DiagnosticReport.result` the same
+  way - whether a given finding came from a Report Panel Questionnaire or
+  directly from a Genomics Reporting profile, it ends up in the same place.
 
 - **[Genomic Test Order](Questionnaire-GenomicTestOrder.html)** - the common
   core order form (Patient, Hospital Spell, Diagnostic Workflow, Specimen)

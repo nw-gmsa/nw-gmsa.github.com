@@ -323,12 +323,13 @@ Usage:  #definition
     structured Ask At Order Entry Questionnaires. A referral has no equivalent
     structured sub-Questionnaire today: the corresponding detail - who else in
     the family is affected, the inheritance pattern, degree of relationship of
-    at-risk relatives - travels as free text within the unstructured **family
-    letter** (see Genetic Referrals and Cancer Background Information for Use
-    Cases - Genetic Counselling Referral Across Regions), not as discrete data
-    items. A future structured representation could use FamilyMemberHistory
-    per relative (see the FamilyMemberHistory examples on Genomic Test
-    Report), but that is not attempted here.
+    at-risk relatives - travels as free text or an attached document within the
+    unstructured **family letter** (see Genetic Referrals and Cancer
+    Background Information for Use Cases - Genetic Counselling Referral
+    Across Regions), not as discrete data items. A future structured
+    representation could use FamilyMemberHistory per relative (see the
+    FamilyMemberHistory examples on Genomic Test Report), but that is not
+    attempted here.
     """
     * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
@@ -339,8 +340,21 @@ Usage:  #definition
     * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.note"
 
   * item[+]
-    * type = #attachment
+    * type = #reference
     * linkId = "FamilyHistory/attachment"
-    * text = "Family Letter (attached document, if sent as a document rather than free text)"
+    * text = "Family Letter (attached document)"
     * required = false
-    * definition = "http://hl7.org/fhir/StructureDefinition/DocumentReference#DocumentReference"
+    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.supportingInfo"
+    * extension[referenceProfile].valueCanonical = "http://hl7.org/fhir/StructureDefinition/DocumentReference"
+    * item[+]
+      * linkId = "FamilyHistory/attachment-designNote"
+      * type = #display
+      * text = """
+      ServiceRequest.supportingInfo references a DocumentReference (the
+      family letter), whose own DocumentReference.content.attachment.url
+      points at a Binary holding the actual document - the same pattern NHS
+      e-Referral Service (eRS) itself already uses for referral attachments
+      (ReferralRequest.supportingInfo -> DocumentReference) - see Genetic
+      Referrals - eRS FHIR Resource Model.
+      """
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help

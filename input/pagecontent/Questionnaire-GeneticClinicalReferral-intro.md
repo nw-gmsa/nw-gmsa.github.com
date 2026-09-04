@@ -36,6 +36,10 @@ erDiagram
     ServiceRequest }o--o{ HealthcareService : "performer (Referred-to Service, PRD)"
     PractitionerRole }o--|| Organization : organization
     ServiceRequest ||--o| Condition : reasonReference
+    ServiceRequest ||--o{ DocumentReference : "supportingInfo (Family Letter)"
+    DocumentReference ||--o| Binary : "content (Attachment.url)"
+    ServiceRequest ||--o{ RelatedPerson : "supportingInfo (Consultand)"
+    RelatedPerson }o--|| Patient : "patient (the proband)"
 
     Patient {
         Identifier nhsNumber
@@ -48,7 +52,7 @@ erDiagram
         code status "RF1-1"
         code priority "RF1-2"
         string code "RF1-4 - not yet coded"
-        string note "Family Letter (free text)"
+        string note "brief note, if no letter attached"
     }
 
     PractitionerRole {
@@ -65,6 +69,23 @@ erDiagram
 
     Condition {
         CodeableConcept code "Suspected/confirmed condition"
+    }
+
+    DocumentReference {
+        code type "Family Letter"
+    }
+
+    Binary {
+        code contentType
+        base64Binary data
+    }
+
+    RelatedPerson {
+        Identifier nhsNumber "if known"
+        HumanName name
+        CodeableConcept relationship "NK1-3"
+        code gender "NK1.15"
+        date birthDate "NK1-16"
     }
 ```
 
@@ -90,7 +111,7 @@ below is the concrete comparison:
 | Priority | `ServiceRequest.priority` (`LN/82768-3`) | **Same** - reuses the identical item (`RF1-2` maps onto the same FHIR element) |
 | Reason | Suspected disease/CITT code (`LN/51967-8`) plus free-text clinical information (`NTE-1`) | **Same** reason-code item reused (`RF1-12`/`DG1`) |
 | Specimen | **Specimen/Biopsy group** - detailed fields (type, body site, accession number, collection/received dates, shipment tracking) | **None.** A referral is a request for assessment, not a physical test - no specimen is collected until/unless it leads to an actual [Genomic Test Order](Questionnaire-GenomicTestOrder.html) later |
-| Order/test-type-specific detail | **Ask At Order Entry Questionnaires** - structured, `derivedFrom`/extended per order/test type (see [Order Entry Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions)) | **No structured equivalent.** The comparable detail - who else in the family is affected, inheritance pattern, at-risk relatives - travels today as free text in an unstructured **family letter** (see [Family History](#family-history) below), not a discrete sub-Questionnaire |
+| Order/test-type-specific detail | **Ask At Order Entry Questionnaires** - structured, `derivedFrom`/extended, exactly **one** applies per order/test type (see [Order Entry Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions)) | **Partly structured.** General family history stays in an attached **family letter** (`supportingInfo` -> `DocumentReference` -> `Binary`, the same pattern eRS uses) or free text - but a *named* consultand is structured via [Genetic Referral Consultand](Questionnaire-GeneticReferralConsultand.html) (`supportingInfo` -> `RelatedPerson`, HL7 v2 `NK1`), `derivedFrom`/extended the same way, except **repeating** (one per named relative) rather than a single choice - see [Order Entry Questions](#order-entry-questions) below |
 {:.grid}
 
 ### Family History
@@ -103,21 +124,59 @@ Cases - Genetic Counselling Referral Across
 Regions](CancerNOS.html#genetic-counselling-referral-across-regions), this
 detail is carried in an unstructured **family letter** - a dictated or
 secure-email clinical letter summarising the variant/condition, the
-inheritance pattern, and which relatives are thought to be at risk. This
-Questionnaire represents that letter as a single free-text item (or an
-attached document, if sent that way) rather than inventing a structured
-family-history data model that doesn't exist in current practice.
+inheritance pattern, and which relatives are thought to be at risk. Rather
+than inventing a structured family-history data model that doesn't exist in
+current practice, this Questionnaire models the letter itself as an
+attachment: `ServiceRequest.supportingInfo` references a `DocumentReference`,
+whose `content.attachment.url` points at a `Binary` holding the actual
+document (with a separate free-text `ServiceRequest.note` item as a fallback
+for a brief note sent without an attached letter). This is not a new pattern
+invented for this Questionnaire - it is the **same shape NHS e-Referral
+Service (eRS) already uses** for referral attachments
+(`ReferralRequest.supportingInfo` -> `DocumentReference`), see [Genetic
+Referrals - eRS FHIR Resource
+Model](GeneticReferrals.html#ers-fhir-resource-model).
 
-A future, more structured representation could use a `FamilyMemberHistory`
-resource per named relative - as already illustrated by the worked examples
-on [Genomic Test Report](Questionnaire-GenomicTestReport.html#examples)
-(`FamilyMemberHistory` for the son/mother in the Lynch syndrome example) -
-but building that out is beyond the analysis this page attempts.
+**General** family history - the wider pedigree, who else is affected - stays
+in that unstructured letter; this Questionnaire doesn't attempt to structure
+all of it. The one part that *is* called out as structured is a **named
+consultand** - a specific at-risk relative who is themselves being referred
+for counselling/testing, not just mentioned in passing - see [Order Entry
+Questions](#order-entry-questions) below.
+
+## Order Entry Questions
+
+This Genetic Clinical Referral Questionnaire (defined above) is the
+**common core** referral form, the same way [Genomic Test
+Order](Questionnaire-GenomicTestOrder.html#order-entry-questions) is the
+common core order form. Where a *named consultand* is being referred
+alongside (or instead of) the proband, that detail is added by a separate,
+`derivedFrom`/extended Questionnaire representing HL7 v2 `NK1` (Next of
+Kin/Associated Parties) as a FHIR `RelatedPerson`, referenced from
+`ServiceRequest.supportingInfo` - the same `supportingInfo` slot the family
+letter's `DocumentReference` uses, just a different resource type:
+
+| Referral Content | Questionnaire |
+|---|---|
+| Named consultand (structured, `NK1`/`RelatedPerson`) | [Genetic Clinical Referral - Consultand (RelatedPerson)](Questionnaire-GeneticReferralConsultand.html) |
+{:.grid}
+
+Unlike [Genomic Test Order](Questionnaire-GenomicTestOrder.html#order-entry-questions),
+where exactly one Ask At Order Entry Questionnaire applies per order/test
+type, this table is expected to grow by **repetition** rather than by
+alternative: a referral naming three at-risk relatives would reference three
+separate `GeneticReferralConsultand`-derived answers, one per consultand, not
+a choice between variants.
 
 ## Data Models
 
 - [Genomic Test Order](Questionnaire-GenomicTestOrder.html) - the equivalent
   archetype for a laboratory order, compared above
+- [Genetic Clinical Referral - Consultand (RelatedPerson)](Questionnaire-GeneticReferralConsultand.html) -
+  the `derivedFrom`/extended Questionnaire for a named consultand, see [Order
+  Entry Questions](#order-entry-questions) above
+- [RelatedPerson](StructureDefinition-RelatedPerson.html) - the FHIR profile
+  the Consultand Questionnaire structures (HL7 v2 `NK1`)
 - [Diagnostic Core](diagnostic-core.html) - the identifier profiles reused
   above ([NHS Identifier](StructureDefinition-NHSIdentifier.html), [Medical
   Record Number](StructureDefinition-MedicalRecordNumber.html), [Order

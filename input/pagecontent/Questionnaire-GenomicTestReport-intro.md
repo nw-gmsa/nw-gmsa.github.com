@@ -41,6 +41,8 @@ erDiagram
     PractitionerRole }o--|| Organization : organization
     DiagnosticReport ||--o{ Specimen : specimen
     DiagnosticReport ||--o{ Observation : "result (Report Panels)"
+    DiagnosticReport ||--o| Binary : "presentedForm (Attachment.url)"
+    DocumentReference ||--o| Binary : "content (Attachment.url)"
 
     Patient {
         Identifier nhsNumber
@@ -80,6 +82,15 @@ erDiagram
     Observation {
         code code "Panel-specific finding"
     }
+
+    DocumentReference {
+        code type "Narrative Report"
+    }
+
+    Binary {
+        code contentType
+        base64Binary data
+    }
 ```
 
 `ServiceRequest` is shown as **optional** (`basedOn`) because it is only
@@ -87,6 +98,17 @@ present for a **closed-loop** report - one answering a specific prior order
 the reporting system already knows about. An **unsolicited** report,
 produced without a matching order ever having been received, has no order to
 reference - see [Order Reference](#order-reference) below.
+
+**Narrative Report.** The full report, as a PDF, is HL7 v2's `OBX (type =
+ED)` - see [OBX (type = ED)](hl7v2.html#obx-type--ed), whose own v2-to-FHIR
+conversion mapping is to `DocumentReference`. `DiagnosticReport.presentedForm`
+and `DocumentReference.content` are both just an `Attachment` with a `url` -
+in this IG, both point at the **same** `Binary` resource holding the actual
+PDF bytes, rather than each carrying its own separate copy. `DocumentReference`
+is the resource this content would be shared via (e.g. IHE XDS.b/MHD, or the
+NHS England National Record Locator), while `DiagnosticReport.presentedForm`
+is the more direct route for a system that already holds the `DiagnosticReport`
+and just wants the PDF alongside it.
 
 ### Diagnostic Report
 
