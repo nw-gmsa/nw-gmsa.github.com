@@ -1,14 +1,38 @@
-This implementation guide primarily focuses on the **Diagnostic Workflow** and how it integrates within the broader **health data model**, as illustrated in the diagram above.
+This implementation guide primarily focuses on the **Diagnostic Workflow** and how it integrates within the broader **health data model**.
 - **Patient Care** and **Patient Administration** are typically found in NHS providers **Electronic Patient Record** systems
 - **Care Directory Service** on the other hand, are centrally defined by NHS England, with supporting APIs also provided by NHS England (for example, the ODS API).
 
 In software design, these areas are often referred to as [domains](https://en.wikipedia.org/wiki/Domain-driven_design). The **Genomic Diagnostic Workflow** operates across several of these domains — in software architecture terms, this is known as a [bounded context](https://martinfowler.com/bliki/BoundedContext.html).
 
-<figure style="overflow-x:auto;">
-{%include Diagnostic-Workflow-mindmap.svg%}
-<p id="fX.X.X.X-X" class="figureTitle">Diagnostic Workflow - MindMap</p>
-</figure>
-<br clear="all">
+## National Reference Data
+
+Rather than every consuming system resolving these against the national
+service directly, this guide's resources carry identifiers that *reference*
+nationally-held data, while a **local copy** of the resource itself is still
+maintained where a genuine local need requires it:
+
+- **Master Patient Index** - [Patient](StructureDefinition-Patient.html)
+  references NHS England's Personal Demographics Service (PDS) via the
+  patient's NHS Number - see [NHS Identifier](StructureDefinition-NHSIdentifier.html).
+  A local copy of `Patient` is still maintained, rather than resolving PDS on
+  every use, because this guide also needs to support identifiers PDS itself
+  doesn't carry - CHI (Scotland) and HSC/HSNI (Northern Ireland) numbers, and
+  locally-assigned [Medical Record Numbers](StructureDefinition-MedicalRecordNumber.html) -
+  see [NHS Identifier](StructureDefinition-NHSIdentifier.html) for how these
+  are represented together. The Regional Integration Engine (RIE) performs
+  the actual PDS check/enrichment - see [Regional Integration Engine (RIE) -
+  Order Process](overview.html#order-process) and [Report
+  Process](overview.html#report-process).
+- **Care Directory Services** - [Organization](StructureDefinition-Organization.html)
+  and [Practitioner](StructureDefinition-Practitioner.html) reference NHS
+  England's centrally-held Organisation Data Service/Transfer (ODS/ODT), via
+  [Organisation Code](StructureDefinition-OrganisationCode.html) (ODS Code)
+  and [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html)
+  (GMP/GMC Number). As with the Master Patient Index above, the RIE performs
+  this check/enrichment against the live ODT API rather than every consuming
+  system doing so individually - see [Regional Integration Engine (RIE) -
+  Order Process](overview.html#order-process) and [Report
+  Process](overview.html#report-process).
 
 ## Entity Relationship Diagram
 
@@ -32,21 +56,15 @@ erDiagram
     ServiceRequest ||--o{ AskAtOrderQuestions : "extended by"
     DiagnosticReport ||--o{ ReportPanels : "extended by"
     DiagnosticReport ||--o{ Results : "extended by"
-
-    classDef orderAggregate fill:#FFE6CC,stroke:#D79B00,stroke-width:2px
-    classDef reportAggregate fill:#DAE8FC,stroke:#6C8EBF,stroke-width:2px
-    class ServiceRequest orderAggregate
-    class AskAtOrderQuestions orderAggregate
-    class DiagnosticReport reportAggregate
-    class ReportPanels reportAggregate
-    class Results reportAggregate
 ```
 
-`ServiceRequest` (orange) and `DiagnosticReport` (blue) are shown in
-different colours as the two separate **aggregates** (in the [Domain-Driven
-Design](https://martinfowler.com/bliki/DDD_Aggregate.html) sense) this model
-is built around - each with its own extension mechanism, shown in the same
-colour as the aggregate it extends.
+`ServiceRequest` and `DiagnosticReport` are the two separate **aggregates**
+(in the [Domain-Driven Design](https://martinfowler.com/bliki/DDD_Aggregate.html)
+sense) this model is built around - each with its own extension mechanism.
+<!-- Colouring these two aggregates differently was attempted here using
+mermaid erDiagram classDef/class styling, but that syntax is not supported by
+the mermaid renderer this IG's build uses - reverted rather than risk a
+broken build. -->
 
 This is deliberately a **high-level (level 1) view** - just the entities and
 how they relate. Field-level (level 2) diagrams, showing the actual
