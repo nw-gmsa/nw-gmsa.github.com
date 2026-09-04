@@ -12,6 +12,11 @@ In software design, these areas are often referred to as [domains](https://en.wi
 
 ## Entity Relationship Diagram
 
+This is the **basic model** this guide is built on: a `Patient` has one or more
+`ServiceRequest`s (orders), each of which references a `Specimen` and produces
+a `DiagnosticReport`, with a `HospitalSpell` linking orders and reports back
+to the episode of care they belong to.
+
 ```mermaid
 erDiagram
 
@@ -75,79 +80,52 @@ erDiagram
     }
 ```
 
+## Archetype Questionnaires
 
-### Patient 
+This basic model is deliberately abstract - it doesn't yet say which specific
+fields an order or report needs, or how those fields map onto HL7 v2 segments
+and FHIR profiles. That detail is added by two **archetype Questionnaires**,
+one for each side of the `ServiceRequest`/`DiagnosticReport` relationship
+above:
 
-<div class="alert alert-info" role="alert">
-<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-Patient.html" _target="_blank">Patient</a> 
-</div>
-<div class="alert alert-info" role="alert">
-<b>HL7 v2 Segment:</b> <a href="hl7v2.html#pid" _target="_blank">PID</a>
-</div>
+```mermaid
+flowchart LR
+    M["Basic model<br/>(this page)"] --> O["Questionnaire-<br/>GenomicTestOrder"]
+    M --> R["Questionnaire-<br/>GenomicTestReport"]
+    O --> OAOE["Ask At Order Entry<br/>Questionnaires<br/>(derived/extended)"]
+    R --> RP["Report Panels<br/>(derived/extended)"]
+    O --> FHIRV2O["FHIR ServiceRequest /<br/>HL7 v2 OML_O21"]
+    R --> FHIRV2R["FHIR DiagnosticReport /<br/>HL7 v2 ORU_R01"]
+```
 
-| Type       | Name                       | Description                                | FHIR [Patient](StructureDefinition-Patient.html) |
-|------------|----------------------------|---------------------------------------------|--------------------------------------------------|
-| identifier | NHSNumber                  | Patient's NHS Number - see [NHS Identifier](StructureDefinition-NHSIdentifier.html) | Patient.identifier (type=NH)                     |
-| identifier | HospitalNumber             | Patient's hospital/medical record number - see [Medical Record Number](StructureDefinition-MedicalRecordNumber.html) | Patient.identifier (type=MR)                     |
-| identifier | PatientAccessionIdentifier | iGene's internal patient accession number - see [Patient Identifier](StructureDefinition-PatientIdentifier.html) | Patient.identifier (type=PI)                     |
-| string     | PatientGivenName           | Patient's first name                        | Patient.name.given                               |
-| string     | PatientFamilyName          | Patient's surname                           | Patient.name.family                              |
-| date       | DateOfBirth                | Patient's date of birth                     | Patient.birthDate                                |
-| code       | AdministrativeSex          | Sex registered at birth                     | Patient.gender                                   |
-| string     | PostCode                   | Patient's postcode                          | Patient.address.postalCode                       |
-{:.grid}
+- **[Genomic Test Order](Questionnaire-GenomicTestOrder.html)** - the common
+  core order form (Patient, Hospital Spell, Diagnostic Workflow, Specimen)
+  shared by every order, regardless of test type. Order/test-type-specific
+  questions are added by **Ask At Order Entry Questionnaires**, which
+  `derivedFrom`/extend this common core - see [Order Entry
+  Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions) for
+  the full list.
+- **[Genomic Test Report](Questionnaire-GenomicTestReport.html)** - the common
+  core report metadata (patient, order/report identifiers, dates, status,
+  conclusion, performers) shared by every report. Individual test findings are
+  added by **Report Panel Questionnaires**, which are likewise
+  `derivedFrom`/extended from this common core - see [Report
+  Panels](Questionnaire-GenomicTestReport.html#report-panels) for the full
+  list.
 
-### Hospital Spell
+Each archetype's own page carries the field-by-field detail this summary page
+doesn't: which [HL7 FHIR profile](artifacts.html) and [HL7 v2
+segment](hl7v2.html) each field maps onto, ready to implement against.
 
-<div class="alert alert-info" role="alert">
-<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-HospitalSpell.html" _target="_blank">Hospital Spell</a> 
-</div>
-<div class="alert alert-info" role="alert">
-<b>HL7 v2 Segment:</b> <a href="hl7v2.html#pv1" _target="_blank">PV1</a>
-</div>
+### Original Order and Filler Order
 
-| Type       | Name                                                                                        | Description                                                          | FHIR [Hospital Spell](StructureDefinition-HospitalSpell.html) |
-|------------|---------------------------------------------------------------------------------------------|-----------------------------------------------------------------------|---------------------------------------------------------------|
-| identifier | [HospitalSpellProviderIdentifier](StructureDefinition-HospitalProviderSpellIdentifier.html) | Identifier for the hospital spell/episode the order was placed under | Encounter.identifier (type = AN)                              |
-{:.grid}
-
-### ServiceRequest (Order)
-
-<div class="alert alert-info" role="alert">
-<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-ServiceRequest.html" _target="_blank">ServiceRequest</a> 
-</div>
-<div class="alert alert-info" role="alert">
-<b>HL7 v2 Segment:</b> <a href="hl7v2.html#orc" _target="_blank">ORC</a>
-</div>
-
-The original order is the order sent from the Order Placer to the Order Filler; in IHE Laboratory Testing Workflow this is the key entity in [LAB-1](LTW.html#diagnostic-testing)
-
-| Type       | Name                                          | Description                                  | FHIR [ServiceRequest](StructureDefinition-ServiceRequest.html) |
-|------------|-----------------------------------------------|------------------------------------------------|----------------------------------------------------------------|
-| identifier | PlacerOrderNumber                             | Order identifier assigned by the ordering Trust - see [Order Identifier](StructureDefinition-OrderIdentifier.html) | ServiceRequest.identifier (type = PLAC)                        |
-| identifier | FillerOrderNumber                             | Order identifier assigned by iGene (the lab) - see [Order Identifier](StructureDefinition-OrderIdentifier.html) | ServiceRequest.identifier (type = FILL)                        |
-| code       |                                               |                                                 | ServiceRequest.intent (code = original-order)                  | 
-| code       | Procedure Code - NGTDTestCode                 | NHS England Genomic Test Directory test code    | ServiceRequest.code                                            |
-| string     | ClinicalDetails                               | Free-text clinical details/history              | ServiceRequest.note                                            |
-| code       | OrderingProviderIdentifier                    | Ordering clinician's professional identifier - see [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html) | ServiceRequest.requester (PractitionerRole.practitioner.identifier) |
-| code       | RequestingOrganisationCode                    | Requesting Trust's ODS code - see [Organisation Code](StructureDefinition-OrganisationCode.html) | ServiceRequest.requester (PractitionerRole.organization.identifier, ODS Code) |
-| code       | Performer                                     |                                                 | ServiceRequest.performer (fixed ODS code = 699X0)              |
-| reference  | Specimen                                      |                                                 | ServiceRequest.specimen                                        |
-| reference  | Patient                                       |                                                 | ServiceRequest.subject                                         |
-| reference  | Hospital Spell                                |                                                 | ServiceRequest.encounter (Hospital Spell)                      |
-| code       | Reason Code - Clinical Indication Code (CITT) |                                                 | ServiceRequest.reasonCode                                      | 
-{:.grid}
-
-#### Filler Order
-
-<div class="alert alert-info" role="alert">
-<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-ServiceRequest.html" _target="_blank">ServiceRequest</a> 
-</div>
-<div class="alert alert-info" role="alert">
-<b>HL7 v2 Segment:</b> <a href="hl7v2.html#orc" _target="_blank">ORC</a>
-</div>
-
-ServiceRequest may also be split into two logical entities called `OriginalOrder` and `FillerOrder`. The former represents the order received by the Order Filler from the Order Placer, and the latter is orders the `Order Filler` creates to fulfil that order. These are often also called `reflex`, `work-order` or `sub-contract` orders.
+`ServiceRequest` may also be split into two logical entities called
+`OriginalOrder` and `FillerOrder`. The former represents the order received by
+the Order Filler from the Order Placer, and the latter is orders the `Order
+Filler` creates to fulfil that order. These are often also called `reflex`,
+`work-order` or `sub-contract` orders - both are structurally the same
+[Genomic Test Order](Questionnaire-GenomicTestOrder.html) archetype, just
+created by a different actor.
 
 ```mermaid
 erDiagram
@@ -178,21 +156,11 @@ erDiagram
     }
 ```
 
-In IHE Laboratory Testing Workflow, this is the key entity in [LAB-4](LTW.html#work-order-and-test-result-management-lab-4-and-lab-5)
-
-| Type       | Name                          | Description                                | FHIR [ServiceRequest](StructureDefinition-ServiceRequest.html) |
-|------------|-------------------------------|-----------------------------------------------|----------------------------------------------------------------|
-| code       | OrderStatus                   | Order's current status in iGene                | ServiceRequest.status                                          |
-| date       | TestOrderDate                 | Date/time the test was ordered                 | ServiceRequest.authoredOn                                      |
-| identifier | TestAccessionIdentifier       | iGene's test-level accession number            | ServiceRequest.identifier                                      |
-| code       | Procedure Code - NGTDTestCode | NHS England Genomic Test Directory test code   | ServiceRequest.code                                            |
-| code       | RequestingOrganisationCode    | Requesting Trust's ODS code - see [Organisation Code](StructureDefinition-OrganisationCode.html) | ServiceRequest.requester (PractitionerRole.organization.identifier, fixed ODS code = 699X0) |
-| code       | Performer                     |                                                | ServiceRequest.performer (ODS Code)                            |
-| reference  | Specimen                      |                                                | ServiceRequest.specimen                                        |
-| reference  | Patient                       |                                                | ServiceRequest.subject                                         |
-| reference  | OriginalOrder                 |                                                | ServiceRequest.requisition and ServiceRequest.basedOn          |
-| reference | Hospital Spell                | | ServiceRequest.encounter (Hospital Spell) |
-{:.grid}
+In IHE Laboratory Testing Workflow, the Original Order is the key entity in
+[LAB-1](LTW.html#diagnostic-testing), and the Filler Order is the key entity
+in [LAB-4](LTW.html#work-order-and-test-result-management-lab-4-and-lab-5) -
+see [Genomic Test Order](Questionnaire-GenomicTestOrder.html) for the
+field-by-field mapping both share.
 
 #### Filler Order Intent
 
@@ -203,50 +171,3 @@ In IHE Laboratory Testing Workflow, this is the key entity in [LAB-4](LTW.html#w
 | Subcontracted Order | A laboratory order forwarded to another laboratory for fulfilment, for example when a specialised test is referred to an external provider.                     | LAB-35   | Order Filler |                                        | filler-order |
 | Reflex Order        | A new order created automatically by the Order Filler based on previous test results, for example when pathology findings automatically trigger a genomic test. | LAB-35   | Order Filler |                                        | reflex                | 
 {:.grid}
-
-### Specimen 
-
-<div class="alert alert-info" role="alert">
-<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-Specimen.html" _target="_blank">Specimen</a> 
-</div>
-<div class="alert alert-info" role="alert">
-<b>HL7 v2 Segment:</b> <a href="hl7v2.html#spm" _target="_blank">SPM</a>
-</div>
-
-| Type       | Name                        | Description             | FHIR [Specimen](StructureDefinition-Specimen.html)       |
-|------------|-----------------------------|-------------------------|----------------------------------------------------------|
-| identifier | SpecimenAccessionIdentifier | Specimen's lab accession/DNA number - see [Specimen Accession Number](StructureDefinition-SpecimenAccessionNumber.html) | Specimen.identifier                                      |
-| identifier | ShipmentTrackingNumber      | Courier tracking number for the dispatched specimen - see [Shipment Tracking Number](StructureDefinition-ShipmentTrackingNumber.html) | Specimen.identifier[ShipmentTrackingNumber] (type = STN) |
-| identifier | FMIIdentifier               | Purpose not yet confirmed                          | Specimen.container.identifier                            |
-| reference  | Patient                     |                         | Specimen.subject                                         |
-| code       | SpecimenTypeCode            | Coded specimen type - normally SNOMED coded using the [Specimen Type](ValueSet-specimen-type.html) value set | Specimen.type |
-| date       | SpecimenDispatchDate        | Date/time the specimen was dispatched              |                                                          |
-| date       | SpecimenTakenDateTime       | Date/time the specimen was taken from the patient  | Specimen.collection.collectedDateTime                    |
-| date       | SpecimenReceivedDateTime    | Date/time the specimen was received in the lab     | Specimen.receivedTime                                               |
-{:.grid}
-
-### Diagnostic Report
-
-<div class="alert alert-info" role="alert">
-<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-DiagnosticReport.html" _target="_blank">DiagnosticReport</a> 
-</div>
-<div class="alert alert-info" role="alert">
-<b>HL7 v2 Segment:</b> <a href="hl7v2.html#obr" _target="_blank">OBR</a>
-</div>
-
-This is the key entity for the reports/results which are generated when the Placer Order and Filler Order are fulfilled, which are [LAB-3](LTW.html#laboratory-report-lab-3) and [LAB-5](LTW.html#test-results-management-lab-5) respectively.
-
-| Type          | Name                                                                         | Description | FHIR [DiagnosticReport](StructureDefinition-DiagnosticReport.html)                          |
-|---------------|------------------------------------------------------------------------------|-------------|---------------------------------------------------------------------------------------------|
-| identifier    | TestAccessionIdentifier                                                      | iGene's test-level accession number - see [Report Identifier](StructureDefinition-ReportIdentifier.html) | DiagnosticReport.identifier                                                                 |
-| reference     | FillerOrder                                                                  |             | DiagnosticReport.basedOn (FillerOrder)                                                      |
-| reference     | Patient                                                                      |             | DiagnosticReport.subject                                                                    |
-| code          | Procedure Code - NGTDTestCode                                                | NHS England Genomic Test Directory test code | DiagnosticReport.code (system = https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory) |
-| date          | ReportStatusDateTime                                                         | Date/time the report status was last updated | DiagnosticReport.effectiveDateTime                                                          |
-| reference     | Hospital Spell - Account Number                                              |             | DiagnosticReport.encounter (Hospital Spell)                                                 |
-| code          | Conclusion Code - [Test Outcome Code](ValueSet-GenomicTestOutcomeCodes.html) |             | DiagnosticReport.conclusionCode                                                             |
-| result        | See [Observations](StructureDefinition-Observation.html)                     |             | DiagnosticReport.result                                                                     | 
-| presentedForm | See [DocumentReference](StructureDefinition-DocumentReference.html)          |             | DiagnosticReport.presentedForm                                                              |
-{:.grid}
-
-

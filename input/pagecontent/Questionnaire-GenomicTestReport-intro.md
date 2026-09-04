@@ -1,3 +1,16 @@
+This Questionnaire describes the common requirement for a Genomic Test
+Report, extended by Report Panel Questionnaires for each kind of individual
+test finding - see [Report Panels](#report-panels) below for the full list.
+
+Although this Questionnaire is genomics-specific in name, the model it
+describes - Patient, Hospital Spell, Diagnostic Workflow and Results - is a
+**core model for diagnostic reports generally**, not something unique to
+genomics. The same shape applies equally to pathology, radiology and clinical
+referral reports; genomics is simply the domain this IG documents it against
+first. See [Diagnostic Core](diagnostic-core.html) for the basic model this
+Questionnaire adds detail to, and how it relates to [Genomic Test
+Order](Questionnaire-GenomicTestOrder.html) on the order side.
+
 ## References
 
 - [HL7 Lab Results Interface (LRI), Release 1 from May 2017](https://confluence.hl7.org/download/attachments/25559919/2018%2004%2003%20-%20V2%20LRI%20-%20Ch.%205%20CG%20and%20Code%20System%20Tables.pdf?api=v2) (HL7 v2,5,1)
@@ -63,8 +76,14 @@ The Laboratory Report acts as the bridge between these two worlds. It references
 Metadata is data that applies to the patient's entire clinical pathway and so it extends beyond diagnostic tests.
 Test detail tends to be common across all diagnostic tests in a patient's pathway, not just genomics.
 
-<span class="badge badge-info">Patient Demographics</span>
+#### Patient Demographics
 
+<div class="alert alert-info" role="alert">
+<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-Patient.html" _target="_blank">Patient</a> 
+</div>
+<div class="alert alert-info" role="alert">
+<b>HL7 v2 Segment:</b> <a href="hl7v2.html#pid" _target="_blank">PID</a>
+</div>
 
 | Name                  | LOINC | Value Set / Data Type                                                 | Cardinality | HL7 v2 OML_O21 Message | HL7 FHIR [ServiceRequest](StructureDefinition-ServiceRequest.html) | HL7 FHIR Resource (Message + RESTful)       |
 |-----------------------|-------|-----------------------------------------------------------------------|-------------|------------------------|--------------------------------------------------------------------|---------------------------------------------|
@@ -72,7 +91,14 @@ Test detail tends to be common across all diagnostic tests in a patient's pathwa
 | Medical Record Number |       | [Medical Record Number](StructureDefinition-MedicalRecordNumber.html) | 0..1        | [PID](hl7v2.html#pid)  | ServiceRequest.subject.identifier                                  | [Patient](StructureDefinition-Patient.html) |
 {:.grid}
 
-<span class="badge badge-info">Hospital Spell</span>
+#### Hospital Spell
+
+<div class="alert alert-info" role="alert">
+<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-HospitalSpell.html" _target="_blank">Hospital Spell</a> 
+</div>
+<div class="alert alert-info" role="alert">
+<b>HL7 v2 Segment:</b> <a href="hl7v2.html#pv1" _target="_blank">PV1</a>
+</div>
 
 Treat as mandatory for reflex or subcontracted orders.
 
@@ -82,7 +108,14 @@ Treat as mandatory for reflex or subcontracted orders.
 | Case Identification or Account Number | 56797-4 | [HospitalProviderSpellIdentifier](StructureDefinition-HospitalProviderSpellIdentifier.html) | 0..1        | [PV1](hl7v2.html#pv1)-19 | ServiceRequest.encounter.identifier | Encounter.identifier [HospitalSpell](StructureDefinition-HospitalSpell.html) |
 {:.grid}
 
-<span class="badge badge-primary">Diagnostic Workflow</span>
+#### Diagnostic Workflow
+
+<div class="alert alert-info" role="alert">
+<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-DiagnosticReport.html" _target="_blank">DiagnosticReport</a> 
+</div>
+<div class="alert alert-info" role="alert">
+<b>HL7 v2 Segment:</b> <a href="hl7v2.html#obr" _target="_blank">OBR</a>
+</div>
 
 | Name                     | Description                                                                                                                           | Value Set / Data Type                                                                          | Cardinality | HL7 v2 ORU_RO1 Message                   | HL7 FHIR [DiagnosticReport](StructureDefinition-DiagnosticReport.html) | HL7 FHIR Resource (RESTful)                               |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|-------------|------------------------------------------|------------------------------------------------------------------------|-----------------------------------------------------------|

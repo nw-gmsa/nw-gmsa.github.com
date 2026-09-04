@@ -4,6 +4,15 @@ these extension questionnaires is used depends on the order/test type
 (`ServiceRequest.code`) - see [Order Entry Questions](#order-entry-questions)
 below.
 
+Although this Questionnaire is genomics-specific in name, the model it
+describes - Patient, Hospital Spell, Diagnostic Workflow and Specimen -
+is a **core model for diagnostic orders generally**, not something unique to
+genomics. The same shape applies equally to pathology, radiology and clinical
+referral orders; genomics is simply the domain this IG documents it against
+first. See [Diagnostic Core](diagnostic-core.html) for the basic model this
+Questionnaire adds detail to, and how it relates to [Genomic Test
+Report](Questionnaire-GenomicTestReport.html) on the report side.
+
 ## Reference
 
 - [HL7 Europe Laboratory Report - ServiceRequest: Laboratory Order](https://build.fhir.org/ig/hl7-eu/laboratory/StructureDefinition-ServiceRequest-eu-lab.html)
@@ -69,6 +78,12 @@ The detail of this form/template defines:
 
 ### Patient Demographics
 
+<div class="alert alert-info" role="alert">
+<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-Patient.html" _target="_blank">Patient</a> 
+</div>
+<div class="alert alert-info" role="alert">
+<b>HL7 v2 Segment:</b> <a href="hl7v2.html#pid" _target="_blank">PID</a>
+</div>
 
 | Name                  | Value Set / Data Type                                                 | Cardinality | HL7 v2 OML_O21 Message   | HL7 FHIR ServiceRequest                                     | HL7 FHIR Resource (Message + RESTful)                                       |
 |-----------------------|-----------------------------------------------------------------------|-------------|--------------------------|-------------------------------------------------------------|-----------------------------------------------------------------------------|
@@ -80,6 +95,13 @@ The detail of this form/template defines:
 
 ### Hospital Spell
 
+<div class="alert alert-info" role="alert">
+<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-HospitalSpell.html" _target="_blank">Hospital Spell</a> 
+</div>
+<div class="alert alert-info" role="alert">
+<b>HL7 v2 Segment:</b> <a href="hl7v2.html#pv1" _target="_blank">PV1</a>
+</div>
+
 Treat as mandatory for reflex or subcontracted orders.
 
 | Name                                  | Value Set / Data Type                                                                       | Cardinality | HL7 v2 OML_O21 Message   | HL7 FHIR ServiceRequest             | HL7 FHIR Resource (Message + RESTful)                                        |
@@ -89,6 +111,13 @@ Treat as mandatory for reflex or subcontracted orders.
 {:.grid}
 
 ### Diagnostic Workflow
+
+<div class="alert alert-info" role="alert">
+<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-ServiceRequest.html" _target="_blank">ServiceRequest</a> 
+</div>
+<div class="alert alert-info" role="alert">
+<b>HL7 v2 Segment:</b> <a href="hl7v2.html#orc" _target="_blank">ORC</a>
+</div>
 
 | Name                        | Value Set / Data Type                                                              | Cardinality | HL7 v2 OML_O21 Message            | HL7 FHIR ServiceRequest                                                                                                           | 
 |-----------------------------|------------------------------------------------------------------------------------|-------------|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
@@ -136,9 +165,11 @@ Questionnaire, which `derivedFrom`/extends this common core Questionnaire:
 
 ### Specimen
 
-
 <div class="alert alert-info" role="alert">
 <b>HL7 FHIR Profile:</b> <a href="StructureDefinition-Specimen.html" _target="_blank">Specimen</a> 
+</div>
+<div class="alert alert-info" role="alert">
+<b>HL7 v2 Segment:</b> <a href="hl7v2.html#spm" _target="_blank">SPM</a>
 </div>
 
 | Name                      | LOINC   | Value Set / Data Type                                                         | Cardinality | HL7 v2 OML_O21 Message   | HL7 FHIR [Specimen](StructureDefinition-Specimen.html) |

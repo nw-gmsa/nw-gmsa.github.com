@@ -87,7 +87,7 @@ sequenceDiagram
 ### Sub Order Management (LAB-35)
 
 <div class="alert alert-info" role="alert">
-<b>Domain Archetype:</b> <a href="diagnostic-core.html#filler-order" _target="_blank">Diagnostic Core - Filler Order</a> 
+<b>Domain Archetype:</b> <a href="diagnostic-core.html#original-order-and-filler-order" _target="_blank">Diagnostic Core - Filler Order</a> 
 </div>
 
 <div class="alert alert-info" role="alert">
