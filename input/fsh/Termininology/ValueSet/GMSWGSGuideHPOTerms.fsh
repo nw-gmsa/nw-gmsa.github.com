@@ -14,7 +14,7 @@ real HPO codes (`http://purl.obolibrary.org/obo/hp.owl`, release
 (`https://ontoserver.aws.gel.ac/fhir`) via `CodeSystem/$lookup`, not
 guessed. See [GMSWGSGuideHPOTermsToSCT
 ConceptMap](ConceptMap-GMSWGSGuideHPOTermsToSCT.html) for the SNOMED CT
-mapping built from the same verification pass (22 of these 38 resolved;
+mapping built from the same verification pass (27 of these 38 resolved;
 the rest have no entry in that server's own `sct-to-hpo` map).
 
 Bound as `#open-choice` on

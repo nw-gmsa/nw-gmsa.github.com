@@ -10,25 +10,28 @@ HPO (Human Phenotype Ontology) to SNOMED CT mapping for the 38 terms in
 Built against the Genomics England terminology server
 (https://re-docs.genomicsengland.co.uk/terminology_server/,
 `https://ontoserver.aws.gel.ac/fhir`), HPO release `20191108`. That server
-only publishes a **SNOMED CT to HPO** `ConceptMap` (`sct-to-hpo`), not the
-reverse - `$translate` in the HPO-to-SNOMED direction returns no result
-even for codes that genuinely are the target of a real entry. This
-ConceptMap was therefore built by finding a candidate SNOMED CT concept for
-each HPO term (`ValueSet/$expand` free-text search under the Clinical
-finding (`404684003`) subtree) and forward-verifying it through
-`ConceptMap/sct-to-hpo/$translate` - keeping only candidates that the
-server's own map confirms translate to the exact target HPO code, with the
-`equivalence` value taken directly from that server response (`equivalent`
-in every case found).
+only publishes a **SNOMED CT to HPO** `ConceptMap` (`sct-to-hpo`) by name,
+but does support querying it in the HPO-to-SNOMED direction directly via
+`ConceptMap/sct-to-hpo/$translate?...&reverse=true` - see [nw-gmsa/Testing
+notebook 13](https://github.com/nw-gmsa/Testing/blob/main/notebooks/13-snomed-to-hpo-genomic-clinical-indication.ipynb),
+which uses the same server and surfaced this parameter. An initial pass of
+this ConceptMap missed that: it instead found a candidate SNOMED CT concept
+for each HPO term (`ValueSet/$expand` free-text search under the Clinical
+finding (`404684003`) subtree) and forward-verified it through
+`ConceptMap/sct-to-hpo/$translate` in the SNOMED-to-HPO direction - which
+undercounted, since a genuinely-mapped HPO term can have a mapped SNOMED
+code that isn't the one a text search happens to surface (e.g. Cataract
+*is* mapped, to SNOMED `128306009`, not the `193570009` a plain text search
+returns first). This version instead queries `reverse=true` directly for
+every HPO code, with the `equivalence` value taken directly from that
+server response (`equivalent` in every case found).
 
-**22 of the 38 terms resolved this way; the remaining 16 do not appear in
-the server's `sct-to-hpo` map** - despite genuine, plausible-looking SNOMED
-CT candidates existing for several of them (e.g. `193570009` "Cataract",
-`1148757008` "Microcephaly", `1145403003` "Macrocephaly", `105986008`
-"Skeletal dysplasia", `271700006` "Chorea") - the server's map is a curated
-subset, not exhaustive HPO coverage, and none of those candidates are
-included in it. Rather than assert an unverified equivalence, unresolved
-terms are recorded below with `equivalence = unmatched` and no target code.
+**27 of the 38 terms resolved this way; the remaining 11 do not appear in
+the server's `sct-to-hpo` map even via `reverse=true`** - so these are
+genuinely absent from the server's curated map, not an artefact of the
+search methodology. Rather than assert an unverified equivalence,
+unresolved terms are recorded below with `equivalence = unmatched` and no
+target code.
 """
 Usage:  #definition
 
@@ -96,12 +99,13 @@ Usage:  #definition
 
 // --- Ophthalmology ---
 
-// NWGMSA: Cataract - not found in the server's sct-to-hpo map, despite
-// SCT 193570009 "Cataract" being an exact-looking candidate
+// NWGMSA: Cataract - found via reverse=true; a plain text search on
+// "Cataract" surfaces SCT 193570009, which is NOT the mapped code
 * group.element[+]
   * code = #"HP:0000518" "Cataract"
   * target[+]
-    * equivalence = #unmatched
+    * code = #128306009 "Cataract"
+    * equivalence = #equivalent
 
 // NWGMSA: RetinalDystrophy
 * group.element[+]
@@ -175,11 +179,12 @@ Usage:  #definition
     * code = #54840006 "Failure to thrive"
     * equivalence = #equivalent
 
-// NWGMSA: AbnormalFacialShape
+// NWGMSA: AbnormalFacialShape - found via reverse=true
 * group.element[+]
   * code = #"HP:0001999" "Abnormal facial shape"
   * target[+]
-    * equivalence = #unmatched
+    * code = #112630007 "Abnormal facies"
+    * equivalence = #equivalent
 
 // NWGMSA: AbnormalityOfMetabolismHomeostasis
 * group.element[+]
@@ -187,19 +192,21 @@ Usage:  #definition
   * target[+]
     * equivalence = #unmatched
 
-// NWGMSA: Microcephaly - not found in the server's sct-to-hpo map, despite
-// SCT 1148757008 "Microcephaly" being an exact-looking candidate
+// NWGMSA: Microcephaly - found via reverse=true; a plain text search on
+// "Microcephaly" surfaces SCT 1148757008, which is NOT the mapped code
 * group.element[+]
   * code = #"HP:0000252" "Microcephaly"
   * target[+]
-    * equivalence = #unmatched
+    * code = #1829003 "Microcephalus"
+    * equivalence = #equivalent
 
-// NWGMSA: Macrocephaly - not found in the server's sct-to-hpo map, despite
-// SCT 1145403003 "Macrocephaly" being an exact-looking candidate
+// NWGMSA: Macrocephaly - found via reverse=true; a plain text search on
+// "Macrocephaly" surfaces SCT 1145403003, which is NOT the mapped code
 * group.element[+]
   * code = #"HP:0000256" "Macrocephaly"
   * target[+]
-    * equivalence = #unmatched
+    * code = #19410003 "Macrocephaly"
+    * equivalence = #equivalent
 
 // NWGMSA: TallStature
 * group.element[+]
@@ -215,7 +222,7 @@ Usage:  #definition
     * equivalence = #unmatched
 
 // NWGMSA: SkeletalDysplasia - not found in the server's sct-to-hpo map,
-// despite SCT 105986008 "Skeletal dysplasia" being an exact-looking candidate
+// even via reverse=true
 * group.element[+]
   * code = #"HP:0002652" "Skeletal dysplasia"
   * target[+]
@@ -258,9 +265,10 @@ Usage:  #definition
     * code = #302226006 "Peripheral nerve disease"
     * equivalence = #equivalent
 
-// NWGMSA: CognitiveImpairment - not found in the server's sct-to-hpo map;
-// SCT 386806002 "Impaired cognition" was ruled out (that code maps to
-// HP:0001268 "Mental deterioration", not this term)
+// NWGMSA: CognitiveImpairment - not found in the server's sct-to-hpo map,
+// even via reverse=true; SCT 386806002 "Impaired cognition" was separately
+// ruled out (that code maps to HP:0001268 "Mental deterioration", not this
+// term)
 * group.element[+]
   * code = #"HP:0100543" "Cognitive impairment"
   * target[+]
@@ -273,8 +281,8 @@ Usage:  #definition
     * code = #221360009 "Spasticity"
     * equivalence = #equivalent
 
-// NWGMSA: Chorea - not found in the server's sct-to-hpo map, despite
-// SCT 271700006 "Chorea" being an exact-looking candidate
+// NWGMSA: Chorea - not found in the server's sct-to-hpo map, even via
+// reverse=true
 * group.element[+]
   * code = #"HP:0002072" "Chorea"
   * target[+]
@@ -294,11 +302,12 @@ Usage:  #definition
     * code = #20262006 "Ataxia"
     * equivalence = #equivalent
 
-// NWGMSA: CerebellarAtrophy
+// NWGMSA: CerebellarAtrophy - found via reverse=true
 * group.element[+]
   * code = #"HP:0001272" "Cerebellar atrophy"
   * target[+]
-    * equivalence = #unmatched
+    * code = #95646004 "Cerebellar degeneration"
+    * equivalence = #equivalent
 
 // NWGMSA: CerebellarHypoplasia
 * group.element[+]
