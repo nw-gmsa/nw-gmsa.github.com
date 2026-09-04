@@ -56,3 +56,44 @@ No Order Placer Number, Account Number/Hospital Spell Identifier, or
 clinician professional identifier (GMC/GMP) field is present on the paper
 form - the same universal gap as every other paper form compared on this
 page.
+
+### Practical Issues: One Form, Multiple Orders
+
+Unlike every other paper form in this comparison, a single completed copy
+of this form names **several** people - the proband plus, for a Duo/Trio
+or larger family test, one or more repeating [Family member(s) to be
+tested](#summary) rows - each of whom is (or becomes) their own `Patient`
+with their own specimen. Modelled strictly, this Questionnaire's answers
+don't decompose into one order, but into **one order per person tested**.
+That composite shape is worth flagging as a practical implementation
+problem in its own right, separate from the question of whether it's a
+referral or an order:
+
+- **EPR order entry is built around a single patient context.** Most
+  Electronic Patient Record systems raise an order from within one
+  patient's own record - there is no natural place to enter "and also
+  order this same test for these other two people" on the same order
+  screen. A family test referred this way would most likely need
+  raising as separate orders per person within the EPR already, with this
+  form's family-level fields (Family test type, clinical justification,
+  HPO terms) either repeated on each or attached once and cross-referenced.
+- **LIMS will very likely only accept one patient and one specimen per
+  order.** Even if an EPR could somehow raise a single composite order for
+  multiple people, the receiving Laboratory Information Management System
+  is unlikely to have a concept of "one order, several patients/specimens”
+  - it needs one order per patient/specimen to allocate accessioning,
+  worklists and results against. Something upstream of the LIMS (the
+  ordering system, or an integration engine) would need to split this
+  form's answers into per-person orders before they could reach it.
+- **[dWGS](dWGS.html) already solves this exact problem, for the
+  distributed pathway.** Its own answer is that "each participant in a
+  Duo or Trio is sequenced and submitted as their own **separate**
+  sub-order (their own `Patient`, `Specimen` and `ServiceRequest`)...not
+  combined into one message", tied together only by a shared requisition
+  number - see [dWGS - Singleton, Duo and Trio
+  testing](dWGS.html#singleton-duo-and-trio-testing). If this form were
+  taken forward as a real digital order, the same per-person decomposition
+  (rather than a single multi-patient resource) is the pattern it would
+  most likely need to follow - not attempted as a new Questionnaire here,
+  since that would need its own dedicated design work rather than a quick
+  extension of the existing Ask At Order Entry pattern.
