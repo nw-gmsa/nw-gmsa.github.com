@@ -9,7 +9,7 @@ Description: """
 national GMS-branded form, not NW GLH-specific), used alongside the [common
 core order form](Questionnaire-GenomicTestOrder.html) - see [Order Entry
 Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). Like
-[GMS WGS Rare Disease](Questionnaire-GMSWGSRareDiseaseAskAtOrderEntry.html)
+[GMS WGS Rare Disease](Questionnaire-GMSWGSRareDisease.html)
 and [dWGS](dWGS.html), this form has no Whole Genome Sequencing Test
 Category in the common core's Test Code branches, so its own Test Directory
 Clinical Indication item fills that gap directly.
@@ -43,7 +43,7 @@ Usage:  #definition
     * item[+]
       * linkId = "HL7/ORC-21-requesting-cancer-designNote"
       * type = #display
-      * text = "Same concept as the common core's own Referring Organisation ODS Code / Ordering Facility (HL7/ORC-21) - see GMS WGS Rare Disease Ask At Order Entry's equivalent item for the same requester/performer split used by dWGS."
+      * text = "Same concept as the common core's own Referring Organisation ODS Code / Ordering Facility (HL7/ORC-21) - see GMS WGS Rare Disease's equivalent item for the same requester/performer split used by dWGS."
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
   * item[+]
@@ -253,7 +253,7 @@ Usage:  #definition
     * item[+]
       * linkId = "MainContact-cancer-designNote"
       * type = #display
-      * text = "Responsible consultant maps directly onto the common core's own Healthcare Professional group and is not re-declared here. Main Contact is the same genuinely-additional-person gap identified on GMS WGS Rare Disease Ask At Order Entry and Genomic Test Order - Common Fields We May Have Missed (Copy Report To)."
+      * text = "Responsible consultant maps directly onto the common core's own Healthcare Professional group and is not re-declared here. Main Contact is the same genuinely-additional-person gap identified on GMS WGS Rare Disease and Genomic Test Order - Common Fields We May Have Missed (Copy Report To)."
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
     * item[+]
       * type = #string

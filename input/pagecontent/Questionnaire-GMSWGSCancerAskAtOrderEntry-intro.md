@@ -17,7 +17,7 @@ for how this compares to the other paper forms.
 **Source form:** [GMS WGS Test Request Form - Cancer, V1.22 July 2024 (PDF)](https://mft.nhs.uk/app/uploads/2024/08/genomic-medicine-device-test-order-form-cancer-v1.22.pdf)
 
 <div class="alert alert-info" role="alert">
-<b>Related:</b> <a href="Questionnaire-GMSWGSRareDiseaseAskAtOrderEntry.html">GMS WGS Rare Disease Ask At Order Entry</a> -
+<b>Related:</b> <a href="Questionnaire-GMSWGSRareDisease.html">GMS WGS Rare Disease</a> -
 the rare disease variant of this same national form family.
 </div>
 

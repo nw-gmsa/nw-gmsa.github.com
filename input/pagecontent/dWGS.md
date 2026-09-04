@@ -291,7 +291,7 @@ evolved Questionnaires - noted here as an open question, not a decision.
 
 A **third** WGS pathway also exists: the *national* NHS Genomic Medicine Service
 (GMS) WGS Test Request forms - [GMS WGS Rare
-Disease](Questionnaire-GMSWGSRareDiseaseAskAtOrderEntry.html) and [GMS WGS
+Disease](Questionnaire-GMSWGSRareDisease.html) and [GMS WGS
 Cancer](Questionnaire-GMSWGSCancerAskAtOrderEntry.html) - see [Genomic Test Order -
 NW GLH Paper Test Request
 Forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms). Unlike

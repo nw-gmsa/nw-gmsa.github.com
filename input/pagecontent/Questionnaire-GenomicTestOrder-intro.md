@@ -294,7 +294,7 @@ Entry Questionnaires, since exactly one applies per order:
 | Rare and Inherited Disease - Genomic Variant Review | [Genomic Variant Review Ask At Order Entry](Questionnaire-VariantReviewAskAtOrderEntry.html) |
 | Rare and Inherited Disease - Deafness (R67) | [Deafness (R67) Ask At Order Entry](Questionnaire-DeafnessR67AskAtOrderEntry.html) |
 | Rare and Inherited Disease - CYP2C19 Mavacamten (R454) | [CYP2C19 Mavacamten (R454) Ask At Order Entry](Questionnaire-CYP2C19MavacamtenAskAtOrderEntry.html) |
-| Rare and Inherited Disease - WGS (national GMS form) | [GMS WGS Rare Disease Ask At Order Entry](Questionnaire-GMSWGSRareDiseaseAskAtOrderEntry.html) |
+| Rare and Inherited Disease - WGS (national GMS form) | [GMS WGS Rare Disease](Questionnaire-GMSWGSRareDisease.html) |
 | Cancer - WGS (national GMS form) | [GMS WGS Cancer Ask At Order Entry](Questionnaire-GMSWGSCancerAskAtOrderEntry.html) |
 {:.grid}
 
@@ -330,7 +330,7 @@ Identifier, Test Code, Ordering Facility, and Ordering Clinician (GMC/GMP).
 | [Genomic Variant Review](Questionnaire-VariantReviewAskAtOrderEntry.html) | Yes | Yes | No (has "Report reference" - see below) | No | N/A - no new specimen | Not present - reviewing a prior result, not requesting a new one | Yes (free text) | Name only, no GMC/GMP |
 | [Deafness (R67)](Questionnaire-DeafnessR67AskAtOrderEntry.html) | Yes | Yes | No | No | No (separate DNA request card assumed) | **Implied** - fixed, R67 is the form itself | No (free text address only) | Name only, no GMC/GMP |
 | [CYP2C19 Mavacamten (R454)](Questionnaire-CYP2C19MavacamtenAskAtOrderEntry.html) | Yes | Yes | No | No | No (lab sticker only) | **Implied** - fixed, R454 is the form itself | Yes (free text) | Name only, no GMC/GMP |
-| [GMS WGS Rare Disease (national form)](Questionnaire-GMSWGSRareDiseaseAskAtOrderEntry.html) | Yes, with a "reason not available" fallback | Yes | No | No | Sample ID, only if also used for sample collection | **Explicit** - Test Directory Clinical Indication & code | Requesting organisation + GMS laboratory (two fields) | Name only, no GMC/GMP |
+| [GMS WGS Rare Disease (national form)](Questionnaire-GMSWGSRareDisease.html) | Yes, with a "reason not available" fallback | Yes | No | No | Sample ID, only if also used for sample collection | **Explicit** - Test Directory Clinical Indication & code | Requesting organisation + GMS laboratory (two fields) | Name only, no GMC/GMP |
 {:.grid}
 
 A pattern holds across **all twelve** paper forms: none captures an Order
@@ -397,7 +397,7 @@ ordering:
   ([Specimen](#specimen), `LN/33882-2`) - a "collected by" field does not
   currently exist.
 - **HPO (Human Phenotype Ontology) terms** are *mandatory* on [GMS WGS Rare
-  Disease](Questionnaire-GMSWGSRareDiseaseAskAtOrderEntry.html) - WGS
+  Disease](Questionnaire-GMSWGSRareDisease.html) - WGS
   analysis and interpretation cannot commence without at least one. This
   Questionnaire has no phenotype-term field at all, structured or
   otherwise, and no confirmed FHIR CodeSystem binding for HPO exists

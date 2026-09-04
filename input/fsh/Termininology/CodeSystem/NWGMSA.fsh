@@ -176,6 +176,10 @@ Bucket for local codes
 // GMS WGS Test Request - Rare Disease
 * #ReasonNHSNumberNotAvailable "Reason NHS Number not available"
 * #FamilyTestType "Family test type (Singleton/Trio/Other)"
+* #FamilyTestSingleton "Singleton"
+* #FamilyTestTrio "Trio"
+* #FamilyTestOther "Other"
+* #FamilyMemberStatus "Family member status (form field purpose unconfirmed)"
 * #UrgencyReason "Reason for urgency (Clinical Priority)"
 * #AdditionalPanels "Additional gene panel(s) (Genomics England PanelApp, GMS Rare Disease Virtual)"
 * #ProbandAgeAtOnset "Proband's age at onset of clinical features"

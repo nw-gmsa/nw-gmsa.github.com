@@ -39,8 +39,8 @@ the distributed sub-contracted WGS pathway, which resolves the same
 | Proband's age at onset | Years/months | `Condition.onsetAge` |
 | Specific rare disease suspected/confirmed | Free text | Not yet mapped |
 | Life status | Alive/Deceased | `Patient.deceasedBoolean` |
-| Family member(s) to be tested | Repeating table (name, DOB, sex, NHS number/postcode, ethnicity, life status, relationship, sample type) | `ServiceRequest.supportingInfo` -> `RelatedPerson`, repeating |
-| HPO Terms | Term + Present/Absent/Unknown, repeating, **mandatory** | `Condition.code` / `Condition.verificationStatus` |
+| Family member(s) to be tested | Repeating group (name, DOB, sex, NHS number/postcode, life status, status, ethnicity, relationship), each with its own nested Sample sub-group | `ServiceRequest.supportingInfo` -> `RelatedPerson`, repeating group |
+| HPO Terms | Term (offered from a [38-term guide list](CodeSystem-GMSWGSGuideHPOTerms.html), or free text) + Present/Absent/Unknown, repeating, **mandatory** | `Condition.code` (`#open-choice`) / `Condition.verificationStatus` |
 | Main contact | Name/department/phone/email, if different from responsible clinician | Not yet mapped |
 {:.grid}
 
@@ -56,6 +56,16 @@ No Order Placer Number, Account Number/Hospital Spell Identifier, or
 clinician professional identifier (GMC/GMP) field is present on the paper
 form - the same universal gap as every other paper form compared on this
 page.
+
+The source PDF's fillable form fields (rather than its plain text) show it
+hard-codes exactly two family-member slots (`FM1_*`/`FM2_*`), each with its
+own demographic fields **and** its own matching sample fields further down
+the form - modelled here as a single repeating `Family Members` group (not
+capped at two) with a nested `Sample` sub-group per repetition, rather than
+two hard-coded, disconnected sections. One field name from the PDF -
+`FM1_status`/`FM2_status`, alongside but distinct from `FM1_deceased` - has
+no stated purpose on the form's own visible labels; it is carried through
+as free text pending confirmation of what it means.
 
 ### Practical Issues: One Form, Multiple Orders
 

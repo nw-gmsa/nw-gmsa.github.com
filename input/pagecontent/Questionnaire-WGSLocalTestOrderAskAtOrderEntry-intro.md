@@ -19,7 +19,7 @@ for how this compares to the other paper forms.
 that Questionnaire is the digital manifest for a <b>distributed WGS
 sub-contracted order</b> between GLHs (see <a href="dWGS.html">dWGS</a>);
 this one is the plain paper form used for a local WGS request. Nor with
-<a href="Questionnaire-GMSWGSRareDiseaseAskAtOrderEntry.html">GMS WGS Rare Disease</a>/
+<a href="Questionnaire-GMSWGSRareDisease.html">GMS WGS Rare Disease</a>/
 <a href="Questionnaire-GMSWGSCancerAskAtOrderEntry.html">GMS WGS Cancer</a> -
 those are the <i>national</i> NHS Genomic Medicine Service-branded WGS
 request forms, not an NW GLH-specific one, and are considerably richer
