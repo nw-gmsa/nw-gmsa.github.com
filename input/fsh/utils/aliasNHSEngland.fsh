@@ -10,6 +10,7 @@ Alias: $MFTEPIC = https://fhir.nwgenomics.nhs.uk/CodeSystem/MFTQuestionIds
 Alias: $EthnicEngland = https://fhir.hl7.org.uk/CodeSystem/UKCore-EthnicCategoryEngland
 Alias: $EthnicWales = https://fhir.hl7.org.uk/CodeSystem/UKCore-EthnicCategoryWales
 Alias: $GTD = https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory
+Alias: $DGTS = https://fhir.nhs.uk/CodeSystem/England-DigitalGenomicTestServices
 Alias: $GSC = https://fhir.hl7.org.uk/CodeSystem/UKCore-GenomeSequencingCategory
 Alias: $GCC = https://fhir.nwgenomics.nhs.uk/CodeSystem/GenomicClinicalIndication
 Alias: $GTOC = https://fhir.nwgenomics.nhs.uk/CodeSystem/GenomicTestOutcomeCode
