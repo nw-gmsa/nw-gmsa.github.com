@@ -284,17 +284,17 @@ Entry Questionnaires, since exactly one applies per order:
 
 | Order/Test Type                          | Ask At Order Entry Questionnaire                                                                                     |
 |-------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
-| Cancer - Solid Tumour (HRD and Tumour BRCA) | [HRD and Tumour BRCA Ask At Order Entry](Questionnaire-HRDTumourBRCAAskAtOrderEntry.html) |
-| Cancer - Haematology Oncology | [Haemato-Oncology Ask At Order Entry](Questionnaire-HaematoOncologyAskAtOrderEntry.html) |
+| Rare and Inherited Disease - WGS (national GMS form) | [GMS WGS Rare Disease](Questionnaire-GMSWGSRareDisease.html) |
+| Rare and Inherited Disease - WGS (local paper order) | [WGS Local Test Order Ask At Order Entry](Questionnaire-WGSLocalTestOrderAskAtOrderEntry.html) |
 | Rare and Inherited Disease (generic) | [Rare Disease Genomic Testing Ask At Order Entry](Questionnaire-RareDiseaseGenomicAskAtOrderEntry.html) |
 | Rare and Inherited Disease - Prenatal Haemoglobinopathy | [Prenatal Haemoglobinopathy Ask At Order Entry](Questionnaire-HaemoglobinopathyPrenatalAskAtOrderEntry.html) |
 | Rare and Inherited Disease - Haemoglobinopathy Genetic Testing | [Haemoglobinopathy Genetic Testing Ask At Order Entry](Questionnaire-HaemoglobinopathyGeneticAskAtOrderEntry.html) |
 | Rare and Inherited Disease - Cystic Fibrosis Carrier Testing | [Cystic Fibrosis Carrier Testing Ask At Order Entry](Questionnaire-CysticFibrosisCarrierAskAtOrderEntry.html) |
-| Rare and Inherited Disease - WGS (local paper order) | [WGS Local Test Order Ask At Order Entry](Questionnaire-WGSLocalTestOrderAskAtOrderEntry.html) |
 | Rare and Inherited Disease - Genomic Variant Review | [Genomic Variant Review Ask At Order Entry](Questionnaire-VariantReviewAskAtOrderEntry.html) |
 | Rare and Inherited Disease - Deafness (R67) | [Deafness (R67) Ask At Order Entry](Questionnaire-DeafnessR67AskAtOrderEntry.html) |
 | Rare and Inherited Disease - CYP2C19 Mavacamten (R454) | [CYP2C19 Mavacamten (R454) Ask At Order Entry](Questionnaire-CYP2C19MavacamtenAskAtOrderEntry.html) |
-| Rare and Inherited Disease - WGS (national GMS form) | [GMS WGS Rare Disease](Questionnaire-GMSWGSRareDisease.html) |
+| Cancer - Solid Tumour (HRD and Tumour BRCA) | [HRD and Tumour BRCA Ask At Order Entry](Questionnaire-HRDTumourBRCAAskAtOrderEntry.html) |
+| Cancer - Haematology Oncology | [Haemato-Oncology Ask At Order Entry](Questionnaire-HaematoOncologyAskAtOrderEntry.html) |
 | Cancer - WGS (national GMS form) | [GMS WGS Cancer Ask At Order Entry](Questionnaire-GMSWGSCancerAskAtOrderEntry.html) |
 {:.grid}
 
