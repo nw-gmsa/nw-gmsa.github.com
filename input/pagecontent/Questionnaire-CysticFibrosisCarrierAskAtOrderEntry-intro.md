@@ -18,7 +18,9 @@ for how this compares to the other paper forms.
 | Item | Paper Form Field | FHIR |
 |---|---|---|
 | Referral scenario | Family history of CF / Partner affected or carrier | `Observation.valueCodeableConcept` |
-| Relative/partner | Name/DOB, relationship, affected/carrier status, known CFTR variant | `ServiceRequest.supportingInfo` -> `RelatedPerson`, `Observation` |
+| Relative/partner | Name, relationship, sex, DOB, NHS/hospital number (if known) | `RelatedPerson` (NK1-shaped, Role = Consultand), repeating group |
+| - Status of relative/partner (CF-specific) | Affected / Carrier | `Observation.valueCodeableConcept`, nested |
+| - Known familial CFTR variant (CF-specific) | Free text | `Observation.valueString`, nested |
 {:.grid}
 
 This is the only one of the ten paper forms explicitly designed for use by
@@ -30,3 +32,13 @@ patients aged 16 or over (informed consent), noted as a help item rather
 than a data field. No Order Placer Number, Account Number/Hospital Spell
 Identifier, or clinician professional identifier (GMC/GMP) field is present
 on the paper form.
+
+The relative/partner is structured using the same NK1-shaped `RelatedPerson`
+group as [NW Genomic General Ask At Order Questions - Related Individual
+(NK1)](Questionnaire-GenomicGeneralAskAtOrderEntry.html) and [Genetic
+Clinical Referral - Consultand](Questionnaire-GeneticReferralConsultand.html),
+under its **Consultand** role - the patient remains this ServiceRequest's
+own subject throughout, whichever referral scenario applies. Status
+(Affected/Carrier) and the known familial CFTR variant are Cystic
+Fibrosis-specific additions nested alongside the shared fields, not part of
+the general shape.
