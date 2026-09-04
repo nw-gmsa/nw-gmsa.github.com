@@ -55,3 +55,28 @@ referral exists, not a distinct Order Placer Number - it converges on
 `ServiceRequest.code` once the NGIS referral is raised. No Account
 Number/Hospital Spell Identifier or clinician professional identifier
 (GMC/GMP) field is present on the paper form.
+
+### Relationship to GMS WGS Rare Disease
+
+The **Family Member** pathway here is effectively a **consultand test**:
+the same real-world scenario as one repetition of [GMS WGS Rare
+Disease](Questionnaire-GMSWGSRareDisease.html)'s own repeating [Family
+member(s) to be tested](Questionnaire-GMSWGSRareDisease.html#summary)
+group - a relative tested alongside a proband, referenced back to them for
+interpretation. The two Questionnaires model it in opposite directions for
+the same reason described above (`ServiceRequest.supportingInfo` roles
+reversed): this form produces **one order per specimen**, so the family
+member is this order's own subject and the proband is the reference,
+whereas GMS WGS Rare Disease's composite form keeps the proband as the
+subject and lists family members as repeating `RelatedPerson` references
+instead - see [GMS WGS Rare Disease - Practical Issues: One Form, Multiple
+Orders](Questionnaire-GMSWGSRareDisease.html#practical-issues-one-form-multiple-orders).
+This Questionnaire may therefore represent a ready-made way of resolving
+that composite-form problem, not just an analogy to it: decomposing GMS WGS
+Rare Disease's Family Members group into individual per-person orders could
+reuse this Family Member pathway's own shape directly - proband referenced
+back via `NOS/ProbandReference`, the same way each Family Members
+repetition on GMS WGS Rare Disease references the proband via a
+`RelatedPerson`, itself modelled on [Genetic Clinical Referral -
+Consultand](Questionnaire-GeneticReferralConsultand.html) - rather than
+needing a new decomposition pattern designed from scratch.

@@ -107,3 +107,15 @@ referral or an order:
   most likely need to follow - not attempted as a new Questionnaire here,
   since that would need its own dedicated design work rather than a quick
   extension of the existing Ask At Order Entry pattern.
+- **[WGS Local Test Order](Questionnaire-WGSLocalTestOrderAskAtOrderEntry.html)
+  already models what one decomposed order looks like.** Its own Family
+  Member pathway - one order per specimen, whose own common-core Patient
+  group is the family member being tested, with a `NOS/ProbandReference`
+  linking back to the proband's separate order - is a concrete, existing
+  answer to exactly this decomposition problem, closer to home than dWGS
+  since it isn't tied to sub-contracting between GLHs. A Family Members
+  repetition here naming a relative's specimen could plausibly decompose
+  into an order shaped exactly like that Family Member pathway, rather than
+  needing a new pattern designed from scratch - see [WGS Local Test Order -
+  Relationship to GMS WGS Rare
+  Disease](Questionnaire-WGSLocalTestOrderAskAtOrderEntry.html#relationship-to-gms-wgs-rare-disease).

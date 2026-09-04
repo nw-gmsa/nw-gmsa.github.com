@@ -72,6 +72,21 @@ Usage:  #definition
       the proband already exists as an independently registered patient with
       their own separate WGS referral (this item only links the two), not a
       person known solely through this family member's record.
+
+      This Family Member pathway is effectively a **consultand test**: the
+      same real-world scenario as one repetition of GMS WGS Rare Disease's
+      own repeating Family Members group (a relative tested alongside a
+      proband for interpretation), just modelled the other way round because
+      this form produces one order per specimen rather than a single
+      composite family submission - see GMS WGS Rare Disease - Practical
+      Issues: One Form, Multiple Orders. This Questionnaire may represent a
+      ready-made way of resolving that composite-form problem, not just an
+      analogy to it: decomposing a GMS WGS Rare Disease Family Members entry
+      into an individual order could reuse this Family Member pathway's own
+      shape directly - proband referenced back via NOS/ProbandReference, the
+      same way each Family Members repetition there references the proband
+      via RelatedPerson - rather than needing a new decomposition pattern
+      designed from scratch.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
