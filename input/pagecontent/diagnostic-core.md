@@ -12,19 +12,26 @@ In software design, these areas are often referred to as [domains](https://en.wi
 
 ## Entity Relationship Diagram
 
-This is the **basic model** this guide is built on: a `Patient` has one or more
-`ServiceRequest`s (orders), each of which references a `Specimen` and produces
-a `DiagnosticReport`, with a `HospitalSpell` linking orders and reports back
-to the episode of care they belong to.
+This is the **basic model** this guide is built on: an `OrderingFacilityAndPractitioner`
+places a `ServiceRequest` (order) for a `Patient`, which references a
+`Specimen` and produces a `DiagnosticReport`, with a `HospitalSpell` linking
+orders and reports back to the episode of care they belong to. Both the order
+and the report are extended with further detail beyond this basic model -
+`AskAtOrderQuestions` for the order, `ReportPanels` and `Results` for the
+report - see [Archetype Questionnaires](#archetype-questionnaires) below.
 
 ```mermaid
 erDiagram
-    Patient ||--|{ ServiceRequest : places
+    OrderingFacilityAndPractitioner ||--|{ ServiceRequest : places
+    Patient ||--|{ ServiceRequest : subject
     HospitalSpell ||--o{ ServiceRequest : links
     ServiceRequest ||--o{ Specimen : contains
     ServiceRequest ||--|{ DiagnosticReport : produces
     Patient ||--|{ DiagnosticReport : subject
     HospitalSpell ||--o{ DiagnosticReport : links
+    ServiceRequest ||--o{ AskAtOrderQuestions : "extended by"
+    DiagnosticReport ||--o{ ReportPanels : "extended by"
+    DiagnosticReport ||--o{ Results : "extended by"
 ```
 
 This is deliberately a **high-level (level 1) view** - just the entities and
