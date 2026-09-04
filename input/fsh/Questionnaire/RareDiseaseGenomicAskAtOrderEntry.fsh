@@ -2,6 +2,8 @@ Instance: RareDiseaseGenomicAskAtOrderEntry
 InstanceOf: NWQuestionnaire
 Title: "Rare Disease Genomic Testing Ask At Order Entry Questions"
 Description: """
+**For analysis purposes only - not an active or planned project.**
+
 **Ask At Order Entry Questions** for the NW GLH paper **Genomic Testing
 Request Form - Rare Disease** (DOC4900), the generic Rare Disease paper
 order form, used alongside the [common core order

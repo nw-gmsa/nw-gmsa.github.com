@@ -2,6 +2,8 @@ Instance: VariantReviewAskAtOrderEntry
 InstanceOf: NWQuestionnaire
 Title: "Genomic Variant Review Ask At Order Entry Questions"
 Description: """
+**For analysis purposes only - not an active or planned project.**
+
 **Ask At Order Entry Questions** for the NW GLH paper **Genomic Variant
 Review Request Form (R442.1) - Rare Disease** (DOC6004), used alongside the
 [common core order form](Questionnaire-GenomicTestOrder.html) - see [Order

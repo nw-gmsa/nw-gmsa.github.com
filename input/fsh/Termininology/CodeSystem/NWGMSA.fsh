@@ -168,3 +168,30 @@ Bucket for local codes
 * #AudiogramSeverityRight "Audiogram severity - right ear"
 * #AudiogramSeverityLeft "Audiogram severity - left ear"
 * #AudiogramProgression "Audiogram progression"
+
+// NHS Genomic Medicine Service (GMS) WGS Test Request Forms (national,
+// GMS-branded - not NW GLH-specific) - Rare Disease and Cancer variants.
+// See Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms.
+
+// GMS WGS Test Request - Rare Disease
+* #ReasonNHSNumberNotAvailable "Reason NHS Number not available"
+* #FamilyTestType "Family test type (Singleton/Trio/Other)"
+* #UrgencyReason "Reason for urgency (Clinical Priority)"
+* #AdditionalPanels "Additional gene panel(s) (Genomics England PanelApp, GMS Rare Disease Virtual)"
+* #ProbandAgeAtOnset "Proband's age at onset of clinical features"
+* #SpecificRareDiseaseSuspected "Specific rare disease suspected or confirmed"
+* #HPOTerm "HPO (Human Phenotype Ontology) term"
+* #MainContact "Main contact (if different from responsible clinician/consultant)"
+
+// GMS WGS Test Request - Cancer
+* #PresentationStatus "Presentation status (First diagnosis/Recurrence/Relapse/Unknown)"
+* #PresentationFirstDiagnosis "First diagnosis"
+* #PresentationRecurrenceRelapse "Recurrence/Relapse"
+* #TumourPresentationType "Tumour presentation type (Primary/Metastatic/Unknown/Lymphoma)"
+* #TumourPresentationPrimary "Primary"
+* #TumourPresentationMetastatic "Metastatic"
+* #TumourPresentationLymphoma "Lymphoma"
+* #HistopathologyLabID "Histopathology Lab ID"
+* #SIHMDSLabID "SIHMDS Lab ID"
+* #HaematoOncologyLiquidTumourType "Haemato-oncology liquid tumour type (AML/ALL/Other)"
+* #NucleatedCellCount "Nucleated cell count (bone marrow/peripheral blood sample)"

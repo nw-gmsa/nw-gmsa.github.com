@@ -2,6 +2,8 @@ Instance: CYP2C19MavacamtenAskAtOrderEntry
 InstanceOf: NWQuestionnaire
 Title: "CYP2C19 Mavacamten (R454) Ask At Order Entry Questions"
 Description: """
+**For analysis purposes only - not an active or planned project.**
+
 **Ask At Order Entry Questions** for the **R454 Mavacamten CYP2C19 Test
 Request Form** (DOC6602), used alongside the [common core order
 form](Questionnaire-GenomicTestOrder.html) - see [Order Entry

@@ -2,6 +2,8 @@ Instance: CysticFibrosisCarrierAskAtOrderEntry
 InstanceOf: NWQuestionnaire
 Title: "Cystic Fibrosis Carrier Testing Ask At Order Entry Questions"
 Description: """
+**For analysis purposes only - not an active or planned project.**
+
 **Ask At Order Entry Questions** for the NW GLH paper **Request for Genetic
 Cystic Fibrosis (CF) Carrier Testing (CFTR Gene)** form, used alongside the
 [common core order form](Questionnaire-GenomicTestOrder.html) - see [Order

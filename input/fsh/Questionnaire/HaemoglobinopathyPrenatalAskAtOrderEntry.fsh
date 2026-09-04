@@ -2,6 +2,8 @@ Instance: HaemoglobinopathyPrenatalAskAtOrderEntry
 InstanceOf: NWQuestionnaire
 Title: "Prenatal Haemoglobinopathy Ask At Order Entry Questions"
 Description: """
+**For analysis purposes only - not an active or planned project.**
+
 **Ask At Order Entry Questions** for the NW GLH paper **Request for Prenatal
 Diagnosis of Haemoglobinopathies** form (DOC4544), used alongside the [common
 core order form](Questionnaire-GenomicTestOrder.html) - see [Order Entry

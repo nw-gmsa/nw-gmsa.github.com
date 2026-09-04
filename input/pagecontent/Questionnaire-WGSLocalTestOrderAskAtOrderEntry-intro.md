@@ -1,3 +1,8 @@
+<div class="alert alert-danger" role="alert">
+This is for information and analysis purposes only and is not an active or
+planned project.
+</div>
+
 This Questionnaire `derivedFrom`/extends [Genomic Test
 Order](Questionnaire-GenomicTestOrder.html) - see [Order Entry
 Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). It
@@ -13,7 +18,13 @@ for how this compares to the other paper forms.
 <b>Not to be confused with:</b> <a href="Questionnaire-dWGSSubOrder.html">dWGS Sub-Order Manifest</a> -
 that Questionnaire is the digital manifest for a <b>distributed WGS
 sub-contracted order</b> between GLHs (see <a href="dWGS.html">dWGS</a>);
-this one is the plain paper form used for a local WGS request.
+this one is the plain paper form used for a local WGS request. Nor with
+<a href="Questionnaire-GMSWGSRareDiseaseAskAtOrderEntry.html">GMS WGS Rare Disease</a>/
+<a href="Questionnaire-GMSWGSCancerAskAtOrderEntry.html">GMS WGS Cancer</a> -
+those are the <i>national</i> NHS Genomic Medicine Service-branded WGS
+request forms, not an NW GLH-specific one, and are considerably richer
+(mandatory HPO terms, a repeating family-member table, no equivalent of
+either on this form).
 </div>
 
 ## Summary

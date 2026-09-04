@@ -2,6 +2,8 @@ Instance: DeafnessR67AskAtOrderEntry
 InstanceOf: NWQuestionnaire
 Title: "Deafness (R67) Ask At Order Entry Questions"
 Description: """
+**For analysis purposes only - not an active or planned project.**
+
 **Ask At Order Entry Questions** for the **Deafness Testing Proforma
 (R67 Non-Syndromic Hearing Loss)**, used alongside the [common core order
 form](Questionnaire-GenomicTestOrder.html) - see [Order Entry

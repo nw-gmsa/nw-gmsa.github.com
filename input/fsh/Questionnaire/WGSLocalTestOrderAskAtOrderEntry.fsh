@@ -2,6 +2,8 @@ Instance: WGSLocalTestOrderAskAtOrderEntry
 InstanceOf: NWQuestionnaire
 Title: "WGS Local Test Order Ask At Order Entry Questions"
 Description: """
+**For analysis purposes only - not an active or planned project.**
+
 **Ask At Order Entry Questions** for the NW GLH paper **Genetic Testing
 Request Form - Whole Genome Sequencing (WGS)** form, which accompanies
 samples sent directly to a NW GLH site, used alongside the [common core

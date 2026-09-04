@@ -2,6 +2,8 @@ Instance: dWGSSubOrder
 InstanceOf: NWQuestionnaire
 Title: "North West Genomics dWGS Sub-Order Manifest"
 Description: """
+**For analysis purposes only - not an active or planned project.**
+
 **CSV manifest description**, not an Ask At Order Entry Questionnaire - this
 Questionnaire documents the complete digital manifest for a **distributed
 WGS (dWGS)** sub-contracted order (IHE LTW `LAB-35`), sent by a Requesting

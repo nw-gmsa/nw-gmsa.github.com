@@ -2,6 +2,8 @@ Instance: dWGSAskAtOrderEntry
 InstanceOf: NWQuestionnaire
 Title: "dWGS Ask At Order Entry Questions"
 Description: """
+**For analysis purposes only - not an active or planned project.**
+
 **Ask At Order Entry Questions** for a **distributed WGS (dWGS)**
 sub-contracted order (IHE LTW `LAB-35`), used alongside the [common core
 order form](Questionnaire-GenomicTestOrder.html) - see [Order Entry

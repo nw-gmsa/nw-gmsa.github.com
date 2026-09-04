@@ -289,6 +289,18 @@ whether NW GLH's local paper pathway should adopt some of the digital manifest's
 structure (Family Structure, in particular) rather than remaining two independently
 evolved Questionnaires - noted here as an open question, not a decision.
 
+A **third** WGS pathway also exists: the *national* NHS Genomic Medicine Service
+(GMS) WGS Test Request forms - [GMS WGS Rare
+Disease](Questionnaire-GMSWGSRareDiseaseAskAtOrderEntry.html) and [GMS WGS
+Cancer](Questionnaire-GMSWGSCancerAskAtOrderEntry.html) - see [Genomic Test Order -
+NW GLH Paper Test Request
+Forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms). Unlike
+either Questionnaire above, the GMS forms make HPO (Human Phenotype Ontology) terms
+mandatory and structure a repeating table of family members to be tested, closer in
+spirit to this page's own Family Structure/Participant Type fields than to WGS Local
+Test Order's single Proband reference - a fourth data point for the same future
+harmonisation question, not resolved here either.
+
 #### Outstanding Issues (resolved by this split)
 
 Until this split, `dWGSSubOrder` declared `derivedFrom` [Genomic Test

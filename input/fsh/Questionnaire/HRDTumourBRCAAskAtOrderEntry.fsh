@@ -2,6 +2,8 @@ Instance: HRDTumourBRCAAskAtOrderEntry
 InstanceOf: NWQuestionnaire
 Title: "HRD and Tumour BRCA Ask At Order Entry Questions"
 Description: """
+**For analysis purposes only - not an active or planned project.**
+
 **Ask At Order Entry Questions** for the NW GLH paper **HRD and Tumour BRCA Test
 Request Form** (GB-27189), used alongside the [common core order
 form](Questionnaire-GenomicTestOrder.html) - see [Order Entry

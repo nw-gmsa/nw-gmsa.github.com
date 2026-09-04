@@ -2,6 +2,8 @@ Instance: HaematoOncologyAskAtOrderEntry
 InstanceOf: NWQuestionnaire
 Title: "Haemato-Oncology Ask At Order Entry Questions"
 Description: """
+**For analysis purposes only - not an active or planned project.**
+
 **Ask At Order Entry Questions** for the NW GLH paper **Molecular Genomic
 Testing Request Form - Haemato-Oncology** (DOC5775), used alongside the
 [common core order form](Questionnaire-GenomicTestOrder.html) - see [Order

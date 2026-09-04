@@ -294,15 +294,19 @@ Entry Questionnaires, since exactly one applies per order:
 | Rare and Inherited Disease - Genomic Variant Review | [Genomic Variant Review Ask At Order Entry](Questionnaire-VariantReviewAskAtOrderEntry.html) |
 | Rare and Inherited Disease - Deafness (R67) | [Deafness (R67) Ask At Order Entry](Questionnaire-DeafnessR67AskAtOrderEntry.html) |
 | Rare and Inherited Disease - CYP2C19 Mavacamten (R454) | [CYP2C19 Mavacamten (R454) Ask At Order Entry](Questionnaire-CYP2C19MavacamtenAskAtOrderEntry.html) |
+| Rare and Inherited Disease - WGS (national GMS form) | [GMS WGS Rare Disease Ask At Order Entry](Questionnaire-GMSWGSRareDiseaseAskAtOrderEntry.html) |
+| Cancer - WGS (national GMS form) | [GMS WGS Cancer Ask At Order Entry](Questionnaire-GMSWGSCancerAskAtOrderEntry.html) |
 {:.grid}
 
 #### NW GLH Paper Test Request Forms
 
-The ten forms above are the NW GLH's own [paper test request
-forms](https://mft.nhs.uk/nwglh/documents/test-request-forms/), each
-compared directly against this Questionnaire below using the same fields
-every paper order form needs to identify: NHS Number, Medical Record Number,
-Order Placer Number, Account Number/Hospital Spell Identifier, Specimen
+The twelve forms above are the NW GLH's own [paper test request
+forms](https://mft.nhs.uk/nwglh/documents/test-request-forms/), plus the two
+*national* NHS Genomic Medicine Service (GMS) WGS forms NW GLH also uses
+(distinct from the NW GLH-specific WGS local paper order) - each compared
+directly against this Questionnaire below using the same fields every paper
+order form needs to identify: NHS Number, Medical Record Number, Order
+Placer Number, Account Number/Hospital Spell Identifier, Specimen
 Identifier, Test Code, Ordering Facility, and Ordering Clinician (GMC/GMP).
 
 **Cancer**
@@ -311,6 +315,7 @@ Identifier, Test Code, Ordering Facility, and Ordering Clinician (GMC/GMP).
 |---|---|---|---|---|---|---|---|---|
 | [HRD and Tumour BRCA](Questionnaire-HRDTumourBRCAAskAtOrderEntry.html) | Yes | Yes | No | No | Pathology block/sample number only | **Implied** - tick box (HRD / tBRCA / relapsed), not a GTD R-code | Yes (free text) | Name + position only, no GMC/GMP |
 | [Haemato-Oncology](Questionnaire-HaematoOncologyAskAtOrderEntry.html) | Yes | Yes | No | No | Pathology block/sample number, optional | **Implied** - named panel tick box, not a GTD R-code | Yes (free text) | Name only, no GMC/GMP |
+| [GMS WGS Cancer (national form)](Questionnaire-GMSWGSCancerAskAtOrderEntry.html) | Yes, with a "reason not available" fallback | Yes | No | No | Sample ID (tumour and germline sections) | **Explicit** - Test Directory Clinical Indication & code | Requesting organisation + GLH laboratory (two fields) | Name only, no GMC/GMP |
 {:.grid}
 
 **Rare and Inherited Disease**
@@ -325,24 +330,31 @@ Identifier, Test Code, Ordering Facility, and Ordering Clinician (GMC/GMP).
 | [Genomic Variant Review](Questionnaire-VariantReviewAskAtOrderEntry.html) | Yes | Yes | No (has "Report reference" - see below) | No | N/A - no new specimen | Not present - reviewing a prior result, not requesting a new one | Yes (free text) | Name only, no GMC/GMP |
 | [Deafness (R67)](Questionnaire-DeafnessR67AskAtOrderEntry.html) | Yes | Yes | No | No | No (separate DNA request card assumed) | **Implied** - fixed, R67 is the form itself | No (free text address only) | Name only, no GMC/GMP |
 | [CYP2C19 Mavacamten (R454)](Questionnaire-CYP2C19MavacamtenAskAtOrderEntry.html) | Yes | Yes | No | No | No (lab sticker only) | **Implied** - fixed, R454 is the form itself | Yes (free text) | Name only, no GMC/GMP |
+| [GMS WGS Rare Disease (national form)](Questionnaire-GMSWGSRareDiseaseAskAtOrderEntry.html) | Yes, with a "reason not available" fallback | Yes | No | No | Sample ID, only if also used for sample collection | **Explicit** - Test Directory Clinical Indication & code | Requesting organisation + GMS laboratory (two fields) | Name only, no GMC/GMP |
 {:.grid}
 
-A pattern holds across **all ten** paper forms: none captures an Order
+A pattern holds across **all twelve** paper forms: none captures an Order
 Placer Number, an Account Number/Hospital Spell Identifier, or a clinician
 professional identifier (GMC/GMP number) - see [Common Fields We May Have
 Missed](#common-fields-we-may-have-missed) below for why the first two are a
 structural difference rather than a gap, and the third genuinely is one.
-Test Code is **explicit** on only two forms (Rare Disease generic, WGS); on
-five it is **implied** by which specific form/tick-box was used rather than
-entered as a coded value, and on one (Genomic Variant Review) no test code
-applies at all, since it reviews a result already reported rather than
-requesting a new one.
+Test Code is **explicit** on four forms (Rare Disease generic, WGS local
+paper order, and both national GMS WGS forms); on five it is **implied** by
+which specific form/tick-box was used rather than entered as a coded value,
+and on one (Genomic Variant Review) no test code applies at all, since it
+reviews a result already reported rather than requesting a new one.
+Both national GMS WGS forms split "Ordering Facility" into **two** fields
+(a requesting organisation and a separate receiving GMS/GLH laboratory) -
+the same requester/performer split [dWGS Ask At Order
+Entry](Questionnaire-dWGSAskAtOrderEntry.html) already uses for its
+Original Ordering Facility Code / Filler Order Ordering Facility Code pair.
 
 #### Common Fields We May Have Missed
 
-Comparing all ten forms side by side surfaces a few candidate additions to
-this common core Questionnaire, alongside two apparent gaps that are better
-understood as structural differences between paper and digital ordering:
+Comparing all twelve forms side by side surfaces a few candidate additions
+to this common core Questionnaire, alongside two apparent gaps that are
+better understood as structural differences between paper and digital
+ordering:
 
 - **Order Placer Number and Account Number/Hospital Spell Identifier are
   absent from every paper form, not missing from this Questionnaire.** Both
@@ -354,7 +366,7 @@ understood as structural differences between paper and digital ordering:
   correct; the paper forms simply sit upstream of where those identifiers
   get created.
 - **Ordering Clinician Professional Identifier (GMC/GMP) is a genuine gap -
-  on the paper side, not this Questionnaire.** Every one of the ten forms
+  on the paper side, not this Questionnaire.** Every one of the twelve forms
   captures the ordering clinician by **name only** (occasionally with
   position/specialty), never a GMC or GMP number, even though [Referring
   Clinician Professional Identifier](#diagnostic-workflow) (`LN/46608-6`) is
@@ -363,32 +375,50 @@ understood as structural differences between paper and digital ordering:
   identifier from name (+ organisation) some other way - e.g. an ODS/PDS
   lookup - since the form itself never supplies it.
 - **Gender Identity**, distinct from Sex Registered at Birth, appears as its
-  own field on four of the ten forms (Rare Disease generic, Genomic Variant
-  Review, Haemato-Oncology, CYP2C19 Mavacamten - all recent DOC-numbered
-  templates). This Questionnaire only has [Sex registered at
+  own field on four of the twelve forms (Rare Disease generic, Genomic
+  Variant Review, Haemato-Oncology, CYP2C19 Mavacamten - all recent
+  DOC-numbered templates). This Questionnaire only has [Sex registered at
   birth](#patient-demographics) (`LN/46098-0`) - Gender Identity (LOINC
   `76691-5`) is a plausible common-core addition rather than something
   specific to any one order type.
 - **Copy Report To / secondary report recipient**, distinct from the
-  ordering clinician, appears on five of the ten forms ("Requested by/Cc.
-  Report to", "Preferred method of report"). This Questionnaire's own
-  [Referring Clinician Email](#diagnostic-workflow) (`LN/89058-2`) already
-  repeats, which can hold a second address, but there is no field for a
-  second recipient's **name** distinct from the referrer - worth considering
-  if a named cc'd recipient (not just an extra email address) turns out to
-  matter operationally.
+  ordering clinician, appears on seven of the twelve forms ("Requested
+  by/Cc. Report to", "Preferred method of report", "Main contact (if
+  different from responsible clinician/consultant)" on both national GMS WGS
+  forms). This Questionnaire's own [Referring Clinician
+  Email](#diagnostic-workflow) (`LN/89058-2`) already repeats, which can
+  hold a second address, but there is no field for a second recipient's
+  **name** distinct from the referrer - worth considering if a named cc'd
+  recipient (not just an extra email address) turns out to matter
+  operationally.
 - **Specimen "Taken by"** (the person who collected the sample) appears
   consistently across the WGS, CYP2C19 and Haemato-Oncology forms, alongside
   Specimen Collection Date, which this Questionnaire already has
   ([Specimen](#specimen), `LN/33882-2`) - a "collected by" field does not
   currently exist.
+- **HPO (Human Phenotype Ontology) terms** are *mandatory* on [GMS WGS Rare
+  Disease](Questionnaire-GMSWGSRareDiseaseAskAtOrderEntry.html) - WGS
+  analysis and interpretation cannot commence without at least one. This
+  Questionnaire has no phenotype-term field at all, structured or
+  otherwise, and no confirmed FHIR CodeSystem binding for HPO exists
+  anywhere in this IG yet (`DiagnosticImplication.fsh`'s own
+  predicted-phenotype component mentions HPO only as one of several
+  acceptable free-text-bound terminologies). Of everything surfaced by this
+  comparison, this is the field most likely to need resolving before any
+  WGS order type could be implemented against this IG.
+- **Reason NHS Number not available** appears on both national GMS WGS
+  forms (e.g. "patient not eligible for NHS number (e.g. foreign
+  national)") - a small but genuinely useful field this Questionnaire
+  doesn't have anywhere, since [NHS Number](#patient-demographics)
+  (`LN/89061-6`) is simply left blank with no explanation captured.
 - **A named relative/partner reference for comparative interpretation**
-  recurs independently across three different Rare Disease forms
-  (Haemoglobinopathy Genetic, Cystic Fibrosis Carrier, and the WGS Proband
-  reference for a Family Member sample) - each names a specific relative
-  whose own affected/carrier status or result affects how *this* test is
-  interpreted. Rather than adding this to the common core, each affected
-  Ask At Order Entry Questionnaire above models it locally via
+  recurs independently across four different Rare Disease forms
+  (Haemoglobinopathy Genetic, Cystic Fibrosis Carrier, the WGS Proband
+  reference for a Family Member sample, and GMS WGS Rare Disease's own
+  repeating Family member(s) to be tested table) - each names a specific
+  relative whose own affected/carrier status or result affects how *this*
+  test is interpreted. Rather than adding this to the common core, each
+  affected Ask At Order Entry Questionnaire above models it locally via
   `ServiceRequest.supportingInfo` -> `RelatedPerson`/`Patient`, the same
   shape as [Genetic Clinical Referral -
   Consultand](Questionnaire-GeneticReferralConsultand.html) - it recurs
