@@ -47,31 +47,32 @@ Usage:  #definition
     * answerOption[+].valueCoding = $nwgmsa#WGSPathwayCancerGermline
 
   * item[+]
-    * type = #reference
-    * linkId = "NOS/ProbandReference"
-    * text = "Name and DOB of proband (Family Member pathway only)"
-    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.supportingInfo"
-    * extension[referenceProfile].valueCanonical = "http://hl7.org/fhir/StructureDefinition/Patient"
+    * type = #group
+    * linkId = "NOS/Proband"
+    * text = "Proband (Family Member pathway only)"
+    * repeats = true
+    * definition = "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson"
     * enableWhen[+]
       * question = "NOS/WGSPathway"
       * operator = #=
       * answerCoding = $nwgmsa#WGSPathwayRareDiseaseFamilyMember
     * item[+]
-      * linkId = "NOS/ProbandReference-designNote"
+      * linkId = "NOS/Proband-designNote"
       * type = #display
       * text = """
-      Same ServiceRequest.supportingInfo pattern used by Genetic Clinical
-      Referral - Consultand (RelatedPerson) to reference a second individual,
-      but the roles are reversed from that Questionnaire: there, the base
-      ServiceRequest's own Patient is always the proband, and the relative is
-      the supportingInfo reference. Here, when the Family Member pathway is
-      selected, this ServiceRequest's own common-core Patient group is
-      completed for the FAMILY MEMBER whose specimen this particular order
-      carries - it is this item, not the base Patient group, that names the
-      proband. A Patient reference is used rather than RelatedPerson because
-      the proband already exists as an independently registered patient with
-      their own separate WGS referral (this item only links the two), not a
-      person known solely through this family member's record.
+      Same NK1-shaped RelatedPerson group as NW Genomic General Ask At
+      Order Questions' own Related Individual (NK1) group
+      (NOS/RelatedIndividual), used here under its Proband role rather than
+      Consultand: the roles are reversed from Genetic Clinical Referral -
+      Consultand, where the base ServiceRequest's own Patient is always the
+      proband and the relative is the supportingInfo reference. Here, when
+      the Family Member pathway is selected, this ServiceRequest's own
+      common-core Patient group is completed for the FAMILY MEMBER whose
+      specimen this particular order carries - it is this group, not the
+      base Patient group, that names the proband. NHS/hospital number (if
+      known) are enough to resolve this RelatedPerson to the proband's own,
+      already-existing Patient record from their own separate WGS referral,
+      without needing to duplicate it as a new Patient.
 
       This Family Member pathway is effectively a **consultand test**: the
       same real-world scenario as one repetition of GMS WGS Rare Disease's
@@ -83,12 +84,88 @@ Usage:  #definition
       ready-made way of resolving that composite-form problem, not just an
       analogy to it: decomposing a GMS WGS Rare Disease Family Members entry
       into an individual order could reuse this Family Member pathway's own
-      shape directly - proband referenced back via NOS/ProbandReference, the
-      same way each Family Members repetition there references the proband
-      via RelatedPerson - rather than needing a new decomposition pattern
+      shape directly - proband referenced back via NOS/Proband, the same way
+      each Family Members repetition there references the proband via
+      RelatedPerson - rather than needing a new decomposition pattern
       designed from scratch.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+// Proband	Role (always Proband on this pathway)
+
+    * item[+]
+      * type = #choice
+      * linkId = "NOS/RelatedIndividualRole"
+      * code[+] = $nwgmsa#RelatedIndividualRole
+      * text = "Role"
+      * required = true
+      * answerOption[+].valueCoding = $nwgmsa#RoleProband
+
+// Proband	Name
+
+    * item[+]
+      * type = #string
+      * linkId = "HL7/NK1-2"
+      * text = "Name"
+      * required = true
+      * definition = "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.name"
+
+// Proband	Relationship to the family member (this order's own Patient)
+
+    * item[+]
+      * type = #choice
+      * linkId = "HL7/NK1-3"
+      * text = "Relationship"
+      * required = true
+      * definition = "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.relationship"
+      * answerValueSet = "https://fhir.hl7.org.uk/ValueSet/UKCore-PersonRelationshipType"
+
+// Proband	Administrative sex
+
+    * item[+]
+      * type = #choice
+      * linkId = "HL7/NK1.15"
+      * text = "Administrative Sex"
+      * definition = "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.gender"
+      * answerValueSet = "http://hl7.org/fhir/ValueSet/administrative-gender"
+
+// Proband	Date of birth
+
+    * item[+]
+      * type = #date
+      * linkId = "HL7/NK1-16"
+      * text = "Date of Birth"
+      * definition = "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.birthDate"
+
+// Proband	NHS Number, if known
+
+    * item[+]
+      * type = #string
+      * linkId = "LN/89061-6"
+      * code[+] = $loinc#89061-6
+      * text = "NHS Number (if known)"
+      * required = false
+      * definition = "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.identifier:nhsNumber"
+
+// Proband	Hospital/Medical Record Number, if known
+
+    * item[+]
+      * type = #string
+      * linkId = "LN/76435-7"
+      * code[+] = $loinc#76435-7
+      * text = "Hospital Number (Medical Record Number), if known"
+      * required = false
+      * definition = "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.identifier:MedicalRecordNumber"
+
+// Proband	Link back to this order's own Patient (the family member)
+
+    * item[+]
+      * type = #reference
+      * linkId = "NOS/RelatedIndividual-patient"
+      * text = "This order's own Patient (the family member)"
+      * required = true
+      * definition = "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.patient"
+      * extension[referenceProfile].valueCanonical = "http://hl7.org/fhir/StructureDefinition/Patient"
 
   * item[+]
     * type = #quantity

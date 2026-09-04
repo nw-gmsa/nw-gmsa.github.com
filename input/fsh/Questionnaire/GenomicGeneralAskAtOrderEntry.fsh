@@ -210,3 +210,116 @@ Usage:  #definition
     * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueString"
     * text = "High infection Risk Details"
     * type = #string
+
+// Related Individual (NK1) - Consultand or Proband
+
+  * item[+]
+    * type = #group
+    * linkId = "NOS/RelatedIndividual"
+    * text = "Related Individual (NK1)"
+    * repeats = true
+    * definition = "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson"
+    * item[+]
+      * linkId = "NOS/RelatedIndividual-designNote"
+      * type = #display
+      * text = """
+      Generalised from Genetic Clinical Referral - Consultand
+      (RelatedPerson): the same NK1-shaped RelatedPerson group, but not
+      always a consultand. Role below states which - a **Consultand** is a
+      relative referenced from this order's own Patient (who is the
+      proband), the usual case; a **Proband** is the opposite direction -
+      used when this order's own Patient is actually a family member (e.g.
+      WGS Local Test Order's Family Member pathway), and this group instead
+      names the original proband the family member is being tested
+      alongside. Repeats, since an order can name more than one related
+      individual (e.g. several consultands, or occasionally both a proband
+      reference and a consultand on the same order).
+      """
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+// Related Individual	Role (Consultand or Proband)
+
+    * item[+]
+      * type = #choice
+      * linkId = "NOS/RelatedIndividualRole"
+      * code[+] = $nwgmsa#RelatedIndividualRole
+      * text = "Role"
+      * required = true
+      * answerOption[+].valueCoding = $nwgmsa#RoleConsultand
+      * answerOption[+].valueCoding = $nwgmsa#RoleProband
+
+// Related Individual	Name
+
+    * item[+]
+      * type = #string
+      * linkId = "HL7/NK1-2"
+      * text = "Name"
+      * required = true
+      * definition = "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.name"
+
+// Related Individual	Relationship to the order's own Patient
+
+    * item[+]
+      * type = #choice
+      * linkId = "HL7/NK1-3"
+      * text = "Relationship"
+      * required = true
+      * definition = "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.relationship"
+      * answerValueSet = "https://fhir.hl7.org.uk/ValueSet/UKCore-PersonRelationshipType"
+      * item[+]
+        * linkId = "HL7/NK1-3-designNote"
+        * type = #display
+        * text = "Real examples in this IG currently code this with HL7 v3 RoleCode (e.g. MTH \"mother\") rather than UKCore-PersonRelationshipType - see RelatedPerson-MotherCerseiLondon. When Role = Proband, this is the family member's relationship to the proband (e.g. the family member is the proband's MTH \"mother\"), the same direction as when Role = Consultand."
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+// Related Individual	Administrative sex
+
+    * item[+]
+      * type = #choice
+      * linkId = "HL7/NK1.15"
+      * text = "Administrative Sex"
+      * definition = "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.gender"
+      * answerValueSet = "http://hl7.org/fhir/ValueSet/administrative-gender"
+
+// Related Individual	Date of birth
+
+    * item[+]
+      * type = #date
+      * linkId = "HL7/NK1-16"
+      * text = "Date of Birth"
+      * definition = "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.birthDate"
+
+// Related Individual	Own NHS Number, if known/already a patient
+
+    * item[+]
+      * type = #string
+      * linkId = "LN/89061-6"
+      * code[+] = $loinc#89061-6
+      * text = "NHS Number (if known)"
+      * required = false
+      * definition = "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.identifier:nhsNumber"
+
+// Related Individual	Own Hospital/Medical Record Number, if known/already a patient
+
+    * item[+]
+      * type = #string
+      * linkId = "LN/76435-7"
+      * code[+] = $loinc#76435-7
+      * text = "Hospital Number (Medical Record Number), if known"
+      * required = false
+      * definition = "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.identifier:MedicalRecordNumber"
+
+// Related Individual	Link back to this order's own Patient
+
+    * item[+]
+      * type = #reference
+      * linkId = "NOS/RelatedIndividual-patient"
+      * text = "This order's own Patient"
+      * required = true
+      * definition = "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.patient"
+      * extension[referenceProfile].valueCanonical = "http://hl7.org/fhir/StructureDefinition/Patient"
+      * item[+]
+        * linkId = "NOS/RelatedIndividual-patient-designNote"
+        * type = #display
+        * text = "The same Patient as this order's own common-core Patient group. When Role = Consultand, that Patient is the proband and this group names a relative of theirs. When Role = Proband, that Patient is instead a family member whose specimen this particular order carries, and this group names the original proband instead - see WGS Local Test Order Ask At Order Entry's Family Member pathway."
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help

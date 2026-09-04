@@ -50,6 +50,13 @@ Bucket for local codes
 * #FamilyStructure "Family Structure"
 * #ParticipantType "Participant Type"
 
+// Related Individual (NK1) - generic Consultand/Proband role, see
+// GenomicGeneralAskAtOrderEntry's NOS/RelatedIndividual group
+
+* #RelatedIndividualRole "Related Individual Role"
+* #RoleConsultand "Consultand"
+* #RoleProband "Proband"
+
 * #230056 "What Type of Referral Do You Require?"
 * #230016 "Test Type"
 * #231284 "Please Select R240 Test(s):"

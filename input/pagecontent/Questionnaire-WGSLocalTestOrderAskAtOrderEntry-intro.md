@@ -32,29 +32,35 @@ either on this form).
 | Item | Paper Form Field | FHIR |
 |---|---|---|
 | WGS test type | Rare Disease (Proband/Family Member) or Cancer (Tumour/Germline sample) | `ServiceRequest.category` |
-| Proband reference | Name/DOB of proband (Family Member pathway only) | `ServiceRequest.supportingInfo` -> `Patient` |
+| Proband | Name/DOB of proband (Family Member pathway only) | `RelatedPerson` (NK1-shaped, Role = Proband), repeating group |
 | Neoplastic cell content | % (Cancer tumour sample only) | `Observation.valueQuantity` |
 | NGIS Test Code | Barcode/placeholder box, completed once the NGIS referral exists | `ServiceRequest.code` |
 {:.grid}
 
 Like [Prenatal Haemoglobinopathy](Questionnaire-HaemoglobinopathyPrenatalAskAtOrderEntry.html),
 this form can name a **second** individual, and does so via the same
-`ServiceRequest.supportingInfo` pattern used by [Genetic Clinical Referral -
-Consultand](Questionnaire-GeneticReferralConsultand.html) - but **the roles
-are reversed here**. In Genetic Clinical Referral/Prenatal Haemoglobinopathy,
-the base ServiceRequest's own Patient group is always the proband/primary
-patient, and the second individual is the supportingInfo reference. On the
-**Family Member** WGS pathway, it is the other way round: the common core's
-own Patient group is completed for the **family member** whose specimen this
-particular order carries, and the Proband reference above names the
-*already-referred* proband instead. Take care not to assume the base
-Patient group is always the proband when reading this Questionnaire
-alongside the others. The paper form's own "NGIS/Barcode (Until NGIS
-Referral Received)" box is a placeholder used before the digital NGIS
-referral exists, not a distinct Order Placer Number - it converges on
-`ServiceRequest.code` once the NGIS referral is raised. No Account
-Number/Hospital Spell Identifier or clinician professional identifier
-(GMC/GMP) field is present on the paper form.
+NK1-shaped `RelatedPerson` group as [NW Genomic General Ask At Order
+Questions - Related Individual
+(NK1)](Questionnaire-GenomicGeneralAskAtOrderEntry.html) (`NOS/Proband`
+here, reusing that same group under its **Proband** role rather than
+**Consultand**) - but **the roles are reversed here**. In Genetic Clinical
+Referral/Prenatal Haemoglobinopathy/the Consultand role of that shared
+group, the base ServiceRequest's own Patient group is always the
+proband/primary patient, and the second individual is the
+`RelatedPerson.patient`-referencing relative. On the **Family Member** WGS
+pathway, it is the other way round: the common core's own Patient group is
+completed for the **family member** whose specimen this particular order
+carries, and the `NOS/Proband` group above names the *already-referred*
+proband instead, with NHS/hospital number (if known) enough to resolve it
+back to that proband's own existing `Patient` record rather than
+duplicating it. Take care not to assume the base Patient group is always
+the proband when reading this Questionnaire alongside the others. The
+paper form's own "NGIS/Barcode (Until NGIS Referral Received)" box is a
+placeholder used before the digital NGIS referral exists, not a distinct
+Order Placer Number - it converges on `ServiceRequest.code` once the NGIS
+referral is raised. No Account Number/Hospital Spell Identifier or
+clinician professional identifier (GMC/GMP) field is present on the paper
+form.
 
 ### Relationship to GMS WGS Rare Disease
 
@@ -75,8 +81,10 @@ This Questionnaire may therefore represent a ready-made way of resolving
 that composite-form problem, not just an analogy to it: decomposing GMS WGS
 Rare Disease's Family Members group into individual per-person orders could
 reuse this Family Member pathway's own shape directly - proband referenced
-back via `NOS/ProbandReference`, the same way each Family Members
-repetition on GMS WGS Rare Disease references the proband via a
-`RelatedPerson`, itself modelled on [Genetic Clinical Referral -
+back via `NOS/Proband`, the same NK1-shaped `RelatedPerson` group as each
+Family Members repetition on GMS WGS Rare Disease, both ultimately the same
+[NW Genomic General Ask At Order Questions - Related Individual
+(NK1)](Questionnaire-GenomicGeneralAskAtOrderEntry.html) group first
+generalised from [Genetic Clinical Referral -
 Consultand](Questionnaire-GeneticReferralConsultand.html) - rather than
 needing a new decomposition pattern designed from scratch.
