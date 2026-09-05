@@ -18,10 +18,7 @@ for how this compares to the other paper forms.
 
 <div class="alert alert-info" role="alert">
 <b>Related:</b> <a href="Questionnaire-GMSWGSCancerAskAtOrderEntry.html">GMS WGS Cancer Ask At Order Entry</a> -
-the cancer variant of this same national form family - and
-<a href="Questionnaire-dWGSAskAtOrderEntry.html">dWGS Ask At Order Entry</a> -
-the distributed sub-contracted WGS pathway, which resolves the same
-"no WGS Test Category in the common core" gap the same way.
+the cancer variant of this same national form family.
 </div>
 
 ## Summary
@@ -76,8 +73,7 @@ tested](#summary) rows - each of whom is (or becomes) their own `Patient`
 with their own specimen. Modelled strictly, this Questionnaire's answers
 don't decompose into one order, but into **one order per person tested**.
 That composite shape is worth flagging as a practical implementation
-problem in its own right, separate from the question of whether it's a
-referral or an order:
+problem in its own right:
 
 - **EPR order entry is built around a single patient context.** Most
   Electronic Patient Record systems raise an order from within one
@@ -95,27 +91,14 @@ referral or an order:
   worklists and results against. Something upstream of the LIMS (the
   ordering system, or an integration engine) would need to split this
   form's answers into per-person orders before they could reach it.
-- **[dWGS](dWGS.html) already solves this exact problem, for the
-  distributed pathway.** Its own answer is that "each participant in a
-  Duo or Trio is sequenced and submitted as their own **separate**
-  sub-order (their own `Patient`, `Specimen` and `ServiceRequest`)...not
-  combined into one message", tied together only by a shared requisition
-  number - see [dWGS - Singleton, Duo and Trio
-  testing](dWGS.html#singleton-duo-and-trio-testing). If this form were
-  taken forward as a real digital order, the same per-person decomposition
-  (rather than a single multi-patient resource) is the pattern it would
-  most likely need to follow - not attempted as a new Questionnaire here,
-  since that would need its own dedicated design work rather than a quick
-  extension of the existing Ask At Order Entry pattern.
 - **[WGS Local Test Order](Questionnaire-WGSLocalTestOrderAskAtOrderEntry.html)
   already models what one decomposed order looks like.** Its own Family
   Member pathway - one order per specimen, whose own common-core Patient
   group is the family member being tested, with a `NOS/Proband` (NK1-shaped
-  `RelatedPerson`) group linking back to the proband's separate order - is a concrete, existing
-  answer to exactly this decomposition problem, closer to home than dWGS
-  since it isn't tied to sub-contracting between GLHs. A Family Members
-  repetition here naming a relative's specimen could plausibly decompose
-  into an order shaped exactly like that Family Member pathway, rather than
-  needing a new pattern designed from scratch - see [WGS Local Test Order -
-  Relationship to GMS WGS Rare
+  `RelatedPerson`) group linking back to the proband's separate order - is a
+  concrete, existing answer to exactly this decomposition problem. A Family
+  Members repetition here naming a relative's specimen could plausibly
+  decompose into an order shaped exactly like that Family Member pathway,
+  rather than needing a new pattern designed from scratch - see [WGS Local
+  Test Order - Relationship to GMS WGS Rare
   Disease](Questionnaire-WGSLocalTestOrderAskAtOrderEntry.html#relationship-to-gms-wgs-rare-disease).

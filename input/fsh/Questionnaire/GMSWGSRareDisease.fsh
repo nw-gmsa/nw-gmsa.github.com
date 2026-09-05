@@ -8,14 +8,12 @@ Description: """
 (GMS) Whole Genome Sequencing (WGS) Test Request - Rare Disease** form (the
 national GMS-branded form, not NW GLH-specific), used alongside the [common
 core order form](Questionnaire-GenomicTestOrder.html) - see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). Like
-[dWGS](dWGS.html), this form has no Whole Genome Sequencing Test Category in
-the common core's Test Code branches, so its own Test Directory Clinical
-Indication item fills that gap directly - see [dWGS Ask At Order
-Entry](Questionnaire-dWGSAskAtOrderEntry.html) for the same fix applied to
-the distributed sub-contracted pathway. **HPO (Human Phenotype Ontology)
-terms are mandatory on this form** - WGS analysis cannot start without at
-least one - see [Genomic Test Order - Common Fields We May Have
+Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). This
+form has no Whole Genome Sequencing Test Category in the common core's Test
+Code branches, so its own Test Directory Clinical Indication item fills
+that gap directly. **HPO (Human Phenotype Ontology) terms are mandatory on
+this form** - WGS analysis cannot start without at least one - see
+[Genomic Test Order - Common Fields We May Have
 Missed](Questionnaire-GenomicTestOrder.html#common-fields-we-may-have-missed).
 """
 Usage:  #definition
@@ -47,7 +45,7 @@ Usage:  #definition
     * item[+]
       * linkId = "HL7/ORC-21-requesting-designNote"
       * type = #display
-      * text = "Same concept as the common core's own Referring Organisation ODS Code / Ordering Facility (HL7/ORC-21) - kept as its own item here to sit alongside GMS laboratory below, the same requester/performer split used by dWGS's Original Ordering Facility Code / Filler Order Ordering Facility Code pair."
+      * text = "Same concept as the common core's own Referring Organisation ODS Code / Ordering Facility (HL7/ORC-21) - kept as its own item here to sit alongside GMS laboratory below."
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
   * item[+]
@@ -71,7 +69,7 @@ Usage:  #definition
     * item[+]
       * linkId = "NOS/FamilyTestType-designNote"
       * type = #display
-      * text = "Same underlying concept as dWGS's Family Structure (NOS/FamilyStructure) on dWGS Ask At Order Entry, but with different answer options - the form's own PDF radio buttons offer Singleton/Trio/Other (with a number), not Duo, since a Duo is presumably covered by 'Other'."
+      * text = "The form's own PDF radio buttons offer Singleton/Trio/Other (with a number), not Duo, since a Duo is presumably covered by 'Other'."
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
     * item[+]
       * type = #integer
@@ -146,7 +144,7 @@ Usage:  #definition
     * item[+]
       * linkId = "NOS/TestDirectoryClinicalIndication-rd-designNote"
       * type = #display
-      * text = "Same gap-fill as dWGS Ask At Order Entry's Test Code (dWGS/clinical_indication_test_type_id) - the common core's own Test Code item only fires for Rare and Inherited Disease/Haemoglobinopathy/Cancer Test Categories, none of which cover Whole Genome Sequencing."
+      * text = "The common core's own Test Code item only fires for Rare and Inherited Disease/Haemoglobinopathy/Cancer Test Categories, none of which cover Whole Genome Sequencing."
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 // Additional panel(s)

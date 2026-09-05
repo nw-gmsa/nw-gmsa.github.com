@@ -11,15 +11,12 @@ manifest](dWGS.html#field-mapping-csv--hl7-v2--fhir) (NHS England `RGL to SGL
 SOP` Appendix 3, plus 5 local extension fields) that are **not** already
 asked by the common core - see [dWGS Sub-Order
 Manifest](Questionnaire-dWGSSubOrder.html) for the full 42-field manifest
-description this Questionnaire was extracted from, and [dWGS - Outstanding
-Issues (resolved by this
-split)](dWGS.html#outstanding-issues-resolved-by-this-split) for why that
-split was made.
+description this Questionnaire was extracted from.
 
 <div class="alert alert-info" role="alert">
 <b>Related:</b> <a href="Questionnaire-WGSLocalTestOrderAskAtOrderEntry.html">WGS Local Test Order Ask At Order Entry</a> -
 a different WGS ordering pathway (local paper form rather than a distributed
-sub-contracted digital manifest) - see <a href="dWGS.html#comparison-with-wgs-local-test-order">dWGS - Comparison with WGS Local Test Order</a>.
+sub-contracted digital manifest).
 </div>
 
 ## Questions at a Glance

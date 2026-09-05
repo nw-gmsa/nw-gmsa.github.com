@@ -343,11 +343,8 @@ paper order, and both national GMS WGS forms); on five it is **implied** by
 which specific form/tick-box was used rather than entered as a coded value,
 and on one (Genomic Variant Review) no test code applies at all, since it
 reviews a result already reported rather than requesting a new one.
-Both national GMS WGS forms split "Ordering Facility" into **two** fields
-(a requesting organisation and a separate receiving GMS/GLH laboratory) -
-the same requester/performer split [dWGS Ask At Order
-Entry](Questionnaire-dWGSAskAtOrderEntry.html) already uses for its
-Original Ordering Facility Code / Filler Order Ordering Facility Code pair.
+Both national GMS WGS forms split "Ordering Facility" into **two** fields -
+a requesting organisation and a separate receiving GMS/GLH laboratory.
 
 #### Common Fields We May Have Missed
 

@@ -63,7 +63,7 @@ flowchart LR
 
 | Transaction | Description                          | Direction         |
 |-------------|-----------------------------------------|------------------------|
-| `LAB-1`     | Laboratory Order (original clinical order, upstream of this sub-order) | Test Ordering Entity → RGL |
+| `LAB-1`     | Laboratory Order (original clinical order, upstream of this sub-order) - see [GMS WGS Rare Disease](Questionnaire-GMSWGSRareDisease.html) (Rare Disease pathway) and [GMS WGS Cancer](Questionnaire-GMSWGSCancerAskAtOrderEntry.html) (Cancer pathway) | Test Ordering Entity → RGL |
 | `LAB-35`    | Sub-order Management (sample + digital manifest) | RGL → SGL          |
 | `LAB-36`    | Sub-order Results Delivery (sequencing result)   | SGL → RGL          |
 | `LAB-3` / `LAB-5` | Laboratory Report (downstream of this sub-order) | RGL → Test Ordering Entity |
@@ -77,6 +77,14 @@ NHS Genomic Medicine Service (GMS) geography's own laboratory acts as a
 **Requesting Genomic Laboratory (RGL)**, submitting DNA samples and a digital manifest
 directly to whichever laboratory is acting as **Sequencing Genomic Laboratory (SGL)**
 for that sample - which may be another GMS's laboratory rather than the RGL's own.
+
+The `LAB-1` leg upstream of this - the Test Ordering Entity (Order Placer)
+raising the original clinical order with the RGL (Order Filler) - uses one
+of the two national GMS WGS forms, depending on pathway:
+
+- **Rare Disease**: [GMS WGS Rare
+  Disease](Questionnaire-GMSWGSRareDisease.html) - In the North East & Yorkshire NE&Y Genomics is the RGL, in the North West NW Genomics is the RLS and NW Genomics is the SGL for both.
+- **Cancer**: [GMS WGS Cancer](Questionnaire-GMSWGSCancerAskAtOrderEntry.html) - In the North West: NW Genomics is the RGL and Royal Marsden is the SGL
 
 Where the RGL and SGL are different organisations, this is a **sub-contracted order**:
 in NW-GMSA's own [Inter-Laboratory Workflow (ILW)](ILW.html#sub-orders-lab-35-and-lab-36)
@@ -178,9 +186,8 @@ page add 5. This IG models the manifest as **two** separate Questionnaires, not 
   Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions)). It carries
   every manifest field **except** the six that duplicate the common core exactly -
   see [Field mapping](#field-mapping-csv--hl7-v2--fhir) below for which is which, and
-  [Outstanding Issues (resolved by this split)](#outstanding-issues-resolved-by-this-split)
-  for why the manifest previously declared `derivedFrom` itself and the confusion that
-  caused.
+  [Outstanding Issues](#outstanding-issues) below for a remaining question about
+  where some of these fields originate.
 
 The two fields specific to dWGS - **Family Structure** and **Participant Type** (see
 [Singleton, Duo and Trio testing](#singleton-duo-and-trio-testing) above) - are
@@ -195,9 +202,9 @@ each participant (Proband and every Family Member) is submitted as their own
 completely separate sub-order, tied together only by a shared requisition number
 (see [The end-to-end clinical journey](#the-end-to-end-clinical-journey) above). There
 is no equivalent here to Consultand's `RelatedPerson`/`ServiceRequest.supportingInfo`
-cross-reference - see [Comparison with WGS Local Test
-Order](#comparison-with-wgs-local-test-order) below for a closer relative that *does*
-use that pattern.
+cross-reference - see [WGS Local Test
+Order](Questionnaire-WGSLocalTestOrderAskAtOrderEntry.html) for a closer relative that
+*does* use that pattern.
 
 #### Field mapping: CSV → HL7 v2 → FHIR
 
@@ -264,80 +271,42 @@ originally received at the GLH (blood/tissue, before extraction); `dispatched_sa
 describes the extracted DNA sent onward. The worked examples below carry both as
 identifiers/values on a single `Specimen` resource rather than two linked resources.
 
-#### Comparison with WGS Local Test Order
 
-[WGS Local Test Order Ask At Order
-Entry](Questionnaire-WGSLocalTestOrderAskAtOrderEntry.html) is the closest relative
-to `dWGS Ask At Order Entry` in this IG - both structure a WGS-specific order beyond
-the common core, and both distinguish a Proband from a Family Member. They model
-genuinely different pathways, though, not the same one twice:
+## Outstanding Issues
 
-| Aspect | dWGS Ask At Order Entry | WGS Local Test Order Ask At Order Entry |
-|---|---|---|
-| Source | NHS England `RGL to SGL SOP` digital manifest (Appendix 3) | NW GLH paper [Genetic Testing Request Form - WGS](Questionnaire-WGSLocalTestOrderAskAtOrderEntry.html#summary) |
-| Pathway | **Sub-contracted**: a Requesting Genomic Laboratory sends the sample onward to a different Sequencing Genomic Laboratory (`LAB-35`) | **Local**: samples sent directly to a NW GLH site, no cross-laboratory sub-contracting implied |
-| Proband/Family Member representation | Each participant is a wholly **separate** sub-order (own `Patient`, `Specimen`, `ServiceRequest`), linked only by a shared requisition number - no direct reference between them | A **single** sub-order whose own Patient group is completed for whichever individual's specimen is being sent; only the Family Member pathway adds a `ServiceRequest.supportingInfo` reference to the pre-existing Proband |
-| Family Structure (Singleton/Duo/Trio) | Explicit, structured field (`NOS/FamilyStructure`) | Not captured - the paper form only distinguishes Proband vs Family Member, not how many participants make up the referral |
-| Specimen model | **Two** specimens per participant (primary as received + dispatched extracted DNA), both on one `Specimen` resource | **One** specimen per participant |
-| Cancer WGS fields | Sample Topography, Sample Morphology, Tumour Content (%) | Neoplastic Cell Content (%) only - see the [design note](Questionnaire-dWGSAskAtOrderEntry.html) on `dWGS/received_sample_tumour_content_pct` |
-| Laboratory QC/logistics fields | Extensive - DNA concentration/purity/integrity/fragment size, rack position, plating organisation, consignment tracking | None - a local order form has no equivalent, since NW Genomics is both the referring and the testing laboratory |
-{:.grid}
-
-Both ultimately request the same underlying test (Whole Genome Sequencing for rare
-and inherited disease or cancer), so a future harmonisation could reasonably ask
-whether NW GLH's local paper pathway should adopt some of the digital manifest's
-structure (Family Structure, in particular) rather than remaining two independently
-evolved Questionnaires - noted here as an open question, not a decision.
-
-A **third** WGS pathway also exists: the *national* NHS Genomic Medicine Service
-(GMS) WGS Test Request forms - [GMS WGS Rare
+**Not resolved.** Some of the manifest fields described above appear to
+originate from Genomics England's own **centralised** WGS systems, rather
+than being fields NW-GMSA itself asked for. The working theory is that
+Genomics England generated them when the paper [GMS WGS Rare
 Disease](Questionnaire-GMSWGSRareDisease.html) and [GMS WGS
-Cancer](Questionnaire-GMSWGSCancerAskAtOrderEntry.html) - see [Genomic Test Order -
-NW GLH Paper Test Request
-Forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms). Unlike
-either Questionnaire above, the GMS forms make HPO (Human Phenotype Ontology) terms
-mandatory and structure a repeating table of family members to be tested, closer in
-spirit to this page's own Family Structure/Participant Type fields than to WGS Local
-Test Order's single Proband reference - a fourth data point for the same future
-harmonisation question, not resolved here either.
+Cancer](Questionnaire-GMSWGSCancerAskAtOrderEntry.html) national order forms
+were entered into Genomics England's own systems, and they were then carried
+over into the dWGS digital manifest along with the rest of the sub-order:
 
-#### Outstanding Issues (resolved by this split)
+- `referral_id` ("Original Order Placer Group Number (Referral ID)",
+  `dWGS/referral_id`, `ServiceRequest.requisition`) reads like a Genomics
+  England `OrderFillerGroupNumber`-style concept, not the
+  `OrderPlacerNumber` + `OrderPlacerGroupNumber` pair this IG would
+  typically expect a Requesting Genomic Laboratory to assign for its own
+  referral (see [Genomic Test Order - Diagnostic
+  Workflow](Questionnaire-GenomicTestOrder.html#diagnostic-workflow)).
+- `patient_ngis_id` ("Patient Identifier (NGIS)", `Patient.identifier`,
+  assigned by Genomics England, ODS `8J834`) reads like a Genomics England
+  `PatientAccessionIdentifier`-style concept, not the `MedicalRecordNumber`
+  this IG would typically expect (see [NHS
+  Identifier](StructureDefinition-NHSIdentifier.html)).
 
-Until this split, `dWGSSubOrder` declared `derivedFrom` [Genomic Test
-Order](Questionnaire-GenomicTestOrder.html) with derivation type `extends`, but
-checking it against the base Questionnaire raised open questions about whether it was
-a clean extension. Recorded here for the design history, followed by how the split
-into [dWGS Sub-Order Manifest](Questionnaire-dWGSSubOrder.html) (manifest
-description, no `derivedFrom`) and [dWGS Ask At Order
-Entry](Questionnaire-dWGSAskAtOrderEntry.html) (the genuine extension) resolves each:
-
-1. **Duplicated patient identifiers.** `dWGSSubOrder` re-declared its own
-   `Patient` group with `patient_forename`/`patient_surname`/NHS number/date of
-   birth, using the **same** `linkId`s and LOINC codes as the equivalent items
-   already in the base Questionnaire (e.g. `LN/45392-8`, `LN/45394-4`,
-   `LN/89061-6`). **Resolved**: `dWGSSubOrder` keeps these (it is a complete
-   manifest description, not an incremental form), but `dWGSAskAtOrderEntry`
-   omits them entirely - see the six fields marked **Genomic Test Order (base)**
-   in the [field mapping](#field-mapping-csv--hl7-v2--fhir) above.
-2. **Two different "Order Group Number" concepts.** The base Questionnaire's
-   `pedigreeNumber` item is labelled "G Number (Pedigree Number) - **Order Group
-   Number**" and maps to `Patient.identifier:PedigreeNumber`. `dWGSSubOrder`'s
-   `referral_id` item is labelled "Original Order Placer **Group Number** (Referral
-   ID)" and maps to `ServiceRequest.requisition` instead. **Not fully resolved** -
-   both terms still appear, and no relationship between the two values is stated;
-   `dWGSAskAtOrderEntry`'s own `referral_id` item now carries a design note flagging
-   this explicitly rather than leaving it implicit.
-3. **Test codes don't exist in the base Questionnaire's Test Code lists.**
-   The base Questionnaire's Test Code item only appears via three
-   `enableWhen`-gated branches, each tied to a Test Category answer
-   (`RareAndInheritedDiseasesGeneticTesting`, `HaemoglobinopathyGeneticTesting`,
-   `CancerGeneticTesting` - see [OrderCategory](ValueSet-order-category.html)), and
-   there is no Test Category option for Whole Genome Sequencing/dWGS at all.
-   **Resolved by framing, not by adding a WGS category**: `dWGSAskAtOrderEntry`'s
-   `clinical_indication_test_type_id` item is documented as deliberately filling
-   that gap against the broader [GenomicTestCodes](ValueSet-GenomicTestCodes.html)
-   value set, rather than silently presenting as a peer of the base's three
-   category-gated branches.
+Neither national paper form captures a `referral_id`/`patient_ngis_id`
+equivalent itself - both are silent on Order Placer Number and Medical
+Record Number too (see their own Summary sections) - which is consistent
+with these values being minted downstream, by Genomics England, once the
+paper form reaches them, rather than by the Requesting Genomic Laboratory at
+the point of ordering. It's possible a Genomics England API exists to
+resolve or issue these identifiers (e.g. an NGIS lookup service an RGL could
+call), but no such API has been identified for this IG - whether an RGL is
+expected to obtain these values from Genomics England directly, mint them
+itself, or something else, is an open question rather than a design
+decision made here.
 
 ## Examples
 
