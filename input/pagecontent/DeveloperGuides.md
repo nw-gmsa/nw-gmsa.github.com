@@ -28,3 +28,17 @@ ones), and most relate directly to one or more of this IG's [Use Cases](index.ht
 {:.grid}
 
 Notebook 13's terminology-server pattern (querying a remote FHIR server's `$lookup`/`$translate` operations live, rather than hand-maintaining a static map) is the same shape [IHE Sharing Valuesets, Codes, and Maps (SVCM)](https://profiles.ihe.net/ITI/SVCM/index.html) formalises as a profile - this IG is likely to adopt an SVCM-conformant terminology service for SNOMED CT/HPO/Genomic Test Directory conversions in future, rather than continuing to hand-build `ConceptMap`s like [GMSWGSGuideHPOTermsToSCT](ConceptMap-GMSWGSGuideHPOTermsToSCT.html) notebook-by-notebook.
+
+## Data Science and Analytics Notebooks
+
+The notebooks above are aimed at integration/interoperability developers - FHIR and HL7
+v2 message shapes, not analysis of genomic data itself. For that audience, Genomics
+England publishes its own separate set of tutorials aimed at researchers and data
+analysts working inside the Genomics England Research Environment: [Genomics England
+Research Environment - How-to
+guides](https://re-docs.genomicsengland.co.uk/tutorials/). These cover cohort building
+(phenotype-first and genotype-first, via Participant Explorer/CloudOS), querying
+aggregate VCF datasets (AggV2/AggV3/somAgg), downstream analysis (association testing,
+variant screening, survival analysis), and desktop tooling (LabKey, Airlock, IVA) using
+Python, R, Jupyter notebooks and HPC workflows - a different layer of the same overall
+genomics ecosystem this IG's own notebooks integrate with at the message/API level.

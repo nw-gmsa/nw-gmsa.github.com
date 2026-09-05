@@ -308,6 +308,31 @@ expected to obtain these values from Genomics England directly, mint them
 itself, or something else, is an open question rather than a design
 decision made here.
 
+**No national mapping exists from SNOMED CT or HPO to a Test
+Directory/DGTS clinical indication code - which is why `clinical_information`
+is free text.** The manifest's own `clinical_indication_test_type_id` field
+maps to `ServiceRequest.code.coding` against the legacy
+`England-GenomicTestDirectory` (`GenomicTestCode`) system, but there is no
+equivalent coded field for the clinical indication/reason for testing behind
+it - `clinical_information` (`ServiceRequest.note`) is free text instead.
+This isn't just a modelling gap this IG could close by adding a coded field:
+confirmed live against Genomics England's own terminology server
+(`https://ontoserver.aws.gel.ac/fhir`, only 4 published `ConceptMap`s, none
+targeting the Test Directory) and against NHS England's own [GOMS FHIR
+Implementation
+Guide](https://simplifier.net/guide/fhir-genomics-implementation-guide/home)
+(whose CodeSystems page states Test Directory codes are "dependent upon the
+digitisation of the test directory\[,] treated as a separate project", and
+whose own DGTS Integration page documents cross-references to HGNC and WHO
+Blue Books but none to SNOMED CT/HPO) - no such mapping exists nationally
+today, for either the legacy `GenomicTestCode` or the new
+[Digital Genomic Test Services](CodeSystem-DigitalGenomicTestServices.html)
+TP codes. A referring clinician's own SNOMED-coded diagnosis on their EPR
+therefore has no automated route to a coded clinical indication for this
+field - only a manual, hand-curated cross-reference, the same gap [notebook
+15](DeveloperGuides.html) found when closing the loop the other way, from a
+genomic result back onto an EPR problem list.
+
 ## Examples
 
 The dWGS example Bundles cover one referral of each family structure, sent as `LAB-35`
