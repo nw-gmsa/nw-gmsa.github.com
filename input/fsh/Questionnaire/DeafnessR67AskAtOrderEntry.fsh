@@ -15,16 +15,128 @@ features, risk factors) that supports the R67 eligibility criteria.
 Usage:  #definition
 
 * title = "Deafness (R67) Ask At Order Entry Questions"
-* status = #draft
+* status = #unknown
 * url = "https://fhir.nwgenomics.nhs.uk/Questionnaire/DeafnessR67AskAtOrderEntry"
-* derivedFrom = "https://fhir.nwgenomics.nhs.uk/Questionnaire/GenomicTestOrder"
-* derivedFrom.extension[+]
-  * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-derivationType"
-  * valueCoding = http://hl7.org/fhir/questionnaire-derivationType#extends
 
 * extension[+]
   * url = "http://hl7.org/fhir/StructureDefinition/artifact-versionAlgorithm"
   * valueCoding = http://hl7.org/fhir/version-algorithm#semver
+
+// ---------------------------------------------------------------------------
+// Order metadata - the Patient Details/Referring Clinician fields the real
+// source proforma actually asks for, restored here since this Questionnaire
+// does not (yet) derivedFrom/extend Genomic Test Order, so these are not
+// otherwise available. Only fields confirmed present on this specific form -
+// not a copy of Genomic Test Order's own (larger) Patient/Healthcare
+// Professional groups. See
+// Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms.
+// ---------------------------------------------------------------------------
+
+* item[+]
+  * linkId = "Patient"
+  * text = "Patient Details"
+  * type = #group
+  * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient"
+
+// Patient	Name
+
+  * item[+]
+    * type = #string
+    * linkId = "NOS/PatientName"
+    * text = "Name"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name"
+    * item[+]
+      * linkId = "NOS/PatientName-designNote"
+      * type = #display
+      * text = "Single free-text Name field on this form, unlike the Surname/Forename split most other paper forms use."
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+// Patient	Date of birth
+
+  * item[+]
+    * type = #date
+    * linkId = "LN/21112-8"
+    * code[+] = $loinc#21112-8
+    * text = "Date of birth"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.birthDate"
+
+// Patient	Gender
+
+  * item[+]
+    * type = #choice
+    * linkId = "LN/46098-0"
+    * code[+] = $loinc#46098-0
+    * text = "Gender"
+    * answerValueSet = "http://hl7.org/fhir/ValueSet/administrative-gender"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.gender"
+
+// Patient	Address
+
+  * item[+]
+    * type = #string
+    * linkId = "LN/56799-0"
+    * code[+] = $loinc#56799-0
+    * text = "Address"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.line"
+
+// Patient	Postcode
+
+  * item[+]
+    * type = #string
+    * linkId = "LN/45401-7"
+    * code[+] = $loinc#45401-7
+    * text = "Postcode"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.postalCode"
+
+// Patient	Hospital Number
+
+  * item[+]
+    * type = #string
+    * linkId = "LN/76435-7"
+    * code[+] = $loinc#76435-7
+    * text = "Hospital Number"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier:MedicalRecordNumber"
+
+// Patient	NHS no
+
+  * item[+]
+    * type = #string
+    * linkId = "LN/89061-6"
+    * code[+] = $loinc#89061-6
+    * text = "NHS no"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier:nhsNumber"
+
+* item[+]
+  * type = #group
+  * linkId = "HealthcareProfessional"
+  * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole"
+  * text = "Referring Clinician"
+
+// Healthcare professional	Referring clinician
+
+  * item[+]
+    * type = #string
+    * linkId = "LN/18705-4"
+    * code[+] = $loinc#18705-4
+    * text = "Referring clinician"
+    * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.practitioner.display"
+
+// Healthcare professional	Address
+
+  * item[+]
+    * type = #string
+    * linkId = "NOS/DepartmentAddress"
+    * text = "Address"
+    * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.organization.display"
+
+// Healthcare professional	Email
+
+  * item[+]
+    * type = #string
+    * linkId = "LN/89058-2"
+    * code[+] = $loinc#89058-2 "Contact email address"
+    * text = "Email"
+    * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.telecom.value"
 
 * item[+]
   * type = #group

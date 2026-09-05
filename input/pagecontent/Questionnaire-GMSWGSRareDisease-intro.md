@@ -3,9 +3,15 @@ This is for information and analysis purposes only and is not an active or
 planned project.
 </div>
 
-This Questionnaire `derivedFrom`/extends [Genomic Test
-Order](Questionnaire-GenomicTestOrder.html) - see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). It
+This Questionnaire is compared against [Genomic Test
+Order](Questionnaire-GenomicTestOrder.html) - see [NW GLH Paper Test Request
+Forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms) -
+but does not yet declare `derivedFrom`/extends it: unlike the Ask At Order
+Entry Questionnaires that originated from an existing digital order-entry
+screen (see [Order Entry
+Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions)), this
+one hasn't yet been processed into the specific electronic Ask At Order
+Entry shape that relationship implies for use in an actual order. It
 structures the **NHS Genomic Medicine Service (GMS) Whole Genome Sequencing
 (WGS) Test Request - Rare Disease** form - the *national* GMS-branded form,
 distinct from the NW GLH-specific [WGS Local Test
@@ -25,6 +31,14 @@ the cancer variant of this same national form family.
 
 | Item | Paper Form Field | FHIR |
 |---|---|---|
+| Proband's first/last name | Free text | `Patient.name` |
+| Date of birth | dd/mm/yyyy | `Patient.birthDate` |
+| Hospital number | Free text | `Patient.identifier:MedicalRecordNumber` |
+| Sex assigned at birth | Male/Female | `Patient.gender` |
+| Postcode | Free text | `Patient.address.postalCode` |
+| NHS number | Free text | `Patient.identifier:nhsNumber` |
+| Ethnicity | Coded | `Patient.extension:ethnicCategory` |
+| Responsible clinician / consultant | Name/Department address/Phone/Email | `PractitionerRole` |
 | Requesting organisation / GMS laboratory | Two organisation fields | `PractitionerRole.organization` / `ServiceRequest.performer` |
 | Family test type | Singleton/Trio/Other (with number) | `Observation.valueCodeableConcept` |
 | Reason NHS Number not available | Free text | `Patient.identifier:nhsNumber.extension` |

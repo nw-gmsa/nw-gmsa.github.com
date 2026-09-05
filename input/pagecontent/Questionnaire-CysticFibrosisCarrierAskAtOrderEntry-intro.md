@@ -3,9 +3,15 @@ This is for information and analysis purposes only and is not an active or
 planned project.
 </div>
 
-This Questionnaire `derivedFrom`/extends [Genomic Test
-Order](Questionnaire-GenomicTestOrder.html) - see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). It
+This Questionnaire is compared against [Genomic Test
+Order](Questionnaire-GenomicTestOrder.html) - see [NW GLH Paper Test Request
+Forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms) -
+but does not yet declare `derivedFrom`/extends it: unlike the Ask At Order
+Entry Questionnaires that originated from an existing digital order-entry
+screen (see [Order Entry
+Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions)), this
+one hasn't yet been processed into the specific electronic Ask At Order
+Entry shape that relationship implies for use in an actual order. It
 structures the NW GLH paper **Request for Genetic Cystic Fibrosis (CF)
 Carrier Testing (CFTR Gene)** form - see [NW Genomics paper test request
 forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms)
@@ -17,6 +23,11 @@ for how this compares to the other paper forms.
 
 | Item | Paper Form Field | FHIR |
 |---|---|---|
+| Surname/Forename/DoB | Free text | `Patient.name` / `Patient.birthDate` |
+| NHS No/Sex/Hospital No | Free text | `Patient.identifier:nhsNumber` / `Patient.gender` / `Patient.identifier:MedicalRecordNumber` |
+| Address/Postcode | Free text | `Patient.address` |
+| Ethnicity/country of origin | Free text | `Patient.extension:ethnicCategory` |
+| Referring Clinician (GP Name, Surgery Address, Telephone No, Email) | Free text | `PractitionerRole` |
 | Referral scenario | Family history of CF / Partner affected or carrier | `Observation.valueCodeableConcept` |
 | Relative/partner | Name, relationship, sex, DOB, NHS/hospital number (if known) | `RelatedPerson` (NK1-shaped, Role = Consultand), repeating group |
 | - Status of relative/partner (CF-specific) | Affected / Carrier | `Observation.valueCodeableConcept`, nested |

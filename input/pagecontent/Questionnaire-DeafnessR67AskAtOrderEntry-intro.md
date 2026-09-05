@@ -3,9 +3,15 @@ This is for information and analysis purposes only and is not an active or
 planned project.
 </div>
 
-This Questionnaire `derivedFrom`/extends [Genomic Test
-Order](Questionnaire-GenomicTestOrder.html) - see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). It
+This Questionnaire is compared against [Genomic Test
+Order](Questionnaire-GenomicTestOrder.html) - see [NW GLH Paper Test Request
+Forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms) -
+but does not yet declare `derivedFrom`/extends it: unlike the Ask At Order
+Entry Questionnaires that originated from an existing digital order-entry
+screen (see [Order Entry
+Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions)), this
+one hasn't yet been processed into the specific electronic Ask At Order
+Entry shape that relationship implies for use in an actual order. It
 structures the **Deafness Testing Proforma (R67 Non-Syndromic Hearing
 Loss)** - see [NW Genomics paper test request
 forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms)
@@ -17,6 +23,11 @@ for how this compares to the other paper forms.
 
 | Item | Paper Form Field | FHIR |
 |---|---|---|
+| Name | Free text (single field) | `Patient.name` |
+| Date of birth/Gender | Free text | `Patient.birthDate` / `Patient.gender` |
+| Address/Postcode | Free text | `Patient.address` |
+| Hospital Number/NHS no | Free text | `Patient.identifier:MedicalRecordNumber` / `Patient.identifier:nhsNumber` |
+| Referring Clinician (Referring clinician, Address, Email) | Free text | `PractitionerRole` |
 | Family history/pedigree | Free text | `ServiceRequest.note` |
 | Audiogram findings | Findings, severity (per ear), progression | `Observation.valueString` / `valueQuantity` |
 | Suspected syndromic diagnosis | Pendred/Usher/Jervell-Lange Nielsen/Waardenburg/Branchio-oto-renal/Wolfram (tick boxes) | `ServiceRequest.reasonCode`, repeating |

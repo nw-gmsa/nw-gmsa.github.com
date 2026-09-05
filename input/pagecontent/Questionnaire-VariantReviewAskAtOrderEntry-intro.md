@@ -3,9 +3,15 @@ This is for information and analysis purposes only and is not an active or
 planned project.
 </div>
 
-This Questionnaire `derivedFrom`/extends [Genomic Test
-Order](Questionnaire-GenomicTestOrder.html) - see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). It
+This Questionnaire is compared against [Genomic Test
+Order](Questionnaire-GenomicTestOrder.html) - see [NW GLH Paper Test Request
+Forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms) -
+but does not yet declare `derivedFrom`/extends it: unlike the Ask At Order
+Entry Questionnaires that originated from an existing digital order-entry
+screen (see [Order Entry
+Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions)), this
+one hasn't yet been processed into the specific electronic Ask At Order
+Entry shape that relationship implies for use in an actual order. It
 structures the NW GLH paper **Genomic Variant Review Request Form (R442.1) -
 Rare Disease** (DOC6004) - see [NW Genomics paper test request
 forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms)
@@ -17,6 +23,12 @@ for how this compares to the other paper forms.
 
 | Item | Paper Form Field | FHIR |
 |---|---|---|
+| Surname/Forename | Free text | `Patient.name` |
+| D.O.B./Biological Sex/Gender Identity | Free text | `Patient.birthDate` / `Patient.gender` / not yet mapped |
+| Address/Postcode | Free text | `Patient.address` |
+| Ethnicity | Coded | `Patient.extension:ethnicCategory` |
+| NHS No/Hospital No | Free text | `Patient.identifier:nhsNumber` / `Patient.identifier:MedicalRecordNumber` |
+| Referring Clinician/Healthcare Professional (Consultant/GP, Hospital/Surgery, Department, E-mail/Tel, Requested by/Cc. Report to) | Free text | `PractitionerRole` |
 | Reason for review | New information / time elapsed / urgent scenario / formal classification required (tick boxes) | `ServiceRequest.reasonCode` |
 | Variant(s) under review | Free text | `ServiceRequest.note` |
 | Prior report reference | "Report reference" free text | `ServiceRequest.basedOn` -> `DiagnosticReport` |

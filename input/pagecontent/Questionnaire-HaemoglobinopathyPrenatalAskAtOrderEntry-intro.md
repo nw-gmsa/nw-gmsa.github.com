@@ -3,9 +3,15 @@ This is for information and analysis purposes only and is not an active or
 planned project.
 </div>
 
-This Questionnaire `derivedFrom`/extends [Genomic Test
-Order](Questionnaire-GenomicTestOrder.html) - see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). It
+This Questionnaire is compared against [Genomic Test
+Order](Questionnaire-GenomicTestOrder.html) - see [NW GLH Paper Test Request
+Forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms) -
+but does not yet declare `derivedFrom`/extends it: unlike the Ask At Order
+Entry Questionnaires that originated from an existing digital order-entry
+screen (see [Order Entry
+Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions)), this
+one hasn't yet been processed into the specific electronic Ask At Order
+Entry shape that relationship implies for use in an actual order. It
 structures the NW GLH paper **Request for Prenatal Diagnosis of
 Haemoglobinopathies** form (DOC4544) - see [NW Genomics paper test request
 forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms)
@@ -17,6 +23,12 @@ for how this compares to the other paper forms.
 
 | Item | Paper Form Field | FHIR |
 |---|---|---|
+| Surname/Forename/DoB | Free text (Maternal Details) | `Patient.name` / `Patient.birthDate` |
+| NHS No/Hospital No/Sex | Free text | `Patient.identifier:nhsNumber` / `Patient.identifier:MedicalRecordNumber` / `Patient.gender` |
+| Address/Postcode | Free text | `Patient.address` |
+| Ethnicity/country of origin | Local A-H category scheme | `Patient.extension:ethnicCategory` |
+| GP name and address | Free text | Not yet mapped |
+| Referring Clinician (Referred by, Hospital/Department/Address, Report to, Email, Telephone number, Copy report to) | Free text | `PractitionerRole` |
 | Paternal details | Second full patient demographic block | `RelatedPerson` (NK1-shaped, Role = Consultand), repeating group |
 | Parental genotypes/reason for referral | Free text | `ServiceRequest.reasonCode.text` |
 | Gestation of pregnancy | Weeks | `Observation.valueQuantity` |

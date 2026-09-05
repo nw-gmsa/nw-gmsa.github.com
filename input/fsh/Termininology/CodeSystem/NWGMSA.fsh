@@ -176,6 +176,14 @@ Bucket for local codes
 * #AudiogramSeverityLeft "Audiogram severity - left ear"
 * #AudiogramProgression "Audiogram progression"
 
+// CYP2C19 R454 Mavacamten Test Request Form (DOC6602)
+* #NHSPatient "NHS patient"
+* #PrivatePatient "Private patient"
+
+// HRD and Tumour BRCA Test Request Form (GB-27189)
+* #ReportMethodEmail "Email"
+* #ReportMethodFax "Fax"
+
 // NHS Genomic Medicine Service (GMS) WGS Test Request Forms (national,
 // GMS-branded - not NW GLH-specific) - Rare Disease and Cancer variants.
 // See Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms.

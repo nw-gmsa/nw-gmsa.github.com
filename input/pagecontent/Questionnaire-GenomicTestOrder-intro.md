@@ -248,7 +248,80 @@ Workflow](#diagnostic-workflow) above.
 | Reflex Order        | A new order created automatically by the Order Filler based on previous test results, for example when pathology findings automatically trigger a genomic test. | LAB-35   | Order Filler |                                        | reflex                | 
 {:.grid}
 
+### Specimen
+
+<div class="alert alert-info" role="alert">
+<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-Specimen.html" _target="_blank">Specimen</a> 
+</div>
+<div class="alert alert-info" role="alert">
+<b>HL7 v2 Segment:</b> <a href="hl7v2.html#spm" _target="_blank">SPM</a>
+</div>
+
+| Name                      | LOINC   | Value Set / Data Type                                                         | Cardinality | HL7 v2 OML_O21 Message   | HL7 FHIR [Specimen](StructureDefinition-Specimen.html) |
+|---------------------------|---------|-------------------------------------------------------------------------------|-------------|--------------------------|--------------------------------------------------------|
+| Specimen ID               | 80398-1 |                                                                               | 0..*        | [SPM](hl7v2.html#spm)-2  | Specimen.identifier[PlacerSpecimenNumber]              |
+| Specimen Type             |         | [Specimen Type](ValueSet-specimen-type.html)                                  | 1..1        | [SPM](hl7v2.html#spm)-4  | Specimen.type                                          |
+| Specimen Source Site      |         | [Specimen Body Site](ValueSet-specimen-bodysite.html)                         | 0..1        | [SPM](hl7v2.html#spm)-8  | Specimen.collection.bodySite                           |
+| Specimen Accession Number | 80398-1 | [Specimen Accession Number](StructureDefinition-SpecimenAccessionNumber.html) | 0..*        | [SPM](hl7v2.html#spm)-30 | Specimen.accessionIdentifier                           |
+| Shipment Tracking Number  | 97209-1 | [Shipment Tracking Number](StructureDefinition-ShipmentTrackingNumber.html)   | 0..*        | [SPM](hl7v2.html#spm)-32 | Specimen.identifier[ShipmentTrackingNumber]            | 
+| Specimen Collection Date  |         |                                                                               | 0..1        | [SPM](hl7v2.html#spm)-17 | Specimen.collection.collectedDateTime                  |
+| Specimen Received Date    |         |                                                                               | 0..1        | [SPM](hl7v2.html#spm)-18 | Specimen.receivedTime                                  |
+{:.grid}
+
+Note: it is likely that source systems will use ORM_01 and not include specimen details. In this case it is suggested that the specimen details are captured as 'Ask at Order Entry Questions' and so provided as OBX segments.
+
+
 ### Order Entry Questions
+
+```mermaid
+flowchart LR
+    CORE["Common Core<br/>Genomic Test Order"]
+    AAOE["+ Ask At Order Entry Questions<br/>(varies by order/test type - e.g. Genomic<br/>General, HLA Tests - Transplant, Chimerism Testing)"]
+    QNAIRE["Order entry form<br/>(EPR / Order Comms system)"]
+    MSG["HL7 v2 OML_O21<br/>or FHIR Message O21"]
+    LIMS["LIMS"]
+
+    CORE --> QNAIRE
+    AAOE --> QNAIRE
+    QNAIRE -->|"order placed"| MSG
+    MSG --> LIMS
+```
+
+The common core plus whichever Ask At Order Entry Questionnaire applies **together**
+are what a `Questionnaire`/`QuestionnaireResponse` represents - the order entry form as
+it appears inside an EPR or Order Comms system. `HL7 v2 OML_O21`/`FHIR Message O21` is
+a **different thing**: the wire format that same order is sent onward to a LIMS in,
+once it's placed - not a form a user fills in. Ask At Order Entry questions are what
+vary between test types; the message shape they end up populating downstream does not.
+Ask At Order Entry Questions generally get transformed to `Observation` (`OBX`) or
+`RelatedPerson` (`NK1`) when added to this HL7 v2/FHIR message, and are linked in FHIR
+via `ServiceRequest.supportingInfo`.
+
+The same pattern recurs on the report side: [Genomic Test
+Report](Questionnaire-GenomicTestReport.html)'s panels and Genomic Results vary
+according to which test is being recorded in the LIMS, in exactly the same way Ask At
+Order Entry questions vary by test type here - and `HL7 v2 ORU_R01`/`FHIR Message R01`
+is, correspondingly, how that varying report content is sent onward from the LIMS to
+the EPR, the mirror image of `OML_O21`/`FHIR Message O21` on the order side.
+
+The Questionnaires in this IG are regarded as **Domain Archetypes** - a term
+deliberately borrowed from [openEHR](https://specifications.openehr.org/releases/AM/latest/Archetypes.html),
+where an archetype is a formal, reusable model of a clinical/domain concept used to
+elaborate a data model during a project's early stages, independent of how it's later
+persisted or exchanged. FHIR logical models can serve the same elaboration purpose;
+this IG uses `Questionnaire`/`QuestionnaireResponse` instead, and the link to
+openEHR's own archetype concept is intentional, not coincidental.
+
+These Questionnaires may also represent a persistence standard for some
+implementations, but this guide itself is about **exchange** - either HL7 v2/FHIR
+messaging or a FHIR REST API. It is the resources that a completed questionnaire
+(e.g. a `QuestionnaireResponse`) breaks down into - `Patient`, `ServiceRequest`,
+`Observation`, `RelatedPerson`, `Specimen`, and so on - that are actually used for
+data exchange, not the `Questionnaire`/`QuestionnaireResponse` itself.
+
+Separately, a `Questionnaire` may also be used to build the actual data-entry screens
+within an EPR or other application - see [HL7 FHIR Structured Data
+Capture](https://build.fhir.org/ig/HL7/sdc/index.html) for more on that use.
 
 This Genomic Test Order Questionnaire (defined below) is the **common core**
 order form: the Patient, Healthcare Professional, Test Request and Specimen fields
@@ -258,7 +331,9 @@ the [FHIR Message O21](MessageDefinition-laboratory-order.html).
 
 Ask At Order Entry questions vary by order/test type, so they are **not** part of the
 common core - each order/test type instead uses its own Ask At Order Entry
-Questionnaire, which `derivedFrom`/extends this common core Questionnaire:
+Questionnaire. Those below `derivedFrom`/extend this common core Questionnaire; the
+[NW GLH Paper Test Request Forms](#nw-glh-paper-test-request-forms) further down
+don't yet declare that relationship - see that section for why.
 
 These Ask At Order Entry Questionnaires originated within this IG, modelling
 an existing digital order-entry screen rather than a paper form:
@@ -271,12 +346,51 @@ an existing digital order-entry screen rather than a paper form:
 | Histocompatibility and Immunogenetics - Chimerism Testing      | [Chimerism Testing Blood (PB) Ask At Order Entry](Questionnaire-ChimerismTestingAskAtOrderEntry.html) - see [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html#chimerism-testing-ask-at-order-entry)                                                                                                                        |
 {:.grid}
 
-The Ask At Order Entry Questionnaires below instead originated from
-comparing this Questionnaire against the NW GLH's own [paper test request
-forms](https://mft.nhs.uk/nwglh/documents/test-request-forms/) - see [NW GLH
-Paper Test Request Forms](#nw-glh-paper-test-request-forms) below for that
-comparison. Where a paper form's own question turns out to already be
-covered by [NW Genomic General Test
+#### NW GLH Paper Test Request Forms
+
+```mermaid
+flowchart LR
+    EPR["Complete Order Form on EPR<br/>(optional)"]
+    FORM["Complete Order Form<br/>(paper)"]
+    SPECIMEN["Sent with specimen"]
+    LIMS["Copy Order Form into LIMS<br/>(manual)"]
+    MSG["HL7 v2 OML_O21<br/>or FHIR Message O21"]
+
+    EPR -.->|"prints"| FORM
+    FORM --> SPECIMEN
+    SPECIMEN --> LIMS
+    LIMS --> MSG
+```
+
+Unlike [Order Entry Questions](#order-entry-questions) above, this pathway is manual
+end to end: an EPR/Order Comms system may optionally exist upstream to *print* the
+form, but the paper form itself - not a `Questionnaire`/`QuestionnaireResponse`
+combination an EPR completes electronically - is what actually travels with the
+specimen to the laboratory, where its answers are **manually** entered into the LIMS.
+`HL7 v2 OML_O21`/`FHIR Message O21` can still be produced at the end of this - see
+[ctDNA Management Information - Current
+Process](NEYManagementInformation.html#current-process), where NW Genomics manually
+enters a paper-based order into iGene and the Regional Integration Engine (RIE) later
+converts that into a genuine `FHIR Message O21`, a copy of which is sent on to NE&Y
+Genomics - but the message is only ever as complete as the paper form was: **a field
+missing from the paper form is missing from the message too**, with no upstream
+Questionnaire/QuestionnaireResponse to have captured it electronically in the first
+place. This is the direct opposite of [Order Entry
+Questions](#order-entry-questions)' own pathway, which requires substantially less
+manual processing at both order creation in the referring NHS Trust and receipt at the
+NHS Diagnostic Service, precisely because the Questionnaire/message combination is
+populated electronically throughout rather than transcribed from paper partway
+through.
+
+The Ask At Order Entry Questionnaires below instead originated from real NW
+GLH paper test request forms, rather than an existing digital order-entry
+screen - see below for which forms and how they compare. None of the twelve
+Questionnaires below `derivedFrom`/extends this common core Questionnaire
+yet, unlike the digital-order-entry-screen-originated ones above: they
+haven't been processed into the specific electronic Ask At Order Entry
+shape that relationship implies for use in an actual order, only compared
+against the common core field-by-field. Where a paper
+form's own question turns out to already be covered by [NW Genomic General Test
 Order](Questionnaire-GenomicGeneralAskAtOrderEntry.html) (e.g. gestation of
 pregnancy), the paper-form Questionnaire carries a design note saying so
 rather than silently duplicating it - both remain independent Ask At Order
@@ -298,7 +412,6 @@ Entry Questionnaires, since exactly one applies per order:
 | Cancer - WGS (national GMS form) | [GMS WGS Cancer Ask At Order Entry](Questionnaire-GMSWGSCancerAskAtOrderEntry.html) |
 {:.grid}
 
-#### NW GLH Paper Test Request Forms
 
 The twelve forms above are the NW GLH's own [paper test request
 forms](https://mft.nhs.uk/nwglh/documents/test-request-forms/), plus the two
@@ -422,26 +535,5 @@ ordering:
   often enough to be worth naming as a pattern, even though it isn't
   universal enough to belong in the shared core.
 
-### Specimen
-
-<div class="alert alert-info" role="alert">
-<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-Specimen.html" _target="_blank">Specimen</a> 
-</div>
-<div class="alert alert-info" role="alert">
-<b>HL7 v2 Segment:</b> <a href="hl7v2.html#spm" _target="_blank">SPM</a>
-</div>
-
-| Name                      | LOINC   | Value Set / Data Type                                                         | Cardinality | HL7 v2 OML_O21 Message   | HL7 FHIR [Specimen](StructureDefinition-Specimen.html) |
-|---------------------------|---------|-------------------------------------------------------------------------------|-------------|--------------------------|--------------------------------------------------------|
-| Specimen ID               | 80398-1 |                                                                               | 0..*        | [SPM](hl7v2.html#spm)-2  | Specimen.identifier[PlacerSpecimenNumber]              |
-| Specimen Type             |         | [Specimen Type](ValueSet-specimen-type.html)                                  | 1..1        | [SPM](hl7v2.html#spm)-4  | Specimen.type                                          |
-| Specimen Source Site      |         | [Specimen Body Site](ValueSet-specimen-bodysite.html)                         | 0..1        | [SPM](hl7v2.html#spm)-8  | Specimen.collection.bodySite                           |
-| Specimen Accession Number | 80398-1 | [Specimen Accession Number](StructureDefinition-SpecimenAccessionNumber.html) | 0..*        | [SPM](hl7v2.html#spm)-30 | Specimen.accessionIdentifier                           |
-| Shipment Tracking Number  | 97209-1 | [Shipment Tracking Number](StructureDefinition-ShipmentTrackingNumber.html)   | 0..*        | [SPM](hl7v2.html#spm)-32 | Specimen.identifier[ShipmentTrackingNumber]            | 
-| Specimen Collection Date  |         |                                                                               | 0..1        | [SPM](hl7v2.html#spm)-17 | Specimen.collection.collectedDateTime                  |
-| Specimen Received Date    |         |                                                                               | 0..1        | [SPM](hl7v2.html#spm)-18 | Specimen.receivedTime                                  |
-{:.grid}
-
-Note: it is likely that source systems will use ORM_01 and not include specimen details. In this case it is suggested that the specimen details are captured as 'Ask at Order Entry Questions' and so provided as OBX segments.
 
 

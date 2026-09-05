@@ -12,7 +12,7 @@ have been extracted here so the core form stays generic to every order/test type
 Usage:  #definition
 
 * title = "NW Genomic General Ask At Order Questions"
-* status = #draft
+* status = #active
 * url = "https://fhir.nwgenomics.nhs.uk/Questionnaire/GenomicGeneralAskAtOrderEntry"
 * derivedFrom = "https://fhir.nwgenomics.nhs.uk/Questionnaire/GenomicTestOrder"
 * derivedFrom.extension[+]

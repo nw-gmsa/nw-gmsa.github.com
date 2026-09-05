@@ -21,7 +21,7 @@ of range.
 Usage:  #definition
 
 * title = "BCR-ABL Monitoring Result Panel"
-* status = #draft
+* status = #active
 * url = "https://fhir.nwgenomics.nhs.uk/Questionnaire/BCRABLResultPanel"
 * code[+] = $loinc#69380-4 "t(9;22)(q34.1;q11)(ABL1,BCR) b2a2+b3a2 fusion transcript/control transcript (International Scale) [# Ratio] in Blood or Tissue by Molecular genetics method"
 

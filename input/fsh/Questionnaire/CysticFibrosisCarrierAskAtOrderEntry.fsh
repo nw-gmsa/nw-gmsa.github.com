@@ -16,16 +16,161 @@ who is affected/a carrier.
 Usage:  #definition
 
 * title = "Cystic Fibrosis Carrier Testing Ask At Order Entry Questions"
-* status = #draft
+* status = #unknown
 * url = "https://fhir.nwgenomics.nhs.uk/Questionnaire/CysticFibrosisCarrierAskAtOrderEntry"
-* derivedFrom = "https://fhir.nwgenomics.nhs.uk/Questionnaire/GenomicTestOrder"
-* derivedFrom.extension[+]
-  * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-derivationType"
-  * valueCoding = http://hl7.org/fhir/questionnaire-derivationType#extends
 
 * extension[+]
   * url = "http://hl7.org/fhir/StructureDefinition/artifact-versionAlgorithm"
   * valueCoding = http://hl7.org/fhir/version-algorithm#semver
+
+// ---------------------------------------------------------------------------
+// Order metadata - the Patient Details/Referring Clinician fields the real
+// source DOC4356 form actually asks for, restored here since this
+// Questionnaire does not (yet) derivedFrom/extend Genomic Test Order, so
+// these are not otherwise available. Only fields confirmed present on this
+// specific form - not a copy of Genomic Test Order's own (larger) Patient/
+// Healthcare Professional groups. See
+// Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms.
+// ---------------------------------------------------------------------------
+
+* item[+]
+  * linkId = "Patient"
+  * text = "Patient Details"
+  * type = #group
+  * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient"
+
+// Patient	Surname
+
+  * item[+]
+    * type = #string
+    * linkId = "LN/45394-4"
+    * code[+] = $loinc#45394-4
+    * text = "Surname"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.family"
+
+// Patient	Forename
+
+  * item[+]
+    * type = #string
+    * linkId = "LN/45392-8"
+    * code[+] = $loinc#45392-8
+    * text = "Forename"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.given"
+
+// Patient	DoB
+
+  * item[+]
+    * type = #date
+    * linkId = "LN/21112-8"
+    * code[+] = $loinc#21112-8
+    * text = "DoB"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.birthDate"
+
+// Patient	NHS No
+
+  * item[+]
+    * type = #string
+    * linkId = "LN/89061-6-patient"
+    * code[+] = $loinc#89061-6
+    * text = "NHS No"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier:nhsNumber"
+    * item[+]
+      * linkId = "LN/89061-6-patient-designNote"
+      * type = #display
+      * text = "Distinct linkId from NOS/RelatedIndividual's own NHS Number (if known) item below (LN/89061-6) - that one is the relative/partner's, this is this order's own Patient."
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+// Patient	Sex
+
+  * item[+]
+    * type = #choice
+    * linkId = "LN/46098-0"
+    * code[+] = $loinc#46098-0
+    * text = "Sex"
+    * answerValueSet = "http://hl7.org/fhir/ValueSet/administrative-gender"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.gender"
+
+// Patient	Hospital No
+
+  * item[+]
+    * type = #string
+    * linkId = "LN/76435-7-patient"
+    * code[+] = $loinc#76435-7
+    * text = "Hospital No"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier:MedicalRecordNumber"
+
+// Patient	Address
+
+  * item[+]
+    * type = #string
+    * linkId = "LN/56799-0"
+    * code[+] = $loinc#56799-0
+    * text = "Address"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.line"
+
+// Patient	Postcode
+
+  * item[+]
+    * type = #string
+    * linkId = "LN/45401-7"
+    * code[+] = $loinc#45401-7
+    * text = "Postcode"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.address.postalCode"
+
+// Patient	Patient's ethnicity/country of origin
+
+  * item[+]
+    * type = #string
+    * linkId = "LN/32624-9"
+    * code[+] = $loinc#32624-9
+    * text = "Ethnicity/country of origin"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.extension:ethnicCategory"
+    * item[+]
+      * linkId = "LN/32624-9-designNote"
+      * type = #display
+      * text = "Free text on this form ('please be specific, i.e. white British rather than Caucasian') rather than the coded Ethnicity ValueSet used elsewhere in this IG."
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+* item[+]
+  * type = #group
+  * linkId = "HealthcareProfessional"
+  * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole"
+  * text = "Referring Clinician"
+
+// Healthcare professional	GP Name
+
+  * item[+]
+    * type = #string
+    * linkId = "LN/18705-4"
+    * code[+] = $loinc#18705-4
+    * text = "GP Name"
+    * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.practitioner.display"
+
+// Healthcare professional	Surgery Address
+
+  * item[+]
+    * type = #string
+    * linkId = "NOS/DepartmentAddress"
+    * text = "Surgery Address"
+    * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.organization.display"
+
+// Healthcare professional	Telephone No
+
+  * item[+]
+    * type = #string
+    * linkId = "LN/81230-5"
+    * code[+] = $loinc#81230-5
+    * text = "Telephone No"
+    * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.telecom.value"
+
+// Healthcare professional	Email
+
+  * item[+]
+    * type = #string
+    * linkId = "LN/89058-2"
+    * code[+] = $loinc#89058-2 "Contact email address"
+    * text = "Email"
+    * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.telecom.value"
 
 * item[+]
   * type = #group

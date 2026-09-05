@@ -3,9 +3,15 @@ This is for information and analysis purposes only and is not an active or
 planned project.
 </div>
 
-This Questionnaire `derivedFrom`/extends [Genomic Test
-Order](Questionnaire-GenomicTestOrder.html) - see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). It
+This Questionnaire is compared against [Genomic Test
+Order](Questionnaire-GenomicTestOrder.html) - see [NW GLH Paper Test Request
+Forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms) -
+but does not yet declare `derivedFrom`/extends it: unlike the Ask At Order
+Entry Questionnaires that originated from an existing digital order-entry
+screen (see [Order Entry
+Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions)), this
+one hasn't yet been processed into the specific electronic Ask At Order
+Entry shape that relationship implies for use in an actual order. It
 structures the NW GLH paper **Genetic Testing Request Form - Whole Genome
 Sequencing (WGS)** form, which accompanies samples sent to a NW GLH site -
 see [NW Genomics paper test request
@@ -31,6 +37,12 @@ either on this form).
 
 | Item | Paper Form Field | FHIR |
 |---|---|---|
+| Surname/Forename | Free text | `Patient.name` |
+| DoB | Free text | `Patient.birthDate` |
+| Sex | Free text | `Patient.gender` |
+| Address/Postcode | Free text | `Patient.address` |
+| NHS No/Hospital No | Free text | `Patient.identifier:nhsNumber` / `Patient.identifier:MedicalRecordNumber` |
+| Referring Clinician (Consultant, Hospital, Department, Tel, Email) | Free text | `PractitionerRole` |
 | WGS test type | Rare Disease (Proband/Family Member) or Cancer (Tumour/Germline sample) | `ServiceRequest.category` |
 | Proband | Name/DOB of proband (Family Member pathway only) | `RelatedPerson` (NK1-shaped, Role = Proband), repeating group |
 | Neoplastic cell content | % (Cancer tumour sample only) | `Observation.valueQuantity` |

@@ -7,7 +7,7 @@ The aim of this is to support conversion of Genomic Report (HL7 v2 ORU) for use 
 Usage:  #definition
 
 * title = "North West Genomics Test Report"
-* status = #draft
+* status = #active
 * url = "https://fhir.nwgenomics.nhs.uk/Questionnaire/GenomicTestReport"
 * code[+] = $loinc#81247-9
 

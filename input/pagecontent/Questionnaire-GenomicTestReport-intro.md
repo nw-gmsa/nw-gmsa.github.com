@@ -263,6 +263,64 @@ than a complete restatement of it. It divides into two parts:
   Questionnaire above - where that's the case, the table below says so rather
   than repeating the same content twice.
 
+
+```mermaid
+flowchart LR
+    CORE["Common Core<br/>Genomic Test Report"]
+    PANEL["+ Report Panel Questionnaire<br/>(varies by result type - e.g. Reportable<br/>Variant, BCR-ABL Monitoring, Chimerism Testing)"]
+    RESULTS["+ Genomic Results<br/>(e.g. Reportable Variant, Laboratory Analyte<br/>Result, Diagnostic Implication)"]
+    QNAIRE["Report as recorded in LIMS"]
+    MSG["HL7 v2 ORU_R01<br/>or FHIR Message R01"]
+    EPR["EPR"]
+
+    CORE --> QNAIRE
+    PANEL --> QNAIRE
+    RESULTS --> QNAIRE
+    QNAIRE -->|"report issued"| MSG
+    MSG --> EPR
+```
+
+The common core, whichever Report Panel Questionnaire applies, and the actual
+[Genomic Results](#genomic-results) it carries **together** are what a
+`Questionnaire`/`QuestionnaireResponse` represents - the report as recorded inside
+the LIMS. `HL7 v2 ORU_R01`/`FHIR Message R01` is a **different thing**: the wire
+format that same report is sent onward to an EPR in, once it's issued - not the
+record the LIMS itself holds. Report Panels and Genomic Results are what vary between
+result types; the message shape they end up populating downstream does not - the
+mirror image of [Genomic Test
+Order](Questionnaire-GenomicTestOrder.html#order-entry-questions)'s Ask At Order
+Entry Questions/`OML_O21`/`FHIR Message O21` pattern on the order side.
+
+[Genomic Test Report](Questionnaire-GenomicTestReport.html) only models the
+report-level metadata common to every report (patient, order/report
+identifiers, dates, status, conclusion, performers) - its `/Results` group
+deliberately doesn't model individual test findings inline. Instead, each
+individual result is carried under `DiagnosticReport.result` as a separate,
+panel-specific Questionnaire, one per kind of test - each documenting the
+discrete fields a particular result type needs, in the same
+Questionnaire-as-computable-data-model style as [Genomic Test
+Report](Questionnaire-GenomicTestReport.html) and [Genomic Test
+Order](Questionnaire-GenomicTestOrder.html) themselves (see [How To Engineer
+(scale and deliver)
+Interoperability](HowToEngineerInteroperability.html#documenting-the-data-model)).
+
+
+### Report Panels
+
+| Report Panel Questionnaire | Code | Used In | Status |
+|---|---|---|---|
+| [Reportable Variant Result Panel](Questionnaire-ReportableVariantResultPanel.html) | LOINC `81250-3` "Discrete genetic variant panel" | [OMICS DSS Result Integration](reportable-variants.html) | Grounded in real `Variant` examples |
+| [BCR-ABL Monitoring Result Panel](Questionnaire-BCRABLResultPanel.html) | LOINC `69380-4` "BCR-ABL1 fusion transcript ... [# Ratio] ... (International Scale)" | [BCR-ABL Monitoring](BCRABLMonitoring.html) | Grounded in real `Observation` examples |
+| [Chimerism Testing Result Panel](Questionnaire-ChimerismResultPanel.html) | Local code (STR-based chimerism testing) | [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html) | Candidate mapping, not yet confirmed against a real example - see the Questionnaire's own description |
+{:.grid}
+
+New result types should follow this pattern - add a new panel Questionnaire
+(rather than extending [Genomic Test
+Report](Questionnaire-GenomicTestReport.html) itself), and list it in the
+table above.
+
+### Genomic Results
+
 ```mermaid
 classDiagram
     class GenomicReport["Genomic Laboratory Report (result)"]
@@ -280,35 +338,6 @@ classDiagram
     Variant <|--|> DiagnosticImplication
     Variant <|..|> TherapeuticImplication
 ```
-
-### Report Panels
-
-[Genomic Test Report](Questionnaire-GenomicTestReport.html) only models the
-report-level metadata common to every report (patient, order/report
-identifiers, dates, status, conclusion, performers) - its `/Results` group
-deliberately doesn't model individual test findings inline. Instead, each
-individual result is carried under `DiagnosticReport.result` as a separate,
-panel-specific Questionnaire, one per kind of test - each documenting the
-discrete fields a particular result type needs, in the same
-Questionnaire-as-computable-data-model style as [Genomic Test
-Report](Questionnaire-GenomicTestReport.html) and [Genomic Test
-Order](Questionnaire-GenomicTestOrder.html) themselves (see [How To Engineer
-(scale and deliver)
-Interoperability](HowToEngineerInteroperability.html#documenting-the-data-model)).
-
-| Report Panel Questionnaire | Code | Used In | Status |
-|---|---|---|---|
-| [Reportable Variant Result Panel](Questionnaire-ReportableVariantResultPanel.html) | LOINC `81250-3` "Discrete genetic variant panel" | [OMICS DSS Result Integration](reportable-variants.html) | Grounded in real `Variant` examples |
-| [BCR-ABL Monitoring Result Panel](Questionnaire-BCRABLResultPanel.html) | LOINC `69380-4` "BCR-ABL1 fusion transcript ... [# Ratio] ... (International Scale)" | [BCR-ABL Monitoring](BCRABLMonitoring.html) | Grounded in real `Observation` examples |
-| [Chimerism Testing Result Panel](Questionnaire-ChimerismResultPanel.html) | Local code (STR-based chimerism testing) | [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html) | Candidate mapping, not yet confirmed against a real example - see the Questionnaire's own description |
-{:.grid}
-
-New result types should follow this pattern - add a new panel Questionnaire
-(rather than extending [Genomic Test
-Report](Questionnaire-GenomicTestReport.html) itself), and list it in the
-table above.
-
-### Genomic Results
 
 The underlying HL7 FHIR profiles/resources this IG's genomic results are
 built from - either directly, or (where noted) via one of the [Report

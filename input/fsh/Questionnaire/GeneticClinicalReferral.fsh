@@ -22,7 +22,7 @@ Interoperability](HowToEngineerInteroperability.html#check-for-existing-patterns
 Usage:  #definition
 
 * title = "Genetic Clinical Referral"
-* status = #draft
+* status = #unknown
 * url = "https://fhir.nwgenomics.nhs.uk/Questionnaire/GeneticClinicalReferral"
 
 * extension[+]

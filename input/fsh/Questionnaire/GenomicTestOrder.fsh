@@ -15,7 +15,7 @@ separate, order-type-specific Questionnaire to use alongside this one.
 Usage:  #definition
 
 * title = "North West Genomics Test Order"
-* status = #draft
+* status = #active1
 * url = "https://fhir.nwgenomics.nhs.uk/Questionnaire/GenomicTestOrder"
 
 * extension[+]
