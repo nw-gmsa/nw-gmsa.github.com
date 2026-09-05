@@ -28,6 +28,32 @@ Usage:  #definition
   * linkId = "AskAtOrderEntry"
   * text = "Ask At Order Entry Questions"
 
+// Patient	G number (pedigree number)
+
+  * item[+]
+    * type = #string
+    * linkId = "pedigreeNumber"
+    * code[+] = $loinc#74027-4 "Family pedigree identifier"
+    * text = "G Number (Pedigree Number)"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueString"
+    * item[+]
+      * linkId = "pedigreeNumber-designNote"
+      * type = #display
+      * text = """
+      Useful for Duo/Trio orders, to record the shared pedigree/family group these
+      related orders belong to. Moved here from Genomic Test Order (where it was
+      wrongly mapped to Patient.identifier:PedigreeNumber, implying it was a formal
+      Patient identifier) - NHS England's own Genomics Pedigree Number naming system
+      (https://fhir.nhs.uk/Id/genomics-pedigree-number) describes this as a patient's
+      genetic/pedigree number which links their family, and their own FHIR Genomics
+      Implementation Guide has since moved its own equivalent mapping to a Group
+      resource. Not an Order Group Number (ServiceRequest.requisition) - see
+      WholeGenomicSequence.html for that distinction. Modelled here simply as an
+      Observation.valueString pending a decision on whether a more structured
+      representation (e.g. Group) is needed.
+      """
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
 // Patient	Patient is from consanguinous union?
 
   * item[+]

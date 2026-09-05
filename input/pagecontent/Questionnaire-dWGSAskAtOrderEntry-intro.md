@@ -23,7 +23,7 @@ sub-contracted digital manifest).
 
 | Group | Item | LinkId | FHIR Field | Note |
 |---|---|---|---|---|
-| Referral / Sub-Order | Original Order Placer Group Number (Referral ID) | `dWGS/referral_id` | `ServiceRequest.requisition` | Related to, but distinct from, the base's G Number (Pedigree Number) |
+| Referral / Sub-Order | Original Order Placer Group Number (Referral ID) | `dWGS/referral_id` | `ServiceRequest.requisition` | Related to, but distinct from, [Genomic General Ask At Order Entry](Questionnaire-GenomicGeneralAskAtOrderEntry.html)'s own G Number (Pedigree Number) |
 | Referral / Sub-Order | Test Code | `dWGS/clinical_indication_test_type_id` | `ServiceRequest.code` | Fills a gap - no WGS Test Category exists in the base's Test Code branches |
 | Referral / Sub-Order | Original Ordering Facility Code | `dWGS/ordering_entity_id` | `Specimen.identifier.assigner.identifier.value` | Overlaps conceptually with the base's Referring Organisation ODS Code (HL7/ORC-21) |
 | Referral / Sub-Order | Filler Order Ordering Facility Code (GLH) | `dWGS/glh_laboratory_id` | `ServiceRequest.requester.identifier.value` | Overlaps conceptually with the base's Referring Organisation ODS Code (HL7/ORC-21) |

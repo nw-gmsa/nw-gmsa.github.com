@@ -75,7 +75,7 @@ assumed from what each Questionnaire's FSH happens to declare:
 | Field | [WGS Local Test Order](Questionnaire-WGSLocalTestOrderAskAtOrderEntry.html) | [GMS WGS Rare Disease](Questionnaire-GMSWGSRareDisease.html)                                                                                                | [GMS WGS Cancer](Questionnaire-GMSWGSCancerAskAtOrderEntry.html) |
 |---|---|-------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
 | Order Placer Number | Not on the paper form | Not on the paper form                                                                                                                                       | Not on the paper form |
-| Order Group Number | Not on the paper form | Not on the paper form - see Outstanding Issues below<br/>It is believed a Order Filler Group Number is created on submission of the form                    | Not on the paper form |
+| Order Group Number | Not on the paper form | Not on the paper form - see the G Number correction below<br/>It is believed an Order Filler Group Number is created on submission of the form, but no field on any of the three Questionnaires actually captures/returns it | Not on the paper form |
 | Medical Record Number | "Hospital number" - present | "Hospital number" - present                                                                                                                                 | "Hospital number" - present |
 | Account Number / Hospital Spell | Not on the paper form | Not on the paper form                                                                                                                                       | Not on the paper form |
 | RelatedPerson | "Family Member (please provide below the Name & DoB of the Proband)" - present, modelled as `NOS/Proband` | "Family members to be tested" table - present, modelled as `FamilyMembers`                                                                                  | Not on the paper form |
@@ -83,12 +83,32 @@ assumed from what each Questionnaire's FSH happens to declare:
 | High Risk Sample | "High Infection Risk? Yes/No" - present, modelled as `SNM/281269004` + `NOS/InfectionRiskDetails` | Not on the paper form                                                                                                                                       | Not on the paper form |
 {:.grid}
 
-Order Placer Number, Order Group Number and Account Number are all still structurally
-present on all three Questionnaires (inherited, unchanged, from the
-[Genomic Test Order](Questionnaire-GenomicTestOrder.html) common core - none of the
-three overrides or re-declares them) - the table above is about what the *paper form*
-itself actually asks for, which is narrower than what the FHIR Questionnaire
-structurally allows.
+Order Placer Number and Account Number are both still structurally present on all
+three Questionnaires (inherited, unchanged, from the [Genomic Test
+Order](Questionnaire-GenomicTestOrder.html) common core - none of the three overrides
+or re-declares them) - the table above is about what the *paper form* itself actually
+asks for, which is narrower than what the FHIR Questionnaire structurally allows.
+
+**G Number (Pedigree Number) was mislabelled "Order Group Number" and has since been
+corrected - but a genuine Order Group Number still doesn't exist on any of these
+Questionnaires.** The field used to live on [Genomic Test
+Order](Questionnaire-GenomicTestOrder.html) itself as `pedigreeNumber` ("G Number
+(Pedigree Number) - **Order Group Number**", mapped to
+`Patient.identifier:PedigreeNumber`) - despite that label, it was never an
+order/requisition-linking field; it's a family/pedigree-level concept. NHS England's
+own `genomics-pedigree-number` NamingSystem (`https://fhir.nhs.uk/Id/genomics-pedigree-number`)
+describes it as "a patient's genetic/pedigree number which links their family," and
+their own FHIR Genomics Implementation Guide has since moved its equivalent mapping to
+a `Group` resource entirely. It has now been moved to [Genomic General Ask At Order
+Entry](Questionnaire-GenomicGeneralAskAtOrderEntry.html), remapped to
+`Observation.valueString`, coded `$loinc#74027-4` "Family pedigree identifier", and
+relabelled without the misleading "Order Group Number" suffix. This exact confusion
+was also identified once before in [dWGS](dWGS.html): `dWGSAskAtOrderEntry`'s own
+`referral_id` item (`ServiceRequest.requisition`) carries a design note distinguishing
+the two. `ServiceRequest.requisition` remains the genuine order-group-linking
+mechanism (the HL7v2 ORC-4 Placer Group Number equivalent) - but it still only exists
+today as a bespoke field on the dWGS manifest, not on Genomic Test Order, Genomic
+General, or any of the three WGS-specific Questionnaires compared here.
 
 ### The Reverse Direction: What the Generic Order Path Doesn't Cover
 
@@ -169,10 +189,16 @@ person - proband plus every family member - needs their own `Patient`/`Specimen`
 `ServiceRequest`, so electronic exchange of this form's answers requires decomposing
 it into **separate singular orders**, one per person, each shaped like the other two
 national/local WGS Questionnaires in the comparison above. Those separate orders
-should/must then be tied back together by a shared **Order Group Number**
-(`pedigreeNumber`, already inherited from the common core, but - like the paper
-form itself - not populated by anything on the form) rather than the family
-relationship being reconstructable only via the composite submission. [WGS Local Test
+should/must then be tied back together by a genuine **Order Group Number**
+(`ServiceRequest.requisition`, the same mechanism [dWGS](dWGS.html)'s own `referral_id`
+already uses) - **not** the common core's own `pedigreeNumber` field, which despite
+its "Order Group Number" label is actually a `Patient`-level pedigree identifier, not
+a requisition-linking one (see Field Comparison above). Since neither [Genomic Test
+Order](Questionnaire-GenomicTestOrder.html) nor any of the three Questionnaires
+compared here has a genuine `ServiceRequest.requisition`-backed field today, this
+decomposition can't currently be built without either adding one, or reusing dWGS's
+own `referral_id` pattern even outside a distributed sub-order context - rather than
+the family relationship being reconstructable only via the composite submission. [WGS Local Test
 Order](Questionnaire-WGSLocalTestOrderAskAtOrderEntry.html)'s Family Member pathway
 already models one instance of exactly this decomposition.
 

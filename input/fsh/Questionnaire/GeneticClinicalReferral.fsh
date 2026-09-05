@@ -139,12 +139,13 @@ Usage:  #definition
   * item[+]
     * type = #string
     * linkId = "pedigreeNumber"
+    * code[+] = $loinc#74027-4 "Family pedigree identifier"
     * text = "G Number (Pedigree Number)"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier:PedigreeNumber"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueString"
     * item[+]
       * linkId = "pedigreeNumber-designNote"
       * type = #display
-      * text = "Links the proband to consultands (at-risk relatives) referred as part of the same family investigation - see Distributed WGS (dWGS) Family Structure/Participant Type pattern."
+      * text = "Links the proband to consultands (at-risk relatives) referred as part of the same family investigation - see Distributed WGS (dWGS) Family Structure/Participant Type pattern. Modelled as Observation.valueString, not a Patient identifier - see Genomic General Ask At Order Entry's own G Number (Pedigree Number) item and WholeGenomicSequence.html for why."
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 * item[+]

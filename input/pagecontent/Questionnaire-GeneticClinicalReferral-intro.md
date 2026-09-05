@@ -38,13 +38,17 @@ erDiagram
     ServiceRequest ||--o| Condition : reasonReference
     ServiceRequest ||--o{ DocumentReference : "supportingInfo (Family Letter)"
     DocumentReference ||--o| Binary : "content (Attachment.url)"
+    ServiceRequest ||--o| Observation : "supportingInfo (G Number)"
     ServiceRequest ||--o{ RelatedPerson : "supportingInfo (Consultand)"
     RelatedPerson }o--|| Patient : "patient (the proband)"
 
     Patient {
         Identifier nhsNumber
         Identifier medicalRecordNumber
-        Identifier pedigreeNumber
+    }
+
+    Observation {
+        valueString pedigreeNumber "LOINC 74027-4"
     }
 
     ServiceRequest {
@@ -107,7 +111,7 @@ below is the concrete comparison:
 | Patient demographics | `PID` - Patient group | **Same** - reuses the identical items (both populate `PID`) |
 | Who initiated it | Healthcare Professional group (`ORC-12`/`ORC-21`) - a single referrer | Referring Provider group (`PRD`, role = Referring Provider) - same shape, same reused items |
 | Who it's going to | *(implicit - the destination LIMS is fixed, not chosen per-order)* | **Referred-to Provider/Service group (`PRD`, role = Referred-to Provider) - new, no equivalent in Genomic Test Order.** A referral explicitly names the receiving clinic/service; an order doesn't need to, because the Order Filler is already fixed |
-| Test/order identifier | Order Placer/Filler Number (`ORC-2`/`ORC-3`), Order Group Number (`ORC-4`, pedigree/`G Number`) | Referral Identifier (`RF1-6`) - a single identifier, not a Placer/Filler pair, and no eRS UBRN equivalent modelled (see [Genetic Referrals - Notes on this sketch](GeneticReferrals.html#referral-data-model)) |
+| Test/order identifier | Order Placer/Filler Number (`ORC-2`/`ORC-3`) - no genuine `ORC-4`/Order Group Number field exists on either Questionnaire (`G Number`/pedigree number is a separate, family-level concept - see [Genomic General Ask At Order Entry](Questionnaire-GenomicGeneralAskAtOrderEntry.html)) | Referral Identifier (`RF1-6`) - a single identifier, not a Placer/Filler pair, and no eRS UBRN equivalent modelled (see [Genetic Referrals - Notes on this sketch](GeneticReferrals.html#referral-data-model)) |
 | Priority | `ServiceRequest.priority` (`LN/82768-3`) | **Same** - reuses the identical item (`RF1-2` maps onto the same FHIR element) |
 | Reason | Suspected disease/CITT code (`LN/51967-8`) plus free-text clinical information (`NTE-1`) | **Same** reason-code item reused (`RF1-12`/`DG1`) |
 | Specimen | **Specimen/Biopsy group** - detailed fields (type, body site, accession number, collection/received dates, shipment tracking) | **None.** A referral is a request for assessment, not a physical test - no specimen is collected until/unless it leads to an actual [Genomic Test Order](Questionnaire-GenomicTestOrder.html) later |

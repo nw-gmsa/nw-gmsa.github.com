@@ -47,7 +47,7 @@ Usage:  #definition
     * item[+]
       * linkId = "dWGS/referral_id-designNote"
       * type = #display
-      * text = "Not the same field as the common core's own G Number (Pedigree Number) - Order Group Number (Patient.identifier:PedigreeNumber) - this identifies the referral/requisition shared across every participant's sub-order, the base field identifies a pedigree on the Patient. See dWGS - Outstanding Issues (resolved) for why these were previously confused."
+      * text = "Not the same field as Genomic General Ask At Order Entry's own G Number (Pedigree Number) (Observation.valueString, LOINC 74027-4) - this identifies the referral/requisition shared across every participant's sub-order, the pedigree number identifies a family/pedigree group instead. See dWGS - Outstanding Issues (resolved) for why these were previously confused, and WholeGenomicSequence.html for the pedigree number correction."
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 // Test Code

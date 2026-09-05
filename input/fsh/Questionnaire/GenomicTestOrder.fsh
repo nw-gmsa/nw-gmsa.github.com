@@ -321,14 +321,6 @@ Usage:  #definition
     * answerValueSet = Canonical(GenomicCancer)
 
 
-// Patient	G number (pedigree number)
-
-  * item[+]
-    * type = #string
-    * linkId = "pedigreeNumber"
-    * text = "G Number (Pedigree Number) - Order Group Number"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier:PedigreeNumber"
-
 // Test request	Test request ID/Order ID
 
   * item[+]
