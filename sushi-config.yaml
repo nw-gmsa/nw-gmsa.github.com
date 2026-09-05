@@ -411,20 +411,20 @@ menu:
   Use Cases:
     Regional Integration Engine (RIE): overview.html
     iGene Orders and Reports (Alder Hey, MFT, Liverpool): RegionalOrdersAndReports.html
-    Whole Genome Sequencing (Proposed - Alder Hey, MFT, Liverpool): WholeGenomicSequence.html
-    Greater Manchester Care Record (GMCR): GMCR.html
-    Lancashire and South Cumbria Genomic Reports: GMCR.html#lancashire-and-south-cumbria
-    Distributed Whole Genome Sequencing (NE&Y to NW Genomics): dWGS.html
+    Shared Genomic Reports (Greater Manchester Care Record (GMCR)): GMCR.html
+    Shared Genomic Reports (Lancashire and South Cumbria): GMCR.html#lancashire-and-south-cumbria
+    ctDNA NHS England Unified Genomic Record (UGR): ctDNAUGR.html
+    ctDNA Management Information (NW to NE&Y Genomics): NEYManagementInformation.html
+    Whole Genome Sequencing (WGS) (Proposed - Alder Hey, MFT, Liverpool): WholeGenomicSequence.html
+    Distributed Whole Genome Sequencing (dWGS) (NE&Y to NW Genomics): dWGS.html
     Histocompatibility and Immunogenetics (Clatterbridge to Histotrac): HistocompatibilityAndImmunogenetics.html
     BCR-ABL Monitoring (Cepheid ASTM to iGene): BCRABLMonitoring.html
     Cytogenetics and Haemato-Oncology Diagnostic Pathway (Shire to HODS): HaematoOncologyPathway.html
-    Cheshire and Merseyside (Pathology to Genomics Reflex): CheshireAndMerseysidePathology.html
-    Cancer Background Information for Use Cases : CancerNOS.html
-    OMICS DSS Result Integration: reportable-variants.html
+    Pathology to Genomics Reflex Orders (Cheshire and Merseyside): CheshireAndMerseysidePathology.html
+    Reportable Variants Test Results(iGene, Omics DSS and DLIMS): reportable-variants.html
     NHS England Genomic Order Management Service (GOMS): GenomicOrderManagementService.html
-    ctDNA NHS England Unified Genomic Record (UGR): ctDNAUGR.html
-    ctDNA Management Information (NW to NE&Y Genomics): NEYManagementInformation.html
     StarLIMS / iGene Integration: starLIMS.html
+    Cancer Clinical Pathways (Background Information) : CancerNOS.html
   Analysis and Design (Volume 1) :
  ##   Design Overview: design.html
     Laboratory Testing Workflow (LTW): LTW.html

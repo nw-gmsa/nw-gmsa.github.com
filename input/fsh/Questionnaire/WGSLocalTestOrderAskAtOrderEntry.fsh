@@ -178,3 +178,46 @@ Usage:  #definition
       * type = #display
       * text = "The paper form's own 'NGIS/Barcode (Until NGIS Referral Received)' box is a placeholder used before the digital NGIS referral exists, rather than a distinct order identifier - it converges on the same ServiceRequest.code as the common core's Test Request group once the NGIS referral is created."
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+// Sample Information	High Infection Risk?
+
+  * item[+]
+    * linkId = "SNM/281269004"
+    * code[+] = $sct#281269004 "High infection risk sample"
+    * text = "High Infection Risk?"
+    * type = #choice
+    * required = false
+    * repeats = false
+    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
+    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
+    * item[+]
+      * linkId = "SNM/281269004-designNote"
+      * type = #display
+      * text = "Present on the paper form's own Sample Information section (and echoed again in the NW GLH Laboratory use ONLY section) - same SNM/281269004 code and Yes/No shape as NW Genomic General Ask At Order Questions' own High Infection Risk item."
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+  * item[+]
+    * linkId = "NOS/InfectionRiskDetails"
+    * code[+] = $nwgmsa#InfectionRiskDetails
+    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueString"
+    * text = "High infection Risk Details"
+    * type = #string
+
+// Referring Clinician	Consent Statement
+
+  * item[+]
+    * linkId = "SNM/74996004-patient-choice-form"
+    * text = "Confirm that a completed Patient Choice (consent) form has been received by the laboratory"
+    * code[+] = $sct#74996004 "Confirmation of"
+    * type = #choice
+    * required = false
+    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
+    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
+    * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
+    * item[+]
+      * linkId = "SNM/74996004-patient-choice-form-designNote"
+      * type = #display
+      * text = "The paper form's own Referring Clinician section carries a Consent Statement: 'A complete Patient Choice form must be received by the laboratory before WGS can be initiated.' Modelled as a confirmation-of-receipt choice, the same #choice/confirmation-code shape as NW Genomic General Ask At Order Questions' own pathology-report confirmation item, rather than the Consent group's consent-for-testing/DNA-storage Y/N questions - the Patient Choice form is a separate, externally-referenced document this order depends on, not a question this order itself is asking."
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help

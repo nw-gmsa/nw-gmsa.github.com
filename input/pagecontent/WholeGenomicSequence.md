@@ -60,37 +60,121 @@ other national WGS form.
 
 ### Field Comparison
 
-All four `derivedFrom`/extend [Genomic Test Order](Questionnaire-GenomicTestOrder.html)
-directly (none extends another in this list), so Order Placer Number, Order Group
-Number, Medical Record Number and Account Number are inherited unchanged from the
-common core in every case - none of the four overrides or re-declares them. The
-differences are all in `RelatedPerson`, Consent and High Risk Sample:
+[Genomic General Ask At Order Entry](Questionnaire-GenomicGeneralAskAtOrderEntry.html)
+isn't tied to any one paper form - its Consent/High Infection Risk/RelatedPerson items
+were originally part of the [Genomic Test Order](Questionnaire-GenomicTestOrder.html)
+common core itself, extracted into this default fallback Questionnaire for order/test
+types that don't have their own dedicated Ask At Order Entry Questionnaire. All three
+WGS-specific Questionnaires below **do** have their own dedicated Questionnaire, so
+Genomic General isn't used alongside them in practice - it's included here only to
+show where these fields originally came from.
 
-| Field | [Genomic General](Questionnaire-GenomicGeneralAskAtOrderEntry.html) | [WGS Local Test Order](Questionnaire-WGSLocalTestOrderAskAtOrderEntry.html) | [GMS WGS Rare Disease](Questionnaire-GMSWGSRareDisease.html) | [GMS WGS Cancer](Questionnaire-GMSWGSCancerAskAtOrderEntry.html) |
-|---|---|---|---|---|
-| Order Placer Number (`LN/106194-4`, `ServiceRequest.identifier:OrderIdentifier`) | Inherited, unchanged | Inherited, unchanged | Inherited, unchanged | Inherited, unchanged |
-| Order Group Number (`pedigreeNumber`, `Patient.identifier:PedigreeNumber`) | Inherited, unchanged | Inherited, unchanged | Inherited, unchanged - see below | Inherited, unchanged |
-| Medical Record Number (`LN/76435-7`, `Patient.identifier:MedicalRecordNumber`, required) | Inherited, unchanged | Inherited, unchanged | Inherited, unchanged | Inherited, unchanged |
-| Account Number / Hospital Spell (`LN/56797-4`, `ServiceRequest.encounter.identifier.value`) | Inherited, unchanged | Inherited, unchanged | Inherited, unchanged | Inherited, unchanged |
-| RelatedPerson | `NOS/RelatedIndividual` - canonical group, Role = Consultand or Proband | `NOS/Proband` - same group, Role fixed to Proband, Family Member pathway only | `FamilyMembers` - own inline repeating group, same shape | Not present |
-| Consent | `Consent` group - consent for testing (`LN/19826-7`) + DNA storage (`LN/75520-7`) + ROD attached/to follow (`NOS/RODToFollow`) | Not present | Not present - only "Record of Discussion (ROD) attached, or to follow" (Attached/To follow), no consent-for-testing/DNA-storage item | Not present - only its own "Record of Discussion (ROD) attached, or to follow" item, same as Rare Disease |
-| High Risk Sample | `SNM/281269004` "High Infection Risk?" + `NOS/InfectionRiskDetails` | Not present | Not present | Not present |
+For the three real paper forms, checked directly against the source PDFs rather than
+assumed from what each Questionnaire's FSH happens to declare:
+
+| Field | [WGS Local Test Order](Questionnaire-WGSLocalTestOrderAskAtOrderEntry.html) | [GMS WGS Rare Disease](Questionnaire-GMSWGSRareDisease.html)                                                                                                | [GMS WGS Cancer](Questionnaire-GMSWGSCancerAskAtOrderEntry.html) |
+|---|---|-------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
+| Order Placer Number | Not on the paper form | Not on the paper form                                                                                                                                       | Not on the paper form |
+| Order Group Number | Not on the paper form | Not on the paper form - see Outstanding Issues below<br/>It is believed a Order Filler Group Number is created on submission of the form                    | Not on the paper form |
+| Medical Record Number | "Hospital number" - present | "Hospital number" - present                                                                                                                                 | "Hospital number" - present |
+| Account Number / Hospital Spell | Not on the paper form | Not on the paper form                                                                                                                                       | Not on the paper form |
+| RelatedPerson | "Family Member (please provide below the Name & DoB of the Proband)" - present, modelled as `NOS/Proband` | "Family members to be tested" table - present, modelled as `FamilyMembers`                                                                                  | Not on the paper form |
+| Consent | "Consent Statement" note ("A complete Patient Choice form must be received by the laboratory before WGS can be initiated") - present, modelled as `SNM/74996004-patient-choice-form` | Only "Record of Discussion" attached/to-follow tick - present, modelled as its own item; no consent-for-testing/DNA-storage question like Genomic General's | Same Record of Discussion tick as Rare Disease |
+| High Risk Sample | "High Infection Risk? Yes/No" - present, modelled as `SNM/281269004` + `NOS/InfectionRiskDetails` | Not on the paper form                                                                                                                                       | Not on the paper form |
 {:.grid}
 
-**GMS WGS Rare Disease can represent a collection of orders, not one order.** As
-[GMS WGS Rare Disease](Questionnaire-GMSWGSRareDisease.html#practical-issues-one-form-multiple-orders)'s
-own "Practical Issues" section describes, a single completed form names the proband
-plus, for a Duo/Trio or larger family test, one or more family members - each of whom
-needs their own `Patient`/`Specimen`/`ServiceRequest`. Rather than one order literally
-containing multiple patients, this would typically be implemented as **separate
-singular orders** - one per person, each shaped like the other three Questionnaires in
-this comparison - **connected to each other via a shared Order Group Number**
-(`pedigreeNumber`, already inherited from the common core above) rather than by
-nesting them inside a single submission. This is exactly the decomposition [WGS Local
-Test Order](Questionnaire-WGSLocalTestOrderAskAtOrderEntry.html)'s Family Member
-pathway already models one instance of.
+Order Placer Number, Order Group Number and Account Number are all still structurally
+present on all three Questionnaires (inherited, unchanged, from the
+[Genomic Test Order](Questionnaire-GenomicTestOrder.html) common core - none of the
+three overrides or re-declares them) - the table above is about what the *paper form*
+itself actually asks for, which is narrower than what the FHIR Questionnaire
+structurally allows.
+
+### The Reverse Direction: What the Generic Order Path Doesn't Cover
+
+The comparison above starts from each WGS-specific Questionnaire and checks the paper
+form. Going the other way - starting from each paper form's own distinctive fields and
+checking whether [Genomic Test Order](Questionnaire-GenomicTestOrder.html) plus
+[Genomic General Ask At Order
+Entry](Questionnaire-GenomicGeneralAskAtOrderEntry.html) (the generic combination
+[iGene Orders and Reports](RegionalOrdersAndReports.html) actually uses today) already
+has an equivalent - is what would decide whether Alder Hey/MFT/Liverpool could order
+WGS through the existing generic path at all, rather than needing this proposed
+WGS-specific one. Of the fields on all three paper forms, only a handful already have
+a genuine or partial match:
+
+| Paper form field | Which form(s) | Generic combo equivalent |
+|---|---|---|
+| Hospital Number (MRN) | All three | `LN/76435-7` - exact match |
+| Proband / Family Member(s) named | WGS Local, GMS Rare Disease | `NOS/RelatedIndividual` (`repeats = true`, Consultand/Proband role) - matches the *shape*, but has no nested Specimen sub-group per repetition the way GMS Rare Disease's `FamilyMembers` does |
+| High Infection Risk? | WGS Local | `SNM/281269004` - exact match, and now used by `WGSLocalTestOrderAskAtOrderEntry` itself |
+| Record of Discussion attached/to follow | GMS Rare Disease, GMS Cancer | `NOS/RODToFollow` (inside the `Consent` group) - exact match |
+| Consent Statement (references a separate Patient Choice form) | WGS Local | `Consent` group's "Has consent been obtained for tests (Y/N)" - related concept, not the same mechanism |
+| Reason for urgency | GMS Rare Disease | `Priority` (`LN/82768-3`) - a coded urgency level, not free-text reason |
+| Requesting organisation / GMS-GLH laboratory (two org fields) | GMS Rare Disease, GMS Cancer | `HL7/ORC-21` "Referring Organisation ODS Code / Ordering Facility" - one field, not the same two-organisation split |
+| Test Directory Clinical Indication & code | GMS Rare Disease, GMS Cancer | `HL7/OBR-4-r`/`-h`/`-c` Test Code branches - present for Rare and Inherited Disease/Haemoglobinopathy/Cancer, but none of the three covers WGS specifically |
+| Additional clinical information | GMS Cancer | `HL7/NTE-1` "Relevant clinical information and family history" - close match |
+| Histopathology/SIHMDS Lab ID | GMS Cancer | `LN/80398-1-ODS` "Pathology Laboratory Hospital/Trust ID" - adjacent concept (identifies the lab), not the same specific field |
+| Life status (Alive/Deceased) | GMS Rare Disease | `LN/81954-0` "Date of death" - implies deceased status, doesn't capture "Alive" explicitly |
+{:.grid}
+
+Everything else - WGS test type itself, Family test type (Singleton/Trio/Other),
+Reason NHS Number not available, Reason for diagnostic test (patient
+management/reproductive/predictive tick boxes), Additional panel(s), Proband's age at
+onset, specific rare disease suspected/confirmed, **HPO Terms**, Main contact,
+Presentation status, Tumour presentation type/topography/morphology, Haemato-oncology
+liquid tumour type, % malignant nuclei/blasts, Nucleated cell count, and Neoplastic
+cell content - has **no equivalent at all** in Genomic Test Order or Genomic General
+Ask At Order Entry. HPO Terms in particular is a mandatory field on GMS WGS Rare
+Disease with nothing resembling it anywhere in the generic combo. This is a fairly
+direct answer to what motivates this whole proposed use case: the generic order path
+[iGene Orders and Reports](RegionalOrdersAndReports.html) uses today could not capture
+a WGS order's own clinically-necessary detail without the WGS-specific Questionnaires'
+shape.
 
 ## Outstanding Issues
+
+**Histopathology/SIHMDS Lab ID hints that a cancer WGS order may originate as a reflex
+from an existing pathology order, which should itself have its own Order Placer
+Number this order doesn't carry forward.** GMS WGS Cancer's Histopathology Lab ID and
+SIHMDS Lab ID fields (see the Reverse Direction table above) only make sense if a
+pathology sample/report already exists before the genomic order is raised - the same
+pathology-to-genomics reflex pattern already modelled as its own use case in
+[Cheshire and Merseyside (Pathology to Genomics
+Reflex)](CheshireAndMerseysidePathology.html), where a pathology `LAB-1`/`LAB-3` can
+reflex on to a genomic order (`LAB-35`/`LAB-36`, or a separate `LAB-1`). If that's what
+GMS WGS Cancer's Lab ID fields are really referencing, the *original* pathology order
+should itself have had its own Order Placer Number (`ServiceRequest.identifier:OrderIdentifier`,
+per [Genomic Test Order - Diagnostic
+Workflow](Questionnaire-GenomicTestOrder.html#diagnostic-workflow)) - but neither Lab
+ID field on the GMS WGS Cancer paper form is modelled as that Order Placer Number, or
+as any other structured reference back to the originating pathology order; they're
+both free text (`Specimen.accessionIdentifier.assigner.identifier.value`), which
+identifies the pathology *lab*, not the pathology *order*. [Haemoglobinopathy Genetic
+Ask At Order Entry](Questionnaire-HaemoglobinopathyGeneticAskAtOrderEntry.html) is the
+closest existing precedent for a genetic order form carrying content from an original
+report - its own `LaboratoryResults` group carries actual FBC/haemoglobinopathy screen
+values (Hb, RBC, HbA2%, HbF%, etc.) forward from a prior report - but even that
+precedent carries the prior report's *values*, not a link back to the prior report's
+own Order Placer Number either. So this remains a genuinely open question, not one
+this IG has already answered elsewhere.
+
+**GMS WGS Rare Disease's one-form-names-several-people shape looks like a data-entry
+convenience (from many EPR and LIMS perspective), not a genuine single order - the individual orders it implies must be
+linked by Order Group Number for electronic exchange.** The paper form itself has no
+Order Group Number field at all (see Field Comparison above), which is consistent with
+it being designed as a single physical document a clinician fills in once per family,
+not as something that maps directly onto one electronic order. In practice, each named
+person - proband plus every family member - needs their own `Patient`/`Specimen`/
+`ServiceRequest`, so electronic exchange of this form's answers requires decomposing
+it into **separate singular orders**, one per person, each shaped like the other two
+national/local WGS Questionnaires in the comparison above. Those separate orders
+should/must then be tied back together by a shared **Order Group Number**
+(`pedigreeNumber`, already inherited from the common core, but - like the paper
+form itself - not populated by anything on the form) rather than the family
+relationship being reconstructable only via the composite submission. [WGS Local Test
+Order](Questionnaire-WGSLocalTestOrderAskAtOrderEntry.html)'s Family Member pathway
+already models one instance of exactly this decomposition.
 
 **The HPO Terms guide list and the Test Directory Clinical Indication guide list
 overlap semantically, but aren't cross-checked.** [GMS WGS Rare

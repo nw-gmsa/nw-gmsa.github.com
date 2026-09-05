@@ -35,6 +35,8 @@ either on this form).
 | Proband | Name/DOB of proband (Family Member pathway only) | `RelatedPerson` (NK1-shaped, Role = Proband), repeating group |
 | Neoplastic cell content | % (Cancer tumour sample only) | `Observation.valueQuantity` |
 | NGIS Test Code | Barcode/placeholder box, completed once the NGIS referral exists | `ServiceRequest.code` (`#choice`, bound to [NGIS Test Code](ValueSet-NGISTestCodeVS.html)) |
+| High Infection Risk? | Yes/No | `Observation.valueCodeableConcept` |
+| Consent Statement | "A complete Patient Choice form must be received by the laboratory before WGS can be initiated" | `Observation.valueCodeableConcept` (confirmation of receipt) |
 {:.grid}
 
 Like [Prenatal Haemoglobinopathy](Questionnaire-HaemoglobinopathyPrenatalAskAtOrderEntry.html),
@@ -62,7 +64,13 @@ referral is raised, and is bound to the same [NGIS Test Code](ValueSet-NGISTestC
 ValueSet (all codes from the [Genomic Test Code](CodeSystem-GenomicTestCode.html)
 CodeSystem) rather than free text. No Account Number/Hospital Spell Identifier or
 clinician professional identifier (GMC/GMP) field is present on the paper
-form.
+form. High Infection Risk (`SNM/281269004`) and a Consent Statement
+confirmation (`SNM/74996004-patient-choice-form`) - both present on the
+paper form itself - reuse the same shapes as [NW Genomic General Ask At
+Order Questions](Questionnaire-GenomicGeneralAskAtOrderEntry.html)'s own
+equivalent items, since that Questionnaire isn't used alongside this one
+(this form has its own dedicated Ask At Order Entry Questionnaire, so
+Genomic General's fallback role doesn't apply here).
 
 ### Relationship to GMS WGS Rare Disease
 
