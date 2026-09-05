@@ -168,22 +168,11 @@ Usage:  #definition
       * extension[referenceProfile].valueCanonical = "http://hl7.org/fhir/StructureDefinition/Patient"
 
   * item[+]
-    * type = #quantity
-    * linkId = "NOS/NeoplasticCellContent-wgs"
-    * code[+] = $nwgmsa#NeoplasticCellContent
-    * text = "Neoplastic cell content (%)"
-    * extension[unit].valueCoding = $ucum#% "%"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
-    * enableWhen[+]
-      * question = "NOS/WGSPathway"
-      * operator = #=
-      * answerCoding = $nwgmsa#WGSPathwayCancerTumour
-
-  * item[+]
-    * type = #string
+    * type = #choice
     * linkId = "NOS/NGISTestCode"
     * text = "National Genomic Informatics System (NGIS) Test Code"
     * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.code"
+    * answerValueSet = Canonical(NGISTestCodeVS)
     * item[+]
       * linkId = "NOS/NGISTestCode-designNote"
       * type = #display

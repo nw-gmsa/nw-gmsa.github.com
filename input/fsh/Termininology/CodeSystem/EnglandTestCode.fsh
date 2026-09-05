@@ -2,7 +2,7 @@ CodeSystem: NHSEngland-GenomicTestCode
 Id: GenomicTestCode
 Title: "NHS England Genomic Test Code"
 Description: """
-- [Genomic Test Directory](https://www.england.nhs.uk/publication/national-genomic-test-directories)"
+- Source: [National genomic test directories](https://www.england.nhs.uk/publication/national-genomic-test-directories/) - codes last updated from this source on 2026-09-05.
 
 HL7 v2 CodeSystem : England-GenomicTestDirectory
 """
@@ -12,8 +12,8 @@ HL7 v2 CodeSystem : England-GenomicTestDirectory
 * ^caseSensitive = true
 * ^experimental = false
 * ^status = #active
-* ^version = "0.1.0"
-* ^date = "2026-06-04"
+* ^version = "2026.09.05"
+* ^date = "2026-09-05"
 * ^url = "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory"
 
 

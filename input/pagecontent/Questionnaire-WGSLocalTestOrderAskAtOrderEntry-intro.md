@@ -34,7 +34,7 @@ either on this form).
 | WGS test type | Rare Disease (Proband/Family Member) or Cancer (Tumour/Germline sample) | `ServiceRequest.category` |
 | Proband | Name/DOB of proband (Family Member pathway only) | `RelatedPerson` (NK1-shaped, Role = Proband), repeating group |
 | Neoplastic cell content | % (Cancer tumour sample only) | `Observation.valueQuantity` |
-| NGIS Test Code | Barcode/placeholder box, completed once the NGIS referral exists | `ServiceRequest.code` |
+| NGIS Test Code | Barcode/placeholder box, completed once the NGIS referral exists | `ServiceRequest.code` (`#choice`, bound to [NGIS Test Code](ValueSet-NGISTestCodeVS.html)) |
 {:.grid}
 
 Like [Prenatal Haemoglobinopathy](Questionnaire-HaemoglobinopathyPrenatalAskAtOrderEntry.html),
@@ -58,7 +58,9 @@ the proband when reading this Questionnaire alongside the others. The
 paper form's own "NGIS/Barcode (Until NGIS Referral Received)" box is a
 placeholder used before the digital NGIS referral exists, not a distinct
 Order Placer Number - it converges on `ServiceRequest.code` once the NGIS
-referral is raised. No Account Number/Hospital Spell Identifier or
+referral is raised, and is bound to the same [NGIS Test Code](ValueSet-NGISTestCodeVS.html)
+ValueSet (all codes from the [Genomic Test Code](CodeSystem-GenomicTestCode.html)
+CodeSystem) rather than free text. No Account Number/Hospital Spell Identifier or
 clinician professional identifier (GMC/GMP) field is present on the paper
 form.
 
