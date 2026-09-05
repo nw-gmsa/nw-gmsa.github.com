@@ -139,12 +139,12 @@ Usage:  #definition
     * linkId = "NOS/TestDirectoryClinicalIndication-rd"
     * text = "Test Directory Clinical Indication & code (reason for testing)"
     * required = true
-    * answerValueSet = Canonical(GenomicTestCodes)
+    * answerValueSet = Canonical(GMSWGSGuideTestCodesVS)
     * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.code"
     * item[+]
       * linkId = "NOS/TestDirectoryClinicalIndication-rd-designNote"
       * type = #display
-      * text = "The common core's own Test Code item only fires for Rare and Inherited Disease/Haemoglobinopathy/Cancer Test Categories, none of which cover Whole Genome Sequencing."
+      * text = "The common core's own Test Code item only fires for Rare and Inherited Disease/Haemoglobinopathy/Cancer Test Categories, none of which cover Whole Genome Sequencing. Bound below against GMSWGSGuideTestCodesVS (the 37 $GTD R* codes whose display text names WGS) rather than the full GenomicTestCodes ValueSet, since every test ordered on this form is a WGS test by definition."
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 // Additional panel(s)
