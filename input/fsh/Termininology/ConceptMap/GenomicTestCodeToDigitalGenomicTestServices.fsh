@@ -27,17 +27,17 @@ Usage:  #definition
 * group.targetVersion = "2026-09-05"
 
 * group.element[+]
-  * code = #M1.6 "Colorectal Carcinoma, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M1.6 "Colorectal Carcinoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M2.3 "Ovarian Carcinoma, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M2.3 "Ovarian Carcinoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M3.5 "Breast Cancer, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M3.5 "Breast Cancer, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
@@ -47,27 +47,27 @@ Usage:  #definition
     * code = #GT353 "CDKN2A CNV FISH"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M5.2 "Mesothelioma, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M5.2 "Mesothelioma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M7.3 "Melanoma, Adult, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M7.3 "Melanoma - Adult, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M7.9 "Melanoma, Adult, CDKN2A & 9cen"
+  * code = #M7.9 "Melanoma - Adult, CDKN2A & 9cen"
   * target[+]
     * code = #GT353 "CDKN2A CNV FISH"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M8.2 "Gastrointestinal Stromal Tumour, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M8.2 "Gastrointestinal Stromal Tumour, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M9.4 "Thyroid Papillary Carcinoma, Adult, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M9.4 "Thyroid Papillary Carcinoma - Adult, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
@@ -77,12 +77,12 @@ Usage:  #definition
     * code = #GT1258 "TP53 deletion CNV FISH"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M12.2 "Thyroid Medullary Carcinoma, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M12.2 "Thyroid Medullary Carcinoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M13.2 "Phaeochromocytoma, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M13.2 "Phaeochromocytoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
@@ -92,7 +92,7 @@ Usage:  #definition
     * code = #GT1258 "TP53 deletion CNV FISH"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M14.4 "Adrenal Cortical Carcinoma, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M14.4 "Adrenal Cortical Carcinoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
@@ -102,12 +102,12 @@ Usage:  #definition
     * code = #GT1258 "TP53 deletion CNV FISH"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M15.6 "Head and Neck Squamous Cell Carcinoma, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M15.6 "Head and Neck Squamous Cell Carcinoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M17.2 "Secretory Carcinoma (Salivary Gland), Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M17.2 "Secretory Carcinoma (Salivary Gland), Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
@@ -910,7 +910,7 @@ Usage:  #definition
     * code = #GT237 "EWSR1 rearrangement FISH"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M46.3 "Chondrosarcoma Conventional Central, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M46.3 "Chondrosarcoma Conventional Central, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
@@ -920,7 +920,7 @@ Usage:  #definition
     * code = #GT854 "SNP Array"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M47.3 "Chondroblastoma, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M47.3 "Chondroblastoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
@@ -950,7 +950,7 @@ Usage:  #definition
     * code = #GT1333 "Structural variant, not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M60.3 "Giant Cell Tumour of Bone, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M60.3 "Giant Cell Tumour of Bone, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
@@ -965,7 +965,7 @@ Usage:  #definition
     * code = #GT237 "EWSR1 rearrangement FISH"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M70.3 "Osteosarcoma, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M70.3 "Osteosarcoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
@@ -985,7 +985,7 @@ Usage:  #definition
     * code = #GT790 "MYC CNV FISH"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M74.3 "Radiation Induced Angiosarcoma, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M74.3 "Radiation Induced Angiosarcoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
@@ -995,7 +995,7 @@ Usage:  #definition
     * code = #GT1333 "Structural variant, not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M79.3 "Well Differentiated/Dedifferentiated Liposarcoma, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M79.3 "Well Differentiated/Dedifferentiated Liposarcoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
@@ -3645,7 +3645,7 @@ Usage:  #definition
     * code = #GT1370 "Chimerism by XY FISH - Post Stem Cell Transplant"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M119.2 "Paediatric Tumours, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M119.2 "Paediatric Tumours, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
@@ -3740,27 +3740,27 @@ Usage:  #definition
     * code = #GT217 "Genome-wide DNA Methylation Profiling"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M124.2 "Clear Cell Kidney Sarcoma, Paediatric, BCOR seq"
+  * code = #M124.2 "Clear Cell Kidney Sarcoma - Paediatric, BCOR seq"
   * target[+]
     * code = #GT1334 "Small nucleotide variant , not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M124.3 "Clear Cell Kidney Sarcoma, Paediatric, BCOR copy number FISH"
+  * code = #M124.3 "Clear Cell Kidney Sarcoma - Paediatric, BCOR copy number FISH"
   * target[+]
     * code = #GT131 "BCOR CNV FISH"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M124.4 "Clear Cell Kidney Sarcoma, Paediatric, BCOR rearrangement FISH"
+  * code = #M124.4 "Clear Cell Kidney Sarcoma - Paediatric, BCOR rearrangement FISH"
   * target[+]
     * code = #GT777 "BCOR rearrangement FISH"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M124.6 "Clear Cell Kidney Sarcoma, Paediatric, NUTM2E-YWHAE FISH/RT-PCR"
+  * code = #M124.6 "Clear Cell Kidney Sarcoma - Paediatric, NUTM2E-YWHAE FISH/RT-PCR"
   * target[+]
     * code = #GT1333 "Structural variant, not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M124.7 "Clear Cell Kidney Sarcoma, Paediatric, NUTM1-YWHAE FISH/RT-PCR"
+  * code = #M124.7 "Clear Cell Kidney Sarcoma - Paediatric, NUTM1-YWHAE FISH/RT-PCR"
   * target[+]
     * code = #GT1333 "Structural variant, not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
@@ -3820,17 +3820,17 @@ Usage:  #definition
     * code = #GT217 "Genome-wide DNA Methylation Profiling"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M131.2 "Cystic Nephroma, Paediatric, DICER1 seq"
+  * code = #M131.2 "Cystic Nephroma - Paediatric, DICER1 seq"
   * target[+]
     * code = #GT1334 "Small nucleotide variant , not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M131.3 "Cystic Nephroma, Paediatric, DICER1 copy number FISH"
+  * code = #M131.3 "Cystic Nephroma - Paediatric, DICER1 copy number FISH"
   * target[+]
     * code = #GT1346 "Copy number variant, not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M131.5 "Cystic Nephroma, Paediatric, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M131.5 "Cystic Nephroma - Paediatric, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
@@ -4110,17 +4110,17 @@ Usage:  #definition
     * code = #GT217 "Genome-wide DNA Methylation Profiling"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M143.2 "Lung, Paediatric, H3-3A seq"
+  * code = #M143.2 "Lung - Paediatric, H3-3A seq"
   * target[+]
     * code = #GT1334 "Small nucleotide variant , not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M143.3 "Lung, Paediatric, H3-3B seq"
+  * code = #M143.3 "Lung - Paediatric, H3-3B seq"
   * target[+]
     * code = #GT1334 "Small nucleotide variant , not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M143.5 "Lung, Paediatric, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M143.5 "Lung - Paediatric, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
@@ -4350,7 +4350,7 @@ Usage:  #definition
     * code = #GT217 "Genome-wide DNA Methylation Profiling"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M149.3 "Melanotic Tumours, Paediatric, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M149.3 "Melanotic Tumours - Paediatric, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
@@ -4395,57 +4395,57 @@ Usage:  #definition
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M151.2 "Midline Carcinoma, Paediatric, NUTM1-BRD3 FISH/RT-PCR"
+  * code = #M151.2 "Midline Carcinoma - Paediatric, NUTM1-BRD3 FISH/RT-PCR"
   * target[+]
     * code = #GT1333 "Structural variant, not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M151.3 "Midline Carcinoma, Paediatric, NUTM1-BRD4 FISH/RT-PCR"
+  * code = #M151.3 "Midline Carcinoma - Paediatric, NUTM1-BRD4 FISH/RT-PCR"
   * target[+]
     * code = #GT1333 "Structural variant, not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M152.1 "Neuroblastoma, Paediatric, SNP Array"
+  * code = #M152.1 "Neuroblastoma - Paediatric, SNP Array"
   * target[+]
     * code = #GT854 "SNP Array"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M152.4 "Neuroblastoma, Paediatric, FGFR1 seq"
+  * code = #M152.4 "Neuroblastoma - Paediatric, FGFR1 seq"
   * target[+]
     * code = #GT1334 "Small nucleotide variant , not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M152.5 "Neuroblastoma, Paediatric, PHOX2B seq"
+  * code = #M152.5 "Neuroblastoma - Paediatric, PHOX2B seq"
   * target[+]
     * code = #GT1334 "Small nucleotide variant , not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M152.6 "Neuroblastoma, Paediatric, TP53 seq"
+  * code = #M152.6 "Neuroblastoma - Paediatric, TP53 seq"
   * target[+]
     * code = #GT1334 "Small nucleotide variant , not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M152.7 "Neuroblastoma, Paediatric, MYCN copy number FISH"
+  * code = #M152.7 "Neuroblastoma - Paediatric, MYCN copy number FISH"
   * target[+]
     * code = #GT634 "MYCN CNV FISH"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M152.8 "Neuroblastoma, Paediatric, ALK copy number FISH"
+  * code = #M152.8 "Neuroblastoma - Paediatric, ALK copy number FISH"
   * target[+]
     * code = #GT1346 "Copy number variant, not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M152.13 "Neuroblastoma, Paediatric, ALK rearrangement FISH"
+  * code = #M152.13 "Neuroblastoma - Paediatric, ALK rearrangement FISH"
   * target[+]
     * code = #GT913 "ALK rearrangement FISH"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M152.15 "Neuroblastoma, Paediatric, MYCN seq"
+  * code = #M152.15 "Neuroblastoma - Paediatric, MYCN seq"
   * target[+]
     * code = #GT1334 "Small nucleotide variant , not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M152.18 "Neuroblastoma, Paediatric, DNA Methylation"
+  * code = #M152.18 "Neuroblastoma - Paediatric, DNA Methylation"
   * target[+]
     * code = #GT217 "Genome-wide DNA Methylation Profiling"
     * equivalence = #equivalent
@@ -4540,7 +4540,7 @@ Usage:  #definition
     * code = #GT217 "Genome-wide DNA Methylation Profiling"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M157.2 "Thyroid Papillary Carcinoma, Paediatric, RET seq"
+  * code = #M157.2 "Thyroid Papillary Carcinoma - Paediatric, RET seq"
   * target[+]
     * code = #GT1334 "Small nucleotide variant , not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
@@ -4695,17 +4695,17 @@ Usage:  #definition
     * code = #GT217 "Genome-wide DNA Methylation Profiling"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M161.2 "Pleuropulmonary Blastoma, Paediatric, DICER1 seq"
+  * code = #M161.2 "Pleuropulmonary Blastoma - Paediatric, DICER1 seq"
   * target[+]
     * code = #GT1334 "Small nucleotide variant , not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M161.3 "Pleuropulmonary Blastoma, Paediatric, DICER1 copy number FISH"
+  * code = #M161.3 "Pleuropulmonary Blastoma - Paediatric, DICER1 copy number FISH"
   * target[+]
     * code = #GT1346 "Copy number variant, not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M161.5 "Pleuropulmonary Blastoma, Paediatric, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M161.5 "Pleuropulmonary Blastoma - Paediatric, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
@@ -4765,62 +4765,62 @@ Usage:  #definition
     * code = #GT217 "Genome-wide DNA Methylation Profiling"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M165.2 "Renal Tumours, Paediatric, ATRX seq"
+  * code = #M165.2 "Renal Tumours - Paediatric, ATRX seq"
   * target[+]
     * code = #GT1334 "Small nucleotide variant , not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M165.3 "Renal Tumours, Paediatric, CTNNB1 seq"
+  * code = #M165.3 "Renal Tumours - Paediatric, CTNNB1 seq"
   * target[+]
     * code = #GT1334 "Small nucleotide variant , not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M165.4 "Renal Tumours, Paediatric, DAXX seq"
+  * code = #M165.4 "Renal Tumours - Paediatric, DAXX seq"
   * target[+]
     * code = #GT1334 "Small nucleotide variant , not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M165.7 "Renal Tumours, Paediatric, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M165.7 "Renal Tumours - Paediatric, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M166.3 "Retinoblastoma, Paediatric, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M166.3 "Retinoblastoma - Paediatric, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M166.4 "Retinoblastoma, Paediatric, DNA Methylation"
+  * code = #M166.4 "Retinoblastoma - Paediatric, DNA Methylation"
   * target[+]
     * code = #GT217 "Genome-wide DNA Methylation Profiling"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M167.1 "Rhabdoid Tumours, Paediatric, Multi-target NGS panel, small variant (SMARCB1)"
+  * code = #M167.1 "Rhabdoid Tumours - Paediatric, Multi-target NGS panel - small variant (SMARCB1)"
   * target[+]
     * code = #GT1411 "Embryonal Tumours Differential Diagnosis-NGS Panel SNV and CNV"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M167.2 "Rhabdoid Tumours, Paediatric, SMARCB1 seq"
+  * code = #M167.2 "Rhabdoid Tumours - Paediatric, SMARCB1 seq"
   * target[+]
     * code = #GT1334 "Small nucleotide variant , not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M167.3 "Rhabdoid Tumours, Paediatric, SMARCB1 copy number FISH"
+  * code = #M167.3 "Rhabdoid Tumours - Paediatric, SMARCB1 copy number FISH"
   * target[+]
     * code = #GT1346 "Copy number variant, not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M167.4 "Rhabdoid Tumours, Paediatric, WGS Germline and Tumor"
+  * code = #M167.4 "Rhabdoid Tumours - Paediatric, WGS Germline and Tumour"
   * target[+]
     * code = #GT943 "Embryonal Tumours WGS - Paediatric and Adult"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M167.5 "Rhabdoid Tumours, Paediatric, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M167.5 "Rhabdoid Tumours - Paediatric, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M167.6 "Rhabdoid Tumours, Paediatric, Multi-target NGS panel, copy number variant (SMARCB1)"
+  * code = #M167.6 "Rhabdoid Tumours - Paediatric, Multi-target NGS panel - copy number variant (SMARCB1)"
   * target[+]
     * code = #GT1411 "Embryonal Tumours Differential Diagnosis-NGS Panel SNV and CNV"
     * equivalence = #equivalent
@@ -5028,22 +5028,22 @@ Usage:  #definition
     * code = #GT217 "Genome-wide DNA Methylation Profiling"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M174.2 "Testicular, Paediatric, PRKAR1A seq"
+  * code = #M174.2 "Testicular - Paediatric, PRKAR1A seq"
   * target[+]
     * code = #GT1334 "Small nucleotide variant , not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M174.4 "Testicular, Paediatric, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M174.4 "Testicular - Paediatric, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M178.2 "Wilms Tumours, Paediatric, DROSHA seq"
+  * code = #M178.2 "Wilms Tumours - Paediatric, DROSHA seq"
   * target[+]
     * code = #GT1334 "Small nucleotide variant , not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M178.4 "Wilms Tumours, Paediatric, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M178.4 "Wilms Tumours - Paediatric, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
@@ -5103,22 +5103,22 @@ Usage:  #definition
     * code = #GT217 "Genome-wide DNA Methylation Profiling"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M180.2 "Xp11.2 Translocation-Associated Renal Cell Carcinoma, Paediatric, TFE3 seq"
+  * code = #M180.2 "Xp11.2 Translocation-Associated Renal Cell Carcinoma - Paediatric, TFE3 seq"
   * target[+]
     * code = #GT1334 "Small nucleotide variant , not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M180.3 "Xp11.2 Translocation-Associated Renal Cell Carcinoma, Paediatric, TFE3-ASPSCR1 FISH/RT-PCR"
+  * code = #M180.3 "Xp11.2 Translocation-Associated Renal Cell Carcinoma - Paediatric, TFE3-ASPSCR1 FISH/RT-PCR"
   * target[+]
     * code = #GT1333 "Structural variant, not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M180.4 "Xp11.2 Translocation-Associated Renal Cell Carcinoma, Paediatric, TFE3-MITF FISH/RT-PCR"
+  * code = #M180.4 "Xp11.2 Translocation-Associated Renal Cell Carcinoma - Paediatric, TFE3-MITF FISH/RT-PCR"
   * target[+]
     * code = #GT1333 "Structural variant, not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M180.5 "Xp11.2 Translocation-Associated Renal Cell Carcinoma, Paediatric, TFE3-PRCC FISH/RT-PCR"
+  * code = #M180.5 "Xp11.2 Translocation-Associated Renal Cell Carcinoma - Paediatric, TFE3-PRCC FISH/RT-PCR"
   * target[+]
     * code = #GT1333 "Structural variant, not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
@@ -5318,7 +5318,7 @@ Usage:  #definition
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M187.4 "Uveal melanoma, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M187.4 "Uveal melanoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
@@ -6112,7 +6112,7 @@ Usage:  #definition
     * code = #GT1333 "Structural variant, not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M204.2 "Undifferentiated tumour, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M204.2 "Undifferentiated tumour, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
@@ -6177,52 +6177,52 @@ Usage:  #definition
     * code = #GT237 "EWSR1 rearrangement FISH"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M211.4 "Fibro-Osseous Tumour of Bone Differential, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M211.4 "Fibro-Osseous Tumour of Bone Differential, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M212.2 "Renal Tumour Differential, Paediatric, ATRX seq"
+  * code = #M212.2 "Renal Tumour Differential - Paediatric, ATRX seq"
   * target[+]
     * code = #GT1334 "Small nucleotide variant , not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M212.3 "Renal Tumour Differential, Paediatric, CTNNB1 seq"
+  * code = #M212.3 "Renal Tumour Differential - Paediatric, CTNNB1 seq"
   * target[+]
     * code = #GT1334 "Small nucleotide variant , not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M212.4 "Renal Tumour Differential, Paediatric, DAXX seq"
+  * code = #M212.4 "Renal Tumour Differential - Paediatric, DAXX seq"
   * target[+]
     * code = #GT1334 "Small nucleotide variant , not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M212.5 "Renal Tumour Differential, Paediatric, TFE3 seq"
+  * code = #M212.5 "Renal Tumour Differential - Paediatric, TFE3 seq"
   * target[+]
     * code = #GT1334 "Small nucleotide variant , not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M212.6 "Renal Tumour Differential, Paediatric, TP53 seq"
+  * code = #M212.6 "Renal Tumour Differential - Paediatric, TP53 seq"
   * target[+]
     * code = #GT1334 "Small nucleotide variant , not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M212.8 "Renal Tumour Differential, Paediatric, del(17p) TP53 copy number FISH"
+  * code = #M212.8 "Renal Tumour Differential - Paediatric, del(17p) TP53 copy number FISH"
   * target[+]
     * code = #GT1258 "TP53 deletion CNV FISH"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M212.11 "Renal Tumour Differential, Paediatric, TFE3-ASPSCR1 FISH/RT-PCR"
+  * code = #M212.11 "Renal Tumour Differential - Paediatric, TFE3-ASPSCR1 FISH/RT-PCR"
   * target[+]
     * code = #GT1333 "Structural variant, not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M212.12 "Renal Tumour Differential, Paediatric, TFE3-MITF FISH/RT-PCR"
+  * code = #M212.12 "Renal Tumour Differential - Paediatric, TFE3-MITF FISH/RT-PCR"
   * target[+]
     * code = #GT1333 "Structural variant, not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M212.13 "Renal Tumour Differential, Paediatric, TFE3-PRCC FISH/RT-PCR"
+  * code = #M212.13 "Renal Tumour Differential - Paediatric, TFE3-PRCC FISH/RT-PCR"
   * target[+]
     * code = #GT1333 "Structural variant, not otherwise specified - Targeted Variant Test"
     * equivalence = #equivalent
@@ -6423,22 +6423,22 @@ Usage:  #definition
     * code = #GT217 "Genome-wide DNA Methylation Profiling"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M215.1 "Endometrial Cancer, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M215.1 "Endometrial Cancer, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M219.2 "Pancreatic Cancer, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M219.2 "Pancreatic Cancer, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M221.1 "Spitzoid tumour, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M221.1 "Spitzoid tumour, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M222.2 "Hepatocellular carcinoma, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M222.2 "Hepatocellular carcinoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
@@ -6947,17 +6947,17 @@ Usage:  #definition
     * code = #GT918 "Karyotype - Mature B & T Cell Neoplasm"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M226.1 "Cancer of Unknown Primary, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M226.1 "Carcinoma of Unknown Primary, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M227.1 "Solid tumour other (i.e. specific histology not listed elsewhere in the test directory), Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M227.1 "Solid tumour other (i.e. specific histology not listed elsewhere in the test directory), Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M231.2 "small cell lung cancer, Multi-target NGS panel, structural variant (NTRK1, NTRK2, NTRK3)"
+  * code = #M231.2 "Small cell lung cancer, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * target[+]
     * code = #GT431 "NTRK - Multi-target NGS panel - structural variants"
     * equivalence = #equivalent
@@ -6977,7 +6977,7 @@ Usage:  #definition
     * code = #GT1076 "WGS Follow-up Germline - exhausted SOC"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M241.5 "Conjunctival melanoma, CDKN2A & 9cen (FISH)"
+  * code = #M241.5 "Conjunctival melanoma, CDKN2A & 9cen"
   * target[+]
     * code = #GT353 "CDKN2A CNV FISH"
     * equivalence = #equivalent

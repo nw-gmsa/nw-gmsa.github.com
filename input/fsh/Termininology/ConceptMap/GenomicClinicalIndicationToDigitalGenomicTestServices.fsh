@@ -101,7 +101,7 @@ Usage:  #definition
     * code = #TP640 "Gliomas, Glioneuronal Tumours, and Neuronal tumours"
     * equivalence = #relatedto
 * group.element[+]
-  * code = #M7 "Melanoma"
+  * code = #M7 "Melanoma - Adult"
   * target[+]
     * code = #TP604 "Embryonal tumours of the CNS"
     * equivalence = #relatedto
@@ -135,7 +135,7 @@ Usage:  #definition
     * code = #TP640 "Gliomas, Glioneuronal Tumours, and Neuronal tumours"
     * equivalence = #relatedto
 * group.element[+]
-  * code = #M9 "Thyroid Papillary Carcinoma"
+  * code = #M9 "Thyroid Papillary Carcinoma - Adult"
   * target[+]
     * code = #TP604 "Embryonal tumours of the CNS"
     * equivalence = #relatedto
@@ -1045,7 +1045,7 @@ Usage:  #definition
     * code = #TP533 "Chronic Lymphocytic Leukaemia"
     * equivalence = #equivalent
 * group.element[+]
-  * code = #M95 "B Cell Non-Hodgkin Lymphoma"
+  * code = #M95 "B cell Non-Hodgkin Lymphoma"
   * target[+]
     * code = #TP377 "Mature B Cell Neoplasms"
     * equivalence = #equivalent
@@ -1220,7 +1220,7 @@ Usage:  #definition
     * code = #TP640 "Gliomas, Glioneuronal Tumours, and Neuronal tumours"
     * equivalence = #relatedto
 * group.element[+]
-  * code = #M124 "Clear Cell Kidney Sarcoma"
+  * code = #M124 "Clear Cell Kidney Sarcoma - Paediatric"
   * target[+]
     * code = #TP604 "Embryonal tumours of the CNS"
     * equivalence = #relatedto
@@ -1280,7 +1280,7 @@ Usage:  #definition
     * code = #TP640 "Gliomas, Glioneuronal Tumours, and Neuronal tumours"
     * equivalence = #relatedto
 * group.element[+]
-  * code = #M131 "Cystic Nephroma"
+  * code = #M131 "Cystic Nephroma - Paediatric"
   * target[+]
     * code = #TP604 "Embryonal tumours of the CNS"
     * equivalence = #relatedto
@@ -1420,7 +1420,7 @@ Usage:  #definition
     * code = #TP640 "Gliomas, Glioneuronal Tumours, and Neuronal tumours"
     * equivalence = #relatedto
 * group.element[+]
-  * code = #M143 "Lung"
+  * code = #M143 "Lung - Paediatric"
   * target[+]
     * code = #TP604 "Embryonal tumours of the CNS"
     * equivalence = #relatedto
@@ -1529,7 +1529,7 @@ Usage:  #definition
     * code = #TP640 "Gliomas, Glioneuronal Tumours, and Neuronal tumours"
     * equivalence = #relatedto
 * group.element[+]
-  * code = #M149 "Melanotic Tumours"
+  * code = #M149 "Melanotic Tumours - Paediatric"
   * target[+]
     * code = #TP604 "Embryonal tumours of the CNS"
     * equivalence = #relatedto
@@ -1569,7 +1569,7 @@ Usage:  #definition
     * code = #TP640 "Gliomas, Glioneuronal Tumours, and Neuronal tumours"
     * equivalence = #relatedto
 * group.element[+]
-  * code = #M151 "Midline Carcinoma"
+  * code = #M151 "Midline Carcinoma - Paediatric"
   * target[+]
     * code = #TP604 "Embryonal tumours of the CNS"
     * equivalence = #relatedto
@@ -1577,7 +1577,7 @@ Usage:  #definition
     * code = #TP640 "Gliomas, Glioneuronal Tumours, and Neuronal tumours"
     * equivalence = #relatedto
 * group.element[+]
-  * code = #M152 "Neuroblastoma"
+  * code = #M152 "Neuroblastoma - Paediatric"
   * target[+]
     * code = #TP604 "Embryonal tumours of the CNS"
     * equivalence = #relatedto
@@ -1669,7 +1669,7 @@ Usage:  #definition
     * code = #TP640 "Gliomas, Glioneuronal Tumours, and Neuronal tumours"
     * equivalence = #relatedto
 * group.element[+]
-  * code = #M157 "Thyroid Papillary Carcinoma"
+  * code = #M157 "Thyroid Papillary Carcinoma - Paediatric"
   * target[+]
     * code = #TP604 "Embryonal tumours of the CNS"
     * equivalence = #relatedto
@@ -1752,7 +1752,7 @@ Usage:  #definition
     * code = #TP640 "Gliomas, Glioneuronal Tumours, and Neuronal tumours"
     * equivalence = #relatedto
 * group.element[+]
-  * code = #M161 "Pleuropulmonary Blastoma"
+  * code = #M161 "Pleuropulmonary Blastoma - Paediatric"
   * target[+]
     * code = #TP604 "Embryonal tumours of the CNS"
     * equivalence = #relatedto
@@ -1792,7 +1792,7 @@ Usage:  #definition
     * code = #TP640 "Gliomas, Glioneuronal Tumours, and Neuronal tumours"
     * equivalence = #relatedto
 * group.element[+]
-  * code = #M165 "Renal Tumours"
+  * code = #M165 "Renal Tumours - Paediatric"
   * target[+]
     * code = #TP604 "Embryonal tumours of the CNS"
     * equivalence = #relatedto
@@ -1809,7 +1809,7 @@ Usage:  #definition
     * code = #TP640 "Gliomas, Glioneuronal Tumours, and Neuronal tumours"
     * equivalence = #relatedto
 * group.element[+]
-  * code = #M166 "Retinoblastoma"
+  * code = #M166 "Retinoblastoma - Paediatric"
   * target[+]
     * code = #TP604 "Embryonal tumours of the CNS"
     * equivalence = #relatedto
@@ -1832,7 +1832,7 @@ Usage:  #definition
     * code = #TP640 "Gliomas, Glioneuronal Tumours, and Neuronal tumours"
     * equivalence = #relatedto
 * group.element[+]
-  * code = #M167 "Rhabdoid Tumours"
+  * code = #M167 "Rhabdoid Tumours - Paediatric"
   * target[+]
     * code = #TP604 "Embryonal tumours of the CNS"
     * equivalence = #relatedto
@@ -1964,7 +1964,7 @@ Usage:  #definition
     * code = #TP640 "Gliomas, Glioneuronal Tumours, and Neuronal tumours"
     * equivalence = #relatedto
 * group.element[+]
-  * code = #M174 "Testicular"
+  * code = #M174 "Testicular - Paediatric"
   * target[+]
     * code = #TP604 "Embryonal tumours of the CNS"
     * equivalence = #relatedto
@@ -1981,7 +1981,7 @@ Usage:  #definition
     * code = #TP640 "Gliomas, Glioneuronal Tumours, and Neuronal tumours"
     * equivalence = #relatedto
 * group.element[+]
-  * code = #M178 "Wilms Tumours"
+  * code = #M178 "Wilms Tumours - Paediatric"
   * target[+]
     * code = #TP604 "Embryonal tumours of the CNS"
     * equivalence = #relatedto
@@ -2021,7 +2021,7 @@ Usage:  #definition
     * code = #TP640 "Gliomas, Glioneuronal Tumours, and Neuronal tumours"
     * equivalence = #relatedto
 * group.element[+]
-  * code = #M180 "Xp11.2 Translocation-Associated Renal Cell Carcinoma"
+  * code = #M180 "Xp11.2 Translocation-Associated Renal Cell Carcinoma - Paediatric"
   * target[+]
     * code = #TP604 "Embryonal tumours of the CNS"
     * equivalence = #relatedto
@@ -2452,7 +2452,7 @@ Usage:  #definition
     * code = #TP640 "Gliomas, Glioneuronal Tumours, and Neuronal tumours"
     * equivalence = #relatedto
 * group.element[+]
-  * code = #M212 "Renal Tumour Differential"
+  * code = #M212 "Renal Tumour Differential - Paediatric"
   * target[+]
     * code = #TP604 "Embryonal tumours of the CNS"
     * equivalence = #relatedto
@@ -2585,7 +2585,7 @@ Usage:  #definition
     * code = #TP62 "Clonality Testing"
     * equivalence = #relatedto
 * group.element[+]
-  * code = #M226 "Cancer of Unknown Primary"
+  * code = #M226 "Carcinoma of Unknown Primary"
   * target[+]
     * code = #TP604 "Embryonal tumours of the CNS"
     * equivalence = #relatedto
@@ -2619,7 +2619,7 @@ Usage:  #definition
     * code = #TP640 "Gliomas, Glioneuronal Tumours, and Neuronal tumours"
     * equivalence = #relatedto
 * group.element[+]
-  * code = #M231 "small cell lung cancer"
+  * code = #M231 "Small cell lung cancer"
   * target[+]
     * code = #TP604 "Embryonal tumours of the CNS"
     * equivalence = #relatedto
