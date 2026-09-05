@@ -415,13 +415,13 @@ menu:
     Shared Genomic Reports (Lancashire and South Cumbria): GMCR.html#lancashire-and-south-cumbria
     ctDNA NHS England Unified Genomic Record (UGR): ctDNAUGR.html
     ctDNA Management Information (NW to NE&Y Genomics): NEYManagementInformation.html
-    Whole Genome Sequencing (WGS) (Proposed - Alder Hey, MFT, Liverpool): WholeGenomicSequence.html
-    Distributed Whole Genome Sequencing (dWGS) (NE&Y to NW Genomics): dWGS.html
-    Histocompatibility and Immunogenetics (Clatterbridge to Histotrac): HistocompatibilityAndImmunogenetics.html
-    BCR-ABL Monitoring (Cepheid ASTM to iGene): BCRABLMonitoring.html
-    Cytogenetics and Haemato-Oncology Diagnostic Pathway (Shire to HODS): HaematoOncologyPathway.html
+    Whole Genome Sequencing (WGS) Orders (Proposed - Alder Hey, MFT, Liverpool): WholeGenomicSequence.html
+    Distributed Whole Genome Sequencing (dWGS) Orders (NE&Y to NW Genomics): dWGS.html
+    Histocompatibility and Immunogenetics Orders and Reports (Clatterbridge to Histotrac): HistocompatibilityAndImmunogenetics.html
+    Cytogenetics and Haemato-Oncology Diagnostic Reports (Shire to HODS): HaematoOncologyPathway.html
     Pathology to Genomics Reflex Orders (Cheshire and Merseyside): CheshireAndMerseysidePathology.html
-    Reportable Variants Test Results(iGene, Omics DSS and DLIMS): reportable-variants.html
+    BCR-ABL Results (Cepheid ASTM to iGene): BCRABLMonitoring.html
+    Reportable Variants Results(iGene, Omics DSS and DLIMS): reportable-variants.html
     NHS England Genomic Order Management Service (GOMS): GenomicOrderManagementService.html
     StarLIMS / iGene Integration: starLIMS.html
     Cancer Clinical Pathways (Background Information) : CancerNOS.html
