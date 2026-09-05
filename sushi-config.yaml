@@ -133,6 +133,9 @@ pages:
   BCRABLMonitoring.md:
     title: "Use Case: BCR-ABL Monitoring"
     generation: markdown
+  WholeGenomicSequence.md:
+    title: "Use Case: Whole Genome Sequencing (Proposed - Alder Hey, MFT, Liverpool)"
+    generation: markdown
   HaematoOncologyPathway.md:
     title: "Use Case: Cytogenetics and Haemato-Oncology Diagnostic Pathway (Shire to HODS)"
     generation: markdown
@@ -408,6 +411,7 @@ menu:
   Use Cases:
     Regional Integration Engine (RIE): overview.html
     iGene Orders and Reports (Alder Hey, MFT, Liverpool): RegionalOrdersAndReports.html
+    Whole Genome Sequencing (Proposed - Alder Hey, MFT, Liverpool): WholeGenomicSequence.html
     Greater Manchester Care Record (GMCR): GMCR.html
     Lancashire and South Cumbria Genomic Reports: GMCR.html#lancashire-and-south-cumbria
     Distributed Whole Genome Sequencing (NE&Y to NW Genomics): dWGS.html
