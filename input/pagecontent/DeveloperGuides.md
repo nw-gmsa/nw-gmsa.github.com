@@ -27,6 +27,26 @@ Design (Volume 1)** - e.g. [Laboratory Testing Workflow (LTW)](LTW.html),
 [Inter-Laboratory Workflow (ILW)](ILW.html) - and as the technical
 interactions themselves in **Interfaces (Volume 2)**.
 
+> **Note:** the RIE plays a similar role to a Trust Integration Engine (TIE)
+> - see [Enterprise Integration](architecture.html#enterprise-integration) -
+> but the two aren't doing the same job. The RIE carries more
+> integration-engine features than a typical Trust-local TIE: **routing**
+> (to the correct destination Trust or LIMS), **enrichment** (PDS/ODT lookups
+> adding patient/organisation detail a source message didn't include),
+> **terminology mapping** (using a [Terminology
+> Service](#fhir-terminology-services) to translate a code from one
+> destination's coding system to another, rather than each destination
+> having to understand every source system's own local codes), and
+> orchestration of the multi-step validate/enrich/convert/route sequence
+> described above. In exchange, it does **less** HL7 v2 flavour-to-flavour
+> transformation than a TIE: rather than every source/destination pair
+> negotiating its own bespoke mapping, the RIE only ever deals in a single
+> canonical NW Standard format - the flavour-specific conversion each Trust's
+> or lab's own local system actually needs happens at the edges, in that
+> Trust's or lab's own TIE, before the message ever reaches the RIE. See
+> [Order Process](overview.html#order-process) for exactly where that
+> boundary sits.
+
 ```mermaid
 flowchart LR
     subgraph Producers["Producers"]
