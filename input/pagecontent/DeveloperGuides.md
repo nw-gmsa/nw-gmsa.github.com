@@ -335,6 +335,57 @@ ones), and most relate directly to one or more of this IG's [Use Cases](index.ht
 
 Notebook 13's terminology-server pattern (querying a remote FHIR server's `$lookup`/`$translate` operations live, rather than hand-maintaining a static map) is the same shape [IHE Sharing Valuesets, Codes, and Maps (SVCM)](https://profiles.ihe.net/ITI/SVCM/index.html) formalises as a profile - this IG is likely to adopt an SVCM-conformant terminology service for SNOMED CT/HPO/Genomic Test Directory conversions in future, rather than continuing to hand-build `ConceptMap`s like [GMSWGSGuideHPOTermsToSCT](ConceptMap-GMSWGSGuideHPOTermsToSCT.html) notebook-by-notebook.
 
+### Postman Collection
+
+For a first look that doesn't need Python/Jupyter, the same requests notebooks
+`01`, `02` and `13` build by hand are also available as a ready-to-run
+[Postman](https://www.postman.com/) collection and environment, in
+[nw-gmsa/Testing/postman](https://github.com/nw-gmsa/Testing/tree/main/postman):
+
+- **`NW-GMSA-FHIR-and-GEL-Terminology-Server.postman_collection.json`** - the
+  requests themselves, in three folders matching the notebooks they mirror:
+  - **01 - FHIR Search Basics** - `Patient`/`Organization`/`ServiceRequest`/
+    `Specimen` searches against the FHIR Repository.
+  - **02 - Work Orders Worked Example (Task-Based)** - finding and reading a
+    lab's work orders (`Task`). Two requests here are marked
+    **`[WRITE][ILLUSTRATIVE]`** - they `PUT` a real status change onto a
+    `Task` and are not run automatically by anything; only send them
+    deliberately.
+  - **13 - Genomics England Terminology Server (SNOMED <-> HPO)** - the
+    `$lookup`/`$validate-code`/`$translate` calls described in [FHIR
+    Terminology Services](#fhir-terminology-services) above, run directly
+    against the public Genomics England terminology server.
+- **`NW-GMSA-Lab.postman_environment.json`** - the variables the requests
+  above use: `base_url` (the FHIR Repository), `fhir_user`/`fhir_password`
+  (HTTP Basic auth for it - `fhir_password` is committed blank, you supply
+  your own), and `ontoserver` (the Genomics England terminology server, which
+  needs no auth).
+
+Every example value in the collection (NHS numbers, MRNs, ODS codes, ids) is
+a real identifier from one of this IG's own [published genomics test
+patients](testing.html#genomics-test-patients) or this repo's own committed
+FHIR/HL7 v2 examples - nothing is a made-up placeholder. The chained internal
+id variables (`patient_id`, `service_request_id`, `task_id`, etc.) are
+pre-filled with known-good values and each has a test script that refreshes
+it automatically when its source request is re-run.
+
+**To import into Postman:**
+
+1. Download both files from
+   [nw-gmsa/Testing/postman](https://github.com/nw-gmsa/Testing/tree/main/postman)
+   (or copy their raw GitHub URLs).
+2. In Postman, click **Import** (top left) and either drop the two
+   downloaded files onto the import dialog, or use its **Link** tab and
+   paste each raw GitHub URL in turn.
+3. Once imported, select the **NW-GMSA Lab** environment from the
+   environment dropdown, top right.
+4. Open that environment (the eye icon, then **Edit**) and fill in
+   `fhir_password` with your own FHIR Repository credentials - it's left
+   blank in the committed file.
+5. Start with the **01 - FHIR Search Basics** folder, then **02**; try
+   **13** against the Genomics England terminology server without any
+   credentials at all.
+
 ## Data Science and Analytics Notebooks
 
 The notebooks above are aimed at integration/interoperability developers - FHIR and HL7
