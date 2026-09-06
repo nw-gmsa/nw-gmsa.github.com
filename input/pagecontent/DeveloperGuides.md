@@ -149,6 +149,36 @@ sequenceDiagram
     Note over Repo: One aggregate, current state -<br/>not two separate immutable events
 ```
 
+The same build-up-then-read-back pattern applies across a whole multi-system
+journey, not just within the RIE. [Reportable Variants - The end-to-end
+clinical journey](reportable-variants.html#the-end-to-end-clinical-journey)
+is a concrete example: each step's **output** is written into the FHIR
+Repository as part of the same Order/Report aggregate, and a later step
+reads that aggregate back as its **input**, rather than every system having
+to talk to every other system directly. The dotted line is proposed, not yet
+implemented - see [Future Process](reportable-variants.html#future-process).
+
+```mermaid
+flowchart LR
+    P0["0. Laboratory order created<br/>(Order Placer)"]
+    P1["1. Work order created<br/>(iGene)"]
+    P2["2. Test performed<br/>(DLIMS)"]
+    P3["3. Bioinformatics processing<br/>(Omics DSS)"]
+    P4["4. Report compiled<br/>(iGene)"]
+    P5["5. Clinical decision<br/>(clinician)"]
+    P0 --> P1 --> P2 --> P3 --> P4 --> P5
+
+    Repo[("FHIR Repository<br/>Order + Report aggregate")]
+
+    P0 -->|"output:<br/>Laboratory Order"| Repo
+    P1 -->|"output:<br/>Work Order"| Repo
+    P2 -.->|"output:<br/>Laboratory Report<br/>(not currently done)"| Repo
+    Repo -->|"input:<br/>Work Order"| P3
+    P3 -->|"output:<br/>Reportable variants"| Repo
+    Repo -->|"input:<br/>Test Results"| P4
+    P4 -->|"output:<br/>Laboratory Report"| Repo
+```
+
 | | Regional Integration Engine (RIE) | FHIR Repository |
 |---|---|---|
 | Product | InterSystems Health Connect | InterSystems FHIR Repository |
