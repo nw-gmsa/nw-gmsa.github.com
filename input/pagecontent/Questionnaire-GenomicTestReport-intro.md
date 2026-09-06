@@ -269,9 +269,9 @@ flowchart LR
     CORE["Common Core<br/>Genomic Test Report"]
     PANEL["+ Report Panel Questionnaire<br/>(varies by result type - e.g. Reportable<br/>Variant, BCR-ABL Monitoring, Chimerism Testing)"]
     RESULTS["+ Genomic Results<br/>(e.g. Reportable Variant, Laboratory Analyte<br/>Result, Diagnostic Implication)"]
-    QNAIRE["Report as recorded in LIMS"]
+    QNAIRE["Report as recorded in LIMS<br/>(NW Genomics)"]
     MSG["HL7 v2 ORU_R01<br/>or FHIR Message R01"]
-    EPR["EPR"]
+    EPR["EPR<br/>(NHS Trust)"]
 
     CORE --> QNAIRE
     PANEL --> QNAIRE
