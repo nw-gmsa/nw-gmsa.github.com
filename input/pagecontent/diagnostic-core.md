@@ -4,7 +4,23 @@ This implementation guide primarily focuses on the **Diagnostic Workflow** and h
 
 In software design, these areas are often referred to as [domains](https://en.wikipedia.org/wiki/Domain-driven_design). The **Genomic Diagnostic Workflow** operates across several of these domains — in software architecture terms, this is known as a [bounded context](https://martinfowler.com/bliki/BoundedContext.html).
 
-## National Reference Data
+## National NHS and NHS Trust Data Models
+
+**National NHS bodies** (e.g. NHS England, PDS, ODS) and **NHS Trusts** are, in
+[Domain Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design)
+terms, natural [bounded
+contexts](https://martinfowler.com/bliki/BoundedContext.html) in their own
+right, each with its own internal data model - **this guide doesn't cover
+those models**. Instead, this guide's resources reference that data via
+**identifiers** (in FHIR, `Reference.identifier`), rather than modelling
+those bounded contexts directly.
+
+The relationship *between* bounded contexts like these is what [Enterprise
+Integration
+Patterns](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CanonicalDataModel.html)
+calls a **Canonical Data Model**, and what Data Engineering calls a **[Data
+Contract](https://en.wikipedia.org/wiki/Data_contract)** - in HL7 FHIR terms,
+that's expressed as FHIR Profiles and the core models described below.
 
 Rather than every consuming system resolving these against the national
 service directly, this guide's resources carry identifiers that *reference*
