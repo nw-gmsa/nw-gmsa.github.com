@@ -37,11 +37,19 @@ completely different resource:
 
 ```mermaid
 flowchart LR
-    A["Suspected condition<br/>(Primary/Secondary Care)"] --> B["Test ordered"]
-    B --> C["Result panel<br/>(QuestionnaireResponse)"]
-    C --> D["FHIR Variant"]
-    D --> E["FHIR Diagnostic<br/>Implication"]
-    E --> F["Confirmed Condition<br/>(back to Order Placer)"]
+    subgraph PSC["Primary/Secondary Care Domain — Order Placer"]
+        A["Suspected condition"]
+        B["Test ordered"]
+        F["Confirmed Condition<br/>(back to Order Placer)"]
+    end
+
+    subgraph LAB["Genomics Laboratory Domain — Order Filler"]
+        C["Result panel<br/>(QuestionnaireResponse)"]
+        D["FHIR Variant"]
+        E["FHIR Diagnostic<br/>Implication"]
+    end
+
+    A --> B --> C --> D --> E --> F
 ```
 
 To complicate matters further, parts of this same chain may travel as HL7 v2
