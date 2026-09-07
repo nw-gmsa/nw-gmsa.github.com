@@ -39,6 +39,7 @@ completely different resource:
 flowchart LR
     subgraph PSC["Primary/Secondary Care Domain — Order Placer"]
         A["Suspected condition"]
+        TOF["Test Order Form"]
         B["Test ordered"]
         F["Confirmed Condition<br/>(back to Order Placer)"]
     end
@@ -49,7 +50,7 @@ flowchart LR
         E["FHIR Diagnostic<br/>Implication"]
     end
 
-    A --> B --> C --> D --> E --> F
+    A --> TOF --> B --> C --> D --> E --> F
 ```
 
 To complicate matters further, parts of this same chain may travel as HL7 v2
