@@ -59,6 +59,34 @@ arrive as a sentence within a PDF report rather than as discrete data at all
 - see [Unstructured and Structured Laboratory
 Reports](Questionnaire-GenomicTestReport.html#unstructured-and-structured-laboratory-reports).
 
+**This isn't specific to genomics.** The same shape-shifting happens in any
+diagnostic pathway that crosses a Primary/Secondary Care boundary. For
+example, a **cardiology** pathway follows an equivalent chain: a suspected
+cardiac condition (e.g. suspected atrial fibrillation) leads to a Test Order
+Form for an ECG/Holter monitor, which becomes the test order itself. The
+cardiology domain then produces its own result panel, a discrete `Observation`
+finding (e.g. an arrhythmia detected on the trace), and a reported diagnostic
+conclusion - before, once reviewed, a confirmed `Condition` goes back to the
+Order Placer, just as it does for a genomic variant:
+
+```mermaid
+flowchart LR
+    subgraph PSC2["Primary/Secondary Care Domain — Order Placer"]
+        A2["Suspected condition<br/>e.g. suspected AF"]
+        TOF2["Test Order Form"]
+        B2["Test ordered<br/>e.g. ECG/Holter monitor"]
+        F2["Confirmed Condition<br/>(back to Order Placer)"]
+    end
+
+    subgraph CARD["Cardiology Domain — Order Filler"]
+        C2["Result panel<br/>e.g. ECG trace"]
+        D2["FHIR Observation<br/>e.g. arrhythmia finding"]
+        E2["Diagnostic conclusion<br/>(DiagnosticReport.conclusion)"]
+    end
+
+    A2 --> TOF2 --> B2 --> C2 --> D2 --> E2 --> F2
+```
+
 Rather than every consuming system resolving these against the national
 service directly, this guide's resources carry identifiers that *reference*
 nationally-held data, while a **local copy** of the resource itself is still
