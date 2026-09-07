@@ -226,3 +226,26 @@ Bucket for local codes
 * #HLAClassIAndIITyping "HLA Class I and Class II type"
 * #ChimerismTotalWholeBlood "Total / Whole Blood"
 * #ChimerismLineageSpecificHSCT "Lineage specific"
+
+// H&I Organ Transplant (Patients and Donors) Test Request Form (NHSBT
+// FRM1008) Ask At Order Entry Codes - see
+// Questionnaire-OrganTransplantPatientsAndDonorsAskAtOrderEntry.html
+* #CategoryPatientRenal "Patient - Renal"
+* #CategoryPatientNonRenal "Patient - Non-Renal"
+* #CategoryDonor "Donor"
+* #RenalPreDialysis "Pre-dialysis"
+* #RenalCAPD "CAPD"
+* #RenalHaemodialysis "Haemodialysis"
+* #RenalPostTransplant "Post transplant"
+* #NonRenalCardiothoracic "Cardiothoracic"
+* #NonRenalLiverSmallBowel "Liver/small bowel"
+* #NonRenalCornea "Cornea"
+* #NonRenalOther "Other"
+* #DonorPreTransplant "Pre transplant"
+* #DonorPostTransplant "Post transplant"
+* #DonorLiveDonor "Live donor"
+* #DonorAltruisticDonor "Altruistic donor"
+* #OrganHLAType "HLA type"
+* #OrganHLASpecificAntibodies "HLA specific antibodies"
+* #OrganLiveDonorCrossmatch "Live donor crossmatch"
+* #OrganAutoCrossmatch "Auto crossmatch"
