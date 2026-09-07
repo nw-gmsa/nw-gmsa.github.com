@@ -48,7 +48,7 @@ flowchart LR
 - The molecular genomic reflex order is **conditional**, triggered by the cytogenetic result/local protocol, not by the original referring clinician - this reflex decision logic sits inside HODS/pathology and isn't modelled by this IG.
 - The report the referring clinician ultimately receives is a single **combined** `LAB-3` report, not two separate cytogenetic and molecular genomic reports.
 - The cytogenetics reflex order goes to **Shire LIMS**, but this order is not believed to be electronic today - see [Current Process](#current-process).
-- The combined `LAB-3` report back to the referring clinician is also not believed to be sent as HL7 `ORU_R01`/`LAB-3` today. Of the transactions in this pathway, only the Shire → HODS Cytogenetic Genomic Report (`LAB-36`) is confirmed electronic - see [Current Process](#current-process).
+- The combined `LAB-3` report back to the referring clinician is also not believed to be sent as HL7 `ORU_R01`/`LAB-3` today - more likely a **secure email alert with a link to the report**, matching the same pattern already confirmed for the equivalent LAB-3 leg in [NE&Y Management Information (ctDNA)](NEYManagementInformation.html#current-process). Of the transactions in this pathway, only the Shire → HODS Cytogenetic Genomic Report (`LAB-36`) is confirmed electronic - see [Current Process](#current-process).
 
 ## Actors
 
@@ -69,7 +69,7 @@ flowchart LR
 | `LAB-36`    | **Cytogenetic Genomic Report**             | Order Filler (Pathology - Shire LIMS) → Order Filler (HODS) |
 | `LAB-35`    | Molecular Genomic Reflex Order            | Order Filler (HODS) → Order Filler (Genomics)  |
 | `LAB-36`    | Molecular Genomic Report                  | Order Filler (Genomics) → Order Filler (HODS)  |
-| `LAB-3` (not believed to be electronic today) | Laboratory Report (combined) | Order Filler (HODS) → Order Placer   |
+| `LAB-3` (believed to be a secure email alert with a report link, not electronic HL7 v2) | Laboratory Report (combined) | Order Filler (HODS) → Order Placer   |
 {:.grid}
 
 Only the Shire → HODS Cytogenetic Genomic Report (`LAB-36`) above is confirmed as
@@ -89,11 +89,16 @@ Pathology](CheshireAndMerseysidePathology.html) for the related pathology-LIMS
 The cytogenetics laboratory here is **Shire LIMS** (MFT's cellular pathology
 LIMS), the same LIMS as the Cheshire and Merseyside scenario. The Cytogenetics
 Reflex Order (`LAB-35`) from HODS to Shire is not believed to be an electronic
-transaction today, and the combined report (`LAB-3`) from HODS back to the
-referring clinician is also not believed to be sent electronically (as HL7
-`ORU_R01`) today - both are shown in the sequence diagram below as such,
-pending confirmation. Of the transactions in this pathway, only the Shire →
-HODS Cytogenetic Genomic Report (`LAB-36`) is confirmed electronic.
+transaction today, pending confirmation - shown in the sequence diagram below
+as such. The combined report (`LAB-3`) from HODS back to the referring
+clinician is similarly not believed to be sent electronically (as HL7
+`ORU_R01`) today - more likely a **secure email alert with a link to the
+report**, following the same pattern already confirmed for the equivalent
+LAB-3 leg in [NE&Y Management Information
+(ctDNA)](NEYManagementInformation.html#current-process) (there, delivered as
+a PDF via NHS.net secure email). Of the transactions in this pathway, only
+the Shire → HODS Cytogenetic Genomic Report (`LAB-36`) is confirmed
+electronic.
 
 ### Haematological Malignancy Diagnostic Services
 
@@ -127,7 +132,7 @@ opt Order Filler (HODS) creates Molecular Genomic Order
     LIMSG ->> LIMS: Send Molecular Genomic Report R01 (LAB-36)
 end
 LIMS -->> LIMS: Write Report
-LIMS -->> EPR: Send Laboratory Report R01 (LAB-3) - not believed to be electronic today
+LIMS -->> EPR: Send Laboratory Report (LAB-3) - believed to be a secure email alert with a report link, not electronic HL7 v2
 ```
 
 This pathway can also apply to children's cancer referrals - see [Cancer
