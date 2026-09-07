@@ -107,7 +107,7 @@ Usage:  #definition
     * answerOption[+].valueCoding = $nwgmsa#ChimerismCD15 "Chimerism CD15"
     * answerOption[+].valueCoding = $nwgmsa#ChimerismCD19 "Chimerism CD19"
     * answerOption[+].valueCoding = $nwgmsa#ChimerismLineageOther "Chimerism Lineage Other"
-    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.code"
+    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.orderDetail"
     * item[+]
       * linkId = "ChimIG/patient_test-designNote"
       * type = #display
@@ -122,7 +122,12 @@ Usage:  #definition
       (after Specimen Source) to match `NTE|2` in the live Histotrac order, whose
       NTE-3 value carries a `(PB)` suffix ("Chimerism Peripheral Blood (PB)") the Hive
       checkbox label itself doesn't show - the same OBR-4-restatement behaviour as HLA
-      Tests - Transplant's Patient Test(s) item.
+      Tests - Transplant's Patient Test(s) item. Mapped to `ServiceRequest.orderDetail`
+      rather than `ServiceRequest.code` - the same reasoning as that item:
+      `ServiceRequest.code` is single-cardinality and already targeted by the base
+      [Genomic Test Order](Questionnaire-GenomicTestOrder.html)'s own Test Code item,
+      with no `enableWhen` to say which wins, while `orderDetail` is repeating and
+      intended for exactly this kind of further order qualifier.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
     * item[+]
