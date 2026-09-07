@@ -432,7 +432,7 @@ Usage:  #definition
     * text = "Request details"
     * repeats = true
     * required = true
-    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.code"
+    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.orderDetail"
     * answerOption[+].valueCoding = $nwgmsa#OrganHLAType "HLA type (6ml EDTA)"
     * answerOption[+].valueCoding = $nwgmsa#OrganHLASpecificAntibodies "HLA specific antibodies (6ml clotted)"
     * answerOption[+].valueCoding = $nwgmsa#OrganLiveDonorCrossmatch "Live donor crossmatch"
@@ -448,6 +448,11 @@ Usage:  #definition
       HLA Type Recipient, DSA, HLA Auto XM), though conceptually related (Live donor
       crossmatch/Auto crossmatch here are close to DSA/HLA Auto XM there). Coded locally
       against `NWGMSA` rather than attempting a direct 1:1 mapping between the two lists,
-      since neither this IG nor NHSBT publishes one.
+      since neither this IG nor NHSBT publishes one. Mapped to `ServiceRequest.orderDetail`
+      rather than `ServiceRequest.code` - the same reasoning as [HLA Tests -
+      Transplant](Questionnaire-HLATestsTransplantAskAtOrderEntry.html#HistoIG/patient_test)'s
+      own `patient_test` item: `ServiceRequest.code` is single-cardinality and not used by
+      this Questionnaire's own primary test-code item, and `orderDetail` is repeating and
+      intended for exactly this kind of further order qualifier.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help

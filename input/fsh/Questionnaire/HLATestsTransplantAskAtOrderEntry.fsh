@@ -78,16 +78,22 @@ Usage:  #definition
     * answerOption[+].valueCoding = $nwgmsa#HLATypeRecipient "HLA Type Recipient"
     * answerOption[+].valueCoding = $nwgmsa#DSA "DSA"
     * answerOption[+].valueCoding = $nwgmsa#HLAAutoXM "HLA Auto XM"
-    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.code"
+    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.orderDetail"
     * item[+]
       * linkId = "HistoIG/patient_test-designNote"
       * type = #display
       * text = """
-      Histotrac NTE-3 (CommentType=OSQ): restates the OBR-4 test name, not a new
-      mapping. Confirmed as this fixed 5-value checklist (`repeats = true`, since the
-      Hive UI presents them as checkboxes - more than one may be selected per order)
-      from the Hive/Histotrac order-entry UI, shown identically regardless of Patient
-      Type (Stem cell or Renal) - coded locally against the `NWGMSA` CodeSystem.
+      Histotrac NTE-3 (CommentType=OSQ): restates the OBR-4 test name. Mapped to
+      `ServiceRequest.orderDetail` rather than `ServiceRequest.code` - the base
+      [Genomic Test Order](Questionnaire-GenomicTestOrder.html)'s own Test Code item
+      already targets `ServiceRequest.code` (single-cardinality), so reusing it here
+      would conflict with no `enableWhen` to say which item wins.
+      `ServiceRequest.orderDetail` is repeating and intended for exactly this kind of
+      further order qualifier, and matches this item's own `repeats = true` (the Hive
+      UI presents them as checkboxes - more than one may be selected per order).
+      Confirmed as this fixed 5-value checklist from the Hive/Histotrac order-entry UI,
+      shown identically regardless of Patient Type (Stem cell or Renal) - coded locally
+      against the `NWGMSA` CodeSystem.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
     * item[+]
