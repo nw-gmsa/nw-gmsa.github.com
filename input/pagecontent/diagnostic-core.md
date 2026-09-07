@@ -97,7 +97,7 @@ Patient Registry, Service Provider Directory Registry and Clinical
 Categorization Registry - scoped down to what the UK's own national services
 actually provide, plus what stays genuinely local.
 
-### Patient Registry (PDS/MPIP)
+### Patient Registry (PDS)
 
 Analogous to FHIR's own [Patient
 Registry](https://hl7.org/fhir/administration-module.html#patient-reg), but
