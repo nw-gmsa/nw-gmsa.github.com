@@ -9,30 +9,126 @@ In software design, these areas are often referred to as [domains](https://en.wi
 Rather than every consuming system resolving these against the national
 service directly, this guide's resources carry identifiers that *reference*
 nationally-held data, while a **local copy** of the resource itself is still
-maintained where a genuine local need requires it:
+maintained where a genuine local need requires it. The three registers below
+follow the same shape as HL7 FHIR's own [Administration
+Module](https://hl7.org/fhir/administration-module.html) registry pattern -
+Patient Registry, Service Provider Directory Registry and Clinical
+Categorization Registry - scoped down to what the UK's own national services
+actually provide, plus what stays genuinely local.
 
-- **Master Patient Index** - [Patient](StructureDefinition-Patient.html)
-  references NHS England's Personal Demographics Service (PDS) via the
-  patient's NHS Number - see [NHS Identifier](StructureDefinition-NHSIdentifier.html).
-  A local copy of `Patient` is still maintained, rather than resolving PDS on
-  every use, because this guide also needs to support identifiers PDS itself
-  doesn't carry - CHI (Scotland) and HSC/HSNI (Northern Ireland) numbers, and
-  locally-assigned [Medical Record Numbers](StructureDefinition-MedicalRecordNumber.html) -
-  see [NHS Identifier](StructureDefinition-NHSIdentifier.html) for how these
-  are represented together. The Regional Integration Engine (RIE) performs
-  the actual PDS check/enrichment - see [Regional Integration Engine (RIE) -
-  Order Process](overview.html#order-process) and [Report
-  Process](overview.html#report-process).
-- **Care Directory Services** - [Organization](StructureDefinition-Organization.html)
-  and [Practitioner](StructureDefinition-Practitioner.html) reference NHS
-  England's centrally-held Organisation Data Service/Transfer (ODS/ODT), via
-  [Organisation Code](StructureDefinition-OrganisationCode.html) (ODS Code)
-  and [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html)
-  (GMP/GMC Number). As with the Master Patient Index above, the RIE performs
-  this check/enrichment against the live ODT API rather than every consuming
-  system doing so individually - see [Regional Integration Engine (RIE) -
-  Order Process](overview.html#order-process) and [Report
-  Process](overview.html#report-process).
+### Patient Registry (PDS/MPIP)
+
+Analogous to FHIR's own [Patient
+Registry](https://hl7.org/fhir/administration-module.html#patient-reg), but
+scoped to just `Patient` and `RelatedPerson` - this guide has no need for the
+generic `Person`/`Group` resources that page also shows.
+[Patient](StructureDefinition-Patient.html) references NHS England's
+Personal Demographics Service (PDS) - the UK's Master Patient Index (MPIP) -
+via the patient's NHS Number - see [NHS
+Identifier](StructureDefinition-NHSIdentifier.html). A local copy of
+`Patient` is still maintained, rather than resolving PDS on every use,
+because this guide also needs to support identifiers PDS itself doesn't
+carry - CHI (Scotland) and HSC/HSNI (Northern Ireland) numbers, and
+locally-assigned [Medical Record
+Numbers](StructureDefinition-MedicalRecordNumber.html) - see [NHS
+Identifier](StructureDefinition-NHSIdentifier.html) for how these are
+represented together. The Regional Integration Engine (RIE) performs the
+actual PDS check/enrichment - see [Regional Integration Engine (RIE) - Order
+Process](overview.html#order-process) and [Report
+Process](overview.html#report-process).
+
+```mermaid
+flowchart LR
+    PDS[("PDS<br/>national Master Patient Index (MPIP)")]
+    Patient["Patient<br/>local copy - NHS Number,<br/>plus CHI/HSC/MRN PDS doesn't carry"]
+    RelatedPerson["RelatedPerson<br/>e.g. mother of a fetus,<br/>a family member"]
+
+    Patient -- "NHS Number" --> PDS
+    RelatedPerson --> Patient
+```
+
+### Care Directory Services
+
+Analogous to FHIR's own [Service Provider Directory
+Registry](https://hl7.org/fhir/administration-module.html#dir-reg), with
+each resource sourced from a different national service rather than one
+single directory:
+
+- [Organization](StructureDefinition-Organization.html),
+  [Practitioner](StructureDefinition-Practitioner.html),
+  `PractitionerRole` and `OrganizationAffiliation` are provided by NHS
+  England's centrally-held Organisation Data Service/Transfer (ODS/ODT) FHIR
+  API and its associated bulk downloads, via [Organisation
+  Code](StructureDefinition-OrganisationCode.html) (ODS Code) and
+  [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html)
+  (GMP/GMC Number).
+- `HealthcareService` is instead provided by a mix of Directory of Services
+  (DoS) APIs, which tend to be aligned to a particular technical service
+  (e.g. the NHS e-Referral Service, eRS), a particular order type (e.g. the
+  Electronic Prescription Service, EPS) or a clinical specialty, rather than
+  one single national HealthcareService directory.
+- `Endpoint` has no direct NHS England equivalent used here, but Spine holds
+  an equivalent concept for routing technical endpoints.
+
+As with the Patient Registry above, the RIE performs this check/enrichment
+against the live ODT API rather than every consuming system doing so
+individually - see [Regional Integration Engine (RIE) - Order
+Process](overview.html#order-process) and [Report
+Process](overview.html#report-process).
+
+```mermaid
+flowchart TB
+    subgraph National["National Care Directory Services"]
+        ODS[("ODS/ODT FHIR API<br/>+ bulk downloads")]
+        DoS[("Directory of Services (DoS) APIs<br/>aligned to a technical service (eRS),<br/>order type (EPS), or specialty")]
+        Spine[("Spine<br/>Endpoint equivalent")]
+    end
+
+    Organization["Organization"]
+    Practitioner["Practitioner"]
+    PractitionerRole["PractitionerRole"]
+    OrganizationAffiliation["OrganizationAffiliation"]
+    HealthcareService["HealthcareService"]
+    Endpoint["Endpoint"]
+
+    ODS --> Organization
+    ODS --> Practitioner
+    ODS --> PractitionerRole
+    ODS --> OrganizationAffiliation
+    DoS --> HealthcareService
+    Spine --> Endpoint
+
+    PractitionerRole --> Practitioner
+    PractitionerRole --> Organization
+    OrganizationAffiliation --> Organization
+    HealthcareService --> Organization
+```
+
+### Clinical Categorisation (Trust-Local, not a National Register)
+
+Analogous to FHIR's own [Clinical Categorization
+Registry](https://hl7.org/fhir/administration-module.html#clinical-reg) -
+`EpisodeOfCare`, `Encounter`, `Account` - but unlike the two registers above,
+this one is **not** a national service: it is normally handled locally by
+each NHS Trust's own PAS/EPR. In the UK, **Account Number** normally refers
+to `EpisodeOfCare.identifier` - also known as the **Hospital Spell
+Identifier** - see [Hospital Provider Spell
+Identifier](StructureDefinition-HospitalProviderSpellIdentifier.html). This
+guide's own [HospitalSpell](StructureDefinition-HospitalSpell.html) profile
+(built on `Encounter`, per the [Entity Relationship
+Diagram](#entity-relationship-diagram) below) carries that same identifier
+value, since no single national register of episodes/spells exists to
+reference instead.
+
+```mermaid
+flowchart LR
+    Trust[("NHS Trust PAS/EPR<br/>(local - not a national register)")]
+    EpisodeOfCare["EpisodeOfCare<br/>Account Number / Hospital<br/>Spell Identifier"]
+    HospitalSpell["HospitalSpell<br/>(this guide's own Encounter<br/>profile, same identifier)"]
+
+    Trust --> EpisodeOfCare
+    Trust --> HospitalSpell
+```
 
 ## Entity Relationship Diagram
 
