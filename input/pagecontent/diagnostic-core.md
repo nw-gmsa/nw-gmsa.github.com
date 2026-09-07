@@ -22,6 +22,34 @@ calls a **Canonical Data Model**, and what Data Engineering calls a **[Data
 Contract](https://en.wikipedia.org/wiki/Data_contract)** - in HL7 FHIR terms,
 that's expressed as FHIR Profiles and the core models described below.
 
+**Why this is hard in practice.** The same underlying clinical fact can take
+a different shape at almost every step as it crosses these bounded contexts.
+For example, whether a variant can even be tested for starts as a
+**suspected condition** in a primary/secondary care system - the reason a
+test is requested in the first place. Following testing, it becomes a
+**result panel** (e.g. captured as a `QuestionnaireResponse`), then a
+discrete [Variant](StructureDefinition-Variant.html) Observation, and once
+reviewed, a [Diagnostic
+Implication](StructureDefinition-DiagnosticImplication.html). Only once
+confirmed is it reported back to the Order Placer as a `Condition` - the same
+clinical fact the referrer originally suspected, now represented by a
+completely different resource:
+
+```mermaid
+flowchart LR
+    A["Suspected condition<br/>(Primary/Secondary Care)"] --> B["Test ordered"]
+    B --> C["Result panel<br/>(QuestionnaireResponse)"]
+    C --> D["FHIR Variant"]
+    D --> E["FHIR Diagnostic<br/>Implication"]
+    E --> F["Confirmed Condition<br/>(back to Order Placer)"]
+```
+
+To complicate matters further, parts of this same chain may travel as HL7 v2
+rather than FHIR in places, and the confirmed finding may just as easily
+arrive as a sentence within a PDF report rather than as discrete data at all
+- see [Unstructured and Structured Laboratory
+Reports](Questionnaire-GenomicTestReport.html#unstructured-and-structured-laboratory-reports).
+
 Rather than every consuming system resolving these against the national
 service directly, this guide's resources carry identifiers that *reference*
 nationally-held data, while a **local copy** of the resource itself is still
