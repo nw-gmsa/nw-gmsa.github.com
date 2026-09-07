@@ -23,7 +23,7 @@ NW Genomics Regional Integration Engine (RIE).
 
 ## References
 
-1. [Diagnostic Core](diagnostic-core.html)
+1. [Diagnostic Model Overview](diagnostic-core.html)
 2. [HL7 Genomics Reporting IG](https://build.fhir.org/ig/HL7/genomics-reporting/)
 3. [StarLIMS / iGene Integration](starLIMS.html)
 4. [Canonical Data Model](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CanonicalDataModel.html) pattern

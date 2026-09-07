@@ -44,6 +44,7 @@
 
 - [HL7 Version 2.5.1 Implementation Guide: Lab Results Interface (LRI), Release 1 from May 2017](https://confluence.hl7.org/download/attachments/25559919/2018%2004%2003%20-%20V2%20LRI%20-%20Ch.%205%20CG%20and%20Code%20System%20Tables.pdf?api=v2) includes **Data Standards**
 - [EPIC HL7 v2](https://open.epic.com/Interface/HL7v2) See **Discrete Genomic Results** (RIE to EPIC EPR)
+- [CodeX HL7 FHIR Accelerator - GenomeX Data Exchange - Transport](https://build.fhir.org/ig/CodeX-HL7-FHIR-Accelerator/GenomeX-DataExchange/transport.html) - suggests sending a genomic FHIR Bundle via `ORU_R01`, either embedded or via `OBX-2 = RP` (Reference Pointer) pointing to a URL - see the design discussion under [MDM_T02](#mdm_t02-original-document-notification-and-content) below for how this differs from this guide's own approach
 
 ### Message
 
@@ -95,6 +96,43 @@ See also which are functionally equivalent and have a similar data model:
 
 - IHE XDS Cross-Enterprise Document Sharing (XDS.b) or Cross-Enterprise Document Reliable Interchange (XDR) - [Provide and Register Document Set-b [ITI-41]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-41.html#3.41)
 - IHE MHD Mobile access to Health Documents (MHD) - [Simplified Publish [ITI-105]](https://profiles.ihe.net/ITI/MHD/ITI-105.html)
+
+### Design Decision: ORU_R01 vs MDM_T02/ITI-105 for the Laboratory Report (Composition)
+
+<div class="alert alert-danger" role="alert">
+This has not yet been decided.
+</div>
+
+[CodeX HL7 FHIR Accelerator - GenomeX Data Exchange -
+Transport](https://build.fhir.org/ig/CodeX-HL7-FHIR-Accelerator/GenomeX-DataExchange/transport.html)
+suggests sending a genomic FHIR Bundle - the equivalent of this guide's own
+[Laboratory Report
+(Composition)](StructureDefinition-Composition-GenomicReport.html), see
+[Diagnostic Model Overview - Closed-Loop
+Referrals](diagnostic-core.html#closed-loop-referrals) - embedded in, or
+referenced from, an `ORU_R01` message: either the whole Bundle base64-encoded
+in an `OBX`, or an `OBX-2 = RP` (Reference Pointer) `OBX` whose `OBX-5` is a
+URL the receiver retrieves the FHIR resource from - see [OBX-2 Value
+Type](#obx-2-value-type) below. This guide instead suggests `MDM_T02` or IHE
+MHD [Simplified Publish [ITI-105]](https://profiles.ihe.net/ITI/MHD/ITI-105.html)
+for that same content, treating it as a *document* rather than a discrete
+result.
+
+By the same logic, the `RP` pattern above is really a **document
+notification** - telling the receiver a document/resource exists at a URL,
+without embedding it - which is what HL7 v2 `MDM^T01` (Document Notification,
+without content) or IHE Document Metadata Subscription (DSUBm) are for,
+rather than `ORU_R01`/`OBX`. Both remain live options for how a Laboratory
+Report (Composition) is signalled/delivered in this guide.
+
+This decision is only about how the *document* (the Laboratory Report
+(Composition)) is packaged and delivered - it does not affect `ORU_R01`'s
+existing use for *discrete, structured* results (the `OBX` conventions
+described throughout this page). For that content this guide already follows
+the [HL7 Version 2.5.1 Implementation Guide: Lab Results Interface
+(LRI)](https://confluence.hl7.org/download/attachments/25559919/2018%2004%2003%20-%20V2%20LRI%20-%20Ch.%205%20CG%20and%20Code%20System%20Tables.pdf?api=v2)
+- e.g. the same LOINC codes and panel/battery conventions - rather than
+inventing its own.
 
 ### References 
 

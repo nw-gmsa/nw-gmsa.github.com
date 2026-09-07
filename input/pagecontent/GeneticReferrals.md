@@ -34,7 +34,7 @@ LAB-1 and LAB-3](LTW.html#laboratory-order-and-report-lab-1-and-lab-3).
 9. [NHS England FHIR Genomics Implementation Guide - Clinical Scenarios](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinical-Scenarios?version=0.5.3) - may contain scenarios relevant to this pattern
 10. [Cancer Background Information for Use Cases - Genetic Counselling Referral Across Regions](CancerNOS.html#genetic-counselling-referral-across-regions) - the worked narrative example this page generalises
 11. Macmillan - [What is genetic counselling?](https://www.macmillan.org.uk/cancer-information-and-support/worried-about-cancer/causes-and-risk-factors/what-is-genetic-counselling) - background on cascade/predictive testing
-12. [Diagnostic Core](diagnostic-core.html) - the identifier profiles reused in the [Referral Data Model](#referral-data-model) below
+12. [Diagnostic Model Overview](diagnostic-core.html) - the identifier profiles reused in the [Referral Data Model](#referral-data-model) below
 
 ## Overview
 
@@ -211,7 +211,7 @@ This is a **high-level sketch of the referral only** - not the report back, and 
 scheduling. It only lists elements that are common data items already needed
 elsewhere in this pathway (e.g. identifiers already elaborated under [Specimen
 Transportation and Management](SpecimenTransportationAndManagement.html#key-identifiers)
-and [Diagnostic Core](diagnostic-core.html)), mapped from HL7 v2 `REF_I12` segments on
+and [Diagnostic Model Overview](diagnostic-core.html)), mapped from HL7 v2 `REF_I12` segments on
 one side and FHIR resources (as used by eRS and generally in this IG) on the other.
 It is not a proposal to build either interface - it exists so that a future
 `ServiceRequest`-based referral profile, if ever built, can reuse identifiers this IG

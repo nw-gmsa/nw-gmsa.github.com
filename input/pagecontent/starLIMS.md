@@ -7,7 +7,7 @@ NW Genomics — StarLIMS / iGene Integration.
 ## References
 
 1. [Inter Laboratory Workflow (ILW) - Sub-orders LAB-35 and LAB-36](ILW.html#sub-orders-lab-35-and-lab-36)
-2. [Diagnostic Core](diagnostic-core.html)
+2. [Diagnostic Model Overview](diagnostic-core.html)
 3. [Regional Integration Engine (RIE)](overview.html)
 4. [FHIR Validation](testing.html#fhir-validation)
 5. [nw-gmsa.github.io/en/index.html](https://nw-gmsa.github.io/en/index.html) - the North West "data contract" all FHIR Repository resources must conform to

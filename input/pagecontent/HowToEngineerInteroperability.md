@@ -278,7 +278,7 @@ check whether it already exists in:
   Management](SpecimenTransportationAndManagement.html), [Genetic
   Referrals](GeneticReferrals.html).
 - **Data Models (Volume 3)** - identifiers, resources and profiles already
-  defined, e.g. [Diagnostic Core](diagnostic-core.html), [Genomic Test
+  defined, e.g. [Diagnostic Model Overview](diagnostic-core.html), [Genomic Test
   Order](Questionnaire-GenomicTestOrder.html), [Genomic Test
   Report](Questionnaire-GenomicTestReport.html), [Laboratory
   Analyte Result](StructureDefinition-LaboratoryAnalyteResult.html).
@@ -515,7 +515,7 @@ being developed alongside this IG.
 **Bypassing semantic and interoperability data modelling entirely** is often
 caused by building directly against base models from HL7 v2, FHIR or UK Core
 (this doesn't include the common English NHS interoperability data models
-this IG is built on, e.g. [Diagnostic Core](diagnostic-core.html)). Base
+this IG is built on, e.g. [Diagnostic Model Overview](diagnostic-core.html)). Base
 standards define what's possible to represent, not what a specific NHS
 workflow actually needs - building directly against them skips the step
 where the workflow and information requirements are agreed and reconciled,

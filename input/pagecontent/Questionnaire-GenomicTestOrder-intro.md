@@ -9,7 +9,7 @@ describes - Patient, Hospital Spell, Diagnostic Workflow and Specimen -
 is a **core model for diagnostic orders generally**, not something unique to
 genomics. The same shape applies equally to pathology, radiology and clinical
 referral orders; genomics is simply the domain this IG documents it against
-first. See [Diagnostic Core](diagnostic-core.html) for the basic model this
+first. See [Diagnostic Model Overview](diagnostic-core.html) for the basic model this
 Questionnaire adds detail to, and how it relates to [Genomic Test
 Report](Questionnaire-GenomicTestReport.html) on the report side.
 
@@ -34,7 +34,7 @@ Report](Questionnaire-GenomicTestReport.html) on the report side.
 </div>
 
 This is a **level 2** (field-level) view of the [basic model](diagnostic-core.html#entity-relationship-diagram)
-introduced in Diagnostic Core, showing the entities and key attributes a
+introduced in Diagnostic Model Overview, showing the entities and key attributes a
 Genomic Test Order actually carries:
 
 ```mermaid

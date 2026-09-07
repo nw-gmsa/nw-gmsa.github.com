@@ -181,7 +181,7 @@ a choice between variants.
   Entry Questions](#order-entry-questions) above
 - [RelatedPerson](StructureDefinition-RelatedPerson.html) - the FHIR profile
   the Consultand Questionnaire structures (HL7 v2 `NK1`)
-- [Diagnostic Core](diagnostic-core.html) - the identifier profiles reused
+- [Diagnostic Model Overview](diagnostic-core.html) - the identifier profiles reused
   above ([NHS Identifier](StructureDefinition-NHSIdentifier.html), [Medical
   Record Number](StructureDefinition-MedicalRecordNumber.html), [Order
   Identifier](StructureDefinition-OrderIdentifier.html))

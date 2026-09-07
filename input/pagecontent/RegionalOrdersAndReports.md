@@ -10,7 +10,7 @@ iGene Orders and Reports: how Alder Hey, Manchester Foundation Trust (MFT) and L
 2. [Genomic Test Order](Questionnaire-GenomicTestOrder.html)
 3. [Ask At Order Entry Questions](Questionnaire-GenomicGeneralAskAtOrderEntry.html)
 4. [LTW - Laboratory Order (LAB-1)](LTW.html#laboratory-order-lab-1) / [Laboratory Report (LAB-3)](LTW.html#laboratory-report-lab-3)
-5. [Diagnostic Core](diagnostic-core.html)
+5. [Diagnostic Model Overview](diagnostic-core.html)
 
 <div class="alert alert-info" role="alert">
 <b>Proposed extension:</b> <a href="WholeGenomicSequence.html">Whole Genome Sequencing

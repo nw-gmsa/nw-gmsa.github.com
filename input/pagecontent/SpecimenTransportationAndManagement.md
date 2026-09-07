@@ -21,7 +21,7 @@ conventions, specimen reception process) - that alignment is left for a future p
 1. IHE PaLM Technical Framework Supplement - [Specimen Event Tracking (SET)](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_Suppl_SET.pdf) - a specification for tracking specimen progress along this process (not adopted here - background/reference only)
 2. [GS1 UK Healthcare](https://www.gs1uk.org/industries/healthcare) - UK barcode standards that can be used with this process/workflow (not mandated here - background/reference only)
 3. [Laboratory Testing Workflow (LTW) - Laboratory Order (LAB-1)](LTW.html#laboratory-order-lab-1) - the electronic order this physical process runs alongside
-4. [Diagnostic Core](diagnostic-core.html) - the identifiers referenced throughout this page
+4. [Diagnostic Model Overview](diagnostic-core.html) - the identifiers referenced throughout this page
 5. [Specimen](StructureDefinition-Specimen.html)
 
 ## Overview
