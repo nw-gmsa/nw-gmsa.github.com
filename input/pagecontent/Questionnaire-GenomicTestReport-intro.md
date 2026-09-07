@@ -22,7 +22,7 @@ Order](Questionnaire-GenomicTestOrder.html) on the order side.
 - [NHS England Genomics DiagnosticReport](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/FHIRAssets/Profiles/All-Profiles/UKCore-DiagnosticReport) use text descriptions only, not the rendered profile.
 - [HL7 Europe Core - DiagnosticReport](https://hl7.eu/fhir/base/2.0.0-ballot/StructureDefinition-diagnosticReport-eu-core.html)
 
-## Domain Archetype1
+## Domain Archetype 
 
 This is a **level 2** (field-level) view of the [basic model](diagnostic-core.html#entity-relationship-diagram)
 introduced in Diagnostic Model Overview, showing the entities and key attributes a
