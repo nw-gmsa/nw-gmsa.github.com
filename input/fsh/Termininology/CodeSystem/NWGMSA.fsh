@@ -214,3 +214,15 @@ Bucket for local codes
 * #SIHMDSLabID "SIHMDS Lab ID"
 * #HaematoOncologyLiquidTumourType "Haemato-oncology liquid tumour type (AML/ALL/Other)"
 * #NucleatedCellCount "Nucleated cell count (bone marrow/peripheral blood sample)"
+
+// H&I Haematopoietic Stem Cell Transplantation (Recipients & Donors) Test
+// Request Form (NHSBT FRM1010) Ask At Order Entry Codes - see
+// Questionnaire-HSCTRecipientsAndDonorsAskAtOrderEntry.html
+* #FamilyMemberPotentialDonor "Family Member / Potential Donor"
+* #CMVPositive "Positive"
+* #CMVNegative "Negative"
+* #CMVDontKnow "Don't know"
+* #HLAClassITyping "HLA Class I type"
+* #HLAClassIAndIITyping "HLA Class I and Class II type"
+* #ChimerismTotalWholeBlood "Total / Whole Blood"
+* #ChimerismLineageSpecificHSCT "Lineage specific"

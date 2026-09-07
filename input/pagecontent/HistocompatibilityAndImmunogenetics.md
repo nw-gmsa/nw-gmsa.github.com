@@ -11,6 +11,7 @@ Clatterbridge Chimerism Testing - process overview.
 3. [HL7 v2 OML_O21](hl7v2.html#oml_o21-laboratory-order)
 4. Original Histotrac `ORM^O01` order (HLA Antibody Screening) - [histotrac-MFT-HLA.txt](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/O01/histotrac-MFT-HLA.txt)
 5. Original Histotrac `ORM^O01` order (Chimerism Testing) - [histotrac-MFT-chimerism.txt](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/O01/histotrac-MFT-chimerism.txt)
+6. NHSBT H&I Haematopoietic Stem Cell Transplantation (Recipients & Donors) request form (`FRM1010`) - [NHSBT's published PDF](https://nhsbtdbe.blob.core.windows.net/umbraco-assets-corp/31364/3c-haematopoietic-stem-cell-transplantation-recipients-donors.pdf)
 
 ## Clinical Pathway Overview
 
@@ -192,7 +193,11 @@ form](Questionnaire-GenomicTestOrder.html) as every other order/test type
 that screen - see [Order Entry Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions).
 There are two such screens/Questionnaires: [HLA Tests -
 Transplant](#hla-tests-transplant-ask-at-order-entry) below, and [Chimerism Testing
-Ask At Order Entry](#chimerism-testing-ask-at-order-entry) further down the page.
+Ask At Order Entry](#chimerism-testing-ask-at-order-entry) further down the page. A
+third Questionnaire, [HSCT Recipients and Donors Ask At Order
+Entry](#hsct-recipients-and-donors-ask-at-order-entry), models NHSBT's own national
+paper request form rather than a Hive order screen - see that section for how it
+relates to the two above.
 
 #### HLA Tests - Transplant Ask At Order Entry
 
@@ -251,6 +256,30 @@ NTE|2||Patient Test(s):->Chimerism Peripheral Blood (PB)|OSQ
 This is the order-entry counterpart to the [Chimerism Testing Result Panel](#chimerism-testing-result-panel-future)
 below - this section covers what is asked when the test is *ordered*, that section
 covers the structured *result* payload once testing is complete.
+
+### HSCT Recipients and Donors Ask At Order Entry
+
+<div class="alert alert-info" role="alert">
+<b>FHIR Questionnaire:</b> <a href="Questionnaire-HSCTRecipientsAndDonorsAskAtOrderEntry.html">H&I Haematopoietic Stem Cell Transplantation (Recipients & Donors) Ask At Order Entry</a>
+</div>
+
+Unlike the two Hive-derived Questionnaires above, this one models NHS Blood and
+Transplant's (NHSBT) own national **H&I Haematopoietic Stem Cell Transplantation
+(Recipients & Donors)** paper request form (`FRM1010`) directly - see [NHSBT's
+published form](https://nhsbtdbe.blob.core.windows.net/umbraco-assets-corp/31364/3c-haematopoietic-stem-cell-transplantation-recipients-donors.pdf).
+No live system message for this form has been sourced, so field mappings are this
+IG's own best-effort candidates rather than confirmed against a live order.
+
+The form's own **HLA Typing**, **Chimerism Analysis** and **HLA Specific Antibody
+Testing** checkboxes overlap with, but are coarser than, the `Patient Test(s)`
+checklists already modelled on [HLA Tests -
+Transplant](#hla-tests-transplant-ask-at-order-entry) and [Chimerism Testing Ask At
+Order Entry](#chimerism-testing-ask-at-order-entry) above - this form only
+distinguishes HLA Class I vs Class I+II, and Chimerism Total/Whole Blood vs Lineage
+specific, not those Questionnaires' finer-grained checklists. **A separate form must
+be completed for each individual** (patient or family member/potential donor) per
+NHSBT's own instruction - modelled as a `Role` choice with `enableWhen`-conditioned
+items, since FHIR Questionnaire has no native "delete as applicable" concept.
 
 ### Chimerism Testing Result Panel (Future?)
 
