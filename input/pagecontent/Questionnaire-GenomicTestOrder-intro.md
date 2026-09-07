@@ -25,14 +25,6 @@ Report](Questionnaire-GenomicTestReport.html) on the report side.
 
 ## Domain Archetype
 
-<div class="alert alert-info" role="alert">
-<b>HL7 FHIR Profile:</b> <a href="StructureDefinition-ServiceRequest.html" _target="_blank">ServiceRequest</a> 
-</div>
-
-<div class="alert alert-info" role="alert">
-<b>HL7 v2 Segment:</b> <a href="hl7v2.html#orc" _target="_blank">ORC</a>
-</div>
-
 This is a **level 2** (field-level) view of the [basic model](diagnostic-core.html#entity-relationship-diagram)
 introduced in Diagnostic Model Overview, showing the entities and key attributes a
 Genomic Test Order actually carries:

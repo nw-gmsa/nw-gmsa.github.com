@@ -460,6 +460,7 @@ menu:
     Genetic Clinical Referral (Analysis Only): Questionnaire-GeneticClinicalReferral.html
     Laboratory Analyte Result: StructureDefinition-LaboratoryAnalyteResult.html
     Observations: StructureDefinition-Observation.html
+    Document Entry: StructureDefinition-DocumentReference.html
   Artefacts (Volume 4):
     HL7 FHIR R4: artifacts.html
     HL7 v2.5.1: hl7v2.html
