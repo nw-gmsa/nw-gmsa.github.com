@@ -29,5 +29,14 @@ itself calls the resulting order.
 * ^version = "0.1.0"
 * ^date = "2026-09-04"
 
+* ^property[+].code = #category
+* ^property[=].uri = "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory#category"
+* ^property[=].description = "Which part of the National Genomic Test Directory this code belongs to - reuses the same category values as CodeSystem-GenomicTestCode/CodeSystem-DigitalGenomicTestServices, plus histocompatibility-immunogenetics for codes outside that scheme"
+* ^property[=].type = #code
+
 * #XTRANSPX_HLAAS "HLA ANTIBODY SCREENING"
+  * ^property[+].code = #category
+  * ^property[=].valueCode = #histocompatibility-immunogenetics
 * #CHIMBTP "CHIMERISM TESTING - PERFORMABLE"
+  * ^property[+].code = #category
+  * ^property[=].valueCode = #chimerism

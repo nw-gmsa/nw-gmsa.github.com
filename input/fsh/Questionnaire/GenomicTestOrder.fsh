@@ -287,7 +287,7 @@ Usage:  #definition
     * text = "Test Code (Rare and inherited diseases)"
     * required = true
     * repeats = true
-    * answerValueSet = Canonical(GenomicRareAndInheritedDisease)
+    * answerValueSet = Canonical(RareAndInheritedDiseaseTestCodes)
   * item[+]
     * type = #choice
     * linkId = "HL7/OBR-4-h"
@@ -318,7 +318,7 @@ Usage:  #definition
     * text = "Test Code (Cancer)"
     * required = true
     * repeats = true
-    * answerValueSet = Canonical(GenomicCancer)
+    * answerValueSet = Canonical(CancerTestCode)
 
 
 // Test request	Test request ID/Order ID

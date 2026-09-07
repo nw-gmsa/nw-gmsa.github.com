@@ -229,7 +229,7 @@ Usage:  #definition
     * item[+]
       * linkId = "NOS/TestDirectoryClinicalIndication-cancer-designNote"
       * type = #display
-      * text = "Same gap-fill as GMS WGS Rare Disease's own Test Code item - the common core's Cancer Test Code branch (HL7/OBR-4-c) is scoped to GenomicCancer, not Whole Genome Sequencing."
+      * text = "Same gap-fill as GMS WGS Rare Disease's own Test Code item - the common core's Cancer Test Code branch (HL7/OBR-4-c) is scoped to CancerTestCode, not Whole Genome Sequencing."
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
   * item[+]
