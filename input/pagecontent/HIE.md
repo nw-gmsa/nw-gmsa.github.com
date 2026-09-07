@@ -205,7 +205,7 @@ sequenceDiagram
   end
 ```
 
-### Sharing Laboratory Reports (Resource and Document)  (ITI-105 plus XD-LAB)
+### Sharing Laboratory Reports (Resource and Document) (ITI-105 plus XD-LAB)
 
 When the document format is an HL7 Europe Laboratory Report FHIR Document, the Resource and Document sharing methods described above can be combined. As noted previously, the FHIR Document contains the same clinical content as the IHE LAB-3 / HL7 v2 ORU_R01 message, so it can be processed in the same way to persist or share individual resources.
 
