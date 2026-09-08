@@ -308,6 +308,22 @@ expected to obtain these values from Genomics England directly, mint them
 itself, or something else, is an open question rather than a design
 decision made here.
 
+**Which internal system NW Genomics (iGene) actually uses to perform the
+sequencing behind its Sequencing Genomic Laboratory (SGL) role is not
+documented on this page.** [Actors](#actors) above treats NW Genomics as a
+single black box that "performs the test" (`LAB-35`/`LAB-36`), without
+naming an internal pipeline the way [OMICS DSS Result
+Integration](reportable-variants.html) does for DLIMS/Omics DSS. It's
+possible dWGS sequencing runs through that same DLIMS/Omics DSS pipeline
+(and so would eventually be affected by [Clarity LIMS](ClarityLIMS.html) if
+that replaces it), or through a separate pipeline entirely - WGS is a
+different scale of sequencing from the "cancer or rare disease gene panel"
+examples [OMICS DSS Result Integration - What is being
+tested](reportable-variants.html#what-is-being-tested) gives for DLIMS, so
+the two aren't necessarily the same underlying lab operation. Not confirmed
+either way - see the matching note on [Clarity LIMS - Outstanding
+Issues](ClarityLIMS.html#outstanding-issues).
+
 
 ## Examples
 

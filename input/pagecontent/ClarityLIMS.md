@@ -17,6 +17,7 @@ Clarity LIMS Integration - proposed replacement for DLIMS and Omics DSS.
 3. Clarity LIMS - a commercial laboratory information management system (LIMS)
    platform from Illumina, commonly used in NGS/genomics laboratories for sample and
    workflow tracking
+4. [Clarity LIMS - Getting Started with the API](https://help.claritylims.illumina.com/api-and-database/api-docs/getting-started-with-api) - Illumina's own documentation for Clarity LIMS's REST API, the likely integration surface for [Outstanding Issues](#outstanding-issues) item 2 below
 
 ## Clinical Pathway Overview
 
@@ -46,11 +47,38 @@ flowchart LR
 
 ### Why this matters for developers
 
-- **Clarity LIMS is proposed to replace both DLIMS and Omics DSS** - collapsing two
-  systems (a satellite testing LIMS, plus a separate bioinformatics processing/
-  decision-support layer) into one commercial platform. Today's [work order → test →
-  bioinformatics processing](reportable-variants.html#the-end-to-end-clinical-journey)
-  steps become work order → Clarity LIMS, a single integration point instead of two.
+- **Clarity LIMS cleanly replaces DLIMS's role, but not necessarily Omics DSS's.**
+  Clarity LIMS has native, purpose-built integration with Illumina sequencers
+  (confirmed for the NextSeq 1000/2000 and MiSeq i100 series) covering run tracking,
+  automated sample sheet generation, primary sequencing QC metrics, and
+  demultiplexing statistics (parsed from `Demultiplex_stats.csv` via BaseSpace
+  Sequence Hub) - genuinely absorbing the sample/run-tracking role DLIMS plays
+  today. **This native tracking stops at demultiplexing** - Illumina's own
+  documentation describes DRAGEN secondary-analysis integration as "up to BCL
+  Convert only", with no mention of variant calling (VCF) or any other downstream
+  bioinformatic result being tracked or parsed. Everything from demultiplexed reads
+  through to a reportable variant is still a separate bioinformatics step - see
+  below.
+- **Clarity LIMS's own data model has no native concept of a genomic variant.** Its
+  REST API is built around Samples, Artifacts, Containers, Processes/Steps, Files
+  and UDFs (user-defined custom fields) - a workflow/sample-tracking model, not a
+  bioinformatics results database. A VCF or variant-report CSV can be attached as a
+  generic result file (via the same `glsstorage`/`files` mechanism used for any
+  file type - Illumina's own docs give no indication of VCF-aware parsing), or
+  individual values can be captured in UDFs if something populates them, but there
+  is no structured `Variant` resource type analogous to this IG's own
+  [Variant](StructureDefinition-Variant.html) Observation.
+- **Practical implication:** getting from a Clarity LIMS-tracked sequencing run to
+  a reportable variant still needs something to parse the attached
+  VCF/variant-report file and produce discrete, coded results - either a bespoke
+  Clarity EPP (automation hook) script, or an external bioinformatics pipeline
+  reading the file back out via the API. Functionally, this is the same role Omics
+  DSS plays today - Clarity LIMS may reposition it (e.g. as the thing writing
+  results *into* Clarity rather than *around* it), but doesn't appear to eliminate
+  the need for it, based on what's publicly documented about the API and its
+  instrument integrations. **Not yet confirmed** - would need direct testing
+  against a real Clarity LIMS instance/API to be certain, rather than published
+  documentation alone.
 - **This is directly relevant to [OMICS DSS Result Integration - Outstanding Issues,
   item 3](reportable-variants.html#outstanding-issues)** - the DLIMS Lab
   Number-to-iGene-Test-ID lookup chain exists today because Omics DSS is a
@@ -112,40 +140,56 @@ flowchart LR
     C --> D[Results]
 ```
 
-Clarity LIMS is proposed to take over both the test-performance role (currently
-DLIMS) and the bioinformatics-processing role (currently Omics DSS), as a single
-system sitting between the sample and iGene. Technically, this is still expected to
-reuse the same FHIR Repository/RIE mechanism [OMICS DSS Result
-Integration](reportable-variants.html#future-process) already establishes for
-getting a result from a processing system back to iGene, rather than Clarity LIMS
-writing to iGene directly:
+**This "Clarity LIMS" step is not a single, uniform capability** - based on what's
+publicly documented (see [Why this matters for
+developers](#why-this-matters-for-developers) above), it splits into two quite
+different parts:
+
+- **Natively covered by Clarity LIMS**: sample and run tracking through to
+  demultiplexed reads - confirmed instrument integration, no extra build needed.
+- **Not natively covered**: turning those reads into a reportable variant. Clarity
+  LIMS can *hold* a VCF/variant-report file (as a generic attachment) or a UDF
+  value, but something else still has to produce that file/value in the first
+  place - the same bioinformatics role Omics DSS plays today, whether that's an
+  external pipeline writing back into Clarity, or a Clarity EPP script calling out
+  to one.
+
+Expanding the diagram to make that split explicit:
 
 ```mermaid
 flowchart TD
-    A[iGene: Work Order Created] -->|for Clarity LIMS| B[Clarity LIMS:<br/>Test Performed +<br/>Bioinformatics Processing]
+    A[iGene: Work Order Created] -->|for Clarity LIMS| B[Clarity LIMS:<br/>Sample/Run Tracking +<br/>Demultiplexing]
     A -.->|Work Order metadata export,<br/>same process as OMICS DSS| F
-    F -.->|Clarity LIMS reads<br/>Work Order metadata| B
+    F -.->|Bioinformatics pipeline reads<br/>Work Order metadata| C
 
-    B -->|Convert to FHIR Genomics Report<br/>and link to the Work Order| F[(FHIR Repository<br/>HL7 Genomic Reporting standard)]
+    B -->|Demultiplexed reads<br/>native instrument integration| C[Bioinformatics/<br/>Variant Calling<br/>- not natively part of Clarity LIMS]
+    C -->|VCF/variant-report file<br/>written back as a generic<br/>Clarity result file/UDF, or read<br/>directly by the next step| B
+    C -->|Convert to FHIR Genomics Report<br/>and link to the Work Order| F[(FHIR Repository<br/>HL7 Genomic Reporting standard)]
     F -->|Results + linked Work Order metadata| E[Regional Integration Engine]
     E -->|Transforms to CSV| G[iGene]
 
     style F fill:#e8f4fd,stroke:#1c7ed6,stroke-width:2px
     style E fill:#fff3bf,stroke:#f08c00,stroke-width:2px
+    style C fill:#f8f9fa,stroke:#868e96,stroke-width:2px
 ```
 
 **Not yet confirmed:** whether Clarity LIMS really does route via the FHIR
-Repository/RIE the same way Omics DSS does, or whether the simpler Sample → Clarity
-LIMS → iGene → Results chain above implies a more direct integration - see
+Repository/RIE the same way Omics DSS does, whether the bioinformatics/variant
+calling step above stays a genuinely separate system or gets absorbed as a Clarity
+EPP script, and whether the simpler Sample → Clarity LIMS → iGene → Results chain
+above implies a more direct integration than either of these diagrams show - see
 [Outstanding Issues](#outstanding-issues) below.
 
 **What's expected to change from [OMICS DSS Result
 Integration](reportable-variants.html#future-process):**
 
-- One work order → Clarity LIMS integration, instead of one to DLIMS and a separate
-  one to Omics DSS.
-- One system (Clarity LIMS) producing the FHIR Genomics Report, rather than DLIMS
-  producing test output that Omics DSS then separately converts.
+- Sample/run tracking and demultiplexing move from DLIMS to Clarity LIMS's native,
+  purpose-built Illumina instrument integration, rather than a bespoke DLIMS
+  integration.
+- Whatever performs bioinformatics/variant calling - Omics DSS, DRAGEN, or
+  something else - can read demultiplexed output and write results back through
+  Clarity LIMS's own file/API mechanisms, rather than needing its own separate
+  integration with a satellite LIMS.
 - Potentially, a cleaner answer to [OMICS DSS Result Integration - Outstanding
   Issues, item 3](reportable-variants.html#outstanding-issues) (matching a DSS
   result back to the correct iGene Test ID) - if Clarity LIMS holds its own
@@ -188,15 +232,49 @@ detail - not repeated here, to avoid the two pages drifting apart.
 2. **What integration surface Clarity LIMS actually exposes is not yet confirmed** -
    whether that's a native FHIR API, an HL7 v2 interface, or requires a custom
    integration layer (e.g. Clarity's own EPP/API scripting) changes how much of the
-   [Future Process](#future-process) diagram above is accurate.
-3. **Whether DLIMS is retired outright or coexists with Clarity LIMS during a
+   [Future Process](#future-process) diagram above is accurate. Its REST API's own
+   data model (Samples, Artifacts, Containers, Processes/Steps, Files, UDFs) is
+   confirmed generic/workflow-oriented, with no native `Variant` resource type - see
+   item 3 below.
+3. **Confirmed: Clarity LIMS's native Illumina instrument integration stops at
+   demultiplexing, not variant calling.** Illumina's own documentation for the
+   NextSeq 1000/2000 and MiSeq i100 integrations describes automated run tracking,
+   primary QC metrics, and demultiplexing statistics (parsed from
+   `Demultiplex_stats.csv` via BaseSpace Sequence Hub) - but explicitly scopes DRAGEN
+   secondary-analysis integration as "up to BCL Convert only", with no documented
+   handling of variant calls or any other downstream bioinformatic result. A VCF or
+   variant-report CSV can be attached to Clarity LIMS as a generic result file (the
+   same mechanism used for any file type - no VCF-aware parsing is documented), or
+   individual values captured as UDFs, but nothing in the bioinformatics/variant
+   calling step itself is natively part of Clarity LIMS.
+4. **Whether a bioinformatics component functionally equivalent to Omics DSS is
+   still needed is therefore an open question, not resolved by adopting Clarity
+   LIMS** - based on items 2 and 3, Clarity LIMS appears to cleanly replace DLIMS's
+   sample/run-tracking role, but not necessarily Omics DSS's bioinformatics role,
+   which may just get repositioned (writing results back through Clarity's own
+   file/API mechanisms) rather than eliminated. This is based on published Illumina
+   documentation only, not direct testing against a real Clarity LIMS
+   instance/API - worth confirming before this use case's title/premise ("replacing
+   Omics DSS and DLIMS") is treated as settled.
+5. **Whether DLIMS is retired outright or coexists with Clarity LIMS during a
    transition period is not yet confirmed** - a phased migration would likely need
    both systems modelled side by side for a period, rather than a clean cutover.
-4. **Whether Clarity LIMS resolves [OMICS DSS Result Integration - Outstanding
+6. **Whether Clarity LIMS resolves [OMICS DSS Result Integration - Outstanding
    Issues, item 3](reportable-variants.html#outstanding-issues) (the DLIMS Lab
    Number/iGene Test ID linkage problem) depends on identifiers not yet
    confirmed** - see [Why this matters for developers](#why-this-matters-for-developers)
    above.
+7. **Whether [Distributed WGS (dWGS)](dWGS.html) sequencing runs through this same
+   DLIMS/Omics DSS pipeline (and so this same eventual Clarity LIMS replacement) is
+   not confirmed.** dWGS treats NW Genomics as a single black box performing the
+   sequencing, without naming an internal system - see [dWGS - Outstanding
+   Issues](dWGS.html#outstanding-issues) for the matching note. WGS is a different
+   scale of sequencing from the "cancer or rare disease gene panel" examples given
+   for DLIMS in [OMICS DSS Result Integration - What is being
+   tested](reportable-variants.html#what-is-being-tested), so the two use cases
+   aren't necessarily the same underlying lab operation, even though WGS is exactly
+   the kind of high-throughput sequencing Clarity LIMS's native Illumina instrument
+   integration (see item 3 above) is built for.
 
 ## Examples
 
