@@ -400,8 +400,8 @@ Entry Questionnaires, since exactly one applies per order:
 | Rare and Inherited Disease - Deafness (R67) | [Deafness (R67) Ask At Order Entry](Questionnaire-DeafnessR67AskAtOrderEntry.html) |
 | Rare and Inherited Disease - CYP2C19 Mavacamten (R454) | [CYP2C19 Mavacamten (R454) Ask At Order Entry](Questionnaire-CYP2C19MavacamtenAskAtOrderEntry.html) |
 | Cancer - Solid Tumour (HRD and Tumour BRCA) | [HRD and Tumour BRCA Ask At Order Entry](Questionnaire-HRDTumourBRCAAskAtOrderEntry.html) |
-| Cancer - Haematology Oncology | [Haemato-Oncology Ask At Order Entry](Questionnaire-HaematoOncologyAskAtOrderEntry.html) |
 | Cancer - WGS (national GMS form) | [GMS WGS Cancer Ask At Order Entry](Questionnaire-GMSWGSCancerAskAtOrderEntry.html) |
+| Haematological Oncology | [Haemato-Oncology Ask At Order Entry](Questionnaire-HaematoOncologyAskAtOrderEntry.html) |
 {:.grid}
 
 
@@ -419,9 +419,21 @@ Identifier, Test Code, Ordering Facility, and Ordering Clinician (GMC/GMP).
 | Form | NHS Number | Medical Record Number | Order Placer Number | Account Number/Hospital Spell | Specimen Identifier | Test Code | Ordering Facility | Ordering Clinician (GMC/GMP) |
 |---|---|---|---|---|---|---|---|---|
 | [HRD and Tumour BRCA](Questionnaire-HRDTumourBRCAAskAtOrderEntry.html) | Yes | Yes | No | No | Pathology block/sample number only | **Implied** - tick box (HRD / tBRCA / relapsed), not a GTD R-code | Yes (free text) | Name + position only, no GMC/GMP |
-| [Haemato-Oncology](Questionnaire-HaematoOncologyAskAtOrderEntry.html) | Yes | Yes | No | No | Pathology block/sample number, optional | **Implied** - named panel tick box, not a GTD R-code | Yes (free text) | Name only, no GMC/GMP |
 | [GMS WGS Cancer (national form)](Questionnaire-GMSWGSCancerAskAtOrderEntry.html) | Yes, with a "reason not available" fallback | Yes | No | No | Sample ID (tumour and germline sections) | **Explicit** - Test Directory Clinical Indication & code | Requesting organisation + GLH laboratory (two fields) | Name only, no GMC/GMP |
 {:.grid}
+
+**Haematological Oncology**
+
+| Form | NHS Number | Medical Record Number | Order Placer Number | Account Number/Hospital Spell | Specimen Identifier | Test Code | Ordering Facility | Ordering Clinician (GMC/GMP) |
+|---|---|---|---|---|---|---|---|---|
+| [Haemato-Oncology](Questionnaire-HaematoOncologyAskAtOrderEntry.html) | Yes | Yes | No | No | Pathology block/sample number, optional | **Implied** - named panel tick box, not a GTD R-code | Yes (free text) | Name only, no GMC/GMP |
+{:.grid}
+
+Modelled as its own category, distinct from Cancer generally - the same
+Haematological Oncology/Cancer split this IG applies elsewhere, e.g. the
+`category` property on [NHS England Genomic Test
+Code](CodeSystem-GenomicTestCode.html) and [NHS England Digital Genomic Test
+Services](CodeSystem-DigitalGenomicTestServices.html).
 
 **Rare and Inherited Disease**
 
