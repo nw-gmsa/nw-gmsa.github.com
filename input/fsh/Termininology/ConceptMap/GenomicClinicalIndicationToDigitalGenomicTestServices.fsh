@@ -17,20 +17,20 @@ Display text for the old CI numbers has no live source any more (see notebook
 14's own note on this) - taken from the current `EnglandTestCode.fsh`'s own
 `M*.*` entries for that number.
 
-Built by [nw-gmsa/Testing notebook 14](https://github.com/nw-gmsa/Testing/blob/main/notebooks/14-national-genomic-test-directory-codesystems.ipynb), checked against v1.1/v2 on 2026-09-05.
+Built by [nw-gmsa/Testing notebook 14](https://github.com/nw-gmsa/Testing/blob/main/notebooks/14-national-genomic-test-directory-codesystems.ipynb), checked against v1.1/v2 on 2026-09-08.
 """
 Usage:  #definition
 
 * name = "GenomicClinicalIndicationToDigitalGenomicTestServices"
 * experimental = false
 * url = "https://fhir.nwgenomics.nhs.uk/ConceptMap/GenomicClinicalIndicationToDigitalGenomicTestServices"
-* version = "2026-09-05"
+* version = "2026-09-08"
 * status = #active
 
 * group.source = "https://fhir.nwgenomics.nhs.uk/CodeSystem/GenomicClinicalIndication"
-* group.sourceVersion = "2026-09-05"
+* group.sourceVersion = "2026-09-08"
 * group.target = "https://fhir.nhs.uk/CodeSystem/England-DigitalGenomicTestServices"
-* group.targetVersion = "2026-09-05"
+* group.targetVersion = "2026-09-08"
 
 * group.element[+]
   * code = #M1 "Colorectal Carcinoma"

@@ -11,20 +11,20 @@ consolidated into one `GT` code (`equivalence = #equivalent`), and a smaller
 number split or shared across more than one `GT` code, recorded as multiple
 `target`s with `equivalence = #relatedto` rather than an arbitrary pick.
 
-Built by [nw-gmsa/Testing notebook 14](https://github.com/nw-gmsa/Testing/blob/main/notebooks/14-national-genomic-test-directory-codesystems.ipynb), checked against v1.1/v2 on 2026-09-05.
+Built by [nw-gmsa/Testing notebook 14](https://github.com/nw-gmsa/Testing/blob/main/notebooks/14-national-genomic-test-directory-codesystems.ipynb), checked against v1.1/v2 on 2026-09-08.
 """
 Usage:  #definition
 
 * name = "GenomicTestCodeToDigitalGenomicTestServices"
 * experimental = false
 * url = "https://fhir.nwgenomics.nhs.uk/ConceptMap/GenomicTestCodeToDigitalGenomicTestServices"
-* version = "2026-09-05"
+* version = "2026-09-08"
 * status = #active
 
 * group.source = "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory"
-* group.sourceVersion = "2026-09-05"
+* group.sourceVersion = "2026-09-08"
 * group.target = "https://fhir.nhs.uk/CodeSystem/England-DigitalGenomicTestServices"
-* group.targetVersion = "2026-09-05"
+* group.targetVersion = "2026-09-08"
 
 * group.element[+]
   * code = #M1.6 "Colorectal Carcinoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"

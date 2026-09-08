@@ -9,20 +9,20 @@ below, so every element uses `equivalence = #narrower` (the target, a specific
 test, is always narrower in scope than the source, the clinical indication it
 sits under), regardless of how many tests a given indication has.
 
-Built by [nw-gmsa/Testing notebook 14](https://github.com/nw-gmsa/Testing/blob/main/notebooks/14-national-genomic-test-directory-codesystems.ipynb), checked against v9/v16 on 2026-09-05.
+Built by [nw-gmsa/Testing notebook 14](https://github.com/nw-gmsa/Testing/blob/main/notebooks/14-national-genomic-test-directory-codesystems.ipynb), checked against v9/v16 on 2026-09-08.
 """
 Usage:  #definition
 
 * name = "GenomicClinicalIndicationToGenomicTestCode"
 * experimental = false
 * url = "https://fhir.nwgenomics.nhs.uk/ConceptMap/GenomicClinicalIndicationToGenomicTestCode"
-* version = "2026-09-05"
+* version = "2026-09-08"
 * status = #active
 
 * group.source = "https://fhir.nwgenomics.nhs.uk/CodeSystem/GenomicClinicalIndication"
-* group.sourceVersion = "2026-09-05"
+* group.sourceVersion = "2026-09-08"
 * group.target = "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory"
-* group.targetVersion = "2026-09-05"
+* group.targetVersion = "2026-09-08"
 
 * group.element[+]
   * code = #M1 "Colorectal Carcinoma"

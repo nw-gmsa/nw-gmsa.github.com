@@ -13,8 +13,8 @@ same way here.
 * ^caseSensitive = true
 * ^experimental = false
 * ^status = #active
-* ^version = "2026.09.05"
-* ^date = "2026-09-05"
+* ^version = "2026.09.08"
+* ^date = "2026-09-08"
 * ^url = "https://fhir.nwgenomics.nhs.uk/CodeSystem/GenomicClinicalIndication"
 
 // R* - Rare & Inherited Disease (v9)

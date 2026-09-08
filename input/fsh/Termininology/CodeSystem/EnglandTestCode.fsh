@@ -3,7 +3,7 @@ Id: GenomicTestCode
 Title: "NHS England Genomic Test Code"
 Description: """
 - Source: [National genomic test directories](https://www.england.nhs.uk/publication/national-genomic-test-directories/) -
-  Rare & Inherited Disease v9 and Cancer (non-CNS) v16 checked/refreshed on 2026-09-05.
+  Rare & Inherited Disease v9 and Cancer (non-CNS) v16 checked/refreshed on 2026-09-08.
 - The M* codes for Haematological Oncology and Cancer CNS below predate those two
   directories' move to the digital TP/GT scheme and no longer appear in any live
   M*-coded master spreadsheet - preserved for backwards compatibility, not
@@ -26,8 +26,8 @@ HL7 v2 CodeSystem : England-GenomicTestDirectory
 * ^caseSensitive = true
 * ^experimental = false
 * ^status = #active
-* ^version = "2026.09.05"
-* ^date = "2026-09-05"
+* ^version = "2026.09.08"
+* ^date = "2026-09-08"
 * ^url = "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory"
 
 * ^property[+].code = #category
