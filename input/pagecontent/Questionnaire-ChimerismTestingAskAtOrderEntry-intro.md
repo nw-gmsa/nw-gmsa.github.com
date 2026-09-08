@@ -1,11 +1,11 @@
-## Questions at a Glance
+## Questions Summary
 
 <span class="badge badge-primary">Histocompatibility and Immunogenetics</span>
 
 | Question         | LinkId                    | Cardinality | Answer Options                                                                                    | FHIR Field                         |
 |-------------------|----------------------------|-------------|-------------------------------------------------------------------------------------------------------|---------------------------------------|
 | Specimen Source   | `ChimIG/specimen_source`  | 0..1        | Blood (PB), Bone Marrow (BM)                                                                          | `Specimen.type`                       |
-| Patient Test(s)   | `ChimIG/patient_test`     | 0..*        | Chimerism Peripheral Blood, Chimerism CD3, Chimerism CD15, Chimerism CD19, Chimerism Lineage Other   | `ServiceRequest.code`                 |
+| Patient Test(s)   | `ChimIG/patient_test`     | 0..*        | Chimerism Peripheral Blood, Chimerism CD3, Chimerism CD15, Chimerism CD19, Chimerism Lineage Other   | `ServiceRequest.orderDetail`          |
 {:.grid}
 
 Specimen Source is asked before Patient Test(s) here, the reverse of [HLA Tests -

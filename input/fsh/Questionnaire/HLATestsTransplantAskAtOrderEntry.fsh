@@ -195,13 +195,13 @@ Usage:  #definition
     * answerOption[+].valueCoding = $nwgmsa#Islets "Islets"
     * answerOption[+].valueCoding = $nwgmsa#SimultaneousPancreasKidney "Simultaneous Pancreas/Kidney"
     * answerOption[+].valueCoding = $nwgmsa#SimultaneousIsletKidney "Simultaneous Islet/Kidney"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.collection.bodySite"
     * item[+]
       * linkId = "HistoIG/organ-designNote"
       * type = #display
       * text = """
-      The organ relevant to the transplant - carried as an Observation referenced from
-      ServiceRequest.supportingInfo. Confirmed as this 5-value list (plus a free-text
+      The organ relevant to the transplant - the body site the specimen was collected
+      from. Confirmed as this 5-value list (plus a free-text
       "Other" box, not modelled here) from the Hive/Histotrac order-entry UI, only shown
       there when Patient Type is "Renal" - coded locally against the `NWGMSA`
       CodeSystem, since two of the five values (the two "Simultaneous..." combination

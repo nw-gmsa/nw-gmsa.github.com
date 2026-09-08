@@ -227,7 +227,7 @@ NTE|5||Specimen source->Blood|OSQ
 | Patient Test(s)    | HLA ANTIBODY SCREENING (TRANSPLANT)   | ServiceRequest.orderDetail (restates OBR-4; not ServiceRequest.code, to avoid conflicting with the base Questionnaire's own Test Code item - see [Outstanding Issues](#outstanding-issues) below) |
 | HLA Type           | Patient                                | Observation.valueCodeableConcept (via ServiceRequest.supportingInfo)     |
 | Patient type       | Renal                                  | Observation.valueCodeableConcept (via ServiceRequest.supportingInfo)     |
-| Organ              | Kidney                                 | Observation.valueCodeableConcept (via ServiceRequest.supportingInfo, low confidence - no confirmed SNOMED CT mapping yet) |
+| Organ              | Kidney                                 | Specimen.collection.bodySite (the body site the specimen was collected from) |
 | Specimen source    | Blood                                  | Specimen.type (SNOMED CT coding)                                        |
 {:.grid}
 
