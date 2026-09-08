@@ -9,6 +9,14 @@ Description: """
   M*-coded master spreadsheet - preserved for backwards compatibility, not
   refreshable from a current source. See `ConceptMap-GenomicTestCodeToDigitalGenomicTestServices`
   for their DGTS GT-code replacements.
+- `specialist-test-group` is populated for R* codes only, from the Rare &
+  Inherited Disease spreadsheet's own "Specialist test group" column - the
+  Cancer directories have no equivalent column, so M* codes don't carry it.
+- `test-method` is populated for R* codes from that same spreadsheet's "Test
+  Method" column, and for current (non-legacy) M* codes from the Cancer
+  directory's "Technology" column (the same concept, differently named) -
+  not populated for legacy M* codes, or the small number of current M* codes
+  (`M4.14`, `M119.5`) whose source cell had no clean single value.
 
 HL7 v2 CodeSystem : England-GenomicTestDirectory
 """
@@ -27,2861 +35,5681 @@ HL7 v2 CodeSystem : England-GenomicTestDirectory
 * ^property[=].description = "Which part of the National Genomic Test Directory this code belongs to: rare-and-inherited-disease, cancer, or haematological-oncology"
 * ^property[=].type = #code
 
+* ^property[+].code = #specialist-test-group
+* ^property[=].uri = "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory#specialist-test-group"
+* ^property[=].description = "The Specialist test group column from the Rare & Inherited Disease National Genomic Test Directory master spreadsheet (R* codes only - the Cancer directories have no equivalent column)"
+* ^property[=].type = #string
+
+* ^property[+].code = #test-method
+* ^property[=].uri = "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory#test-method"
+* ^property[=].description = "The test method/technology used - Test Method column (R* codes) or Technology column (current M* codes); not populated for legacy M* codes"
+* ^property[=].type = #string
+
 // R* - Rare & Inherited Disease (v9)
 
 * #R14.1 "Acutely unwell children with a likely monogenic disorder (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Multi specialty"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R15.4 "Primary immunodeficiency or monogenic inflammatory bowel disease (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Immunology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R15.5 "Primary immunodeficiency or monogenic inflammatory bowel disease (WES)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Immunology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES"
 * #R16.1 "Severe combined immunodeficiency with adenosine deaminase deficiency (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Immunology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R17.1 "Lymphoproliferative syndrome with absent SAP expression (Single gene sequencing <10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Immunology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing <10 amplicons"
 * #R18.1 "Haemophagocytic syndrome with absent XIAP expression (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Immunology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R19.1 "Autoimmune lymphoproliferative syndrome with defective apoptosis (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Immunology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R20.1 "Wiskott-Aldrich syndrome (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Immunology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R21.1 "Fetal anomalies with a likely genetic cause (Common aneuploidy testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Prenatal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Common aneuploidy testing"
 * #R21.2 "Fetal anomalies with a likely genetic cause (Large Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Prenatal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Large Panel"
 * #R21.3 "Fetal anomalies with a likely genetic cause (Microarray)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Prenatal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Microarray"
 * #R22.1 "Fetus with a likely chromosomal abnormality (Common aneuploidy testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Common aneuploidy testing"
 * #R22.2 "Fetus with a likely chromosomal abnormality (Microarray)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Microarray"
 * #R23.1 "Apert syndrome (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Musculoskeletal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R24.1 "Achondroplasia (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R25.1 "Thanatophoric dysplasia (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R26.1 "Likely common aneuploidy (Common aneuploidy testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Common aneuploidy testing"
 * #R27.3 "Paediatric disorders (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R28.1 "Congenital malformation and dysmorphism syndromes (Microarray)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Microarray"
 * #R31.3 "Bilateral congenital or childhood onset cataracts (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Ophthalmology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R32.2 "Retinal disorders (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Ophthalmology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R33.1 "Possible X-linked retinitis pigmentosa (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Ophthalmology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R36.2 "Structural eye disease (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Ophthalmology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R38.2 "Sporadic aniridia (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Ophthalmology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R39.1 "Albinism or congenital nystagmus (WES or Medium panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Ophthalmology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium panel"
 * #R41.1 "Optic neuropathy (WES or Medium panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Ophthalmology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium panel"
 * #R41.3 "Optic neuropathy (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Ophthalmology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R42.1 "Leber hereditary optic neuropathy (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Mitochondrial"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R42.2 "Leber hereditary optic neuropathy (Other)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Mitochondrial"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Other"
 * #R43.1 "Blepharophimosis ptosis and epicanthus inversus (Single gene sequencing <10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Ophthalmology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing <10 amplicons"
 * #R43.2 "Blepharophimosis ptosis and epicanthus inversus (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Ophthalmology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R43.3 "Blepharophimosis ptosis and epicanthus inversus (STR testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Ophthalmology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "STR testing"
 * #R45.1 "Stickler syndrome (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Ophthalmology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R46.1 "Congenital fibrosis of the extraocular muscles (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Ophthalmology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R47.1 "Angelman syndrome (Methylation testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Methylation testing"
 * #R48.1 "Prader-Willi syndrome (Methylation testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Methylation testing"
 * #R49.1 "Beckwith-Wiedemann syndrome (Methylation testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Methylation testing"
 * #R49.3 "Beckwith-Wiedemann syndrome (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R50.1 "Isolated hemihypertrophy or macroglossia (Methylation testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Methylation testing"
 * #R52.1 "Short stature - SHOX deficiency (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Musculoskeletal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R52.2 "Short stature - SHOX deficiency (Single gene sequencing <10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Musculoskeletal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing <10 amplicons"
 * #R54.3 "Hereditary ataxia with onset in adulthood (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R54.4 "Hereditary ataxia with onset in adulthood (STR testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "STR testing"
 * #R55.4 "Hereditary ataxia with onset in childhood (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R56.3 "Adult onset dystonia, chorea or related movement disorder (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R57.5 "Childhood onset dystonia, chorea or related movement disorder (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R60.3 "Adult onset hereditary spastic paraplegia (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R61.4 "Childhood onset hereditary spastic paraplegia (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R62.2 "Adult onset leukodystrophy (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R63.1 "Possible mitochondrial disorder - nuclear genes (WES or Large Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Mitochondrial"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Large Panel"
 * #R64.1 "MELAS or MIDD (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Mitochondrial"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R65.1 "Aminoglycoside exposure posing risk to hearing (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R66.1 "Paroxysmal central nervous system disorders (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R67.1 "Monogenic hearing loss (WES or Large Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Audiology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Large Panel"
 * #R68.1 "Huntington disease (STR testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "STR testing"
 * #R69.5 "Hypotonic infant (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R70.1 "Spinal muscular atrophy type 1 diagnostic test (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R71.1 "Spinal muscular atrophy type 1 rare variant testing (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R72.1 "Myotonic dystrophy type 1 (STR testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "STR testing"
 * #R73.1 "Duchenne or Becker muscular dystrophy (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R73.2 "Duchenne or Becker muscular dystrophy (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R74.1 "Facioscapulohumeral muscular dystrophy (Other)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Other"
 * #R75.1 "Oculopharyngeal muscular dystrophy (STR testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "STR testing"
 * #R76.1 "Skeletal muscle channelopathy (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R77.1 "Hereditary neuropathy - PMP22 copy number (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R78.4 "Hereditary neuropathy or pain disorder (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R78.5 "Hereditary neuropathy or pain disorder (STR testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "STR testing"
 * #R79.1 "Congenital muscular dystrophy (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R80.1 "Congenital myaesthenic syndrome (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R81.1 "Congenital myopathy (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R82.1 "Limb girdle muscular dystrophies, myofibrillar myopathies and distal myopathies (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R83.3 "Arthrogryposis (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R84.4 "Cerebellar anomalies (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R85.2 "Holoprosencephaly - NOT chromosomal (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R86.3 "Hydrocephalus (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R87.3 "Cerebral malformation (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R88.3 "Severe microcephaly (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R89.3 "Ultra-rare and atypical monogenic disorders (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R90.1 "Bleeding and platelet disorders (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R91.1 "Cytopenia - NOT Fanconi anaemia (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R91.2 "Cytopenia - NOT Fanconi anaemia (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R92.1 "Rare anaemia (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R92.2 "Rare anaemia (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R92.3 "Rare anaemia (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R93.1 "Sickle cell, thalassaemia and other haemoglobinopathies (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R93.2 "Sickle cell, thalassaemia and other haemoglobinopathies (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R95.1 "Iron overload - hereditary haemochromatosis testing (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R96.1 "Iron metabolism disorders - NOT common HFE  variants (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R97.1 "Thrombophilia with a likely monogenic cause (WES or Small Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Small Panel"
 * #R98.2 "Likely inborn error of metabolism (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R98.3 "Likely inborn error of metabolism (WES)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES"
 * #R99.1 "Common craniosynostosis syndromes (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Musculoskeletal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R99.2 "Common craniosynostosis syndromes (Exon level CNV detection by MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Musculoskeletal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Exon level CNV detection by MLPA or equivalent"
 * #R100.3 "Rare syndromic craniosynostosis or isolated multisuture synostosis (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Musculoskeletal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R101.1 "Ehlers Danlos syndrome with a likely monogenic cause (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Musculoskeletal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R102.1 "Osteogenesis imperfecta (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Musculoskeletal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R104.3 "Skeletal dysplasia (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Musculoskeletal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R104.4 "Skeletal dysplasia (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Musculoskeletal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R105.1 "MCADD - Medium-chain acyl-CoA dehydrogenase deficiency – common variant newborn screening follow up (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Screening"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R106.1 "Alstrom syndrome (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R107.1 "Bardet Biedl syndrome (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Ophthalmology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R109.3 "Childhood onset leukodystrophy (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R110.1 "Segmental overgrowth disorders - Deep sequencing (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Dermatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R111.1 "X-inactivation testing (X-inactivation testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core/Specialised"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "X-inactivation testing"
 * #R112.1 "Factor II deficiency (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R115.1 "Factor V deficiency (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R115.2 "Factor V deficiency (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R116.1 "Factor VII deficiency (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R116.2 "Factor VII deficiency (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R117.1 "Factor VIII deficiency (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R117.2 "Factor VIII deficiency (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R117.3 "Factor VIII deficiency (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R118.1 "Factor IX deficiency (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R118.2 "Factor IX deficiency (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R119.1 "Factor X deficiency (Single gene sequencing <10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing <10 amplicons"
 * #R119.2 "Factor X deficiency (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R120.1 "Factor XI deficiency (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R120.2 "Factor XI deficiency (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R121.1 "von Willebrand disease (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R121.2 "von Willebrand disease (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R122.1 "Factor XIII deficiency (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R123.1 "Combined vitamin K-dependent clotting factor deficiency (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R124.1 "Combined factor V and VIII deficiency (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R125.1 "Thoracic aortic aneurysm or dissection (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Cardiology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R127.1 "Long QT syndrome (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Cardiology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R128.1 "Brugada syndrome and cardiac sodium channel disease (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Cardiology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R129.1 "Catecholaminergic polymorphic VT (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Cardiology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R130.1 "Short QT syndrome (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Cardiology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R131.1 "Hypertrophic cardiomyopathy (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Cardiology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R132.1 "Dilated and Arrhythmogenic cardiomyopathy (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Cardiology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R133.1 "Arrhythmogenic right ventricular cardiomyopathy (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Cardiology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R134.1 "Familial hypercholesterolaemia (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R135.2 "Paediatric or syndromic cardiomyopathy (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Cardiology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R135.3 "Paediatric or syndromic cardiomyopathy (WES)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Cardiology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES"
 * #R136.1 "Primary lymphoedema (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Cardiology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R137.1 "Congenital heart disease - microarray (Microarray)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Microarray"
 * #R138.1 "Sudden unexplained death or survivors of a cardiac event (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Cardiology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R139.1 "Laterality disorders and isomerism (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Respiratory"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R140.1 "Elastin-related phenotypes (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Cardiology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R141.1 "Monogenic diabetes (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R142.1 "Glucokinase-related fasting hyperglycaemia (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R143.1 "Neonatal diabetes (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R143.3 "Neonatal diabetes (Methylation testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Methylation testing"
 * #R143.4 "Neonatal diabetes (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R144.1 "Congenital hyperinsulinism (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R144.2 "Congenital hyperinsulinism (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R145.1 "Congenital hypothyroidism (WES or Medium panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium panel"
 * #R146.1 "Differences in sex development (Microarray)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Microarray"
 * #R146.2 "Differences in sex development (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R148.1 "Hypogonadotropic hypogonadism (Medium panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Medium panel"
 * #R149.1 "Severe early-onset obesity (WES or Medium panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium panel"
 * #R150.1 "Congenital adrenal hypoplasia (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R151.1 "Familial hyperparathyroidism or Hypocalciuric hypercalcaemia (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R153.1 "Familial hypoparathyroidism (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R154.1 "Hypophosphataemia or rickets (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R155.1 "Autoimmune Polyendocrine Syndrome (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Immunology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R156.1 "Carney complex (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R157.1 "IPEX - Immunodysregulation Polyendocrinopathy and Enteropathy, X-Linked (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R158.1 "Severe insulin resistance and lipodystrophy syndromes (Medium panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Medium panel"
 * #R159.1 "Pituitary hormone deficiency (WES or Medium panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium panel"
 * #R160.1 "Primary pigmented nodular adrenocortical disease (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R162.1 "Familial tumoral calcinosis (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R163.1 "Ectodermal dysplasia (WES or Medium panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Dermatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium panel"
 * #R164.1 "Epidermolysis bullosa and congenital skin fragility (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Dermatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R165.1 "Ichthyosis and erythrokeratoderma (WES or Medium panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Dermatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium panel"
 * #R166.1 "Palmoplantar keratodermas (WES or Medium panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Dermatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium panel"
 * #R167.1 "Autosomal recessive primary hypertrophic osteoarthropathy (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Dermatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R168.1 "Non-acute porphyrias (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Gastrohepatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R169.1 "Acute intermittent porphyria (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Gastrohepatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R170.1 "Variegate porphyria (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Gastrohepatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R171.1 "Cholestasis (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Gastrohepatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R172.1 "Wilson disease (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Gastrohepatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R173.1 "Polycystic liver disease (WES or Small Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Gastrohepatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Small Panel"
 * #R175.1 "Pancreatitis (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Gastrohepatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R176.1 "Gilbert syndrome (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Gastrohepatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R180.1 "Congenital adrenal hyperplasia diagnostic test (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R180.2 "Congenital adrenal hyperplasia diagnostic test (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R181.1 "Congenital adrenal hyperplasia carrier testing (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R181.2 "Congenital adrenal hyperplasia carrier testing (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R182.1 "Hyperthyroidism (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R183.1 "Glucocorticoid-remediable aldosteronism (GRA) (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R184.1 "Cystic fibrosis diagnostic test (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R184.2 "Cystic fibrosis diagnostic test (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R184.3 "Cystic fibrosis diagnostic test (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R185.1 "Cystic fibrosis carrier testing (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R186.1 "Hereditary haemorrhagic telangiectasia (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Respiratory"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R188.1 "Pulmonary arterial hypertension (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Respiratory"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R189.1 "Respiratory ciliopathies including non-CF bronchiectasis (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Respiratory"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R190.1 "Pneumothorax - familial (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Respiratory"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R191.1 "Alpha-1-antitrypsin deficiency (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Respiratory"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R193.4 "Cystic renal disease (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Renal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R194.1 "Haematuria (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Renal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R195.3 "Proteinuric renal disease (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Renal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R196.1 "CFHR5 nephropathy (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Renal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R197.1 "Membranoproliferative glomerulonephritis including C3 glomerulopathy (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Renal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R197.2 "Membranoproliferative glomerulonephritis including C3 glomerulopathy (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Renal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R198.1 "Renal tubulopathies (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Renal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R199.1 "Congenital anomalies of the kidney and urinary tract - familial (Microarray)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Microarray"
 * #R201.1 "Atypical haemolytic uraemic syndrome (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Renal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R202.1 "Tubulointerstitial kidney disease (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Renal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R204.1 "Hereditary Systemic Amyloidosis (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Renal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R207.1 "Inherited ovarian cancer (without breast cancer) (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R208.1 "Inherited breast cancer and ovarian cancer (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R210.2 "Inherited MMR deficiency (Lynch syndrome) (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R210.4 "Inherited MMR deficiency (Lynch syndrome) (Methylation testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Methylation testing"
 * #R210.6 "Inherited MMR deficiency (Lynch syndrome) (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R211.1 "Inherited polyposis and early onset colorectal cancer - germline testing (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R211.3 "Inherited polyposis and early onset colorectal cancer - germline testing (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R212.1 "Peutz Jeghers Syndrome (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Inherited cancer"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R213.1 "PTEN Hamartoma Tumor Syndrome (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Inherited cancer"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R214.1 "Nevoid Basal Cell Carcinoma Syndrome or Gorlin syndrome (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Inherited cancer"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R215.1 "Hereditary diffuse gastric cancer (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Inherited cancer"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R216.1 "Li Fraumeni Syndrome (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Inherited cancer"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R217.1 "Endocrine neoplasia (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R218.1 "Multiple endocrine neoplasia type 2 (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R219.1 "Retinoblastoma (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Inherited cancer"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R219.2 "Retinoblastoma (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Inherited cancer"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R221.1 "Familial tumours of the nervous system (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R221.2 "Familial tumours of the nervous system (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R222.1 "Neurofibromatosis type 1 (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R222.2 "Neurofibromatosis type 1 (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R223.1 "Inherited phaeochromocytoma and paraganglioma excluding NF1 (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R224.1 "Inherited renal cancer (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Inherited cancer"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R225.1 "Von Hippel Lindau syndrome (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Inherited cancer"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R226.1 "Inherited parathyroid cancer (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R227.1 "Xeroderma pigmentosum, Trichothiodystrophy or Cockayne syndrome (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Dermatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R227.2 "Xeroderma pigmentosum, Trichothiodystrophy or Cockayne syndrome (DNA repair defect testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Dermatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "DNA repair defect testing"
 * #R228.1 "Tuberous sclerosis (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R228.2 "Tuberous sclerosis (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R228.3 "Tuberous sclerosis (Small panel - deep sequencing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel - deep sequencing"
 * #R229.1 "Confirmed Fanconi anaemia or Bloom syndrome - variant testing (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R230.1 "Multiple monogenic benign skin tumours (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Dermatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R231.2 "Neuronal ceroid lipofuscinosis (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R232.1 "Haemophagocytic syndrome with absent perforin expression (Single gene sequencing <10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Immunology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing <10 amplicons"
 * #R233.1 "Agammaglobulinaemia with absent BTK expression (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Immunology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R234.1 "Severe combined immunodeficiency with PNP deficiency (Single gene sequencing <10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Immunology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing <10 amplicons"
 * #R235.1 "SCID with features of gamma chain deficiency (Single gene sequencing <10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Immunology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing <10 amplicons"
 * #R236.1 "Pigmentary skin disorders (WES or Large panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Dermatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Large panel"
 * #R236.2 "Pigmentary skin disorders (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Dermatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R237.1 "Cutaneous photosensitivity with a likely genetic cause (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Dermatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R239.1 "Incontinentia pigmenti (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Dermatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R239.2 "Incontinentia pigmenti (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Dermatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R240.1 "Diagnostic testing for known variant(s) (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core/Specialised"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R242.1 "Predictive testing for known familial variant(s) (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core/Specialised"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R244.1 "Carrier testing for known familial variant(s) (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core/Specialised"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R246.1 "Carrier testing at population risk for partners of known carriers of nationally agreed autosomal recessive disorders (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core/Specialised"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R249.1 "NIPD using paternal exclusion testing for very rare conditions where familial variant is known (NIPD)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Prenatal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "NIPD"
 * #R250.1 "NIPD for congenital adrenal hyperplasia - CYP21A2 haplotype testing (NIPD)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Prenatal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "NIPD"
 * #R251.1 "Non-invasive prenatal sexing (NIPD)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Prenatal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "NIPD"
 * #R252.1 "SMA carrier testing at population risk for partners of known carriers (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R253.1 "Cystic fibrosis newborn screening follow-up (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Screening"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R254.1 "Familial melanoma (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Inherited cancer"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R255.1 "Epidermodysplasia verruciformis (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Dermatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R256.1 "Nephrocalcinosis or nephrolithiasis (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Renal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R257.2 "Unexplained young onset end-stage renal disease (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Renal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R257.3 "Unexplained young onset end-stage renal disease (WES)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Renal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES"
 * #R258.1 "Cytopenia - Fanconi breakage testing indicated (DNA repair defect testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "DNA repair defect testing"
 * #R258.2 "Cytopenia - Fanconi breakage testing indicated (Small Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small Panel"
 * #R259.1 "Nijmegen breakage syndrome (DNA repair defect testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "DNA repair defect testing"
 * #R259.2 "Nijmegen breakage syndrome (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R260.1 "Fanconi anaemia or Bloom syndrome - chromosome breakage testing (DNA repair defect testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "DNA repair defect testing"
 * #R262.1 "Corneal dystrophy (WES or Medium panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Ophthalmology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium panel"
 * #R263.1 "Confirmation of uniparental disomy (UPD testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core/Specialised"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "UPD testing"
 * #R264.1 "Identity testing (Identity testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Identity testing"
 * #R265.1 "Chromosomal mosaicism - karyotype (Karyotype)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Karyotype"
 * #R268.1 "Kagami-Ogata syndrome - paternal uniparental disomy 14 (Methylation testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Methylation testing"
 * #R270.1 "Smith-Lemli-Opitz syndrome (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R270.2 "Smith-Lemli-Opitz syndrome (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R271.1 "Neuronal ceroid lipofuscinosis type 2 (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R272.1 "Gaucher disease (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R273.1 "Glycogen storage disease V (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R274.1 "Glycogen storage disease (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R275.1 "Glutaric acidaemia I newborn screening follow up (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Screening"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R276.1 "Lysosomal storage disorder (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R277.1 "Mucopolysaccharidosis type IH/S (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R278.1 "Mucopolysaccharidosis type II (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R278.2 "Mucopolysaccharidosis type II (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R279.1 "Isovaleric acidaemia newborn screening follow up (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Screening"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R280.1 "Krabbe disease – GALC deficiency (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R280.2 "Krabbe disease – GALC deficiency (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R281.1 "Krabbe disease - Saposin A deficiency (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R282.1 "Niemann-Pick disease type A or B (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R283.1 "Phenylketonuria (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R285.1 "Sandhoff disease (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R286.1 "Tay-Sachs disease (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R287.1 "Mucopolysaccharidosis type IVA (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R288.1 "GM1 Gangliosidosis and Mucopolysaccharidosis Type IVB (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R289.1 "Mucolipidosis II and III Alpha/Beta (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R290.1 "Mucopolysaccharidosis type VI (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R291.1 "Mucopolysaccharidosis type IIIA (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R292.1 "Mucopolysaccharidosis type IIIB (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R293.1 "Albright hereditary osteodystrophy, pseudohypoparathyroidism, pseudopseudohypoparathyroidism, acrodysostosis and osteoma cutis (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R293.2 "Albright hereditary osteodystrophy, pseudohypoparathyroidism, pseudopseudohypoparathyroidism, acrodysostosis and osteoma cutis (Methylation testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Methylation testing"
 * #R294.1 "Ataxia telangiectasia - DNA repair testing (DNA repair defect testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "DNA repair defect testing"
 * #R295.1 "Ataxia telangiectasia - variant testing (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R296.1 "RNA analysis of variants (Other)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core/Specialised"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Other"
 * #R298.1 "Possible structural or mosaic chromosomal abnormality - FISH (FISH)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #R299.1 "Possible mitochondrial disorder - mitochondrial DNA rearrangement testing (Other)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Mitochondrial"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Other"
 * #R299.2 "Possible mitochondrial disorder - mitochondrial DNA rearrangement testing (Other)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Mitochondrial"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Other"
 * #R299.3 "Possible mitochondrial disorder - mitochondrial DNA rearrangement testing (Other)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Mitochondrial"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Other"
 * #R300.1 "Possible mitochondrial disorder - whole mitochondrial genome sequencing (Other)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Mitochondrial"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Other"
 * #R301.1 "Possible mitochondrial disorder - mitochondrial DNA depletion testing (Other)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Mitochondrial"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Other"
 * #R304.1 "NIPD for cystic fibrosis - haplotype testing (NIPD)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Prenatal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "NIPD"
 * #R305.1 "NIPD for cystic fibrosis - variant testing (NIPD)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Prenatal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "NIPD"
 * #R306.1 "NIPD for Apert syndrome - variant testing (NIPD)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Prenatal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "NIPD"
 * #R307.1 "NIPD for Crouzon syndrome with acanthosis nigricans - variant testing (NIPD)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Prenatal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "NIPD"
 * #R308.1 "NIPD for FGFR2-related craniosynostosis syndromes - variant testing (NIPD)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Prenatal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "NIPD"
 * #R309.1 "NIPD for FGFR3-related skeletal dysplasias - variant testing (NIPD)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Prenatal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "NIPD"
 * #R310.1 "NIPD for Duchenne and Becker muscular dystrophy - haplotype testing (NIPD)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Prenatal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "NIPD"
 * #R311.1 "NIPD for spinal muscular atrophy - variant testing (NIPD)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Prenatal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "NIPD"
 * #R312.1 "Parental sequencing for lethal autosomal recessive disorders (WES or Large panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Other"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Large panel"
 * #R313.1 "Neutropaenia consistent with ELANE variants (Single gene sequencing <10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing <10 amplicons"
 * #R314.1 "Ambiguous genitalia (Common aneuploidy testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Common aneuploidy testing"
 * #R314.2 "Ambiguous genitalia (Karyotype)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Karyotype"
 * #R315.1 "POLG-related disorder (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Mitochondrial"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R315.2 "POLG-related disorder (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Mitochondrial"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R316.1 "Pyruvate dehydrogenase (PDH) deficiency (WES or Medium panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Mitochondrial"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium panel"
 * #R317.1 "Mitochondrial liver disease, including transient infantile liver failure (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Mitochondrial"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R318.1 "Recurrent miscarriage with products of conception available for testing (Common aneuploidy testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Common aneuploidy testing"
 * #R318.2 "Recurrent miscarriage with products of conception available for testing (Microarray)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Microarray"
 * #R319.1 "Calcium-sensing receptor phenotypes (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R320.1 "Invasive prenatal diagnosis requiring fetal sexing (Common aneuploidy testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Common aneuploidy testing"
 * #R321.1 "Maternal cell contamination testing (Identity testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core/Specialised"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Identity testing"
 * #R322.1 "Skin fibroblasts to be cultured and stored (Other)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Other"
 * #R323.1 "Sitosterolaemia (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R324.1 "Familial Chylomicronaemia Syndrome (FCS) (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R325.1 "Lysosomal acid lipase deficiency (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R326.1 "Vascular skin disorders (WES or Medium panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Dermatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium panel"
 * #R327.1 "Mosaic skin disorders - deep sequencing (Medium panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Dermatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Medium panel"
 * #R328.1 "Progressive cardiac conduction disease (WES or Small Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Cardiology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Small Panel"
 * #R329.1 "Familial dysalbuminaemic hyperthyroxinaemia (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R330.1 "Alveolar capillary dysplasia with misalignment of pulmonary veins (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Respiratory"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R331.1 "Intestinal failure or congenital diarrhoea (WES or Small Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Gastrohepatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Small Panel"
 * #R332.1 "Rare genetic inflammatory skin disorders (WES or Medium panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Dermatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium panel"
 * #R333.1 "Central congenital hypoventilation (STR testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Respiratory"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "STR testing"
 * #R333.2 "Central congenital hypoventilation (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Respiratory"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R334.1 "Cystinosis (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R335.1 "Fabry disease (Single gene sequencing <10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing <10 amplicons"
 * #R335.2 "Fabry disease (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R336.1 "Cerebral vascular malformations (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R337.1 "CADASIL (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R338.1 "Monitoring for G(M)CSF escape variants (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R340.1 "Amelogenesis imperfecta (WES or Medium panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Musculoskeletal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium panel"
 * #R341.1 "Hereditary angioedema types I and II (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Immunology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R343.1 "Chromosomal mosaicism - microarray (Microarray)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Microarray"
 * #R344.1 "Primary hyperaldosteronism - KCNJ5 (Single gene sequencing <10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing <10 amplicons"
 * #R345.1 "Facioscapulohumeral muscular dystrophy - extended testing (Methylation testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Methylation testing"
 * #R345.2 "Facioscapulohumeral muscular dystrophy - extended testing (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R345.3 "Facioscapulohumeral muscular dystrophy - extended testing (Other)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Other"
 * #R346.1 "DNA to be stored (Other)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Other"
 * #R347.1 "Inherited predisposition to acute myeloid leukaemia (AML) (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R350.1 "MERRF syndrome (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Mitochondrial"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R351.1 "NARP syndrome or maternally inherited Leigh syndrome (Single gene sequencing <10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Mitochondrial"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing <10 amplicons"
 * #R351.2 "NARP syndrome or maternally inherited Leigh syndrome (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Mitochondrial"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R352.1 "Mitochondrial DNA maintenance disorder (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Mitochondrial"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R353.1 "Mitochondrial disorder with complex I deficiency (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Mitochondrial"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R354.1 "Mitochondrial disorder with complex II deficiency (WES or Small Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Mitochondrial"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Small Panel"
 * #R355.1 "Mitochondrial disorder with complex III deficiency (WES or Small Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Mitochondrial"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Small Panel"
 * #R356.1 "Mitochondrial disorder with complex IV deficiency (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Mitochondrial"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R357.1 "Mitochondrial disorder with complex V deficiency (WES or Small Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Mitochondrial"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Small Panel"
 * #R361.1 "Sickle cell, thalassaemia and other haemoglobinopathies trait or carrier testing (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R361.2 "Sickle cell, thalassaemia and other haemoglobinopathies trait or carrier testing (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R363.1 "Inherited predisposition to GIST (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Inherited cancer"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R364.1 "DICER1-related cancer predisposition (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Inherited cancer"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R365.1 "Fumarate hydratase-related tumour syndromes (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Inherited cancer"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R366.1 "Inherited susceptibility to acute lymphoblastoid leukaemia (ALL) (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R367.1 "Inherited pancreatic cancer (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Inherited cancer"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R368.1 "Hereditary angioedema type III (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Immunology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R370.1 "Validation of unaccredited findings (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core/Specialised"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R371.1 "Malignant hyperthermia (small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "small panel"
 * #R372.1 "Newborn screening for sickle cell disease in a transfused baby (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Screening"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R373.1 "RNA to be stored (Other)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Other"
 * #R374.1 "Other sample to be stored (Other)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Other"
 * #R375.1 "Family follow-up testing to aid variant interpretation (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core/Specialised"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R376.1 "Segmental or atypical neurofibromatosis type 1 testing (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R376.2 "Segmental or atypical neurofibromatosis type 1 testing (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R380.1 "Niemann Pick disease type C (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R380.2 "Niemann Pick disease type C (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R381.2 "Other rare neuromuscular disorders (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R382.1 "Hypochondroplasia (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R383.1 "Linkage testing for Huntington disease (Other)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Other"
 * #R384.1 "Generalised arterial calcification in infancy (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Cardiology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R387.1 "Reanalysis of existing data (Other)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core/Specialised"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Other"
 * #R389.1 "NIPD - pre-pregnancy test work-up (NIPD)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Prenatal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "NIPD"
 * #R390.1 "Multiple exostoses (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Musculoskeletal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R390.2 "Multiple exostoses (MLPA or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Musculoskeletal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #R391.1 "Barth syndrome (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Cardiology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R394.1 "Mitochondrial neurogastrointestinal encephalopathy (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Mitochondrial"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R395.1 "Thiamine metabolism dysfunction syndrome 2 (Single gene sequencing <10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Mitochondrial"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing <10 amplicons"
 * #R396.1 "Mitochondrial Complex V deficiency, TMEM70 type (Single gene sequencing <10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Mitochondrial"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing <10 amplicons"
 * #R397.1 "Maternally inherited cardiomyopathy (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Mitochondrial"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R401.1 "Common aneuploidy testing - prenatal (Common aneuploidy testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Common aneuploidy testing"
 * #R402.1 "Premature ovarian insufficiency (Karyotype or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Karyotype or equivalent"
 * #R402.2 "Premature ovarian insufficiency (STR testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "STR testing"
 * #R403.1 "MCADD - Medium-chain acyl-CoA dehydrogenase deficiency – full ACADM sequencing newborn screening follow up (Single gene sequencing <10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Screening"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing <10 amplicons"
 * #R404.1 "Testing of unaffected individuals for inherited cancer predisposition syndromes (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Inherited cancer"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R404.3 "Testing of unaffected individuals for inherited cancer predisposition syndromes (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Inherited cancer"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R405.1 "Hereditary Erythrocytosis (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R406.1 "Thrombocythaemia (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Haematology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R409.1 "Linkage testing for other recognisable Mendelian disorders (Linkage analysis)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core/Specialised"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Linkage analysis"
 * #R410.1 "Myotonic dystrophy type 2 (DM2) (STR testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "STR testing"
 * #R411.1 "Y chromosome microdeletion (Targeted variant testing or equivalent)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing or equivalent"
 * #R412.1 "Fetal anomalies with a likely genetic cause - non urgent (WES or Large Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Prenatal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Large Panel"
 * #R413.1 "Autoinflammatory Disorders (WES or Medium panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Immunology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium panel"
 * #R414.1 "APC associated Polyposis (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R416.1 "Syndromic and non syndromic craniosynostosis involving midline sutures (Single gene sequencing <10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Musculoskeletal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing <10 amplicons"
 * #R417.1 "Multi Locus Imprinting Disorder (MLID) (MLPA)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA"
 * #R417.2 "Multi Locus Imprinting Disorder (MLID) (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R419.1 "Acute Rhabdomyolysis (Medium panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Medium panel"
 * #R420.1 "Pseudoxanthoma elasticum (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Ophthalmology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R421.1 "Pulmonary Fibrosis, Familial (Medium panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Respiratory"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Medium panel"
 * #R422.1 "BAP1 associated tumour predisposition syndrome (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Inherited cancer"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R423.1 "NIPD for Retinoblastoma - haplotype testing (NIPD)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Prenatal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "NIPD"
 * #R424.1 "Subcutaneous panniculitis T-cell lymphoma (SPTCL) (Single gene sequencing <10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Dermatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing <10 amplicons"
 * #R426.1 "Pulmonary alveolar microlithiasis (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Respiratory"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R428.1 "Patient receiving solid organ transplantation (only in cases where passenger lymphocyte syndrome is suspected) (STR testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "STR testing"
 * #R428.2 "Patient receiving solid organ transplantation (only in cases where passenger lymphocyte syndrome is suspected) (FISH)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #R430.1 "Inherited prostate cancer (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R431.1 "Genome-wide DNA Methylation Profiling to Aid Variant Interpretation (Methylation testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Multi specialty"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Methylation testing"
 * #R433.1 "Monogenic diabetes, subtype glucokinase - NIPT (NIPD)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Prenatal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "NIPD"
 * #R436.1 "Hereditary alpha tryptasaemia (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Immunology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R438.1 "Paediatric pseudo-obstruction syndrome (WES or Medium panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Gastrohepatology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium panel"
 * #R440.1 "Hereditary isolated diabetes insipidus (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R441.1 "Unexplained death in infancy and sudden unexplained death in childhood (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Multi specialty"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R442.1 "Variant re-interpretation (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core/Specialised"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R443.1 "Confirmation test (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core/Specialised"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R444.1 "NICE approved PARP inhibitor treatment (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R444.2 "NICE approved PARP inhibitor treatment (Small panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small panel"
 * #R445.1 "T21, T18 and T13 aneuploidy testing - NIPT (previous history) (NIPT)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Prenatal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "NIPT"
 * #R446.1 "APOL1 kidney donor testing (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Renal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R447.1 "Validation of WGS Diagnostic discovery (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R448.1 "Prenatal testing (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R449.1 "Diagnostic testing for Glutaric acidaemia I (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R450.1 "Diagnostic testing for Isovaleric acidaemia (Single gene sequencing >=10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing >=10 amplicons"
 * #R451.1 "Diagnostic testing for MCADD - Medium-chain acyl-CoA dehydrogenase deficiency – full ACADM sequencing (Single gene sequencing <10 amplicons)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Metabolic"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing <10 amplicons"
 * #R452.1 "Silver russell syndrome and Temple Syndrome (Methylation testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Methylation testing"
 * #R453.1 "Monogenic short stature (WES or Medium panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Endocrinology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium panel"
 * #R454.1 "Mavacamten for treating symptomatic obstructive hypertrophic cardiomyopathy (Targeted variant testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Cardiology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted variant testing"
 * #R456.1 "Embryonal tumour of possible germline origin (WES or Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Inherited cancer"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WES or Medium Panel"
 * #R456.2 "Embryonal tumour of possible germline origin (Methylation testing)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Inherited cancer"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Methylation testing"
 * #R457.1 "Sarcoma of possible germline origin (Small Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Inherited cancer"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Small Panel"
 * #R458.1 "Young onset or familial dementia (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R459.1 "Young onset or complex Parkinson disease (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R460.1 "Amyotrophic lateral sclerosis (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R461.1 "Cerebral amyloid angiopathy (WGS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #R462.1 "Childhood interstitial lung disease (Medium Panel)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Respiratory"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Medium Panel"
 * #R463.1 "Cytogenetic characterisation of a genomic abnormality – Karyotype or Targeted Chromosome Analysis (Karyotype)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Karyotype"
 * #R464.1 "Recurrent miscarriage where products of conception are not available for testing - parental karyotype (Karyotype)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Karyotype"
 * #R465.1 "Familial cytogenetic rearrangement - Karyotype or Targeted Chromosome Analysis (Karyotype)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Karyotype"
 * #R466.1 "Unexplained infertility - karyotype (Karyotype)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Karyotype"
 * #R467.1 "Gamete donors - karyotype (Karyotype)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Karyotype"
 * #R468.1 "Possible sex chromosome aneuploidy or structural rearrangement – Targeted Chromosome Analysis (Karyotype)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Core"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Karyotype"
 * #R470.1 "T21, T18, and T13 aneuploidy testing - NIPT NHS Fetal Anomaly Screening Programme (FASP) (NIPT)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Prenatal"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "NIPT"
 * #R471.1 "Neurodegenerative Disorders, adult onset – Prenatal Exclusion Testing (Linkage analysis)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Linkage analysis"
 * #R471.2 "Neurodegenerative Disorders, adult onset – Prenatal Exclusion Testing (Linkage analysis)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Linkage analysis"
 * #R471.3 "Neurodegenerative Disorders, adult onset – Prenatal Exclusion Testing (Linkage analysis)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Linkage analysis"
 * #R471.4 "Neurodegenerative Disorders, adult onset – Prenatal Exclusion Testing (Linkage analysis)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #rare-and-inherited-disease
+  * ^property[+].code = #specialist-test-group
+  * ^property[=].valueString = "Neurology"
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Linkage analysis"
 
 // M* - Cancer, non-CNS (v16) - still current
 
 * #M1.1 "Colorectal Carcinoma, Multi-target NGS panel - small variant (KRAS, NRAS, BRAF)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M1.2 "Colorectal Carcinoma, KRAS hotspot"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M1.3 "Colorectal Carcinoma, NRAS hotspot"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M1.4 "Colorectal Carcinoma, MSI Testing"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Microsatellite instability"
 * #M1.5 "Colorectal Carcinoma, MLH1 promoter hypermethylation"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted mutation testing"
 * #M1.6 "Colorectal Carcinoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M1.7 "Colorectal Carcinoma, DPYD hotspot"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M1.9 "Colorectal Carcinoma, Multi-target NGS panel - small variant (MLH1, MSH2, MSH6, PMS2, POLE, POLD1)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M2.1 "Ovarian Carcinoma, Multi-target NGS panel - small variant (BRCA1, BRCA2, SMARCA4)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M2.3 "Ovarian Carcinoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M2.5 "Ovarian Carcinoma, HRD status (either positive for BRCA 1 and/or 2, or HRD positive)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M3.5 "Breast Cancer, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M3.6 "Breast Cancer, Multi-target NGS panel - small variant (PIK3CA, AKT1, PTEN (SNV & CNV))"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M3.7 "Breast Cancer, DPYD hotspot"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M3.9 "Breast Cancer, ETV6-NTRK3 FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M3.12 "Breast Cancer, Tumour profiling tests to guide adjuvant chemotherapy decisions in early breast cancer"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Gene expression profilling"
 * #M3.13 "Breast Cancer, Multi-target ctDNA NGS panel - small variant (ESR1, PIK3CA, AKT1, PTEN (SNV & CNV))"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M4.1 "Non-Small Cell Lung Cancer, Multi-target NGS panel - small variant (EGFR, ALK, BRAF, KRAS, MET)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M4.2 "Non-Small Cell Lung Cancer, Multi-target NGS panel - structural variant (ROS1, RET, EML4-ALK, NTRK1, NTRK1, NTRK3, MET)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M4.3 "Non-Small Cell Lung Cancer, Multi-target NGS panel - copy number variant (MET)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M4.4 "Non-Small Cell Lung Cancer, EGFR hotspot tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M4.5 "Non-Small Cell Lung Cancer, EGFR hotspot ctDNA"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M4.6 "Non-Small Cell Lung Cancer, ROS1 rearrangement FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M4.7 "Non-Small Cell Lung Cancer, RET rearrangement FISH/RT-PC"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M4.8 "Non-Small Cell Lung Cancer, MET copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M4.10 "Non-Small Cell Lung Cancer, EML4-ALK FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M4.11 "Non-Small Cell Lung Cancer, ALK hotspot cDNA"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M4.13 "Non-Small Cell Lung Cancer, Combined Multi-target NGS panel - small variant (EGFR, ALK, BRAF, KRAS, MET exon 14 skipping) and structural variant (ROS1, RET, ALK, NTRK1, NTRK2, NTRK3, MET exon 14 skipping)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M4.14 "Non-Small Cell Lung Cancer, Multi-target ctDNA combined Multi-target NGS panel - small variant (EGFR, ALK, BRAF, KRAS, MET exon 14 skipping and copy number variations) and structural variant (ROS1, RET, ALK, NTRK1, NTRK2, NTRK3, MET exon 14 skipping)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
 * #M5.1 "Mesothelioma, CDKN2A copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M5.2 "Mesothelioma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M5.3 "Mesothelioma, Multi-target NGS panel - copy number variant (CDKN2A)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M6.1 "Mucoepidermoid Carcinoma, MAML2 rearrangement FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M6.2 "Mucoepidermoid Carcinoma, Multi-target NGS panel - structural variant (MAML2, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M6.3 "Mucoepidermoid Carcinoma, Multi-target NGS panel - structural variant (MAML2)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M6.5 "Mucoepidermoid Carcinoma, DPYD hotspot"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M7.1 "Melanoma - Adult, Multi-target NGS panel - small variant (BRAF, KIT, NRAS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M7.2 "Melanoma - Adult, BRAF hotspot"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M7.3 "Melanoma - Adult, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M7.5 "Melanoma - Adult, MYB & 6cen"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M7.6 "Melanoma - Adult, RREB1 (6p25)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M7.7 "Melanoma - Adult, CCND1 (11q13)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M7.8 "Melanoma - Adult, MYC & 8cen"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M7.9 "Melanoma - Adult, CDKN2A & 9cen"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M7.10 "Melanoma - Adult, Copy number variant detection to genomewide resolution"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Microarray"
 * #M8.1 "Gastrointestinal Stromal Tumour, Multi-target NGS panel - small variant (KIT, PDGFRA)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M8.2 "Gastrointestinal Stromal Tumour, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M9.1 "Thyroid Papillary Carcinoma - Adult, Multi-target NGS panel - small variant (BRAF, KRAS, NRAS, HRAS, TERT promoter)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M9.2 "Thyroid Papillary Carcinoma - Adult, Multi-target NGS panel - structural variant (RET, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M9.3 "Thyroid Papillary Carcinoma - Adult, RET rearrangement FISH/RT-PC"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M9.4 "Thyroid Papillary Carcinoma - Adult, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M9.6 "Thyroid Papillary Carcinoma - Adult, TERT promoter hotspot"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M10.1 "Thyroid Follicular Carcinoma, Multi-target NGS panel - small variant (KRAS, NRAS, HRAS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M10.2 "Thyroid Follicular Carcinoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3, RET)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M11.1 "Poorly Differentiated Anaplastic Thyroid Carcinoma, Multi-target NGS panel - small variant (TP53, BRAF)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M11.2 "Poorly Differentiated Anaplastic Thyroid Carcinoma, Multi-target NGS panel - copy number variant (TP53)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M11.3 "Poorly Differentiated Anaplastic Thyroid Carcinoma, del(17p) TP53 copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M11.4 "Poorly Differentiated Anaplastic Thyroid Carcinoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3, RET, ALK)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M12.1 "Thyroid Medullary Carcinoma, Multi-target NGS panel - small variant (RET)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M12.2 "Thyroid Medullary Carcinoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M13.1 "Phaeochromocytoma, Multi-target NGS panel - small variant (RET)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M13.2 "Phaeochromocytoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M14.1 "Adrenal Cortical Carcinoma, Multi-target NGS panel - small variant (TP53)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M14.2 "Adrenal Cortical Carcinoma, Multi-target NGS panel - copy number variant (TP53)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M14.3 "Adrenal Cortical Carcinoma, del(17p) TP53 copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M14.4 "Adrenal Cortical Carcinoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M14.5 "Adrenal Cortical Carcinoma, DPYD hotspot"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M15.1 "Head and Neck Squamous Cell Carcinoma, Multi-target NGS panel - small variant (CDKN2A, EGFR, TP53)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M15.2 "Head and Neck Squamous Cell Carcinoma, Multi-target NGS panel - structural variant (RET, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M15.3 "Head and Neck Squamous Cell Carcinoma, Multi-target NGS panel - copy number variant (CDKN2A, TP53"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M15.4 "Head and Neck Squamous Cell Carcinoma, RET rearrangement FISH/RT-PC"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M15.5 "Head and Neck Squamous Cell Carcinoma, del(17p) TP53 copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M15.6 "Head and Neck Squamous Cell Carcinoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M15.7 "Head and Neck Squamous Cell Carcinoma, DPYD hotspot"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M16.1 "Adenoid Cystic Carcinoma, MYB-NFIB FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M16.2 "Adenoid Cystic Carcinoma, Multi-target NGS panel - structural variant (MYB-NFIB, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M16.4 "Adenoid Cystic Carcinoma, DPYD hotspot"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M17.1 "Secretory Carcinoma (Salivary Gland), ETV6-NTRK3 FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M17.2 "Secretory Carcinoma (Salivary Gland), Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M17.4 "Secretory Carcinoma (Salivary Gland), DPYD hotspot"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M18.1 "Renal Cell Carcinoma - Adult, TFE3 rearrangement FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M18.2 "Renal Cell Carcinoma - Adult, Multi-target NGS panel small variant (FH, SDHA, SDHB, SDHC, SDHD, VHL, ELOC (TCEB-1), TSC1/2, MET, BRAF)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M18.3 "Renal Cell Carcinoma - Adult, Chromosome 3 FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M18.4 "Renal Cell Carcinoma - Adult, Chromosome 8 FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M18.5 "Renal Cell Carcinoma - Adult, Chromosome 7 & 17 FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M18.6 "Renal Cell Carcinoma - Adult, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3, TFE3, TFEB)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M18.7 "Renal Cell Carcinoma - Adult, TFEB rearrangement FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/RT-PCR"
 * #M42.1 "Alveolar Rhabdomyosarcoma, FOXO1 rearrangement FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M42.2 "Alveolar Rhabdomyosarcoma, PAX3-FOXO1 rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M42.3 "Alveolar Rhabdomyosarcoma, PAX7-FOXO1 rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M42.4 "Alveolar Rhabdomyosarcoma, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M42.5 "Alveolar Rhabdomyosarcoma, Multi-target NGS panel - structural variant (FOXO1, PAX3-FOXO1, PAX7-FOXO1  NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M43.1 "Alveolar Soft Part Sarcoma, TFE3 rearrangement FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M43.2 "Alveolar Soft Part Sarcoma, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M43.3 "Alveolar Soft Part Sarcoma, Multi-target NGS panel - structural variant (TFE3, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M44.1 "Aneurysmal Bone Cyst, USP6 rearrangement FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M44.2 "Aneurysmal Bone Cyst, Multi-target NGS panel - structural variant (USP6)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M45.1 "Angiomatoid Fibrous Histiocytoma, EWSR1 rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M45.2 "Angiomatoid Fibrous Histiocytoma, FUS rearrangement FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M45.3 "Angiomatoid Fibrous Histiocytoma, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M45.4 "Angiomatoid Fibrous Histiocytoma, Multi-target NGS panel - structural variant (EWSR1, FUS, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M46.1 "Chondrosarcoma Conventional Central, Multi-target NGS panel - small variant (IDH1, IDH2)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M46.2 "Chondrosarcoma Conventional Central, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M46.3 "Chondrosarcoma Conventional Central, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M47.1 "Chondroblastoma, SNP Array"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Karyotype or equivalent"
 * #M47.2 "Chondroblastoma, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M47.3 "Chondroblastoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M48.1 "Clear Cell Sarcoma of Soft Tissue, EWSR1 rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M48.2 "Clear Cell Sarcoma of Soft Tissue, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M48.3 "Clear Cell Sarcoma of Soft Tissue, Multi-target NGS panel - structural variant (EWSR1, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M49.1 "CNS Ewing Sarcoma Family Tumour With CIC Alteration, Multi-target NGS panel - structural variant (CIC, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M49.2 "CNS Ewing Sarcoma Family Tumour With CIC Alteration, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M50.1 "Dermatofibrosarcoma Protuberans, COL1A1-PDGFB rearrangement FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M50.2 "Dermatofibrosarcoma Protuberans, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M50.3 "Dermatofibrosarcoma Protuberans, Multi-target NGS panel - structural variant (COL1A1-PDGFB, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M51.1 "Desmoid-Type Fibromatosis, Multi-target NGS panel - small variant (APC, CTNNB1)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M52.1 "Desmoplastic Small Round Cell Tumour, WT1 rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M52.2 "Desmoplastic Small Round Cell Tumour, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M52.3 "Desmoplastic Small Round Cell Tumour, Multi-target NGS panel - structural variant (WT1, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M53.1 "Endometrial Stromal Sarcoma, EPC1-PHF1 rearrangement FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M53.2 "Endometrial Stromal Sarcoma, JAZF1-PHF1 rearrangement FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M53.3 "Endometrial Stromal Sarcoma, JAZF1-SUZ12 rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M53.4 "Endometrial Stromal Sarcoma, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M53.5 "Endometrial Stromal Sarcoma, Multi-target NGS panel - structural variant (EPC1-PHF1, JAZF1-PHF1, JAZF1-SUZ12, NTRK1, NTRK2, NTRK3, ZC3H7B-BCOR)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M53.7 "Endometrial Stromal Sarcoma, ZC3H7B-BCOR rearrangment FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M54.1 "Epithelioid Haemangioendothelioma, WWTR1-CAMTA1 RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M54.2 "Epithelioid Haemangioendothelioma, Multi-target NGS panel - structural variant (WWTR1-CAMTA1)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M55.1 "Ewing Like Sarcoma/PNET, Multi-target NGS panel - structural variant (BCOR, BCOR-CCNB3, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M55.2 "Ewing Like Sarcoma/PNET, BCOR-CCNB3 RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M55.3 "Ewing Like Sarcoma/PNET, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M56.1 "Ewing Sarcoma of Bone, EWSR1 rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M56.2 "Ewing Sarcoma of Bone, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M56.3 "Ewing Sarcoma of Bone, Multi-target NGS panel - structural variant (EWSR1, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M57.1 "Ewing-Like Soft-Tissue Sarcoma, Multi-target NGS panel - structural variant (BCOR, BCOR-CCNB3, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M57.2 "Ewing-Like Soft-Tissue Sarcoma, BCOR-CCNB3 RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M57.3 "Ewing-Like Soft-Tissue Sarcoma, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M58.1 "Extraskeletal Myxoid Chondrosarcoma, NR4A3 rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M58.2 "Extraskeletal Myxoid Chondrosarcoma, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M58.3 "Extraskeletal Myxoid Chondrosarcoma, Multi-target NGS panel - structural variant (NR4A3, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M59.1 "Fibrous Dysplasia/Myxomas (Mazabraud Syndrome), Multi-target NGS panel - small variant (GNAS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M60.1 "Giant Cell Tumour of Bone, H3-3A hotspot"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M60.2 "Giant Cell Tumour of Bone, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M60.3 "Giant Cell Tumour of Bone, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M61.1 "High-Grade Neuroepithelial Tumour-Bcor Group, Multi-target NGS panel - structural variant (BCOR, BCOR-CCNB3, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M61.2 "High-Grade Neuroepithelial Tumour-Bcor Group, BCOR-CCNB3 RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M61.3 "High-Grade Neuroepithelial Tumour-Bcor Group, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M62.1 "Infantile Fibrosarcoma, ETV6-NTRK3 RT-PCR or FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M62.2 "Infantile Fibrosarcoma, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M62.3 "Infantile Fibrosarcoma, Multi-target NGS panel - structural variant (ETV6-NTRK3, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M63.1 "Inflammatory Myofibroblastic Tumour, TPM4-ALK FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M63.2 "Inflammatory Myofibroblastic Tumour, TPM3-ALK FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M63.3 "Inflammatory Myofibroblastic Tumour, Multi-target NGS panel - structural variant (ALK, TPM4-ALK, TPM3-ALK, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M63.4 "Inflammatory Myofibroblastic Tumour, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M64.1 "Low Grade Fibromyxoid Sarcoma, FUS rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M64.2 "Low Grade Fibromyxoid Sarcoma, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M64.3 "Low Grade Fibromyxoid Sarcoma, Multi-target NGS panel - structural variant (FUS, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M65.1 "Mesenchymal Chondrosarcoma, HEY1-NCOA2 RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M65.2 "Mesenchymal Chondrosarcoma, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M65.3 "Mesenchymal Chondrosarcoma, Multi-target NGS panel - structural variant (HEY1-NCOA2, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M66.1 "Myoepithelial Tumours of Soft Tissue, EWSR1 rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M66.2 "Myoepithelial Tumours of Soft Tissue, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M66.3 "Myoepithelial Tumours of Soft Tissue, Multi-target NGS panel - structural variant (EWSR1, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M67.1 "Myxoid/Round Cell Liposarcoma, DDIT3 rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M67.2 "Myxoid/Round Cell Liposarcoma, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M67.3 "Myxoid/Round Cell Liposarcoma, Multi-target NGS panel - structural variant (DDIT3, MDM2, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M67.4 "Myxoid/Round Cell Liposarcoma, MDM2 amplification FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M68.1 "Myxoinflammatory Fibroblastic Sarcoma, TGFBR3-OGA FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M68.2 "Myxoinflammatory Fibroblastic Sarcoma, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M68.3 "Myxoinflammatory Fibroblastic Sarcoma, MDM2 copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M68.4 "Myxoinflammatory Fibroblastic Sarcoma, Multi-target NGS panel - structural variant (TGFBR3-OGA, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M68.5 "Myxoinflammatory Fibroblastic Sarcoma, Multi-target NGS panel - copy number variant (MDM2)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M69.1 "Nodular Fasciitis, USP6 rearrangement FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M69.2 "Nodular Fasciitis, Multi-target NGS panel - structural variant (USP6)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M70.1 "Osteosarcoma, MDM2 copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M70.2 "Osteosarcoma, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M70.3 "Osteosarcoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M70.4 "Osteosarcoma, Multi-target NGS panel - copy number variant (MDM2)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M71.1 "Phosphaturic Mesenchymal Tumour, FN1 rearrangement FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M71.2 "Phosphaturic Mesenchymal Tumour, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M71.3 "Phosphaturic Mesenchymal Tumour, Multi-target NGS panel - structural variant (FN1, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M72.1 "Primitive Mesenchymal Myxoid Tumour of Infancy, Multi-target NGS panel - structural variant (BCOR, BCOR-CCNB3, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M72.2 "Primitive Mesenchymal Myxoid Tumour of Infancy, BCOR-CCNB3 RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M72.3 "Primitive Mesenchymal Myxoid Tumour of Infancy, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M73.1 "Pseudomyogenic Haemangioendothelioma, SERPINE1-FOSB FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M73.2 "Pseudomyogenic Haemangioendothelioma, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M73.3 "Pseudomyogenic Haemangioendothelioma, Multi-target NGS panel - structural variant (SERPINE1-FOSB, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M74.1 "Radiation Induced Angiosarcoma, MYC copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M74.2 "Radiation Induced Angiosarcoma, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M74.3 "Radiation Induced Angiosarcoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M74.4 "Radiation Induced Angiosarcoma, Multi-target NGS panel - copy number variant (MYC)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M75.1 "Round Cell Sarcoma Nos, Multi-target NGS panel - structural variant (BCOR, CIC, BCOR-CCNB3, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M75.2 "Round Cell Sarcoma Nos, BCOR-CCNB3 RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M75.3 "Round Cell Sarcoma Nos, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M76.1 "Sclerosing Epithelioid Fibrosarcoma, FUS rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M76.2 "Sclerosing Epithelioid Fibrosarcoma, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M76.3 "Sclerosing Epithelioid Fibrosarcoma, Multi-target NGS panel - structural variant (FUS, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M77.1 "Synovial Sarcoma, SS18 rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M77.2 "Synovial Sarcoma, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M77.3 "Synovial Sarcoma, Multi-target NGS panel - structural variant (SS18, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M78.1 "Undifferentiated Round Cell Sarcoma of Infancy, Multi-target NGS panel - structural variant (CIC, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M78.2 "Undifferentiated Round Cell Sarcoma of Infancy, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M79.1 "Well Differentiated/Dedifferentiated Liposarcoma, MDM2 amplification FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M79.2 "Well Differentiated/Dedifferentiated Liposarcoma, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M79.3 "Well Differentiated/Dedifferentiated Liposarcoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M79.4 "Well Differentiated/Dedifferentiated Liposarcoma, Multi-target NGS panel - copy number variant (MDM2, DDIT3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M79.6 "Well Differentiated/Dedifferentiated Liposarcoma, DDIT3 copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M79.7 "Well Differentiated/Dedifferentiated Liposarcoma, DDIT3 copy number RT-PCR/ddPCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "RT-PCR/ddPCR"
 * #M119.1 "Paediatric Tumours, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M119.2 "Paediatric Tumours, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M119.4 "Paediatric Tumours, DPYD hotspot"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M119.5 "Paediatric Tumours, Multi-target NGS-small variant (ABL1, ACVR1, AKT1, ALK, AMER1, APC, ARID1A, ARID1B, ASXL1, ATM, ATR, ATRX, BARD1, BBC3, BCOR, BRAF, BRCA1, BRCA2, BRIP1, CCND1, CCND2, CCNE1, CDK12, CDK4, CDK6, CDKN1A, CDKN2A, CDKN2B, CHEK1, CHEK2, CIC, CREBBP, CTNNB1, DAXX, DDX3X, DICER1, DROSHA, EGFR, EMSY, EPHB2, ERBB2, EZH2, FANCI, FANCL, FBXW7, FGFR1, FGFR2, FGFR3, FGFR4, GPR161, H3F3A, HIST1H3B, HIST1H3C, HIST2H3C, HRAS, IDH1, IDH2, IGF1R, KIAA1549 (CNV), KIT, KMT2A, KRAS, LIN28B, MAP2K1, MAP2K2, MAPK1, MDM2, MDM4, MET, MLH1, MRE11A, MSH2, MSH6, MYC, MYCL, MYCN, MYOD1, NF1, NF2, NRAS, PALB2, PDGFRA, PHOX2B, PIK3CA, PIK3R1, PIN1, PMS1, PMS2, PPM1D, PPP2R2A, PRKAR1A, PTCH1, PTCH2, PTEN, PTPN11, RAD51B, RAD51C, RAD51D, RAD54L, RAF1, RB1, RET, SETD2, SMARCA4, SMARCB1, SMARCE1, SMO, SUFU, TERT, TFE3, TP53, TSC1, TSC2, VHL, WT1, YAP1, YWHAE (CNV))"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
 * #M124.1 "Clear Cell Kidney Sarcoma - Paediatric, Multi-target NGS panel - small variant (BCOR)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M124.2 "Clear Cell Kidney Sarcoma - Paediatric, BCOR seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M124.3 "Clear Cell Kidney Sarcoma - Paediatric, BCOR copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M124.4 "Clear Cell Kidney Sarcoma - Paediatric, BCOR rearrangement FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M124.5 "Clear Cell Kidney Sarcoma - Paediatric, NUTM2B-YWHAE FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M124.6 "Clear Cell Kidney Sarcoma - Paediatric, NUTM2E-YWHAE FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M124.7 "Clear Cell Kidney Sarcoma - Paediatric, NUTM1-YWHAE FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M124.8 "Clear Cell Kidney Sarcoma - Paediatric, YWHAE copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M124.9 "Clear Cell Kidney Sarcoma - Paediatric, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M124.10 "Clear Cell Kidney Sarcoma - Paediatric, Multi-target NGS panel - structural variant (BCOR, NUTM2B-YWHAE, NUTM2E-YWHAE, NUTM1-YWHAE, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M124.11 "Clear Cell Kidney Sarcoma - Paediatric, Multi-target NGS panel - copy number variant (BCOR, YWHAE)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M127.1 "Congenital Mesoblastic Nephroma - Paediatric, NTRK3-ETV6 FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M127.3 "Congenital Mesoblastic Nephroma - Paediatric, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M127.4 "Congenital Mesoblastic Nephroma - Paediatric, Multi-target NGS panel - structural variant (NTRK3-ETV6, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M131.1 "Cystic Nephroma - Paediatric, Multi-target NGS panel - small variant (DICER1)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M131.2 "Cystic Nephroma - Paediatric, DICER1 seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M131.3 "Cystic Nephroma - Paediatric, DICER1 copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M131.4 "Cystic Nephroma - Paediatric, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M131.5 "Cystic Nephroma - Paediatric, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M131.6 "Cystic Nephroma - Paediatric, Multi-target NGS panel - copy number variant (DICER1)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M143.1 "Lung - Paediatric, Multi-target NGS panel - small variant (H3-3A, H3-3B)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M143.2 "Lung - Paediatric, H3-3A seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M143.3 "Lung - Paediatric, H3-3B seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M143.4 "Lung - Paediatric, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M143.5 "Lung - Paediatric, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M149.1 "Melanotic Tumours - Paediatric, Multi-target NGS panel - small variant (NRAS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M149.2 "Melanotic Tumours - Paediatric, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M149.3 "Melanotic Tumours - Paediatric, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M151.1 "Midline Carcinoma - Paediatric, NUTM1-BRD2 FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M151.2 "Midline Carcinoma - Paediatric, NUTM1-BRD3 FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M151.3 "Midline Carcinoma - Paediatric, NUTM1-BRD4 FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M151.4 "Midline Carcinoma - Paediatric, NUTM1-CIC FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M151.5 "Midline Carcinoma - Paediatric, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M151.6 "Midline Carcinoma - Paediatric, Multi-target NGS panel - structural variant (NUTM1-BRD2, NUTM1-BRD3, NUTM1-BRD4, NUTM1-CIC, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M152.1 "Neuroblastoma - Paediatric, SNP Array"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Karyotype or equivalent"
 * #M152.2 "Neuroblastoma - Paediatric, Multi-target NGS panel - small variant (ALK, ATRX, FGFR1, MYCN, NRAS, PHOX2B, TP53)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M152.3 "Neuroblastoma - Paediatric, ALK seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M152.4 "Neuroblastoma - Paediatric, FGFR1 seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M152.5 "Neuroblastoma - Paediatric, PHOX2B seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M152.6 "Neuroblastoma - Paediatric, TP53 seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M152.7 "Neuroblastoma - Paediatric, MYCN copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M152.8 "Neuroblastoma - Paediatric, ALK copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M152.9 "Neuroblastoma - Paediatric, 17q copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M152.10 "Neuroblastoma - Paediatric, 17q rearrangement FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M152.11 "Neuroblastoma - Paediatric, 11q copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M152.12 "Neuroblastoma - Paediatric, 1p36 copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M152.13 "Neuroblastoma - Paediatric, ALK rearrangement FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M152.14 "Neuroblastoma - Paediatric, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M152.15 "Neuroblastoma - Paediatric, MYCN seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M152.16 "Neuroblastoma - Paediatric, Multi-target NGS panel - structural variant (17q, ALK, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M152.17 "Neuroblastoma - Paediatric, Multi-target NGS panel - copy number variant (MYCN, ALK, 17q, 11q, 1p36)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M152.18 "Neuroblastoma - Paediatric, DNA Methylation"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Methylation array (whole genome)"
 * #M152.19 "Neuroblastoma - Paediatric, TERT promoter rearrangement FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M157.1 "Thyroid Papillary Carcinoma - Paediatric, Multi-target NGS panel - small variant (RET)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M157.2 "Thyroid Papillary Carcinoma - Paediatric, RET seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M157.3 "Thyroid Papillary Carcinoma - Paediatric, Multi-target NGS panel - structural variant (RET, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M157.4 "Thyroid Papillary Carcinoma - Paediatric, RET rearrangement FISH/RT-PC"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M157.5 "Thyroid Papillary Carcinoma - Paediatric, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M161.1 "Pleuropulmonary Blastoma - Paediatric, Multi-target NGS panel - small variant (DICER1)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M161.2 "Pleuropulmonary Blastoma - Paediatric, DICER1 seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M161.3 "Pleuropulmonary Blastoma - Paediatric, DICER1 copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M161.4 "Pleuropulmonary Blastoma - Paediatric, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M161.5 "Pleuropulmonary Blastoma - Paediatric, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M161.6 "Pleuropulmonary Blastoma - Paediatric, Multi-target NGS panel - copy number variant (DICER1)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M165.1 "Renal Tumours - Paediatric, Multi-target NGS panel - small variant (CTNNB1, DAXX, ATRX)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M165.2 "Renal Tumours - Paediatric, ATRX seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M165.3 "Renal Tumours - Paediatric, CTNNB1 seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M165.4 "Renal Tumours - Paediatric, DAXX seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M165.5 "Renal Tumours - Paediatric, ATRX copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M165.6 "Renal Tumours - Paediatric, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M165.7 "Renal Tumours - Paediatric, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M165.8 "Renal Tumours - Paediatric, Multi-target NGS panel - copy number variant (ATRX)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M166.1 "Retinoblastoma - Paediatric, Multi-target NGS panel - small variant (RB1)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M166.2 "Retinoblastoma - Paediatric, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M166.3 "Retinoblastoma - Paediatric, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M166.4 "Retinoblastoma - Paediatric, DNA Methylation"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Methylation array (whole genome)"
 * #M167.1 "Rhabdoid Tumours - Paediatric, Multi-target NGS panel - small variant (SMARCB1)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M167.2 "Rhabdoid Tumours - Paediatric, SMARCB1 seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M167.3 "Rhabdoid Tumours - Paediatric, SMARCB1 copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M167.4 "Rhabdoid Tumours - Paediatric, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M167.5 "Rhabdoid Tumours - Paediatric, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M167.6 "Rhabdoid Tumours - Paediatric, Multi-target NGS panel - copy number variant (SMARCB1)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M173.1 "t(6;11) Translocation-Associated Renal Cell Carcinoma - Paediatric, TFEB-MALAT1 FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M173.2 "t(6;11) Translocation-Associated Renal Cell Carcinoma - Paediatric, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M173.3 "t(6;11) Translocation-Associated Renal Cell Carcinoma - Paediatric, Multi-target NGS panel - structural variant (TFEB-MALAT1, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M174.1 "Testicular - Paediatric, Multi-target NGS panel - small variant (PRKAR1A)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M174.2 "Testicular - Paediatric, PRKAR1A seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M174.3 "Testicular - Paediatric, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M174.4 "Testicular - Paediatric, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M178.1 "Wilms Tumours - Paediatric, Multi-target NGS panel - small variant (DROSHA)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M178.2 "Wilms Tumours - Paediatric, DROSHA seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M178.3 "Wilms Tumours - Paediatric, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M178.4 "Wilms Tumours - Paediatric, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M180.1 "Xp11.2 Translocation-Associated Renal Cell Carcinoma - Paediatric, Multi-target NGS panel - small variant (TFE3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M180.2 "Xp11.2 Translocation-Associated Renal Cell Carcinoma - Paediatric, TFE3 seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M180.3 "Xp11.2 Translocation-Associated Renal Cell Carcinoma - Paediatric, TFE3-ASPSCR1 FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M180.4 "Xp11.2 Translocation-Associated Renal Cell Carcinoma - Paediatric, TFE3-MITF FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M180.5 "Xp11.2 Translocation-Associated Renal Cell Carcinoma - Paediatric, TFE3-PRCC FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M180.6 "Xp11.2 Translocation-Associated Renal Cell Carcinoma - Paediatric, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M180.7 "Xp11.2 Translocation-Associated Renal Cell Carcinoma - Paediatric, Multi-target NGS panel - structural variant (TFE3-ASPSCR1, TFE3-MITF,  TFE3-PRCC, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M187.1 "Uveal melanoma, 1p, 3, 6, 8 MLPA"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "MLPA or equivalent"
 * #M187.2 "Uveal melanoma, BRAF hotspot"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M187.3 "Uveal melanoma, Multi-target NGS panel - small variant (BRAF, NRAS, NF1)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M187.4 "Uveal melanoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M196.1 "Bone Forming Soft Tissue Tumour Differential, MDM2 copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M196.2 "Bone Forming Soft Tissue Tumour Differential, USP6 rearrangement FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M196.3 "Bone Forming Soft Tissue Tumour Differential, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M196.4 "Bone Forming Soft Tissue Tumour Differential, Multi-target NGS panel - structural variant (USP6, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M196.5 "Bone Forming Soft Tissue Tumour Differential, Multi-target NGS panel - copy number variant (MDM2)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M197.1 "Round Cell Sarcoma of Soft Tissue Differential, Multi-target NGS panel - structural variant (BCOR, CIC, DDIT3, EWSR1, FOXO1, WT1, BCOR-CCNB3, HEY1-NCOA2, PAX3-FOXO1, PAX7-FOXO1, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M197.2 "Round Cell Sarcoma of Soft Tissue Differential, DDIT3 rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M197.3 "Round Cell Sarcoma of Soft Tissue Differential, EWSR1 rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M197.4 "Round Cell Sarcoma of Soft Tissue Differential, FOXO1 rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M197.5 "Round Cell Sarcoma of Soft Tissue Differential, WT1 rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M197.6 "Round Cell Sarcoma of Soft Tissue Differential, BCOR-CCNB3 RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M197.7 "Round Cell Sarcoma of Soft Tissue Differential, HEY1-NCOA2 RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M197.8 "Round Cell Sarcoma of Soft Tissue Differential, PAX3-FOXO1 rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M197.9 "Round Cell Sarcoma of Soft Tissue Differential, PAX7-FOXO1 rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M197.10 "Round Cell Sarcoma of Soft Tissue Differential, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M198.1 "Vascular Soft Tissue Tumour Differential, MYC copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M198.2 "Vascular Soft Tissue Tumour Differential, SERPINE1-FOSB FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M198.3 "Vascular Soft Tissue Tumour Differential, WWTR1-CAMTA1 RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M198.4 "Vascular Soft Tissue Tumour Differential, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M198.5 "Vascular Soft Tissue Tumour Differential, Multi-target NGS panel - structural variant (SERPINE1-FOSB, WWTR1-CAMTA1, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M198.6 "Vascular Soft Tissue Tumour Differential, Multi-target NGS panel - copy number variant (MYC)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M199.1 "Spindle Cell Soft Tissue Tumour Differential, Multi-target NGS panel - small variant (APC, CTNNB1)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M199.2 "Spindle Cell Soft Tissue Tumour Differential, Multi-target NGS panel - structural variant (ALK, BCOR, CIC, EWSR1, FUS, SS18, USP6, COL1A1-PDGFB, TPM3-ALK, TPM4-ALK, ETV6-NTRK3, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M199.3 "Spindle Cell Soft Tissue Tumour Differential, EWSR1 rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M199.4 "Spindle Cell Soft Tissue Tumour Differential, FUS rearrangement FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M199.5 "Spindle Cell Soft Tissue Tumour Differential, MDM2 copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M199.6 "Spindle Cell Soft Tissue Tumour Differential, SS18 rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M199.7 "Spindle Cell Soft Tissue Tumour Differential, USP6 rearrangement FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M199.8 "Spindle Cell Soft Tissue Tumour Differential, COL1A1-PDGFB rearrangement FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M199.9 "Spindle Cell Soft Tissue Tumour Differential, TPM3-ALK FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M199.10 "Spindle Cell Soft Tissue Tumour Differential, TPM4-ALK FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M199.11 "Spindle Cell Soft Tissue Tumour Differential, ETV6-NTRK3 RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M199.12 "Spindle Cell Soft Tissue Tumour Differential, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M199.13 "Spindle Cell Soft Tissue Tumour Differential, Multi-target NGS panel - copy number variant (MDM2)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M200.1 "Myxoid Soft Tissue Tumour Differential, Multi-target NGS panel - structural variant (BCOR, DDIT3, FUS, NR4A3, TGFBR3-OGA, BCOR-CCNB3, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M200.2 "Myxoid Soft Tissue Tumour Differential, DDIT3 rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M200.3 "Myxoid Soft Tissue Tumour Differential, FUS rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M200.4 "Myxoid Soft Tissue Tumour Differential, NR4A3 rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M200.5 "Myxoid Soft Tissue Tumour Differential, TGFBR3-OGA FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M200.6 "Myxoid Soft Tissue Tumour Differential, BCOR-CCNB3 RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M200.7 "Myxoid Soft Tissue Tumour Differential, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M201.1 "Adipocytic Soft Tissue Tumour Differential, DDIT3 rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M201.2 "Adipocytic Soft Tissue Tumour Differential, MDM2 copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M201.3 "Adipocytic Soft Tissue Tumour Differential, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M201.4 "Adipocytic Soft Tissue Tumour Differential, Multi-target NGS panel - structural variant (DDIT3, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M201.5 "Adipocytic Soft Tissue Tumour Differential, Multi-target NGS panel - copy number variant (MDM2)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M202.1 "Epithelioid Soft Tissue Tumour Differential, EWSR1 rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M202.2 "Epithelioid Soft Tissue Tumour Differential, FUS rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M202.3 "Epithelioid Soft Tissue Tumour Differential, SS18 rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M202.4 "Epithelioid Soft Tissue Tumour Differential, TFE3 rearrangement FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M202.5 "Epithelioid Soft Tissue Tumour Differential, WWTR1-CAMTA1  RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M202.6 "Epithelioid Soft Tissue Tumour Differential, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M202.7 "Epithelioid Soft Tissue Tumour Differential, Multi-target NGS panel - structural variant (EWSR1, FUS, SS18, TFE3, WWTR1-CAMTA1, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M203.1 "Uterine Sarcomas (Inc Endometrial), EPC1-PHF1 rearrangement FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M203.2 "Uterine Sarcomas (Inc Endometrial), JAZF1-PHF1 rearrangement FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M203.3 "Uterine Sarcomas (Inc Endometrial), JAZF1-SUZ12 rearrangement FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M203.4 "Uterine Sarcomas (Inc Endometrial), NUTM2B-YWHAE FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M203.5 "Uterine Sarcomas (Inc Endometrial), WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M203.6 "Uterine Sarcomas (Inc Endometrial), Multi-target NGS panel - structural variant (EPC1-PHF1, JAZF1-PHF1, JAZF1-SUZ12, NUTM2B-YWHAE, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M204.1 "Undifferentiated tumour, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M204.2 "Undifferentiated tumour, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M205.1 "Cartilage Forming Bone Tumour Differential, Multi-target NGS panel - small variant (H3-3A, H3-3B, IDH1, IDH2)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M205.2 "Cartilage Forming Bone Tumour Differential, H3-3B hotspot"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M205.3 "Cartilage Forming Bone Tumour Differential, H3-3A seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M205.4 "Cartilage Forming Bone Tumour Differential, H3-3B seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M205.5 "Cartilage Forming Bone Tumour Differential, HEY1-NCOA2 RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M205.6 "Cartilage Forming Bone Tumour Differential, SNP Array"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Karyotype or equivalent"
 * #M205.7 "Cartilage Forming Bone Tumour Differential, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M205.8 "Cartilage Forming Bone Tumour Differential, Multi-target NGS panel - structural variant (HEY1-NCOA2, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M206.1 "Bone Forming Bone Tumour Differential, Multi-target NGS panel - small variant (H3-3A, H3-3B)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M206.2 "Bone Forming Bone Tumour Differential, H3-3B hotspot"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M206.3 "Bone Forming Bone Tumour Differential, H3-3A seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M206.4 "Bone Forming Bone Tumour Differential, H3-3B seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M206.5 "Bone Forming Bone Tumour Differential, MDM2 copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M206.6 "Bone Forming Bone Tumour Differential, USP6 rearrangement FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M206.7 "Bone Forming Bone Tumour Differential, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M206.8 "Bone Forming Bone Tumour Differential, Multi-target NGS panel - structural variant (USP6, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M206.9 "Bone Forming Bone Tumour Differential, Multi-target NGS panel - copy number variant (MDM2)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M207.1 "Osteoclast-Rich Bone Tumour Differential, Multi-target NGS panel - small variant (H3-3B)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M207.2 "Osteoclast-Rich Bone Tumour Differential, H3-3B seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M207.3 "Osteoclast-Rich Bone Tumour Differential, H3-3B hotspot"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M207.4 "Osteoclast-Rich Bone Tumour Differential, MDM2 copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M207.5 "Osteoclast-Rich Bone Tumour Differential, USP6 rearrangement FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M207.6 "Osteoclast-Rich Bone Tumour Differential, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M207.7 "Osteoclast-Rich Bone Tumour Differential, Multi-target NGS panel - structural variant (USP6, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M207.8 "Osteoclast-Rich Bone Tumour Differential, Multi-target NGS panel - copy number variant (MDM2)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M208.1 "Round Cell Sarcoma of Bone Differential, Multi-target NGS panel - structural variant (BCOR, CIC, EWSR1, WT1, BCOR-CCNB3, HEY1-NCOA2, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M208.2 "Round Cell Sarcoma of Bone Differential, EWSR1 rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M208.3 "Round Cell Sarcoma of Bone Differential, WT1 rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M208.4 "Round Cell Sarcoma of Bone Differential, BCOR-CCNB3 RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M208.5 "Round Cell Sarcoma of Bone Differential, HEY1-NCOA2 RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M208.6 "Round Cell Sarcoma of Bone Differential, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M209.1 "Vascular Tumour of Bone Differential, MYC copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M209.2 "Vascular Tumour of Bone Differential, SERPINE1-FOSB FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M209.3 "Vascular Tumour of Bone Differential, WWTR1-CAMTA1 RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M209.4 "Vascular Tumour of Bone Differential, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M209.5 "Vascular Tumour of Bone Differential, Multi-target NGS panel - structural variant (SERPINE1-FOSB, WWTR1-CAMTA1, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M209.6 "Vascular Tumour of Bone Differential, Multi-target NGS panel - copy number variant (MYC)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M210.1 "Spindle Cell Tumour of Bone Differential, Multi-target NGS panel - structural variant (ALK, BCOR, CIC, EWSR1, FUS, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M210.2 "Spindle Cell Tumour of Bone Differential, EWSR1 rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M210.3 "Spindle Cell Tumour of Bone Differential, FUS rearrangement FISH or RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M210.4 "Spindle Cell Tumour of Bone Differential, MDM2 copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M210.5 "Spindle Cell Tumour of Bone Differential, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M210.6 "Spindle Cell Tumour of Bone Differential, Multi-target NGS panel - copy number variant (MDM2)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M211.1 "Fibro-Osseous Tumour of Bone Differential, Multi-target NGS panel - small variant (GNAS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M211.2 "Fibro-Osseous Tumour of Bone Differential, MDM2 copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M211.3 "Fibro-Osseous Tumour of Bone Differential, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M211.4 "Fibro-Osseous Tumour of Bone Differential, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M211.5 "Fibro-Osseous Tumour of Bone Differential, Multi-target NGS panel - copy number variant (MDM2)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M212.1 "Renal Tumour Differential - Paediatric, Multi-target NGS panel - small variant (CTNNB1, DAXX, ATRX, TP53, TFE3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M212.2 "Renal Tumour Differential - Paediatric, ATRX seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M212.3 "Renal Tumour Differential - Paediatric, CTNNB1 seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M212.4 "Renal Tumour Differential - Paediatric, DAXX seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M212.5 "Renal Tumour Differential - Paediatric, TFE3 seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M212.6 "Renal Tumour Differential - Paediatric, TP53 seq"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Single gene sequencing"
 * #M212.7 "Renal Tumour Differential - Paediatric, ATRX copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M212.8 "Renal Tumour Differential - Paediatric, del(17p) TP53 copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M212.9 "Renal Tumour Differential - Paediatric, WT1 copy number FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M212.10 "Renal Tumour Differential - Paediatric, TFEB-MALAT1 FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M212.11 "Renal Tumour Differential - Paediatric, TFE3-ASPSCR1 FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M212.12 "Renal Tumour Differential - Paediatric, TFE3-MITF FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M212.13 "Renal Tumour Differential - Paediatric, TFE3-PRCC FISH/RT-PCR"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH/Simple targeted mutation testing"
 * #M212.14 "Renal Tumour Differential - Paediatric, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M212.15 "Renal Tumour Differential - Paediatric, Multi-target NGS panel - structural variant (TFEB-MALAT1, TFE3-ASPSCR1, TFE3-MITF, TFE3-PRCC, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M212.16 "Renal Tumour Differential - Paediatric, Multi-target NGS panel - copy number variant (ATRX, TP53, WT1)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M215.1 "Endometrial Cancer, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M215.2 "Endometrial Cancer, MLH1 promoter hypermethylation"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Targeted mutation testing"
 * #M215.4 "Endometrial Cancer, Multi-target NGS panel - small variant (MLH1, MSH2, MSH6, PMS2)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M215.5 "Endometrial Cancer, Multi-target NGS panel-small variant detection (POLE)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M217.1 "Urothelial Carcinoma, Multi-target NGS panel - small variant (FGFR3, FGFR2)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M217.2 "Urothelial Carcinoma, Multi-target NGS panel - copy number variant (FGFR3, FGFR2)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M217.3 "Urothelial Carcinoma, Multi-target NGS panel - structural variant (FGFR3, FGFR2, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M218.1 "Prostate Cancer, Multi-target NGS panel - small variant (BRCA1, BRCA2) for somatic/tissue testing"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M218.2 "Prostate Cancer, Multi-target NGS panel - structural variant (TMPRSS2-ERG, NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M218.3 "Prostate Cancer, TMPRSS2-ERG FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M219.1 "Pancreatic Cancer, Multi-target NGS panel - small variant (BRCA1, BRCA2)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M219.2 "Pancreatic Cancer, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M219.3 "Pancreatic Cancer, DPYD hotspot"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M219.5 "Pancreatic Cancer, MSI Testing"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Microsatellite instability analysis"
 * #M220.1 "Cholangiocarcinoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3, FGFR2)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M220.3 "Cholangiocarcinoma, DPYD hotspot"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M220.5 "Cholangiocarcinoma, MSI Testing"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Microsatellite instability analysis"
 * #M220.6 "Cholangiocarcinoma, Multi-target NGS panel -small variant (IDH1)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M220.7 "Cholangiocarcinoma, FGFR2 rearrangement FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M221.1 "Spitzoid tumour, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M222.2 "Hepatocellular carcinoma, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M222.4 "Hepatocellular carcinoma, DPYD hotspot"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M226.1 "Carcinoma of Unknown Primary, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M226.3 "Carcinoma of Unknown Primary, DPYD hotspot"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M226.4 "Carcinoma of Unknown Primary, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M226.5 "Carcinoma of Unknown Primary, Multi-target NGS panel-structural variant (ALK, EML4, FGFR2, FGFR3, MAML2, MET * (including exon 14 skipping), MYB, NFIB, NTRK1, NTRK2, NTRK3, RET,ROS1, TFE3, TMPRSS2, ERG)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M226.6 "Carcinoma of Unknown Primary, Multi-target NGS panel -small variant (AKT1, APC, ALK, BRCA1, BRCA2, BRAF, CDKN2A, CTNNB1, DICER1, EGFR, ELOC, ESR1, FGFR2, FGFR3, FH, FOXL2, HRAS, IDH1, KIT, KRAS, MLH1, MSH2, MSH6, MET (including exon 14 skipping), NF1, NRAS, PDGFRA, PIK3CA, POLD1, POLE, PMS2, PTEN, RB1, RET, SDHA, SHDB, SDHC, SDHD, SMARCA4, TP53, TSC1, TSC2, TERT (promoter), VKL, NF2, CDK12) and copy number variant (CDKN2A, FGFR2, FGFR3, MET, PTEN, TP53)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M226.7 "Carcinoma of Unknown Primary, Multi-target ctDNA NGS panel - small variant (AKT1, APC, ALK, BRCA1, BRCA2, BRAF, CDKN2A, CTNNB1, EGFR, ESR1, HRAS, IDH1, FGFR2, FGFR3, KIT, KRAS, MLH1, NF1, NRAS, PDGFRA, PIK3CA, PTEN, RB1, RET, TSC1, TP53, TERT (promoter), VHL) , copy number variant (BRCA1, BRCA2, PTEN) , structural variant (ALK, BRAF, EML4, FGFR2, FGFR3, NTRK1, NTRK2, NTRK3, ROS1, MET (including exon 14 skipping), RET)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M227.1 "Solid tumour other (i.e. specific histology not listed elsewhere in the test directory), Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M227.3 "Solid tumour other (i.e. specific histology not listed elsewhere in the test directory), DPYD hotspot"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M231.1 "Small cell lung cancer, Multi-target NGS panel - copy number variant (RB1)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M231.2 "Small cell lung cancer, Multi-target NGS panel - structural variant (NTRK1, NTRK2, NTRK3)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M232.1 "Solid Tumour Exhausted all Standards of Care Testing and Treatment- Adult, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M233.1 "High Grade Ovarian Carcinoma, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M234.1 "Triple Negative Breast Cancer, WGS Germline and Tumour"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "WGS"
 * #M236.1 "Oesophageal Cancer, MSI Testing"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Microsatellite instability analysis"
 * #M236.2 "Oesophageal Cancer, DPYD hotspot"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M237.1 "Gastric Cancer, MSI Testing"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Microsatellite instability analysis"
 * #M237.2 "Gastric Cancer, DPYD hotspot"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M238.1 "Small Bowel Cancer, MSI Testing"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Microsatellite instability analysis"
 * #M238.2 "Small Bowel Cancer, DPYD hotspot"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Simple targeted mutation testing"
 * #M239.1 "Thyroid Hurtle Cell Carcinoma, Multi-target NGS panel - structural variant (RET)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M240.1 "Non-invasive follicular thyroid neoplasm with papillary like nuclei, Multi-target NGS panel - small variant (BRAF,HRAS,NRAS,KRAS)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M241.1 "Conjunctival melanoma, MYB & 6cen"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M241.2 "Conjunctival melanoma, RREB1 (6p25)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M241.3 "Conjunctival melanoma, CCND1 (11q13)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M241.4 "Conjunctival melanoma, MYC & 8cen"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M241.5 "Conjunctival melanoma, CDKN2A & 9cen"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M242.1 "Any patient receiving solid organ transplantation (only in cases where passenger lymphocyte syndrome is suspected), STR Testing"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Complex targeted mutation testing"
 * #M242.2 "Any patient receiving solid organ transplantation (only in cases where passenger lymphocyte syndrome is suspected), Sex chromosome FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M243.1 "Thymic Carcinoma, Multi-target NGS panel (KIT)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 * #M244.1 "In all tumours eligible for NTRK1/2/3 testing, FISH"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "FISH"
 * #M245.1 "Ovarian sex cord stromal tumours, Multi-target NGS panel-small variant (FOXL2, CTNNB1, APC, DICER1)"
   * ^property[+].code = #category
   * ^property[=].valueCode = #cancer
+  * ^property[+].code = #test-method
+  * ^property[=].valueString = "Panel"
 
 // M* - Haematological Oncology / Cancer CNS - superseded by DGTS GT codes, preserved as-is
 
