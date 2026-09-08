@@ -79,6 +79,24 @@ flowchart LR
   instrument integrations. **Not yet confirmed** - would need direct testing
   against a real Clarity LIMS instance/API to be certain, rather than published
   documentation alone.
+- **Genomics England's own BAM/CRAM → VCF conversion is a useful precedent for
+  what "the bioinformatics component" above actually looks like in practice.**
+  Genomics England runs this conversion (realignment plus small variant/SV/CNV
+  calling from an input BAM/CRAM, currently DRAGEN, e.g. v3.7.8, producing a new
+  CRAM plus VCF/gVCF outputs) as a **batch pipeline over a whole cohort** (NHS GMS,
+  100kGP, COVID-19 genomes) - not an on-demand, per-file conversion service. Access
+  for approved researchers is through the Genomics England Research Environment,
+  where the already-generated BAM/CRAM and VCF/gVCF files are exposed via a
+  file-system/S3-style mount (an S3 alias or ARN) - you read pre-computed output
+  files, you don't POST a BAM and get a VCF back. CRAM files are also deep-archived
+  to AWS SequenceStore after realignment, so even file-based access to raw CRAMs
+  isn't always immediate - there's a retrieval step first. **Bottom line:** even a
+  well-resourced national body treats this as pipeline-as-a-batch-process plus
+  file-system access to results, not an exposed conversion API - if NW Genomics
+  wanted BAM/CRAM → VCF as an actual callable API (rather than a batch job whose
+  output files something else picks up), that would need building in-house (e.g.
+  wrapping DRAGEN or GATK in a bespoke service), not something an external body
+  like Genomics England already exposes for that purpose.
 - **This is directly relevant to [OMICS DSS Result Integration - Outstanding Issues,
   item 3](reportable-variants.html#outstanding-issues)** - the DLIMS Lab
   Number-to-iGene-Test-ID lookup chain exists today because Omics DSS is a
