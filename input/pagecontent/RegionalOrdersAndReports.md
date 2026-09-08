@@ -289,6 +289,31 @@ open questions the worked ctDNA example surfaces against this same model
 `ReportIdentifier`, and `Specimen` not currently being included in the R01
 Bundle) - not repeated here since they aren't specific to this use case.
 
+### Outstanding Issues
+
+**HODS-originated orders from MFT use `PV1-3`/`PV1-4` non-standardly.** MFT
+sends orders from both EPIC and HODS through the same TIE (see
+[Actors](#actors) above) - but HODS orders carry a **site code in `PV1-3`**
+and a **HODS Order Placer Number in `PV1-4`**, rather than either field's
+usual meaning. This IG's own [PV1 definition](hl7v2.html#pv1) models
+`PV1-3` as Assigned Patient Location (the ward/clinic/bed the patient is
+assigned to, which can include a facility component) - a site code isn't
+necessarily inconsistent with that, but isn't confirmed either. `PV1-4`
+isn't modelled by this IG at all, and standard HL7 v2.5.1 defines it as
+Admission Type, not an order identifier - HODS appears to be repurposing it
+to carry an order-level identifier on what is otherwise a visit/admission
+segment. Not yet resolved:
+
+- Whether the RIE/conversion pipeline that turns MFT's local `ORM_O01` into
+  the NW Standard (see [Order Process](#order-process) above) currently reads
+  `PV1-4` for HODS orders, or only looks at the usual `ORC`/`OBR`
+  placer-order fields.
+- Whether the HODS Order Placer Number in `PV1-4` should map onto
+  `ServiceRequest.identifier` (OrderIdentifier, type=PLAC) the same way
+  `PlacerOrderNumber` does elsewhere in this use case's [Laboratory Order O21
+  Mapping](#laboratory-order-o21-mapping) above, or whether it represents a
+  distinct identifier from a standard Placer Order Number.
+
 ## Examples
 
 FHIR examples for the Laboratory Order (LAB-1) and Laboratory Report (LAB-3)
