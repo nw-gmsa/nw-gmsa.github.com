@@ -151,6 +151,9 @@ pages:
   reportable-variants.md:
     title: "Use Case: OMICS DSS Result Integration"
     generation: markdown
+  ClarityLIMS.md:
+    title: "Use Case: Clarity LIMS Integration (Proposed - Replacing Omics DSS and DLIMS)"
+    generation: markdown
   GenomicOrderManagementService.md:
     title: "Use Case: NHS England Genomic Order Management Service (GOMS)"
     generation: markdown
@@ -422,6 +425,7 @@ menu:
     Pathology to Genomics Reflex Orders (Cheshire and Merseyside): CheshireAndMerseysidePathology.html
     BCR-ABL Results (Cepheid ASTM to iGene): BCRABLMonitoring.html
     Reportable Variants Results(iGene, Omics DSS and DLIMS): reportable-variants.html
+    Clarity LIMS Integration (Proposed - Replacing Omics DSS and DLIMS): ClarityLIMS.html
     NHS England Genomic Order Management Service (GOMS): GenomicOrderManagementService.html
     StarLIMS / iGene Integration: starLIMS.html
     Cancer Clinical Pathways (Background Information) : CancerNOS.html

@@ -1,5 +1,7 @@
 <div class="alert alert-danger" role="alert">
-This is currently being elaborated and subject to change.
+This is currently being elaborated and subject to change. See also [Clarity LIMS
+Integration](ClarityLIMS.html), a proposed future direction that would eventually
+replace both DLIMS and Omics DSS described here.
 </div>
 
 DSS and iGene Integration Overview.
@@ -562,6 +564,14 @@ This raises two open questions, neither resolved by any current example:
    a second, independent path to iGene. This is one option, not a decided design -
    the options for resolving this linkage still need to be identified and compared
    before one is chosen.
+
+   **A third, longer-term possibility:** [Clarity LIMS](ClarityLIMS.html), proposed to
+   eventually replace both DLIMS and Omics DSS, may resolve this linkage problem
+   differently again - as a full LIMS rather than a downstream processing layer, it
+   would be expected to hold proper sample/patient tracking natively, potentially
+   removing the need for the referral-number/patient-lookup chain (or a DLIMS
+   Lab Number-on-`Specimen` workaround) altogether. Not yet confirmed - see [Clarity
+   LIMS - Outstanding Issues](ClarityLIMS.html#outstanding-issues).
 
 ## Examples
 
