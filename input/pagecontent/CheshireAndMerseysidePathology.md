@@ -153,7 +153,42 @@ for the Colorectal Cancer diagnostic pathway example.
 
 ## Future Process
 
-No distinct future-state changes are currently defined for this pathway.
+### Use Case: Pathology Reflex Order Supplemented by Resource Exchange (PCC-44)
+
+Rather than always duplicating pathology content in full into the genomic
+reflex order/message, the `LAB-35` reflex order from Pathology could carry
+just enough to identify the pathology data it relates to - e.g. a Pathology
+Order Filler Number, Pathology Patient Identifier and/or Pathology Specimen
+Identifier, the same reference-based direction proposed on [Cancer Test
+Additional Ask At Order Entry
+Questions](Questionnaire-CancerTestAdditionalAskAtOrderQuestions.html)'s own
+Pathologist / Pathology hospital fields. If the Order Filler (Genomics)
+then finds it needs more pathology detail than the reflex order itself
+carries, it can use [Resource Exchange
+(PCC-44)](HIE.html#resource-exchange-pcc-44) to query the Resource Access
+Provider on demand, rather than requiring Pathology to push everything
+up front - the same pattern [NHS England Genomic Order Management Service
+(GOMS)](GenomicOrderManagementService.html) already uses.
+
+```mermaid
+sequenceDiagram
+    participant LIMSP as Order Filler (Pathology)
+    participant LIMSG as Order Filler (Genomics)
+    participant Provider as Resource Access Provider
+
+    LIMSP ->> LIMSG: Submit Genomic Reflex Order O21 (LAB-35)
+    opt Pathology detail in the reflex order is insufficient
+        LIMSG ->> Provider: Resource Exchange (PCC-44) query - e.g. by<br/>Pathology Order Filler Number/Patient/Specimen identifier
+        Provider -->> LIMSG: Respond with pathology resources<br/>(e.g. DiagnosticReport, Observation)
+    end
+    LIMSG -->> LIMSG: Performs genomic test
+    LIMSG ->> LIMSP: Send Genomic Report R01 (LAB-36)
+```
+
+This keeps the reflex order itself lightweight while still letting
+genomics pull whatever additional pathology detail it needs, on demand,
+rather than the pathology LIMS/genomics order needing to anticipate and
+carry every field a downstream test might require.
 
 ## Data Models
 
