@@ -28,6 +28,72 @@ Usage:  #definition
   * linkId = "AskAtOrderEntry"
   * text = "Ask At Order Entry Questions"
 
+// Raw specimen/biopsy (Directly obtained from patient)	Specimin High Infection risk?
+
+  * item[+]
+    * linkId = "SNM/281269004"
+    * code[+] = $sct#281269004 "High infection risk sample"
+    * text = "High Infection Risk?"
+    * type = #choice
+    * required = false
+    * repeats = false
+    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
+    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
+
+// Raw specimen/biopsy (Directly obtained from patient)	Specimin High infection Risk Details
+
+  * item[+]
+    * linkId = "NOS/InfectionRiskDetails"
+    * code[+] = $nwgmsa#InfectionRiskDetails
+    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueString"
+    * text = "High infection Risk Details"
+    * type = #string
+
+
+// Consent
+
+  * item[+]
+    * type = #group
+    * linkId = "Consent"
+    * text = "Consent"
+
+// Consent	Has consent has been obtained for tests (Y/N)
+
+    * item[+]
+      * type = #choice
+      * linkId = "LN/19826-7"
+      * code[+] = $sct#309370004 "Consent status"
+      * code[+] = $loinc#19826-7 "Informed consent obtained"
+      * code[+] = $loinc#59284-0 "Consent Document"
+      * text = "Has consent has been obtained for tests (Y/N)"
+      * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
+      * answerOption[+].valueCoding = $loinc#LA32-8 "No"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
+
+// Consent	Has consent has been obtained for DNA storage (Y/N)
+
+    * item[+]
+      * type = #choice
+      * linkId = "LN/75520-7"
+      * text = "Has consent has been obtained for DNA storage (Y/N)"
+      * code[+] = $loinc#75520-7 "Biobank specimens are stored and available for research"
+      * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
+      * answerOption[+].valueCoding = $loinc#LA32-8 "No"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
+
+// Consent	ROD attached or to follow
+
+    * item[+]
+      * type = #choice
+      * linkId = "NOS/RODToFollow"
+      * code[+] = $nwgmsa#RODToFollow
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
+      * text = "ROD attached or to follow"
+      * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
+      * answerOption[+].valueCoding = $loinc#LA32-8 "No"
+      * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
+
 // Patient	G number (pedigree number)
 
   * item[+]
@@ -163,49 +229,6 @@ Usage:  #definition
     * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
     * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
 
-// Consent
-
-  * item[+]
-    * type = #group
-    * linkId = "Consent"
-    * text = "Consent"
-
-// Consent	Has consent has been obtained for tests (Y/N)
-
-    * item[+]
-      * type = #choice
-      * linkId = "LN/19826-7"
-      * code[+] = $sct#309370004 "Consent status"
-      * code[+] = $loinc#19826-7 "Informed consent obtained"
-      * code[+] = $loinc#59284-0 "Consent Document"
-      * text = "Has consent has been obtained for tests (Y/N)"
-      * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
-      * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
-
-// Consent	Has consent has been obtained for DNA storage (Y/N)
-
-    * item[+]
-      * type = #choice
-      * linkId = "LN/75520-7"
-      * text = "Has consent has been obtained for DNA storage (Y/N)"
-      * code[+] = $loinc#75520-7 "Biobank specimens are stored and available for research"
-      * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
-      * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
-
-// Consent	ROD attached or to follow
-
-    * item[+]
-      * type = #choice
-      * linkId = "NOS/RODToFollow"
-      * code[+] = $nwgmsa#RODToFollow
-      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
-      * text = "ROD attached or to follow"
-      * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
-      * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-      * answerOption[+].valueCoding = $loinc#LA4489-6 "Unknown"
-
 // Patient clinical information	Reason For Variant Re-Interpretation Request
 
   * item[+]
@@ -215,27 +238,6 @@ Usage:  #definition
     * text = "Reason For Variant Re-Interpretation Request"
     * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueString"
 
-// Raw specimen/biopsy (Directly obtained from patient)	Specimin High Infection risk?
-
-  * item[+]
-    * linkId = "SNM/281269004"
-    * code[+] = $sct#281269004 "High infection risk sample"
-    * text = "High Infection Risk?"
-    * type = #choice
-    * required = false
-    * repeats = false
-    * answerOption[+].valueCoding = $loinc#LA33-6 "Yes"
-    * answerOption[+].valueCoding = $loinc#LA32-8 "No"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueCodeableConcept"
-
-// Raw specimen/biopsy (Directly obtained from patient)	Specimin High infection Risk Details
-
-  * item[+]
-    * linkId = "NOS/InfectionRiskDetails"
-    * code[+] = $nwgmsa#InfectionRiskDetails
-    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueString"
-    * text = "High infection Risk Details"
-    * type = #string
 
 // Related Individual (NK1) - Consultand or Proband
 

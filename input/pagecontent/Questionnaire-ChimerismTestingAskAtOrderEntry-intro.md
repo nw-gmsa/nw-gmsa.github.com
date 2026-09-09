@@ -2,10 +2,10 @@
 
 <span class="badge badge-primary">Histocompatibility and Immunogenetics</span>
 
-| Question         | LinkId                    | Cardinality | Answer Options                                                                                    | FHIR Field                         |
-|-------------------|----------------------------|-------------|-------------------------------------------------------------------------------------------------------|---------------------------------------|
-| Specimen Source   | `ChimIG/specimen_source`  | 0..1        | Blood (PB), Bone Marrow (BM)                                                                          | `Specimen.type`                       |
-| Patient Test(s)   | `ChimIG/patient_test`     | 0..*        | Chimerism Peripheral Blood, Chimerism CD3, Chimerism CD15, Chimerism CD19, Chimerism Lineage Other   | `ServiceRequest.orderDetail`          |
+| Question         | LinkId                    | Cardinality | HL7 v2 OML_O21 Message | OBX-2 Value Type | Answer Options                                                                                    | FHIR Field                         |
+|-------------------|----------------------------|-------------|------------------------|-------------------|-------------------------------------------------------------------------------------------------------|---------------------------------------|
+| Specimen Source   | `ChimIG/specimen_source`  | 0..1        | [SPM](hl7v2.html#spm)-4 | CWE               | Blood (PB), Bone Marrow (BM)                                                                          | `Specimen.type`                       |
+| Patient Test(s)   | `ChimIG/patient_test`     | 0..*        | [OBR](hl7v2.html#obr)-46 | CWE             | Chimerism Peripheral Blood, Chimerism CD3, Chimerism CD15, Chimerism CD19, Chimerism Lineage Other   | `ServiceRequest.orderDetail`          |
 {:.grid}
 
 Specimen Source is asked before Patient Test(s) here, the reverse of [HLA Tests -

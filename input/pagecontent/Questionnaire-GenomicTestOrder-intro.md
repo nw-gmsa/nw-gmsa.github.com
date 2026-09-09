@@ -91,34 +91,12 @@ erDiagram
 <p class="figureTitle">Order Test Form - Data Extraction Overview</p> 
 <br clear="all">
 
-The FHIR exchange style used [FHIR Message](https://hl7.org/fhir/R4/messaging.html) following [laboratory-order](MessageDefinition-laboratory-order.html) message definition. This definition is based on HL7 v2 `OML_O21 Laboratory Order` which simplifies conversion to/from pipe+hat (v2) and json (FHIR) formats.
+[FHIR Message](https://hl7.org/fhir/R4/messaging.html), following the [laboratory-order](MessageDefinition-laboratory-order.html) message definition, is the **primary** format for order messages. HL7 v2 `OML_O21 Laboratory Order` is **also supported** - the FHIR Message definition is deliberately based on `OML_O21`'s own structure, which simplifies conversion to/from pipe+hat (v2) and json (FHIR) formats.
+
 
 > At present, the NW GLH Laboratory Information Management System (LIMS) will not support HL7 FHIR. The Regional Integration Exchange (RIE) will perform conversion between v2 and FHIR formats.
 
 This message is an [aggregate (DDD)](https://martinfowler.com/bliki/DDD_Aggregate.html)/[archetype](https://en.wikipedia.org/wiki/Archetype_(information_science)) and so is a collection of FHIR Resources (similar to v2 segments) which is described in [Genomic Test Order](StructureDefinition-ServiceRequest.html).
-
-
-###### Communicating Ask at Order Entry questions and prior results
-
-See also [HL7 Europe Laboratory Report - ServiceRequest](https://hl7.eu/fhir/laboratory/StructureDefinition-ServiceRequest-eu-lab.html#communicating-ask-at-order-entry-questions-and-prior-results)
-This message can be extended by a [template (FHIR Questionnaire)](https://hl7.org/fhir/R4/questionnaire.html) which allows the definition of additional questions to be defined for the `laboratory order`.
-
-The detail of this form/template defines:
-
-<img style="padding:3px;width:700px;" src="sdc-order-test-form.png" alt="Order Test Form Example (extract)"/>
-<br clear="all">
-<p class="figureTitle">Order Text Form Example (extract)</p> 
-<br clear="all">
-
-| Question                             | CodeSystem | Code      | FHIR Profile                                                    | HL7 v2 Segment | FHIR Questionniare <br/>item.type | FHIR Observation <br/>value[x] | v2 OBX-2                                                                      |
-|--------------------------------------|------------|-----------|-----------------------------------------------------------------|----------------|--------------------------------|--------------------------------|-------------------------------------------------------------------------------|
-| Does This Test Relate to a Pregnancy | SNOMED     | 77386006  | [Observation](StructureDefinition-Observation.html)             | OBX            | boolean                        | valueBoolean                   | CE ([code 0136](https://terminology.hl7.org/5.1.0/CodeSystem-v2-tables.html)) |
-| Sample                               | LOINC      | 68992-7   | [Observation-Panel](StructureDefinition-Observation-Panel.html) | OBR            |                                |                                |                                                                               |
-| High Infection Risk Sample           | SNOMED     | 281269004 | [Observation](StructureDefinition-Observation.html)             | OBX            | boolean                        | valueBoolean                   | CE ([code 0136](https://terminology.hl7.org/5.1.0/CodeSystem-v2-tables.html)) |
-{:.grid}
-
-> It is not expected the NW GLH Laboratory Information Management System (LIMS) will support UK SNOMED CT, and the RIE will handle the conversion either internally using [FHIR ConceptMap](https://hl7.org/fhir/R4/conceptmap.html) or a terminology service with the following capabilities [IHE Sharing Valuesets, Codes, and Maps (SVCM)](https://profiles.ihe.net/ITI/SVCM/index.html)
-
 
 ### Patient Demographics
 
@@ -196,33 +174,25 @@ Filler` creates to fulfil that order. These are often also called `reflex`,
 Genomic Test Order archetype above, just created by a different actor.
 
 ```mermaid
-erDiagram
+flowchart TB
+    LO["Laboratory Order<br/>(Original Order)<br/>intent = order / reflex"]
+    WO["Work Order<br/>intent = instance-order"]
+    SC["Subcontracted Order<br/>intent = filler-order"]
+    RO["Reflex Order<br/>intent = reflex"]
 
-    OriginalOrder ||--|{ FillerOrder : "has (FillerOrderNumber = FillerGroupNumber)"
-
-    OriginalOrder {
-        identifier PlacerOrderNumber
-        identifier FillerOrderNumber
-        code NGTDTestCode
-        code RequestingOrganisationCode
-        reference Specimen
-        reference Patient
-        reference HospitalSpellProviderIdentifier
-    }
-
-    FillerOrder {
-        code OrderStatus
-        date TestOrderDate
-        identifier TestAccessionIdentifier
-        code NGTDTestCode
-        string ClinicalDetails
-        code Performer
-        reference Specimen
-        reference Patient
-        reference OriginalOrder
-        reference HospitalSpellProviderIdentifier
-    }
+    LO -->|"Order Filler creates<br/>(Filler Order)"| WO
+    LO -->|"Order Filler creates<br/>(Filler Order)"| SC
+    LO -->|"Order Filler creates<br/>(Filler Order)"| RO
 ```
+
+One Laboratory Order (the Original Order) can give rise to any of the three
+Filler Order shapes in the table below - a Work Order, a Subcontracted
+Order, or a Reflex Order - each created *by* the Order Filler rather than
+the original requester, and each carrying its own `intent` value. See
+[Diagnostic Model Overview - Linking Related
+Orders](diagnostic-core.html#linking-related-orders-servicerequestrequisition)
+for how `ServiceRequest.requisition` ties a Filler Order back to the
+Original Order it descends from.
 
 In IHE Laboratory Testing Workflow, the Original Order is the key entity in
 [LAB-1](LTW.html#diagnostic-testing), and the Filler Order is the key entity
@@ -289,6 +259,18 @@ Ask At Order Entry Questions generally get transformed to `Observation` (`OBX`) 
 `RelatedPerson` (`NK1`) when added to this HL7 v2/FHIR message, and are linked in FHIR
 via `ServiceRequest.supportingInfo`.
 
+**Coding Ask At Order Entry questions.** Local coding (against the `NWGMSA`
+CodeSystem) is acceptable where no suitable national code exists, and is
+used throughout this IG's own Ask At Order Entry Questionnaires. Where a
+national code does exist for an important/key question, using it is
+preferred, to aid communication with systems and services beyond this IG -
+SNOMED CT or LOINC, whichever actually has a matching concept. In practice
+this is more often LOINC than SNOMED CT: SNOMED CT is a clinical
+terminology, and doesn't tend to hold codes for *questions* themselves (as
+opposed to the findings/answers a question is about), whereas LOINC's own
+question-and-panel structure covers this directly - so LOINC is often the
+only coded option available, not a stylistic preference.
+
 The same pattern recurs on the report side: [Genomic Test
 Report](Questionnaire-GenomicTestReport.html)'s panels and Genomic Results vary
 according to which test is being recorded in the LIMS, in exactly the same way Ask At
@@ -330,12 +312,12 @@ don't yet declare that relationship - see that section for why.
 These Ask At Order Entry Questionnaires originated within this IG, modelling
 an existing digital order-entry screen rather than a paper form:
 
-| Order/Test Type                                                | Ask At Order Entry Questionnaire                                                                                                                                                                                                                                                                                                                          |
-|----------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Generic Ask At Order (default)                                 | [Generic Ask At Order Entry](Questionnaire-GenomicGeneralAskAtOrderEntry.html) - the fallback for any order/test type without its own dedicated Ask At Order Entry Questionnaire, which today covers:<ul><li>**Cancer**</li><li>**Whole Genome Sequencing (WGS)** - outside the dWGS sub-contracted order row below, which has its own dedicated Questionnaire instead</li><li>**Rare and Inherited Diseases**</li></ul> |
-| Distributed WGS (dWGS) sub-contracted order                    | [dWGS Ask At Order Entry Questions](Questionnaire-dWGSAskAtOrderEntry.html) - see [dWGS](dWGS.html#ask-at-order-entry-the-dwgs-digital-manifest). The full 42-field digital manifest is separately documented as a CSV manifest description at [dWGS Sub-Order Manifest](Questionnaire-dWGSSubOrder.html), not itself an Ask At Order Entry Questionnaire |
-| Histocompatibility and Immunogenetics - HLA Tests (Transplant) | [HLA Tests - Transplant Ask At Order Entry](Questionnaire-HLATestsTransplantAskAtOrderEntry.html) - see [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html#ask-at-order-entry-questions)                                                                                                                                    |
-| Histocompatibility and Immunogenetics - Chimerism Testing      | [Chimerism Testing Blood (PB) Ask At Order Entry](Questionnaire-ChimerismTestingAskAtOrderEntry.html) - see [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html#chimerism-testing-ask-at-order-entry)                                                                                                                        |
+| Order/Test Type                                                | Ask At Order Entry Questionnaire                                                                                                                                                                                                                                                                                                                                                                                    |
+|----------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Generic Ask At Order (default)                                 | [Generic Ask At Order Entry](Questionnaire-GenomicGeneralAskAtOrderEntry.html) - the fallback for any order/test type without its own dedicated Ask At Order Entry Questionnaire, which today covers:<br/>- **Cancer**<br/>- **Whole Genome Sequencing (WGS)** - outside the dWGS sub-contracted order row below, which has its own dedicated Questionnaire instead<br/>- **Rare and Inherited Diseases** |
+| Distributed WGS (dWGS) sub-contracted order                    | [dWGS Ask At Order Entry Questions](Questionnaire-dWGSAskAtOrderEntry.html) - see [dWGS](dWGS.html#ask-at-order-entry-the-dwgs-digital-manifest). The full 42-field digital manifest is separately documented as a CSV manifest description at [dWGS Sub-Order Manifest](Questionnaire-dWGSSubOrder.html), not itself an Ask At Order Entry Questionnaire                                                           |
+| Histocompatibility and Immunogenetics - HLA Tests (Transplant) | [HLA Tests - Transplant Ask At Order Entry](Questionnaire-HLATestsTransplantAskAtOrderEntry.html) - see [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html#ask-at-order-entry-questions)                                                                                                                                                                                              |
+| Histocompatibility and Immunogenetics - Chimerism Testing      | [Chimerism Testing Blood (PB) Ask At Order Entry](Questionnaire-ChimerismTestingAskAtOrderEntry.html) - see [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html#chimerism-testing-ask-at-order-entry)                                                                                                                                                                                  |
 {:.grid}
 
 #### NW GLH Paper Test Request Forms
