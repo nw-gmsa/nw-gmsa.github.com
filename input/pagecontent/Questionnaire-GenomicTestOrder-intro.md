@@ -237,9 +237,9 @@ Note: it is likely that source systems will use ORM_01 and not include specimen 
 
 ```mermaid
 flowchart LR
-    CORE["Common Core<br/>Genomic Test Order"]
-    AAOEC["Ask At Order Entry Questions<br/>Common (e.g. Genomic General)"]
-    AAOET["Test Specific Additional Ask At<br/>Order Entry Questions (e.g. WGS,<br/>HLA Tests - Transplant, Chimerism Testing)"]
+    CORE["Laboratory Order Core"]
+    AAOEC["Ask At Order Entry Questions<br/>Genomic Order Common Questions"]
+    AAOET["Genomic Test Specific Additional Ask At<br/>Order Entry Questions (e.g. WGS,<br/>Cancer, Chimerism Testing)"]
     QNAIRE["Order entry form<br/>(EPR / Order Comms system)"]
     MSG["HL7 v2 OML_O21<br/>or FHIR Message O21"]
     LIMS["LIMS"]
@@ -315,9 +315,12 @@ Separately, a `Questionnaire` may also be used to build the actual data-entry sc
 within an EPR or other application - see [HL7 FHIR Structured Data
 Capture](https://build.fhir.org/ig/HL7/sdc/index.html) for more on that use.
 
-This Genomic Test Order Questionnaire (defined below) is the **common core**
-order form: the Patient, Healthcare Professional, Test Request and Specimen fields
-shared by every order, regardless of test type, mapping onto the standardised
+This Questionnaire (defined below, titled **Genomic Test Order** in this
+IG) represents the **Laboratory Order Core**: the Patient, Healthcare
+Professional, Test Request and Specimen fields shared by every order,
+regardless of test type or diagnostic domain - the same shape would apply
+equally to a pathology or radiology order, not just genomics (see this
+page's own introduction above) - mapping onto the standardised
 [HL7 v2 OML_O21](hl7v2.html#oml_o21-laboratory-order) message and its FHIR equivalent,
 the [FHIR Message O21](MessageDefinition-laboratory-order.html).
 
