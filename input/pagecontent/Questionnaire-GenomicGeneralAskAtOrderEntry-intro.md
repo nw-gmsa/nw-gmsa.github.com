@@ -10,7 +10,6 @@
 | Consent                                                                |                        |                                      |             |                        |                  |                                                                            |
 | - Has consent has been obtained for tests (Y/N)                       | LOINC 19826-7          | Yes/No                              | 0..1        | [OBX](hl7v2.html#obx)  | CE               | [Observation](StructureDefinition-Observation.html).valueCodeableConcept |
 | - Has consent has been obtained for DNA storage (Y/N)                 | LOINC 75520-7          | Yes/No                              | 0..1        | [OBX](hl7v2.html#obx)  | CE               | [Observation](StructureDefinition-Observation.html).valueCodeableConcept |
-| - ROD attached or to follow                                           | NWGMSA RODToFollow     | Yes/No/Unknown                      | 0..1        | [OBX](hl7v2.html#obx)  | CE               | [Observation](StructureDefinition-Observation.html).valueCodeableConcept |
 | G Number (Pedigree Number)                                             | LOINC 74027-4          |                                       | 0..1        | [OBX](hl7v2.html#obx)  | ST               | [Observation](StructureDefinition-Observation.html).valueString          |
 | Patient is from consanguineous union?                                  | SNOMED 842009          | [YesNoUnknown](ValueSet-YNU.html)    | 0..1        | [OBX](hl7v2.html#obx)  | CE               | [Observation](StructureDefinition-Observation.html).valueCodeableConcept |
 | Confirm that a pathology report will be provided alongside the sample. | SNOMED 74996004        | [YesNoUnknown](ValueSet-YNU.html)    | 0..1        | [OBX](hl7v2.html#obx)  | CE               | [Observation](StructureDefinition-Observation.html).valueCodeableConcept |
@@ -22,27 +21,13 @@
 | Is this test for a pregnancy loss?                                     | SNOMED 17369002        | [YesNoUnknown](ValueSet-YNU.html)    | 0..1        | [OBX](hl7v2.html#obx)  | CE               | [Observation](StructureDefinition-Observation.html).valueCodeableConcept |   
 | Is this test for a deceased infant?                                    | SNOMED 419099009       | [YesNoUnknown](ValueSet-YNU.html)    | 0..1        | [OBX](hl7v2.html#obx)  | CE               | [Observation](StructureDefinition-Observation.html).valueCodeableConcept |                         
 | Reason For Variant Re-Interpretation Request                          | NWGMSA VariantReinterpretationReason |                        | 0..1        | [OBX](hl7v2.html#obx)  | ST               | [Observation](StructureDefinition-Observation.html).valueString          |
-| Related Individual (NK1)                                              |                        |                                      | 0..*        | [NK1](hl7v2.html#nk1)  |                  | [RelatedPerson](StructureDefinition-RelatedPerson.html)                  |
-| - Role (Consultand or Proband)                                        | NWGMSA RelatedIndividualRole |                              | 1..1        |                        | CE               | n/a (discriminator only)                                                  |
-| - Name                                                                 |                        |                                      | 1..1        | NK1-2                  | XPN              | RelatedPerson.name                                                        |
-| - Relationship                                                        |                        | [UKCore-PersonRelationshipType](https://fhir.hl7.org.uk/ValueSet/UKCore-PersonRelationshipType) | 1..1 | NK1-3 | CE | RelatedPerson.relationship |
-| - Administrative Sex                                                   |                        | [AdministrativeGender](http://hl7.org/fhir/ValueSet/administrative-gender) | 0..1 | NK1.15 | CE | RelatedPerson.gender |
-| - Date of Birth                                                        |                        |                                      | 0..1        | NK1-16                 | DT               | RelatedPerson.birthDate                                                   |
-| - NHS Number (if known)                                                | LOINC 89061-6          |                                      | 0..1        | NK1-33                 | CX               | RelatedPerson.identifier:nhsNumber                                        |
-| - Hospital Number (if known)                                           | LOINC 76435-7          |                                      | 0..1        | NK1-33                 | CX               | RelatedPerson.identifier:MedicalRecordNumber                              |
-| - This order's own Patient                                             |                        |                                      | 1..1        |                        |                  | RelatedPerson.patient                                                     |
 {:.grid}
 
-**Role** is what generalises this group beyond Genetic Clinical Referral's
-own Consultand: a **Consultand** is a relative referenced from this order's
-own proband; a **Proband** is the reverse - used when this order's own
-Patient is itself a family member (e.g. [WGS Local Test
-Order](Questionnaire-WGSLocalTestOrderAskAtOrderEntry.html)'s Family Member
-pathway, `NOS/Proband`), and this group names the original proband instead.
-See [GMS WGS
-Rare Disease](Questionnaire-GMSWGSRareDisease.html#summary)'s own repeating
-Family Members group for the same shape used inline on a Questionnaire that
-doesn't extend this one directly.
+`Related Individual (NK1)` and `Record of Discussion attached or to follow`
+used to live here, but have moved to [WGS Test Additional Ask At Order
+Entry Questions](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html) -
+they are only genuinely relevant to Whole Genome Sequencing orders, not
+every order/test type this Questionnaire covers.
 
 ## Guidance by Order Type
 
@@ -61,44 +46,57 @@ Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions)) -
 uses its own dedicated Ask At Order Entry Questionnaires - [Chimerism Testing
 Blood (PB)](Questionnaire-ChimerismTestingAskAtOrderEntry.html), [HLA Tests -
 Transplant](Questionnaire-HLATestsTransplantAskAtOrderEntry.html) - so almost
-none of the items below normally apply to it.
+none of the items below normally apply to it. WGS orders also combine in
+[WGS Test Additional Ask At Order Entry
+Questions](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html) alongside
+this Questionnaire - see that Questionnaire's own guidance for the items
+specific to it.
 
 | Item/Group                                                       | Cancer | WGS | Rare and Inherited Disease | Chimerism |
 |--------------------------------------------------------------------|--------|-----|------------------------------|-----------|
 | G Number (Pedigree Number)                                       | -      | ✓ (Rare and Inherited Disease WGS only) | ✓ | - |
-| Related Individual (NK1)                                         | -      | ✓   | ✓                             | -         |
 | Patient is from consanguineous union?                            | -      | ✓   | ✓                             | -         |
 | Confirm that a pathology report will be provided alongside the sample | ✓ | -   | -                             | -         |
 | Neonatal/Prenatal/Neither? (and the Pregnant sub-group)           | -      | ✓ (where prenatal) | ✓ (where prenatal) | -   |
 | Is this test for a pregnancy loss? / a deceased infant?           | -      | ✓ (where prenatal) | ✓ (where prenatal) | -   |
 | Consent group                                                     | ✓      | ✓   | ✓                             | -         |
-| ROD attached or to follow                                         | ✓      | ✓   | ✓                             | -         |
 | Reason For Variant Re-Interpretation Request                     | ✓      | ✓   | ✓                             | -         |
 | High Infection Risk? / High infection Risk Details                | ✓      | ✓   | ✓                             | -         |
 {:.grid}
 
-### Related Individual: Consultand vs Proband, and Mother/Baby-Fetus Orders
+### G Number (Pedigree Number)
 
-Give particular attention to `Related Individual` and `Patient` when the
-order's own **Patient** is a baby or fetus, not the person the family
-history is actually about:
+**G Number (Pedigree Number)** is only applicable to Rare and Inherited
+Disease WGS orders - see [Whole Genome Sequencing (WGS) - The Reverse
+Direction](WholeGenomicSequence.html#the-reverse-direction-what-the-generic-order-path-doesnt-cover)
+for how it relates to (and is distinct from) a genuine Order Group Number
+(`ServiceRequest.requisition`). See [WGS Test Additional Ask At Order Entry
+Questions](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html) for
+`Related Individual` and the Consultand/Proband/mother-baby-fetus guidance
+that goes with it, now that both have moved there.
 
-- **Mother/baby-fetus orders** - the order's own `Patient` is expected to be
-  the baby/fetus, and the mother is named as the `Related Individual` (Role
-  = Consultand, Relationship = mother) - not the other way round. This is
-  the same shape [Genetic Clinical Referral -
-  Consultand](Questionnaire-GeneticClinicalReferral.html) generalises from.
-- **For Whole Genome Sequencing (WGS)** orders specifically, `Related
-  Individual` shows the family relationship, and Role may be either
-  **Consultand** (the usual case - this order's own `Patient` is the
-  proband, and the group names a relative of theirs) or **Proband** (the
-  reverse - this order's own `Patient` is actually a family member, e.g.
-  [WGS Local Test
-  Order](Questionnaire-WGSLocalTestOrderAskAtOrderEntry.html)'s Family
-  Member pathway, and the group instead names the original proband the
-  family member is being tested alongside).
-- **G Number (Pedigree Number)** is only applicable to Rare and Inherited
-  Disease WGS orders - see [Whole Genome Sequencing (WGS) - The Reverse
-  Direction](WholeGenomicSequence.html#the-reverse-direction-what-the-generic-order-path-doesnt-cover)
-  for how it relates to (and is distinct from) a genuine Order Group Number
-  (`ServiceRequest.requisition`).
+### Known Gaps (from a Live WGS Order-Entry Screen)
+
+A real NHS Trust EPR order-entry screen for Rare and Inherited Disease WGS
+orders surfaces several fields with no equivalent anywhere in this
+Questionnaire, [WGS Test Additional Ask At Order Entry
+Questions](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html) or
+[Genomic Test Order](Questionnaire-GenomicTestOrder.html) - consistent
+with, and extending, the same gap analysis in [Whole Genome Sequencing
+(WGS)](WholeGenomicSequence.html#the-reverse-direction-what-the-generic-order-path-doesnt-cover):
+
+- **Family/test structure (Singleton/Duo/Trio/Tumour/Germline)** - a
+  required field selecting which WGS family structure or sample type the
+  order is for. This Questionnaire has no equivalent; [Distributed WGS
+  (dWGS)](dWGS.html) is the only place in this IG with a comparable concept
+  (`FamilyStructure`/`ParticipantType` on `dWGSAskAtOrderEntry`), and that is
+  a different Questionnaire for a different pathway.
+- **Previously stored DNA ID number** - a reference to an existing stored
+  DNA sample from a prior test, as an alternative to submitting a fresh
+  specimen. No equivalent field exists on this Questionnaire or the common
+  core's own [Specimen](Questionnaire-GenomicTestOrder.html#specimen) group.
+- **Specialist Test Group**, used on this live screen as a required
+  selector alongside the Test Code itself (e.g. "WGS" for a WGS order) -
+  this is the same [Genomic Test Code](CodeSystem-GenomicTestCode.html)
+  `specialist-test-group` property already modelled as CodeSystem metadata
+  in this IG, but not yet as its own submitted Ask At Order Entry answer.

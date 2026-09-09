@@ -45,8 +45,9 @@ Identifier, or clinician professional identifier (GMC/GMP) field is present
 on the paper form.
 
 The relative/partner is structured using the same NK1-shaped `RelatedPerson`
-group as [NW Genomic General Ask At Order Questions - Related Individual
-(NK1)](Questionnaire-GenomicGeneralAskAtOrderEntry.html) and [Genetic
+group as [WGS Test Additional Ask At Order Entry Questions - Related
+Individual
+(NK1)](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html) and [Genetic
 Clinical Referral - Consultand](Questionnaire-GeneticReferralConsultand.html),
 under its **Consultand** role - the patient remains this ServiceRequest's
 own subject throughout, whichever referral scenario applies. Status

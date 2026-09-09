@@ -37,12 +37,15 @@ touches the <code>LAB-35</code> manifest.
 Three Questionnaires already model the Proband/family-member (`RelatedPerson`) side of
 this proposed pathway:
 
-- [Genomic General Ask At Order Entry](Questionnaire-GenomicGeneralAskAtOrderEntry.html) -
-  the canonical NK1-shaped `NOS/RelatedIndividual` group (Name/Relationship/Sex/
-  DOB/NHS Number/Hospital Number, plus a Role of Consultand or Proband) every other
-  Questionnaire below reuses. Alongside `RelatedPerson`, this is also the only one of
-  the four with its own explicit Consent and High Infection Risk items - it represents
-  a **singular order** (one Patient, one `ServiceRequest`), the same as [WGS Local Test
+- [WGS Test Additional Ask At Order Entry
+  Questions](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html) - the
+  canonical NK1-shaped `NOS/RelatedIndividual` group (Name/Relationship/Sex/
+  DOB/NHS Number/Hospital Number, plus a Role of Consultand or Proband) every
+  other Questionnaire below reuses. Used *alongside* [Ask At Order Entry
+  Questions Common](Questionnaire-GenomicGeneralAskAtOrderEntry.html) (which
+  carries the Consent and High Infection Risk items) and the common core -
+  together these represent a **singular order** (one Patient, one
+  `ServiceRequest`), the same as [WGS Local Test
   Order](Questionnaire-WGSLocalTestOrderAskAtOrderEntry.html) and [GMS WGS
   Cancer](Questionnaire-GMSWGSCancerAskAtOrderEntry.html) below.
 - [WGS Local Test Order Ask At Order Entry](Questionnaire-WGSLocalTestOrderAskAtOrderEntry.html) -
@@ -60,13 +63,17 @@ other national WGS form.
 
 ### Field Comparison
 
-[Genomic General Ask At Order Entry](Questionnaire-GenomicGeneralAskAtOrderEntry.html)
-isn't tied to any one paper form - its Consent/High Infection Risk/RelatedPerson items
-were originally part of the [Genomic Test Order](Questionnaire-GenomicTestOrder.html)
-common core itself, extracted into this default fallback Questionnaire for order/test
-types that don't have their own dedicated Ask At Order Entry Questionnaire. All three
-WGS-specific Questionnaires below **do** have their own dedicated Questionnaire, so
-Genomic General isn't used alongside them in practice - it's included here only to
+Neither [Ask At Order Entry Questions
+Common](Questionnaire-GenomicGeneralAskAtOrderEntry.html) nor [WGS Test
+Additional Ask At Order Entry
+Questions](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html) is tied
+to any one paper form - their Consent/High Infection Risk/`RelatedPerson`
+items were originally part of the [Genomic Test
+Order](Questionnaire-GenomicTestOrder.html) common core itself, extracted
+into these two Questionnaires for order/test types that don't have their own
+dedicated Ask At Order Entry Questionnaire. All three WGS-specific
+Questionnaires below **do** have their own dedicated Questionnaire, so
+neither is used alongside them in practice - they're included here only to
 show where these fields originally came from.
 
 For the three real paper forms, checked directly against the source PDFs rather than
@@ -115,10 +122,13 @@ General, or any of the three WGS-specific Questionnaires compared here.
 The comparison above starts from each WGS-specific Questionnaire and checks the paper
 form. Going the other way - starting from each paper form's own distinctive fields and
 checking whether [Genomic Test Order](Questionnaire-GenomicTestOrder.html) plus
-[Genomic General Ask At Order
-Entry](Questionnaire-GenomicGeneralAskAtOrderEntry.html) (the generic combination
-[iGene Orders and Reports](RegionalOrdersAndReports.html) actually uses today) already
-has an equivalent - is what would decide whether Alder Hey/MFT/Liverpool could order
+[Ask At Order Entry Questions
+Common](Questionnaire-GenomicGeneralAskAtOrderEntry.html) and [WGS Test
+Additional Ask At Order Entry
+Questions](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html) (the
+generic combination [iGene Orders and Reports](RegionalOrdersAndReports.html)
+actually uses today) already has an equivalent - is what would decide
+whether Alder Hey/MFT/Liverpool could order
 WGS through the existing generic path at all, rather than needing this proposed
 WGS-specific one. Of the fields on all three paper forms, only a handful already have
 a genuine or partial match:

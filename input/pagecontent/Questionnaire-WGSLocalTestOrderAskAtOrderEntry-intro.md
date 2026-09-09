@@ -53,9 +53,9 @@ either on this form).
 
 Like [Prenatal Haemoglobinopathy](Questionnaire-HaemoglobinopathyPrenatalAskAtOrderEntry.html),
 this form can name a **second** individual, and does so via the same
-NK1-shaped `RelatedPerson` group as [NW Genomic General Ask At Order
+NK1-shaped `RelatedPerson` group as [WGS Test Additional Ask At Order Entry
 Questions - Related Individual
-(NK1)](Questionnaire-GenomicGeneralAskAtOrderEntry.html) (`NOS/Proband`
+(NK1)](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html) (`NOS/Proband`
 here, reusing that same group under its **Proband** role rather than
 **Consultand**) - but **the roles are reversed here**. In Genetic Clinical
 Referral/Prenatal Haemoglobinopathy/the Consultand role of that shared
@@ -105,8 +105,8 @@ Rare Disease's Family Members group into individual per-person orders could
 reuse this Family Member pathway's own shape directly - proband referenced
 back via `NOS/Proband`, the same NK1-shaped `RelatedPerson` group as each
 Family Members repetition on GMS WGS Rare Disease, both ultimately the same
-[NW Genomic General Ask At Order Questions - Related Individual
-(NK1)](Questionnaire-GenomicGeneralAskAtOrderEntry.html) group first
+[WGS Test Additional Ask At Order Entry Questions - Related Individual
+(NK1)](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html) group first
 generalised from [Genetic Clinical Referral -
 Consultand](Questionnaire-GeneticReferralConsultand.html) - rather than
 needing a new decomposition pattern designed from scratch.

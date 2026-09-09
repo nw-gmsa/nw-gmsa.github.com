@@ -9,8 +9,8 @@ Order Entry Questionnaire extends [Genomic Test
 Order](Questionnaire-GenomicTestOrder.html) - see [Genetic Clinical Referral -
 Order Entry Questions](Questionnaire-GeneticClinicalReferral.html#order-entry-questions).
 It structures a repeating **Related Individual (NK1)** group - the same
-NK1-shaped `RelatedPerson` group as [NW Genomic General Ask At Order
-Questions](Questionnaire-GenomicGeneralAskAtOrderEntry.html)'s own
+NK1-shaped `RelatedPerson` group as [WGS Test Additional Ask At Order Entry
+Questions](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html)'s own
 `NOS/RelatedIndividual`, generalised from this Questionnaire's original
 Consultand-only shape. A **Role** item states which direction each entry
 is: usually a named **consultand** (an at-risk relative of the proband, per
@@ -93,7 +93,7 @@ neither is yet the confirmed convention for this specific Questionnaire.
 
 - [Genetic Clinical Referral](Questionnaire-GeneticClinicalReferral.html) -
   the common core this Questionnaire extends
-- [NW Genomic General Ask At Order Questions](Questionnaire-GenomicGeneralAskAtOrderEntry.html) -
+- [WGS Test Additional Ask At Order Entry Questions](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html) -
   the same NK1-shaped `RelatedPerson` group (`NOS/RelatedIndividual`) this
   Questionnaire's shape was generalised to match
 - [RelatedPerson](StructureDefinition-RelatedPerson.html) - the FHIR profile

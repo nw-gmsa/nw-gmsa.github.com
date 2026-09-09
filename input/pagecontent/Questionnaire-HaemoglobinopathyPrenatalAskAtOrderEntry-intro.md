@@ -40,9 +40,9 @@ This is one of only two forms (with [WGS Local Test
 Order](Questionnaire-WGSLocalTestOrderAskAtOrderEntry.html)) that names a
 **second** patient - the common core's own Patient group is completed for
 the mother throughout, and the father is referenced from here using the
-same NK1-shaped `RelatedPerson` group as [NW Genomic General Ask At Order
-Questions - Related Individual
-(NK1)](Questionnaire-GenomicGeneralAskAtOrderEntry.html) and [Genetic
+same NK1-shaped `RelatedPerson` group as [WGS Test Additional Ask At Order
+Entry Questions - Related Individual
+(NK1)](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html) and [Genetic
 Clinical Referral - Consultand](Questionnaire-GeneticReferralConsultand.html),
 under its **Consultand** role (fixed here, since the mother is always this
 ServiceRequest's own subject). `RelatedPerson.identifier` already

@@ -51,7 +51,7 @@ Bucket for local codes
 * #ParticipantType "Participant Type"
 
 // Related Individual (NK1) - generic Consultand/Proband role, see
-// GenomicGeneralAskAtOrderEntry's NOS/RelatedIndividual group
+// WGSTestAdditionalAskAtOrderQuestions's NOS/RelatedIndividual group
 
 * #RelatedIndividualRole "Related Individual Role"
 * #RoleConsultand "Consultand"
@@ -249,3 +249,7 @@ Bucket for local codes
 * #OrganHLASpecificAntibodies "HLA specific antibodies"
 * #OrganLiveDonorCrossmatch "Live donor crossmatch"
 * #OrganAutoCrossmatch "Auto crossmatch"
+
+// WGS Test Additional Ask At Order Entry Questions
+* #WGSParticipantTypeProband "Proband"
+* #WGSParticipantTypeFamilyMember "Family Member"

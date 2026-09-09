@@ -13,9 +13,9 @@ Referrals](GeneticReferrals.html) for the Proband/Consultand distinction.
 This represents HL7 v2 `NK1` (Next of Kin/Associated Parties), converted to
 FHIR `RelatedPerson`.
 
-This is the same NK1-shaped `RelatedPerson` group as [NW Genomic General
-Ask At Order Questions - Related Individual
-(NK1)](Questionnaire-GenomicGeneralAskAtOrderEntry.html)
+This is the same NK1-shaped `RelatedPerson` group as [WGS Test Additional
+Ask At Order Entry Questions - Related Individual
+(NK1)](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html)
 (`NOS/RelatedIndividual`), generalised from this Questionnaire's own
 original Consultand-only shape - a **Role** item now states whether this
 entry is a **Consultand** (the usual case here) or a **Proband** (the

@@ -238,26 +238,44 @@ Note: it is likely that source systems will use ORM_01 and not include specimen 
 ```mermaid
 flowchart LR
     CORE["Common Core<br/>Genomic Test Order"]
-    AAOE["+ Ask At Order Entry Questions<br/>(varies by order/test type - e.g. Genomic<br/>General, HLA Tests - Transplant, Chimerism Testing)"]
+    AAOEC["Ask At Order Entry Questions<br/>Common (e.g. Genomic General)"]
+    AAOET["Test Specific Additional Ask At<br/>Order Entry Questions (e.g. WGS,<br/>HLA Tests - Transplant, Chimerism Testing)"]
     QNAIRE["Order entry form<br/>(EPR / Order Comms system)"]
     MSG["HL7 v2 OML_O21<br/>or FHIR Message O21"]
     LIMS["LIMS"]
 
     CORE --> QNAIRE
-    AAOE --> QNAIRE
+    AAOEC --> QNAIRE
+    AAOET --> QNAIRE
     QNAIRE -->|"order placed"| MSG
     MSG --> LIMS
 ```
 
-The common core plus whichever Ask At Order Entry Questionnaire applies **together**
-are what a `Questionnaire`/`QuestionnaireResponse` represents - the order entry form as
-it appears inside an EPR or Order Comms system. `HL7 v2 OML_O21`/`FHIR Message O21` is
-a **different thing**: the wire format that same order is sent onward to a LIMS in,
-once it's placed - not a form a user fills in. Ask At Order Entry questions are what
-vary between test types; the message shape they end up populating downstream does not.
-Ask At Order Entry Questions generally get transformed to `Observation` (`OBX`) or
-`RelatedPerson` (`NK1`) when added to this HL7 v2/FHIR message, and are linked in FHIR
-via `ServiceRequest.supportingInfo`.
+The common core, plus whichever Ask At Order Entry Questionnaire(s) apply,
+**together** are what a `Questionnaire`/`QuestionnaireResponse` represents -
+the order entry form as it appears inside an EPR or Order Comms system.
+`HL7 v2 OML_O21`/`FHIR Message O21` is a **different thing**: the wire
+format that same order is sent onward to a LIMS in, once it's placed - not a
+form a user fills in. Ask At Order Entry questions are what vary between
+test types; the message shape they end up populating downstream does not.
+Ask At Order Entry Questions generally get transformed to `Observation`
+(`OBX`) or `RelatedPerson` (`NK1`) when added to this HL7 v2/FHIR message,
+and are linked in FHIR via `ServiceRequest.supportingInfo`.
+
+For most order/test types this is **two** Questionnaires combined - the
+common core plus one Ask At Order Entry Questionnaire. Some test types split
+the Ask At Order Entry side further, into questions **common** to several
+test types (e.g. [Ask At Order Entry Questions
+Common](Questionnaire-GenomicGeneralAskAtOrderEntry.html), shared by Cancer,
+WGS and Rare and Inherited Disease orders) plus questions **specific** to
+just one (e.g. [WGS Test Additional Ask At Order Entry
+Questions](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html)) - a WGS
+order therefore combines **three** Questionnaires. [HLA Tests -
+Transplant](Questionnaire-HLATestsTransplantAskAtOrderEntry.html) and
+[Chimerism Testing](Questionnaire-ChimerismTestingAskAtOrderEntry.html) sit
+in the same "Test Specific" tier as WGS, just without a shared "Common" tier
+of their own today - each combines directly with the common core, the same
+two-Questionnaire shape as most other test types.
 
 **Coding Ask At Order Entry questions.** Local coding (against the `NWGMSA`
 CodeSystem) is acceptable where no suitable national code exists, and is
@@ -312,12 +330,13 @@ don't yet declare that relationship - see that section for why.
 These Ask At Order Entry Questionnaires originated within this IG, modelling
 an existing digital order-entry screen rather than a paper form:
 
-| Order/Test Type                                                | Ask At Order Entry Questionnaire                                                                                                                                                                                                                                                                                                                                                                                    |
-|----------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Generic Ask At Order (default)                                 | [Generic Ask At Order Entry](Questionnaire-GenomicGeneralAskAtOrderEntry.html) - the fallback for any order/test type without its own dedicated Ask At Order Entry Questionnaire, which today covers:<br/>- **Cancer**<br/>- **Whole Genome Sequencing (WGS)** - outside the dWGS sub-contracted order row below, which has its own dedicated Questionnaire instead<br/>- **Rare and Inherited Diseases** |
-| Distributed WGS (dWGS) sub-contracted order                    | [dWGS Ask At Order Entry Questions](Questionnaire-dWGSAskAtOrderEntry.html) - see [dWGS](dWGS.html#ask-at-order-entry-the-dwgs-digital-manifest). The full 42-field digital manifest is separately documented as a CSV manifest description at [dWGS Sub-Order Manifest](Questionnaire-dWGSSubOrder.html), not itself an Ask At Order Entry Questionnaire                                                           |
-| Histocompatibility and Immunogenetics - HLA Tests (Transplant) | [HLA Tests - Transplant Ask At Order Entry](Questionnaire-HLATestsTransplantAskAtOrderEntry.html) - see [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html#ask-at-order-entry-questions)                                                                                                                                                                                              |
-| Histocompatibility and Immunogenetics - Chimerism Testing      | [Chimerism Testing Blood (PB) Ask At Order Entry](Questionnaire-ChimerismTestingAskAtOrderEntry.html) - see [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html#chimerism-testing-ask-at-order-entry)                                                                                                                                                                                  |
+| Order/Test Type                                                | Ask At Order Entry Questionnaire                                                                                                                                                                                                                                                                                                                                                                                    | Tier |
+|----------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------|
+| Ask At Order Entry Questions Common (default)                  | [Ask At Order Entry Questions Common](Questionnaire-GenomicGeneralAskAtOrderEntry.html) - the fallback for any order/test type without its own dedicated Ask At Order Entry Questionnaire, which today covers:<br/>- **Cancer**<br/>- **Whole Genome Sequencing (WGS)** - alongside the Test Specific Questionnaire below<br/>- **Rare and Inherited Diseases** | Common |
+| Test Specific - Whole Genome Sequencing (WGS)                  | [WGS Test Additional Ask At Order Entry Questions](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html) - used *alongside* Ask At Order Entry Questions Common above, not instead of it - a WGS order combines both plus the common core | Test Specific |
+| Distributed WGS (dWGS) sub-contracted order                    | [dWGS Ask At Order Entry Questions](Questionnaire-dWGSAskAtOrderEntry.html) - see [dWGS](dWGS.html#ask-at-order-entry-the-dwgs-digital-manifest). The full 42-field digital manifest is separately documented as a CSV manifest description at [dWGS Sub-Order Manifest](Questionnaire-dWGSSubOrder.html), not itself an Ask At Order Entry Questionnaire                                                           | Test Specific |
+| Histocompatibility and Immunogenetics - HLA Tests (Transplant) | [HLA Tests - Transplant Ask At Order Entry](Questionnaire-HLATestsTransplantAskAtOrderEntry.html) - see [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html#ask-at-order-entry-questions) - combines directly with the common core, no separate Common tier of its own today | Test Specific |
+| Histocompatibility and Immunogenetics - Chimerism Testing      | [Chimerism Testing Blood (PB) Ask At Order Entry](Questionnaire-ChimerismTestingAskAtOrderEntry.html) - see [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html#chimerism-testing-ask-at-order-entry) - combines directly with the common core, no separate Common tier of its own today | Test Specific |
 {:.grid}
 
 #### NW GLH Paper Test Request Forms
@@ -370,21 +389,33 @@ pregnancy), the paper-form Questionnaire carries a design note saying so
 rather than silently duplicating it - both remain independent Ask At Order
 Entry Questionnaires, since exactly one applies per order:
 
-| Order/Test Type                          | Ask At Order Entry Questionnaire                                                                                     |
-|-------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
-| Rare and Inherited Disease - WGS (national GMS form) | [GMS WGS Rare Disease](Questionnaire-GMSWGSRareDisease.html) |
-| Rare and Inherited Disease - WGS (local paper order) | [WGS Local Test Order Ask At Order Entry](Questionnaire-WGSLocalTestOrderAskAtOrderEntry.html) |
-| Rare and Inherited Disease (generic) | [Rare Disease Genomic Testing Ask At Order Entry](Questionnaire-RareDiseaseGenomicAskAtOrderEntry.html) |
-| Rare and Inherited Disease - Prenatal Haemoglobinopathy | [Prenatal Haemoglobinopathy Ask At Order Entry](Questionnaire-HaemoglobinopathyPrenatalAskAtOrderEntry.html) |
-| Rare and Inherited Disease - Haemoglobinopathy Genetic Testing | [Haemoglobinopathy Genetic Testing Ask At Order Entry](Questionnaire-HaemoglobinopathyGeneticAskAtOrderEntry.html) |
-| Rare and Inherited Disease - Cystic Fibrosis Carrier Testing | [Cystic Fibrosis Carrier Testing Ask At Order Entry](Questionnaire-CysticFibrosisCarrierAskAtOrderEntry.html) |
-| Rare and Inherited Disease - Genomic Variant Review | [Genomic Variant Review Ask At Order Entry](Questionnaire-VariantReviewAskAtOrderEntry.html) |
-| Rare and Inherited Disease - Deafness (R67) | [Deafness (R67) Ask At Order Entry](Questionnaire-DeafnessR67AskAtOrderEntry.html) |
-| Rare and Inherited Disease - CYP2C19 Mavacamten (R454) | [CYP2C19 Mavacamten (R454) Ask At Order Entry](Questionnaire-CYP2C19MavacamtenAskAtOrderEntry.html) |
-| Cancer - Solid Tumour (HRD and Tumour BRCA) | [HRD and Tumour BRCA Ask At Order Entry](Questionnaire-HRDTumourBRCAAskAtOrderEntry.html) |
-| Cancer - WGS (national GMS form) | [GMS WGS Cancer Ask At Order Entry](Questionnaire-GMSWGSCancerAskAtOrderEntry.html) |
-| Haematological Oncology | [Haemato-Oncology Ask At Order Entry](Questionnaire-HaematoOncologyAskAtOrderEntry.html) |
+| Order/Test Type                          | Ask At Order Entry Questionnaire                                                                                     | Test Directory Code(s) |
+|-------------------------------------------|------------------------------------------------------------------------------------------------------------------------|--------------------------|
+| Rare and Inherited Disease - WGS (national GMS form) | [GMS WGS Rare Disease](Questionnaire-GMSWGSRareDisease.html) | Any Rare and Inherited Disease code with `test-method` = WGS on [Genomic Test Code](CodeSystem-GenomicTestCode.html) (e.g. `R14.1`) - not one fixed code |
+| Rare and Inherited Disease - WGS (local paper order) | [WGS Local Test Order Ask At Order Entry](Questionnaire-WGSLocalTestOrderAskAtOrderEntry.html) | Same WGS codes as above, ordered via the local paper route rather than the national GMS form |
+| Rare and Inherited Disease (generic) | [Rare Disease Genomic Testing Ask At Order Entry](Questionnaire-RareDiseaseGenomicAskAtOrderEntry.html) | Any Rare and Inherited Disease code not covered by a more specific row below |
+| Rare and Inherited Disease - Prenatal Haemoglobinopathy | [Prenatal Haemoglobinopathy Ask At Order Entry](Questionnaire-HaemoglobinopathyPrenatalAskAtOrderEntry.html) | `R361`, `R372`, `R93` (haemoglobinopathy trait/carrier/diagnostic codes) - shared with Haemoglobinopathy Genetic Testing below; which specific code applies to which of the two forms is not confirmed from either form's own source |
+| Rare and Inherited Disease - Haemoglobinopathy Genetic Testing | [Haemoglobinopathy Genetic Testing Ask At Order Entry](Questionnaire-HaemoglobinopathyGeneticAskAtOrderEntry.html) | `R361`, `R372`, `R93` - see caveat above |
+| Rare and Inherited Disease - Cystic Fibrosis Carrier Testing | [Cystic Fibrosis Carrier Testing Ask At Order Entry](Questionnaire-CysticFibrosisCarrierAskAtOrderEntry.html) | `R185.1` "Cystic fibrosis carrier testing" |
+| Rare and Inherited Disease - Genomic Variant Review | [Genomic Variant Review Ask At Order Entry](Questionnaire-VariantReviewAskAtOrderEntry.html) | Not applicable - reviews a variant already reported under a prior test code, rather than requesting a new one |
+| Rare and Inherited Disease - Deafness (R67) | [Deafness (R67) Ask At Order Entry](Questionnaire-DeafnessR67AskAtOrderEntry.html) | `R67.1` "Monogenic hearing loss" |
+| Rare and Inherited Disease - CYP2C19 Mavacamten (R454) | [CYP2C19 Mavacamten (R454) Ask At Order Entry](Questionnaire-CYP2C19MavacamtenAskAtOrderEntry.html) | `R454.1` "Mavacamten for treating symptomatic obstructive hypertrophic cardiomyopathy" |
+| Cancer - Solid Tumour (HRD and Tumour BRCA) | [HRD and Tumour BRCA Ask At Order Entry](Questionnaire-HRDTumourBRCAAskAtOrderEntry.html) | `M2.5` (HRD test, tumour BRCA included) / `M2.1` (tumour BRCA only) |
+| Cancer - WGS (national GMS form) | [GMS WGS Cancer Ask At Order Entry](Questionnaire-GMSWGSCancerAskAtOrderEntry.html) | Any Cancer code with `test-method` = WGS on [Genomic Test Code](CodeSystem-GenomicTestCode.html) - not one fixed code |
+| Haematological Oncology | [Haemato-Oncology Ask At Order Entry](Questionnaire-HaematoOncologyAskAtOrderEntry.html) | Not applicable - the form selects a named laboratory test panel directly, not a Test Directory code (see the Questionnaire's own description) |
 {:.grid}
+
+**This list is not exhaustive.** A real NHS Trust order-entry screen for
+Rare and Inherited Disease WGS orders lists several *further* Rare and
+Inherited Disease test codes that also require their own paper form to be
+completed and sent with the sample - none of which has a Questionnaire in
+this IG yet: `R413.1` "Autoinflammatory Disorders", `R141.1` "Monogenic
+diabetes" / `R142.1` "Glucokinase-related fasting hyperglycaemia" (offered
+as alternatives on the same form), and `R201.1` "Atypical haemolytic
+uraemic syndrome". All four codes are live in the current Rare and
+Inherited Disease directory - see [Genomic Test
+Code](CodeSystem-GenomicTestCode.html) - so these are genuine gaps in this
+IG's own paper-form coverage, not retired codes.
 
 
 The twelve forms above are the NW GLH's own [paper test request

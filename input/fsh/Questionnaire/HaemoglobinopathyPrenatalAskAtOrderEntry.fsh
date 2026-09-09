@@ -14,8 +14,8 @@ completed for the mother (the referral's own registered patient - not a
 "proband" in the classical sense, since prenatal carrier testing doesn't
 imply an already-affected index case), and this Questionnaire adds a
 reference to the father via the same NK1-shaped `RelatedPerson` group as
-[NW Genomic General Ask At Order Questions - Related Individual
-(NK1)](Questionnaire-GenomicGeneralAskAtOrderEntry.html).
+[WGS Test Additional Ask At Order Entry Questions - Related Individual
+(NK1)](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html).
 """
 Usage:  #definition
 
