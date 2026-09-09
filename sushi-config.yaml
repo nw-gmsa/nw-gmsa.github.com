@@ -382,9 +382,9 @@ resources:
     name: HLA Tests - Transplant Ask At Order Entry Response - HLA Antibody Screening
     description: QuestionnaireResponse answering HLA Tests - Transplant Ask At Order Entry, sourced from a live Histotrac ORM^O01 HLA Antibody Screening (Transplant) order
     exampleBoolean: true
-  QuestionnaireResponse/ChimerismTestingAskAtOrderEntry-CHIM:
-    name: Chimerism Testing Blood (PB) Ask At Order Entry Response
-    description: QuestionnaireResponse answering Chimerism Testing Blood (PB) Ask At Order Entry, sourced from a live Histotrac ORM^O01 Chimerism Testing (Performable) order
+  QuestionnaireResponse/ChimerismTestAdditionalAskAtOrderQuestions-CHIM:
+    name: Chimerism Test Additional Ask At Order Entry Questions Response
+    description: QuestionnaireResponse answering Chimerism Test Additional Ask At Order Entry Questions, sourced from a live Histotrac ORM^O01 Chimerism Testing (Performable) order
     exampleBoolean: true
   QuestionnaireResponse/GenomicGeneralAskAtOrderEntry-OctaviaCHISLETT:
     name: Genomic General Ask At Order Entry Response - Octavia CHISLETT
@@ -591,10 +591,10 @@ groups:
     resources:
       - QuestionnaireResponse/HLATestsTransplantAskAtOrderEntry-HLAAS
   -ex-example-chimerism-order:
-    name: "Example: Chimerism Testing Blood (PB) Ask At Order Entry"
-    description: "QuestionnaireResponse answering Chimerism Testing Blood (PB) Ask At Order Entry, sourced from a live Histotrac ORM^O01 Chimerism Testing (Performable) order"
+    name: "Example: Chimerism Test Additional Ask At Order Entry Questions"
+    description: "QuestionnaireResponse answering Chimerism Test Additional Ask At Order Entry Questions, sourced from a live Histotrac ORM^O01 Chimerism Testing (Performable) order"
     resources:
-      - QuestionnaireResponse/ChimerismTestingAskAtOrderEntry-CHIM
+      - QuestionnaireResponse/ChimerismTestAdditionalAskAtOrderQuestions-CHIM
   -ex-example-omics-dss:
     name: "Example: OMICS DSS Result Integration"
     description: "NW-GMSA R01 Test Results message produced from a GA4GH VCF/Phenopacket by the 05 - Test Results notebook"

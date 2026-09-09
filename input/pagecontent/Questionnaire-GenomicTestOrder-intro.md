@@ -272,7 +272,7 @@ just one (e.g. [WGS Test Additional Ask At Order Entry
 Questions](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html)) - a WGS
 order therefore combines **three** Questionnaires. [HLA Tests -
 Transplant](Questionnaire-HLATestsTransplantAskAtOrderEntry.html) and
-[Chimerism Testing](Questionnaire-ChimerismTestingAskAtOrderEntry.html) sit
+[Chimerism Test Additional Ask At Order Entry Questions](Questionnaire-ChimerismTestAdditionalAskAtOrderQuestions.html) sit
 in the same "Test Specific" tier as WGS, just without a shared "Common" tier
 of their own today - each combines directly with the common core, the same
 two-Questionnaire shape as most other test types.
@@ -337,9 +337,10 @@ an existing digital order-entry screen rather than a paper form:
 |----------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------|
 | Ask At Order Entry Questions Common (default)                  | [Ask At Order Entry Questions Common](Questionnaire-GenomicGeneralAskAtOrderEntry.html) - the fallback for any order/test type without its own dedicated Ask At Order Entry Questionnaire, which today covers:<br/>- **Cancer**<br/>- **Whole Genome Sequencing (WGS)** - alongside the Test Specific Questionnaire below<br/>- **Rare and Inherited Diseases** | Common |
 | Test Specific - Whole Genome Sequencing (WGS)                  | [WGS Test Additional Ask At Order Entry Questions](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html) - used *alongside* Ask At Order Entry Questions Common above, not instead of it - a WGS order combines both plus the common core | Test Specific |
+| Test Specific - Cancer (proposal)                              | [Cancer Test Additional Ask At Order Entry Questions](Questionnaire-CancerTestAdditionalAskAtOrderQuestions.html) - a **proposal**, inferred from the two Cancer-category [NW GLH Paper Test Request Forms](#nw-glh-paper-test-request-forms) below, not yet wired into either of them | Test Specific |
 | Distributed WGS (dWGS) sub-contracted order                    | [dWGS Ask At Order Entry Questions](Questionnaire-dWGSAskAtOrderEntry.html) - see [dWGS](dWGS.html#ask-at-order-entry-the-dwgs-digital-manifest). The full 42-field digital manifest is separately documented as a CSV manifest description at [dWGS Sub-Order Manifest](Questionnaire-dWGSSubOrder.html), not itself an Ask At Order Entry Questionnaire                                                           | Test Specific |
 | Histocompatibility and Immunogenetics - HLA Tests (Transplant) | [HLA Tests - Transplant Ask At Order Entry](Questionnaire-HLATestsTransplantAskAtOrderEntry.html) - see [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html#ask-at-order-entry-questions) - combines directly with the common core, no separate Common tier of its own today | Test Specific |
-| Histocompatibility and Immunogenetics - Chimerism Testing      | [Chimerism Testing Blood (PB) Ask At Order Entry](Questionnaire-ChimerismTestingAskAtOrderEntry.html) - see [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html#chimerism-testing-ask-at-order-entry) - combines directly with the common core, no separate Common tier of its own today | Test Specific |
+| Histocompatibility and Immunogenetics - Chimerism Testing      | [Chimerism Test Additional Ask At Order Entry Questions](Questionnaire-ChimerismTestAdditionalAskAtOrderQuestions.html) - see [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html#chimerism-testing-ask-at-order-entry) - combines directly with the common core, no separate Common tier of its own today | Test Specific |
 {:.grid}
 
 #### NW GLH Paper Test Request Forms

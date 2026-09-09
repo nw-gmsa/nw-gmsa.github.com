@@ -9,6 +9,11 @@ Sequencing orders specifically - see [Order Entry
 Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). A WGS
 order therefore combines **three** Questionnaires, not the usual two.
 
+Used for the WGS tests within [Rare and Inherited Disease Test
+Codes](ValueSet-RareAndInheritedDiseaseTestCodes.html) - i.e. Rare and
+Inherited Disease WGS, identified via `test-method` = WGS on [Genomic Test
+Code](CodeSystem-GenomicTestCode.html), rather than one fixed code.
+
 | Name                                        | Code System         | Answer ValueSet | Cardinality | HL7 v2 OML_O21 Message | OBX-2 Value Type | HL7 FHIR Resource (Message + RESTful)                                    |
 |----------------------------------------------|----------------------|------------------|-------------|------------------------|------------------|--------------------------------------------------------------------------|
 | WGS participant type?                        | NWGMSA WGSParticipantTypeProband / WGSParticipantTypeFamilyMember | Proband/Family Member | 1..1 | [OBX](hl7v2.html#obx) | CE | [Observation](StructureDefinition-Observation.html).valueCodeableConcept |

@@ -552,7 +552,7 @@ Usage:  #definition
 // (Consanguinity, pathology report confirmation, pregnancy/neonatal, deceased infant,
 // Consent, Reason For Variant Re-Interpretation Request, High Infection Risk),
 // dWGSSubOrder for distributed WGS, or HLATestsTransplantAskAtOrderEntry /
-// ChimerismTestingAskAtOrderEntry for Histocompatibility and Immunogenetics (one per
+// ChimerismTestAdditionalAskAtOrderQuestions for Histocompatibility and Immunogenetics (one per
 // Hive order screen). See Questionnaire-GenomicTestOrder.html#order-entry-questions.
 
 //* item[+]

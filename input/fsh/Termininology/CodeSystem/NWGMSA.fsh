@@ -98,7 +98,7 @@ Bucket for local codes
 * #HistoOther "Other"
 
 // Chimerism Testing Blood (PB) Ask At Order Entry Codes (from Hive/Histotrac
-// order-entry UI - see Questionnaire-ChimerismTestingAskAtOrderEntry.html)
+// order-entry UI - see Questionnaire-ChimerismTestAdditionalAskAtOrderQuestions.html)
 
 * #ChimerismBloodPB "Blood (PB)"
 * #ChimerismBoneMarrowBM "Bone Marrow (BM)"

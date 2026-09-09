@@ -10,7 +10,7 @@ screen within Histocompatibility and Immunogenetics orders (SNOMED CT
 [Order Entry Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions) and
 [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html#ask-at-order-entry-questions).
 For the sibling Chimerism testing order screen, see
-[Chimerism Testing Blood (PB) Ask At Order Entry](Questionnaire-ChimerismTestingAskAtOrderEntry.html).
+[Chimerism Test Additional Ask At Order Entry Questions](Questionnaire-ChimerismTestAdditionalAskAtOrderQuestions.html).
 
 Extracted from the `NTE` segments (each carrying HL7 v2 Table 0105-style comment type
 `OSQ`) of a live Histotrac `ORM^O01` order - see the worked
@@ -245,7 +245,7 @@ Usage:  #definition
       the EU/UK/NW-compatible [Specimen Type](ValueSet-specimen-type.html) value set
       previously bound here (`answerValueSet = Canonical(SpecimenType)`), so this item
       now uses local `NWGMSA` codes to match what Hive actually offers for this
-      exchange. The separate [Chimerism Testing Blood (PB)](Questionnaire-ChimerismTestingAskAtOrderEntry.html)
+      exchange. The separate [Chimerism Test Additional Ask At Order Entry Questions](Questionnaire-ChimerismTestAdditionalAskAtOrderQuestions.html)
       order screen in Hive instead offers "Blood (PB)"/"Bone Marrow (BM)". Deliberately
       given its own `HistoIG/specimen_source` linkId rather than reusing the base
       [Genomic Test Order](Questionnaire-GenomicTestOrder.html)'s own `LN/66746-9`

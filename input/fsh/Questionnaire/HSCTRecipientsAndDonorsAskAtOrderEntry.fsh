@@ -12,8 +12,8 @@ Immunogenetics](HistocompatibilityAndImmunogenetics.html#ask-at-order-entry-ques
 
 Unlike the sibling [HLA Tests -
 Transplant](Questionnaire-HLATestsTransplantAskAtOrderEntry.html) and [Chimerism
-Testing Blood (PB)](Questionnaire-ChimerismTestingAskAtOrderEntry.html) Ask At Order
-Entry Questionnaires - both extracted from a live Hive/Histotrac `ORM^O01` order -
+Test Additional Ask At Order Entry Questions](Questionnaire-ChimerismTestAdditionalAskAtOrderQuestions.html) -
+both extracted from a live Hive/Histotrac `ORM^O01` order -
 this Questionnaire is modelled directly from NHSBT's own **paper request form**, since
 no live system message for it has been sourced. It is **not** `derivedFrom`/`extends`
 [Genomic Test Order](Questionnaire-GenomicTestOrder.html): this form is submitted
@@ -386,8 +386,8 @@ Usage:  #definition
       * type = #display
       * text = """
       A coarser scope choice than the 5-value `Patient Test(s)` checklist on
-      [Chimerism Testing Blood
-      (PB)](Questionnaire-ChimerismTestingAskAtOrderEntry.html#ChimIG/patient_test)
+      [Chimerism Test Additional Ask At Order Entry
+      Questions](Questionnaire-ChimerismTestAdditionalAskAtOrderQuestions.html#ChimIG/patient_test)
       (Chimerism Peripheral Blood, CD3, CD15, CD19, Lineage Other) - this form only
       distinguishes Total/Whole Blood vs Lineage specific, not that finer lineage
       breakdown. Coded locally against `NWGMSA`, same rationale as that item.

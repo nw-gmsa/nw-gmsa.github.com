@@ -43,8 +43,8 @@ for **Cancer**, **Whole Genome Sequencing (WGS)** and **Rare and Inherited
 Disease** orders placed through the generic order path (see [Order Entry
 Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions)) -
 **Chimerism** (and Histocompatibility and Immunogenetics generally) instead
-uses its own dedicated Ask At Order Entry Questionnaires - [Chimerism Testing
-Blood (PB)](Questionnaire-ChimerismTestingAskAtOrderEntry.html), [HLA Tests -
+uses its own dedicated Ask At Order Entry Questionnaires - [Chimerism Test
+Additional Ask At Order Entry Questions](Questionnaire-ChimerismTestAdditionalAskAtOrderQuestions.html), [HLA Tests -
 Transplant](Questionnaire-HLATestsTransplantAskAtOrderEntry.html) - so almost
 none of the items below normally apply to it. WGS orders also combine in
 [WGS Test Additional Ask At Order Entry

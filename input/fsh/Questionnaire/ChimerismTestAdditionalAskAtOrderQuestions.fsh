@@ -1,12 +1,15 @@
-Instance: ChimerismTestingAskAtOrderEntry
+Instance: ChimerismTestAdditionalAskAtOrderQuestions
 
 InstanceOf: NWQuestionnaire
-Title: "Chimerism Testing Blood (PB) Ask At Order Entry"
+Title: "Chimerism Test Additional Ask At Order Entry Questions"
 Description: """
-**Ask At Order Entry Questions** used alongside the [common core order
-form](Questionnaire-GenomicTestOrder.html) for the "Chimerism Testing Blood (PB)" order
-screen within Histocompatibility and Immunogenetics orders (SNOMED CT
-`909871000000100`) - see
+**Test Specific Additional Ask At Order Entry Questions** used alongside the
+[common core order form](Questionnaire-GenomicTestOrder.html) for the
+"Chimerism Testing Blood (PB)" order screen within Histocompatibility and
+Immunogenetics orders (SNOMED CT `909871000000100`) - the same "Test
+Specific" tier pattern [WGS Test Additional Ask At Order Entry
+Questions](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html) follows
+for WGS orders - see
 [Order Entry Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions) and
 [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html#ask-at-order-entry-questions).
 For the sibling HLA testing order screen, see
@@ -33,7 +36,7 @@ Usage:  #definition
 
 * title = "Chimerism Testing Blood (PB) Ask At Order Entry"
 * status = #draft
-* url = "https://fhir.nwgenomics.nhs.uk/Questionnaire/ChimerismTestingAskAtOrderEntry"
+* url = "https://fhir.nwgenomics.nhs.uk/Questionnaire/ChimerismTestAdditionalAskAtOrderQuestions"
 * derivedFrom = "https://fhir.nwgenomics.nhs.uk/Questionnaire/GenomicTestOrder"
 * derivedFrom.extension[+]
   * url = "http://hl7.org/fhir/StructureDefinition/questionnaire-derivationType"

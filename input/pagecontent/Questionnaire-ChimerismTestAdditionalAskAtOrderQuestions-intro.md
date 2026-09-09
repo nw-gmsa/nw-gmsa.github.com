@@ -2,6 +2,15 @@
 
 <span class="badge badge-primary">Histocompatibility and Immunogenetics</span>
 
+Used for these [Digital Genomic Test
+Services](CodeSystem-DigitalGenomicTestServices.html) tests:
+
+| Code     | Test                                                          |
+|----------|----------------------------------------------------------------|
+| `GT1335` | Chimerism by STR Testing - Post Solid Organ Transplant          |
+| `GT1336` | Chimerism by XY FISH - Post Solid Organ Transplant              |
+{:.grid}
+
 | Question         | LinkId                    | Cardinality | HL7 v2 OML_O21 Message | OBX-2 Value Type | Answer Options                                                                                    | FHIR Field                         |
 |-------------------|----------------------------|-------------|------------------------|-------------------|-------------------------------------------------------------------------------------------------------|---------------------------------------|
 | Specimen Source   | `ChimIG/specimen_source`  | 0..1        | [SPM](hl7v2.html#spm)-4 | CWE               | Blood (PB), Bone Marrow (BM)                                                                          | `Specimen.type`                       |

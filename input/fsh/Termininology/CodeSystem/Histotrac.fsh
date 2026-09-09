@@ -6,8 +6,8 @@ Local test-order codes from **Histotrac**, the Histocompatibility and
 Immunogenetics LIMS - see [Histocompatibility and
 Immunogenetics](HistocompatibilityAndImmunogenetics.html), [HLA Tests -
 Transplant Ask At Order Entry](Questionnaire-HLATestsTransplantAskAtOrderEntry.html)
-and [Chimerism Testing Blood (PB) Ask At Order
-Entry](Questionnaire-ChimerismTestingAskAtOrderEntry.html). Sourced as HL7
+and [Chimerism Test Additional Ask At Order Entry
+Questions](Questionnaire-ChimerismTestAdditionalAskAtOrderQuestions.html). Sourced as HL7
 v2 CE (coded element)-style `code^text^codingSystem` strings, both from the
 `HISTOTRACEAP` coding system:
 
