@@ -241,7 +241,7 @@ flowchart LR
     AAOEC["Ask At Order Entry Questions<br/>Genomic Order Common Questions"]
     AAOET["Genomic Test Specific Additional Ask At<br/>Order Entry Questions (e.g. WGS,<br/>Cancer, Chimerism Testing)"]
     QNAIRE["Order entry form<br/>(EPR / Order Comms system)"]
-    MSG["HL7 v2 OML_O21<br/>or FHIR Message O21"]
+    MSG["HL7 v2.5.1 OML_O21<br/>or FHIR R4 Message O21"]
     LIMS["LIMS"]
 
     CORE --> QNAIRE
