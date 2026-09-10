@@ -2,7 +2,7 @@
 This is currently being elaborated and subject to change.
 </div>
 
-Greater Manchester Care Record (GMCR): sharing NW Genomics cancer reports into Greater Manchester's shared care record, via a wire-tap on the Laboratory Report (LAB-3) feed.
+Regional Shared Care Records: sharing NW Genomics cancer reports into regional shared care records - currently the Greater Manchester Care Record (GMCR), with Lancashire and South Cumbria to follow - via a wire-tap on the Laboratory Report (LAB-3) feed.
 
 ## References
 
@@ -48,7 +48,7 @@ flowchart LR
 |-------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
 | [Order Filler](ActorDefinition-OrderFiller.html)                                 | iGene (NW Genomics master LIMS) - originates the LAB-3 report that is wire-tapped                    |
 | [Order Placer](ActorDefinition-OrderPlacer.html)                                 | NHS Trust - the original recipient of the LAB-3 report                                               |
-| [Intermediary](ActorDefinition-Intermediary.html)                              | Regional Integration Engine (RIE) - wire-taps LAB-3/`ORU_R01`, filters and converts it for GMCR         |
+| [Intermediary](ActorDefinition-Intermediary.html) / [Document Publisher](ActorDefinition-DocumentPublisher.html) | Regional Integration Engine (RIE) - wire-taps LAB-3/`ORU_R01`, filters and converts it, then publishes it for GMCR |
 | [Document Consumer](ActorDefinition-DocumentConsumer.html)                       | Greater Manchester Care Record (GMCR) / GraphNet - Shared Care Record Provider, cancer only            |
 {:.grid}
 
@@ -81,6 +81,28 @@ flowchart LR
     Conv2 -->|"5. Send MDM_T02"| GMCR["GraphNet<br/>(GMCR)"]
 ```
 
+The sequence diagram below shows the same process as a message exchange,
+following the same [HIE - Sharing Laboratory Reports
+(Document)](HIE.html#sharing-laboratory-reports-document-iti-105-and-mdm_t02)
+Document Publisher/Document Consumer pattern used elsewhere in this IG - the
+`HL7 v2 MDM_T02` transaction is what's actually used today; `IHE ITI-105`
+is the future/FHIR-based alternative the [Transactions](#transactions) table
+above already flags as a possibility:
+
+```mermaid
+sequenceDiagram
+    participant iGene as iGene<br/>Order Filler
+    participant RIE as RIE<br/>Intermediary / Document Publisher
+    participant GMCR as GraphNet (GMCR)<br/>Document Consumer
+
+    iGene ->> RIE: LAB-3 Report (ORU_R01)
+    RIE ->> RIE: Wire-tap, filter (catchment + cancer<br/>Test Code) and convert to<br/>GraphNet HL7 flavour
+   
+    RIE ->> GMCR: HL7 v2 MDM_T02 Message
+    GMCR -->> RIE: Response HL7 v2 ACK
+
+```
+
 > **Note:** The `DocumentReference` + attachment on the LAB-3 report currently forms the basis for this feed - see [Data Models](#data-models) below.
 
 ## Future Process
@@ -100,6 +122,25 @@ future IHE ITI-105 FHIR document) and the exact filtering rules are yet to be
 defined - see [ctDNA NHS England Unified Genomic Record
 (UGR)](ctDNAUGR.html) for how the NHS England Unified Genomic Record Phase 1
 adapts this same wire-tap.
+
+
+```mermaid
+sequenceDiagram
+    participant iGene as iGene<br/>Order Filler
+    participant RIE as RIE<br/>Intermediary / Document Publisher
+    participant GMCR as Lancashire and South Cumbria<br/>Document Consumer
+
+    iGene ->> RIE: LAB-3 Report (ORU_R01)
+    RIE ->> RIE: Wire-tap, filter (catchment + cancer<br/>Test Code) and convert to<br/>GraphNet HL7 flavour
+    opt HL7 v2 MDM_T02 (current)
+        RIE ->> GMCR: HL7 v2 MDM_T02 Message
+        GMCR -->> RIE: Response HL7 v2 ACK
+    end
+    opt IHE ITI-105 Simplified Publish (future)
+        RIE ->> GMCR: POST /DocumentReference
+        GMCR -->> RIE: Response OperationOutcome
+    end
+```
 
 ## Data Models
 

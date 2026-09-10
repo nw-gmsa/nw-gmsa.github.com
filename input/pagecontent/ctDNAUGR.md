@@ -8,7 +8,7 @@ ctDNA reports to the NHS England Unified Genomic Record (UGR) - future integrati
 
 1. NHS England - ctDNA UGR Solution Design (internal NHS England document, not publicly linked)
 2. [06 - EU Laboratory Report: FHIR Messages to a FHIR Document](https://github.com/nw-gmsa/Testing/blob/main/notebooks/06-eu-laboratory-report-fhir-document.ipynb) - Phase 2 worked example
-3. [Greater Manchester Care Record (GMCR)](GMCR.html) - the existing wire-tap this reuses
+3. [Regional Shared Care Records](RegionalSharedCareRecords.html) - the existing wire-tap this reuses
 4. [HIE - Sharing Laboratory Reports (Document)](HIE.html#sharing-laboratory-reports-document-iti-105-and-mdm_t02) - the IHE ITI-105/MDM_T02 pattern Phase 1 resembles
 5. [OMICS DSS Result Integration](reportable-variants.html) - source of the Reportable Variant Observations Phase 2 combines with the report
 6. [nw-gmsa/Testing - ctdna9737383222-eulab-document.json](https://github.com/nw-gmsa/Testing/blob/main/Input/FHIR/R01/ctdna9737383222-eulab-document.json) - Phase 2 example
@@ -49,9 +49,9 @@ flowchart LR
 |-------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
 | [Order Filler](ActorDefinition-OrderFiller.html)                                 | iGene (NW Genomics master LIMS) - originates the LAB-3 report that is wire-tapped                              |
 | [Order Placer](ActorDefinition-OrderPlacer.html)                                 | NHS Trust - the original recipient of the LAB-3 report                                                         |
-| [Intermediary](ActorDefinition-Intermediary.html)                              | Regional Integration Engine (RIE) - wire-taps LAB-3/`ORU_R01` and builds the document sent to the national solution |
+| [Intermediary](ActorDefinition-Intermediary.html) / [Document Publisher](ActorDefinition-DocumentPublisher.html) | Regional Integration Engine (RIE) - wire-taps LAB-3/`ORU_R01`, builds the document and publishes it to the national solution |
 | [Resource Access Provider](ActorDefinition-ResourceAccessProvider.html)          | FHIR Repository - source of the Reportable Variant Observations Phase 2 combines with the report                |
-| [Document Consumer](ActorDefinition-DocumentConsumer.html)                       | NHS England Genomics Core Broker / Unified Genomic Record (UGR) - national solution, stores the report and registers a National Record Locator (NRL) pointer |
+| [Document Access Provider](ActorDefinition-DocumentAccessProvider.html) / [Document Consumer](ActorDefinition-DocumentConsumer.html) | NHS England Genomics Core Broker / Unified Genomic Record (UGR) / National Record Locator (NRL) - national solution: stores the report, indexes and registers a discovery pointer (Document Access Provider), and is itself the initial recipient of the RIE's published document (Document Consumer) |
 {:.grid}
 
 ## Transactions
@@ -66,13 +66,13 @@ flowchart LR
 
 ## Current Process
 
-There is currently no integration with the NHS England Unified Genomic Record (UGR). ctDNA Laboratory Reports (LAB-3) are distributed to NHS Trusts as usual - see [Regional Integration Engine (RIE) - Current Process](overview.html#current-process). The same LAB-3 wire-tap used for the [Greater Manchester Care Record (GMCR)](GMCR.html) does not yet extend to the UGR; this page describes the two planned phases for adding that feed.
+There is currently no integration with the NHS England Unified Genomic Record (UGR). ctDNA Laboratory Reports (LAB-3) are distributed to NHS Trusts as usual - see [Regional Integration Engine (RIE) - Current Process](overview.html#current-process). The same LAB-3 wire-tap used for [Regional Shared Care Records](RegionalSharedCareRecords.html) does not yet extend to the UGR; this page describes the two planned phases for adding that feed.
 
 ## Future Process
 
 ### Phase 1: PDF Report + NRL Pointer
 
-The RIE wire-taps the LAB-3/`ORU_R01` feed (the same wire-tap already used for the [Greater Manchester Care Record (GMCR)](GMCR.html) - see that page for the existing filter/convert process this reuses) and converts it into a `DiagnosticReport` with the report PDF embedded as an attachment. This is sent to the NHS England Genomics Core Broker - at a high level this is similar to both HL7 v2 `MDM_T02` and IHE ITI-105 (Simplified Publish); ITI-105, being FHIR-based, could in principle be used instead of a bespoke feed.
+The RIE (also acting as [Document Publisher](ActorDefinition-DocumentPublisher.html) here, the same role it plays on [Regional Shared Care Records](RegionalSharedCareRecords.html)) wire-taps the LAB-3/`ORU_R01` feed (the same wire-tap already used for [Regional Shared Care Records](RegionalSharedCareRecords.html) - see that page for the existing filter/convert process this reuses) and converts it into a `DiagnosticReport` with the report PDF embedded as an attachment. This is sent to the NHS England Genomics Core Broker - at a high level this is similar to both HL7 v2 `MDM_T02` and IHE ITI-105 (Simplified Publish); ITI-105, being FHIR-based, could in principle be used instead of a bespoke feed.
 
 The Core Broker (a national component, summarised only - see [References](#references) for the NHS England solution design) verifies the patient, stores the PDF and report metadata in the UGR, and converts the report into a `DocumentReference` pointer registered with the National Record Locator (NRL), making it discoverable by other care settings.
 
@@ -80,8 +80,8 @@ The Core Broker (a national component, summarised only - see [References](#refer
 sequenceDiagram
     participant iGene as iGene<br/>Order Filler
     participant Trust as NHS Trust<br/>Order Placer
-    participant RIE as RIE<br/>Intermediary (wire-tap)
-    participant Broker as NHS England<br/>Genomics Core Broker
+    participant RIE as RIE<br/>Intermediary / Document Publisher
+    participant Broker as NHS England Genomics Core Broker<br/>Document Access Provider / Document Consumer
     participant UGR as UGR / NRL<br/>(national, summarised)
 
     iGene ->> Trust: LAB-3 Report (ORU_R01)
@@ -98,9 +98,9 @@ Phase 2, elaborated in notebook [06 - EU Laboratory Report: FHIR Messages to a F
 sequenceDiagram
     participant iGene as iGene<br/>Order Filler
     participant Trust as NHS Trust<br/>Order Placer
-    participant RIE as RIE<br/>Intermediary (wire-tap)
+    participant RIE as RIE<br/>Intermediary / Document Publisher
     participant FHIRRepo as FHIR Repository<br/>Resource Access Provider
-    participant Broker as NHS England<br/>Genomics Core Broker
+    participant Broker as NHS England Genomics Core Broker<br/>Document Access Provider / Document Consumer
     participant UGR as UGR / NRL<br/>(national, summarised)
 
     iGene ->> Trust: LAB-3 Report (ORU_R01)

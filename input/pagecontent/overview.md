@@ -62,7 +62,7 @@ flowchart LR
 ### Why this matters for developers
 
 - Every genomic order/report use case in this IG - whatever the specific test - relies on the RIE for the underlying message translation/routing described here; the use-case-specific pages describe what varies (test type, actors, message format), this page describes the shared plumbing.
-- The RIE's "wire-tap" pattern - copying a report onward to a shared care record or peer system as it passes through - is a general capability reused by several other use cases, see [Greater Manchester Care Record (GMCR)](GMCR.html) for a worked example.
+- The RIE's "wire-tap" pattern - copying a report onward to a shared care record or peer system as it passes through - is a general capability reused by several other use cases, see [Regional Shared Care Records](RegionalSharedCareRecords.html) for a worked example.
 
 ## Actors
 
@@ -78,7 +78,7 @@ flowchart LR
 | [Order Placer](ActorDefinition-OrderPlacer.html)                                 | NHS Trusts sending direct HL7 orders to the RIE - see [iGene Orders and Reports (Alder Hey, MFT, Liverpool)](RegionalOrdersAndReports.html) for the named Trusts and their specific integrations |
 | [Order Placer](ActorDefinition-OrderPlacer.html) (via GMS Order Comms)           | NHS Trusts - electronic or web portal, not direct HL7 to the RIE       |
 | [Automation Manager](ActorDefinition-AutomationManager.html)                     | National Genomic Order Comms - national ordering system / web portal (future interface, GOMS) |
-| [Document Consumer](ActorDefinition-DocumentConsumer.html)                       | Greater Manchester Care Record (GMCR) and Lancashire & South Cumbria - Shared Care Record Providers, see [Greater Manchester Care Record (GMCR)](GMCR.html) for their own use case |
+| [Document Consumer](ActorDefinition-DocumentConsumer.html)                       | Greater Manchester Care Record (GMCR) and Lancashire & South Cumbria - Shared Care Record Providers, see [Regional Shared Care Records](RegionalSharedCareRecords.html) for their own use case |
 | [Document Consumer](ActorDefinition-DocumentConsumer.html)                       | National Unified Genomic Care Record (UGR) - Shared Care Record Provider, in elaboration |
 | [Order Result Tracker](ActorDefinition-OrderResultTracker.html) | North East and Yorkshire (NE&Y) Genomics - receives copies of ctDNA order/report messages for their Management Portal, not itself the ordering or testing party - see [NE&Y Management Information (ctDNA)](NEYManagementInformation.html) |
 {:.grid}
@@ -198,7 +198,7 @@ sequenceDiagram
 
 For reports, the RIE will [wire-tap](https://www.enterpriseintegrationpatterns.com/patterns/messaging/WireTap.html)
 the `ORU_R01` to send a copy of the report to a Shared Care Record - see
-[Greater Manchester Care Record (GMCR)](GMCR.html) for the detailed
+[Regional Shared Care Records](RegionalSharedCareRecords.html) for the detailed
 convert/filter/deliver process (and its Lancashire and South Cumbria stub),
 and [ctDNA NHS England Unified Genomic Record (UGR)](ctDNAUGR.html) for how
 the NHS England Unified Genomic Record Phase 1 adapts the same wire-tap.
@@ -213,7 +213,7 @@ A second group of NHS Trusts create orders via the NHS Genomic Medicine Service 
 
 The RIE connects to multiple internal LIMS systems — including iGene, StarLIMS, and others — each using its own variant of HL7 messaging. It transforms these into standardised report messages for consumption by NHS Trusts. In the reverse direction, standardised orders received from NHS Trusts (or potentially national order comms) are transformed by the RIE into the appropriate HL7 flavour for each destination LIMS.
 
-Reports are also sent to shared care record providers using HL7 MDM_T02 (the HL7 v2 message type for sending a document, such as a PDF report), currently for the [Greater Manchester Care Record (GMCR)](GMCR.html) — this feed is cancer only. Similar services are likely to be provided to Lancashire and South Cumbria (see GMCR's stub section), and to the national Unified Genomic Care Record.
+Reports are also sent to shared care record providers using HL7 MDM_T02 (the HL7 v2 message type for sending a document, such as a PDF report), currently for the Greater Manchester Care Record (GMCR) - see [Regional Shared Care Records](RegionalSharedCareRecords.html) — this feed is cancer only. Similar services are likely to be provided to Lancashire and South Cumbria (see that page's stub section), and to the national Unified Genomic Care Record.
 
 The RIE also sends copies of NW Diagnostic Core Standard ctDNA orders and reports to North East and Yorkshire Genomics, for their own regional Management Portal — NE&Y is not the ordering or testing party here, just a recipient of copies (results/clinical content removed from the report copy). See [NE&Y Management Information (ctDNA)](NEYManagementInformation.html) for the full process.
 
@@ -489,7 +489,7 @@ erDiagram
 
 The same LAB-3 report (`DocumentReference` + PDF attachment) is also the
 source for the `MDM_T02` feed sent to shared care record providers - see
-[Greater Manchester Care Record (GMCR)](GMCR.html#data-models) for the data
+[Regional Shared Care Records](RegionalSharedCareRecords.html#data-models) for the data
 model this feed builds on, and [ctDNA NHS England Unified Genomic Record
 (UGR)](ctDNAUGR.html) for the two planned UGR phases which adapt the same
 feed.

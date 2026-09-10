@@ -169,8 +169,8 @@ pages:
   RegionalOrdersAndReports.md:
     title: "Use Case: iGene Orders and Reports (Alder Hey, MFT, Liverpool)"
     generation: markdown
-  GMCR.md:
-    title: "Use Case: Greater Manchester Care Record (GMCR)"
+  RegionalSharedCareRecords.md:
+    title: "Use Case: Regional Shared Care Records"
     generation: markdown
   starLIMS.md:
     title: "Use Case: StarLIMS / iGene Integration"
@@ -414,8 +414,8 @@ menu:
   Use Cases:
     Regional Integration Engine (RIE): overview.html
     iGene Orders and Reports (Alder Hey, MFT, Liverpool): RegionalOrdersAndReports.html
-    Shared Genomic Reports (Greater Manchester Care Record (GMCR)): GMCR.html
-    Shared Genomic Reports (Lancashire and South Cumbria): GMCR.html#lancashire-and-south-cumbria
+    Regional Shared Care Records (Greater Manchester Care Record (GMCR)): RegionalSharedCareRecords.html
+    Regional Shared Care Records (Lancashire and South Cumbria): RegionalSharedCareRecords.html#lancashire-and-south-cumbria
     ctDNA NHS England Unified Genomic Record (UGR): ctDNAUGR.html
     ctDNA Management Information (NW to NE&Y Genomics): NEYManagementInformation.html
     Whole Genome Sequencing (WGS) Orders (Proposed - Alder Hey, MFT, Liverpool): WholeGenomicSequence.html
