@@ -84,7 +84,8 @@ sequenceDiagram
     participant Broker as NHS England Genomics Core Broker<br/>Document Access Provider / Document Consumer
     participant UGR as UGR / NRL<br/>(national, summarised)
 
-    iGene ->> Trust: LAB-3 Report (ORU_R01)
+    iGene ->> RIE: LAB-3 Report (ORU_R01)
+    RIE ->> Trust: LAB-3 Report (ORU_R01)
     RIE ->> RIE: Wire-tap ORU_R01,<br/>convert to DiagnosticReport + embedded PDF
     RIE ->> Broker: DiagnosticReport (PDF)<br/>similar to MDM_T02 / IHE ITI-105
     Broker ->> UGR: Store PDF + metadata,<br/>register NRL DocumentReference pointer
@@ -103,7 +104,8 @@ sequenceDiagram
     participant Broker as NHS England Genomics Core Broker<br/>Document Access Provider / Document Consumer
     participant UGR as UGR / NRL<br/>(national, summarised)
 
-    iGene ->> Trust: LAB-3 Report (ORU_R01)
+    iGene ->> RIE: LAB-3 Report (ORU_R01)
+    RIE ->> Trust: LAB-3 Report (ORU_R01)
     RIE ->> RIE: Wire-tap ORU_R01
     RIE ->> FHIRRepo: Retrieve linked<br/>Reportable Variant Observations
     FHIRRepo -->> RIE: Reportable Variants

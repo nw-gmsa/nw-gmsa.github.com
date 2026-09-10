@@ -49,7 +49,7 @@ flowchart LR
 | [Order Filler](ActorDefinition-OrderFiller.html)                                 | iGene (NW Genomics master LIMS) - originates the LAB-3 report that is wire-tapped                    |
 | [Order Placer](ActorDefinition-OrderPlacer.html)                                 | NHS Trust - the original recipient of the LAB-3 report                                               |
 | [Intermediary](ActorDefinition-Intermediary.html) / [Document Publisher](ActorDefinition-DocumentPublisher.html) | Regional Integration Engine (RIE) - wire-taps LAB-3/`ORU_R01`, filters and converts it, then publishes it for GMCR |
-| [Document Consumer](ActorDefinition-DocumentConsumer.html)                       | Greater Manchester Care Record (GMCR) / GraphNet - Shared Care Record Provider, cancer only            |
+| [Document Access Provider](ActorDefinition-DocumentAccessProvider.html) / [Document Consumer](ActorDefinition-DocumentConsumer.html) | Greater Manchester Care Record (GMCR) / GraphNet and Lancashire and South Cumbria - Shared Care Record Providers, cancer only |
 {:.grid}
 
 ## Transactions
@@ -93,11 +93,10 @@ above already flags as a possibility:
 sequenceDiagram
     participant iGene as iGene<br/>Order Filler
     participant RIE as RIE<br/>Intermediary / Document Publisher
-    participant GMCR as GraphNet (GMCR)<br/>Document Consumer
+    participant GMCR as GraphNet (GMCR)<br/>Document Access Provider / Document Consumer
 
     iGene ->> RIE: LAB-3 Report (ORU_R01)
     RIE ->> RIE: Wire-tap, filter (catchment + cancer<br/>Test Code) and convert to<br/>GraphNet HL7 flavour
-   
     RIE ->> GMCR: HL7 v2 MDM_T02 Message
     GMCR -->> RIE: Response HL7 v2 ACK
 
@@ -128,7 +127,7 @@ adapts this same wire-tap.
 sequenceDiagram
     participant iGene as iGene<br/>Order Filler
     participant RIE as RIE<br/>Intermediary / Document Publisher
-    participant GMCR as Lancashire and South Cumbria<br/>Document Consumer
+    participant GMCR as Lancashire and South Cumbria<br/>Document Access Provider / Document Consumer
 
     iGene ->> RIE: LAB-3 Report (ORU_R01)
     RIE ->> RIE: Wire-tap, filter (catchment + cancer<br/>Test Code) and convert to<br/>GraphNet HL7 flavour
