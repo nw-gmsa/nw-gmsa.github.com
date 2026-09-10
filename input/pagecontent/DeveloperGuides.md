@@ -9,6 +9,11 @@ Engineers** building against this Implementation Guide. It gives an overview of
 where FHIR is actually used in this implementation, before the worked-example
 notebooks below get into specifics.
 
+For questions on FHIR itself, or this IG's own use of it, the [FHIR Zulip
+chat](https://chat.fhir.org/) has two relevant channels: [#genomics](https://chat.fhir.org/#narrow/channel/179197-genomics)
+for FHIR Genomics Reporting questions, and [#uk](https://chat.fhir.org/#narrow/channel/179189-uk)
+for UK Core and other UK-specific FHIR questions.
+
 North West Genomics runs two InterSystems products that both use HL7, but for
 different purposes and in different styles:
 
