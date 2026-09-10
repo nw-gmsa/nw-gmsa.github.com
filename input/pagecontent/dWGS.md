@@ -87,6 +87,16 @@ of the two national GMS WGS forms, depending on pathway:
   Disease](Questionnaire-GMSWGSRareDisease.html) - In the North East & Yorkshire NE&Y Genomics is the RGL, in the North West NW Genomics is the RLS and NW Genomics is the SGL for both.
 - **Cancer**: [GMS WGS Cancer](Questionnaire-GMSWGSCancerAskAtOrderEntry.html) - In the North West: NW Genomics is the RGL and Royal Marsden is the SGL
 
+Results/data returning to the RGL for analysis and reporting are handled by Genomics
+England Limited (GEL), using `referral_id` and `patient_ngis_id` as the identifiers -
+these are the only identifiers present across every system in this workflow (RGL LIMS,
+TOMS, SGL LIMS, GEL).
+
+While NW Genomics is the SGL for NE&Y dWGS, the vast majority of NE&Y's results go back
+to NE&Y directly (`LAB-5` and `LAB-36` returning to the RGL) and are reported (`LAB-3`)
+by NE&Y, not via NW Genomics. The integration NW Genomics needs to build for this
+workflow is therefore one direction only - `LAB-35`.
+
 Where the RGL and SGL are different organisations, this is a **sub-contracted order**:
 in NW-GMSA's own [Inter-Laboratory Workflow (ILW)](ILW.html#sub-orders-lab-35-and-lab-36)
 terms, the RGL is the *Order Placer* sending a `LAB-35` sub-order to the SGL (the
@@ -143,6 +153,7 @@ sequenceDiagram
     TOMS ->> OF: referral_id, patient_ngis_id
     OF ->> SC: LAB-35 Sub-order + manifest
     SC ->> ANP: LAB-4 Work Order
+    Note over ANP,OP: LAB-5 onwards - out of scope for NW-GMSA,<br/>handled by GEL and NE&Y
     ANP ->> SC: LAB-5 Test Result and Reportable Variant
     SC ->> OF: LAB-36 Sequencing Result
     OF ->> OP: LAB-3 Laboratory Report
