@@ -116,7 +116,7 @@ pages:
     title: HL7 v2 Standards
     generation: markdown
   dWGS.md:
-    title: Whole Genome Sequencing (WGS)
+    title: Distributed Whole Genome Sequencing (dWGS)
     generation: markdown
   HistocompatibilityAndImmunogenetics.md:
     title: "Use Case: Histocompatibility and Immunogenetics (Clatterbridge to Histotrac)"
