@@ -76,6 +76,31 @@ The current process works as follows:
 3. Omics DSS processes the results
 4. The processed output is sent to iGene
 
+```mermaid
+    flowchart TD
+        OP["Order Placer<br/>Test Ordering Entity"]
+        OF["Order Filler<br/>iGene"]
+        SC["Sub Contractor<br/>DLIMS"]
+        ANP["Automation Manager<br/>Analyser and<br/>Analytics Processor"]
+
+        OP -- "LAB-1<br/>laboratory order" --> OF
+    
+        OF -- "LAB-3<br/>laboratory report" --> OP
+        OF -- "LAB-4<br/>Work Order" --> SC
+        SC -- "Result Metadata" --> ANP
+        ANP -- "LAB-5<br/>Test Result and Reportable Variant" --> OF
+```
+
+The diagram above shows the **entire** background process end-to-end - Order
+Placer through to Automation Manager - for context only. The interaction
+this page actually elaborates is `LAB-5` (the test result/reportable
+variant leg); everything else, including `LAB-4` (the Work Order sent to
+DLIMS), is background. `LAB-4` is drawn here as a simple arrow, but today
+it isn't actually delivered to Omics DSS at all - that gap is exactly what
+[Future Process](#future-process) below, and [Outstanding Issues](#outstanding-issues)
+item 3 in particular, are looking at methods of solving, rather than
+something already resolved by this Current Process diagram.
+
 ## Future Process
 
 Rather than sending processed output directly to iGene, it will instead be converted to a FHIR Genomics Report and stored in the FHIR Repository, following the HL7 Genomic Reporting standard. The Regional Integration Engine will then transform this data into a format suitable for iGene (likely a CSV file).

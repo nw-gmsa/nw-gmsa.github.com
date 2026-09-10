@@ -55,6 +55,7 @@ flowchart LR
 
 | IHE Actor (ILW)                                     | Role in dWGS                                    | System (worked examples)             |
 |-------------------------------------------------------|----------------------------------------------------|------------------------------------------|
+| [Order Placer](ActorDefinition-OrderPlacer.html) | Test Ordering Entity - NHS Trust sending the initial `LAB-1` order, upstream of this sub-order | NHS Trust EPR |
 | [Requestor](ActorDefinition-Requestor.html) (Order Placer) | Requesting Genomic Laboratory (RGL)             | NE&Y Genomics                            |
 | [Subcontractor](ActorDefinition-Subcontractor.html) (Order Filler) | Sequencing Genomic Laboratory (SGL)     | NW Genomics (iGene)                      |
 {:.grid}
@@ -95,16 +96,53 @@ sent as either a FHIR `Bundle` (`POST [base]/$process-message`, the
 HL7 v2 `OML^O21` (see [HL7 v2 Standards](hl7v2.html)) - both follow the same underlying
 NW-GMSA order model, so the choice is purely about what the sending system can produce.
 
+The diagram below shows the **entire** background process end-to-end - Test
+Ordering Entity through to Automation Manager - for context only. This page
+itself elaborates just the `LAB-35`/`LAB-36` sub-order in the middle; the
+legs either side of it are covered elsewhere:
+
+- `LAB-1`/`LAB-3` (Test Ordering Entity ↔ RGL) - the general shape of this
+  leg is documented in [Regional Orders and
+  Reports](RegionalOrdersAndReports.html). For NE&Y Genomics specifically
+  (acting as RGL here), the current, live data contract already used with
+  them is documented in [NE&Y Management Information
+  (ctDNA)](NEYManagementInformation.html) - important to this use case,
+  since this leg should ideally continue to align with that established
+  contract rather than diverge from it.
+- `LAB-4`/`LAB-5` (SGL ↔ Automation Manager) - background only; see [OMICS
+  DSS Result Integration](reportable-variants.html) for that leg's own
+  detail. NW Genomics' Automation Manager role here is currently DLIMS,
+  which [Clarity LIMS](ClarityLIMS.html) will likely replace - see this
+  page's own [Outstanding Issues](#outstanding-issues) above.
+
 ```mermaid
 flowchart TD
-    OP["Order Placer<br/>Test Ordering Entity"]
-    OF["Order Filler<br/>Requesting Genomic Laboratory (RGL)"]
-    SC["Sub Contractor<br/>Sequencing Genomic Laboratory (SGL)"]
+  OP["Order Placer<br/>Test Ordering Entity"]
+  OF["Order Filler<br/>Requesting Genomic Laboratory (RGL)"]
+  SC["Sub Contractor<br/>Sequencing Genomic Laboratory (SGL)"]
+  ANP["Automation Manager<br/>Analyser and<br/>Analytics Processor"]
 
-    OP -- "LAB-1<br/>laboratory order" --> OF
-    OF -- "LAB-35<br/>sub-order + manifest" --> SC
-    SC -- "LAB-36<br/>sequencing result" --> OF
-    OF -- "LAB-3 / LAB-5<br/>laboratory report" --> OP
+  OP -- "LAB-1<br/>laboratory order" --> OF
+  OF -- "LAB-35<br/>sub-order + manifest" --> SC
+  SC -- "LAB-36<br/>sequencing result" --> OF
+  OF -- "LAB-3<br/>laboratory report" --> OP
+  SC -- "LAB-4<br/>Work Order" --> ANP
+  ANP -- "LAB-5<br/>Test Result and Reportable Variant" --> SC
+```
+
+```mermaid
+sequenceDiagram
+    participant OP as Order Placer<br/>Test Ordering Entity
+    participant OF as Order Filler<br/>RGL
+    participant SC as Sub Contractor<br/>SGL
+    participant ANP as Automation Manager<br/>Analyser/Analytics Processor
+
+    OP ->> OF: LAB-1 Laboratory Order
+    OF ->> SC: LAB-35 Sub-order + manifest
+    SC ->> ANP: LAB-4 Work Order
+    ANP ->> SC: LAB-5 Test Result and Reportable Variant
+    SC ->> OF: LAB-36 Sequencing Result
+    OF ->> OP: LAB-3 Laboratory Report
 ```
 
 ### Singleton, Duo and Trio testing
