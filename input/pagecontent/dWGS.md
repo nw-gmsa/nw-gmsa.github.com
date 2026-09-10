@@ -134,10 +134,13 @@ flowchart TD
 sequenceDiagram
     participant OP as Order Placer<br/>Test Ordering Entity
     participant OF as Order Filler<br/>RGL
+    participant TOMS as TOMS<br/>(Test Order Management System,<br/>Genomics England Limited)
     participant SC as Sub Contractor<br/>SGL
     participant ANP as Automation Manager<br/>Analyser/Analytics Processor
 
     OP ->> OF: LAB-1 Laboratory Order
+    OF ->> TOMS: Enter LAB-1 order
+    TOMS ->> OF: referral_id, patient_ngis_id
     OF ->> SC: LAB-35 Sub-order + manifest
     SC ->> ANP: LAB-4 Work Order
     ANP ->> SC: LAB-5 Test Result and Reportable Variant
@@ -312,14 +315,18 @@ identifiers/values on a single `Specimen` resource rather than two linked resour
 
 ## Outstanding Issues
 
-**Not resolved.** Some of the manifest fields described above appear to
+**Partially resolved.** Some of the manifest fields described above
 originate from Genomics England's own **centralised** WGS systems, rather
-than being fields NW-GMSA itself asked for. The working theory is that
-Genomics England generated them when the paper [GMS WGS Rare
+than being fields NW-GMSA itself asked for. Confirmed: the RGL enters the
+`LAB-1` order into **TOMS** (Test Order Management System, Genomics England
+Limited) - see the [Current Process](#current-process) sequence diagram
+above - and TOMS returns `referral_id` and `patient_ngis_id` in response,
+rather than either being minted by the RGL itself. This is a Genomics
+England system, entered from the paper [GMS WGS Rare
 Disease](Questionnaire-GMSWGSRareDisease.html) and [GMS WGS
-Cancer](Questionnaire-GMSWGSCancerAskAtOrderEntry.html) national order forms
-were entered into Genomics England's own systems, and they were then carried
-over into the dWGS digital manifest along with the rest of the sub-order:
+Cancer](Questionnaire-GMSWGSCancerAskAtOrderEntry.html) national order
+forms, and the two identifiers it returns are then carried over into the
+dWGS digital manifest along with the rest of the sub-order:
 
 - `referral_id` ("Original Order Placer Group Number (Referral ID)",
   `dWGS/referral_id`, `ServiceRequest.requisition`) reads like a Genomics
@@ -337,14 +344,12 @@ over into the dWGS digital manifest along with the rest of the sub-order:
 Neither national paper form captures a `referral_id`/`patient_ngis_id`
 equivalent itself - both are silent on Order Placer Number and Medical
 Record Number too (see their own Summary sections) - which is consistent
-with these values being minted downstream, by Genomics England, once the
-paper form reaches them, rather than by the Requesting Genomic Laboratory at
-the point of ordering. It's possible a Genomics England API exists to
-resolve or issue these identifiers (e.g. an NGIS lookup service an RGL could
-call), but no such API has been identified for this IG - whether an RGL is
-expected to obtain these values from Genomics England directly, mint them
-itself, or something else, is an open question rather than a design
-decision made here.
+with these values being minted downstream by TOMS, once the RGL enters the
+`LAB-1` order into it, rather than by the Requesting Genomic Laboratory at
+the point of ordering. What remains open is the detail of that TOMS
+interaction itself - e.g. whether it is a synchronous API call an RGL's own
+system makes as part of order entry, or a manual/batch step - which isn't
+yet documented for this IG.
 
 **Which internal system NW Genomics (iGene) actually uses to perform the
 sequencing behind its Sequencing Genomic Laboratory (SGL) role is not
