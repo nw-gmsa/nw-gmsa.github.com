@@ -148,14 +148,18 @@ sequenceDiagram
     participant SC as Sub Contractor<br/>SGL
     participant ANP as Automation Manager<br/>Analyser/Analytics Processor
 
+    Note over OP,OF: NW Genomics only - covers both <br/>electronic and paper LAB-1 orders.
     OP ->> OF: LAB-1 Laboratory Order
-    OF ->> TOMS: Enter LAB-1 order
+  Note over OF,SC: Enter LAB-1 order (TOMS) applies to<br/>both NW Genomics and NE&Y Genomics
+
+  OF ->> TOMS: Enter LAB-1 order
     TOMS ->> OF: referral_id, patient_ngis_id
     OF ->> SC: LAB-35 Sub-order + manifest
     SC ->> ANP: LAB-4 Work Order
     Note over ANP,OP: LAB-5 onwards - out of scope for NW-GMSA,<br/>handled by GEL and NE&Y
     ANP ->> SC: LAB-5 Test Result and Reportable Variant
     SC ->> OF: LAB-36 Sequencing Result
+    Note over OF,OP: NW-GMSA only - the LAB-3 report may instead be<br/>sourced via NHS England's UGR or GOMS
     OF ->> OP: LAB-3 Laboratory Report
 ```
 
