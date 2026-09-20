@@ -164,7 +164,7 @@ Treat as mandatory for reflex or subcontracted orders.
 | (Order) Procedure Code - Genomic Test Code            | [Genomic Test Directory](ValueSet-GenomicTestCodes.html)                | 1..1        | [OBR](hl7v2.html#obr)-4 | ServiceRequest.code       |                               
 {:.grid}
 
-### Original Order and Filler Order
+### Original Order, Instance and Filler Orders
 
 `ServiceRequest` may also be split into two logical entities called
 `OriginalOrder` and `FillerOrder`. The former represents the order received by

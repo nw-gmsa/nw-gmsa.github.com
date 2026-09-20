@@ -431,8 +431,8 @@ erDiagram
   `derivedFrom`/extend this common core - see [Order Entry
   Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions) for
   the full list. `ServiceRequest` itself also splits into `OriginalOrder` and
-  `FillerOrder` - see [Original Order and Filler
-  Order](Questionnaire-GenomicTestOrder.html#original-order-and-filler-order).
+  `FillerOrder` - see [Original Order, Instance and Filler
+  Orders](Questionnaire-GenomicTestOrder.html#original-order-instance-and-filler-orders).
 - **[Genomic Test Report](Questionnaire-GenomicTestReport.html)** - the common
   core report metadata (patient, order/report identifiers, dates, status,
   conclusion, performers) shared by every report. Individual test findings are
