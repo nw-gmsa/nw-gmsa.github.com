@@ -65,6 +65,7 @@ Bucket for local codes
 * #230037 "Please Acknowledge That a DNA Sample Will be Stored in the Laboratory on Completion of Testing"
 * #230039 "Is the Person Ordering the Test the Referring Clinician"
 * #GENEAP "GENETICS TEST PERFORMABLE"
+* #PATIENTTEST "Patient Test(s)"
 * #unknown "Unknown"
 
 // Identifier Type (local, HL7 v2 Table 0203 Z-code)
