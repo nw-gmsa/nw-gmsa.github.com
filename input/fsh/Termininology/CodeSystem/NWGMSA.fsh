@@ -66,6 +66,8 @@ Bucket for local codes
 * #230039 "Is the Person Ordering the Test the Referring Clinician"
 * #GENEAP "GENETICS TEST PERFORMABLE"
 * #PATIENTTEST "Patient Test(s)"
+* #HLATYPE "HLA Type"
+* #PATIENTTYPE "Patient type"
 * #unknown "Unknown"
 
 // Identifier Type (local, HL7 v2 Table 0203 Z-code)

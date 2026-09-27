@@ -222,14 +222,47 @@ NTE|5||Specimen source->Blood|OSQ
 
 ##### Field mapping: HLA Tests NTE → FHIR
 
-| NTE Label         | Example Value                        | FHIR Field                                                             |
-|--------------------|----------------------------------------|--------------------------------------------------------------------------|
-| Patient Test(s)    | HLA ANTIBODY SCREENING (TRANSPLANT)   | ServiceRequest.orderDetail (restates OBR-4; not ServiceRequest.code, to avoid conflicting with the base Questionnaire's own Test Code item - see [Outstanding Issues](#outstanding-issues) below) |
-| HLA Type           | Patient                                | Observation.valueCodeableConcept (via ServiceRequest.supportingInfo)     |
-| Patient type       | Renal                                  | Observation.valueCodeableConcept (via ServiceRequest.supportingInfo)     |
-| Organ              | Kidney                                 | Specimen.collection.bodySite (the body site the specimen was collected from) |
-| Specimen source    | Blood                                  | Specimen.type (SNOMED CT coding)                                        |
+| NTE Label         | Example Value                        | HL7 v2 Mapping                                              | FHIR Field                                                             |
+|--------------------|----------------------------------------|----------------------------------------------------------------|--------------------------------------------------------------------------|
+| Patient Test(s)    | HLA ANTIBODY SCREENING (TRANSPLANT)   | [OBX](hl7v2.html#obx) (CWE, restating [OBR](hl7v2.html#obr)-4) | ServiceRequest.orderDetail - coded against [Histotrac](CodeSystem-Histotrac.html) (`XTRANSPX_HLAAS`); not ServiceRequest.code, to avoid conflicting with the base Questionnaire's own Test Code item - see [Outstanding Issues](#outstanding-issues) below |
+| HLA Type           | Patient                                | [OBX](hl7v2.html#obx) (CWE)                                    | Observation.valueCodeableConcept (via ServiceRequest.supportingInfo)     |
+| Patient type       | Renal                                  | [OBX](hl7v2.html#obx) (CWE)                                    | Observation.valueCodeableConcept (via ServiceRequest.supportingInfo)     |
+| Organ              | Kidney                                 | [SPM](hl7v2.html#spm)-8 - `64033007^Kidney structure^SNM3`     | Specimen.collection.bodySite (the body site the specimen was collected from) |
+| Specimen source    | Blood                                  | [SPM](hl7v2.html#spm)-4 - `119297000^Blood specimen^SNM3`      | Specimen.type (SNOMED CT coding)                                        |
 {:.grid}
+
+##### HL7 v2 `OML_O21` Example (HLA)
+
+The original `ORM^O01` order above predates this IG's `OML_O21` [Laboratory
+Order](hl7v2.html#oml_o21-laboratory-order) structure and carries no `SPM` segment - see
+[Outstanding Issues](#outstanding-issues) item 3. Re-expressed as `OML_O21` per this IG:
+
+- `MSH-9` becomes `OML^O21^OML_O21`.
+- `OBR-4` carries the local `NWTestCode` Test Code (`XTRANSPX_HLAAS` "HLA ANTIBODY
+  SCREENING") - unlike Chimerism, no `$DGTS` national code exists for H&I, see
+  [Outstanding Issues](#outstanding-issues) item 7.
+- The five free-text `NTE` segments are replaced by coded `OBX`s - Patient Test(s)
+  against [Histotrac](CodeSystem-Histotrac.html), HLA Type and Patient type against
+  `NWGMSA` - and an `SPM` segment (Specimen source as `SPM-4`, Organ as `SPM-8` body
+  site).
+- `ORC-12`/`OBR-16` Ordering Provider use a `GMC`-coded [Practitioner
+  Identifier](StructureDefinition-PractitionerIdentifier.html), and `ORC-21` Ordering
+  Facility Name carries Manchester's own [Organisation
+  Code](StructureDefinition-OrganisationCode.html) (`R0A`) - this order originates
+  within MFT itself (a renal transplant HLA screen), unlike the Clatterbridge-originated
+  Chimerism order above.
+
+```
+MSH|^~\&|Meditech|R0A|Histotrac|HISTOTRAC|20260820093644|69721|OML^O21^OML_O21|2386275941|T|2.5.1|||AL
+PID|1||R0A4990415^^^R0A^MR~9737383192^^^NHS^NH||MANCHESTER^Sansa||19720921|F
+PV1|1|IP|||||C3456789^Darwin^Samuel^^^Dr^^^GMC
+ORC|NW|300995243^EPC|1035738067^Beaker||||||20260820005841|||C3456789^Darwin^Samuel^^^Dr^^^GMC|||||||||MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS
+OBR|1|300995243^EPC|1035738067^Beaker|XTRANSPX_HLAAS^HLA ANTIBODY SCREENING^NWTestCode||20260820|20260820011600|||||||||C3456789^Darwin^Samuel^^^Dr^^^GMC
+OBX|1|CWE|PATIENTTEST^Patient Test(s)^https://fhir.nwgenomics.nhs.uk/CodeSystem/NWGMSA||XTRANSPX_HLAAS^HLA ANTIBODY SCREENING (TRANSPLANT)^Histotrac||||||F
+OBX|2|CWE|HLATYPE^HLA Type^https://fhir.nwgenomics.nhs.uk/CodeSystem/NWGMSA||Patient^Patient^https://fhir.nwgenomics.nhs.uk/CodeSystem/NWGMSA||||||F
+OBX|3|CWE|PATIENTTYPE^Patient type^https://fhir.nwgenomics.nhs.uk/CodeSystem/NWGMSA||Renal^Renal^https://fhir.nwgenomics.nhs.uk/CodeSystem/NWGMSA||||||F
+SPM|1|||119297000^Blood specimen^SNM3||||64033007^Kidney structure^SNM3
+```
 
 #### Organ Transplant (Patients and Donors) Ask At Order Entry
 
