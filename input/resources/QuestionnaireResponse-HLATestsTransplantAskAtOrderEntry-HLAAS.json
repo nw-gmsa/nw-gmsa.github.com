@@ -35,7 +35,7 @@
           "answer": [
             {
               "valueCoding": {
-                "system": "https://fhir.nwgenomics.nhs.uk/CodeSystem/NWGMSA",
+                "system": "https://fhir.nwgenomics.nhs.uk/CodeSystem/Histotrac",
                 "code": "HLAAntibodyScreening",
                 "display": "HLA Antibody Screening"
               }
@@ -74,9 +74,9 @@
           "answer": [
             {
               "valueCoding": {
-                "system": "https://fhir.nwgenomics.nhs.uk/CodeSystem/NWGMSA",
-                "code": "Kidney",
-                "display": "Kidney"
+                "system": "http://snomed.info/sct",
+                "code": "64033007",
+                "display": "Kidney structure"
               }
             }
           ]
@@ -87,9 +87,9 @@
           "answer": [
             {
               "valueCoding": {
-                "system": "https://fhir.nwgenomics.nhs.uk/CodeSystem/NWGMSA",
-                "code": "HistoBlood",
-                "display": "Blood"
+                "system": "http://snomed.info/sct",
+                "code": "119297000",
+                "display": "Blood specimen"
               }
             }
           ]

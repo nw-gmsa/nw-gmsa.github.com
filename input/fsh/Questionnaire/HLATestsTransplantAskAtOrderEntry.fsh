@@ -73,11 +73,11 @@ Usage:  #definition
     * linkId = "HistoIG/patient_test"
     * text = "Patient Test(s)"
     * repeats = true
-    * answerOption[+].valueCoding = $nwgmsa#HLATypingAntibodyScreening "HLA Typing + Antibody Screening"
-    * answerOption[+].valueCoding = $nwgmsa#HLAAntibodyScreening "HLA Antibody Screening"
-    * answerOption[+].valueCoding = $nwgmsa#HLATypeRecipient "HLA Type Recipient"
-    * answerOption[+].valueCoding = $nwgmsa#DSA "DSA"
-    * answerOption[+].valueCoding = $nwgmsa#HLAAutoXM "HLA Auto XM"
+    * answerOption[+].valueCoding = $Histotrac#HLATypingAntibodyScreening "HLA Typing + Antibody Screening"
+    * answerOption[+].valueCoding = $Histotrac#HLAAntibodyScreening "HLA Antibody Screening"
+    * answerOption[+].valueCoding = $Histotrac#HLATypeRecipient "HLA Type Recipient"
+    * answerOption[+].valueCoding = $Histotrac#DSA "DSA"
+    * answerOption[+].valueCoding = $Histotrac#HLAAutoXM "HLA Auto XM"
     * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.orderDetail"
     * item[+]
       * linkId = "HistoIG/patient_test-designNote"
@@ -92,8 +92,14 @@ Usage:  #definition
       further order qualifier, and matches this item's own `repeats = true` (the Hive
       UI presents them as checkboxes - more than one may be selected per order).
       Confirmed as this fixed 5-value checklist from the Hive/Histotrac order-entry UI,
-      shown identically regardless of Patient Type (Stem cell or Renal) - coded locally
-      against the `NWGMSA` CodeSystem.
+      shown identically regardless of Patient Type (Stem cell or Renal) - coded against
+      the [Histotrac](CodeSystem-Histotrac.html) CodeSystem (the order-detail
+      restatement codes Histotrac itself uses alongside its Test Code, bound via
+      [HistotracOrderDetail](ValueSet-HistotracOrderDetail.html)), the same pattern as
+      [Chimerism Test Additional Ask At Order Entry
+      Questions](Questionnaire-ChimerismTestAdditionalAskAtOrderQuestions.html#ChimIG/patient_test)'s
+      own `patient_test` item - rather than the local `NWGMSA` codes the Hive
+      order-entry UI's own checkboxes use for the order-entry *selection* itself.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
     * item[+]
@@ -102,7 +108,7 @@ Usage:  #definition
       * text = """
       No MFT/NHS England code set was found for these five specific test names, but
       LOINC has panels the Histotrac test catalogue could map onto if a coded
-      alternative to the local `NWGMSA` codes is wanted: 102092-4 (HLA-ABDR typing
+      alternative to the `Histotrac` codes is wanted: 102092-4 (HLA-ABDR typing
       panel), 96615-0/96629-1 (HLA-A/B/C class I typing, high/low resolution), 94492-6
       (HLA-DQA1/DQB1 typing), 72905-3 (Neutrophil Ab and HLA Ab screen panel), 94428-0
       (HLA class I and II IgG panel), and 80737-0 (Calculated panel reactive antibody).
@@ -190,9 +196,9 @@ Usage:  #definition
     * type = #choice
     * linkId = "HistoIG/organ"
     * text = "Organ"
-    * answerOption[+].valueCoding = $nwgmsa#Kidney "Kidney"
-    * answerOption[+].valueCoding = $nwgmsa#Pancreas "Pancreas"
-    * answerOption[+].valueCoding = $nwgmsa#Islets "Islets"
+    * answerOption[+].valueCoding = $sct#64033007 "Kidney structure"
+    * answerOption[+].valueCoding = $sct#15776009 "Pancreatic structure"
+    * answerOption[+].valueCoding = $sct#78696007 "Endocrine pancreatic structure"
     * answerOption[+].valueCoding = $nwgmsa#SimultaneousPancreasKidney "Simultaneous Pancreas/Kidney"
     * answerOption[+].valueCoding = $nwgmsa#SimultaneousIsletKidney "Simultaneous Islet/Kidney"
     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.collection.bodySite"
@@ -203,24 +209,29 @@ Usage:  #definition
       The organ relevant to the transplant - the body site the specimen was collected
       from. Confirmed as this 5-value list (plus a free-text
       "Other" box, not modelled here) from the Hive/Histotrac order-entry UI, only shown
-      there when Patient Type is "Renal" - coded locally against the `NWGMSA`
-      CodeSystem, since two of the five values (the two "Simultaneous..." combination
-      transplants) are not themselves single SNOMED CT body-site concepts.
+      there when Patient Type is "Renal". The three single-organ values (Kidney,
+      Pancreas, Islets) are now coded against SNOMED CT from the FHIR [body-site value
+      set](https://hl7.org/fhir/R4/valueset-body-site.html) - `64033007` "Kidney
+      structure", `15776009` "Pancreatic structure", and `78696007` "Endocrine
+      pancreatic structure" for Islets (the closest single body-structure concept to
+      "Islets of Langerhans" available - islet tissue is the endocrine pancreas, there
+      is no separate discrete "Islet of Langerhans structure" concept). The two
+      "Simultaneous..." combination transplants remain coded against `NWGMSA`, since
+      neither is itself a single SNOMED CT body-site concept.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
     * item[+]
       * linkId = "HistoIG/organ-reference"
       * type = #display
       * text = """
-      For the three single-organ values (Kidney, Pancreas, Islets), SNOMED CT body-site
-      codes from the FHIR body-site value set (https://hl7.org/fhir/R4/valueset-body-site.html)
-      or NHS Digital's UK-specific "Solid organ transplant codes" (ORGTRANSP_COD)
+      NHS Digital's UK-specific "Solid organ transplant codes" (ORGTRANSP_COD)
       reference set (part of the NHS Digital Primary Care Domain Refsets, ~364 codes,
       https://www.opencodelists.org/codelist/nhsd-primary-care-domain-refsets/orgtransp_cod/)
-      remain candidate future bindings if a coded alternative to the local `NWGMSA`
-      codes is wanted. Neither source has a single code for a combination transplant
-      such as "Simultaneous Pancreas/Kidney", which is why the local coding keeps all
-      five Hive values together as one list rather than splitting by source.
+      remains a candidate alternative binding, not adopted here since it is a UK
+      reference set rather than the FHIR body-site value set the SNOMED CT codes above
+      are drawn from. Neither source has a single code for a combination transplant
+      such as "Simultaneous Pancreas/Kidney", which is why those two remain local
+      `NWGMSA` codes rather than SNOMED CT.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
@@ -232,8 +243,8 @@ Usage:  #definition
     * code[+] = $loinc#66746-9 "Specimen Type"
     * code[+] = $sct#123038009 "Specimen"
     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type.coding.code"
-    * answerOption[+].valueCoding = $nwgmsa#HistoBlood "Blood"
-    * answerOption[+].valueCoding = $nwgmsa#HistoBuccal "Buccal"
+    * answerOption[+].valueCoding = $sct#119297000 "Blood specimen"
+    * answerOption[+].valueCoding = $sct#733104004 "Swab from buccal mucosa"
     * answerOption[+].valueCoding = $nwgmsa#HistoOther "Other"
     * text = "Specimen Source"
     * item[+]
@@ -243,17 +254,22 @@ Usage:  #definition
       Confirmed as this 3-value list (Blood, Buccal, plus a free-text "Other" box, not
       modelled here) from the Hive/Histotrac order-entry UI's HLA panel - narrower than
       the EU/UK/NW-compatible [Specimen Type](ValueSet-specimen-type.html) value set
-      previously bound here (`answerValueSet = Canonical(SpecimenType)`), so this item
-      now uses local `NWGMSA` codes to match what Hive actually offers for this
-      exchange. The separate [Chimerism Test Additional Ask At Order Entry Questions](Questionnaire-ChimerismTestAdditionalAskAtOrderQuestions.html)
-      order screen in Hive instead offers "Blood (PB)"/"Bone Marrow (BM)". Deliberately
-      given its own `HistoIG/specimen_source` linkId rather than reusing the base
-      [Genomic Test Order](Questionnaire-GenomicTestOrder.html)'s own `LN/66746-9`
-      Specimen Type item (same `code`/LOINC `66746-9`, so the semantic link is kept via
-      `code`) - the two questions are asked at different points for different purposes
-      in Hive, and the IG Publisher's Questionnaire derivation validator does not
-      support a `derivedFrom`/`extends` item reusing a base item's linkId while also
-      declaring more than one `answerOption`.
+      previously bound here (`answerValueSet = Canonical(SpecimenType)`). Blood and
+      Buccal are now coded against SNOMED CT codes drawn from that same [Specimen
+      Type](ValueSet-specimen-type.html) value set - `119297000` "Blood specimen" and
+      `733104004` "Swab from buccal mucosa" - the same `119297000` code [Chimerism Test
+      Additional Ask At Order Entry
+      Questions](Questionnaire-ChimerismTestAdditionalAskAtOrderQuestions.html)'s own
+      `ChimIG/specimen_source` item uses for its "Blood (PB)" option. Other remains a
+      local `NWGMSA` code, since [Specimen Type](ValueSet-specimen-type.html) has no
+      single generic "other/unspecified" concept to match Hive's free-text catch-all.
+      Deliberately given its own `HistoIG/specimen_source` linkId rather than reusing
+      the base [Genomic Test Order](Questionnaire-GenomicTestOrder.html)'s own
+      `LN/66746-9` Specimen Type item (same `code`/LOINC `66746-9`, so the semantic link
+      is kept via `code`) - the two questions are asked at different points for
+      different purposes in Hive, and the IG Publisher's Questionnaire derivation
+      validator does not support a `derivedFrom`/`extends` item reusing a base item's
+      linkId while also declaring more than one `answerOption`.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
     * item[+]
@@ -263,10 +279,8 @@ Usage:  #definition
       NHSBT's INF136 Table 5 (sample requirements) shows nearly every H&I test uses
       peripheral blood (EDTA and/or clotted, varying by test), with spleen/lymph node
       as the exception for deceased-donor crossmatching - consistent with Hive's Blood
-      option. If a coded alternative to the local `NWGMSA` codes is wanted, the
-      [Specimen Type](ValueSet-specimen-type.html) value set remains a candidate binding
-      (e.g. whole blood, plasma/serum specimen for Blood; a buccal swab specimen code
-      for Buccal). No dedicated NHS-published specimen-type binding specific to H&I was
-      found.
+      option. No dedicated NHS-published specimen-type binding specific to H&I was
+      found; the generic [Specimen Type](ValueSet-specimen-type.html) SNOMED CT codes
+      above are used instead for Blood/Buccal.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help

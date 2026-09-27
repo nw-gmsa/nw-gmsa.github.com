@@ -72,3 +72,28 @@ Histotrac itself calls the resulting order.
   * ^property[=].valueCode = #histocompatibility-immunogenetics
   * ^property[+].code = #relatedTestCode
   * ^property[=].valueCode = #XTRANSPX_HLAAS
+* #HLATypingAntibodyScreening "HLA Typing + Antibody Screening"
+  * ^property[+].code = #category
+  * ^property[=].valueCode = #histocompatibility-immunogenetics
+  * ^property[+].code = #relatedTestCode
+  * ^property[=].valueCode = #XTRANSPX_HLAAS
+* #HLAAntibodyScreening "HLA Antibody Screening"
+  * ^property[+].code = #category
+  * ^property[=].valueCode = #histocompatibility-immunogenetics
+  * ^property[+].code = #relatedTestCode
+  * ^property[=].valueCode = #XTRANSPX_HLAAS
+* #HLATypeRecipient "HLA Type Recipient"
+  * ^property[+].code = #category
+  * ^property[=].valueCode = #histocompatibility-immunogenetics
+  * ^property[+].code = #relatedTestCode
+  * ^property[=].valueCode = #XTRANSPX_HLAAS
+* #DSA "DSA"
+  * ^property[+].code = #category
+  * ^property[=].valueCode = #histocompatibility-immunogenetics
+  * ^property[+].code = #relatedTestCode
+  * ^property[=].valueCode = #XTRANSPX_HLAAS
+* #HLAAutoXM "HLA Auto XM"
+  * ^property[+].code = #category
+  * ^property[=].valueCode = #histocompatibility-immunogenetics
+  * ^property[+].code = #relatedTestCode
+  * ^property[=].valueCode = #XTRANSPX_HLAAS
