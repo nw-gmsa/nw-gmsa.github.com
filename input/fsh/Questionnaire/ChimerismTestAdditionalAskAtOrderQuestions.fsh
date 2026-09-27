@@ -149,10 +149,10 @@ Usage:  #definition
     * linkId = "ChimIG/patient_test"
     * text = "Patient Test(s)"
     * repeats = true
-    * answerOption[+].valueCoding = $Histotrac#C1-Post-PB "Chimerism Peripheral Blood (PB)"
-    * answerOption[+].valueCoding = $Histotrac#C2-Post-CD3 "Chimerism CD3"
-    * answerOption[+].valueCoding = $Histotrac#C3-Post-CD15 "Chimerism CD15"
-    * answerOption[+].valueCoding = $Histotrac#C5-Post-BM "Chimerism Bone Marrow (BM)"
+    * answerOption[+].valueCoding = $Histotrac#C1-Post-PB
+    * answerOption[+].valueCoding = $Histotrac#C2-Post-CD3
+    * answerOption[+].valueCoding = $Histotrac#C3-Post-CD15
+    * answerOption[+].valueCoding = $Histotrac#C5-Post-BM
     * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.orderDetail"
     * item[+]
       * linkId = "ChimIG/patient_test-designNote"
@@ -162,37 +162,32 @@ Usage:  #definition
       pattern as `HistoIG/patient_test` on
       [HLA Tests - Transplant](Questionnaire-HLATestsTransplantAskAtOrderEntry.html)
       (`repeats = true`, since the Hive UI presents them as checkboxes - more than one
-      may be selected per order). Coded against the [Histotrac](CodeSystem-Histotrac.html)
-      CodeSystem - the order-detail restatement codes Histotrac itself uses alongside
-      its Test Code, bound via [HistotracOrderDetail](ValueSet-HistotracOrderDetail.html)
-      on `ServiceRequest.orderDetail` - rather than the local `NWGMSA` codes the
-      Hive/Histotrac order-entry UI's own checkboxes use for the order-entry *selection*
-      itself (`ChimerismPeripheralBlood`/`ChimerismCD3`/`ChimerismCD15`/`ChimerismCD19`/`ChimerismLineageOther`)
-      - see the Histotrac CodeSystem's own description for that selection-vs-resulting-order
-      distinction. Ordered second (after Specimen Source) to match `NTE|2` in the live
-      Histotrac order, whose NTE-3 value carries a `(PB)` suffix ("Chimerism Peripheral
-      Blood (PB)") the Hive checkbox label itself doesn't show - the same
-      OBR-4-restatement behaviour as HLA Tests - Transplant's Patient Test(s) item.
-      Mapped to `ServiceRequest.orderDetail` rather than `ServiceRequest.code` - the
-      same reasoning as that item: `ServiceRequest.code` is single-cardinality and
-      already targeted by the base [Genomic Test
-      Order](Questionnaire-GenomicTestOrder.html)'s own Test Code item, with no
-      `enableWhen` to say which wins, while `orderDetail` is repeating and intended for
-      exactly this kind of further order qualifier.
+      may be selected per order). Confirmed as this fixed 5-value checklist from the
+      Hive/Histotrac order-entry UI - coded locally against the `NWGMSA` CodeSystem, as
+      no NHSBT/NHS England-published FHIR/LOINC/SNOMED binding exists. Ordered second
+      (after Specimen Source) to match `NTE|2` in the live Histotrac order, whose
+      NTE-3 value carries a `(PB)` suffix ("Chimerism Peripheral Blood (PB)") the Hive
+      checkbox label itself doesn't show - the same OBR-4-restatement behaviour as HLA
+      Tests - Transplant's Patient Test(s) item. Mapped to `ServiceRequest.orderDetail`
+      rather than `ServiceRequest.code` - the same reasoning as that item:
+      `ServiceRequest.code` is single-cardinality and already targeted by the base
+      [Genomic Test Order](Questionnaire-GenomicTestOrder.html)'s own Test Code item,
+      with no `enableWhen` to say which wins, while `orderDetail` is repeating and
+      intended for exactly this kind of further order qualifier.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
     * item[+]
       * linkId = "ChimIG/patient_test-reference"
       * type = #display
       * text = """
-      Only four Histotrac order-detail codes are currently defined (`C1-Post-PB`,
-      `C2-Post-CD3`, `C3-Post-CD15`, `C5-Post-BM`) - there is no Histotrac equivalent
-      yet confirmed for the Hive UI's own `Chimerism CD19`/`Chimerism Lineage Other`
-      checkbox options (`$nwgmsa#ChimerismCD19`/`$nwgmsa#ChimerismLineageOther`), so
-      those two are not offered here until a corresponding Histotrac code is confirmed
-      (candidate `C4-Post-CD19`, by the existing numbering gap). See also this IG's
-      existing [Chimerism](CodeSystem-Chimerism.html) CodeSystem, which covers the
-      *result* payload's OBX-3 sub-identifiers (STR/IM/RANGE/CV/EXT/PURE/POST/DTP/DID)
-      rather than these order-entry test-selection values.
+      No MFT/NHS England code set was found for these five specific test names. LOINC
+      has short tandem repeat (STR)/chimerism-adjacent panels (e.g. `48018-6` Gene
+      studied, engraftment-monitoring local codes used elsewhere in genetics
+      laboratories) but no exact match for a CD3/CD15/CD19 lineage-specific chimerism
+      checklist was confirmed - a candidate future binding if a coded alternative to
+      the local `NWGMSA` codes is wanted. See also this IG's existing
+      [Chimerism](CodeSystem-Chimerism.html) CodeSystem, which covers the *result*
+      payload's OBX-3 sub-identifiers (STR/IM/RANGE/CV/EXT/PURE/POST/DTP/DID) rather
+      than these order-entry test-selection values.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
