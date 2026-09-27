@@ -30,15 +30,30 @@
       "text": "Ask At Order Entry Questions",
       "item": [
         {
-          "linkId": "ChimIG/specimen_source",
-          "text": "Specimen Source",
-          "answer": [
+          "linkId": "ChimIG/specimen",
+          "text": "Specimen",
+          "item": [
             {
-              "valueCoding": {
-                "system": "https://fhir.nwgenomics.nhs.uk/CodeSystem/NWGMSA",
-                "code": "ChimerismBloodPB",
-                "display": "Blood (PB)"
-              }
+              "linkId": "ChimIG/specimen_source",
+              "text": "Specimen Source",
+              "answer": [
+                {
+                  "valueCoding": {
+                    "system": "https://fhir.nwgenomics.nhs.uk/CodeSystem/NWGMSA",
+                    "code": "ChimerismBloodPB",
+                    "display": "Blood (PB)"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "ChimIG/specimen_identifier",
+              "text": "Specimen Identifier",
+              "answer": [
+                {
+                  "valueString": "25GEN-029GN00001"
+                }
+              ]
             }
           ]
         },

@@ -45,6 +45,8 @@ HL7 v2 CodeSystem : NWTestCode
 * #RX21.1 "Ashkenazi Jewish and Polish Population Screening (Targeted variant testing)"
 * #XX01.1 "Not Processed (No Extraction)"
 * #XX02.1 "Cell line extraction & aliquot for DNA storage (Other)"
-
+* #XTRANSPX_HLAAS "HLA ANTIBODY SCREENING"
+  * ^property[+].code = #category
+  * ^property[=].valueCode = #histocompatibility-immunogenetics
 
 

@@ -69,10 +69,15 @@ Description:    """
 * orderDetail.coding ^slicing.description = "Slice based on the system"
 * orderDetail.coding ^slicing.ordered = false
 * orderDetail.coding contains
-  GenomicTestDirectory 1..1 MS
+  GenomicTestDirectory 1..1 MS and
+  Histotrac 0..1 MS
 
 * orderDetail.coding[GenomicTestDirectory] ^short = "Genomic Test Directory"
 * orderDetail.coding[GenomicTestDirectory].system = $GTD
+
+* orderDetail.coding[Histotrac] ^short = "Histotrac Test Code"
+* orderDetail.coding[Histotrac].system = $Histotrac
+* orderDetail.coding[Histotrac] from HistotracOrderDetail (required)
 
 
 * category 0..*

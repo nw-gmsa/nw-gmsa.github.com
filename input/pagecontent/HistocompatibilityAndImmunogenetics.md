@@ -275,15 +275,61 @@ NTE|2||Patient Test(s):->Chimerism Peripheral Blood (PB)|OSQ
 
 #### Field mapping: Chimerism NTE → FHIR
 
-| NTE Label         | Example Value                        | FHIR Field                                                             |
-|--------------------|------------------------------------------|--------------------------------------------------------------------------|
-| Specimen Source    | Blood (PB)                              | Specimen.type (local `NWGMSA` coding - Blood (PB) or Bone Marrow (BM))   |
-| Patient Test(s)    | Chimerism Peripheral Blood (PB)         | ServiceRequest.orderDetail (restates OBR-4 `CHIMBTP^CHIMERISM TESTING - PERFORMABLE`; not ServiceRequest.code, to avoid conflicting with the base Questionnaire's own Test Code item - see [Outstanding Issues](#outstanding-issues) below - note the live `NTE-3` value carries a `(PB)` suffix the Hive checkbox label itself doesn't show, the same OBR-4-restatement behaviour as HLA Tests - Transplant's Patient Test(s) above) |
+| NTE Label           | Example Value                    | HL7 v2 Mapping                                              | FHIR Field                                                             |
+|----------------------|-----------------------------------|---------------------------------------------------------------|--------------------------------------------------------------------------|
+| Specimen Source      | Blood (PB)                       | [SPM](hl7v2.html#spm)-4 - `119297000^Blood specimen^SNM3` (Bone Marrow (BM) → `119359002^Bone marrow specimen^SNM3`) | Specimen.type (local `NWGMSA` coding on order entry - Blood (PB) or Bone Marrow (BM); SNOMED CT on the wire, see [Specimen Type](ValueSet-specimen-type.html)) |
+| Specimen Identifier  | *(not present on the original order)* | [SPM](hl7v2.html#spm)-2                                   | Specimen.identifier - grouped with Specimen Source as a single repeating `Specimen` item (`ChimIG/specimen`), one per `SPM` segment - see [Outstanding Issues](#outstanding-issues) item 3 |
+| Patient Test(s)      | Chimerism Peripheral Blood (PB)  | [OBX](hl7v2.html#obx) (CWE, restating [OBR](hl7v2.html#obr)-4) | ServiceRequest.orderDetail - coded against [Histotrac](CodeSystem-Histotrac.html) (e.g. `C1-Post-PB`); not ServiceRequest.code, to avoid conflicting with the base Questionnaire's own Test Code item - see [Outstanding Issues](#outstanding-issues) below - note the live `NTE-3` value carries a `(PB)` suffix the Hive checkbox label itself doesn't show, the same OBR-4-restatement behaviour as HLA Tests - Transplant's Patient Test(s) above |
 {:.grid}
+
+Specimen Source and Specimen Identifier are asked together as a single repeating
+`Specimen` group (`ChimIG/specimen`) on [Chimerism Test Additional Ask At Order Entry
+Questions](Questionnaire-ChimerismTestAdditionalAskAtOrderQuestions.html) - one instance
+per specimen, matching one `SPM` segment each once the order carries `SPM` at all (see
+below).
 
 This is the order-entry counterpart to the [Chimerism Testing Result Panel](#chimerism-testing-result-panel-future)
 below - this section covers what is asked when the test is *ordered*, that section
 covers the structured *result* payload once testing is complete.
+
+#### HL7 v2 `OML_O21` Example
+
+The original `ORM^O01` order above predates this IG's `OML_O21` [Laboratory
+Order](hl7v2.html#oml_o21-laboratory-order) structure and carries no `SPM` segment - see
+[Outstanding Issues](#outstanding-issues) item 3. Re-expressed as `OML_O21` per this
+IG:
+
+- `MSH-9` becomes `OML^O21^OML_O21`, sent from Clatterbridge (`Meditech`/`CCC`) rather
+  than Histotrac's own `Epic`/`Beaker` source feed.
+- `OBR-4` now carries the national `$DGTS` Test Code (`GT1368` "Chimerism by STR
+  Testing - Post Stem Cell Transplant") rather than Histotrac's local `CHIMBTP` code -
+  see [Outstanding Issues](#outstanding-issues) item 7.
+- The free-text `NTE` segments are replaced by a coded `OBX` (Patient Test(s), against
+  [Histotrac](CodeSystem-Histotrac.html)) and an `SPM` segment (Specimen Source, plus a
+  Specimen Identifier that the original order never carried).
+- `ORC`/`OBR` are trimmed to the fields this IG documents on [ORC](hl7v2.html#orc)/[OBR](hl7v2.html#obr)
+  - `ORC-12`/`OBR-16` Ordering Provider use a `GMC`-coded [Practitioner
+  Identifier](StructureDefinition-PractitionerIdentifier.html), the same shape as
+  those pages' own examples, and `ORC-21` Ordering Facility Name carries Clatterbridge's
+  own [Organisation Code](StructureDefinition-OrganisationCode.html) (`REN`).
+- The patient, ward and provider are switched from `histotrac-MFT-chimerism.txt`'s own
+  demographics (an MFT-internal order, MRN under `R0A`) to the [NW Genomics
+  Testing](https://github.com/nw-gmsa/Testing) repo's established Clatterbridge (`REN`)
+  test patient/order identity from
+  [Clatterbridge-Order.txt](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/O01/Clatterbridge-Order.txt) -
+  otherwise the example would show a Clatterbridge Ordering Facility Name (`ORC-21`)
+  alongside a Manchester patient/ward/provider, which cannot both be true of the same
+  order.
+
+```
+MSH|^~\&|Meditech|CCC|Histotrac|HISTOTRAC|20260109115030|LABBACKGROUND|OML^O21^OML_O21|1997132494|T|2.5.1|||AL
+PID|1||CB07442115^^^REN^MR~9737383206^^^NHS^NH||LIVERPOOL^Ned||19420618|M
+PV1|1|O|PAL_C863^^^REN||||C6167060^Wells^Matthew^^^Dr^^^GMC|||892761000000102^Clinical haematology service^SNM3
+ORC|NW|5595441^LAB|1030094566^Histotrac||||||20260109112453|||C6167060^Wells^Matthew^^^Dr^^^GMC|||||||||The Clatterbridge Cancer Centre NHS Foundation Trust^^REN^^^ODS
+OBR|1|5595441^LAB|1030094566^Histotrac|GT1368^Chimerism by STR Testing - Post Stem Cell Transplant^England-DigitalGenomicTestServices||20260109|20260109114828|||||||||C6167060^Wells^Matthew^^^Dr^^^GMC
+OBX|1|CWE|PATIENTTEST^Patient Test(s)^HISTOTRACEAP||C1-Post-PB^Chimerism Peripheral Blood (PB)^Histotrac||||||F
+SPM|1|1030094566&Histotrac||119297000^Blood specimen^SNM3|||||||||||||20260109114828+0000|||Y
+```
 
 ### HSCT Recipients and Donors Ask At Order Entry
 

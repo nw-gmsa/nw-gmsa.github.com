@@ -51,52 +51,96 @@ Usage:  #definition
   * linkId = "AskAtOrderEntry"
   * text = "Ask At Order Entry Questions"
 
-// Specimen Source :->Blood (PB)
+// Specimen (repeating group - Specimen Type + Specimen Identifier, carried as HL7 v2 SPM segment(s) once the order moves to OML_O21)
 
   * item[+]
-    * type = #choice
-    * linkId = "ChimIG/specimen_source"
-    * code[+] = $loinc#66746-9 "Specimen Type"
-    * code[+] = $sct#123038009 "Specimen"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type.coding.code"
-    * answerOption[+].valueCoding = $nwgmsa#ChimerismBloodPB "Blood (PB)"
-    * answerOption[+].valueCoding = $nwgmsa#ChimerismBoneMarrowBM "Bone Marrow (BM)"
-    * text = "Specimen Source"
+    * type = #group
+    * linkId = "ChimIG/specimen"
+    * text = "Specimen"
+    * repeats = true
     * item[+]
-      * linkId = "ChimIG/specimen_source-designNote"
+      * linkId = "ChimIG/specimen-designNote"
       * type = #display
       * text = """
-      Confirmed as this 2-value list (Blood (PB), Bone Marrow (BM)) from the
-      Hive/Histotrac order-entry UI's Chimerism panel - a different list from the
-      Blood/Buccal/Other list [HLA Tests -
-      Transplant](Questionnaire-HLATestsTransplantAskAtOrderEntry.html) uses for the
-      same underlying `code` (LOINC `66746-9`), since the two order screens offer
-      different specimen-source options in Hive. Coded locally against the
-      `NWGMSA` CodeSystem rather than the EU/UK/NW-compatible
-      [Specimen Type](ValueSet-specimen-type.html) value set, to match what Hive
-      actually offers for this exchange. Deliberately given its own
-      `ChimIG/specimen_source` linkId rather than reusing the base [Genomic Test
-      Order](Questionnaire-GenomicTestOrder.html)'s own `LN/66746-9` Specimen Type
-      item - the IG Publisher's Questionnaire derivation validator does not support a
-      `derivedFrom`/`extends` item reusing a base item's linkId while also declaring
-      more than one `answerOption`. Ordered first (before Patient Test(s)) to match
-      `NTE|1` in the live Histotrac order - the reverse of HLA Tests - Transplant, where
-      Patient Test(s) comes first.
+      Groups Specimen Type and Specimen Identifier as a single repeating unit, one per
+      specimen taken - the FHIR/HL7 v2 shape [Outstanding
+      Issues](HistocompatibilityAndImmunogenetics.html#outstanding-issues) item 3
+      anticipated for the `ORM_O01` → `OML_O21` move (an `SPM` segment per specimen,
+      carrying Specimen ID and Specimen Type). Only Specimen Type was present on the
+      live `ORM^O01` order sourcing this Questionnaire (see [Chimerism Testing Ask At
+      Order
+      Entry](HistocompatibilityAndImmunogenetics.html#chimerism-testing-ask-at-order-entry));
+      Specimen Identifier is added ahead of that move so an `SPM-2` value has somewhere
+      to go once Histotrac starts sending one.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+// Specimen Source :->Blood (PB)
+
     * item[+]
-      * linkId = "ChimIG/specimen_source-reference"
-      * type = #display
-      * text = """
-      Post-transplant chimerism monitoring conventionally uses peripheral blood, with
-      bone marrow used for deeper/marrow-level engraftment assessment - consistent with
-      this 2-value list. If a coded alternative to the local `NWGMSA` codes is wanted,
-      the [Specimen Type](ValueSet-specimen-type.html) value set remains a candidate
-      binding (e.g. whole blood specimen for Blood (PB); bone marrow specimen for Bone
-      Marrow (BM)). No dedicated NHS-published specimen-type binding specific to H&I
-      chimerism testing was found.
-      """
-      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+      * type = #choice
+      * linkId = "ChimIG/specimen_source"
+      * code[+] = $loinc#66746-9 "Specimen Type"
+      * code[+] = $sct#123038009 "Specimen"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type.coding.code"
+      * answerOption[+].valueCoding = $nwgmsa#ChimerismBloodPB "Blood (PB)"
+      * answerOption[+].valueCoding = $nwgmsa#ChimerismBoneMarrowBM "Bone Marrow (BM)"
+      * text = "Specimen Source"
+      * item[+]
+        * linkId = "ChimIG/specimen_source-designNote"
+        * type = #display
+        * text = """
+        Confirmed as this 2-value list (Blood (PB), Bone Marrow (BM)) from the
+        Hive/Histotrac order-entry UI's Chimerism panel - a different list from the
+        Blood/Buccal/Other list [HLA Tests -
+        Transplant](Questionnaire-HLATestsTransplantAskAtOrderEntry.html) uses for the
+        same underlying `code` (LOINC `66746-9`), since the two order screens offer
+        different specimen-source options in Hive. Coded locally against the
+        `NWGMSA` CodeSystem rather than the EU/UK/NW-compatible
+        [Specimen Type](ValueSet-specimen-type.html) value set, to match what Hive
+        actually offers for this exchange. Deliberately given its own
+        `ChimIG/specimen_source` linkId rather than reusing the base [Genomic Test
+        Order](Questionnaire-GenomicTestOrder.html)'s own `LN/66746-9` Specimen Type
+        item - the IG Publisher's Questionnaire derivation validator does not support a
+        `derivedFrom`/`extends` item reusing a base item's linkId while also declaring
+        more than one `answerOption`. Ordered first within Specimen (before Specimen
+        Identifier) to match `NTE|1` in the live Histotrac order - the reverse of HLA
+        Tests - Transplant, where Patient Test(s) comes first.
+        """
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+      * item[+]
+        * linkId = "ChimIG/specimen_source-reference"
+        * type = #display
+        * text = """
+        Post-transplant chimerism monitoring conventionally uses peripheral blood, with
+        bone marrow used for deeper/marrow-level engraftment assessment - consistent with
+        this 2-value list. Once converted onto `SPM-4` (`Specimen.type`), Blood (PB) maps
+        to SNOMED CT `119297000` "Blood specimen" and Bone Marrow (BM) maps to SNOMED CT
+        `119359002` "Bone marrow specimen" - the [Specimen
+        Type](ValueSet-specimen-type.html) value set's own generic codes, now confirmed
+        rather than only a candidate binding. No dedicated NHS-published specimen-type
+        binding specific to H&I chimerism testing was found.
+        """
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+// Specimen Identifier
+
+    * item[+]
+      * type = #string
+      * linkId = "ChimIG/specimen_identifier"
+      * text = "Specimen Identifier"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.identifier"
+      * item[+]
+        * linkId = "ChimIG/specimen_identifier-designNote"
+        * type = #display
+        * text = """
+        Not present on the live `ORM^O01` order this Questionnaire was extracted from
+        (which carries no `SPM` segment) - added so the specimen carries its own
+        identifier (`SPM-2`) once the order moves to `OML_O21`, the same reasoning as
+        [Outstanding Issues](HistocompatibilityAndImmunogenetics.html#outstanding-issues)
+        item 3.
+        """
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 // Patient Test(s):->Chimerism Peripheral Blood (PB)
 
