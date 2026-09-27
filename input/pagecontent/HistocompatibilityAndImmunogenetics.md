@@ -313,7 +313,7 @@ PID|1||1680914^^^REN^MR~9999999557^^^^NH||WYTHENSHAWE^Lyanna||20170911|F||||||||
 PV1|1|OP||||||||||||||||||1093117039^^^REN
 ORC|NW|261635568^REN|||||^^^20260109^^R^^||20260109112453|||C3321416^WYNN^ROBERT^^^Dr^^^GMC|||||||||The Clatterbridge Cancer Centre NHS Foundation Trust^^REN^^^ODS
 OBR|1|261635568^REN||GT1368^Chimerism by STR Testing - Post Stem Cell Transplant^England-DigitalGenomicTestServices||20260109|20260109114828|||8659^TAYLOR^LAURA^^|L|||20260109115029||C3321416^WYNN^ROBERT^^^Dr^^^GMC|03003 309444^^^^^03003^309444
-OBX|1|CWE|PATIENTTEST^Patient Test(s)^NWGMSA||C 1-Post-PB^Chimerism Peripheral Blood (PB)^Histotrac||||||F
+OBX|1|CWE|PATIENTTEST^Patient Test(s)^NWGMSA||C1-Post-PB^Chimerism Peripheral Blood (PB)^Histotrac||||||F
 SPM|1|1030094566&REN||119297000^Blood specimen^SNM3|||||||||||||20260109114828+0000|||Y
 ```
 
