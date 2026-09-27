@@ -39,9 +39,9 @@
               "answer": [
                 {
                   "valueCoding": {
-                    "system": "https://fhir.nwgenomics.nhs.uk/CodeSystem/NWGMSA",
-                    "code": "ChimerismBloodPB",
-                    "display": "Blood (PB)"
+                    "system": "http://snomed.info/sct",
+                    "code": "119297000",
+                    "display": "Blood specimen"
                   }
                 }
               ]
@@ -63,9 +63,9 @@
           "answer": [
             {
               "valueCoding": {
-                "system": "https://fhir.nwgenomics.nhs.uk/CodeSystem/NWGMSA",
-                "code": "ChimerismPeripheralBlood",
-                "display": "Chimerism Peripheral Blood"
+                "system": "https://fhir.nwgenomics.nhs.uk/CodeSystem/Histotrac",
+                "code": "C1-Post-PB",
+                "display": "Chimerism Peripheral Blood (PB)"
               }
             }
           ]
