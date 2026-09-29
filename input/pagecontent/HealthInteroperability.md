@@ -200,7 +200,8 @@ I'm not sure what the solution is. It looks mostly like an organisational proble
 2. **Standard coding.** Where codes need to be standardised, we use SNOMED CT and LOINC.
 3. **Collaborative models.** We now have data models that meet most NHS Trusts' requirements, though these are mostly administrative at present.
 4. **HL7 v2 converted to FHIR for data engineers.** Interoperability engineers still use HL7 v2 for messaging, and we also convert it to FHIR, which is easier for data engineers to work with.
-5. **Profiles as data contracts.** We encourage validating all data against the FHIR Profiles, so the profiles act as data contracts for data engineering.
+5. **HL7 v2 aligned with the other standards.** We've moved our default HL7 v2 version to 2.5.1, and moved laboratory orders from ORM_O01 to OML_O21. Both changes bring the HL7 v2 data model closer to the models used in the other standards.
+6. **Profiles as data contracts.** We encourage validating all data against the FHIR Profiles, so the profiles act as data contracts for data engineering.
 
 ```mermaid
 flowchart TB
@@ -239,7 +240,7 @@ flowchart LR
     end
     API["FHIR RESTful API"]
 
-    CONS -- "HL7 v2 order" --> IE
+    CONS -- "HL7 v2 OML_O21 order" --> IE
     IE -- "validated FHIR" --> LIMS
     LIMS --> AN
     AN --> REP
