@@ -385,12 +385,13 @@ Usage:  #definition
       * linkId = "HSCT/chimerism_analysis-designNote"
       * type = #display
       * text = """
-      A coarser scope choice than the 5-value `Patient Test(s)` checklist on
-      [Chimerism Test Additional Ask At Order Entry
-      Questions](Questionnaire-ChimerismTestAdditionalAskAtOrderQuestions.html#ChimIG/patient_test)
-      (Chimerism Peripheral Blood, CD3, CD15, CD19, Lineage Other) - this form only
-      distinguishes Total/Whole Blood vs Lineage specific, not that finer lineage
-      breakdown. Coded locally against `NWGMSA`, same rationale as that item.
+      A coarser scope choice than the 5-value `Patient Test(s)` checklist [Chimerism
+      Test Additional Ask At Order
+      Questions](Questionnaire-ChimerismTestAdditionalAskAtOrderQuestions.html) used to
+      carry (Chimerism Peripheral Blood, CD3, CD15, CD19, Lineage Other) before it was
+      dropped from that Questionnaire - this form only distinguishes Total/Whole Blood
+      vs Lineage specific, not that finer lineage breakdown. Coded locally against
+      `NWGMSA`.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 

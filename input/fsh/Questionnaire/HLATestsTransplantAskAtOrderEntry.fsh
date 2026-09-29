@@ -95,11 +95,13 @@ Usage:  #definition
       shown identically regardless of Patient Type (Stem cell or Renal) - coded against
       the [Histotrac](CodeSystem-Histotrac.html) CodeSystem (the order-detail
       restatement codes Histotrac itself uses alongside its Test Code, bound via
-      [HistotracOrderDetail](ValueSet-HistotracOrderDetail.html)), the same pattern as
-      [Chimerism Test Additional Ask At Order Entry
-      Questions](Questionnaire-ChimerismTestAdditionalAskAtOrderQuestions.html#ChimIG/patient_test)'s
-      own `patient_test` item - rather than the local `NWGMSA` codes the Hive
-      order-entry UI's own checkboxes use for the order-entry *selection* itself.
+      [HistotracOrderDetail](ValueSet-HistotracOrderDetail.html)) - rather than the
+      local `NWGMSA` codes the Hive order-entry UI's own checkboxes use for the
+      order-entry *selection* itself. [Chimerism Test Additional Ask At Order Entry
+      Questions](Questionnaire-ChimerismTestAdditionalAskAtOrderQuestions.html) used to
+      follow the same `patient_test` pattern, since dropped - see
+      [Outstanding Issues](HistocompatibilityAndImmunogenetics.html#outstanding-issues)
+      item 7.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
     * item[+]

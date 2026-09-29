@@ -30,42 +30,14 @@
       "text": "Ask At Order Entry Questions",
       "item": [
         {
-          "linkId": "ChimIG/specimen",
-          "text": "Specimen",
-          "item": [
-            {
-              "linkId": "ChimIG/specimen_source",
-              "text": "Specimen Source",
-              "answer": [
-                {
-                  "valueCoding": {
-                    "system": "http://snomed.info/sct",
-                    "code": "119297000",
-                    "display": "Blood specimen"
-                  }
-                }
-              ]
-            },
-            {
-              "linkId": "ChimIG/specimen_identifier",
-              "text": "Specimen Identifier",
-              "answer": [
-                {
-                  "valueString": "25GEN-029GN00001"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "linkId": "ChimIG/patient_test",
-          "text": "Patient Test(s)",
+          "linkId": "ChimIG/specimen_source",
+          "text": "Specimen Source",
           "answer": [
             {
               "valueCoding": {
-                "system": "https://fhir.nwgenomics.nhs.uk/CodeSystem/Histotrac",
-                "code": "C1-Post-PB",
-                "display": "Chimerism Peripheral Blood (PB)"
+                "system": "http://snomed.info/sct",
+                "code": "119297000",
+                "display": "Blood specimen"
               }
             }
           ]
