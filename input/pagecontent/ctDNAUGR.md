@@ -159,41 +159,59 @@ flowchart TB
 
 ### Building the aggregate: Domain Driven Design
 
-The overall design follows the [Domain Driven Design Aggregate pattern already used elsewhere in this IG](overview.html#future-composition--aggregated-laboratory-report): the events below assemble, over time, the aggregate that the UGR Phase II Genomic Report needs, in the FHIR Repository.
+The overall design follows the [Domain Driven Design Aggregate pattern already used elsewhere in this IG](overview.html#future-composition--aggregated-laboratory-report): the events below assemble, over time, the aggregate that the UGR Phase I and Phase II Genomic Reports need, in the FHIR Repository.
 
 1. **LAB-1 - Order.** NHS Trusts order in either electronic or paper form. This creates/updates `Patient`, and (electronic orders only) creates the placer `ServiceRequest`. The order is also sent to iGene (future: StarLIMS) LIMS. See [Regional Orders and Reports](RegionalOrdersAndReports.html).
 2. **LAB-4 - Work Order.** ctDNA work orders are exported from iGene and used to create child `ServiceRequest`s, `basedOn` the original LAB-1 order above. For manual (paper) orders, the `Patient` and the original order are created/updated at this step instead. See [NE&Y Management Information](NEYManagementInformation.html) and [OMICS DSS Result Integration](reportable-variants.html) for example use cases.
 3. **LAB-5 - Test Result.** The first step to follow the [HL7 FHIR Genomics Reporting IG](https://build.fhir.org/ig/HL7/genomics-reporting/) - a work in progress, described in [OMICS DSS Result Integration](reportable-variants.html). Produces a `DiagnosticReport` (linked to the LAB-4 work order `ServiceRequest`) and results as FHIR `Observation`s conforming to the [Variant](StructureDefinition-Variant.html) and Molecular Consequence profiles. Stored in the FHIR Repository and sent to iGene.
+
+    LAB-4/LAB-5 are not necessarily one-off: a single LAB-1 order can generate **multiple** LAB-4 work orders, each with its own LAB-5 test result - for example, separate work orders for OMICS DSS and for Germany-based analytics processes. Each pair contributes its own work order `ServiceRequest`, `DiagnosticReport` and `Observation`s to the same aggregate, alongside those from any other work order, before LAB-3 (step 4) completes it.
 4. **LAB-3 - Laboratory Report.** A further `DiagnosticReport` (in the FHIR Repository), linked to the original LAB-1 order, plus a `DocumentReference` with an attached `Binary` holding the PDF. The original placer `ServiceRequest` is updated to `completed`. As well as being stored in the FHIR Repository, this is sent back to the order-placing NHS Trust. See [Regional Orders and Reports](RegionalOrdersAndReports.html).
-5. **Create UGR Phase II Genomic Report.** By this point the aggregate is already complete - the previous four steps have created every FHIR resource needed. Triggered by the LAB-3 event message, this step is therefore a simple transform, not further assembly: the same resources are repackaged (with whatever changes are needed to meet NHS England's requirements) into an EU Laboratory Report FHIR Document and sent to NHS England for national sharing of the report - see [Phase 2: Structured FHIR Document (EU Laboratory Report)](#phase-2-structured-fhir-document-eu-laboratory-report) below.
+5. **Create UGR Phase I Genomic Report.** By this point the aggregate is already complete, so - also triggered by the LAB-3 event message - this step is a simple transform, not further assembly: the `DocumentReference` + `Binary` (PDF) created in the previous step is converted into a `DiagnosticReport` with the PDF embedded as an attachment, and sent to NHS England, which registers its own `DocumentReference` NRL pointer - see [Phase 1: PDF Report + NRL Pointer](#phase-1-pdf-report--nrl-pointer) below.
+6. **Create UGR Phase II Genomic Report.** Also triggered by the LAB-3 event message, and also a simple transform rather than further assembly: the full set of resources from steps 1-4 is repackaged (with whatever changes are needed to meet NHS England's requirements) into an EU Laboratory Report FHIR Document and sent to NHS England for national sharing of the report - see [Phase 2: Structured FHIR Document (EU Laboratory Report)](#phase-2-structured-fhir-document-eu-laboratory-report) below.
+
+Phase I and Phase II are alternative transforms of the same LAB-3-triggered aggregate, not sequential steps - see [Future Process](#future-process) above for how the two phases relate.
 
 ```mermaid
 flowchart TB
     subgraph T1["Time 1 · LAB-1 Order"]
         R1["Patient<br/>ServiceRequest (placer)"]
     end
-    subgraph T2["Time 2 · LAB-4 Work Order"]
-        R2["Patient · ServiceRequest (placer)<br/><b>+ ServiceRequest (work order)</b><br/><b>basedOn placer</b>"]
-    end
-    subgraph T3["Time 3 · LAB-5 Test Result"]
-        R3["Patient · ServiceRequest (placer)<br/>ServiceRequest (work order)<br/><b>+ DiagnosticReport (work order)</b><br/><b>+ Observation (Variant /<br/>Molecular Consequence)</b>"]
+    subgraph Repeat["Repeats per work order<br/>(e.g. OMICS DSS, Germany-based analytics)"]
+        subgraph T2["Time 2 · LAB-4 Work Order"]
+            R2["Patient · ServiceRequest (placer)<br/><b>+ ServiceRequest (work order)</b><br/><b>basedOn placer</b>"]
+        end
+        subgraph T3["Time 3 · LAB-5 Test Result"]
+            R3["Patient · ServiceRequest (placer)<br/>ServiceRequest (work order)<br/><b>+ DiagnosticReport (work order)</b><br/><b>+ Observation (Variant /<br/>Molecular Consequence)</b>"]
+        end
+        T2 --> T3
+        T3 -. "next work order<br/>(another LAB-4)" .-> T2
     end
     subgraph T4["Time 4 · LAB-3 Laboratory Report"]
         R4["Patient · ServiceRequest (placer, completed)<br/>ServiceRequest (work order) · DiagnosticReport (work order)<br/>Observation (Variant / Molecular Consequence)<br/><b>+ DiagnosticReport (placer)</b><br/><b>+ DocumentReference + Binary (PDF)</b>"]
     end
-    subgraph T5["Time 5 · UGR Phase II Genomic Report"]
-        R5["No new resources - aggregate<br/>already complete.<br/><b>Simple transform only:</b><br/>repackage as EU Laboratory Report<br/>FHIR Document → sent to NHS England"]
+    subgraph T5a["Time 5 · UGR Phase I Genomic Report"]
+        R5a["No new resources - aggregate<br/>already complete.<br/><b>Simple transform only:</b><br/>DocumentReference + Binary (PDF)<br/>→ DiagnosticReport (embedded PDF)<br/>→ sent to NHS England"]
+    end
+    subgraph T5b["Time 5 · UGR Phase II Genomic Report"]
+        R5b["No new resources - aggregate<br/>already complete.<br/><b>Simple transform only:</b><br/>repackage as EU Laboratory Report<br/>FHIR Document → sent to NHS England"]
     end
 
-    T1 --> T2 --> T3 --> T4 --> T5
+    T1 --> Repeat --> T4
+    T4 --> T5a
+    T4 --> T5b
 
     classDef stage fill:#eef,stroke:#448,color:#000;
     class T1,T2,T3,T4 stage;
     classDef final fill:#efe,stroke:#484,color:#000;
-    class T5 final;
+    class T5a,T5b final;
 ```
 
-*The aggregate held in the FHIR Repository only ever grows - each stage carries forward every resource from the stage before it (plain text) and adds the new resources that stage's event contributes (**bold**). By LAB-3 (Time 4) the aggregate is already complete, so the LAB-3 event simply triggers Time 5 - a transform, not further assembly.*
+*The aggregate held in the FHIR Repository only ever grows - each stage carries forward every resource from the stage before it (plain text) and adds the new resources that stage's event contributes (**bold**). LAB-4/LAB-5 (Time 2/3) can repeat multiple times for the same LAB-1 order - once per work order/analytic process - each pass adding its own work order `ServiceRequest`, `DiagnosticReport` and `Observation`s to the aggregate. By LAB-3 (Time 4) the aggregate is already complete, so the same LAB-3 event triggers two independent, parallel Time 5 transforms - UGR Phase I and UGR Phase II - rather than further assembly.*
+
+<div class="alert alert-info" role="alert">
+<b>Fit against NHS England's design:</b> the aggregate built up above matches the assumed UGR Phase II design well - each resource maps fairly directly onto an entry in the EU Laboratory Report FHIR Document. UGR Phase I is less clean: it needs three separate resources from the aggregate - the placer <code>DiagnosticReport</code>, the <code>DocumentReference</code>, and its <code>Binary</code> attachment - collapsed into a <b>single</b> <code>DiagnosticReport</code> with the PDF embedded directly as an attachment. This collapsing step is not yet fully resolved - see <a href="#phase-1-pdf-report--nrl-pointer">Phase 1: PDF Report + NRL Pointer</a>.
+</div>
 
 ## Data Models
 
