@@ -115,12 +115,6 @@ pages:
   hl7v2.md:
     title: HL7 v2 Standards
     generation: markdown
-  dWGS.md:
-    title: Distributed Whole Genome Sequencing (dWGS)
-    generation: markdown
-  HistocompatibilityAndImmunogenetics.md:
-    title: "Use Case: Histocompatibility and Immunogenetics (Clatterbridge to Histotrac)"
-    generation: markdown
   testing.md:
     title: Testing
     generation: markdown
@@ -130,50 +124,8 @@ pages:
   data-intro.md:
     title: Overview - Data Contracts
     generation: markdown
-  BCRABLMonitoring.md:
-    title: "Use Case: BCR-ABL Monitoring"
-    generation: markdown
-  WholeGenomicSequence.md:
-    title: "Use Case: Whole Genome Sequencing (Proposed - Alder Hey, MFT, Liverpool)"
-    generation: markdown
-  HaematoOncologyPathway.md:
-    title: "Use Case: Cytogenetics and Haemato-Oncology Diagnostic Pathway (Shire to HODS)"
-    generation: markdown
-  CheshireAndMerseysidePathology.md:
-    title: "Use Case: Cheshire and Merseyside Pathology"
-    generation: markdown
-  CancerNOS.md:
-    title: "Use Case: Cancer Background Information for Use Cases"
-    generation: markdown
   DeveloperGuides.md:
     title: Developer Guides
-    generation: markdown
-  reportable-variants.md:
-    title: "Use Case: OMICS DSS Result Integration"
-    generation: markdown
-  ClarityLIMS.md:
-    title: "Use Case: Clarity LIMS Integration (Proposed - Replacing Omics DSS and DLIMS)"
-    generation: markdown
-  GenomicOrderManagementService.md:
-    title: "Use Case: NHS England Genomic Order Management Service (GOMS)"
-    generation: markdown
-  NEYManagementInformation.md:
-    title: "Use Case: ctDNA Management Information (NW to NE&Y Genomics)"
-    generation: markdown
-  ctDNAUGR.md:
-    title: "Use Case: ctDNA NHS England Unified Genomic Record (UGR)"
-    generation: markdown
-  overview.md:
-    title: "Use Case: Regional Integration Engine (RIE)"
-    generation: markdown
-  RegionalOrdersAndReports.md:
-    title: "Use Case: iGene Orders and Reports (Alder Hey, MFT, Liverpool)"
-    generation: markdown
-  RegionalSharedCareRecords.md:
-    title: "Use Case: Regional Shared Care Records"
-    generation: markdown
-  starLIMS.md:
-    title: "Use Case: StarLIMS / iGene Integration"
     generation: markdown
   architecture.md:
     title: Architecture
@@ -411,24 +363,6 @@ resources:
     exampleBoolean: true
 menu:
   Home: index.html
-  Use Cases:
-    Regional Integration Engine (RIE): overview.html
-    iGene Orders and Reports (Alder Hey, MFT, Liverpool): RegionalOrdersAndReports.html
-    Regional Shared Care Records (Greater Manchester Care Record (GMCR)): RegionalSharedCareRecords.html
-    Regional Shared Care Records (Lancashire and South Cumbria): RegionalSharedCareRecords.html#lancashire-and-south-cumbria
-    ctDNA NHS England Unified Genomic Record (UGR): ctDNAUGR.html
-    ctDNA Management Information (NW to NE&Y Genomics): NEYManagementInformation.html
-    Whole Genome Sequencing (WGS) Orders (Proposed - Alder Hey, MFT, Liverpool): WholeGenomicSequence.html
-    Distributed Whole Genome Sequencing (dWGS) Orders (NE&Y to NW Genomics): dWGS.html
-    Histocompatibility and Immunogenetics Orders and Reports (Clatterbridge to Histotrac): HistocompatibilityAndImmunogenetics.html
-    Cytogenetics and Haemato-Oncology Diagnostic Reports (Shire to HODS): HaematoOncologyPathway.html
-    Pathology to Genomics Reflex Orders (Cheshire and Merseyside): CheshireAndMerseysidePathology.html
-    BCR-ABL Results (Cepheid ASTM to iGene): BCRABLMonitoring.html
-    Reportable Variants Results(iGene, Omics DSS and DLIMS): reportable-variants.html
-    Clarity LIMS Integration (Proposed - Replacing Omics DSS and DLIMS): ClarityLIMS.html
-    NHS England Genomic Order Management Service (GOMS): GenomicOrderManagementService.html
-    StarLIMS / iGene Integration: starLIMS.html
-    Cancer Clinical Pathways (Background Information) : CancerNOS.html
   Analysis and Design (Volume 1) :
  ##   Design Overview: design.html
     Laboratory Testing Workflow (LTW): LTW.html
