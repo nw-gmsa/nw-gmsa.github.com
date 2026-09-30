@@ -10,5 +10,5 @@ Usage:  #definition
 Transforms a laboratory report and pushes it to a Document Consumer or Document Access Provider, using IHE ITI-105 Simplified Publish or HL7 v2 MDM_T02. See [Health Data API (HIE/EURIDICE) - Actors](HIE.html#actors).
 """
 * documentation = """
-In this IG this role is always played by the Regional Integration Engine (RIE) - the same system that plays [Intermediary](ActorDefinition-Intermediary.html) and Resource Publisher elsewhere - see [Regional Shared Care Records](RegionalSharedCareRecords.html) and [ctDNA NHS England Unified Genomic Record (UGR)](ctDNAUGR.html) for worked examples.
+In this IG this role is always played by the Regional Integration Engine (RIE) - the same system that plays [Intermediary](ActorDefinition-Intermediary.html) and Resource Publisher elsewhere - see [Regional Shared Care Records](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/RegionalSharedCareRecords.md) and [ctDNA NHS England Unified Genomic Record (UGR)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/ctDNAUGR.md) for worked examples.
 """

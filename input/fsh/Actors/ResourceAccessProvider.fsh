@@ -10,5 +10,5 @@ Usage:  #definition
 Stores FHIR resources populated by a Resource Publisher and serves them to Resource/Data Consumers. See [Health Data API (HIE/EURDICE) - Actors](HIE.html#actors).
 """
 * documentation = """
-In this IG this is the FHIR Repository populated by the Regional Integration Engine's wire-tap (see [Regional Integration Engine (RIE)](overview.html#fhir-repository)) - other examples include the Genomic Data Platform, Shared Care Records and NHS England Patient Data Manager.
+In this IG this is the FHIR Repository populated by the Regional Integration Engine's wire-tap (see [Regional Integration Engine (RIE)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/overview.md#fhir-repository)) - other examples include the Genomic Data Platform, Shared Care Records and NHS England Patient Data Manager.
 """

@@ -5,7 +5,7 @@ Description: """
 Result panel for BCR-ABL1 monitoring (chronic myeloid leukaemia), capturing a
 Cepheid-class ASTM-communicating analyser's result as a [Laboratory Analyte
 Result](StructureDefinition-LaboratoryAnalyteResult.html) `Observation` - see
-[BCR-ABL Monitoring](BCRABLMonitoring.html).
+[BCR-ABL Monitoring](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/BCRABLMonitoring.md).
 
 `item.definition` and `item.code` are inferred directly from this IG's own
 example `Observation`s -

@@ -86,8 +86,8 @@ In short: a publisher submits documents into the registry/repository, and a cons
 ### Sharing Laboratory Reports (Document) (ITI-105 and MDM_T02)
 
 Used by these Use Cases:
-- [Regional Integration Engine (RIE)](overview.html) - including the wire-tap to [Regional Shared Care Records](RegionalSharedCareRecords.html) (Greater Manchester Care Record (GMCR) and Lancashire and South Cumbria)
-- [ctDNA NHS England Unified Genomic Record (UGR)](ctDNAUGR.html) - Phase 1 (`DiagnosticReport` + PDF)
+- [Regional Integration Engine (RIE)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/overview.md) - including the wire-tap to [Regional Shared Care Records](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/RegionalSharedCareRecords.md) (Greater Manchester Care Record (GMCR) and Lancashire and South Cumbria)
+- [ctDNA NHS England Unified Genomic Record (UGR)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/ctDNAUGR.md) - Phase 1 (`DiagnosticReport` + PDF)
 
 The diagram below shows how an IHE LAB-3 / HL7 v2 ORU_R01 laboratory report is transformed by the Document Publisher and pushed on to a Document Consumer or Document Access Provider, using one of two supported publish transactions:
 
@@ -158,7 +158,7 @@ DiagnosticReport o-- Observation
 ## Resource Exchange (PCC-44)
 
 Used by these Use Cases:
-- [NHS England Genomic Order Management Service (GOMS)](GenomicOrderManagementService.html) - the RIE retrieves Laboratory Orders exposed by GOMS this way
+- [NHS England Genomic Order Management Service (GOMS)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/GenomicOrderManagementService.md) - the RIE retrieves Laboratory Orders exposed by GOMS this way
 
 ```mermaid
 graph LR
@@ -175,8 +175,8 @@ graph LR
 ### Sharing Laboratory Reports (Resource)
 
 Used by these Use Cases:
-- [OMICS DSS Result Integration](reportable-variants.html)
-- [StarLIMS / iGene Integration](starLIMS.html)
+- [OMICS DSS Result Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md)
+- [StarLIMS / iGene Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/starLIMS.md)
 
 The diagram below shows how an IHE LAB-3 / HL7 v2 ORU_R01 laboratory report is used to populate resources in the Resource Access Provider. The internal processing uses a combination of FHIR RESTful interactions and FHIR Transactions.
 This method of sharing results is aimed at populating a FHIR repository for resource/data consumers. The order placer (hospital) will typically prefer the more traditional method of receiving structured laboratory reports: a direct, point-to-point HL7 v2 ORU_R01 feed into their own LIMS/EPR, rather than retrieving results via this resource-population flow.

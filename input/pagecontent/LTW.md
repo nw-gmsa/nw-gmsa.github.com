@@ -154,13 +154,13 @@ sequenceDiagram
 </div>
 
 Used by these Use Cases:
-- [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html)
-- [Haemato-Oncology Diagnostic Pathway](HaematoOncologyPathway.html)
-- [Cheshire and Merseyside Pathology](CheshireAndMerseysidePathology.html)
-- [Cancer Background Information for Use Cases](CancerNOS.html)
-- [Regional Integration Engine (RIE)](overview.html)
-- [StarLIMS / iGene Integration](starLIMS.html)
-- [NE&Y Management Information (ctDNA)](NEYManagementInformation.html) - paper-based, no electronic LAB-1 transaction
+- [Histocompatibility and Immunogenetics](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HistocompatibilityAndImmunogenetics.md)
+- [Haemato-Oncology Diagnostic Pathway](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HaematoOncologyPathway.md)
+- [Cheshire and Merseyside Pathology](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/CheshireAndMerseysidePathology.md)
+- [Cancer Background Information for Use Cases](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/CancerNOS.md)
+- [Regional Integration Engine (RIE)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/overview.md)
+- [StarLIMS / iGene Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/starLIMS.md)
+- [NE&Y Management Information (ctDNA)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/NEYManagementInformation.md) - paper-based, no electronic LAB-1 transaction
 
 #### LAB-1 Process Flow
 
@@ -289,13 +289,13 @@ After submitting the original order, the sample will be collected and sent to th
 </div>
 
 Used by these Use Cases:
-- [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html)
-- [Haemato-Oncology Diagnostic Pathway](HaematoOncologyPathway.html)
-- [Cheshire and Merseyside Pathology](CheshireAndMerseysidePathology.html)
-- [Cancer Background Information for Use Cases](CancerNOS.html)
-- [Regional Integration Engine (RIE)](overview.html) - including the wire-tap to [Regional Shared Care Records](RegionalSharedCareRecords.html) (Greater Manchester Care Record (GMCR) and Lancashire and South Cumbria), and the NHS England Unified Genomic Record
-- [StarLIMS / iGene Integration](starLIMS.html)
-- [NE&Y Management Information (ctDNA)](NEYManagementInformation.html) - wire-tapped, converted to a FHIR Message R01 with the PDF removed
+- [Histocompatibility and Immunogenetics](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HistocompatibilityAndImmunogenetics.md)
+- [Haemato-Oncology Diagnostic Pathway](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HaematoOncologyPathway.md)
+- [Cheshire and Merseyside Pathology](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/CheshireAndMerseysidePathology.md)
+- [Cancer Background Information for Use Cases](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/CancerNOS.md)
+- [Regional Integration Engine (RIE)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/overview.md) - including the wire-tap to [Regional Shared Care Records](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/RegionalSharedCareRecords.md) (Greater Manchester Care Record (GMCR) and Lancashire and South Cumbria), and the NHS England Unified Genomic Record
+- [StarLIMS / iGene Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/starLIMS.md)
+- [NE&Y Management Information (ctDNA)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/NEYManagementInformation.md) - wire-tapped, converted to a FHIR Message R01 with the PDF removed
 
 ### LAB-3 Process Flow
 
@@ -404,7 +404,7 @@ It is envisaged this design will also extend to Laboratory Reports (R01).
 </div>
 
 Used by these Use Cases:
-- [NE&Y Management Information (ctDNA)](NEYManagementInformation.html) - the FHIR Message O21 converted daily from the iGene CSV export
+- [NE&Y Management Information (ctDNA)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/NEYManagementInformation.md) - the FHIR Message O21 converted daily from the iGene CSV export
 
 ### LAB-2 Process Flow
 
@@ -518,9 +518,9 @@ Device ->> LIMS: Send Test Results Management LAB-5 R22/R32
 </div>
 
 Used by these Use Cases:
-- [OMICS DSS Result Integration](reportable-variants.html)
-- [Regional Integration Engine (RIE)](overview.html)
-- [StarLIMS / iGene Integration](starLIMS.html)
+- [OMICS DSS Result Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md)
+- [Regional Integration Engine (RIE)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/overview.md)
+- [StarLIMS / iGene Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/starLIMS.md)
 
 #### LAB-4 Process Flow
 
@@ -569,9 +569,9 @@ class GDP,RIE4,PubSub pink;
 </div>
 
 Used by these Use Cases:
-- [BCR-ABL Monitoring (Cepheid ASTM to iGene)](BCRABLMonitoring.html)
-- [OMICS DSS Result Integration](reportable-variants.html)
-- [Regional Integration Engine (RIE)](overview.html)
+- [BCR-ABL Monitoring (Cepheid ASTM to iGene)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/BCRABLMonitoring.md)
+- [OMICS DSS Result Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md)
+- [Regional Integration Engine (RIE)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/overview.md)
 
 #### LAB-5 Process Flow
 

@@ -68,7 +68,7 @@ specific to it.
 
 **G Number (Pedigree Number)** is only applicable to Rare and Inherited
 Disease WGS orders - see [Whole Genome Sequencing (WGS) - The Reverse
-Direction](WholeGenomicSequence.html#the-reverse-direction-what-the-generic-order-path-doesnt-cover)
+Direction](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/WholeGenomicSequence.md#the-reverse-direction-what-the-generic-order-path-doesnt-cover)
 for how it relates to (and is distinct from) a genuine Order Group Number
 (`ServiceRequest.requisition`). See [WGS Test Additional Ask At Order Entry
 Questions](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html) for
@@ -83,12 +83,12 @@ Questionnaire, [WGS Test Additional Ask At Order Entry
 Questions](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html) or
 [Genomic Test Order](Questionnaire-GenomicTestOrder.html) - consistent
 with, and extending, the same gap analysis in [Whole Genome Sequencing
-(WGS)](WholeGenomicSequence.html#the-reverse-direction-what-the-generic-order-path-doesnt-cover):
+(WGS)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/WholeGenomicSequence.md#the-reverse-direction-what-the-generic-order-path-doesnt-cover):
 
 - **Family/test structure (Singleton/Duo/Trio/Tumour/Germline)** - a
   required field selecting which WGS family structure or sample type the
   order is for. This Questionnaire has no equivalent; [Distributed WGS
-  (dWGS)](dWGS.html) is the only place in this IG with a comparable concept
+  (dWGS)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md) is the only place in this IG with a comparable concept
   (`FamilyStructure`/`ParticipantType` on `dWGSAskAtOrderEntry`), and that is
   a different Questionnaire for a different pathway.
 - **Previously stored DNA ID number** - a reference to an existing stored

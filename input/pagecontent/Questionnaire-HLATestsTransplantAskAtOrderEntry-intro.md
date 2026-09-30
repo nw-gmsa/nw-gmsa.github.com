@@ -15,7 +15,7 @@ HLA Type and Patient Type are carried as `Observation`s referenced
 from `ServiceRequest.supportingInfo`; Patient Test(s) maps directly to
 `ServiceRequest.orderDetail`; Organ maps to `Specimen.collection.bodySite`,
 the body site the specimen was collected from - see [Ask At Order Entry
-Questions](HistocompatibilityAndImmunogenetics.html#hla-tests-transplant-ask-at-order-entry)
+Questions](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HistocompatibilityAndImmunogenetics.md#hla-tests-transplant-ask-at-order-entry)
 for the worked example this Questionnaire was extracted from, and each item's own
 design/reference notes below for the coding behind each answer option. Patient
 Test(s) is coded against [Histotrac](CodeSystem-Histotrac.html), Specimen Source's

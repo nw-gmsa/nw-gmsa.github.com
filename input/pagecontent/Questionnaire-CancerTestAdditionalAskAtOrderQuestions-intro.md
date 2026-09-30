@@ -57,11 +57,11 @@ ID (a related but not identical concept - a lab identifier rather than a
 named hospital) into one shared pair of fields.
 
 These two fields most directly relate to the [Cheshire and Merseyside
-Pathology](CheshireAndMerseysidePathology.html) reflex use case, where a
+Pathology](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/CheshireAndMerseysidePathology.md) reflex use case, where a
 genomic order follows on from a prior pathology order/report
 (`LAB-1`/`LAB-3`) rather than starting the clinical episode itself - that
 page's own [Current
-Process](CheshireAndMerseysidePathology.html#current-process) still models
+Process](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/CheshireAndMerseysidePathology.md#current-process) still models
 the pathology-to-genomics handoff entirely as HL7 v2/FHIR messaging
 (`LAB-1`/`LAB-35`/`LAB-3`/`LAB-36`), which is why today's answer is free
 text rather than a machine-resolvable reference. A query-based alternative

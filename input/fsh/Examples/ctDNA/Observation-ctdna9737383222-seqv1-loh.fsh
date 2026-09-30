@@ -7,7 +7,7 @@ Worked example of this IG's preferred pattern for Loss of Heterozygosity: a sepa
 of, rather than a component on the `Variant` itself. Represents the classic
 germline-mutation-plus-somatic-LOH "two-hit" finding at the same locus as
 [Variant - ctDNA Small Variant (BRCA1)](Observation-ctdna9737383222-seqv1.html) - see
-[OMICS DSS Result Integration](reportable-variants.html#outstanding-issues) for the
+[OMICS DSS Result Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md#outstanding-issues) for the
 decision this grounds.
 """
 Usage: #example

@@ -9,7 +9,7 @@ sub-contracted order (IHE LTW `LAB-35`), used alongside the [common core
 order form](Questionnaire-GenomicTestOrder.html) - see [Order Entry
 Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). This
 Questionnaire carries only the fields from the [dWGS digital
-manifest](dWGS.html#field-mapping-csv--hl7-v2--fhir) (NHS England `RGL to SGL
+manifest](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md#field-mapping-csv--hl7-v2--fhir) (NHS England `RGL to SGL
 SOP` Appendix 3, plus 5 local extension fields) that are **not** already
 asked by the common core - see [dWGS Sub-Order
 Manifest](Questionnaire-dWGSSubOrder.html) for the full 42-field manifest
@@ -170,7 +170,7 @@ Usage:  #definition
       Values: "Singleton", "Duo" or "Trio" - how many people are being tested together
       as part of this referral. Text-only (no NW-GMSA-confirmed coding system exists),
       carried as an Observation referenced from ServiceRequest.supportingInfo. See
-      [dWGS - Singleton, Duo and Trio testing](dWGS.html#singleton-duo-and-trio-testing).
+      [dWGS - Singleton, Duo and Trio testing](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md#singleton-duo-and-trio-testing).
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 

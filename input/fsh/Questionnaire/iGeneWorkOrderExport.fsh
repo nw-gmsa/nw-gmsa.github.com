@@ -5,9 +5,9 @@ Title: "iGene Work Order Export (CSV)"
 Description: """
 Represents the flat-file shape of `StarLIMSSampleData.csv`, iGene's daily CSV export
 of work orders sub-contracted to StarLIMS (the Liverpool GLH satellite LIMS) - see
-[StarLIMS / iGene Integration](starLIMS.html#subcontracted-orders). The same export
+[StarLIMS / iGene Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/starLIMS.md#subcontracted-orders). The same export
 shape/pattern is reused by the [OMICS DSS Result
-Integration](reportable-variants.html) use case for DLIMS work order metadata (see
+Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md) use case for DLIMS work order metadata (see
 that page's Future Process) - one row per sub-contracted test, named for iGene (the
 common source) rather than StarLIMS specifically, since it isn't StarLIMS-specific.
 
@@ -17,9 +17,9 @@ imported - many of these reuse the exact same field as the equivalent item alrea
 defined on [Genomic Test Order](Questionnaire-GenomicTestOrder.html), since a
 sub-contracted work order carries the same underlying data as any other order. See
 [StarLIMS / iGene Integration - Work Order CSV Export from
-iGene](starLIMS.html#work-order-csv-export-from-igene) for a simple description of each
+iGene](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/starLIMS.md#work-order-csv-export-from-igene) for a simple description of each
 column plus its FHIR mapping (also reused, unchanged, by [OMICS DSS Result
-Integration](reportable-variants.html#work-order-csv-from-igene)), and
+Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md#work-order-csv-from-igene)), and
 [StarLIMSSampleData.csv](https://github.com/nw-gmsa/Testing/blob/main/Input/StarLIMSSampleData.csv)
 for the source file this was extracted from.
 

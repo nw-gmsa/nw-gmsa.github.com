@@ -4,7 +4,7 @@ Title: "Histotrac Test Codes"
 Description: """
 Local order-detail codes from **Histotrac**, the Histocompatibility and
 Immunogenetics LIMS - see [Histocompatibility and
-Immunogenetics](HistocompatibilityAndImmunogenetics.html), [HLA Tests -
+Immunogenetics](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HistocompatibilityAndImmunogenetics.md), [HLA Tests -
 Transplant Ask At Order Entry](Questionnaire-HLATestsTransplantAskAtOrderEntry.html)
 and [Chimerism Test Additional Ask At Order Entry
 Questions](Questionnaire-ChimerismTestAdditionalAskAtOrderQuestions.html).
@@ -21,8 +21,8 @@ binding these relate to via the `relatedTestCode` property below.
 
 Sourced as HL7 v2 CE (coded element)-style `code^text^codingSystem` strings from the
 `HISTOTRACEAP` coding system - see each concept's worked example
-([HLA Tests - Transplant](HistocompatibilityAndImmunogenetics.html#hla-tests-transplant-ask-at-order-entry),
-[Chimerism Testing](HistocompatibilityAndImmunogenetics.html#chimerism-testing-ask-at-order-entry)).
+([HLA Tests - Transplant](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HistocompatibilityAndImmunogenetics.md#hla-tests-transplant-ask-at-order-entry),
+[Chimerism Testing](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HistocompatibilityAndImmunogenetics.md#chimerism-testing-ask-at-order-entry)).
 These are distinct from the local `NWGMSA` answer options (e.g. `HLAAntibodyScreening`,
 `ChimerismPeripheralBlood`) used on the Ask At Order Entry Questionnaires' own
 order-entry choice items - those model the order-entry UI selection, these are what

@@ -214,7 +214,7 @@ below).
   the Order Number row below - simply doesn't apply.
 
 See [ctDNA Management Information - How the Two Event Messages Link
-Together](NEYManagementInformation.html#how-the-two-event-messages-link-together)
+Together](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/NEYManagementInformation.md#how-the-two-event-messages-link-together)
 for a fuller worked explanation of solicited vs unsolicited reports in this
 IG.
 
@@ -305,9 +305,9 @@ Interoperability](HowToEngineerInteroperability.html#documenting-the-data-model)
 
 | Report Panel Questionnaire | Code | Used In | Status |
 |---|---|---|---|
-| [Reportable Variant Result Panel](Questionnaire-ReportableVariantResultPanel.html) | LOINC `81250-3` "Discrete genetic variant panel" | [OMICS DSS Result Integration](reportable-variants.html) | Grounded in real `Variant` examples |
-| [BCR-ABL Monitoring Result Panel](Questionnaire-BCRABLResultPanel.html) | LOINC `69380-4` "BCR-ABL1 fusion transcript ... [# Ratio] ... (International Scale)" | [BCR-ABL Monitoring](BCRABLMonitoring.html) | Grounded in real `Observation` examples |
-| [Chimerism Testing Result Panel](Questionnaire-ChimerismResultPanel.html) | Local code (STR-based chimerism testing) | [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html) | Candidate mapping, not yet confirmed against a real example - see the Questionnaire's own description |
+| [Reportable Variant Result Panel](Questionnaire-ReportableVariantResultPanel.html) | LOINC `81250-3` "Discrete genetic variant panel" | [OMICS DSS Result Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md) | Grounded in real `Variant` examples |
+| [BCR-ABL Monitoring Result Panel](Questionnaire-BCRABLResultPanel.html) | LOINC `69380-4` "BCR-ABL1 fusion transcript ... [# Ratio] ... (International Scale)" | [BCR-ABL Monitoring](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/BCRABLMonitoring.md) | Grounded in real `Observation` examples |
+| [Chimerism Testing Result Panel](Questionnaire-ChimerismResultPanel.html) | Local code (STR-based chimerism testing) | [Histocompatibility and Immunogenetics](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HistocompatibilityAndImmunogenetics.md) | Candidate mapping, not yet confirmed against a real example - see the Questionnaire's own description |
 {:.grid}
 
 New result types should follow this pattern - add a new panel Questionnaire
@@ -343,12 +343,12 @@ Panels](#report-panels) above:
 |---|---|---|---|
 | [Genomic Study (Procedure)](StructureDefinition-GenomicStudy.html) - [description](https://build.fhir.org/ig/HL7/genomics-reporting/general.html#genomic-study) | - | [Examples](#examples) below (Lynch syndrome, cystic fibrosis carrier) | *(none yet)* |
 | [Genomic Study Analysis](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-genomic-study-analysis.html) (extension on Genomic Study) | LOINC `48002-0` "Genomic source class [Type]" | Not yet confirmed against a real example | *(none yet)* |
-| [Laboratory Analyte Result (Observation)](StructureDefinition-LaboratoryAnalyteResult.html) | - | [BCR-ABL Monitoring](BCRABLMonitoring.html) | [BCR-ABL Monitoring Result Panel](Questionnaire-BCRABLResultPanel.html) |
-| [Reportable Variant (Observation)](StructureDefinition-Variant.html) | LOINC `48018-6` "Gene studied [ID]" (component) | [OMICS DSS Result Integration](reportable-variants.html) | [Reportable Variant Result Panel](Questionnaire-ReportableVariantResultPanel.html) |
-| [Molecular Consequence (Observation)](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-molecular-consequence.html) | Sequence Ontology (`functional-effect`), e.g. `SO_0001786` loss_of_heterozygosity | [OMICS DSS Result Integration](reportable-variants.html) - see [Outstanding Issues](reportable-variants.html#outstanding-issues) for why Loss of Heterozygosity is modelled this way | [Reportable Variant Result Panel](Questionnaire-ReportableVariantResultPanel.html) |
+| [Laboratory Analyte Result (Observation)](StructureDefinition-LaboratoryAnalyteResult.html) | - | [BCR-ABL Monitoring](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/BCRABLMonitoring.md) | [BCR-ABL Monitoring Result Panel](Questionnaire-BCRABLResultPanel.html) |
+| [Reportable Variant (Observation)](StructureDefinition-Variant.html) | LOINC `48018-6` "Gene studied [ID]" (component) | [OMICS DSS Result Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md) | [Reportable Variant Result Panel](Questionnaire-ReportableVariantResultPanel.html) |
+| [Molecular Consequence (Observation)](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-molecular-consequence.html) | Sequence Ontology (`functional-effect`), e.g. `SO_0001786` loss_of_heterozygosity | [OMICS DSS Result Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md) - see [Outstanding Issues](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md#outstanding-issues) for why Loss of Heterozygosity is modelled this way | [Reportable Variant Result Panel](Questionnaire-ReportableVariantResultPanel.html) |
 | [Diagnostic Implication (Observation)](StructureDefinition-DiagnosticImplication.html) - [description](https://build.fhir.org/ig/HL7/genomics-reporting/general.html#genomic-implications) | - | [Examples](#examples) below (Lynch syndrome, cystic fibrosis carrier) | *(none yet)* |
-| [Histocompatibility and Immunogenetic Reporting](https://hl7.org/fhir/uv/genomics-reporting/histocompatibility.html) | - | [Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html) | [Chimerism Testing Result Panel](Questionnaire-ChimerismResultPanel.html) (candidate mapping by analogy, not confirmed - see the Questionnaire's own description) |
-| Cytogenetic Genomic Report *(this IG's own future/proposed model - no balloted HL7 profile exists yet)* | LOINC cytogenetics panels, e.g. `62389-2` (master panel), `62356-1` (ISCN), `62367-8` (FISH) | [Haemato-Oncology Diagnostic Pathway - Future genomic data model (proposed)](HaematoOncologyPathway.html#future-genomic-data-model-proposed) | *(none yet - proposed direction only)* |
+| [Histocompatibility and Immunogenetic Reporting](https://hl7.org/fhir/uv/genomics-reporting/histocompatibility.html) | - | [Histocompatibility and Immunogenetics](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HistocompatibilityAndImmunogenetics.md) | [Chimerism Testing Result Panel](Questionnaire-ChimerismResultPanel.html) (candidate mapping by analogy, not confirmed - see the Questionnaire's own description) |
+| Cytogenetic Genomic Report *(this IG's own future/proposed model - no balloted HL7 profile exists yet)* | LOINC cytogenetics panels, e.g. `62389-2` (master panel), `62356-1` (ISCN), `62367-8` (FISH) | [Haemato-Oncology Diagnostic Pathway - Future genomic data model (proposed)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HaematoOncologyPathway.md#future-genomic-data-model-proposed) | *(none yet - proposed direction only)* |
 {:.grid}
 
 ## Examples

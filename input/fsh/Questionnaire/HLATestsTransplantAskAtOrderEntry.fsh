@@ -8,13 +8,13 @@ form](Questionnaire-GenomicTestOrder.html) for the "HLA Tests - Transplant" orde
 screen within Histocompatibility and Immunogenetics orders (SNOMED CT
 `909871000000100`) - see
 [Order Entry Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions) and
-[Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html#ask-at-order-entry-questions).
+[Histocompatibility and Immunogenetics](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HistocompatibilityAndImmunogenetics.md#ask-at-order-entry-questions).
 For the sibling Chimerism testing order screen, see
 [Chimerism Test Additional Ask At Order Entry Questions](Questionnaire-ChimerismTestAdditionalAskAtOrderQuestions.html).
 
 Extracted from the `NTE` segments (each carrying HL7 v2 Table 0105-style comment type
 `OSQ`) of a live Histotrac `ORM^O01` order - see the worked
-[example](HistocompatibilityAndImmunogenetics.html#ask-at-order-entry-questions) for the
+[example](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HistocompatibilityAndImmunogenetics.md#ask-at-order-entry-questions) for the
 full message. Each `NTE-3` value uses a local `Label:->Value` convention (e.g.
 `HLA Type:->Patient`), split below into a question/answer pair.
 
@@ -100,7 +100,7 @@ Usage:  #definition
       order-entry *selection* itself. [Chimerism Test Additional Ask At Order Entry
       Questions](Questionnaire-ChimerismTestAdditionalAskAtOrderQuestions.html) used to
       follow the same `patient_test` pattern, since dropped - see
-      [Outstanding Issues](HistocompatibilityAndImmunogenetics.html#outstanding-issues)
+      [Outstanding Issues](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HistocompatibilityAndImmunogenetics.md#outstanding-issues)
       item 7.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help

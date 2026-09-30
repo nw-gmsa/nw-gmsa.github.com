@@ -11,13 +11,13 @@ Specific" tier pattern [WGS Test Additional Ask At Order Entry
 Questions](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html) follows
 for WGS orders - see
 [Order Entry Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions) and
-[Histocompatibility and Immunogenetics](HistocompatibilityAndImmunogenetics.html#ask-at-order-entry-questions).
+[Histocompatibility and Immunogenetics](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HistocompatibilityAndImmunogenetics.md#ask-at-order-entry-questions).
 For the sibling HLA testing order screen, see
 [HLA Tests - Transplant Ask At Order Entry](Questionnaire-HLATestsTransplantAskAtOrderEntry.html).
 
 Extracted from the `NTE` segments of a live Histotrac `ORM^O01` order for a Chimerism
 Testing (Performable) test - see the worked
-[example](HistocompatibilityAndImmunogenetics.html#chimerism-testing-ask-at-order-entry)
+[example](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HistocompatibilityAndImmunogenetics.md#chimerism-testing-ask-at-order-entry)
 for the full message. The original order carried two `NTE` segments (Specimen Source,
 then Patient Test(s)); only Specimen Source is asked here - Specimen Identifier (a
 speculative future `SPM-2` addition) and Patient Test(s) have both since been dropped
@@ -78,7 +78,7 @@ Usage:  #definition
       `119297000` "Blood specimen" for Blood (PB), `119359002` "Bone marrow specimen"
       for Bone Marrow (BM)) rather than a local `NWGMSA` code, once converted onto
       `SPM-4` (`Specimen.type`) - see [Chimerism Testing Ask At Order
-      Entry](HistocompatibilityAndImmunogenetics.html#chimerism-testing-ask-at-order-entry).
+      Entry](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HistocompatibilityAndImmunogenetics.md#chimerism-testing-ask-at-order-entry).
       Deliberately given its own `ChimIG/specimen_source` linkId rather than reusing
       the base [Genomic Test Order](Questionnaire-GenomicTestOrder.html)'s own
       `LN/66746-9` Specimen Type item - the IG Publisher's Questionnaire derivation

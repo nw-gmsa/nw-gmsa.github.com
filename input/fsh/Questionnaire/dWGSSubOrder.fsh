@@ -11,7 +11,7 @@ Genomic Laboratory (RGL) to North West Genomics acting as Sequencing
 Genomic Laboratory (SGL): the 37 national digital manifest fields (NHS
 England `RGL to SGL SOP` Appendix 3) plus 5 local extension fields, with
 `item.definition` mappings to FHIR where a confirmed mapping exists - see
-[dWGS](dWGS.html#field-mapping-csv--hl7-v2--fhir). It deliberately carries
+[dWGS](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md#field-mapping-csv--hl7-v2--fhir). It deliberately carries
 **every** manifest field, including several also asked by [Genomic Test
 Order](Questionnaire-GenomicTestOrder.html) (Patient name/DOB/NHS number,
 Specimen Type, Specimen Collection Date) - because it describes the full CSV
@@ -197,7 +197,7 @@ Usage:  #definition
       Values: "Singleton", "Duo" or "Trio" - how many people are being tested together
       as part of this referral. Text-only (no NW-GMSA-confirmed coding system exists),
       carried as an Observation referenced from ServiceRequest.supportingInfo. See
-      [dWGS - Singleton, Duo and Trio testing](dWGS.html#singleton-duo-and-trio-testing).
+      [dWGS - Singleton, Duo and Trio testing](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md#singleton-duo-and-trio-testing).
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 

@@ -7,7 +7,7 @@ This Questionnaire `derivedFrom`/extends [Genomic Test
 Order](Questionnaire-GenomicTestOrder.html) - see [Order Entry
 Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). It
 carries the fields from the [dWGS digital
-manifest](dWGS.html#field-mapping-csv--hl7-v2--fhir) (NHS England `RGL to SGL
+manifest](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md#field-mapping-csv--hl7-v2--fhir) (NHS England `RGL to SGL
 SOP` Appendix 3, plus 5 local extension fields) that are **not** already
 asked by the common core - see [dWGS Sub-Order
 Manifest](Questionnaire-dWGSSubOrder.html) for the full 42-field manifest
@@ -31,7 +31,7 @@ sub-contracted digital manifest).
 | Referral / Sub-Order | Clinical Information | `dWGS/clinical_information` | `ServiceRequest.note` | Same FHIR target as the base's Relevant clinical information (HL7/NTE-1), different v2 NTE occurrence |
 | Referral / Sub-Order | Approved By | `dWGS/approved_by` | - | - |
 | Patient | Patient Identifier (NGIS) | `dWGS/patient_ngis_id` | `Patient.identifier` | Base Patient group (name/DOB/NHS number) is not repeated |
-| Ask At Order Entry Questions | Family Structure | `NOS/FamilyStructure` | `Observation.valueCodeableConcept` | Singleton/Duo/Trio - see [Singleton, Duo and Trio testing](dWGS.html#singleton-duo-and-trio-testing) |
+| Ask At Order Entry Questions | Family Structure | `NOS/FamilyStructure` | `Observation.valueCodeableConcept` | Singleton/Duo/Trio - see [Singleton, Duo and Trio testing](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md#singleton-duo-and-trio-testing) |
 | Ask At Order Entry Questions | Participant Type | `NOS/ParticipantType` | `Observation.valueCodeableConcept` | Proband/Family Member |
 | Primary Specimen | Sample Received Date | `dWGS/primary_sample_received_date` | `Specimen.receivedTime` | Same FHIR target as General AAOE's Date and time sample received (NOS/SampleReceived) |
 | Primary Specimen | Received Sample Identifier | `dWGS/primary_sample_id_as_received_by_glh` | `Specimen.identifier` (type=PLAC) | PLAC-typed instance of the base's Specimen ID Number (LN/80398-1) |
@@ -56,7 +56,7 @@ patient date of birth, NHS Number, Sample Material Type (Specimen Type), and
 Specimen Collection Date all use the **same** `linkId`s and codes as items
 already in [Genomic Test Order](Questionnaire-GenomicTestOrder.html)'s own
 Patient and Specimen groups - see the six rows marked **Genomic Test Order
-(base)** in [dWGS - Field mapping](dWGS.html#field-mapping-csv--hl7-v2--fhir)
+(base)** in [dWGS - Field mapping](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md#field-mapping-csv--hl7-v2--fhir)
 for the full list. They remain part of [dWGS Sub-Order
 Manifest](Questionnaire-dWGSSubOrder.html)'s complete manifest description,
 just not repeated here.

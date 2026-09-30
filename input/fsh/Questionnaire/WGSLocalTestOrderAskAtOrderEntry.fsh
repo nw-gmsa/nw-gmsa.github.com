@@ -12,7 +12,7 @@ Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions).
 
 **Not to be confused with** [dWGS Sub-Order Manifest](Questionnaire-dWGSSubOrder.html) -
 that Questionnaire is the digital manifest for a **distributed WGS
-sub-contracted order** between GLHs (see [dWGS](dWGS.html)); this one is the
+sub-contracted order** between GLHs (see [dWGS](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md)); this one is the
 plain paper form used for a **local** WGS request, and does not by itself
 imply any sub-contracting.
 """

@@ -5,7 +5,7 @@ Description: """
 iGene's five variant-type categories, each with its own repeating set of custom
 fields in iGene's "Variant Level Data" spec (`SEQV1`-`SEQV10`, `ICNV1`-`ICNV3`,
 `MCNV1`-`MCNV3`, `SV1`-`SV3`, `LOH1`-`LOH2`) - see [OMICS DSS Result
-Integration](reportable-variants.html#outstanding-issues) for the decision this
+Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md#outstanding-issues) for the decision this
 codifies: making "which iGene slot type is this" an explicit, coded
 `Variant.component:variant-category` value instead of an inferred classification.
 

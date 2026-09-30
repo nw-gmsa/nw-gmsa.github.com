@@ -9,9 +9,9 @@ Requesting Genomic Laboratory sends for a distributed WGS (dWGS)
 sub-contracted order, including several fields also asked by [Genomic Test
 Order](Questionnaire-GenomicTestOrder.html) itself. See [dWGS - Ask at Order
 Entry: the dWGS digital
-manifest](dWGS.html#ask-at-order-entry-the-dwgs-digital-manifest) for the
+manifest](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md#ask-at-order-entry-the-dwgs-digital-manifest) for the
 full narrative, [dWGS - Field
-mapping](dWGS.html#field-mapping-csv--hl7-v2--fhir) for the complete
+mapping](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md#field-mapping-csv--hl7-v2--fhir) for the complete
 field-by-field CSV/HL7 v2/FHIR mapping, and [dWGS Ask At Order Entry
 Questions](Questionnaire-dWGSAskAtOrderEntry.html) for the genuinely
 additional Ask At Order Entry Questionnaire this manifest was split from.
@@ -23,7 +23,7 @@ Forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms),
 this Questionnaire genuinely does carry its own Patient/order-identifier
 fields directly (it doesn't rely on `derivedFrom`/extends Genomic Test Order
 for them) - see [dWGS - Field
-mapping](dWGS.html#field-mapping-csv--hl7-v2--fhir) for the full 42-field
+mapping](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md#field-mapping-csv--hl7-v2--fhir) for the full 42-field
 table; the fields below are the identifying subset most comparable to what
 those other Ask At Order Entry Questionnaires' own Summary sections list:
 

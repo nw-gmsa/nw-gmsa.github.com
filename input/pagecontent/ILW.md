@@ -95,11 +95,11 @@ sequenceDiagram
 </div>
 
 Used by these Use Cases:
-- [Distributed WGS (dWGS)](dWGS.html)
-- [Haemato-Oncology Diagnostic Pathway](HaematoOncologyPathway.html)
-- [Cheshire and Merseyside Pathology](CheshireAndMerseysidePathology.html)
-- [Regional Integration Engine (RIE)](overview.html)
-- [StarLIMS / iGene Integration](starLIMS.html)
+- [Distributed WGS (dWGS)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md)
+- [Haemato-Oncology Diagnostic Pathway](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HaematoOncologyPathway.md)
+- [Cheshire and Merseyside Pathology](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/CheshireAndMerseysidePathology.md)
+- [Regional Integration Engine (RIE)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/overview.md)
+- [StarLIMS / iGene Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/starLIMS.md)
 
 ### Sub-order Results Delivery (LAB-36)
 
@@ -112,10 +112,10 @@ Used by these Use Cases:
 </div>
 
 Used by these Use Cases:
-- [Distributed WGS (dWGS)](dWGS.html)
-- [Haemato-Oncology Diagnostic Pathway](HaematoOncologyPathway.html)
-- [Regional Integration Engine (RIE)](overview.html)
-- [StarLIMS / iGene Integration](starLIMS.html)
+- [Distributed WGS (dWGS)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md)
+- [Haemato-Oncology Diagnostic Pathway](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HaematoOncologyPathway.md)
+- [Regional Integration Engine (RIE)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/overview.md)
+- [StarLIMS / iGene Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/starLIMS.md)
 
 
 ### Modernisation
@@ -131,9 +131,9 @@ The current IHE ILW specification relies on HL7 v2.x, HL7 v3, and IHE XDS. Sever
 
 ### NHS England Genomic Order Management Service FHIR API
 
-See [NHS England Genomic Order Management Service (GOMS)](GenomicOrderManagementService.html) for the future use of the [GOMS FHIR API](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) to deliver sub-contracted orders (LAB-35) to, and receive results (LAB-36) from, other GMSAs.
+See [NHS England Genomic Order Management Service (GOMS)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/GenomicOrderManagementService.md) for the future use of the [GOMS FHIR API](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) to deliver sub-contracted orders (LAB-35) to, and receive results (LAB-36) from, other GMSAs.
 
-See [Haemato-Oncology Diagnostic Pathway](HaematoOncologyPathway.html) for the
+See [Haemato-Oncology Diagnostic Pathway](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HaematoOncologyPathway.md) for the
 CFT Shire → HODS-orchestrated reflex use case (pathology test order following on
 to a genomics test order, and the HODS-orchestrated haematological malignancy
 pathway), including the NHS North West Children Cancer notification example.

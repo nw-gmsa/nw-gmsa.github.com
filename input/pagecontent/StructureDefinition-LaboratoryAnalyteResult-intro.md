@@ -10,7 +10,7 @@ This is currently being elaborated and subject to change.
 
 A Laboratory Analyte Result carries a single measured/detected substance (analyte)
 from the analytical phase of testing through to the `Observation` referenced by
-`DiagnosticReport.result`. See [BCR-ABL Monitoring](BCRABLMonitoring.html) for a
+`DiagnosticReport.result`. See [BCR-ABL Monitoring](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/BCRABLMonitoring.md) for a
 worked use case of this profile - BCR-ABL1 quantification for chronic myeloid
 leukaemia (CML) monitoring, from a Cepheid-class ASTM-communicating analyser through
 to iGene.
@@ -51,4 +51,4 @@ Rows marked with `↳` in the Data Element column are sub-elements of the **Resu
 ### Result Detail
 
 These entries are expressed in `Observation.component` - see [BCR-ABL
-Monitoring](BCRABLMonitoring.html#result-detail) for a worked example.
+Monitoring](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/BCRABLMonitoring.md#result-detail) for a worked example.

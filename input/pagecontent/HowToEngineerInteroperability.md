@@ -177,9 +177,9 @@ Our preference in this IG is a **computable data model**, expressed in one of:
   LOINC panel (a fixed set of LOINC-coded observations) can itself act as the
   data model for a result, since it already specifies the discrete elements a
   result needs. See the LRI Discrete Variant Panel used in [OMICS DSS Result
-  Integration](reportable-variants.html) and the LOINC cytogenetics panel
+  Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md) and the LOINC cytogenetics panel
   table in [Haemato-Oncology Diagnostic
-  Pathway](HaematoOncologyPathway.html#future-genomic-data-model-proposed).
+  Pathway](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HaematoOncologyPathway.md#future-genomic-data-model-proposed).
 
 **How the data model leads to the technical/wire model.** Once agreed, in
 whichever of these forms, the data model still has to be mapped onto whatever

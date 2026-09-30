@@ -6,7 +6,7 @@ Description: """
 Represents the flat-file shape of `NEYctDNA.csv`, iGene's daily CSV export of ctDNA
 orders and reports copied to NE&Y Genomics for regional management information - see
 [ctDNA Management Information (NW to NE&Y
-Genomics)](NEYManagementInformation.html#current-process). One row per test; a report
+Genomics)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/NEYManagementInformation.md#current-process). One row per test; a report
 row carries both order fields and report/result fields together, so this Questionnaire
 models the full row - the order-only columns populate the FHIR Message O21 Laboratory
 Order ([Bundle-GenomicsOrderMessage-ctDNA](Bundle-GenomicsOrderMessage-ctDNA.html)),
@@ -15,9 +15,9 @@ while the report/result columns (`ReportStatusDateTime`, `ReportIdentifier`,
 `ObservationIdentifierDescription`) instead populate the separate FHIR Message R01
 Laboratory Report ([Bundle-GenomicsReportMessage-ctDNA](Bundle-GenomicsReportMessage-ctDNA.html),
 itself based on an HL7 v2 `ORU^R01`, not O21). See [ctDNA Management Information -
-Laboratory Order O21 Mapping](NEYManagementInformation.html#laboratory-order-o21-mapping)
+Laboratory Order O21 Mapping](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/NEYManagementInformation.md#laboratory-order-o21-mapping)
 for the O21-only columns and [Laboratory Report R01
-Mapping](NEYManagementInformation.html#laboratory-report-r01-mapping) for the
+Mapping](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/NEYManagementInformation.md#laboratory-report-r01-mapping) for the
 report/result columns - the two markdown tables split this Questionnaire's items by
 which FHIR Message actually carries them, even though all items live on this one
 Questionnaire. Named for iGene (the common source) rather than NE&Y/ctDNA

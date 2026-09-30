@@ -8,7 +8,7 @@ Description: """
 (`FRM1010`, form "3C" in NHSBT's own numbering) - see [NHSBT's published
 form](https://nhsbtdbe.blob.core.windows.net/umbraco-assets-corp/31364/3c-haematopoietic-stem-cell-transplantation-recipients-donors.pdf)
 and [Histocompatibility and
-Immunogenetics](HistocompatibilityAndImmunogenetics.html#ask-at-order-entry-questions).
+Immunogenetics](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HistocompatibilityAndImmunogenetics.md#ask-at-order-entry-questions).
 
 Unlike the sibling [HLA Tests -
 Transplant](Questionnaire-HLATestsTransplantAskAtOrderEntry.html) and [Chimerism

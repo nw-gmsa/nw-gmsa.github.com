@@ -11,7 +11,7 @@ structural variants; this Questionnaire follows that same single-panel structure
 rather than iGene's separate per-variant-type field sets, mapping each item to both
 its LRI `OBX` row and its corresponding component in the HL7 Genomics Reporting IG's
 [Variant](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-variant.html)
-profile. See [OMICS DSS Result Integration](reportable-variants.html) for the full
+profile. See [OMICS DSS Result Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md) for the full
 LRI/FHIR/iGene three-way mapping table.
 
 `item.definition`/`item.code` are cross-checked against this IG's current `Variant`
@@ -25,7 +25,7 @@ iGene's own custom field spec for variants (`NotGit/iGene Custom Fields Master
 Dataset - Updated 13-Aug-26.xlsx`, "Variant Level Data" sheet) - only elements
 genuinely populated by at least one of these is modelled, since these are the only
 elements needed for the iGene feed. See [OMICS DSS Result Integration - Result
-Panel: Elements Not Included](reportable-variants.html#result-panel-elements-not-included)
+Panel: Elements Not Included](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md#result-panel-elements-not-included)
 for the LRI/FHIR elements deliberately left out because no current example populates
 them.
 
@@ -87,7 +87,7 @@ Usage:  #definition
       component to its own [IGeneVariantCategory](CodeSystem-IGeneVariantCategory.html)
       value set instead (`SEQV`/`ICNV`/`MCNV`/`SV`/`LOH`), making the classification
       that used to be inferred (see [OMICS DSS Result
-      Integration](reportable-variants.html#outstanding-issues)) an explicit, coded
+      Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md#outstanding-issues)) an explicit, coded
       value - the FHIR Variant profile has no named slice for this at all, so it is
       modelled here as an open-slice component, same as `Variant.component:variant-category`.
       Populated by every current example.

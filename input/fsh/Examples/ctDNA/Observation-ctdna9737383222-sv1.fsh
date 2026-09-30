@@ -5,7 +5,7 @@ Description: """
 Standalone extraction of the structural-variant `Observation` from
 [Bundle-ctdna9737383222-testresults](Bundle-ctdna9737383222-testresults.html), for
 individual reference - see [OMICS DSS Result
-Integration](reportable-variants.html#result-panel) for the LRI/FHIR/iGene mapping
+Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md#result-panel) for the LRI/FHIR/iGene mapping
 this example grounds, including the open gap around iGene's own `81262-8` "Complex
 variant HGVS name" field, which this example does not populate.
 """

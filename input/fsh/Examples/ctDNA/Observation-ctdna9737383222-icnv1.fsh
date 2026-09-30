@@ -5,7 +5,7 @@ Description: """
 Standalone extraction of the intragenic-CNV `Observation` (`FBN1` exon deletion) from
 [Bundle-ctdna9737383222-testresults](Bundle-ctdna9737383222-testresults.html), for
 individual reference - see [OMICS DSS Result
-Integration](reportable-variants.html#result-panel) for the LRI/FHIR/iGene mapping
+Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md#result-panel) for the LRI/FHIR/iGene mapping
 this example grounds.
 """
 Usage: #example

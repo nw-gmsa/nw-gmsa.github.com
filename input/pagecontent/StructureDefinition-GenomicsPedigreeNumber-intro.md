@@ -27,7 +27,7 @@ clinical genetics convention above, not a Genomics-England-specific invention.
 
 | Ubiquitous Term | HL7 FHIR             | HL7 v2                            | OID  | Notes |
 |-------------------|--------------------------|--------------------------------------|------|-------|
-| Pedigree Number    | Patient.identifier (type = PI) | Patient Identifier List (PID-3) | none - locally assigned, system fixed to `https://fhir.nhs.uk/Id/genomics-pedigree-number` | Identifies a family/pedigree group across related [Distributed WGS (dWGS)](dWGS.html) participants - a "Patient internal identifier" (PI), not the patient's own medical record number (MR) |
+| Pedigree Number    | Patient.identifier (type = PI) | Patient Identifier List (PID-3) | none - locally assigned, system fixed to `https://fhir.nhs.uk/Id/genomics-pedigree-number` | Identifies a family/pedigree group across related [Distributed WGS (dWGS)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md) participants - a "Patient internal identifier" (PI), not the patient's own medical record number (MR) |
 {:.grid}
 
 ## Examples

@@ -154,11 +154,11 @@ Usage:  #definition
       * text = """
       This item, and Pathologist above, most directly relate to the
       [Cheshire and Merseyside
-      Pathology](CheshireAndMerseysidePathology.html) reflex use case, where
+      Pathology](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/CheshireAndMerseysidePathology.md) reflex use case, where
       a genomic order follows on from a prior pathology order/report
       (`LAB-1`/`LAB-3`) rather than starting the clinical episode itself.
       That page's own [Current
-      Process](CheshireAndMerseysidePathology.html#current-process) still
+      Process](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/CheshireAndMerseysidePathology.md#current-process) still
       models the pathology-to-genomics handoff entirely as HL7 v2/FHIR
       messaging (`LAB-1`/`LAB-35`/`LAB-3`/`LAB-36`), which is why today's
       answer is free text naming the pathologist/hospital rather than a

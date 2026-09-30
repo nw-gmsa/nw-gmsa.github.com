@@ -4,7 +4,7 @@ Title: "Chimerism Testing Result Panel"
 Description: """
 Result panel for STR-based chimerism testing (Clatterbridge post-transplant
 monitoring) - see [Histocompatibility and Immunogenetics - Chimerism Testing
-Result Panel (Future?)](HistocompatibilityAndImmunogenetics.html#chimerism-testing-result-panel-future)
+Result Panel (Future?)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HistocompatibilityAndImmunogenetics.md#chimerism-testing-result-panel-future)
 for the source data table this Questionnaire structures.
 
 The payload described there is currently unstructured `NTE`/`OBX` text, with no

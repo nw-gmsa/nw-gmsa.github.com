@@ -13,7 +13,7 @@ profile: a separate `Observation` from the `Variant` it describes the consequenc
 of, referenced via `derivedFrom` - not a component on the `Variant` itself.
 
 This is this IG's preferred pattern for representing Loss of Heterozygosity (LOH) -
-see [OMICS DSS Result Integration](reportable-variants.html#outstanding-issues) for
+see [OMICS DSS Result Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md#outstanding-issues) for
 the decision and the tradeoff against modelling LOH as a bare component/extension on
 `Variant` instead.
 """

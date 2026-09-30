@@ -10,7 +10,7 @@ This covers both directions a referral into North West genomics can arise:
 - **Referral for genetic counselling / cascade (predictive) testing**, following a
   variant already found or a condition already suspected - see [Clinical
   Scenarios](#clinical-scenarios) below and [Cancer Background Information for Use
-  Cases - Genetic Counselling Referral Across Regions](CancerNOS.html#genetic-counselling-referral-across-regions).
+  Cases - Genetic Counselling Referral Across Regions](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/CancerNOS.md#genetic-counselling-referral-across-regions).
 - **A GP or hospital referral direct into a regional clinical genetics service**, such
   as [Manchester Centre for Genomic Medicine](https://www.mangen.co.uk/healthcare-professionals/clinical-genomic-services/)
   or the [Liverpool Centre for Genomic Medicine (LCGM)](https://www.uhliverpool.nhs.uk/services/service-finder/liverpool-centre-genomic-medicine-lcgm) -
@@ -27,12 +27,12 @@ LAB-1 and LAB-3](LTW.html#laboratory-order-and-report-lab-1-and-lab-3).
 2. HL7 v2 `REF_I12` (Patient Referral) - one model for the referral message, used as the basis for the [Referral Data Model](#referral-data-model) below
 3. NHS [e-Referral Service (eRS)](https://digital.nhs.uk/services/e-referral-service) / [FHIR API](https://digital.nhs.uk/developer/api-catalogue/e-referral-service-fhir) - the service GPs use today to refer into secondary care, including regional clinical genetics services; the other basis for the [Referral Data Model](#referral-data-model) below
 4. NHS England [Booking and Referral Standard (BaRS) - FHIR API](https://digital.nhs.uk/developer/api-catalogue/booking-and-referral-fhir/v1.0.7) - a possible alternative to eRS; checked for referral-specific data modelling in the [Mapping to NHS Booking and Referral Standard (BaRS)](#mapping-to-nhs-booking-and-referral-standard-bars) section below
-5. HL7 v2 `ORU_R01` - a possible model for the report/clinic letter back, already used elsewhere in this IG for hospital reports (see [Cancer Background Information for Use Cases](CancerNOS.html))
+5. HL7 v2 `ORU_R01` - a possible model for the report/clinic letter back, already used elsewhere in this IG for hospital reports (see [Cancer Background Information for Use Cases](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/CancerNOS.md))
 6. [HL7 Europe Hospital Discharge Report (HDR)](https://build.fhir.org/ig/hl7-eu/hdr/) - a possible FHIR-native alternative for the report/clinic letter back
 7. [Manchester Centre for Genomic Medicine - Clinical Services](https://www.mangen.co.uk/healthcare-professionals/clinical-genomic-services/)
 8. [Liverpool Centre for Genomic Medicine (LCGM)](https://www.uhliverpool.nhs.uk/services/service-finder/liverpool-centre-genomic-medicine-lcgm)
 9. [NHS England FHIR Genomics Implementation Guide - Clinical Scenarios](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Clinical-Scenarios?version=0.5.3) - may contain scenarios relevant to this pattern
-10. [Cancer Background Information for Use Cases - Genetic Counselling Referral Across Regions](CancerNOS.html#genetic-counselling-referral-across-regions) - the worked narrative example this page generalises
+10. [Cancer Background Information for Use Cases - Genetic Counselling Referral Across Regions](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/CancerNOS.md#genetic-counselling-referral-across-regions) - the worked narrative example this page generalises
 11. Macmillan - [What is genetic counselling?](https://www.macmillan.org.uk/cancer-information-and-support/worried-about-cancer/causes-and-risk-factors/what-is-genetic-counselling) - background on cascade/predictive testing
 12. [Diagnostic Model Overview](diagnostic-core.html) - the identifier profiles reused in the [Referral Data Model](#referral-data-model) below
 
@@ -54,7 +54,7 @@ clinical genetics context:
 - **Consultand** - a relative of the proband being counselled and/or tested as a
   result (e.g. for cascade/predictive testing), as distinct from the proband
   themselves. The same distinction is used in [Distributed WGS
-  (dWGS)](dWGS.html)'s Family Structure/Participant Type pattern.
+  (dWGS)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md)'s Family Structure/Participant Type pattern.
 
 - A pathogenic variant is **found** in a patient (the proband), and at-risk relatives
   need to be offered genetic counselling and predictive/cascade testing;
@@ -89,7 +89,7 @@ flowchart LR
 ### Why this matters for developers
 
 - This is the referral-level counterpart to the [Distributed WGS
-  (dWGS)](dWGS.html) Family Structure/Participant Type pattern: dWGS covers ordering
+  (dWGS)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md) Family Structure/Participant Type pattern: dWGS covers ordering
   a *test* for multiple family members at once, whereas this page covers the
   *referral* that decides which relatives should be offered counselling/testing in
   the first place, and reports back the outcome.
@@ -146,7 +146,7 @@ items it carries, are considered.
 ### Genetic Counselling / Cascade Testing Referral (non-eRS)
 
 **Current state:** as described in [Cancer Background Information for Use Cases -
-Genetic Counselling Referral Across Regions](CancerNOS.html#genetic-counselling-referral-across-regions),
+Genetic Counselling Referral Across Regions](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/CancerNOS.md#genetic-counselling-referral-across-regions),
 a referral between genomics/genetics services (e.g. cascade testing for a relative
 under a different regional service) travels as a secure NHS.net email or a dictated
 letter - the same generic mechanism as any inter-Trust referral, carrying no
@@ -176,7 +176,7 @@ sequenceDiagram
 **Current state:** the outcome of assessment, counselling and any family testing
 arranged is reported back as dictated hospital correspondence - the same mechanism
 used for any other outpatient clinic letter (see [Cancer Background Information for
-Use Cases](CancerNOS.html) for the equivalent pattern on the initial GP referral).
+Use Cases](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/CancerNOS.md) for the equivalent pattern on the initial GP referral).
 
 **Target state (not built):** the report could be modelled as an HL7 v2 `ORU_R01`
 (as already used elsewhere in this IG for hospital reports/discharge summaries), or
@@ -493,7 +493,7 @@ Scenarios](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/
 page may contain further scenarios relevant to all three - not reviewed in detail
 here. The worked example already in this IG is [Cancer Background Information for
 Use Cases - Genetic Counselling Referral Across
-Regions](CancerNOS.html#genetic-counselling-referral-across-regions), covering
+Regions](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/CancerNOS.md#genetic-counselling-referral-across-regions), covering
 scenario 1 (a confirmed Lynch syndrome variant, with relatives under different
 regional genetics services referred for cascade testing).
 

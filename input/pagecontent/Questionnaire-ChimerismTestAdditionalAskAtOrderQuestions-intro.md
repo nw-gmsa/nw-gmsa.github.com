@@ -19,7 +19,7 @@ Services](CodeSystem-DigitalGenomicTestServices.html) tests:
 Specimen Source is now the only Ask At Order Entry question this Questionnaire asks -
 Specimen Identifier (a speculative future `SPM-2` addition) and Patient Test(s) have
 both since been dropped. See [Chimerism Testing Ask At Order
-Entry](HistocompatibilityAndImmunogenetics.html#chimerism-testing-ask-at-order-entry)
+Entry](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HistocompatibilityAndImmunogenetics.md#chimerism-testing-ask-at-order-entry)
 for the worked example this Questionnaire was extracted from (including the `OML_O21`
 version showing `SPM` in place of the original order's free-text `NTE` segments), and
 the item's own design/reference notes below for the reasoning behind its coding.

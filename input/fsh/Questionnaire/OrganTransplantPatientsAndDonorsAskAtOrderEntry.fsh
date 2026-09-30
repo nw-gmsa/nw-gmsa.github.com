@@ -8,7 +8,7 @@ Description: """
 NHSBT's own numbering) - see [NHSBT's published
 form](https://nhsbtdbe.blob.core.windows.net/umbraco-assets-corp/31363/3b-organ-transplant-patients-and-donors.pdf)
 and [Histocompatibility and
-Immunogenetics](HistocompatibilityAndImmunogenetics.html#ask-at-order-entry-questions).
+Immunogenetics](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HistocompatibilityAndImmunogenetics.md#ask-at-order-entry-questions).
 
 This is the national form the existing [HLA Tests -
 Transplant](Questionnaire-HLATestsTransplantAskAtOrderEntry.html) Ask At Order Entry

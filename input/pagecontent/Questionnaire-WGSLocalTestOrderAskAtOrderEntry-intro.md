@@ -23,7 +23,7 @@ for how this compares to the other paper forms.
 <div class="alert alert-info" role="alert">
 <b>Not to be confused with:</b> <a href="Questionnaire-dWGSSubOrder.html">dWGS Sub-Order Manifest</a> -
 that Questionnaire is the digital manifest for a <b>distributed WGS
-sub-contracted order</b> between GLHs (see <a href="dWGS.html">dWGS</a>);
+sub-contracted order</b> between GLHs (see <a href="https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md">dWGS</a>);
 this one is the plain paper form used for a local WGS request. Nor with
 <a href="Questionnaire-GMSWGSRareDisease.html">GMS WGS Rare Disease</a>/
 <a href="Questionnaire-GMSWGSCancerAskAtOrderEntry.html">GMS WGS Cancer</a> -

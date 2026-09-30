@@ -125,7 +125,7 @@ detail as structured, coded data. A referral's equivalent detail doesn't have
 that today: per [Genetic Referrals](GeneticReferrals.html)'s "Genetic Counselling /
 Cascade Testing Referral" section and [Cancer Background Information for Use
 Cases - Genetic Counselling Referral Across
-Regions](CancerNOS.html#genetic-counselling-referral-across-regions), this
+Regions](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/CancerNOS.md#genetic-counselling-referral-across-regions), this
 detail is carried in an unstructured **family letter** - a dictated or
 secure-email clinical letter summarising the variant/condition, the
 inheritance pattern, and which relatives are thought to be at risk. Rather
