@@ -541,25 +541,8 @@
           },
           "related": [
             {
-              "reference": "urn:uuid:b3bdaa63-3016-4115-97a4-e89f6f9731e0",
-              "type": "ServiceRequest",
-              "identifier": {
-                "assigner": {
-                  "identifier": {
-                    "system": "https://fhir.nhs.uk/Id/ods-organization-code",
-                    "value": "RR8"
-                  }
-                },
-                "type": {
-                  "coding": [
-                    {
-                      "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
-                      "code": "PLAC"
-                    }
-                  ]
-                },
-                "value": "1234-RR8"
-              }
+              "type": "DiagnosticReport",
+              "reference": "urn:uuid:2032aa8f-abea-4f1e-8bc3-8db8cffca53a"
             }
           ]
         }

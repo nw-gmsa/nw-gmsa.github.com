@@ -26,32 +26,25 @@ Description:    """
 * context.encounter.identifier only CorrelationIdentifier
 
 * context.related 0..*
+* context.related ^short = "Related resources. For laboratory and imaging reports, a reference to the DiagnosticReport"
+* context.related ^definition = "Related resources. Accession Number, Order Identifier and Report Identifier are not carried here; they are held on the referenced DiagnosticReport (DiagnosticReport.specimen, DiagnosticReport.basedOn and DiagnosticReport.identifier)."
 
-* context.related.type 1..1
-* context.related ^slicing.discriminator.type = #pattern
+* context.related ^slicing.discriminator.type = #value
 * context.related ^slicing.discriminator.path = "type"
 * context.related ^slicing.rules = #open
 * context.related ^slicing.description = "Slice based on the type"
 * context.related ^slicing.ordered = false
 
 * context.related contains
-  OrderIdentifier 0..* and ReportIdentifier 0..1
+  DiagnosticReport 0..1 MS
 
-* context.related[OrderIdentifier] only Reference(ServiceRequest)
-* context.related[OrderIdentifier].type = "ServiceRequest"
-* context.related[OrderIdentifier].identifier 1..1
-* context.related[OrderIdentifier].identifier only OrderIdentifier
-
-//* context.related[OrderGroupNumber] only Reference(ServiceRequest)
-//* context.related[OrderGroupNumber].type 1..1
-//* context.related[OrderGroupNumber].type = "ServiceRequest"
-//* context.related[OrderGroupNumber].identifier 1..1
-//* context.related[OrderGroupNumber].identifier only OrderGroupNumber
-
-* context.related[ReportIdentifier] only Reference(DiagnosticReport)
-* context.related[ReportIdentifier].type = "DiagnosticReport"
-* context.related[ReportIdentifier].identifier 1..1
-* context.related[ReportIdentifier].identifier only ReportIdentifier
+* context.related[DiagnosticReport] only Reference(DiagnosticReport)
+* context.related[DiagnosticReport] ^short = "The DiagnosticReport this document is a rendering of (laboratory or imaging report)"
+* context.related[DiagnosticReport] ^definition = "Reference to the DiagnosticReport this document presents. Not mandatory, but highly recommended for the Document Access Provider when serving laboratory or imaging reports. Accession Number, Order Identifier and Report Identifier are available from the referenced DiagnosticReport."
+* context.related[DiagnosticReport].type 1..1
+* context.related[DiagnosticReport].type = "DiagnosticReport"
+* context.related[DiagnosticReport].reference 1..1 MS
+* context.related[DiagnosticReport] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/DocumentAccessProvider)
 
 * context.sourcePatientInfo only Reference(Patient)
 * context.sourcePatientInfo.identifier only MedicalRecordNumber

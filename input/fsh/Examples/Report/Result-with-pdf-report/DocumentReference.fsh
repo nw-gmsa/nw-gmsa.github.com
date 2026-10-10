@@ -26,11 +26,9 @@ Description: "TODO"
     * assigner.identifier.system = $ods-code
     * assigner.identifier.value = "R0A"
 
-* context.related[ReportIdentifier].identifier.value = "1001166717"
-* context.related[ReportIdentifier].identifier.system = "http://www.example.org/servicerequest/identifier"
-* context.related[ReportIdentifier].identifier.type = http://terminology.hl7.org/CodeSystem/v2-0203#FILL
-* context.related[ReportIdentifier].identifier.assigner.identifier.system = $ods-code
-* context.related[ReportIdentifier].identifier.assigner.identifier.value = "699X0"
+// Accession Number, Order Identifier and Report Identifier are held on the DiagnosticReport
+* context.related[DiagnosticReport].reference = "urn:uuid:233ff41a-5067-46c4-b6aa-5d6f87719f5f"
+* context.related[DiagnosticReport].type = "DiagnosticReport"
 
 * content[+]
   * attachment.contentType = #application/pdf

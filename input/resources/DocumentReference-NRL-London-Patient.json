@@ -32,8 +32,8 @@
     "coding": [
       {
         "system": "http://snomed.info/sct",
-        "code" : "1054161000000101",
-        "display" : "Genetic report"
+        "code": "1054161000000101",
+        "display": "Genetic report"
       }
     ]
   },
@@ -100,7 +100,7 @@
   "context": {
     "encounter": [
       {
-       "type": "Encounter",
+        "type": "Encounter",
         "identifier": {
           "type": {
             "coding": [
@@ -161,46 +161,8 @@
         }
       },
       {
-        "type": "ServiceRequest",
-        "identifier": {
-          "type": {
-            "coding": [
-              {
-                "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
-                "code": "PLAC"
-              }
-            ]
-          },
-          "system": "urn:oid:1.2.840.114350.1.13.861.1.7.2.798268",
-          "value": "160171601",
-          "assigner": {
-            "identifier": {
-              "system": "https://fhir.nhs.uk/Id/ods-organization-code",
-              "value": "RPY"
-            }
-          }
-        }
-      },
-      {
         "type": "DiagnosticReport",
-        "identifier": {
-          "type": {
-            "coding": [
-              {
-                "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
-                "code": "FILL"
-              }
-            ]
-          },
-          "system": "https://fhir.nwgenomics.nhs.uk/iGene/ReportNumber",
-          "value": "T25-6218",
-          "assigner": {
-            "identifier": {
-              "system": "https://fhir.nhs.uk/Id/ods-organization-code",
-              "value": "699X0"
-            }
-          }
-        }
+        "reference": "https://gen-tie-test.nwgenomics.nhs.uk/cdr/fhir/r4/DiagnosticReport/T25-6218"
       }
     ]
   }

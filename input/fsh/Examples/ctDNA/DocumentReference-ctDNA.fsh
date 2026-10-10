@@ -27,21 +27,9 @@ Description: "TODO"
   * type = #Organization
   * display = "NW GMSA"
 
-* context.related[ReportIdentifier].identifier.value = "T26-59XG"
-* context.related[ReportIdentifier].identifier.system = "https://fhir.nwgenomics.nhs.uk/iGene/ReportIdentifier"
-* context.related[ReportIdentifier].identifier.type = http://terminology.hl7.org/CodeSystem/v2-0203#FILL
-* context.related[ReportIdentifier].identifier.assigner.identifier.system = $ods-code
-* context.related[ReportIdentifier].identifier.assigner.identifier.value = "699X0"
-* context.related[ReportIdentifier].type = "DiagnosticReport"
-* context.related[ReportIdentifier].reference = "urn:uuid:0a6ad8ec-b069-4a65-8c65-c7569d8413e3"
-
-* context.related[OrderIdentifier].identifier.value = "T26-59XG"
-* context.related[OrderIdentifier].identifier.system = "https://fhir.nwgenomics.nhs.uk/iGene/ReportIdentifier"
-* context.related[OrderIdentifier].identifier.type = http://terminology.hl7.org/CodeSystem/v2-0203#FILL
-* context.related[OrderIdentifier].identifier.assigner.identifier.system = $ods-code
-* context.related[OrderIdentifier].identifier.assigner.identifier.value = "699X0"
-* context.related[OrderIdentifier].type = "ServiceRequest"
-* context.related[OrderIdentifier].reference = "urn:uuid:6e26d6b3-490e-4348-9d6c-37281567d6ec"
+// Accession Number, Order Identifier and Report Identifier are held on the DiagnosticReport
+* context.related[DiagnosticReport].reference = "urn:uuid:0a6ad8ec-b069-4a65-8c65-c7569d8413e3"
+* context.related[DiagnosticReport].type = "DiagnosticReport"
 
 * content[+]
   * attachment.contentType = #application/pdf

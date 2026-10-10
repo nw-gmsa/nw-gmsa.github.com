@@ -6,7 +6,7 @@ Usage: #example
 
 * extension[+]
   * url = "http://hl7.eu/fhir/extensions/StructureDefinition/composition-diagnosticReportReference"
-  * valueReference.reference = "urn:uuid:c64139e7-f02d-409c-bf34-75e8bf23bc80"
+  * valueReference.reference = "urn:uuid:233ff41a-5067-46c4-b6aa-5d6f87719f5f"
 
 * identifier
   * value = "25edee2b-add8-4522-9fa2-1ee8f229bd75"
@@ -46,7 +46,7 @@ Usage: #example
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Genomics Report</li></ul></div>"
   * code = http://loinc.org#30954-2
-  * entry[+].reference = "urn:uuid:c64139e7-f02d-409c-bf34-75e8bf23bc80"
+  * entry[+].reference = "urn:uuid:233ff41a-5067-46c4-b6aa-5d6f87719f5f"
   * entry[+].reference = "urn:uuid:94bf65ba-cd6c-4601-b339-6d547f424646"
 
 Instance: FHIRDocumentGeneticReportBundle
@@ -57,7 +57,7 @@ Usage: #example
 * insert DocumentBundle("1d7155e8-b5b8-4406-adda-01a474d5ff6c", "2024-10-13T10:33:00+00:00")
 * insert EntryDocument("urn:uuid:30551ce1-5a28-4356-b684-1e639094ad4d", Composition-GenomicsReport-OctaviaCHISLETT)
 * insert EntryDocument("urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd", Patient-OctaviaCHISLETT-9449305552)
-* insert EntryDocument("urn:uuid:c64139e7-f02d-409c-bf34-75e8bf23bc80", DiagnosticReportGenomicsReport)
+* insert EntryDocument("urn:uuid:233ff41a-5067-46c4-b6aa-5d6f87719f5f", DiagnosticReportGenomicsReport)
 // DocumentReference
 * insert EntryDocument("urn:uuid:94bf65ba-cd6c-4601-b339-6d547f424646", 94bf65ba-cd6c-4601-b339-6d547f424646)
 // Binary
