@@ -4,7 +4,7 @@ planned project.
 </div>
 
 This Questionnaire is a **CSV manifest description**, not an Ask At Order
-Entry Questionnaire - it documents the complete 42-field digital manifest a
+Entry Questionnaire - it documents the complete 44-field digital manifest (37 national fields plus 7 NW GMS local extension fields) a
 Requesting Genomic Laboratory sends for a distributed WGS (dWGS)
 sub-contracted order, including several fields also asked by [Genomic Test
 Order](Questionnaire-GenomicTestOrder.html) itself. See [dWGS - Ask at Order
@@ -23,7 +23,7 @@ Forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms),
 this Questionnaire genuinely does carry its own Patient/order-identifier
 fields directly (it doesn't rely on `derivedFrom`/extends Genomic Test Order
 for them) - see [dWGS - Field
-mapping](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md#field-mapping-csv--hl7-v2--fhir) for the full 42-field
+mapping](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md#field-mapping-csv--hl7-v2--fhir) for the full 44-field
 table; the fields below are the identifying subset most comparable to what
 those other Ask At Order Entry Questionnaires' own Summary sections list:
 
@@ -32,8 +32,10 @@ those other Ask At Order Entry Questionnaires' own Summary sections list:
 | Patient first/last name | `patient_forename`/`patient_surname` | `Patient.name` |
 | Date of birth | `patient_date_of_birth` | `Patient.birthDate` |
 | NHS Number | `patient_nhs_number` | `Patient.identifier:nhsNumber` |
+| Hospital Number (Medical Record Number) | `patient_medical_record_number` | `Patient.identifier:MedicalRecordNumber` |
 | Patient Identifier (NGIS) | `patient_ngis_id` | `Patient.identifier` (assigner Genomics England, ODS `8J834`) |
 | Original Order Placer Group Number (Referral ID) | `referral_id` | `ServiceRequest.requisition` |
+| Placer Order Number | `placer_order_number` | `ServiceRequest.identifier:OrderIdentifier` (type=PLAC) |
 | Test Code | `clinical_indication_test_type_id` | `ServiceRequest.code.coding` (`England-GenomicTestDirectory`) |
 | Original Ordering Facility Code | `ordering_entity_id` | `Specimen.identifier.assigner.identifier.value` |
 | Filler Order Ordering Facility Code (GLH) | `glh_laboratory_id` | `ServiceRequest.requester.identifier.value` |
