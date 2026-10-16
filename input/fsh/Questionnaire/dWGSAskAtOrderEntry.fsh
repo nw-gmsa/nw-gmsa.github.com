@@ -10,9 +10,9 @@ order form](Questionnaire-GenomicTestOrder.html) - see [Order Entry
 Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). This
 Questionnaire carries only the fields from the [dWGS digital
 manifest](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md#field-mapping-csv--hl7-v2--fhir) (NHS England `RGL to SGL
-SOP` Appendix 3, plus 5 local extension fields) that are **not** already
+SOP` Appendix 3, plus 7 NW GMS local extension fields) that are **not** already
 asked by the common core - see [dWGS Sub-Order
-Manifest](Questionnaire-dWGSSubOrder.html) for the full 42-field manifest
+Manifest](Questionnaire-dWGSSubOrder.html) for the full 44-field manifest
 description, including the fields this Questionnaire deliberately omits
 because the common core already asks them.
 """
@@ -48,6 +48,20 @@ Usage:  #definition
       * linkId = "dWGS/referral_id-designNote"
       * type = #display
       * text = "Not the same field as Genomic General Ask At Order Entry's own G Number (Pedigree Number) (Observation.valueString, LOINC 74027-4) - this identifies the referral/requisition shared across every participant's sub-order, the pedigree number identifies a family/pedigree group instead. See dWGS - Outstanding Issues (resolved) for why these were previously confused, and WholeGenomicSequence.html for the pedigree number correction."
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+// Placer Order Number (NW GMS local extension)
+
+  * item[+]
+    * type = #string
+    * linkId = "dWGS/placer_order_number"
+    * text = "Placer Order Number"
+    * required = true
+    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.identifier:OrderIdentifier"
+    * item[+]
+      * linkId = "dWGS/placer_order_number-designNote"
+      * type = #display
+      * text = "NW GMS local extension (manifest column 38, CRF-2026-059). Unique order identifier assigned by the sending system (e.g. NEY-DWGS-00000001) - identifier.type = PLAC (v2-0203), HL7 v2 ORC-2/OBR-2. Separate from the Referral ID (ServiceRequest.requisition) above; stable across retransmission and never reused. Format and assigning authority still to be agreed with NE&Y Genomics."
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 // Test Code
@@ -146,7 +160,7 @@ Usage:  #definition
     * item[+]
       * linkId = "dWGS/patient_ngis_id-designNote"
       * type = #display
-      * text = "No confirmed identifier system - carried as Patient.identifier.assigner (Genomics England, ODS 8J834, who run NGIS), type=PI (v2-0203 Patient internal identifier). The common core's own Patient group (name/DOB/NHS number) is not repeated here - it is asked once by Genomic Test Order itself."
+      * text = "No confirmed identifier system - carried as Patient.identifier.assigner (Genomics England, ODS 8J834, who run NGIS), type=PI (v2-0203 Patient internal identifier). The common core's own Patient group (name/DOB/NHS number/Hospital Number) is not repeated here - it is asked once by Genomic Test Order itself, including the manifest's patient_medical_record_number local extension field (LN/76435-7)."
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 * item[+]

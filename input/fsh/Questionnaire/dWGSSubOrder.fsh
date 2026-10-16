@@ -9,11 +9,11 @@ Questionnaire documents the complete digital manifest for a **distributed
 WGS (dWGS)** sub-contracted order (IHE LTW `LAB-35`), sent by a Requesting
 Genomic Laboratory (RGL) to North West Genomics acting as Sequencing
 Genomic Laboratory (SGL): the 37 national digital manifest fields (NHS
-England `RGL to SGL SOP` Appendix 3) plus 5 local extension fields, with
+England `RGL to SGL SOP` Appendix 3) plus 7 NW GMS local extension fields, with
 `item.definition` mappings to FHIR where a confirmed mapping exists - see
 [dWGS](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md#field-mapping-csv--hl7-v2--fhir). It deliberately carries
 **every** manifest field, including several also asked by [Genomic Test
-Order](Questionnaire-GenomicTestOrder.html) (Patient name/DOB/NHS number,
+Order](Questionnaire-GenomicTestOrder.html) (Patient name/DOB/NHS number/Hospital Number,
 Specimen Type, Specimen Collection Date) - because it describes the full CSV
 structure a Requesting Genomic Laboratory actually sends, not an incremental
 set of order-entry questions. For the genuinely additional Ask At Order
@@ -47,6 +47,20 @@ Usage:  #definition
     * text = "Original Order Placer Group Number (Referral ID)"
     * required = true
     * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.requisition"
+
+// Placer Order Number (NW GMS local extension)
+
+  * item[+]
+    * type = #string
+    * linkId = "dWGS/placer_order_number"
+    * text = "Placer Order Number"
+    * required = true
+    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.identifier:OrderIdentifier"
+    * item[+]
+      * linkId = "dWGS/placer_order_number-designNote"
+      * type = #display
+      * text = "NW GMS local extension (manifest column 38, CRF-2026-059). Unique order identifier assigned by the sending system (e.g. NEY-DWGS-00000001) - identifier.type = PLAC (v2-0203), HL7 v2 ORC-2/OBR-2. Separate from the Referral ID (ServiceRequest.requisition) above; stable across retransmission and never reused. Format and assigning authority still to be agreed with NE&Y Genomics."
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 // Test Code
 
@@ -161,6 +175,21 @@ Usage:  #definition
     * code[+] = $loinc#89061-6
     * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier:nhsNumber"
     * text = "NHS Number"
+
+// Hospital Number (Medical Record Number) (NW GMS local extension)
+
+  * item[+]
+    * type = #string
+    * linkId = "LN/76435-7"
+    * code[+] = $loinc#76435-7
+    * text = "Hospital Number (Medical Record Number)"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier:MedicalRecordNumber"
+    * required = true
+    * item[+]
+      * linkId = "LN/76435-7-designNote"
+      * type = #display
+      * text = "CSV field patient_medical_record_number - NW GMS local extension (manifest column 41, CRF-2026-059). The sending organisation's local hospital number, HL7 v2 PID-3 (identifier type MR), never the NHS Number or NGIS Patient ID. Source, assigning authority and handling of participants without a local MRN still to be agreed with NE&Y Genomics."
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 // Patient Identifier (NGIS)
 
