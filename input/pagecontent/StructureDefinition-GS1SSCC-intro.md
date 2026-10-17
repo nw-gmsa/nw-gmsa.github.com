@@ -1,4 +1,4 @@
-## NHS Data Dictionary and Model
+### NHS Data Dictionary and Model
 
 No NHS Data Dictionary entry - this is GS1's own global standard, not an
 NHS-specific data item. See [GS1 Serial Shipping Container Code
@@ -9,22 +9,22 @@ Number](StructureDefinition-ShipmentTrackingNumber.html).
 
 **Ubiquitous terms:** SSCC, Shipping Container Code, Tracking Number.
 
-## Mapping
+### Mapping
 
 | Ubiquitous Term | HL7 FHIR             | HL7 v2                                                | OID (GS1 Application Identifier 00) | Notes |
 |-------------------|--------------------------|------------------------------------------------------------|------------------------------------------|-------|
 | SSCC               | Specimen.identifier      | Diagnostic Workflow - Identifier Type **STN** Shipment Tracking Number | `2.51.2`                                | GS1's standard identifier for a logistic unit (the shipping package) |
 {:.grid}
 
-## Examples
+### Examples
 
-### HL7 v2 ST
+#### HL7 v2 ST
 
 ```aiignore
 006141411234567890
 ```
 
-### HL7 FHIR Identifier
+#### HL7 FHIR Identifier
 
 ```json
 {

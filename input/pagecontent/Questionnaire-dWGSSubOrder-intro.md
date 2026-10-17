@@ -16,7 +16,7 @@ field-by-field CSV/HL7 v2/FHIR mapping, and [dWGS Ask At Order Entry
 Questions](Questionnaire-dWGSAskAtOrderEntry.html) for the genuinely
 additional Ask At Order Entry Questionnaire this manifest was split from.
 
-## Summary
+### Summary
 
 Unlike the [NW GLH Paper Test Request
 Forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms),

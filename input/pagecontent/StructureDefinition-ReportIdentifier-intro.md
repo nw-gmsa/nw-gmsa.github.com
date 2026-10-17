@@ -1,4 +1,4 @@
-## NHS Data Dictionary and Model
+### NHS Data Dictionary and Model
 
 No NHS Data Dictionary entry - a laboratory report identifier is a local
 Filler concept defined by HL7 v2/FHIR, not a nationally-defined data item.
@@ -9,22 +9,22 @@ with [Specimen Accession
 Number](StructureDefinition-SpecimenAccessionNumber.html), which identifies
 the specimen rather than the report/order.
 
-## Mapping
+### Mapping
 
 | Ubiquitous Term | HL7 FHIR                                                    | HL7 v2                       | OID  | Notes |
 |-------------------|----------------------------------------------------------------|---------------------------------|------|-------|
 | Report Number      | DiagnosticReport.identifier (type = FILL) and ServiceRequest.identifier | Filler Order Number (OBR-3) | none - locally assigned by the laboratory | Assigned by the Order Filler (laboratory) system |
 {:.grid}
 
-## Examples
+### Examples
 
-### HL7 v2 EI
+#### HL7 v2 EI
 
 ```aiignore
 1001166717^699X0^^255^ISO
 ```
 
-### HL7 FHIR Identifier
+#### HL7 FHIR Identifier
 
 ```json
 {

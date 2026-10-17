@@ -1,4 +1,4 @@
-## NHS Data Dictionary and Model
+### NHS Data Dictionary and Model
 
 No NHS Data Dictionary entry - a courier/logistics identifier, not a
 nationally-defined NHS data item. See also [Specimen Transportation and
@@ -10,7 +10,7 @@ the GS1-standardised equivalent of this same concept.
 **Ubiquitous terms:** Tracking Number, Courier Reference, Waybill Number,
 Consignment Number.
 
-## Mapping
+### Mapping
 
 | Ubiquitous Term  | HL7 FHIR                                | HL7 v2                    | OID  | Notes |
 |--------------------|--------------------------------------------|------------------------------|------|-------|
@@ -18,15 +18,15 @@ Consignment Number.
 
 - **IHE XDS** nil
 
-## Examples
+### Examples
 
-### HL7 v2 ST
+#### HL7 v2 ST
 
 ```aiignore
 UK3096580215
 ```
 
-### HL7 FHIR Identifier
+#### HL7 FHIR Identifier
 
 ```json
 {

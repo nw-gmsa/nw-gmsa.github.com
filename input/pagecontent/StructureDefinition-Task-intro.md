@@ -2,12 +2,12 @@
 This is currently being elaborated and subject to change.
 </div>
 
-## References
+### References
 
 - [NHS England FHIR Genomics Implementation Guide - Current State vs Future State](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Design/Current-State-vs-Future-State)
 - [AU eRequesting Implementation Guide](https://build.fhir.org/ig/hl7au/au-fhir-erequesting/index.html) which represents HL7 FHIR pathology orders and reports for two ICS within the region (Magentus).
 
-## Laboratory Order Management
+### Laboratory Order Management
 
 A single laboratory order may generate multiple reports. Throughout the process, the order placer needs to be informed of the order’s progress—particularly when the laboratory has fully completed it.
 
@@ -30,7 +30,7 @@ graph TD
 - As each report arrives, the Task is updated to reflect progress, moving to `in-progress`.
 - The order is considered complete once all expected reports have been received, at which point the Task moves to `completed`.
 
-### Data Model
+#### Data Model
 
 This model is based on a merge of NHS England Genomics and [AU eRequesting Task Diagnostic Request](https://build.fhir.org/ig/hl7au/au-fhir-erequesting/StructureDefinition-au-erequesting-task-diagnosticrequest.html).
 
@@ -51,7 +51,7 @@ This model is based on a merge of NHS England Genomics and [AU eRequesting Task 
 
 No SNOMED codes for genomic diagnostic testing found, codes are potentially children of `386053000 Evaluation procedure` 
 
-### Caveats
+#### Caveats
 
 The logic for determining when an order is complete may not always be accurate. For example, the laboratory may decide to perform additional or follow-up tests on the same specimen.
 
@@ -63,7 +63,7 @@ For this reason, it is advisable that the laboratory emit explicit events indica
 
 [IHE Pathology and Laboratory Medicine (PaLM) Volume 2 - LAB-4](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol2a.pdf) from the LIMS, offers a potential approach to handling this.
 
-## Specimen Collection
+### Specimen Collection
 
 Testing cannot begin until a specimen has been collected. Activities such as biopsies or sample collection occur outside the core diagnostic workflow. Monitoring the progress of specimen collection is important for supporting timely diagnostic processing.
 
@@ -80,7 +80,7 @@ graph TD
 - When an order is received with Specimen Collection, a Task is created to represent it.
 - When a report is received, the Task is updated to reflect progress.
 
-### Data Model
+#### Data Model
 
 This model is based on a merge of NHS England Genomics and AU eRequesting.
 
@@ -102,7 +102,7 @@ This model is based on a merge of NHS England Genomics and AU eRequesting.
 
 SNOMED codes for specimen collection exist, e.g. `2620001000004108 Specimen collection procedure`.
 
-### Caveats
+#### Caveats
 
 Specimen-related information may be limited in both laboratory orders and reports. In some older HL7 implementations, the `SPM` segment may not be included at all.
 

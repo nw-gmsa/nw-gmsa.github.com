@@ -1,4 +1,4 @@
-## NHS Data Dictionary and Model
+### NHS Data Dictionary and Model
 
 No NHS Data Dictionary entry - a v2/FHIR technical grouping identifier, not a
 nationally-defined data item.
@@ -7,22 +7,22 @@ nationally-defined data item.
 Number (the number linking several individual orders placed together, e.g. a
 test panel or a single specimen requesting several tests).
 
-## Mapping
+### Mapping
 
 | Ubiquitous Term    | HL7 FHIR                       | HL7 v2                          | OID  | Notes |
 |----------------------|-----------------------------------|-----------------------------------|------|-------|
 | Order Group Number   | ServiceRequest.requisition (type = PGN) | Placer Group Number (ORC-4) | none - locally assigned | Groups several ServiceRequests placed together |
 {:.grid}
 
-## Examples
+### Examples
 
-### HL7 v2 EI
+#### HL7 v2 EI
 
 ```aiignore
 1001166717^699X0^^255^ISO
 ```
 
-### HL7 FHIR Identifier
+#### HL7 FHIR Identifier
 
 ```json
 {

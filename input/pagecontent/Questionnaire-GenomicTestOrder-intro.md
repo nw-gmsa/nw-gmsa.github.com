@@ -13,7 +13,7 @@ first. See [Diagnostic Model Overview](diagnostic-core.html) for the basic model
 Questionnaire adds detail to, and how it relates to [Genomic Test
 Report](Questionnaire-GenomicTestReport.html) on the report side.
 
-## Reference
+### Reference
 
 - [HL7 Europe Laboratory Report - ServiceRequest: Laboratory Order](https://build.fhir.org/ig/hl7-eu/laboratory/StructureDefinition-ServiceRequest-eu-lab.html)
 - HL7 Europe [ServiceRequest: Laboratory Order](https://build.fhir.org/ig/hl7-eu/laboratory/StructureDefinition-ServiceRequest-eu-lab.html)
@@ -23,7 +23,7 @@ Report](Questionnaire-GenomicTestReport.html) on the report side.
 - Prior Results (Oncology)
   - HL7 USA [minimal Common Oncology Data Elements (mCODE) Implementation Guide - Assessment](https://build.fhir.org/ig/HL7/fhir-mCODE-ig/group-assessment.html)
 
-## Domain Archetype
+### Domain Archetype
 
 This is a **level 2** (field-level) view of the [basic model](diagnostic-core.html#entity-relationship-diagram)
 introduced in Diagnostic Model Overview, showing the entities and key attributes a
@@ -83,7 +83,7 @@ erDiagram
     }
 ```
 
-## Diagnostic Order
+### Diagnostic Order
 
 
 <img style="padding:3px;width:95%;" src="SDC Overview.drawio.png" alt="Order Test Form - Data Extraction Overview"/>
@@ -98,7 +98,7 @@ erDiagram
 
 This message is an [aggregate (DDD)](https://martinfowler.com/bliki/DDD_Aggregate.html)/[archetype](https://en.wikipedia.org/wiki/Archetype_(information_science)) and so is a collection of FHIR Resources (similar to v2 segments) which is described in [Genomic Test Order](StructureDefinition-ServiceRequest.html).
 
-### Patient Demographics
+#### Patient Demographics
 
 <div class="alert alert-info" role="alert">
 <b>HL7 FHIR Profile:</b> <a href="StructureDefinition-Patient.html" _target="_blank">Patient</a> 
@@ -115,7 +115,7 @@ This message is an [aggregate (DDD)](https://martinfowler.com/bliki/DDD_Aggregat
 | Postcode              | [Postcode](StructureDefinition-Postcode.html)                         | 0..1        | [PID](hl7v2.html#pid)-11 |                                                             | [Patient](StructureDefinition-Patient.html).address.postalCode              |
 {:.grid}
 
-### Hospital Spell
+#### Hospital Spell
 
 <div class="alert alert-info" role="alert">
 <b>HL7 FHIR Profile:</b> <a href="StructureDefinition-HospitalSpell.html" _target="_blank">Hospital Spell</a> 
@@ -132,7 +132,7 @@ Treat as mandatory for reflex or subcontracted orders.
 | Case Identification or Account Number | [HospitalProviderSpellIdentifier](StructureDefinition-HospitalProviderSpellIdentifier.html) | 0..1        | [PV1](hl7v2.html#pv1)-19 | ServiceRequest.encounter.identifier | Encounter.identifier [HospitalSpell](StructureDefinition-HospitalSpell.html) |
 {:.grid}
 
-### Diagnostic Workflow
+#### Diagnostic Workflow
 
 <div class="alert alert-info" role="alert">
 <b>HL7 FHIR Profile:</b> <a href="StructureDefinition-ServiceRequest.html" _target="_blank">ServiceRequest</a> 
@@ -157,14 +157,14 @@ Treat as mandatory for reflex or subcontracted orders.
 | Specimen                    | See Specimen below                                                                 | 0..*        | [SPM](hl7v2.html#spm)             | ServiceRequest.specimen.identifier                                                                                                |                                                                                               
 {:.grid}
 
-### Diagnostic Genomics
+#### Diagnostic Genomics
 
 | Name                                                  | Value Set / Data Type                                                   | Cardinality | HL7 v2 OML_O21 Message  | HL7 FHIR ServiceRequest   | 
 |-------------------------------------------------------|-------------------------------------------------------------------------|-------------|-------------------------|---------------------------|
 | (Order) Procedure Code - Genomic Test Code            | [Genomic Test Directory](ValueSet-GenomicTestCodes.html)                | 1..1        | [OBR](hl7v2.html#obr)-4 | ServiceRequest.code       |                               
 {:.grid}
 
-### Original Order, Instance and Filler Orders
+#### Original Order, Instance and Filler Orders
 
 `ServiceRequest` may also be split into two logical entities called
 `OriginalOrder` and `FillerOrder`. The former represents the order received by
@@ -200,7 +200,7 @@ in [LAB-4](LTW.html#work-order-and-test-result-management-lab-4-and-lab-5) -
 both share the field-by-field mapping in [Diagnostic
 Workflow](#diagnostic-workflow) above.
 
-#### Filler Order Intent
+##### Filler Order Intent
 
 | Type                | Description                                                                                                                                                     | IHE PALM | Created by   | Original Order Intent | Filler Order Intent   |
 |---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|--------------|----------------------------------------|-----------------------|
@@ -210,7 +210,7 @@ Workflow](#diagnostic-workflow) above.
 | Reflex Order        | A new order created automatically by the Order Filler based on previous test results, for example when pathology findings automatically trigger a genomic test. | LAB-35   | Order Filler |                                        | reflex                | 
 {:.grid}
 
-### Specimen
+#### Specimen
 
 <div class="alert alert-info" role="alert">
 <b>HL7 FHIR Profile:</b> <a href="StructureDefinition-Specimen.html" _target="_blank">Specimen</a> 
@@ -233,7 +233,7 @@ Workflow](#diagnostic-workflow) above.
 Note: it is likely that source systems will use ORM_01 and not include specimen details. In this case it is suggested that the specimen details are captured as 'Ask at Order Entry Questions' and so provided as OBX segments.
 
 
-### Order Entry Questions
+#### Order Entry Questions
 
 ```mermaid
 flowchart LR
@@ -343,7 +343,7 @@ an existing digital order-entry screen rather than a paper form:
 | Histocompatibility and Immunogenetics - Chimerism Testing      | [Chimerism Test Additional Ask At Order Entry Questions](Questionnaire-ChimerismTestAdditionalAskAtOrderQuestions.html) - see [Histocompatibility and Immunogenetics](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HistocompatibilityAndImmunogenetics.md#chimerism-testing-ask-at-order-entry) - combines directly with the common core, no separate Common tier of its own today | Test Specific |
 {:.grid}
 
-#### NW GLH Paper Test Request Forms
+##### NW GLH Paper Test Request Forms
 
 ```mermaid
 flowchart LR
@@ -480,7 +480,7 @@ reviews a result already reported rather than requesting a new one.
 Both national GMS WGS forms split "Ordering Facility" into **two** fields -
 a requesting organisation and a separate receiving GMS/GLH laboratory.
 
-#### Common Fields We May Have Missed
+##### Common Fields We May Have Missed
 
 Comparing all twelve forms side by side surfaces a few candidate additions
 to this common core Questionnaire, alongside two apparent gaps that are

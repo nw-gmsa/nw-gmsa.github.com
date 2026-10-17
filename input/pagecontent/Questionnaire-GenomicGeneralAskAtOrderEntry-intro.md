@@ -1,5 +1,5 @@
 
-## Order Entry Questions
+### Order Entry Questions
 
 <span class="badge badge-primary">Diagnostic Genomics</span>
 
@@ -29,7 +29,7 @@ Entry Questions](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html) -
 they are only genuinely relevant to Whole Genome Sequencing orders, not
 every order/test type this Questionnaire covers.
 
-## Guidance by Order Type
+### Guidance by Order Type
 
 <div class="alert alert-info" role="alert">
 This Questionnaire does not gate any of these questions by order/test type via
@@ -64,7 +64,7 @@ specific to it.
 | High Infection Risk? / High infection Risk Details                | ✓      | ✓   | ✓                             | -         |
 {:.grid}
 
-### G Number (Pedigree Number)
+#### G Number (Pedigree Number)
 
 **G Number (Pedigree Number)** is only applicable to Rare and Inherited
 Disease WGS orders - see [Whole Genome Sequencing (WGS) - The Reverse
@@ -75,7 +75,7 @@ Questions](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html) for
 `Related Individual` and the Consultand/Proband/mother-baby-fetus guidance
 that goes with it, now that both have moved there.
 
-### Known Gaps (from a Live WGS Order-Entry Screen)
+#### Known Gaps (from a Live WGS Order-Entry Screen)
 
 A real NHS Trust EPR order-entry screen for Rare and Inherited Disease WGS
 orders surfaces several fields with no equivalent anywhere in this

@@ -2,11 +2,11 @@
 This is currently being elaborated and subject to change.
 </div>
 
-## Reference
+### Reference
 
 1. [openEHR Laboratory analyte result](https://ckm.openehr.org/ckm/archetypes/1013.1.2881)
 
-## Overview
+### Overview
 
 A Laboratory Analyte Result carries a single measured/detected substance (analyte)
 from the analytical phase of testing through to the `Observation` referenced by
@@ -15,14 +15,14 @@ worked use case of this profile - BCR-ABL1 quantification for chronic myeloid
 leukaemia (CML) monitoring, from a Cepheid-class ASTM-communicating analyser through
 to iGene.
 
-## Data Mapping
+### Data Mapping
 
 <figure style="overflow-x:auto;">
 {%include LaboratoryAnalyteResult-mindmap.svg%}
 </figure>
 
 
-### Laboratory Analyte Result
+#### Laboratory Analyte Result
 
 Rows marked with `↳` in the Data Element column are sub-elements of the **Result** row above them, i.e. they map to fields on the `Observation` referenced by `DiagnosticReport.result`.
 
@@ -48,7 +48,7 @@ Rows marked with `↳` in the Data Element column are sub-elements of the **Resu
 |                          | ↳ Device Identifier                                              | ?? OBX-18 EquipmentInstanceIdentifier   |                   |                                                                         Observation.device                        |                    |                                   |
 {:.grid}
 
-### Result Detail
+#### Result Detail
 
 These entries are expressed in `Observation.component` - see [BCR-ABL
 Monitoring](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/BCRABLMonitoring.md#result-detail) for a worked example.

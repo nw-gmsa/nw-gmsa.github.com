@@ -1,4 +1,4 @@
-## NHS Data Dictionary and Model
+### NHS Data Dictionary and Model
 
 No NHS Data Dictionary entry - a laboratory order identifier is a local
 Placer/Filler concept defined by HL7 v2/FHIR, not a nationally-defined data
@@ -8,7 +8,7 @@ item.
 (the referring system's own number) / Filler Order Number (the receiving
 laboratory's own number).
 
-## Mapping
+### Mapping
 
 | Ubiquitous Term       | HL7 FHIR                              | HL7 v2                        | OID  | Notes |
 |-------------------------|-----------------------------------------|--------------------------------|------|-------|
@@ -16,15 +16,15 @@ laboratory's own number).
 | Order Number (Filler)   | ServiceRequest.identifier (type = FILL) | Filler Order Number (ORC-3)   | none - locally assigned | Assigned by the receiving (Order Filler) system |
 {:.grid}
 
-## Examples
+### Examples
 
-### HL7 v2 EI
+#### HL7 v2 EI
 
 ```aiignore
 1601737^R0A^150^L
 ```
 
-### HL7 FHIR Identifier
+#### HL7 FHIR Identifier
 
 ```json
 {

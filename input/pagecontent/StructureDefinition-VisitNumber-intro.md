@@ -1,4 +1,4 @@
-## NHS Data Dictionary and Model
+### NHS Data Dictionary and Model
 
 No distinct, confirmed NHS Data Dictionary entry for "Visit Number" itself -
 closely related to [Hospital Provider Spell
@@ -8,22 +8,22 @@ which this v2 field is often used to carry in practice.
 
 **Ubiquitous terms:** Visit Number, Encounter Number, Attendance Number.
 
-## Mapping
+### Mapping
 
 | Ubiquitous Term | HL7 v2                                                                                                                                | OID  | Notes |
 |-------------------|------------------------------------------------------------------------------------------------------------------------------------------|------|-------|
 | Visit Number       | Visit Number (PV1-19). See [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws) PV1 documentation. | none - locally assigned | See [Hospital Provider Spell Identifier](StructureDefinition-HospitalProviderSpellIdentifier.html) for the FHIR-side mapping this v2 field is normally paired with |
 {:.grid}
 
-## Examples
+### Examples
 
-### HL7 v2 CX
+#### HL7 v2 CX
 
 ```aiignore
 12345^^^R0A^VN
 ```
 
-### HL7 FHIR Identifier
+#### HL7 FHIR Identifier
 
 ```json
 {

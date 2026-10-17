@@ -2,13 +2,13 @@
 This is currently being elaborated and subject to change.
 </div>
 
-## Use Case 
+### Use Case 
 
-## Process Flow 
+### Process Flow 
 
 See [Work Order Management (LAB-4)](LTW.html#work-order-management-lab-4)
 
-## Data Mapping
+### Data Mapping
 
 | Name                                                                                | Optionality                        | FHIR Task             | FHIR                                                      | HL7 v2 (OML_O21)              | iGene    | StarLIMS | Other GMSA       |
 |-------------------------------------------------------------------------------------|------------------------------------|-----------------------|-----------------------------------------------------------|-------------------------------|----------|----------|------------------|

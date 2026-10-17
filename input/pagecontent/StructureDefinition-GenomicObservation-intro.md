@@ -1,6 +1,6 @@
 
 
-## Entity Relationships
+### Entity Relationships
 
 ```mermaid
 erDiagram

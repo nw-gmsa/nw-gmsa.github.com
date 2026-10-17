@@ -1,4 +1,4 @@
-## References
+### References
 
 - HL7 International [Genomics Reporting Implementation Guide](https://build.fhir.org/ig/HL7/genomics-reporting/index.html)
   - HL7 USA [minimal Common Oncology Data Elements (mCODE) Implementation Guide - Genomics](https://build.fhir.org/ig/HL7/fhir-mCODE-ig/group-genomics.html)
@@ -10,7 +10,7 @@
   - HL7 Europe [Laboratory Report](https://build.fhir.org/ig/hl7-eu/laboratory/index.html) 
   - HL7 Europe [Imaging](https://build.fhir.org/ig/hl7-eu/imaging/index.html)
 
-## Domain Archetype
+### Domain Archetype
 
 > **DRAFT FOR ELABORATION PURPOSES**
 
@@ -21,7 +21,7 @@
 <br clear="all">
 
 
-### Structured Report
+#### Structured Report
 
 <div class="alert alert-danger" role="alert">
 This section is currently being elaborated and subject to change. It will include a modernisation to core FHIR concepts such as FHIR Workflow, FHIR Subscription and FHIR RESTful.
@@ -31,19 +31,19 @@ This section is currently being elaborated and subject to change. It will includ
 > **DRAFT FOR ELABORATION PURPOSES**
 
 <!-- 
-### Somatic Reporting
+#### Somatic Reporting
 
 [HL7 FHIR Genomics Reporting - Somatic Reporting](https://hl7.org/fhir/uv/genomics-reporting/pharmacogenomics.html)
 
 is a mindmap 
 
-### Pharmacogenomic Reporting
+#### Pharmacogenomic Reporting
 
 [HL7 FHIR Genomics Reporting - Pharmacogenomic Reporting](https://hl7.org/fhir/uv/genomics-reporting/pharmacogenomics.html)
 
 is a mindmap
 
-### HL7 v2 Genetic Variant Reporting (ORU_R01.txt)
+#### HL7 v2 Genetic Variant Reporting (ORU_R01.txt)
 
 > This is not included in the current phase and is for reference purposes. 
 

@@ -31,7 +31,7 @@ the part of that information that names a *specific* consultand who is
 themselves being referred is structured here, following the shape of an HL7
 v2 `NK1` segment.
 
-## Domain Archetype
+### Domain Archetype
 
 <div class="alert alert-info" role="alert">
 <b>HL7 FHIR Profile:</b> <a href="StructureDefinition-RelatedPerson.html" _target="_blank">RelatedPerson</a> 
@@ -70,7 +70,7 @@ completed if they are themselves already a patient somewhere (e.g. already
 known to the referring service) - it is not required, since many named at
 referral time won't yet have any record of their own.
 
-## Field Mapping
+### Field Mapping
 
 | Name | HL7 v2 | Value Set / Data Type | FHIR `RelatedPerson` |
 |---|---|---|---|
@@ -89,7 +89,7 @@ code `relationship` with HL7 v3 `RoleCode` (e.g. `MTH` "mother") rather than
 `UKCore-PersonRelationshipType` - both are shown as options above since
 neither is yet the confirmed convention for this specific Questionnaire.
 
-## Data Models
+### Data Models
 
 - [Genetic Clinical Referral](Questionnaire-GeneticClinicalReferral.html) -
   the common core this Questionnaire extends

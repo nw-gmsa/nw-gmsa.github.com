@@ -1,4 +1,4 @@
-## NHS Data Dictionary and Model
+### NHS Data Dictionary and Model
 
 [CONSULTANT CODE](https://www.datadictionary.nhs.uk/data_elements/consultant_code.html),
 [GENERAL MEDICAL PRACTITIONER PPD CODE](https://www.datadictionary.nhs.uk/attributes/general_medical_practitioner_ppd_code.html)
@@ -10,7 +10,7 @@ ID, GMC Reference Number) used to identify a practitioner.
 **Ubiquitous terms:** GMC Number, Doctor Index Number (DIN), Professional
 Registration Number, Prescriber Code.
 
-## [PROFESSIONAL REGISTRATION ENTRY IDENTIFIER](https://www.datadictionary.nhs.uk/attributes/professional_registration_entry_identifier.html)
+### [PROFESSIONAL REGISTRATION ENTRY IDENTIFIER](https://www.datadictionary.nhs.uk/attributes/professional_registration_entry_identifier.html)
 
 | Ubiquitous Term | Name                                                                                                                             | FHIR identifier.system                       | OID/HL7v3                         | HL7 v2 XCN-8 | Value Format<br/>(FHIR identifier.value<br/>HL7 v2 XCN-1) | Description                                                                                                              |
 |------------------|----------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|-----------------------------------|--------------|-----------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
@@ -44,15 +44,15 @@ Format
 | Paramedic prescriber (HCPC)	      | PANNNNNN  | PA054321 |
 {:.grid}
 
-## Example 
+### Example 
 
-### HL7 v2 XCN
+#### HL7 v2 XCN
 
 ```aiignore
 C3456789^Darwin^Samuel^^^Dr^^^GMC
 ```
 
-### HL7 FHIR Identifier 
+#### HL7 FHIR Identifier 
 
 ```json
 {

@@ -27,7 +27,7 @@ for how this compares to the other paper forms.
 the rare disease variant of this same national form family.
 </div>
 
-## Summary
+### Summary
 
 | Item | Paper Form Field | FHIR |
 |---|---|---|

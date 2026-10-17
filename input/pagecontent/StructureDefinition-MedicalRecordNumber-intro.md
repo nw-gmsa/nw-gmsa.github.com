@@ -1,4 +1,4 @@
-## NHS Data Dictionary and Model
+### NHS Data Dictionary and Model
 
 [LOCAL PATIENT IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/local_patient_identifier__extended_.html) -
 a hospital-assigned identifier, not a nationally-issued number. There is no
@@ -6,7 +6,7 @@ single national OID or value format; each Trust's PAS/EPR assigns its own.
 
 **Ubiquitous terms:** Hospital Number, Unit Number, Patient ID, MRN, Case Number.
 
-## Mapping
+### Mapping
 
 | Ubiquitous Term        | Field              | HL7 FHIR Identifier        | Value / OID / URI                                                                                    | HL7 v2 CX | HL7 FHIR Example                                      | HL7 v2 Example |
 |-------------------------|--------------------|-----------------------------|-------------------------------------------------------------------------------------------------------|-----------|--------------------------------------------------------|----------------|
@@ -18,14 +18,14 @@ single national OID or value format; each Trust's PAS/EPR assigns its own.
 | -                       | -                  | assigner.identifier.system | https://fhir.nhs.uk/Id/ods-organization-code (fixed); OID `2.16.840.1.113883.2.1.3.2.4.18.48`         | -         | https://fhir.nhs.uk/Id/ods-organization-code          |                |
 {:.grid}
 
-## Example 
+### Example 
 
-### HL7 v2 CX 
+#### HL7 v2 CX 
 
 ```aiignore
 633^^^R0A^MR
 ```
-### HL7 FHIR Identifier
+#### HL7 FHIR Identifier
 
 ```json
 {
@@ -48,7 +48,7 @@ single national OID or value format; each Trust's PAS/EPR assigns its own.
     }
 ```
 
-## Identifier.system
+### Identifier.system
 
 | Name                                                    | System                                       |
 |---------------------------------------------------------|----------------------------------------------|

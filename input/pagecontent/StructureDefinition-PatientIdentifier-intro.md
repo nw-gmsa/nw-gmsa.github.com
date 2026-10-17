@@ -1,4 +1,4 @@
-## NHS Data Dictionary and Model
+### NHS Data Dictionary and Model
 
 [LOCAL PATIENT IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/local_patient_identifier__extended_.html) -
 the same underlying NHS Data Dictionary concept as [Medical Record
@@ -14,7 +14,7 @@ interoperability.
 "Hospital Number" per [Medical Record
 Number](StructureDefinition-MedicalRecordNumber.html) in new development).
 
-## Mapping
+### Mapping
 
 | Ubiquitous Term  | HL7 FHIR                     | HL7 v2                            | OID  | Notes |
 |--------------------|---------------------------------|--------------------------------------|------|-------|
@@ -22,15 +22,15 @@ Number](StructureDefinition-MedicalRecordNumber.html) in new development).
 
 - **IHE XDS** sourcePatientId and patientId
 
-## Examples
+### Examples
 
-### HL7 v2 CX
+#### HL7 v2 CX
 
 ```aiignore
 12067204^^^R0A^PI
 ```
 
-### HL7 FHIR Identifier
+#### HL7 FHIR Identifier
 
 ```json
 {

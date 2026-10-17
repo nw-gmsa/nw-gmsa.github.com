@@ -1,4 +1,4 @@
-## NHS Data Dictionary and Model
+### NHS Data Dictionary and Model
 
 - England/Wales: [NHS NUMBER](https://www.datadictionary.nhs.uk/attributes/nhs_number.html)
 - Northern Ireland: [HEALTH AND CARE NUMBER](https://www.datadictionary.nhs.uk/data_elements/health_and_care_number.html)
@@ -6,7 +6,7 @@
 
 **Ubiquitous terms:** NHS Number, NHS No, NHS ID; CHI Number (Scotland); H&C Number (Northern Ireland).
 
-## Mapping 
+### Mapping 
 
 - **HL7 FHIR** Patient.identifier (type = NH)
 - **HL7 v2** Patient Identifier List (PID-3)
@@ -16,7 +16,7 @@ Format: NNNNNNNNNN, values include a checksum, details can be found in [NHS NUMB
 
 - Testing number range: 999 000 0000 to 999 999 9999
 
-### NHS Number (England and Wales)
+#### NHS Number (England and Wales)
 
 - England, Wales and the Isle of Man value ranges: 400 000 0000 to 499 999 9999, and 600 000 0000 to 799 999 9999.
 
@@ -28,7 +28,7 @@ Format: NNNNNNNNNN, values include a checksum, details can be found in [NHS NUMB
 | System              | system              | 2.16.840.1.113883.2.1.4.1 | **https://fhir.nhs.uk/Id/nhs-number**            | N/a       | N/a          | -          |
 {:.grid}
 
-### CHI Number (Scotland)
+#### CHI Number (Scotland)
 
 - Scotland ranges: 010 100 0000 to 311 299 9999.
 
@@ -40,7 +40,7 @@ Format: NNNNNNNNNN, values include a checksum, details can be found in [NHS NUMB
 | System              | system              | 2.16.840.1.113883.2.1.3.2.4.16.53 | **urn:oid:2.16.840.1.113883.2.1.3.2.4.16.53**    | N/a       | N/a          | -          |
 {:.grid}
 
-### Health and Care Number (Northern Ireland)
+#### Health and Care Number (Northern Ireland)
 
 - Northern Ireland ranges: 320 000 0000 to 399 999 9999.
 
@@ -52,7 +52,7 @@ Format: NNNNNNNNNN, values include a checksum, details can be found in [NHS NUMB
 | System              | system              |  | **https://fhir.nhs.uk/Id/hsc-number**            | N/a       | N/a          |          |
 {:.grid}
 
-## Identifier.system
+### Identifier.system
 
 | Name              | System                                       |
 |-------------------|----------------------------------------------|
@@ -60,15 +60,15 @@ Format: NNNNNNNNNN, values include a checksum, details can be found in [NHS NUMB
 | Scotland          | urn:oid:2.16.840.1.113883.2.1.3.2.4.16.53 |
 | Northern Ireland   | https://fhir.nhs.uk/Id/hsc-number         |  
 
-## Example
+### Example
 
-### HL7 v2 CX
+#### HL7 v2 CX
 
 ```aiignore
 9449305552^^^^NH
 ```
 
-### HL7 FHIR Identifier
+#### HL7 FHIR Identifier
 
 ```json
 {

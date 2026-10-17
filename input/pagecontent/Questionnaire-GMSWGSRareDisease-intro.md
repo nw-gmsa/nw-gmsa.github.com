@@ -27,7 +27,7 @@ for how this compares to the other paper forms.
 the cancer variant of this same national form family.
 </div>
 
-## Summary
+### Summary
 
 | Item | Paper Form Field | FHIR |
 |---|---|---|
@@ -78,7 +78,7 @@ two hard-coded, disconnected sections. One field name from the PDF -
 no stated purpose on the form's own visible labels; it is carried through
 as free text pending confirmation of what it means.
 
-### Practical Issues: One Form, Multiple Orders
+#### Practical Issues: One Form, Multiple Orders
 
 Unlike every other paper form in this comparison, a single completed copy
 of this form names **several** people - the proband plus, for a Duo/Trio

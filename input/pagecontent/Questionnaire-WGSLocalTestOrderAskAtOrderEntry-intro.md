@@ -33,7 +33,7 @@ request forms, not an NW GLH-specific one, and are considerably richer
 either on this form).
 </div>
 
-## Summary
+### Summary
 
 | Item | Paper Form Field | FHIR |
 |---|---|---|
@@ -84,7 +84,7 @@ equivalent items, since that Questionnaire isn't used alongside this one
 (this form has its own dedicated Ask At Order Entry Questionnaire, so
 Genomic General's fallback role doesn't apply here).
 
-### Relationship to GMS WGS Rare Disease
+#### Relationship to GMS WGS Rare Disease
 
 The **Family Member** pathway here is effectively a **consultand test**:
 the same real-world scenario as one repetition of [GMS WGS Rare

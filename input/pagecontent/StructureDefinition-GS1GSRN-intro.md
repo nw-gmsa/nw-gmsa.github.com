@@ -1,4 +1,4 @@
-## NHS Data Dictionary and Model
+### NHS Data Dictionary and Model
 
 [GS1 GLOBAL SERVICE RELATION NUMBER](https://www.datadictionary.nhs.uk/supporting_information/gs1_global_service_relation_number.html) -
 identifies the patient as recipient of a service, under the NHS
@@ -7,22 +7,22 @@ identifies the patient as recipient of a service, under the NHS
 
 **Ubiquitous terms:** GSRN, GS1 Patient ID, Global Service Relation Number.
 
-## Mapping
+### Mapping
 
 | Ubiquitous Term | HL7 FHIR             | HL7 v2                                | OID              | Notes |
 |-------------------|--------------------------|-------------------------------------------|----------------------|-------|
 | GSRN               | Patient.identifier       | Patient Administration - Identifier Type **PN** Patient Identifier | `2.51.1.7` (GS1 Application Identifier 8018) | Printed on a GS1-compliant patient wristband |
 {:.grid}
 
-## Examples
+### Examples
 
-### HL7 v2 CX
+#### HL7 v2 CX
 
 ```aiignore
 98765432109876543^^^^PN
 ```
 
-### HL7 FHIR Identifier
+#### HL7 FHIR Identifier
 
 ```json
 {

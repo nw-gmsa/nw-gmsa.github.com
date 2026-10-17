@@ -2,7 +2,7 @@
 This Questionnaire is a proposal, not an active or planned project.
 </div>
 
-## Questions Summary
+### Questions Summary
 
 <span class="badge badge-primary">Diagnostic Genomics</span>
 

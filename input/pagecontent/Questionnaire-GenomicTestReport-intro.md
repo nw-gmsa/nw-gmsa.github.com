@@ -11,7 +11,7 @@ first. See [Diagnostic Model Overview](diagnostic-core.html) for the basic model
 Questionnaire adds detail to, and how it relates to [Genomic Test
 Order](Questionnaire-GenomicTestOrder.html) on the order side.
 
-## References
+### References
 
 - [HL7 Lab Results Interface (LRI), Release 1 from May 2017](https://confluence.hl7.org/download/attachments/25559919/2018%2004%2003%20-%20V2%20LRI%20-%20Ch.%205%20CG%20and%20Code%20System%20Tables.pdf?api=v2) (HL7 v2,5,1)
 - HL7 International [Genomics Reporting Implementation Guide](https://build.fhir.org/ig/HL7/genomics-reporting/index.html) (HL7 FHIR)
@@ -22,7 +22,7 @@ Order](Questionnaire-GenomicTestOrder.html) on the order side.
 - [NHS England Genomics DiagnosticReport](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/FHIRAssets/Profiles/All-Profiles/UKCore-DiagnosticReport) use text descriptions only, not the rendered profile.
 - [HL7 Europe Core - DiagnosticReport](https://hl7.eu/fhir/base/2.0.0-ballot/StructureDefinition-diagnosticReport-eu-core.html)
 
-## Domain Archetype 
+### Domain Archetype 
 
 This is a **level 2** (field-level) view of the [basic model](diagnostic-core.html#entity-relationship-diagram)
 introduced in Diagnostic Model Overview, showing the entities and key attributes a
@@ -106,9 +106,9 @@ NHS England National Record Locator), while `DiagnosticReport.presentedForm`
 is the more direct route for a system that already holds the `DiagnosticReport`
 and just wants the PDF alongside it.
 
-### Diagnostic Report
+#### Diagnostic Report
 
-#### Unstructured and Structured Laboratory Reports
+##### Unstructured and Structured Laboratory Reports
 
 A laboratory report contains both structured and unstructured information, and they complement each other rather than replace one another.
 
@@ -117,7 +117,7 @@ A laboratory report contains both structured and unstructured information, and t
 
 The Laboratory Report acts as the bridge between these two worlds. It references the structured observations for computer processing, clinical decision support, analytics, and interoperability, while also linking to the complete unstructured report that clinicians view as the authoritative laboratory document. This approach ensures that systems can exchange computable data without losing the rich narrative and legal record contained in the original laboratory report.
 
-##### Laboratory Report with FHIR and V2 Mappings
+###### Laboratory Report with FHIR and V2 Mappings
 
 <img style="padding:3px;width:95%;" src="LaboratoryReportExplainedPage1.drawio.png" alt="Genomic Report Page 1"/>
 <br clear="all">
@@ -125,12 +125,12 @@ The Laboratory Report acts as the bridge between these two worlds. It references
 <img style="padding:3px;width:95%;" src="LaboratoryReportExplainedPage2.drawio.png" alt="Genomic Report Page 1"/>
 <br clear="all">
 
-##### Laboratory Report with detailed FHIR Mappings
+###### Laboratory Report with detailed FHIR Mappings
 
 <img style="padding:3px;width:95%;" src="LaboratoryReportExplained.drawio.png" alt="Genomic Report Page 1"/>
 <br clear="all">
 
-##### FHIR Document / Clinical Document Architecture
+###### FHIR Document / Clinical Document Architecture
 
 > The FHIR DiagnosticReport illustrated above is well suited to workflow-based information exchange, where structured clinical data is exchanged between systems and individual observations can be processed, queried, and acted upon. However, it may be less suitable for document sharing use cases, such as IHE XDS/MHD or the NHS England National Record Locator (NRL), where the laboratory report is exchanged as a complete clinical document. In these scenarios, the preferred approach is a FHIR Document (the FHIR equivalent of a Clinical Document Architecture (CDA) document), which packages the report into a self-contained, attested document with a Composition resource as its root. This preserves the report as a legal and clinical record while still allowing structured data to be included.
 >
@@ -138,17 +138,17 @@ The Laboratory Report acts as the bridge between these two worlds. It references
 >
 > NW Genomics example [FHIR Document - Genomic Report](Bundle-FHIRDocumentGeneticReportBundle2.html)
 
-##### Laboratory Report with FHIR Composition Mappings
+###### Laboratory Report with FHIR Composition Mappings
 
 <img style="padding:3px;width:95%;" src="LaboratoryReportDocumentExplained.drawio.png" alt="Genomic Report Page 1"/>
 <br clear="all">
 
-### Detailed Model
+#### Detailed Model
 
 Metadata is data that applies to the patient's entire clinical pathway and so it extends beyond diagnostic tests.
 Test detail tends to be common across all diagnostic tests in a patient's pathway, not just genomics.
 
-#### Patient Demographics
+##### Patient Demographics
 
 <div class="alert alert-info" role="alert">
 <b>HL7 FHIR Profile:</b> <a href="StructureDefinition-Patient.html" _target="_blank">Patient</a> 
@@ -163,7 +163,7 @@ Test detail tends to be common across all diagnostic tests in a patient's pathwa
 | Medical Record Number |       | [Medical Record Number](StructureDefinition-MedicalRecordNumber.html) | 0..1        | [PID](hl7v2.html#pid)  | ServiceRequest.subject.identifier                                  | [Patient](StructureDefinition-Patient.html) |
 {:.grid}
 
-#### Hospital Spell
+##### Hospital Spell
 
 <div class="alert alert-info" role="alert">
 <b>HL7 FHIR Profile:</b> <a href="StructureDefinition-HospitalSpell.html" _target="_blank">Hospital Spell</a> 
@@ -180,7 +180,7 @@ Treat as mandatory for reflex or subcontracted orders.
 | Case Identification or Account Number | 56797-4 | [HospitalProviderSpellIdentifier](StructureDefinition-HospitalProviderSpellIdentifier.html) | 0..1        | [PV1](hl7v2.html#pv1)-19 | ServiceRequest.encounter.identifier | Encounter.identifier [HospitalSpell](StructureDefinition-HospitalSpell.html) |
 {:.grid}
 
-#### Diagnostic Workflow
+##### Diagnostic Workflow
 
 <div class="alert alert-info" role="alert">
 <b>HL7 FHIR Profile:</b> <a href="StructureDefinition-DiagnosticReport.html" _target="_blank">DiagnosticReport</a> 
@@ -189,7 +189,7 @@ Treat as mandatory for reflex or subcontracted orders.
 <b>HL7 v2 Segment:</b> <a href="hl7v2.html#obr" _target="_blank">OBR</a>
 </div>
 
-##### Order Reference
+###### Order Reference
 
 <div class="alert alert-info" role="alert">
 <b>HL7 FHIR Profile:</b> <a href="StructureDefinition-ServiceRequest.html" _target="_blank">ServiceRequest</a> 
@@ -237,7 +237,7 @@ IG.
 {:.grid}
 
 
-## Results
+### Results
 
 `DiagnosticReport.result` (see [Detailed Model](#detailed-model) above) is
 where the individual findings of a test live. This is specific to genomics
@@ -301,7 +301,7 @@ Order](Questionnaire-GenomicTestOrder.html) themselves (see [How To Engineer
 Interoperability](HowToEngineerInteroperability.html#documenting-the-data-model)).
 
 
-### Report Panels
+#### Report Panels
 
 | Report Panel Questionnaire | Code | Used In | Status |
 |---|---|---|---|
@@ -315,7 +315,7 @@ New result types should follow this pattern - add a new panel Questionnaire
 Report](Questionnaire-GenomicTestReport.html) itself), and list it in the
 table above.
 
-### Genomic Results
+#### Genomic Results
 
 ```mermaid
 classDiagram
@@ -351,9 +351,9 @@ Panels](#report-panels) above:
 | Cytogenetic Genomic Report *(this IG's own future/proposed model - no balloted HL7 profile exists yet)* | LOINC cytogenetics panels, e.g. `62389-2` (master panel), `62356-1` (ISCN), `62367-8` (FISH) | [Haemato-Oncology Diagnostic Pathway - Future genomic data model (proposed)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HaematoOncologyPathway.md#future-genomic-data-model-proposed) | *(none yet - proposed direction only)* |
 {:.grid}
 
-## Examples
+### Examples
 
-### Inherited MMR deficiency (Lynch syndrome) - R210
+#### Inherited MMR deficiency (Lynch syndrome) - R210
 
 HL7 LRI (Ref A) Example 2 (5.9.1.2) - FOUND DISCRETE – TARGETED MUTATIONS ANALYSIS THAT STUDIES MANY MUTATIONS (106)
 
@@ -362,17 +362,17 @@ HL7 LRI (Ref A) Example 2 (5.9.1.2) - FOUND DISCRETE – TARGETED MUTATIONS ANAL
 - [Diagnostic Implication - Lynch syndrome](Observation-6beb613f-d303-42af-b025-86e8e0872061.html) <span class="badge badge-primary">Genomics</span>
 - [Variant NTHL1](Observation-8385c2fd-313d-4fd5-b98e-d5ea4bae6f99.html) <span class="badge badge-primary">Genomics</span>
 
-#### Primary or Secondary Care Examples
+##### Primary or Secondary Care Examples
 
 - [Condition - Lynch syndrome](Condition-c8f82825-e4cb-4e1f-b728-3fd2808e93db.html) <span class="badge badge-secondary">Patient Care</span>
 - [Observation - Lynch Syndrome Mutation Finding](Observation-4490c092-c78c-480a-8cb7-653b70113fd5.html) <span class="badge badge-secondary">Patient Care</span>
 
-#### Genetic Counseling Examples
+##### Genetic Counseling Examples
 
 - [FamilyMemberHistory - Son Patient Leeds](FamilyMemberHistory-074ea905-8d91-452c-af3c-15b5b860fdb2.html) <span class="badge badge-secondary">Patient Care</span>
 - [FamilyMemberHistory - Mother Patient Nottingham](FamilyMemberHistory-c76b8bc2-ec36-4ce1-a2ea-8c57215115e2.html) <span class="badge badge-secondary">Patient Care</span>
 
-### Cystic fibrosis Carrier R184
+#### Cystic fibrosis Carrier R184
 
 HL7 LRI (Ref A) Example 3 (5.9.1.3)  - SIMPLE VARIANT – MUTATION ANALYSIS WITH SEQUENCE PLUS DELETION-DUPLICATION STUDY
 

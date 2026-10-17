@@ -1,4 +1,4 @@
-## NHS Data Dictionary and Model
+### NHS Data Dictionary and Model
 
 This is a generic base pattern (parent of every other identifier data type in
 this IG), not one specific NHS Data Dictionary item - see the individual
@@ -11,12 +11,12 @@ Data Dictionary entries.
 **Ubiquitous terms:** Correlation ID, Message ID, Reference Number - the generic
 concept, not any single named identifier.
 
-## Reference
+### Reference
 
 - [Rule 3: Reference Other Aggregates by Identity (Implementing Domain Driven Design)](https://www.archi-lab.io/infopages/ddd/aggregate-design-rules-vernon.html#rule-3-reference-other-aggregates-by-identity) 
 - [Enterprise Integration Patterns - Correlation Identifier](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CorrelationIdentifier.html).
 
-## Overview
+### Overview
 
 Identifiers play a central role in both HL7 v2 and FHIR, enabling systems to uniquely reference and track entities such as patients, samples, orders, and clinical documents. In traditional point-to-point messaging, these identifiers are primarily used to correlate and reconcile messages exchanged between two systems—often those operating within the same organisation.
 
@@ -26,9 +26,9 @@ To meet these needs, a standardised and interoperable identifier model is requir
 
 The following identifier data contract is therefore proposed to underpin the reliable exchange, correlation, and lifecycle management of genomic data across the UK health ecosystem.
 
-## Correlation Identifier Data Contract
+### Correlation Identifier Data Contract
 
-### [HL7 v2 EI - Entity Identifier](https://hl7-definition.caristix.com/v2/HL7v2.5.1/DataTypes/EI)
+#### [HL7 v2 EI - Entity Identifier](https://hl7-definition.caristix.com/v2/HL7v2.5.1/DataTypes/EI)
 
 Used in HL7 v2 ORC, SPM and OBR, and FHIR ServiceRequest, Specimen and DiagnosticReport.
 
@@ -41,7 +41,7 @@ Used in HL7 v2 ORC, SPM and OBR, and FHIR ServiceRequest, Specimen and Diagnosti
 | Identifier Type Code | 1..1        | PLAC                              | FILL           | Identifier.type     | n/a - identifiers use separate fields in HL7 v2 Messages |                                                                                                                                                                                                                             |
 {:.grid}
 
-#### Example
+##### Example
 
 HL7 v2 
 
@@ -94,7 +94,7 @@ HL7 FHIR
 
 where ROA is the ODS code for Manchester University NHS Foundation Trust and 699X0 is the ODS code from NW Region GLH
 
-### [HL7 v2 CX - Extended Composite ID with Check Digit](https://hl7-definition.caristix.com/v2/HL7v2.5.1/DataTypes/CX)
+#### [HL7 v2 CX - Extended Composite ID with Check Digit](https://hl7-definition.caristix.com/v2/HL7v2.5.1/DataTypes/CX)
 
 Used in HL7 v2 PID and FHIR Patient.
 
@@ -106,7 +106,7 @@ Used in HL7 v2 PID and FHIR Patient.
 | Universal Id         | 1..1        | https://fhir.nhs.uk/Id/nhs-number          | https://nw-gmsa.github.io/Id/MR | Identifier.system         | N/a       |                                                                                                                                                                                                  |
 {:.grid}
 
-#### Example
+##### Example
 
 HL7 v2 
 

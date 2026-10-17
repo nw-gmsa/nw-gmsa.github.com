@@ -1,4 +1,4 @@
-## NHS Data Dictionary and Model
+### NHS Data Dictionary and Model
 
 [GS1 SERVICE RELATION INSTANCE NUMBER](https://www.datadictionary.nhs.uk/attributes/gs1_service_relation_instance_number.html) -
 the GS1-standardised equivalent of an account/visit number, under the NHS
@@ -6,22 +6,22 @@ Scan4Safety programme. See also [GS1 Pathology](https://gs1hospital.gs1.org/path
 
 **Ubiquitous terms:** SRIN, GS1 Account/Visit Number.
 
-## Mapping
+### Mapping
 
 | Ubiquitous Term | HL7 FHIR                 | HL7 v2                                            | OID (GS1 code 8019) | Notes |
 |-------------------|------------------------------|-------------------------------------------------------|-------------------------|-------|
 | SRIN               | Encounter.identifier         | Patient Administration - Identifier Type **AN/VN** Account/Visit number | `2.51.1.2.8019` | Instance of a service relation - i.e. one visit/account under a [GSRN](StructureDefinition-GS1GSRN.html) |
 {:.grid}
 
-## Examples
+### Examples
 
-### HL7 v2 CX
+#### HL7 v2 CX
 
 ```aiignore
 1234567890123^^^^SNO
 ```
 
-### HL7 FHIR Identifier
+#### HL7 FHIR Identifier
 
 ```json
 {

@@ -2,7 +2,7 @@
 <b>HL7 v2 Segment:</b> <a href="hl7v2.html#spm" _target="_blank">SPM</a>
 </div>
 
-## Reference
+### Reference
 
 - [NHS England Genomics Specimen](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/FHIRAssets/Profiles/All-Profiles/UKCore-Specimen) use text descriptions only, not the rendered profile.
 - [HL7 Europe Laboratory Report - Specimen: Laboratory](https://build.fhir.org/ig/hl7-eu/laboratory/StructureDefinition-Specimen-eu-lab.html)
@@ -16,7 +16,7 @@ Related:
 
 - [Optimal Blood Use - EU](http://www.optimalblooduse.eu/content/62-blood-component-label) This is more comprehensive than a sample for laboratory testing.
 
-## Domain Archetype
+### Domain Archetype
 
 | Name                      | LOINC   | Value Set / Data Type                                                         | Cardinality | HL7 v2 OML_O21 Message   | HL7 FHIR [Specimen](StructureDefinition-Specimen.html) |
 |---------------------------|---------|-------------------------------------------------------------------------------|-------------|--------------------------|--------------------------------------------------------|

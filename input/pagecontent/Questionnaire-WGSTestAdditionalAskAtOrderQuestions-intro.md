@@ -1,4 +1,4 @@
-## Questions Summary
+### Questions Summary
 
 <span class="badge badge-primary">Diagnostic Genomics</span>
 

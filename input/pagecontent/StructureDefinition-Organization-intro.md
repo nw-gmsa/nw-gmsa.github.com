@@ -1,16 +1,16 @@
-## Reference
+### Reference
 
 - **NHS England HL7 v2** XON [ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws)
 - [HL7 v2 XON – Extended Composite Name and Identification Number for Organisations](https://hl7-definition.caristix.com/v2/HL7v2.5.1/DataTypes/XON)
 - [IHE Mobile Care Services Discovery (mCSD)](https://profiles.ihe.net/ITI/mCSD/volume-1.html)
 
-## Identifier.system
+### Identifier.system
 
 | Name | System                                       |
 |------|----------------------------------------------|
 | ODS  | https://fhir.nhs.uk/Id/ods-organization-code |
 
-## Organization (Resource) or Reference by Organization Identity
+### Organization (Resource) or Reference by Organization Identity
 
 In message paradigms, especially HL7 v2 `laboratory order (OML_O21/ORM_O01)` and `unsolicitied observations (ORU_R01)` it is common to use the XON (Extended Composite Name and Identification Number for Organisations). The FHIR equivalent to this datatype is FHIR [Reference](https://hl7.org/fhir/R4/references.html)
 
@@ -44,7 +44,7 @@ This `reference` may be able to point to `Care Service Directory` services provi
 
 and so continuing conventions used in HL7 v2, i.e. no Organization resources will be present in FHIR Messaging.
 
-## Data Mappings
+### Data Mappings
 
 | NHS Data Dictionary                                                                                                                                                                                                                                                       | FHIR Organization              | HL7 v2 XON                                                                     | NHS England Organisation Data Terminology - FHIR API     |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------|--------------------------------------------------------------------------------|----------------------------------------------------------|

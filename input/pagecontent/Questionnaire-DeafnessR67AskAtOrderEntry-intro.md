@@ -19,7 +19,7 @@ for how this compares to the other paper forms.
 
 **Source form:** [Deafness Testing Proforma - R67 Non-Syndromic Hearing Loss (PDF)](https://mft.nhs.uk/5-deafness/)
 
-## Summary
+### Summary
 
 | Item | Paper Form Field | FHIR |
 |---|---|---|

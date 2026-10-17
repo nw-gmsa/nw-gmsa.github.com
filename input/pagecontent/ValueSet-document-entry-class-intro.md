@@ -1,5 +1,5 @@
 
-## Genomics Reports 
+### Genomics Reports 
 
 | DocumentEntry Category    | SNOMED CT |
 |---------------------------|-----------|

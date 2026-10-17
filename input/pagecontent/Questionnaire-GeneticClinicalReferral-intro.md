@@ -22,7 +22,7 @@ captures (e.g. patient demographics, both populating HL7 v2 `PID`), this
 Questionnaire reuses the same item rather than re-defining it, per the "check
 for existing patterns" principle on that same page.
 
-## Domain Archetype
+### Domain Archetype
 
 <div class="alert alert-info" role="alert">
 <b>HL7 v2 Message:</b> `REF_I12` (Patient Referral)
@@ -97,7 +97,7 @@ This is a **level 2** (field-level) sketch of [Genetic Referrals'](GeneticReferr
 own [Target Referral Model](GeneticReferrals.html#target-referral-model) - the
 same entities, with the fields this Questionnaire actually asks.
 
-## Differences from Genomic Test Order
+### Differences from Genomic Test Order
 
 Both Questionnaires exist for the same reason - a computable common core,
 extended per scenario rather than re-modelled each time - but a clinical
@@ -118,7 +118,7 @@ below is the concrete comparison:
 | Order/test-type-specific detail | **Ask At Order Entry Questionnaires** - structured, `derivedFrom`/extended, exactly **one** applies per order/test type (see [Order Entry Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions)) | **Partly structured.** General family history stays in an attached **family letter** (`supportingInfo` -> `DocumentReference` -> `Binary`, the same pattern eRS uses) or free text - but a *named* consultand is structured via [Genetic Referral Consultand](Questionnaire-GeneticReferralConsultand.html) (`supportingInfo` -> `RelatedPerson`, HL7 v2 `NK1`), `derivedFrom`/extended the same way, except **repeating** (one per named relative) rather than a single choice - see [Order Entry Questions](#order-entry-questions) below |
 {:.grid}
 
-### Family History
+#### Family History
 
 Genomic Test Order's Ask At Order Entry Questionnaires model order-type-specific
 detail as structured, coded data. A referral's equivalent detail doesn't have
@@ -148,7 +148,7 @@ consultand** - a specific at-risk relative who is themselves being referred
 for counselling/testing, not just mentioned in passing - see [Order Entry
 Questions](#order-entry-questions) below.
 
-## Order Entry Questions
+### Order Entry Questions
 
 This Genetic Clinical Referral Questionnaire (defined above) is the
 **common core** referral form, the same way [Genomic Test
@@ -172,7 +172,7 @@ alternative: a referral naming three at-risk relatives would reference three
 separate `GeneticReferralConsultand`-derived answers, one per consultand, not
 a choice between variants.
 
-## Data Models
+### Data Models
 
 - [Genomic Test Order](Questionnaire-GenomicTestOrder.html) - the equivalent
   archetype for a laboratory order, compared above

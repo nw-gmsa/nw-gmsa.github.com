@@ -1,4 +1,4 @@
-## NHS Data Dictionary and Model
+### NHS Data Dictionary and Model
 
 No NHS Data Dictionary entry for the general (pathology/genomics) specimen
 accession number - it is a laboratory-assigned identifier, not a nationally
@@ -9,7 +9,7 @@ which applies to imaging studies rather than specimens.
 **Ubiquitous terms:** Accession Number, Lab Number, Case Number, Specimen
 Number.
 
-## Mapping
+### Mapping
 
 - **HL7 FHIR** Specimen.accessionIdentifier (type = ACSN)
 - **HL7 v2** Accession ID (SPM-30)
@@ -26,15 +26,15 @@ In imaging the accession number refers to the imaging test [RADIOLOGICAL ACCESSI
 | -                | System   | system              | none - locally assigned by the laboratory     | N/a       | https://fhir.example.org/Id/medical-record-number  | N/a            |
 {:.grid}
 
-## Examples
+### Examples
 
-### HL7 v2 EI
+#### HL7 v2 EI
 
 ```aiignore
 ABC1234^R0A
 ```
 
-### HL7 FHIR Identifier
+#### HL7 FHIR Identifier
 
 ```json
 {

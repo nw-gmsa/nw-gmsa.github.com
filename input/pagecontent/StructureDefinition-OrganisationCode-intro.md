@@ -1,4 +1,4 @@
-## NHS Data Dictionary and Model
+### NHS Data Dictionary and Model
 
 [ORGANISATION CODE](https://www.datadictionary.nhs.uk/attributes/organisation_code.html) -
 issued by NHS England's [Organisation Data Service
@@ -7,7 +7,7 @@ never reused for the lifetime of the organisation.
 
 **Ubiquitous terms:** ODS Code, Trust Code, Organisation Code.
 
-## Mapping
+### Mapping
 
 | Ubiquitous Term | HL7 FHIR             | HL7 v2                                                                                     | OID                                    | Notes |
 |-------------------|-------------------------|------------------------------------------------------------------------------------------------|-------------------------------------------|-------|
@@ -16,15 +16,15 @@ never reused for the lifetime of the organisation.
 
 - **IHE XDS** author
 
-## Examples
+### Examples
 
-### HL7 v2 XON
+#### HL7 v2 XON
 
 ```aiignore
 MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS
 ```
 
-### HL7 FHIR Identifier
+#### HL7 FHIR Identifier
 
 ```json
 {

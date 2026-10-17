@@ -19,7 +19,7 @@ for how this compares to the other paper forms.
 
 **Source form:** [Request for Genetic Testing for Haemoglobinopathies, DOC4544 (PDF)](https://mft.nhs.uk/app/uploads/2022/03/DOC4544-NW-GLH-Request-for-Haemoglobinopathy-genetic-testing-form-1.pdf)
 
-## Summary
+### Summary
 
 | Item | Paper Form Field | FHIR |
 |---|---|---|

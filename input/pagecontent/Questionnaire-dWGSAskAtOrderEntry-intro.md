@@ -19,7 +19,7 @@ a different WGS ordering pathway (local paper form rather than a distributed
 sub-contracted digital manifest).
 </div>
 
-## Questions at a Glance
+### Questions at a Glance
 
 | Group | Item | LinkId | FHIR Field | Note |
 |---|---|---|---|---|
