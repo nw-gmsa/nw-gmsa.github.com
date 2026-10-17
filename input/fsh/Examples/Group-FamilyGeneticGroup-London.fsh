@@ -1,7 +1,7 @@
 Instance: FamilyGeneticGroup-London
 InstanceOf: FamilyGeneticGroup
 Title: "Family Genetic Group - London family (Duo)"
-Description: "Family Genetic Group for the London family: the fetus (Patient, proband) and mother (RelatedPerson)"
+Description: "Family Genetic Group for the London family: the fetus (proband) and mother, both Patients"
 Usage: #example
 
 * identifier[PedigreeNumber]
@@ -21,6 +21,5 @@ Usage: #example
   * entity = Reference(Patient-FetusLondon)
   * extension[relationship].valueCodeableConcept = $v3-RoleCode#ONESELF "self"
 * member[+]
-  * entity.display = "Cersei London (mother)"
-  * entity.extension[alternateReference].valueReference = Reference(RelatedPerson-MotherCerseiLondon)
+  * entity = Reference(Patient-London)
   * extension[relationship].valueCodeableConcept = $v3-RoleCode#MTH "mother"

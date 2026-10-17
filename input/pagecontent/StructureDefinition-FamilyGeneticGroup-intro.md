@@ -24,20 +24,19 @@ separately, and every one of those orders carries the Pedigree Number as its Ord
 
 ### Members
 
-Each member is a [Patient](StructureDefinition-Patient.html) (e.g. the proband) or a
-[RelatedPerson](StructureDefinition-RelatedPerson.html) (e.g. a parent who isn't a patient in their own right).
-FHIR R4 `Group.member.entity` can't reference a RelatedPerson, so a RelatedPerson member is carried in the
-[alternate-reference](http://hl7.org/fhir/extensions/StructureDefinition-alternate-reference.html) extension
-on `member.entity`.
+Each member is a [Patient](StructureDefinition-Patient.html) - the proband and each family member
+tested with them.
 
-Each member's relationship to the proband (father, mother, son, daughter, ...) uses the
-[Family Member Relationship](StructureDefinition-FamilyMemberRelationship.html) extension, coded from the HL7
-v3 [FamilyMember](http://terminology.hl7.org/ValueSet/v3-FamilyMember) value set. The proband is `ONESELF`.
+Each member's role in the family - their relationship to the proband (mother, father, son,
+daughter, ...) - is given by the [Family Member Relationship](StructureDefinition-FamilyMemberRelationship.html)
+extension, coded from the [RelatedPerson Relationship
+Type](http://hl7.org/fhir/R4/valueset-relatedperson-relationshiptype.html) value set
+(e.g. `MTH`, `FTH`, `SON`, `DAU`). The proband is `ONESELF`.
 
 ```mermaid
 graph LR
     G[FamilyGeneticGroup<br/>Pedigree Number] -->|member<br/>ONESELF| P[Patient<br/>Proband]
-    G -->|member<br/>e.g. MTH| R[RelatedPerson or Patient<br/>Family Member]
+    G -->|member<br/>e.g. MTH| R[Patient<br/>Family Member]
     SP[ServiceRequest<br/>Proband] -->|requisition| G
     SR[ServiceRequest<br/>Family Member] -->|requisition| G
 ```

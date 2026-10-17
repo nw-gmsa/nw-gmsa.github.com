@@ -31,23 +31,21 @@ its Pedigree Number (also known as Family Id), which each family member's order 
 * code ^short = "Family Structure: Singleton, Duo or Trio"
 
 * member MS
-* member.extension contains FamilyMemberRelationship named relationship 0..1 MS
+* member.extension contains FamilyMemberRelationship named relationship 1..1 MS
+* member.extension[relationship] ^short = "Role of the patient in the family: mother, father, son, daughter, ... (the proband is ONESELF)"
 * member.entity only Reference(Patient)
-* member.entity ^short = "Family member - a Patient, or a RelatedPerson via the alternate-reference extension"
-* member.entity ^comment = "FHIR R4 Group.member.entity cannot reference a RelatedPerson (R5 can). For a family member held as a RelatedPerson, put the RelatedPerson reference in the alternate-reference extension on member.entity, with display or identifier as the R4 reference."
-* member.entity.extension contains http://hl7.org/fhir/StructureDefinition/alternate-reference named alternateReference 0..1 MS
-* member.entity.extension[alternateReference].value[x] only Reference(RelatedPerson)
+* member.entity ^short = "Family member (Patient)"
 
 
 Extension:      FamilyMemberRelationship
 Id:             FamilyMemberRelationship
 Title:          "Family Member Relationship"
-Description:    "The family member's relationship to the proband, e.g. father, mother, son, daughter. The proband is `ONESELF`."
+Description:    "The role of the patient in the family group - their relationship to the proband, e.g. mother, father, son, daughter. The proband is `ONESELF`."
 * ^context.type = #element
 * ^context.expression = "Group.member"
 * value[x] 1..1
 * value[x] only CodeableConcept
-* valueCodeableConcept from http://terminology.hl7.org/ValueSet/v3-FamilyMember (extensible)
+* valueCodeableConcept from http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype (required)
 
 
 ValueSet:       FamilyStructure
