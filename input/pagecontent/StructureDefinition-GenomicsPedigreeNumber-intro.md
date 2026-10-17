@@ -1,9 +1,12 @@
-## NHS Data Dictionary and Model
+### NHS Data Dictionary and Model
 
 No NHS Data Dictionary entry - this identifier is specific to genomics family
 studies and is not a nationally-defined NHS data item. See also [Medical Record
-Number](StructureDefinition-MedicalRecordNumber.html) for the equivalent
-individual-patient identifier this complements.
+Number](StructureDefinition-MedicalRecordNumber.html) for the
+individual-patient identifier. The Pedigree Number is **not** a patient
+identifier: it identifies the family as a whole ([Family Genetic
+Group](StructureDefinition-FamilyGeneticGroup.html)) and is used as the Order Group
+Number on each family member's order.
 
 The underlying concept - numbering a family/pedigree as a unit, distinct from
 numbering each individual - is rooted in general clinical genetics/genetic
@@ -21,24 +24,24 @@ participant's relationship to their family's proband. So the concept is
 real and used by Genomics England, but it is an application of the wider
 clinical genetics convention above, not a Genomics-England-specific invention.
 
-**Ubiquitous terms:** Pedigree Number, Family ID, Kindred Number.
+**Ubiquitous terms:** Pedigree Number, Family Id, Kindred Number.
 
-## Mapping
+### Mapping
 
 | Ubiquitous Term | HL7 FHIR             | HL7 v2                            | OID  | Notes |
 |-------------------|--------------------------|--------------------------------------|------|-------|
-| Pedigree Number    | Patient.identifier (type = PI) | Patient Identifier List (PID-3) | none - locally assigned, system fixed to `https://fhir.nhs.uk/Id/genomics-pedigree-number` | Identifies a family/pedigree group across related [Distributed WGS (dWGS)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md) participants - a "Patient internal identifier" (PI), not the patient's own medical record number (MR) |
+| Pedigree Number    | FamilyGeneticGroup.identifier:PedigreeNumber, ServiceRequest.requisition (type = PGN) | Placer Group Number (ORC-4) | none - locally assigned, system fixed to `https://fhir.nhs.uk/Id/genomics-pedigree-number` | Identifies a family/pedigree tested together, e.g. related [Distributed WGS (dWGS)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md) participants. Not a patient identifier |
 {:.grid}
 
-## Examples
+### Examples
 
-### HL7 v2 CX
+#### HL7 v2 EI
 
 ```aiignore
-PED-2026-0042^^^R0A^PI
+PED-2026-0042^R0A
 ```
 
-### HL7 FHIR Identifier
+#### HL7 FHIR Identifier
 
 ```json
 {
@@ -46,7 +49,7 @@ PED-2026-0042^^^R0A^PI
     "coding": [
       {
         "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
-        "code": "PI"
+        "code": "PGN"
       }
     ]
   },

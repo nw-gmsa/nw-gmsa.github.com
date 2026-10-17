@@ -256,3 +256,8 @@ Bucket for local codes
 // WGS Test Additional Ask At Order Entry Questions
 * #WGSParticipantTypeProband "Proband"
 * #WGSParticipantTypeFamilyMember "Family Member"
+
+// Pedigree Group (Group.code) - dWGS Family Structure
+* #FamilyStructureSingleton "Singleton"
+* #FamilyStructureDuo "Duo"
+* #FamilyStructureTrio "Trio"
