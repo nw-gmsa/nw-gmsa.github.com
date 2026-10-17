@@ -4,9 +4,9 @@ Title: "Composition - Genomics Report Octavia CHISLETT"
 Description: "Composition - Genomics Report Octavia CHISLETT"
 Usage: #example
 
-* extension[+]
-  * url = "http://hl7.eu/fhir/extensions/StructureDefinition/composition-diagnosticReportReference"
-  * valueReference.reference = "urn:uuid:233ff41a-5067-46c4-b6aa-5d6f87719f5f"
+//* extension[+]
+//  * url = "http://hl7.eu/fhir/extensions/StructureDefinition/composition-diagnosticReportReference"
+//  * valueReference.reference = "urn:uuid:233ff41a-5067-46c4-b6aa-5d6f87719f5f"
 
 * identifier
   * value = "25edee2b-add8-4522-9fa2-1ee8f229bd75"
