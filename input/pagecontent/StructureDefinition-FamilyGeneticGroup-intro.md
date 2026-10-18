@@ -13,11 +13,15 @@ A family (pedigree) whose members are tested together, for example a [Distribute
 The group is identified by its [Pedigree Number](StructureDefinition-GenomicsPedigreeNumber.html),
 also known as **Family Id**. It is **not** a patient identifier: each family member is ordered
 separately, and every one of those orders carries the Pedigree Number as its Order Group Number.
+For dWGS the family can also (or instead) be identified by the NGIS `referral_id` from TOMS, which
+can likewise be used as the Order Group Number.
 
 | Ubiquitous Term | HL7 FHIR | HL7 v2 |
 |-----------------|----------|--------|
 | Pedigree Number (Family Id) | `Group.identifier:PedigreeNumber` | - |
 | Pedigree Number (Family Id) | `ServiceRequest.requisition` ([Order Group Number](StructureDefinition-OrderGroupNumber.html)) | ORC-4 Placer Group Number |
+| NGIS Referral Id (`referral_id`, dWGS) | `Group.identifier:ReferralId` ([NGIS Referral Id](StructureDefinition-NGISReferralId.html)) | - |
+| NGIS Referral Id (`referral_id`, dWGS) | `ServiceRequest.requisition` | ORC-4 Placer Group Number |
 | Family Structure | `Group.code` ([Family Structure](ValueSet-FamilyStructure.html): Singleton, Duo, Trio) | - |
 | Relationship to proband | `Group.member.extension:relationship` ([Family Member Relationship](StructureDefinition-FamilyMemberRelationship.html)) | - |
 {:.grid}

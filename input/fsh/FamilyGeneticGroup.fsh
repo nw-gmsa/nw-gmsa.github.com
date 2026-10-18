@@ -4,8 +4,9 @@ Id:             FamilyGeneticGroup
 Title:          "Family Genetic Group"
 Description:    """
 A family (pedigree) tested together, e.g. a Distributed WGS (dWGS) Singleton, Duo or Trio. The group is identified by
-its Pedigree Number (also known as Family Id), which each family member's order carries as its Order Group Number
-(`ServiceRequest.requisition`, HL7 v2 ORC-4 Placer Group Number). The Pedigree Number is not a patient identifier.
+its Pedigree Number (also known as Family Id) and/or, for dWGS, the NGIS `referral_id` from TOMS. Either can be carried
+on each family member's order as its Order Group Number (`ServiceRequest.requisition`, HL7 v2 ORC-4 Placer Group
+Number). Neither is a patient identifier.
 """
 
 * identifier 1..* MS
@@ -16,7 +17,12 @@ its Pedigree Number (also known as Family Id), which each family member's order 
 * identifier ^slicing.ordered = false
 
 * identifier contains
-  PedigreeNumber 1..1 MS
+  PedigreeNumber 0..1 MS
+  and ReferralId 0..* MS
+
+* identifier[ReferralId] only NGISReferralId
+* identifier[ReferralId] ^short = "NGIS Referral Id (referral_id from TOMS)"
+* identifier[ReferralId] ^definition = "The dWGS referral_id returned by TOMS. Can be used as the Order Group Number (ServiceRequest.requisition, HL7 v2 ORC-4 Placer Group Number) on each family member's order."
 
 * identifier[PedigreeNumber] only GenomicsPedigreeNumber
 * identifier[PedigreeNumber] ^short = "Pedigree Number (Family Id)"
