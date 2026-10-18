@@ -4,6 +4,7 @@ No NHS Data Dictionary entry. The `referral_id` is returned by TOMS (Test Order 
 for a [Distributed WGS (dWGS)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md) referral. Every
 participant tested together in that referral shares it, so it identifies the family
 ([Family Genetic Group](StructureDefinition-FamilyGeneticGroup.html)) and can be used as the Order Group Number.
+It is always assigned by Genomics England Limited (ODS `8J834`).
 
 **Ubiquitous terms:** NGIS Referral Id, `referral_id`, Referral ID.
 
@@ -11,7 +12,7 @@ participant tested together in that referral shares it, so it identifies the fam
 
 | Ubiquitous Term | HL7 FHIR | HL7 v2 | OID | Notes |
 |-----------------|----------|--------|-----|-------|
-| NGIS Referral Id | FamilyGeneticGroup.identifier:ReferralId, ServiceRequest.requisition (type = PGN) | Placer Group Number (ORC-4) | none | Shared by all participants in the referral |
+| NGIS Referral Id | FamilyGeneticGroup.identifier:ReferralId, ServiceRequest.requisition (type = PGN) | Placer Group Number (ORC-4) | none | Shared by all participants in the referral. Assigner Genomics England Limited (ODS `8J834`) |
 {:.grid}
 
 Combined with the participant's `patient_ngis_id` it forms the per-participant [NGIS Composite Order
