@@ -15,9 +15,6 @@ It is always assigned by Genomics England Limited (ODS `8J834`).
 | NGIS Referral Id | FamilyGeneticGroup.identifier:ReferralId, ServiceRequest.requisition (type = PGN) | Placer Group Number (ORC-4) | none | Shared by all participants in the referral. Assigner Genomics England Limited (ODS `8J834`) |
 {:.grid}
 
-Combined with the participant's `patient_ngis_id` it forms the per-participant [NGIS Composite Order
-Number](StructureDefinition-NGISCompositeOrderNumber.html).
-
 ### Examples
 
 #### HL7 v2 EI

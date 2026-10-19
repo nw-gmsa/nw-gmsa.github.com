@@ -61,7 +61,7 @@ Usage:  #definition
     * item[+]
       * linkId = "dWGS/placer_order_number-designNote"
       * type = #display
-      * text = "NW GMS local extension (manifest column 38, CRF-2026-059). Unique order identifier assigned by the sending system (e.g. NEY-DWGS-00000001) - identifier.type = PLAC (v2-0203), HL7 v2 ORC-2/OBR-2. Separate from the Referral ID (ServiceRequest.requisition) above; stable across retransmission and never reused. Format and assigning authority still to be agreed with NE&Y Genomics."
+      * text = "NW GMS local extension (manifest column 38, CRF-2026-059). The dispatched sample LSID (see Specimen Barcode, dWGS/dispatched_sample_lsid), assigned by the sending GLH laboratory (identifier.assigner = its ODS code, e.g. 699C0, 699N0, 699D0) - identifier.type = PLAC (v2-0203), HL7 v2 ORC-2/OBR-2. Separate from the Referral ID (ServiceRequest.requisition) above: referral_id and patient_ngis_id are not unique, so neither (nor their combination) can serve as the order number."
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 // Test Code

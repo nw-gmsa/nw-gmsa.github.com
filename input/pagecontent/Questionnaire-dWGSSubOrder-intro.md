@@ -35,7 +35,7 @@ those other Ask At Order Entry Questionnaires' own Summary sections list:
 | Hospital Number (Medical Record Number) | `patient_medical_record_number` | `Patient.identifier:MedicalRecordNumber` |
 | Patient Identifier (NGIS) | `patient_ngis_id` | `Patient.identifier` (assigner Genomics England, ODS `8J834`) |
 | Original Order Placer Group Number (Referral ID) | `referral_id` | `ServiceRequest.requisition` |
-| Placer Order Number | `placer_order_number` | `ServiceRequest.identifier:OrderIdentifier` (type=PLAC) |
+| Placer Order Number | `placer_order_number` | `ServiceRequest.identifier:OrderIdentifier` (type=PLAC) - the dispatched sample LSID, assigned by the sending GLH laboratory (ODS code) |
 | Test Code | `clinical_indication_test_type_id` | `ServiceRequest.code.coding` (`England-GenomicTestDirectory`) |
 | Original Ordering Facility Code | `ordering_entity_id` | `Specimen.identifier.assigner.identifier.value` |
 | Filler Order Ordering Facility Code (GLH) | `glh_laboratory_id` | `ServiceRequest.requester.identifier.value` |
