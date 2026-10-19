@@ -28,7 +28,7 @@ sub-contracted digital manifest).
 | Referral / Sub-Order | Test Code | `dWGS/clinical_indication_test_type_id` | `ServiceRequest.code` | Fills a gap - no WGS Test Category exists in the base's Test Code branches |
 | Referral / Sub-Order | Original Ordering Facility Code | `dWGS/ordering_entity_id` | `Specimen.identifier.assigner.identifier.value` | Overlaps conceptually with the base's Referring Organisation ODS Code (HL7/ORC-21) |
 | Referral / Sub-Order | Filler Order Ordering Facility Code (GLH) | `dWGS/glh_laboratory_id` | `ServiceRequest.requester.identifier.value` | Overlaps conceptually with the base's Referring Organisation ODS Code (HL7/ORC-21) |
-| Referral / Sub-Order | Retrospective Sample Flag | `dWGS/retrospective_sample` | `ServiceRequest.intent` | - |
+| Referral / Sub-Order | Retrospective Sample Flag | `dWGS/retrospective_sample` | `ServiceRequest.specimen` | Add-on order on a pre-existing (stored) specimen, not a reflex order - `intent` stays `filler-order`; HL7 v2 OBR-11 = A |
 | Referral / Sub-Order | Clinical Information | `dWGS/clinical_information` | `ServiceRequest.note` | Same FHIR target as the base's Relevant clinical information (HL7/NTE-1), different v2 NTE occurrence |
 | Referral / Sub-Order | Approved By | `dWGS/approved_by` | - | - |
 | Patient | Patient Identifier (NGIS) | `dWGS/patient_ngis_id` | `Patient.identifier` | Base Patient group (name/DOB/NHS number/Hospital Number) is not repeated |

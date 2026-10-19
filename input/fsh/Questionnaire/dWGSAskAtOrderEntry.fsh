@@ -112,14 +112,24 @@ Usage:  #definition
     * type = #string
     * linkId = "dWGS/retrospective_sample"
     * text = "Retrospective Sample Flag"
-    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.intent"
+    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.specimen"
     * item[+]
       * linkId = "dWGS/retrospective_sample-designNote"
       * type = #display
       * text = """
-      Values: "New" (ServiceRequest.intent = filler-order) or "Retrospective"
-      (ServiceRequest.intent = reflex-order - NW Genomics is reflexing further testing
-      off a specimen it already holds, not a fresh sub-order).
+      Values: "New" or "Retrospective". Interpreted as an add-on order, not a reflex
+      order: "Retrospective" means the WGS order is being fulfilled from a specimen
+      (typically stored DNA) the RGL already holds from earlier collection or testing,
+      rather than a sample collected for this referral. The order itself is still
+      clinician-requested (LAB-1) and sub-contracted to the SGL, so
+      ServiceRequest.intent = filler-order in both cases - reflex-order is reserved for
+      testing the Order Filler triggers itself from an earlier result.
+      In FHIR, ServiceRequest.specimen references the pre-existing Specimen, whose
+      collection.collectedDateTime/receivedTime predate the referral. In HL7 v2 the
+      equivalent is OBR-11 Specimen Action Code = A (add ordered tests to the existing
+      specimen). The flag alone does not identify the earlier specimen or order - the
+      original sample identifier/order filler number would be needed to link them.
+      Interpretation pending confirmation from NHS England (RGL to SGL SOP).
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
