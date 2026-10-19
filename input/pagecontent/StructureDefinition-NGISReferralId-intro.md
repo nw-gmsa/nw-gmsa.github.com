@@ -20,7 +20,7 @@ It is always assigned by Genomics England Limited (ODS `8J834`).
 #### HL7 v2 EI
 
 ```aiignore
-r2026000203^8J834
+r26000000203^8J834
 ```
 
 #### HL7 FHIR Identifier
@@ -36,7 +36,7 @@ r2026000203^8J834
     ]
   },
   "system": "https://fhir.nwgenomics.nhs.uk/Identifier/NGIS-ReferralIdentifier",
-  "value": "r2026000203",
+  "value": "r26000000203",
   "assigner": {
     "identifier": {
       "system": "https://fhir.nhs.uk/Id/ods-organization-code",

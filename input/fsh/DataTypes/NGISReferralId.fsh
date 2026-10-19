@@ -11,6 +11,6 @@ Assigned by Genomics England Limited (ODS `8J834`).
 
 * system = "https://fhir.nwgenomics.nhs.uk/Identifier/NGIS-ReferralIdentifier" (exactly)
 * value ^example.label = "dWGS Trio"
-* value ^example.valueString = "r2026000203"
+* value ^example.valueString = "r26000000203"
 * assigner ^short = "Genomics England Limited (TOMS)"
 * assigner.identifier.value = "8J834"

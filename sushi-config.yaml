@@ -284,29 +284,29 @@ resources:
     name: Shire Cytogenetics Report R01 - Future Structured Example (FISH)
     description: Illustrative future-state structured FHIR equivalent of the Shire-2 LAB-36 cytogenetics R01 message (Haemato-Oncology Diagnostic Pathway), including a FISH panel result, converted from the raw HL7 v2 sample
     exampleBoolean: true
-  Bundle/dWGS-Singleton-r2026000201:
+  Bundle/dWGS-Singleton-r26000000201:
     name: dWGS Sub-order - Singleton
     description: Distributed WGS (dWGS) LAB-35 sub-order from NE&Y Genomics (RGL) to NW Genomics (SGL) - a Singleton (Proband only) referral
     exampleBoolean: true
-  Bundle/dWGS-Duo-r2026000202-p2026000102:
+  Bundle/dWGS-Duo-r26000000202-p26000000102:
     name: dWGS Sub-order - Duo (Proband)
-    description: Distributed WGS (dWGS) LAB-35 sub-order - the Proband half of a Duo referral (see dWGS-Duo-r2026000202-p2026000103 for the Family Member)
+    description: Distributed WGS (dWGS) LAB-35 sub-order - the Proband half of a Duo referral (see dWGS-Duo-r26000000202-p26000000103 for the Family Member)
     exampleBoolean: true
-  Bundle/dWGS-Duo-r2026000202-p2026000103:
+  Bundle/dWGS-Duo-r26000000202-p26000000103:
     name: dWGS Sub-order - Duo (Family Member)
-    description: Distributed WGS (dWGS) LAB-35 sub-order - the Family Member half of a Duo referral (see dWGS-Duo-r2026000202-p2026000102 for the Proband)
+    description: Distributed WGS (dWGS) LAB-35 sub-order - the Family Member half of a Duo referral (see dWGS-Duo-r26000000202-p26000000102 for the Proband)
     exampleBoolean: true
-  Bundle/dWGS-Trio-r2026000203-p2026000104:
+  Bundle/dWGS-Trio-r26000000203-p26000000104:
     name: dWGS Sub-order - Trio (Proband)
-    description: Distributed WGS (dWGS) LAB-35 sub-order - the Proband member of a Trio referral (see dWGS-Trio-r2026000203-p2026000105/106 for the two Family Members)
+    description: Distributed WGS (dWGS) LAB-35 sub-order - the Proband member of a Trio referral (see dWGS-Trio-r26000000203-p26000000105/106 for the two Family Members)
     exampleBoolean: true
-  Bundle/dWGS-Trio-r2026000203-p2026000105:
+  Bundle/dWGS-Trio-r26000000203-p26000000105:
     name: dWGS Sub-order - Trio (Family Member 1)
-    description: Distributed WGS (dWGS) LAB-35 sub-order - a Family Member of a Trio referral (see dWGS-Trio-r2026000203-p2026000104 for the Proband)
+    description: Distributed WGS (dWGS) LAB-35 sub-order - a Family Member of a Trio referral (see dWGS-Trio-r26000000203-p26000000104 for the Proband)
     exampleBoolean: true
-  Bundle/dWGS-Trio-r2026000203-p2026000106:
+  Bundle/dWGS-Trio-r26000000203-p26000000106:
     name: dWGS Sub-order - Trio (Family Member 2)
-    description: Distributed WGS (dWGS) LAB-35 sub-order - a Family Member of a Trio referral (see dWGS-Trio-r2026000203-p2026000104 for the Proband)
+    description: Distributed WGS (dWGS) LAB-35 sub-order - a Family Member of a Trio referral (see dWGS-Trio-r26000000203-p26000000104 for the Proband)
     exampleBoolean: true
   QuestionnaireResponse/HLATestsTransplantAskAtOrderEntry-HLAAS:
     name: HLA Tests - Transplant Ask At Order Entry Response - HLA Antibody Screening
@@ -485,12 +485,12 @@ groups:
     name: "Example: Distributed WGS (dWGS) Sub-contracted Order"
     description: "LAB-35 sub-orders from a Requesting Genomic Laboratory (RGL) to a Sequencing Genomic Laboratory (SGL), covering Singleton, Duo and Trio family structures"
     resources:
-      - Bundle/dWGS-Singleton-r2026000201
-      - Bundle/dWGS-Duo-r2026000202-p2026000102
-      - Bundle/dWGS-Duo-r2026000202-p2026000103
-      - Bundle/dWGS-Trio-r2026000203-p2026000104
-      - Bundle/dWGS-Trio-r2026000203-p2026000105
-      - Bundle/dWGS-Trio-r2026000203-p2026000106
+      - Bundle/dWGS-Singleton-r26000000201
+      - Bundle/dWGS-Duo-r26000000202-p26000000102
+      - Bundle/dWGS-Duo-r26000000202-p26000000103
+      - Bundle/dWGS-Trio-r26000000203-p26000000104
+      - Bundle/dWGS-Trio-r26000000203-p26000000105
+      - Bundle/dWGS-Trio-r26000000203-p26000000106
   -ex-example-histocompatibility:
     name: "Example: HLA Tests - Transplant Ask At Order Entry"
     description: "QuestionnaireResponse answering HLA Tests - Transplant Ask At Order Entry, sourced from a live Histotrac ORM^O01 HLA Antibody Screening (Transplant) order"
