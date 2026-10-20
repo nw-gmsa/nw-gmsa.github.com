@@ -324,7 +324,19 @@ Usage:  #definition
     * item[+]
       * linkId = "LN/66746-9-designNote"
       * type = #display
-      * text = "The manifest's primary_sample_state is the Genomics England TOMS sampleState (e.g. blood_unsorted_edta), which combines three GEL enumerations. It is split: SampleSource to Specimen.type (with this SNOMED CT answer, and the original value as text), Method to Specimen.collection.method and StorageMedium to Specimen.processing."
+      * text = "The SNOMED CT code for the SampleSource part of Sample State (dWGS/primary_sample_state) below."
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+// Sample State (GEL TOMS sampleState)
+
+  * item[+]
+    * type = #string
+    * linkId = "dWGS/primary_sample_state"
+    * text = "Sample State"
+    * item[+]
+      * linkId = "dWGS/primary_sample_state-designNote"
+      * type = #display
+      * text = "The manifest's primary_sample_state, the Genomics England TOMS sampleState (e.g. blood_unsorted_edta). It combines three GEL enumerations and is split: SampleSource to Specimen.type (with the SNOMED CT Sample Material Type above, and this value as text), Method to Specimen.collection.method and StorageMedium to Specimen.processing."
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 // Sample Topography (cancer only)
