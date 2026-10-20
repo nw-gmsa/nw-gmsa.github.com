@@ -162,6 +162,8 @@ Usage:  #definition
     * code = #"Pl F"
     * equivalence = #equivalent
 
-
-
-
+* group.element[+]
+  * code = #258566005 "Deoxyribonucleic acid sample"
+  * target[+]
+    * code = #"SAMPLE: Ext DNA"
+    * equivalence = #equivalent
