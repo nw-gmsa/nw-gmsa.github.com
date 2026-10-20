@@ -39,6 +39,8 @@ Number). Neither is a patient identifier.
 * member MS
 * member.extension contains FamilyMemberRelationship named relationship 1..1 MS
 * member.extension[relationship] ^short = "Role of the patient in the family: mother, father, son, daughter, ... (the proband is ONESELF)"
+* member.extension contains FamilyMemberHistoryReference named familyMemberHistory 0..1 MS
+* member.extension[familyMemberHistory] ^short = "Family history of this member, relative to the proband"
 * member.entity only Reference(Patient)
 * member.entity ^short = "Family member (Patient)"
 
@@ -52,6 +54,16 @@ Description:    "The role of the patient in the family group - their relationshi
 * value[x] 1..1
 * value[x] only CodeableConcept
 * valueCodeableConcept from http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype (required)
+
+
+Extension:      FamilyMemberHistoryReference
+Id:             FamilyMemberHistoryReference
+Title:          "Family Member History Reference"
+Description:    "The [FamilyMemberHistory](StructureDefinition-FamilyMemberHistory.html) recorded for this family member, in relation to the proband. Sits alongside the [Family Member Relationship](StructureDefinition-FamilyMemberRelationship.html) extension."
+* ^context.type = #element
+* ^context.expression = "Group.member"
+* value[x] 1..1
+* value[x] only Reference(FamilyMemberHistory)
 
 
 ValueSet:       FamilyStructure

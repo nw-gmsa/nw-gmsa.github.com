@@ -24,6 +24,7 @@ can likewise be used as the Order Group Number.
 | NGIS Referral Id (`referral_id`, dWGS) | `ServiceRequest.requisition` | ORC-4 Placer Group Number |
 | Family Structure | `Group.code` ([Family Structure](ValueSet-FamilyStructure.html): Singleton, Duo, Trio) | - |
 | Relationship to proband | `Group.member.extension:relationship` ([Family Member Relationship](StructureDefinition-FamilyMemberRelationship.html)) | - |
+| Family member history | `Group.member.extension:familyMemberHistory` ([Family Member History Reference](StructureDefinition-FamilyMemberHistoryReference.html)) | - |
 {:.grid}
 
 ### Members
@@ -36,6 +37,9 @@ daughter, ...) - is given by the [Family Member Relationship](StructureDefinitio
 extension, coded from the [RelatedPerson Relationship
 Type](http://hl7.org/fhir/R4/valueset-relatedperson-relationshiptype.html) value set
 (e.g. `MTH`, `FTH`, `SON`, `DAU`). The proband is `ONESELF`.
+
+Alongside it, the [Family Member History Reference](StructureDefinition-FamilyMemberHistoryReference.html)
+extension can point to that member's [FamilyMemberHistory](StructureDefinition-FamilyMemberHistory.html).
 
 ```mermaid
 graph LR
