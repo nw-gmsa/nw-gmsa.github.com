@@ -321,6 +321,11 @@ Usage:  #definition
     * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type.coding.code"
     * answerValueSet = Canonical(SpecimenType)
     * text = "Sample Material Type"
+    * item[+]
+      * linkId = "LN/66746-9-designNote"
+      * type = #display
+      * text = "The manifest's primary_sample_state is the Genomics England TOMS sampleState (e.g. blood_unsorted_edta), which combines three GEL enumerations. It is split: SampleSource to Specimen.type (with this SNOMED CT answer, and the original value as text), Method to Specimen.collection.method and StorageMedium to Specimen.processing."
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 // Sample Topography (cancer only)
 
