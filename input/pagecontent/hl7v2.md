@@ -280,8 +280,8 @@ This is based on the definition of ORC from [Digital Health and Care Wales - HL7
 | Field HL7 | Fieldname                | Data Type   | Optionality                                  | Identifier Type or ValueSet                                                | Example Values                                        | Description |
 |-----------|--------------------------|-------------|----------------------------------------------|----------------------------------------------------------------------------|-------------------------------------------------------|-------------|
 | ORC-2     | Placer Order Number      | [EI](#ei)   | R <span class="badge badge-danger">S</span> | [Order Identifier](StructureDefinition-OrderIdentifier.html)               | 1601737^R0A^150^L                                     | The referring system's own order number (ubiquitous terms: **Order Number**, **Placer Order Number**). |
-| ORC-3     | Filler Order Number      | [EI](#ei)   | O                                            | [Report Identifier](StructureDefinition-ReportIdentifier.html)             | 1001166717^699X0^^255^ISO                             | The receiving laboratory's own order/report number (ubiquitous terms: **Report Number**, **Filler Order Number**). |
-| ORC-4     | Placer Group Number      | [EI](#ei)   | O <span class="badge badge-danger">S</span>                                           | [Order Group Number](StructureDefinition-OrderGroupNumber.html)           | 1001166717^699X0^^255^ISO                             | Links several orders placed together, e.g. a panel (ubiquitous terms: **Order Group Number**, **Panel Number**). |
+| ORC-3     | Filler Order Number      | [EI](#ei)   | O                                            | [Order Identifier](StructureDefinition-OrderIdentifier.html) (type `FILL`) | R25012345^699X0                                       | The receiving laboratory's own number for the order, e.g. the iGene **R-Number**. Maps to `ServiceRequest.identifier` (ubiquitous terms: **Filler Order Number**, **Lab Order Number**). |
+| ORC-4     | Placer Group Number      | [EI](#ei)   | O <span class="badge badge-danger">S</span>                                           | [Order Group Number](StructureDefinition-OrderGroupNumber.html)           | r25012345678^8J834                                    | Assigned by the ordering system to link several orders placed together, e.g. the NGIS Referral Id or a panel (ubiquitous terms: **Order Group Number**, **Panel Number**). |
 | ORC-5     | Order Status             |             | O                                            |                                                                            |                                                         | The current status of the order (ubiquitous term: **Order Status**). |
 | ORC-9     | Date/Time of Transaction | TS          | O                                            |                                                                            |                                                         | When this order message was created/transacted (ubiquitous term: **Transaction Date/Time**). |
 | ORC-12    | Ordering Provider        | [XCN](#xcn) | O                                            | [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html) | C3456789^Darwin^Samuel^^^Dr^^^GMC                     | The clinician who placed the order (ubiquitous terms: **Ordering Provider**, **Requesting Clinician**). |
@@ -297,7 +297,7 @@ This is based on the definition of ORC from [Digital Health and Care Wales - HL7
 #### Examples
 
 ```
-ORC|NW|1601737^R0A|1001166717^699X0||||||20250129|||C3456789^Darwin^Samuel^^^Dr^^^GMC|||||||||^^R0A^^^ODS
+ORC|NW|1601737^R0A|R25012345^699X0||||||20250129|||C3456789^Darwin^Samuel^^^Dr^^^GMC|||||||||^^R0A^^^ODS
 ```
 
 > FHIR Resource Example: [ServiceRequest Coded Entries Example](ServiceRequest-ServiceRequestGenomicsOrderCodedEntries.html)
@@ -310,7 +310,7 @@ This is based on the definition of OBR from [Digital Health and Care Wales - HL7
 |-----------|------------------------------------|-------------|----------------------------------------------|-----------------------------------------------------------------------------------|-----------------------------------------------------------------------------|-------------|
 | OBR-1     | Set ID - OBR                       |             | R                                            |                                                                                   | 1                                                                           | Sequence number of this order/observation-request group within the message (ubiquitous term: **Set ID**). |
 | OBR-2     | Placer Order Number                | [EI](#ei)   | O <span class="badge badge-danger">S</span> | [Order Identifier](StructureDefinition-OrderIdentifier.html)                      | 1601737^ R0A^150^L                                                          | The referring system's own order number, repeated from ORC-2 (ubiquitous terms: **Order Number**, **Placer Order Number**). |
-| OBR-3     | Filler Order Number                | [EI](#ei)   | R <span class="badge badge-danger">S</span> | [Report Identifier](StructureDefinition-ReportIdentifier.html)                   | 1001166717^699X0^^255^ISO                                                   | The receiving laboratory's own order/report number, repeated from ORC-3 (ubiquitous terms: **Report Number**, **Filler Order Number**). |
+| OBR-3     | Filler Order Number                | [EI](#ei)   | R <span class="badge badge-danger">S</span> | [Report Identifier](StructureDefinition-ReportIdentifier.html)                   | T25067890^699X0                                                             | The receiving laboratory's own number for this test/report, e.g. the iGene **T-Number**. Maps to `DiagnosticReport.identifier`. This may differ from ORC-3 (the order), see note below (ubiquitous terms: **Report Number**, **Test Number**, **Filler Order Number**). |
 | OBR-4     | Universal Service Identifier       |             | R <span class="badge badge-danger">S</span>                                           | [Genomic Test Directory](ValueSet-GenomicTestCodes.html)                    | R240.1^Diagnostic testing for known variant(s)^England-GenomicTestDirectory | The test/panel being requested or reported on (ubiquitous term: **Test Code**). |
 | OBR-6     | Requested Date/Time                | TS          | R for OML_O21                                |                                                                                   | 20170126135745                                                              | When the order was requested (ubiquitous term: **Requested Date/Time**). |
 | OBR-7     | Observation Date/Time              | TS          | R for ORU_R01 <span class="badge badge-danger">S</span>                               |                                                                                   | 20170126135745                                                              | When the specimen/observation was taken (ubiquitous term: **Observation Date/Time**). |
@@ -324,6 +324,10 @@ This is based on the definition of OBR from [Digital Health and Care Wales - HL7
 | OBR-46    | Placer Supplemental Service Information | CWE    | O                                            |                                                                                   |                                                                              | Further coded qualifier(s) on the requested service, supplementing OBR-4 rather than replacing it - maps to FHIR `ServiceRequest.orderDetail` (ubiquitous term: **Supplemental Service Information**). |
 {:.grid}
 
+<div class="alert alert-warning" role="alert">
+<b>ORC-3 and OBR-3:</b> HL7 v2.5.1 expects OBR-3 to repeat ORC-3. In this guide they can differ: ORC-3 is the laboratory's number for the order (e.g. iGene R-Number, <code>ServiceRequest.identifier</code>) and OBR-3 is its number for each test/report under that order (e.g. iGene T-Number, <code>DiagnosticReport.identifier</code>). This follows the <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-message-oru-r01-to-bundle.html" _target="_blank">v2 to FHIR ORU_R01 mapping</a>. Receivers that check ORC-3 = OBR-3 need to allow for this.
+</div>
+
 <div class="alert alert-info" role="alert">
 <b>v2 to FHIR Conversion OML_O21:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obr-to-servicerequest.html" _target="_blank">OBR to FHIR ServiceRequest</a> 
 <br/>
@@ -335,7 +339,7 @@ This is based on the definition of OBR from [Digital Health and Care Wales - HL7
 #### Examples
 
 ```
-OBR|1|1601737^R0A|1001166717^699X0|R240.1^^England-GenomicTestDirectory||20250129||||||||||C3456789^Darwin^Samuel^^^Dr^^^GMC
+OBR|1|1601737^R0A|T25067890^699X0|R240.1^^England-GenomicTestDirectory||20250129||||||||||C3456789^Darwin^Samuel^^^Dr^^^GMC
 ```
 
 > FHIR Resource Example: [Diagnostic Report Example](DiagnosticReport-DiagnosticReportGenomicsReport.html)
@@ -511,15 +515,15 @@ Specimen Type is SNOMED CT, not HL7 v2 Table 0487, for conversion to SNOMED see 
 
 | Field HL7 | Fieldname                     | Data Type   | Optionality                                 | Identifier Type or ValueSet                                                   | Example Values                                     | Description |
 |-----------|-------------------------------|-------------|---------------------------------------------|-------------------------------------------------------------------------------|----------------------------------------------------|-------------|
-| SPM-2     | Specimen ID                   |             | O                                           | Placer Specimen Number^Filler Specimen Number                                 | 25GEN-029GN00001&R0A                               | The specimen's own identifier, from the requester and/or the laboratory (ubiquitous terms: **Specimen Number**, **Specimen ID**). |
-| SPM-3     | Specimen Parent IDs           |             | O <span class="badge badge-danger">S</span> |                                                                               | ^1001166717&699X0                                  | Identifiers of the order(s) this specimen relates to (ubiquitous terms: **Order Number**, **Report Number**). |
+| SPM-2     | Specimen ID                   |             | O                                           | Placer Specimen Number^[Specimen Accession Number](StructureDefinition-SpecimenAccessionNumber.html) | 25GEN-029GN00001&R0A^S25034567&699X0               | The specimen's own identifier. SPM-2.1 is the requester's number; SPM-2.2 (Filler Assigned Identifier) is the laboratory's own number, e.g. the iGene **S-Number**, which maps to `Specimen.accessionIdentifier` (ubiquitous terms: **Specimen Number**, **Specimen ID**, **Accession Number**, **Lab Number**). |
+| SPM-3     | Specimen Parent IDs           |             | O <span class="badge badge-danger">S</span> |                                                                               | ^R25012345&699X0                                   | Identifiers of the order(s) this specimen relates to, i.e. the Filler Order Number in ORC-3 (ubiquitous term: **Order Number**). |
 | SPM-4     | Specimen Type                 | [CWE](#cwe) | R <span class="badge badge-danger">S</span> | [Specimen Type](ValueSet-specimen-type.html)                                  | 119325001^Skin specimen^SNM3                       | What kind of specimen this is, e.g. blood, tissue (ubiquitous term: **Specimen Type**). |
 | SPM-8     | Specimen Source Site          | [CWE](#cwe) | O <span class="badge badge-danger">S</span> | [Specimen Body Site](ValueSet-specimen-bodysite.html)                         | 299706009^Bone structure of wrist and/or hand^SNM3 | Where on/in the body the specimen was taken from (ubiquitous term: **Body Site**). |
 | SPM-9     | Specimen Source Site Modifier |             | O                                           |                                                                               | 7771000^Left^SNM3                                  | A qualifier on the body site, e.g. left/right (ubiquitous term: **Body Site Modifier**, **Laterality**). |
 | SPM-17    | Specimen Collection Date/Time | TS          | O                                           |                                                                               |                                                    | When the specimen was taken from the patient (ubiquitous term: **Collection Date/Time**). |
 | SPM-18    | Specimen Received Date/Time   | TS          | O                                           |                                                                               |                                                    | When the specimen arrived at the laboratory (ubiquitous term: **Received Date/Time**). |
 | SPM-20    | Specimen Availability         |             | O                                           |                                                                               |                                                    | Whether the specimen is available for further testing (ubiquitous term: **Specimen Availability**). |
-| SPM-30    | Accession ID                  |             | O <span class="badge badge-danger">S</span> | [Specimen Accession Number](StructureDefinition-SpecimenAccessionNumber.html) |                                                    | The laboratory's own number for this specimen (ubiquitous terms: **Accession Number**, **Lab Number**). |
+| SPM-30    | Accession ID                  |             | Not used                                    | [Specimen Accession Number](StructureDefinition-SpecimenAccessionNumber.html) |                                                    | HL7 v2.7 and later only - not part of HL7 v2.5.1, which ends at SPM-29. For v2.5.1 feeds the laboratory's specimen number goes in SPM-2.2 (ubiquitous terms: **Accession Number**, **Lab Number**). |
 | SPM-32    | Shipment Tracking Number      |             | O                                           | [Shipment Tracking Number](StructureDefinition-ShipmentTrackingNumber.html)   |                                                    | The courier/logistics tracking number for the specimen's shipment (ubiquitous terms: **Tracking Number**, **Consignment Number**). |
 {:.grid}
 
@@ -532,6 +536,14 @@ Specimen Type is SNOMED CT, not HL7 v2 Table 0487, for conversion to SNOMED see 
 <br/>
 <b>FHIR Profile:</b> <a href="StructureDefinition-Specimen.html" _target="_blank">Specimen</a> 
 </div>
+
+#### Examples
+
+```
+SPM|1|25GEN-029GN00001&R0A^S25034567&699X0|^R25012345&699X0|258580003^Whole blood specimen^SNM3|||||||||||||20250129103726+0000|||Y
+```
+
+> FHIR Resource Example: [Specimen Example](Specimen-SpecimenExample.html)
 
 ### TXA
 
@@ -552,14 +564,6 @@ Specimen Type is SNOMED CT, not HL7 v2 Table 0487, for conversion to SNOMED see 
 <br/>
 <b>FHIR Profile:</b> <a href="StructureDefinition-DocumentReference.html" _target="_blank">DocumentReference</a> 
 </div>
-
-#### Examples
-
-```
-SPM|1|25GEN-029GN00001&R0A|^1001166717&699X0|258580003^Whole blood specimen^SNM3|||||||||||||20250129103726+0000|||Y
-```
-
-> FHIR Resource Example: [Specimen Example](Specimen-SpecimenExample.html)
 
 ## Data Types
 
