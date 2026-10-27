@@ -1,6 +1,6 @@
 Profile:        Observation
-Parent:         http://hl7.eu/fhir/base/StructureDefinition/medicalTestResult-eu-core
-//Parent:         http://hl7.eu/fhir/laboratory/StructureDefinition/Observation-resultslab-eu-lab
+//Parent:         http://hl7.eu/fhir/base/StructureDefinition/medicalTestResult-eu-core
+Parent:         http://hl7.eu/fhir/laboratory/StructureDefinition/Observation-resultslab-eu-lab
 Id:             Observation
 Title:          "Observation"
 Description:    """
@@ -11,18 +11,9 @@ Description:    """
 //* ^keyword[+] = #patientcare "Patient Care"
 //* ^keyword[+] = #diagnostics "Diagnostics"
 
-* category ^slicing.discriminator.type = #value
-* category ^slicing.discriminator.path = "coding"
-* category ^slicing.rules = #open
-* category ^slicing.description = "Slice based on the category code pattern"
-* category ^slicing.ordered = false
-
-* category contains labCategory 0..1
-                and geCategory 0..1
-* category[labCategory].coding 1..1
-* category[labCategory].coding = $OBSCAT#laboratory
-* category[geCategory].coding 1..1
-* category[geCategory].coding = $DIAGNOSTICSERVICE#GE
+// category slicing (pattern:$this) and category[laboratory] 1..1 are inherited from Observation-resultslab-eu-lab
+* category contains geCategory 0..1
+* category[geCategory] = $DIAGNOSTICSERVICE#GE
 
 * identifier 1..* MS
 

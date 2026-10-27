@@ -20,6 +20,7 @@ Description: "TODO"
 
 * subject = Reference(Patient-Sheffield)
 * subject.display = "Theon SHEFFIELD"
+* performer[+] = Reference(4446ab81-35ef-49cb-b2fe-1d6f1a0dcc02)
 
 * component[+]
   * code

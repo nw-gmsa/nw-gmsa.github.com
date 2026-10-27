@@ -19,6 +19,7 @@ Description: "TODO"
 
 * subject.reference = "urn:uuid:2160525b-0168-4f40-8ebf-9b053052a62c"
 * subject.display = "Theon SHEFFIELD"
+* performer[+] = Reference(4446ab81-35ef-49cb-b2fe-1d6f1a0dcc02)
 
 * component[0].code = $loinc#48018-6 "Gene studied [ID]"
 * component[=].valueCodeableConcept = $genenames#HGNC:3236 "EGFR"

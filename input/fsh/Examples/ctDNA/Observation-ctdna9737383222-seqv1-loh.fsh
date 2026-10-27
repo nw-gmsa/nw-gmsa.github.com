@@ -17,7 +17,7 @@ Usage: #example
 * status = #final
 
 * category[geCategory] = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
-* category[labCategory] = http://terminology.hl7.org/CodeSystem/observation-category#laboratory
+* category[laboratory] = http://terminology.hl7.org/CodeSystem/observation-category#laboratory
 
 * subject = Reference(Patient-Leeds)
 

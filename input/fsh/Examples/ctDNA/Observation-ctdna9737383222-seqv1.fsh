@@ -15,7 +15,7 @@ Usage: #example
 * status = #final
 
 * category[geCategory] = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
-* category[labCategory] = http://terminology.hl7.org/CodeSystem/observation-category#laboratory
+* category[laboratory] = http://terminology.hl7.org/CodeSystem/observation-category#laboratory
 
 * subject = Reference(Patient-Leeds)
 
@@ -71,6 +71,8 @@ Usage: #example
 
 * component[+].code = $loinc#81254-5 "Genomic allele start-end"
 * component[=].valueRange.low.value = 41276046
+* component[=].valueRange.low.system = $ucum
+* component[=].valueRange.low.code = #"{bp}"
 
 * component[+].code = $loinc#81258-6 "Sample variant allelic frequency [NFr]"
 * component[=].valueQuantity.value = 0.33

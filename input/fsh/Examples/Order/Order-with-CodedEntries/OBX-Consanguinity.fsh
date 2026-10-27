@@ -9,7 +9,7 @@ Description: "TODO. See also https://digital.nhs.uk/data-and-information/data-co
 
 * effectiveDateTime = "2025-01-29T10:37:26+00:00"
 
-* category[labCategory] = $OBSCAT#laboratory
+* category[laboratory] = $OBSCAT#laboratory
 
 * code
   * coding[+] = $sct#842009 "Consanguinity"

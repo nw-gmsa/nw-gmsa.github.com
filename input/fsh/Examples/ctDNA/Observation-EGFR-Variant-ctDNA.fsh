@@ -10,7 +10,7 @@ Description: "TODO"
 * effectiveDateTime = "2026-07-13T10:37:26+00:00"
 
 * category[geCategory] = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
-* category[labCategory] = http://terminology.hl7.org/CodeSystem/observation-category#laboratory
+* category[laboratory] = http://terminology.hl7.org/CodeSystem/observation-category#laboratory
 
 * code
   * coding[+]
@@ -20,6 +20,7 @@ Description: "TODO"
 
 * subject.reference = "urn:uuid:2160525b-0168-4f40-8ebf-9b053052a62c"
 * subject.display = "Theon SHEFFIELD"
+* performer[+] = Reference(4446ab81-35ef-49cb-b2fe-1d6f1a0dcc02)
 
 * valueCodeableConcept = $loinc#LA9633-4 "Present"
 
