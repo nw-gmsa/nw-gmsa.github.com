@@ -307,7 +307,9 @@
       },
       "valueRange": {
         "low": {
-          "value": 41276046
+          "value": 41276046,
+          "system": "http://unitsofmeasure.org",
+          "code": "{bp}"
         }
       }
     },

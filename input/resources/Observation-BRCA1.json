@@ -48,6 +48,13 @@
         },
         "display": "Octavia CHISLETT"
     },
+    "effectiveDateTime": "2025-10-23T10:37:26+00:00",
+    "performer": [
+        {
+            "type": "PractitionerRole",
+            "display": "Jonathan Edgerley"
+        }
+    ],
     "valueCodeableConcept": {
         "coding": [
             {

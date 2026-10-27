@@ -21,3 +21,6 @@ Description: "Based on HL7 LRI Example 3 (Ref 5.9.1.3)"
 // SNOMED Validation issues * code = $sct#1365861003 "Lynch syndrome gene mutation detected"
 * code = $sct#716318002 "Lynch syndrome"
 
+
+// eu-lab-1: a result needs a value
+* valueCodeableConcept = $sct#260373001 "Detected"

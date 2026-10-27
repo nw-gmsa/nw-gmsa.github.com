@@ -797,6 +797,11 @@
             "value": "9737383222"
           }
         },
+        "performer": [
+          {
+            "reference": "urn:uuid:223a5b16-7751-44a3-a890-ac1d6085ade5"
+          }
+        ],
         "effectiveDateTime": "2026-07-14T15:59:16+00:00",
         "component": [
           {
@@ -1151,7 +1156,9 @@
             },
             "valueRange": {
               "low": {
-                "value": 41276046
+                "value": 41276046,
+                "system": "http://unitsofmeasure.org",
+                "code": "{bp}"
               }
             }
           },
@@ -1507,10 +1514,14 @@
             },
             "valueRange": {
               "low": {
-                "value": 48797221
+                "value": 48797221,
+                "system": "http://unitsofmeasure.org",
+                "code": "{bp}"
               },
               "high": {
-                "value": 48802366
+                "value": 48802366,
+                "system": "http://unitsofmeasure.org",
+                "code": "{bp}"
               }
             }
           },
@@ -1818,10 +1829,14 @@
             },
             "valueRange": {
               "low": {
-                "value": 100652796
+                "value": 100652796,
+                "system": "http://unitsofmeasure.org",
+                "code": "{bp}"
               },
               "high": {
-                "value": 153792676
+                "value": 153792676,
+                "system": "http://unitsofmeasure.org",
+                "code": "{bp}"
               }
             }
           },
@@ -2075,10 +2090,14 @@
             },
             "valueRange": {
               "low": {
-                "value": 100652796
+                "value": 100652796,
+                "system": "http://unitsofmeasure.org",
+                "code": "{bp}"
               },
               "high": {
-                "value": 153792676
+                "value": 153792676,
+                "system": "http://unitsofmeasure.org",
+                "code": "{bp}"
               }
             }
           },

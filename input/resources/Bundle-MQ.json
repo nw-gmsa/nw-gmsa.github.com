@@ -237,7 +237,13 @@
                   "value": "9737383222"
                 },
                 "reference": "urn:uuid:9c824395-c298-4c1f-9dd0-eaafd2cec875"
-              }
+              },
+              "performer": [
+                {
+                  "type": "PractitionerRole",
+                  "display": "Jonathan Edgerley"
+                }
+              ]
             }
           },
           {
@@ -830,7 +836,13 @@
                   "value": "9737383222"
                 },
                 "reference": "urn:uuid:128bab3d-bea2-45cb-a613-08dde4529d71"
-              }
+              },
+              "performer": [
+                {
+                  "type": "PractitionerRole",
+                  "display": "Jonathan Edgerley"
+                }
+              ]
             }
           },
           {
@@ -1423,7 +1435,13 @@
                   "value": "9737383222"
                 },
                 "reference": "urn:uuid:b419c81a-c036-4207-8fd8-547f898803e4"
-              }
+              },
+              "performer": [
+                {
+                  "type": "PractitionerRole",
+                  "display": "Jonathan Edgerley"
+                }
+              ]
             }
           },
           {
@@ -2016,7 +2034,13 @@
                   "value": "9737383222"
                 },
                 "reference": "urn:uuid:c7fee322-790f-403f-80b7-3c9b0883b558"
-              }
+              },
+              "performer": [
+                {
+                  "type": "PractitionerRole",
+                  "display": "Jonathan Edgerley"
+                }
+              ]
             }
           },
           {
