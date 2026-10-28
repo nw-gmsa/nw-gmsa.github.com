@@ -1,4 +1,4 @@
-## Reference
+### Reference
 
 - [FHIR Messaging](https://hl7.org/fhir/R4/messaging.html)
 - NHS Standards
@@ -8,7 +8,7 @@
 - [IHE Pathology and Laboratory Medicine (PaLM) Technical Framework - Volume 2a (PaLM TF-2a) Transactions](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol2a.pdf)
 - [HL7 Version 2.5.1 Implementation Guide: Lab Results Interface (LRI), Release 1 from May 2017](https://confluence.hl7.org/download/attachments/25559919/2018%2004%2003%20-%20V2%20LRI%20-%20Ch.%205%20CG%20and%20Code%20System%20Tables.pdf?api=v2)
 
-## Message Types
+### Message Types
 
 | Event | Event Trigger                 | IHE Interaction Code      | HL7 FHIR Message Definition                                                    | HL7 v2 Message Definition                                                                                           | EIP Type                                                                                                  |
 |-------|-------------------------------|---------------------------|--------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
@@ -17,7 +17,7 @@
 | T01   | A document has been published | none - related to ITI-105 | [Document and Document Notification](MessageDefinition-original-document.html) | [MDM_T02 Original document notification and content](hl7v2.html#mdm_t02-original-document-notification-and-content) | [Document Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) |
 {:.grid}
 
-## Send Message
+### Send Message
 
 ```mermaid
 
@@ -30,7 +30,7 @@ sequenceDiagram
     Consumer-->>Producer: Acknowledge Message
 ```
 
-### NW Genomics as a Producer
+#### NW Genomics as a Producer
 
 ```mermaid
 sequenceDiagram
@@ -47,7 +47,7 @@ RIE ->> consumer: Send Message (POST [base/$process-message)
 consumer -->> RIE: Acknowledgement
 ```
 
-### NW Genomics as a Consumer
+#### NW Genomics as a Consumer
 
 ```mermaid
 sequenceDiagram
@@ -60,7 +60,7 @@ producer ->> RIE: Send Message (POST [base/$process-message)
 RIE -->> producer: Acknowledgement
 ```
 
-### Send Message (FHIR)
+#### Send Message (FHIR)
 
 <div class="alert alert-info" role="alert">
 <b>Operation:</b> <a href="https://hl7.org/fhir/R4/messageheader-operation-process-message.html" _target="_blank">$process-message</a>
@@ -77,7 +77,7 @@ Examples
 - LAB-3/R01 payload [Bundle 'Message' - Genomics Result](Bundle-GenomicsReportMessage.html)
 - /T02 payload [Bundle 'Message' - Original Document](Bundle-OriginalDocumentMessage.html)
 
-### Send Message (V2)
+#### Send Message (V2)
 
 Uses Minimal Lower Layer Protocol (MLLP) over TCP/IP.
 HL7 over http can be supported. 
@@ -88,13 +88,13 @@ Authorization: Bearer {accessToken}<br/>
 Content-Type: application/hl7-v2+er7
 </div>
 
-## Receive Message – Synchronous Messaging
+### Receive Message – Synchronous Messaging
 
 <div class="alert alert-danger" role="alert">
 This section is currently being elaborated and subject to change.
 </div>
 
-## Receive Message – Asynchronous Messaging
+### Receive Message – Asynchronous Messaging
 
 This is based on [Asynchronous Messaging using the RESTful API](https://hl7.org/fhir/R4/messaging.html#rest)
 
@@ -115,7 +115,7 @@ alt For each individual Message
 end
 ```
 
-### Search - Checking an Inbox (FHIR)
+#### Search - Checking an Inbox (FHIR)
 
 <div class="alert alert-success" role="alert">
 GET [base]/Bundle?[parameter]=[value]
@@ -131,7 +131,7 @@ GET [base]/Bundle?[parameter]=[value]
 
 `message.receiver:identifier` is a mandatory parameter and must match the OAuth2 clientID associated with the ODS code.
 
-#### Examples
+##### Examples
 
 Searching for Messages for NE&Y Genomics after 1st May 2026..
 
@@ -151,7 +151,7 @@ Authorization: Bearer {accessToken}
 
  [Search Response - Bundle 'SearchSet' - Genomics Order](Bundle-GenomicsOrderSearchSet.html)
 
-### Acknowledge a Message
+#### Acknowledge a Message
 
 <div class="alert alert-success" role="alert">
 POST [base]/Bundle
@@ -170,7 +170,7 @@ The Bundle is taken from the `Check Inbox` search, only the MessageHeader resour
 {% fragment MessageHeader/MessageHeaderGenomicOrderReplyFatalAcknowledge JSON JSON EXCEPT:sender|destination %}
 
 
-#### Examples
+##### Examples
 
 Acknowledge a single message.
 
