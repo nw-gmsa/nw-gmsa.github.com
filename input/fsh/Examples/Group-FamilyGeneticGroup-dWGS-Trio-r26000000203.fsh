@@ -26,8 +26,10 @@ Usage: #example
   * entity.identifier.value = "9999999581"
   * entity.display = "Thirteen Editestpatient (p26000000105)"
   * extension[relationship].valueCodeableConcept = $v3-RoleCode#FAMMEMB "family member"
+  * extension[familyMemberHistory].valueReference = Reference(FamilyMemberHistory-dWGS-Trio-r26000000203-p26000000105)
 * member[+]
   * entity.identifier.system = "https://fhir.nhs.uk/Id/nhs-number"
   * entity.identifier.value = "9999999514"
   * entity.display = "Six Editestpatient (p26000000106)"
   * extension[relationship].valueCodeableConcept = $v3-RoleCode#FAMMEMB "family member"
+  * extension[familyMemberHistory].valueReference = Reference(FamilyMemberHistory-dWGS-Trio-r26000000203-p26000000106)

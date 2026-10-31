@@ -23,3 +23,4 @@ Usage: #example
 * member[+]
   * entity = Reference(Patient-London)
   * extension[relationship].valueCodeableConcept = $v3-RoleCode#MTH "mother"
+  * extension[familyMemberHistory].valueReference = Reference(FamilyMemberHistory-London-Mother)
