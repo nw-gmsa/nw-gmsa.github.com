@@ -12,6 +12,7 @@ test panel or a single specimen requesting several tests).
 | Ubiquitous Term    | HL7 FHIR                       | HL7 v2                          | OID  | Notes |
 |----------------------|-----------------------------------|-----------------------------------|------|-------|
 | Order Group Number   | ServiceRequest.requisition (type = PGN) | Placer Group Number (ORC-4) | none - locally assigned | Groups several ServiceRequests placed together |
+| Parent Order Number  | ServiceRequest.requisition (type = PGN) | Parent (ORC-8) - **provisional** | none - locally assigned | The parent order's Filler (or Placer) Order Number, on a Sub-Contracted, Reflex or Work Order |
 {:.grid}
 
 ### Examples

@@ -97,7 +97,7 @@ sequenceDiagram
 Used by these Use Cases:
 - [Distributed WGS (dWGS)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md)
 - [Haemato-Oncology Diagnostic Pathway](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HaematoOncologyPathway.md)
-- [Cheshire and Merseyside Pathology](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/CheshireAndMerseysidePathology.md)
+- [Pathology to Genomics Reflex](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/PathologyToGenomicsReflex.md)
 - [Regional Integration Engine (RIE)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/overview.md)
 - [StarLIMS / iGene Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/starLIMS.md)
 

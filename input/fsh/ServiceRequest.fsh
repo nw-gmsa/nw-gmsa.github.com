@@ -33,7 +33,7 @@ Description:    """
 * identifier[OrderIdentifier] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/AutomationManager)
 
 * requisition only OrderGroupNumber
-* requisition ^short = "Identifier assigned by the Order Placer. (HL7 v2 ORC-4 Placer Group Number)"
+* requisition ^short = "Identifier assigned by the Order Placer. (HL7 v2 ORC-4 Placer Group Number, provisionally ORC-8 Parent)"
 * requisition insert Obligation(#SHALL:populate, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderPlacer)
 * requisition insert Obligation(#SHALL:populate, https://fhir.nwgenomics.nhs.uk/ActorDefinition/Requestor)
 * requisition insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderFiller)
