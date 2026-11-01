@@ -7,5 +7,5 @@ DRAFT: Additional conformance on FHIR Attachment data type.
 """
 
 * url ^short = "Uri where the data can be found. Mandatory for PDF or FHIR Documents"
-* data ^short = "Avoid using for wider compatability reasons."
+* data 0..0
 * contentType from DocumentEntryMimeType
