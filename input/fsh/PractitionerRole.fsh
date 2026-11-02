@@ -9,6 +9,7 @@ Description:    """
 //* ^keyword[+] = #cds "Care Directory"
 
 * practitioner 0..1 MS
+* practitioner ^comment = "It is intended that this element will be changed to 1..1 (mandatory) in a future version of this guide. Senders SHOULD populate it now."
 //* practitioner.identifier 1..1
 * practitioner.identifier only PractitionerIdentifier
 * practitioner.identifier.value MS
