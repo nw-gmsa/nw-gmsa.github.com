@@ -248,9 +248,9 @@ This is based on the definition of PV1 from [NHS England HL7 v2 ADT Message Spec
 
 | Field HL7 | Fieldname                 | Data Type   | Optionality                                 | Identifier Type or ValueSet                                                                    | Example Values                                         | Description |
 |-----------|---------------------------|-------------|---------------------------------------------|------------------------------------------------------------------------------------------------|--------------------------------------------------------|-------------|
-| PV1-1     | Set ID - PV1              | [PL](#pl)   | R                                           |                                                                                                | 1                                                      | Sequence number of this PV1 segment within the message (ubiquitous term: **Set ID**). |
+| PV1-1     | Set ID - PV1              | SI          | R                                           |                                                                                                | 1                                                      | Sequence number of this PV1 segment within the message (ubiquitous term: **Set ID**). |
 | PV1-2     | Patient Class             |             |                                             |                                                                                                | I                                                      | Inpatient, outpatient, emergency, etc. (ubiquitous term: **Patient Class**). |
-| PV1-3     | Assigned Patient Location |             | R                                           |                                                                                                | ^^^R0A09^^^^^^^R0A <br/> ^^^P1S8J^^^^^^^699X0          | The ward/clinic/bed the patient is assigned to (ubiquitous terms: **Location**, **Ward**, **Bed**). |
+| PV1-3     | Assigned Patient Location | [PL](#pl)   | R                                           |                                                                                                | ^^^R0A09^^^^^^^R0A <br/> ^^^P1S8J^^^^^^^699X0          | The ward/clinic/bed the patient is assigned to (ubiquitous terms: **Location**, **Ward**, **Bed**). |
 | PV1-8     | Referring Doctor          | [XCN](#xcn) | O                                           | [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html)                     | C3456789^Darwin^Samuel^^^Dr^^^GMC                      | The doctor who referred the patient (ubiquitous terms: **Referring Doctor**, **Referrer**). |
 | PV1-9     | Consulting Doctor         | [XCN](#xcn) | O                                           | [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html)                     | C3456789^Darwin^Samuel^^^Dr^^^GMC                      | A doctor consulted on this visit (ubiquitous term: **Consultant**). |
 | PV1-10    | Hospital Service          |             | R <span class="badge badge-danger">S</span> | [Service](ValueSet-service.html)                                                               | 892761000000102^Clinical haematology service^SNM3<br/>810^Radiology^2.16.840.1.113883.2.1.6.8 | The clinical service/specialty responsible for the visit (ubiquitous term: **Specialty**). |
@@ -285,9 +285,13 @@ This is based on the definition of ORC from [Digital Health and Care Wales - HL7
 | ORC-5     | Order Status             |             | O                                            |                                                                            |                                                         | The current status of the order (ubiquitous term: **Order Status**). |
 | ORC-8     | Parent                   | EIP         | O                                            | [Order Group Number](StructureDefinition-OrderGroupNumber.html) (provisional) | ^R25012345&699X0                                      | The parent order's Placer and/or Filler Order Number, e.g. the pathology order a genomic reflex order follows on from. **Provisionally** maps to `ServiceRequest.requisition` - see [Linking Related Orders](diagnostic-core.html#linking-related-orders-servicerequestrequisition) (ubiquitous term: **Parent Order Number**). |
 | ORC-9     | Date/Time of Transaction | TS          | O                                            |                                                                            |                                                         | When this order message was created/transacted (ubiquitous term: **Transaction Date/Time**). |
-| ORC-12    | Ordering Provider        | [XCN](#xcn) | O                                            | [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html) | C3456789^Darwin^Samuel^^^Dr^^^GMC                     | The clinician who placed the order (ubiquitous terms: **Ordering Provider**, **Requesting Clinician**). |
+| ORC-12    | Ordering Provider        | [XCN](#xcn) | O                                            | [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html) | C3456789^Darwin^Samuel^^^Dr^^^GMC                     | The clinician who placed the order (ubiquitous terms: **Ordering Provider**, **Requesting Clinician**). Intended to become **R** (required), see note below. |
 | ORC-21    | Ordering Facility Name   | [XON](#xon) | R  <span class="badge badge-danger">S</span>                                          | [Organisation Code](StructureDefinition-OrganisationCode.html)             | MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS | The organisation the order was placed on behalf of (ubiquitous terms: **Ordering Facility**, **Trust**). |
 {:.grid}
+
+<div class="alert alert-warning" role="alert">
+<b>ORC-12 Ordering Provider:</b> ORC-12 is currently optional, but it is intended that it will be made mandatory (<b>R</b>) in a future version of this guide. Senders <b>SHOULD</b> populate ORC-12 now in preparation for this change.
+</div>
 
 <div class="alert alert-info" role="alert">
 <b>v2 to FHIR Conversion:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-orc-to-servicerequest.html" _target="_blank">ORC to FHIR ServiceRequest</a> 
@@ -570,7 +574,7 @@ SPM|1|25GEN-029GN00001&R0A^S25034567&699X0|^R25012345&699X0|258580003^Whole bloo
 
 This applies to HL7 v2 ORU_R01 feeds to the RIE.
 
-ORC-3, ORC-12 (XCN) and ORC-21 (XON) **SHALL** be populated.
+ORC-21 (XON) **SHALL** be populated. ORC-12 (XCN) **SHOULD** be populated, and is intended to become mandatory, see [ORC](#orc).
 
 ### CNE 
 
@@ -660,7 +664,7 @@ North West GLH Hub
 
 ### PL
 
-This is based on the definition of PL from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws) **SHOULD** be followed and **SHALL** be used in ORC-12.
+This is based on the definition of PL from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws) **SHOULD** be followed and **SHALL** be used in PV1-3.
 In addition, this includes of PL.11 to hold organisation ODS code.  
 
 > The ODS Site Code **SHALL** belong to the ODS Code. This is to help avoid data issues in this codesystem. 
