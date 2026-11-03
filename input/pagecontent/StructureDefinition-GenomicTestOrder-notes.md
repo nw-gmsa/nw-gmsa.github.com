@@ -14,6 +14,7 @@ flowchart LR
         LW["orderIdentifier, testCode,<br/>category, priority, orderDate,<br/>reasonCode, clinicalInformation"]
         LS["specimen"]
         LA["askAtOrderEntry<br/>clinicalGeneticist<br/>specimen.tracking"]
+        LPR["pathologyReport"]
     end
 
     subgraph IM["Implementation model (FHIR)"]
@@ -23,6 +24,7 @@ flowchart LR
         SR["ServiceRequest"]
         SPEC["Specimen"]
         OBS["Observation /<br/>RelatedPerson"]
+        DOC["Clinical Document<br/>DocumentReference or<br/>Bundle (type = document)"]
     end
 
     LP --> PAT
@@ -31,12 +33,14 @@ flowchart LR
     LW --> SR
     LS --> SPEC
     LA --> OBS
+    LPR --> DOC
 
     SR -. subject .-> PAT
     SR -. encounter .-> ENC
     SR -. requester .-> PR
     SR -. specimen .-> SPEC
     SR -. supportingInfo .-> OBS
+    SR -. supportingInfo .-> DOC
 ```
 
 `ServiceRequest` is the root: every other resource is referenced from it,
@@ -50,6 +54,7 @@ and it carries the order-level elements itself.
 | orderIdentifier, fillerOrderNumber, orderGroupNumber, category, testCode, orderDate, priority, performer, reasonCode, clinicalInformation | [ServiceRequest](StructureDefinition-ServiceRequest.html) | [ORC](hl7v2.html#orc), [OBR](hl7v2.html#obr), [DG1](hl7v2.html#dg1), [NTE](hl7v2.html#nte) | Order Placer (filler order number: Order Filler) |
 | specimen | [Specimen](StructureDefinition-Specimen.html) | [SPM](hl7v2.html#spm) | Order Placer (collection); Order Filler (receipt, accession) |
 | askAtOrderEntry, clinicalGeneticist, specimen.additive, specimen.tracking | [Observation](StructureDefinition-Observation.html), [RelatedPerson](StructureDefinition-RelatedPerson.html) via `ServiceRequest.supportingInfo` | [OBX](hl7v2.html#obx), NK1 | Order Placer |
+| pathologyReport | Clinical document - [DocumentReference](StructureDefinition-DocumentReference.html) or [FHIR Document](StructureDefinition-BundleDocument.html) via `ServiceRequest.supportingInfo` | [OBX](hl7v2.html#obx) (RP or ED) | Pathology laboratory |
 {:.grid}
 
 #### Patient Demographics
@@ -104,6 +109,18 @@ code.
 Note: it is likely that source systems will use ORM_01 and not include
 specimen details. In this case it is suggested that the specimen details are
 captured as 'Ask at Order Entry Questions' and so provided as OBX segments.
+
+#### Pathology Report
+
+Pathology studies can be included in the order as `pathologyReport` -
+for example a **Cancer Pathology Report** held by NHS England **NDRS**
+(National Disease Registration Service), or a pathology report shared by
+the NHS England Single Patient Record. As on [Genetic Clinical
+Referral](StructureDefinition-GeneticClinicalReferral.html#pathology-report),
+it is referenced as a clinical document, or in the interim attached as a
+PDF (`DocumentReference` -> `Binary`, HL7 v2 `OBX` type `ED`). NDRS is a
+reporting/analytical service, so a report retrieved from it may not be the
+latest version.
 
 #### How the Pieces Travel
 

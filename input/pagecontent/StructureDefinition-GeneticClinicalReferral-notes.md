@@ -17,6 +17,7 @@ flowchart LR
         LPR["pathologyReport"]
         LPS["patientSummary"]
         LCD["clinicalDocument<br/>(family letter)"]
+        LFH["familyHistory"]
     end
 
     subgraph IM["Implementation model (FHIR)"]
@@ -27,6 +28,7 @@ flowchart LR
         QR["QuestionnaireResponse"]
         RP["RelatedPerson"]
         DOC["Clinical Documents<br/>DocumentReference or<br/>Bundle (type = document)"]
+        FMH["FamilyMemberHistory"]
     end
 
     LID --> SR
@@ -38,6 +40,7 @@ flowchart LR
     LPR --> DOC
     LPS --> DOC
     LCD --> DOC
+    LFH --> FMH
 
     SR -. subject .-> PAT
     SR -. requester .-> PR
@@ -45,6 +48,7 @@ flowchart LR
     SR -. supportingInfo .-> QR
     SR -. supportingInfo .-> RP
     SR -. supportingInfo .-> DOC
+    SR -. supportingInfo .-> FMH
 ```
 
 | Logical model element(s) | FHIR Profile | HL7 v2 Segment | Owned by |
@@ -58,7 +62,15 @@ flowchart LR
 | pathologyReport | Clinical document - [DocumentReference](StructureDefinition-DocumentReference.html) or [FHIR Document](StructureDefinition-BundleDocument.html) | [OBX](hl7v2.html#obx) (RP or ED) | Pathology laboratory |
 | patientSummary | Clinical document - [DocumentReference](StructureDefinition-DocumentReference.html) or [FHIR Document](StructureDefinition-BundleDocument.html) | [OBX](hl7v2.html#obx) (RP or ED) | Patient's care provider (e.g. GP) |
 | clinicalDocument (family letter) | [DocumentReference](StructureDefinition-DocumentReference.html) -> `Binary` | [OBX](hl7v2.html#obx) (RP or ED) | Referrer |
+| familyHistory | [FamilyMemberHistory](StructureDefinition-FamilyMemberHistory.html) | - | NHS England NDRS (at present) |
 {:.grid}
+
+<div class="alert alert-info" role="alert">
+This referral is not expected to be implemented within this IG - see the
+introduction. The breakdown above shows what a Genomics England Limited
+application, NHS England BaRS/eRS or the NHS England Genomic Order Management
+Service would need to carry, using this IG's profiles as the reference shape.
+</div>
 
 #### Forms
 
@@ -104,6 +116,12 @@ Either way the logical model element is the same (`pathologyReport`); only
 the implementation changes, so moving from the interim to the target does
 not change the referral model.
 
+NHS England **NDRS** (National Disease Registration Service) also holds
+**Cancer Pathology Reports**. These are pathology studies, so the same
+reports can also be included in the [Genomic Test
+Order](StructureDefinition-GenomicTestOrder.html) (its `pathologyReport`
+element) when a referral leads to a test.
+
 ##### Patient Summary
 
 The patient summary is another clinical document referenced from the
@@ -116,10 +134,10 @@ a shared clinical document, or an attached document in the interim).
 specification. This model adds it as <code>ServiceRequest.supportingInfo</code>.
 </div>
 
-##### Family Letter
+##### Family Letter and Family History
 
-The family letter is the existing `clinicalDocument` - see [Family
-History](#family-history) below.
+The family letter is the existing `clinicalDocument`; structured family
+history is `familyHistory` - see [Family History](#family-history) below.
 
 #### How the Pieces Travel
 
@@ -137,7 +155,8 @@ History](#family-history) below.
 - Clinical content travels as **documents referenced from the referral** - the pathology report, patient summary and family letter are never copied into the `ServiceRequest`.
 - Forms are structured (`QuestionnaireResponse`); documents are not. A form is never used to carry a document, and a document is never used to carry structured referral data.
 - A named consultand is structured (`RelatedPerson`, `NK1`), one per relative.
-- The [Genetic Clinical Referral Questionnaire](Questionnaire-GeneticClinicalReferral.html) is the form representation of this model - its `linkId`s are listed on the **Mappings** tab. `forms`, `pathologyReport` and `patientSummary` are in its Supporting Information group.
+- Family history retrieved from NDRS is structured (`FamilyMemberHistory`), one per relative, and may not be current.
+- The [Genetic Clinical Referral Questionnaire](Questionnaire-GeneticClinicalReferral.html) is the form representation of this model - its `linkId`s are listed on the **Mappings** tab. `forms`, `pathologyReport` and `patientSummary` are in its Supporting Information group; `familyHistory` maps to its Family History group.
 
 ### Domain Archetype
 
@@ -257,6 +276,17 @@ Service (eRS) already uses** for referral attachments
 (`ReferralRequest.supportingInfo` -> `DocumentReference`), see [Genetic
 Referrals - eRS FHIR Resource
 Model](GeneticReferrals.html#ers-fhir-resource-model).
+
+**Structured family history** (`familyHistory`, one `FamilyMemberHistory`
+per relative) is also part of this model. At present clinical genetics is
+believed to retrieve this information from NHS England **NDRS** (National
+Disease Registration Service), rather than receiving it in the referral.
+
+<div class="alert alert-warning" role="alert">
+NDRS is a <b>reporting/analytical</b> service, not a care record, so family
+history retrieved from it may not be concurrent with the patient's current
+clinical record.
+</div>
 
 **General** family history - the wider pedigree, who else is affected - stays
 in that unstructured letter; this model doesn't attempt to structure

@@ -2,7 +2,10 @@ Logical:        GeneticClinicalReferralModel
 Id:             GeneticClinicalReferral
 Title:          "Genetic Clinical Referral"
 Description:    """
-**For analysis purposes only - not an active or planned project.**
+**For analysis purposes only - not an active or planned project.** This referral is not
+expected to be implemented within this IG; it is expected to be implemented via a
+Genomics England Limited application, NHS England BaRS/eRS or the NHS England Genomic
+Order Management Service.
 
 A closed-loop clinical referral into a genomics/clinical genetics service (see
 [Genetic Referrals](GeneticReferrals.html)), modelled on HL7 v2 `REF_I12` (Patient
@@ -79,13 +82,19 @@ referral form, as structured answers.
 * pathologyReport 0..* Reference(DocumentReference or Bundle) "Pathology report" """
 The pathology report supporting the referral. Ideally a reference to a clinical document
 shared via the NHS England Single Patient Record (SPR); in the interim this may be an
-attached PDF (`DocumentReference` -> `Binary`).
+attached PDF (`DocumentReference` -> `Binary`). NHS England NDRS also holds Cancer
+Pathology Reports.
 """
 * patientSummary 0..1 Reference(DocumentReference or Bundle) "Patient summary" """
 The patient summary, as a clinical document. **Not** part of the NHS England Genomics
 ServiceRequest specification.
 """
 * clinicalDocument 0..* Reference(DocumentReference or Bundle) "Clinical document" "e.g. the family letter or a clinic letter"
+* familyHistory 0..* Reference(FamilyMemberHistory) "Family history" """
+Structured family history - one per relative. At present clinical genetics is believed
+to retrieve this from NHS England NDRS (National Disease Registration Service). NDRS is a
+reporting/analytical service, so the information may not be current.
+"""
 
 Mapping:        GeneticClinicalReferral-HL7v2
 Source:         GeneticClinicalReferralModel
@@ -116,6 +125,7 @@ Title:          "HL7 v2 REF_I12"
 * pathologyReport -> "OBX (type = RP reference pointer, or ED for an attached PDF)"
 * patientSummary -> "OBX (type = RP reference pointer, or ED for an attached PDF)"
 * clinicalDocument -> "OBX (type = RP reference pointer, or ED for an attached PDF)"
+* familyHistory -> "No REF_I12 segment - retrieved from NHS England NDRS"
 
 Mapping:        GeneticClinicalReferral-FHIR
 Source:         GeneticClinicalReferralModel
@@ -150,6 +160,7 @@ Title:          "FHIR (this IG)"
 * pathologyReport -> "ServiceRequest.supportingInfo (DocumentReference, or Bundle type = document)"
 * patientSummary -> "ServiceRequest.supportingInfo (DocumentReference, or Bundle type = document)"
 * clinicalDocument -> "ServiceRequest.supportingInfo (DocumentReference, or Bundle type = document)"
+* familyHistory -> "ServiceRequest.supportingInfo (FamilyMemberHistory)"
 
 Mapping:        GeneticClinicalReferral-Questionnaire
 Source:         GeneticClinicalReferralModel
@@ -188,3 +199,4 @@ Title:          "Questionnaire (linkId)"
 * pathologyReport -> "SupportingInformation/pathologyReport"
 * patientSummary -> "SupportingInformation/patientSummary"
 * clinicalDocument -> "FamilyHistory/attachment"
+* familyHistory -> "FamilyHistory"

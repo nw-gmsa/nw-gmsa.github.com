@@ -78,6 +78,11 @@ depends on the test category (Rare and Inherited Disease, Haemoglobinopathy, Can
 Questions that vary by order/test type, defined by a separate Ask At Order Entry
 Questionnaire. See Order Entry Questions.
 """
+* pathologyReport 0..* Reference(DocumentReference or Bundle) "Pathology report" """
+Pathology studies supporting the order, e.g. a Cancer Pathology Report held by NHS
+England NDRS, or a pathology report shared by the NHS England Single Patient Record.
+Referenced as a clinical document, or in the interim an attached PDF.
+"""
 
 // Specimen
 
@@ -136,6 +141,7 @@ Title:          "HL7 v2 OML_O21"
 * clinicalInformation -> "NTE"
 * clinicalGeneticist -> "OBX"
 * askAtOrderEntry -> "OBX / NK1"
+* pathologyReport -> "OBX (type = RP reference pointer, or ED for an attached PDF)"
 * specimen -> "SPM"
 * specimen.identifier -> "SPM-2"
 * specimen.accessionIdentifier -> "SPM-30"
@@ -186,6 +192,7 @@ Title:          "FHIR (this IG)"
 * clinicalInformation -> "ServiceRequest.note"
 * clinicalGeneticist -> "ServiceRequest.supportingInfo (Observation)"
 * askAtOrderEntry -> "ServiceRequest.supportingInfo (Observation / RelatedPerson)"
+* pathologyReport -> "ServiceRequest.supportingInfo (DocumentReference, or Bundle type = document)"
 * specimen -> "ServiceRequest.specimen (Specimen)"
 * specimen.status -> "Specimen.status"
 * specimen.identifier -> "Specimen.identifier"

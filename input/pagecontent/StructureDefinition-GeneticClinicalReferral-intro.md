@@ -3,6 +3,13 @@ This is for information and analysis purposes only and is not an active or
 planned project.
 </div>
 
+<div class="alert alert-info" role="alert">
+This referral is <b>not</b> expected to be implemented within this IG. It is
+expected to be implemented via a Genomics England Limited application, NHS
+England BaRS/eRS or the NHS England Genomic Order Management Service - this
+logical model describes the information those routes need to carry.
+</div>
+
 This logical model describes a closed-loop clinical referral into a
 genomics/clinical genetics service - the narrative use case is [Genetic
 Referrals](GeneticReferrals.html), and the underlying HL7 v2 message it is

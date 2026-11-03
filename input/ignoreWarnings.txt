@@ -4,3 +4,8 @@
 Code System URI 'urn:ihe:event-type-code' is unknown so the code cannot be validated
 
 
+# Logical model Mappings tabs - mapping targets are this IG's canonicals, not navigation links
+The link 'https://fhir.nwgenomics.nhs.uk' for "FHIR (this IG)" is a canonical link and is therefore unsafe with regard to versions
+The link 'https://fhir.nwgenomics.nhs.uk/Questionnaire/GeneticClinicalReferral' for "Questionnaire (linkId)" is a canonical link and is therefore unsafe with regard to versions
+The link 'https://fhir.nwgenomics.nhs.uk/Questionnaire/GenomicTestOrder' for "Questionnaire (linkId)" is a canonical link and is therefore unsafe with regard to versions
+The link 'https://fhir.nwgenomics.nhs.uk/Questionnaire/GenomicTestReport' for "Questionnaire (linkId)" is a canonical link and is therefore unsafe with regard to versions
