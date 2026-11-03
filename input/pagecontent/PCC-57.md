@@ -53,7 +53,7 @@ The outcome is a status update and a clinical document.
 | Referral ID | ORC-2 | `basedOn.identifier`, `focus` |
 | Order status | ORC-5 `CM` | `businessStatus` `completed` |
 | Referrer | ORC-12 and ORC-21 - **required** in this guide | `requester` (unchanged) |
-| Document | [`MDM^T02`](hl7v2.html#mdm_t02-original-document-notification-and-content) or OBX `ED` / `RP` | `output` - the document |
+| Document | [`MDM^T02`](hl7v2.html#mdm_t02-original-document-notification-and-content) or OBX `ED` / `RP` | `output` - the document, or for a laboratory order every report issued (see [Genomic Orders with Multiple Reports](#genomic-orders-with-multiple-reports)) |
 {:.grid}
 
 The referral `ServiceRequest.status` becomes `completed`.
@@ -74,6 +74,61 @@ Whatever the type, the document **SHALL**:
 - answer the referral question or report the test result - for a referral, give the plan
   of care, including any cascade (family) testing offered;
 - name the Referral Initiator as a recipient, and the patient's GP if different.
+
+#### Genomic Orders with Multiple Reports
+
+A single genomic laboratory order may result in **more than one report**, for example:
+
+- several tests on the same order (more than one `OBR` / Genomic Test Directory code);
+- staged testing, where a later test depends on an earlier result (e.g. `R210.2` small
+  panel followed by `R210.6` MLPA);
+- work, subcontracted or reflex orders the laboratory creates to fulfil the order - see
+  [Original Order, Instance and Filler
+  Orders](StructureDefinition-GenomicTestOrder.html#original-order-instance-and-filler-orders);
+- preliminary reports followed by a final report.
+
+Each report is sent as it is issued ([ORU_R01](hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message)
+/ `DiagnosticReport`), linked to the order by the Placer Order Number (ORC-2 / OBR-2,
+`DiagnosticReport.basedOn`). A report's own status (OBR-25 `F`,
+`DiagnosticReport.status` `final`) only says that **report** is final - it does not say
+the **order** is complete, because further reports may follow.
+
+Hospitals need to know when the **entire order** is complete - for example to close the
+order in the EPR, stop chasing outstanding results, and know that the set of reports
+they hold is the full answer to the request. This guide uses the order status update for
+that:
+
+```mermaid
+sequenceDiagram
+    participant OP as Order Placer<br/>(Hospital EPR)
+    participant OF as Order Filler<br/>(Genomic Laboratory)
+    OF ->> OP: Report 1 - ORU_R01 / DiagnosticReport (final)
+    OF -->> OP: Optional: OSU^O51 SC/A - Task in-progress
+    OF ->> OP: Report 2 - ORU_R01 / DiagnosticReport (final)
+    OF ->> OP: Order complete - OSU^O51 SC/CM<br/>Task completed, output = all reports
+    OP -->> OP: Close the order
+```
+
+| Event | HL7 v2 | FHIR ([Task](StructureDefinition-Task.html)) |
+|---|---|---|
+| A report is issued, more to follow | `ORU_R01`; optionally `OSU^O51` ORC-1 `SC`, ORC-5 `A` (some, but not all, results available) | `DiagnosticReport`; `Task.status` `in-progress`, `businessStatus` `interim-report` - **To confirm** |
+| The whole order is complete | `OSU^O51` ORC-1 `SC`, ORC-5 `CM` | `Task.status` `completed`, `businessStatus` `completed`; `Task.output` references **every** report issued for the order |
+{:.grid}
+
+- The Order Filler **SHALL** send the order outcome (ORC-5 `CM` / `Task` `completed`)
+  only once all reports for the order - including those from any filler orders - have
+  been issued.
+- The Order Placer **SHALL NOT** treat a final report as completion of the order; it
+  **SHOULD** use the order outcome to close the order.
+- An amended or corrected report issued after completion (OBR-25 `C`,
+  `DiagnosticReport.status` `amended` / `corrected`) is sent as a further report; whether
+  it also changes the order status is **To confirm**.
+
+Where the order is managed by GOMS, MNS raises a `genomic-order-event-1` for each
+`DiagnosticReport` and for the `Task` (and `ServiceRequest`) status change. The RIE
+converts report events to `ORU_R01` (or the FHIR equivalent) and the order completion
+`Task` to `OSU^O51` - see [Status Updates from GOMS via
+MNS](PCC-55.html#status-updates-from-goms-via-mns).
 
 ### Example
 
