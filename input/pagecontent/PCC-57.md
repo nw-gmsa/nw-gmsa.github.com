@@ -132,18 +132,21 @@ sequenceDiagram
 ##### Report References
 
 The O51 FHIR Message contains only the `MessageHeader` and the `Task` - the reports are
-**not** carried in it. Each `Task.output` is an **external reference** to a genomic test
-report held in the NHS England **Unified Genomic Record (UGR)**:
+**not** carried in it. Each `Task.output` (type `reference-results`) is an **external
+reference** to a report held nationally - a genomic test report `DiagnosticReport` in the
+NHS England **Unified Genomic Record (UGR)**, or a document (e.g. a PDF report or
+consultation note) `DocumentReference` in the NHS England **National Record Locator
+(NRL)**:
 
 | `Task.output.valueReference` | Content |
 |---|---|
-| `reference` | Absolute URL of the `DiagnosticReport` in the UGR, where known - omitted in the example, which references the report by its Report Identifier only |
-| `type` | `DiagnosticReport` |
+| `reference` | Absolute URL of the `DiagnosticReport` in the UGR or the `DocumentReference` in the NRL, where known - never a reference to a resource in the message or the sender's own repository. Omitted in the example, which references the report by its Report Identifier only |
+| `type` | `DiagnosticReport` (UGR) or `DocumentReference` (NRL) |
 | `identifier` | The [Report Identifier](StructureDefinition-ReportIdentifier.html) (type `FILL`, assigned by the laboratory) - the same value as OBR-3 on the report's `ORU_R01` and `DiagnosticReport.identifier[ReportIdentifier]` |
 {:.grid}
 
 The Report Identifier lets the Order Placer match each reference to a report it has
-already received (e.g. as `ORU_R01`), and retrieve any it has not from the UGR.
+already received (e.g. as `ORU_R01`), and retrieve any it has not from the UGR or NRL.
 
 Where the order is managed by GOMS, MNS raises a `genomic-order-event-1` for each
 `DiagnosticReport` and for the `Task` (and `ServiceRequest`) status change. The RIE
