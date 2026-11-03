@@ -24,6 +24,17 @@ The [examples](#examples) are for a laboratory order.
 - [NHS England Multicast Notification Service - Genomic Order Event](https://digital.nhs.uk/developer/api-catalogue/multicast-notification-service/genomic-order-event)
 - [eRS FHIR API](https://digital.nhs.uk/developer/api-catalogue/e-referral-service-fhir), [BaRS FHIR API](https://digital.nhs.uk/developer/api-catalogue/booking-and-referral-fhir)
 - [HL7 v2 OMG_O19](hl7v2.html#omg_o19-general-clinical-order) and [OSU_O51](hl7v2.html#osu_o51-order-status-update)
+- Equivalent IHE transactions for a laboratory or imaging order (a new order, then accepted or rejected by the Order Filler):
+  - [IHE PaLM Laboratory Testing Workflow (LTW)](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol2a.pdf) Placer Order Management [LAB-1] - see [Laboratory Order (LAB-1)](LTW.html#laboratory-order-lab-1)
+  - [IHE Inter-Laboratory Workflow (ILW)](https://www.ihe.net/uploadedFiles/Documents/Laboratory/IHE_LAB_Suppl_ILW.pdf) Sub-order Management [LAB-35] - see [Sub Order Management (LAB-35)](ILW.html#sub-order-management-lab-35)
+  - [IHE RAD Scheduled Workflow](https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Vol2.pdf) Placer Order Management [RAD-2]
+
+<div class="alert alert-info" role="alert">
+<b>Note:</b> none of these IHE transactions use <code>OSU^O51</code>, which was added in
+HL7 v2.8. An Order Placer built to IHE LTW receives the accept or decline as
+<code>ORL^O22</code> (ORC-1 <code>OK</code> / <code>UA</code>), and one built to IHE RAD as
+<code>ORR^O02</code>; the Referral Initiator may need to support both.
+</div>
 
 ### Interaction
 
@@ -200,7 +211,7 @@ Example](ServiceRequest-ServiceRequestGenomicsOrderCodedEntries.html)).
 ORC-1 `OK`, ORC-5 `IP`; the laboratory's Filler Order Number in ORC-3.
 
 ```
-MSH|^~\&|RIE|699X0|EPIC|R0A|20250130093000+0000||OSU^O51^OSU_O51|GLH-MSG-250130001|P|2.5.1|||AL|NE
+MSH|^~\&|RIE|699X0|EPIC|R0A|20250130093000+0000||OSU^O51^OSU_O51|GLH-MSG-250130001|P|2.8|||AL|NE
 PID|1||633^^^R0A^MR~9449305552^^^^NH||CHISLETT^Octavia||20080920|F|||1 RAVENSFIELD GARDENS^^EPSOM^SURREY^KT19 0ST
 ORC|OK|1601737^R0A|R25012345^699X0||IP||||20250130093000+0000|||C3456789^Darwin^Samuel^^^Dr^^^GMC|||||||||MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS
 ```
@@ -214,7 +225,7 @@ The alternative first response: the patient does not meet the test directory eli
 criteria.
 
 ```
-MSH|^~\&|RIE|699X0|EPIC|R0A|20250130093000+0000||OSU^O51^OSU_O51|GLH-MSG-250130002|P|2.5.1|||AL|NE
+MSH|^~\&|RIE|699X0|EPIC|R0A|20250130093000+0000||OSU^O51^OSU_O51|GLH-MSG-250130002|P|2.8|||AL|NE
 PID|1||633^^^R0A^MR~9449305552^^^^NH||CHISLETT^Octavia||20080920|F|||1 RAVENSFIELD GARDENS^^EPSOM^SURREY^KT19 0ST
 ORC|UA|1601737^R0A|||CA||||20250130093000+0000|||C3456789^Darwin^Samuel^^^Dr^^^GMC||||not-eligible^Does not meet the R240 eligibility criteria - no known familial variant provided. Please contact the laboratory.^L|||||MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS
 ```

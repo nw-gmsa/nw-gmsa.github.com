@@ -247,6 +247,13 @@ and <a href="PCC-57.html">[PCC-57]</a>.
 - [IHE PCC 360X Closed Loop Referral](https://www.ihe.net/uploadedFiles/Documents/PCC/IHE_PCC_Suppl_360X.pdf) PCC TF-2 3.55 to 3.59
 - [NHS England Multicast Notification Service - Genomic Order Event](https://digital.nhs.uk/developer/api-catalogue/multicast-notification-service/genomic-order-event)
 
+<div class="alert alert-info" role="alert">
+<b>Note:</b> <code>OSU^O51</code> is an HL7 v2.8 message - it is not in HL7 v2.5.1, the
+version used by IHE PaLM (LTW, ILW) and the other messages in this guide. The IHE
+laboratory equivalents report order status with <code>ORL^O22</code> /
+<code>OML^O21</code> (ORC-1 and ORC-5) instead.
+</div>
+
 `OSU^O51^OSU_O51` reports a change in the status of an order - accept, decline,
 interim note, outcome, cancellation. The FHIR equivalent is the [Referral Order Status
 (O51)](MessageDefinition-referral-order-status.html) FHIR Message, whose focus is a
@@ -282,7 +289,7 @@ Updates from GOMS via MNS](PCC-55.html#status-updates-from-goms-via-mns).
 #### Example
 
 ```
-MSH|^~\&|RIE|699X0|EPIC|R0A|20250130093000+0000||OSU^O51^OSU_O51|GLH-MSG-250130001|P|2.5.1|||AL|NE
+MSH|^~\&|RIE|699X0|EPIC|R0A|20250130093000+0000||OSU^O51^OSU_O51|GLH-MSG-250130001|P|2.8|||AL|NE
 PID|1||633^^^R0A^MR~9449305552^^^^NH||CHISLETT^Octavia||20080920|F|||1 RAVENSFIELD GARDENS^^EPSOM^SURREY^KT19 0ST
 ORC|OK|1601737^R0A|R25012345^699X0||IP||||20250130093000+0000|||C3456789^Darwin^Samuel^^^Dr^^^GMC|||||||||MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS
 ```

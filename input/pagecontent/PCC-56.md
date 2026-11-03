@@ -14,6 +14,16 @@ for a laboratory order.
 
 - [IHE PCC 360X Closed Loop Referral](https://www.ihe.net/uploadedFiles/Documents/PCC/IHE_PCC_Suppl_360X.pdf) PCC TF-2 3.56
 - [Care Coordination and 360 Referrals (proof of concept) - Referral Decline [PCC-56]](https://kevinmayfield.github.io/PatientCareCoordination/en/PCC-56.html)
+- Equivalent IHE transactions for a laboratory or imaging order (the Order Filler cancels an order it has already accepted, ORC-1 `OC` rather than `UA`):
+  - [IHE PaLM Laboratory Testing Workflow (LTW)](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol2a.pdf) Placer Order Management [LAB-1] - order cancelled by the Order Filler; see [Laboratory Order (LAB-1)](LTW.html#laboratory-order-lab-1)
+  - [IHE RAD Scheduled Workflow](https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Vol2.pdf) Filler Order Management [RAD-3] - order cancelled by the Order Filler
+
+<div class="alert alert-info" role="alert">
+<b>Note:</b> none of these IHE transactions use <code>OSU^O51</code>, which was added in
+HL7 v2.8. An Order Placer built to IHE LTW receives the cancellation as
+<code>OML^O21</code> (ORC-1 <code>OC</code>), and one built to IHE RAD as
+<code>ORM^O01</code> (ORC-1 <code>OC</code>).
+</div>
 
 ### Interaction
 
@@ -60,7 +70,7 @@ The North West GLH accepted Octavia CHISLETT's R240.1 order
 new sample.
 
 ```
-MSH|^~\&|RIE|699X0|EPIC|R0A|20250205100000+0000||OSU^O51^OSU_O51|GLH-MSG-250205001|P|2.5.1|||AL|NE
+MSH|^~\&|RIE|699X0|EPIC|R0A|20250205100000+0000||OSU^O51^OSU_O51|GLH-MSG-250205001|P|2.8|||AL|NE
 PID|1||633^^^R0A^MR~9449305552^^^^NH||CHISLETT^Octavia||20080920|F|||1 RAVENSFIELD GARDENS^^EPSOM^SURREY^KT19 0ST
 ORC|UA|1601737^R0A|R25012345^699X0||CA||||20250205100000+0000|||C3456789^Darwin^Samuel^^^Dr^^^GMC||||sample-unsuitable^Insufficient DNA extracted from the sample. Please send a new blood sample with a new order.^L|||||MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS
 ```

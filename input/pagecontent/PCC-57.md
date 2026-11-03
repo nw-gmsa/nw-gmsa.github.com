@@ -14,6 +14,10 @@ laboratory order.
 - [IHE PCC 360X Closed Loop Referral](https://www.ihe.net/uploadedFiles/Documents/PCC/IHE_PCC_Suppl_360X.pdf) PCC TF-2 3.57
 - [Care Coordination and 360 Referrals (proof of concept) - Referral Outcome [PCC-57]](https://kevinmayfield.github.io/PatientCareCoordination/en/PCC-57.html)
 - [HL7 v2 MDM_T02](hl7v2.html#mdm_t02-original-document-notification-and-content)
+- Equivalent IHE transactions for a laboratory or imaging order (the report sent back to the Order Placer):
+  - [IHE PaLM Laboratory Testing Workflow (LTW)](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol2a.pdf) Order Results Management [LAB-3] - see [Laboratory Report (LAB-3)](LTW.html#laboratory-report-lab-3)
+  - [IHE Inter-Laboratory Workflow (ILW)](https://www.ihe.net/uploadedFiles/Documents/Laboratory/IHE_LAB_Suppl_ILW.pdf) Sub-order Results Delivery [LAB-36] - see [Sub-order Results Delivery (LAB-36)](ILW.html#sub-order-results-delivery-lab-36)
+  - [IHE RAD Results Distribution (RD)](https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_Suppl_RD.pdf) Send Imaging Result [RAD-128]
 
 ### Interaction
 
@@ -155,7 +159,7 @@ It sends the outcome status update and the report (`ORU_R01`, Placer Order Numbe
 ORC-2 / OBR-2).
 
 ```
-MSH|^~\&|RIE|699X0|EPIC|R0A|20250220110000+0000||OSU^O51^OSU_O51|GLH-MSG-250220001|P|2.5.1|||AL|NE
+MSH|^~\&|RIE|699X0|EPIC|R0A|20250220110000+0000||OSU^O51^OSU_O51|GLH-MSG-250220001|P|2.8|||AL|NE
 PID|1||633^^^R0A^MR~9449305552^^^^NH||CHISLETT^Octavia||20080920|F|||1 RAVENSFIELD GARDENS^^EPSOM^SURREY^KT19 0ST
 ORC|SC|1601737^R0A|R25012345^699X0||CM||||20250220110000+0000|||C3456789^Darwin^Samuel^^^Dr^^^GMC|||||||||MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS
 ```
