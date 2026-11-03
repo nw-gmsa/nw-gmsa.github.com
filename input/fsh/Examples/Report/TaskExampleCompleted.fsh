@@ -1,7 +1,9 @@
 Instance: TaskGenomicOrderCompleted
 InstanceOf: Task
 Title: "Task Genomic Test Completed"
-Description: "TODO"
+Description: "**For future use.** Referral Outcome [PCC-57]: the NW GLH has issued every report for the laboratory order, so the order is complete (HL7 v2 OSU^O51, ORC-1 SC, ORC-5 CM). The reports are external references to the NHS England Unified Genomic Record (UGR)."
+Usage: #example
+* insert GenomicOrderStatusTask
 
 * identifier[+].
   * value = "25GEN-029GN00001"
@@ -11,34 +13,7 @@ Description: "TODO"
 
 * status = #completed
 * businessStatus = ReferralWorkflowStatus#completed
-* intent = #order
-
-* code = http://hl7.org/fhir/CodeSystem/task-code#fulfill
-
-* for.reference = "Patient/Patient-OctaviaCHISLETT-9449305552"
-* for.display = "Octavia CHISLETT"
-* for.identifier
-  * system = $nhs-number
-  * value = "9449305552"
-
-* authoredOn = "2025-01-29"
-
-* focus.reference = "ServiceRequest/ServiceRequestGenomicsOrderCodedEntries"
-* focus.identifier.type = $v2-0203#PLAC
-* focus.identifier.value = "1601737"
-* focus.identifier.system = "http://www.acme.org/servicerequest/identifier"
-* focus.identifier.assigner.identifier.system = $ods-code
-* focus.identifier.assigner.identifier.value = "R0A"
-
-* requester.reference = "Organization/R0A"
-* requester.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
-* requester.identifier.value = "R0A"
-* requester.display = "MANCHESTER UNIVERSITY NHS FOUNDATION TRUST"
-
-* owner.reference = "Organization/699X0"
-* owner.identifier.system = "https://fhir.nhs.uk/Id/ods-organization-code"
-* owner.identifier.value = "699X0"
-* owner.display = "NORTH WEST GLH"
+* lastModified = "2025-02-20T11:00:00+00:00"
 
 * output[+]
   * type = TaskInputOutputParameterType#reference-results
