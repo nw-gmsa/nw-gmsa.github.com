@@ -55,8 +55,10 @@ order status update, for a [Genetic Clinical
 Referral](StructureDefinition-GeneticClinicalReferral.html) or a laboratory order ([Genomic
 Test Order](StructureDefinition-GenomicTestOrder.html)). The
 [Task](StructureDefinition-Task.html) carries the status
-(`status`, `businessStatus`, `statusReason`); for an outcome [PCC-57] the message also
-carries the clinical document or report referenced from `Task.output`.
+(`status`, `businessStatus`, `statusReason`). The message contains only the
+`MessageHeader` and the `Task`. For an outcome [PCC-57], `Task.output` references the
+clinical document or reports externally - for a laboratory order, the genomic test reports
+in the NHS England Unified Genomic Record (UGR), each with its Report Identifier.
 
 Where the referral is managed by the NHS England Genomic Order Management Service (GOMS),
 the Regional Integration Engine (RIE) receives a `genomic-order-event-1` notification

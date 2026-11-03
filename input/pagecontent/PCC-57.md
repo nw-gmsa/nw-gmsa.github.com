@@ -36,10 +36,11 @@ sequenceDiagram
 | Referral Recipient | R (send) |
 {:.grid}
 
-Where the referral is managed by GOMS, the outcome is a `Task` update (with the
-document in `Task.output`) that the RIE receives via MNS, retrieves from GOMS and
-converts to `OSU^O51` plus the document - see [Status Updates from GOMS via
-MNS](PCC-55.html#status-updates-from-goms-via-mns).
+Where the referral or order is managed by GOMS, the outcome is a `Task` update that the
+RIE receives via MNS, retrieves from GOMS and converts to `OSU^O51` or the O51 FHIR
+Message - see [Status Updates from GOMS via
+MNS](PCC-55.html#status-updates-from-goms-via-mns). `Task.output` references the reports
+in the NHS England Unified Genomic Record (UGR); they are not carried in the message.
 
 ### Content
 
@@ -53,7 +54,7 @@ The outcome is a status update and a clinical document.
 | Referral ID | ORC-2 | `basedOn.identifier`, `focus` |
 | Order status | ORC-5 `CM` | `businessStatus` `completed` |
 | Referrer | ORC-12 and ORC-21 - **required** in this guide | `requester` (unchanged) |
-| Document | [`MDM^T02`](hl7v2.html#mdm_t02-original-document-notification-and-content) or OBX `ED` / `RP` | `output` - the document, or for a laboratory order every report issued (see [Genomic Orders with Multiple Reports](#genomic-orders-with-multiple-reports)) |
+| Document | [`MDM^T02`](hl7v2.html#mdm_t02-original-document-notification-and-content) or OBX `ED` / `RP` | `output` - an external reference to the document; for a laboratory order, every report issued, in the NHS England Unified Genomic Record (UGR), with its Report Identifier (see [Genomic Orders with Multiple Reports](#genomic-orders-with-multiple-reports)) |
 {:.grid}
 
 The referral `ServiceRequest.status` becomes `completed`.
@@ -105,14 +106,14 @@ sequenceDiagram
     OF ->> OP: Report 1 - ORU_R01 / DiagnosticReport (final)
     OF -->> OP: Optional: OSU^O51 SC/A - Task in-progress
     OF ->> OP: Report 2 - ORU_R01 / DiagnosticReport (final)
-    OF ->> OP: Order complete - OSU^O51 SC/CM<br/>Task completed, output = all reports
+    OF ->> OP: Order complete - OSU^O51 SC/CM<br/>Task completed, output = UGR references to all reports
     OP -->> OP: Close the order
 ```
 
 | Event | HL7 v2 | FHIR ([Task](StructureDefinition-Task.html)) |
 |---|---|---|
 | A report is issued, more to follow | `ORU_R01`; optionally `OSU^O51` ORC-1 `SC`, ORC-5 `A` (some, but not all, results available) | `DiagnosticReport`; `Task.status` `in-progress`, `businessStatus` `interim-report` - **To confirm** |
-| The whole order is complete | `OSU^O51` ORC-1 `SC`, ORC-5 `CM` | `Task.status` `completed`, `businessStatus` `completed`; `Task.output` references **every** report issued for the order |
+| The whole order is complete | `OSU^O51` ORC-1 `SC`, ORC-5 `CM` | `Task.status` `completed`, `businessStatus` `completed`; `Task.output` references **every** report issued for the order - see [Report References](#report-references) |
 {:.grid}
 
 - The Order Filler **SHALL** send the order outcome (ORC-5 `CM` / `Task` `completed`)
@@ -123,6 +124,22 @@ sequenceDiagram
 - An amended or corrected report issued after completion (OBR-25 `C`,
   `DiagnosticReport.status` `amended` / `corrected`) is sent as a further report; whether
   it also changes the order status is **To confirm**.
+
+##### Report References
+
+The O51 FHIR Message contains only the `MessageHeader` and the `Task` - the reports are
+**not** carried in it. Each `Task.output` is an **external reference** to a genomic test
+report held in the NHS England **Unified Genomic Record (UGR)**:
+
+| `Task.output.valueReference` | Content |
+|---|---|
+| `reference` | Absolute URL of the `DiagnosticReport` in the UGR |
+| `type` | `DiagnosticReport` |
+| `identifier` | The [Report Identifier](StructureDefinition-ReportIdentifier.html) (type `FILL`, assigned by the laboratory) - the same value as OBR-3 on the report's `ORU_R01` and `DiagnosticReport.identifier[ReportIdentifier]` |
+{:.grid}
+
+The Report Identifier lets the Order Placer match each reference to a report it has
+already received (e.g. as `ORU_R01`), and retrieve any it has not from the UGR.
 
 Where the order is managed by GOMS, MNS raises a `genomic-order-event-1` for each
 `DiagnosticReport` and for the `Task` (and `ServiceRequest`) status change. The RIE
@@ -143,12 +160,15 @@ PID|1||633^^^R0A^MR~9449305552^^^^NH||CHISLETT^Octavia||20080920|F|||1 RAVENSFIE
 ORC|SC|1601737^R0A|R25012345^699X0||CM||||20250220110000+0000|||C3456789^Darwin^Samuel^^^Dr^^^GMC|||||||||MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS
 ```
 
-The report itself follows as an [ORU_R01](hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message) -
-see the [HL7 v2 example instances](hl7v2.html#example-example-instances).
+`OSU^O51` has no segment for the reports. They are held in the UGR, and each is also sent
+separately as an [ORU_R01](hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message)
+(Report Identifier in OBR-3) - see the [HL7 v2 example instances](hl7v2.html#example-example-instances).
 
 FHIR Message: [Bundle Message - Order Status (O51), outcome](Bundle-GenomicOrderStatusOutcomeMessage.html)
-(the [completed Task](Task-TaskGenomicOrderCompleted.html) and the [genomic test
-report](DiagnosticReport-DiagnosticReportGenomicsReport.html)).
+- the `MessageHeader` and the [completed Task](Task-TaskGenomicOrderCompleted.html) only.
+`Task.output` is an external reference to the genomic test report in the UGR, with its
+Report Identifier (`25edee2b-add8-4522-9fa2-1ee8f229bd75`, assigned by 699X0) - the
+same report as [Diagnostic Report Example](DiagnosticReport-DiagnosticReportGenomicsReport.html).
 
 ### Expected Actions
 

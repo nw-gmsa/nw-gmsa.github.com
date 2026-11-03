@@ -42,7 +42,11 @@ Description: "TODO"
 
 * output[+]
   * type = TaskInputOutputParameterType#reference-results
-  * valueReference.reference = "DiagnosticReport/DiagnosticReportGenomicsReport"
+  // External reference to the report held in the NHS England Unified Genomic Record (UGR)
+  * valueReference.reference = "https://ugr.example.nhs.uk/FHIR/R4/DiagnosticReport/25edee2b-add8-4522-9fa2-1ee8f229bd75"
+  * valueReference.type = "DiagnosticReport"
+  * valueReference.display = "Genomic test report (NHS England Unified Genomic Record)"
+  * valueReference.identifier.type = $v2-0203#FILL
   * valueReference.identifier.system = "http://www.acme.org/diagnosticreport/identifiers"
   * valueReference.identifier.value = "25edee2b-add8-4522-9fa2-1ee8f229bd75"
   * valueReference.identifier.assigner.identifier.system = $ods-code

@@ -1,7 +1,8 @@
 // Order status examples (OSU^O51 / Referral Order Status (O51)) for the existing
 // laboratory order ServiceRequestGenomicsOrderCodedEntries - Referral Request [PCC-55],
 // Referral Decline [PCC-56] and Referral Outcome [PCC-57]. For future use.
-// The completed Task is the existing TaskGenomicOrderCompleted.
+// The completed Task is the existing TaskGenomicOrderCompleted; its reports are external
+// references to the NHS England Unified Genomic Record (UGR), not carried in the message.
 
 RuleSet: GenomicOrderStatusTask
 * basedOn.reference = "ServiceRequest/ServiceRequestGenomicsOrderCodedEntries"
@@ -148,9 +149,8 @@ Usage: #example
 Instance: GenomicOrderStatusOutcomeMessage
 InstanceOf: BundleMessage
 Title: "Bundle Message - Order Status (O51), outcome"
-Description: "**For future use.** FHIR Message equivalent of the HL7 v2 OSU^O51 outcome (ORC-1 SC, ORC-5 CM) on Referral Outcome [PCC-57]: the completed Task and the genomic test report."
+Description: "**For future use.** FHIR Message equivalent of the HL7 v2 OSU^O51 outcome (ORC-1 SC, ORC-5 CM) on Referral Outcome [PCC-57]: the completed Task only. The genomic test reports are external references (with Report Identifiers) to the NHS England Unified Genomic Record."
 Usage: #example
 * insert MessageBundle("urn:uuid:9efaef2e-8dbb-4e03-aa25-4968c76bd1fc", "2025-02-20T11:00:00+00:00")
 * insert EntryDocument("urn:uuid:5597012c-542f-4a2d-ad4c-3431403f4b54", MessageHeaderGenomicOrderStatusOutcome)
 * insert EntryDocument("https://fhir.nwgenomics.nhs.uk/Task/TaskGenomicOrderCompleted", TaskGenomicOrderCompleted)
-* insert EntryDocument("https://fhir.nwgenomics.nhs.uk/DiagnosticReport/DiagnosticReportGenomicsReport", DiagnosticReportGenomicsReport)

@@ -142,8 +142,9 @@ sequenceDiagram
 1. GOMS creates or updates a `Task` (accept, decline, completion, reassignment).
 2. MNS sends the RIE a `genomic-order-event-1` notification. The notification is
    **event-only** - its `focus` references the changed resource, it does not carry it.
-3. The RIE retrieves the `Task` (and, for an outcome, the documents in `Task.output`) from
-   the GOMS FHIR API.
+3. The RIE retrieves the `Task` from the GOMS FHIR API. For an outcome, `Task.output`
+   references the reports in the NHS England Unified Genomic Record (UGR) - they are not
+   retrieved or forwarded by the RIE.
 4. The RIE converts the `Task` to a [Referral Order Status
    (O51)](MessageDefinition-referral-order-status.html) FHIR Message or an HL7 v2
    [`OSU^O51`](hl7v2.html#osu_o51-order-status-update) - `Task.status` and
