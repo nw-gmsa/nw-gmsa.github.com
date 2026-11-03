@@ -9,7 +9,7 @@ Request and Specimen fields shared by every order, regardless of test type - the
 onto the standardised [HL7 v2 OML_O21](hl7v2.html#oml_o21-laboratory-order) message and
 its FHIR equivalent, the [FHIR Message O21](MessageDefinition-laboratory-order.html).
 Ask At Order Entry questions, which vary by order/test type, are **not** part of this
-core form - see [Order Entry Questions](#order-entry-questions) below for the
+core form - see [Order Entry Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions) for the
 separate, order-type-specific Questionnaire to use alongside this one.
 """
 Usage:  #definition
@@ -553,7 +553,7 @@ Usage:  #definition
 // Consent, Reason For Variant Re-Interpretation Request, High Infection Risk),
 // dWGSSubOrder for distributed WGS, or HLATestsTransplantAskAtOrderEntry /
 // ChimerismTestAdditionalAskAtOrderQuestions for Histocompatibility and Immunogenetics (one per
-// Hive order screen). See Questionnaire-GenomicTestOrder.html#order-entry-questions.
+// Hive order screen). See StructureDefinition-GenomicTestOrder.html#order-entry-questions.
 
 //* item[+]
 //  * type = #group

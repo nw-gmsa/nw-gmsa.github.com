@@ -4,17 +4,17 @@ planned project.
 </div>
 
 This Questionnaire is compared against [Genomic Test
-Order](Questionnaire-GenomicTestOrder.html) - see [NW GLH Paper Test Request
-Forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms) -
+Order](StructureDefinition-GenomicTestOrder.html) - see [NW GLH Paper Test Request
+Forms](StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms) -
 but does not yet declare `derivedFrom`/extends it: unlike the Ask At Order
 Entry Questionnaires that originated from an existing digital order-entry
 screen (see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions)), this
+Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions)), this
 one hasn't yet been processed into the specific electronic Ask At Order
 Entry shape that relationship implies for use in an actual order. It
 structures the NW GLH paper **Genomic Variant Review Request Form (R442.1) -
 Rare Disease** (DOC6004) - see [NW Genomics paper test request
-forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms)
+forms](StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms)
 for how this compares to the other paper forms.
 
 **Source form:** [Genomic Variant Review Request Form, R442.1/DOC6004 (DOCX)](https://mft.nhs.uk/genomic-variant-review-request-form-r442-1-rare-disease/)
@@ -43,6 +43,6 @@ detail, and the common core's own Specimen group does not apply. Where the
 prior report came from an external GLH, the form asks for a copy to be
 attached - the same `ServiceRequest.supportingInfo` -> `DocumentReference` ->
 `Binary` pattern used for the family letter on [Genetic Clinical
-Referral](Questionnaire-GeneticClinicalReferral.html#family-history). No
+Referral](StructureDefinition-GeneticClinicalReferral.html#family-history). No
 Order Placer Number, Account Number/Hospital Spell Identifier, or clinician
 professional identifier (GMC/GMP) field is present on the paper form.

@@ -14,7 +14,7 @@ common source) rather than StarLIMS specifically, since it isn't StarLIMS-specif
 Each item's `linkId` is the literal CSV column header, `type` the FHIR datatype the
 column's values coerce to, and `definition` the FHIR field the column populates once
 imported - many of these reuse the exact same field as the equivalent item already
-defined on [Genomic Test Order](Questionnaire-GenomicTestOrder.html), since a
+defined on [Genomic Test Order](StructureDefinition-GenomicTestOrder.html), since a
 sub-contracted work order carries the same underlying data as any other order. See
 [StarLIMS / iGene Integration - Work Order CSV Export from
 iGene](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/starLIMS.md#work-order-csv-export-from-igene) for a simple description of each

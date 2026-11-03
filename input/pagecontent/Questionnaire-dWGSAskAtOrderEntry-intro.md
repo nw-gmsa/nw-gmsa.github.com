@@ -4,8 +4,8 @@ planned project.
 </div>
 
 This Questionnaire `derivedFrom`/extends [Genomic Test
-Order](Questionnaire-GenomicTestOrder.html) - see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). It
+Order](StructureDefinition-GenomicTestOrder.html) - see [Order Entry
+Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions). It
 carries the fields from the [dWGS digital
 manifest](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md#field-mapping-csv--hl7-v2--fhir) (NHS England `RGL to SGL
 SOP` Appendix 3, plus 7 NW GMS local extension fields) that are **not** already
@@ -55,7 +55,7 @@ sub-contracted digital manifest).
 **Not carried over from the manifest**: `patient_forename`, `patient_surname`,
 patient date of birth, NHS Number, `patient_medical_record_number` (Hospital Number), Sample Material Type (Specimen Type), and
 Specimen Collection Date all use the **same** `linkId`s and codes as items
-already in [Genomic Test Order](Questionnaire-GenomicTestOrder.html)'s own
+already in [Genomic Test Order](StructureDefinition-GenomicTestOrder.html)'s own
 Patient and Specimen groups - see the seven rows marked **Genomic Test Order
 (base)** in [dWGS - Field mapping](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md#field-mapping-csv--hl7-v2--fhir)
 for the full list. They remain part of [dWGS Sub-Order

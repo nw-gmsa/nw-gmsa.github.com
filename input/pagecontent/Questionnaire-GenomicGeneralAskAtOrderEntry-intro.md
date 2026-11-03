@@ -41,7 +41,7 @@ expected to be completed for a given order type, not a technical constraint.
 Today, this Generic Ask At Order Entry Questionnaire is the one actually used
 for **Cancer**, **Whole Genome Sequencing (WGS)** and **Rare and Inherited
 Disease** orders placed through the generic order path (see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions)) -
+Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions)) -
 **Chimerism** (and Histocompatibility and Immunogenetics generally) instead
 uses its own dedicated Ask At Order Entry Questionnaires - [Chimerism Test
 Additional Ask At Order Entry Questions](Questionnaire-ChimerismTestAdditionalAskAtOrderQuestions.html), [HLA Tests -
@@ -81,7 +81,7 @@ A real NHS Trust EPR order-entry screen for Rare and Inherited Disease WGS
 orders surfaces several fields with no equivalent anywhere in this
 Questionnaire, [WGS Test Additional Ask At Order Entry
 Questions](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html) or
-[Genomic Test Order](Questionnaire-GenomicTestOrder.html) - consistent
+[Genomic Test Order](StructureDefinition-GenomicTestOrder.html) - consistent
 with, and extending, the same gap analysis in [Whole Genome Sequencing
 (WGS)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/WholeGenomicSequence.md#the-reverse-direction-what-the-generic-order-path-doesnt-cover):
 
@@ -94,7 +94,7 @@ with, and extending, the same gap analysis in [Whole Genome Sequencing
 - **Previously stored DNA ID number** - a reference to an existing stored
   DNA sample from a prior test, as an alternative to submitting a fresh
   specimen. No equivalent field exists on this Questionnaire or the common
-  core's own [Specimen](Questionnaire-GenomicTestOrder.html#specimen) group.
+  core's own [Specimen](StructureDefinition-GenomicTestOrder.html#specimen) group.
 - **Specialist Test Group**, used on this live screen as a required
   selector alongside the Test Code itself (e.g. "WGS" for a WGS order) -
   this is the same [Genomic Test Code](CodeSystem-GenomicTestCode.html)

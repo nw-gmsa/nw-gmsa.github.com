@@ -10,7 +10,7 @@ title "Genomic Laboratory Report"
 ** Hospital Spell
 *** Case identification / Account Number [[StructureDefinition-HospitalProviderSpellIdentifier.html Hospital Provider Spell Identifier]]
 *** Service Type [[ValueSet-service.html Service]]
-** [[Questionnaire-GenomicTestOrder.html Order Details]]
+** [[StructureDefinition-GenomicTestOrder.html Order Details]]
 *** [[StructureDefinition-OrderIdentifier.html Order Identifier (Placer)]]
 *** Filler Order Number
 *** Ordering Facility [[StructureDefinition-OrganisationCode.html Organisation Code]]

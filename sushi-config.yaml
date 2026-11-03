@@ -4,7 +4,7 @@
 # e.g. ihe.iti.mhds, or ihe.iti.basicaudit
 id: fhir.nwgenomics.nhs.uk
 canonical: https://fhir.nwgenomics.nhs.uk
-version: 2.2.4
+version: 2.2.5
 name: NWGMSA
 title: NHS North West Genomics
 description: NHS North West Genomic Medicine Service Alliance - IHE Laboratory Testing Workflow (LTW)
@@ -370,10 +370,10 @@ menu:
   Data Models (Volume 3):
     Diagnostic Model Overview: diagnostic-core.html
   ##  Overview - Data Contracts: data-intro.html
-    Genomic Test Order: Questionnaire-GenomicTestOrder.html
+    Genomic Test Order: StructureDefinition-GenomicTestOrder.html
    ## Genomic Test Report (Composition): StructureDefinition-Composition-GenomicReport.html
-    Genomic Test Report: Questionnaire-GenomicTestReport.html
-    Genetic Clinical Referral (Analysis Only): Questionnaire-GeneticClinicalReferral.html
+    Genomic Test Report: StructureDefinition-GenomicTestReport.html
+    Genetic Clinical Referral (Analysis Only): StructureDefinition-GeneticClinicalReferral.html
     Laboratory Analyte Result: StructureDefinition-LaboratoryAnalyteResult.html
     Observations: StructureDefinition-Observation.html
     Document Entry: StructureDefinition-DocumentReference.html

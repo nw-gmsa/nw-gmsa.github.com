@@ -6,8 +6,8 @@ Description: """
 
 **Ask At Order Entry Questions** for the **Deafness Testing Proforma
 (R67 Non-Syndromic Hearing Loss)**, used alongside the [common core order
-form](Questionnaire-GenomicTestOrder.html) - see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). The
+form](StructureDefinition-GenomicTestOrder.html) - see [Order Entry
+Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions). The
 test code (R67) is fixed by the choice of form rather than entered - the
 proforma instead exists to capture the clinical detail (audiogram, syndromic
 features, risk factors) that supports the R67 eligibility criteria.
@@ -29,7 +29,7 @@ Usage:  #definition
 // otherwise available. Only fields confirmed present on this specific form -
 // not a copy of Genomic Test Order's own (larger) Patient/Healthcare
 // Professional groups. See
-// Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms.
+// StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms.
 // ---------------------------------------------------------------------------
 
 * item[+]

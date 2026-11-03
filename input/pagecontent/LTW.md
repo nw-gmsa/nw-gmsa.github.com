@@ -241,8 +241,8 @@ How this is implemented will vary between different NHS organisations and system
 
 These forms will have a computable definition called a [template (FHIR Questionnaire)](https://hl7.org/fhir/R4/questionnaire.html) which will list the technical content requirements for the form. 
 
-- See [NW GMSA Genomics Test Order Panel](Questionnaire-GenomicTestOrder.html) for a FHIR Questionnaire definition of the form.
-  - For details `on the wire` format see [Genomic Test Order](Questionnaire-GenomicTestOrder.html#diagnostic-order) 
+- See [NW GMSA Genomics Test Order Panel](StructureDefinition-GenomicTestOrder.html) for a FHIR Questionnaire definition of the form.
+  - For details `on the wire` format see [Genomic Test Order](StructureDefinition-GenomicTestOrder.html#diagnostic-order) 
 
 This archetype definition can also support [HL7 Structured Data Capture](https://build.fhir.org/ig/HL7/sdc/index.html) should the Order Placer system support these features.
 
@@ -251,7 +251,7 @@ This archetype definition can also support [HL7 Structured Data Capture](https:/
 For submission, this form will be converted by the [Order Placer](ActorDefinition-OrderPlacer.html) to a communication format called [HL7 FHIR](https://hl7.org/fhir/R4/index.html) (and for compatability reasons [HL7 v2](https://en.wikipedia.org/wiki/Health_Level_7#HL7_Version_2).
 If the [Order Placer](ActorDefinition-OrderPlacer.html) has a FHIR enabled Electronic Patient Record (e.g. EPIC, Cerner, Meditech, etc), they may use [HL7 SDC - Form Data Extraction](https://build.fhir.org/ig/HL7/sdc/extraction.html) to assist with this process.
 
-For details on the relationship between forms and HL7 v2/FHIR see [Genomic Test Order](Questionnaire-GenomicTestOrder.html#diagnostic-order)
+For details on the relationship between forms and HL7 v2/FHIR see [Genomic Test Order](StructureDefinition-GenomicTestOrder.html#diagnostic-order)
 
 ##### Submit Genomic Test Order Form
 
@@ -282,7 +282,7 @@ After submitting the original order, the sample will be collected and sent to th
 ### Laboratory Report (LAB-3)
 
 <div class="alert alert-info" role="alert">
-<b>Domain Archetype:</b> <a href="Questionnaire-GenomicTestReport.html" _target="_blank">Genomic Test Report</a> 
+<b>Domain Archetype:</b> <a href="StructureDefinition-GenomicTestReport.html" _target="_blank">Genomic Test Report</a> 
 </div>
 
 <div class="alert alert-info" role="alert">
@@ -397,7 +397,7 @@ It is envisaged this design will also extend to Laboratory Reports (R01).
 
 <div class="alert alert-info" role="alert">
 <b>Domain Archetype:</b> <a href="StructureDefinition-ServiceRequest.html" _target="_blank">Genomic Test Order</a> 
-<b>Domain Archetype:</b> <a href="Questionnaire-GenomicTestReport.html" _target="_blank">Genomic Test Report</a> 
+<b>Domain Archetype:</b> <a href="StructureDefinition-GenomicTestReport.html" _target="_blank">Genomic Test Report</a> 
 </div>
 
 <div class="alert alert-info" role="alert">
@@ -515,7 +515,7 @@ Device ->> LIMS: Send Test Results Management LAB-5 R22/R32
 ### Work Order Management (LAB-4)
 
 <div class="alert alert-info" role="alert">
-<b>Domain Archetype:</b> <a href="Questionnaire-GenomicTestOrder.html#original-order-instance-and-filler-orders" _target="_blank">Genomic Test Order - Instance Order</a> 
+<b>Domain Archetype:</b> <a href="StructureDefinition-GenomicTestOrder.html#original-order-instance-and-filler-orders" _target="_blank">Genomic Test Order - Instance Order</a> 
 </div>
 
 Used by these Use Cases:

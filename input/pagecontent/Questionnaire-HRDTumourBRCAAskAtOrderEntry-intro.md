@@ -4,17 +4,17 @@ planned project.
 </div>
 
 This Questionnaire is compared against [Genomic Test
-Order](Questionnaire-GenomicTestOrder.html) - see [NW GLH Paper Test Request
-Forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms) -
+Order](StructureDefinition-GenomicTestOrder.html) - see [NW GLH Paper Test Request
+Forms](StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms) -
 but does not yet declare `derivedFrom`/extends it: unlike the Ask At Order
 Entry Questionnaires that originated from an existing digital order-entry
 screen (see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions)), this
+Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions)), this
 one hasn't yet been processed into the specific electronic Ask At Order
 Entry shape that relationship implies for use in an actual order. It
 structures the NW GLH paper **HRD and Tumour BRCA Test Request Form**
 (GB-27189) - see [NW Genomics paper test request
-forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms)
+forms](StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms)
 for how this compares to the other paper forms.
 
 **Source form:** [HRD and Tumour BRCA Test Request Form (PDF)](https://mft.nhs.uk/app/uploads/2021/10/HRD-test-request-form-new.pdf)
@@ -41,7 +41,7 @@ for how this compares to the other paper forms.
 
 Specimen/pathology-block detail beyond Pathologist, Pathology hospital and
 Neoplastic cell content (above) is captured by the common core [Genomic Test
-Order](Questionnaire-GenomicTestOrder.html) Questionnaire's own Specimen
+Order](StructureDefinition-GenomicTestOrder.html) Questionnaire's own Specimen
 group and is not repeated here - this form has no Order Placer Number,
 Account Number/Hospital Spell Identifier, or clinician professional
 identifier (GMC/GMP) field.

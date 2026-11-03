@@ -6,8 +6,8 @@ Description: """
 
 **Ask At Order Entry Questions** for the NW GLH paper **Request for Prenatal
 Diagnosis of Haemoglobinopathies** form (DOC4544), used alongside the [common
-core order form](Questionnaire-GenomicTestOrder.html) - see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). This
+core order form](StructureDefinition-GenomicTestOrder.html) - see [Order Entry
+Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions). This
 form is unusual among the paper forms in naming **two** patients (maternal
 and paternal) rather than one - the common core's own Patient group is
 completed for the mother (the referral's own registered patient - not a
@@ -34,7 +34,7 @@ Usage:  #definition
 // these are not otherwise available. Only fields confirmed present on this
 // specific form - not a copy of Genomic Test Order's own (larger) Patient/
 // Healthcare Professional groups. See
-// Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms.
+// StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms.
 // ---------------------------------------------------------------------------
 
 * item[+]

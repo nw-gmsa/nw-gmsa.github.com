@@ -4,12 +4,12 @@ planned project.
 </div>
 
 This Questionnaire is compared against [Genomic Test
-Order](Questionnaire-GenomicTestOrder.html) - see [NW GLH Paper Test Request
-Forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms) -
+Order](StructureDefinition-GenomicTestOrder.html) - see [NW GLH Paper Test Request
+Forms](StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms) -
 but does not yet declare `derivedFrom`/extends it: unlike the Ask At Order
 Entry Questionnaires that originated from an existing digital order-entry
 screen (see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions)), this
+Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions)), this
 one hasn't yet been processed into the specific electronic Ask At Order
 Entry shape that relationship implies for use in an actual order. It
 structures the **NHS Genomic Medicine Service (GMS) Whole Genome Sequencing
@@ -17,7 +17,7 @@ structures the **NHS Genomic Medicine Service (GMS) Whole Genome Sequencing
 distinct from the NW GLH-specific [HRD and Tumour
 BRCA](Questionnaire-HRDTumourBRCAAskAtOrderEntry.html) form (a different
 cancer test, not WGS) - see [NW Genomics paper test request
-forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms)
+forms](StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms)
 for how this compares to the other paper forms.
 
 **Source form:** [GMS WGS Test Request Form - Cancer, V1.22 July 2024 (PDF)](https://mft.nhs.uk/app/uploads/2024/08/genomic-medicine-device-test-order-form-cancer-v1.22.pdf)
@@ -57,7 +57,7 @@ the rare disease variant of this same national form family.
 
 Tumour and germline sample sections (sample type, sample ID, collection
 date/time, sample volume, comments) map directly onto the common core's own
-[Specimen](Questionnaire-GenomicTestOrder.html#specimen) group and are not
+[Specimen](StructureDefinition-GenomicTestOrder.html#specimen) group and are not
 re-declared here. No Order Placer Number, Account Number/Hospital Spell
 Identifier, or clinician professional identifier (GMC/GMP) field is present
 on the paper form - the same universal gap as every other paper form

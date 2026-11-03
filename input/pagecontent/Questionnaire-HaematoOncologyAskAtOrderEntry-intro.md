@@ -4,17 +4,17 @@ planned project.
 </div>
 
 This Questionnaire is compared against [Genomic Test
-Order](Questionnaire-GenomicTestOrder.html) - see [NW GLH Paper Test Request
-Forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms) -
+Order](StructureDefinition-GenomicTestOrder.html) - see [NW GLH Paper Test Request
+Forms](StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms) -
 but does not yet declare `derivedFrom`/extends it: unlike the Ask At Order
 Entry Questionnaires that originated from an existing digital order-entry
 screen (see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions)), this
+Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions)), this
 one hasn't yet been processed into the specific electronic Ask At Order
 Entry shape that relationship implies for use in an actual order. It
 structures the NW GLH paper **Molecular Genomic Testing Request Form -
 Haemato-Oncology** (DOC5775) - see [NW Genomics paper test request
-forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms)
+forms](StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms)
 for how this compares to the other paper forms.
 
 **Source form:** [Molecular Genomic Testing Request Form - Haemato-Oncology (DOCX)](https://mft.nhs.uk/app/uploads/2024/04/DOC5775-Haem-Onc-Genomics-referral-form-April-24.docx)
@@ -39,6 +39,6 @@ local CodeSystem in this IG, so `NOS/HaemOncPanelRequested` is left open
 rather than guessing lab-internal panel codes. Specimen detail (Sample Type,
 High Infection Risk, Sample Date, Taken by) beyond the common core's own
 Specimen group is not restored here - see [Genomic Test
-Order](Questionnaire-GenomicTestOrder.html) for that. No Order Placer
+Order](StructureDefinition-GenomicTestOrder.html) for that. No Order Placer
 Number, Account Number/Hospital Spell Identifier, or clinician professional
 identifier (GMC/GMP) field is present on the paper form.

@@ -7,7 +7,7 @@ This Questionnaire is a **CSV manifest description**, not an Ask At Order
 Entry Questionnaire - it documents the complete 44-field digital manifest (37 national fields plus 7 NW GMS local extension fields) a
 Requesting Genomic Laboratory sends for a distributed WGS (dWGS)
 sub-contracted order, including several fields also asked by [Genomic Test
-Order](Questionnaire-GenomicTestOrder.html) itself. See [dWGS - Ask at Order
+Order](StructureDefinition-GenomicTestOrder.html) itself. See [dWGS - Ask at Order
 Entry: the dWGS digital
 manifest](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md#ask-at-order-entry-the-dwgs-digital-manifest) for the
 full narrative, [dWGS - Field
@@ -19,7 +19,7 @@ additional Ask At Order Entry Questionnaire this manifest was split from.
 ### Summary
 
 Unlike the [NW GLH Paper Test Request
-Forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms),
+Forms](StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms),
 this Questionnaire genuinely does carry its own Patient/order-identifier
 fields directly (it doesn't rely on `derivedFrom`/extends Genomic Test Order
 for them) - see [dWGS - Field

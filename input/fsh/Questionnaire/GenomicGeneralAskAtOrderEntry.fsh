@@ -3,10 +3,10 @@ InstanceOf: NWQuestionnaire
 Title: "NW Genomic General Ask At Order Questions"
 Description: """
 **Ask At Order Entry Questions Common** - the default set used alongside the
-[common core order form](Questionnaire-GenomicTestOrder.html) for order/test
+[common core order form](StructureDefinition-GenomicTestOrder.html) for order/test
 types that do not have their own dedicated Ask At Order Entry Questionnaire -
-see [Order Entry Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions).
-These questions were originally part of [GenomicTestOrder](Questionnaire-GenomicTestOrder.html)
+see [Order Entry Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions).
+These questions were originally part of [GenomicTestOrder](StructureDefinition-GenomicTestOrder.html)
 and have been extracted here so the core form stays generic to every order/test type.
 
 Covers Cancer, Whole Genome Sequencing (WGS) and Rare and Inherited Disease

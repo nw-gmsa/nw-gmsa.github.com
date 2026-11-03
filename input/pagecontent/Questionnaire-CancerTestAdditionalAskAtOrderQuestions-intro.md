@@ -6,11 +6,11 @@ This Questionnaire is a proposal, not an active or planned project.
 
 <span class="badge badge-primary">Diagnostic Genomics</span>
 
-Used **alongside** [Genomic Test Order](Questionnaire-GenomicTestOrder.html)
+Used **alongside** [Genomic Test Order](StructureDefinition-GenomicTestOrder.html)
 (the common core) **and** [Ask At Order Entry Questions
 Common](Questionnaire-GenomicGeneralAskAtOrderEntry.html) for Cancer orders
 specifically - see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions), the
+Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions), the
 same "Test Specific" tier pattern [WGS Test Additional Ask At Order Entry
 Questions](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html) already
 follows for WGS orders.
@@ -18,7 +18,7 @@ follows for WGS orders.
 Its content is **inferred**, not yet confirmed against a live order-entry
 screen: each item below is a concept that recurs independently across the
 two Cancer-category [NW GLH paper test request
-forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms) -
+forms](StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms) -
 [HRD and Tumour BRCA](Questionnaire-HRDTumourBRCAAskAtOrderEntry.html)
 (GB-27189) and [GMS WGS Cancer](Questionnaire-GMSWGSCancerAskAtOrderEntry.html)
 (the national form). Neither of those two Questionnaires has been changed

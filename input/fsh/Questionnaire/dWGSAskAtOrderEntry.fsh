@@ -6,8 +6,8 @@ Description: """
 
 **Ask At Order Entry Questions** for a **distributed WGS (dWGS)**
 sub-contracted order (IHE LTW `LAB-35`), used alongside the [common core
-order form](Questionnaire-GenomicTestOrder.html) - see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). This
+order form](StructureDefinition-GenomicTestOrder.html) - see [Order Entry
+Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions). This
 Questionnaire carries only the fields from the [dWGS digital
 manifest](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md#field-mapping-csv--hl7-v2--fhir) (NHS England `RGL to SGL
 SOP` Appendix 3, plus 7 NW GMS local extension fields) that are **not** already

@@ -6,8 +6,8 @@ Description: """
 
 **Ask At Order Entry Questions** for the NW GLH paper **Request for Genetic
 Testing for Haemoglobinopathies** form (DOC4544), used alongside the [common
-core order form](Questionnaire-GenomicTestOrder.html) - see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). Two
+core order form](StructureDefinition-GenomicTestOrder.html) - see [Order Entry
+Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions). Two
 things are distinctive here: prior full blood count/HPLC laboratory results
 are submitted *with* the request (used to interpret the genetic result, not
 produced by it), and a relative/partner's own affected/carrier status can be
@@ -30,7 +30,7 @@ Usage:  #definition
 // these are not otherwise available. Only fields confirmed present on this
 // specific form - not a copy of Genomic Test Order's own (larger) Patient/
 // Healthcare Professional groups. See
-// Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms.
+// StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms.
 // ---------------------------------------------------------------------------
 
 * item[+]

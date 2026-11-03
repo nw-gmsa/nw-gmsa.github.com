@@ -6,8 +6,8 @@ Description: """
 
 **Ask At Order Entry Questions** for the NW GLH paper **HRD and Tumour BRCA Test
 Request Form** (GB-27189), used alongside the [common core order
-form](Questionnaire-GenomicTestOrder.html) - see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). This
+form](StructureDefinition-GenomicTestOrder.html) - see [Order Entry
+Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions). This
 form is specific to newly-diagnosed advanced high-grade epithelial ovarian,
 fallopian tube or primary peritoneal cancer (HRD test, performed by Myriad
 Genetics Inc. in the United States) and its relapsed-disease tumour BRCA-only
@@ -30,7 +30,7 @@ Usage:  #definition
 // these are not otherwise available. Only fields confirmed present on this
 // specific form - not a copy of Genomic Test Order's own (larger) Patient/
 // Healthcare Professional groups. See
-// Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms.
+// StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms.
 // ---------------------------------------------------------------------------
 
 * item[+]

@@ -2,5 +2,5 @@
 This is currently being elaborated and subject to change.
 </div>
 
-See [Genomic Test Order](Questionnaire-GenomicTestOrder.html) for detailed notes.
+See [Genomic Test Order](StructureDefinition-GenomicTestOrder.html) for detailed notes.
 

@@ -16,7 +16,7 @@ Test Additional Ask At Order Entry Questions](Questionnaire-ChimerismTestAdditio
 both extracted from a live Hive/Histotrac `ORM^O01` order -
 this Questionnaire is modelled directly from NHSBT's own **paper request form**, since
 no live system message for it has been sourced. It is **not** `derivedFrom`/`extends`
-[Genomic Test Order](Questionnaire-GenomicTestOrder.html): this form is submitted
+[Genomic Test Order](StructureDefinition-GenomicTestOrder.html): this form is submitted
 directly to NHSBT (a national body, not NW GLH/MFT), so its own Patient/Requester
 fields are restored here rather than assumed available from the common core order
 form - the same reason [HRD and Tumour

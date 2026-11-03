@@ -6,12 +6,12 @@ Description: """
 
 **Test Specific Additional Ask At Order Entry Questions** for Cancer
 orders - used *alongside* the [common core order
-form](Questionnaire-GenomicTestOrder.html) **and** [Ask At Order Entry
+form](StructureDefinition-GenomicTestOrder.html) **and** [Ask At Order Entry
 Questions Common](Questionnaire-GenomicGeneralAskAtOrderEntry.html), the
 same "Test Specific" tier pattern [WGS Test Additional Ask At Order Entry
 Questions](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html) already
 follows for WGS orders - see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions).
+Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions).
 
 Its content is **inferred**, not yet confirmed against a live order-entry
 screen the way `WGSTestAdditionalAskAtOrderQuestions` was: each item below
@@ -20,7 +20,7 @@ GLH paper forms - [HRD and Tumour
 BRCA](Questionnaire-HRDTumourBRCAAskAtOrderEntry.html) (GB-27189) and [GMS
 WGS Cancer](Questionnaire-GMSWGSCancerAskAtOrderEntry.html) (the national
 form) - see [NW GLH Paper Test Request
-Forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms).
+Forms](StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms).
 Neither of those two Questionnaires has been changed to actually use this
 one yet - both remain independent, standalone Questionnaires, each already
 carrying its own copy of the fields proposed here.

@@ -21,7 +21,7 @@ with [HSCT Recipients and
 Donors](Questionnaire-HSCTRecipientsAndDonorsAskAtOrderEntry.html), this Questionnaire
 is modelled directly from NHSBT's own **paper request form** rather than the live Hive
 UI, and is **not** `derivedFrom`/`extends` [Genomic Test
-Order](Questionnaire-GenomicTestOrder.html) for the same reason - this form is
+Order](StructureDefinition-GenomicTestOrder.html) for the same reason - this form is
 submitted directly to NHSBT, so its own Patient/Requester fields are restored here.
 
 **A separate form must be completed for each individual** - the same physical form is

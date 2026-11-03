@@ -4,17 +4,17 @@ planned project.
 </div>
 
 This Questionnaire is compared against [Genomic Test
-Order](Questionnaire-GenomicTestOrder.html) - see [NW GLH Paper Test Request
-Forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms) -
+Order](StructureDefinition-GenomicTestOrder.html) - see [NW GLH Paper Test Request
+Forms](StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms) -
 but does not yet declare `derivedFrom`/extends it: unlike the Ask At Order
 Entry Questionnaires that originated from an existing digital order-entry
 screen (see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions)), this
+Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions)), this
 one hasn't yet been processed into the specific electronic Ask At Order
 Entry shape that relationship implies for use in an actual order. It
 structures the **R454 Mavacamten CYP2C19 Test Request Form** (DOC6602) - see
 [NW Genomics paper test request
-forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms)
+forms](StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms)
 for how this compares to the other paper forms.
 
 **Source form:** [CYP2C19 R454 Mavacamten Test Request Form, DOC6602 (PDF)](https://mft.nhs.uk/cyp2c19-r454-mavacamten-referral-form/)
@@ -37,7 +37,7 @@ for how this compares to the other paper forms.
 This is the leanest of the ten paper forms - the test itself (R454) is fixed
 by the choice of form, and beyond a Gender Identity field and an NHS/Private
 tick box (see [Genomic Test Order - Common Fields We May Have
-Missed](Questionnaire-GenomicTestOrder.html#common-fields-we-may-have-missed))
+Missed](StructureDefinition-GenomicTestOrder.html#common-fields-we-may-have-missed))
 its Patient and Referring Clinician/Healthcare Professional content maps
 cleanly onto the common core's own Patient and Healthcare Professional
 groups. No Order Placer Number, Account Number/Hospital Spell Identifier,

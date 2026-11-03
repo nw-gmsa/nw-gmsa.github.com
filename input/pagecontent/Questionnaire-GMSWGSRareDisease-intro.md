@@ -4,12 +4,12 @@ planned project.
 </div>
 
 This Questionnaire is compared against [Genomic Test
-Order](Questionnaire-GenomicTestOrder.html) - see [NW GLH Paper Test Request
-Forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms) -
+Order](StructureDefinition-GenomicTestOrder.html) - see [NW GLH Paper Test Request
+Forms](StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms) -
 but does not yet declare `derivedFrom`/extends it: unlike the Ask At Order
 Entry Questionnaires that originated from an existing digital order-entry
 screen (see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions)), this
+Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions)), this
 one hasn't yet been processed into the specific electronic Ask At Order
 Entry shape that relationship implies for use in an actual order. It
 structures the **NHS Genomic Medicine Service (GMS) Whole Genome Sequencing
@@ -17,7 +17,7 @@ structures the **NHS Genomic Medicine Service (GMS) Whole Genome Sequencing
 distinct from the NW GLH-specific [WGS Local Test
 Order](Questionnaire-WGSLocalTestOrderAskAtOrderEntry.html) form - see [NW
 Genomics paper test request
-forms](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms)
+forms](StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms)
 for how this compares to the other paper forms.
 
 **Source form:** [GMS WGS Test Request Form - Rare Disease, V2.0 April 2026 (PDF)](https://mft.nhs.uk/app/uploads/2026/05/GMS-WGS-Test-Order-Form-Rare-Disease.pdf)
@@ -56,9 +56,9 @@ the cancer variant of this same national form family.
 {:.grid}
 
 This is the richest of the twelve paper forms compared on [Genomic Test
-Order](Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms) -
+Order](StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms) -
 see [Genomic Test Order - Common Fields We May Have
-Missed](Questionnaire-GenomicTestOrder.html#common-fields-we-may-have-missed)
+Missed](StructureDefinition-GenomicTestOrder.html#common-fields-we-may-have-missed)
 for the two candidate common-core additions it surfaces on its own (HPO
 Terms, Main Contact), and the Family member(s) to be tested row in the table
 above for how it relates to [Genetic Clinical Referral -

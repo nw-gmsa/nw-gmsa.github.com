@@ -7,14 +7,14 @@ Description: """
 **Ask At Order Entry Questions** for the **NHS Genomic Medicine Service
 (GMS) Whole Genome Sequencing (WGS) Test Request - Rare Disease** form (the
 national GMS-branded form, not NW GLH-specific), used alongside the [common
-core order form](Questionnaire-GenomicTestOrder.html) - see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). This
+core order form](StructureDefinition-GenomicTestOrder.html) - see [Order Entry
+Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions). This
 form has no Whole Genome Sequencing Test Category in the common core's Test
 Code branches, so its own Test Directory Clinical Indication item fills
 that gap directly. **HPO (Human Phenotype Ontology) terms are mandatory on
 this form** - WGS analysis cannot start without at least one - see
 [Genomic Test Order - Common Fields We May Have
-Missed](Questionnaire-GenomicTestOrder.html#common-fields-we-may-have-missed).
+Missed](StructureDefinition-GenomicTestOrder.html#common-fields-we-may-have-missed).
 """
 Usage:  #definition
 
@@ -32,7 +32,7 @@ Usage:  #definition
 // does not (yet) derivedFrom/extend Genomic Test Order, so these are not
 // otherwise available. Only fields confirmed present on this specific form -
 // not a copy of Genomic Test Order's own (larger) Patient/Healthcare
-// Professional groups. See Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms.
+// Professional groups. See StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms.
 // ---------------------------------------------------------------------------
 
 * item[+]

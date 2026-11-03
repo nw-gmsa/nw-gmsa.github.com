@@ -164,7 +164,7 @@ Our preference in this IG is a **computable data model**, expressed in one of:
   Questionnaire's items describe each individual data element (name, type,
   cardinality, answer set), independently of whether it's later exchanged as
   HL7 v2, a CSV export or a FHIR resource. See, for example, [Genomic Test
-  Order](Questionnaire-GenomicTestOrder.html), the [iGene Laboratory Order
+  Order](StructureDefinition-GenomicTestOrder.html), the [iGene Laboratory Order
   Export](Questionnaire-iGeneLaboratoryOrderExport.html), and the various
   Ask-At-Order-Entry Questionnaires used across this IG's Use Cases.
 - **openEHR archetypes** - a mature, clinically-led modelling approach with
@@ -279,8 +279,8 @@ check whether it already exists in:
   Referrals](GeneticReferrals.html).
 - **Data Models (Volume 3)** - identifiers, resources and profiles already
   defined, e.g. [Diagnostic Model Overview](diagnostic-core.html), [Genomic Test
-  Order](Questionnaire-GenomicTestOrder.html), [Genomic Test
-  Report](Questionnaire-GenomicTestReport.html), [Laboratory
+  Order](StructureDefinition-GenomicTestOrder.html), [Genomic Test
+  Report](StructureDefinition-GenomicTestReport.html), [Laboratory
   Analyte Result](StructureDefinition-LaboratoryAnalyteResult.html).
 
 This checking step matters for more than tidiness:

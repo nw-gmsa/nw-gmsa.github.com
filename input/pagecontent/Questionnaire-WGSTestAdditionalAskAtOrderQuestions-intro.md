@@ -2,11 +2,11 @@
 
 <span class="badge badge-primary">Diagnostic Genomics</span>
 
-Used **alongside** [Genomic Test Order](Questionnaire-GenomicTestOrder.html)
+Used **alongside** [Genomic Test Order](StructureDefinition-GenomicTestOrder.html)
 (the common core) **and** [Ask At Order Entry Questions
 Common](Questionnaire-GenomicGeneralAskAtOrderEntry.html) for Whole Genome
 Sequencing orders specifically - see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). A WGS
+Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions). A WGS
 order therefore combines **three** Questionnaires, not the usual two.
 
 Used for the WGS tests within [Rare and Inherited Disease Test

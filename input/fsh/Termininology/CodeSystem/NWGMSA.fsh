@@ -113,7 +113,7 @@ Bucket for local codes
 * #ChimerismLineageOther "Chimerism Lineage Other"
 
 // NW GLH Paper Test Request Form Ask At Order Entry Codes (see
-// Questionnaire-GenomicTestOrder.html#order-entry-questions - NW GLH paper
+// StructureDefinition-GenomicTestOrder.html#order-entry-questions - NW GLH paper
 // forms row) - one block per form, in the order the forms appear there.
 
 // HRD and Tumour BRCA Test Request Form
@@ -189,7 +189,7 @@ Bucket for local codes
 
 // NHS Genomic Medicine Service (GMS) WGS Test Request Forms (national,
 // GMS-branded - not NW GLH-specific) - Rare Disease and Cancer variants.
-// See Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms.
+// See StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms.
 
 // GMS WGS Test Request - Rare Disease
 * #ReasonNHSNumberNotAvailable "Reason NHS Number not available"

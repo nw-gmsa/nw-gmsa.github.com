@@ -4,10 +4,10 @@ Title: "WGS Test Additional Ask At Order Entry Questions"
 Description: """
 **Test Specific Additional Ask At Order Entry Questions** for Whole Genome
 Sequencing (WGS) orders - used *alongside* the [common core order
-form](Questionnaire-GenomicTestOrder.html) **and** [Ask At Order Entry
+form](StructureDefinition-GenomicTestOrder.html) **and** [Ask At Order Entry
 Questions Common](Questionnaire-GenomicGeneralAskAtOrderEntry.html), rather
 than instead of it - see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). A WGS
+Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions). A WGS
 order therefore combines **three** Questionnaires, not the usual two.
 
 Split out of [Genomic General Ask At Order

@@ -3,7 +3,7 @@ InstanceOf: NWQuestionnaire
 Title: "Genetic Clinical Referral - Consultand (RelatedPerson)"
 Description: """
 **For analysis purposes only - not an active or planned project.** See
-[Genetic Clinical Referral](Questionnaire-GeneticClinicalReferral.html) for
+[Genetic Clinical Referral](StructureDefinition-GeneticClinicalReferral.html) for
 the common core this extends.
 
 Structured detail for a named **consultand** - an at-risk relative of the
@@ -26,7 +26,7 @@ for the same pattern applied to a lab order rather than a referral).
 
 **Scope note:** general family history (who else is affected, the wider
 pedigree) remains in the unstructured family letter referenced from [Genetic
-Clinical Referral](Questionnaire-GeneticClinicalReferral.html#family-history)
+Clinical Referral](StructureDefinition-GeneticClinicalReferral.html#family-history)
 - this Questionnaire only structures the part of that information that
 identifies a *named* consultand who is themselves being referred, following
 the same shape as an `NK1` segment.

@@ -4,10 +4,10 @@ InstanceOf: NWQuestionnaire
 Title: "HLA Tests - Transplant Ask At Order Entry"
 Description: """
 **Ask At Order Entry Questions** used alongside the [common core order
-form](Questionnaire-GenomicTestOrder.html) for the "HLA Tests - Transplant" order
+form](StructureDefinition-GenomicTestOrder.html) for the "HLA Tests - Transplant" order
 screen within Histocompatibility and Immunogenetics orders (SNOMED CT
 `909871000000100`) - see
-[Order Entry Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions) and
+[Order Entry Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions) and
 [Histocompatibility and Immunogenetics](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HistocompatibilityAndImmunogenetics.md#ask-at-order-entry-questions).
 For the sibling Chimerism testing order screen, see
 [Chimerism Test Additional Ask At Order Entry Questions](Questionnaire-ChimerismTestAdditionalAskAtOrderQuestions.html).
@@ -85,7 +85,7 @@ Usage:  #definition
       * text = """
       Histotrac NTE-3 (CommentType=OSQ): restates the OBR-4 test name. Mapped to
       `ServiceRequest.orderDetail` rather than `ServiceRequest.code` - the base
-      [Genomic Test Order](Questionnaire-GenomicTestOrder.html)'s own Test Code item
+      [Genomic Test Order](StructureDefinition-GenomicTestOrder.html)'s own Test Code item
       already targets `ServiceRequest.code` (single-cardinality), so reusing it here
       would conflict with no `enableWhen` to say which item wins.
       `ServiceRequest.orderDetail` is repeating and intended for exactly this kind of
@@ -266,7 +266,7 @@ Usage:  #definition
       local `NWGMSA` code, since [Specimen Type](ValueSet-specimen-type.html) has no
       single generic "other/unspecified" concept to match Hive's free-text catch-all.
       Deliberately given its own `HistoIG/specimen_source` linkId rather than reusing
-      the base [Genomic Test Order](Questionnaire-GenomicTestOrder.html)'s own
+      the base [Genomic Test Order](StructureDefinition-GenomicTestOrder.html)'s own
       `LN/66746-9` Specimen Type item (same `code`/LOINC `66746-9`, so the semantic link
       is kept via `code`) - the two questions are asked at different points for
       different purposes in Hive, and the IG Publisher's Questionnaire derivation

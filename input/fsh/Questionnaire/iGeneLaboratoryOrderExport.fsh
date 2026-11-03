@@ -28,7 +28,7 @@ documents for StarLIMS/DLIMS work orders, just with ctDNA report/result columns 
 Each item's `linkId` is the literal CSV column header, `type` the FHIR datatype the
 column's values coerce to, and `definition` the FHIR field the column populates once
 converted into the relevant FHIR Message - many of these reuse the exact same field as
-the equivalent item already defined on [Genomic Test Order](Questionnaire-GenomicTestOrder.html)
+the equivalent item already defined on [Genomic Test Order](StructureDefinition-GenomicTestOrder.html)
 or [iGene Work Order Export](Questionnaire-iGeneWorkOrderExport.html), since
 this is the same underlying order data plus report/result-specific columns those don't
 carry. See [NEYctDNA.csv](https://github.com/nw-gmsa/Testing/blob/main/Input/NEYctDNA.csv)

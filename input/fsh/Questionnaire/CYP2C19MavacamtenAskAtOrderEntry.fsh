@@ -6,14 +6,14 @@ Description: """
 
 **Ask At Order Entry Questions** for the **R454 Mavacamten CYP2C19 Test
 Request Form** (DOC6602), used alongside the [common core order
-form](Questionnaire-GenomicTestOrder.html) - see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). This
+form](StructureDefinition-GenomicTestOrder.html) - see [Order Entry
+Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions). This
 is one of the leanest of the paper forms - the test itself (R454) is fixed
 by the choice of form, and there is no specimen-specific content beyond the
 common core's own Specimen group. Like several of the newer DOC-numbered
 forms, it captures **Gender Identity** separately from Biological Sex - see
 [Genomic Test Order - Common Fields We May Have
-Missed](Questionnaire-GenomicTestOrder.html#common-fields-we-may-have-missed)
+Missed](StructureDefinition-GenomicTestOrder.html#common-fields-we-may-have-missed)
 for why that item is proposed as a common-core addition rather than repeated
 per Ask At Order Entry Questionnaire.
 """
@@ -34,7 +34,7 @@ Usage:  #definition
 // these are not otherwise available. Only fields confirmed present on this
 // specific form - not a copy of Genomic Test Order's own (larger) Patient/
 // Healthcare Professional groups. See
-// Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms.
+// StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms.
 // ---------------------------------------------------------------------------
 
 * item[+]

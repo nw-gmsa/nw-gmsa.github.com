@@ -13,14 +13,14 @@ England `RGL to SGL SOP` Appendix 3) plus 7 NW GMS local extension fields, with
 `item.definition` mappings to FHIR where a confirmed mapping exists - see
 [dWGS](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md#field-mapping-csv--hl7-v2--fhir). It deliberately carries
 **every** manifest field, including several also asked by [Genomic Test
-Order](Questionnaire-GenomicTestOrder.html) (Patient name/DOB/NHS number/Hospital Number,
+Order](StructureDefinition-GenomicTestOrder.html) (Patient name/DOB/NHS number/Hospital Number,
 Specimen Type, Specimen Collection Date) - because it describes the full CSV
 structure a Requesting Genomic Laboratory actually sends, not an incremental
 set of order-entry questions. For the genuinely additional Ask At Order
 Entry content - the manifest fields **not** already covered by the common
 core - see [dWGS Ask At Order Entry
 Questions](Questionnaire-dWGSAskAtOrderEntry.html), which `derivedFrom`/
-extends [Genomic Test Order](Questionnaire-GenomicTestOrder.html) in the
+extends [Genomic Test Order](StructureDefinition-GenomicTestOrder.html) in the
 usual way.
 """
 Usage:  #definition

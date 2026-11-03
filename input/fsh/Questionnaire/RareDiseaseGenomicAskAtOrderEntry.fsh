@@ -7,8 +7,8 @@ Description: """
 **Ask At Order Entry Questions** for the NW GLH paper **Genomic Testing
 Request Form - Rare Disease** (DOC4900), the generic Rare Disease paper
 order form, used alongside the [common core order
-form](Questionnaire-GenomicTestOrder.html) - see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). This
+form](StructureDefinition-GenomicTestOrder.html) - see [Order Entry
+Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions). This
 form's own Test Request Details section (R code, clinical details) already
 maps directly onto the common core's Test Request group, so this
 Questionnaire only carries the additional Clinical Utility and targeted
@@ -31,7 +31,7 @@ Usage:  #definition
 // these are not otherwise available. Only fields confirmed present on this
 // specific form - not a copy of Genomic Test Order's own (larger) Patient/
 // Healthcare Professional groups. See
-// Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms.
+// StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms.
 // ---------------------------------------------------------------------------
 
 * item[+]

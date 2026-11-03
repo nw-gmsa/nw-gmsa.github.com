@@ -6,8 +6,8 @@ Description: """
 
 **Ask At Order Entry Questions** for the NW GLH paper **Genomic Variant
 Review Request Form (R442.1) - Rare Disease** (DOC6004), used alongside the
-[common core order form](Questionnaire-GenomicTestOrder.html) - see [Order
-Entry Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions).
+[common core order form](StructureDefinition-GenomicTestOrder.html) - see [Order
+Entry Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions).
 This form does not request a new test on a new specimen - it asks the
 laboratory to **re-review a variant already reported**, so its distinctive
 content is a reference back to that prior report rather than specimen
@@ -30,7 +30,7 @@ Usage:  #definition
 // these are not otherwise available. Only fields confirmed present on this
 // specific form - not a copy of Genomic Test Order's own (larger) Patient/
 // Healthcare Professional groups. See
-// Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms.
+// StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms.
 // ---------------------------------------------------------------------------
 
 * item[+]

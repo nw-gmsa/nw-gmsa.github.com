@@ -4,10 +4,10 @@ planned project.
 </div>
 
 This Questionnaire `derivedFrom`/extends [Genetic Clinical
-Referral](Questionnaire-GeneticClinicalReferral.html) the same way an Ask At
+Referral](StructureDefinition-GeneticClinicalReferral.html) the same way an Ask At
 Order Entry Questionnaire extends [Genomic Test
-Order](Questionnaire-GenomicTestOrder.html) - see [Genetic Clinical Referral -
-Order Entry Questions](Questionnaire-GeneticClinicalReferral.html#order-entry-questions).
+Order](StructureDefinition-GenomicTestOrder.html) - see [Genetic Clinical Referral -
+Order Entry Questions](StructureDefinition-GeneticClinicalReferral.html#order-entry-questions).
 It structures a repeating **Related Individual (NK1)** group - the same
 NK1-shaped `RelatedPerson` group as [WGS Test Additional Ask At Order Entry
 Questions](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html)'s own
@@ -26,7 +26,7 @@ uses on a lab order.
 **Scope note:** this is deliberately narrow. General family history - the
 wider pedigree, who else in the family is affected - stays in the
 unstructured family letter (see [Genetic Clinical Referral - Family
-History](Questionnaire-GeneticClinicalReferral.html#family-history)). Only
+History](StructureDefinition-GeneticClinicalReferral.html#family-history)). Only
 the part of that information that names a *specific* consultand who is
 themselves being referred is structured here, following the shape of an HL7
 v2 `NK1` segment.
@@ -61,7 +61,7 @@ erDiagram
 ```
 
 `RelatedPerson.patient` always references the *same* `Patient` as [Genetic
-Clinical Referral](Questionnaire-GeneticClinicalReferral.html)'s own Patient
+Clinical Referral](StructureDefinition-GeneticClinicalReferral.html)'s own Patient
 group. When Role = Consultand (the usual case), that Patient is the
 proband and this group names a relative of theirs. When Role = Proband,
 that Patient is instead a family member, and this group names the original
@@ -91,7 +91,7 @@ neither is yet the confirmed convention for this specific Questionnaire.
 
 ### Data Models
 
-- [Genetic Clinical Referral](Questionnaire-GeneticClinicalReferral.html) -
+- [Genetic Clinical Referral](StructureDefinition-GeneticClinicalReferral.html) -
   the common core this Questionnaire extends
 - [WGS Test Additional Ask At Order Entry Questions](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html) -
   the same NK1-shaped `RelatedPerson` group (`NOS/RelatedIndividual`) this

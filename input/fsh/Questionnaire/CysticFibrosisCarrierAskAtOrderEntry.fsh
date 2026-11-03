@@ -6,8 +6,8 @@ Description: """
 
 **Ask At Order Entry Questions** for the NW GLH paper **Request for Genetic
 Cystic Fibrosis (CF) Carrier Testing (CFTR Gene)** form, used alongside the
-[common core order form](Questionnaire-GenomicTestOrder.html) - see [Order
-Entry Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions).
+[common core order form](StructureDefinition-GenomicTestOrder.html) - see [Order
+Entry Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions).
 Unlike the other paper forms, this one is specifically for use by **General
 Practitioners** rather than hospital clinicians, and structures one of two
 mutually exclusive referral scenarios: a family history of CF, or a partner
@@ -30,7 +30,7 @@ Usage:  #definition
 // these are not otherwise available. Only fields confirmed present on this
 // specific form - not a copy of Genomic Test Order's own (larger) Patient/
 // Healthcare Professional groups. See
-// Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms.
+// StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms.
 // ---------------------------------------------------------------------------
 
 * item[+]

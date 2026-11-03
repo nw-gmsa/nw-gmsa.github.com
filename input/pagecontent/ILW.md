@@ -87,7 +87,7 @@ sequenceDiagram
 ### Sub Order Management (LAB-35)
 
 <div class="alert alert-info" role="alert">
-<b>Domain Archetype:</b> <a href="Questionnaire-GenomicTestOrder.html#original-order-instance-and-filler-orders" _target="_blank">Genomic Test Order - Filler Order</a> 
+<b>Domain Archetype:</b> <a href="StructureDefinition-GenomicTestOrder.html#original-order-instance-and-filler-orders" _target="_blank">Genomic Test Order - Filler Order</a> 
 </div>
 
 <div class="alert alert-info" role="alert">
@@ -104,7 +104,7 @@ Used by these Use Cases:
 ### Sub-order Results Delivery (LAB-36)
 
 <div class="alert alert-info" role="alert">
-<b>Domain Archetype:</b> <a href="Questionnaire-GenomicTestReport.html" _target="_blank">Genomic Test Report</a> 
+<b>Domain Archetype:</b> <a href="StructureDefinition-GenomicTestReport.html" _target="_blank">Genomic Test Report</a> 
 </div>
 
 <div class="alert alert-info" role="alert">

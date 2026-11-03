@@ -7,8 +7,8 @@ Description: """
 **Ask At Order Entry Questions** for the NW GLH paper **Genetic Testing
 Request Form - Whole Genome Sequencing (WGS)** form, which accompanies
 samples sent directly to a NW GLH site, used alongside the [common core
-order form](Questionnaire-GenomicTestOrder.html) - see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions).
+order form](StructureDefinition-GenomicTestOrder.html) - see [Order Entry
+Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions).
 
 **Not to be confused with** [dWGS Sub-Order Manifest](Questionnaire-dWGSSubOrder.html) -
 that Questionnaire is the digital manifest for a **distributed WGS
@@ -33,7 +33,7 @@ Usage:  #definition
 // these are not otherwise available. Only fields confirmed present on this
 // specific form - not a copy of Genomic Test Order's own (larger) Patient/
 // Healthcare Professional groups. See
-// Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms.
+// StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms.
 // ---------------------------------------------------------------------------
 
 * item[+]

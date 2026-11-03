@@ -6,14 +6,14 @@ Description: """
 [Genetic Referrals](GeneticReferrals.html) for the narrative use case this
 Questionnaire sketches a computable data model for, and [Genetic Clinical
 Referral - Differences from Genomic Test
-Order](Questionnaire-GeneticClinicalReferral.html#differences-from-genomic-test-order)
+Order](StructureDefinition-GeneticClinicalReferral.html#differences-from-genomic-test-order)
 for how this compares to [Genomic Test
-Order](Questionnaire-GenomicTestOrder.html).
+Order](StructureDefinition-GenomicTestOrder.html).
 
 This is a closed-loop clinical referral into a genomics/clinical genetics
 service (see [Genetic Referrals](GeneticReferrals.html)), modelled on HL7 v2
 `REF_I12` (Patient Referral) - not a laboratory order. Where a data item is
-genuinely the same one [Genomic Test Order](Questionnaire-GenomicTestOrder.html)
+genuinely the same one [Genomic Test Order](StructureDefinition-GenomicTestOrder.html)
 already captures (e.g. patient demographics), this Questionnaire reuses the
 same item, per the "check for existing patterns" principle in [How To
 Engineer (scale and deliver)
@@ -357,5 +357,77 @@ Usage:  #definition
       e-Referral Service (eRS) itself already uses for referral attachments
       (ReferralRequest.supportingInfo -> DocumentReference) - see Genetic
       Referrals - eRS FHIR Resource Model.
+      """
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+* item[+]
+  * type = #group
+  * linkId = "SupportingInformation"
+  * text = "Supporting Information (Forms and Clinical Documents)"
+  * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.supportingInfo"
+  * item[+]
+    * linkId = "SupportingInformation-designNote"
+    * type = #display
+    * text = """
+    Clinical content travels as forms and clinical documents referenced from
+    the referral, not copied into it - see Genetic Clinical Referral (logical
+    model) - From Logical Model to Implementation Model.
+    """
+    * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+  * item[+]
+    * type = #reference
+    * linkId = "SupportingInformation/forms"
+    * text = "Referral Forms"
+    * required = false
+    * repeats = true
+    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.supportingInfo"
+    * extension[referenceProfile].valueCanonical = "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse"
+    * item[+]
+      * linkId = "SupportingInformation/forms-designNote"
+      * type = #display
+      * text = """
+      Completed referral forms (e.g. a national GMS test order form or a
+      service-specific referral form) as QuestionnaireResponse - structured
+      answers, not a clinical document.
+      """
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+  * item[+]
+    * type = #reference
+    * linkId = "SupportingInformation/pathologyReport"
+    * code[+] = $loinc#11526-1 "Pathology study"
+    * text = "Pathology Report"
+    * required = false
+    * repeats = true
+    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.supportingInfo"
+    * extension[referenceProfile].valueCanonical = "http://hl7.org/fhir/StructureDefinition/DocumentReference"
+    * item[+]
+      * linkId = "SupportingInformation/pathologyReport-designNote"
+      * type = #display
+      * text = """
+      Target: a reference to the pathology report as a clinical document
+      shared by the NHS England Single Patient Record (SPR), either a
+      DocumentReference or a FHIR Document Bundle. Interim: an attached PDF -
+      a DocumentReference whose content.attachment.url points at a Binary
+      (HL7 v2 OBX type ED).
+      """
+      * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+  * item[+]
+    * type = #reference
+    * linkId = "SupportingInformation/patientSummary"
+    * code[+] = $loinc#60591-5 "Patient summary Document"
+    * text = "Patient Summary"
+    * required = false
+    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.supportingInfo"
+    * extension[referenceProfile].valueCanonical = "http://hl7.org/fhir/StructureDefinition/DocumentReference"
+    * item[+]
+      * linkId = "SupportingInformation/patientSummary-designNote"
+      * type = #display
+      * text = """
+      A clinical document - a DocumentReference or a FHIR Document Bundle,
+      implemented the same way as the Pathology Report. Not part of the NHS
+      England Genomics ServiceRequest specification.
       """
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help

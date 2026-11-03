@@ -7,8 +7,8 @@ Description: """
 **Ask At Order Entry Questions** for the **NHS Genomic Medicine Service
 (GMS) Whole Genome Sequencing (WGS) Test Request - Cancer** form (the
 national GMS-branded form, not NW GLH-specific), used alongside the [common
-core order form](Questionnaire-GenomicTestOrder.html) - see [Order Entry
-Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions). Like
+core order form](StructureDefinition-GenomicTestOrder.html) - see [Order Entry
+Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions). Like
 [GMS WGS Rare Disease](Questionnaire-GMSWGSRareDisease.html), this form has
 no Whole Genome Sequencing Test Category in the common core's Test Code
 branches, so its own Test Directory Clinical Indication item fills that gap
@@ -30,7 +30,7 @@ Usage:  #definition
 // not (yet) derivedFrom/extend Genomic Test Order, so these are not
 // otherwise available. Only fields confirmed present on this specific form -
 // not a copy of Genomic Test Order's own (larger) Patient/Healthcare
-// Professional groups. See Questionnaire-GenomicTestOrder.html#nw-glh-paper-test-request-forms.
+// Professional groups. See StructureDefinition-GenomicTestOrder.html#nw-glh-paper-test-request-forms.
 // ---------------------------------------------------------------------------
 
 * item[+]

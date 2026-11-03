@@ -4,13 +4,13 @@ InstanceOf: NWQuestionnaire
 Title: "Chimerism Test Additional Ask At Order Entry Questions"
 Description: """
 **Test Specific Additional Ask At Order Entry Questions** used alongside the
-[common core order form](Questionnaire-GenomicTestOrder.html) for the
+[common core order form](StructureDefinition-GenomicTestOrder.html) for the
 "Chimerism Testing Blood (PB)" order screen within Histocompatibility and
 Immunogenetics orders (SNOMED CT `909871000000100`) - the same "Test
 Specific" tier pattern [WGS Test Additional Ask At Order Entry
 Questions](Questionnaire-WGSTestAdditionalAskAtOrderQuestions.html) follows
 for WGS orders - see
-[Order Entry Questions](Questionnaire-GenomicTestOrder.html#order-entry-questions) and
+[Order Entry Questions](StructureDefinition-GenomicTestOrder.html#order-entry-questions) and
 [Histocompatibility and Immunogenetics](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HistocompatibilityAndImmunogenetics.md#ask-at-order-entry-questions).
 For the sibling HLA testing order screen, see
 [HLA Tests - Transplant Ask At Order Entry](Questionnaire-HLATestsTransplantAskAtOrderEntry.html).
@@ -80,7 +80,7 @@ Usage:  #definition
       `SPM-4` (`Specimen.type`) - see [Chimerism Testing Ask At Order
       Entry](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HistocompatibilityAndImmunogenetics.md#chimerism-testing-ask-at-order-entry).
       Deliberately given its own `ChimIG/specimen_source` linkId rather than reusing
-      the base [Genomic Test Order](Questionnaire-GenomicTestOrder.html)'s own
+      the base [Genomic Test Order](StructureDefinition-GenomicTestOrder.html)'s own
       `LN/66746-9` Specimen Type item - the IG Publisher's Questionnaire derivation
       validator does not support a `derivedFrom`/`extends` item reusing a base item's
       linkId while also declaring more than one `answerOption`. Matches `NTE|1` in the
