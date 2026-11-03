@@ -3,6 +3,11 @@
 
 ## OML_O21 Laboratory Order 
 
+<div class="alert alert-info" role="alert">
+<a href="#omg_o19-general-clinical-order">OMG_O19 General Clinical Order</a> <b>MAY</b>
+be used instead of OML_O21 - it has the same segments, including SPM.
+</div>
+
 ### References
 
 <span class="badge badge-danger">Diagnostic Workflow</span> 
@@ -153,6 +158,136 @@ inventing its own.
 | **OBXNTE**    | 1..*        |                                                         |
 | - [OBX](#obx) | 1..1        |                                                         |
 {:.grid}
+
+## OMG_O19 General Clinical Order
+
+<div class="alert alert-info" role="alert">
+<b>Laboratory orders:</b> <code>OMG^O19</code> <b>MAY</b> be used instead of
+<a href="#oml_o21-laboratory-order">OML_O21</a> for a laboratory (genomic test) order.
+The segments, including <a href="#spm">SPM</a>, and their field rules are the same as
+OML_O21, and the FHIR equivalent is the same
+<a href="MessageDefinition-laboratory-order.html">Laboratory Order</a> FHIR Message.
+</div>
+
+<div class="alert alert-warning" role="alert">
+<b>Referrals - for future use.</b> <code>OMG^O19</code> is also the IHE 360X referral
+order for a <a href="StructureDefinition-GeneticClinicalReferral.html">Genetic Clinical
+Referral</a> - see <a href="PCC-55.html">Referral Request [PCC-55]</a>. Not used by any
+interface in this guide today.
+</div>
+
+### References
+
+<span class="badge badge-danger">Diagnostic Workflow</span> <span class="badge badge-danger">Referral Workflow</span>
+
+- [IHE PCC 360X Closed Loop Referral](https://www.ihe.net/uploadedFiles/Documents/PCC/IHE_PCC_Suppl_360X.pdf) PCC TF-2 3.55
+- [HL7 Version 2 to FHIR - ORC to ServiceRequest](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-orc-to-servicerequest.html)
+
+`OMG^O19^OMG_O19` has the same `ORC`/`OBR`/`SPM` shape as
+[OML_O21](#oml_o21-laboratory-order), so it can carry either:
+
+- a **laboratory order** - a specific test (e.g. a Genomic Test Directory code in OBR-4),
+  with its specimens in the SPECIMEN group; FHIR equivalent [Laboratory Order
+  (O21)](MessageDefinition-laboratory-order.html); or
+- a **referral** (IHE 360X, ORC-1 `NW`) - a clinical service (e.g. a clinical genetics
+  assessment) in OBR-4, normally with no specimen; FHIR equivalent [Referral Order
+  (O19)](MessageDefinition-referral-order.html).
+
+### Message
+
+| Segment HL7               | Optionality | Notes                                                                                   |
+|---------------------------|-------------|-----------------------------------------------------------------------------------------|
+| [MSH](#msh)               | 1..1        | For a referral, MSH-5 / MSH-6 identify the referred-to service                          |
+| [PID](#pid)               | 1..1        |                                                                                         |
+| [NK1](#nk1)               | 0..*        | For a fetus, this shall be the mother; for a referral, a named consultand (at-risk relative) |
+| [PV1](#pv1)               | 0..1        | PV1 should be populated if PV1-19 Visit Number is known                                 |
+| **ORDER**                 | 1..*        | A referral has one ORDER                                                                |
+| - [ORC](#orc)             | 1..1        | ORC-2 Placer Order Number / Referral ID; ORC-12 and ORC-21 the orderer / referrer        |
+| - TQ1                     | 0..1        | TQ1-8 expected by date, TQ1-9 priority                                                  |
+| - [OBR](#obr)             | 1..1        | OBR-4 Genomic Test Directory code, or for a clinical genetics referral `306119003^^SCT`; OBR-31 reason for referral |
+| - [NTE](#nte)             | 0..*        | Clinical details                                                                        |
+| - [DG1](#dg1)             | 0..*        | Suspected/confirmed condition                                                           |
+| - **OBSERVATION**         | 0..*        |                                                                                         |
+| -- [OBX](#obx)            | 0..*        | Ask At Order Entry answers; for a referral, the referral question (OBX-11 `O`, OBX-29 `QST`), forms and documents as `RP` or [ED](#obx-type--ed) |
+| - **SPECIMEN**            | 0..*        | Conditional - required for a complete laboratory order; normally absent for a referral  |
+| -- [SPM](#spm)            | 1..1        |                                                                                         |
+| -- [OBX](#obx)            | 0..*        | Observations about the specimen                                                         |
+{:.grid}
+
+#### Example
+
+A laboratory order sent as `OMG^O19` instead of OML_O21 - see [Referral Request
+[PCC-55]](PCC-55.html#examples). For a referral, OBR-4 is `306119003^^SCT` and there is
+normally no `SPM`.
+
+```
+MSH|^~\&|EPIC|R0A|RIE|699X0|20250129103726+0000||OMG^O19^OMG_O19|MSG001601737|P|2.5.1|||AL|NE
+PID|1||633^^^R0A^MR~9449305552^^^^NH||CHISLETT^Octavia||20080920|F|||1 RAVENSFIELD GARDENS^^EPSOM^SURREY^KT19 0ST
+PV1|1|I|^^^R0A09^^^^^^^R0A||||C3456789^Darwin^Samuel^^^Dr^^^GMC|||892761000000102^Clinical haematology service^SNM3|||||||||1001166717^^^R0A^AN
+ORC|NW|1601737^R0A|||||||20250129103726+0000|||C3456789^Darwin^Samuel^^^Dr^^^GMC|||||||||MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS
+OBR|1|1601737^R0A||R240.1^^England-GenomicTestDirectory||20250129||||||||||C3456789^Darwin^Samuel^^^Dr^^^GMC
+SPM|1|25GEN-029GN00001&R0A||258580003^Whole blood specimen^SNM3|||||||||||||20250129103726+0000|||Y
+```
+
+> FHIR Message Example: [Bundle 'Message' - Genomics Order with Coded Entries](Bundle-GenomicsOrderMessageCodedEntries.html)
+
+## OSU_O51 Order Status Update
+
+<div class="alert alert-warning" role="alert">
+<b>For future use.</b> Not used by any interface in this guide today. Used for
+<a href="StructureDefinition-GeneticClinicalReferral.html">Genetic Clinical Referral</a>
+status updates - see <a href="PCC-55.html">[PCC-55]</a>, <a href="PCC-56.html">[PCC-56]</a>
+and <a href="PCC-57.html">[PCC-57]</a>.
+</div>
+
+### References
+
+<span class="badge badge-danger">Referral Workflow</span>
+
+- [IHE PCC 360X Closed Loop Referral](https://www.ihe.net/uploadedFiles/Documents/PCC/IHE_PCC_Suppl_360X.pdf) PCC TF-2 3.55 to 3.59
+- [NHS England Multicast Notification Service - Genomic Order Event](https://digital.nhs.uk/developer/api-catalogue/multicast-notification-service/genomic-order-event)
+
+`OSU^O51^OSU_O51` reports a change in the status of an order - accept, decline,
+interim note, outcome, cancellation. The FHIR equivalent is the [Referral Order Status
+(O51)](MessageDefinition-referral-order-status.html) FHIR Message, whose focus is a
+[Task](StructureDefinition-Task.html).
+
+Where the referral or order is managed by the NHS England Genomic Order Management
+Service (GOMS), the Regional Integration Engine (RIE) receives a `genomic-order-event-1`
+notification from the NHS England Multicast Notification Service (MNS), retrieves the
+`Task` from GOMS, and converts it to `OSU^O51` (or the FHIR Message) - see [Status
+Updates from GOMS via MNS](PCC-55.html#status-updates-from-goms-via-mns).
+
+### Message
+
+| Segment HL7   | Optionality | Notes                                                                   |
+|---------------|-------------|-------------------------------------------------------------------------|
+| [MSH](#msh)   | 1..1        |                                                                         |
+| [PID](#pid)   | 1..1        | Required in this guide                                                  |
+| [ORC](#orc)   | 1..*        | ORC-1 / ORC-5 the status; ORC-2 the Referral ID; ORC-12 and ORC-21 the referrer (required in this guide); ORC-16 the reason |
+{:.grid}
+
+### Order Control and Status
+
+| Status update | ORC-1 | ORC-5 | FHIR `Task.status` | `Task.businessStatus` ([Referral Workflow Status](CodeSystem-referral-workflow-status.html)) |
+|---|---|---|---|---|
+| Accept [PCC-55] | `OK` | `IP` | `accepted` | `accepted` |
+| Decline [PCC-55, PCC-56] | `UA` | `CA` | `rejected` | `declined` |
+| Interim Consultation Note [PCC-59] | `SC` | `A` | `in-progress` | `interim-report` |
+| Referral Outcome [PCC-57] | `SC` | `CM` | `completed` | `completed` |
+| Cancel Request [PCC-58] | `CA` | `CA` | `cancelled` | `cancel-requested` |
+| Cancel Confirmation [PCC-58] | `CR` | `CA` | `cancelled` | `cancelled` |
+{:.grid}
+
+#### Example
+
+```
+MSH|^~\&|RIE|699X0|EPIC|R0A|20250130093000+0000||OSU^O51^OSU_O51|GLH-MSG-250130001|P|2.5.1|||AL|NE
+PID|1||633^^^R0A^MR~9449305552^^^^NH||CHISLETT^Octavia||20080920|F|||1 RAVENSFIELD GARDENS^^EPSOM^SURREY^KT19 0ST
+ORC|OK|1601737^R0A|R25012345^699X0||IP||||20250130093000+0000|||C3456789^Darwin^Samuel^^^Dr^^^GMC|||||||||MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS
+```
+
+> FHIR Message Example: [Bundle Message - Order Status (O51), accepted](Bundle-GenomicOrderStatusAcceptMessage.html)
 
 ## Segments
 
@@ -775,6 +910,12 @@ Manchester Royal Infirmary^^R0A02^^^ODS^R0A
 | [FHIR Message R01](https://github.com/nw-gmsa/Testing/tree/main/Output/FHIR/R01)                 |
 | [Original Hl7 v2 ORU_R01](https://github.com/nw-gmsa/Testing/tree/main/Input/V2/R01)             |
 {:.grid}
+
+### OMG_O19 General Clinical Order and OSU_O51 Order Status Update
+
+For future use - see [Referral Request [PCC-55]](PCC-55.html), [Referral Decline
+[PCC-56]](PCC-56.html) and [Referral Outcome [PCC-57]](PCC-57.html) for HL7 v2 and FHIR
+Message examples.
 
 ### MDM_T02 Original document notification and content
 

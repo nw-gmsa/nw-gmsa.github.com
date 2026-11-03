@@ -93,6 +93,15 @@ pages:
   GeneticReferrals.md:
     title: "Genetic Referrals"
     generation: markdown
+  PCC-55.md:
+    title: "Referral Request [PCC-55] (Future Use)"
+    generation: markdown
+  PCC-56.md:
+    title: "Referral Decline [PCC-56] (Future Use)"
+    generation: markdown
+  PCC-57.md:
+    title: "Referral Outcome [PCC-57] (Future Use)"
+    generation: markdown
   HIE.md:
     title: Health Data API (HIE/EURDICE)
     generation: markdown
@@ -365,6 +374,9 @@ menu:
 ##    Health Data API: CapabilityStatement-HealthDataAPI.html
     Authorisation [IUA] : IUA.html
     Message Exchange [LTW/MQ]: MQ.html
+    Referral Request [PCC-55] (Future Use): PCC-55.html
+    Referral Decline [PCC-56] (Future Use): PCC-56.html
+    Referral Outcome [PCC-57] (Future Use): PCC-57.html
 ##    Work Order Management [LAB-4]: LAB-4.html
 ##    Test Results Management [LAB-5]: LAB-5.html
   Data Models (Volume 3):
@@ -390,6 +402,21 @@ menu:
     Developer Guides: DeveloperGuides.html
 
 groups:
+  -ex-example-order-status:
+    name: "Example: Order Status (Future Use)"
+    description: "Order status updates (OSU^O51 / Referral Order Status (O51)) for the laboratory order ServiceRequest Coded Entries Example - Referral Request [PCC-55], Referral Decline [PCC-56] and Referral Outcome [PCC-57]"
+    resources:
+      - Bundle/GenomicOrderStatusAcceptMessage
+      - Bundle/GenomicOrderStatusDeclineMessage
+      - Bundle/GenomicOrderStatusLaterDeclineMessage
+      - Bundle/GenomicOrderStatusOutcomeMessage
+      - Task/TaskGenomicOrderAccepted
+      - Task/TaskGenomicOrderDeclined
+      - Task/TaskGenomicOrderDeclinedAfterAcceptance
+      - MessageHeader/MessageHeaderGenomicOrderStatusAccept
+      - MessageHeader/MessageHeaderGenomicOrderStatusDecline
+      - MessageHeader/MessageHeaderGenomicOrderStatusLaterDecline
+      - MessageHeader/MessageHeaderGenomicOrderStatusOutcome
   -ex-example-laboratory-order:
     name: "Example: Laboratory Order"
     description: "Laboratory Order Examples"

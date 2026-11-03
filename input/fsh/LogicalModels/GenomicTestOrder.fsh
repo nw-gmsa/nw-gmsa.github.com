@@ -74,14 +74,20 @@ depends on the test category (Rare and Inherited Disease, Haemoglobinopathy, Can
 * clinicalGeneticist 0..1 BackboneElement "Clinical Geneticist" "Clinical geneticist contact details"
   * email 0..1 string "Clinical Geneticist email" "Clinical geneticist email"
   * departmentEmail 0..1 string "Clinical Geneticist department email" "Clinical geneticist department email"
-* askAtOrderEntry 0..* Reference(Observation or RelatedPerson) "Ask At Order Entry Questions" """
-Questions that vary by order/test type, defined by a separate Ask At Order Entry
-Questionnaire. See Order Entry Questions.
+* forms 0..* Reference(QuestionnaireResponse or Observation or RelatedPerson) "Order forms (Ask At Order Entry)" """
+Also known as **Ask At Order Entry** questions. Questions that vary by order/test type,
+defined by a separate Ask At Order Entry Questionnaire and completed as a
+QuestionnaireResponse. For exchange the answers are carried as Observation (OBX) or
+RelatedPerson (NK1). See Order Entry Questions.
 """
 * pathologyReport 0..* Reference(DocumentReference or Bundle) "Pathology report" """
 Pathology studies supporting the order, e.g. a Cancer Pathology Report held by NHS
 England NDRS, or a pathology report shared by the NHS England Single Patient Record.
 Referenced as a clinical document, or in the interim an attached PDF.
+"""
+* patientSummary 0..1 Reference(DocumentReference or Bundle) "Patient summary" """
+The patient summary, as a clinical document. **Not** part of the NHS England Genomics
+ServiceRequest specification.
 """
 
 // Specimen
@@ -111,7 +117,7 @@ Mapping:        GenomicTestOrder-HL7v2
 Source:         GenomicTestOrderModel
 Target:         "http://hl7.org/v2"
 Id:             hl7v2
-Title:          "HL7 v2 OML_O21"
+Title:          "HL7 v2 OML_O21 / OMG_O19"
 * patient -> "PID"
 * patient.nhsNumber -> "PID-3"
 * patient.medicalRecordNumber -> "PID-3"
@@ -140,8 +146,9 @@ Title:          "HL7 v2 OML_O21"
 * reasonCode -> "DG1-3"
 * clinicalInformation -> "NTE"
 * clinicalGeneticist -> "OBX"
-* askAtOrderEntry -> "OBX / NK1"
+* forms -> "OBX / NK1"
 * pathologyReport -> "OBX (type = RP reference pointer, or ED for an attached PDF)"
+* patientSummary -> "OBX (type = RP reference pointer, or ED for an attached PDF)"
 * specimen -> "SPM"
 * specimen.identifier -> "SPM-2"
 * specimen.accessionIdentifier -> "SPM-30"
@@ -191,8 +198,9 @@ Title:          "FHIR (this IG)"
 * reasonCode -> "ServiceRequest.reasonCode"
 * clinicalInformation -> "ServiceRequest.note"
 * clinicalGeneticist -> "ServiceRequest.supportingInfo (Observation)"
-* askAtOrderEntry -> "ServiceRequest.supportingInfo (Observation / RelatedPerson)"
+* forms -> "ServiceRequest.supportingInfo (QuestionnaireResponse; answers as Observation / RelatedPerson)"
 * pathologyReport -> "ServiceRequest.supportingInfo (DocumentReference, or Bundle type = document)"
+* patientSummary -> "ServiceRequest.supportingInfo (DocumentReference, or Bundle type = document)"
 * specimen -> "ServiceRequest.specimen (Specimen)"
 * specimen.status -> "Specimen.status"
 * specimen.identifier -> "Specimen.identifier"

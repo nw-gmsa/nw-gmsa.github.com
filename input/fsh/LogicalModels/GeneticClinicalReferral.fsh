@@ -8,10 +8,11 @@ Genomics England Limited application, NHS England BaRS/eRS or the NHS England Ge
 Order Management Service.
 
 A closed-loop clinical referral into a genomics/clinical genetics service (see
-[Genetic Referrals](GeneticReferrals.html)), modelled on HL7 v2 `REF_I12` (Patient
-Referral) - not a laboratory order. The referral itself stays small: clinical content
-travels as forms and clinical documents (pathology report, patient summary, family
-letter) referenced from the referral.
+[Genetic Referrals](GeneticReferrals.html)), modelled on the IHE 360X HL7 v2 referral
+order `OMG^O19` with `OSU^O51` status updates (see [Referral Request [PCC-55]](PCC-55.html)) -
+not a laboratory order. The referral itself stays small: clinical content
+travels as forms, clinical documents (pathology report, patient summary) and family
+history referenced from the referral.
 
 This is a logical model - it is not exchanged as is. It breaks down into
 `ServiceRequest`, `Patient`, `PractitionerRole`, `Organization`, `HealthcareService`,
@@ -66,8 +67,10 @@ has no equivalent: an order's Order Filler is fixed.
 
 * serviceRequested 1..1 CodeableConcept "Referral Type / Service Requested" """
 The clinical service/assessment requested (e.g. genetic counselling, cascade testing) -
-not a Genomic Test Directory code. Not yet coded in this IG.
+not a Genomic Test Directory code. For a clinical genetics referral this is SNOMED CT
+`306119003`.
 """
+* serviceRequested = http://snomed.info/sct#306119003
 * reasonForReferral 0..* CodeableConcept "Reason for referral" "Suspected/confirmed condition"
 * reasonForReferral from GenomicClinicalIndicationCodes (extensible)
 * clinicalInformation 0..1 string "Clinical details" "Brief free-text note, if no family letter is attached"
@@ -89,10 +92,10 @@ Pathology Reports.
 The patient summary, as a clinical document. **Not** part of the NHS England Genomics
 ServiceRequest specification.
 """
-* clinicalDocument 0..* Reference(DocumentReference or Bundle) "Clinical document" "e.g. the family letter or a clinic letter"
-* familyHistory 0..* Reference(FamilyMemberHistory) "Family history" """
-Structured family history - one per relative. At present clinical genetics is believed
-to retrieve this from NHS England NDRS (National Disease Registration Service). NDRS is a
+* familyHistory 0..* Reference(FamilyMemberHistory or DocumentReference or Bundle) "Family history" """
+Structured family history (FamilyMemberHistory, one per relative), or the unstructured
+family letter as a clinical document. At present clinical genetics is believed
+to retrieve structured family history from NHS England NDRS (National Disease Registration Service). NDRS is a
 reporting/analytical service, so the information may not be current.
 """
 
@@ -100,11 +103,11 @@ Mapping:        GeneticClinicalReferral-HL7v2
 Source:         GeneticClinicalReferralModel
 Target:         "http://hl7.org/v2"
 Id:             hl7v2
-Title:          "HL7 v2 REF_I12"
-* referralIdentifier -> "RF1-6"
-* status -> "RF1-1"
-* priority -> "RF1-2"
-* dateOfReferral -> "RF1-7"
+Title:          "HL7 v2 OMG_O19 / OSU_O51 (IHE 360X)"
+* referralIdentifier -> "ORC-2 / OBR-2"
+* status -> "ORC-1 / ORC-5 (OMG^O19 ORC-1 NW; status changes in OSU^O51)"
+* priority -> "TQ1-9"
+* dateOfReferral -> "ORC-9"
 * patient -> "PID"
 * patient.nhsNumber -> "PID-3"
 * patient.medicalRecordNumber -> "PID-3"
@@ -113,19 +116,18 @@ Title:          "HL7 v2 REF_I12"
 * patient.birthDate -> "PID-7"
 * patient.address -> "PID-11"
 * patient.sexRegisteredAtBirth -> "PID-8"
-* patient.accountNumber -> "PID-18"
+* patient.accountNumber -> "PV1-19"
 * patient.pedigreeNumber -> "OBX"
-* referrer -> "PRD (role = Referring Provider)"
-* recipient -> "PRD (role = Referred-to Provider)"
-* serviceRequested -> "RF1-4"
-* reasonForReferral -> "RF1-12 / DG1"
+* referrer -> "ORC-12 / OBR-16 (ordering provider), ORC-21 (ordering facility)"
+* recipient -> "MSH-5 / MSH-6 (receiving application / facility)"
+* serviceRequested -> "OBR-4 (306119003^^SCT)"
+* reasonForReferral -> "OBR-31 / DG1"
 * clinicalInformation -> "NTE"
 * forms -> "OBX"
 * consultand -> "NK1"
 * pathologyReport -> "OBX (type = RP reference pointer, or ED for an attached PDF)"
 * patientSummary -> "OBX (type = RP reference pointer, or ED for an attached PDF)"
-* clinicalDocument -> "OBX (type = RP reference pointer, or ED for an attached PDF)"
-* familyHistory -> "No REF_I12 segment - retrieved from NHS England NDRS"
+* familyHistory -> "OBX (type = RP or ED) for the family letter; structured family history has no OMG_O19 segment - retrieved from NHS England NDRS"
 
 Mapping:        GeneticClinicalReferral-FHIR
 Source:         GeneticClinicalReferralModel
@@ -159,16 +161,15 @@ Title:          "FHIR (this IG)"
 * consultand -> "ServiceRequest.supportingInfo (RelatedPerson)"
 * pathologyReport -> "ServiceRequest.supportingInfo (DocumentReference, or Bundle type = document)"
 * patientSummary -> "ServiceRequest.supportingInfo (DocumentReference, or Bundle type = document)"
-* clinicalDocument -> "ServiceRequest.supportingInfo (DocumentReference, or Bundle type = document)"
-* familyHistory -> "ServiceRequest.supportingInfo (FamilyMemberHistory)"
+* familyHistory -> "ServiceRequest.supportingInfo (FamilyMemberHistory, or DocumentReference for the family letter)"
 
 Mapping:        GeneticClinicalReferral-Questionnaire
 Source:         GeneticClinicalReferralModel
 Target:         "https://fhir.nwgenomics.nhs.uk/Questionnaire/GeneticClinicalReferral"
 Id:             questionnaire
 Title:          "Questionnaire (linkId)"
-* referralIdentifier -> "HL7/RF1-6"
-* status -> "HL7/RF1-1"
+* referralIdentifier -> "HL7/ORC-2"
+* status -> "HL7/ORC-5"
 * priority -> "LN/82768-3"
 * patient -> "Patient"
 * patient.nhsNumber -> "LN/89061-6"
@@ -186,17 +187,16 @@ Title:          "Questionnaire (linkId)"
 * referrer.professionalIdentifier -> "LN/46608-6"
 * referrer.email -> "LN/89058-2"
 * referrer.phone -> "LN/81230-5"
-* referrer.organisation -> "HL7/PRD-referring-org"
+* referrer.organisation -> "HL7/ORC-21"
 * recipient -> "ReferredToProvider"
 * recipient.service -> "ReferredToProvider/serviceName"
 * recipient.organisation -> "ReferredToProvider/organisationCode"
 * recipient.clinician -> "ReferredToProvider/clinicianName"
-* serviceRequested -> "HL7/RF1-4"
+* serviceRequested -> "HL7/OBR-4"
 * reasonForReferral -> "LN/51967-8"
 * clinicalInformation -> "HL7/NTE-1"
 * consultand -> "Genetic Referral Consultand Questionnaire"
 * forms -> "SupportingInformation/forms"
 * pathologyReport -> "SupportingInformation/pathologyReport"
 * patientSummary -> "SupportingInformation/patientSummary"
-* clinicalDocument -> "FamilyHistory/attachment"
-* familyHistory -> "FamilyHistory"
+* familyHistory -> "FamilyHistory (family letter: FamilyHistory/attachment)"

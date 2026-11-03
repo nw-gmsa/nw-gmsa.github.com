@@ -12,15 +12,18 @@ logical model describes the information those routes need to carry.
 
 This logical model describes a closed-loop clinical referral into a
 genomics/clinical genetics service - the narrative use case is [Genetic
-Referrals](GeneticReferrals.html), and the underlying HL7 v2 message it is
-modelled on is `REF_I12` (Patient Referral), per that page's own [Referral
-Data Model](GeneticReferrals.html#referral-data-model) and [Target Referral
-Model](GeneticReferrals.html#target-referral-model).
+Referrals](GeneticReferrals.html). The HL7 v2 messages it is modelled on are the
+IHE 360X referral order `OMG^O19` and order status update `OSU^O51` - see
+[Referral Request [PCC-55]](PCC-55.html), [Referral Decline
+[PCC-56]](PCC-56.html) and [Referral Outcome [PCC-57]](PCC-57.html), all
+**for future use**. Earlier drafts used `REF_I12` (Patient Referral) - see
+[Genetic Referrals](GeneticReferrals.html#referral-data-model) for that
+mapping.
 
 The referral itself stays small. Clinical content travels as **forms**
-(`QuestionnaireResponse`) and **clinical documents** - the pathology report,
-the patient summary and the family letter - referenced from the referral,
-not copied into it.
+(`QuestionnaireResponse`), **clinical documents** - the pathology report and
+the patient summary - and **family history** (structured, or the family
+letter), referenced from the referral, not copied into it.
 
 It is deliberately built the same way as [Genomic Test
 Order](StructureDefinition-GenomicTestOrder.html) and [Genomic Test
@@ -34,7 +37,7 @@ Interoperability](HowToEngineerInteroperability.html#check-for-existing-patterns
 
 It is not a FHIR profile and is not exchanged as is - see [From Logical Model
 to Implementation Model](#from-logical-model-to-implementation-model) below,
-and the **Mappings** tab for where each element goes in HL7 v2 `REF_I12`, in
+and the **Mappings** tab for where each element goes in HL7 v2 `OMG^O19`/`OSU^O51`, in
 this IG's FHIR profiles, and in the [Genetic Clinical Referral
 Questionnaire](Questionnaire-GeneticClinicalReferral.html).
 

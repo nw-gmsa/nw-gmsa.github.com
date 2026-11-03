@@ -13,8 +13,8 @@ flowchart LR
         LRQ["requester"]
         LW["orderIdentifier, testCode,<br/>category, priority, orderDate,<br/>reasonCode, clinicalInformation"]
         LS["specimen"]
-        LA["askAtOrderEntry<br/>clinicalGeneticist<br/>specimen.tracking"]
-        LPR["pathologyReport"]
+        LA["forms (Ask At Order Entry)<br/>clinicalGeneticist<br/>specimen.tracking"]
+        LPR["pathologyReport<br/>patientSummary"]
     end
 
     subgraph IM["Implementation model (FHIR)"]
@@ -24,7 +24,7 @@ flowchart LR
         SR["ServiceRequest"]
         SPEC["Specimen"]
         OBS["Observation /<br/>RelatedPerson"]
-        DOC["Clinical Document<br/>DocumentReference or<br/>Bundle (type = document)"]
+        DOC["Clinical Documents<br/>DocumentReference or<br/>Bundle (type = document)"]
     end
 
     LP --> PAT
@@ -53,8 +53,9 @@ and it carries the order-level elements itself.
 | requester | [PractitionerRole](StructureDefinition-PractitionerRole.html), [Practitioner](StructureDefinition-Practitioner.html), [Organization](StructureDefinition-Organization.html) | [ORC](hl7v2.html#orc)-12, ORC-21 | Order Placer |
 | orderIdentifier, fillerOrderNumber, orderGroupNumber, category, testCode, orderDate, priority, performer, reasonCode, clinicalInformation | [ServiceRequest](StructureDefinition-ServiceRequest.html) | [ORC](hl7v2.html#orc), [OBR](hl7v2.html#obr), [DG1](hl7v2.html#dg1), [NTE](hl7v2.html#nte) | Order Placer (filler order number: Order Filler) |
 | specimen | [Specimen](StructureDefinition-Specimen.html) | [SPM](hl7v2.html#spm) | Order Placer (collection); Order Filler (receipt, accession) |
-| askAtOrderEntry, clinicalGeneticist, specimen.additive, specimen.tracking | [Observation](StructureDefinition-Observation.html), [RelatedPerson](StructureDefinition-RelatedPerson.html) via `ServiceRequest.supportingInfo` | [OBX](hl7v2.html#obx), NK1 | Order Placer |
-| pathologyReport | Clinical document - [DocumentReference](StructureDefinition-DocumentReference.html) or [FHIR Document](StructureDefinition-BundleDocument.html) via `ServiceRequest.supportingInfo` | [OBX](hl7v2.html#obx) (RP or ED) | Pathology laboratory |
+| forms (Ask At Order Entry) | [QuestionnaireResponse](StructureDefinition-QuestionnaireResponse.html); answers as [Observation](StructureDefinition-Observation.html) / [RelatedPerson](StructureDefinition-RelatedPerson.html) via `ServiceRequest.supportingInfo` | [OBX](hl7v2.html#obx), NK1 | Order Placer |
+| clinicalGeneticist, specimen.additive, specimen.tracking | [Observation](StructureDefinition-Observation.html) via `ServiceRequest.supportingInfo` | [OBX](hl7v2.html#obx) | Order Placer |
+| pathologyReport, patientSummary | Clinical document - [DocumentReference](StructureDefinition-DocumentReference.html) or [FHIR Document](StructureDefinition-BundleDocument.html) via `ServiceRequest.supportingInfo` | [OBX](hl7v2.html#obx) (RP or ED) | Pathology laboratory (pathology report); patient's care provider, e.g. GP (patient summary) |
 {:.grid}
 
 #### Patient Demographics
@@ -122,12 +123,24 @@ PDF (`DocumentReference` -> `Binary`, HL7 v2 `OBX` type `ED`). NDRS is a
 reporting/analytical service, so a report retrieved from it may not be the
 latest version.
 
+#### Patient Summary
+
+The patient summary is another clinical document referenced from the order,
+implemented the same way as the pathology report (a reference to a shared
+clinical document, or an attached document in the interim).
+
+<div class="alert alert-warning" role="alert">
+<b>Difference from NHS England:</b> the patient summary is <b>not</b> part of the
+<a href="https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/FHIRAssets/Profiles/All-Profiles/Genomics-ServiceRequest">NHS England Genomics ServiceRequest</a>
+specification. This model adds it as <code>ServiceRequest.supportingInfo</code>.
+</div>
+
 #### How the Pieces Travel
 
 | Exchange | Format | What is sent |
 |---|---|---|
 | FHIR Messaging (primary) | [FHIR Message O21](MessageDefinition-laboratory-order.html) | `Bundle` (type = message) containing `MessageHeader`, `ServiceRequest` and the resources it references |
-| HL7 v2 messaging | [OML_O21](hl7v2.html#oml_o21-laboratory-order) | `PID`, `PD1`, `PV1`, `ORC`, `OBR`, `DG1`, `NTE`, `OBX`, `NK1`, `SPM` segments |
+| HL7 v2 messaging | [OML_O21](hl7v2.html#oml_o21-laboratory-order), or [OMG_O19](hl7v2.html#omg_o19-general-clinical-order) instead | `PID`, `PD1`, `PV1`, `ORC`, `OBR`, `DG1`, `NTE`, `OBX`, `NK1`, `SPM` segments |
 | FHIR RESTful API | [Health Data API](HIE.html) | `ServiceRequest` and its referenced resources |
 {:.grid}
 
@@ -135,7 +148,7 @@ latest version.
 
 - The **Order Identifier (Placer)** (`ServiceRequest.identifier[OrderIdentifier]`, `ORC-2`) is present on every order, whichever format is used, and is echoed back on the [Genomic Test Report](StructureDefinition-GenomicTestReport.html).
 - `Patient` and `Encounter` are owned by patient administration; the order references them using business identifiers.
-- Ask At Order Entry questions are never part of the core - they are carried as `Observation` (`OBX`) or `RelatedPerson` (`NK1`), linked via `ServiceRequest.supportingInfo`.
+- Ask At Order Entry questions (`forms`) are never part of the core - they are completed as a `QuestionnaireResponse` and carried as `Observation` (`OBX`) or `RelatedPerson` (`NK1`), linked via `ServiceRequest.supportingInfo`.
 - A Filler Order (work order, subcontracted or reflex order) has the same shape, created by the Order Filler - see [Original Order, Instance and Filler Orders](#original-order-instance-and-filler-orders).
 - The [Genomic Test Order Questionnaire](Questionnaire-GenomicTestOrder.html) is the form representation of this model - its `linkId`s are listed on the **Mappings** tab. It is the resources above, not the `Questionnaire`/`QuestionnaireResponse`, that are exchanged.
 
@@ -207,7 +220,7 @@ erDiagram
 <p class="figureTitle">Order Test Form - Data Extraction Overview</p> 
 <br clear="all">
 
-[FHIR Message](https://hl7.org/fhir/R4/messaging.html), following the [laboratory-order](MessageDefinition-laboratory-order.html) message definition, is the **primary** format for order messages. HL7 v2 `OML_O21 Laboratory Order` is **also supported** - the FHIR Message definition is deliberately based on `OML_O21`'s own structure, which simplifies conversion to/from pipe+hat (v2) and json (FHIR) formats.
+[FHIR Message](https://hl7.org/fhir/R4/messaging.html), following the [laboratory-order](MessageDefinition-laboratory-order.html) message definition, is the **primary** format for order messages. HL7 v2 `OML_O21 Laboratory Order` is **also supported** (`OMG_O19 General Clinical Order`, which has the same segments including `SPM`, **MAY** be used instead) - the FHIR Message definition is deliberately based on `OML_O21`'s own structure, which simplifies conversion to/from pipe+hat (v2) and json (FHIR) formats.
 
 
 > At present, the NW GLH Laboratory Information Management System (LIMS) will not support HL7 FHIR. The Regional Integration Exchange (RIE) will perform conversion between v2 and FHIR formats.
@@ -261,6 +274,9 @@ Workflow](#diagnostic-workflow) above.
 {:.grid}
 
 #### Order Entry Questions
+
+In the logical model these are the `forms` element - also known as **Ask At
+Order Entry** questions.
 
 ```mermaid
 flowchart LR

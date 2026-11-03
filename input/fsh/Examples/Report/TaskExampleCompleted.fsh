@@ -10,6 +10,7 @@ Description: "TODO"
   * assigner.identifier.value = "R0A"
 
 * status = #completed
+* businessStatus = ReferralWorkflowStatus#completed
 * intent = #order
 
 * code = http://hl7.org/fhir/CodeSystem/task-code#fulfill

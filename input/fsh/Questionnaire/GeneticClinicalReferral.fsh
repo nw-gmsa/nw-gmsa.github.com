@@ -12,7 +12,7 @@ Order](StructureDefinition-GenomicTestOrder.html).
 
 This is a closed-loop clinical referral into a genomics/clinical genetics
 service (see [Genetic Referrals](GeneticReferrals.html)), modelled on HL7 v2
-`REF_I12` (Patient Referral) - not a laboratory order. Where a data item is
+`OMG^O19` (IHE 360X referral order, for future use) - not a laboratory order. Where a data item is
 genuinely the same one [Genomic Test Order](StructureDefinition-GenomicTestOrder.html)
 already captures (e.g. patient demographics), this Questionnaire reuses the
 same item, per the "check for existing patterns" principle in [How To
@@ -119,7 +119,7 @@ Usage:  #definition
     * text = "Hospital Number (Medical Record Number)"
     * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier:MedicalRecordNumber"
 
-// Patient	Account number (visit/episode number) - REF_I12 PID-18
+// Patient	Account number (visit/episode number) - PV1-19
 
   * item[+]
     * type = #string
@@ -131,7 +131,7 @@ Usage:  #definition
     * item[+]
       * linkId = "LN/56797-4-designNote"
       * type = #display
-      * text = "REF_I12 PID-18 (Patient Account Number) - not the unrelated v2 ACC segment."
+      * text = "PV1-19 (Visit/Account Number) - not the unrelated v2 ACC segment."
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 // Patient	G number (pedigree number)
@@ -151,12 +151,12 @@ Usage:  #definition
 * item[+]
   * type = #group
   * linkId = "ReferringProvider"
-  * text = "Referring Provider/Organisation (PRD, role = Referring Provider)"
+  * text = "Referring Provider/Organisation (ORC-12 / ORC-21)"
   * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole"
   * item[+]
     * linkId = "ReferringProvider-designNote"
     * type = #display
-    * text = "REF_I12 PRD segment, role-coded as Referring Provider. Reuses the same items as Genomic Test Order's Healthcare Professional group."
+    * text = "OMG^O19 ORC-12 (ordering provider) and ORC-21 (ordering facility). Reuses the same items as Genomic Test Order's Healthcare Professional group."
     * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 // Healthcare professional	Referring Clinician Name
@@ -209,20 +209,20 @@ Usage:  #definition
 
   * item[+]
     * type = #string
-    * linkId = "HL7/PRD-referring-org"
+    * linkId = "HL7/ORC-21"
     * definition = "http://hl7.org/fhir/StructureDefinition/PractitionerRole#PractitionerRole.organization.identifier.value"
     * text = "Referring Organisation ODS Code"
 
 * item[+]
   * type = #group
   * linkId = "ReferredToProvider"
-  * text = "Referred-to Provider/Service (PRD, role = Referred-to Provider)"
+  * text = "Referred-to Provider/Service (MSH-5 / MSH-6)"
   * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.performer"
   * item[+]
     * linkId = "ReferredToProvider-designNote"
     * type = #display
     * text = """
-    REF_I12 PRD segment, role-coded as Referred-to Provider - who/what the
+    OMG^O19 MSH-5 / MSH-6 (receiving application / facility) - who/what the
     referral is being sent to. Genomic Test Order has no equivalent group: an
     order's Order Filler is implicit/fixed (the destination LIMS), whereas a
     referral explicitly names the receiving clinic/service - see Differences
@@ -253,14 +253,14 @@ Usage:  #definition
 * item[+]
   * type = #group
   * linkId = "Referral"
-  * text = "Referral (RF1)"
+  * text = "Referral (ORC / OBR)"
   * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest"
 
 // Referral	Referral Identifier (Originating Referral Identifier)
 
   * item[+]
     * type = #string
-    * linkId = "HL7/RF1-6"
+    * linkId = "HL7/ORC-2"
     * text = "Referral Identifier"
     * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.identifier:OrderIdentifier"
 
@@ -268,7 +268,7 @@ Usage:  #definition
 
   * item[+]
     * type = #choice
-    * linkId = "HL7/RF1-1"
+    * linkId = "HL7/ORC-5"
     * text = "Referral Status"
     * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.status"
     * answerValueSet = "http://hl7.org/fhir/ValueSet/request-status"
@@ -287,20 +287,22 @@ Usage:  #definition
 // Referral	Referral Type/Service Requested
 
   * item[+]
-    * type = #string
-    * linkId = "HL7/RF1-4"
+    * type = #choice
+    * linkId = "HL7/OBR-4"
+    * answerOption[+].valueCoding = http://snomed.info/sct#306119003
+    * answerOption[=].initialSelected = true
     * text = "Referral Type / Service Requested"
     * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.code"
     * item[+]
-      * linkId = "HL7/RF1-4-designNote"
+      * linkId = "HL7/OBR-4-designNote"
       * type = #display
-      * text = "Not currently modelled as a coded value in this IG - see Genetic Referrals - Referral Data Model. Unlike Genomic Test Order's Test Code, this is not a Genomic Test Directory code: it names the clinical service/assessment being requested (e.g. genetic counselling, cascade testing), not a specific lab test."
+      * text = "For a clinical genetics referral this is SNOMED CT 306119003. Unlike Genomic Test Order's Test Code, this is not a Genomic Test Directory code: it names the clinical service/assessment being requested (e.g. genetic counselling, cascade testing), not a specific lab test."
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 * item[+]
   * type = #group
   * linkId = "ReasonForReferral"
-  * text = "Reason for Referral (RF1-12 / DG1)"
+  * text = "Reason for Referral (OBR-31 / DG1)"
 
   * item[+]
     * type = #choice
