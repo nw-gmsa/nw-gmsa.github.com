@@ -17,8 +17,8 @@ Usage: #example
 
 * output[+]
   * type = TaskInputOutputParameterType#reference-results
-  // External reference to the report held in the NHS England Unified Genomic Record (UGR)
-  * valueReference.reference = "https://ugr.example.nhs.uk/FHIR/R4/DiagnosticReport/25edee2b-add8-4522-9fa2-1ee8f229bd75"
+  // External (logical) reference to the report held in the NHS England Unified Genomic
+  // Record (UGR), by its Report Identifier
   * valueReference.type = "DiagnosticReport"
   * valueReference.display = "Genomic test report (NHS England Unified Genomic Record)"
   * valueReference.identifier.type = $v2-0203#FILL

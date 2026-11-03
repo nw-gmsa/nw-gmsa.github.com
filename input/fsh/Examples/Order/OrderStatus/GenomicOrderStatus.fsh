@@ -96,7 +96,7 @@ InstanceOf: MessageHeader
 Title: "Message Header - Order Status (O51), accepted"
 Description: "**For future use.** Referral Accept [PCC-55]."
 Usage: #example
-* insert GenomicOrderStatusHeader("Task/TaskGenomicOrderAccepted", "2025-01-30T09:30:00+00:00")
+* insert GenomicOrderStatusHeader("urn:uuid:9e24c762-a7a6-451a-9ee1-adf516b1e7cf", "2025-01-30T09:30:00+00:00")
 
 Instance: GenomicOrderStatusAcceptMessage
 InstanceOf: BundleMessage
@@ -105,14 +105,14 @@ Description: "**For future use.** FHIR Message equivalent of the HL7 v2 OSU^O51 
 Usage: #example
 * insert MessageBundle("urn:uuid:3015ed84-85d1-438a-9741-2bf21d8dae38", "2025-01-30T09:30:00+00:00")
 * insert EntryDocument("urn:uuid:cb7a19b2-eee2-40ea-8628-eaf95222e841", MessageHeaderGenomicOrderStatusAccept)
-* insert EntryDocument("https://fhir.nwgenomics.nhs.uk/Task/TaskGenomicOrderAccepted", TaskGenomicOrderAccepted)
+* insert EntryDocument("urn:uuid:9e24c762-a7a6-451a-9ee1-adf516b1e7cf", TaskGenomicOrderAccepted)
 
 Instance: MessageHeaderGenomicOrderStatusDecline
 InstanceOf: MessageHeader
 Title: "Message Header - Order Status (O51), declined"
 Description: "**For future use.** Referral Decline [PCC-55]."
 Usage: #example
-* insert GenomicOrderStatusHeader("Task/TaskGenomicOrderDeclined", "2025-01-30T09:30:00+00:00")
+* insert GenomicOrderStatusHeader("urn:uuid:e1ba7074-9279-4e38-a640-4fd0fb59e32a", "2025-01-30T09:30:00+00:00")
 
 Instance: GenomicOrderStatusDeclineMessage
 InstanceOf: BundleMessage
@@ -121,14 +121,14 @@ Description: "**For future use.** FHIR Message equivalent of the HL7 v2 OSU^O51 
 Usage: #example
 * insert MessageBundle("urn:uuid:713796e2-833a-440b-bccf-ba6f428aa19b", "2025-01-30T09:30:00+00:00")
 * insert EntryDocument("urn:uuid:ac9ad3a5-b4b3-4c4f-90d3-ae09ab093e04", MessageHeaderGenomicOrderStatusDecline)
-* insert EntryDocument("https://fhir.nwgenomics.nhs.uk/Task/TaskGenomicOrderDeclined", TaskGenomicOrderDeclined)
+* insert EntryDocument("urn:uuid:e1ba7074-9279-4e38-a640-4fd0fb59e32a", TaskGenomicOrderDeclined)
 
 Instance: MessageHeaderGenomicOrderStatusLaterDecline
 InstanceOf: MessageHeader
 Title: "Message Header - Order Status (O51), declined after acceptance"
 Description: "**For future use.** Referral Decline [PCC-56]."
 Usage: #example
-* insert GenomicOrderStatusHeader("Task/TaskGenomicOrderDeclinedAfterAcceptance", "2025-02-05T10:00:00+00:00")
+* insert GenomicOrderStatusHeader("urn:uuid:e8c50144-4538-41ba-99d1-eecae8860ec8", "2025-02-05T10:00:00+00:00")
 
 Instance: GenomicOrderStatusLaterDeclineMessage
 InstanceOf: BundleMessage
@@ -137,14 +137,14 @@ Description: "**For future use.** FHIR Message equivalent of the HL7 v2 OSU^O51 
 Usage: #example
 * insert MessageBundle("urn:uuid:399da194-8280-447d-a3ec-7585bccec0e6", "2025-02-05T10:00:00+00:00")
 * insert EntryDocument("urn:uuid:6f70cb81-531c-4ef2-a21b-ef1a76b1cf9d", MessageHeaderGenomicOrderStatusLaterDecline)
-* insert EntryDocument("https://fhir.nwgenomics.nhs.uk/Task/TaskGenomicOrderDeclinedAfterAcceptance", TaskGenomicOrderDeclinedAfterAcceptance)
+* insert EntryDocument("urn:uuid:e8c50144-4538-41ba-99d1-eecae8860ec8", TaskGenomicOrderDeclinedAfterAcceptance)
 
 Instance: MessageHeaderGenomicOrderStatusOutcome
 InstanceOf: MessageHeader
 Title: "Message Header - Order Status (O51), outcome"
 Description: "**For future use.** Referral Outcome [PCC-57]."
 Usage: #example
-* insert GenomicOrderStatusHeader("Task/TaskGenomicOrderCompleted", "2025-02-20T11:00:00+00:00")
+* insert GenomicOrderStatusHeader("urn:uuid:b0ee013a-b63d-4665-9c1f-ce87b76cdf7a", "2025-02-20T11:00:00+00:00")
 
 Instance: GenomicOrderStatusOutcomeMessage
 InstanceOf: BundleMessage
@@ -153,4 +153,4 @@ Description: "**For future use.** FHIR Message equivalent of the HL7 v2 OSU^O51 
 Usage: #example
 * insert MessageBundle("urn:uuid:9efaef2e-8dbb-4e03-aa25-4968c76bd1fc", "2025-02-20T11:00:00+00:00")
 * insert EntryDocument("urn:uuid:5597012c-542f-4a2d-ad4c-3431403f4b54", MessageHeaderGenomicOrderStatusOutcome)
-* insert EntryDocument("https://fhir.nwgenomics.nhs.uk/Task/TaskGenomicOrderCompleted", TaskGenomicOrderCompleted)
+* insert EntryDocument("urn:uuid:b0ee013a-b63d-4665-9c1f-ce87b76cdf7a", TaskGenomicOrderCompleted)

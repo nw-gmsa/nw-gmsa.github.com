@@ -137,7 +137,7 @@ report held in the NHS England **Unified Genomic Record (UGR)**:
 
 | `Task.output.valueReference` | Content |
 |---|---|
-| `reference` | Absolute URL of the `DiagnosticReport` in the UGR |
+| `reference` | Absolute URL of the `DiagnosticReport` in the UGR, where known - omitted in the example, which references the report by its Report Identifier only |
 | `type` | `DiagnosticReport` |
 | `identifier` | The [Report Identifier](StructureDefinition-ReportIdentifier.html) (type `FILL`, assigned by the laboratory) - the same value as OBR-3 on the report's `ORU_R01` and `DiagnosticReport.identifier[ReportIdentifier]` |
 {:.grid}
