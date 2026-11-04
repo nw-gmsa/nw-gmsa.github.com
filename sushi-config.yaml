@@ -147,6 +147,9 @@ pages:
   diagnostic-core.md:
     title: Diagnostic Model Overview
     generation: markdown
+  ReportTypes.md:
+    title: Report Types
+    generation: markdown
     #  LAB-1.md:
     #   title: Placer Order Management [LAB-1]
     #    generation: markdown
@@ -381,6 +384,7 @@ menu:
 ##    Test Results Management [LAB-5]: LAB-5.html
   Data Models (Volume 3):
     Diagnostic Model Overview: diagnostic-core.html
+    Report Types: ReportTypes.html
   ##  Overview - Data Contracts: data-intro.html
     Genomic Test Order: StructureDefinition-GenomicTestOrder.html
    ## Genomic Test Report (Composition): StructureDefinition-Composition-GenomicReport.html
