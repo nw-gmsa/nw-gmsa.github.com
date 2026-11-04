@@ -60,43 +60,54 @@ Description:    """
 
 
 * section contains
-    Order 0..* MS
-    and Specimen 0..* MS
-    and Narrative 0..* MS
-    and GenomicFinding  0..* MS
-    and GenomicImplication 0..* MS
-    and RecommendedActions 0..* MS
+    Referral 0..1 MS
+    and Specimen 0..1 MS
+    and ResultSummary 0..1 MS
+    and Results 0..* MS
+    and Interpretation 0..1 MS
+    and Recommendations 0..1 MS
+    and Methodology 0..1 MS
+    and PresentedForm 0..* MS
 
+// Inferred layout - see Document Layout on the profile page. Section titles are not fixed, so a laboratory can use its own headings.
 
-* section[Order] ^short = "Laboratory Order"
-* section[Order].title = "Laboratory Order"
-* section[Order].code = $loinc#59772-4 	"Planned procedure Narrative"
-* section[Order].entry ^short = "Order"
-* section[Order].entry only Reference(ServiceRequest)
+* section[Referral] ^short = "Referral"
+* section[Referral] ^definition = "Reason for referral (clinical indication) and the National Genomic Test Directory test requested"
+* section[Referral].code = $loinc#42349-1 "Reason for referral (narrative)"
+* section[Referral].entry only Reference(http://hl7.org/fhir/StructureDefinition/ServiceRequest or http://hl7.org/fhir/StructureDefinition/Condition or http://hl7.org/fhir/StructureDefinition/Observation)
 
 * section[Specimen] ^short = "Specimen"
-* section[Specimen].title = "Specimen"
-* section[Specimen].code = $loinc#59773-2 "Procedure specimens taken Narrative"
-* section[Specimen].entry ^short = "Specimen"
-* section[Specimen].entry only Reference(Specimen)
+* section[Specimen] ^definition = "Sample type, collection and receipt dates"
+* section[Specimen].code = $sct#123038009 "Specimen"
+* section[Specimen].entry only Reference(http://hl7.org/fhir/StructureDefinition/Specimen)
 
-* section[Narrative] ^short = "Narrative"
-* section[Narrative].title = "Narrative"
-* section[Narrative].code = $loinc#29554-3
-* section[Narrative].entry ^short = "Procedure Narrative"
-* section[Narrative].entry only Reference(DiagnosticReport or DocumentReference)
+* section[ResultSummary] ^short = "Result summary"
+* section[ResultSummary] ^definition = "The headline result, shown first on the report"
+* section[ResultSummary].code = $loinc#51968-6 "Discrete variation analysis overall interpretation"
+* section[ResultSummary].entry only Reference(http://hl7.org/fhir/StructureDefinition/DiagnosticReport or http://hl7.org/fhir/StructureDefinition/Observation)
 
-* section[GenomicFinding] ^short = "Findings"
-* section[GenomicFinding].title = "Findings"
-* section[GenomicFinding].code = $loinc#59776-5 "Findings"
-* section[GenomicFinding].entry only Reference(Observation)
+* section[Results] ^short = "Results"
+* section[Results] ^definition = "The reported variants, genotypes, haplotypes and biomarkers (the variant table)"
+* section[Results].code = $loinc#69548-6 "Genetic variant assessment"
+* section[Results].entry only Reference(http://hl7.org/fhir/StructureDefinition/Observation)
 
-* section[GenomicImplication] ^short = "Implications"
-* section[GenomicImplication].title = "Implications"
-* section[GenomicImplication].code = $loinc#59768-2 "Procedure indications Imp"
-* section[GenomicImplication].entry only Reference(Observation)
+* section[Interpretation] ^short = "Interpretation"
+* section[Interpretation] ^definition = "Interpretation of the results, including diagnostic and therapeutic implications"
+* section[Interpretation].code = GenomicReportSection#interpretation
+* section[Interpretation].entry only Reference(http://hl7.org/fhir/StructureDefinition/Observation or http://hl7.org/fhir/StructureDefinition/Condition)
 
-* section[RecommendedActions] ^short = "Recommended Actions"
-* section[RecommendedActions].title = "Recommended Actions"
-* section[RecommendedActions].code = $loinc#46209-3 "Provider orders"
-//* section[RecommendedActions].entry only Reference(http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/medication-recommendation or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/followup-recommendation)
+* section[Recommendations] ^short = "Recommendations"
+* section[Recommendations] ^definition = "Recommended actions, for example testing of relatives or further tests"
+* section[Recommendations].code = $loinc#62385-0 "Recommendation [Interpretation] Document"
+* section[Recommendations].entry only Reference(http://hl7.org/fhir/StructureDefinition/Task or http://hl7.org/fhir/StructureDefinition/ServiceRequest or http://hl7.org/fhir/StructureDefinition/Observation)
+
+* section[Methodology] ^short = "Methodology and limitations"
+* section[Methodology] ^definition = "Genes or regions studied, technology, coverage and limitations"
+* section[Methodology].code = GenomicReportSection#methodology
+* section[Methodology].entry only Reference(http://hl7.org/fhir/StructureDefinition/Observation or http://hl7.org/fhir/StructureDefinition/Procedure)
+
+* section[PresentedForm] ^short = "Presented form"
+* section[PresentedForm] ^definition = "The authorised report as a PDF, while the PDF remains the authorised report"
+* section[PresentedForm].code = $loinc#77599-9 "Additional documentation"
+* section[PresentedForm].entry 1..*
+* section[PresentedForm].entry only Reference(http://hl7.org/fhir/StructureDefinition/DocumentReference or http://hl7.org/fhir/StructureDefinition/Binary)

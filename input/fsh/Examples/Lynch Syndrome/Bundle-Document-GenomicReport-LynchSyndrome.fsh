@@ -36,22 +36,41 @@ Usage: #example
   * assigner.identifier.value = "RBS"
 
 * section[+]
-  * title = "Findings"
+  * title = "Referral"
+  * code = $loinc#42349-1 "Reason for referral (narrative)"
   * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Genomics Findings</li></ul></div>"
-  * code = $loinc#59776-5 "Findings"
-  * entry[+].reference = "urn:uuid:8385c2fd-313d-4fd5-b98e-d5ea4bae6f99"
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R210 Inherited MMR deficiency (Lynch syndrome). History of carcinoma.</p></div>"
+  * entry[+].reference = "urn:uuid:d6c19529-a64e-476b-b896-303abec26a79"
+
+* section[+]
+  * title = "Result summary"
+  * code = $loinc#51968-6 "Discrete variation analysis overall interpretation"
+  * text.status = #generated
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Lynch syndrome: detected.</p></div>"
+  * entry[+].reference = "urn:uuid:c64139e7-f02d-409c-bf34-75e8bf23bc80"
   * entry[+].reference = "urn:uuid:4490c092-c78c-480a-8cb7-653b70113fd5"
 
 * section[+]
-  * title = "Implications"
+  * title = "Results"
+  * code = $loinc#69548-6 "Genetic variant assessment"
   * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Genomics Implications</li></ul></div>"
-  * code = $loinc#59768-2 "Procedure indications Imp"
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>NTHL1 germline heterozygous duplication.</p></div>"
+  * entry[+].reference = "urn:uuid:8385c2fd-313d-4fd5-b98e-d5ea4bae6f99"
+
+* section[+]
+  * title = "Interpretation"
+  * code = GenomicReportSection#interpretation
+  * text.status = #generated
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Pathogenic. Inherited MMR deficiency (Lynch syndrome).</p></div>"
   * entry[+].reference = "urn:uuid:6beb613f-d303-42af-b025-86e8e0872061"
+
+* section[+]
+  * title = "Methodology and limitations"
+  * code = GenomicReportSection#methodology
+  * text.status = #generated
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R210 Inherited MMR deficiency (Lynch syndrome).</p></div>"
   * entry[+].reference = "urn:uuid:0878c5de-c22f-4e31-841a-a82ad31c93aa"
   * entry[+].reference = "urn:uuid:f0036554-cd1a-463c-ac8a-d891ca409af9"
-  * entry[+].reference = "urn:uuid:d6c19529-a64e-476b-b896-303abec26a79"
 
 
 Instance: FHIRDocumentGeneticReportBundle2

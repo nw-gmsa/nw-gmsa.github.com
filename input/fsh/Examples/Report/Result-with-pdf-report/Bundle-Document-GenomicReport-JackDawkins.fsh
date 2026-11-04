@@ -42,12 +42,19 @@ Usage: #example
   * assigner.identifier.value = "R0A"
 
 * section[+]
-  * title = "Results"
+  * title = "Result summary"
+  * code = $loinc#51968-6 "Discrete variation analysis overall interpretation"
   * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Genomics Report</li></ul></div>"
-  * code = http://loinc.org#30954-2
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>See the attached report.</p></div>"
   * entry[+].reference = "urn:uuid:233ff41a-5067-46c4-b6aa-5d6f87719f5f"
+
+* section[+]
+  * title = "Presented form"
+  * code = $loinc#77599-9 "Additional documentation"
+  * text.status = #generated
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Genomic Report for Octavia CHISLETT (PDF).</p></div>"
   * entry[+].reference = "urn:uuid:94bf65ba-cd6c-4601-b339-6d547f424646"
+
 
 Instance: FHIRDocumentGeneticReportBundle
 InstanceOf: BundleDocument

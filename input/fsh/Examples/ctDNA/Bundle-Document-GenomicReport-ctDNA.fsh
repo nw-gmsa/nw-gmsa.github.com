@@ -37,28 +37,33 @@ Usage: #example
   * value = "9737873858"
 
 * section[+]
-  * title = "Presented Format"
+  * title = "Result summary"
+  * code = $loinc#51968-6 "Discrete variation analysis overall interpretation"
   * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Presented Form</li></ul> This is a PDF document which holds the narrative which ideally would be contained in this Composition resource.</div>"
-  * code = $loinc#77599-9
-  * entry[+].reference = "urn:uuid:13028359-6a38-4dff-8978-55a57dbdfb56"
-  * entry[+].reference = "urn:uuid:d6eeedd1-92d3-45b9-bf33-6401e804425f"
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>TARGET DETECTED AT A LEVEL REQUIRING CLINICAL ACTION.</p></div>"
+  * entry[+].reference = "urn:uuid:0a6ad8ec-b069-4a65-8c65-c7569d8413e3"
 
 * section[+]
-  * title = "Findings"
+  * title = "Results"
+  * code = $loinc#69548-6 "Genetic variant assessment"
   * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Genomics Findings</li></ul>TODO data from variant and regions studied to be rendered here. For now (phase 1) see PDF, the references to structured data should be ignored.</div>"
-  * code = $loinc#59776-5 "Findings"
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>EGFR variant detected. For now (phase 1) see the PDF.</p></div>"
   * entry[+].reference = "urn:uuid:00c22e97-a226-4845-b17a-e24ec1f4f77a"
+
+* section[+]
+  * title = "Methodology and limitations"
+  * code = GenomicReportSection#methodology
+  * text.status = #generated
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>EGFR region studied by dPCR. For now (phase 1) see the PDF.</p></div>"
   * entry[+].reference = "urn:uuid:a151b1ed-5aef-4c36-af50-987cfbd5bad4"
 
-
 * section[+]
-  * title = "Implications"
+  * title = "Presented form"
+  * code = $loinc#77599-9 "Additional documentation"
   * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Genomics Implications</li></ul>See PDF</div>"
-  * code = $loinc#59768-2 "Procedure indications Imp"
-
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>ctDNA Genomic Report for Theon Sheffield (PDF). This PDF holds the narrative which ideally would be contained in this Composition.</p></div>"
+  * entry[+].reference = "urn:uuid:13028359-6a38-4dff-8978-55a57dbdfb56"
+  * entry[+].reference = "urn:uuid:d6eeedd1-92d3-45b9-bf33-6401e804425f"
 
 
 Instance: FHIRDocumentGeneticReportBundle-ctDNA
