@@ -67,4 +67,9 @@ Description:    """
 * collection.collector 0..1 MS
 * collection.collector only Reference(PractitionerRole)
 
+* container MS
+* container.identifier MS
+* container.identifier ^short = "Identifier of the tube/container holding the specimen, e.g. DNA tube number (HL7 v2 SPM-2)"
+* container.identifier ^comment = "Used for the derivative (e.g. extracted DNA) tube rather than the primary collection tube. dWGS: the dispatched sample LSID (FluidX tube barcode, `dispatched_sample_lsid`). DSS work order: the MolDB / D-LIMS DNA tube number (`DerivativeSpecimenIdentifier`, iGene `mdbSampleNumber`)."
+
 

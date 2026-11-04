@@ -27,7 +27,21 @@ Related:
 | Shipment Tracking Number  | 97209-1 | [Shipment Tracking Number](StructureDefinition-ShipmentTrackingNumber.html)   | 0..*        | [SPM](hl7v2.html#spm)-32 | Specimen.identifier[ShipmentTrackingNumber]            | 
 | Specimen Collection Date  |         |                                                                               | 0..1        | [SPM](hl7v2.html#spm)-17 | Specimen.collection.collectedDateTime                  |
 | Specimen Received Date    |         |                                                                               | 0..1        | [SPM](hl7v2.html#spm)-18 | Specimen.receivedTime                                  |
+| Container Identifier      |         |                                                                               | 0..*        | [SPM](hl7v2.html#spm)-2  | Specimen.container.identifier                          |
 {:.grid}
+
+### Container Identifier
+
+`Specimen.container.identifier` holds the identifier of the tube the specimen is in. It is used
+for the derivative specimen (e.g. extracted DNA), not the primary collection tube:
+
+| Use Case | Identifier | Source | HL7 v2 |
+|----------|------------|--------|--------|
+| [dWGS](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md#field-mapping-csv--hl7-v2--fhir) | Dispatched sample LSID (FluidX tube barcode), `dispatched_sample_lsid` | dWGS Ask At Order Entry manifest | SPM-2.1 (type=ZCID) |
+| [DSS Work Order](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md#work-order-csv-from-igene) | DNA tube number from MolDB / D-LIMS (the DLIMS Lab Number), `DerivativeSpecimenIdentifier` | iGene `ReferralTest.referralTestSampleTubes(createdAt:0).sample.mdbSampleNumber` | SPM-2 |
+{:.grid}
+
+The identifier system for the MolDB / D-LIMS DNA tube number is not yet confirmed.
 
 
 
