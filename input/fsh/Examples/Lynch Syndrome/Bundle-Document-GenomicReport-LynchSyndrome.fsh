@@ -48,7 +48,6 @@ Usage: #example
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Lynch syndrome: detected.</p></div>"
   * entry[+].reference = "urn:uuid:c64139e7-f02d-409c-bf34-75e8bf23bc80"
-  * entry[+].reference = "urn:uuid:4490c092-c78c-480a-8cb7-653b70113fd5"
 
 * section[+]
   * title = "Results"
@@ -88,7 +87,6 @@ Usage: #example
 * insert EntryDocument("urn:uuid:6beb613f-d303-42af-b025-86e8e0872061", 6beb613f-d303-42af-b025-86e8e0872061)
 * insert EntryDocument("urn:uuid:0878c5de-c22f-4e31-841a-a82ad31c93aa", 0878c5de-c22f-4e31-841a-a82ad31c93aa)
 * insert EntryDocument("urn:uuid:8385c2fd-313d-4fd5-b98e-d5ea4bae6f99", 8385c2fd-313d-4fd5-b98e-d5ea4bae6f99)
-* insert EntryDocument("urn:uuid:4490c092-c78c-480a-8cb7-653b70113fd5", 4490c092-c78c-480a-8cb7-653b70113fd5)
 // Procedure
 * insert EntryDocument("urn:uuid:f0036554-cd1a-463c-ac8a-d891ca409af9", f0036554-cd1a-463c-ac8a-d891ca409af9)
 // Condition

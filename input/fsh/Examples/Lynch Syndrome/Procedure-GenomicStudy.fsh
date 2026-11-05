@@ -1,5 +1,5 @@
 Instance: f0036554-cd1a-463c-ac8a-d891ca409af9
-InstanceOf: Procedure
+InstanceOf: http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/genomic-study
 Title: "Genomic Study - Lynch Syndrome"
 Description: "Based on HL7 LRI Example 3 (Ref 5.9.1.3)"
 
@@ -9,7 +9,7 @@ Description: "Based on HL7 LRI Example 3 (Ref 5.9.1.3)"
 
 * performedDateTime	 = "2025-10-23T10:37:26+00:00"
 
-* category[+] = http://terminology.hl7.org/CodeSystem/observation-category#laboratory
+* category = http://terminology.hl7.org/CodeSystem/observation-category#laboratory
 
 // * code
 
@@ -24,4 +24,3 @@ Description: "Based on HL7 LRI Example 3 (Ref 5.9.1.3)"
     * display = "Inherited MMR deficiency (Lynch syndrome)"
     * system = $GCC
 
-* outcome = $GTOC#321 "VARIANT DETECTED"

@@ -74,27 +74,27 @@ Description:    """
 * section[Referral] ^short = "Referral"
 * section[Referral] ^definition = "Reason for referral (clinical indication) and the National Genomic Test Directory test requested"
 * section[Referral].code = $loinc#42349-1 "Reason for referral (narrative)"
-* section[Referral].entry only Reference(http://hl7.org/fhir/StructureDefinition/ServiceRequest or http://hl7.org/fhir/StructureDefinition/Condition or http://hl7.org/fhir/StructureDefinition/Observation)
+* section[Referral].entry only Reference(ServiceRequest or Condition)
 
 * section[Specimen] ^short = "Specimen"
 * section[Specimen] ^definition = "Sample type, collection and receipt dates"
 * section[Specimen].code = $sct#123038009 "Specimen"
-* section[Specimen].entry only Reference(http://hl7.org/fhir/StructureDefinition/Specimen)
+* section[Specimen].entry only Reference(Specimen)
 
 * section[ResultSummary] ^short = "Result summary"
 * section[ResultSummary] ^definition = "The headline result, shown first on the report"
 * section[ResultSummary].code = $loinc#51968-6 "Discrete variation analysis overall interpretation"
-* section[ResultSummary].entry only Reference(http://hl7.org/fhir/StructureDefinition/DiagnosticReport or http://hl7.org/fhir/StructureDefinition/Observation)
+* section[ResultSummary].entry only Reference(DiagnosticReport)
 
 * section[Results] ^short = "Results"
 * section[Results] ^definition = "The reported variants, genotypes, haplotypes and biomarkers (the variant table)"
 * section[Results].code = $loinc#69548-6 "Genetic variant assessment"
-* section[Results].entry only Reference(http://hl7.org/fhir/StructureDefinition/Observation)
+* section[Results].entry only Reference(Variant or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/genomic-study-analysis or MolecularConsequence)
 
 * section[Interpretation] ^short = "Interpretation"
 * section[Interpretation] ^definition = "Interpretation of the results, including diagnostic and therapeutic implications"
 * section[Interpretation].code = GenomicReportSection#interpretation
-* section[Interpretation].entry only Reference(http://hl7.org/fhir/StructureDefinition/Observation or http://hl7.org/fhir/StructureDefinition/Condition)
+* section[Interpretation].entry only Reference(DiagnosticImplication or TherapeuticImplication)
 
 * section[Recommendations] ^short = "Recommendations"
 * section[Recommendations] ^definition = "Recommended actions, for example testing of relatives or further tests"
@@ -104,7 +104,7 @@ Description:    """
 * section[Methodology] ^short = "Methodology and limitations"
 * section[Methodology] ^definition = "Genes or regions studied, technology, coverage and limitations"
 * section[Methodology].code = GenomicReportSection#methodology
-* section[Methodology].entry only Reference(http://hl7.org/fhir/StructureDefinition/Observation or http://hl7.org/fhir/StructureDefinition/Procedure)
+* section[Methodology].entry only Reference(GenomicStudyPanel or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/genomic-study or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/genomic-study-analysis)
 
 * section[PresentedForm] ^short = "Presented form"
 * section[PresentedForm] ^definition = "The authorised report as a PDF, while the PDF remains the authorised report"

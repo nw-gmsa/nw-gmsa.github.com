@@ -49,13 +49,13 @@ flowchart TB
         direction TB
         COMP["<b>Composition</b> (Composition Genomic Report)<br/>type: Genetic report, LOINC 51969-4 Genetic analysis report<br/>subject: Patient - author: reporting laboratory (GLH)<br/>attester: authorising clinical scientist<br/>custodian: reporting laboratory"]
 
-        S1["Section: Referral<br/>reason for referral, test requested (R / M code)<br/><i>text + ServiceRequest</i>"]
+        S1["Section: Referral<br/>reason for referral, test requested (R / M code)<br/><i>text + ServiceRequest, Condition</i>"]
         S2["Section: Specimen<br/>sample type, collected, received<br/><i>text + Specimen</i>"]
-        S3["Section: Result summary<br/>headline result<br/><i>text + overall interpretation</i>"]
-        S4["Section: Results<br/>variant table<br/><i>text + Variant, Genotype,<br/>Molecular Biomarker</i>"]
+        S3["Section: Result summary<br/>headline result<br/><i>text + DiagnosticReport</i>"]
+        S4["Section: Results<br/>variant table<br/><i>text + Variant, Genomic Study Analysis,<br/>Molecular Consequence</i>"]
         S5["Section: Interpretation<br/><i>text + Diagnostic and<br/>Therapeutic Implication</i>"]
         S6["Section: Recommendations<br/>family testing, further tests<br/><i>text + recommended actions</i>"]
-        S7["Section: Methodology and limitations<br/>genes/regions studied, coverage<br/><i>text + Genomic Study</i>"]
+        S7["Section: Methodology and limitations<br/>genes/regions studied, coverage<br/><i>text + Genomic Study Panel,<br/>Genomic Study, Genomic Study Analysis</i>"]
         S8["Section: Presented form<br/><i>the PDF: DocumentReference, Binary</i>"]
         S9["Section: Annotations<br/><i>comments - text only</i>"]
         DR["DiagnosticReport<br/><i>result: the same Observations</i>"]
@@ -75,13 +75,13 @@ flowchart TB
 
 | Section (slice) | Code | Content (entries) | Notes |
 |---|---|---|---|
-| Referral (`Referral`) | LOINC `42349-1` Reason for referral (narrative) | Text; entries ServiceRequest, Condition, Observation | Clinical indication and the [National Genomic Test Directory](https://www.england.nhs.uk/publication/national-genomic-test-directories/) test requested. Could instead be in the Composition header only |
-| Specimen (`Specimen`) | SNOMED CT `123038009` Specimen | Text; entry Specimen | No LOINC document section code found; as used by the [ctDNA UGR example](Bundle-ctdna9737383222-eulab-document.html) |
-| Result summary (`ResultSummary`) | LOINC `51968-6` Discrete variation analysis overall interpretation | Text; entries DiagnosticReport, overall interpretation Observation | The headline result shown first on the report |
-| Results (`Results`) | LOINC `69548-6` Genetic variant assessment | Text (the variant table); entries Variant, Genotype, Haplotype, Molecular Biomarker | Could be split into sub-sections following the `81247-9` panel (discrete variants, complex variants, pharmacogenomics) |
-| Interpretation (`Interpretation`) | [Genomic Report Section](CodeSystem-GenomicReportSection.html) `interpretation` (local) | Text; entries Diagnostic Implication, Therapeutic Implication, Condition | Is this separate from the result summary? |
+| Referral (`Referral`) | LOINC `42349-1` Reason for referral (narrative) | Text; entries [ServiceRequest](StructureDefinition-ServiceRequest.html), [Condition](StructureDefinition-Condition.html) | Clinical indication and the [National Genomic Test Directory](https://www.england.nhs.uk/publication/national-genomic-test-directories/) test requested. Could instead be in the Composition header only |
+| Specimen (`Specimen`) | SNOMED CT `123038009` Specimen | Text; entry [Specimen](StructureDefinition-Specimen.html) | No LOINC document section code found; as used by the [ctDNA UGR example](Bundle-ctdna9737383222-eulab-document.html) |
+| Result summary (`ResultSummary`) | LOINC `51968-6` Discrete variation analysis overall interpretation | Text; entry [DiagnosticReport](StructureDefinition-DiagnosticReport.html) | The headline result shown first on the report |
+| Results (`Results`) | LOINC `69548-6` Genetic variant assessment | Text (the variant table); entries [Variant](StructureDefinition-Variant.html), [Genomic Study Analysis](https://hl7.org/fhir/uv/genomics-reporting/STU3/StructureDefinition-genomic-study-analysis.html), [Molecular Consequence](StructureDefinition-MolecularConsequence.html) | Could be split into sub-sections following the `81247-9` panel (discrete variants, complex variants, pharmacogenomics) |
+| Interpretation (`Interpretation`) | [Genomic Report Section](CodeSystem-GenomicReportSection.html) `interpretation` (local) | Text; entries [Diagnostic Implication](StructureDefinition-DiagnosticImplication.html), [Therapeutic Implication](StructureDefinition-TherapeuticImplication.html) | Is this separate from the result summary? |
 | Recommendations (`Recommendations`) | LOINC `62385-0` Recommendation | Text; entries follow-up and medication recommendations (Task) | For example testing of relatives. LOINC `18783-1` Study recommendation is an alternative |
-| Methodology and limitations (`Methodology`) | [Genomic Report Section](CodeSystem-GenomicReportSection.html) `methodology` (local) | Text; entries Genomic Study (Observation, Procedure) | Genes or regions studied, technology, coverage, limitations |
+| Methodology and limitations (`Methodology`) | [Genomic Report Section](CodeSystem-GenomicReportSection.html) `methodology` (local) | Text; entries [Genomic Study Panel](StructureDefinition-GenomicStudyPanel.html), [Genomic Study](https://hl7.org/fhir/uv/genomics-reporting/STU3/StructureDefinition-genomic-study.html), [Genomic Study Analysis](https://hl7.org/fhir/uv/genomics-reporting/STU3/StructureDefinition-genomic-study-analysis.html) (regions studied) | Genes or regions studied, technology, coverage, limitations |
 | Presented form (`PresentedForm`) | LOINC `77599-9` Additional documentation | Entries DocumentReference, Binary | Used while the PDF remains the authorised report (UGR phase 1) |
 | Annotations (`annotations`) | LOINC `48767-8` Annotation comment | Text only, no entries | Inherited from `Composition-eu-lab` |
 {:.grid}
@@ -116,7 +116,7 @@ part of the FHIR Document each block comes from - a real viewer would not show t
 <div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Specimen &middot; SNOMED CT 123038009 &middot; entry Specimen</div>
 <div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">Specimen</div>
 <p style="margin:2px 0 10px;">Peripheral blood (EDTA). Collected 30-Sep-2026, received 01-Oct-2026.</p>
-<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Result summary &middot; LOINC 51968-6 &middot; entries DiagnosticReport, overall interpretation Observation</div>
+<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Result summary &middot; LOINC 51968-6 &middot; entry DiagnosticReport</div>
 <div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">Result summary</div>
 <div style="border:1px solid #999; background:#f6f6f6; padding:6px 10px; margin:2px 0 14px;"><b>Pathogenic <i>MLH1</i> variant detected. This result confirms a diagnosis of Lynch syndrome.</b><br/>Test outcome: 311 RESULT CONSISTENT WITH REFERRAL INDICATION</div>
 <div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Results &middot; LOINC 69548-6 &middot; entries Variant</div>
@@ -131,7 +131,7 @@ part of the FHIR Document each block comes from - a real viewer would not show t
 <div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Recommendations &middot; LOINC 62385-0 &middot; entries recommended actions (Task)</div>
 <div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">Recommendations</div>
 <p style="margin:2px 0 10px;">Predictive testing is available for at-risk relatives through Clinical Genetics. Management should follow national guidance for Lynch syndrome.</p>
-<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Methodology and limitations &middot; GenomicReportSection#methodology &middot; entries Genomic Study</div>
+<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Methodology and limitations &middot; GenomicReportSection#methodology &middot; entries Genomic Study Panel, Genomic Study, Genomic Study Analysis</div>
 <div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">Methodology and limitations</div>
 <p style="margin:2px 0 10px;">Next generation sequencing of the coding regions and exon-intron boundaries of <i>MLH1</i>, <i>MSH2</i>, <i>MSH6</i>, <i>PMS2</i> and <i>EPCAM</i>, with copy number analysis. Deep intronic variants and low-level mosaicism may not be detected.</p>
 <div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Presented form &middot; LOINC 77599-9 &middot; entry DocumentReference (PDF)</div>

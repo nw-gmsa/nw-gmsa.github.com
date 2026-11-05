@@ -55,7 +55,7 @@ Usage: #example
   * code = GenomicReportSection#methodology
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>EGFR region studied by dPCR. For now (phase 1) see the PDF.</p></div>"
-  * entry[+].reference = "urn:uuid:a151b1ed-5aef-4c36-af50-987cfbd5bad4"
+  * entry[+].reference = "urn:uuid:e1e2150d-ba34-4247-83a2-5bc9ab93ba22"
 
 * section[+]
   * title = "Presented form"
@@ -80,7 +80,7 @@ Usage: #example
 * insert EntryDocument("urn:uuid:b930b4c4-327a-4728-8bb9-f90061914cc5", Specimen-ctDNA)
 * insert EntryDocument("urn:uuid:0a6ad8ec-b069-4a65-8c65-c7569d8413e3", DiagnosticReport-ctDNA)
 * insert EntryDocument("urn:uuid:00c22e97-a226-4845-b17a-e24ec1f4f77a", variant-egfr)
-* insert EntryDocument("urn:uuid:a151b1ed-5aef-4c36-af50-987cfbd5bad4", region-studied-egfr-dpcr)
+* insert EntryDocument("urn:uuid:e1e2150d-ba34-4247-83a2-5bc9ab93ba22", genomic-study-analysis-egfr-dpcr)
 //* insert EntryDocument("urn:uuid:f80f704c-b2b2-4912-ac6f-e62aaadd4ff0", GenomicStudy-ctDNA)
 //* insert EntryDocument("urn:uuid:cd491a5f-62ec-4f6b-904f-206bae2c9b20", 51967-8-ctDNA)
 //* insert EntryDocument("urn:uuid:b3b6b20f-8e5a-432c-8155-579dc4d60a09", 51968-6-ctDNA)
