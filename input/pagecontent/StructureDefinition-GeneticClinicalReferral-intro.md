@@ -16,9 +16,8 @@ Referrals](GeneticReferrals.html). The HL7 v2 messages it is modelled on are the
 IHE 360X referral order `OMG^O19` and order status update `OSU^O51` - see
 [Referral Request [PCC-55]](PCC-55.html), [Referral Decline
 [PCC-56]](PCC-56.html) and [Referral Outcome [PCC-57]](PCC-57.html), all
-**for future use**. Earlier drafts used `REF_I12` (Patient Referral) - see
-[Genetic Referrals](GeneticReferrals.html#referral-data-model) for that
-mapping.
+**for future use**. See [Genetic Referrals](GeneticReferrals.html#referral-data-model)
+for the common data item mapping.
 
 The referral itself stays small. Clinical content travels as **forms**
 (`QuestionnaireResponse`), **clinical documents** - the pathology report and

@@ -331,7 +331,7 @@ a choice between variants.
   Record Number](StructureDefinition-MedicalRecordNumber.html), [Order
   Identifier](StructureDefinition-OrderIdentifier.html))
 - [Genetic Referrals](GeneticReferrals.html) - the narrative use case, actors,
-  transactions and REF_I12/eRS/BaRS mapping this model was first built from
+  transactions and OMG_O19/eRS/BaRS mapping this model was first built from
 
 Nothing on this page has been adopted as an active profile or interface in
 this IG.

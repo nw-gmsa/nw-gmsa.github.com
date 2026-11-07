@@ -24,7 +24,7 @@ LAB-1 and LAB-3](LTW.html#laboratory-order-and-report-lab-1-and-lab-3).
 ## References
 
 1. IHE PCC Technical Framework Supplement - [360X: Closed Loop Referrals](https://www.ihe.net/uploadedFiles/Documents/PCC/IHE_PCC_Suppl_360X.pdf) - the closed-loop referral profile this pattern is analogous to (not itself adopted here)
-2. HL7 v2 `REF_I12` (Patient Referral) - one model for the referral message, used as the basis for the [Referral Data Model](#referral-data-model) below
+2. HL7 v2 `OMG_O19` (General Clinical Order), as used by IHE 360X - see [Referral Request [PCC-55]](PCC-55.html) - one model for the referral message, used as the basis for the [Referral Data Model](#referral-data-model) below
 3. NHS [e-Referral Service (eRS)](https://digital.nhs.uk/services/e-referral-service) / [FHIR API](https://digital.nhs.uk/developer/api-catalogue/e-referral-service-fhir) - the service GPs use today to refer into secondary care, including regional clinical genetics services; the other basis for the [Referral Data Model](#referral-data-model) below
 4. NHS England [Booking and Referral Standard (BaRS) - FHIR API](https://digital.nhs.uk/developer/api-catalogue/booking-and-referral-fhir/v1.0.7) - a possible alternative to eRS; checked for referral-specific data modelling in the [Mapping to NHS Booking and Referral Standard (BaRS)](#mapping-to-nhs-booking-and-referral-standard-bars) section below
 5. HL7 v2 `ORU_R01` - a possible model for the report/clinic letter back, already used elsewhere in this IG for hospital reports (see [Cancer Background Information for Use Cases](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/CancerNOS.md))
@@ -111,7 +111,7 @@ flowchart LR
 | Transaction                                        | Description                                                            | Direction                                          |
 |------------------------------------------------------|------------------------------------------------------------------------------|---------------------------------------------------------|
 | Referral (eRS, current state - GP referrers)          | A GP refers a patient into a regional clinical genetics service            | Referrer (GP) → Genomics / Clinical Genetics Service |
-| Referral (`REF_I12`, target state - non-eRS referrers) | Refers a patient/relative for genetic counselling and/or cascade testing, where eRS is not used (e.g. genomics-to-genomics, cross-region) | Referrer → Genomics / Clinical Genetics Service |
+| Referral (`OMG_O19`, target state - non-eRS referrers) | Refers a patient/relative for genetic counselling and/or cascade testing, where eRS is not used (e.g. genomics-to-genomics, cross-region) | Referrer → Genomics / Clinical Genetics Service |
 | Referral (secure email/letter, current state - non-eRS referrers) | The same referral, today sent as unstructured correspondence, not a defined transaction | Referrer → Genomics / Clinical Genetics Service |
 | Report/clinic letter (`ORU_R01`, target state)        | Reports back the outcome of assessment/counselling/testing, closing the loop              | Genomics / Clinical Genetics Service → Referrer |
 | Report/clinic letter (dictated correspondence, current state) | The same report, today sent as unstructured correspondence, not a defined transaction | Genomics / Clinical Genetics Service → Referrer |
@@ -155,7 +155,7 @@ service, this takes the form of a **family letter** summarising the variant,
 inheritance pattern and at-risk relatives.
 
 **Target state (not built):** the referral could instead be modelled as an HL7 v2
-`REF_I12` message (Patient Referral) - both carrying structured referral data (the
+`OMG_O19` message (General Clinical Order, see [Referral Request [PCC-55]](PCC-55.html)) - both carrying structured referral data (the
 referring service, the reason for referral, and relevant clinical/genomic context)
 rather than free text.
 
@@ -168,7 +168,7 @@ sequenceDiagram
     Ref -->> GC: Secure email / dictated letter<br/>(unstructured)
 
     Note over Ref,GC: Target state (not built)
-    Ref ->> GC: REF_I12
+    Ref ->> GC: OMG_O19
 ```
 
 ### Referral Report / Clinic Letter
@@ -211,37 +211,37 @@ This is a **high-level sketch of the referral only** - not the report back, and 
 scheduling. It only lists elements that are common data items already needed
 elsewhere in this pathway (e.g. identifiers already elaborated under [Specimen
 Transportation and Management](SpecimenTransportationAndManagement.html#key-identifiers)
-and [Diagnostic Model Overview](diagnostic-core.html)), mapped from HL7 v2 `REF_I12` segments on
+and [Diagnostic Model Overview](diagnostic-core.html)), mapped from HL7 v2 `OMG_O19` segments on
 one side and FHIR resources (as used by eRS and generally in this IG) on the other.
 It is not a proposal to build either interface - it exists so that a future
 `ServiceRequest`-based referral profile, if ever built, can reuse identifiers this IG
 already defines rather than inventing new ones.
 
 
-| Common Data Item                     | `REF_I12` Segment.Field                              | FHIR Resource.Element                              | This IG's Profile (if reused)                                                             |
+| Common Data Item                     | `OMG_O19` Segment.Field                              | FHIR Resource.Element                              | This IG's Profile (if reused)                                                             |
 |-----------------------------------------|-----------------------------------------------------------|-----------------------------------------------------------|--------------------------------------------------------------------------------------------------|
 | Patient - NHS Number                    | `PID-3` (identifier, NHS Number assigning authority)       | `Patient.identifier` (NHS Number system)                    | [NHSIdentifier](StructureDefinition-NHSIdentifier.html)                                            |
 | Patient - Medical Record Number (MRN)   | `PID-3` (identifier, MRN assigning authority)               | `Patient.identifier` (MRN system)                            | [MedicalRecordNumber](StructureDefinition-MedicalRecordNumber.html)                                |
 | Patient - name, date of birth, sex, address | `PID-5`, `PID-7`, `PID-8`, `PID-11`                     | `Patient.name`, `.birthDate`, `.gender`, `.address`          | Not specific to referral - standard `Patient` demographics                                        |
 | Patient Account/Episode Number          | `PV1-19` (Visit Number, type `AN`)                         | `Encounter.identifier`                                        | [HospitalProviderSpellIdentifier](StructureDefinition-HospitalProviderSpellIdentifier.html)        |
-| Referral (order) identifier             | `RF1-6` (Originating Referral Identifier)                    | `ServiceRequest.identifier`                                 | [OrderIdentifier](StructureDefinition-OrderIdentifier.html)                                        |
-| Referral identifier - eRS-specific      | *(no `REF_I12` equivalent)*                                 | `ServiceRequest.identifier` (system `https://fhir.nhs.uk/Id/UBRN`) | Not currently modelled - a new identifier profile, analogous to `OrderIdentifier`, would be needed if eRS referrals were represented |
-| Referral status                         | `RF1-1` (Referral Status)                                   | `ServiceRequest.status`                                     | Standard FHIR status code, not separately profiled                                                |
-| Referral priority                       | `RF1-2` (Referral Priority)                                 | `ServiceRequest.priority`                                   | Standard FHIR priority code, not separately profiled                                              |
-| Service/test requested                  | `RF1-4` (Referral Type)                                     | `ServiceRequest.code`                                        | Not currently modelled for this use case - would need a genetics-referral-specific code system/ValueSet |
-| Reason for referral                     | `RF1-12` (Reason for Referral), `DG1` (Diagnosis)             | `ServiceRequest.reasonCode`, or `Condition`                   | Not currently modelled for this use case                                                          |
-| Referring provider/organisation         | `PRD` (role = Referring Provider)                            | `Practitioner`/`PractitionerRole`, `Organization`             | Analogous to [Order Placer](ActorDefinition-OrderPlacer.html)                                       |
-| Referred-to provider/service            | `PRD` (role = Referred-to Provider)                          | `Practitioner`/`PractitionerRole`, `Organization`, `HealthcareService` | Analogous to [Order Filler](ActorDefinition-OrderFiller.html)                                       |
+| Referral (order) identifier             | `ORC-2` and `OBR-2` (Placer Order Number)                    | `ServiceRequest.identifier`                                 | [OrderIdentifier](StructureDefinition-OrderIdentifier.html)                                        |
+| Referral identifier - eRS-specific      | *(no `OMG_O19` equivalent)*                                 | `ServiceRequest.identifier` (system `https://fhir.nhs.uk/Id/UBRN`) | Not currently modelled - a new identifier profile, analogous to `OrderIdentifier`, would be needed if eRS referrals were represented |
+| Referral status                         | `ORC-1` (Order Control), `ORC-5` (Order Status)             | `ServiceRequest.status`                                     | Standard FHIR status code, not separately profiled                                                |
+| Referral priority                       | `TQ1-9` (Priority)                                          | `ServiceRequest.priority`                                   | Standard FHIR priority code, not separately profiled                                              |
+| Service/test requested                  | `OBR-4` (Universal Service Identifier)                      | `ServiceRequest.code`                                        | Not currently modelled for this use case - would need a genetics-referral-specific code system/ValueSet |
+| Reason for referral                     | `OBR-31` (Reason for Study), `DG1` (Diagnosis)                | `ServiceRequest.reasonCode`, or `Condition`                   | Not currently modelled for this use case                                                          |
+| Referring provider/organisation         | `ORC-12` and `OBR-16` (Ordering Provider), `ORC-21` (Ordering Facility) | `Practitioner`/`PractitionerRole`, `Organization`             | Analogous to [Order Placer](ActorDefinition-OrderPlacer.html)                                       |
+| Referred-to provider/service            | `MSH-5` / `MSH-6` (Receiving Application / Facility)         | `Practitioner`/`PractitionerRole`, `Organization`, `HealthcareService` | Analogous to [Order Filler](ActorDefinition-OrderFiller.html)                                       |
 | Visit/encounter context (if any)        | `PV1`                                                       | `Encounter`                                                  | Not currently modelled for this use case                                                          |
 {:.grid}
 
 Notes on this sketch:
 
-- `REF_I12`'s `PV1-19` (Visit Number, identifier type `AN`) is the v2 field that
+- `OMG_O19`'s `PV1-19` (Visit Number, identifier type `AN`) is the v2 field that
   corresponds to this IG's existing Account/Episode Number identifier, consistent with
   the [HL7 v2](hl7v2.html) PV1 segment - it is **not** `PID-18` (Patient Account
   Number), nor the v2 `ACC` segment, which is unrelated (Accident information).
-- eRS's own referral identifier, the UBRN, has no `REF_I12` equivalent - it is an
+- eRS's own referral identifier, the UBRN, has no `OMG_O19` equivalent - it is an
   eRS-specific concept that would need its own identifier profile if this pathway
   were ever modelled in FHIR, following the same pattern as the existing
   [OrderIdentifier](StructureDefinition-OrderIdentifier.html).
@@ -461,13 +461,13 @@ which can still be mapped against the same common data items:
 | Referred-to provider/service            | `performer` (reference, array)                                                                      |
 | Visit/encounter context                 | `encounter`                                                                                          |
 | *(no equivalent common data item)*      | `category` - coded `referral` ("Transfer of Care"), system `https://fhir.nhs.uk/CodeSystem/message-category-servicerequest` - **the same code system eRS's own newer R4 `ServiceRequest` endpoint uses** for the same purpose |
-| *(no equivalent common data item)*      | `occurrencePeriod`, `authoredOn` - referral timing, with no `REF_I12`/eRS equivalent shown above     |
+| *(no equivalent common data item)*      | `occurrencePeriod`, `authoredOn` - referral timing, with no `OMG_O19`/eRS equivalent shown above     |
 {:.grid}
 
 **Practical conclusion:** BaRS's `ServiceRequest` does carry plain FHIR fields for
 several common data items (status, subject/encounter references, requester,
 performer, a reference-based reason) - so it is not entirely unmapped, correcting an
-earlier version of this page. What it lacks, unlike eRS or `REF_I12`, is anything
+earlier version of this page. What it lacks, unlike eRS or `OMG_O19`, is anything
 referral-*specific*: no identifier akin to the UBRN or Order Number, no priority, and
 no coded service/test-requested or reason-for-referral - these would all need to be
 added by whichever `MessageDefinition` a genetics referral use case defined on top of
