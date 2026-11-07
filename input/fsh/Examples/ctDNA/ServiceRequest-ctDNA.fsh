@@ -5,11 +5,11 @@ Description: "TODO"
 
 * meta.versionId = "1.0"
 
-* identifier[OrderIdentifier].type = $v2-0203#FILL
-* identifier[OrderIdentifier].value = "T26-59XG"
-* identifier[OrderIdentifier].system = "https://fhir.nwgenomics.nhs.uk/iGene/ReportIdentifier"
-* identifier[OrderIdentifier].assigner.identifier.system = $ods-code
-* identifier[OrderIdentifier].assigner.identifier.value = "699X0"
+* identifier[OrderFillerNumber].type = $v2-0203#FILL
+* identifier[OrderFillerNumber].value = "T26-59XG"
+* identifier[OrderFillerNumber].system = "https://fhir.nwgenomics.nhs.uk/iGene/ReportIdentifier"
+* identifier[OrderFillerNumber].assigner.identifier.system = $ods-code
+* identifier[OrderFillerNumber].assigner.identifier.value = "699X0"
 
 * requisition
   * type = $v2-0203#PGN

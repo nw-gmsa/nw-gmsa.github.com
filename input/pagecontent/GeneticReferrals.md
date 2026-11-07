@@ -224,8 +224,8 @@ already defines rather than inventing new ones.
 | Patient - Medical Record Number (MRN)   | `PID-3` (identifier, MRN assigning authority)               | `Patient.identifier` (MRN system)                            | [MedicalRecordNumber](StructureDefinition-MedicalRecordNumber.html)                                |
 | Patient - name, date of birth, sex, address | `PID-5`, `PID-7`, `PID-8`, `PID-11`                     | `Patient.name`, `.birthDate`, `.gender`, `.address`          | Not specific to referral - standard `Patient` demographics                                        |
 | Patient Account/Episode Number          | `PV1-19` (Visit Number, type `VN` or `AN`)                  | `Encounter.identifier`                                        | [VisitNumber](StructureDefinition-VisitNumber.html) or [HospitalProviderSpellIdentifier](StructureDefinition-HospitalProviderSpellIdentifier.html) |
-| Referral (order) identifier             | `ORC-2` and `OBR-2` (Placer Order Number)                    | `ServiceRequest.identifier`                                 | [OrderIdentifier](StructureDefinition-OrderIdentifier.html)                                        |
-| Referral identifier - eRS-specific      | *(no `OMG_O19` equivalent)*                                 | `ServiceRequest.identifier` (system `https://fhir.nhs.uk/Id/UBRN`) | Not currently modelled - a new identifier profile, analogous to `OrderIdentifier`, would be needed if eRS referrals were represented |
+| Referral (order) identifier             | `ORC-2` and `OBR-2` (Placer Order Number)                    | `ServiceRequest.identifier`                                 | [OrderPlacerNumber](StructureDefinition-OrderPlacerNumber.html)                                      |
+| Referral identifier - eRS-specific      | *(no `OMG_O19` equivalent)*                                 | `ServiceRequest.identifier` (system `https://fhir.nhs.uk/Id/UBRN`) | Not currently modelled - a new identifier profile, analogous to `OrderPlacerNumber`, would be needed if eRS referrals were represented |
 | Referral status                         | `ORC-1` (Order Control), `ORC-5` (Order Status)             | `ServiceRequest.status`                                     | Standard FHIR status code, not separately profiled                                                |
 | Referral priority                       | `TQ1-9` (Priority)                                          | `ServiceRequest.priority`                                   | Standard FHIR priority code, not separately profiled                                              |
 | Service/test requested                  | `OBR-4` (Universal Service Identifier)                      | `ServiceRequest.code`                                        | SNOMED CT `306119003`, as used by [Referral Request [PCC-55]](PCC-55.html) and the [Genetic Clinical Referral](StructureDefinition-GeneticClinicalReferral.html) logical model |
@@ -249,7 +249,7 @@ Notes on this sketch:
 - eRS's own referral identifier, the UBRN, has no `OMG_O19` equivalent - it is an
   eRS-specific concept that would need its own identifier profile if this pathway
   were ever modelled in FHIR, following the same pattern as the existing
-  [OrderIdentifier](StructureDefinition-OrderIdentifier.html).
+  [OrderPlacerNumber](StructureDefinition-OrderPlacerNumber.html).
 - The FHIR resource types listed (`ServiceRequest`, `Patient`, `Practitioner`/
   `PractitionerRole`, `Organization`, `HealthcareService`, `Encounter`, `Condition`)
   are the standard FHIR building blocks generally used to represent a referral, and
@@ -271,7 +271,7 @@ target for this IG).
 ```mermaid
 erDiagram
     ServiceRequest {
-        Identifier orderNumber "OrderIdentifier"
+        Identifier orderNumber "OrderPlacerNumber"
         Identifier ubrn "not yet profiled in this IG"
         code status
         code priority
@@ -320,7 +320,7 @@ erDiagram
 Notes on this diagram:
 
 - `ServiceRequest` carries two distinct identifiers - the Order Number (already
-  covered by [OrderIdentifier](StructureDefinition-OrderIdentifier.html)) and, only
+  covered by [OrderPlacerNumber](StructureDefinition-OrderPlacerNumber.html)) and, only
   where the referral originated via eRS, the UBRN (not yet profiled - see [Notes on
   this sketch](#referral-data-model) above).
 - `requester` and `performer` are kept separate because the mapping table
@@ -511,7 +511,7 @@ currently represents a genetics referral or its report specifically (the existin
 profiles are scoped to diagnostic laboratory orders/reports, per [Diagnostic
 Core](diagnostic-core.html)). The [Target Referral Model](#target-referral-model)
 sketched above is the most likely starting point were this profile ever built,
-reusing this IG's existing identifiers (`OrderIdentifier`, `NHSIdentifier`,
+reusing this IG's existing identifiers (`OrderPlacerNumber`, `NHSIdentifier`,
 `MedicalRecordNumber`, `HospitalProviderSpellIdentifier`) alongside a small number of
 not-yet-profiled elements (the UBRN identifier, referral priority/status/reason). The
 report side would separately need a `DiagnosticReport` or `Composition`-led FHIR

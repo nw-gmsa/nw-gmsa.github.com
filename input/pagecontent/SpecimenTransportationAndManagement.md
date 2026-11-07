@@ -63,7 +63,7 @@ equivalent term used elsewhere in this IG noted in brackets where it differs:
 4. **The package is shipped and given a tracking number.** Key identifiers -
    patient [NHS Number](StructureDefinition-NHSIdentifier.html), [hospital/medical
    record number (MRN)](StructureDefinition-MedicalRecordNumber.html), [order/
-   requisition number](StructureDefinition-OrderIdentifier.html), [episode/account
+   requisition number](StructureDefinition-OrderPlacerNumber.html), [episode/account
    number](StructureDefinition-HospitalProviderSpellIdentifier.html), the specimen's
    own identifier (see [Specimen](StructureDefinition-Specimen.html)), and the
    [shipment tracking
@@ -80,7 +80,7 @@ equivalent term used elsewhere in this IG noted in brackets where it differs:
 |--------------------------|---------------------------------------------------------------------------|----------------------------------------------------|
 | NHS Number               | [NHSIdentifier](StructureDefinition-NHSIdentifier.html)                   | Printed order, shipping container                   |
 | Medical Record Number (MRN) | [MedicalRecordNumber](StructureDefinition-MedicalRecordNumber.html)     | Printed order, shipping container                   |
-| Order Placer Number      | [OrderIdentifier](StructureDefinition-OrderIdentifier.html)               | Printed order, shipping container                   |
+| Order Placer Number      | [OrderPlacerNumber](StructureDefinition-OrderPlacerNumber.html)             | Printed order, shipping container                   |
 | Account Number           | [HospitalProviderSpellIdentifier](StructureDefinition-HospitalProviderSpellIdentifier.html) | Printed order, shipping container   |
 | Specimen Number          | [Specimen](StructureDefinition-Specimen.html).identifier                  | Specimen label, shipping container                  |
 | Shipment Tracking Number | [ShipmentTrackingNumber](StructureDefinition-ShipmentTrackingNumber.html) | Shipping container                                  |

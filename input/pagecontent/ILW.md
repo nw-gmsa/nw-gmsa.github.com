@@ -143,7 +143,7 @@ pathway), including the NHS North West Children Cancer notification example.
 Variations on the basic LTW scenario. 
 
 Order Order Placer MUST include Ordering Facility (ODS Code) if the Order Filler is outside the organisation (i.e. ICS Pathology Lab or Regional Genomics Lab).
-Order Filler MUST respond with a Report Identifier and the Order Identifier (if supplied in the Order) in the laboratory report.
+Order Filler MUST respond with a Report Identifier and the [Order Placer Number](StructureDefinition-OrderPlacerNumber.html) (if supplied in the Order) in the laboratory report.
 
 ```mermaid
 sequenceDiagram

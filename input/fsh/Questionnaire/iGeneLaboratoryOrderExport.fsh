@@ -137,11 +137,11 @@ Usage:  #definition
     * type = #string
     * linkId = "PlacerOrderNumber"
     * text = "PlacerOrderNumber"
-    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.identifier:OrderIdentifier"
+    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.identifier:OrderPlacerNumber"
     * item[+]
       * linkId = "PlacerOrderNumber-designNote"
       * type = #display
-      * text = "identifier.type = PLAC (v2-0203), the same OrderIdentifier slice FillerOrderNumber below uses with type = FILL."
+      * text = "identifier.type = PLAC (v2-0203) - the OrderPlacerNumber slice; FillerOrderNumber below uses the OrderFillerNumber slice (type = FILL)."
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
   * item[+]
     * type = #string
@@ -157,7 +157,7 @@ Usage:  #definition
     * type = #string
     * linkId = "FillerOrderNumber"
     * text = "FillerOrderNumber"
-    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.identifier:OrderIdentifier"
+    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.identifier:OrderFillerNumber"
     * item[+]
       * linkId = "FillerOrderNumber-designNote"
       * type = #display

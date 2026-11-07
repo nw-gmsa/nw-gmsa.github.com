@@ -328,7 +328,7 @@ Usage:  #definition
     * linkId = "LN/106194-4"
     * code[+] = $loinc#106194-4
     * text = "Test request ID/Order ID"
-    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.identifier:OrderIdentifier"
+    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.identifier:OrderPlacerNumber"
     * required = false
 
 // Test request	Priority

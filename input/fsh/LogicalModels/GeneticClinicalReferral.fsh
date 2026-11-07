@@ -21,7 +21,7 @@ This is a logical model - it is not exchanged as is. It breaks down into
 """
 Characteristics: #can-be-target
 
-* referralIdentifier 1..1 OrderIdentifier "Referral Identifier" "Originating referral identifier, assigned by the referrer and used in every message"
+* referralIdentifier 1..1 OrderPlacerNumber "Referral Identifier" "Originating referral identifier, assigned by the referrer and used in every message"
 * status 1..1 code "Referral Status" "e.g. active, completed, revoked"
 * status from http://hl7.org/fhir/ValueSet/request-status (required)
 * priority 0..1 code "Priority" "Urgency of the referral"
@@ -135,7 +135,7 @@ Source:         GeneticClinicalReferralModel
 Target:         "https://fhir.nwgenomics.nhs.uk"
 Id:             fhir
 Title:          "FHIR (this IG)"
-* referralIdentifier -> "ServiceRequest.identifier[OrderIdentifier]"
+* referralIdentifier -> "ServiceRequest.identifier[OrderPlacerNumber]"
 * status -> "ServiceRequest.status"
 * priority -> "ServiceRequest.priority"
 * dateOfReferral -> "ServiceRequest.authoredOn"

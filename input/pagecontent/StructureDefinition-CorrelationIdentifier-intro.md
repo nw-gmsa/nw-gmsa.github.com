@@ -5,7 +5,8 @@ this IG), not one specific NHS Data Dictionary item - see the individual
 identifier profiles it underpins (e.g.
 [NHS Identifier](StructureDefinition-NHSIdentifier.html),
 [Medical Record Number](StructureDefinition-MedicalRecordNumber.html),
-[Order Identifier](StructureDefinition-OrderIdentifier.html)) for their own NHS
+[Order Placer Number](StructureDefinition-OrderPlacerNumber.html),
+[Order Filler Number](StructureDefinition-OrderFillerNumber.html)) for their own NHS
 Data Dictionary entries.
 
 **Ubiquitous terms:** Correlation ID, Message ID, Reference Number - the generic

@@ -35,7 +35,7 @@ those other Ask At Order Entry Questionnaires' own Summary sections list:
 | Hospital Number (Medical Record Number) | `patient_medical_record_number` | `Patient.identifier:MedicalRecordNumber` |
 | Patient Identifier (NGIS) | `patient_ngis_id` | `Patient.identifier` (assigner Genomics England, ODS `8J834`) |
 | Original Order Placer Group Number (Referral ID) | `referral_id` | `ServiceRequest.requisition` |
-| Placer Order Number | `placer_order_number` | `ServiceRequest.identifier:OrderIdentifier` (type=PLAC) - the dispatched sample LSID, assigned by the sending GLH laboratory (ODS code) |
+| Placer Order Number | `placer_order_number` | `ServiceRequest.identifier:OrderPlacerNumber` (type=PLAC) - the dispatched sample LSID, assigned by the sending GLH laboratory (ODS code) |
 | Test Code | `clinical_indication_test_type_id` | `ServiceRequest.code.coding` (`England-GenomicTestDirectory`) |
 | Sample Material Type / Sample State | `primary_sample_state` | GEL TOMS `sampleState` (e.g. `blood_unsorted_edta`), split into its GEL parts: `SampleSource` → `Specimen.type` (with the SNOMED CT Sample Material Type, and the original value as `text`), `Method` → `Specimen.collection.method`, `StorageMedium` → `Specimen.processing` |
 | Original Ordering Facility Code | `ordering_entity_id` | `Specimen.identifier.assigner.identifier.value` |

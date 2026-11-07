@@ -262,7 +262,7 @@ Usage:  #definition
     * type = #string
     * linkId = "HL7/ORC-2"
     * text = "Referral Identifier"
-    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.identifier:OrderIdentifier"
+    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.identifier:OrderPlacerNumber"
 
 // Referral	Referral Status
 

@@ -54,7 +54,7 @@ as spell or episode id. Also known as stay number.
 
 // Test Request (Diagnostic Workflow)
 
-* orderIdentifier 1..1 OrderIdentifier "Order Identifier (Placer)" "Test request ID / Order ID, assigned by the Order Placer"
+* orderIdentifier 1..1 OrderPlacerNumber "Order Placer Number" "Test request ID / Order ID, assigned by the Order Placer"
 * fillerOrderNumber 0..1 Identifier "Filler Order Number" "Order number assigned by the Order Filler (LIMS)"
 * orderGroupNumber 0..1 OrderGroupNumber "(Placer) Order Group Number" "Groups related orders together"
 * category 0..1 CodeableConcept "Test Category" "e.g. Rare and inherited disease, Cancer, Haemoglobinopathy"
@@ -187,7 +187,7 @@ Title:          "FHIR (this IG)"
 * requester.email -> "PractitionerRole.telecom"
 * requester.phone -> "PractitionerRole.telecom"
 * requester.orderingFacility -> "PractitionerRole.organization; ServiceRequest.requester (Organization) if there is no requesting practitioner"
-* orderIdentifier -> "ServiceRequest.identifier[OrderIdentifier]"
+* orderIdentifier -> "ServiceRequest.identifier[OrderPlacerNumber]"
 * fillerOrderNumber -> "ServiceRequest.identifier[OrderFillerNumber]"
 * orderGroupNumber -> "ServiceRequest.requisition"
 * category -> "ServiceRequest.category"

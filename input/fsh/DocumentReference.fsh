@@ -27,7 +27,7 @@ Description:    """
 
 * context.related 0..*
 * context.related ^short = "Related resources. For laboratory and imaging reports, a reference to the DiagnosticReport"
-* context.related ^definition = "Related resources. Accession Number, Order Identifier and Report Identifier are not carried here; they are held on the referenced DiagnosticReport (DiagnosticReport.specimen, DiagnosticReport.basedOn and DiagnosticReport.identifier)."
+* context.related ^definition = "Related resources. Accession Number, Order Placer Number and Report Identifier are not carried here; they are held on the referenced DiagnosticReport (DiagnosticReport.specimen, DiagnosticReport.basedOn and DiagnosticReport.identifier)."
 
 * context.related ^slicing.discriminator.type = #value
 * context.related ^slicing.discriminator.path = "type"
@@ -40,7 +40,7 @@ Description:    """
 
 * context.related[DiagnosticReport] only Reference(DiagnosticReport)
 * context.related[DiagnosticReport] ^short = "The DiagnosticReport this document is a rendering of (laboratory or imaging report)"
-* context.related[DiagnosticReport] ^definition = "Reference to the DiagnosticReport this document presents. Not mandatory, but highly recommended for the Document Access Provider when serving laboratory or imaging reports. Accession Number, Order Identifier and Report Identifier are available from the referenced DiagnosticReport."
+* context.related[DiagnosticReport] ^definition = "Reference to the DiagnosticReport this document presents. Not mandatory, but highly recommended for the Document Access Provider when serving laboratory or imaging reports. Accession Number, Order Placer Number and Report Identifier are available from the referenced DiagnosticReport."
 * context.related[DiagnosticReport].type 1..1
 * context.related[DiagnosticReport].type = "DiagnosticReport"
 * context.related[DiagnosticReport].reference 1..1 MS

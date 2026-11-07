@@ -146,7 +146,7 @@ specification. This model adds it as <code>ServiceRequest.supportingInfo</code>.
 
 #### Rules
 
-- The **Order Identifier (Placer)** (`ServiceRequest.identifier[OrderIdentifier]`, `ORC-2`) is present on every order, whichever format is used, and is echoed back on the [Genomic Test Report](StructureDefinition-GenomicTestReport.html).
+- The **Order Placer Number** (`ServiceRequest.identifier[OrderPlacerNumber]`, `ORC-2`) is present on every order, whichever format is used, and is echoed back on the [Genomic Test Report](StructureDefinition-GenomicTestReport.html).
 - `Patient` and `Encounter` are owned by patient administration; the order references them using business identifiers.
 - Ask At Order Entry questions (`forms`) are never part of the core - they are completed as a `QuestionnaireResponse` and carried as `Observation` (`OBX`) or `RelatedPerson` (`NK1`), linked via `ServiceRequest.supportingInfo`.
 - A Filler Order (work order, subcontracted or reflex order) has the same shape, created by the Order Filler - see [Original Order, Instance and Filler Orders](#original-order-instance-and-filler-orders).

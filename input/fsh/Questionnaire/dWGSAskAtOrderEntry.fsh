@@ -57,7 +57,7 @@ Usage:  #definition
     * linkId = "dWGS/placer_order_number"
     * text = "Placer Order Number"
     * required = true
-    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.identifier:OrderIdentifier"
+    * definition = "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.identifier:OrderPlacerNumber"
     * item[+]
       * linkId = "dWGS/placer_order_number-designNote"
       * type = #display

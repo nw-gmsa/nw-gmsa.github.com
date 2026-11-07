@@ -313,8 +313,8 @@ A Sub-Contracted Order, a Reflex Order and a Work Order are each their own
 `ServiceRequest` resource, with their own identifier and their own `intent`
 value (`filler-order`, `reflex-order`, `instance-order` respectively - see
 the table above) - but its `requisition` most often carries the **original**
-Laboratory Order's own **Filler Order Number** ([Order
-Identifier](StructureDefinition-OrderIdentifier.html), `ORC-3`) - the
+Laboratory Order's own **Filler Order Number** ([Order Filler
+Number](StructureDefinition-OrderFillerNumber.html), `ORC-3`) - the
 identifier the Order Filler itself already assigned when it first received
 that order - rather than a new group number invented for the child order. It
 may instead carry the original order's **Placer Order Number** (`ORC-2`)

@@ -13,7 +13,7 @@ Description: "Ned Liverpool Lynch Syndrome"
   * assigner.identifier.system = $ods-code
   * assigner.identifier.value = "699X0"
 
-* basedOn[OrderIdentifier]
+* basedOn[OrderPlacerNumber]
   * type = "ServiceRequest"
   * identifier.type = $v2-0203#PLAC
   * identifier.system = "http://www.acme.org/servicerequest"

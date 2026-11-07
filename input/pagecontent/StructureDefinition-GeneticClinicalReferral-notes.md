@@ -328,8 +328,8 @@ a choice between variants.
   the Consultand Questionnaire structures (HL7 v2 `NK1`)
 - [Diagnostic Model Overview](diagnostic-core.html) - the identifier profiles reused
   above ([NHS Identifier](StructureDefinition-NHSIdentifier.html), [Medical
-  Record Number](StructureDefinition-MedicalRecordNumber.html), [Order
-  Identifier](StructureDefinition-OrderIdentifier.html))
+  Record Number](StructureDefinition-MedicalRecordNumber.html), [Order Placer
+  Number](StructureDefinition-OrderPlacerNumber.html))
 - [Genetic Referrals](GeneticReferrals.html) - the narrative use case, actors,
   transactions and OMG_O19/eRS/BaRS mapping this model was first built from
 

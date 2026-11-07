@@ -31,12 +31,12 @@ diagnostics to link tests to a spell/episode. Also known as stay number.
 
 // Diagnostic Workflow
 
-* orderNumber 0..1 OrderIdentifier "Order Number (Placer)" """
+* orderNumber 0..1 OrderPlacerNumber "Order Placer Number" """
 The unique order number assigned by the Order Placer (order comms or EHR) that requested
 the report. Present for a **closed-loop** report; absent for an **unsolicited** report,
 where no order was ever received.
 """
-* orderFillerNumber 0..1 Identifier "Order Filler Number" "Order number assigned by the Order Filler (LIMS)"
+* orderFillerNumber 0..1 OrderFillerNumber "Order Filler Number" "Order number assigned by the Order Filler (LIMS)"
 * reportNumber 1..1 ReportIdentifier "Report Number" "Identifies the report, assigned by the Order Filler (LIMS)"
 * orderingFacility 0..1 OrganisationCode "Referring Organisation / Ordering Facility" "ODS code of the organisation that ordered the test"
 * testCode 1..1 CodeableConcept "Test Code" """
@@ -108,7 +108,7 @@ Title:          "FHIR (this IG)"
 * hospitalSpell -> "DiagnosticReport.encounter (Encounter - HospitalSpell)"
 * hospitalSpell.accountNumber -> "Encounter.identifier"
 * hospitalSpell.hospitalService -> "Encounter.serviceType"
-* orderNumber -> "DiagnosticReport.basedOn (ServiceRequest).identifier[OrderIdentifier]"
+* orderNumber -> "DiagnosticReport.basedOn[OrderPlacerNumber].identifier"
 * orderFillerNumber -> "ServiceRequest.identifier[OrderFillerNumber]"
 * reportNumber -> "DiagnosticReport.identifier[ReportNumber]"
 * orderingFacility -> "ServiceRequest.requester (PractitionerRole).organization"

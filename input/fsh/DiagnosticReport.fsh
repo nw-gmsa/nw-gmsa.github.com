@@ -41,16 +41,25 @@ Description:    """
 * basedOn ^slicing.description = "Slice based on the type"
 * basedOn ^slicing.ordered = false
 * basedOn contains
-  OrderIdentifier 0..1 MS
+  OrderPlacerNumber 0..1 MS and
+  OrderFillerNumber 0..1 MS
 
-* basedOn[OrderIdentifier] ^short = "Identifier assigned by the placer (ORC-2)"
-* basedOn[OrderIdentifier].type 1..1 MS
-* basedOn[OrderIdentifier].type = "ServiceRequest"
-* basedOn[OrderIdentifier].identifier 1..1
-* basedOn[OrderIdentifier].identifier only OrderIdentifier
-* basedOn[OrderIdentifier] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderFiller)
-* basedOn[OrderIdentifier] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/AutomationManager)
-* basedOn[OrderIdentifier] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderPlacer)
+* basedOn[OrderPlacerNumber] ^short = "Identifier assigned by the placer (ORC-2)"
+* basedOn[OrderPlacerNumber].type 1..1 MS
+* basedOn[OrderPlacerNumber].type = "ServiceRequest"
+* basedOn[OrderPlacerNumber].identifier 1..1
+* basedOn[OrderPlacerNumber].identifier only OrderPlacerNumber
+* basedOn[OrderPlacerNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderFiller)
+* basedOn[OrderPlacerNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/AutomationManager)
+* basedOn[OrderPlacerNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderPlacer)
+
+* basedOn[OrderFillerNumber] ^short = "Identifier assigned by the filler (ORC-3)"
+* basedOn[OrderFillerNumber].type 1..1 MS
+* basedOn[OrderFillerNumber].type = "ServiceRequest"
+* basedOn[OrderFillerNumber].identifier 1..1
+* basedOn[OrderFillerNumber].identifier only OrderFillerNumber
+* basedOn[OrderFillerNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderFiller)
+* basedOn[OrderFillerNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/AutomationManager)
 
 
 * category ^slicing.discriminator.type = #value

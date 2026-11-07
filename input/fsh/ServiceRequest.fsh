@@ -22,15 +22,22 @@ Description:    """
 * identifier ^slicing.description = "Slice based on the type"
 * identifier ^slicing.ordered = false
 * identifier contains
-  OrderIdentifier 0..* MS
+  OrderPlacerNumber 0..1 MS and
+  OrderFillerNumber 0..1 MS
 
-* identifier[OrderIdentifier] only OrderIdentifier
-* identifier[OrderIdentifier] ^short = "Identifier assigned by the Order Placer. (HL7 v2 ORC-2/OBR-2 Placer Order Number and GS1 )"
-* identifier[OrderIdentifier] insert Obligation(#SHALL:populate, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderPlacer)
-* identifier[OrderIdentifier] insert Obligation(#SHALL:populate, https://fhir.nwgenomics.nhs.uk/ActorDefinition/Requestor)
-* identifier[OrderIdentifier] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderFiller)
-* identifier[OrderIdentifier] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/Subcontractor)
-* identifier[OrderIdentifier] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/AutomationManager)
+// Obligations from https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/InformaticsIssues.md (pathway identifiers)
+* identifier[OrderPlacerNumber] only OrderPlacerNumber
+* identifier[OrderPlacerNumber] ^short = "Identifier assigned by the Order Placer, or by the Requestor for a sub-order. (HL7 v2 ORC-2/OBR-2 Placer Order Number)"
+* identifier[OrderPlacerNumber] insert Obligation(#SHALL:populate, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderPlacer)
+* identifier[OrderPlacerNumber] insert Obligation(#SHALL:populate, https://fhir.nwgenomics.nhs.uk/ActorDefinition/Requestor)
+* identifier[OrderPlacerNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderFiller)
+* identifier[OrderPlacerNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/AutomationManager)
+
+* identifier[OrderFillerNumber] only OrderFillerNumber
+* identifier[OrderFillerNumber] ^short = "Identifier assigned by the Order Filler, or by the Subcontractor for a sub-order. (HL7 v2 ORC-3/OBR-3 Filler Order Number)"
+* identifier[OrderFillerNumber] insert Obligation(#SHALL:populate, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderFiller)
+* identifier[OrderFillerNumber] insert Obligation(#SHALL:populate, https://fhir.nwgenomics.nhs.uk/ActorDefinition/Requestor)
+* identifier[OrderFillerNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/Subcontractor)
 
 * requisition only OrderGroupNumber
 * requisition ^short = "Identifier assigned by the Order Placer. (HL7 v2 ORC-4 Placer Group Number, provisionally ORC-8 Parent)"
@@ -123,7 +130,7 @@ Description:    """
 * basedOn 0..* MS
 * basedOn ^short = "SHALL reference a parent request where this ServiceRequest is based on a previous request, e.g. in the case of reanalysis and cascade testing, or Germline Late tests in the Tumour First/Germline Late scenario"
 * basedOn only Reference(ServiceRequest)
-* basedOn.identifier only OrderIdentifier
+* basedOn.identifier only OrderPlacerNumber or OrderFillerNumber
 
 * priority from RequestPriority (required)
 

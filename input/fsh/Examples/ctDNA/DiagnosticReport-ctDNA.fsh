@@ -11,7 +11,7 @@ Description: "Diagnostic Report ctDNA Example"
   * assigner.identifier.system = $ods-code
   * assigner.identifier.value = "699X0"
 
-* basedOn[OrderIdentifier]
+* basedOn[OrderFillerNumber]
   * identifier.value = "T26-59XG"
   * identifier.system = "https://fhir.nwgenomics.nhs.uk/iGene/ReportIdentifier"
   * identifier.assigner.identifier.system = $ods-code
