@@ -223,7 +223,7 @@ already defines rather than inventing new ones.
 | Patient - NHS Number                    | `PID-3` (identifier, NHS Number assigning authority)       | `Patient.identifier` (NHS Number system)                    | [NHSIdentifier](StructureDefinition-NHSIdentifier.html)                                            |
 | Patient - Medical Record Number (MRN)   | `PID-3` (identifier, MRN assigning authority)               | `Patient.identifier` (MRN system)                            | [MedicalRecordNumber](StructureDefinition-MedicalRecordNumber.html)                                |
 | Patient - name, date of birth, sex, address | `PID-5`, `PID-7`, `PID-8`, `PID-11`                     | `Patient.name`, `.birthDate`, `.gender`, `.address`          | Not specific to referral - standard `Patient` demographics                                        |
-| Patient Account/Episode Number          | `PID-18` (Patient Account Number)                          | `Encounter.identifier`, or `Account.identifier`               | [HospitalProviderSpellIdentifier](StructureDefinition-HospitalProviderSpellIdentifier.html)        |
+| Patient Account/Episode Number          | `PV1-19` (Visit Number, type `AN`)                         | `Encounter.identifier`                                        | [HospitalProviderSpellIdentifier](StructureDefinition-HospitalProviderSpellIdentifier.html)        |
 | Referral (order) identifier             | `RF1-6` (Originating Referral Identifier)                    | `ServiceRequest.identifier`                                 | [OrderIdentifier](StructureDefinition-OrderIdentifier.html)                                        |
 | Referral identifier - eRS-specific      | *(no `REF_I12` equivalent)*                                 | `ServiceRequest.identifier` (system `https://fhir.nhs.uk/Id/UBRN`) | Not currently modelled - a new identifier profile, analogous to `OrderIdentifier`, would be needed if eRS referrals were represented |
 | Referral status                         | `RF1-1` (Referral Status)                                   | `ServiceRequest.status`                                     | Standard FHIR status code, not separately profiled                                                |
@@ -237,9 +237,10 @@ already defines rather than inventing new ones.
 
 Notes on this sketch:
 
-- `REF_I12`'s `PID-18` (Patient Account Number) is the v2 field that corresponds to
-  this IG's existing Account/Episode Number identifier - it is **not** the v2 `ACC`
-  segment, which is unrelated (Accident information).
+- `REF_I12`'s `PV1-19` (Visit Number, identifier type `AN`) is the v2 field that
+  corresponds to this IG's existing Account/Episode Number identifier, consistent with
+  the [HL7 v2](hl7v2.html) PV1 segment - it is **not** `PID-18` (Patient Account
+  Number), nor the v2 `ACC` segment, which is unrelated (Accident information).
 - eRS's own referral identifier, the UBRN, has no `REF_I12` equivalent - it is an
   eRS-specific concept that would need its own identifier profile if this pathway
   were ever modelled in FHIR, following the same pattern as the existing
