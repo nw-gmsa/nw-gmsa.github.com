@@ -12,7 +12,7 @@ example `Observation`s -
 [Observation-BCRABL-Valid](Observation-BCRABL-Valid.html),
 [Observation-BCRABL-Invalid](Observation-BCRABL-Invalid.html) and
 `Observation-LAR-BCRABL` (`input/fsh/Examples/BCRABL/`) - not just the
-[data mapping table](LaboratoryAnalyteResult.html#data-mapping): the local
+[data mapping table](StructureDefinition-LaboratoryAnalyteResult.html#data-mapping): the local
 `Cepheid` CodeSystem component codes below (`BCR-ABL&`, `ABL&Ct`, etc.) are the
 exact codes those examples use, and the two examples together show both a
 normal result and the `dataAbsentReason` shape used when a value is invalid/out

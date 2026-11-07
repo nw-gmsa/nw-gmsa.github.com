@@ -1,11 +1,11 @@
   
-## References 
+### References 
 
 1. [IHE Pathology and Laboratory Medicine (PaLM) Technical Framework - Volume 1](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol1.pdf) HL7 v2
 
-## Overview
+### Overview
 
-### Clinical Process
+#### Clinical Process
 
 Diagnostic testing (Laboratory Testing Workflow) is a supporting workflow that is embedded within the wider clinical care pathway rather than a separate process. The laboratory or diagnostic service is used whenever the clinical team needs additional evidence to make, confirm, monitor, or review a diagnosis and treatment plan.
 
@@ -41,7 +41,7 @@ graph TD;
     class T purple
 ```
 
-### Diagnostic Testing
+#### Diagnostic Testing
 
 The diagnostic testing begins when the Order Placer creates a laboratory order after determining that diagnostic testing is required. At the same time, the requesting organisation arranges for the patient's specimen to be collected. The laboratory order (LAB-1) is transmitted electronically to the laboratory, while the physical specimen is collected and transported to the testing facility.
 
@@ -68,7 +68,7 @@ graph
     P --> |"Sends Laboratory Report (LAB-3)"| OrderPlacer;
 ```
 
-### Perform Tests
+#### Perform Tests
 
 Order Filler generates one or more Work Orders (LAB-4). A work order contains the operational instructions needed by the diagnostic equipment, such as the specimen identifier, requested tests, analyser configuration, priority, and quality control requirements. These work orders are transmitted to the appropriate laboratory instruments or automation manager, which routes specimens and schedules testing across one or more analysers.
 
@@ -83,7 +83,7 @@ graph
     DiagnosticEquipment --> |"Test Results (LAB-5)"| OrderFiller
 ```
 
-## Actors and Transactions
+### Actors and Transactions
 
 | Actor                                                           | Definition                                                                                                                                          |
 | --------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -107,7 +107,7 @@ See also Reference 1, `Section 3 Laboratory Testing Workflow (LTW) Profile`, for
 
 Initially only the IHE `LAB-1` and `LAB-3` are in focus. Later stages will include the use of [Genomic Order Management Service](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir).
 
-## Laboratory Order and Report LAB-1 and LAB-3
+### Laboratory Order and Report LAB-1 and LAB-3
 
 <img style="padding:3px;width:95%;" src="LTW Use Case 1 and 2.drawio.png" alt="Genomic LTW Business Process"/>
 <br clear="all">
@@ -144,7 +144,7 @@ sequenceDiagram
     LIMS ->> clinician: Sends Laboratory Report
 ```
 
-### Laboratory Order (LAB-1)
+#### Laboratory Order (LAB-1)
 
 <div class="alert alert-info" role="alert">
 <b>Domain Archetype:</b> <a href="StructureDefinition-ServiceRequest.html" _target="_blank">Genomic Test Order</a> 
@@ -163,7 +163,7 @@ Used by these Use Cases:
 - [StarLIMS / iGene Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/starLIMS.md)
 - [NE&Y Management Information (ctDNA)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/NEYManagementInformation.md) - paper-based, no electronic LAB-1 transaction
 
-#### LAB-1 Process Flow
+##### LAB-1 Process Flow
 
 An order is created by the clinical practice and placed to the laboratory.
 
@@ -181,7 +181,7 @@ graph LR
     C --> |Arrange| Specimen
 ```
 
-##### Technical Process Flow
+###### Technical Process Flow
 
 ```mermaid
 graph TD;
@@ -219,7 +219,7 @@ graph TD;
 
 ```
 
-##### Select Genomic Test Order Form
+###### Select Genomic Test Order Form
 
 Within the system creating the genomics order, the practitioner will select a form for the test required. Below are several examples from [North West Genomic Laboratory Hub - Test Request Forms](https://mft.nhs.uk/nwglh/documents/test-request-forms/).
 How this is implemented will vary between different NHS organisations and systems they use.
@@ -237,7 +237,7 @@ How this is implemented will vary between different NHS organisations and system
   </tr>
 </table>
 
-##### Complete Genomic Test Order Form
+###### Complete Genomic Test Order Form
 
 These forms will have a computable definition called a [template (FHIR Questionnaire)](https://hl7.org/fhir/R4/questionnaire.html) which will list the technical content requirements for the form. 
 
@@ -246,14 +246,14 @@ These forms will have a computable definition called a [template (FHIR Questionn
 
 This archetype definition can also support [HL7 Structured Data Capture](https://build.fhir.org/ig/HL7/sdc/index.html) should the Order Placer system support these features.
 
-##### Form Data Extraction
+###### Form Data Extraction
 
 For submission, this form will be converted by the [Order Placer](ActorDefinition-OrderPlacer.html) to a communication format called [HL7 FHIR](https://hl7.org/fhir/R4/index.html) (and for compatability reasons [HL7 v2](https://en.wikipedia.org/wiki/Health_Level_7#HL7_Version_2).
 If the [Order Placer](ActorDefinition-OrderPlacer.html) has a FHIR enabled Electronic Patient Record (e.g. EPIC, Cerner, Meditech, etc), they may use [HL7 SDC - Form Data Extraction](https://build.fhir.org/ig/HL7/sdc/extraction.html) to assist with this process.
 
 For details on the relationship between forms and HL7 v2/FHIR see [Genomic Test Order](StructureDefinition-GenomicTestOrder.html#diagnostic-order)
 
-##### Submit Genomic Test Order Form
+###### Submit Genomic Test Order Form
 
 The completed form is submitted to the Regional Orchestration Engine following:
 
@@ -275,11 +275,11 @@ EPR -->> LIMS: Send Sample
 LIMS ->> LIMS: Update Test Order
 ```
 
-##### Specimen Collection
+###### Specimen Collection
 
 After submitting the original order, the sample will be collected and sent to the Order Filler. The Order Filler will update the Test Order to include details such as a specimen collection date, order filler number, etc.
 
-### Laboratory Report (LAB-3)
+#### Laboratory Report (LAB-3)
 
 <div class="alert alert-info" role="alert">
 <b>Domain Archetype:</b> <a href="StructureDefinition-GenomicTestReport.html" _target="_blank">Genomic Test Report</a> 
@@ -298,7 +298,7 @@ Used by these Use Cases:
 - [StarLIMS / iGene Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/starLIMS.md)
 - [NE&Y Management Information (ctDNA)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/NEYManagementInformation.md) - wire-tapped, converted to a FHIR Message R01 with the PDF removed
 
-### LAB-3 Process Flow
+#### LAB-3 Process Flow
 
 A report is created by the clinical practice and sent to the order result tracker.
 
@@ -308,7 +308,7 @@ A report is created by the clinical practice and sent to the order result tracke
 </figure>
 <br clear="all">
 
-#### Technical Process Flow
+##### Technical Process Flow
 
 ```mermaid
 graph TD;
@@ -345,7 +345,7 @@ graph TD;
 
 ```
 
-#### Main Process Flow
+##### Main Process Flow
 
 ```mermaid
 sequenceDiagram
@@ -390,7 +390,7 @@ TIE ->> EPR: Task complete notification\n(Can be an email notification)
   - When all tests in the order are complete, a Task Complete Notification is sent to the Order Placer.
     - This notification can be sent via email or another messaging system.
  
-## Filler Order Management (LAB-2)
+### Filler Order Management (LAB-2)
 
 LAB-2 is aimed at sending a copy of the order back to the Order Placer, and this will include updated data items such as Order Filler Number.
 It is envisaged this design will also extend to Laboratory Reports (R01). 
@@ -407,7 +407,7 @@ It is envisaged this design will also extend to Laboratory Reports (R01).
 Used by these Use Cases:
 - [NE&Y Management Information (ctDNA)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/NEYManagementInformation.md) - the FHIR Message O21 converted daily from the iGene CSV export
 
-### LAB-2 Process Flow
+#### LAB-2 Process Flow
 
 ```mermaid
 graph TD
@@ -434,7 +434,7 @@ class OrderFiller,OrderPlacer yellow
 ```
 
 
-## Work Order and Test Result Management LAB-4 and LAB-5
+### Work Order and Test Result Management LAB-4 and LAB-5
 
 ```mermaid
 graph TD;
@@ -496,7 +496,7 @@ sequenceDiagram
     LIMS ->> clinician: Sends Laboratory Report
 ```
 
-### Use Case
+#### Use Case
 
 > BCR-ABL1 concentration testing (M84.2) is used to monitor the amount of the fusion gene (Philadelphia chromosome) in chronic myeloid leukemia (CML) patients, with results typically reported on an International Scale (%IS) to measure treatment response.
 
@@ -512,7 +512,7 @@ Device ->> LIMS: Send Test Results Management LAB-5 R22/R32
 
 ```
 
-### Work Order Management (LAB-4)
+#### Work Order Management (LAB-4)
 
 <div class="alert alert-info" role="alert">
 <b>Domain Archetype:</b> <a href="StructureDefinition-GenomicTestOrder.html#original-order-instance-and-filler-orders" _target="_blank">Genomic Test Order - Instance Order</a> 
@@ -523,7 +523,7 @@ Used by these Use Cases:
 - [Regional Integration Engine (RIE)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/overview.md)
 - [StarLIMS / iGene Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/starLIMS.md)
 
-#### LAB-4 Process Flow
+##### LAB-4 Process Flow
 
 ```mermaid
 graph TD
@@ -559,7 +559,7 @@ classDef pink fill:#F8CECC;
 class GDP,RIE4,PubSub pink;
 ```
 
-### Test Results Management (LAB-5)
+#### Test Results Management (LAB-5)
 
 <div class="alert alert-info" role="alert">
 <b>Domain Archetype:</b> <a href="StructureDefinition-LaboratoryAnalyteResult.html" _target="_blank">Laboratory Analyte Result</a> 
@@ -574,7 +574,7 @@ Used by these Use Cases:
 - [OMICS DSS Result Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md)
 - [Regional Integration Engine (RIE)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/overview.md)
 
-#### LAB-5 Process Flow
+##### LAB-5 Process Flow
 
 ```mermaid
 graph TD
@@ -617,7 +617,7 @@ graph TD
 This section is currently being elaborated and subject to change.
 </div>
 
-## Security Considerations
+### Security Considerations
 
 Includes:
 
@@ -626,7 +626,7 @@ Includes:
 - FHIR AuditEvent/IHE BALP for [Audit Logging](api-security.html#audit-logging)
 - TLS for [Transport Security/Encrytion](api-security.html#encryption)
 
-## Cross-Profile Considerations
+### Cross-Profile Considerations
 
 It is recommended that the actors receive patient demographic and encounter updates only within the
 context of a work order. Whenever patient data changes, due to:

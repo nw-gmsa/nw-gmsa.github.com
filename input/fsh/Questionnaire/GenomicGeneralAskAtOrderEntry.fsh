@@ -10,7 +10,7 @@ These questions were originally part of [GenomicTestOrder](StructureDefinition-G
 and have been extracted here so the core form stays generic to every order/test type.
 
 Covers Cancer, Whole Genome Sequencing (WGS) and Rare and Inherited Disease
-orders generally - see [Guidance by Order Type](#guidance-by-order-type)
+orders generally - see [Guidance by Order Type](Questionnaire-GenomicGeneralAskAtOrderEntry.html#guidance-by-order-type)
 below for which questions actually apply to which. Questions only relevant
 to WGS specifically (`Related Individual (NK1)`, `Record of Discussion
 attached or to follow`) have moved to [WGS Test Additional Ask At Order

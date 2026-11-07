@@ -1,8 +1,8 @@
-### References
+#### References
 
 - https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation/keep-your-software-secure
 
-### Overview
+#### Overview
 
 ```mermaid
 graph LR
@@ -68,9 +68,9 @@ else Issue
     rate -->> consumer: 503 Service Unavailable error 
 end  
 ```
-## API Gateway 
+### API Gateway 
 
-### Encryption
+#### Encryption
 
 | Transport level integration | Requirement                                                                                                                                                                                                                                                                                                                      | 
 |-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -83,13 +83,13 @@ end
 | Transfer encoding | MUST support chunked transfer encoding                                                                                                                                                                                                                                                                                           |
 {:.grid}
 
-### Rate Limiting
+#### Rate Limiting
 
 <div class="alert alert-danger" role="alert">
 This section is currently being elaborated and subject to change.
 </div>
 
-### Identification and Authentication
+#### Identification and Authentication
 
 At present, only system-to-system identification is currently supported using OAuth2 client credentials.
 
@@ -98,11 +98,11 @@ NHS England user identification and authentication is:
 - Practitioner openID [NHS England CIS2 Authentication](https://digital.nhs.uk/services/care-identity-service/applications-and-services/cis2-authentication)
 - Patient openID [NHS England NHS login](https://digital.nhs.uk/services/nhs-login)
 
-## Data Platform
+### Data Platform
 
-### Access Control and Authorisation
+#### Access Control and Authorisation
 
-#### Authorisation - OAuth2
+##### Authorisation - OAuth2
 
 <div class="alert alert-info" role="alert">
 <b>Interaction:</b> <a href="IUA.html" _target="_blank">Authorisation [IUA]</a> 
@@ -148,12 +148,12 @@ Server -->> Client: Response
 - The client then performs requests to the resource server using the `Access Token` (authorisation = Bearer {accessToken})
 - The resource **MUST** check the token is valid using **Introspect Token (ITI-102)**, invalid tokens will be rejected using a 403 Forbidden http code.
 
-#### Access Control - JWT
+##### Access Control - JWT
 
 See also [NHS England Security and authorisation](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation)
 NHS England does not currently support detailed JWT tokens in APIM, the previous documentation can be found on [JSON Web Token Guidance](https://webarchive.nationalarchives.gov.uk/ukgwa/20250306002836/https://developer.nhs.uk/apis/nrl/guidance_jwt.html) and [Access Tokens and Audit (JWT)](https://webarchive.nationalarchives.gov.uk/ukgwa/20250307104717/https://developer.nhs.uk/apis/spine-core/security_jwt.html)
 
-##### Scopes
+###### Scopes
 
 FHIR Resource Scopes are used to define the permissions a client has to access a FHIR resource. See [SMART - App Launch: Scopes and Launch Context](https://build.fhir.org/ig/HL7/smart-app-launch/scopes-and-launch-context.html)
 
@@ -165,7 +165,7 @@ FHIR Resource Scopes are used to define the permissions a client has to access a
 {:.grid}
 
 
-### Audit Logging
+#### Audit Logging
 
 <div class="alert alert-info" role="alert">
 <b>Domain Archetype:</b> <a href="StructureDefinition-AuditEvent.html" _target="_blank">AuditEvent</a> 
@@ -184,13 +184,13 @@ creator --> |"Record Audit Event [ITI-20]"| repository
 consumer --> |"Retrieve ATNA Audit Event [ITI-81]"| repository
 ```
 
-### Patient Consent
+#### Patient Consent
 
 <div class="alert alert-danger" role="alert">
 This section is currently being elaborated and subject to change. See <a href="https://profiles.ihe.net/ITI/PCF/volume-1.html" _target="_blank">IHE Privacy Consent on FHIR (PCF)</a>.
 </div>
 
-### Data Security
+#### Data Security
 
 All interactions must conform to this Implementation Guide, details on testing and validation are available in the [Testing](testing.html) section.
 
@@ -205,7 +205,7 @@ This implementation guide conforms to the following information standards:
 | [HL7 UK Core](https://digital.nhs.uk/services/fhir-uk-core)                | NHS England [DAPB4020: UK Core Fast Healthcare Interoperability Resources (FHIR) Release 4 (R4) Governance](https://digital.nhs.uk/data-and-information/information-standards/governance/latest-activity/standards-and-collections/dapb4020-uk-core-fhir-r4-governance) |
 {:.grid}
 
-## NRL and Spine Security Proxy (SSP)
+### NRL and Spine Security Proxy (SSP)
 
 Based on [National Record Locator - FHIR API v3 - Producer](https://digital.nhs.uk/developer/api-catalogue/national-record-locator-fhir/v3/producer)
 and [SSP Retrieval](https://webarchive.nationalarchives.gov.uk/ukgwa/20250306000638/https://developer.nhs.uk/apis/nrl/retrieval_ssp.html)
@@ -213,7 +213,7 @@ and [SSP Retrieval](https://webarchive.nationalarchives.gov.uk/ukgwa/20250306000
 <img style="padding:3px;width:80%;" src="retrieval_concept_diagram.png" alt="NW Genomics Technical Overview"/>
 <br clear="all">
 
-### SSP Mapping 
+#### SSP Mapping 
 
 | SSP                                        | Description                                                                                                                                                                                                          | NW FHIR AuditEvent         | Http Header      |
 |--------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------|------------------|

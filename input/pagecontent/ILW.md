@@ -2,12 +2,12 @@
 This is currently being elaborated and subject to change.
 </div>
 
-## References
+### References
 
 1. [IHE Inter Laboratory Workflow](https://wiki.ihe.net/index.php/Inter_Laboratory_Workflow)
 2. [IHE Laboratory Technical Framework Supplement Inter-Laboratory Workflow (ILW)](https://www.ihe.net/uploadedFiles/Documents/Laboratory/IHE_LAB_Suppl_ILW.pdf)
 
-## Actors and Transactions
+### Actors and Transactions
 
 | Actor                                               | Definition                                                                                                                                                                                             |
 |-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -15,7 +15,7 @@ This is currently being elaborated and subject to change.
 | [Subcontractor](ActorDefinition-Subcontractor.html) | Receives Sub-orders, acknowledges specimen arrival and sends back results fulfilling these Sub-orders, e.g. Genomics. Is known in IHE LTW as [Order Filler](ActorDefinition-OrderFiller.html)                                                           |
 {:.grid}
 
-## Overview
+### Overview
 
 See Ref 1 for details.
 
@@ -52,7 +52,7 @@ graph LR;
 
 ```
 
-## Sub-orders LAB-35 and LAB-36
+### Sub-orders LAB-35 and LAB-36
 
 ```mermaid
 sequenceDiagram
@@ -84,7 +84,7 @@ sequenceDiagram
     LIMS ->> clinician: Sends Laboratory Report
 ```
 
-### Sub Order Management (LAB-35)
+#### Sub Order Management (LAB-35)
 
 <div class="alert alert-info" role="alert">
 <b>Domain Archetype:</b> <a href="StructureDefinition-GenomicTestOrder.html#original-order-instance-and-filler-orders" _target="_blank">Genomic Test Order - Filler Order</a> 
@@ -101,7 +101,7 @@ Used by these Use Cases:
 - [Regional Integration Engine (RIE)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/overview.md)
 - [StarLIMS / iGene Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/starLIMS.md)
 
-### Sub-order Results Delivery (LAB-36)
+#### Sub-order Results Delivery (LAB-36)
 
 <div class="alert alert-info" role="alert">
 <b>Domain Archetype:</b> <a href="StructureDefinition-GenomicTestReport.html" _target="_blank">Genomic Test Report</a> 
@@ -118,7 +118,7 @@ Used by these Use Cases:
 - [StarLIMS / iGene Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/starLIMS.md)
 
 
-### Modernisation
+#### Modernisation
 
 The current IHE ILW specification relies on HL7 v2.x, HL7 v3, and IHE XDS. Several modernization paths are available, most of which focus on adopting FHIR, updating relevant IHE profiles, and shifting from Clinical Documents (HL7 CDA and FHIR Documents) to IHE QEDm for data exchange.
 
@@ -127,9 +127,9 @@ The current IHE ILW specification relies on HL7 v2.x, HL7 v3, and IHE XDS. Sever
 <p class="figureTitle">IHE ILW Modernisation with FHIR</p> 
 <br clear="all">
 
-## Scenarios
+### Scenarios
 
-### NHS England Genomic Order Management Service FHIR API
+#### NHS England Genomic Order Management Service FHIR API
 
 See [NHS England Genomic Order Management Service (GOMS)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/GenomicOrderManagementService.md) for the future use of the [GOMS FHIR API](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) to deliver sub-contracted orders (LAB-35) to, and receive results (LAB-36) from, other GMSAs.
 
@@ -138,7 +138,7 @@ CFT Shire → HODS-orchestrated reflex use case (pathology test order following 
 to a genomics test order, and the HODS-orchestrated haematological malignancy
 pathway), including the NHS North West Children Cancer notification example.
 
-## Options 
+### Options 
 
 Variations on the basic LTW scenario. 
 
@@ -154,7 +154,7 @@ sequenceDiagram
     OrderFillerGenomics -->> OrderPlacer: Returns Laboratory Report (Report Identifier 1 & Order Identifier 1. Optional Visit/Spell Number A)
 ```
 
-### Orchestrated Order 
+#### Orchestrated Order 
 
 e.g. Haematology and oncology services
 
@@ -182,7 +182,7 @@ sequenceDiagram
     OrderFillerSpecialty -->> OrderPlacer: Returns (Discharge/Hospital?) Report (Report Identifier 3, Order Identifier 1 & Visit/Spell Number A)
 ```
 
-### Reflex Order
+#### Reflex Order
 
 Is this around cancer? Is similar to above but both Lab and Genomics use the specimen for testing, so the genomic order is raised by the Pathology Lab.
 
@@ -207,7 +207,7 @@ sequenceDiagram
     OrderFillerPathology -->> OrderPlacer: Returns Report (Report Identifier 2, Order Identifier 1, Order Identifier 2, Visit/Spell Number A  and Specimen Accession Number X)
 ```
 
-### Sub Contract 
+#### Sub Contract 
 
 Genomic Lab sub contracts to another Genomics Lab for testing.
 
@@ -234,7 +234,7 @@ sequenceDiagram
 
 
 
-## Security Considerations
+### Security Considerations
 
 Includes:
 

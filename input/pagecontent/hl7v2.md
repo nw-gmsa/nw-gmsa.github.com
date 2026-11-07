@@ -1,21 +1,21 @@
 
 
 
-## OML_O21 Laboratory Order 
+### OML_O21 Laboratory Order 
 
 <div class="alert alert-info" role="alert">
 <a href="#omg_o19-general-clinical-order">OMG_O19 General Clinical Order</a> <b>MAY</b>
 be used instead of OML_O21 - it has the same segments, including SPM.
 </div>
 
-### References
+#### References
 
 <span class="badge badge-danger">Diagnostic Workflow</span> 
 
  - [EPIC HL7 v2](https://open.epic.com/Interface/HL7v2) See **Outgoing Ancillary Orders** (EPR to RIE)
  - [MEDITECH HL7 v2](https://ehr.meditech.com/sites/default/files/documents/20240613/om-orders-outbound-24.pdf)
 
-### Message
+#### Message
 
 | Segment HL7               | Optionality | Notes                                                   |
 |---------------------------|-------------|---------------------------------------------------------|
@@ -35,9 +35,9 @@ be used instead of OML_O21 - it has the same segments, including SPM.
 | -- [SPM](#spm)            | 0..1        |                                                         |
 {:.grid}
 
-## ORU_R01 Unsolicited transmission of an observation message
+### ORU_R01 Unsolicited transmission of an observation message
 
-### References
+#### References
 
 <span class="badge badge-danger">Diagnostic Workflow</span> 
 
@@ -51,7 +51,7 @@ be used instead of OML_O21 - it has the same segments, including SPM.
 - [EPIC HL7 v2](https://open.epic.com/Interface/HL7v2) See **Discrete Genomic Results** (RIE to EPIC EPR)
 - [CodeX HL7 FHIR Accelerator - GenomeX Data Exchange - Transport](https://build.fhir.org/ig/CodeX-HL7-FHIR-Accelerator/GenomeX-DataExchange/transport.html) - suggests sending a genomic FHIR Bundle via `ORU_R01`, either embedded or via `OBX-2 = RP` (Reference Pointer) pointing to a URL - see the design discussion under [MDM_T02](#mdm_t02-original-document-notification-and-content) below for how this differs from this guide's own approach
 
-### Message
+#### Message
 
 | Segment HL7           | Optionality | Notes                                                   |
 |-----------------------|-------------|---------------------------------------------------------|
@@ -67,7 +67,7 @@ be used instead of OML_O21 - it has the same segments, including SPM.
 {:.grid}
 
 <!--
-### MASTER HL7 REPORTING PANEL
+#### MASTER HL7 REPORTING PANEL
 
 | Type (OBX-2) | Code (OBX-3.1) | Name (OBX-3.2)                    | CodeSystem (OBX-3.3) | Sub ID (OBX-4) | Example values (OBX-5)                                            | Cardinality | Term Description                                                       |
 |-------------|----------------|-----------------------------------|----------------------|----------------|-------------------------------------------------------------------|-------------|------------------------------------------------------------------------|
@@ -75,7 +75,7 @@ be used instead of OML_O21 - it has the same segments, including SPM.
 | ED          | 51969-4        | Genetic analysis report           | LOINC                | 1              | ^AP^PDF^Base64^JVBERi0xL....                                      | [0..1]      |                                                                        |
 | CE         | TESTCOME       | NHS England Genomics Test Outcome | NWGMSA         |                | 311^RESULT CONSISTENT WITH REFERRAL INDICATION^TESTOUTCOME        | [0..1]      | [Test Outcome](ValueSet-GenomicTestOutcomeCodes.html)    |                                                                     |
 
-### Supplemental Codes (work in progress)
+#### Supplemental Codes (work in progress)
 
 | Type (OBX-2) | Code (OBX-3.1) | Name (OBX-3.2)                          | CodeSystem (OBX-3.3) | Sub ID (OBX-4) | Example values (OBX-5)                             | Cardinality | Term Description                                                                                                                                                                                     |
 |--------------|----------------|-----------------------------------------|----------------------|----------------|----------------------------------------------------|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -83,7 +83,7 @@ be used instead of OML_O21 - it has the same segments, including SPM.
 | CNE          | 51968-6        | Genetic analysis overall interpretation | LOINC                | 1              | LA6576^Posititive^LN^ <br/>  10828004^Positive^SCT | [0..1]      | [Genetic disease analysis overall predictive risk interpretation (LOINC LL541-4)](https://loinc.org/LL541-4)                                                                                         |
 | ST           | 69547-8        | Genomic ref allele [ID]                 | LOINC                | 2a             | C                                                  | [0..1]      | The DNA string in the reference sequence (Ref Allele) with which the DNA string in the test sample differs, starting at the first position given in  LOINC 81254-5’s Genome Allele start-end (B.12). |
 
-### Interpretations (work in progress)
+#### Interpretations (work in progress)
 
 | Type (OBX-2) | Code (OBX-3.1) | Name (OBX-3.2)             | CodeSystem (OBX-3.3) | Sub ID (OBX-4) | Example values (OBX-5) | Cardinality | Term Description                                                              |
 |--------------|----------------|----------------------------|----------------------|----------------|------------------------|-------------|-------------------------------------------------------------------------------|
@@ -91,7 +91,7 @@ be used instead of OML_O21 - it has the same segments, including SPM.
 | CWE          | 69548-6        | Genetic variant Assessment | LOINC                | 2a             | LA9633-4^Present^LN    | [0..1]      | [Genetic variant assessment](https://loinc.org/LL1971-2)                      |
 -->
 
-## MDM_T02 Original document notification and content
+### MDM_T02 Original document notification and content
 
 <div class="alert alert-info" role="alert">
 This is currently being elaborated and subject to change.
@@ -102,7 +102,7 @@ See also which are functionally equivalent and have a similar data model:
 - IHE XDS Cross-Enterprise Document Sharing (XDS.b) or Cross-Enterprise Document Reliable Interchange (XDR) - [Provide and Register Document Set-b [ITI-41]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-41.html#3.41)
 - IHE MHD Mobile access to Health Documents (MHD) - [Simplified Publish [ITI-105]](https://profiles.ihe.net/ITI/MHD/ITI-105.html)
 
-### Design Decision: ORU_R01 vs MDM_T02/ITI-105 for the Laboratory Report (Composition)
+#### Design Decision: ORU_R01 vs MDM_T02/ITI-105 for the Laboratory Report (Composition)
 
 <div class="alert alert-danger" role="alert">
 This has not yet been decided.
@@ -139,11 +139,11 @@ the [HL7 Version 2.5.1 Implementation Guide: Lab Results Interface
 - e.g. the same LOINC codes and panel/battery conventions - rather than
 inventing its own.
 
-### References 
+#### References 
 
 - [EPIC Incoming Scanned Document Link Interface Technical Specification](https://open.epic.com/Tech/TechSpec?spec=5323)
 
-### Message
+#### Message
 
 | Segment HL7   | Optionality | Notes                                                   |
 |---------------|-------------|---------------------------------------------------------|
@@ -159,7 +159,7 @@ inventing its own.
 | - [OBX](#obx) | 1..1        |                                                         |
 {:.grid}
 
-## OMG_O19 General Clinical Order
+### OMG_O19 General Clinical Order
 
 <div class="alert alert-info" role="alert">
 <b>Laboratory orders:</b> <code>OMG^O19</code> <b>MAY</b> be used instead of
@@ -176,7 +176,7 @@ Referral</a> - see <a href="PCC-55.html">Referral Request [PCC-55]</a>. Not used
 interface in this guide today.
 </div>
 
-### References
+#### References
 
 <span class="badge badge-danger">Diagnostic Workflow</span> <span class="badge badge-danger">Referral Workflow</span>
 
@@ -193,7 +193,7 @@ interface in this guide today.
   assessment) in OBR-4, normally with no specimen; FHIR equivalent [Referral Order
   (O19)](MessageDefinition-referral-order.html).
 
-### Message
+#### Message
 
 | Segment HL7               | Optionality | Notes                                                                                   |
 |---------------------------|-------------|-----------------------------------------------------------------------------------------|
@@ -214,7 +214,7 @@ interface in this guide today.
 | -- [OBX](#obx)            | 0..*        | Observations about the specimen                                                         |
 {:.grid}
 
-#### Example
+##### Example
 
 A laboratory order sent as `OMG^O19` instead of OML_O21 - see [Referral Request
 [PCC-55]](PCC-55.html#examples). For a referral, OBR-4 is `306119003^^SCT` and there is
@@ -231,7 +231,7 @@ SPM|1|25GEN-029GN00001&R0A||258580003^Whole blood specimen^SNM3|||||||||||||2025
 
 > FHIR Message Example: [Bundle 'Message' - Genomics Order with Coded Entries](Bundle-GenomicsOrderMessageCodedEntries.html)
 
-## OSU_O51 Order Status Update
+### OSU_O51 Order Status Update
 
 <div class="alert alert-warning" role="alert">
 <b>For future use.</b> Not used by any interface in this guide today. Used for
@@ -240,7 +240,7 @@ status updates - see <a href="PCC-55.html">[PCC-55]</a>, <a href="PCC-56.html">[
 and <a href="PCC-57.html">[PCC-57]</a>.
 </div>
 
-### References
+#### References
 
 <span class="badge badge-danger">Referral Workflow</span>
 
@@ -265,7 +265,7 @@ notification from the NHS England Multicast Notification Service (MNS), retrieve
 `Task` from GOMS, and converts it to `OSU^O51` (or the FHIR Message) - see [Status
 Updates from GOMS via MNS](PCC-55.html#status-updates-from-goms-via-mns).
 
-### Message
+#### Message
 
 | Segment HL7   | Optionality | Notes                                                                   |
 |---------------|-------------|-------------------------------------------------------------------------|
@@ -274,7 +274,7 @@ Updates from GOMS via MNS](PCC-55.html#status-updates-from-goms-via-mns).
 | [ORC](#orc)   | 1..*        | ORC-1 / ORC-5 the status; ORC-2 the Referral ID; ORC-12 and ORC-21 the referrer (required in this guide); ORC-16 the reason |
 {:.grid}
 
-### Order Control and Status
+#### Order Control and Status
 
 | Status update | ORC-1 | ORC-5 | FHIR `Task.status` | `Task.businessStatus` ([Referral Workflow Status](CodeSystem-referral-workflow-status.html)) |
 |---|---|---|---|---|
@@ -286,7 +286,7 @@ Updates from GOMS via MNS](PCC-55.html#status-updates-from-goms-via-mns).
 | Cancel Confirmation [PCC-58] | `CR` | `CA` | `cancelled` | `cancelled` |
 {:.grid}
 
-#### Example
+##### Example
 
 ```
 MSH|^~\&|RIE|699X0|EPIC|R0A|20250130093000+0000||OSU^O51^OSU_O51|GLH-MSG-250130001|P|2.8|||AL|NE
@@ -296,9 +296,9 @@ ORC|OK|1601737^R0A|R25012345^699X0||IP||||20250130093000+0000|||C3456789^Darwin^
 
 > FHIR Message Example: [Bundle Message - Order Status (O51), accepted](Bundle-GenomicOrderStatusAcceptMessage.html)
 
-## Segments
+### Segments
 
-### MSH
+#### MSH
 
 This is based on the definition of MSH from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws).
 
@@ -326,7 +326,7 @@ This is based on the definition of MSH from [NHS England HL7 v2 ADT Message Spec
 <b>FHIR Profile:</b> <a href="StructureDefinition-MessageHeader.html" _target="_blank">MessageHeader</a> 
 </div>
 
-### PID
+#### PID
 
 This is based on the definition of PID from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws) and [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](../DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
 
@@ -348,7 +348,7 @@ This is based on the definition of PID from [NHS England HL7 v2 ADT Message Spec
 <b>FHIR Profile:</b> <a href="StructureDefinition-Patient.html" _target="_blank">Patient</a> 
 </div>
 
-#### Examples
+##### Examples
 
 ```
 PID|1||633^^^R0A^MR~9449305552^^^^NH||CHISLETT^Octavia||20080920|F|||1 RAVENSFIELD GARDENS^^EPSOM^SURREY^KT19 0ST
@@ -356,7 +356,7 @@ PID|1||633^^^R0A^MR~9449305552^^^^NH||CHISLETT^Octavia||20080920|F|||1 RAVENSFIE
 
 > FHIR Resource Example: [Patient - Octavia CHISLETT NHS Number: 9449305552](Patient-Patient-OctaviaCHISLETT-9449305552.html)
 
-### PD1
+#### PD1
 
 <div class="alert alert-info" role="alert">
 <b>v2 to FHIR Conversion:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pd1-to-patient.html" _target="_blank">PD1 to FHIR Patient</a> 
@@ -364,7 +364,7 @@ PID|1||633^^^R0A^MR~9449305552^^^^NH||CHISLETT^Octavia||20080920|F|||1 RAVENSFIE
 <b>FHIR Profile:</b> <a href="StructureDefinition-Patient.html" _target="_blank">Patient</a> 
 </div>
 
-### NK1
+#### NK1
 
 | Field HL7 | Fieldname                                  | Data Type | Optionality | Identifier Type or ValueSet                                                                                   | Example Values                       | Description |
 |-----------|--------------------------------------------|-----------|-------------|---------------------------------------------------------------------------------------------------------------|--------------------------------------|-------------|
@@ -382,7 +382,7 @@ PID|1||633^^^R0A^MR~9449305552^^^^NH||CHISLETT^Octavia||20080920|F|||1 RAVENSFIE
 </div>
 
 
-### PV1 
+#### PV1 
 
 > The PV1 segment should represent the episode/stay/visit number, not a consultant episode. 
 
@@ -407,7 +407,7 @@ This is based on the definition of PV1 from [NHS England HL7 v2 ADT Message Spec
 <b>FHIR Profile:</b> <a href="StructureDefinition-Visit.html" _target="_blank">Visit</a> 
 </div>
 
-#### Examples
+##### Examples
 
 ```
 PV1|1|I|^^^R0A09^^^^^^^R0A||||C3456789^Darwin^Samuel^^^Dr^^^GMC|||892761000000102^Clinical haematology service^SNM3|||||||||1001166717^^^R0A^AN|||||||||||||||||||||||||20250129103726+0000
@@ -415,7 +415,7 @@ PV1|1|I|^^^R0A09^^^^^^^R0A||||C3456789^Darwin^Samuel^^^Dr^^^GMC|||89276100000010
 
 > FHIR Resource Example: [Encounter 'episode/stay' Example](Encounter-984b8a89-4194-4eb4-a7ea-ca8049ebeea3.html)
 
-### ORC
+#### ORC
 
 This is based on the definition of ORC from [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf).
 
@@ -441,7 +441,7 @@ This is based on the definition of ORC from [Digital Health and Care Wales - HL7
 <b>FHIR Profile:</b> <a href="StructureDefinition-ServiceRequest.html" _target="_blank">ServiceRequest</a> 
 </div>
 
-#### Examples
+##### Examples
 
 ```
 ORC|NW|1601737^R0A|R25012345^699X0||||||20250129|||C3456789^Darwin^Samuel^^^Dr^^^GMC|||||||||^^R0A^^^ODS
@@ -449,7 +449,7 @@ ORC|NW|1601737^R0A|R25012345^699X0||||||20250129|||C3456789^Darwin^Samuel^^^Dr^^
 
 > FHIR Resource Example: [ServiceRequest Coded Entries Example](ServiceRequest-ServiceRequestGenomicsOrderCodedEntries.html)
 
-### OBR 
+#### OBR 
 
 This is based on the definition of OBR from [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
 
@@ -483,7 +483,7 @@ This is based on the definition of OBR from [Digital Health and Care Wales - HL7
 <b>FHIR Profile:</b> <a href="StructureDefinition-DiagnosticReport.html" _target="_blank">DiagnosticReport</a> 
 </div>
 
-#### Examples
+##### Examples
 
 ```
 OBR|1|1601737^R0A|T25067890^699X0|R240.1^^England-GenomicTestDirectory||20250129||||||||||C3456789^Darwin^Samuel^^^Dr^^^GMC
@@ -491,7 +491,7 @@ OBR|1|1601737^R0A|T25067890^699X0|R240.1^^England-GenomicTestDirectory||20250129
 
 > FHIR Resource Example: [Diagnostic Report Example](DiagnosticReport-DiagnosticReportGenomicsReport.html)
 
-### NTE
+#### NTE
 
 Multiple NTE should be converted to a single FHIR Annotation using markdown
 
@@ -509,7 +509,7 @@ Multiple NTE should be converted to a single FHIR Annotation using markdown
 <b>v2 to FHIR Conversion ORU_R01:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-nte-to-observation.html" _target="_blank">NTE to FHIR Observation</a> 
 </div>
 
-#### Examples
+##### Examples
 
 ```
 NTE|1||Referral lab PLEASE do following tests:
@@ -537,7 +537,7 @@ NTE|19||Contact/Bleep No: 123
 > 
 > FHIR Resource Example ORU_R01: TODO
 
-### DG1
+#### DG1
 
 | Field HL7 | Fieldname         | Data Type | Optionality | Identifier Type or ValueSet | Example Values | Description |
 |-----------|-------------------|-----------|-------------|-------------|----------------|-------------|
@@ -551,7 +551,7 @@ NTE|19||Contact/Bleep No: 123
 <b>FHIR Profile:</b> <a href="StructureDefinition-Condition.html" _target="_blank">Condition</a> 
 </div>
 
-#### Examples
+##### Examples
 
 ```
 DG1|1||363349007^Malignant tumour of stomach^SNM3||20250129103726+0000
@@ -559,7 +559,7 @@ DG1|1||363349007^Malignant tumour of stomach^SNM3||20250129103726+0000
 
 > FHIR Resource Example ORU_R01: TODO
  
-### OBX
+#### OBX
 
 This is based on the definition of OBX from [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
 
@@ -577,7 +577,7 @@ This is based on the definition of OBX from [Digital Health and Care Wales - HL7
 | OBX-14    | Date/Time of the Observation | TS        | O - SHOULD                                  |                                                               | 20190514102417+0000                                                                                             | When this specific observation was made (ubiquitous term: **Observation Date/Time**). |
 {:.grid}
 
-#### OBX-2 Value Type
+##### OBX-2 Value Type
 
 | HL7 Value Type                                        | OBX-5 FHIR Observation Mapping                                                                      | FHIR DiagnosticReport                                                                                                            |
 |-------------------------------------------------------|-----------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
@@ -604,7 +604,7 @@ For discussion:
 <b>FHIR Profile:</b> <a href="StructureDefinition-Observation.html" _target="_blank">Observation</a> 
 </div>
 
-#### Examples
+##### Examples
 
 ```
 OBX|1|CE|GENEAP^GENETICS TEST PERFORMABLE^https://fhir.nwgenomics.nhs.uk/CodeSystem/MFTQuestionIds|||||||||||20250129103726+0000
@@ -626,7 +626,7 @@ OBX|2|CE|51968-6^^LN|1|432^NO TARGET DETECTED OR TARGET DETECTED BELOW A LEVEL R
 > FHIR Resource Example: [Pregnancy Expected Delivery Date (value type=DT)](Observation-OBX-PregnancyExpectedDeliveryDate.html)
 
 
-#### OBX (type = ED)
+##### OBX (type = ED)
 
 This is based on the definition of OBX from [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
 
@@ -646,7 +646,7 @@ This is based on the definition of OBX from [Digital Health and Care Wales - HL7
 <b>FHIR Profile:</b> <a href="StructureDefinition-DocumentReference.html" _target="_blank">DocumentReference</a> 
 </div>
 
-#### Examples
+##### Examples
 
 ```
 OBX|1|ED|1054161000000101^Genetic report^SNM3||MOL^IM^PDF^Base64^JVBERi0x...||||||F
@@ -654,7 +654,7 @@ OBX|1|ED|1054161000000101^Genetic report^SNM3||MOL^IM^PDF^Base64^JVBERi0x...||||
 
 > FHIR Resource Example: [Document Reference Laboratory Report](DocumentReference-94bf65ba-cd6c-4601-b339-6d547f424646.html)
 
-### SPM
+#### SPM
 
 This is based on the definition of SPM from [Digital Health and Care Wales - HL7 ORU_R01 2.5.1 Implementation Guide](DHCW-HL7-v2-5-1-ORUR01-Specification.pdf)
 
@@ -684,7 +684,7 @@ Specimen Type is SNOMED CT, not HL7 v2 Table 0487, for conversion to SNOMED see 
 <b>FHIR Profile:</b> <a href="StructureDefinition-Specimen.html" _target="_blank">Specimen</a> 
 </div>
 
-#### Examples
+##### Examples
 
 ```
 SPM|1|25GEN-029GN00001&R0A^S25034567&699X0|^R25012345&699X0|258580003^Whole blood specimen^SNM3|||||||||||||20250129103726+0000|||Y
@@ -692,7 +692,7 @@ SPM|1|25GEN-029GN00001&R0A^S25034567&699X0|^R25012345&699X0|258580003^Whole bloo
 
 > FHIR Resource Example: [Specimen Example](Specimen-SpecimenExample.html)
 
-### TXA
+#### TXA
 
 | Field HL7 | Fieldname                           | Data Type | Optionality | Identifier Type or ValueSet                               | Example Values                       | Description |
 |-----------|-------------------------------------|-----------|-------------|-----------------------------------------------------------|--------------------------------------|-------------|
@@ -712,30 +712,30 @@ SPM|1|25GEN-029GN00001&R0A^S25034567&699X0|^R25012345&699X0|258580003^Whole bloo
 <b>FHIR Profile:</b> <a href="StructureDefinition-DocumentReference.html" _target="_blank">DocumentReference</a> 
 </div>
 
-## Data Types
+### Data Types
 
 This applies to HL7 v2 ORU_R01 feeds to the RIE.
 
 ORC-21 (XON) **SHALL** be populated. ORC-12 (XCN) **SHOULD** be populated, and is intended to become mandatory, see [ORC](#orc).
 
-### CNE 
+#### CNE 
 
 <div class="alert alert-info" role="alert">
 <b>v2 to FHIR Conversion:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-datatype-cne-to-codeableconcept.html" _target="_blank">CNE to FHIR CodeableConcept</a>
 </div>
 
-### CWE
+#### CWE
 
 <div class="alert alert-info" role="alert">
 <b>v2 to FHIR Conversion:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/datatype_maps.html" _target="_blank">CWE to FHIR Value[x]</a>
 </div>
 
-### CE 
+#### CE 
 
 Coded Element.
 UK SNOMED CT is preferred and may be mandatory depending on use, for example for OXB Type ED, it will be required.
 
-#### Example 
+##### Example 
 
 SNOMED
 
@@ -747,12 +747,12 @@ LOINC (from HL7 International)
 ```51967-8^Genetic disease assessed [ID]^LN```
 ```48018-6^Gene studied^LN```
 
-### CX 
+#### CX 
 
 Extended Composite ID with Check Digit
 CX.1 - Id Number, CX-4 - Assigning authority and CX.5 - Identifier Type Code are mandatory
 
-#### Example
+##### Example
 
 NHS Number 
 
@@ -770,7 +770,7 @@ Medical Record Number
 <b>v2 to FHIR Conversion:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-datatype-ce-to-codeableconcept.html" _target="_blank">CE to FHIR CodeableConcept</a>
 </div>
 
-### ED 
+#### ED 
 
 <div class="alert alert-info" role="alert">
 <b>v2 to FHIR Conversion:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-datatype-ed-to-documentreference.html" _target="_blank">ED to FHIR DocumentReference</a>
@@ -785,12 +785,12 @@ Medical Record Number
 | ED.5      | Type Of Data       | TX        | R           |                                                                 | JVBERI0X…                    | The encoded file content itself (ubiquitous terms: **Attachment**, **File Content**). |
 {:.grid}
 
-### EI 
+#### EI 
 
 Entity Identifier.
 EI.1 - Entity Identifier and EI.2 - Namespace Id are mandatory
 
-#### Example
+##### Example
 
 Manchester University NHS Foundation Trust 
 
@@ -804,7 +804,7 @@ North West GLH Hub
 1001166717^699X0
 ```
 
-### PL
+#### PL
 
 This is based on the definition of PL from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws) **SHOULD** be followed and **SHALL** be used in PV1-3.
 In addition, this includes of PL.11 to hold organisation ODS code.  
@@ -817,7 +817,7 @@ In addition, this includes of PL.11 to hold organisation ODS code.
 | PL.11     | Assigning Authority For Location | HD        | R           | [Organisation Code](StructureDefinition-OrganisationCode.html)          | R0A            | The organisation the site belongs to (ubiquitous terms: **ODS Code**, **Trust Code**). |
 {:.grid}
 
-### NDL
+#### NDL
 
 This is based on the definitions of NDL from [Royal College of Radiologists](https://www.rcr.ac.uk/media/wwtp2mif/rcr-publications_radiology-reporting-networks-understanding-the-technical-options_march-2022.pdf)
 
@@ -829,19 +829,19 @@ This is based on the definitions of NDL from [Royal College of Radiologists](htt
 | NDL-7       | Facility    | HD        | O           | [Organisation Code](StructureDefinition-OrganisationCode.html)         |                | The organisation the clinician belongs to (ubiquitous terms: **ODS Code**, **Trust Code**). |
 {:.grid}
 
-### NM
+#### NM
 
 <div class="alert alert-info" role="alert">
 <b>v2 to FHIR Conversion:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-datatype-nm-to-quantity.html" _target="_blank">NM to FHIR Quantity</a>
 </div>
 
-### SN
+#### SN
 
 <div class="alert alert-info" role="alert">
 <b>v2 to FHIR Conversion:</b> <a href="https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-datatype-sn-to-quantity.html" _target="_blank">SN to FHIR Quantity</a>
 </div>
 
-### XCN
+#### XCN
 
 Extended Composite ID Number and Name for Persons.
 The definition of XCN from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws) **SHOULD** be followed and **SHALL** be used in ORC-12.
@@ -862,7 +862,7 @@ GMC Code
 C3456789^Darwin^Samuel^^^Dr^^^GMC
 ```
 
-### XON 
+#### XON 
 
 Extended Composite Name and Identification Number for Organizations.
 The definition of XON from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws) should be followed and **SHALL** be used in ORC-21.
@@ -892,15 +892,15 @@ Manchester Royal Infirmary^^R0A02^^^ODS^R0A
 </div>
 
 
-## HL7 v2 to FHIR Message Conversion
+### HL7 v2 to FHIR Message Conversion
 
 - [HL7 Version 2 to FHIR - Message OML_O21 to Bundle Map](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-message-oml-o21-to-bundle.html)
 - [HL7 Version 2 to FHIR - Message ORM_O01 to Bundle Map](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-message-orm-o01-to-bundle.html) 
 - [HL7 Version 2 to FHIR - Message ORU_R01 to Bundle Map](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-message-oru-r01-to-bundle.html)
 
-## Example: Example Instances
+### Example: Example Instances
 
-### OML_O21 Laboratory Order
+#### OML_O21 Laboratory Order
 
 | Format                                                                                           | 
 |--------------------------------------------------------------------------------------------------|
@@ -909,7 +909,7 @@ Manchester Royal Infirmary^^R0A02^^^ODS^R0A
 | [Original Hl7 v2 OML_O21](https://github.com/nw-gmsa/Testing/tree/main/Input/V2/O21)             |
 {:.grid}
 
-### ORU_R01 Unsolicited transmission of an observation message
+#### ORU_R01 Unsolicited transmission of an observation message
 
 | Format                                                                                           | 
 |--------------------------------------------------------------------------------------------------|
@@ -918,13 +918,13 @@ Manchester Royal Infirmary^^R0A02^^^ODS^R0A
 | [Original Hl7 v2 ORU_R01](https://github.com/nw-gmsa/Testing/tree/main/Input/V2/R01)             |
 {:.grid}
 
-### OMG_O19 General Clinical Order and OSU_O51 Order Status Update
+#### OMG_O19 General Clinical Order and OSU_O51 Order Status Update
 
 For future use - see [Referral Request [PCC-55]](PCC-55.html), [Referral Decline
 [PCC-56]](PCC-56.html) and [Referral Outcome [PCC-57]](PCC-57.html) for HL7 v2 and FHIR
 Message examples.
 
-### MDM_T02 Original document notification and content
+#### MDM_T02 Original document notification and content
 
 | Format                                                                                           | 
 |--------------------------------------------------------------------------------------------------|

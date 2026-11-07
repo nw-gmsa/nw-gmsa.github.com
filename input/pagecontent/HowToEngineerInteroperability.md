@@ -83,7 +83,7 @@ Issues, Future Process updates, further examples and Developer Guide links as
 the work continues. Don't expect a Use Case page to be a static, one-off
 document; expect it to keep growing alongside the project it describes.
 
-## The Clinical Pathway Overview
+#### The Clinical Pathway Overview
 
 The starting point is the **Clinical Pathway Overview**.
 
@@ -109,35 +109,35 @@ That may be enough to build an interface, but it doesn't necessarily explain wha
 
 The pathway provides that missing context.
 
-## Different sections support different project stages
+#### Different sections support different project stages
 
 The sections then progressively move from the real-world use case towards implementation.
 
-### Clinical Pathway Overview
+##### Clinical Pathway Overview
 **What is happening clinically and operationally?**
 
 Primarily useful to clinicians, managers, business analysts and clinical informatics, while also providing essential background for technical staff.
 
-### Actors and Transactions
+##### Actors and Transactions
 **Who is involved and what interactions take place?**
 
 This starts turning the clinical/business process into a system and workflow model.
 
 It is particularly useful to business analysts, architects and interoperability specialists.
 
-### Current Process
+##### Current Process
 **How does it actually work today?**
 
 This is important because the existing process often contains constraints, workarounds and organisational responsibilities that aren't obvious from a future-state technical design.
 
-### Future Process
+##### Future Process
 **What are we trying to change?**
 
 This provides the bridge between the business requirement and the technical architecture.
 
 It allows the proposed solution to be discussed before jumping into individual messages or APIs.
 
-### Data Models
+##### Data Models
 **What information actually needs to be exchanged?**
 
 This is where the focus moves towards business analysts and clinical informatics.
@@ -148,7 +148,7 @@ This separation is important.
 
 **The data model is the thing we are agreeing; HL7 v2 and FHIR are mechanisms for representing or exchanging that model.**
 
-### Documenting the Data Model
+##### Documenting the Data Model
 **What format should the data model itself be captured in?**
 
 A data model can be captured as a spreadsheet or a Word document, and both
@@ -198,7 +198,7 @@ independent data model behind it, is exactly the trap explored later in
 [Examples of Common Interoperability Project
 Problems](#examples-of-common-interoperability-project-problems).
 
-### Interoperability Data Model
+##### Interoperability Data Model
 **How does the agreed model become something developers can implement?**
 
 This is the **technical/interoperability data model** - the HL7 v2 Message
@@ -213,14 +213,14 @@ The mappings therefore refer back to the data model rather than becoming the pri
 
 This gives developers something much more useful than a collection of FHIR profiles or message specifications: they can see where each technical field comes from and what it means.
 
-### Examples and Developer Guides
+##### Examples and Developer Guides
 **How do I actually build and test this?**
 
 Only at this point are we primarily talking to developers.
 
 The examples, mappings, message structures, APIs and implementation guidance can therefore be treated as the final implementation layer rather than the starting point.
 
-### Security Considerations
+##### Security Considerations
 **What does this Use Case need from authentication, authorisation, audit and consent?**
 
 Where a Use Case has security guidance beyond the IG-wide baseline - for
@@ -238,7 +238,7 @@ specific to this Use Case. See [Laboratory Testing Workflow
 If a Use Case has no security requirements beyond the IG-wide baseline
 already documented on the API Security page, this section can be omitted.
 
-## The General Structure of a Use Case Page
+#### The General Structure of a Use Case Page
 
 Most Use Case pages in this IG follow the same section order, so once you know
 this structure you can find the part relevant to you in any of them without
@@ -261,7 +261,7 @@ section where a use case is too small to need the split.
 | Developer Guides | Step-by-step, hands-on implementation guidance (notebooks, worked builds) | Developers |
 {:.grid}
 
-## Check for Existing Patterns Before Modelling New Ones
+#### Check for Existing Patterns Before Modelling New Ones
 
 Workflow and information requirements in a new Use Case very often turn out
 to already be documented - the actors, transactions and identifiers a new
@@ -296,7 +296,7 @@ This checking step matters for more than tidiness:
 
 ---
 
-# The Use Case as a common language
+### The Use Case as a common language
 
 The same Use Case can therefore be read differently by different people.
 
@@ -331,7 +331,7 @@ This is very different from starting with a FHIR profile or spreadsheet and tryi
 
 ---
 
-# In effect: Why → What → How
+### In effect: Why → What → How
 
 The Use Case format is therefore trying to maintain a clear separation between three questions:
 
@@ -363,13 +363,13 @@ Otherwise, we risk building a very good technical solution to the wrong problem.
 
 ---
 
-# Examples of Common Interoperability Project Problems
+### Examples of Common Interoperability Project Problems
 
 The sections below work through what tends to go wrong when a project skips
 straight to the technical layer without the Clinical Pathway, workflow and
 data model steps above.
 
-## Another example: starting with technical instructions
+#### Another example: starting with technical instructions
 
 There is another common variation of the same problem.
 
@@ -405,7 +405,7 @@ If developers are given only the data model, the implementation can therefore be
 
 The missing pieces are often the **data relationships, identifiers, state changes, actors and events** that occur along the pathway.
 
-### EPR data modelling versus workflow interoperability
+##### EPR data modelling versus workflow interoperability
 
 This is particularly complicated because **clinical informatics and interoperability can approach modelling from different directions**.
 
@@ -441,7 +441,7 @@ A model can accurately describe a prescription, laboratory result or clinical ob
 
 That process is often what the interoperability project actually needs to solve.
 
-### Four common data modelling failure patterns
+##### Four common data modelling failure patterns
 
 In practice, most NHS interoperability projects that struggle with their data
 model fall into one of four patterns, depending on which discipline is
@@ -572,7 +572,7 @@ Base/Core/Specialty stack built in one standard (typically HL7 v2) in favour
 of rebuilding the same stack in another (typically FHIR), rather than
 converting between the two where they're already expected to interoperate.
 
-## Why the Clinical Pathway matters to developers
+#### Why the Clinical Pathway matters to developers
 
 This is why the Clinical Pathway Overview should not be treated as optional background reading for technical staff.
 
@@ -580,7 +580,7 @@ It is part of the **technical context**.
 
 Consider two ways of giving a developer the same requirement.
 
-### Technical-only approach
+##### Technical-only approach
 
 > Create a FHIR `DiagnosticReport`, populate these fields, reference the `Patient` and `Specimen`, and POST it to this endpoint.
 
@@ -597,7 +597,7 @@ But they may not know:
 - which organisation owns the clinical workflow;
 - or what should happen when the expected information isn't available.
 
-### Use Case approach
+##### Use Case approach
 
 The developer can instead work down through:
 
@@ -623,7 +623,7 @@ Each layer provides the context needed to understand the next one.
 
 The technical instruction is still there — but it is no longer disconnected from the problem it is trying to solve.
 
-## Why this matters for interoperability
+#### Why this matters for interoperability
 
 A lot of interoperability documentation effectively starts at the bottom of this chain.
 

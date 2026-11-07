@@ -1,6 +1,6 @@
 Instance: DiagnosticReportGenomicsReportLS
 InstanceOf: DiagnosticReport
-Title: "Diagnostic Report Example."
+Title: "Diagnostic Report Example - Lynch Syndrome"
 Description: "Ned Liverpool Lynch Syndrome"
 
 * meta.versionId = "1.0"

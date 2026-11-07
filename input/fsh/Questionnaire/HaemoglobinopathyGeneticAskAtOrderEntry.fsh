@@ -253,7 +253,7 @@ Usage:  #definition
   * item[+]
     * type = #quantity
     * linkId = "LN/787-2"
-    * code[+] = $loinc#787-2 "MCV [Entitic volume] by Automated count"
+    * code[+] = $loinc#787-2 "MCV [Entitic mean volume] in Red Blood Cells by Automated count"
     * text = "MCV (fL)"
     * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
   * item[+]

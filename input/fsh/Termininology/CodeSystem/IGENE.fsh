@@ -14,6 +14,7 @@ iGene Codes
 // Ethnic
 
 
+* #"SAMPLE: Ext DNA" "Ext DNA"
 * #"SAMPLE: Urine" "Urine"
 * #"SAMPLE: TC" "Tissue"
 * #"SAMPLE: SALIVA" "Saliva"

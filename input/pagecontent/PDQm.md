@@ -22,7 +22,7 @@ sequenceDiagram
     Note over Consumer: Consumer uses Patient.id<br/>for subsequent queries
 ```
 
-## Patient
+### Patient
 
 <table style="">
     <tr>
@@ -44,13 +44,13 @@ sequenceDiagram
 	</tr>
 </table>
 
-### Read
+#### Read
 
 <div class="alert alert-success" role="alert">
 GET [base]/Patient/{id}
 </div>
 
-### Search
+#### Search
 
 <div class="alert alert-success" role="alert">
 GET [base]/Patient?[parameter]=[value]
@@ -74,7 +74,7 @@ GET [base]/Patient?[parameter]=[value]
 | gender             | token  | GET [base]/Patient?gender=[code]                   | Gender of the patient                                                                                                                                   | `                                                                                                                                                       
 | mothersMaidenName  | string | GET [base]/Patient?mothersMaidenName=[string]      |                                                                                                                                                         |      
 
-#### Examples
+##### Examples
 
 Searching for Conditions for Patient Liverpool.
 ```

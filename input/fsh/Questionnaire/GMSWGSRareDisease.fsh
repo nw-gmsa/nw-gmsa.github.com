@@ -494,7 +494,7 @@ Usage:  #definition
       Ophthalmology, Renal, Developmental, Neurology) - rendered as an
       image on the form itself, not selectable text or coded values.
       GMSWGSGuideHPOTermsVS reproduces that same list, but as real HPO
-      codes (http://purl.obolibrary.org/obo/hp.owl, release 20191108),
+      codes (http://human-phenotype-ontology.org, release 20191108),
       confirmed term-by-term against the Genomics England terminology
       server (https://ontoserver.aws.gel.ac/fhir) via CodeSystem/$lookup
       rather than guessed - see GMSWGSGuideHPOTermsToSCT for the SNOMED CT

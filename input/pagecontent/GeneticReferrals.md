@@ -21,7 +21,7 @@ This covers both directions a referral into North West genomics can arise:
 Both follow the same referral-out/report-back shape as [Laboratory Order and Report
 LAB-1 and LAB-3](LTW.html#laboratory-order-and-report-lab-1-and-lab-3).
 
-## References
+### References
 
 1. IHE PCC Technical Framework Supplement - [360X: Closed Loop Referrals](https://www.ihe.net/uploadedFiles/Documents/PCC/IHE_PCC_Suppl_360X.pdf) - the closed-loop referral profile whose HL7 v2 `OMG^O19` referral order and `OSU^O51` status updates this pattern follows, see [Referral Request [PCC-55]](PCC-55.html) (for future use)
 2. HL7 v2 `OMG_O19` (General Clinical Order), as used by IHE 360X - see [Referral Request [PCC-55]](PCC-55.html) - one model for the referral message, used as the basis for the [Referral Data Model](#referral-data-model) below
@@ -36,14 +36,14 @@ LAB-1 and LAB-3](LTW.html#laboratory-order-and-report-lab-1-and-lab-3).
 11. Macmillan - [What is genetic counselling?](https://www.macmillan.org.uk/cancer-information-and-support/worried-about-cancer/causes-and-risk-factors/what-is-genetic-counselling) - background on cascade/predictive testing
 12. [Diagnostic Model Overview](diagnostic-core.html) - the identifier profiles reused in the [Referral Data Model](#referral-data-model) below
 
-## Overview
+### Overview
 
 This page is **not** about diagnostic genomic testing itself - that is covered by
 [Laboratory Testing Workflow (LTW)](LTW.html) and the use cases built on it. It is
 about the **clinical referral workflow** that brings a patient or relative into a
 genomics/clinical genetics service in the first place, whichever of these starts it:
 
-### Terminology
+#### Terminology
 
 This page uses two genetics-specific terms that may not be familiar outside a
 clinical genetics context:
@@ -86,7 +86,7 @@ flowchart LR
     E -.-> A
 ```
 
-### Why this matters for developers
+#### Why this matters for developers
 
 - This is the referral-level counterpart to the [Distributed WGS
   (dWGS)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md) Family Structure/Participant Type pattern: dWGS covers ordering
@@ -100,7 +100,7 @@ flowchart LR
   secure email/letter), the same small set of common data items recur - see
   [Referral Data Model](#referral-data-model) below.
 
-## Actors and Transactions
+### Actors and Transactions
 
 | Actor                        | Role                                                                                                       |
 |--------------------------------|----------------------------------------------------------------------------------------------------------------|
@@ -117,7 +117,7 @@ flowchart LR
 | Report/clinic letter (dictated correspondence, current state) | The same report, today sent as unstructured correspondence, not a defined transaction | Genomics / Clinical Genetics Service → Referrer |
 {:.grid}
 
-### Referral via NHS e-Referral Service (eRS)
+#### Referral via NHS e-Referral Service (eRS)
 
 **Current state:** where the referrer is a GP practice, the referral into a regional
 clinical genetics service (e.g. Manchester Centre for Genomic Medicine, LCGM) is most
@@ -143,7 +143,7 @@ Resource Model](#ers-fhir-resource-model) below.
 of Scope)](#scheduling-out-of-scope) below) - only the referral itself, and the data
 items it carries, are considered.
 
-### Genetic Counselling / Cascade Testing Referral (non-eRS)
+#### Genetic Counselling / Cascade Testing Referral (non-eRS)
 
 **Current state:** as described in [Cancer Background Information for Use Cases -
 Genetic Counselling Referral Across Regions](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/CancerNOS.md#genetic-counselling-referral-across-regions),
@@ -171,7 +171,7 @@ sequenceDiagram
     Ref ->> GC: OMG_O19
 ```
 
-### Referral Report / Clinic Letter
+#### Referral Report / Clinic Letter
 
 **Current state:** the outcome of assessment, counselling and any family testing
 arranged is reported back as dictated hospital correspondence - the same mechanism
@@ -195,7 +195,7 @@ sequenceDiagram
     GC ->> Ref: ORU_R01, or HL7 Europe HDR<br/>FHIR Document
 ```
 
-## Scheduling (Out of Scope)
+### Scheduling (Out of Scope)
 
 Booking the counselling/genetics appointment itself is deliberately out of scope for
 this page. eRS has its own booking functionality, IHE's Closed Loop Referral profile
@@ -205,7 +205,7 @@ is itself primarily a booking-and-referral service for non-eRS pathways - any of
 these could be the natural place scheduling would live if this pattern were ever
 built out, but none is analysed further here.
 
-## Referral Data Model
+### Referral Data Model
 
 This is a **high-level sketch of the referral only** - not the report back, and not
 scheduling. It only lists elements that are common data items already needed
@@ -260,7 +260,7 @@ Notes on this sketch:
 - Nothing in this table has been built as a profile in this IG - see [Data
   Models](#data-models) below.
 
-### Target Referral Model
+#### Target Referral Model
 
 The diagram below is the FHIR resource model implied by the mapping table above -
 **this is likely the model this IG would actually build**, if a genetics referral
@@ -334,7 +334,7 @@ Notes on this diagram:
 - None of this has been built as a profile in this IG yet - see [Data
   Models](#data-models) below.
 
-### eRS FHIR Resource Model
+#### eRS FHIR Resource Model
 
 The diagram below sketches how eRS's own FHIR API relates the resources involved in
 a referral, taken from the worked examples published in [eRS's FHIR API
@@ -403,7 +403,7 @@ Notes on this diagram:
   API does link a booked `ReferralRequest` directly to an `Appointment`, but
   scheduling remains [out of scope](#scheduling-out-of-scope) for this page.
 
-#### Missing Key Fields (eRS)
+##### Missing Key Fields (eRS)
 
 Checked against the [common data items](#referral-data-model) above, eRS's own
 published `ReferralRequest` examples do **not** carry the following - i.e. these are
@@ -424,7 +424,7 @@ What eRS *does* carry beyond the common data items list: `ReferralPriority`,
 `ReferralState` (a fuller workflow-state model than a plain FHIR `status`), and the
 `ClinicalInfoFirstSubmitted`/`eReferralPathwayStart` timestamps.
 
-### Mapping to NHS Booking and Referral Standard (BaRS)
+#### Mapping to NHS Booking and Referral Standard (BaRS)
 
 [NHS Booking and Referral Standard
 (BaRS)](https://digital.nhs.uk/developer/api-catalogue/booking-and-referral-fhir/v1.0.7)
@@ -445,7 +445,7 @@ carrying a `Bundle` of standard UK Core resources, with a `ServiceRequest` as th
 `MedicationStatement`, `AllergyIntolerance`, `QuestionnaireResponse` and `Consent`
 (all standard [UK Core](https://simplifier.net/hl7fhirukcorer4) profiles).
 
-#### BaRS `ServiceRequest` Field Mapping
+##### BaRS `ServiceRequest` Field Mapping
 
 Unlike eRS's `ReferralRequest`/`ServiceRequest`, BaRS defines no referral-specific
 extensions at all - but its own published `ServiceRequest` example (profile
@@ -478,7 +478,7 @@ no coded service/test-requested or reason-for-referral - these would all need to
 added by whichever `MessageDefinition` a genetics referral use case defined on top of
 BaRS, in the same way BaRS's existing use cases (e.g. `referraltopharmacy`) each do.
 
-## Clinical Scenarios
+### Clinical Scenarios
 
 This page's scope is specifically:
 
@@ -503,7 +503,7 @@ Regions](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/CancerNOS.md#gen
 scenario 1 (a confirmed Lynch syndrome variant, with relatives under different
 regional genetics services referred for cascade testing).
 
-## Data Models
+### Data Models
 
 Not yet modelled in this IG - no `ServiceRequest`/`DiagnosticReport` profile
 currently represents a genetics referral or its report specifically (the existing
@@ -517,7 +517,7 @@ not-yet-profiled elements (the UBRN identifier, referral priority/status/reason)
 report side would separately need a `DiagnosticReport` or `Composition`-led FHIR
 Document, following the same closed-loop shape as LAB-1/LAB-3.
 
-## Security Considerations
+### Security Considerations
 
 Includes:
 

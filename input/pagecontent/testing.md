@@ -1,10 +1,10 @@
-## Development Testing 
+### Development Testing 
 
-### FHIR Validation
+#### FHIR Validation
 
 For details see [FHIR Validation](https://hl7.org/fhir/R4/validation.html)
 
-### Command Line Validation
+#### Command Line Validation
 
 See [Using the FHIR Validator](https://confluence.hl7.org/display/FHIR/Using+the+FHIR+Validator) (download link [https://github.com/hapifhir/org.hl7.fhir.core/releases/latest/download/validator_cli.jar](https://github.com/hapifhir/org.hl7.fhir.core/releases/latest/download/validator_cli.jar))
 
@@ -15,36 +15,36 @@ To use this Implementation Guide with the HL7 Validator, you will need to downlo
 
 The FHIR Validator defaults to validating individual FHIR resources (not FHIR Bundles), to validate FHIR resources in a Bundle see **Validating a single resource in a bundle** on the *Using the FHIR Validator* link above.
 
-#### Examples to Validate a Bundle
+##### Examples to Validate a Bundle
 
-##### laboratory-order O21 Validation Example
+###### laboratory-order O21 Validation Example
 
 ```aiignore
  java -jar validator_cli.jar bundle.json -version 4.0.1 -ig package.tgz -bundle ServiceRequest:0 https://fhir.nwgenomics.nhs.uk/StructureDefinition/ServiceRequest -tx n/a
 ```
 
-##### unsolicited-observation R01 Validation Example
+###### unsolicited-observation R01 Validation Example
 
 ```aiignore
  java -jar validator_cli.jar bundle.json -version 4.0.1 -ig package.tgz -bundle DiagnosticReport:0 https://fhir.nwgenomics.nhs.uk/StructureDefinition/DiagnosticReport -tx n/a
 ```
 
-### Asking a FHIR Server
+#### Asking a FHIR Server
 
 [validator.fhir.org](https://validator.fhir.org/) provides a web-based interface to the Validator CLI jar. This defaults to international FHIR and the options tab can be used to specify specific packages and SNOMED editions (this is listed as `UK - 999000041000000102`). This IG is not currently published to the registry and so `ukcore` should be used instead using the latest release
 
 
-## Integration Testing 
+### Integration Testing 
 
-### Test Patients
+#### Test Patients
 
 All test patients (with a NHS Number) are on NHS England [Personal Demographics Service - FHIR API](https://digital.nhs.uk/developer/api-catalogue/personal-demographics-service-fhir) (Int environment).
 
 The ODS code for GP Surgery MUST be a real code, this is used for routing reports to relevant ICS.
 
-#### Genomics Test Patients
+##### Genomics Test Patients
 
-##### NHS North West Genomics
+###### NHS North West Genomics
 
 | NHS Number                                                      | Surname                                       | Forename | Middle name | Other Name                | Gender     | Date Of Birth <br/> (SMSP) | Deceased                                                                            | GP Surgery <br/> ODS Code                                                                                                                                                                | Address line 1        | Address line 2                  | Address line 3          | Address line 4 <br/> city | Address line 5 <br/> district | Postcode |
 |-----------------------------------------------------------------|-----------------------------------------------|----------|-------------|---------------------------|------------|----------------------------|-------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|---------------------------------|-------------------------|---------------------------|-------------------------------|----------|
@@ -71,7 +71,7 @@ The ODS code for GP Surgery MUST be a real code, this is used for routing report
 |                                                                 | STRETFORD                                     | Syrio    |             |                           | M          | 1992-05-29                 | &#9989;  2025-12-01                                                                 |                                                                                                                                                                                          |                       |                                 |                         |                            |                               |          |
 {:.grid}
 
-##### NHS North East and Yorkshire Genomics
+###### NHS North East and Yorkshire Genomics
 
 | NHS Number | Surname                             | Forename | Middle name | Other Name | Gender | Date Of Birth <br/> (SMSP) | Deceased | GP Surgery <br/> ODS Code                                                           | Address line 1  | Address line 2 | Address line 3 | Address line 4 <br/> city | Address line 5 <br/> district | Postcode |
 |------------|-------------------------------------|----------|-------------|------------|--------|----------------------------|----------|-------------------------------------------------------------------------------------|-----------------|----------------|----------------|---------------------------|-------------------------------|----------|
@@ -136,7 +136,7 @@ graph TD;
     end
 ```
 
-### NHS England EDI  Test Patients
+#### NHS England EDI  Test Patients
 
 These patients are created in the NHS England Test Data Repository (TDR) and were used for previous national programmes (from HSCIC and NHS Digital)
 
@@ -158,7 +158,7 @@ These patients are created in the NHS England Test Data Repository (TDR) and wer
 | 999 999 9603	 | EDITESTPATIENT | FOURTEEN |             | M (F)  | 1984-11-06 (1939-07-05)    |          | B85023                    |                |                |                |                           |                               | ub4 0db  |
 {:.grid}
 
-## Environments
+### Environments
 
 The APIs are available on the [Health and Social Care Network (HSCN)](https://digital.nhs.uk/services/health-and-social-care-network)
 
@@ -174,7 +174,7 @@ The APIs are available on the [Health and Social Care Network (HSCN)](https://di
 
 {:.grid}
 
-### Security and authorisation
+#### Security and authorisation
 
 This API has two access modes:
 

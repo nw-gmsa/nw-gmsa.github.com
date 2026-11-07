@@ -1,6 +1,6 @@
 Instance: GeneticClinicalReferral
 InstanceOf: NWQuestionnaire
-Title: "Genetic Clinical Referral"
+Title: "Genetic Clinical Referral Form"
 Description: """
 **For analysis purposes only - not an active or planned project.** See
 [Genetic Referrals](GeneticReferrals.html) for the narrative use case this

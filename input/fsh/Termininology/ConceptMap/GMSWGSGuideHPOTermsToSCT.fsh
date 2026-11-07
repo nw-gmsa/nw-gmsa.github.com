@@ -41,9 +41,9 @@ Usage:  #definition
 * version = "0.0.1"
 * status = #draft
 
-* sourceUri = "http://purl.obolibrary.org/obo/hp.owl"
+* sourceUri = "http://human-phenotype-ontology.org"
 
-* group.source = "http://purl.obolibrary.org/obo/hp.owl"
+* group.source = "http://human-phenotype-ontology.org"
 * group.sourceVersion = "20191108"
 * group.target = "http://snomed.info/sct"
 * group.targetVersion = "http://snomed.info/sct/83821000000107/version/20240605"

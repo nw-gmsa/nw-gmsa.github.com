@@ -155,7 +155,7 @@
           ]
         },
         "subject": {
-          "reference": "Patient/849705be-9ed3-499c-ab8a-5579dd02d305",
+          "reference": "urn:uuid:849705be-9ed3-499c-ab8a-5579dd02d305",
           "identifier": {
             "system": "urn:oid:2.16.840.1.113883.2.1.3.2.4.18.24",
             "value": "Fetus-A-8955713713",
@@ -169,7 +169,7 @@
         },
         "authoredOn": "2023-09-25",
         "requester": {
-          "reference": "PractitionerRole/01f81774-4153-4c18-a7df-1c4cdbba4f2f"
+          "reference": "urn:uuid:01f81774-4153-4c18-a7df-1c4cdbba4f2f"
         },
         "reasonCode": [
           {
@@ -198,12 +198,12 @@
         ],
         "supportingInfo": [
           {
-            "reference": "Observation/2a6e7070-5ea2-4ef3-96b6-607b474fcc0b"
+            "reference": "urn:uuid:2a6e7070-5ea2-4ef3-96b6-607b474fcc0b"
           }
         ],
         "specimen": [
           {
-            "reference": "Specimen/9fa291ba-d9a4-46a9-87e5-486bcaae47fa"
+            "reference": "urn:uuid:9fa291ba-d9a4-46a9-87e5-486bcaae47fa"
           }
         ],
         "note": [
@@ -307,7 +307,7 @@
           ]
         },
         "subject": {
-          "reference": "Patient/849705be-9ed3-499c-ab8a-5579dd02d305",
+          "reference": "urn:uuid:849705be-9ed3-499c-ab8a-5579dd02d305",
           "identifier": {
             "system": "urn:oid:2.16.840.1.113883.2.1.3.2.4.18.24",
             "value": "Fetus-A-8955713713",
@@ -321,7 +321,7 @@
         },
         "request": [
           {
-            "reference": "ServiceRequest/d302e6f8-c09f-4153-a669-8fa6b3a95d52"
+            "reference": "urn:uuid:d302e6f8-c09f-4153-a669-8fa6b3a95d52"
           }
         ]
       }
@@ -342,7 +342,7 @@
           ]
         },
         "subject": {
-          "reference": "Patient/849705be-9ed3-499c-ab8a-5579dd02d305",
+          "reference": "urn:uuid:849705be-9ed3-499c-ab8a-5579dd02d305",
           "identifier": {
             "system": "urn:oid:2.16.840.1.113883.2.1.3.2.4.18.24",
             "value": "Fetus-A-8955713713",
@@ -378,7 +378,7 @@
           }
         ],
         "patient": {
-          "reference": "Patient/849705be-9ed3-499c-ab8a-5579dd02d305",
+          "reference": "urn:uuid:849705be-9ed3-499c-ab8a-5579dd02d305",
           "identifier": {
             "system": "urn:oid:2.16.840.1.113883.2.1.3.2.4.18.24",
             "value": "Fetus-A-8955713713",

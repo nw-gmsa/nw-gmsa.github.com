@@ -8,7 +8,7 @@ This specification also conforms to HL7 UK Core.
 
 Process flows and background information are the same as [EU Health Data API](https://hl7.eu/fhir/health-data-api/1.0.0-ballot/en/index.html) and so are not repeated here.
 
-## Actors
+### Actors
 
 The table below summarises the actors referenced throughout this page.
 
@@ -30,14 +30,14 @@ The table below summarises the actors referenced throughout this page.
 
 Note: the Document Publisher and Resource Publisher are logical roles played by the same Regional Orchestration Engine — the former publishes whole documents, the latter populates individual FHIR resources.
 
-## API Security
+### API Security
 
 See also [API Security](api-security.html)
 
 HL7 SMART Backend Services - Defines authorization in FHIR. We use the SMART Backend Services profile for system-system authorization, and FHIR scopes.
 [Authorisation [IUA]](IUA.html) - Defines authorization and access control actors and mechanisms. We use the actors and transactions model.
 
-## Patient Identity Matching (ITI-78)
+### Patient Identity Matching (ITI-78)
 
 [Patient Identity Matching [PDQm]](PDQm.html) - Defines how a client can perform patient lookup given demographics against a server.
 
@@ -52,7 +52,7 @@ graph LR
   consumer --> |"PDQm Mobile Patient Demographics Query [ITI-78]"| mpi
 ```
 
-## Document Exchange (MHD)
+### Document Exchange (MHD)
 
 ```mermaid
 graph LR
@@ -83,7 +83,7 @@ The IHE XDS/MHD document-sharing pattern used in health information exchange has
 
 In short: a publisher submits documents into the registry/repository, and a consumer discovers them via the registry then fetches the content from the repository — with each interaction supporting both a modern FHIR transaction and its older HL7v2/XDS equivalent.
 
-### Sharing Laboratory Reports (Document) (ITI-105 and MDM_T02)
+#### Sharing Laboratory Reports (Document) (ITI-105 and MDM_T02)
 
 Used by these Use Cases:
 - [Regional Integration Engine (RIE)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/overview.md) - including the wire-tap to [Regional Shared Care Records](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/RegionalSharedCareRecords.md) (Greater Manchester Care Record (GMCR) and Lancashire and South Cumbria)
@@ -155,7 +155,7 @@ Composition o-- Observation
 DiagnosticReport o-- Observation
 ```
 
-## Resource Exchange (PCC-44)
+### Resource Exchange (PCC-44)
 
 Used by these Use Cases:
 - [NHS England Genomic Order Management Service (GOMS)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/GenomicOrderManagementService.md) - the RIE retrieves Laboratory Orders exposed by GOMS this way
@@ -172,7 +172,7 @@ graph LR
 
 [Resource Access [IPA/QEDm]](QEDm.html) - using HL7 International Patient Access (IPA), aligned with IHE Query for Existing Data for Mobile (QEDm) — for querying individual FHIR resources such as conditions, medications, and observations
 
-### Sharing Laboratory Reports (Resource)
+#### Sharing Laboratory Reports (Resource)
 
 Used by these Use Cases:
 - [OMICS DSS Result Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md)
@@ -205,7 +205,7 @@ sequenceDiagram
   end
 ```
 
-### Sharing Laboratory Reports (Resource and Document) (ITI-105 plus XD-LAB)
+#### Sharing Laboratory Reports (Resource and Document) (ITI-105 plus XD-LAB)
 
 When the document format is an HL7 Europe Laboratory Report FHIR Document, the Resource and Document sharing methods described above can be combined. As noted previously, the FHIR Document contains the same clinical content as the IHE LAB-3 / HL7 v2 ORU_R01 message, so it can be processed in the same way to persist or share individual resources.
 

@@ -1,6 +1,6 @@
 Instance: MessageHeaderGenomicReportAck
 InstanceOf: MessageHeader
-Title: "Message Header - Genomic Report"
+Title: "Message Header - Genomic Report Acknowledgement"
 Description: "TODO"
 Usage: #example
 

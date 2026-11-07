@@ -25,7 +25,7 @@ sequenceDiagram
 
 ```
 
-## Condition
+### Condition
 
 <table style="">
     <tr>
@@ -42,13 +42,13 @@ sequenceDiagram
 	</tr>
 </table>
 
-### Read
+#### Read
 
 <div class="alert alert-success" role="alert">
 GET [base]/Condition/{id}
 </div>
 
-### Search
+#### Search
 
 <div class="alert alert-success" role="alert">
 GET [base]/Condition?[parameter]=[value]
@@ -62,7 +62,7 @@ GET [base]/Condition?[parameter]=[value]
 | patient      | reference | GET [base]/Condition?patient=[id]                    | Who has the condition?                      |
 {:.grid}
 
-#### Examples
+##### Examples
 
 Searching for Conditions for Patient Liverpool.
 ```
@@ -71,7 +71,7 @@ Accept: application/fhir+json
 ```
 [Response](Bundle-036ceda5-8eea-42d5-9e8f-f977287c0dd6.json.html)
 
-## DiagnosticReport
+### DiagnosticReport
 
 <table style="">
     <tr>
@@ -93,13 +93,13 @@ Accept: application/fhir+json
 	</tr>
 </table>
 
-### Read
+#### Read
 
 <div class="alert alert-success" role="alert">
 GET [base]/DiagnosticReport/{id}
 </div>
 
-### Search
+#### Search
 
 <div class="alert alert-success" role="alert">
 GET [base]/DiagnosticReport?[parameter]=[value]
@@ -117,7 +117,7 @@ GET [base]/DiagnosticReport?[parameter]=[value]
 | _id          |           | GET [base]/DiagnosticReport?_id=[id]                              |                                                                                                                                                  |
 {:.grid}
 
-#### Example
+##### Example
 
 Searching for a DiagnosticReport by code (Diagnostic testing for known variant(s)).
 
@@ -140,7 +140,7 @@ GET [base]/DiagnosticReport?_id=46120&_include=DiagnosticReport:result
 Accept: application/fhir+json
 ```
 
-## Encounter
+### Encounter
 
 <table style="">
     <tr>
@@ -160,13 +160,13 @@ Accept: application/fhir+json
 
 This Encounter represents the overall episode or stay, for further information see [Interweave Encounter Grouping](https://fhir.interweavedigital.com/R4/StructureDefinition-Interweave-EncounterGrouping.html)
 
-### Read
+#### Read
 
 <div class="alert alert-success" role="alert">
 GET [base]/Encounter/{id}
 </div>
 
-### Search
+#### Search
 
 <div class="alert alert-success" role="alert">
 GET [base]/Encounter?[parameter]=[value]
@@ -180,7 +180,7 @@ GET [base]/Encounter?[parameter]=[value]
 | date         | date      | GET [base]/Encounter?date=[date]                     | A date within the actualPeriod the Encounter lasted |
 {:.grid}
 
-#### Example
+##### Example
 
 Searching for an Encounter by Visit Number.
 
@@ -189,7 +189,7 @@ GET [base]/Encounter?identifier=http://www.acme.org/encounter/identifiers/R0A|10
 Accept: application/fhir+json
 ```
 
-## Observation
+### Observation
 
 <table style="">
     <tr>
@@ -212,13 +212,13 @@ Accept: application/fhir+json
 </table>
 
 
-### Read
+#### Read
 
 <div class="alert alert-success" role="alert">
 GET [base]/Observation/{id}
 </div>
 
-### Search
+#### Search
 
 <div class="alert alert-success" role="alert">
 GET [base]/Observation?[parameter]=[value]
@@ -235,7 +235,7 @@ GET [base]/Observation?[parameter]=[value]
 | combo-code         | token     | GET [base]/Observation?combo-code=[system&#124;][code]       | The code of the observation type or component type                                                         |
 {:.grid}
 
-#### Examples
+##### Examples
 
 Searching for an [Variant](StructureDefinition-Variant.html) Observation by code.
 ```
@@ -262,7 +262,7 @@ Accept: application/fhir+json
 ```
 [Response](Bundle-92a0a6c6-404f-4347-8de4-fa1c457a037e.json.html)
 
-## ServiceRequest
+### ServiceRequest
 
 <table style="">
     <tr>
@@ -280,13 +280,13 @@ Accept: application/fhir+json
 </table>
 
 
-### Read
+#### Read
 
 <div class="alert alert-success" role="alert">
 GET [base]/ServiceRequest/{id}
 </div>
 
-### Search 
+#### Search 
 
 <div class="alert alert-success" role="alert">
 GET [base]/ServiceRequest?[parameter]=[value]
@@ -301,7 +301,7 @@ GET [base]/ServiceRequest?[parameter]=[value]
 | code                                      | token | GET [base]/ServiceRequest?code=[system&#124;][code]       | What is being requested/ordered                                                                            |
 {:.grid}
 
-#### Example
+##### Example
 
 Searching for a ServiceRequest via Order Placer Number.
 
@@ -324,7 +324,7 @@ GET [base]/ServiceRequest?code=https://fhir.nhs.uk/CodeSystem/England-GenomicTes
 Accept: application/fhir+json
 ```
 
-## Specimen
+### Specimen
 
 <table style="">
     <tr>
@@ -341,13 +341,13 @@ Accept: application/fhir+json
 	</tr>
 </table>
 
-### Read
+#### Read
 
 <div class="alert alert-success" role="alert">
 GET [base]/Specimen/{id}
 </div>
 
-### Search
+#### Search
 
 <div class="alert alert-success" role="alert">
 GET [base]/Specimen?[parameter]=[value]
@@ -361,7 +361,7 @@ GET [base]/Specimen?[parameter]=[value]
 | patient      | reference | GET [base]/Specimen?patient=[id]           | `id` is the logical id of the patient on the server which can be obtained by a [Patient](PDQm.html) query. |
 {:.grid}
 
-#### Example
+##### Example
 
 Searching for a Specimen via Accession Number.
 
@@ -370,7 +370,7 @@ GET [base]/Specimen?identifier=http://www.example.org/specimen/accession|1001166
 Accept: application/fhir+json
 ```
 
-## Task
+### Task
 
 <table style="">
     <tr>
@@ -386,13 +386,13 @@ Accept: application/fhir+json
 </table>
 
 
-### Read
+#### Read
 
 <div class="alert alert-success" role="alert">
 GET [base]/Task/{id}
 </div>
 
-### Search
+#### Search
 
 <div class="alert alert-success" role="alert">
 GET [base]/Task?[parameter]=[value]
@@ -410,7 +410,7 @@ GET [base]/Task?[parameter]=[value]
 | status               | token     | GET [base]/Task?status=[code]                             | Search by task status |
 {:.grid}
 
-#### Example
+##### Example
 
 Searching for a `requested` Task for an Organisation.
 

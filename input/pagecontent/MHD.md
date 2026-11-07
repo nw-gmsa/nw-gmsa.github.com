@@ -25,7 +25,7 @@ consumer --> |Request Documents| provider
 provider --> |Respond| consumer
 ```
 
-## Document Consumption 
+### Document Consumption 
 
 The sequence diagram below relates to Genomics Data Platform (GDP).
 
@@ -48,7 +48,7 @@ sequenceDiagram
 ```
 
 
-### Binary [ITI-68]
+#### Binary [ITI-68]
 
 Binary can be FHIR Document or PDF.
 
@@ -64,13 +64,13 @@ Binary can be FHIR Document or PDF.
 	</tr>
 </table>
 
-#### Read
+##### Read
 
 <div class="alert alert-success" role="alert">
 GET [base]/Binary/{id}
 </div>
 
-### DocumentReference [ITI-67]
+#### DocumentReference [ITI-67]
 
 <div class="alert alert-danger" role="alert">
 This is currently being elaborated and subject to change.
@@ -98,13 +98,13 @@ This is currently being elaborated and subject to change.
 	</tr>
 </table>
 
-#### Read
+##### Read
 
 <div class="alert alert-success" role="alert">
 GET [base]/DocumentReference/{id}
 </div>
 
-#### Search
+##### Search
 
 <div class="alert alert-success" role="alert">
 GET [base]/DocumentReference?[parameter]=[value]
@@ -120,7 +120,7 @@ GET [base]/DocumentReference?[parameter]=[value]
 | type         | token     | GET [base]/DocumentReference?type=[system&#124;][code]       | Kind of document                         |
 {:.grid}
 
-##### Example
+###### Example
 
 Searching for a DocumentReference by type (Genetic report) and patient.
 
@@ -129,7 +129,7 @@ GET [base]/DocumentReference?type=http://snomed.info/sct|1054161000000101&patien
 Accept: application/fhir+json
 ```
 
-### NRL Document Consumption
+#### NRL Document Consumption
 
 In the NRL version, Genomics Data Platform (GDP) is a Document Repository, and NRL is a Document Registry.
 
@@ -153,9 +153,9 @@ sequenceDiagram
 ```
 
 
-## Document Publish
+### Document Publish
 
-### MDM_T02 Original document notification and content
+#### MDM_T02 Original document notification and content
 
 Document is currently PDF.
 

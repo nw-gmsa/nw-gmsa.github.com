@@ -285,7 +285,7 @@ resources:
     description: Example Filler Order Message for internal or external LIMS
     exampleBoolean: true
   Bundle/Bundle-Message-FillerOrder-K1S6S:
-    name: Bundle 'Message' - Filler Order Message
+    name: Bundle 'Message' - Filler Order Message (K1S6S)
     description: Example Filler Order Message for internal or external LIMS
     exampleBoolean: true
   Bundle/Shire1StructuredR01:

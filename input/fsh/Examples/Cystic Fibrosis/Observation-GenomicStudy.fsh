@@ -26,4 +26,4 @@ Description: "Based on HL7 LRI Example 1 (Ref 5.9.1.2)"
 
 * component[+]
   * code = $loinc#51967-8 "Genetic disease assessed [ID]"
-  * valueCodeableConcept = $GCC#R185 "Cystic fibrosis carrier"
+  * valueCodeableConcept = $GCC#R185 "Cystic fibrosis carrier testing"

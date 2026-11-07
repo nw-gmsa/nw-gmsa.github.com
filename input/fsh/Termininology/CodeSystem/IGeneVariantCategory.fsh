@@ -1,6 +1,6 @@
 CodeSystem: IGeneVariantCategory
 Id: IGeneVariantCategory
-Title: "iGene Variant Category"
+Title: "iGene Variant Category Codes"
 Description: """
 iGene's five variant-type categories, each with its own repeating set of custom
 fields in iGene's "Variant Level Data" spec (`SEQV1`-`SEQV10`, `ICNV1`-`ICNV3`,

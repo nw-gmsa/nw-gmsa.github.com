@@ -84,7 +84,7 @@ referral time won't yet have any record of their own.
 {:.grid}
 
 Real `RelatedPerson` examples already in this IG (e.g.
-[RelatedPerson-MotherCerseiLondon](RelatedPerson-MotherCerseiLondon.html))
+[RelatedPerson-MotherCerseiLondon](RelatedPerson-RelatedPerson-MotherCerseiLondon.html))
 code `relationship` with HL7 v3 `RoleCode` (e.g. `MTH` "mother") rather than
 `UKCore-PersonRelationshipType` - both are shown as options above since
 neither is yet the confirmed convention for this specific Questionnaire.

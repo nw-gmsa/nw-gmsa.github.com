@@ -16,7 +16,7 @@ Trust's actual specimen shipment procedure (courier, packaging/labelling
 conventions, specimen reception process) - that alignment is left for a future pass.
 </div>
 
-## References
+### References
 
 1. IHE PaLM Technical Framework Supplement - [Specimen Event Tracking (SET)](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_Suppl_SET.pdf) - a specification for tracking specimen progress along this process (not adopted here - background/reference only)
 2. [GS1 UK Healthcare](https://www.gs1uk.org/industries/healthcare) - UK barcode standards that can be used with this process/workflow (not mandated here - background/reference only)
@@ -24,7 +24,7 @@ conventions, specimen reception process) - that alignment is left for a future p
 4. [Diagnostic Model Overview](diagnostic-core.html) - the identifiers referenced throughout this page
 5. [Specimen](StructureDefinition-Specimen.html)
 
-## Overview
+### Overview
 
 A [Laboratory Order (LAB-1)](LTW.html#laboratory-order-lab-1) message and its
 physical specimen travel to the laboratory by two different routes that have to be
@@ -47,7 +47,7 @@ flowchart TD
     G --> H
 ```
 
-## Current Process
+### Current Process
 
 This is generally a manual process today, and does not feature in automated
 interactions. The terms below follow common laboratory/logistics usage, with the
@@ -74,7 +74,7 @@ equivalent term used elsewhere in this IG noted in brackets where it differs:
    onto the LIMS from the specimen and its paperwork - barcodes normally speed this
    up by letting reception scan rather than re-key each identifier.
 
-### Key Identifiers
+#### Key Identifiers
 
 | Identifier             | Profile                                                                | Typically carried on                          |
 |--------------------------|---------------------------------------------------------------------------|----------------------------------------------------|
@@ -87,7 +87,7 @@ equivalent term used elsewhere in this IG noted in brackets where it differs:
 | Specimen Accession Number | [SpecimenAccessionNumber](StructureDefinition-SpecimenAccessionNumber.html) | Assigned by the laboratory on receipt, not shipped with the specimen |
 {:.grid}
 
-## IHE Specimen Event Tracking (SET)
+### IHE Specimen Event Tracking (SET)
 
 [IHE Specimen Event Tracking (SET)](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_Suppl_SET.pdf)
 is a specification for tracking the progress of specimens along this process, from
@@ -98,7 +98,7 @@ across collecting, shipping, receiving and accepting a specimen. This would be t
 natural specification to formalise the manual steps above, were this process ever
 automated - not adopted here.
 
-## Barcoding (GS1 UK Healthcare)
+### Barcoding (GS1 UK Healthcare)
 
 [GS1 UK Healthcare](https://www.gs1uk.org/industries/healthcare) publishes UK
 barcode standards (typically carried in a GS1 DataMatrix or GS1-128 symbol) that
@@ -122,12 +122,12 @@ shown in brackets) inside the barcode:
 
 Only NHS Number (via GSRN-Recipient) and Specimen Number (via GIAI) have well-established, GS1 UK-documented healthcare mappings; the remaining identifiers are locally-defined numbers that GS1 UK Healthcare does not itself standardise a barcode for - they would typically continue to be carried as plain text or a locally-agreed barcode alongside the GS1 keys above.
 
-## Data Models
+### Data Models
 
 - [Specimen](StructureDefinition-Specimen.html)
 - The identifier profiles listed under [Key Identifiers](#key-identifiers) above
 
-## Security Considerations
+### Security Considerations
 
 Includes:
 

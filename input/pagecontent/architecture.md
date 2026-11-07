@@ -1,5 +1,5 @@
 
-## Introduction
+### Introduction
 
 The architecture generally follows [Domain Driven Design [DDD]](https://en.wikipedia.org/wiki/Domain-driven_design), [Domain Driven Design](https://martinfowler.com/bliki/DomainDrivenDesign.html) and [Data Mesh](https://en.wikipedia.org/wiki/Data_mesh)
 
@@ -53,7 +53,7 @@ graph TD
     class LTW,REST,MDM green
 ```
 
-## Enterprise Integration
+### Enterprise Integration
 
 The [Intermediary](ActorDefinition-Intermediary.html), North West GMSA Regional Orchestration Engine (RIE) is an [Enterprise Service Bus](https://en.wikipedia.org/wiki/Enterprise_service_bus) most commonly known in the NHS as a Trust Integration Engine (TIE).
 
@@ -65,7 +65,7 @@ The ESB has a [Canonical Data Model](https://www.enterpriseintegrationpatterns.c
 - pipe+hat [HL7 v2](https://en.wikipedia.org/wiki/Health_Level_7)
 - potential use case for sharing reports: XML [IHE XDS.b](https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html)
 
-### Enterprise Data Contracts
+#### Enterprise Data Contracts
 
 <img style="padding:3px;width:60%;" src="CDM.jpeg" alt="CDM"/>
 <br clear="all">
@@ -91,7 +91,7 @@ These are detailed in [Data Contracts](data-intro.html) with standard-specific v
 > Genomic-Specific modeling, which this model supports, can be found on [NHS England FHIR Genomics Implementation Guide](https://simplifier.net/guide/fhir-genomics-implementation-guide)
 
 
-### Enterprise Workflow Interactions
+#### Enterprise Workflow Interactions
 
 <img style="padding:3px;width:60%;" src="LAB-1.jpeg" alt="LAB-1"/>
 <br clear="all">
@@ -101,6 +101,6 @@ These are detailed in [Data Contracts](data-intro.html) with standard-specific v
 To support genomics workflow, this guide is aligned to enterprise workflow processes described in [IHE Laboratory Testing Workflow](LTW.html), terminology from this guide especially around Actors is used throughout this Implementation Guide.
 
 
-### Security
+#### Security
 
 See [API Security](api-security.html)

@@ -1,18 +1,18 @@
 
-## Referenced Standards
+### Referenced Standards
 
 - [EURIDICE EU Health Data API - Authorization](https://hl7.eu/fhir/health-data-api/en/authorization.html)
 - [IHE Internet User Authorization (IUA)](https://profiles.ihe.net/ITI/IUA/index.html)
 
-### Get Authorization Server Metadata [ITI-103]
+#### Get Authorization Server Metadata [ITI-103]
 
-#### Request
+##### Request
 
 <div class="alert alert-success" role="alert">
 GET [base]/.well-known/openid-configuration
 </div>
 
-#### Response
+##### Response
 
 ```json
 {
@@ -50,9 +50,9 @@ GET [base]/.well-known/openid-configuration
 }
 ```
 
-### Get Access Token [ITI-71] (client credentials)
+#### Get Access Token [ITI-71] (client credentials)
 
-#### Request
+##### Request
 
 Body is the following values in x-www-form-urlencoded format
 
@@ -68,7 +68,7 @@ Authorization: Basic {base64 clientid and clientsecret}<br/>
 Content-Type: application/x-www-form-urlencoded
 </div>
 
-#### Response
+##### Response
 
 ```json
 {
@@ -79,9 +79,9 @@ Content-Type: application/x-www-form-urlencoded
 }
 ```
 
-### Introspect Token [ITI-102]
+#### Introspect Token [ITI-102]
 
-#### Request
+##### Request
 
 Body is the following values in x-www-form-urlencoded format
 
@@ -96,7 +96,7 @@ Authorization: Basic {base64 clientid and clientsecret}<br/>
 Content-Type: application/x-www-form-urlencoded
 </div>
 
-#### Response
+##### Response
 
 ```json
 {

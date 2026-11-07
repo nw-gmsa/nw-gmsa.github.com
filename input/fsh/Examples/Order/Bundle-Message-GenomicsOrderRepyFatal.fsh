@@ -1,6 +1,6 @@
 Instance: GenomicsOrderMessageReplyFatal
 InstanceOf: BundleMessage
-Title:       "Bundle 'Message' - Genomics Order Reply"
+Title:       "Bundle 'Message' - Genomics Order Reply (Fatal)"
 Description:  "Async response to a Genomic Order"
 Usage: #example
 * insert MessageBundle("urn:uuid:9612365d-52a4-4fab-87e7-8a09d753f095", "2024-10-13T10:33:00+00:00")

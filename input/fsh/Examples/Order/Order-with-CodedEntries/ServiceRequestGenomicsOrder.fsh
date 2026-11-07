@@ -44,7 +44,7 @@ Description: "TODO"
 * reasonCode[+]
   * coding[+]
     * code = #R240
-    * display = "Diagnostic testing for known mutation(s)"
+    * display = "Diagnostic testing for known variant(s)"
     * system = $GCC
 * reasonReference[+]
   * reference = "urn:uuid:47f34393-cc83-428f-b8dd-54bcd372c847"

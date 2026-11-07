@@ -54,7 +54,7 @@ Importantly, both Document Messaging and Conversational Messaging are likely to 
 <p class="figureTitle">Genomic Enterprise Integration</p> 
 <br clear="all">
 
-## Document Messaging
+### Document Messaging
 
 This basic patten is the exchange of records via [Document Messaging](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) and is supported by a wide area of [Messaging Patterns](https://www.enterpriseintegrationpatterns.com/patterns/messaging/index.html) 
 In NHS Trusts this is often supported by a Trust Integration Engine.
@@ -96,7 +96,7 @@ classDiagram
 
 Note: [FHIR Transaction](https://hl7.org/fhir/R4/http.html#transaction) is considered an antipattern for loosely coupled systems in an enterprise environment.
 
-### Example - Laboratory Testing Workflow
+#### Example - Laboratory Testing Workflow
 
 Is based on Document Messaging and two flows are combined to create a workflow e.g. [IHE Laboratory Testing Workflow (LTW)](LTW.html)
 
@@ -117,7 +117,7 @@ LIMS -->  |LAB-3 Laboratory Report ORU_R01| EPR
 
 ```
 
-## Document Sharing
+### Document Sharing
 
 Document Messaging's main limitation is it is between two parties; often in health care many other practitioners are involved. Messaging can be used to solve this, but it begins to have scaling and data concurrency issues. 
 In FHIR these API's are known as [FHIR RESTful](https://www.hl7.org/fhir/R4/http.html#rest) and [FHIR Search](https://www.hl7.org/fhir/R4/search.html)
@@ -133,9 +133,9 @@ s --> |Query API<br/>XDS API<br/>FHIR RESTful| d
 
 ```
 
-### Example – Document Exchange
+#### Example – Document Exchange
 
-See also [Health Information Exchange - Document Exchange](HIE.html#document-exchange)
+See also [Health Information Exchange - Document Exchange](HIE.html#document-exchange-mhd)
 
 ```mermaid
 graph LR;
@@ -152,17 +152,17 @@ s --> |Retrieve Document ITI-68<br/>Retrieve Document Set ITI-41| Repository
 
 ```
 
-### Example - NHS England National Record Locator
+#### Example - NHS England National Record Locator
 
 See [NHS England National Record Locator](https://digital.nhs.uk/services/national-record-locator)
 
-### Example - Cross Enterprise Document Sharing Laboratory 
+#### Example - Cross Enterprise Document Sharing Laboratory 
 
 Electronic Document Management (EDM) is a common practice for storing and sharing documents across healthcare systems and common formats for the documents are often PDF. In diagnostics this is not desirable and so instead a document format called [Clinical Document Architecture (CDA)](https://en.wikipedia.org/wiki/Clinical_Document_Architecture), in HL7 FHIR this is known as [FHIR Document](https://hl7.org/fhir/R4/documents.html)
 
 This is described in [IHE Sharing Laboratory Reports](https://wiki.ihe.net/index.php/Sharing_Laboratory_Reports) and [HL7 Europe Laboratory Report](https://build.fhir.org/ig/hl7-eu/laboratory/). [NHS England Pathology](https://simplifier.net/guide/pathology-fhir-implementation-guide/Home/Design/How-to-Construct-Bundles?version=0.4.0) is based on this but uses [Document Messaging](#document-messaging); the EU is likely to use [Document Sharing](#document-sharing).
 
-## Clinical Document Architecture (FHIR Document/CDA)
+### Clinical Document Architecture (FHIR Document/CDA)
 
 [FHIR Document](https://hl7.org/fhir/R4/documents.html) replaces HL7 CDA and unstructed documents such as PDF. The FHIR Document is a FHIR resource that is a container for the document content.
 
@@ -191,7 +191,7 @@ The FHIR Document can also be treated as a HTML document, for example, see [Bund
 <br clear="all">
 
 
-## Document Event Notifications
+### Document Event Notifications
 
 Prerequisite is [Document Sharing](#document-sharing) 
 
@@ -244,21 +244,21 @@ OrderPlacer ->> OrderFiller: Document Notification
 OrderFiller ->> DocumentExchange: Retrieve Document via Document Exchange
 ```
 
-### Example - Multicast Notifcation Service
+#### Example - Multicast Notifcation Service
 
 See [NHS England Multicast Notification Service API](https://digital.nhs.uk/developer/api-catalogue/multicast-notification-service)
 
-### Example - Document Subscription for Mobile (DSUBm)
+#### Example - Document Subscription for Mobile (DSUBm)
 
 See [IHE Document Subscription for Mobile (DSUBm)](https://profiles.ihe.net/ITI/DSUBm/index.html)
 
-## Document Workflow
+### Document Workflow
 
-### Example - IHE Cross-Enterprise Document Workflow Content Profile (XDW)
+#### Example - IHE Cross-Enterprise Document Workflow Content Profile (XDW)
 
 See [Cross-Enterprise Document Workflow Content Profile (XDW)](https://profiles.ihe.net/ITI/TF/Volume1/ch-30.html)
 
-## Data Sharing
+### Data Sharing
 
 Can be considered an extension of Document Sharing where the data contained in the documents is queryable. This data is known as Resources and is related to Segments used in HL7 v2 Messaging.
 
@@ -276,11 +276,11 @@ consumer --> |Request Resources| provider
 provider --> |Respond| consumer
 ```
 
-### Example - Resource Exchange
+#### Example - Resource Exchange
 
-See also [Health Information Exchange - Resource Exchange](HIE.html#resource-exchange)
+See also [Health Information Exchange - Resource Exchange](HIE.html#resource-exchange-pcc-44)
 
-## Resource Event Notifications 
+### Resource Event Notifications 
 
 Prerequisite is [Data Sharing](#data-sharing). 
 
@@ -341,7 +341,7 @@ OrderFiller -->> OrderPlacer: Event Notification
 OrderPlacer -->> OrderFiller: Retrieve Resources
 ```
 
-## Conversational Messaging (Resource/Data)
+### Conversational Messaging (Resource/Data)
 
 See [Conversation Patterns](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Conversation.html)
 For a FHIR implementation see [FHIR Worfklow](https://hl7.org/fhir/R4/workflow.html)
@@ -395,15 +395,15 @@ classDiagram
     }
 ```
 
-### Example - NHS England Genomic Order Management System
+#### Example - NHS England Genomic Order Management System
 
 See [NHS England Genomic Order Management System](https://simplifier.net/guide/FHIR-Genomics-Implementation-Guide/Home/Design/Interactions.page.md?version=current)
 
-### Example - HL7 AU eRequesting 
+#### Example - HL7 AU eRequesting 
 
 See [AU eRequesting Implementation Guide](https://build.fhir.org/ig/hl7au/au-fhir-erequesting/)
 
-### Example - NHS England Electronic Prescription Service
+#### Example - NHS England Electronic Prescription Service
 
 See [NHS England Electronic Prescription Service - Dispensing](https://simplifier.net/guide/NHSEngland-EPS/Home/Design/Dispensing?version=current)
 

@@ -2,7 +2,7 @@
 This is currently being elaborated and subject to change.
 </div>
 
-## Introduction
+### Introduction
 
 This page is aimed at **Integration Developers**, **Data Scientists** and **Data
 Engineers** building against this Implementation Guide. It gives an overview of
@@ -17,7 +17,7 @@ for UK Core and other UK-specific FHIR questions.
 North West Genomics runs two InterSystems products that both use HL7, but for
 different purposes and in different styles:
 
-### Regional Integration Engine (RIE)
+#### Regional Integration Engine (RIE)
 
 Built on InterSystems Health Connect. This is the messaging layer: it
 supports workflows *between* NHS Organisations (Trust EPR to NW Genomics and
@@ -109,7 +109,7 @@ own language) - though InterSystems IRIS also supports embedding Python
 directly, so RIE-adjacent development doesn't have to be done in
 ObjectScript alone.
 
-### FHIR Repository
+#### FHIR Repository
 
 Built on the InterSystems FHIR Repository. This is an **operational data
 platform**, not a messaging engine: it is populated by
@@ -207,7 +207,7 @@ operation and IG Publisher checks this IG's own examples are checked against)
 Interoperability](HowToEngineerInteroperability.html) for why this IG builds
 profiles the way it does.
 
-## Introduction to FHIR
+### Introduction to FHIR
 
 [HL7 FHIR](https://hl7.org/fhir/) (Fast Healthcare Interoperability Resources)
 is the standard both products above are built on. A few concepts recur
@@ -271,7 +271,7 @@ flowchart LR
     VAL --> OUT
 ```
 
-### FHIR Terminology Services
+#### FHIR Terminology Services
 
 A **Terminology Server** is a FHIR server specialised in serving coded
 content - `CodeSystem`s and `ValueSet`s - and running the terminology
@@ -311,7 +311,7 @@ own closing note on [IHE Sharing Valuesets, Codes, and Maps
 (SVCM)](https://profiles.ihe.net/ITI/SVCM/index.html) for where this pattern
 is heading.
 
-## Integration and Interoperability Developer Notebooks
+### Integration and Interoperability Developer Notebooks
 
 Worked-example Jupyter notebooks from
 [nw-gmsa/Testing](https://github.com/nw-gmsa/Testing/tree/main/notebooks) - each
@@ -340,7 +340,7 @@ ones), and most relate directly to one or more of this IG's [Use Cases](index.ht
 
 Notebook 13's terminology-server pattern (querying a remote FHIR server's `$lookup`/`$translate` operations live, rather than hand-maintaining a static map) is the same shape [IHE Sharing Valuesets, Codes, and Maps (SVCM)](https://profiles.ihe.net/ITI/SVCM/index.html) formalises as a profile - this IG is likely to adopt an SVCM-conformant terminology service for SNOMED CT/HPO/Genomic Test Directory conversions in future, rather than continuing to hand-build `ConceptMap`s like [GMSWGSGuideHPOTermsToSCT](ConceptMap-GMSWGSGuideHPOTermsToSCT.html) notebook-by-notebook.
 
-### Postman Collection
+#### Postman Collection
 
 For a first look that doesn't need Python/Jupyter, the same requests notebooks
 `01`, `02` and `13` build by hand are also available as a ready-to-run
@@ -391,7 +391,7 @@ it automatically when its source request is re-run.
    **13** against the Genomics England terminology server without any
    credentials at all.
 
-## Data Science and Analytics Notebooks
+### Data Science and Analytics Notebooks
 
 The notebooks above are aimed at integration/interoperability developers - FHIR and HL7
 v2 message shapes, not analysis of genomic data itself. For that audience, Genomics

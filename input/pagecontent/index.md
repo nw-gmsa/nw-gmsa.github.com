@@ -1,4 +1,4 @@
-## Overview
+### Overview
 
 Diagnostic testing is essential to modern clinical care, offering objective information that supports decision-making at every stage of a patient’s journey—from initial evaluation to long-term monitoring and assessment of outcomes.
 
@@ -48,7 +48,7 @@ As part of the service transition, existing systems for electronic test ordering
 <br clear="all">
 
 
-## How to Read this IG
+### How to Read this IG
 
 ```mermaid
 graph TD 
@@ -139,7 +139,7 @@ Artefacts --> |Data Contracts| HL7
 | API Security                    | [API Security](api-security.html)                                  | [Authorisation [IUA]](IUA.html) OAuth2                                                   |                                                                                                                                                                                                 |                                                                                               
 {:.grid}
 
-## Use Cases
+### Use Cases
 
 Real-world scenarios this IG is built against, each linking to the relevant
 Analysis and Design (Volume 1) and Data Model (Volume 3) material plus its own
@@ -169,15 +169,15 @@ worked-example page - see the **Use Cases** menu for the full list.
 
 
 
-## SNOMED CT
+### SNOMED CT
 
 UK edition of SNOMED (83821000000107)
 
-## Dependencies
+### Dependencies
 
 {% include dependency-table.xhtml %}
 
-## Credits
+### Credits
 
 | Role(s)        | Contributor(s)                                             | 
 |----------------|------------------------------------------------------------|

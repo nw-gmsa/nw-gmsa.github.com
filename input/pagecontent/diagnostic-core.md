@@ -4,7 +4,7 @@ This implementation guide primarily focuses on the **Diagnostic Workflow** and h
 
 In software design, these areas are often referred to as [domains](https://en.wikipedia.org/wiki/Domain-driven_design). The **Genomic Diagnostic Workflow** operates across several of these domains — in software architecture terms, this is known as a [bounded context](https://martinfowler.com/bliki/BoundedContext.html).
 
-## National NHS and NHS Trust Data Models
+### National NHS and NHS Trust Data Models
 
 **National NHS bodies** (e.g. NHS England, PDS, ODS) and **NHS Trusts** are, in
 [Domain Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design)
@@ -97,7 +97,7 @@ Patient Registry, Service Provider Directory Registry and Clinical
 Categorization Registry - scoped down to what the UK's own national services
 actually provide, plus what stays genuinely local.
 
-### Patient Registry (PDS)
+#### Patient Registry (PDS)
 
 Analogous to FHIR's own [Patient
 Registry](https://hl7.org/fhir/administration-module.html#patient-reg), but
@@ -128,7 +128,7 @@ flowchart LR
     RelatedPerson --> Patient
 ```
 
-### Care Directory Services
+#### Care Directory Services
 
 Analogous to FHIR's own [Service Provider Directory
 Registry](https://hl7.org/fhir/administration-module.html#dir-reg), with
@@ -185,7 +185,7 @@ flowchart TB
     HealthcareService --> Organization
 ```
 
-### Clinical Categorisation (Trust-Local, not a National Register)
+#### Clinical Categorisation (Trust-Local, not a National Register)
 
 Analogous to FHIR's own [Clinical Categorization
 Registry](https://hl7.org/fhir/administration-module.html#clinical-reg) -
@@ -211,7 +211,7 @@ flowchart LR
     Trust --> HospitalSpell
 ```
 
-## Entity Relationship Diagram
+### Entity Relationship Diagram
 
 This is the **basic model** this guide is built on: an `OrderingFacilityAndPractitioner`
 places a `ServiceRequest` (order) for a `Patient`, which references a
@@ -248,7 +248,7 @@ how they relate. Field-level (level 2) diagrams, showing the actual
 attributes each entity carries, are on the two archetype Questionnaire pages
 below.
 
-## Closed-Loop Referrals
+### Closed-Loop Referrals
 
 Every order/report relationship in this guide is a **closed loop**: something
 requests work (a `ServiceRequest`), and something else closes that loop with
@@ -303,7 +303,7 @@ Summary of the modelling differences:
   loops above into a single FHIR Document - there is no `ServiceRequest`
   behind it and nothing for `ServiceRequest.intent` to describe.
 
-### Linking Related Orders: ServiceRequest.requisition
+#### Linking Related Orders: ServiceRequest.requisition
 
 `ServiceRequest.intent` says what *kind* of order a given `ServiceRequest`
 is, but not which original Laboratory Order it belongs to - that's a separate
@@ -357,7 +357,7 @@ assigned by the Requesting Genomic Laboratory for the referral as a whole,
 rather than each one referencing back to a single parent order's own Filler
 Order Number.
 
-### Linking Across Diagnostic Services
+#### Linking Across Diagnostic Services
 
 `ServiceRequest.requisition` links one order to the order it was *derived
 from*, within a single family descending from one Laboratory Order (or
@@ -383,7 +383,7 @@ radiology):
   same `Specimen` resource, or its `Specimen.accessionIdentifier` value is
   repeated across separately-tracked `Specimen` resources per service.
 
-## Archetype Questionnaires
+### Archetype Questionnaires
 
 This basic model is deliberately abstract - it doesn't yet say which specific
 fields an order or report needs, or how those fields map onto HL7 v2 segments

@@ -53,5 +53,5 @@ Description: "TODO"
 * reasonCode[+]
   * coding[+]
     * code = #R240
-    * display = "Diagnostic testing for known mutation(s)"
+    * display = "Diagnostic testing for known variant(s)"
     * system = $GCC

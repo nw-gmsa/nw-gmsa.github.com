@@ -1,6 +1,6 @@
 CodeSystem: NationalHealthIdentifiers
 Id: NationalHealthIdentifiers
-Title: "UK National Health Identifiers"
+Title: "UK National Health Identifier Codes"
 Description: """
 England/Wales NHS Number, Scotland CHI Number and Northern Ireland Health and Care Number
 """

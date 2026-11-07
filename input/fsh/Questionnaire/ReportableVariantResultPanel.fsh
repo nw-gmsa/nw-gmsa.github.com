@@ -174,7 +174,7 @@ Usage:  #definition
     * item[+]
       * type = #choice
       * linkId = "LRI/B.7"
-      * code[+] = $loinc#48019-4 "DNA change [Type]"
+      * code[+] = $loinc#48019-4 "DNA change type"
       * text = "DNA Change Type"
       * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueCodeableConcept"
       * item[+]
@@ -391,7 +391,7 @@ Usage:  #definition
     * item[+]
       * type = #decimal
       * linkId = "LRI/B.24"
-      * code[+] = $loinc#81258-6 "Allelic Frequency [NFr]"
+      * code[+] = $loinc#81258-6 "Sample variant allelic frequency [NFr]"
       * text = "Allelic Frequency"
       * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueQuantity"
       * item[+]
@@ -413,7 +413,7 @@ Usage:  #definition
   * item[+]
     * type = #group
     * linkId = "StructuralVariantAddenda"
-    * code[+] = $loinc#81297-4 "Structural variant addendum panel"
+    * code[+] = $loinc#81297-4 "Structural variant panel"
     * text = "Structural Variant Addenda"
     * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component"
     * item[+]

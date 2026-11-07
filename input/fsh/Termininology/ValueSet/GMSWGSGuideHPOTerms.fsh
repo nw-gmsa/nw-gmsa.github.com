@@ -9,10 +9,10 @@ directly from the form itself) on page 2 of the [GMS WGS Test Request Form
 Disease](https://mft.nhs.uk/app/uploads/2026/05/GMS-WGS-Test-Order-Form-Rare-Disease.pdf).
 
 Unlike the CodeSystem this ValueSet previously drew from, these **are**
-real HPO codes (`http://purl.obolibrary.org/obo/hp.owl`, release
-`20191108`) - confirmed against the Genomics England terminology server
-(`https://ontoserver.aws.gel.ac/fhir`) via `CodeSystem/$lookup`, not
-guessed. See [GMSWGSGuideHPOTermsToSCT
+real HPO codes (`http://human-phenotype-ontology.org`, release `20191108`) - confirmed against the
+Genomics England terminology server (`https://ontoserver.aws.gel.ac/fhir`,
+which publishes HPO as `http://purl.obolibrary.org/obo/hp.owl`) via
+`CodeSystem/$lookup`, not guessed. See [GMSWGSGuideHPOTermsToSCT
 ConceptMap](ConceptMap-GMSWGSGuideHPOTermsToSCT.html) for the SNOMED CT
 mapping built from the same verification pass (27 of these 38 resolved;
 the rest have no entry in that server's own `sct-to-hpo` map).
