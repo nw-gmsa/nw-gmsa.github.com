@@ -1,3 +1,12 @@
+<div class="alert alert-danger">
+<b>Workaround - identifier type <code>AN</code> is not technically correct.</b>
+Hospital Provider Spell is an NHS concept with no equivalent in HL7: v2 Table 0203 has no identifier type code for a spell.
+This profile uses <code>AN</code> (Account number) as an interim workaround. Strictly, <code>AN</code> identifies an
+account (HL7 v2 <code>PID-18</code> Patient Account Number, FHIR <code>Account.identifier</code>) rather than an encounter.
+The closest encounter-level code, <code>VN</code> (Visit number), is already used by
+<a href="StructureDefinition-VisitNumber.html">Visit Number</a>. Expect this identifier type to change once a better code is agreed.
+</div>
+
 ### NHS Data Dictionary and Model
 
 [HOSPITAL PROVIDER SPELL IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_identifier.html) -
