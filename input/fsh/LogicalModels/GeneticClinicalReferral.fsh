@@ -38,11 +38,12 @@ Characteristics: #can-be-target
   * birthDate 1..1 date "Date of birth" "Patient date of birth"
   * address 0..1 Address "Address" "Address line(s) and postcode"
   * sexRegisteredAtBirth 0..1 code "Sex registered at birth" "Administrative gender"
-  * accountNumber 0..1 HospitalProviderSpellIdentifier "Account Number (Episode or Stay Number)" "Patient account number"
+  * accountNumber 0..1 Identifier "Account Number (Episode or Stay Number)" "Patient account number - a Visit Number (VN) or Hospital Provider Spell Identifier (AN). Only diagnostic laboratory orders require the Hospital Provider Spell Identifier."
   * pedigreeNumber 0..1 string "G Number (Pedigree Number)" """
 Links the proband to consultands (at-risk relatives) referred as part of the same
 family investigation. Not a Patient identifier.
 """
+* patient.accountNumber only VisitNumber or HospitalProviderSpellIdentifier
 * patient.sexRegisteredAtBirth from http://hl7.org/fhir/ValueSet/administrative-gender (required)
 
 // Referrer and recipient

@@ -223,7 +223,7 @@ already defines rather than inventing new ones.
 | Patient - NHS Number                    | `PID-3` (identifier, NHS Number assigning authority)       | `Patient.identifier` (NHS Number system)                    | [NHSIdentifier](StructureDefinition-NHSIdentifier.html)                                            |
 | Patient - Medical Record Number (MRN)   | `PID-3` (identifier, MRN assigning authority)               | `Patient.identifier` (MRN system)                            | [MedicalRecordNumber](StructureDefinition-MedicalRecordNumber.html)                                |
 | Patient - name, date of birth, sex, address | `PID-5`, `PID-7`, `PID-8`, `PID-11`                     | `Patient.name`, `.birthDate`, `.gender`, `.address`          | Not specific to referral - standard `Patient` demographics                                        |
-| Patient Account/Episode Number          | `PV1-19` (Visit Number, type `AN`)                         | `Encounter.identifier`                                        | [HospitalProviderSpellIdentifier](StructureDefinition-HospitalProviderSpellIdentifier.html)        |
+| Patient Account/Episode Number          | `PV1-19` (Visit Number, type `VN` or `AN`)                  | `Encounter.identifier`                                        | [VisitNumber](StructureDefinition-VisitNumber.html) or [HospitalProviderSpellIdentifier](StructureDefinition-HospitalProviderSpellIdentifier.html) |
 | Referral (order) identifier             | `ORC-2` and `OBR-2` (Placer Order Number)                    | `ServiceRequest.identifier`                                 | [OrderIdentifier](StructureDefinition-OrderIdentifier.html)                                        |
 | Referral identifier - eRS-specific      | *(no `OMG_O19` equivalent)*                                 | `ServiceRequest.identifier` (system `https://fhir.nhs.uk/Id/UBRN`) | Not currently modelled - a new identifier profile, analogous to `OrderIdentifier`, would be needed if eRS referrals were represented |
 | Referral status                         | `ORC-1` (Order Control), `ORC-5` (Order Status)             | `ServiceRequest.status`                                     | Standard FHIR status code, not separately profiled                                                |
@@ -232,15 +232,20 @@ already defines rather than inventing new ones.
 | Reason for referral                     | `OBR-31` (Reason for Study), `DG1` (Diagnosis)                | `ServiceRequest.reasonCode`, or `Condition`                   | Not currently modelled for this use case                                                          |
 | Referring provider/organisation         | `ORC-12` and `OBR-16` (Ordering Provider), `ORC-21` (Ordering Facility) | `Practitioner`/`PractitionerRole`, `Organization`             | Analogous to [Order Placer](ActorDefinition-OrderPlacer.html)                                       |
 | Referred-to provider/service            | `MSH-5` / `MSH-6` (Receiving Application / Facility)         | `Practitioner`/`PractitionerRole`, `Organization`, `HealthcareService` | Analogous to [Order Filler](ActorDefinition-OrderFiller.html)                                       |
-| Visit/encounter context (if any)        | `PV1`                                                       | `Encounter`                                                  | Not currently modelled for this use case                                                          |
+| Visit/encounter context (if any)        | `PV1` (Patient Visit), identified by `PV1-19`               | `ServiceRequest.encounter` (`Encounter`)                     | [Visit](StructureDefinition-Visit.html) (by its [VisitNumber](StructureDefinition-VisitNumber.html)) or [HospitalSpell](StructureDefinition-HospitalSpell.html) (by its [HospitalProviderSpellIdentifier](StructureDefinition-HospitalProviderSpellIdentifier.html)) - as in the [Genetic Clinical Referral](StructureDefinition-GeneticClinicalReferral.html) logical model (`patient.accountNumber`) |
 {:.grid}
 
 Notes on this sketch:
 
-- `OMG_O19`'s `PV1-19` (Visit Number, identifier type `AN`) is the v2 field that
-  corresponds to this IG's existing Account/Episode Number identifier, consistent with
-  the [HL7 v2](hl7v2.html) PV1 segment - it is **not** `PID-18` (Patient Account
-  Number), nor the v2 `ACC` segment, which is unrelated (Accident information).
+- `OMG_O19`'s `PV1-19` (Visit Number) is the v2 field that corresponds to this IG's
+  existing Account/Episode Number identifier, consistent with the [HL7 v2](hl7v2.html)
+  PV1 segment - it is **not** `PID-18` (Patient Account Number), nor the v2 `ACC`
+  segment, which is unrelated (Accident information). For a referral it may carry
+  either a [Visit Number](StructureDefinition-VisitNumber.html) (identifier type `VN`)
+  or a [Hospital Provider Spell
+  Identifier](StructureDefinition-HospitalProviderSpellIdentifier.html) (identifier
+  type `AN`); only diagnostic laboratory orders require the Hospital Provider Spell
+  Identifier.
 - eRS's own referral identifier, the UBRN, has no `OMG_O19` equivalent - it is an
   eRS-specific concept that would need its own identifier profile if this pathway
   were ever modelled in FHIR, following the same pattern as the existing
@@ -282,7 +287,7 @@ erDiagram
         Address address
     }
     Encounter {
-        Identifier accountNumber "HospitalProviderSpellIdentifier"
+        Identifier accountNumber "VisitNumber or HospitalProviderSpellIdentifier"
     }
     Condition {
         CodeableConcept code "reason for referral - not yet profiled"

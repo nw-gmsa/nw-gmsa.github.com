@@ -131,7 +131,7 @@ Usage:  #definition
     * item[+]
       * linkId = "LN/56797-4-designNote"
       * type = #display
-      * text = "PV1-19 (Visit/Account Number) - not the unrelated v2 ACC segment."
+      * text = "PV1-19 (Visit/Account Number) - identifier type VN (Visit Number) or AN (Hospital Provider Spell Identifier); not the unrelated v2 ACC segment."
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 // Patient	G number (pedigree number)

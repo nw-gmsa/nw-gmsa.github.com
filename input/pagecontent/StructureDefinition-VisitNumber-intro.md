@@ -12,14 +12,14 @@ which this v2 field is often used to carry in practice.
 
 | Ubiquitous Term | HL7 v2                                                                                                                                | OID  | Notes |
 |-------------------|------------------------------------------------------------------------------------------------------------------------------------------|------|-------|
-| Visit Number       | Visit Number (PV1-19). See [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws) PV1 documentation. | none - locally assigned | In this IG, PV1-19 carries the [Hospital Provider Spell Identifier](StructureDefinition-HospitalProviderSpellIdentifier.html) with identifier type `AN` (e.g. `1001166717^^^R0A^AN`), not `VN` |
+| Visit Number       | Visit Number (PV1-19). See [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws) PV1 documentation. | none - locally assigned | For diagnostic laboratory orders, PV1-19 carries the [Hospital Provider Spell Identifier](StructureDefinition-HospitalProviderSpellIdentifier.html) with identifier type `AN` (e.g. `1001166717^^^R0A^AN`), not `VN`. A clinical genetics referral (`OMG_O19`) may use either `VN` or `AN` |
 {:.grid}
 
 ### Examples
 
 #### HL7 v2 CX
 
-Generic `VN` CX shown for reference only - this IG's PV1-19 examples use `AN`, see [Hospital Provider Spell Identifier](StructureDefinition-HospitalProviderSpellIdentifier.html).
+As used by a clinical genetics referral (`OMG_O19`). Diagnostic laboratory orders use `AN` instead, see [Hospital Provider Spell Identifier](StructureDefinition-HospitalProviderSpellIdentifier.html).
 
 ```aiignore
 12345^^^R0A^VN
