@@ -27,16 +27,16 @@ Description:    """
 
 // Obligations from https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/InformaticsIssues.md (pathway identifiers)
 * identifier[OrderPlacerNumber] only OrderPlacerNumber
-* identifier[OrderPlacerNumber] ^short = "Identifier assigned by the Order Placer, or by the Requestor for a sub-order. (HL7 v2 ORC-2/OBR-2 Placer Order Number)"
+* identifier[OrderPlacerNumber] ^short = "Identifier assigned by the Order Placer, or by the Requestor for a sub-order. (HL7 v2 ORC-2/OBR-2 Placer Order Number). Optional for a sub-order (recommended in LAB-36): the placer specimen identifier can identify the sub-order instead"
 * identifier[OrderPlacerNumber] insert Obligation(#SHALL:populate, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderPlacer)
-* identifier[OrderPlacerNumber] insert Obligation(#SHALL:populate, https://fhir.nwgenomics.nhs.uk/ActorDefinition/Requestor)
+* identifier[OrderPlacerNumber] insert Obligation(#SHOULD:populate, https://fhir.nwgenomics.nhs.uk/ActorDefinition/Requestor)
+* identifier[OrderPlacerNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/Subcontractor)
 * identifier[OrderPlacerNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderFiller)
 * identifier[OrderPlacerNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/AutomationManager)
 
 * identifier[OrderFillerNumber] only OrderFillerNumber
 * identifier[OrderFillerNumber] ^short = "Identifier assigned by the Order Filler, or by the Subcontractor for a sub-order. (HL7 v2 ORC-3/OBR-3 Filler Order Number)"
 * identifier[OrderFillerNumber] insert Obligation(#SHALL:populate, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderFiller)
-* identifier[OrderFillerNumber] insert Obligation(#SHALL:populate, https://fhir.nwgenomics.nhs.uk/ActorDefinition/Requestor)
 * identifier[OrderFillerNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/Subcontractor)
 
 * requisition only OrderGroupNumber

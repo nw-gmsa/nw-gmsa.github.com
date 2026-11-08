@@ -26,7 +26,7 @@ Description:    """
   PlacerSpecimenNumber 0..1 MS and FillerSpecimenNumber 0..1 MS and ShipmentTrackingNumber 0..1 MS and GS1SSCC 0..1
 
 * identifier[PlacerSpecimenNumber].type = $v2-0203#PLAC
-* identifier[PlacerSpecimenNumber] ^short = "Identifier assigned by the Order Placer."
+* identifier[PlacerSpecimenNumber] ^short = "Identifier assigned by the Order Placer (or the Requestor for a sub-order). Not the accession identifier. May identify a sub-order where no sub-order placer number is assigned."
 * identifier[PlacerSpecimenNumber] insert Obligation(#SHALL:populate, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderPlacer)
 * identifier[PlacerSpecimenNumber] insert Obligation(#SHALL:populate, https://fhir.nwgenomics.nhs.uk/ActorDefinition/Requestor)
 * identifier[PlacerSpecimenNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderFiller)

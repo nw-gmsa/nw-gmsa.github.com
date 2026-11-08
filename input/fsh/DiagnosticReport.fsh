@@ -31,9 +31,14 @@ Description:    """
 * identifier[ReportIdentifier] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/AutomationManager)
 * identifier[ReportIdentifier] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderPlacer)
 
-* basedOn only CodeableReference
+* basedOn 0..* MS
+* basedOn ^short = "The ServiceRequest this report is based on, identified by the Order Placer Number. Order Group Number or Order Filler Number only if the Order Placer Number is not known."
+* basedOn only Reference(ServiceRequest)
+* basedOn.type 1..1 MS
+* basedOn.type = "ServiceRequest"
 * basedOn.identifier 1..1 MS
 * basedOn.identifier only CorrelationIdentifier
+* obeys nw-dr-basedon-1
 
 * basedOn ^slicing.discriminator.type = #value
 * basedOn ^slicing.discriminator.path = "identifier.type"
@@ -42,25 +47,26 @@ Description:    """
 * basedOn ^slicing.ordered = false
 * basedOn contains
   OrderPlacerNumber 0..1 MS and
-  OrderFillerNumber 0..1 MS
+  OrderGroupNumber 0..1 and
+  OrderFillerNumber 0..1
 
-* basedOn[OrderPlacerNumber] ^short = "Identifier assigned by the placer (ORC-2)"
-* basedOn[OrderPlacerNumber].type 1..1 MS
-* basedOn[OrderPlacerNumber].type = "ServiceRequest"
+* basedOn[OrderPlacerNumber] ^short = "Order Placer Number, assigned by the placer (ORC-2). Use this to identify the order"
+* basedOn[OrderPlacerNumber] only Reference(ServiceRequest)
 * basedOn[OrderPlacerNumber].identifier 1..1
 * basedOn[OrderPlacerNumber].identifier only OrderPlacerNumber
-* basedOn[OrderPlacerNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderFiller)
+* basedOn[OrderPlacerNumber] insert Obligation(#SHALL:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderFiller)
 * basedOn[OrderPlacerNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/AutomationManager)
 * basedOn[OrderPlacerNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderPlacer)
 
-* basedOn[OrderFillerNumber] ^short = "Identifier assigned by the filler (ORC-3)"
-* basedOn[OrderFillerNumber].type 1..1 MS
-* basedOn[OrderFillerNumber].type = "ServiceRequest"
+* basedOn[OrderGroupNumber] ^short = "Order Group Number (ORC-4). Only if the Order Placer Number is not known"
+* basedOn[OrderGroupNumber] only Reference(ServiceRequest)
+* basedOn[OrderGroupNumber].identifier 1..1
+* basedOn[OrderGroupNumber].identifier only OrderGroupNumber
+
+* basedOn[OrderFillerNumber] ^short = "Order Filler Number, assigned by the filler (ORC-3). Only if the Order Placer Number is not known"
+* basedOn[OrderFillerNumber] only Reference(ServiceRequest)
 * basedOn[OrderFillerNumber].identifier 1..1
 * basedOn[OrderFillerNumber].identifier only OrderFillerNumber
-* basedOn[OrderFillerNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderFiller)
-* basedOn[OrderFillerNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/AutomationManager)
-
 
 * category ^slicing.discriminator.type = #value
 * category ^slicing.discriminator.path = "coding"
@@ -194,3 +200,8 @@ Description:    """
 
 * conclusionCode.coding[GenomicTestOutcomeCode] ^short = "Genomic Test Outcome Code"
 * conclusionCode.coding[GenomicTestOutcomeCode] from GenomicTestOutcomeCodes
+
+Invariant: nw-dr-basedon-1
+Description: "basedOn uses the Order Placer Number. The Order Group Number or Order Filler Number may be used only if the Order Placer Number is not known"
+Expression: "basedOn.identifier.where(type.coding.where(code = 'PLAC').exists()).exists() implies basedOn.identifier.where(type.coding.where(code = 'PGN' or code = 'FILL').exists()).empty()"
+Severity: #error
