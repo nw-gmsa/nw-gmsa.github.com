@@ -124,8 +124,10 @@ Description:    """
 * occurrence[x] 0..1
 
 * subject 1..1 MS
-* subject only Reference(Patient)
-* subject.identifier only NHSIdentifier
+* subject only Reference(Patient or FamilyGeneticGroup)
+* subject ^short = "The patient. A Family Genetic Group is only used for the dWGS original order, which is out of scope for this guide"
+* subject ^comment = "This guide generally references the Patient by identifier (NHS Number). A FamilyGeneticGroup subject is allowed only to support the dWGS original order (the family referral to TOMS), which is not in scope for this guide; orders for individual family members reference the Patient and can carry the family in supportingInfo[familyGeneticGroup]."
+* subject.identifier only NHSIdentifier or NGISReferralId or GenomicsPedigreeNumber
 
 * basedOn 0..* MS
 * basedOn ^short = "SHALL reference a parent request where this ServiceRequest is based on a previous request, e.g. in the case of reanalysis and cascade testing, or Germline Late tests in the Tumour First/Germline Late scenario"
