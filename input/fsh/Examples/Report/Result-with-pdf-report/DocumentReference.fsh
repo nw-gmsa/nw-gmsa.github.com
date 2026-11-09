@@ -21,14 +21,27 @@ Description: "TODO"
 // EPIC PV1
 * context.encounter[+]
   * identifier
+    * type = $v2-0203#AN
     * value = "1001166717"
     * system = "http://www.acme.org/encounter/identifiers/R0A"
     * assigner.identifier.system = $ods-code
     * assigner.identifier.value = "R0A"
 
-// Accession Number, Order Identifier and Report Identifier are held on the DiagnosticReport
+// Report Identifier (with a reference to the DiagnosticReport) and order identifiers (IHE XDS referenceIdList)
 * context.related[DiagnosticReport].reference = "urn:uuid:233ff41a-5067-46c4-b6aa-5d6f87719f5f"
 * context.related[DiagnosticReport].type = "DiagnosticReport"
+* context.related[DiagnosticReport].identifier.type = $v2-0203#FILL
+* context.related[DiagnosticReport].identifier.system = "http://www.acme.org/diagnosticreport/identifiers"
+* context.related[DiagnosticReport].identifier.value = "25edee2b-add8-4522-9fa2-1ee8f229bd75"
+* context.related[DiagnosticReport].identifier.assigner.identifier.system = $ods-code
+* context.related[DiagnosticReport].identifier.assigner.identifier.value = "699X0"
+* context.related[OrderPlacerNumber]
+  * type = "ServiceRequest"
+  * identifier.type = $v2-0203#PLAC
+  * identifier.system = "http://www.acme.org/servicerequest"
+  * identifier.value = "1001166717"
+  * identifier.assigner.identifier.system = $ods-code
+  * identifier.assigner.identifier.value = "699X0"
 
 * content[+]
   * attachment.contentType = #application/pdf

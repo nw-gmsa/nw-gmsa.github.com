@@ -27,9 +27,14 @@ Description: "TODO"
   * type = #Organization
   * display = "NW GMSA"
 
-// Accession Number, Order Identifier and Report Identifier are held on the DiagnosticReport
+// Report Identifier (with a reference to the DiagnosticReport) and order identifiers (IHE XDS referenceIdList)
 * context.related[DiagnosticReport].reference = "urn:uuid:0a6ad8ec-b069-4a65-8c65-c7569d8413e3"
 * context.related[DiagnosticReport].type = "DiagnosticReport"
+* context.related[DiagnosticReport].identifier.type = $v2-0203#FILL
+* context.related[DiagnosticReport].identifier.system = "https://fhir.nwgenomics.nhs.uk/iGene/ReportIdentifier"
+* context.related[DiagnosticReport].identifier.value = "T26-59XG"
+* context.related[DiagnosticReport].identifier.assigner.identifier.system = $ods-code
+* context.related[DiagnosticReport].identifier.assigner.identifier.value = "699X0"
 
 * content[+]
   * attachment.contentType = #application/pdf
