@@ -851,7 +851,7 @@ The definition of XCN from [NHS England HL7 v2 ADT Message Specification](https:
 | XCN-1     | Id Number    | ST        | O           | [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html) |                | The person's own professional identifier (ubiquitous terms: **GMC Number**, **Professional Registration Number**). |
 | XCN-2     | Family Name  | ST        | O           |                                                                     |                | The person's family name (ubiquitous term: **Surname**). |
 | XCN-3     | Given  Name  | ST        | O           |                                                                   |                | The person's given name (ubiquitous term: **First Name**). |
-| XCN-8     | Source Table | HD        | O           | See [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html)                                                                        |                | Which professional register/code system XCN-1 comes from, e.g. GMC (ubiquitous term: **Identifier Type**). |
+| XCN-9     | Assigning Authority | HD        | O           | See [Practitioner Identifier](StructureDefinition-PractitionerIdentifier.html)                                                                        |                | The professional register that assigned XCN-1, e.g. GMC or GMP (ubiquitous term: **Identifier Type**). XCN-8 Source Table is not used. |
 {:.grid}
 
 Example
