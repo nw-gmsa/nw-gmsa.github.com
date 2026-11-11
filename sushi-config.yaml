@@ -202,53 +202,6 @@ resources:
     name: Genomic Report Ovarian Carcinoma Diagnostic Implication Example
     description: Genomic Report Ovarian Carcinoma Diagnostic Implication Example
     exampleBoolean: true
-  Bundle/NonWGSTestOrderForm-CancerSolidTumor-Example:
-    name: Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example
-    description: See [Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle#Bundle-NonWGSTestOrderForm-CancerSolidTumor-Example)
-    exampleBoolean: true
-  Bundle/NonWGSTestOrderForm-FetalScenario-Example:
-    name: Bundle-NonWGSTestOrderForm-FetalScenario-Example
-    description: See [Bundle-NonWGSTestOrderForm-FetalScenario-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle#Bundle-NonWGSTestOrderForm-FetalScenario-Example)
-    exampleBoolean: true
-  Bundle/NonWGSTestOrderForm-Reanalysis-Example:
-    name: Bundle-Bundle-NonWGSTestOrderForm-Reanalysis-Example
-    description: See [Bundle-Bundle-NonWGSTestOrderForm-Reanalysis-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/ServiceRequest?version=0.4.3#ServiceRequest-NonWGSTestOrderForm-ReAnalysis-Example-duplicate-2)
-  Bundle/NonWGSScenario3-FetusAsProband-Example-FetusA:
-    name: Bundle-NonWGSScenario3-FetusAsProband-Example-FetusA
-    description: See [Bundle-NonWGSScenario3-FetusAsProband-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle#Bundle-NonWGSScenario3-FetusAsProband-Example)
-    exampleBoolean: true
-  Bundle/NonWGSScenario4-ProbandWithMultipleFetus-Example-FetusA:
-    name: Bundle-NonWGSScenario4-ProbandWithMultipleFetus-Example-FetusA
-    description: See [Bundle-NonWGSScenario4-ProbandWithMultipleFetus-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle#Bundle-NonWGSScenario4-ProbandWithMultipleFetus-Example)
-    exampleBoolean: true
-  Bundle/NonWGSScenario4-ProbandWithMultipleFetus-Example-FetusB:
-    name: Bundle-NonWGSScenario4-ProbandWithMultipleFetus-Example-FetusB
-    description: See [Bundle-NonWGSScenario4-ProbandWithMultipleFetus-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle#Bundle-NonWGSScenario4-ProbandWithMultipleFetus-Example)
-    exampleBoolean: true
-  Bundle/NonWGSScenario5-ProductsofConception-Example:
-    name: Bundle-NonWGSScenario5-ProductsofConception-Example
-    description: See [Bundle-NonWGSScenario5-ProductsofConception-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle#Bundle-NonWGSScenario5-ProductsofConception-Example)
-    exampleBoolean: true
-  Bundle/NonWGSTestOrderForm-Example:
-    name: Bundle-NonWGSTestOrderForm-Example
-    description: See [Bundle-NonWGSTestOrderForm-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle#Bundle-NonWGSTestOrderForm-Example)
-    exampleBoolean: true
-  Bundle/NonWGSTestOrderFormQRPatientExtensions-Example:
-    name: Bundle-NonWGSTestOrderFormQRPatientExtensions-Example
-    description: See [Bundle-NonWGSTestOrderFormQRPatientExtensions-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle#Bundle-NonWGSTestOrderFormQRPatientExtensions-Example)
-    exampleBoolean: true
-  Bundle/WGSTestOrderForm-Example:
-    name: Bundle-WGSTestOrderForm-Example
-    description: See [Bundle-WGSTestOrderForm-Example](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle#Bundle-WGSTestOrderForm-Example)
-    exampleBoolean: true
-  Bundle/UKCore-MichaelJonesRequest-Example-Minimal:
-    name: UKCore-Bundle-MichaelJonesRequest-Example (minimal)
-    description: See the [FHIR Genomics Implementation Guide](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle) on Simplifier - a minimal-population variant of the MichaelJonesRequest example
-    exampleBoolean: true
-  Bundle/UKCore-MichaelJonesRequest-Example:
-    name: UKCore-Bundle-MichaelJonesRequest-Example (v3 message)
-    description: See the [FHIR Genomics Implementation Guide](https://simplifier.net/guide/fhir-genomics-implementation-guide/Home/Examples/Bundle) on Simplifier - the fully-populated FHIR message variant of the MichaelJonesRequest example
-    exampleBoolean: true
   NamingSystem/nhs-number-namingsystem:
     name: NHS Number
     exampleBoolean: false
@@ -337,11 +290,11 @@ resources:
     exampleBoolean: true
   QuestionnaireResponse/GenomicGeneralAskAtOrderEntry-OctaviaCHISLETT:
     name: Genomic General Ask At Order Entry Response - Octavia CHISLETT
-    description: QuestionnaireResponse answering the default Genomic General Ask At Order Entry Questionnaire, sourced from the existing ServiceRequestGenomicsOrderCodedEntries order (test code R240.1) and its free-text note
+    description: QuestionnaireResponse answering the default Genomic General Ask At Order Entry Questionnaire, sourced from the existing ServiceRequestGenomicsOrderAttachment order (test code R240.1) and its free-text note
     exampleBoolean: true
   QuestionnaireResponse/GenomicTestOrder-OctaviaCHISLETT:
     name: North West Genomics Test Order Response - Octavia CHISLETT
-    description: QuestionnaireResponse answering the common core North West Genomics Test Order form, sourced from the existing ServiceRequestGenomicsOrderCodedEntries order and its associated Patient, PractitionerRole and Specimen resources
+    description: QuestionnaireResponse answering the common core North West Genomics Test Order form, sourced from the existing ServiceRequestGenomicsOrderAttachment order and its associated Patient, PractitionerRole and Specimen resources
     exampleBoolean: true
   QuestionnaireResponse/GenomicTestOrder-TheonSHEFFIELD:
     name: North West Genomics Test Order Response - Theon SHEFFIELD
@@ -415,7 +368,7 @@ menu:
 groups:
   -ex-example-order-status:
     name: "Example: Order Status (Future Use)"
-    description: "Order status updates (OSU^O51 / Referral Order Status (O51)) for the laboratory order ServiceRequest Coded Entries Example - Referral Request [PCC-55], Referral Decline [PCC-56] and Referral Outcome [PCC-57]"
+    description: "Order status updates (OSU^O51 / Referral Order Status (O51)) for the laboratory order ServiceRequest Attachment Example - Referral Request [PCC-55], Referral Decline [PCC-56] and Referral Outcome [PCC-57]"
     resources:
       - Bundle/GenomicOrderStatusAcceptMessage
       - Bundle/GenomicOrderStatusDeclineMessage
@@ -434,7 +387,6 @@ groups:
     resources:
       - Bundle/GenomicsOrderMessageReplyOk
       - Bundle/GenomicsOrderMessageAttachment
-      - Bundle/GenomicsOrderMessageCodedEntries
       - Bundle/GenomicsOrderSearchSet
       - Bundle/Bundle-Message-FillerOrder
       - Bundle/Bundle-Message-FillerOrder-K1S6S
@@ -444,7 +396,6 @@ groups:
       - MessageHeader/MessageHeaderGenomicOrderReplyOk
       - Patient/Patient-OctaviaCHISLETT-9449305552
       - PractitionerRole/ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8
-      - ServiceRequest/ServiceRequestGenomicsOrderCodedEntries
       - ServiceRequest/ServiceRequestGenomicsOrderAttachment
       - Specimen/SpecimenExample
   -ex-example-laboratory-report:
@@ -556,48 +507,26 @@ groups:
       - Procedure/7b362aa5-41a7-4168-94b4-f12dff0dfb2a
       - Patient/Patient-Lancaster
   -ex-example-other:
-    name: "Example: Ask at Order Entry questions and prior results"
-    description: "Ask at Order Entry questions and prior results"
+    name: "Example: Ask at Order Entry"
+    description: "QuestionnaireResponses answering Ask at Order Entry (AOE) questions and test order forms: genomics (Octavia Chislett, Theon Sheffield) and histocompatibility and immunogenetics (HLA antibody screening, chimerism), the last two sourced from live Histotrac ORM^O01 orders"
     resources:
-      - Observation/EPIC-OBR-1
-      - Observation/OBX-GenomicReferralCategory
-      - Observation/OBX-SupervisingClinician
-      - Observation/OBX-Pregnancy
-      - Observation/OBX-HighInfectionRiskSample
-      - Observation/OBX-InformedConsent
-      - Observation/EPIC-OBX-4
-      - Condition/EPIC-OBX-2
-      - Observation/EPIC-OBX-6
-      - Observation/EPIC-OBX-7
-      - Observation/EPIC-OBX-8
-      - Observation/EPIC-OBX-10
-      - Observation/EPIC-OBX-11
-      - Bundle/748683741
       - QuestionnaireResponse/GenomicGeneralAskAtOrderEntry-OctaviaCHISLETT
       - QuestionnaireResponse/GenomicTestOrder-OctaviaCHISLETT
       - QuestionnaireResponse/GenomicTestOrder-TheonSHEFFIELD
-  -ex-example-NHS-Genomics-Medicine-Service:
-    name: "Example: NHS England Genomics Order Management Service"
-    description: "NHS England Genomics Order Management Service"
+      - QuestionnaireResponse/HLATestsTransplantAskAtOrderEntry-HLAAS
+      - QuestionnaireResponse/ChimerismTestAdditionalAskAtOrderQuestions-CHIM
+  -ex-example-health-data-api:
+    name: "Health Data API (HIE/EURDICE) Examples"
+    description: "Health Data API examples: Patient Demographics Query for Mobile (PDQm) search results, Mobile access to Health Documents (MHD) document references held on the NHS England National Record Locator (NRL), and Query for Existing Data for Mobile (QEDm) / IPA search results"
     resources:
-      - Bundle/NonWGSTestOrderForm-CancerSolidTumor-Example
-      - Bundle/NonWGSTestOrderForm-FetalScenario-Example
-      - Bundle/NonWGSTestOrderForm-Reanalysis-Example
-      - Bundle/NonWGSScenario3-FetusAsProband-Example-FetusA
-      - Bundle/NonWGSScenario4-ProbandWithMultipleFetus-Example-FetusA
-      - Bundle/NonWGSScenario4-ProbandWithMultipleFetus-Example-FetusB
-      - Bundle/NonWGSScenario5-ProductsofConception-Example
-      - Bundle/NonWGSTestOrderForm-Example
-      - Bundle/NonWGSTestOrderFormQRPatientExtensions-Example
-      - Bundle/WGSTestOrderForm-Example
-      - Bundle/UKCore-MichaelJonesRequest-Example-Minimal
-      - Bundle/UKCore-MichaelJonesRequest-Example
-  -ex-nrl:
-    name: "Example: NHS England National Record Locator Service"
-    description: "NHS England National Record Locator Service"
-    resources:
+      - Bundle/PDQSearchResults
+      - Bundle/c39fc97b-e99f-47b2-8660-d3d6b8840d20
       - DocumentReference/Y05868-d783361d-83fa-438f-977c-601f30ef5ceb
       - DocumentReference/Y05868-75c254c0-d2cf-43ee-8a83-926af3f302bb
+      - Bundle/036ceda5-8eea-42d5-9e8f-f977287c0dd6
+      - Bundle/187a20ef-9b81-4c83-84f7-140c210f8706
+      - Bundle/41a20f74-643f-4073-968a-ee003160734f
+      - Bundle/92a0a6c6-404f-4347-8de4-fa1c457a037e
   -ex-example-dwgs:
     name: "Example: Distributed WGS (dWGS) Sub-contracted Order"
     description: "LAB-35 sub-orders from a Requesting Genomic Laboratory (RGL) to a Sequencing Genomic Laboratory (SGL), covering Singleton, Duo and Trio family structures"
@@ -608,16 +537,6 @@ groups:
       - Bundle/dWGS-Trio-r26000000203-p26000000104
       - Bundle/dWGS-Trio-r26000000203-p26000000105
       - Bundle/dWGS-Trio-r26000000203-p26000000106
-  -ex-example-histocompatibility:
-    name: "Example: HLA Tests - Transplant Ask At Order Entry"
-    description: "QuestionnaireResponse answering HLA Tests - Transplant Ask At Order Entry, sourced from a live Histotrac ORM^O01 HLA Antibody Screening (Transplant) order"
-    resources:
-      - QuestionnaireResponse/HLATestsTransplantAskAtOrderEntry-HLAAS
-  -ex-example-chimerism-order:
-    name: "Example: Chimerism Test Additional Ask At Order Entry Questions"
-    description: "QuestionnaireResponse answering Chimerism Test Additional Ask At Order Entry Questions, sourced from a live Histotrac ORM^O01 Chimerism Testing (Performable) order"
-    resources:
-      - QuestionnaireResponse/ChimerismTestAdditionalAskAtOrderQuestions-CHIM
   -ex-example-omics-dss:
     name: "Example: OMICS DSS Result Integration"
     description: "NW-GMSA R01 Test Results message produced from a GA4GH VCF/Phenopacket by the 05 - Test Results notebook"

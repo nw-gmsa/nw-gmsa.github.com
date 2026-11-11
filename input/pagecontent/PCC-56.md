@@ -65,7 +65,7 @@ a [Referral Outcome [PCC-57]](PCC-57.html) instead.
 ### Example
 
 The North West GLH accepted Octavia CHISLETT's R240.1 order
-([ServiceRequest Coded Entries Example](ServiceRequest-ServiceRequestGenomicsOrderCodedEntries.html))
+([ServiceRequest Attachment Example](ServiceRequest-ServiceRequestGenomicsOrderAttachment.html))
 [PCC-55]. DNA extraction then failed, so the laboratory declines the order and asks for a
 new sample.
 

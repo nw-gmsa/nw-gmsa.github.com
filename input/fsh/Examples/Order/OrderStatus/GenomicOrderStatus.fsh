@@ -1,17 +1,17 @@
 // Order status examples (OSU^O51 / Referral Order Status (O51)) for the existing
-// laboratory order ServiceRequestGenomicsOrderCodedEntries - Referral Request [PCC-55],
+// laboratory order ServiceRequestGenomicsOrderAttachment - Referral Request [PCC-55],
 // Referral Decline [PCC-56] and Referral Outcome [PCC-57]. For future use.
 // The completed Task is the existing TaskGenomicOrderCompleted; its reports are external
 // references to the NHS England Unified Genomic Record (UGR), not carried in the message.
 
 RuleSet: GenomicOrderStatusTask
-* basedOn.reference = "ServiceRequest/ServiceRequestGenomicsOrderCodedEntries"
+* basedOn.reference = "ServiceRequest/ServiceRequestGenomicsOrderAttachment"
 * basedOn.identifier.type = $v2-0203#PLAC
 * basedOn.identifier.value = "1601737"
 * basedOn.identifier.system = "urn:oid:1.2.840.114350.1.13.0.1.7.2.798268"
 * basedOn.identifier.assigner.identifier.system = $ods-code
 * basedOn.identifier.assigner.identifier.value = "R0A"
-* focus.reference = "ServiceRequest/ServiceRequestGenomicsOrderCodedEntries"
+* focus.reference = "ServiceRequest/ServiceRequestGenomicsOrderAttachment"
 * focus.identifier.type = $v2-0203#PLAC
 * focus.identifier.value = "1601737"
 * focus.identifier.system = "urn:oid:1.2.840.114350.1.13.0.1.7.2.798268"

@@ -251,7 +251,7 @@ Searching for a [Variant](StructureDefinition-Variant.html) Observation with a s
 GET [base]/Observation?combo-code=http://loinc.org|48018-6&combo-value-concept=HGNC:8028
 Accept: application/fhir+json
 ```
-[Response](Bundle-187a20ef-9b81-4c83-84f7-140c210f8706.json.html)
+[Response](Bundle-41a20f74-643f-4073-968a-ee003160734f.json.html)
 
 ---
 

@@ -229,7 +229,7 @@ OBR|1|1601737^R0A||R240.1^^England-GenomicTestDirectory||20250129||||||||||C3456
 SPM|1|25GEN-029GN00001&R0A||258580003^Whole blood specimen^SNM3|||||||||||||20250129103726+0000|||Y
 ```
 
-> FHIR Message Example: [Bundle 'Message' - Genomics Order with Coded Entries](Bundle-GenomicsOrderMessageCodedEntries.html)
+> FHIR Message Example: [Bundle 'Message' - Genomics Order with Attachment](Bundle-GenomicsOrderMessageAttachment.html)
 
 ### OSU_O51 Order Status Update
 
@@ -447,7 +447,7 @@ This is based on the definition of ORC from [Digital Health and Care Wales - HL7
 ORC|NW|1601737^R0A|R25012345^699X0||||||20250129|||C3456789^Darwin^Samuel^^^Dr^^^GMC|||||||||^^R0A^^^ODS
 ```
 
-> FHIR Resource Example: [ServiceRequest Coded Entries Example](ServiceRequest-ServiceRequestGenomicsOrderCodedEntries.html)
+> FHIR Resource Example: [ServiceRequest Attachment Example](ServiceRequest-ServiceRequestGenomicsOrderAttachment.html)
 
 #### OBR 
 
@@ -533,7 +533,7 @@ NTE|18||TESTING
 NTE|19||Contact/Bleep No: 123
 ```
 
-> FHIR Resource Example OML_O21: [ServiceRequest Coded Entries Example](ServiceRequest-ServiceRequestGenomicsOrderCodedEntries.html)
+> FHIR Resource Example OML_O21: [ServiceRequest Attachment Example](ServiceRequest-ServiceRequestGenomicsOrderAttachment.html)
 > 
 > FHIR Resource Example ORU_R01: TODO
 
@@ -618,13 +618,6 @@ Genomic Genomic Test Outcome Codes Example - this is mapped to DiagnosticReport.
 ```
 OBX|2|CE|51968-6^^LN|1|432^NO TARGET DETECTED OR TARGET DETECTED BELOW A LEVEL REQUIRING CLINICAL ACTION|||||||||20260604200000+0000
 ```
-
-> FHIR Resource Example: [Consanguinity (value type=CE)](Observation-OBX-Consanguinity.html)
-> 
-> FHIR Resource Example: [Order Tracking Number (value type=ST)](Observation-OBX-OrderTrackingNumber.html)
-> 
-> FHIR Resource Example: [Pregnancy Expected Delivery Date (value type=DT)](Observation-OBX-PregnancyExpectedDeliveryDate.html)
-
 
 ##### OBX (type = ED)
 

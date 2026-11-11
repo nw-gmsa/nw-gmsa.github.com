@@ -22,7 +22,7 @@ Description: "TODO"
 
 * authoredOn = "2025-01-29"
 
-* focus.reference = "ServiceRequest/ServiceRequestGenomicsOrderCodedEntries"
+* focus.reference = "ServiceRequest/ServiceRequestGenomicsOrderAttachment"
 * focus.identifier.type = $v2-0203#PLAC
 * focus.identifier.value = "1601737"
 * focus.identifier.system = "http://www.acme.org/servicerequest/identifier"

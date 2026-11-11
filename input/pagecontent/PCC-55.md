@@ -180,8 +180,8 @@ passed through as an in-progress ORC-5 <code>IP</code>) is still to be agreed.
 
 ### Examples
 
-The existing laboratory order [ServiceRequest Coded Entries
-Example](ServiceRequest-ServiceRequestGenomicsOrderCodedEntries.html): Dr Samuel Darwin at
+The existing laboratory order [ServiceRequest Attachment
+Example](ServiceRequest-ServiceRequestGenomicsOrderAttachment.html): Dr Samuel Darwin at
 Manchester University NHS Foundation Trust (R0A) orders R240.1 (diagnostic testing for
 known mutation(s)) for Octavia CHISLETT from the North West GLH (699X0). In every `ORC`,
 **ORC-12** (the ordering clinician) and **ORC-21** (the ordering organisation's ODS code)
@@ -201,10 +201,10 @@ OBR|1|1601737^R0A||R240.1^^England-GenomicTestDirectory||20250129||||||||||C3456
 SPM|1|25GEN-029GN00001&R0A||258580003^Whole blood specimen^SNM3|||||||||||||20250129103726+0000|||Y
 ```
 
-FHIR Message: [Bundle 'Message' - Genomics Order with Coded
-Entries](Bundle-GenomicsOrderMessageCodedEntries.html) ([Laboratory
-Order](MessageDefinition-laboratory-order.html), focus [ServiceRequest Coded Entries
-Example](ServiceRequest-ServiceRequestGenomicsOrderCodedEntries.html)).
+FHIR Message: [Bundle 'Message' - Genomics Order with
+Attachment](Bundle-GenomicsOrderMessageAttachment.html) ([Laboratory
+Order](MessageDefinition-laboratory-order.html), focus [ServiceRequest Attachment
+Example](ServiceRequest-ServiceRequestGenomicsOrderAttachment.html)).
 
 #### Accept - OSU^O51
 

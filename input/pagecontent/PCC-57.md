@@ -157,7 +157,7 @@ MNS](PCC-55.html#status-updates-from-goms-via-mns).
 ### Example
 
 The North West GLH has issued the report for Octavia CHISLETT's R240.1 order
-([ServiceRequest Coded Entries Example](ServiceRequest-ServiceRequestGenomicsOrderCodedEntries.html)).
+([ServiceRequest Attachment Example](ServiceRequest-ServiceRequestGenomicsOrderAttachment.html)).
 It sends the outcome status update and the report (`ORU_R01`, Placer Order Number in
 ORC-2 / OBR-2).
 
