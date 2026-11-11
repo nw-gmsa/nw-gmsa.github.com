@@ -63,8 +63,13 @@ Usage: #example
   * title = "Results"
   * code = $loinc#69548-6 "Genetic variant assessment"
   * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>EGFR NM_005228.5:c.2369C&gt;T detected in circulating tumour DNA (somatic), mutant allele fraction 0.42%.</p></div>"
-  * entry[+].reference = "urn:uuid:00c22e97-a226-4845-b17a-e24ec1f4f77a"
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>One somatic sequence variant detected in circulating tumour DNA.</p></div>"
+  * section[+]
+    * title = "Simple variants"
+    * code = $loinc#81250-3
+    * text.status = #generated
+    * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>EGFR NM_005228.5:c.2369C&gt;T detected in circulating tumour DNA (somatic), mutant allele fraction 0.42%.</p></div>"
+    * entry[+].reference = "urn:uuid:00c22e97-a226-4845-b17a-e24ec1f4f77a"
 
 * section[Interpretation]
   * title = "Interpretation"
