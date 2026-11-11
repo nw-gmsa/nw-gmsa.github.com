@@ -91,6 +91,44 @@ Description:    """
 * section[Results].code = $loinc#69548-6 "Genetic variant assessment"
 * section[Results].entry only Reference(Variant or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/genomic-study-analysis or MolecularConsequence)
 
+// Optional sub-sections following the groups of the Master HL7 genetic variant reporting panel (LOINC 81247-9). Only the groups that apply to the test are included.
+
+* section[Results].section ^slicing.discriminator[0].type = #pattern
+* section[Results].section ^slicing.discriminator[=].path = "$this.code"
+* section[Results].section ^slicing.ordered = false
+* section[Results].section ^slicing.rules = #open
+* section[Results].section contains
+    SimpleVariants 0..1 MS
+    and StructuralVariants 0..1 MS
+    and ComplexVariants 0..1 MS
+    and Pharmacogenomics 0..1 MS
+    and HaplotypeDefinitions 0..1 MS
+
+* section[Results].section[SimpleVariants] ^short = "Simple variants"
+* section[Results].section[SimpleVariants] ^definition = "Simple variants, such as single nucleotide changes and small insertions or deletions"
+* section[Results].section[SimpleVariants].code = $loinc#81250-3
+* section[Results].section[SimpleVariants].entry only Reference(Variant)
+
+* section[Results].section[StructuralVariants] ^short = "Structural variants"
+* section[Results].section[StructuralVariants] ^definition = "Structural variants, such as copy number changes, with their ISCN or HGVS name"
+* section[Results].section[StructuralVariants].code = $loinc#81297-4
+* section[Results].section[StructuralVariants].entry only Reference(Variant)
+
+* section[Results].section[ComplexVariants] ^short = "Complex variants"
+* section[Results].section[ComplexVariants] ^definition = "Complex variants, such as compound heterozygous variants or haplotypes, with the simple variants that make them up"
+* section[Results].section[ComplexVariants].code = $loinc#81251-1
+* section[Results].section[ComplexVariants].entry only Reference(Variant)
+
+* section[Results].section[Pharmacogenomics] ^short = "Pharmacogenomics"
+* section[Results].section[Pharmacogenomics] ^definition = "Pharmacogenomic genotypes. The medication implications belong in the Interpretation section"
+* section[Results].section[Pharmacogenomics].code = $loinc#82118-1
+* section[Results].section[Pharmacogenomics].entry only Reference(Genotype)
+
+* section[Results].section[HaplotypeDefinitions] ^short = "Haplotype definitions"
+* section[Results].section[HaplotypeDefinitions] ^definition = "Haplotypes and the variants that define them"
+* section[Results].section[HaplotypeDefinitions].code = $loinc#83011-7
+* section[Results].section[HaplotypeDefinitions].entry only Reference(Haplotype)
+
 * section[Interpretation] ^short = "Interpretation"
 * section[Interpretation] ^definition = "Interpretation of the results, including diagnostic and therapeutic implications"
 * section[Interpretation].code = GenomicReportSection#interpretation

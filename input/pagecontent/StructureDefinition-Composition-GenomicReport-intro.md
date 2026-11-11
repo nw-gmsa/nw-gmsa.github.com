@@ -52,7 +52,7 @@ flowchart TB
         S1["Section: Referral<br/>reason for referral, test requested (R / M code)<br/><i>text + ServiceRequest, Condition</i>"]
         S2["Section: Specimen<br/>sample type, collected, received<br/><i>text + Specimen</i>"]
         S3["Section: Result summary<br/>headline result<br/><i>text + DiagnosticReport</i>"]
-        S4["Section: Results<br/>variant table<br/><i>text + Variant, Genomic Study Analysis,<br/>Molecular Consequence</i>"]
+        S4["Section: Results<br/>variant table, optional sub-sections<br/><i>text + Variant, Genomic Study Analysis,<br/>Molecular Consequence</i>"]
         S5["Section: Interpretation<br/><i>text + Diagnostic and<br/>Therapeutic Implication</i>"]
         S6["Section: Recommendations<br/>family testing, further tests<br/><i>text + recommended actions</i>"]
         S7["Section: Methodology and limitations<br/>genes/regions studied, coverage<br/><i>text + Genomic Study Panel,<br/>Genomic Study, Genomic Study Analysis</i>"]
@@ -78,12 +78,30 @@ flowchart TB
 | Referral (`Referral`) | LOINC `42349-1` Reason for referral (narrative) | Text; entries [ServiceRequest](StructureDefinition-ServiceRequest.html), [Condition](StructureDefinition-Condition.html) | Clinical indication and the [National Genomic Test Directory](https://www.england.nhs.uk/publication/national-genomic-test-directories/) test requested. Could instead be in the Composition header only |
 | Specimen (`Specimen`) | SNOMED CT `123038009` Specimen | Text; entry [Specimen](StructureDefinition-Specimen.html) | No LOINC document section code found; as used by the [ctDNA UGR example](Bundle-ctdna9737383222-eulab-document.html) |
 | Result summary (`ResultSummary`) | LOINC `51968-6` Discrete variation analysis overall interpretation | Text; entry [DiagnosticReport](StructureDefinition-DiagnosticReport.html) | The headline result shown first on the report |
-| Results (`Results`) | LOINC `69548-6` Genetic variant assessment | Text (the variant table); entries [Variant](StructureDefinition-Variant.html), [Genomic Study Analysis](https://hl7.org/fhir/uv/genomics-reporting/STU3/StructureDefinition-genomic-study-analysis.html), [Molecular Consequence](StructureDefinition-MolecularConsequence.html) | Could be split into sub-sections following the `81247-9` panel (discrete variants, complex variants, pharmacogenomics) |
+| Results (`Results`) | LOINC `69548-6` Genetic variant assessment | Text (the variant table); entries [Variant](StructureDefinition-Variant.html), [Genomic Study Analysis](https://hl7.org/fhir/uv/genomics-reporting/STU3/StructureDefinition-genomic-study-analysis.html), [Molecular Consequence](StructureDefinition-MolecularConsequence.html) | Optional sub-sections, one per `81247-9` panel group that applies - see [Results Sub-sections](#results-sub-sections) |
 | Interpretation (`Interpretation`) | [Genomic Report Section](CodeSystem-GenomicReportSection.html) `interpretation` (local) | Text; entries [Diagnostic Implication](StructureDefinition-DiagnosticImplication.html), [Therapeutic Implication](StructureDefinition-TherapeuticImplication.html) | Is this separate from the result summary? |
 | Recommendations (`Recommendations`) | LOINC `62385-0` Recommendation | Text; entries follow-up and medication recommendations (Task) | For example testing of relatives. LOINC `18783-1` Study recommendation is an alternative |
 | Methodology and limitations (`Methodology`) | [Genomic Report Section](CodeSystem-GenomicReportSection.html) `methodology` (local) | Text; entries [Genomic Study Panel](StructureDefinition-GenomicStudyPanel.html), [Genomic Study](https://hl7.org/fhir/uv/genomics-reporting/STU3/StructureDefinition-genomic-study.html), [Genomic Study Analysis](https://hl7.org/fhir/uv/genomics-reporting/STU3/StructureDefinition-genomic-study-analysis.html) (regions studied) | Genes or regions studied, technology, coverage, limitations |
 | Presented form (`PresentedForm`) | LOINC `77599-9` Additional documentation | Entries DocumentReference, Binary | Used while the PDF remains the authorised report (UGR phase 1) |
 | Annotations (`annotations`) | LOINC `48767-8` Annotation comment | Text only, no entries | Inherited from `Composition-eu-lab` |
+{:.grid}
+
+##### Results Sub-sections
+
+The Results section can be split into sub-sections (the second level allowed by
+`Composition-eu-lab`), one for each group of the HL7 v2 [Master HL7 genetic variant reporting panel](Questionnaire-81247-9.html)
+that applies to the test - see [Alternative Layout](#alternative-layout-hl7-v2-genetic-variant-panel).
+Results holds what was found. What it means, including the medication implications of a
+pharmacogenomic genotype, belongs in the Interpretation section, so a Therapeutic Implication
+appears only once.
+
+| Sub-section (slice) | Code | Content (entries) |
+|---|---|---|
+| Simple variants (`SimpleVariants`) | LOINC `81250-3` | [Variant](StructureDefinition-Variant.html) - single nucleotide changes, small insertions and deletions |
+| Structural variants (`StructuralVariants`) | LOINC `81297-4` | [Variant](StructureDefinition-Variant.html) - copy number changes, with their ISCN or HGVS name |
+| Complex variants (`ComplexVariants`) | LOINC `81251-1` | [Variant](StructureDefinition-Variant.html) - compound heterozygous variants, haplotypes |
+| Pharmacogenomics (`Pharmacogenomics`) | LOINC `82118-1` | [Genotype](StructureDefinition-Genotype.html) - medication implications go in Interpretation |
+| Haplotype definitions (`HaplotypeDefinitions`) | LOINC `83011-7` | [Haplotype](StructureDefinition-Haplotype.html) |
 {:.grid}
 
 Examples: [Lynch syndrome](Bundle-FHIRDocumentGeneticReportBundle2.html),
@@ -93,7 +111,8 @@ Examples: [Lynch syndrome](Bundle-FHIRDocumentGeneticReportBundle2.html),
 ##### What the Reader Sees (Inferred Layout)
 
 A viewer shows each section's narrative in order, like the pages of a printed report. The mock below
-is a fictitious germline (Lynch syndrome) report laid out this way. The small grey labels show which
+is a fictitious germline (Lynch syndrome) report laid out this way, as the report looks today. The
+small grey labels show which
 part of the FHIR Document each block comes from - a real viewer would not show them.
 
 <div style="border:1px solid #bbb; box-shadow:0 2px 8px rgba(0,0,0,0.15); background:#fff; color:#222; max-width:820px; margin:16px auto; padding:28px 36px; font-family:Georgia,'Times New Roman',serif; font-size:15px; line-height:1.5;">
@@ -125,6 +144,61 @@ part of the FHIR Document each block comes from - a real viewer would not show t
 <tr style="background:#eee;"><th style="text-align:left; padding:3px 6px; border:1px solid #ccc;">Gene</th><th style="text-align:left; padding:3px 6px; border:1px solid #ccc;">Variant (HGVS)</th><th style="text-align:left; padding:3px 6px; border:1px solid #ccc;">Zygosity</th><th style="text-align:left; padding:3px 6px; border:1px solid #ccc;">Inheritance</th><th style="text-align:left; padding:3px 6px; border:1px solid #ccc;">Classification</th></tr>
 <tr><td style="padding:3px 6px; border:1px solid #ccc;"><i>MLH1</i></td><td style="padding:3px 6px; border:1px solid #ccc;">NM_000249.4:c.350C&gt;T p.(Thr117Met)</td><td style="padding:3px 6px; border:1px solid #ccc;">Heterozygous</td><td style="padding:3px 6px; border:1px solid #ccc;">Germline</td><td style="padding:3px 6px; border:1px solid #ccc;"><b>Pathogenic</b> (class 5)</td></tr>
 </table>
+<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Interpretation &middot; GenomicReportSection#interpretation &middot; entries Diagnostic Implication</div>
+<div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">Interpretation</div>
+<p style="margin:2px 0 10px;">This variant has been reported in many individuals with Lynch syndrome and is classified as pathogenic. It is consistent with the loss of MLH1 and PMS2 seen in the tumour.</p>
+<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Recommendations &middot; LOINC 62385-0 &middot; entries recommended actions (Task)</div>
+<div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">Recommendations</div>
+<p style="margin:2px 0 10px;">Predictive testing is available for at-risk relatives through Clinical Genetics. Management should follow national guidance for Lynch syndrome.</p>
+<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Methodology and limitations &middot; GenomicReportSection#methodology &middot; entries Genomic Study Panel, Genomic Study, Genomic Study Analysis</div>
+<div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">Methodology and limitations</div>
+<p style="margin:2px 0 10px;">Next generation sequencing of the coding regions and exon-intron boundaries of <i>MLH1</i>, <i>MSH2</i>, <i>MSH6</i>, <i>PMS2</i> and <i>EPCAM</i>, with copy number analysis. Deep intronic variants and low-level mosaicism may not be detected.</p>
+<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Presented form &middot; LOINC 77599-9 &middot; entry DocumentReference (PDF)</div>
+<p style="margin:2px 0 10px;"><i>The authorised report is also attached as a PDF.</i></p>
+</div>
+
+
+##### What the Reader Sees (Inferred Layout with Results Sub-sections)
+
+The same fictitious report, using the [Results sub-sections](#results-sub-sections) of this profile.
+The Results section is split by kind of variant: the sequence variant under Simple variants, and the
+copy number analysis under Structural variants. Sub-sections that do not apply to this germline
+report (complex variants, pharmacogenomics, haplotype definitions) are left out.
+
+<div style="border:1px solid #bbb; box-shadow:0 2px 8px rgba(0,0,0,0.15); background:#fff; color:#222; max-width:820px; margin:16px auto; padding:28px 36px; font-family:Georgia,'Times New Roman',serif; font-size:15px; line-height:1.5;">
+<div style="font-family:Arial,sans-serif; font-size:11px; color:#888; text-align:right;">Composition.title &middot; type SNOMED CT Genetic report, LOINC 51969-4</div>
+<div style="display:flex; justify-content:space-between; align-items:flex-start; border-bottom:2px solid #333; padding-bottom:8px; margin-bottom:12px;">
+<div><div style="font-size:22px; font-weight:bold;">Genomic Test Report</div><div>North West Genomic Laboratory Hub (ODS 699X0)</div></div>
+<div style="font-family:Arial,sans-serif; font-size:12px; color:#c00; font-weight:bold; border:1px solid #c00; padding:2px 6px;">FICTITIOUS EXAMPLE</div>
+</div>
+<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">Composition header: subject (Patient), identifier, date, status, author, attester</div>
+<table style="width:100%; font-size:14px; margin-bottom:14px; border:none;">
+<tr><td style="border:none; padding:2px 8px 2px 0;"><b>Patient</b></td><td style="border:none;">EXAMPLE, Alex</td><td style="border:none;"><b>NHS Number</b></td><td style="border:none;">999 000 0001</td></tr>
+<tr><td style="border:none; padding:2px 8px 2px 0;"><b>Date of birth</b></td><td style="border:none;">01-Jan-1970</td><td style="border:none;"><b>Laboratory number</b></td><td style="border:none;">G26-012345</td></tr>
+<tr><td style="border:none; padding:2px 8px 2px 0;"><b>Requested by</b></td><td style="border:none;">Dr A Clinician, Clinical Genetics</td><td style="border:none;"><b>Report status</b></td><td style="border:none;">Final</td></tr>
+<tr><td style="border:none; padding:2px 8px 2px 0;"><b>Reported</b></td><td style="border:none;">21-Oct-2026</td><td style="border:none;"><b>Authorised by</b></td><td style="border:none;">Dr B Scientist, Consultant Clinical Scientist</td></tr>
+</table>
+<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Referral &middot; LOINC 42349-1 &middot; entries ServiceRequest, Condition</div>
+<div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">Referral</div>
+<p style="margin:2px 0 10px;"><b>Reason for referral.</b> R210 Inherited MMR deficiency (Lynch syndrome). Colorectal adenocarcinoma at age 42; tumour immunohistochemistry showed loss of MLH1 and PMS2 with no <i>MLH1</i> promoter hypermethylation.</p>
+<p style="margin:2px 0 10px;"><b>Test requested.</b> R210.2 - National Genomic Test Directory.</p>
+<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Specimen &middot; SNOMED CT 123038009 &middot; entry Specimen</div>
+<div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">Specimen</div>
+<p style="margin:2px 0 10px;">Peripheral blood (EDTA). Collected 30-Sep-2026, received 01-Oct-2026.</p>
+<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Result summary &middot; LOINC 51968-6 &middot; entry DiagnosticReport</div>
+<div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">Result summary</div>
+<div style="border:1px solid #999; background:#f6f6f6; padding:6px 10px; margin:2px 0 14px;"><b>Pathogenic <i>MLH1</i> variant detected. This result confirms a diagnosis of Lynch syndrome.</b><br/>Test outcome: 311 RESULT CONSISTENT WITH REFERRAL INDICATION</div>
+<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Results &middot; LOINC 69548-6</div>
+<div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">Results</div>
+<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">sub-section Simple variants &middot; LOINC 81250-3 &middot; entries Variant</div>
+<div style="font-size:15px; font-weight:bold; margin:8px 0 4px;">Simple variants</div>
+<table style="width:100%; font-size:14px; border-collapse:collapse; margin:4px 0 10px;">
+<tr style="background:#eee;"><th style="text-align:left; padding:3px 6px; border:1px solid #ccc;">Gene</th><th style="text-align:left; padding:3px 6px; border:1px solid #ccc;">Variant (HGVS)</th><th style="text-align:left; padding:3px 6px; border:1px solid #ccc;">Zygosity</th><th style="text-align:left; padding:3px 6px; border:1px solid #ccc;">Inheritance</th><th style="text-align:left; padding:3px 6px; border:1px solid #ccc;">Classification</th></tr>
+<tr><td style="padding:3px 6px; border:1px solid #ccc;"><i>MLH1</i></td><td style="padding:3px 6px; border:1px solid #ccc;">NM_000249.4:c.350C&gt;T p.(Thr117Met)</td><td style="padding:3px 6px; border:1px solid #ccc;">Heterozygous</td><td style="padding:3px 6px; border:1px solid #ccc;">Germline</td><td style="padding:3px 6px; border:1px solid #ccc;"><b>Pathogenic</b> (class 5)</td></tr>
+</table>
+<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">sub-section Structural variants &middot; LOINC 81297-4 &middot; entries Variant</div>
+<div style="font-size:15px; font-weight:bold; margin:8px 0 4px;">Structural variants</div>
+<p style="margin:2px 0 10px;">No copy number variants (exon deletions or duplications) detected.</p>
 <div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Interpretation &middot; GenomicReportSection#interpretation &middot; entries Diagnostic Implication</div>
 <div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">Interpretation</div>
 <p style="margin:2px 0 10px;">This variant has been reported in many individuals with Lynch syndrome and is classified as pathogenic. It is consistent with the loss of MLH1 and PMS2 seen in the tumour.</p>
@@ -192,54 +266,6 @@ flowchart TB
 The guide also has headings that are not document content (Mapping to HL7v2/IHE, OMOP, Task
 Updates). It gives no section codes and no cardinality for its headings.
 
-##### What the Reader Sees (Alternative Layout)
-
-The same fictitious report, with the NHS England clinical headings as its sections. The referral side
-is more detailed (consent, clinical information), but the result - the part the reader most needs -
-has no heading to go under (shown in red).
-
-<div style="border:1px solid #bbb; box-shadow:0 2px 8px rgba(0,0,0,0.15); background:#fff; color:#222; max-width:820px; margin:16px auto; padding:28px 36px; font-family:Georgia,'Times New Roman',serif; font-size:15px; line-height:1.5;">
-<div style="font-family:Arial,sans-serif; font-size:11px; color:#888; text-align:right;">Composition.title &middot; headings from NHS England Clinical Headings</div>
-<div style="display:flex; justify-content:space-between; align-items:flex-start; border-bottom:2px solid #333; padding-bottom:8px; margin-bottom:12px;">
-<div><div style="font-size:22px; font-weight:bold;">Genomic Test Report</div><div>North West Genomic Laboratory Hub (ODS 699X0)</div></div>
-<div style="font-family:Arial,sans-serif; font-size:12px; color:#c00; font-weight:bold; border:1px solid #c00; padding:2px 6px;">FICTITIOUS EXAMPLE</div>
-</div>
-<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">Healthcare Professional &middot; PractitionerRole</div>
-<div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">Healthcare Professional</div>
-<p style="margin:2px 0 10px;">Dr A Clinician, Clinical Genetics, Example Hospital NHS Foundation Trust.</p>
-<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">Patient &middot; Patient</div>
-<div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">Patient</div>
-<table style="width:100%; font-size:14px; margin-bottom:10px; border:none;">
-<tr><td style="border:none; padding:2px 8px 2px 0;"><b>Name</b></td><td style="border:none;">EXAMPLE, Alex</td><td style="border:none;"><b>NHS Number</b></td><td style="border:none;">999 000 0001</td></tr>
-<tr><td style="border:none; padding:2px 8px 2px 0;"><b>Date of birth</b></td><td style="border:none;">01-Jan-1970</td><td style="border:none;"><b>Phenotypic sex</b></td><td style="border:none;">Female</td></tr>
-</table>
-<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">Test Request &middot; ServiceRequest</div>
-<div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">Test Request</div>
-<p style="margin:2px 0 10px;">R210 Inherited MMR deficiency (Lynch syndrome) - test R210.2. Priority routine. Laboratory number G26-012345.</p>
-<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">NGRL Consent &middot; Consent, QuestionnaireResponse</div>
-<div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">NGRL Consent</div>
-<p style="margin:2px 0 10px;">Record of discussion completed 30-Sep-2026. Consent for storage in the National Genomic Research Library: not given.</p>
-<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">Primary Sample &middot; Specimen</div>
-<div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">Primary Sample</div>
-<p style="margin:2px 0 10px;">Peripheral blood (EDTA). Collected 30-Sep-2026, received 01-Oct-2026.</p>
-<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">Patient Clinical Information &middot; Condition, Observation</div>
-<div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">Patient Clinical Information</div>
-<p style="margin:2px 0 10px;">Colorectal adenocarcinoma at age 42; tumour immunohistochemistry showed loss of MLH1 and PMS2 with no <i>MLH1</i> promoter hypermethylation.</p>
-<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">Miscellaneous &middot; ServiceRequest.note</div>
-<div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">Miscellaneous</div>
-<p style="margin:2px 0 10px;">None.</p>
-<div style="border:2px dashed #c00; padding:6px 10px; margin:14px 0 6px;">
-<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">no clinical heading defined - results, interpretation, recommendations, methodology</div>
-<div style="font-size:17px; font-weight:bold; color:#c00;">(No heading)</div>
-<p style="margin:2px 0 10px;"><b>Pathogenic <i>MLH1</i> variant detected. This result confirms a diagnosis of Lynch syndrome.</b></p>
-<table style="width:100%; font-size:14px; border-collapse:collapse; margin:4px 0 10px;">
-<tr style="background:#eee;"><th style="text-align:left; padding:3px 6px; border:1px solid #ccc;">Gene</th><th style="text-align:left; padding:3px 6px; border:1px solid #ccc;">Variant (HGVS)</th><th style="text-align:left; padding:3px 6px; border:1px solid #ccc;">Zygosity</th><th style="text-align:left; padding:3px 6px; border:1px solid #ccc;">Inheritance</th><th style="text-align:left; padding:3px 6px; border:1px solid #ccc;">Classification</th></tr>
-<tr><td style="padding:3px 6px; border:1px solid #ccc;"><i>MLH1</i></td><td style="padding:3px 6px; border:1px solid #ccc;">NM_000249.4:c.350C&gt;T p.(Thr117Met)</td><td style="padding:3px 6px; border:1px solid #ccc;">Heterozygous</td><td style="padding:3px 6px; border:1px solid #ccc;">Germline</td><td style="padding:3px 6px; border:1px solid #ccc;"><b>Pathogenic</b> (class 5)</td></tr>
-</table>
-<p style="margin:2px 0 10px;">Predictive testing is available for at-risk relatives through Clinical Genetics.</p>
-</div>
-</div>
-
 #### Alternative Layout: HL7 v2 Genetic Variant Panel
 
 The [HL7 Version 2.5.1 Lab Results Interface (LRI) Clinical Genomics chapter](https://confluence.hl7.org/download/attachments/25559919/2018%2004%2003%20-%20V2%20LRI%20-%20Ch.%205%20CG%20and%20Code%20System%20Tables.pdf?api=v2)
@@ -289,51 +315,6 @@ Germline, somatic and pharmacogenomic reports share this layout: groups that do 
 left out, and the genomic source class (germline, somatic, prenatal) is recorded on each variant
 rather than by the layout.
 
-##### What the Reader Sees (HL7 v2 Layout)
-
-The same fictitious report, with the panel groups as its sections. Methodology moves into the
-overall study, and the results are a sub-section per kind of variant. Groups that do not apply to
-this germline report (structural and complex variants, pharmacogenomics, haplotypes) are left out,
-and the recommendations have no group to go under (shown in red).
-
-<div style="border:1px solid #bbb; box-shadow:0 2px 8px rgba(0,0,0,0.15); background:#fff; color:#222; max-width:820px; margin:16px auto; padding:28px 36px; font-family:Georgia,'Times New Roman',serif; font-size:15px; line-height:1.5;">
-<div style="font-family:Arial,sans-serif; font-size:11px; color:#888; text-align:right;">Composition.title &middot; sections from LOINC 81247-9 panel groups</div>
-<div style="display:flex; justify-content:space-between; align-items:flex-start; border-bottom:2px solid #333; padding-bottom:8px; margin-bottom:12px;">
-<div><div style="font-size:22px; font-weight:bold;">Genomic Test Report</div><div>North West Genomic Laboratory Hub (ODS 699X0)</div></div>
-<div style="font-family:Arial,sans-serif; font-size:12px; color:#c00; font-weight:bold; border:1px solid #c00; padding:2px 6px;">FICTITIOUS EXAMPLE</div>
-</div>
-<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">Composition header: subject (Patient), identifier, date, status, author, attester</div>
-<table style="width:100%; font-size:14px; margin-bottom:14px; border:none;">
-<tr><td style="border:none; padding:2px 8px 2px 0;"><b>Patient</b></td><td style="border:none;">EXAMPLE, Alex</td><td style="border:none;"><b>NHS Number</b></td><td style="border:none;">999 000 0001</td></tr>
-<tr><td style="border:none; padding:2px 8px 2px 0;"><b>Date of birth</b></td><td style="border:none;">01-Jan-1970</td><td style="border:none;"><b>Laboratory number</b></td><td style="border:none;">G26-012345</td></tr>
-<tr><td style="border:none; padding:2px 8px 2px 0;"><b>Requested by</b></td><td style="border:none;">Dr A Clinician, Clinical Genetics</td><td style="border:none;"><b>Report status</b></td><td style="border:none;">Final</td></tr>
-<tr><td style="border:none; padding:2px 8px 2px 0;"><b>Reported</b></td><td style="border:none;">21-Oct-2026</td><td style="border:none;"><b>Authorised by</b></td><td style="border:none;">Dr B Scientist, Consultant Clinical Scientist</td></tr>
-</table>
-<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Overall study &middot; LOINC 81306-3 &middot; entries ServiceRequest, Genomic Study, Genomic Study Analysis</div>
-<div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">Overall study</div>
-<p style="margin:2px 0 10px;"><b>Reason for study.</b> R210 Inherited MMR deficiency (Lynch syndrome). Colorectal adenocarcinoma at age 42; tumour immunohistochemistry showed loss of MLH1 and PMS2 with no <i>MLH1</i> promoter hypermethylation.</p>
-<p style="margin:2px 0 10px;"><b>Genes studied.</b> <i>MLH1</i>, <i>MSH2</i>, <i>MSH6</i>, <i>PMS2</i>, <i>EPCAM</i>.</p>
-<p style="margin:2px 0 10px;"><b>Regions examined.</b> Coding regions and exon-intron boundaries, with copy number analysis. Reference GRCh38; HGVS nomenclature.</p>
-<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Overall interpretation &middot; LOINC 51968-6 &middot; entry DiagnosticReport</div>
-<div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">Overall interpretation</div>
-<div style="border:1px solid #999; background:#f6f6f6; padding:6px 10px; margin:2px 0 14px;"><b>Pathogenic <i>MLH1</i> variant detected. This result confirms a diagnosis of Lynch syndrome.</b></div>
-<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Results &middot; sub-section Simple variants &middot; LOINC 81250-3 &middot; entries Variant</div>
-<div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">Results</div>
-<div style="font-size:15px; font-weight:bold; margin:8px 0 4px;">Simple variants</div>
-<table style="width:100%; font-size:14px; border-collapse:collapse; margin:4px 0 10px;">
-<tr style="background:#eee;"><th style="text-align:left; padding:3px 6px; border:1px solid #ccc;">Gene</th><th style="text-align:left; padding:3px 6px; border:1px solid #ccc;">Variant (HGVS)</th><th style="text-align:left; padding:3px 6px; border:1px solid #ccc;">Allelic state</th><th style="text-align:left; padding:3px 6px; border:1px solid #ccc;">Genomic source</th><th style="text-align:left; padding:3px 6px; border:1px solid #ccc;">Classification</th></tr>
-<tr><td style="padding:3px 6px; border:1px solid #ccc;"><i>MLH1</i></td><td style="padding:3px 6px; border:1px solid #ccc;">NM_000249.4:c.350C&gt;T p.(Thr117Met)</td><td style="padding:3px 6px; border:1px solid #ccc;">Heterozygous</td><td style="padding:3px 6px; border:1px solid #ccc;">Germline</td><td style="padding:3px 6px; border:1px solid #ccc;"><b>Pathogenic</b> (class 5)</td></tr>
-</table>
-<p style="margin:2px 0 10px;">This variant has been reported in many individuals with Lynch syndrome and is classified as pathogenic. It is consistent with the loss of MLH1 and PMS2 seen in the tumour.</p>
-<div style="border:2px dashed #c00; padding:6px 10px; margin:14px 0 6px;">
-<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">no panel group - recommendations (an NTE comment in HL7 v2)</div>
-<div style="font-size:17px; font-weight:bold; color:#c00;">(No heading)</div>
-<p style="margin:2px 0 10px;">Predictive testing is available for at-risk relatives through Clinical Genetics. Management should follow national guidance for Lynch syndrome.</p>
-</div>
-<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Narrative report &middot; LOINC 51969-4 &middot; entry DocumentReference (PDF)</div>
-<p style="margin:2px 0 10px;"><i>The authorised report is also attached as a PDF.</i></p>
-</div>
-
 Questions for discussion:
 
 1. Is this the common layout of a NW GLH (and NHS England) genomic report, and in this order?
@@ -348,5 +329,6 @@ Questions for discussion:
 6. Should the report repeat the NHS England clinical headings of the test request (for example
    Patient Clinical Information, NGRL Consent, Fetus), and if so as sections or as entries in a
    Referral section?
-7. Should the Results section have sub-sections for the HL7 v2 panel groups (simple, structural
-   and complex variants, pharmacogenomics, haplotypes), using their LOINC codes as section codes?
+7. Are the Results sub-sections, taken from the HL7 v2 panel groups (simple, structural and
+   complex variants, pharmacogenomics, haplotypes), the right split, and should they be required
+   where they apply?
