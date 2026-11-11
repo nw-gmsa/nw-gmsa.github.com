@@ -104,7 +104,20 @@ appears only once.
 | Haplotype definitions (`HaplotypeDefinitions`) | LOINC `83011-7` | [Haplotype](StructureDefinition-Haplotype.html) |
 {:.grid}
 
-Examples: [Lynch syndrome](Bundle-FHIRDocumentGeneticReportBundle2.html),
+##### FHIR Document Examples
+
+These FHIR Document examples use this profile, including the Results sub-sections. All are
+fictitious.
+
+| Example | Kind of report | Test | Results sub-sections | Based on |
+|---|---|---|---|---|
+| [Lynch syndrome](Bundle-FHIRDocumentGeneticReportBundle2.html) | Germline (rare disease) | R210.2 Inherited MMR deficiency (Lynch syndrome) | Simple variants | HL7 v2 LRI Example 3 |
+| [Whole Genome Sequencing](Bundle-FHIRDocumentGeneticReportBundle-WGS.html) | Germline (rare disease), trio | R27.3 Paediatric disorders (WGS), for the [dWGS Trio](Bundle-dWGS-Trio-r26000000203-p26000000104.html) referral r26000000203 | Simple variants, Structural variants (none detected) | |
+| [Somatic](Bundle-FHIRDocumentGeneticReportBundle-Somatic.html) | Somatic (cancer) | M4.1 Non-Small Cell Lung Cancer, multi-target NGS panel - small variant | Simple variants | HL7 Genomics Reporting [Somatic Reporting](https://build.fhir.org/ig/HL7/genomics-reporting/somatics.html) |
+| [Pharmacogenomics](Bundle-FHIRDocumentGeneticReportBundle-Pharmacogenomics.html) | Pharmacogenomic | R454.1 Mavacamten for treating symptomatic obstructive hypertrophic cardiomyopathy (CYP2C19) | Pharmacogenomics, Haplotype definitions | HL7 Genomics Reporting [Pharmacogenomic Reporting](https://build.fhir.org/ig/HL7/genomics-reporting/pharmacogenomics.html) |
+{:.grid}
+
+Older examples that do not use the Results sub-sections:
 [ctDNA](Bundle-FHIRDocumentGeneticReportBundle-ctDNA.html) and
 [Targeted Variant](Bundle-FHIRDocumentGeneticReportBundle.html).
 

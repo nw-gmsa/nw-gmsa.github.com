@@ -468,8 +468,14 @@ groups:
     resources:
       - Bundle/FHIRDocumentGeneticReportBundle
       - Bundle/FHIRDocumentGeneticReportBundle2
+      - Bundle/FHIRDocumentGeneticReportBundle-WGS
+      - Bundle/FHIRDocumentGeneticReportBundle-Somatic
+      - Bundle/FHIRDocumentGeneticReportBundle-Pharmacogenomics
       - Composition/Composition-GenomicsReport-OctaviaCHISLETT
       - Composition/Composition-GenomicsReport-LynchSyndrome
+      - Composition/Composition-GenomicsReport-WGS
+      - Composition/Composition-GenomicsReport-Somatic
+      - Composition/Composition-GenomicsReport-Pharmacogenomics
       - Observation/6beb613f-d303-42af-b025-86e8e0872061
       - Observation/8385c2fd-313d-4fd5-b98e-d5ea4bae6f99
       - Procedure/7b362aa5-41a7-4168-94b4-f12dff0dfb2a
