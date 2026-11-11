@@ -455,37 +455,106 @@ groups:
       - DiagnosticReport/DiagnosticReportGenomicsReport
       - DocumentReference/94bf65ba-cd6c-4601-b339-6d547f424646
       - MessageHeader/MessageHeaderGenomicReport
+      - Bundle/FHIRDocumentGeneticReportBundle
+      - Composition/Composition-GenomicsReport-OctaviaCHISLETT
   -ex-example-ctdna:
     name: "Example: ctDNA"
-    description: "ctDNA Examples"
+    description: "ctDNA (M4.14 Non-Small Cell Lung Cancer) closed loop referral for Theon Sheffield: the order (O21) and report (R01) messages, the FHIR Document report, and the resources they carry"
     resources:
       - Bundle/GenomicsOrderMessage-ctDNA
       - Bundle/GenomicsReportMessage-ctDNA
       - Bundle/FHIRDocumentGeneticReportBundle-ctDNA
-  -ex-example-structured-laboratory-report:
-    name: "Example: Laboratory Report Structured"
-    description: "Laboratory Report Structured Examples"
+      - Composition/Composition-GenomicsReport-ctDNA
+      - MessageHeader/MessageHeaderO21ctDNA
+      - MessageHeader/MessageHeaderR01ctDNA
+      - ServiceRequest/ServiceRequest-ctDNA
+      - Specimen/Specimen-ctDNA
+      - DiagnosticReport/DiagnosticReport-ctDNA
+      - DocumentReference/DocumentReference-ctDNA
+      - Observation/variant-egfr
+      - Procedure/genomic-study-analysis-egfr-dpcr
+      - Observation/GenomicStudy-ctDNA
+      - Observation/GenomicStudy-ctDNA-Failed
+      - Patient/Patient-Sheffield
+      - PractitionerRole/4446ab81-35ef-49cb-b2fe-1d6f1a0dcc02
+  -ex-example-somatic:
+    name: "Example: Somatic (cancer)"
+    description: "Somatic (M4.1 Non-Small Cell Lung Cancer) closed loop referrals: the order (O21) message from The Christie and the FHIR Document report, for first-line treatment selection (Ramsay Bolton) and for resistance testing with a result from a laboratory in Germany (Tommen Birmingham)"
     resources:
-      - Bundle/FHIRDocumentGeneticReportBundle
-      - Bundle/FHIRDocumentGeneticReportBundle2
-      - Bundle/FHIRDocumentGeneticReportBundle-WGS
-      - Bundle/FHIRDocumentGeneticReportBundle-WGS-ExternalLab
+      - Bundle/GenomicsOrderMessage-Somatic
       - Bundle/FHIRDocumentGeneticReportBundle-Somatic
-      - Bundle/FHIRDocumentGeneticReportBundle-Somatic-ExternalLab
-      - Bundle/FHIRDocumentGeneticReportBundle-Pharmacogenomics
-      - Composition/Composition-GenomicsReport-OctaviaCHISLETT
-      - Composition/Composition-GenomicsReport-LynchSyndrome
-      - Composition/Composition-GenomicsReport-WGS
-      - Composition/Composition-GenomicsReport-WGS-ExternalLab
       - Composition/Composition-GenomicsReport-Somatic
+      - MessageHeader/MessageHeader-O21-Somatic
+      - ServiceRequest/ServiceRequest-Somatic
+      - Specimen/Specimen-Somatic
+      - PractitionerRole/PractitionerRole-Requester-Oncology-RBV
+      - Bundle/GenomicsOrderMessage-Somatic-ExternalLab
+      - Bundle/FHIRDocumentGeneticReportBundle-Somatic-ExternalLab
       - Composition/Composition-GenomicsReport-Somatic-ExternalLab
+      - MessageHeader/MessageHeader-O21-Somatic-ExternalLab
+      - ServiceRequest/ServiceRequest-Somatic-ExternalLab
+      - Specimen/Specimen-Somatic-ExternalLab
+      - DocumentReference/DocumentReference-ExternalLab-Germany-EML4-ALK
+      - Patient/Patient-Bolton
+      - Patient/Patient-Birmingham
+  -ex-example-wgs:
+    name: "Example: Whole Genome Sequencing (WGS)"
+    description: "Whole Genome Sequencing closed loop referrals: R27.3 Paediatric disorders trio (Gilly Brough), ordered by the dWGS Trio sub-order dWGS-Trio-r26000000203-p26000000104 (see the dWGS examples), and R54.3 Hereditary ataxia with a result from another laboratory (Robert Blackburn), with its order (O21) message and FHIR Document report"
+    resources:
+      - Bundle/FHIRDocumentGeneticReportBundle-WGS
+      - Composition/Composition-GenomicsReport-WGS
+      - ServiceRequest/ServiceRequest-WGS
+      - Specimen/Specimen-WGS
+      - PractitionerRole/PractitionerRole-Requester-NEYGLH
+      - Bundle/GenomicsOrderMessage-WGS-ExternalLab
+      - Bundle/FHIRDocumentGeneticReportBundle-WGS-ExternalLab
+      - Composition/Composition-GenomicsReport-WGS-ExternalLab
+      - MessageHeader/MessageHeader-O21-WGS-ExternalLab
+      - ServiceRequest/ServiceRequest-WGS-ExternalLab
+      - Specimen/Specimen-WGS-ExternalLab
+      - PractitionerRole/PractitionerRole-Requester-Neurology-RM3
+      - Patient/Patient-Brough
+      - Patient/Patient-Blackburn
+  -ex-example-pharmacogenomics:
+    name: "Example: Pharmacogenomics"
+    description: "Pharmacogenomics (R454.1 CYP2C19 before mavacamten) closed loop referral for Mace Northwich: the order (O21) message from Liverpool Heart and Chest and the FHIR Document report"
+    resources:
+      - Bundle/GenomicsOrderMessage-Pharmacogenomics
+      - Bundle/FHIRDocumentGeneticReportBundle-Pharmacogenomics
       - Composition/Composition-GenomicsReport-Pharmacogenomics
-      - Observation/6beb613f-d303-42af-b025-86e8e0872061
+      - MessageHeader/MessageHeader-O21-Pharmacogenomics
+      - ServiceRequest/ServiceRequest-Pharmacogenomics
+      - Specimen/Specimen-Pharmacogenomics
+      - PractitionerRole/PractitionerRole-Requester-Cardiology-RBQ
+      - Patient/Patient-Northwich
+  -ex-example-lynch-syndrome:
+    name: "Example: Lynch Syndrome"
+    description: "Germline (R210.2 Inherited MMR deficiency) closed loop referral for Ned Liverpool: the order (O21) message and the FHIR Document report, with the tumour immunohistochemistry result from histopathology, and the resources they carry"
+    resources:
+      - Bundle/GenomicsOrderMessage-LynchSyndrome
+      - Bundle/FHIRDocumentGeneticReportBundle2
+      - Composition/Composition-GenomicsReport-LynchSyndrome
+      - MessageHeader/MessageHeader-O21-LynchSyndrome
+      - ServiceRequest/ServiceRequest-LynchSyndrome
+      - Specimen/Specimen-LynchSyndrome
+      - DiagnosticReport/DiagnosticReportGenomicsReportLS
       - Observation/8385c2fd-313d-4fd5-b98e-d5ea4bae6f99
-      - Procedure/7b362aa5-41a7-4168-94b4-f12dff0dfb2a
+      - Observation/6beb613f-d303-42af-b025-86e8e0872061
+      - Observation/0878c5de-c22f-4e31-841a-a82ad31c93aa
       - Procedure/f0036554-cd1a-463c-ac8a-d891ca409af9
+      - Observation/4490c092-c78c-480a-8cb7-653b70113fd5
+      - Procedure/13240a3b-d1db-4f1a-ad7d-b19f23967060
+      - Condition/c8f82825-e4cb-4e1f-b728-3fd2808e93db
+      - Condition/d6c19529-a64e-476b-b896-303abec26a79
+      - Patient/Patient-Liverpool
+  -ex-example-cystic-fibrosis:
+    name: "Example: Cystic Fibrosis"
+    description: "Structured germline results (CFTR variant, diagnostic implication and genomic study) for Jaime Lancaster"
+    resources:
       - Observation/bca547c1-78a5-41be-8cfc-03c05805ac85
       - Observation/a954a98c-f427-4968-9022-8b760de66628
+      - Procedure/7b362aa5-41a7-4168-94b4-f12dff0dfb2a
+      - Patient/Patient-Lancaster
   -ex-example-other:
     name: "Example: Ask at Order Entry questions and prior results"
     description: "Ask at Order Entry questions and prior results"

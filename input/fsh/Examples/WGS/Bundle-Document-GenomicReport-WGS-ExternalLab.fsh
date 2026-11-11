@@ -45,12 +45,14 @@ Usage: #example
   * code = $loinc#42349-1 "Reason for referral (narrative)"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R54.3 Hereditary ataxia with onset in adulthood (WGS). Progressive cerebellar ataxia from age 55, no family history.</p></div>"
+  * entry[+].reference = "urn:uuid:d975fa86-c754-48e6-935b-d2aa1e822ba9"
 
 * section[+]
   * title = "Specimen"
   * code = $sct#123038009 "Specimen"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Peripheral blood (EDTA). Collected 12-Aug-2026, received 13-Aug-2026.</p></div>"
+  * entry[+].reference = "urn:uuid:3767ac32-ead0-4d95-9793-1a4559822666"
 
 * section[+]
   * title = "Result summary"
@@ -112,6 +114,8 @@ Usage: #inline
   * identifier.value = "71502"
   * identifier.assigner.identifier.system = $ods-code
   * identifier.assigner.identifier.value = "699X0"
+  * reference = "urn:uuid:d975fa86-c754-48e6-935b-d2aa1e822ba9"
+* specimen[+].reference = "urn:uuid:3767ac32-ead0-4d95-9793-1a4559822666"
 * status = #final
 * category[Genetics] = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
 * code.coding[+] = $GTD#R54.3
@@ -199,6 +203,10 @@ Usage: #example
 * insert DocumentBundle("3d352f1c-26d8-41f0-8dda-eff6ddb85d79", "2026-11-06T13:20:00+00:00")
 * insert EntryDocument("urn:uuid:c531d733-207b-4364-83b0-7dcf9c488857", Composition-GenomicsReport-WGS-ExternalLab)
 * insert EntryDocument("urn:uuid:d9dc03c1-b90b-4474-85a8-fb7e7717c24f", Patient-Blackburn)
+// Order (also in the order message GenomicsOrderMessage-WGS-ExternalLab): ServiceRequest, requester and Specimen
+* insert EntryDocument("urn:uuid:d975fa86-c754-48e6-935b-d2aa1e822ba9", ServiceRequest-WGS-ExternalLab)
+* insert EntryDocument("urn:uuid:0a9b29d6-b81b-4747-9045-2aca50e861d7", PractitionerRole-Requester-Neurology-RM3)
+* insert EntryDocument("urn:uuid:3767ac32-ead0-4d95-9793-1a4559822666", Specimen-WGS-ExternalLab)
 * insert EntryDocument("urn:uuid:2f62e254-7879-4cc4-9bd8-6c9709aa10ad", DiagnosticReport-GenomicsReport-WGS-ExternalLab)
 //  Performer
 * insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)

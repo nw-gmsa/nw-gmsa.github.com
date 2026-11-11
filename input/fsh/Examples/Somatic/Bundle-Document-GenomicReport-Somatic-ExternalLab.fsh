@@ -1,4 +1,6 @@
 // Somatic (cancer) report that restates a result from another laboratory, received as a PDF.
+// The result arrived as an HL7 v2 ORU^R01: OBR/OBX became the DiagnosticReport, and the OBX of type ED
+// (the embedded PDF) became a DocumentReference, both pointing at the same Binary.
 // The EML4-ALK fusion was reported by a laboratory in Germany when the patient was diagnosed there;
 // the NW GLH panel on a later biopsy finds an ALK resistance mutation, and the interpretation covers
 // both results (ACGS 2.5.14, 2.5.16).
@@ -45,12 +47,14 @@ Usage: #example
   * code = $loinc#42349-1 "Reason for referral (narrative)"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>M4 Non-Small Cell Lung Cancer. ALK-positive lung adenocarcinoma, diagnosed in Germany in 2025, now progressing on alectinib. Testing for resistance mechanisms on a new biopsy.</p></div>"
+  * entry[+].reference = "urn:uuid:ee2e9cd7-bcc3-4e0d-b6a9-dab5e4ee3fdb"
 
 * section[+]
   * title = "Specimen"
   * code = $sct#123038009 "Specimen"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Formalin-fixed paraffin-embedded (FFPE) lung biopsy. Estimated tumour content 50%. Collected 05-Oct-2026, received 06-Oct-2026.</p></div>"
+  * entry[+].reference = "urn:uuid:d22cfe12-7f10-41b1-ad44-c4accb626f52"
 
 * section[+]
   * title = "Result summary"
@@ -77,6 +81,7 @@ Usage: #example
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>RNA-based NGS fusion analysis of the diagnostic lung biopsy, Institut für Molekularpathologie, Musterstadt, Germany (report dated 12-Mar-2025, received as a PDF): EML4-ALK fusion detected (EML4 exon 13 :: ALK exon 20, variant 1). Result transcribed from the attached report.</p></div>"
   * entry[+].reference = "urn:uuid:03f0995b-1592-4578-8128-53ec8c16061c"
+  * entry[+].reference = "urn:uuid:5c8e2f47-1d3a-4b96-a0e2-7f4b9c31d826"
 
 * section[+]
   * title = "Interpretation"
@@ -118,6 +123,8 @@ Usage: #inline
   * identifier.value = "71455"
   * identifier.assigner.identifier.system = $ods-code
   * identifier.assigner.identifier.value = "699X0"
+  * reference = "urn:uuid:ee2e9cd7-bcc3-4e0d-b6a9-dab5e4ee3fdb"
+* specimen[+].reference = "urn:uuid:d22cfe12-7f10-41b1-ad44-c4accb626f52"
 * status = #final
 * category[Genetics] = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
 * code.coding[+] = $GTD#M4.1
@@ -259,6 +266,39 @@ Usage: #inline
   * creation = "2025-03-12"
 
 
+Instance: DocumentReference-ExternalLab-Germany-EML4-ALK
+InstanceOf: http://hl7.org/fhir/StructureDefinition/DocumentReference
+Title: "Document Reference - EML4-ALK fusion report PDF (laboratory in Germany)"
+Description: "Fictitious example: the PDF report from the laboratory in Germany. It was received in an HL7 v2 ORU^R01 as an OBX of type ED and converted to a DocumentReference, related to the DiagnosticReport converted from the same message (OBR). The PDF is the same Binary as DiagnosticReport.presentedForm."
+Usage: #example
+
+// Hand-written narrative: a generated one links content.attachment.url, and urn: is not a valid hyperlink scheme
+* text.status = #generated
+* text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Molecular pathology report (RNA fusion analysis), Institut für Molekularpathologie, Musterstadt, Germany, 12-Mar-2025 (PDF, from OBX type ED).</p></div>"
+* identifier[+].system = "https://molekularpathologie.musterstadt.example.de/befund"
+* identifier[=].value = "MP-2025-004711-PDF"
+* status = #current
+* docStatus = #final
+* type = $sct#1054161000000101 "Genetic report"
+* subject.reference = "urn:uuid:2ad4e236-0bf0-4a42-a83b-173a6b0dc14c"
+* subject.display = "Tommen BIRMINGHAM"
+* date = "2025-03-12T00:00:00+01:00"
+* author[+].reference = "urn:uuid:93b5dcc3-a90f-4099-94e7-7abebb94c899"
+* author[=].display = "Institut für Molekularpathologie, Musterstadt"
+* content[+].attachment
+  * contentType = #application/pdf
+  * language = #en
+  * url = "urn:uuid:d7d2682b-50c2-4baf-80b5-d64a5848b0bb"
+  * title = "Molecular pathology report - RNA fusion analysis"
+  * creation = "2025-03-12"
+// Report Identifier (OBR-3), with a reference to the DiagnosticReport converted from the same ORU^R01
+* context.related[+].reference = "urn:uuid:03f0995b-1592-4578-8128-53ec8c16061c"
+* context.related[=].type = "DiagnosticReport"
+* context.related[=].identifier.type = $v2-0203#FILL
+* context.related[=].identifier.system = "https://molekularpathologie.musterstadt.example.de/befund"
+* context.related[=].identifier.value = "MP-2025-004711"
+
+
 Instance: Organization-ExternalLab-Germany
 InstanceOf: http://hl7.org/fhir/StructureDefinition/Organization
 Title: "Organization - Institut für Molekularpathologie, Musterstadt (Germany)"
@@ -277,11 +317,15 @@ Usage: #inline
 Instance: FHIRDocumentGeneticReportBundle-Somatic-ExternalLab
 InstanceOf: BundleDocument
 Title: "Bundle `Document` - Genomics Report Somatic with a result from a laboratory in Germany"
-Description: "FHIR Document Genomics Report (Somatic, M4.1 Non-Small Cell Lung Cancer) for Tommen Birmingham. An EML4-ALK fusion reported as a PDF by a laboratory in Germany is restated in the Results from other laboratories section, and the interpretation covers it together with the ALK resistance mutation found by NW GLH."
+Description: "FHIR Document Genomics Report (Somatic, M4.1 Non-Small Cell Lung Cancer) for Tommen Birmingham. An EML4-ALK fusion reported as a PDF by a laboratory in Germany is restated in the Results from other laboratories section (received as an ORU^R01: a DiagnosticReport, and a DocumentReference for the OBX of type ED carrying the PDF), and the interpretation covers it together with the ALK resistance mutation found by NW GLH."
 Usage: #example
 * insert DocumentBundle("6f1b2c8d-3e4a-4b5c-8d9e-0a1b2c3d4e5f", "2026-10-20T11:15:00+00:00")
 * insert EntryDocument("urn:uuid:014c8f1b-9aa5-4253-8e50-069a37b2054f", Composition-GenomicsReport-Somatic-ExternalLab)
 * insert EntryDocument("urn:uuid:2ad4e236-0bf0-4a42-a83b-173a6b0dc14c", Patient-Birmingham)
+// Order (also in the order message GenomicsOrderMessage-Somatic-ExternalLab): ServiceRequest, requester and Specimen
+* insert EntryDocument("urn:uuid:ee2e9cd7-bcc3-4e0d-b6a9-dab5e4ee3fdb", ServiceRequest-Somatic-ExternalLab)
+* insert EntryDocument("urn:uuid:547e7b64-63b0-4a6c-b3fc-c832cf9fc5c5", PractitionerRole-Requester-Oncology-RBV)
+* insert EntryDocument("urn:uuid:d22cfe12-7f10-41b1-ad44-c4accb626f52", Specimen-Somatic-ExternalLab)
 * insert EntryDocument("urn:uuid:89782eb3-1235-4844-847f-68b475d7639b", DiagnosticReport-GenomicsReport-Somatic-ExternalLab)
 //  Performer
 * insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)
@@ -289,7 +333,8 @@ Usage: #example
 * insert EntryDocument("urn:uuid:e4529ca6-f3e5-4ba7-bf6b-70f58be5cd98", Variant-Somatic-ALK-G1202R)
 * insert EntryDocument("urn:uuid:34872adc-5e60-4a62-8e8e-9ff8c9d3b3f5", TherapeuticImplication-Somatic-ALK-Lorlatinib)
 * insert EntryDocument("urn:uuid:eb655b7c-800e-4cae-95ed-49f9fdc16174", GenomicStudyPanel-Somatic-ExternalLab)
-// Result from the laboratory in Germany, with its PDF
+// Result from the laboratory in Germany (ORU^R01): DiagnosticReport (OBR), DocumentReference (OBX type ED) and its PDF
 * insert EntryDocument("urn:uuid:03f0995b-1592-4578-8128-53ec8c16061c", DiagnosticReport-ExternalLab-Germany-EML4-ALK)
+* insert EntryDocument("urn:uuid:5c8e2f47-1d3a-4b96-a0e2-7f4b9c31d826", DocumentReference-ExternalLab-Germany-EML4-ALK)
 * insert EntryDocument("urn:uuid:93b5dcc3-a90f-4099-94e7-7abebb94c899", Organization-ExternalLab-Germany)
 * insert EntryDocument("urn:uuid:d7d2682b-50c2-4baf-80b5-d64a5848b0bb", Binary-ExternalLab-Germany-EML4-ALK)

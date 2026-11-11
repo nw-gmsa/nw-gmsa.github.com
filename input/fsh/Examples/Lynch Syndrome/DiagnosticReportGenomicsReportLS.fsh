@@ -20,6 +20,8 @@ Description: "Ned Liverpool Lynch Syndrome"
   * identifier.value = "66717"
   * identifier.assigner.identifier.system = $ods-code
   * identifier.assigner.identifier.value = "699X0"
+  * reference = "urn:uuid:c0627dab-6f98-4846-beba-d9412ed3a60e"
+* specimen[+].reference = "urn:uuid:635eaecb-a9c9-488e-978b-f63b12ce52b1"
 //  * extension[ExtCodeableReference].valueCodeableConcept.coding = $GTD#R240.1
 
 * status = #final

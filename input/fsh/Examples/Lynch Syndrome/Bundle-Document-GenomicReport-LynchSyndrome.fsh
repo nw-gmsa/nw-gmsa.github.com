@@ -48,6 +48,7 @@ Usage: #example
   * code = $loinc#42349-1 "Reason for referral (narrative)"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R210 Inherited MMR deficiency (Lynch syndrome). History of carcinoma.</p></div>"
+  * entry[+].reference = "urn:uuid:c0627dab-6f98-4846-beba-d9412ed3a60e"
   * entry[+].reference = "urn:uuid:d6c19529-a64e-476b-b896-303abec26a79"
 
 * section[+]
@@ -55,6 +56,7 @@ Usage: #example
   * code = $sct#123038009 "Specimen"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Peripheral blood (EDTA). Received 08-Sep-2023.</p></div>"
+  * entry[+].reference = "urn:uuid:635eaecb-a9c9-488e-978b-f63b12ce52b1"
 
 * section[+]
   * title = "Result summary"
@@ -106,6 +108,10 @@ Usage: #example
 * insert DocumentBundle("e51f87e6-f43f-4c7a-b475-23b784e2b852", "2024-10-13T10:33:00+00:00")
 * insert EntryDocument("urn:uuid:c55a7dc6-9b29-4cd6-ab8f-9aea594aabde", Composition-GenomicsReport-LynchSyndrome)
 * insert EntryDocument("urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd", Patient-Liverpool)
+// Order (also in the order message GenomicsOrderMessage-LynchSyndrome): ServiceRequest, requester and Specimen
+* insert EntryDocument("urn:uuid:c0627dab-6f98-4846-beba-d9412ed3a60e", ServiceRequest-LynchSyndrome)
+* insert EntryDocument("urn:uuid:ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8", ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8)
+* insert EntryDocument("urn:uuid:635eaecb-a9c9-488e-978b-f63b12ce52b1", Specimen-LynchSyndrome)
 * insert EntryDocument("urn:uuid:c64139e7-f02d-409c-bf34-75e8bf23bc80", DiagnosticReportGenomicsReportLS)
 //  Performer
 * insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)

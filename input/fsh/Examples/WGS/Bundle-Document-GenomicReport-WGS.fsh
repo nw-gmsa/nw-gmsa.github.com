@@ -43,12 +43,14 @@ Usage: #example
   * code = $loinc#42349-1 "Reason for referral (narrative)"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R27.3 Paediatric disorders (WGS). Trio analysis with both parents, NGIS referral r26000000203.</p></div>"
+  * entry[+].reference = "urn:uuid:74e1181c-035a-42c4-9f05-d14831a99980"
 
 * section[+]
   * title = "Specimen"
   * code = $sct#123038009 "Specimen"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Whole blood (EDTA), sample S26-1A04. Collected 18-Aug-2026, received 26-Aug-2026.</p></div>"
+  * entry[+].reference = "urn:uuid:ace6ede5-177c-4560-a407-02e27a6545bc"
 
 * section[+]
   * title = "Result summary"
@@ -114,6 +116,8 @@ Usage: #inline
   * identifier.value = "4000000004"
   * identifier.assigner.identifier.system = $ods-code
   * identifier.assigner.identifier.value = "699N0"
+  * reference = "urn:uuid:74e1181c-035a-42c4-9f05-d14831a99980"
+* specimen[+].reference = "urn:uuid:ace6ede5-177c-4560-a407-02e27a6545bc"
 * status = #final
 * category[Genetics] = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
 * code.coding[+] = $GTD#R27.3
@@ -231,6 +235,10 @@ Usage: #example
 * insert DocumentBundle("3d7f6a1e-0b4c-4f1e-9a51-7c2f0e6b8d42", "2026-10-28T14:10:00+00:00")
 * insert EntryDocument("urn:uuid:3b50bc11-0026-4071-a29e-c8cc9c16d10e", Composition-GenomicsReport-WGS)
 * insert EntryDocument("urn:uuid:eaf97963-82df-4623-9bab-ab9476b295d7", Patient-Brough)
+// Order (also in the order message dWGS-Trio-r26000000203-p26000000104): ServiceRequest, requester and Specimen
+* insert EntryDocument("urn:uuid:74e1181c-035a-42c4-9f05-d14831a99980", ServiceRequest-WGS)
+* insert EntryDocument("urn:uuid:d8573b87-4984-48e4-87f5-599509c0a5bc", PractitionerRole-Requester-NEYGLH)
+* insert EntryDocument("urn:uuid:ace6ede5-177c-4560-a407-02e27a6545bc", Specimen-WGS)
 * insert EntryDocument("urn:uuid:aaac7b4a-1484-4b06-a1a3-4200da1bce76", DiagnosticReport-GenomicsReport-WGS)
 //  Performer
 * insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)

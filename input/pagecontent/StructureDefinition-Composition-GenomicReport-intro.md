@@ -158,14 +158,20 @@ These FHIR Document examples use this profile, including the Results sub-section
 fictitious. The PDF reports from other laboratories are fictitious too, made for these examples; the
 IG Publisher does not display a PDF held in a Binary, so they are also linked here.
 
-| Example | Kind of report | Test | Results sub-sections | Based on |
-|---|---|---|---|---|
-| [Lynch syndrome](Bundle-FHIRDocumentGeneticReportBundle2.html) | Germline (rare disease) | R210.2 Inherited MMR deficiency (Lynch syndrome) | Simple variants; also a Results from other laboratories section (tumour immunohistochemistry) | HL7 v2 LRI Example 3 |
-| [Whole Genome Sequencing](Bundle-FHIRDocumentGeneticReportBundle-WGS.html) | Germline (rare disease), trio | R27.3 Paediatric disorders (WGS), for the [dWGS Trio](Bundle-dWGS-Trio-r26000000203-p26000000104.html) referral r26000000203 | Simple variants, Structural variants (none detected) | |
-| [Whole Genome Sequencing, with a result from another laboratory](Bundle-FHIRDocumentGeneticReportBundle-WGS-ExternalLab.html) | Germline (rare disease), integrated report | R54.3 Hereditary ataxia with onset in adulthood (WGS) | None (no genetic cause found); also a Results from other laboratories section - repeat expansion testing received as a PDF ([view the PDF](ExternalLab-RepeatExpansion-Report.pdf)), carried as a DocumentReference with no DiagnosticReport | ACGS 2.5.14, 2.5.16 |
-| [Somatic](Bundle-FHIRDocumentGeneticReportBundle-Somatic.html) | Somatic (cancer) | M4.1 Non-Small Cell Lung Cancer, multi-target NGS panel - small variant | Simple variants | HL7 Genomics Reporting [Somatic Reporting](https://build.fhir.org/ig/HL7/genomics-reporting/somatics.html) |
-| [Somatic, with a result from another laboratory](Bundle-FHIRDocumentGeneticReportBundle-Somatic-ExternalLab.html) | Somatic (cancer), integrated report | M4.1 Non-Small Cell Lung Cancer, after progression on alectinib | Simple variants; also a Results from other laboratories section - an EML4-ALK fusion reported as a PDF by a laboratory in Germany ([view the PDF](ExternalLab-Germany-EML4-ALK-Report.pdf)) | ACGS 2.5.14, 2.5.16 |
-| [Pharmacogenomics](Bundle-FHIRDocumentGeneticReportBundle-Pharmacogenomics.html) | Pharmacogenomic | R454.1 Mavacamten for treating symptomatic obstructive hypertrophic cardiomyopathy (CYP2C19) | Pharmacogenomics, Haplotype definitions | HL7 Genomics Reporting [Pharmacogenomic Reporting](https://build.fhir.org/ig/HL7/genomics-reporting/pharmacogenomics.html) |
+Each report carries its order as a ServiceRequest (Referral section) and its sample as a Specimen
+(Specimen section). These are the same resources sent in the order message (Order column), so each
+example shows a closed loop referral from order to report. The [Artifacts](artifacts.html) page groups
+each example's messages, document and resources by pathway (ctDNA, Somatic, WGS, Pharmacogenomics,
+Lynch Syndrome).
+
+| Example | Kind of report | Test | Results sub-sections | Based on | Order |
+|---|---|---|---|---|---|
+| [Lynch syndrome](Bundle-FHIRDocumentGeneticReportBundle2.html) | Germline (rare disease) | R210.2 Inherited MMR deficiency (Lynch syndrome) | Simple variants; also a Results from other laboratories section (tumour immunohistochemistry) | HL7 v2 LRI Example 3 | [O21 message](Bundle-GenomicsOrderMessage-LynchSyndrome.html) |
+| [Whole Genome Sequencing](Bundle-FHIRDocumentGeneticReportBundle-WGS.html) | Germline (rare disease), trio | R27.3 Paediatric disorders (WGS), for the [dWGS Trio](Bundle-dWGS-Trio-r26000000203-p26000000104.html) referral r26000000203 | Simple variants, Structural variants (none detected) | | [dWGS Trio sub-order](Bundle-dWGS-Trio-r26000000203-p26000000104.html) |
+| [Whole Genome Sequencing, with a result from another laboratory](Bundle-FHIRDocumentGeneticReportBundle-WGS-ExternalLab.html) | Germline (rare disease), integrated report | R54.3 Hereditary ataxia with onset in adulthood (WGS) | None (no genetic cause found); also a Results from other laboratories section - repeat expansion testing received as a PDF ([view the PDF](ExternalLab-RepeatExpansion-Report.pdf)), carried as a DocumentReference with no DiagnosticReport | ACGS 2.5.14, 2.5.16 | [O21 message](Bundle-GenomicsOrderMessage-WGS-ExternalLab.html) |
+| [Somatic](Bundle-FHIRDocumentGeneticReportBundle-Somatic.html) | Somatic (cancer) | M4.1 Non-Small Cell Lung Cancer, multi-target NGS panel - small variant | Simple variants | HL7 Genomics Reporting [Somatic Reporting](https://build.fhir.org/ig/HL7/genomics-reporting/somatics.html) | [O21 message](Bundle-GenomicsOrderMessage-Somatic.html) |
+| [Somatic, with a result from another laboratory](Bundle-FHIRDocumentGeneticReportBundle-Somatic-ExternalLab.html) | Somatic (cancer), integrated report | M4.1 Non-Small Cell Lung Cancer, after progression on alectinib | Simple variants; also a Results from other laboratories section - an EML4-ALK fusion reported as a PDF by a laboratory in Germany and received as an ORU^R01, carried as a DiagnosticReport plus a DocumentReference for the OBX of type ED ([view the PDF](ExternalLab-Germany-EML4-ALK-Report.pdf)) | ACGS 2.5.14, 2.5.16 | [O21 message](Bundle-GenomicsOrderMessage-Somatic-ExternalLab.html) |
+| [Pharmacogenomics](Bundle-FHIRDocumentGeneticReportBundle-Pharmacogenomics.html) | Pharmacogenomic | R454.1 Mavacamten for treating symptomatic obstructive hypertrophic cardiomyopathy (CYP2C19) | Pharmacogenomics, Haplotype definitions | HL7 Genomics Reporting [Pharmacogenomic Reporting](https://build.fhir.org/ig/HL7/genomics-reporting/pharmacogenomics.html) | [O21 message](Bundle-GenomicsOrderMessage-Pharmacogenomics.html) |
 {:.grid}
 
 Older examples that do not use the Results sub-sections:

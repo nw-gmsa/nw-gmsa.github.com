@@ -43,12 +43,14 @@ Usage: #example
   * code = $loinc#42349-1 "Reason for referral (narrative)"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R454 Mavacamten for treating symptomatic obstructive hypertrophic cardiomyopathy. CYP2C19 genotyping before starting mavacamten.</p></div>"
+  * entry[+].reference = "urn:uuid:a3ef9f92-1896-4174-8523-659726543fb4"
 
 * section[+]
   * title = "Specimen"
   * code = $sct#123038009 "Specimen"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Peripheral blood (EDTA). Collected 27-Oct-2026, received 28-Oct-2026.</p></div>"
+  * entry[+].reference = "urn:uuid:5cd4af98-b7b4-410e-8f71-0dbc2a3e1af4"
 
 * section[+]
   * title = "Result summary"
@@ -115,6 +117,8 @@ Usage: #inline
   * identifier.value = "71388"
   * identifier.assigner.identifier.system = $ods-code
   * identifier.assigner.identifier.value = "699X0"
+  * reference = "urn:uuid:a3ef9f92-1896-4174-8523-659726543fb4"
+* specimen[+].reference = "urn:uuid:5cd4af98-b7b4-410e-8f71-0dbc2a3e1af4"
 * status = #final
 * category[Genetics] = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
 * code.coding[+] = $GTD#R454.1
@@ -245,6 +249,10 @@ Usage: #example
 * insert DocumentBundle("8c2d4f6a-1e3b-4a5c-9d7e-0f1a2b3c4d5e", "2026-11-02T15:45:00+00:00")
 * insert EntryDocument("urn:uuid:5e71bb01-36a9-44b6-bc00-c9403a2c432c", Composition-GenomicsReport-Pharmacogenomics)
 * insert EntryDocument("urn:uuid:50d6aefa-e2d2-439a-820f-cb495c72ae6a", Patient-Northwich)
+// Order (also in the order message GenomicsOrderMessage-Pharmacogenomics): ServiceRequest, requester and Specimen
+* insert EntryDocument("urn:uuid:a3ef9f92-1896-4174-8523-659726543fb4", ServiceRequest-Pharmacogenomics)
+* insert EntryDocument("urn:uuid:354876d4-435a-413f-817d-eb6440b0a4ef", PractitionerRole-Requester-Cardiology-RBQ)
+* insert EntryDocument("urn:uuid:5cd4af98-b7b4-410e-8f71-0dbc2a3e1af4", Specimen-Pharmacogenomics)
 * insert EntryDocument("urn:uuid:7d97f7b6-1cd8-4563-94ff-efebd54590e2", DiagnosticReport-GenomicsReport-Pharmacogenomics)
 //  Performer
 * insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)

@@ -42,12 +42,14 @@ Usage: #example
   * code = $loinc#42349-1 "Reason for referral (narrative)"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>M4 Non-Small Cell Lung Cancer. Adenocarcinoma of the lung, stage IV, for first-line treatment selection.</p></div>"
+  * entry[+].reference = "urn:uuid:5b5d3536-7a68-4631-8c9c-dcaf79c1798b"
 
 * section[+]
   * title = "Specimen"
   * code = $sct#123038009 "Specimen"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Formalin-fixed paraffin-embedded (FFPE) lung biopsy. Estimated tumour content 40%. Received 10-Oct-2026.</p></div>"
+  * entry[+].reference = "urn:uuid:fb300032-6854-4c9e-aa21-972a2e1fcb56"
 
 * section[+]
   * title = "Result summary"
@@ -108,6 +110,8 @@ Usage: #inline
   * identifier.value = "71204"
   * identifier.assigner.identifier.system = $ods-code
   * identifier.assigner.identifier.value = "699X0"
+  * reference = "urn:uuid:5b5d3536-7a68-4631-8c9c-dcaf79c1798b"
+* specimen[+].reference = "urn:uuid:fb300032-6854-4c9e-aa21-972a2e1fcb56"
 * status = #final
 * category[Genetics] = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
 * code.coding[+] = $GTD#M4.1
@@ -234,6 +238,10 @@ Usage: #example
 * insert DocumentBundle("5a1e7c3d-2f6b-4e8a-b0d9-6c4f2a8e1b73", "2026-10-21T09:30:00+00:00")
 * insert EntryDocument("urn:uuid:e7e2432d-ec59-4de7-b26b-7e995067084b", Composition-GenomicsReport-Somatic)
 * insert EntryDocument("urn:uuid:9a53f1c4-c93b-4e27-a54e-176dd0aca0b7", Patient-Bolton)
+// Order (also in the order message GenomicsOrderMessage-Somatic): ServiceRequest, requester and Specimen
+* insert EntryDocument("urn:uuid:5b5d3536-7a68-4631-8c9c-dcaf79c1798b", ServiceRequest-Somatic)
+* insert EntryDocument("urn:uuid:547e7b64-63b0-4a6c-b3fc-c832cf9fc5c5", PractitionerRole-Requester-Oncology-RBV)
+* insert EntryDocument("urn:uuid:fb300032-6854-4c9e-aa21-972a2e1fcb56", Specimen-Somatic)
 * insert EntryDocument("urn:uuid:0dc1fe99-b0ff-41f6-954f-ad6aaf1adf33", DiagnosticReport-GenomicsReport-Somatic)
 //  Performer
 * insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)
