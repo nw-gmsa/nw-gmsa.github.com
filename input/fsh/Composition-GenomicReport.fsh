@@ -138,6 +138,7 @@ Description:    """
 
 * section[OtherLaboratoryResults] ^short = "Results from other laboratories"
 * section[OtherLaboratoryResults] ^definition = "Results from other laboratories (for example tumour immunohistochemistry or histopathology) restated because the interpretation depends on them (ACGS 2.5.14, 2.5.16). Each result has the other laboratory as its performer (Observation, DiagnosticReport) or author (DocumentReference, for a report received only as a document such as a PDF)"
+* section[OtherLaboratoryResults] ^comment = "A top-level section, not a Results sub-section: Composition-eu-lab uses the top level for a study or specialty, and Results holds only what this laboratory found, so a reader does not take another laboratory's result as this laboratory's finding. Placed after Results and before Interpretation."
 * section[OtherLaboratoryResults].code = GenomicReportSection#other-laboratory-results
 * section[OtherLaboratoryResults].entry only Reference(http://hl7.org/fhir/StructureDefinition/Observation or http://hl7.org/fhir/StructureDefinition/DiagnosticReport or http://hl7.org/fhir/StructureDefinition/DocumentReference)
 

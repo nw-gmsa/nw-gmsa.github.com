@@ -152,6 +152,20 @@ appears only once.
 | Haplotype definitions (`HaplotypeDefinitions`) | LOINC `83011-7` | [Haplotype](StructureDefinition-Haplotype.html) |
 {:.grid}
 
+Results from other laboratories are a top-level section, not a Results sub-section:
+
+- `Composition-eu-lab` uses the top level for a study or specialty and the second level for the
+  items within it. A result from another laboratory comes from a different study, and often a
+  different specialty such as histopathology.
+- Results holds what this laboratory found, grouped as in the `81247-9` panel. Keeping other
+  laboratories' results apart makes it clear who did each test (ACGS 2.5.14, 2.5.16), so a reader does
+  not take them as this laboratory's findings.
+- Their entries are Observations, DiagnosticReports or DocumentReferences of any kind, many of them not
+  genomic, so they do not fit the Results sub-sections.
+
+The section comes straight after Results and before Interpretation, so a reader still sees the results
+together.
+
 ##### FHIR Document Examples
 
 These FHIR Document examples use this profile, including the Results sub-sections. All are
