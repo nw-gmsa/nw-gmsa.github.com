@@ -174,9 +174,8 @@ Lynch Syndrome).
 | [Pharmacogenomics](Bundle-FHIRDocumentGeneticReportBundle-Pharmacogenomics.html) | Pharmacogenomic | R454.1 Mavacamten for treating symptomatic obstructive hypertrophic cardiomyopathy (CYP2C19) | Pharmacogenomics, Haplotype definitions | HL7 Genomics Reporting [Pharmacogenomic Reporting](https://build.fhir.org/ig/HL7/genomics-reporting/pharmacogenomics.html) | [O21 message](Bundle-GenomicsOrderMessage-Pharmacogenomics.html) |
 {:.grid}
 
-Older examples that do not use the Results sub-sections:
-[ctDNA](Bundle-FHIRDocumentGeneticReportBundle-ctDNA.html) and
-[Targeted Variant](Bundle-FHIRDocumentGeneticReportBundle.html).
+An older example that does not use the Results sub-sections:
+[ctDNA](Bundle-FHIRDocumentGeneticReportBundle-ctDNA.html).
 
 ##### What the Reader Sees (Inferred Layout)
 

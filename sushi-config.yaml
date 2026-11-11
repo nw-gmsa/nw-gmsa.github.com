@@ -382,8 +382,8 @@ groups:
       - MessageHeader/MessageHeaderGenomicOrderStatusLaterDecline
       - MessageHeader/MessageHeaderGenomicOrderStatusOutcome
   -ex-example-laboratory-order:
-    name: "Example: Laboratory Order"
-    description: "Laboratory Order Examples"
+    name: "Example: Laboratory Order and Report Messages"
+    description: "Laboratory order (OML^O21) and report (ORU^R01) FHIR Messages, with the order acknowledgement, filler orders and an order search, and the resources they carry"
     resources:
       - Bundle/GenomicsOrderMessageReplyOk
       - Bundle/GenomicsOrderMessageAttachment
@@ -398,16 +398,10 @@ groups:
       - PractitionerRole/ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8
       - ServiceRequest/ServiceRequestGenomicsOrderAttachment
       - Specimen/SpecimenExample
-  -ex-example-laboratory-report:
-    name: "Example: Laboratory Report"
-    description: "Laboratory Report Examples"
-    resources:
       - Bundle/GenomicsReportMessage
       - DiagnosticReport/DiagnosticReportGenomicsReport
       - DocumentReference/94bf65ba-cd6c-4601-b339-6d547f424646
       - MessageHeader/MessageHeaderGenomicReport
-      - Bundle/FHIRDocumentGeneticReportBundle
-      - Composition/Composition-GenomicsReport-OctaviaCHISLETT
   -ex-example-ctdna:
     name: "Example: ctDNA"
     description: "ctDNA (M4.14 Non-Small Cell Lung Cancer) closed loop referral for Theon Sheffield: the order (O21) and report (R01) messages, the FHIR Document report, and the resources they carry"
