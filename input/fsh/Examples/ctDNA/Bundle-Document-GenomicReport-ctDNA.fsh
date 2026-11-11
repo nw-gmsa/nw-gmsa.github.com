@@ -38,41 +38,41 @@ Usage: #example
   * system = "https://fhir.nhs.uk/Id/nhs-number"
   * value = "9737873858"
 
-* section[+]
+* section[Referral]
   * title = "Referral"
   * code = $loinc#42349-1 "Reason for referral (narrative)"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>M4 Non-Small Cell Lung Cancer. M4.14 multi-target ctDNA panel.</p></div>"
   * entry[+].reference = "urn:uuid:6e26d6b3-490e-4348-9d6c-37281567d6ec"
 
-* section[+]
+* section[Specimen]
   * title = "Specimen"
   * code = $sct#123038009 "Specimen"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Blood specimen for ctDNA. Collected 29-Jun-2026, received 30-Jun-2026.</p></div>"
   * entry[+].reference = "urn:uuid:b930b4c4-327a-4728-8bb9-f90061914cc5"
 
-* section[+]
+* section[ResultSummary]
   * title = "Result summary"
   * code = $loinc#51968-6 "Discrete variation analysis overall interpretation"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>TARGET DETECTED AT A LEVEL REQUIRING CLINICAL ACTION.</p></div>"
   * entry[+].reference = "urn:uuid:0a6ad8ec-b069-4a65-8c65-c7569d8413e3"
 
-* section[+]
+* section[Results]
   * title = "Results"
   * code = $loinc#69548-6 "Genetic variant assessment"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>EGFR NM_005228.5:c.2369C&gt;T detected in circulating tumour DNA (somatic), mutant allele fraction 0.42%.</p></div>"
   * entry[+].reference = "urn:uuid:00c22e97-a226-4845-b17a-e24ec1f4f77a"
 
-* section[+]
+* section[Interpretation]
   * title = "Interpretation"
   * code = GenomicReportSection#interpretation
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>An EGFR variant was detected in circulating tumour DNA at a level requiring clinical action.</p></div>"
 
-* section[+]
+* section[Methodology]
   * title = "Methodology and limitations"
   * code = GenomicReportSection#methodology
   * text.status = #generated

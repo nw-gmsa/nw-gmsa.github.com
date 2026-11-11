@@ -38,30 +38,33 @@ Usage: #example
 * subject.reference = "urn:uuid:eaf97963-82df-4623-9bab-ab9476b295d7"
 * subject.display = "Gilly BROUGH"
 
+// Sections in reading order. SUSHI pre-fills the profile's required section slices at the first
+// positions, so each section sets code.coding[0] (replacing the pre-filled code) rather than
+// code (which would add a second coding and match two slices).
 * section[+]
   * title = "Referral"
-  * code = $loinc#42349-1 "Reason for referral (narrative)"
+  * code.coding[0] = $loinc#42349-1 "Reason for referral (narrative)"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R27.3 Paediatric disorders (WGS). Trio analysis with both parents, NGIS referral r26000000203.</p></div>"
   * entry[+].reference = "urn:uuid:74e1181c-035a-42c4-9f05-d14831a99980"
 
 * section[+]
   * title = "Specimen"
-  * code = $sct#123038009 "Specimen"
+  * code.coding[0] = $sct#123038009 "Specimen"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Whole blood (EDTA), sample S26-1A04. Collected 18-Aug-2026, received 26-Aug-2026.</p></div>"
   * entry[+].reference = "urn:uuid:ace6ede5-177c-4560-a407-02e27a6545bc"
 
 * section[+]
   * title = "Result summary"
-  * code = $loinc#51968-6 "Discrete variation analysis overall interpretation"
+  * code.coding[0] = $loinc#51968-6 "Discrete variation analysis overall interpretation"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Pathogenic de novo MECP2 variant detected. This result is consistent with the referral indication.</p></div>"
   * entry[+].reference = "urn:uuid:aaac7b4a-1484-4b06-a1a3-4200da1bce76"
 
 * section[+]
   * title = "Results"
-  * code = $loinc#69548-6 "Genetic variant assessment"
+  * code.coding[0] = $loinc#69548-6 "Genetic variant assessment"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>One sequence variant detected. No reportable structural or copy number variants.</p></div>"
   * section[+]
@@ -79,20 +82,20 @@ Usage: #example
 
 * section[+]
   * title = "Interpretation"
-  * code = GenomicReportSection#interpretation
+  * code.coding[0] = GenomicReportSection#interpretation
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>The variant was not detected in either parent and is classified as pathogenic. It confirms a diagnosis of MECP2-related disorder (Rett syndrome).</p></div>"
   * entry[+].reference = "urn:uuid:9a3327aa-558c-4f9e-aafd-13d4e976cd72"
 
 * section[+]
   * title = "Recommendations"
-  * code = $loinc#62385-0 "Recommendation [Interpretation] Document"
+  * code.coding[0] = $loinc#62385-0 "Recommendation [Interpretation] Document"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Referral to Clinical Genetics to discuss the result. The recurrence risk for the parents is low, but not zero because of the possibility of germline mosaicism.</p></div>"
 
 * section[+]
   * title = "Methodology and limitations"
-  * code = GenomicReportSection#methodology
+  * code.coding[0] = GenomicReportSection#methodology
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Whole genome sequencing of the proband and both parents, analysed against the R27 Paediatric disorders virtual gene panels, with copy number and structural variant calling. Variants outside the panels are not reported.</p></div>"
   * entry[+].reference = "urn:uuid:aa2d7981-74d2-474e-9e1a-cd78cd485b72"

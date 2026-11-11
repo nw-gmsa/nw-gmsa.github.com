@@ -37,30 +37,33 @@ Usage: #example
 * subject.reference = "urn:uuid:9a53f1c4-c93b-4e27-a54e-176dd0aca0b7"
 * subject.display = "Ramsay BOLTON"
 
+// Sections in reading order. SUSHI pre-fills the profile's required section slices at the first
+// positions, so each section sets code.coding[0] (replacing the pre-filled code) rather than
+// code (which would add a second coding and match two slices).
 * section[+]
   * title = "Referral"
-  * code = $loinc#42349-1 "Reason for referral (narrative)"
+  * code.coding[0] = $loinc#42349-1 "Reason for referral (narrative)"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>M4 Non-Small Cell Lung Cancer. Adenocarcinoma of the lung, stage IV, for first-line treatment selection.</p></div>"
   * entry[+].reference = "urn:uuid:5b5d3536-7a68-4631-8c9c-dcaf79c1798b"
 
 * section[+]
   * title = "Specimen"
-  * code = $sct#123038009 "Specimen"
+  * code.coding[0] = $sct#123038009 "Specimen"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Formalin-fixed paraffin-embedded (FFPE) lung biopsy. Estimated tumour content 40%. Received 10-Oct-2026.</p></div>"
   * entry[+].reference = "urn:uuid:fb300032-6854-4c9e-aa21-972a2e1fcb56"
 
 * section[+]
   * title = "Result summary"
-  * code = $loinc#51968-6 "Discrete variation analysis overall interpretation"
+  * code.coding[0] = $loinc#51968-6 "Discrete variation analysis overall interpretation"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>EGFR exon 21 p.(Leu858Arg) sensitising mutation detected.</p></div>"
   * entry[+].reference = "urn:uuid:0dc1fe99-b0ff-41f6-954f-ad6aaf1adf33"
 
 * section[+]
   * title = "Results"
-  * code = $loinc#69548-6 "Genetic variant assessment"
+  * code.coding[0] = $loinc#69548-6 "Genetic variant assessment"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>One somatic sequence variant detected.</p></div>"
   * section[+]
@@ -72,20 +75,20 @@ Usage: #example
 
 * section[+]
   * title = "Interpretation"
-  * code = GenomicReportSection#interpretation
+  * code.coding[0] = GenomicReportSection#interpretation
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>EGFR p.(Leu858Arg) is a sensitising mutation, predictive of response to EGFR tyrosine kinase inhibitors such as osimertinib.</p></div>"
   * entry[+].reference = "urn:uuid:675e7eaf-66d7-4668-81cb-8b7c770fd47b"
 
 * section[+]
   * title = "Recommendations"
-  * code = $loinc#62385-0 "Recommendation [Interpretation] Document"
+  * code.coding[0] = $loinc#62385-0 "Recommendation [Interpretation] Document"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Discuss EGFR tyrosine kinase inhibitor treatment at the lung cancer multidisciplinary team meeting.</p></div>"
 
 * section[+]
   * title = "Methodology and limitations"
-  * code = GenomicReportSection#methodology
+  * code.coding[0] = GenomicReportSection#methodology
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Targeted next generation sequencing of EGFR, ALK, BRAF, KRAS and MET hotspots in tumour DNA. Variants below 5% allele frequency may not be detected. Structural and copy number variants are reported separately (M4.2, M4.3).</p></div>"
   * entry[+].reference = "urn:uuid:14ea83e6-334d-42f2-874d-4d32672c9661"

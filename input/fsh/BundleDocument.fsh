@@ -28,7 +28,9 @@ Description:    "[FHIR Document](https://hl7.org/fhir/R4/documents.html)"
 * entry contains composition 1..1
 * entry[composition].resource only Composition
 
-* entry contains diagnosticReport 1..1
+// 1..*: the report's own DiagnosticReport (Composition diagnosticReport extension), plus any results from other laboratories restated in the OtherLaboratoryResults section
+* entry contains diagnosticReport 1..*
+* entry[diagnosticReport] ^comment = "One is the DiagnosticReport this document reports, referenced by the Composition's diagnosticReport extension. Others are results from other laboratories restated in the Results from other laboratories section."
 * entry[diagnosticReport].resource only DiagnosticReport
 
 * entry contains patient 0..*

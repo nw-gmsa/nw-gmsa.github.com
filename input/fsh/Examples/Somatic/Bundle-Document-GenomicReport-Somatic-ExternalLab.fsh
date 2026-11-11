@@ -42,30 +42,33 @@ Usage: #example
 * subject.reference = "urn:uuid:2ad4e236-0bf0-4a42-a83b-173a6b0dc14c"
 * subject.display = "Tommen BIRMINGHAM"
 
+// Sections in reading order. SUSHI pre-fills the profile's required section slices at the first
+// positions, so each section sets code.coding[0] (replacing the pre-filled code) rather than
+// code (which would add a second coding and match two slices).
 * section[+]
   * title = "Referral"
-  * code = $loinc#42349-1 "Reason for referral (narrative)"
+  * code.coding[0] = $loinc#42349-1 "Reason for referral (narrative)"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>M4 Non-Small Cell Lung Cancer. ALK-positive lung adenocarcinoma, diagnosed in Germany in 2025, now progressing on alectinib. Testing for resistance mechanisms on a new biopsy.</p></div>"
   * entry[+].reference = "urn:uuid:ee2e9cd7-bcc3-4e0d-b6a9-dab5e4ee3fdb"
 
 * section[+]
   * title = "Specimen"
-  * code = $sct#123038009 "Specimen"
+  * code.coding[0] = $sct#123038009 "Specimen"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Formalin-fixed paraffin-embedded (FFPE) lung biopsy. Estimated tumour content 50%. Collected 05-Oct-2026, received 06-Oct-2026.</p></div>"
   * entry[+].reference = "urn:uuid:d22cfe12-7f10-41b1-ad44-c4accb626f52"
 
 * section[+]
   * title = "Result summary"
-  * code = $loinc#51968-6 "Discrete variation analysis overall interpretation"
+  * code.coding[0] = $loinc#51968-6 "Discrete variation analysis overall interpretation"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>ALK p.(Gly1202Arg) resistance mutation detected, in a tumour with a known EML4-ALK fusion.</p></div>"
   * entry[+].reference = "urn:uuid:89782eb3-1235-4844-847f-68b475d7639b"
 
 * section[+]
   * title = "Results"
-  * code = $loinc#69548-6 "Genetic variant assessment"
+  * code.coding[0] = $loinc#69548-6 "Genetic variant assessment"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>One somatic sequence variant detected.</p></div>"
   * section[+]
@@ -77,7 +80,7 @@ Usage: #example
 
 * section[+]
   * title = "Results from other laboratories"
-  * code = GenomicReportSection#other-laboratory-results
+  * code.coding[0] = GenomicReportSection#other-laboratory-results
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>RNA-based NGS fusion analysis of the diagnostic lung biopsy, Institut für Molekularpathologie, Musterstadt, Germany (report dated 12-Mar-2025, received as a PDF): EML4-ALK fusion detected (EML4 exon 13 :: ALK exon 20, variant 1). Result transcribed from the attached report.</p></div>"
   * entry[+].reference = "urn:uuid:03f0995b-1592-4578-8128-53ec8c16061c"
@@ -85,20 +88,20 @@ Usage: #example
 
 * section[+]
   * title = "Interpretation"
-  * code = GenomicReportSection#interpretation
+  * code.coding[0] = GenomicReportSection#interpretation
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>ALK p.(Gly1202Arg) is a solvent-front mutation in the ALK kinase domain. Together with the EML4-ALK fusion reported by the laboratory in Germany, it is consistent with acquired resistance to alectinib. Lorlatinib may retain activity against this mutation.</p></div>"
   * entry[+].reference = "urn:uuid:34872adc-5e60-4a62-8e8e-9ff8c9d3b3f5"
 
 * section[+]
   * title = "Recommendations"
-  * code = $loinc#62385-0 "Recommendation [Interpretation] Document"
+  * code.coding[0] = $loinc#62385-0 "Recommendation [Interpretation] Document"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Discuss treatment with lorlatinib at the lung cancer multidisciplinary team meeting.</p></div>"
 
 * section[+]
   * title = "Methodology and limitations"
-  * code = GenomicReportSection#methodology
+  * code.coding[0] = GenomicReportSection#methodology
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Targeted next generation sequencing of EGFR, ALK, BRAF, KRAS and MET hotspots in tumour DNA. Variants below 5% allele frequency may not be detected. ALK fusions are not detected by this test; the fusion result is from the laboratory in Germany.</p></div>"
   * entry[+].reference = "urn:uuid:eb655b7c-800e-4cae-95ed-49f9fdc16174"

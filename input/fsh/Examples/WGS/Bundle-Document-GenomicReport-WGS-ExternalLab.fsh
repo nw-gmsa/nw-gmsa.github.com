@@ -40,56 +40,59 @@ Usage: #example
 * subject.reference = "urn:uuid:d9dc03c1-b90b-4474-85a8-fb7e7717c24f"
 * subject.display = "Robert BLACKBURN"
 
+// Sections in reading order. SUSHI pre-fills the profile's required section slices at the first
+// positions, so each section sets code.coding[0] (replacing the pre-filled code) rather than
+// code (which would add a second coding and match two slices).
 * section[+]
   * title = "Referral"
-  * code = $loinc#42349-1 "Reason for referral (narrative)"
+  * code.coding[0] = $loinc#42349-1 "Reason for referral (narrative)"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R54.3 Hereditary ataxia with onset in adulthood (WGS). Progressive cerebellar ataxia from age 55, no family history.</p></div>"
   * entry[+].reference = "urn:uuid:d975fa86-c754-48e6-935b-d2aa1e822ba9"
 
 * section[+]
   * title = "Specimen"
-  * code = $sct#123038009 "Specimen"
+  * code.coding[0] = $sct#123038009 "Specimen"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Peripheral blood (EDTA). Collected 12-Aug-2026, received 13-Aug-2026.</p></div>"
   * entry[+].reference = "urn:uuid:3767ac32-ead0-4d95-9793-1a4559822666"
 
 * section[+]
   * title = "Result summary"
-  * code = $loinc#51968-6 "Discrete variation analysis overall interpretation"
+  * code.coding[0] = $loinc#51968-6 "Discrete variation analysis overall interpretation"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>No genetic cause found. RFC1 repeat expansion testing is recommended.</p></div>"
   * entry[+].reference = "urn:uuid:2f62e254-7879-4cc4-9bd8-6c9709aa10ad"
 
 * section[+]
   * title = "Results"
-  * code = $loinc#69548-6 "Genetic variant assessment"
+  * code.coding[0] = $loinc#69548-6 "Genetic variant assessment"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>No reportable sequence, copy number or structural variants were detected in the R54 Hereditary ataxia with onset in adulthood panel.</p></div>"
   * emptyReason = http://terminology.hl7.org/CodeSystem/list-empty-reason#nilknown "Nil Known"
 
 * section[+]
   * title = "Results from other laboratories"
-  * code = GenomicReportSection#other-laboratory-results
+  * code.coding[0] = GenomicReportSection#other-laboratory-results
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Repeat expansion testing, Regional Neurogenetics Laboratory (report dated 14-May-2024, received as a PDF): SCA1, SCA2, SCA3, SCA6, SCA7, SCA17, DRPLA and FXN (Friedreich ataxia) alleles all within the normal range. Result transcribed from the attached report.</p></div>"
   * entry[+].reference = "urn:uuid:9b9d3ca4-fd96-42ff-9eef-308be79bf214"
 
 * section[+]
   * title = "Interpretation"
-  * code = GenomicReportSection#interpretation
+  * code.coding[0] = GenomicReportSection#interpretation
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>No genetic cause for the ataxia was found by whole genome sequencing. The common spinocerebellar ataxia and Friedreich ataxia repeat expansions were excluded by the earlier testing at the Regional Neurogenetics Laboratory. Biallelic RFC1 repeat expansions (CANVAS) are a common cause of late-onset ataxia and are not reliably detected by this test, so have not been excluded.</p></div>"
 
 * section[+]
   * title = "Recommendations"
-  * code = $loinc#62385-0 "Recommendation [Interpretation] Document"
+  * code.coding[0] = $loinc#62385-0 "Recommendation [Interpretation] Document"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>RFC1 repeat expansion testing is recommended. The whole genome sequence can be reanalysed if new clinical information becomes available. Support is available from Clinical Genetics.</p></div>"
 
 * section[+]
   * title = "Methodology and limitations"
-  * code = GenomicReportSection#methodology
+  * code.coding[0] = GenomicReportSection#methodology
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Whole genome sequencing, analysed against the R54 Hereditary ataxia with onset in adulthood virtual gene panel, with copy number and structural variant calling. Short tandem repeat expansions, including RFC1, are not reliably detected. Variants outside the panel are not reported.</p></div>"
   * entry[+].reference = "urn:uuid:95613cf5-45e5-4053-9a30-e95a93b7d6db"

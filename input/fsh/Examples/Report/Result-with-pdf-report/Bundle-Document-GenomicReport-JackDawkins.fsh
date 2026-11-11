@@ -44,38 +44,38 @@ Usage: #example
   * assigner.identifier.system = $ods-code
   * assigner.identifier.value = "R0A"
 
-* section[+]
+* section[Referral]
   * title = "Referral"
   * code = $loinc#42349-1 "Reason for referral (narrative)"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R240.1 Diagnostic testing for known variant(s) (Targeted variant testing).</p></div>"
 
-* section[+]
+* section[Specimen]
   * title = "Specimen"
   * code = $sct#123038009 "Specimen"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Peripheral blood (EDTA).</p></div>"
 
-* section[+]
+* section[ResultSummary]
   * title = "Result summary"
   * code = $loinc#51968-6 "Discrete variation analysis overall interpretation"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Known familial variant not detected. Normal - no action.</p></div>"
   * entry[+].reference = "urn:uuid:233ff41a-5067-46c4-b6aa-5d6f87719f5f"
 
-* section[+]
+* section[Results]
   * title = "Results"
   * code = $loinc#69548-6 "Genetic variant assessment"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>The known familial variant was not detected.</p></div>"
 
-* section[+]
+* section[Interpretation]
   * title = "Interpretation"
   * code = GenomicReportSection#interpretation
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This result is normal. No further action is needed.</p></div>"
 
-* section[+]
+* section[Methodology]
   * title = "Methodology and limitations"
   * code = GenomicReportSection#methodology
   * text.status = #generated

@@ -43,9 +43,12 @@ Usage: #example
   * assigner.identifier.system = $ods-code
   * assigner.identifier.value = "RBS"
 
+// Sections in reading order. SUSHI pre-fills the profile's required section slices at the first
+// positions, so each section sets code.coding[0] (replacing the pre-filled code) rather than
+// code (which would add a second coding and match two slices).
 * section[+]
   * title = "Referral"
-  * code = $loinc#42349-1 "Reason for referral (narrative)"
+  * code.coding[0] = $loinc#42349-1 "Reason for referral (narrative)"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R210 Inherited MMR deficiency (Lynch syndrome). History of carcinoma.</p></div>"
   * entry[+].reference = "urn:uuid:c0627dab-6f98-4846-beba-d9412ed3a60e"
@@ -53,21 +56,21 @@ Usage: #example
 
 * section[+]
   * title = "Specimen"
-  * code = $sct#123038009 "Specimen"
+  * code.coding[0] = $sct#123038009 "Specimen"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Peripheral blood (EDTA). Received 08-Sep-2023.</p></div>"
   * entry[+].reference = "urn:uuid:635eaecb-a9c9-488e-978b-f63b12ce52b1"
 
 * section[+]
   * title = "Result summary"
-  * code = $loinc#51968-6 "Discrete variation analysis overall interpretation"
+  * code.coding[0] = $loinc#51968-6 "Discrete variation analysis overall interpretation"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Lynch syndrome: detected.</p></div>"
   * entry[+].reference = "urn:uuid:c64139e7-f02d-409c-bf34-75e8bf23bc80"
 
 * section[+]
   * title = "Results"
-  * code = $loinc#69548-6 "Genetic variant assessment"
+  * code.coding[0] = $loinc#69548-6 "Genetic variant assessment"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>One sequence variant detected.</p></div>"
   * section[+]
@@ -79,21 +82,21 @@ Usage: #example
 
 * section[+]
   * title = "Results from other laboratories"
-  * code = GenomicReportSection#other-laboratory-results
+  * code.coding[0] = GenomicReportSection#other-laboratory-results
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Tumour mismatch repair immunohistochemistry (Histopathology, Manchester University NHS Foundation Trust): loss of MLH1 and PMS2 expression; MSH2 and MSH6 retained. No MLH1 promoter hypermethylation.</p></div>"
   * entry[+].reference = "urn:uuid:9541381a-ba5f-4e4c-a748-507fd7f701f7"
 
 * section[+]
   * title = "Interpretation"
-  * code = GenomicReportSection#interpretation
+  * code.coding[0] = GenomicReportSection#interpretation
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Pathogenic. Inherited MMR deficiency (Lynch syndrome).</p></div>"
   * entry[+].reference = "urn:uuid:6beb613f-d303-42af-b025-86e8e0872061"
 
 * section[+]
   * title = "Methodology and limitations"
-  * code = GenomicReportSection#methodology
+  * code.coding[0] = GenomicReportSection#methodology
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R210 Inherited MMR deficiency (Lynch syndrome).</p></div>"
   * entry[+].reference = "urn:uuid:0878c5de-c22f-4e31-841a-a82ad31c93aa"

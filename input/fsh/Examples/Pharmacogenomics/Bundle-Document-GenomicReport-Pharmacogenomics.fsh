@@ -38,30 +38,33 @@ Usage: #example
 * subject.reference = "urn:uuid:50d6aefa-e2d2-439a-820f-cb495c72ae6a"
 * subject.display = "Mace NORTHWICH"
 
+// Sections in reading order. SUSHI pre-fills the profile's required section slices at the first
+// positions, so each section sets code.coding[0] (replacing the pre-filled code) rather than
+// code (which would add a second coding and match two slices).
 * section[+]
   * title = "Referral"
-  * code = $loinc#42349-1 "Reason for referral (narrative)"
+  * code.coding[0] = $loinc#42349-1 "Reason for referral (narrative)"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R454 Mavacamten for treating symptomatic obstructive hypertrophic cardiomyopathy. CYP2C19 genotyping before starting mavacamten.</p></div>"
   * entry[+].reference = "urn:uuid:a3ef9f92-1896-4174-8523-659726543fb4"
 
 * section[+]
   * title = "Specimen"
-  * code = $sct#123038009 "Specimen"
+  * code.coding[0] = $sct#123038009 "Specimen"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Peripheral blood (EDTA). Collected 27-Oct-2026, received 28-Oct-2026.</p></div>"
   * entry[+].reference = "urn:uuid:5cd4af98-b7b4-410e-8f71-0dbc2a3e1af4"
 
 * section[+]
   * title = "Result summary"
-  * code = $loinc#51968-6 "Discrete variation analysis overall interpretation"
+  * code.coding[0] = $loinc#51968-6 "Discrete variation analysis overall interpretation"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>CYP2C19 *2/*2 - poor metaboliser.</p></div>"
   * entry[+].reference = "urn:uuid:7d97f7b6-1cd8-4563-94ff-efebd54590e2"
 
 * section[+]
   * title = "Results"
-  * code = $loinc#69548-6 "Genetic variant assessment"
+  * code.coding[0] = $loinc#69548-6 "Genetic variant assessment"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>CYP2C19 genotype and the haplotype that defines it.</p></div>"
   * section[+]
@@ -79,20 +82,20 @@ Usage: #example
 
 * section[+]
   * title = "Interpretation"
-  * code = GenomicReportSection#interpretation
+  * code.coding[0] = GenomicReportSection#interpretation
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This genotype predicts a CYP2C19 poor metaboliser. Mavacamten exposure is increased in CYP2C19 poor metabolisers.</p></div>"
   * entry[+].reference = "urn:uuid:c645241f-8361-465c-83ab-f270a23fcfa1"
 
 * section[+]
   * title = "Recommendations"
-  * code = $loinc#62385-0 "Recommendation [Interpretation] Document"
+  * code.coding[0] = $loinc#62385-0 "Recommendation [Interpretation] Document"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Start and titrate mavacamten using the dosing recommended for CYP2C19 poor metabolisers in the Summary of Product Characteristics.</p></div>"
 
 * section[+]
   * title = "Methodology and limitations"
-  * code = GenomicReportSection#methodology
+  * code.coding[0] = GenomicReportSection#methodology
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Targeted genotyping of CYP2C19 *2, *3 and *17. Other rare alleles are not tested; a sample without a tested allele is assigned *1.</p></div>"
   * entry[+].reference = "urn:uuid:2c43b15a-0b31-4c49-b087-88292f80abd2"
