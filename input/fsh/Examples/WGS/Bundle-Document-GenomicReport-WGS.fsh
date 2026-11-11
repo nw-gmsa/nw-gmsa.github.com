@@ -7,6 +7,8 @@ Title: "Composition - Genomics Report Whole Genome Sequencing"
 Description: "Composition - Genomics Report Whole Genome Sequencing (R27.3 Paediatric disorders) for the Proband of the dWGS Trio referral r26000000203"
 Usage: #example
 
+* extension[diagnosticReport].valueReference.reference = "urn:uuid:aaac7b4a-1484-4b06-a1a3-4200da1bce76"
+
 
 * identifier
   * value = "8b0c4e52-wgs-r26000000203"

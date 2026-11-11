@@ -7,6 +7,8 @@ Title: "Composition - Genomics Report Somatic (Non-Small Cell Lung Cancer)"
 Description: "Composition - Genomics Report Somatic (M4.1 Non-Small Cell Lung Cancer, multi-target NGS panel - small variant)"
 Usage: #example
 
+* extension[diagnosticReport].valueReference.reference = "urn:uuid:0dc1fe99-b0ff-41f6-954f-ad6aaf1adf33"
+
 * identifier
   * value = "c2f4d9a0-somatic-m4"
   * system = "http://www.acme.org/diagnosticreport/identifiers"

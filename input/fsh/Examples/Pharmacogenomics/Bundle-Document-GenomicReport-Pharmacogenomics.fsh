@@ -8,6 +8,8 @@ Title: "Composition - Genomics Report Pharmacogenomics (CYP2C19 Mavacamten)"
 Description: "Composition - Genomics Report Pharmacogenomics (R454.1 Mavacamten for treating symptomatic obstructive hypertrophic cardiomyopathy)"
 Usage: #example
 
+* extension[diagnosticReport].valueReference.reference = "urn:uuid:7d97f7b6-1cd8-4563-94ff-efebd54590e2"
+
 * identifier
   * value = "e9a1b7c4-pgx-r454"
   * system = "http://www.acme.org/diagnosticreport/identifiers"

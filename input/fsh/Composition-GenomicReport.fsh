@@ -7,8 +7,6 @@ Description:    """
 `Diagnostic - Laboratory`
 """
 
-* extension[diagnosticReport]
-  * valueReference.reference = "urn:uuid:0a6ad8ec-b069-4a65-8c65-c7569d8413e3"
 
 * identifier 1..1 MS
 * identifier only CorrelationIdentifier
@@ -97,6 +95,9 @@ Description:    """
 * section[Results].section ^slicing.discriminator[=].path = "$this.code"
 * section[Results].section ^slicing.ordered = false
 * section[Results].section ^slicing.rules = #open
+// Constraining the sub-section's own elements unfolds Composition.section.section (a contentReference), so sub-sections validate before slice matching
+* section[Results].section.title 1..1
+* section[Results].section.code 1..1
 * section[Results].section contains
     SimpleVariants 0..1 MS
     and StructuralVariants 0..1 MS

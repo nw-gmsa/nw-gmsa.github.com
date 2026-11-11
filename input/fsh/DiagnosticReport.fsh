@@ -199,6 +199,7 @@ Description:    """
    GenomicTestOutcomeCode 1..1
 
 * conclusionCode.coding[GenomicTestOutcomeCode] ^short = "Genomic Test Outcome Code"
+* conclusionCode.coding[GenomicTestOutcomeCode].system = $GTOC
 * conclusionCode.coding[GenomicTestOutcomeCode] from GenomicTestOutcomeCodes
 
 Invariant: nw-dr-basedon-1

@@ -4,6 +4,8 @@ Title: "Composition - Genomics Report LynchSyndrome"
 Description: "Composition - Genomics Report LynchSyndrome"
 Usage: #example
 
+* extension[diagnosticReport].valueReference.reference = "urn:uuid:c64139e7-f02d-409c-bf34-75e8bf23bc80"
+
 * identifier
   * value = "98763a9b-98d4-4cfc-b760-1db086ec52a1"
   * system = "http://www.acme.org/diagnosticreport/identifiers"
