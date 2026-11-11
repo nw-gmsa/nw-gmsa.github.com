@@ -292,4 +292,4 @@ Usage: #example
 // Result from the laboratory in Germany, with its PDF
 * insert EntryDocument("urn:uuid:03f0995b-1592-4578-8128-53ec8c16061c", DiagnosticReport-ExternalLab-Germany-EML4-ALK)
 * insert EntryDocument("urn:uuid:93b5dcc3-a90f-4099-94e7-7abebb94c899", Organization-ExternalLab-Germany)
-* insert EntryDocument("urn:uuid:d7d2682b-50c2-4baf-80b5-d64a5848b0bb", Binary-Sample)
+* insert EntryDocument("urn:uuid:d7d2682b-50c2-4baf-80b5-d64a5848b0bb", Binary-ExternalLab-Germany-EML4-ALK)

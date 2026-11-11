@@ -206,4 +206,4 @@ Usage: #example
 * insert EntryDocument("urn:uuid:95613cf5-45e5-4053-9a30-e95a93b7d6db", GenomicStudyPanel-WGS-ExternalLab)
 // Result from another laboratory: DocumentReference and its PDF, no DiagnosticReport
 * insert EntryDocument("urn:uuid:9b9d3ca4-fd96-42ff-9eef-308be79bf214", DocumentReference-ExternalLab-RepeatExpansion)
-* insert EntryDocument("urn:uuid:1f3593f8-0309-4cb2-9424-dae7129841a2", Binary-Sample)
+* insert EntryDocument("urn:uuid:1f3593f8-0309-4cb2-9424-dae7129841a2", Binary-ExternalLab-RepeatExpansion)
