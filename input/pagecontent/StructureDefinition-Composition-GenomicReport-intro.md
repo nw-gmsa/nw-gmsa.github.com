@@ -68,6 +68,7 @@ about the document's content and are left out.
 | 2.5.8 | Carrier and recurrence risks, and implications for other family members, **should** be stated | Interpretation or Recommendations section | Met (text) |
 | 2.5.11 | Referral for genetic counselling **should** be recommended; all reports **should** state that support is available from Clinical Genetics | Recommendations section (LOINC `62385-0`) | Optional (0..1) - *should* only |
 | 2.5.12 | Further tests, or that no further testing is planned | Recommendations section | Met |
+| 2.5.14, 2.5.16 | Results from another laboratory may be restated; an integrated report **must** have an overarching interpretation | Results from other laboratories section (`performer` is the other laboratory), with the Interpretation section covering all results | Met - optional section |
 | 3 | The report **must** indicate that it has been authorised | `Composition.attester` (mode `legal`), `DiagnosticReport.resultsInterpreter` | Met - `attester` required (1..\*) |
 | 4 | Interim or preliminary reports **should** be clearly marked as such | `Composition.status` = `preliminary` | Met |
 | 5 | A revised report **must** be stand-alone, refer to the original report, and state whether it replaces or supersedes it | `Composition.status` = `amended` or `corrected`, `Composition.relatesTo` (`replaces`) | Met |
@@ -80,9 +81,9 @@ sections, and `attester`, are required because they carry an ACGS *must*. Recomm
 optional, as ACGS only says *should* for its content. The *Profile* column shows the remaining gaps,
 where an ACGS *must* is carried in text but not enforced by the profile.
 
-While the PDF remains the authorised report (see [Presented form](#inferred-layout)), a required
-section may only point to the attached PDF, as in the [ctDNA](Bundle-FHIRDocumentGeneticReportBundle-ctDNA.html)
-and [Targeted Variant](Bundle-FHIRDocumentGeneticReportBundle.html) examples.
+A PDF report is not generally part of the FHIR Document. Where one exists it is exchanged
+separately, as a [DocumentReference](StructureDefinition-DocumentReference.html) (see
+[Report Types](ReportTypes.html)).
 
 #### Inferred Layout
 
@@ -100,10 +101,10 @@ flowchart TB
         S2["Section: Specimen<br/>sample type, collected, received<br/><i>text + Specimen</i>"]
         S3["Section: Result summary<br/>headline result<br/><i>text + DiagnosticReport</i>"]
         S4["Section: Results<br/>variant table, optional sub-sections<br/><i>text + Variant, Genomic Study Analysis,<br/>Molecular Consequence</i>"]
+        S8["Section: Results from other laboratories<br/>e.g. tumour immunohistochemistry<br/><i>text + Observation, DiagnosticReport</i>"]
         S5["Section: Interpretation<br/><i>text + Diagnostic and<br/>Therapeutic Implication</i>"]
         S6["Section: Recommendations<br/>family testing, further tests<br/><i>text + recommended actions</i>"]
         S7["Section: Methodology and limitations<br/>genes/regions studied, coverage<br/><i>text + Genomic Study Panel,<br/>Genomic Study, Genomic Study Analysis</i>"]
-        S8["Section: Presented form<br/><i>the PDF: DocumentReference, Binary</i>"]
         S9["Section: Annotations<br/><i>comments - text only</i>"]
         DR["DiagnosticReport<br/><i>result: the same Observations</i>"]
     end
@@ -112,10 +113,10 @@ flowchart TB
     COMP --> S2
     COMP --> S3
     COMP --> S4
+    COMP --> S8
     COMP --> S5
     COMP --> S6
     COMP --> S7
-    COMP --> S8
     COMP --> S9
     COMP <-->|"extension diagnosticReport /<br/>DiagnosticReport composition"| DR
 ```
@@ -126,10 +127,10 @@ flowchart TB
 | Specimen (`Specimen`) | SNOMED CT `123038009` Specimen | Text; entry [Specimen](StructureDefinition-Specimen.html) | No LOINC document section code found; as used by the [ctDNA UGR example](Bundle-ctdna9737383222-eulab-document.html) |
 | Result summary (`ResultSummary`) | LOINC `51968-6` Discrete variation analysis overall interpretation | Text; entry [DiagnosticReport](StructureDefinition-DiagnosticReport.html) | The headline result shown first on the report |
 | Results (`Results`) | LOINC `69548-6` Genetic variant assessment | Text (the variant table); entries [Variant](StructureDefinition-Variant.html), [Genomic Study Analysis](https://hl7.org/fhir/uv/genomics-reporting/STU3/StructureDefinition-genomic-study-analysis.html), [Molecular Consequence](StructureDefinition-MolecularConsequence.html) | Optional sub-sections, one per `81247-9` panel group that applies - see [Results Sub-sections](#results-sub-sections) |
+| Results from other laboratories (`OtherLaboratoryResults`) | [Genomic Report Section](CodeSystem-GenomicReportSection.html) `other-laboratory-results` (local) | Text; entries Observation, DiagnosticReport, with the other laboratory as `performer` | Optional. Results the interpretation depends on, for example tumour immunohistochemistry from Histopathology (ACGS 2.5.14, 2.5.16) |
 | Interpretation (`Interpretation`) | [Genomic Report Section](CodeSystem-GenomicReportSection.html) `interpretation` (local) | Text; entries [Diagnostic Implication](StructureDefinition-DiagnosticImplication.html), [Therapeutic Implication](StructureDefinition-TherapeuticImplication.html) | Is this separate from the result summary? |
 | Recommendations (`Recommendations`) | LOINC `62385-0` Recommendation | Text; entries follow-up and medication recommendations (Task) | For example testing of relatives. LOINC `18783-1` Study recommendation is an alternative |
 | Methodology and limitations (`Methodology`) | [Genomic Report Section](CodeSystem-GenomicReportSection.html) `methodology` (local) | Text; entries [Genomic Study Panel](StructureDefinition-GenomicStudyPanel.html), [Genomic Study](https://hl7.org/fhir/uv/genomics-reporting/STU3/StructureDefinition-genomic-study.html), [Genomic Study Analysis](https://hl7.org/fhir/uv/genomics-reporting/STU3/StructureDefinition-genomic-study-analysis.html) (regions studied) | Genes or regions studied, technology, coverage, limitations |
-| Presented form (`PresentedForm`) | LOINC `77599-9` Additional documentation | Entries DocumentReference, Binary | Used while the PDF remains the authorised report (UGR phase 1) |
 | Annotations (`annotations`) | LOINC `48767-8` Annotation comment | Text only, no entries | Inherited from `Composition-eu-lab` |
 {:.grid}
 
@@ -158,7 +159,7 @@ fictitious.
 
 | Example | Kind of report | Test | Results sub-sections | Based on |
 |---|---|---|---|---|
-| [Lynch syndrome](Bundle-FHIRDocumentGeneticReportBundle2.html) | Germline (rare disease) | R210.2 Inherited MMR deficiency (Lynch syndrome) | Simple variants | HL7 v2 LRI Example 3 |
+| [Lynch syndrome](Bundle-FHIRDocumentGeneticReportBundle2.html) | Germline (rare disease) | R210.2 Inherited MMR deficiency (Lynch syndrome) | Simple variants; also a Results from other laboratories section (tumour immunohistochemistry) | HL7 v2 LRI Example 3 |
 | [Whole Genome Sequencing](Bundle-FHIRDocumentGeneticReportBundle-WGS.html) | Germline (rare disease), trio | R27.3 Paediatric disorders (WGS), for the [dWGS Trio](Bundle-dWGS-Trio-r26000000203-p26000000104.html) referral r26000000203 | Simple variants, Structural variants (none detected) | |
 | [Somatic](Bundle-FHIRDocumentGeneticReportBundle-Somatic.html) | Somatic (cancer) | M4.1 Non-Small Cell Lung Cancer, multi-target NGS panel - small variant | Simple variants | HL7 Genomics Reporting [Somatic Reporting](https://build.fhir.org/ig/HL7/genomics-reporting/somatics.html) |
 | [Pharmacogenomics](Bundle-FHIRDocumentGeneticReportBundle-Pharmacogenomics.html) | Pharmacogenomic | R454.1 Mavacamten for treating symptomatic obstructive hypertrophic cardiomyopathy (CYP2C19) | Pharmacogenomics, Haplotype definitions | HL7 Genomics Reporting [Pharmacogenomic Reporting](https://build.fhir.org/ig/HL7/genomics-reporting/pharmacogenomics.html) |
@@ -204,6 +205,9 @@ part of the FHIR Document each block comes from - a real viewer would not show t
 <tr style="background:#eee;"><th style="text-align:left; padding:3px 6px; border:1px solid #ccc;">Gene</th><th style="text-align:left; padding:3px 6px; border:1px solid #ccc;">Variant (HGVS)</th><th style="text-align:left; padding:3px 6px; border:1px solid #ccc;">Zygosity</th><th style="text-align:left; padding:3px 6px; border:1px solid #ccc;">Inheritance</th><th style="text-align:left; padding:3px 6px; border:1px solid #ccc;">Classification</th></tr>
 <tr><td style="padding:3px 6px; border:1px solid #ccc;"><i>MLH1</i></td><td style="padding:3px 6px; border:1px solid #ccc;">NM_000249.4:c.350C&gt;T p.(Thr117Met)</td><td style="padding:3px 6px; border:1px solid #ccc;">Heterozygous</td><td style="padding:3px 6px; border:1px solid #ccc;">Germline</td><td style="padding:3px 6px; border:1px solid #ccc;"><b>Pathogenic</b> (class 5)</td></tr>
 </table>
+<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Results from other laboratories &middot; GenomicReportSection#other-laboratory-results &middot; entry Observation</div>
+<div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">Results from other laboratories</div>
+<p style="margin:2px 0 10px;">Tumour mismatch repair immunohistochemistry (Histopathology): loss of MLH1 and PMS2 expression; MSH2 and MSH6 retained. No <i>MLH1</i> promoter hypermethylation.</p>
 <div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Interpretation &middot; GenomicReportSection#interpretation &middot; entries Diagnostic Implication</div>
 <div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">Interpretation</div>
 <p style="margin:2px 0 10px;">This variant has been reported in many individuals with Lynch syndrome and is classified as pathogenic. It is consistent with the loss of MLH1 and PMS2 seen in the tumour.</p>
@@ -213,8 +217,6 @@ part of the FHIR Document each block comes from - a real viewer would not show t
 <div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Methodology and limitations &middot; GenomicReportSection#methodology &middot; entries Genomic Study Panel, Genomic Study, Genomic Study Analysis</div>
 <div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">Methodology and limitations</div>
 <p style="margin:2px 0 10px;">Next generation sequencing of the coding regions and exon-intron boundaries of <i>MLH1</i>, <i>MSH2</i>, <i>MSH6</i>, <i>PMS2</i> and <i>EPCAM</i>, with copy number analysis. Deep intronic variants and low-level mosaicism may not be detected.</p>
-<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Presented form &middot; LOINC 77599-9 &middot; entry DocumentReference (PDF)</div>
-<p style="margin:2px 0 10px;"><i>The authorised report is also attached as a PDF.</i></p>
 </div>
 
 
@@ -259,6 +261,9 @@ report (complex variants, pharmacogenomics, haplotype definitions) are left out.
 <div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">sub-section Structural variants &middot; LOINC 81297-4 &middot; entries Variant</div>
 <div style="font-size:15px; font-weight:bold; margin:8px 0 4px;">Structural variants</div>
 <p style="margin:2px 0 10px;">No copy number variants (exon deletions or duplications) detected.</p>
+<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Results from other laboratories &middot; GenomicReportSection#other-laboratory-results &middot; entry Observation</div>
+<div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">Results from other laboratories</div>
+<p style="margin:2px 0 10px;">Tumour mismatch repair immunohistochemistry (Histopathology): loss of MLH1 and PMS2 expression; MSH2 and MSH6 retained. No <i>MLH1</i> promoter hypermethylation.</p>
 <div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Interpretation &middot; GenomicReportSection#interpretation &middot; entries Diagnostic Implication</div>
 <div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">Interpretation</div>
 <p style="margin:2px 0 10px;">This variant has been reported in many individuals with Lynch syndrome and is classified as pathogenic. It is consistent with the loss of MLH1 and PMS2 seen in the tumour.</p>
@@ -268,8 +273,6 @@ report (complex variants, pharmacogenomics, haplotype definitions) are left out.
 <div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Methodology and limitations &middot; GenomicReportSection#methodology &middot; entries Genomic Study Panel, Genomic Study, Genomic Study Analysis</div>
 <div style="font-size:17px; font-weight:bold; border-bottom:1px solid #999; margin:14px 0 6px;">Methodology and limitations</div>
 <p style="margin:2px 0 10px;">Next generation sequencing of the coding regions and exon-intron boundaries of <i>MLH1</i>, <i>MSH2</i>, <i>MSH6</i>, <i>PMS2</i> and <i>EPCAM</i>, with copy number analysis. Deep intronic variants and low-level mosaicism may not be detected.</p>
-<div style="font-family:Arial,sans-serif; font-size:11px; color:#888;">section Presented form &middot; LOINC 77599-9 &middot; entry DocumentReference (PDF)</div>
-<p style="margin:2px 0 10px;"><i>The authorised report is also attached as a PDF.</i></p>
 </div>
 
 
@@ -367,7 +370,7 @@ flowchart TB
 | Complex variants | `81251-1` Complex variant panel | Compound heterozygous or haplotype, with the simple variants that make it up | Results (sub-section) |
 | Pharmacogenomics | `82118-1` Pharmacogenomics result panel | Genotype (`84413-4`), drug metabolism and efficacy interpretation, medication usage implications (`82117-3`) | Results (sub-section) and Interpretation (therapeutic) |
 | Haplotype definitions | `83011-7` Haplotype definition panel | Haplotype name and its defining variants | Not in the inferred layout |
-| Narrative report | `51969-4` Genetic analysis report | The narrative or PDF report | Presented form |
+| Narrative report | `51969-4` Genetic analysis report | The narrative or PDF report | Not in the inferred layout - a PDF report is exchanged separately (DocumentReference) |
 | - | - | Specimen, Recommendations, Annotations: **no panel group** (in v2 these are carried by the SPM and NTE segments) | Specimen, Recommendations, Annotations |
 {:.grid}
 

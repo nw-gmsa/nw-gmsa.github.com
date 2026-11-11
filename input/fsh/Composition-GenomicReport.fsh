@@ -68,10 +68,10 @@ Description:    """
     and Specimen 1..1 MS
     and ResultSummary 1..1 MS
     and Results 1..* MS
+    and OtherLaboratoryResults 0..1 MS
     and Interpretation 1..1 MS
     and Recommendations 0..1 MS
     and Methodology 1..1 MS
-    and PresentedForm 0..* MS
 
 // Inferred layout - see Document Layout on the profile page. Section titles are not fixed, so a laboratory can use its own headings.
 
@@ -136,6 +136,11 @@ Description:    """
 * section[Results].section[HaplotypeDefinitions].code = $loinc#83011-7
 * section[Results].section[HaplotypeDefinitions].entry only Reference(Haplotype)
 
+* section[OtherLaboratoryResults] ^short = "Results from other laboratories"
+* section[OtherLaboratoryResults] ^definition = "Results from other laboratories (for example tumour immunohistochemistry or histopathology) restated because the interpretation depends on them (ACGS 2.5.14, 2.5.16). Each result has the other laboratory as its performer"
+* section[OtherLaboratoryResults].code = GenomicReportSection#other-laboratory-results
+* section[OtherLaboratoryResults].entry only Reference(http://hl7.org/fhir/StructureDefinition/Observation or http://hl7.org/fhir/StructureDefinition/DiagnosticReport)
+
 * section[Interpretation] ^short = "Interpretation"
 * section[Interpretation] ^definition = "Interpretation of the results, including diagnostic and therapeutic implications"
 * section[Interpretation].code = GenomicReportSection#interpretation
@@ -151,8 +156,3 @@ Description:    """
 * section[Methodology].code = GenomicReportSection#methodology
 * section[Methodology].entry only Reference(GenomicStudyPanel or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/genomic-study or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/genomic-study-analysis)
 
-* section[PresentedForm] ^short = "Presented form"
-* section[PresentedForm] ^definition = "The authorised report as a PDF, while the PDF remains the authorised report"
-* section[PresentedForm].code = $loinc#77599-9 "Additional documentation"
-* section[PresentedForm].entry 1..*
-* section[PresentedForm].entry only Reference(http://hl7.org/fhir/StructureDefinition/DocumentReference or http://hl7.org/fhir/StructureDefinition/Binary)

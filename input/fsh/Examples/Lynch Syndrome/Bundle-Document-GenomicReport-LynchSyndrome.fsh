@@ -76,6 +76,13 @@ Usage: #example
     * entry[+].reference = "urn:uuid:8385c2fd-313d-4fd5-b98e-d5ea4bae6f99"
 
 * section[+]
+  * title = "Results from other laboratories"
+  * code = GenomicReportSection#other-laboratory-results
+  * text.status = #generated
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Tumour mismatch repair immunohistochemistry (Histopathology, Manchester University NHS Foundation Trust): loss of MLH1 and PMS2 expression; MSH2 and MSH6 retained. No MLH1 promoter hypermethylation.</p></div>"
+  * entry[+].reference = "urn:uuid:9541381a-ba5f-4e4c-a748-507fd7f701f7"
+
+* section[+]
   * title = "Interpretation"
   * code = GenomicReportSection#interpretation
   * text.status = #generated
@@ -106,6 +113,7 @@ Usage: #example
 * insert EntryDocument("urn:uuid:6beb613f-d303-42af-b025-86e8e0872061", 6beb613f-d303-42af-b025-86e8e0872061)
 * insert EntryDocument("urn:uuid:0878c5de-c22f-4e31-841a-a82ad31c93aa", 0878c5de-c22f-4e31-841a-a82ad31c93aa)
 * insert EntryDocument("urn:uuid:8385c2fd-313d-4fd5-b98e-d5ea4bae6f99", 8385c2fd-313d-4fd5-b98e-d5ea4bae6f99)
+* insert EntryDocument("urn:uuid:9541381a-ba5f-4e4c-a748-507fd7f701f7", Observation-LynchSyndrome-MMR-IHC)
 // Procedure
 * insert EntryDocument("urn:uuid:f0036554-cd1a-463c-ac8a-d891ca409af9", f0036554-cd1a-463c-ac8a-d891ca409af9)
 // Condition

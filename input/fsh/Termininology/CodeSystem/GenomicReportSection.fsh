@@ -15,4 +15,5 @@ Section codes for the [Composition Genomic Report](StructureDefinition-Compositi
 * ^url = "https://fhir.nwgenomics.nhs.uk/CodeSystem/GenomicReportSection"
 
 * #interpretation "Interpretation" "The clinical scientist's interpretation of the results, including diagnostic and therapeutic implications"
+* #other-laboratory-results "Results from other laboratories" "Results from other laboratories (for example tumour immunohistochemistry or histopathology) that the interpretation of the genomic results depends on"
 * #methodology "Methodology and limitations" "The genes or regions studied, the technology used, coverage, and the limitations of the test"

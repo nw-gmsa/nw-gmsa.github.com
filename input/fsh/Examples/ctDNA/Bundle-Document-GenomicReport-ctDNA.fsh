@@ -63,29 +63,22 @@ Usage: #example
   * title = "Results"
   * code = $loinc#69548-6 "Genetic variant assessment"
   * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>EGFR variant detected. For now (phase 1) see the PDF.</p></div>"
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>EGFR NM_005228.5:c.2369C&gt;T detected in circulating tumour DNA (somatic), mutant allele fraction 0.42%.</p></div>"
   * entry[+].reference = "urn:uuid:00c22e97-a226-4845-b17a-e24ec1f4f77a"
 
 * section[+]
   * title = "Interpretation"
   * code = GenomicReportSection#interpretation
   * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>For now (phase 1) see the PDF.</p></div>"
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>An EGFR variant was detected in circulating tumour DNA at a level requiring clinical action.</p></div>"
 
 * section[+]
   * title = "Methodology and limitations"
   * code = GenomicReportSection#methodology
   * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>EGFR region studied by dPCR. For now (phase 1) see the PDF.</p></div>"
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Targeted variant analysis of EGFR in circulating tumour DNA by digital PCR. A negative result only rules out variants at the positions tested.</p></div>"
   * entry[+].reference = "urn:uuid:e1e2150d-ba34-4247-83a2-5bc9ab93ba22"
 
-* section[+]
-  * title = "Presented form"
-  * code = $loinc#77599-9 "Additional documentation"
-  * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>ctDNA Genomic Report for Theon Sheffield (PDF). This PDF holds the narrative which ideally would be contained in this Composition.</p></div>"
-  * entry[+].reference = "urn:uuid:13028359-6a38-4dff-8978-55a57dbdfb56"
-  * entry[+].reference = "urn:uuid:d6eeedd1-92d3-45b9-bf33-6401e804425f"
 
 
 Instance: FHIRDocumentGeneticReportBundle-ctDNA
@@ -106,6 +99,4 @@ Usage: #example
 //* insert EntryDocument("urn:uuid:f80f704c-b2b2-4912-ac6f-e62aaadd4ff0", GenomicStudy-ctDNA)
 //* insert EntryDocument("urn:uuid:cd491a5f-62ec-4f6b-904f-206bae2c9b20", 51967-8-ctDNA)
 //* insert EntryDocument("urn:uuid:b3b6b20f-8e5a-432c-8155-579dc4d60a09", 51968-6-ctDNA)
-* insert EntryDocument("urn:uuid:13028359-6a38-4dff-8978-55a57dbdfb56",DocumentReference-ctDNA)
-* insert EntryDocument("urn:uuid:d6eeedd1-92d3-45b9-bf33-6401e804425f",Binary-Sample)
 

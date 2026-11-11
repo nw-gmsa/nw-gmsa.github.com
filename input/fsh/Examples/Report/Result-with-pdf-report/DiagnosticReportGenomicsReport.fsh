@@ -27,6 +27,9 @@ Description: "First draft is based on Royal College of Radiologists HL7 v2 ORU c
 //  * extension[ExtCodeableReference].valueCodeableConcept.coding = $GTD#R240.1
 
 * status = #final
+// Hand-written narrative: a generated one links presentedForm.url, and urn: is not a valid hyperlink scheme
+* text.status = #generated
+* text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Genomic report for Octavia CHISLETT. R240.1 Diagnostic testing for known variant(s) (Targeted variant testing). Conclusion: Normal - no action.</p></div>"
 * category[Genetics] = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
 
 * code.coding[+] = $GTD#R240.1

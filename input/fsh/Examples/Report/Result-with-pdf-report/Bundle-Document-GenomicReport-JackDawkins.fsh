@@ -48,45 +48,39 @@ Usage: #example
   * title = "Referral"
   * code = $loinc#42349-1 "Reason for referral (narrative)"
   * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R240.1 Diagnostic testing for known variant(s) (Targeted variant testing). See the attached report.</p></div>"
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R240.1 Diagnostic testing for known variant(s) (Targeted variant testing).</p></div>"
 
 * section[+]
   * title = "Specimen"
   * code = $sct#123038009 "Specimen"
   * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>See the attached report.</p></div>"
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Peripheral blood (EDTA).</p></div>"
 
 * section[+]
   * title = "Result summary"
   * code = $loinc#51968-6 "Discrete variation analysis overall interpretation"
   * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>See the attached report.</p></div>"
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Known familial variant not detected. Normal - no action.</p></div>"
   * entry[+].reference = "urn:uuid:233ff41a-5067-46c4-b6aa-5d6f87719f5f"
 
 * section[+]
   * title = "Results"
   * code = $loinc#69548-6 "Genetic variant assessment"
   * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>See the attached report.</p></div>"
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>The known familial variant was not detected.</p></div>"
 
 * section[+]
   * title = "Interpretation"
   * code = GenomicReportSection#interpretation
   * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>See the attached report.</p></div>"
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This result is normal. No further action is needed.</p></div>"
 
 * section[+]
   * title = "Methodology and limitations"
   * code = GenomicReportSection#methodology
   * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>See the attached report.</p></div>"
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Targeted testing for the known familial variant(s).</p></div>"
 
-* section[+]
-  * title = "Presented form"
-  * code = $loinc#77599-9 "Additional documentation"
-  * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Genomic Report for Octavia CHISLETT (PDF).</p></div>"
-  * entry[+].reference = "urn:uuid:94bf65ba-cd6c-4601-b339-6d547f424646"
 
 
 Instance: FHIRDocumentGeneticReportBundle
@@ -98,9 +92,5 @@ Usage: #example
 * insert EntryDocument("urn:uuid:30551ce1-5a28-4356-b684-1e639094ad4d", Composition-GenomicsReport-OctaviaCHISLETT)
 * insert EntryDocument("urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd", Patient-OctaviaCHISLETT-9449305552)
 * insert EntryDocument("urn:uuid:233ff41a-5067-46c4-b6aa-5d6f87719f5f", DiagnosticReportGenomicsReport)
-// DocumentReference
-* insert EntryDocument("urn:uuid:94bf65ba-cd6c-4601-b339-6d547f424646", 94bf65ba-cd6c-4601-b339-6d547f424646)
-// Binary
-* insert EntryDocument("urn:uuid:d6eeedd1-92d3-45b9-bf33-6401e804425f", Binary-Sample)
 // Practitioner Role - order creator
 //* insert EntryDocument("urn:uuid:ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8", ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8)

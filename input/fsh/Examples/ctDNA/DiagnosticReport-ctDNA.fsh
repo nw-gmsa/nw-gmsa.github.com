@@ -21,6 +21,9 @@ Description: "Diagnostic Report ctDNA Example"
   * reference = "urn:uuid:6e26d6b3-490e-4348-9d6c-37281567d6ec"
 
 * status = #final
+// Hand-written narrative: a generated one links presentedForm.url, and urn: is not a valid hyperlink scheme
+* text.status = #generated
+* text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>ctDNA genomic report for Theon SHEFFIELD. M4.14 Non-Small Cell Lung Cancer, multi-target ctDNA panel. Outcome: TARGET DETECTED AT A LEVEL REQUIRING CLINICAL ACTION.</p></div>"
 * category[Genetics] = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
 
 * code.coding[+] = $GTD#M4.14

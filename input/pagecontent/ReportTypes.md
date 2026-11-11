@@ -196,10 +196,9 @@ flowchart LR
     S -- text --> N
 ```
 
-Where the narrative is only available as a PDF, the section entry is the DocumentReference (and
-Binary) - for example the *Presented Format* section of the
-[ctDNA FHIR Document](Bundle-FHIRDocumentGeneticReportBundle-ctDNA.html), and the
-[Genomics Report Targeted Variant](Bundle-FHIRDocumentGeneticReportBundle.html) document.
+A PDF report is not generally part of a FHIR Document. Where the report is only available as a
+PDF, it is exchanged separately as a DocumentReference (and Binary), not as a section of the
+document.
 
 #### Discrete Results in a FHIR Document (Document Exchange)
 
