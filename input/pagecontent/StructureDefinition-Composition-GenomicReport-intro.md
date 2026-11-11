@@ -1,5 +1,6 @@
 ### References
 
+- Association for Clinical Genomic Science (ACGS) [General Genetic Laboratory Reporting Recommendations](https://www.acgs.uk.com/media/11649/acgs-general-genetic-laboratory-reporting-recommendations-2020-v1-1.pdf) (2020, version 1.1) - the reporting rules this profile follows
 - HL7 International [Genomics Reporting Implementation Guide](https://build.fhir.org/ig/HL7/genomics-reporting/index.html)
   - HL7 USA [minimal Common Oncology Data Elements (mCODE) Implementation Guide - Genomics](https://build.fhir.org/ig/HL7/fhir-mCODE-ig/group-genomics.html)
 - [HL7 Version 2.5.1 Implementation Guide: Lab Results Interface (LRI), Release 1 from May 2017](https://confluence.hl7.org/download/attachments/25559919/2018%2004%2003%20-%20V2%20LRI%20-%20Ch.%205%20CG%20and%20Code%20System%20Tables.pdf?api=v2)
@@ -32,10 +33,56 @@ combining these sources:
 |---|---|
 | HL7 Europe [Laboratory Report](https://hl7.eu/fhir/laboratory/) `Composition-eu-lab` | The base profile: at least one section, `section.code` and `section.text` 1..1, sections nested at most **two levels** (top level for the study or specialty, second for report items), and an **Annotations** section (LOINC `48767-8`) for comments, text only |
 | HL7 [Genomics Reporting](https://hl7.org/fhir/uv/genomics-reporting/) `genomic-report` | The content but not the layout: `DiagnosticReport.result` slices for variant, genotype, haplotype, biomarker, diagnostic and therapeutic implication, and the `recommended-action`, `genomic-study` and `coded-note` extensions |
-| [NHS England Genomics Test Reporting Specification](https://www.england.nhs.uk/publication/genomics-testing-reporting-specification/) and ACGS reporting guidance | The headings a UK genomic report is expected to show - to be confirmed against the published specification |
+| ACGS [General Genetic Laboratory Reporting Recommendations](https://www.acgs.uk.com/media/11649/acgs-general-genetic-laboratory-reporting-recommendations-2020-v1-1.pdf) (2020, v1.1) | **The rules this profile follows**: what a UK genetic laboratory report must and should contain. It sets content, not a section layout - see [ACGS Reporting Recommendations](#acgs-reporting-recommendations) |
+| [NHS England Genomics Test Reporting Specification](https://www.england.nhs.uk/publication/genomics-testing-reporting-specification/) | The headings a UK genomic report is expected to show - to be confirmed against the published specification |
 | [Master HL7 genetic variant reporting panel](https://loinc.org/81247-9) (LOINC `81247-9`), as used by the [HL7 v2.5.1 LRI Clinical Genomics chapter](https://confluence.hl7.org/download/attachments/25559919/2018%2004%2003%20-%20V2%20LRI%20-%20Ch.%205%20CG%20and%20Code%20System%20Tables.pdf?api=v2) | The HL7 v2 grouping of results: overall study, overall interpretation, simple, structural and complex variants, pharmacogenomics, haplotypes - see [Alternative Layout](#alternative-layout-hl7-v2-genetic-variant-panel) |
 | NHS England [FHIR Genomics Implementation Guide - Clinical Headings](https://simplifier.net/guide/fhir-genomics-implementation-guide/home/design/clinicalheadings?version=0.6.2) | Headings from the Genomics Minimum Dataset for the test request - see [Alternative Layout](#alternative-layout-nhs-england-clinical-headings) |
 {:.grid}
+
+#### ACGS Reporting Recommendations
+
+This profile follows the ACGS [General Genetic Laboratory Reporting Recommendations](https://www.acgs.uk.com/media/11649/acgs-general-genetic-laboratory-reporting-recommendations-2020-v1-1.pdf)
+(2020, version 1.1). In that document *must* is a requirement and *should* is a recommendation. It
+says what a report has to contain, but not in which sections, so the table below shows where each
+requirement is carried in the FHIR Document. Requirements about the printed page (pagination,
+patient identifiers on every page), report distribution, archiving and turnaround times are not
+about the document's content and are left out.
+
+| ACGS | Requirement | Where in the FHIR Document | Profile |
+|---|---|---|---|
+| 2.1 | The overall result or conclusion **must** be clearly visible | Result summary section (LOINC `51968-6`), and `DiagnosticReport.conclusion` / `conclusionCode` | Met - Result summary required (1..1) |
+| 2.2 | Name, contact details and referral unit of the requesting clinician, and of any copy recipients, **must** be shown | Referral section entry ServiceRequest (`requester`); copy recipients in the `informationRecipient` extension (from `Composition-eu-lab`) | Referral required (1..1); `requester` and contact details not required |
+| 2.3 | The issuing laboratory **must** be clearly identified, with full contact details; the report **should** have a title and date of issue | `Composition.custodian` and `author` (Organization), `Composition.title`, `Composition.date` | `custodian` is optional; contact details are not required |
+| 2.3 | The accreditation status of the test **should** be indicated | Methodology and limitations section text | No coded element |
+| 2.4 | At least two patient identifiers (e.g. full name and date of birth), plus a laboratory number and/or NHS number, **must** be shown | `Composition.subject` (Patient name, `birthDate`, NHS number), `Composition.identifier` | Met |
+| 2.4 | For prenatal samples it **must** be clear that the result is from the fetus, and which fetus | `Composition.subject` is the fetus (see [Patient - Fetus](Patient-Patient-FetusLondon.html)) | Not checked |
+| 2.4 | The type of primary sample and its date of receipt **must** be recorded | Specimen section entry Specimen (`type`, `receivedTime`) | Met - Specimen required (1..1); the Specimen entry is optional |
+| 2.5 | Sequence variants **must** be classified using the ACMG guidelines | Interpretation section entry Diagnostic Implication (`clinical-significance`, LOINC `53037-8`) | Met |
+| 2.5.1 | HGVS or ISCN nomenclature; a reference sequence or genome build **must** be given with any coordinates | Variant components (`48004-6`, `51958-7`, `81290-9`, `81291-7`) and the genome build (`62374-4`) on the Genomic Study Panel | Not required by the Variant profile |
+| 2.5.2 | The clinical question **must** be restated, with any relevant referral information | Referral section (LOINC `42349-1`) | Met - Referral required (1..1) |
+| 2.5.3, 2.5.6 | A clear description of the genetic abnormality and a full clinical interpretation **must** be given | Results section (and sub-sections) and Interpretation section | Met - Results (1..\*) and Interpretation (1..1) required |
+| 2.5.4 | The associated syndrome, disease or prognosis is included where relevant | Diagnostic Implication `predicted-phenotype` (LOINC `81259-4`) | Met |
+| 2.5.5 | The test methodology, its sensitivity and resolution, and whether testing was incomplete **must** be stated | Methodology and limitations section | Met - Methodology required (1..1) |
+| 2.5.6.4 | For tumours, results **should** be linked to the proportion of neoplastic cells; a normal result without it **must** be qualified | Specimen section text (tumour content) and Methodology and limitations | No coded element |
+| 2.5.7 | Family studies: a table, a pedigree where complex, and a pedigree or family number | [Family Genetic Group](StructureDefinition-FamilyGeneticGroup.html), [Genomics Pedigree Number](StructureDefinition-GenomicsPedigreeNumber.html) | No section |
+| 2.5.8 | Carrier and recurrence risks, and implications for other family members, **should** be stated | Interpretation or Recommendations section | Met (text) |
+| 2.5.11 | Referral for genetic counselling **should** be recommended; all reports **should** state that support is available from Clinical Genetics | Recommendations section (LOINC `62385-0`) | Optional (0..1) - *should* only |
+| 2.5.12 | Further tests, or that no further testing is planned | Recommendations section | Met |
+| 3 | The report **must** indicate that it has been authorised | `Composition.attester` (mode `legal`), `DiagnosticReport.resultsInterpreter` | Met - `attester` required (1..\*) |
+| 4 | Interim or preliminary reports **should** be clearly marked as such | `Composition.status` = `preliminary` | Met |
+| 5 | A revised report **must** be stand-alone, refer to the original report, and state whether it replaces or supersedes it | `Composition.status` = `amended` or `corrected`, `Composition.relatesTo` (`replaces`) | Met |
+| 6 | No disclaimers are required | Annotations section only where appropriate | Met |
+| 7 | Selected references, where published data are key to the interpretation | Interpretation section text, or the `relatedArtifact` extension on the implication | No section |
+{:.grid}
+
+The Referral, Specimen, Result summary, Results, Interpretation and Methodology and limitations
+sections, and `attester`, are required because they carry an ACGS *must*. Recommendations stays
+optional, as ACGS only says *should* for its content. The *Profile* column shows the remaining gaps,
+where an ACGS *must* is carried in text but not enforced by the profile.
+
+While the PDF remains the authorised report (see [Presented form](#inferred-layout)), a required
+section may only point to the attached PDF, as in the [ctDNA](Bundle-FHIRDocumentGeneticReportBundle-ctDNA.html)
+and [Targeted Variant](Bundle-FHIRDocumentGeneticReportBundle.html) examples.
 
 #### Inferred Layout
 
@@ -75,7 +122,7 @@ flowchart TB
 
 | Section (slice) | Code | Content (entries) | Notes |
 |---|---|---|---|
-| Referral (`Referral`) | LOINC `42349-1` Reason for referral (narrative) | Text; entries [ServiceRequest](StructureDefinition-ServiceRequest.html), [Condition](StructureDefinition-Condition.html) | Clinical indication and the [National Genomic Test Directory](https://www.england.nhs.uk/publication/national-genomic-test-directories/) test requested. Could instead be in the Composition header only |
+| Referral (`Referral`) | LOINC `42349-1` Reason for referral (narrative) | Text; entries [ServiceRequest](StructureDefinition-ServiceRequest.html), [Condition](StructureDefinition-Condition.html) | Clinical indication and the [National Genomic Test Directory](https://www.england.nhs.uk/publication/national-genomic-test-directories/) test requested. Required: ACGS 2.5.2 |
 | Specimen (`Specimen`) | SNOMED CT `123038009` Specimen | Text; entry [Specimen](StructureDefinition-Specimen.html) | No LOINC document section code found; as used by the [ctDNA UGR example](Bundle-ctdna9737383222-eulab-document.html) |
 | Result summary (`ResultSummary`) | LOINC `51968-6` Discrete variation analysis overall interpretation | Text; entry [DiagnosticReport](StructureDefinition-DiagnosticReport.html) | The headline result shown first on the report |
 | Results (`Results`) | LOINC `69548-6` Genetic variant assessment | Text (the variant table); entries [Variant](StructureDefinition-Variant.html), [Genomic Study Analysis](https://hl7.org/fhir/uv/genomics-reporting/STU3/StructureDefinition-genomic-study-analysis.html), [Molecular Consequence](StructureDefinition-MolecularConsequence.html) | Optional sub-sections, one per `81247-9` panel group that applies - see [Results Sub-sections](#results-sub-sections) |
@@ -337,8 +384,8 @@ Questions for discussion:
    example a top-level *Genetics* study section with these as sub-sections?
 4. Which section codes should be used? LOINC has few document section codes for genomics; the
    alternatives are SNOMED CT or a local CodeSystem.
-5. Should the referral and specimen details be sections, or only in the Composition header and
-   the DiagnosticReport (`basedOn`, `specimen`)?
+5. *Answered.* The referral and specimen details are sections, because ACGS requires the report to
+   restate the clinical question (2.5.2) and record the sample type and date of receipt (2.4).
 6. Should the report repeat the NHS England clinical headings of the test request (for example
    Patient Clinical Information, NGRL Consent, Fetus), and if so as sections or as entries in a
    Referral section?

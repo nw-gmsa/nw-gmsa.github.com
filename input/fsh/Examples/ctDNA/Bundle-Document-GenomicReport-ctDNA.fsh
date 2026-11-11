@@ -25,6 +25,10 @@ Usage: #example
 * author.identifier.system = $ods-code
 * author.identifier.value = "699X0"
 * author.display = "North West Genomics"
+* attester[+].mode = #legal
+* attester[=].time = "2025-10-14T15:59:16+00:00"
+* attester[=].party.reference = "urn:uuid:4446ab81-35ef-49cb-b2fe-1d6f1a0dcc02"
+* attester[=].party.display = "Jonathan Edgerley"
 
 * title = "Composition Genomics Report ctDNA"
 
@@ -33,6 +37,20 @@ Usage: #example
 * subject.identifier
   * system = "https://fhir.nhs.uk/Id/nhs-number"
   * value = "9737873858"
+
+* section[+]
+  * title = "Referral"
+  * code = $loinc#42349-1 "Reason for referral (narrative)"
+  * text.status = #generated
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>M4 Non-Small Cell Lung Cancer. M4.14 multi-target ctDNA panel.</p></div>"
+  * entry[+].reference = "urn:uuid:6e26d6b3-490e-4348-9d6c-37281567d6ec"
+
+* section[+]
+  * title = "Specimen"
+  * code = $sct#123038009 "Specimen"
+  * text.status = #generated
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Blood specimen for ctDNA. Collected 29-Jun-2026, received 30-Jun-2026.</p></div>"
+  * entry[+].reference = "urn:uuid:b930b4c4-327a-4728-8bb9-f90061914cc5"
 
 * section[+]
   * title = "Result summary"
@@ -47,6 +65,12 @@ Usage: #example
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>EGFR variant detected. For now (phase 1) see the PDF.</p></div>"
   * entry[+].reference = "urn:uuid:00c22e97-a226-4845-b17a-e24ec1f4f77a"
+
+* section[+]
+  * title = "Interpretation"
+  * code = GenomicReportSection#interpretation
+  * text.status = #generated
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>For now (phase 1) see the PDF.</p></div>"
 
 * section[+]
   * title = "Methodology and limitations"

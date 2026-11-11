@@ -41,6 +41,9 @@ Description:    """
 * author only Reference(Practitioner or Organization or PractitionerRole)
 //* author.identifier only PractitionerIdentifier
 
+// ACGS 3: the report must indicate that it has been authorised
+* attester 1..* MS
+* attester ^short = "Authorisation of the report (ACGS 3)"
 * attester.party only Reference(Practitioner or PractitionerRole)
 * attester.party.identifier only PractitionerIdentifier
 
@@ -57,14 +60,17 @@ Description:    """
 * section.code.coding.code 1..1
 
 
+// Required sections carry ACGS General Genetic Laboratory Reporting Recommendations 'must' requirements:
+// Referral 2.5.2, Specimen 2.4, ResultSummary 2.1, Results 2.5.3, Interpretation 2.5.6, Methodology 2.5.5.
+// Recommendations carries 'should' requirements (2.5.8, 2.5.11, 2.5.12) only.
 * section contains
-    Referral 0..1 MS
-    and Specimen 0..1 MS
-    and ResultSummary 0..1 MS
-    and Results 0..* MS
-    and Interpretation 0..1 MS
+    Referral 1..1 MS
+    and Specimen 1..1 MS
+    and ResultSummary 1..1 MS
+    and Results 1..* MS
+    and Interpretation 1..1 MS
     and Recommendations 0..1 MS
-    and Methodology 0..1 MS
+    and Methodology 1..1 MS
     and PresentedForm 0..* MS
 
 // Inferred layout - see Document Layout on the profile page. Section titles are not fixed, so a laboratory can use its own headings.

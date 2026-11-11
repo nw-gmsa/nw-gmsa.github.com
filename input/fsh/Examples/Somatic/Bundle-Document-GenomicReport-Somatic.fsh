@@ -25,6 +25,12 @@ Usage: #example
 * author.identifier.system = $ods-code
 * author.identifier.value = "699X0"
 * author.display = "NW GLH"
+* attester[+].mode = #legal
+* attester[=].time = "2026-10-21T09:30:00+00:00"
+* attester[=].party.reference = "urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c"
+* attester[=].party.identifier.system = "https://fhir.hl7.org.uk/Id/gmc-number"
+* attester[=].party.identifier.value = "C1234567"
+* attester[=].party.display = "FICTITIOUS, Ralph"
 
 * title = "Composition Genomics Report Somatic Non-Small Cell Lung Cancer"
 
@@ -41,7 +47,7 @@ Usage: #example
   * title = "Specimen"
   * code = $sct#123038009 "Specimen"
   * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Formalin-fixed paraffin-embedded (FFPE) lung biopsy. Estimated tumour content 40%.</p></div>"
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Formalin-fixed paraffin-embedded (FFPE) lung biopsy. Estimated tumour content 40%. Received 10-Oct-2026.</p></div>"
 
 * section[+]
   * title = "Result summary"

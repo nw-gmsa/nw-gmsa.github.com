@@ -25,6 +25,12 @@ Usage: #example
 * author.identifier.system = $ods-code
 * author.identifier.value = "R0A"
 * author.display = "MANCHESTER UNIVERSITY NHS FOUNDATION TRUST"
+* attester[+].mode = #legal
+* attester[=].time = "2024-10-13T10:33:00+00:00"
+* attester[=].party.reference = "urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c"
+* attester[=].party.identifier.system = "https://fhir.hl7.org.uk/Id/gmc-number"
+* attester[=].party.identifier.value = "C1234567"
+* attester[=].party.display = "FICTITIOUS, Ralph"
 
 * title = "Composition Genomics Report Lynch Syndrome"
 
@@ -43,6 +49,12 @@ Usage: #example
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R210 Inherited MMR deficiency (Lynch syndrome). History of carcinoma.</p></div>"
   * entry[+].reference = "urn:uuid:d6c19529-a64e-476b-b896-303abec26a79"
+
+* section[+]
+  * title = "Specimen"
+  * code = $sct#123038009 "Specimen"
+  * text.status = #generated
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Peripheral blood (EDTA). Received 08-Sep-2023.</p></div>"
 
 * section[+]
   * title = "Result summary"
