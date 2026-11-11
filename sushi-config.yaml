@@ -469,12 +469,14 @@ groups:
       - Bundle/FHIRDocumentGeneticReportBundle
       - Bundle/FHIRDocumentGeneticReportBundle2
       - Bundle/FHIRDocumentGeneticReportBundle-WGS
+      - Bundle/FHIRDocumentGeneticReportBundle-WGS-ExternalLab
       - Bundle/FHIRDocumentGeneticReportBundle-Somatic
       - Bundle/FHIRDocumentGeneticReportBundle-Somatic-ExternalLab
       - Bundle/FHIRDocumentGeneticReportBundle-Pharmacogenomics
       - Composition/Composition-GenomicsReport-OctaviaCHISLETT
       - Composition/Composition-GenomicsReport-LynchSyndrome
       - Composition/Composition-GenomicsReport-WGS
+      - Composition/Composition-GenomicsReport-WGS-ExternalLab
       - Composition/Composition-GenomicsReport-Somatic
       - Composition/Composition-GenomicsReport-Somatic-ExternalLab
       - Composition/Composition-GenomicsReport-Pharmacogenomics

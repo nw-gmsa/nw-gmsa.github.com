@@ -137,9 +137,9 @@ Description:    """
 * section[Results].section[HaplotypeDefinitions].entry only Reference(Haplotype)
 
 * section[OtherLaboratoryResults] ^short = "Results from other laboratories"
-* section[OtherLaboratoryResults] ^definition = "Results from other laboratories (for example tumour immunohistochemistry or histopathology) restated because the interpretation depends on them (ACGS 2.5.14, 2.5.16). Each result has the other laboratory as its performer"
+* section[OtherLaboratoryResults] ^definition = "Results from other laboratories (for example tumour immunohistochemistry or histopathology) restated because the interpretation depends on them (ACGS 2.5.14, 2.5.16). Each result has the other laboratory as its performer (Observation, DiagnosticReport) or author (DocumentReference, for a report received only as a document such as a PDF)"
 * section[OtherLaboratoryResults].code = GenomicReportSection#other-laboratory-results
-* section[OtherLaboratoryResults].entry only Reference(http://hl7.org/fhir/StructureDefinition/Observation or http://hl7.org/fhir/StructureDefinition/DiagnosticReport)
+* section[OtherLaboratoryResults].entry only Reference(http://hl7.org/fhir/StructureDefinition/Observation or http://hl7.org/fhir/StructureDefinition/DiagnosticReport or http://hl7.org/fhir/StructureDefinition/DocumentReference)
 
 * section[Interpretation] ^short = "Interpretation"
 * section[Interpretation] ^definition = "Interpretation of the results, including diagnostic and therapeutic implications"
