@@ -54,3 +54,12 @@ Description: "DLIMS order number, assigned by NW GLH (699X0) when DLIMS (Subcont
 Usage: #definition
 * insert LIMSNamingSystem(DLIMSOrderIdentifier, https://fhir.nwgenomics.nhs.uk/DLIMS/OrderIdentifier, FILL)
 * description = "DLIMS order number, assigned by NW GLH (699X0) when DLIMS (Subcontractor) accepts a sub-order (ILW LAB-35). Used as the Order Filler Number (`ServiceRequest.identifier[OrderFillerNumber]`) of the sub-order."
+
+
+Instance: DLIMS-WorkOrderIdentifier
+InstanceOf: NamingSystem
+Title: "DLIMS Work Order Identifier"
+Description: "DLIMS work order number, assigned by NW GLH (699X0) when DLIMS (Order Filler) places a work order with OmicsDSS (LTW LAB-4). Used as the Order Placer Number (`ServiceRequest.identifier[OrderPlacerNumber]`) of the work order."
+Usage: #definition
+* insert LIMSNamingSystem(DLIMSWorkOrderIdentifier, https://fhir.nwgenomics.nhs.uk/DLIMS/WorkOrderIdentifier, PLAC)
+* description = "DLIMS work order number, assigned by NW GLH (699X0) when DLIMS (Order Filler) places a work order with OmicsDSS (LTW LAB-4). Used as the Order Placer Number (`ServiceRequest.identifier[OrderPlacerNumber]`) of the work order."

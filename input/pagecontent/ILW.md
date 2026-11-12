@@ -240,12 +240,15 @@ sequenceDiagram
     participant OrderPlacer as Order Placer
 
     participant iGene as Requestor<br/>(Order Filler - iGene)
-    participant DLIMS as Subcontractor<br/>(DLIMS / OMICS DSS)
+        participant DLIMS as Subcontractor<br/>(DLIMS)
+    participant OmicsDSS as Automation Manager<br/>(OmicsDSS)
 
     OrderPlacer ->> iGene: Places Order (Order Identifier 1, Specimen Accession Number X)
 
     alt OMICS DSS Sub-order
         iGene ->> DLIMS: LAB-35 Places Sub-order (Order Identifier 2, basedOn Order Identifier 1, performer DLIMS)
+        DLIMS ->> OmicsDSS: LAB-4 Places Work Order (Work Order Identifier 3, basedOn Order Identifier 2, performer OmicsDSS)
+        OmicsDSS -->> DLIMS: LAB-5 Returns Test Results (Work Order Identifier 3)
         DLIMS -->> iGene: LAB-36 Returns Test Results (Order Identifier 2)
     end
 
@@ -274,7 +277,9 @@ GET [base]/ServiceRequest?performer:identifier=https://fhir.nwgenomics.nhs.uk/Id
 
 or, where the `Device` resource is held on the same server, `GET [base]/ServiceRequest?performer=Device/DLIMS`.
 
-See the example [OMICS DSS sub-order from iGene to DLIMS](ServiceRequest-ServiceRequest-ctDNA-DLIMS-SubOrder.html).
+DLIMS then places a [LAB-4](LTW.html#work-order-and-test-result-management-lab-4-and-lab-5) work order with OmicsDSS. This is internal to DLIMS, so it uses `intent` = `instance-order`, `basedOn` the DLIMS sub-order, and `performer[laboratoryInformationSystem]` = `OmicsDSS`.
+
+See the examples [OMICS DSS sub-order from iGene to DLIMS](ServiceRequest-ServiceRequest-ctDNA-DLIMS-SubOrder.html) and [OMICS DSS work order from DLIMS to OmicsDSS](ServiceRequest-ServiceRequest-ctDNA-OmicsDSS-WorkOrder.html).
 
 
 
