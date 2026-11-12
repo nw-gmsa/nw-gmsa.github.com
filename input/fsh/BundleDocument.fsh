@@ -31,7 +31,8 @@ Description:    "[FHIR Document](https://hl7.org/fhir/R4/documents.html)"
 // 1..*: the report's own DiagnosticReport (Composition diagnosticReport extension), plus any results from other laboratories restated in the OtherLaboratoryResults section
 * entry contains diagnosticReport 1..*
 * entry[diagnosticReport] ^comment = "One is the DiagnosticReport this document reports, referenced by the Composition's diagnosticReport extension. Others are results from other laboratories restated in the Results from other laboratories section."
-* entry[diagnosticReport].resource only DiagnosticReport
+// Base DiagnosticReport allowed for reports from other laboratories, which are not NW reports
+* entry[diagnosticReport].resource only DiagnosticReport or http://hl7.org/fhir/StructureDefinition/DiagnosticReport
 
 * entry contains patient 0..*
 * entry[patient].resource only Patient // or PatientEuCore or PatientAnimalEuCore changed based on https://jira.hl7.org/browse/FHIR-56181
@@ -46,7 +47,8 @@ Description:    "[FHIR Document](https://hl7.org/fhir/R4/documents.html)"
 * entry[serviceRequest].resource only ServiceRequest
 
 * entry contains organization 0..*
-* entry[organization].resource only Organization
+// Base Organization allowed for organisations without NHS identifiers, e.g. a laboratory in another country
+* entry[organization].resource only Organization or http://hl7.org/fhir/StructureDefinition/Organization
 
 * entry contains practitioner 0..*
 * entry[practitioner].resource only Practitioner

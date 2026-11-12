@@ -60,18 +60,21 @@ Description:    """
 * section.code.coding.code 1..1
 
 
-// Required sections carry ACGS General Genetic Laboratory Reporting Recommendations 'must' requirements:
-// Referral 2.5.2, Specimen 2.4, ResultSummary 2.1, Results 2.5.3, Interpretation 2.5.6, Methodology 2.5.5.
-// Recommendations carries 'should' requirements (2.5.8, 2.5.11, 2.5.12) only.
+// Sections carrying ACGS General Genetic Laboratory Reporting Recommendations 'must' requirements are required
+// by invariants, not slice cardinality: SUSHI pre-fills required slices in profile order, which would fix the
+// section order of every instance. Referral 2.5.2, Specimen 2.4, ResultSummary 2.1, Results 2.5.3,
+// Interpretation 2.5.6, Methodology 2.5.5. Recommendations carries 'should' requirements (2.5.8, 2.5.11, 2.5.12) only.
 * section contains
-    Referral 1..1 MS
-    and Specimen 1..1 MS
-    and ResultSummary 1..1 MS
-    and Results 1..* MS
+    Referral 0..1 MS
+    and Specimen 0..1 MS
+    and ResultSummary 0..1 MS
+    and Results 0..* MS
     and OtherLaboratoryResults 0..1 MS
-    and Interpretation 1..1 MS
+    and Interpretation 0..1 MS
     and Recommendations 0..1 MS
-    and Methodology 1..1 MS
+    and Methodology 0..1 MS
+
+* obeys nw-gr-referral and nw-gr-specimen and nw-gr-result-summary and nw-gr-results and nw-gr-interpretation and nw-gr-methodology
 
 // Inferred layout - see Document Layout on the profile page. Section titles are not fixed, so a laboratory can use its own headings.
 
@@ -157,3 +160,33 @@ Description:    """
 * section[Methodology].code = GenomicReportSection#methodology
 * section[Methodology].entry only Reference(GenomicStudyPanel or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/genomic-study or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/genomic-study-analysis)
 
+
+Invariant: nw-gr-referral
+Description: "A Referral section (LOINC 42349-1) SHALL be present: the report must restate the clinical question (ACGS 2.5.2)"
+Expression: "section.where(code.coding.where(system = 'http://loinc.org' and code = '42349-1').exists()).exists()"
+Severity: #error
+
+Invariant: nw-gr-specimen
+Description: "A Specimen section (SNOMED CT 123038009) SHALL be present: the type of primary sample and its date of receipt must be recorded (ACGS 2.4)"
+Expression: "section.where(code.coding.where(system = 'http://snomed.info/sct' and code = '123038009').exists()).exists()"
+Severity: #error
+
+Invariant: nw-gr-result-summary
+Description: "A Result summary section (LOINC 51968-6) SHALL be present: the overall result or conclusion must be clearly visible (ACGS 2.1)"
+Expression: "section.where(code.coding.where(system = 'http://loinc.org' and code = '51968-6').exists()).exists()"
+Severity: #error
+
+Invariant: nw-gr-results
+Description: "A Results section (LOINC 69548-6) SHALL be present: the report must clearly describe the genetic abnormality, or that none was found (ACGS 2.5.3)"
+Expression: "section.where(code.coding.where(system = 'http://loinc.org' and code = '69548-6').exists()).exists()"
+Severity: #error
+
+Invariant: nw-gr-interpretation
+Description: "An Interpretation section SHALL be present: the report must give a full clinical interpretation (ACGS 2.5.6)"
+Expression: "section.where(code.coding.where(system = 'https://fhir.nwgenomics.nhs.uk/CodeSystem/GenomicReportSection' and code = 'interpretation').exists()).exists()"
+Severity: #error
+
+Invariant: nw-gr-methodology
+Description: "A Methodology and limitations section SHALL be present: the methodology, sensitivity and any incomplete testing must be stated (ACGS 2.5.5)"
+Expression: "section.where(code.coding.where(system = 'https://fhir.nwgenomics.nhs.uk/CodeSystem/GenomicReportSection' and code = 'methodology').exists()).exists()"
+Severity: #error

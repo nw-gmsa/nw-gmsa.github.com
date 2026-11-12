@@ -50,19 +50,19 @@ about the document's content and are left out.
 
 | ACGS | Requirement | Where in the FHIR Document | Profile |
 |---|---|---|---|
-| 2.1 | The overall result or conclusion **must** be clearly visible | Result summary section (LOINC `51968-6`), and `DiagnosticReport.conclusion` / `conclusionCode` | Met - Result summary required (1..1) |
-| 2.2 | Name, contact details and referral unit of the requesting clinician, and of any copy recipients, **must** be shown | Referral section entry ServiceRequest (`requester`); copy recipients in the `informationRecipient` extension (from `Composition-eu-lab`) | Referral required (1..1); `requester` and contact details not required |
+| 2.1 | The overall result or conclusion **must** be clearly visible | Result summary section (LOINC `51968-6`), and `DiagnosticReport.conclusion` / `conclusionCode` | Met - Result summary required (`nw-gr-result-summary`) |
+| 2.2 | Name, contact details and referral unit of the requesting clinician, and of any copy recipients, **must** be shown | Referral section entry ServiceRequest (`requester`); copy recipients in the `informationRecipient` extension (from `Composition-eu-lab`) | Referral required (`nw-gr-referral`); `requester` and contact details not required |
 | 2.3 | The issuing laboratory **must** be clearly identified, with full contact details; the report **should** have a title and date of issue | `Composition.custodian` and `author` (Organization), `Composition.title`, `Composition.date` | `custodian` is optional; contact details are not required |
 | 2.3 | The accreditation status of the test **should** be indicated | Methodology and limitations section text | No coded element |
 | 2.4 | At least two patient identifiers (e.g. full name and date of birth), plus a laboratory number and/or NHS number, **must** be shown | `Composition.subject` (Patient name, `birthDate`, NHS number), `Composition.identifier` | Met |
 | 2.4 | For prenatal samples it **must** be clear that the result is from the fetus, and which fetus | `Composition.subject` is the fetus (see [Patient - Fetus](Patient-Patient-FetusLondon.html)) | Not checked |
-| 2.4 | The type of primary sample and its date of receipt **must** be recorded | Specimen section entry Specimen (`type`, `receivedTime`) | Met - Specimen required (1..1); the Specimen entry is optional |
+| 2.4 | The type of primary sample and its date of receipt **must** be recorded | Specimen section entry Specimen (`type`, `receivedTime`) | Met - Specimen required (`nw-gr-specimen`); the Specimen entry is optional |
 | 2.5 | Sequence variants **must** be classified using the ACMG guidelines | Interpretation section entry Diagnostic Implication (`clinical-significance`, LOINC `53037-8`) | Met |
 | 2.5.1 | HGVS or ISCN nomenclature; a reference sequence or genome build **must** be given with any coordinates | Variant components (`48004-6`, `51958-7`, `81290-9`, `81291-7`) and the genome build (`62374-4`) on the Genomic Study Panel | Not required by the Variant profile |
-| 2.5.2 | The clinical question **must** be restated, with any relevant referral information | Referral section (LOINC `42349-1`) | Met - Referral required (1..1) |
-| 2.5.3, 2.5.6 | A clear description of the genetic abnormality and a full clinical interpretation **must** be given | Results section (and sub-sections) and Interpretation section | Met - Results (1..\*) and Interpretation (1..1) required |
+| 2.5.2 | The clinical question **must** be restated, with any relevant referral information | Referral section (LOINC `42349-1`) | Met - Referral required (`nw-gr-referral`) |
+| 2.5.3, 2.5.6 | A clear description of the genetic abnormality and a full clinical interpretation **must** be given | Results section (and sub-sections) and Interpretation section | Met - Results and Interpretation required (`nw-gr-results`, `nw-gr-interpretation`) |
 | 2.5.4 | The associated syndrome, disease or prognosis is included where relevant | Diagnostic Implication `predicted-phenotype` (LOINC `81259-4`) | Met |
-| 2.5.5 | The test methodology, its sensitivity and resolution, and whether testing was incomplete **must** be stated | Methodology and limitations section | Met - Methodology required (1..1) |
+| 2.5.5 | The test methodology, its sensitivity and resolution, and whether testing was incomplete **must** be stated | Methodology and limitations section | Met - Methodology required (`nw-gr-methodology`) |
 | 2.5.6.4 | For tumours, results **should** be linked to the proportion of neoplastic cells; a normal result without it **must** be qualified | Specimen section text (tumour content) and Methodology and limitations | No coded element |
 | 2.5.7 | Family studies: a table, a pedigree where complex, and a pedigree or family number | [Family Genetic Group](StructureDefinition-FamilyGeneticGroup.html), [Genomics Pedigree Number](StructureDefinition-GenomicsPedigreeNumber.html) | No section |
 | 2.5.8 | Carrier and recurrence risks, and implications for other family members, **should** be stated | Interpretation or Recommendations section | Met (text) |
@@ -77,8 +77,9 @@ about the document's content and are left out.
 {:.grid}
 
 The Referral, Specimen, Result summary, Results, Interpretation and Methodology and limitations
-sections, and `attester`, are required because they carry an ACGS *must*. Recommendations stays
-optional, as ACGS only says *should* for its content. The *Profile* column shows the remaining gaps,
+sections, and `attester`, are required because they carry an ACGS *must*. The sections are required
+by invariants (`nw-gr-*`) rather than by slice cardinality, so a laboratory keeps its own section
+order. Recommendations stays optional, as ACGS only says *should* for its content. The *Profile* column shows the remaining gaps,
 where an ACGS *must* is carried in text but not enforced by the profile.
 
 A PDF report is not generally part of the FHIR Document. Where one exists it is exchanged
