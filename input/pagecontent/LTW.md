@@ -43,11 +43,16 @@ graph TD;
 
 #### Diagnostic Testing
 
-The diagnostic testing begins when the Order Placer creates a laboratory order after determining that diagnostic testing is required. At the same time, the requesting organisation arranges for the patient's specimen to be collected. The laboratory order (LAB-1) is transmitted electronically to the laboratory, while the physical specimen is collected and transported to the testing facility.
+The diagnostic testing begins when the Order Placer creates a laboratory order after determining that diagnostic testing is required. The clinician selects the test order form for the test, completes it (the Genomic Test Order) and submits it. The laboratory order (LAB-1) is transmitted electronically to the laboratory.
 
-When an order has been entered manually, or when the Specimen arrives at the laboratory, a laboratory filler order (LAB-2) is generated.
+At the same time, the requesting organisation arranges for the patient's specimen to be collected, and the physical specimen is sent to the laboratory (usually by post). A specimen does not always need collecting:
 
-Within the Order Filler, the laboratory receives both the electronic order and the specimen. Laboratory staff perform the requested tests, validate the results, and produce a diagnostic report. Once authorised, the laboratory sends the completed laboratory report (LAB-3) back to the requesting clinical system.
+- it has already been sent to the GLH and extracted DNA is already stored there, or
+- the sample is somewhere else in the country. In this instance the ordering clinician will need to arrange the sample transfer to the GLH.
+
+The order may be updated after it has been submitted, for example with the specimen collection details. When an order has been entered manually, or when the Specimen arrives at the laboratory, a laboratory filler order (LAB-2) is generated.
+
+Within the Order Filler, the laboratory receives both the electronic order and the specimen, in either order (or locates the stored DNA). Laboratory staff perform the requested tests, validate the results, and produce a diagnostic report. Once authorised, the laboratory sends the laboratory report (LAB-3) back to the requesting clinical system. One or more initial (interim) reports may be sent before the final report, each as a LAB-3, so the Order Result Tracker receives reports until the final report arrives.
 
 ```mermaid
 graph 
@@ -109,16 +114,7 @@ Initially only the IHE `LAB-1` and `LAB-3` are in focus. Later stages will inclu
 
 ### Laboratory Order and Report LAB-1 and LAB-3
 
-<img style="padding:3px;width:95%;" src="LTW Use Case 1 and 2.drawio.png" alt="Genomic LTW Business Process"/>
-<br clear="all">
-<p class="figureTitle">Genomic LTW Business Process</p> 
-<br clear="all">
-
-> The sample may not need collecting by the ordering clinician for 2 reasons 
-> - it has already been sent to the GLH and extracted DNA is already stored there 
-> - the sample is somewhere else in the country. In this instance the ordering clinician will need to arrange the sample transfer to the GLH.
-
-The processes above are described in more detail in:
+The order and the report are described in more detail in:
 
 - [Process Flow: Genomic Test Order](#lab-1-process-flow) for the order
 - [Process Flow: Genomic Test Report](#lab-3-process-flow) for the report
