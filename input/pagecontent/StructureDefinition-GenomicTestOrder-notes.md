@@ -269,7 +269,7 @@ Workflow](#diagnostic-workflow) above.
 |---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|--------------|----------------------------------------|-----------------------|
 | Laboratory Order    | A request for one or more laboratory investigations submitted by the requesting clinician or system.                                                            | LAB-1    | Order Placer | order / reflex                         |                       | 
 | Work Order          | A subordinate order created by the laboratory to organise and fulfil part of the overall Laboratory Order.                                                      | LAB-4    | Order Filler |                                        | instance-order       | 
-| Subcontracted Order | A laboratory order forwarded to another laboratory for fulfilment, for example when a specialised test is referred to an external provider.                     | LAB-35   | Order Filler |                                        | filler-order |
+| Subcontracted Order | A laboratory order forwarded to another laboratory, or another LIMS in the same laboratory, for fulfilment, for example when a specialised test is referred to an external provider, or iGene sub-orders OMICS DSS analysis to DLIMS. | LAB-35   | Order Filler |                                        | filler-order |
 | Reflex Order        | A new order created automatically by the Order Filler based on previous test results, for example when pathology findings automatically trigger a genomic test. | LAB-35   | Order Filler |                                        | reflex                | 
 {:.grid}
 

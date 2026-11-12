@@ -231,6 +231,51 @@ sequenceDiagram
     OrderFillerGenomics1 -->> OrderPlacer: Returns Report (Report Identifier 1, Order Identifier 1, Visit/Spell Number A  and Specimen Accession Number X)
 ```
 
+#### DLIMS Sub-order (OMICS DSS)
+
+The sub-contractor does not have to be a different laboratory. For [OMICS DSS Result Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md), iGene (Requestor) sub-orders the analysis to DLIMS (Subcontractor). Both systems are run by NW GLH (`699X0`), so the ODS code alone cannot say which system the sub-order is for.
+
+```mermaid
+sequenceDiagram
+    participant OrderPlacer as Order Placer
+
+    participant iGene as Requestor<br/>(Order Filler - iGene)
+    participant DLIMS as Subcontractor<br/>(DLIMS / OMICS DSS)
+
+    OrderPlacer ->> iGene: Places Order (Order Identifier 1, Specimen Accession Number X)
+
+    alt OMICS DSS Sub-order
+        iGene ->> DLIMS: LAB-35 Places Sub-order (Order Identifier 2, basedOn Order Identifier 1, performer DLIMS)
+        DLIMS -->> iGene: LAB-36 Returns Test Results (Order Identifier 2)
+    end
+
+    iGene -->> OrderPlacer: Returns Report (Report Identifier 1, Order Identifier 1)
+```
+
+The sub-order `ServiceRequest`:
+
+| Element | Value |
+|---|---|
+| `intent` | `filler-order` |
+| `identifier[OrderPlacerNumber]` | iGene sub-order number (`PLAC`) |
+| `identifier[OrderFillerNumber]` | DLIMS order number (`FILL`), once DLIMS accepts the sub-order |
+| `basedOn` | The original iGene Laboratory Order |
+| `requisition` | The same Placer Group Number (referral) as the original order |
+| `requester` | NW GLH (`699X0`) |
+| `performer[organization]` | NW GLH (`699X0`) |
+| `performer[laboratoryInformationSystem]` | DLIMS, as a [Laboratory Information System](StructureDefinition-LaboratoryInformationSystem.html) (`Device`) |
+{:.grid}
+
+DLIMS (or the RIE on its behalf) finds its open sub-orders by searching on the performer:
+
+```
+GET [base]/ServiceRequest?performer:identifier=https://fhir.nwgenomics.nhs.uk/Id/laboratory-information-system|DLIMS&status=active&intent=filler-order
+```
+
+or, where the `Device` resource is held on the same server, `GET [base]/ServiceRequest?performer=Device/DLIMS`.
+
+See the example [OMICS DSS sub-order from iGene to DLIMS](ServiceRequest-ServiceRequest-ctDNA-DLIMS-SubOrder.html).
+
 
 
 

@@ -116,8 +116,39 @@ Description:    """
 * requester only Reference(PractitionerRole or Organization)
 * requester.identifier only OrganisationCode
 
-* performer only Reference(Organization)
-* performer.identifier only OrganisationCode
+* performer only Reference(Organization or LaboratoryInformationSystem)
+* performer ^slicing.discriminator.type = #value
+* performer ^slicing.discriminator.path = "type"
+* performer ^slicing.rules = #open
+* performer ^slicing.description = "Slice based on the type of the performer"
+* performer ^slicing.ordered = false
+* performer contains
+  organization 0..1 MS and
+  laboratoryInformationSystem 0..1 MS
+
+* performer ^short = "External orders (LAB-1, LAB-35 to another organisation): Organization. Internal orders (LAB-4, LAB-35 to another system in the same organisation): Device"
+* performer ^comment = "See [ServiceRequest - Performer](StructureDefinition-ServiceRequest.html#performer) for when each slice is used."
+
+* performer[organization] ^short = "The laboratory (ODS code) asked to perform the test. Used for external orders: LAB-1, and LAB-35 to another organisation"
+* performer[organization] ^comment = "SHALL be used when the order crosses an organisational boundary (Order Placer to Order Filler in LAB-1, or Requestor to a Subcontractor in another organisation in LAB-35). MAY also be populated on internal orders, where it holds the requester's own ODS code."
+* performer[organization].type 1..1
+* performer[organization].type = "Organization"
+* performer[organization] only Reference(Organization)
+* performer[organization].identifier only OrganisationCode
+
+* performer[laboratoryInformationSystem] ^short = "The laboratory system asked to perform the test. Used for internal orders: LAB-4 work orders, and LAB-35 sub-orders to another system in the same organisation (e.g. iGene to DLIMS)"
+* performer[laboratoryInformationSystem] ^comment = "SHALL be used when the order stays within one organisation, so the ODS code cannot identify the receiving system: LAB-4 (Order Filler to Automation Manager) and LAB-35 (e.g. iGene to DLIMS). Allows that system to search for its own orders, e.g. `ServiceRequest?performer:identifier=https://fhir.nwgenomics.nhs.uk/Id/laboratory-information-system|DLIMS`"
+* performer[laboratoryInformationSystem].type 1..1
+* performer[laboratoryInformationSystem].type = "Device"
+* performer[laboratoryInformationSystem] only Reference(LaboratoryInformationSystem)
+* performer[laboratoryInformationSystem].reference ^short = "MAY be populated where the Device is held in the same repository; the identifier is the primary reference"
+* performer[laboratoryInformationSystem].identifier 1..1
+* performer[laboratoryInformationSystem].identifier ^short = "Identifier of the laboratory system, e.g. DLIMS or OmicsDSS"
+* performer[laboratoryInformationSystem].identifier.system 1..1
+* performer[laboratoryInformationSystem].identifier.system = "https://fhir.nwgenomics.nhs.uk/Id/laboratory-information-system"
+* performer[laboratoryInformationSystem].identifier.value 1..1
+* performer[laboratoryInformationSystem] insert Obligation(#SHALL:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/Requestor)
+* performer[laboratoryInformationSystem] insert Obligation(#SHALL:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderFiller)
 
 * authoredOn 0..1 MS
 
