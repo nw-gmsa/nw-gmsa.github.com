@@ -16,6 +16,7 @@ Usage: #definition
 * insert ActorEntity(fmu, "Fetal Medicine Unit - Manchester University NHS FT", [[ [Order Placer](ActorDefinition-OrderPlacer.html). The fetal medicine unit at St Mary's Hospital, Manchester University NHS Foundation Trust (R0A), that finds the fetal anomaly on scan. A multidisciplinary team of fetal medicine and clinical genetics agrees the case is eligible ]])
 * insert ActorEntity(homeglh, "Home GLH - North West", [[ [Order Filler](ActorDefinition-OrderFiller.html) of the Laboratory Order and [Requestor](ActorDefinition-Requestor.html) of the sub-order. Does the first-line tests and prepares the trio's DNA ]])
 * insert ActorEntity(goms, "Genomic Order Management Service", [[ NHS England GOMS. An [Intermediary](ActorDefinition-Intermediary.html) that routes the sub-order and its status and results between the GLHs ]])
+* insert ActorEntity(ugr, "Central Repository - UGR", [[ NHS England Unified Genomic Record. A central repository of genomic reports for each patient ]])
 * insert ActorEntity(testglh, "Testing GLH - North Thames", [[ [Subcontractor](ActorDefinition-Subcontractor.html). North Thames GLH, one of the two national testing GLHs for rapid prenatal exome sequencing. Sequences, interprets and reports ]])
 
 * insert Instance_Empty(Order, Bundle, "Laboratory Order", [[ LAB-1 order for R21. The fetus is the subject, with the mother linked to the fetus. Samples for the fetus and both parents are sent to the home GLH ]])
@@ -26,6 +27,7 @@ Usage: #definition
 * insert Instance_Empty(Decline, Bundle, "Sub-order declined", [[ Order status: the testing GLH declines the sub-order, for example because it does not meet the eligibility criteria. In FHIR a `Task` with `status` = `rejected` and a `statusReason`. See [Order Status - declined](Bundle-GenomicOrderStatusDeclineMessage.html) for the message shape ]])
 * insert Instance_Empty(SubOrderReport, Bundle, "Sub-order Laboratory Report", [[ LAB-36 [Laboratory Report](StructureDefinition-LaboratoryReport.html) from the testing GLH, `basedOn` the sub-order ]])
 * insert Instance_Empty(Report, Bundle, "Laboratory Report", [[ LAB-3 [Laboratory Report](StructureDefinition-LaboratoryReport.html) to the requesting clinician, `basedOn` the Laboratory Order. It may include the testing GLH's report ]])
+* insert Instance_Empty(ReportDocument, Binary, "Laboratory Report document", [[ HL7 v2 `MDM^T02` with the Laboratory Report as a PDF, base64 encoded in OBX-5 (`ED`). A FHIR Document may replace the PDF later ]])
 * insert Instance_Empty(Cancel, Bundle, "Order status - not tested", [[ The home GLH tells the requesting clinician the exome sequencing was not done ]])
 
 * process[+]
@@ -72,3 +74,8 @@ Usage: #definition
   * title = "6. Laboratory Report (LAB-3)"
   * description = "The home GLH sends the result to the requesting clinician at the Trust."
   * insert ProcessCreateEvent(13, "Send Laboratory Report", homeglh, fmu, Report, , [[ See [Genomic Test Report Process](ExampleScenario-GenomicTestReportProcess.html) ]])
+
+* process[+]
+  * title = "7. Send to the central repository"
+  * description = "The home GLH's Laboratory Report is sent to the NHS England Unified Genomic Record (UGR) through the RIE."
+  * insert ProcessCreateEvent(14, "Send Laboratory Report document", homeglh, ugr, ReportDocument, , [[ HL7 v2 `MDM^T02` with the report as a PDF ]])

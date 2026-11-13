@@ -14,6 +14,7 @@ Usage: #definition
 * insert ActorEntity(placer, "Order Placer - GOSH", [[ [Order Placer](ActorDefinition-OrderPlacer.html). Great Ormond Street Hospital for Children NHS Foundation Trust, in the North Thames region ]])
 * insert ActorEntity(reqglh, "Requesting GLH - North Thames", [[ North Thames GLH. [Order Filler](ActorDefinition-OrderFiller.html) of the Laboratory Order and [Requestor](ActorDefinition-Requestor.html) of the sub-order ]])
 * insert ActorEntity(goms, "Genomic Order Management Service", [[ NHS England GOMS. An [Intermediary](ActorDefinition-Intermediary.html) that routes the sub-order and its status and results between the GLHs ]])
+* insert ActorEntity(ugr, "Central Repository - UGR", [[ NHS England Unified Genomic Record. A central repository of genomic reports for each patient ]])
 * insert ActorEntity(nwglh, "North West GLH", [[ [Subcontractor](ActorDefinition-Subcontractor.html). The national provider for the specialist test ]])
 
 * insert Instance_Empty(Order, Bundle, "Laboratory Order", [[ LAB-1 order to the requesting GLH, for example R67 monogenic hearing loss ]])
@@ -25,6 +26,7 @@ Usage: #definition
 * insert Instance_Empty(LaterDecline, Bundle, "Sub-order declined after acceptance", [[ Order status: the sample turns out to be unsuitable after the sub-order was accepted ]])
 * insert InstanceVersion(1, "Order Status - declined after acceptance", GenomicOrderStatusLaterDeclineMessage, [[ The message shape for an order declined after acceptance ]])
 * insert Instance_Empty(SubOrderReport, Bundle, "Sub-order Laboratory Report", [[ LAB-36 [Laboratory Report](StructureDefinition-LaboratoryReport.html) from the North West GLH, `basedOn` the sub-order ]])
+* insert Instance_Empty(ReportDocument, Binary, "Laboratory Report document", [[ HL7 v2 `MDM^T02` with the Laboratory Report as a PDF, base64 encoded in OBX-5 (`ED`). A FHIR Document may replace the PDF later ]])
 * insert Instance_Empty(Report, Bundle, "Laboratory Report", [[ LAB-3 [Laboratory Report](StructureDefinition-LaboratoryReport.html) to the requesting clinician ]])
 
 * process[+]
@@ -60,3 +62,8 @@ Usage: #definition
   * title = "5. Laboratory Report (LAB-3)"
   * description = "The requesting GLH sends the result to the requesting clinician."
   * insert ProcessCreateEvent(10, "Send Laboratory Report", reqglh, placer, Report, , [[ ]])
+
+* process[+]
+  * title = "6. Send to the central repository"
+  * description = "The North West GLH's Laboratory Report is sent to the NHS England Unified Genomic Record (UGR) through the RIE."
+  * insert ProcessCreateEvent(11, "Send Laboratory Report document", nwglh, ugr, ReportDocument, , [[ HL7 v2 `MDM^T02` with the report as a PDF ]])
