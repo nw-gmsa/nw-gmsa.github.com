@@ -28,7 +28,7 @@ Usage: #example
 * attester[+].mode = #legal
 * attester[=].time = "2025-10-14T15:59:16+00:00"
 * attester[=].party.reference = "urn:uuid:4446ab81-35ef-49cb-b2fe-1d6f1a0dcc02"
-* attester[=].party.display = "Jonathan Edgerley"
+* attester[=].party.display = "FICTITIOUS, Morgan"
 
 * title = "Composition Genomics Report ctDNA"
 

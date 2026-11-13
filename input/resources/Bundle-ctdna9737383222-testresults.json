@@ -157,7 +157,7 @@
       "resource": {
         "resourceType": "ServiceRequest",
         "status": "completed",
-        "intent": "order",
+        "intent": "instance-order",
         "category": [
           {
             "coding": [
@@ -1466,7 +1466,7 @@
         "resourceType": "DiagnosticReport",
         "meta": {
           "profile": [
-            "https://fhir.nwgenomics.nhs.uk/StructureDefinition/DiagnosticReport",
+            "https://fhir.nwgenomics.nhs.uk/StructureDefinition/TestResults",
             "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/genomic-report"
           ]
         },

@@ -30,6 +30,6 @@ A Laboratory Report built from Test Results does not need to repeat them in `res
 - the Laboratory Report's `result` lists the Test Results' `Observation`s, and its `supportingInfo` resolves to the Test Results in the document;
 - the Composition's Results section holds the `Observation`s, and the Test Results MAY also be placed in the Results from other laboratories section.
 
-See [OMICS DSS and UGR Reporting](ExampleScenario-OmicsDSSUGRReporting.html).
+See [UGR Full Pipeline](ExampleScenario-UGRFullPipeline.html).
 
 Both profiles are sent in the same [Unsolicited Observation](MessageDefinition-unsolicited-observation.html) (`R01`) FHIR Message.

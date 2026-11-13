@@ -523,8 +523,9 @@ groups:
       - Bundle/92a0a6c6-404f-4347-8de4-fa1c457a037e
   -ex-example-dwgs:
     name: "Example: Distributed WGS (dWGS) Sub-contracted Order"
-    description: "LAB-35 sub-orders from a Requesting Genomic Laboratory (RGL) to a Sequencing Genomic Laboratory (SGL), covering Singleton, Duo and Trio family structures"
+    description: "The dWGS referral (original order, LAB-1) and the LAB-35 sub-orders from a Requesting Genomic Laboratory (RGL) to a Sequencing Genomic Laboratory (SGL), covering Singleton, Duo and Trio family structures"
     resources:
+      - ServiceRequest/ServiceRequest-dWGS-Trio-r26000000203-Referral
       - Bundle/dWGS-Singleton-r26000000201
       - Bundle/dWGS-Duo-r26000000202-p26000000102
       - Bundle/dWGS-Duo-r26000000202-p26000000103
@@ -533,7 +534,7 @@ groups:
       - Bundle/dWGS-Trio-r26000000203-p26000000106
   -ex-example-omics-dss:
     name: "Example: OMICS DSS Result Integration"
-    description: "NW-GMSA R01 Test Results message produced from a GA4GH VCF/Phenopacket by the 05 - Test Results notebook, and the work order (LAB-4) and Test Results (LAB-5) steps of the OMICS DSS and UGR Reporting scenario"
+    description: "NW-GMSA R01 Test Results message produced from a GA4GH VCF/Phenopacket by the 05 - Test Results notebook, and the work order (LAB-4) and Test Results (LAB-5) steps of the UGR Full Pipeline scenario"
     resources:
       - Bundle/ctdna9737383222-testresults
       - ServiceRequest/ServiceRequest-ctDNA-DLIMS-WorkOrder

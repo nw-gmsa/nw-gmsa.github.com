@@ -7,7 +7,7 @@ The same `R01` message is used for three transactions. Which [DiagnosticReport](
 | [LAB-36 Sub-order Results](ILW.html#sub-order-results-delivery-lab-36) | Subcontractor | Requestor | [Laboratory Report](StructureDefinition-LaboratoryReport.html) |
 {:.grid}
 
-See [Test Results or Laboratory Report](StructureDefinition-DiagnosticReport.html#test-results-or-laboratory-report) for the differences, and [OMICS DSS and UGR Reporting](ExampleScenario-OmicsDSSUGRReporting.html) for LAB-5 and LAB-3 messages in one workflow.
+See [Test Results or Laboratory Report](StructureDefinition-DiagnosticReport.html#test-results-or-laboratory-report) for the differences, and [UGR Full Pipeline](ExampleScenario-UGRFullPipeline.html) for LAB-5 and LAB-3 messages in one workflow.
 
 This is backwards compatible conversion of [HL7 v2 ORU_R01](hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message) Message.
 

@@ -25,4 +25,4 @@ The `Device` performer lets the receiving system, or the RIE on its behalf, find
 GET [base]/ServiceRequest?performer:identifier=https://fhir.nwgenomics.nhs.uk/Id/laboratory-information-system|DLIMS&status=active
 ```
 
-See the example [OMICS DSS work order from iGene to DLIMS](ServiceRequest-ServiceRequest-ctDNA-DLIMS-WorkOrder.html) (LAB-4) and the [OMICS DSS and UGR Reporting](ExampleScenario-OmicsDSSUGRReporting.html) scenario.
+See the example [OMICS DSS work order from iGene to DLIMS](ServiceRequest-ServiceRequest-ctDNA-DLIMS-WorkOrder.html) (LAB-4) and the [UGR Full Pipeline](ExampleScenario-UGRFullPipeline.html) scenario.

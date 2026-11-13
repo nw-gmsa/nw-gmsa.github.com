@@ -46,7 +46,7 @@ Description: "Diagnostic Report ctDNA Example"
 
 
 * resultsInterpreter[author]
-  * display = "Jonathan Edgerley"
+  * display = "FICTITIOUS, Morgan"
 
 * result[+].reference = "urn:uuid:00c22e97-a226-4845-b17a-e24ec1f4f77a"
 

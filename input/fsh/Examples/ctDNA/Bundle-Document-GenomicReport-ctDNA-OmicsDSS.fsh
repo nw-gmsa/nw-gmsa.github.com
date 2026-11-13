@@ -1,6 +1,6 @@
-// OMICS DSS and UGR Reporting scenario, steps 4 and 5. The resources are kept together in workflow order to demonstrate the scenario.
-// Step 4: iGene (Lab 1) writes the narrative Laboratory Report (LTW LAB-3) for ctDNA order T26-59XG.
-// Step 5: the RIE merges that report with the LAB-5 test results held in the FHIR Repository (adding their Observations to result)
+// UGR Full Pipeline scenario, steps 5 and 6 (Laboratory Report and FHIR Document). The resources are kept together in workflow order to demonstrate the scenario.
+// Step 5: iGene (Lab 1) writes the narrative Laboratory Report (LTW LAB-3) for ctDNA order T26-59XG.
+// Step 6: the RIE merges that report with the LAB-5 test results held in the FHIR Repository (adding their Observations to result)
 // and builds a FHIR Document for the UGR. The Test Results are also placed in the Results from other laboratories section.
 // Fictitious example: identifiers, dates and results are illustrative only.
 
@@ -45,7 +45,7 @@ RuleSet: iGeneNarrativeReportContent
   * display = "NW GLH"
 
 * resultsInterpreter[author]
-  * display = "Jonathan Edgerley"
+  * display = "FICTITIOUS, Morgan"
 
 * specimen[+].reference = "urn:uuid:b930b4c4-327a-4728-8bb9-f90061914cc5"
 
@@ -157,7 +157,7 @@ Usage: #example
 * attester[+].mode = #legal
 * attester[=].time = "2026-07-08T09:30:00+00:00"
 * attester[=].party.reference = "urn:uuid:4446ab81-35ef-49cb-b2fe-1d6f1a0dcc02"
-* attester[=].party.display = "Jonathan Edgerley"
+* attester[=].party.display = "FICTITIOUS, Morgan"
 
 * title = "Composition Genomics Report ctDNA (OMICS DSS)"
 

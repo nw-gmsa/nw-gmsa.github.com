@@ -520,7 +520,22 @@ Used by these Use Cases:
 - [Regional Integration Engine (RIE)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/overview.md)
 - [StarLIMS / iGene Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/starLIMS.md)
 
-A work order can also be placed with another LIMS in the same laboratory. As the ODS code cannot identify the receiving system, `ServiceRequest.performer` references it as a [Laboratory Information System](StructureDefinition-LaboratoryInformationSystem.html) (`Device`), see [ServiceRequest - Performer](StructureDefinition-ServiceRequest.html#performer). The test results it returns (LAB-5) are `preliminary` and identify the producing system in `Observation.device`; see the [OMICS DSS and UGR Reporting](ExampleScenario-OmicsDSSUGRReporting.html) scenario.
+##### Work Order or Sub-order?
+
+An order from one LIMS to another is not automatically a work order. What decides it is the role the receiving system plays for that order, so the same pair of systems can exchange both:
+
+| | Work Order (LAB-4) | Sub-order ([LAB-35](ILW.html#sub-orders-lab-35-and-lab-36)) |
+|---|---|---|
+| Receiving system acts as | Automation Manager, working on behalf of the Order Filler | Subcontractor, a laboratory in its own right |
+| Who validates the results | The Order Filler | The Subcontractor |
+| Results returned as | [Test Results](StructureDefinition-TestResults.html) (LAB-5) | Results or a [Laboratory Report](StructureDefinition-LaboratoryReport.html) (LAB-36) |
+| `ServiceRequest.intent` | `instance-order` | `filler-order` |
+| Examples | An analyser; another LIMS in the same laboratory that only performs the analytical work; StarLIMS when it only performs the analytical work | Another GLH, including via GOMS; StarLIMS when Liverpool validates and reports the result; Shire (cytogenetics), which returns its own interpretive conclusion |
+{:.grid}
+
+A system that receives both kinds of order can find them with one search, e.g. `ServiceRequest?intent=filler-order,instance-order&performer:identifier=...`.
+
+Where the work order goes to another LIMS in the same laboratory, the ODS code cannot identify the receiving system, so `ServiceRequest.performer` references it as a [Laboratory Information System](StructureDefinition-LaboratoryInformationSystem.html) (`Device`), see [ServiceRequest - Performer](StructureDefinition-ServiceRequest.html#performer). The test results it returns (LAB-5) are `preliminary` and identify the producing system in `Observation.device`; see the [UGR Full Pipeline](ExampleScenario-UGRFullPipeline.html) scenario.
 
 ##### LAB-4 Process Flow
 
@@ -535,9 +550,7 @@ RIE4["RIE Workflow Orchestration"]
 
 subgraph Analyser["Automation Manager"];
     Cepheid[Analyser - Cepheid]
-    StarLIMS[LIMS - StarLIMS]
-    GOMS["NHS England Genomic Order Management System"] 
-    ExtLIMS[External GMSA/LIMS]
+    StarLIMS["LIMS - StarLIMS<br/>(work orders only)"]
 end 
 
 GDP["Genomic Data Platform<br/>(FHIR Repository)"]
@@ -549,8 +562,6 @@ GDP -.-> |O21 Event Notification| PubSub
 iGene --> |"Work Order Management (LAB-4)<br/>Worksheet (iGene CSV export)"| RIE4
 GDP <--> |"Work Order Management (LAB-4)<br/>HL7 QBP Query"| Cepheid
 GDP <--> |"Work Order Management (LAB-4)<br/>HL7 FHIR RESTful Query"| StarLIMS
-RIE4 --> |"Work Order Management (LAB-4)<br/>FHIR RESTful PUT/POST (inc Transaction)"| GOMS
-GOMS --> ExtLIMS
 
 classDef purple fill:#E1D5E7;
 classDef pink fill:#F8CECC;
@@ -585,10 +596,7 @@ graph TD
 
   subgraph Analyser["Automation Manager"];
     Cepheid[Analyser - Cepheid]
-    StarLIMS[LIMS - StarLIMS]
-    ExtLIMS[External GMSA/LIMS]
-    GOMS["NHS England Genomic Order Management System"]
-    ExtLIMS --> GOMS
+    StarLIMS["LIMS - StarLIMS<br/>(work orders only)"]
   end
 
 
@@ -603,8 +611,6 @@ graph TD
   Cepheid --> |"Test Results Management (LAB-5/LAB-32)<br/>ASTM"| RIE
   StarLIMS --> |"Test Results Management (LAB-5)<br/>FHIR RESTful PUT/POST and Queries"| GDP
   GDP <--> |"Event Triggers and Queries (StarLIMS only)"| RIE
-  GOMS --> RIE
-
   RIE --> |"Test Results Management (LAB-5)<br/>CSV Import"| iGene
 
   classDef purple fill:#E1D5E7;
