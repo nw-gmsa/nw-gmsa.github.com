@@ -14,10 +14,10 @@ RuleSet: LIMSNamingSystem(name, uri, type)
 Instance: iGene-ReportIdentifier
 InstanceOf: NamingSystem
 Title: "iGene Report Identifier"
-Description: "iGene test number (e.g. `T26-59XG`), assigned by NW GLH (699X0). Used as the Order Filler Number (`ServiceRequest.identifier[OrderFillerNumber]`) and the Laboratory Report identifier (`DiagnosticReport.identifier`)."
+Description: "iGene test number (e.g. `T26-59XG`), assigned by NW GLH (699X0). Used as the Order Filler Number (`ServiceRequest.identifier[OrderFillerNumber]`) of the Laboratory Order, the Order Placer Number (`ServiceRequest.identifier[OrderPlacerNumber]`) of iGene work orders (LTW LAB-4), and the Laboratory Report identifier (`DiagnosticReport.identifier`)."
 Usage: #definition
 * insert LIMSNamingSystem(IGeneReportIdentifier, https://fhir.nwgenomics.nhs.uk/iGene/ReportIdentifier, FILL)
-* description = "iGene test number (e.g. `T26-59XG`), assigned by NW GLH (699X0). Used as the Order Filler Number (`ServiceRequest.identifier[OrderFillerNumber]`) and the Laboratory Report identifier (`DiagnosticReport.identifier`)."
+* description = "iGene test number (e.g. `T26-59XG`), assigned by NW GLH (699X0). Used as the Order Filler Number (`ServiceRequest.identifier[OrderFillerNumber]`) of the Laboratory Order, the Order Placer Number (`ServiceRequest.identifier[OrderPlacerNumber]`) of iGene work orders (LTW LAB-4), and the Laboratory Report identifier (`DiagnosticReport.identifier`)."
 
 
 Instance: iGene-ReferralIdentifier
@@ -38,37 +38,28 @@ Usage: #definition
 * description = "iGene specimen number (e.g. `S26-1K1Q`), assigned by NW GLH (699X0). Used as the Filler Specimen Number (`Specimen.identifier[FillerSpecimenNumber]`)."
 
 
-Instance: iGene-SubOrderIdentifier
-InstanceOf: NamingSystem
-Title: "iGene Sub-order Identifier"
-Description: "iGene sub-order number, assigned by NW GLH (699X0) when iGene (Requestor) sub-orders work to another system such as DLIMS (ILW LAB-35). Used as the Order Placer Number (`ServiceRequest.identifier[OrderPlacerNumber]`) of the sub-order."
-Usage: #definition
-* insert LIMSNamingSystem(IGeneSubOrderIdentifier, https://fhir.nwgenomics.nhs.uk/iGene/SubOrderIdentifier, PLAC)
-* description = "iGene sub-order number, assigned by NW GLH (699X0) when iGene (Requestor) sub-orders work to another system such as DLIMS (ILW LAB-35). Used as the Order Placer Number (`ServiceRequest.identifier[OrderPlacerNumber]`) of the sub-order."
-
-
 Instance: DLIMS-OrderIdentifier
 InstanceOf: NamingSystem
 Title: "DLIMS Order Identifier"
-Description: "DLIMS order number, assigned by NW GLH (699X0) when DLIMS (Subcontractor) accepts a sub-order (ILW LAB-35). Used as the Order Filler Number (`ServiceRequest.identifier[OrderFillerNumber]`) of the sub-order."
+Description: "DLIMS order number, assigned by NW GLH (699X0) when DLIMS accepts a work order from iGene (LTW LAB-4). Used as the Order Filler Number (`ServiceRequest.identifier[OrderFillerNumber]`) of the work order."
 Usage: #definition
 * insert LIMSNamingSystem(DLIMSOrderIdentifier, https://fhir.nwgenomics.nhs.uk/DLIMS/OrderIdentifier, FILL)
-* description = "DLIMS order number, assigned by NW GLH (699X0) when DLIMS (Subcontractor) accepts a sub-order (ILW LAB-35). Used as the Order Filler Number (`ServiceRequest.identifier[OrderFillerNumber]`) of the sub-order."
+* description = "DLIMS order number, assigned by NW GLH (699X0) when DLIMS accepts a work order from iGene (LTW LAB-4). Used as the Order Filler Number (`ServiceRequest.identifier[OrderFillerNumber]`) of the work order."
 
 
 Instance: DLIMS-WorkOrderIdentifier
 InstanceOf: NamingSystem
 Title: "DLIMS Work Order Identifier"
-Description: "DLIMS work order number, assigned by NW GLH (699X0) when DLIMS (Order Filler) places a work order with OmicsDSS (LTW LAB-4). Used as the Order Placer Number (`ServiceRequest.identifier[OrderPlacerNumber]`) of the work order."
+Description: "DLIMS processing request number, assigned by NW GLH (699X0) when DLIMS asks OmicsDSS to process a work order received from iGene. Used as the Order Placer Number (`ServiceRequest.identifier[OrderPlacerNumber]`) of that request."
 Usage: #definition
 * insert LIMSNamingSystem(DLIMSWorkOrderIdentifier, https://fhir.nwgenomics.nhs.uk/DLIMS/WorkOrderIdentifier, PLAC)
-* description = "DLIMS work order number, assigned by NW GLH (699X0) when DLIMS (Order Filler) places a work order with OmicsDSS (LTW LAB-4). Used as the Order Placer Number (`ServiceRequest.identifier[OrderPlacerNumber]`) of the work order."
+* description = "DLIMS processing request number, assigned by NW GLH (699X0) when DLIMS asks OmicsDSS to process a work order received from iGene. Used as the Order Placer Number (`ServiceRequest.identifier[OrderPlacerNumber]`) of that request."
 
 
 Instance: OmicsDSS-ResultIdentifier
 InstanceOf: NamingSystem
 Title: "OmicsDSS Result Identifier"
-Description: "OmicsDSS result number, assigned by NW GLH (699X0) when OmicsDSS (Automation Manager) returns test results for a work order (LTW LAB-5). Used as the test results identifier (`DiagnosticReport.identifier[ReportIdentifier]`)."
+Description: "OmicsDSS result number, assigned by NW GLH (699X0) when Lab 2 (DLIMS or Clarity LIMS, with OmicsDSS) returns test results for an iGene work order (LTW LAB-5). Used as the test results identifier (`DiagnosticReport.identifier[ReportIdentifier]`)."
 Usage: #definition
 * insert LIMSNamingSystem(OmicsDSSResultIdentifier, https://fhir.nwgenomics.nhs.uk/OmicsDSS/ResultIdentifier, FILL)
-* description = "OmicsDSS result number, assigned by NW GLH (699X0) when OmicsDSS (Automation Manager) returns test results for a work order (LTW LAB-5). Used as the test results identifier (`DiagnosticReport.identifier[ReportIdentifier]`)."
+* description = "OmicsDSS result number, assigned by NW GLH (699X0) when Lab 2 (DLIMS or Clarity LIMS, with OmicsDSS) returns test results for an iGene work order (LTW LAB-5). Used as the test results identifier (`DiagnosticReport.identifier[ReportIdentifier]`)."

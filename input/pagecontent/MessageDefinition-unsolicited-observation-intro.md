@@ -1,3 +1,14 @@
+The same `R01` message is used for three transactions. Which [DiagnosticReport](StructureDefinition-DiagnosticReport.html) profile the focus conforms to depends on the transaction:
+
+| Transaction | Sent by | Sent to | Focus `DiagnosticReport` profile |
+|---|---|---|---|
+| [LAB-5 Test Results](LTW.html#test-results-management-lab-5) | Automation Manager | Order Filler | [Test Results](StructureDefinition-TestResults.html) |
+| [LAB-3 Laboratory Report](LTW.html#laboratory-report-lab-3) | Order Filler | Order Placer | [Laboratory Report](StructureDefinition-LaboratoryReport.html) |
+| [LAB-36 Sub-order Results](ILW.html#sub-order-results-delivery-lab-36) | Subcontractor | Requestor | [Laboratory Report](StructureDefinition-LaboratoryReport.html) |
+{:.grid}
+
+See [Test Results or Laboratory Report](StructureDefinition-DiagnosticReport.html#test-results-or-laboratory-report) for the differences, and [OMICS DSS and UGR Reporting](ExampleScenario-OmicsDSSUGRReporting.html) for LAB-5 and LAB-3 messages in one workflow.
+
 This is backwards compatible conversion of [HL7 v2 ORU_R01](hl7v2.html#oru_r01-unsolicited-transmission-of-an-observation-message) Message.
 
 Detailed Mapping can be here [Message ORU_R01 to Bundle Map (Experimental)](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-message-oru-r01-to-bundle.html)
@@ -8,7 +19,7 @@ Detailed Mapping can be here [Message ORU_R01 to Bundle Map (Experimental)](http
 | Patient                                                                                                         | PID - Patient Identification        | 1..1        | [PID[Patient]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pid-to-patient.html)                                                                                                                       |    
 | Encounter                                                                                                       | PV1 - Patient visit                 | 0..1        | [PV1[Encounter]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-pv1-to-encounter.html) via DiagnosticReport.encounter <br/> (.identifier (PV1-19) preferred, Encounter is optional)                      | 
 | **ORDER OBSERVATION**                                                                                           |                                     | 1..*        |                                                                                                                                                                                                                       |
-| [DiagnosticReport](StructureDefinition-DiagnosticReport.html)                                                   | - ORC - Common Order                | 1..*        | [ORC[DiagnosticReport]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-orc-to-diagnosticreport.html)                                                                                                     |
+| [Test Results](StructureDefinition-TestResults.html) or [Laboratory Report](StructureDefinition-LaboratoryReport.html) | - ORC - Common Order                | 1..*        | [ORC[DiagnosticReport]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-orc-to-diagnosticreport.html)                                                                                                     |
 | [ServiceRequest](StructureDefinition-ServiceRequest.html)                                                       |                                     |             | [ORC[ServiceRequest]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-orc-to-servicerequest.html)                                                                                                         |
 |                                                                                                                 | - OBR - Observations Request        | 1..*        | [OBR[DiagnosticReport]](https://build.fhir.org/ig/HL7/v2-to-fhir/ConceptMap-segment-obr-to-diagnosticreport.html)                                                                                                     |
 | DiagnosticReport.note                                                                                           | - NTE - Notes and Comments          |             |                                                                                                                                                                                                                       |

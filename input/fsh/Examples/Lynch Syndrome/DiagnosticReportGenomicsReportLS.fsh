@@ -1,5 +1,5 @@
 Instance: DiagnosticReportGenomicsReportLS
-InstanceOf: DiagnosticReport
+InstanceOf: LaboratoryReport
 Title: "Diagnostic Report Example - Lynch Syndrome"
 Description: "Ned Liverpool Lynch Syndrome"
 

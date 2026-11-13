@@ -1,5 +1,5 @@
 Instance: DiagnosticReport-ctDNA
-InstanceOf: DiagnosticReport
+InstanceOf: LaboratoryReport
 Title: "Diagnostic Report ctDNA Example"
 Description: "Diagnostic Report ctDNA Example"
 

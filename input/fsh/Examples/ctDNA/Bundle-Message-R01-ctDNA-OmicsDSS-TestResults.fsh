@@ -1,11 +1,12 @@
-// OMICS DSS test results (LTW LAB-5) from OmicsDSS (Automation Manager) to DLIMS (Order Filler), both run by NW GLH (699X0).
-// Results for the work order ServiceRequest-ctDNA-OmicsDSS-WorkOrder (D26-004512-W1).
+// OMICS DSS test results (LTW LAB-5) from DLIMS (Automation Manager, Lab 2) to iGene (Order Filler, Lab 1), both run by NW GLH (699X0).
+// Results for the iGene work order ServiceRequest-ctDNA-DLIMS-WorkOrder (T26-59XG), produced by OmicsDSS (Observation.device).
+// The RIE routes the message to iGene and sends a copy to the FHIR Repository using $process-message.
 // Fictitious example: identifiers and variant values are illustrative only.
 
 Instance: variant-egfr-omicsdss
 InstanceOf: Variant
 Title: "Variant - ctDNA EGFR T790M (OmicsDSS test result)"
-Description: "Fictitious example: EGFR sequence variant returned by OmicsDSS for work order D26-004512-W1 (LTW LAB-5)"
+Description: "Fictitious example: EGFR sequence variant produced by OmicsDSS and returned to iGene for work order T26-59XG (LTW LAB-5)"
 Usage: #example
 
 * identifier[+].value = "eb1f8ec5-f9ff-4472-97f9-77999460b8c8"
@@ -13,8 +14,8 @@ Usage: #example
 * basedOn[+]
   * type = "ServiceRequest"
   * identifier.type = $v2-0203#PLAC
-  * identifier.value = "D26-004512-W1"
-  * identifier.system = "https://fhir.nwgenomics.nhs.uk/DLIMS/WorkOrderIdentifier"
+  * identifier.value = "T26-59XG"
+  * identifier.system = "https://fhir.nwgenomics.nhs.uk/iGene/ReportIdentifier"
   * identifier.assigner.identifier.system = $ods-code
   * identifier.assigner.identifier.value = "699X0"
 
@@ -71,9 +72,9 @@ Usage: #example
 
 
 Instance: DiagnosticReport-ctDNA-OmicsDSS-TestResults
-InstanceOf: DiagnosticReport
+InstanceOf: TestResults
 Title: "Diagnostic Report - ctDNA OmicsDSS test results"
-Description: "Fictitious example: OmicsDSS test results for work order D26-004512-W1, returned to DLIMS (LTW LAB-5). Clinical validation and the Laboratory Report are done by the Order Filler."
+Description: "Fictitious example: OmicsDSS test results for iGene work order T26-59XG, returned to iGene by DLIMS (LTW LAB-5). Clinical validation and the Laboratory Report are done by iGene (the Order Filler)."
 Usage: #example
 
 * identifier[ReportIdentifier]
@@ -85,8 +86,8 @@ Usage: #example
 * basedOn[OrderPlacerNumber]
   * type = "ServiceRequest"
   * identifier.type = $v2-0203#PLAC
-  * identifier.value = "D26-004512-W1"
-  * identifier.system = "https://fhir.nwgenomics.nhs.uk/DLIMS/WorkOrderIdentifier"
+  * identifier.value = "T26-59XG"
+  * identifier.system = "https://fhir.nwgenomics.nhs.uk/iGene/ReportIdentifier"
   * identifier.assigner.identifier.system = $ods-code
   * identifier.assigner.identifier.value = "699X0"
 
@@ -118,7 +119,7 @@ Usage: #example
 Instance: MessageHeaderR01ctDNAOmicsDSS
 InstanceOf: MessageHeader
 Title: "Message Header - ctDNA OmicsDSS Test Results R01"
-Description: "Fictitious example: LAB-5 test results message from OmicsDSS to DLIMS"
+Description: "Fictitious example: LAB-5 test results message from DLIMS (with OmicsDSS) to iGene"
 Usage: #example
 
 * meta.lastUpdated = "2026-07-06T11:21:00+00:00"
@@ -131,12 +132,12 @@ Usage: #example
 * destination.receiver.identifier.system = $ods-code
 * destination.receiver.identifier.value = "699X0"
 * destination.receiver.display = "NW GLH"
-* destination.name = "DLIMS"
-* destination.endpoint = "https://fhir.nwgenomics.nhs.uk/Endpoint/DLIMS"
+* destination.name = "iGene"
+* destination.endpoint = "https://fhir.nwgenomics.nhs.uk/Endpoint/iGene"
 
-* source.name = "OmicsDSS"
-* source.software = "OmicsDSS"
-* source.endpoint = "https://fhir.nwgenomics.nhs.uk/Endpoint/OmicsDSS"
+* source.name = "DLIMS"
+* source.software = "DLIMS"
+* source.endpoint = "https://fhir.nwgenomics.nhs.uk/Endpoint/DLIMS"
 
 * focus[+]
   * reference = "urn:uuid:38be35e1-1df1-40fb-a055-c012dada778f"
@@ -145,8 +146,8 @@ Usage: #example
 
 Instance: TestResultsMessage-ctDNA-OmicsDSS
 InstanceOf: BundleMessage
-Title: "Bundle 'Message' - ctDNA OmicsDSS Test Results R01 (LAB-5)"
-Description: "Fictitious example: OmicsDSS returns test results to DLIMS for work order D26-004512-W1 (LTW LAB-5)"
+Title: "Bundle 'Message' - ctDNA OmicsDSS Test Results R01 (LAB-5, DLIMS to iGene)"
+Description: "Fictitious example: DLIMS returns OmicsDSS test results to iGene for work order T26-59XG (LTW LAB-5)"
 Usage: #example
 * insert MessageBundle("urn:uuid:a064cfd3-9c89-4213-861b-3966cb2dc77a", "2026-07-06T11:21:00+00:00")
 * insert EntryDocument("urn:uuid:06843352-994e-4cc0-91f7-4fcf550c37f5", MessageHeaderR01ctDNAOmicsDSS)

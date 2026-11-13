@@ -136,8 +136,8 @@ Description:    """
 * performer[organization] only Reference(Organization)
 * performer[organization].identifier only OrganisationCode
 
-* performer[laboratoryInformationSystem] ^short = "The laboratory system asked to perform the test. Used for internal orders: LAB-4 work orders, and LAB-35 sub-orders to another system in the same organisation (e.g. iGene to DLIMS)"
-* performer[laboratoryInformationSystem] ^comment = "SHALL be used when the order stays within one organisation, so the ODS code cannot identify the receiving system: LAB-4 (Order Filler to Automation Manager) and LAB-35 (e.g. iGene to DLIMS). Allows that system to search for its own orders, e.g. `ServiceRequest?performer:identifier=https://fhir.nwgenomics.nhs.uk/Id/laboratory-information-system|DLIMS`"
+* performer[laboratoryInformationSystem] ^short = "The laboratory system asked to perform the test. Used for internal orders: LAB-4 work orders (e.g. iGene to DLIMS), and LAB-35 sub-orders to another system in the same organisation"
+* performer[laboratoryInformationSystem] ^comment = "SHALL be used when the order stays within one organisation, so the ODS code cannot identify the receiving system: LAB-4 (Order Filler to Automation Manager, e.g. iGene to DLIMS) and LAB-35 within the same organisation. Allows that system to search for its own orders, e.g. `ServiceRequest?performer:identifier=https://fhir.nwgenomics.nhs.uk/Id/laboratory-information-system|DLIMS`"
 * performer[laboratoryInformationSystem].type 1..1
 * performer[laboratoryInformationSystem].type = "Device"
 * performer[laboratoryInformationSystem] only Reference(LaboratoryInformationSystem)

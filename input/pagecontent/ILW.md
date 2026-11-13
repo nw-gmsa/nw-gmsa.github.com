@@ -105,6 +105,7 @@ Used by these Use Cases:
 
 <div class="alert alert-info" role="alert">
 <b>Domain Archetype:</b> <a href="StructureDefinition-GenomicTestReport.html" _target="_blank">Genomic Test Report</a> 
+<br/><b>FHIR Profile:</b> <a href="StructureDefinition-LaboratoryReport.html" _target="_blank">Laboratory Report</a>
 </div>
 
 <div class="alert alert-info" role="alert">
@@ -230,61 +231,6 @@ sequenceDiagram
 
     OrderFillerGenomics1 -->> OrderPlacer: Returns Report (Report Identifier 1, Order Identifier 1, Visit/Spell Number A  and Specimen Accession Number X)
 ```
-
-#### DLIMS Sub-order (OMICS DSS)
-
-The sub-contractor does not have to be a different laboratory. For [OMICS DSS Result Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md), iGene (Requestor) sub-orders the analysis to DLIMS (Subcontractor). Both systems are run by NW GLH (`699X0`), so the ODS code alone cannot say which system the sub-order is for.
-
-```mermaid
-sequenceDiagram
-    participant OrderPlacer as Order Placer
-
-    participant iGene as Requestor<br/>(Order Filler - iGene)
-        participant DLIMS as Subcontractor<br/>(DLIMS)
-    participant OmicsDSS as Automation Manager<br/>(OmicsDSS)
-
-    OrderPlacer ->> iGene: Places Order (Order Identifier 1, Specimen Accession Number X)
-
-    alt OMICS DSS Sub-order
-        iGene ->> DLIMS: LAB-35 Places Sub-order (Order Identifier 2, basedOn Order Identifier 1, performer DLIMS)
-        DLIMS ->> OmicsDSS: LAB-4 Places Work Order (Work Order Identifier 3, basedOn Order Identifier 2, performer OmicsDSS)
-        OmicsDSS -->> DLIMS: LAB-5 Returns Test Results (Work Order Identifier 3)
-        DLIMS -->> iGene: LAB-36 Returns Test Results (Order Identifier 2)
-    end
-
-    iGene -->> OrderPlacer: Returns Report (Report Identifier 1, Order Identifier 1)
-```
-
-The sub-order `ServiceRequest`:
-
-| Element | Value |
-|---|---|
-| `intent` | `filler-order` |
-| `identifier[OrderPlacerNumber]` | iGene sub-order number (`PLAC`) |
-| `identifier[OrderFillerNumber]` | DLIMS order number (`FILL`), once DLIMS accepts the sub-order |
-| `basedOn` | The original iGene Laboratory Order |
-| `requisition` | The same Placer Group Number (referral) as the original order |
-| `requester` | NW GLH (`699X0`) |
-| `performer[organization]` | NW GLH (`699X0`) |
-| `performer[laboratoryInformationSystem]` | DLIMS, as a [Laboratory Information System](StructureDefinition-LaboratoryInformationSystem.html) (`Device`) |
-{:.grid}
-
-DLIMS (or the RIE on its behalf) finds its open sub-orders by searching on the performer:
-
-```
-GET [base]/ServiceRequest?performer:identifier=https://fhir.nwgenomics.nhs.uk/Id/laboratory-information-system|DLIMS&status=active&intent=filler-order
-```
-
-or, where the `Device` resource is held on the same server, `GET [base]/ServiceRequest?performer=Device/DLIMS`.
-
-DLIMS then places a [LAB-4](LTW.html#work-order-and-test-result-management-lab-4-and-lab-5) work order with OmicsDSS. This is internal to DLIMS, so it uses `intent` = `instance-order`, `basedOn` the DLIMS sub-order, and `performer[laboratoryInformationSystem]` = `OmicsDSS`.
-
-OmicsDSS returns its LAB-5 test results to DLIMS as an `R01` FHIR Message. The `DiagnosticReport` and `Observation`s are `basedOn` the work order (by identifier) and have `status` = `preliminary`, because DLIMS and iGene still do the clinical validation and the Laboratory Report. `Observation.device` identifies OmicsDSS as the system that produced the result; `Observation.performer` is the responsible scientist.
-
-See the examples [OMICS DSS sub-order from iGene to DLIMS](ServiceRequest-ServiceRequest-ctDNA-DLIMS-SubOrder.html), [OMICS DSS work order from DLIMS to OmicsDSS](ServiceRequest-ServiceRequest-ctDNA-OmicsDSS-WorkOrder.html) and [OmicsDSS test results to DLIMS](Bundle-TestResultsMessage-ctDNA-OmicsDSS.html).
-
-
-
 
 ### Security Considerations
 

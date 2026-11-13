@@ -533,12 +533,26 @@ groups:
       - Bundle/dWGS-Trio-r26000000203-p26000000106
   -ex-example-omics-dss:
     name: "Example: OMICS DSS Result Integration"
-    description: "NW-GMSA R01 Test Results message produced from a GA4GH VCF/Phenopacket by the 05 - Test Results notebook"
+    description: "NW-GMSA R01 Test Results message produced from a GA4GH VCF/Phenopacket by the 05 - Test Results notebook, and the work order (LAB-4) and Test Results (LAB-5) steps of the OMICS DSS and UGR Reporting scenario"
     resources:
       - Bundle/ctdna9737383222-testresults
+      - ServiceRequest/ServiceRequest-ctDNA-DLIMS-WorkOrder
+      - ServiceRequest/ServiceRequest-ctDNA-OmicsDSS-WorkOrder
+      - Device/DLIMS
+      - Device/OmicsDSS
+      - Bundle/TestResultsMessage-ctDNA-OmicsDSS
+      - MessageHeader/MessageHeaderR01ctDNAOmicsDSS
+      - DiagnosticReport/DiagnosticReport-ctDNA-OmicsDSS-TestResults
+      - Observation/variant-egfr-omicsdss
   -ex-example-ctdna-ugr:
     name: "Example: FHIR Document (incl. ctDNA NHS England Unified Genomic Record (UGR))"
     description: "FHIR Document (Bundle type document) examples, including the Phase 2 HL7 Europe Laboratory Report FHIR Document combining the Laboratory Report with its Reportable Variant Observations"
     resources:
       - Bundle/ctdna9737383222-eulab-document
       - Bundle/OriginalDocumentMessage
+      - Bundle/ReportMessage-ctDNA-iGene-NarrativeReport
+      - MessageHeader/MessageHeaderR01ctDNAiGeneNarrativeReport
+      - DiagnosticReport/DiagnosticReport-ctDNA-iGene-NarrativeReport
+      - DiagnosticReport/DiagnosticReport-ctDNA-iGene-MergedReport
+      - Bundle/FHIRDocumentGeneticReportBundle-ctDNA-OmicsDSS
+      - Composition/Composition-GenomicsReport-ctDNA-OmicsDSS

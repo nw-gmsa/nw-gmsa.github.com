@@ -279,6 +279,7 @@ After submitting the original order, the sample will be collected and sent to th
 
 <div class="alert alert-info" role="alert">
 <b>Domain Archetype:</b> <a href="StructureDefinition-GenomicTestReport.html" _target="_blank">Genomic Test Report</a> 
+<br/><b>FHIR Profile:</b> <a href="StructureDefinition-LaboratoryReport.html" _target="_blank">Laboratory Report</a>
 </div>
 
 <div class="alert alert-info" role="alert">
@@ -519,6 +520,8 @@ Used by these Use Cases:
 - [Regional Integration Engine (RIE)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/overview.md)
 - [StarLIMS / iGene Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/starLIMS.md)
 
+A work order can also be placed with another LIMS in the same laboratory. As the ODS code cannot identify the receiving system, `ServiceRequest.performer` references it as a [Laboratory Information System](StructureDefinition-LaboratoryInformationSystem.html) (`Device`), see [ServiceRequest - Performer](StructureDefinition-ServiceRequest.html#performer). The test results it returns (LAB-5) are `preliminary` and identify the producing system in `Observation.device`; see the [OMICS DSS and UGR Reporting](ExampleScenario-OmicsDSSUGRReporting.html) scenario.
+
 ##### LAB-4 Process Flow
 
 ```mermaid
@@ -559,6 +562,7 @@ class GDP,RIE4,PubSub pink;
 
 <div class="alert alert-info" role="alert">
 <b>Domain Archetype:</b> <a href="StructureDefinition-LaboratoryAnalyteResult.html" _target="_blank">Laboratory Analyte Result</a> 
+<br/><b>FHIR Profile:</b> <a href="StructureDefinition-TestResults.html" _target="_blank">Test Results</a>
 </div>
 
 <div class="alert alert-info" role="alert">

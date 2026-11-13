@@ -2,7 +2,7 @@
 This is currently being elaborated and subject to change.
 </div>
 
-A laboratory can run more than one Laboratory Information Management System (LIMS). NW GLH (`699X0`) runs both iGene and DLIMS, for example. When one of these systems sub-orders work to another ([ILW LAB-35](ILW.html#sub-orders-lab-35-and-lab-36)), the ODS code in `ServiceRequest.performer` cannot tell them apart. The receiving system is therefore also referenced as a `Device` in `ServiceRequest.performer[laboratoryInformationSystem]`.
+A laboratory can run more than one Laboratory Information Management System (LIMS). NW GLH (`699X0`) runs both iGene and DLIMS, for example. When one of these systems places a work order with another ([LTW LAB-4](LTW.html#work-order-management-lab-4)), the ODS code in `ServiceRequest.performer` cannot tell them apart. The receiving system is therefore also referenced as a `Device` in `ServiceRequest.performer[laboratoryInformationSystem]`.
 
 ### Referencing by identifier
 
@@ -23,5 +23,5 @@ GET [base]/ServiceRequest?performer:identifier=https://fhir.nwgenomics.nhs.uk/Id
 ```
 
 <div class="alert alert-info" role="alert">
-See <a href="ILW.html#dlims-sub-order-omics-dss">ILW - DLIMS Sub-order (OMICS DSS)</a> and the example <a href="ServiceRequest-ServiceRequest-ctDNA-DLIMS-SubOrder.html">OMICS DSS sub-order from iGene to DLIMS</a>.
+See <a href="LTW.html#work-order-management-lab-4">LTW - Work Order Management (LAB-4)</a> and the example <a href="ServiceRequest-ServiceRequest-ctDNA-DLIMS-WorkOrder.html">OMICS DSS work order from iGene to DLIMS</a>.
 </div>

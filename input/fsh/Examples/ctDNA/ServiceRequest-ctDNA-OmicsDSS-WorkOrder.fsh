@@ -1,11 +1,11 @@
-// OMICS DSS work order (LTW LAB-4) from DLIMS (Order Filler) to OmicsDSS, both run by NW GLH (699X0).
-// Follows the iGene to DLIMS sub-order ServiceRequest-ctDNA-DLIMS-SubOrder.
+// OMICS DSS processing request from DLIMS to OmicsDSS, internal to Lab 2 (both run by NW GLH, 699X0).
+// Follows the iGene to DLIMS work order ServiceRequest-ctDNA-DLIMS-WorkOrder. Lab 2 returns the results to iGene (LAB-5).
 // Fictitious example: the work order identifier is illustrative only.
 
 Instance: ServiceRequest-ctDNA-OmicsDSS-WorkOrder
 InstanceOf: ServiceRequest
 Title: "ServiceRequest - OMICS DSS work order from DLIMS to OmicsDSS (ctDNA)"
-Description: "Fictitious example: DLIMS places a work order with OmicsDSS for the analysis requested in sub-order D26-004512 (LTW LAB-4)"
+Description: "Fictitious example: DLIMS (Lab 2) asks OmicsDSS to process the analysis requested in iGene work order D26-004512. Internal to Lab 2; the results are returned to iGene by Lab 2 (LAB-5)."
 Usage: #example
 
 * identifier[OrderPlacerNumber].type = $v2-0203#PLAC
@@ -15,7 +15,7 @@ Usage: #example
 * identifier[OrderPlacerNumber].assigner.identifier.value = "699X0"
 
 * basedOn
-  * reference = "ServiceRequest/ServiceRequest-ctDNA-DLIMS-SubOrder"
+  * reference = "ServiceRequest/ServiceRequest-ctDNA-DLIMS-WorkOrder"
   * identifier.type = $v2-0203#FILL
   * identifier.value = "D26-004512"
   * identifier.system = "https://fhir.nwgenomics.nhs.uk/DLIMS/OrderIdentifier"
