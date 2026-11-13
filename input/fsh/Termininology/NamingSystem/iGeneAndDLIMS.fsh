@@ -63,3 +63,12 @@ Description: "DLIMS work order number, assigned by NW GLH (699X0) when DLIMS (Or
 Usage: #definition
 * insert LIMSNamingSystem(DLIMSWorkOrderIdentifier, https://fhir.nwgenomics.nhs.uk/DLIMS/WorkOrderIdentifier, PLAC)
 * description = "DLIMS work order number, assigned by NW GLH (699X0) when DLIMS (Order Filler) places a work order with OmicsDSS (LTW LAB-4). Used as the Order Placer Number (`ServiceRequest.identifier[OrderPlacerNumber]`) of the work order."
+
+
+Instance: OmicsDSS-ResultIdentifier
+InstanceOf: NamingSystem
+Title: "OmicsDSS Result Identifier"
+Description: "OmicsDSS result number, assigned by NW GLH (699X0) when OmicsDSS (Automation Manager) returns test results for a work order (LTW LAB-5). Used as the test results identifier (`DiagnosticReport.identifier[ReportIdentifier]`)."
+Usage: #definition
+* insert LIMSNamingSystem(OmicsDSSResultIdentifier, https://fhir.nwgenomics.nhs.uk/OmicsDSS/ResultIdentifier, FILL)
+* description = "OmicsDSS result number, assigned by NW GLH (699X0) when OmicsDSS (Automation Manager) returns test results for a work order (LTW LAB-5). Used as the test results identifier (`DiagnosticReport.identifier[ReportIdentifier]`)."

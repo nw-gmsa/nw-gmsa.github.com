@@ -134,7 +134,8 @@ flowchart LR
 
 Examples: [Shire cytogenetics](Bundle-Shire1StructuredR01.html) (panel, karyotype),
 [Shire cytogenetics with FISH](Bundle-Shire2StructuredR01.html) (panel with two results) and
-[OMICS DSS ctDNA test results](Bundle-ctdna9737383222-testresults.html) (single results) - all FHIR Messages.
+[OMICS DSS ctDNA test results](Bundle-ctdna9737383222-testresults.html) (single results) and
+[OmicsDSS to DLIMS ctDNA test results (LAB-5)](Bundle-TestResultsMessage-ctDNA-OmicsDSS.html) (single result) - all FHIR Messages.
 
 #### Narrative Reports
 

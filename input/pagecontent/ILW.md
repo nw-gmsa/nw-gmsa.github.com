@@ -279,7 +279,9 @@ or, where the `Device` resource is held on the same server, `GET [base]/ServiceR
 
 DLIMS then places a [LAB-4](LTW.html#work-order-and-test-result-management-lab-4-and-lab-5) work order with OmicsDSS. This is internal to DLIMS, so it uses `intent` = `instance-order`, `basedOn` the DLIMS sub-order, and `performer[laboratoryInformationSystem]` = `OmicsDSS`.
 
-See the examples [OMICS DSS sub-order from iGene to DLIMS](ServiceRequest-ServiceRequest-ctDNA-DLIMS-SubOrder.html) and [OMICS DSS work order from DLIMS to OmicsDSS](ServiceRequest-ServiceRequest-ctDNA-OmicsDSS-WorkOrder.html).
+OmicsDSS returns its LAB-5 test results to DLIMS as an `R01` FHIR Message. The `DiagnosticReport` and `Observation`s are `basedOn` the work order (by identifier) and have `status` = `preliminary`, because DLIMS and iGene still do the clinical validation and the Laboratory Report. `Observation.device` identifies OmicsDSS as the system that produced the result; `Observation.performer` is the responsible scientist.
+
+See the examples [OMICS DSS sub-order from iGene to DLIMS](ServiceRequest-ServiceRequest-ctDNA-DLIMS-SubOrder.html), [OMICS DSS work order from DLIMS to OmicsDSS](ServiceRequest-ServiceRequest-ctDNA-OmicsDSS-WorkOrder.html) and [OmicsDSS test results to DLIMS](Bundle-TestResultsMessage-ctDNA-OmicsDSS.html).
 
 
 
