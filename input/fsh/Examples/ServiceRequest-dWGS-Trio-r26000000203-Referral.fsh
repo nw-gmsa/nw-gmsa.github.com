@@ -39,8 +39,8 @@ Usage: #example
 * requester
   * type = "Organization"
   * identifier.system = $ods-code
-  * identifier.value = "RTD"
-  * display = "The Newcastle upon Tyne Hospitals NHS Foundation Trust"
+  * identifier.value = "RNN"
+  * display = "North Cumbria Integrated Care NHS Foundation Trust"
 
 // The Requesting Genomic Laboratory (RGL), the Order Filler of the referral
 * performer[organization]
@@ -49,6 +49,6 @@ Usage: #example
   * identifier.value = "699N0"
   * display = "Northern Genetics Service, Newcastle (NE&Y Genomics)"
 
-* authoredOn = "2026-06-01"
+* authoredOn = "2026-08-10"
 
 * note[+].text = "Patient has intellectual disability"
