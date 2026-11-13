@@ -232,6 +232,10 @@ sequenceDiagram
     OrderFillerGenomics1 -->> OrderPlacer: Returns Report (Report Identifier 1, Order Identifier 1, Visit/Spell Number A  and Specimen Accession Number X)
 ```
 
+#### GLH to GLH Sub-orders
+
+See the scenarios [Rapid Prenatal Exome Sequencing](ExampleScenario-RapidPrenatalExomeSequencing.html), where the North West GLH is the home GLH sending a sub-order to a testing GLH through GOMS, and [Specialist Test for Another GLH](ExampleScenario-SpecialistTestForAnotherGLH.html), the reverse flow.
+
 ### Security Considerations
 
 Includes:
