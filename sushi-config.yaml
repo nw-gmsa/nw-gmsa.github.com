@@ -465,6 +465,9 @@ groups:
       - Bundle/GenomicsReportMessage-WGS-Referral
       - MessageHeader/MessageHeader-R01-WGS-Referral
       - DiagnosticReport/DiagnosticReport-WGS-Referral
+      - Observation/Variant-WGS-Referral-MECP2
+      - Observation/DiagnosticImplication-WGS-Referral-MECP2
+      - DocumentReference/DocumentReference-WGS-Referral
   -ex-example-rapid-prenatal-exome:
     name: "Example: Rapid Prenatal Exome Sequencing"
     description: "Rapid prenatal exome sequencing (R21 Fetal anomalies with a likely genetic cause) for Fetus Wigan: the Laboratory Order (O21) from Manchester University NHS FT to the North West GLH, the sub-order (O21) to North Thames GLH via GOMS, its order status (O51), the sub-order report and Laboratory Report (R01) messages, the referral of the family to clinical genetics (O19), and the resources they carry"
@@ -543,7 +546,7 @@ groups:
       - DocumentReference/DocumentReference-SPT-Report
   -ex-example-pharmacogenomics:
     name: "Example: Pharmacogenomics"
-    description: "Pharmacogenomics (R454.1 CYP2C19 before mavacamten) closed loop referral for Mace Northwich: the order (O21) message from Liverpool Heart and Chest and the FHIR Document report"
+    description: "Pharmacogenomics (R454.1 CYP2C19 before mavacamten) closed loop referral for Mace Northwich: the order (O21) and report (R01) messages and the FHIR Document report - see the [Pharmacogenomics](ExampleScenario-Pharmacogenomics.html) scenario"
     resources:
       - Bundle/GenomicsOrderMessage-Pharmacogenomics
       - Bundle/FHIRDocumentGeneticReportBundle-Pharmacogenomics
@@ -551,11 +554,15 @@ groups:
       - MessageHeader/MessageHeader-O21-Pharmacogenomics
       - ServiceRequest/ServiceRequest-Pharmacogenomics
       - Specimen/Specimen-Pharmacogenomics
+      - Bundle/GenomicsReportMessage-Pharmacogenomics
+      - MessageHeader/MessageHeader-R01-Pharmacogenomics
+      - DiagnosticReport/DiagnosticReport-Pharmacogenomics-Report
+      - DocumentReference/DocumentReference-Pharmacogenomics-Report
       - PractitionerRole/PractitionerRole-Requester-Cardiology-RBQ
       - Patient/Patient-Northwich
   -ex-example-lynch-syndrome:
     name: "Example: Lynch Syndrome"
-    description: "Germline (R210.2 Inherited MMR deficiency) closed loop referral for Ned Liverpool: the order (O21) message and the FHIR Document report, with the tumour immunohistochemistry result from histopathology, and the resources they carry"
+    description: "Germline (R210.2 Inherited MMR deficiency) closed loop referral for Ned Liverpool: the order (O21) and report (R01) messages and the FHIR Document report - see the [Lynch Syndrome](ExampleScenario-LynchSyndrome.html) scenario - with the tumour immunohistochemistry result from histopathology, and the resources they carry"
     resources:
       - Bundle/GenomicsOrderMessage-LynchSyndrome
       - Bundle/FHIRDocumentGeneticReportBundle2
@@ -563,6 +570,10 @@ groups:
       - MessageHeader/MessageHeader-O21-LynchSyndrome
       - ServiceRequest/ServiceRequest-LynchSyndrome
       - Specimen/Specimen-LynchSyndrome
+      - Bundle/GenomicsReportMessage-LynchSyndrome
+      - MessageHeader/MessageHeader-R01-LynchSyndrome
+      - DiagnosticReport/DiagnosticReport-LynchSyndrome-Report
+      - DocumentReference/DocumentReference-LynchSyndrome-Report
       - DiagnosticReport/DiagnosticReportGenomicsReportLS
       - Observation/8385c2fd-313d-4fd5-b98e-d5ea4bae6f99
       - Observation/6beb613f-d303-42af-b025-86e8e0872061

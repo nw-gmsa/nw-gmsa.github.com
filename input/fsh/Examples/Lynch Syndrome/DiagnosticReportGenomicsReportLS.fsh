@@ -65,7 +65,7 @@ Description: "Ned Liverpool Lynch Syndrome"
   * identifier.value = "C1234567"
   * display = "FICTITIOUS, Ralph"
 
-* conclusion = "Normal - no action"
+* conclusion = "Heterozygous pathogenic germline variant detected, consistent with inherited MMR deficiency (Lynch syndrome)."
 * conclusionCode[+] = $GTOC#321 "VARIANT DETECTED"
 
 * result[+].reference = "urn:uuid:6beb613f-d303-42af-b025-86e8e0872061"

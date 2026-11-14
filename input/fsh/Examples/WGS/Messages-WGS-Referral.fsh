@@ -87,6 +87,13 @@ Usage: #example
 * conclusion = "Trio whole genome sequencing: pathogenic de novo MECP2 variant detected in the Proband, consistent with the referral indication. The variant was not detected in either parent."
 * conclusionCode[+] = $GTOC#311 "RESULT CONSISTENT WITH REFERRAL INDICATION"
 
+// Hand-written narrative: a generated one links presentedForm.url, and urn: is not a valid hyperlink scheme
+* text.status = #generated
+* text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R27.3 Paediatric disorders (trio whole genome sequencing) for Gilly BROUGH. Pathogenic de novo MECP2 variant NM_004992.4:c.763C&gt;T p.(Arg255Ter), consistent with the referral indication.</p></div>"
+* result[+].reference = "urn:uuid:59721fb3-b791-4ff8-8f8d-a9a44c602c05"
+* result[+].reference = "urn:uuid:c19d9c74-cfb6-428d-8ce8-7aca96b5f53b"
+* insert ReportPDF(urn:uuid:cf3bc470-4956-4fe7-989a-2fb876905021, R27.3 Laboratory Report - Gilly BROUGH, 2026-11-02)
+
 Instance: MessageHeader-R01-WGS-Referral
 InstanceOf: MessageHeader
 Title: "Message Header - Laboratory Report R27.3 (R01), dWGS Trio referral r26000000203"
@@ -117,3 +124,95 @@ Usage: #example
 * insert EntryDocument("urn:uuid:f9153314-1f04-465e-b1a9-168b953e6e2f", MessageHeader-R01-WGS-Referral)
 * insert EntryDocument("https://fhir.nwgenomics.nhs.uk/Patient/Patient-Brough", Patient-Brough)
 * insert EntryDocument("urn:uuid:efc76d09-a4d9-46cb-8aa5-98748594ceae", DiagnosticReport-WGS-Referral)
+* insert EntryDocument("urn:uuid:59721fb3-b791-4ff8-8f8d-a9a44c602c05", Variant-WGS-Referral-MECP2)
+* insert EntryDocument("urn:uuid:c19d9c74-cfb6-428d-8ce8-7aca96b5f53b", DiagnosticImplication-WGS-Referral-MECP2)
+* insert EntryDocument("urn:uuid:0349b609-bc9c-40e2-8c34-ee322adceca8", DocumentReference-WGS-Referral)
+* insert EntryDocument("urn:uuid:cf3bc470-4956-4fe7-989a-2fb876905021", Binary-Sample)
+
+// Results and report document
+
+Instance: Variant-WGS-Referral-MECP2
+InstanceOf: Variant
+Title: "Variant - MECP2, dWGS Trio referral r26000000203"
+Description: "Fictitious example: the de novo MECP2 variant found in the Proband by trio whole genome sequencing, interpreted by the RGL"
+Usage: #example
+
+* insert GenomicResultObservation(59721fb3-b791-4ff8-8f8d-a9a44c602c05, 2026-10-28T14:10:00+00:00, 699N0, NE&Y GENOMICS)
+* code = $loinc#69548-6 "Genetic variant assessment"
+* subject.reference = "https://fhir.nwgenomics.nhs.uk/Patient/Patient-Brough"
+* subject.display = "Gilly BROUGH"
+* subject.identifier
+  * system = "https://fhir.nhs.uk/Id/nhs-number"
+  * value = "9737383362"
+* valueCodeableConcept = $loinc#LA9633-4 "Present"
+* method = $sct#264896000 "Nucleic acid analysis"
+* method.text = "Whole genome sequencing (trio)"
+* component[0].code = $loinc#83005-9 "Variant category"
+* component[=].valueCodeableConcept = IGeneVariantCategory#SEQV "Sequence Variant"
+* component[+].code = $loinc#48018-6 "Gene studied [ID]"
+* component[=].valueCodeableConcept = $genenames#HGNC:6990 "MECP2"
+* component[+].code = $loinc#51958-7 "Transcript reference sequence [ID]"
+* component[=].valueCodeableConcept = $refseq#NM_004992.4
+* component[+].code = $loinc#48004-6 "DNA change (c.HGVS)"
+* component[=].valueCodeableConcept = $ghgvs#NM_004992.4:c.763C>T
+* component[+].code = $loinc#48005-3 "Amino acid change (pHGVS)"
+* component[=].valueCodeableConcept = $ghgvs#"NP_004983.1:p.(Arg255Ter)"
+* component[+].code = $loinc#48002-0 "Genomic source class [Type]"
+* component[=].valueCodeableConcept = $loinc#LA6683-2 "Germline"
+* component[+].code = $loinc#53034-5 "Allelic state"
+* component[=].valueCodeableConcept = $loinc#LA6706-1 "Heterozygous"
+
+Instance: DiagnosticImplication-WGS-Referral-MECP2
+InstanceOf: DiagnosticImplication
+Title: "Diagnostic Implication - MECP2, dWGS Trio referral r26000000203"
+Description: "Fictitious example: pathogenic classification of the de novo MECP2 variant"
+Usage: #example
+
+* insert GenomicResultObservation(c19d9c74-cfb6-428d-8ce8-7aca96b5f53b, 2026-10-28T14:10:00+00:00, 699N0, NE&Y GENOMICS)
+* subject.reference = "https://fhir.nwgenomics.nhs.uk/Patient/Patient-Brough"
+* subject.display = "Gilly BROUGH"
+* subject.identifier
+  * system = "https://fhir.nhs.uk/Id/nhs-number"
+  * value = "9737383362"
+* derivedFrom.reference = "urn:uuid:59721fb3-b791-4ff8-8f8d-a9a44c602c05"
+* component[clinical-significance].valueCodeableConcept = $loinc#LA6668-3 "Pathogenic"
+* component[predicted-phenotype].valueCodeableConcept.text = "MECP2-related disorder (Rett syndrome)"
+* component[conclusion-string].valueString = "De novo pathogenic MECP2 variant, consistent with the referral indication."
+
+Instance: DocumentReference-WGS-Referral
+InstanceOf: DocumentReference
+Title: "Document Reference - R27.3 Laboratory Report PDF, dWGS Trio referral r26000000203"
+Description: "Fictitious example: the RGL's LAB-3 report as a PDF, related to its DiagnosticReport and to the referral by its NGIS referral_id (Order Group Number)"
+Usage: #example
+
+* identifier[+].value = "0349b609-bc9c-40e2-8c34-ee322adceca8"
+* identifier[=].system = "http://www.example.org/documentreference/identifier"
+* identifier[=].assigner.identifier.system = $ods-code
+* identifier[=].assigner.identifier.value = "699N0"
+* status = #current
+* date = "2026-11-02T12:00:00+00:00"
+* type = $sct#1054161000000101 "Genetic report"
+* context.related[DiagnosticReport]
+  * reference = "urn:uuid:efc76d09-a4d9-46cb-8aa5-98748594ceae"
+  * type = "DiagnosticReport"
+  * identifier.type = $v2-0203#FILL
+  * identifier.system = "http://www.acme.org/diagnosticreport/identifiers/699N0"
+  * identifier.value = "NEY26-r26000000203"
+  * identifier.assigner.identifier.system = $ods-code
+  * identifier.assigner.identifier.value = "699N0"
+* context.related[OrderGroupNumber]
+  * type = "ServiceRequest"
+  * identifier.type = $v2-0203#PGN
+  * identifier.system = "https://genomicsengland.co.uk/healthcare/referral-id"
+  * identifier.value = "r26000000203"
+  * identifier.assigner.identifier.system = $ods-code
+  * identifier.assigner.identifier.value = "8J834"
+* content[+]
+  * attachment.contentType = #application/pdf
+  * attachment.url = "urn:uuid:cf3bc470-4956-4fe7-989a-2fb876905021"
+* context.event[+] = $test-directory#R27.3
+* subject.reference = "https://fhir.nwgenomics.nhs.uk/Patient/Patient-Brough"
+* subject.display = "Gilly BROUGH"
+* subject.identifier
+  * system = "https://fhir.nhs.uk/Id/nhs-number"
+  * value = "9737383362"
