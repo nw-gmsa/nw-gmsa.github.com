@@ -504,6 +504,10 @@ groups:
       - DiagnosticReport/DiagnosticReport-RPX-FirstLine
       - DiagnosticReport/DiagnosticReport-RPX-SubOrder
       - DiagnosticReport/DiagnosticReport-RPX-Report
+      - Observation/Variant-RPX-COL1A1
+      - Observation/DiagnosticImplication-RPX-COL1A1
+      - DocumentReference/DocumentReference-RPX-SubOrderReport
+      - DocumentReference/DocumentReference-RPX-Report
   -ex-example-specialist-test:
     name: "Example: Specialist Test for Another GLH"
     description: "Specialist test (R67.1 Monogenic hearing loss) for Oliver Camden: the Laboratory Order (O21) from GOSH to North Thames GLH, the sub-order (O21) to the North West GLH via GOMS, its order status (O51), the sub-order report and Laboratory Report (R01) messages, and the resources they carry"
@@ -533,6 +537,10 @@ groups:
       - Task/Task-SPT-SubOrder-LaterDeclined
       - DiagnosticReport/DiagnosticReport-SPT-SubOrder
       - DiagnosticReport/DiagnosticReport-SPT-Report
+      - Observation/Variant-SPT-GJB2
+      - Observation/DiagnosticImplication-SPT-GJB2
+      - DocumentReference/DocumentReference-SPT-SubOrderReport
+      - DocumentReference/DocumentReference-SPT-Report
   -ex-example-pharmacogenomics:
     name: "Example: Pharmacogenomics"
     description: "Pharmacogenomics (R454.1 CYP2C19 before mavacamten) closed loop referral for Mace Northwich: the order (O21) message from Liverpool Heart and Chest and the FHIR Document report"

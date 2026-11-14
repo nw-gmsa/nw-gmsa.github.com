@@ -386,6 +386,13 @@ Usage: #example
 * conclusion = "Homozygous pathogenic variant GJB2 c.35delG identified, consistent with autosomal recessive non-syndromic hearing loss (DFNB1)."
 * conclusionCode[+] = $GTOC#311 "RESULT CONSISTENT WITH REFERRAL INDICATION"
 
+// Hand-written narrative: a generated one links presentedForm.url, and urn: is not a valid hyperlink scheme
+* text.status = #generated
+* text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R67.1 Monogenic hearing loss (North West GLH) for Oliver CAMDEN. Homozygous pathogenic GJB2 variant NM_004004.6:c.35del, consistent with autosomal recessive non-syndromic hearing loss (DFNB1).</p></div>"
+* result[+].reference = "urn:uuid:a542b8fd-caaa-4cb4-be09-5a26a8f7af9c"
+* result[+].reference = "urn:uuid:3abfc150-cd90-4164-b2e7-ed45d9e7d986"
+* insert ReportPDF(urn:uuid:292b12e2-63bd-4868-9789-5fea45e101f6, R67.1 sub-order report - Oliver CAMDEN, 2026-10-19)
+
 Instance: MessageHeader-SPT-SubOrderReport
 InstanceOf: MessageHeader
 Title: "Message Header - Sub-order Laboratory Report R67.1 (R01)"
@@ -416,6 +423,10 @@ Usage: #example
 * insert EntryDocument("urn:uuid:dee3deb9-5440-4799-97ae-4bc4a3c8c777", MessageHeader-SPT-SubOrderReport)
 * insert EntryDocument("urn:uuid:74fe4bf0-26d8-4b8c-90eb-b6ef80d887e0", Patient-Camden)
 * insert EntryDocument("urn:uuid:25749dd1-3f8f-472a-a8e3-1ebcf0cd8a23", DiagnosticReport-SPT-SubOrder)
+* insert EntryDocument("urn:uuid:a542b8fd-caaa-4cb4-be09-5a26a8f7af9c", Variant-SPT-GJB2)
+* insert EntryDocument("urn:uuid:3abfc150-cd90-4164-b2e7-ed45d9e7d986", DiagnosticImplication-SPT-GJB2)
+* insert EntryDocument("urn:uuid:0ba15655-0de9-46c8-98a6-aaa78279b82b", DocumentReference-SPT-SubOrderReport)
+* insert EntryDocument("urn:uuid:292b12e2-63bd-4868-9789-5fea45e101f6", Binary-Sample)
 * insert EntryDocument("urn:uuid:99bb76ca-edcb-44f4-95ff-b9b1c7b95780", ServiceRequest-SPT-SubOrder)
 * insert EntryDocument("urn:uuid:2b589e1b-b81f-48b5-b1a9-a4875b24c6b1", Specimen-SPT-DNA)
 * insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)
@@ -455,6 +466,13 @@ Usage: #example
 * conclusion = "Monogenic hearing loss testing (R67.1), performed by the North West GLH: homozygous pathogenic variant GJB2 c.35delG, consistent with autosomal recessive non-syndromic hearing loss (DFNB1). Genetic counselling and cascade testing of the parents are recommended."
 * conclusionCode[+] = $GTOC#311 "RESULT CONSISTENT WITH REFERRAL INDICATION"
 
+// Hand-written narrative: a generated one links presentedForm.url, and urn: is not a valid hyperlink scheme
+* text.status = #generated
+* text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R67.1 Monogenic hearing loss for Oliver CAMDEN, performed by the North West GLH: homozygous pathogenic GJB2 variant, consistent with autosomal recessive non-syndromic hearing loss (DFNB1).</p></div>"
+* result[+].reference = "urn:uuid:a542b8fd-caaa-4cb4-be09-5a26a8f7af9c"
+* result[+].reference = "urn:uuid:3abfc150-cd90-4164-b2e7-ed45d9e7d986"
+* insert ReportPDF(urn:uuid:e1a556fb-ac0b-4138-b4f5-9adce3f0004e, R67.1 Laboratory Report - Oliver CAMDEN, 2026-10-21)
+
 Instance: MessageHeader-SPT-Report
 InstanceOf: MessageHeader
 Title: "Message Header - Laboratory Report R67.1 (R01), specialist test"
@@ -485,3 +503,64 @@ Usage: #example
 * insert EntryDocument("urn:uuid:4ae66ef9-04bb-49c1-9d8c-6112f8e12115", MessageHeader-SPT-Report)
 * insert EntryDocument("urn:uuid:74fe4bf0-26d8-4b8c-90eb-b6ef80d887e0", Patient-Camden)
 * insert EntryDocument("urn:uuid:bf3c6351-d196-4a3c-b989-1b50aab6fe85", DiagnosticReport-SPT-Report)
+* insert EntryDocument("urn:uuid:a542b8fd-caaa-4cb4-be09-5a26a8f7af9c", Variant-SPT-GJB2)
+* insert EntryDocument("urn:uuid:3abfc150-cd90-4164-b2e7-ed45d9e7d986", DiagnosticImplication-SPT-GJB2)
+* insert EntryDocument("urn:uuid:63f0bf07-b24c-4881-b56e-ab04bc535888", DocumentReference-SPT-Report)
+* insert EntryDocument("urn:uuid:e1a556fb-ac0b-4138-b4f5-9adce3f0004e", Binary-Sample)
+
+// Results and report documents
+
+Instance: Variant-SPT-GJB2
+InstanceOf: Variant
+Title: "Variant - GJB2, Oliver Camden"
+Description: "Fictitious example: the GJB2 variant found by the North West GLH's monogenic hearing loss test"
+Usage: #example
+
+* insert GenomicResultObservation(a542b8fd-caaa-4cb4-be09-5a26a8f7af9c, 2026-10-19T14:00:00+00:00, 699X0, NORTH WEST GLH)
+* code = $loinc#69548-6 "Genetic variant assessment"
+* insert CamdenSubject
+* valueCodeableConcept = $loinc#LA9633-4 "Present"
+* method = $sct#264896000 "Nucleic acid analysis"
+* component[0].code = $loinc#83005-9 "Variant category"
+* component[=].valueCodeableConcept = IGeneVariantCategory#SEQV "Sequence Variant"
+* component[+].code = $loinc#48018-6 "Gene studied [ID]"
+* component[=].valueCodeableConcept = $genenames#HGNC:4284 "GJB2"
+* component[+].code = $loinc#51958-7 "Transcript reference sequence [ID]"
+* component[=].valueCodeableConcept = $refseq#NM_004004.6
+* component[+].code = $loinc#48004-6 "DNA change (c.HGVS)"
+* component[=].valueCodeableConcept = $ghgvs#NM_004004.6:c.35del
+* component[+].code = $loinc#48002-0 "Genomic source class [Type]"
+* component[=].valueCodeableConcept = $loinc#LA6683-2 "Germline"
+* component[+].code = $loinc#53034-5 "Allelic state"
+* component[=].valueCodeableConcept = $loinc#LA6705-3 "Homozygous"
+
+Instance: DiagnosticImplication-SPT-GJB2
+InstanceOf: DiagnosticImplication
+Title: "Diagnostic Implication - GJB2, Oliver Camden"
+Description: "Fictitious example: pathogenic classification of the GJB2 variant, consistent with DFNB1 hearing loss"
+Usage: #example
+
+* insert GenomicResultObservation(3abfc150-cd90-4164-b2e7-ed45d9e7d986, 2026-10-19T14:00:00+00:00, 699X0, NORTH WEST GLH)
+* insert CamdenSubject
+* derivedFrom.reference = "urn:uuid:a542b8fd-caaa-4cb4-be09-5a26a8f7af9c"
+* component[clinical-significance].valueCodeableConcept = $loinc#LA6668-3 "Pathogenic"
+* component[predicted-phenotype].valueCodeableConcept.text = "Autosomal recessive non-syndromic hearing loss (DFNB1)"
+* component[conclusion-string].valueString = "Homozygous pathogenic GJB2 variant, consistent with autosomal recessive non-syndromic hearing loss (DFNB1)."
+
+Instance: DocumentReference-SPT-SubOrderReport
+InstanceOf: DocumentReference
+Title: "Document Reference - R67.1 sub-order report PDF (North West GLH), Oliver Camden"
+Description: "Fictitious example: the North West GLH's LAB-36 report as a PDF, related to its DiagnosticReport and the sub-order"
+Usage: #example
+
+* insert ReportPDFDocumentReference(0ba15655-0de9-46c8-98a6-aaa78279b82b, 699X0, 2026-10-19T14:00:00+00:00, urn:uuid:25749dd1-3f8f-472a-a8e3-1ebcf0cd8a23, http://www.acme.org/diagnosticreport/identifiers, G26-43307, http://www.acme.org/servicerequest/NorthThamesGLH, NT26-80455, 69A70, urn:uuid:292b12e2-63bd-4868-9789-5fea45e101f6, R67.1)
+* insert CamdenSubject
+
+Instance: DocumentReference-SPT-Report
+InstanceOf: DocumentReference
+Title: "Document Reference - R67.1 Laboratory Report PDF (North Thames GLH), Oliver Camden"
+Description: "Fictitious example: North Thames GLH's LAB-3 report as a PDF, related to its DiagnosticReport and the Laboratory Order"
+Usage: #example
+
+* insert ReportPDFDocumentReference(63f0bf07-b24c-4881-b56e-ab04bc535888, 69A70, 2026-10-21T10:00:00+00:00, urn:uuid:bf3c6351-d196-4a3c-b989-1b50aab6fe85, http://www.acme.org/diagnosticreport/identifiers/69A70, NT26-80455, http://www.acme.org/servicerequest/RP4, GOSH-5520917, RP4, urn:uuid:e1a556fb-ac0b-4138-b4f5-9adce3f0004e, R67.1)
+* insert CamdenSubject

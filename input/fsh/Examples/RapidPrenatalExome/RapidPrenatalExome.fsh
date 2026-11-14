@@ -561,6 +561,13 @@ Usage: #example
 * conclusion = "Heterozygous pathogenic variant in COL1A1 identified in the fetus, consistent with osteogenesis imperfecta and the scan findings. Referral to clinical genetics is recommended for genetic counselling and parental testing."
 * conclusionCode[+] = $GTOC#311 "RESULT CONSISTENT WITH REFERRAL INDICATION"
 
+// Hand-written narrative: a generated one links presentedForm.url, and urn: is not a valid hyperlink scheme
+* text.status = #generated
+* text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R21.2 rapid prenatal exome sequencing (North Thames GLH) for Baby WIGAN. Heterozygous pathogenic COL1A1 variant NM_000088.4:c.2461G&gt;A p.(Gly821Ser), consistent with osteogenesis imperfecta.</p></div>"
+* result[+].reference = "urn:uuid:eb11c7ed-8b8d-4062-8956-a8bb85c32523"
+* result[+].reference = "urn:uuid:953e2395-e834-431e-8003-6230e647e148"
+* insert ReportPDF(urn:uuid:e9991788-9e6c-46e4-ab38-b1e4f57ad655, R21.2 rapid prenatal exome sequencing report - Baby WIGAN, 2026-09-26)
+
 Instance: MessageHeader-RPX-SubOrderReport
 InstanceOf: MessageHeader
 Title: "Message Header - Sub-order Laboratory Report R21.2 (R01)"
@@ -593,6 +600,10 @@ Usage: #example
 * insert EntryDocument("urn:uuid:26c66a34-9028-4b14-866e-42d8284b17c4", DiagnosticReport-RPX-SubOrder)
 * insert EntryDocument("urn:uuid:bc2ce852-cad4-4f35-aeac-c1c1021bf680", ServiceRequest-RPX-SubOrder)
 * insert EntryDocument("urn:uuid:5bcb951e-a64c-461f-9334-8b9f932b1cbc", Specimen-RPX-Fetal-DNA)
+* insert EntryDocument("urn:uuid:eb11c7ed-8b8d-4062-8956-a8bb85c32523", Variant-RPX-COL1A1)
+* insert EntryDocument("urn:uuid:953e2395-e834-431e-8003-6230e647e148", DiagnosticImplication-RPX-COL1A1)
+* insert EntryDocument("urn:uuid:b8dbd628-25ab-423d-809a-5a1a83ca6b4b", DocumentReference-RPX-SubOrderReport)
+* insert EntryDocument("urn:uuid:e9991788-9e6c-46e4-ab38-b1e4f57ad655", Binary-Sample)
 
 // Laboratory Report (LAB-3)
 
@@ -623,6 +634,13 @@ Usage: #example
 * conclusion = "QF-PCR (R21.1) and microarray (R21.3): normal. Rapid prenatal exome sequencing (R21.2), performed by North Thames GLH: heterozygous pathogenic variant in COL1A1, consistent with osteogenesis imperfecta. Referral to clinical genetics is recommended for genetic counselling and parental testing."
 * conclusionCode[+] = $GTOC#311 "RESULT CONSISTENT WITH REFERRAL INDICATION"
 
+// Hand-written narrative: a generated one links presentedForm.url, and urn: is not a valid hyperlink scheme
+* text.status = #generated
+* text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R21 Fetal anomalies with a likely genetic cause, for Baby WIGAN. QF-PCR and microarray normal. Rapid prenatal exome sequencing (North Thames GLH): heterozygous pathogenic COL1A1 variant, consistent with osteogenesis imperfecta. Referral to clinical genetics is recommended.</p></div>"
+* result[+].reference = "urn:uuid:eb11c7ed-8b8d-4062-8956-a8bb85c32523"
+* result[+].reference = "urn:uuid:953e2395-e834-431e-8003-6230e647e148"
+* insert ReportPDF(urn:uuid:752fc3a3-8932-403e-a19a-84042080e0b0, R21 Laboratory Report - Baby WIGAN, 2026-09-28)
+
 Instance: MessageHeader-RPX-Report
 InstanceOf: MessageHeader
 Title: "Message Header - Laboratory Report R21 (R01), rapid prenatal exome"
@@ -644,7 +662,101 @@ Usage: #example
 * insert EntryDocument("urn:uuid:5ffedde8-4c1f-4850-8248-b4f730db0a50", MessageHeader-RPX-Report)
 * insert EntryDocument("urn:uuid:e322141b-af07-451d-92ab-74d192151818", Patient-Fetus-Wigan)
 * insert EntryDocument("urn:uuid:0cd9fd4c-7934-4815-9573-e278229d3b9c", DiagnosticReport-RPX-Report)
+* insert EntryDocument("urn:uuid:eb11c7ed-8b8d-4062-8956-a8bb85c32523", Variant-RPX-COL1A1)
+* insert EntryDocument("urn:uuid:953e2395-e834-431e-8003-6230e647e148", DiagnosticImplication-RPX-COL1A1)
+* insert EntryDocument("urn:uuid:87733553-52c1-4662-b0d2-a9cf22573c98", DocumentReference-RPX-Report)
+* insert EntryDocument("urn:uuid:752fc3a3-8932-403e-a19a-84042080e0b0", Binary-Sample)
 * insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)
+
+// Results and report documents
+
+Instance: Variant-RPX-COL1A1
+InstanceOf: Variant
+Title: "Variant - COL1A1, Fetus Wigan"
+Description: "Fictitious example: the COL1A1 variant found by North Thames GLH's rapid prenatal exome sequencing"
+Usage: #example
+
+* insert GenomicResultObservation(eb11c7ed-8b8d-4062-8956-a8bb85c32523, 2026-09-26T14:00:00+00:00, 69A70, NORTH THAMES GLH)
+* code = $loinc#69548-6 "Genetic variant assessment"
+* subject.reference = "urn:uuid:e322141b-af07-451d-92ab-74d192151818"
+* subject.display = "Baby WIGAN"
+* subject.identifier
+  * type = $v2-0203#MR
+  * value = "R0A-F26-0042"
+  * system = "http://www.acme.org/mrn/R0A"
+  * assigner.identifier.system = $ods-code
+  * assigner.identifier.value = "R0A"
+* valueCodeableConcept = $loinc#LA9633-4 "Present"
+* method = $sct#264896000 "Nucleic acid analysis"
+* method.text = "Rapid prenatal exome sequencing"
+* component[0].code = $loinc#83005-9 "Variant category"
+* component[=].valueCodeableConcept = IGeneVariantCategory#SEQV "Sequence Variant"
+* component[+].code = $loinc#48018-6 "Gene studied [ID]"
+* component[=].valueCodeableConcept = $genenames#HGNC:2197 "COL1A1"
+* component[+].code = $loinc#51958-7 "Transcript reference sequence [ID]"
+* component[=].valueCodeableConcept = $refseq#NM_000088.4
+* component[+].code = $loinc#48004-6 "DNA change (c.HGVS)"
+* component[=].valueCodeableConcept = $ghgvs#NM_000088.4:c.2461G>A
+* component[+].code = $loinc#48005-3 "Amino acid change (pHGVS)"
+* component[=].valueCodeableConcept = $ghgvs#"NP_000079.2:p.(Gly821Ser)"
+* component[+].code = $loinc#48002-0 "Genomic source class [Type]"
+* component[=].valueCodeableConcept = $loinc#LA6683-2 "Germline"
+* component[+].code = $loinc#53034-5 "Allelic state"
+* component[=].valueCodeableConcept = $loinc#LA6706-1 "Heterozygous"
+
+Instance: DiagnosticImplication-RPX-COL1A1
+InstanceOf: DiagnosticImplication
+Title: "Diagnostic Implication - COL1A1, Fetus Wigan"
+Description: "Fictitious example: pathogenic classification of the COL1A1 variant, consistent with osteogenesis imperfecta"
+Usage: #example
+
+* insert GenomicResultObservation(953e2395-e834-431e-8003-6230e647e148, 2026-09-26T14:00:00+00:00, 69A70, NORTH THAMES GLH)
+* subject.reference = "urn:uuid:e322141b-af07-451d-92ab-74d192151818"
+* subject.display = "Baby WIGAN"
+* subject.identifier
+  * type = $v2-0203#MR
+  * value = "R0A-F26-0042"
+  * system = "http://www.acme.org/mrn/R0A"
+  * assigner.identifier.system = $ods-code
+  * assigner.identifier.value = "R0A"
+* derivedFrom.reference = "urn:uuid:eb11c7ed-8b8d-4062-8956-a8bb85c32523"
+* component[clinical-significance].valueCodeableConcept = $loinc#LA6668-3 "Pathogenic"
+* component[predicted-phenotype].valueCodeableConcept.text = "Osteogenesis imperfecta (COL1A1-related)"
+* component[conclusion-string].valueString = "Heterozygous pathogenic COL1A1 variant, consistent with osteogenesis imperfecta and the scan findings."
+
+Instance: DocumentReference-RPX-SubOrderReport
+InstanceOf: DocumentReference
+Title: "Document Reference - R21.2 sub-order report PDF (North Thames GLH), Fetus Wigan"
+Description: "Fictitious example: North Thames GLH's LAB-36 report as a PDF, related to its DiagnosticReport and the sub-order"
+Usage: #example
+
+* insert ReportPDFDocumentReference(b8dbd628-25ab-423d-809a-5a1a83ca6b4b, 69A70, 2026-09-26T14:00:00+00:00, urn:uuid:26c66a34-9028-4b14-866e-42d8284b17c4, http://www.acme.org/diagnosticreport/identifiers/69A70, NT26-77812, https://fhir.nwgenomics.nhs.uk/iGene/OrderIdentifier, G26-41180, 699X0, urn:uuid:e9991788-9e6c-46e4-ab38-b1e4f57ad655, R21.2)
+// A fetus has no NHS Number: the Medical Record Number is carried as the source patient identifier
+* subject.reference = "urn:uuid:e322141b-af07-451d-92ab-74d192151818"
+* subject.display = "Baby WIGAN"
+* context.sourcePatientInfo.identifier
+  * type = $v2-0203#MR
+  * value = "R0A-F26-0042"
+  * system = "http://www.acme.org/mrn/R0A"
+  * assigner.identifier.system = $ods-code
+  * assigner.identifier.value = "R0A"
+
+Instance: DocumentReference-RPX-Report
+InstanceOf: DocumentReference
+Title: "Document Reference - R21 Laboratory Report PDF, Fetus Wigan"
+Description: "Fictitious example: the North West GLH's LAB-3 report as a PDF, related to its DiagnosticReport and the Laboratory Order"
+Usage: #example
+
+* insert ReportPDFDocumentReference(87733553-52c1-4662-b0d2-a9cf22573c98, 699X0, 2026-09-28T09:00:00+00:00, urn:uuid:0cd9fd4c-7934-4815-9573-e278229d3b9c, http://www.acme.org/diagnosticreport/identifiers, G26-41180, urn:oid:1.2.840.114350.1.13.0.1.7.2.798268, 1702114, R0A, urn:uuid:752fc3a3-8932-403e-a19a-84042080e0b0, R21.2)
+// A fetus has no NHS Number: the Medical Record Number is carried as the source patient identifier
+* subject.reference = "urn:uuid:e322141b-af07-451d-92ab-74d192151818"
+* subject.display = "Baby WIGAN"
+* context.sourcePatientInfo.identifier
+  * type = $v2-0203#MR
+  * value = "R0A-F26-0042"
+  * system = "http://www.acme.org/mrn/R0A"
+  * assigner.identifier.system = $ods-code
+  * assigner.identifier.value = "R0A"
 
 // Referral to clinical genetics (O19)
 
