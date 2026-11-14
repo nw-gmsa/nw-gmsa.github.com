@@ -212,7 +212,7 @@ Usage:  #definition
     * item[+]
       * linkId = "dWGS/patient_ngis_id-designNote"
       * type = #display
-      * text = "No confirmed identifier system - carried as Patient.identifier.assigner (Genomics England, ODS 8J834, who run NGIS), type=PI (v2-0203 Patient internal identifier)."
+      * text = "Carried as Patient.identifier with system https://genomicsengland.co.uk/healthcare/participant-id (NGIS Participant Identifier, the national system used by Genomics England and the NHS England Upload Genomic Data API), assigner Genomics England (ODS 8J834, who run NGIS), type=PI (v2-0203 Patient internal identifier)."
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 * item[+]

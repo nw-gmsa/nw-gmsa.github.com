@@ -28,7 +28,7 @@ Usage: #example
 
 * requisition
   * type = $v2-0203#PGN
-  * system = "https://fhir.nwgenomics.nhs.uk/Identifier/NGIS-ReferralIdentifier"
+  * system = "https://genomicsengland.co.uk/healthcare/referral-id"
   * value = "r26000000203"
   * assigner.identifier.system = $ods-code
   * assigner.identifier.value = "8J834"

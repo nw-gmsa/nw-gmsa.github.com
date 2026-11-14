@@ -31,7 +31,7 @@ sub-contracted digital manifest).
 | Referral / Sub-Order | Retrospective Sample Flag | `dWGS/retrospective_sample` | `ServiceRequest.specimen` | Add-on order on a pre-existing (stored) specimen, not a reflex order - `intent` stays `filler-order`; HL7 v2 OBR-11 = A |
 | Referral / Sub-Order | Clinical Information | `dWGS/clinical_information` | `ServiceRequest.note` | Same FHIR target as the base's Relevant clinical information (HL7/NTE-1), different v2 NTE occurrence |
 | Referral / Sub-Order | Approved By | `dWGS/approved_by` | - | - |
-| Patient | Patient Identifier (NGIS) | `dWGS/patient_ngis_id` | `Patient.identifier` | Base Patient group (name/DOB/NHS number/Hospital Number) is not repeated |
+| Patient | Patient Identifier (NGIS) | `dWGS/patient_ngis_id` | `Patient.identifier` (system [NGIS Participant Identifier](NamingSystem-NGIS-ParticipantIdentifier.html), type `PI`) | Base Patient group (name/DOB/NHS number/Hospital Number) is not repeated |
 | Ask At Order Entry Questions | Family Structure | `NOS/FamilyStructure` | `Observation.valueCodeableConcept` | Singleton/Duo/Trio - see [Singleton, Duo and Trio testing](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/dWGS.md#singleton-duo-and-trio-testing) |
 | Ask At Order Entry Questions | Participant Type | `NOS/ParticipantType` | `Observation.valueCodeableConcept` | Proband/Family Member |
 | Primary Specimen | Sample Received Date | `dWGS/primary_sample_received_date` | `Specimen.receivedTime` | Same FHIR target as General AAOE's Date and time sample received (NOS/SampleReceived) |

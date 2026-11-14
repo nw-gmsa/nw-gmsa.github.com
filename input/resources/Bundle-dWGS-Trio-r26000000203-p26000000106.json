@@ -80,6 +80,7 @@
                 }
               ]
             },
+            "system": "https://genomicsengland.co.uk/healthcare/participant-id",
             "value": "p26000000106"
           }
         ],
@@ -237,7 +238,7 @@
                 }
               ]
             },
-            "system": "https://fhir.nwgenomics.nhs.uk/Identifier/NGIS-ReferralIdentifier",
+            "system": "https://genomicsengland.co.uk/healthcare/referral-id",
             "value": "r26000000203",
             "assigner": {
               "identifier": {
@@ -389,7 +390,7 @@
               }
             ]
           },
-          "system": "https://fhir.nwgenomics.nhs.uk/Identifier/NGIS-ReferralIdentifier",
+          "system": "https://genomicsengland.co.uk/healthcare/referral-id",
           "value": "r26000000203",
           "assigner": {
             "identifier": {

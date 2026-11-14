@@ -12,6 +12,7 @@ Usage: #example
 * identifier[0].system = $nhs-number
 * identifier[0].value = "9737383362"
 * identifier[1].type = $v2-0203#PI
+* identifier[1].system = "https://genomicsengland.co.uk/healthcare/participant-id"
 * identifier[1].value = "p26000000104"
 * identifier[1].assigner.identifier.system = $ods-code
 * identifier[1].assigner.identifier.value = "8J834"

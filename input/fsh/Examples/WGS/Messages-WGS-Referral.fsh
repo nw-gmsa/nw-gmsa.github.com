@@ -58,7 +58,7 @@ Usage: #example
 * basedOn[OrderFillerNumber]
   * type = "ServiceRequest"
   * identifier.type = $v2-0203#FILL
-  * identifier.system = "https://fhir.nwgenomics.nhs.uk/Identifier/NGIS-ReferralIdentifier"
+  * identifier.system = "https://genomicsengland.co.uk/healthcare/referral-id"
   * identifier.value = "r26000000203"
   * identifier.assigner.identifier.system = $ods-code
   * identifier.assigner.identifier.value = "8J834"

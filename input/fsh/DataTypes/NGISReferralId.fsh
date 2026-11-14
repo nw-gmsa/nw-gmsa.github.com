@@ -9,7 +9,7 @@ and can be used as the Order Group Number (`ServiceRequest.requisition`, HL7 v2 
 Assigned by Genomics England Limited (ODS `8J834`).
 """
 
-* system = "https://fhir.nwgenomics.nhs.uk/Identifier/NGIS-ReferralIdentifier" (exactly)
+* system = "https://genomicsengland.co.uk/healthcare/referral-id" (exactly)
 * value ^example.label = "dWGS Trio"
 * value ^example.valueString = "r26000000203"
 * assigner ^short = "Genomics England Limited (TOMS)"

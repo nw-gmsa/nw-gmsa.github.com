@@ -35,7 +35,7 @@ r26000000203^8J834
       }
     ]
   },
-  "system": "https://fhir.nwgenomics.nhs.uk/Identifier/NGIS-ReferralIdentifier",
+  "system": "https://genomicsengland.co.uk/healthcare/referral-id",
   "value": "r26000000203",
   "assigner": {
     "identifier": {
