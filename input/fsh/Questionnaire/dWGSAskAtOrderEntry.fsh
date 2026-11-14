@@ -255,11 +255,11 @@ Usage:  #definition
     * type = #string
     * linkId = "dWGS/primary_sample_id_in_glh_lims"
     * text = "LIMS Sample Identifier"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.identifier"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.accessionIdentifier"
     * item[+]
       * linkId = "dWGS/primary_sample_id_in_glh_lims-designNote"
       * type = #display
-      * text = "Assigned by the Filler Order Ordering Facility (GLH) - coded type=FILL (Filler Identifier). Conceptually the same as the common core's own Lab DNA Number (If Known) (Specimen/accessionIdentifier), which instead uses Specimen.accessionIdentifier rather than a typed Specimen.identifier - the two have not been reconciled onto a single FHIR element."
+      * text = "Assigned by the GLH laboratory. Carried as Specimen.accessionIdentifier with system https://genomicsengland.co.uk/healthcare/primary-sample-id (NGIS Primary Sample Identifier, the national system used by Genomics England and the NHS England Upload Genomic Data API), coded type=ACSN (Accession ID)."
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 // Sample Type (germline/tumour)
@@ -337,7 +337,7 @@ Usage:  #definition
     * item[+]
       * linkId = "dWGS/dispatched_sample_lsid-designNote"
       * type = #display
-      * text = "Carried on Specimen.container.identifier, coded type=ZCID - see NW IdentifierType."
+      * text = "Carried on Specimen.container.identifier with system https://genomicsengland.co.uk/healthcare/lab-sample-id (NGIS Lab Sample Identifier, the national system used by Genomics England and the NHS England Upload Genomic Data API), coded type=ZCID - see NW IdentifierType."
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 // Dispatched Sample Type

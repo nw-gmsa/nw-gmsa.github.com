@@ -36,14 +36,14 @@ sub-contracted digital manifest).
 | Ask At Order Entry Questions | Participant Type | `NOS/ParticipantType` | `Observation.valueCodeableConcept` | Proband/Family Member |
 | Primary Specimen | Sample Received Date | `dWGS/primary_sample_received_date` | `Specimen.receivedTime` | Same FHIR target as General AAOE's Date and time sample received (NOS/SampleReceived) |
 | Primary Specimen | Received Sample Identifier | `dWGS/primary_sample_id_as_received_by_glh` | `Specimen.identifier` (type=PLAC) | PLAC-typed instance of the base's Specimen ID Number (LN/80398-1) |
-| Primary Specimen | LIMS Sample Identifier | `dWGS/primary_sample_id_in_glh_lims` | `Specimen.identifier` (type=FILL) | Conceptually the base's Lab DNA Number, on a different FHIR element |
+| Primary Specimen | LIMS Sample Identifier | `dWGS/primary_sample_id_in_glh_lims` | `Specimen.accessionIdentifier` (system [NGIS Primary Sample Identifier](NamingSystem-NGIS-PrimarySampleIdentifier.html), type=ACSN) | Same FHIR element as the base's Lab DNA Number |
 | Primary Specimen | Sample Type (germline/tumour) | `dWGS/primary_sample_type` | - | Low confidence, no FHIR field yet |
 | Primary Specimen | Sample Topography | `dWGS/received_sample_topography` | `Specimen.bodySite` | Cancer only; overlaps with the base's Tissue source/organ of origin (LN/39111-0) |
 | Primary Specimen | Sample Morphology | `dWGS/received_sample_morphology` | - | - |
 | Primary Specimen | Tumour Content (%) | `dWGS/received_sample_tumour_content_pct` | - | Cancer only; same concept as WGS Local Test Order's Neoplastic Cell Content |
 | Primary Specimen | Sample Comments | `dWGS/received_sample_comments` | - | - |
 | Dispatched Specimen | Dispatched Sample Identifier | `dWGS/dispatched_sample_id_in_glh_lims` | - | - |
-| Dispatched Specimen | Specimen Barcode | `dWGS/dispatched_sample_lsid` | `Specimen.container.identifier` (type=ZCID) | - |
+| Dispatched Specimen | Specimen Barcode | `dWGS/dispatched_sample_lsid` | `Specimen.container.identifier` (system [NGIS Lab Sample Identifier](NamingSystem-NGIS-LabSampleIdentifier.html), type=ZCID) | - |
 | Dispatched Specimen | Dispatched Sample Type | `dWGS/dispatched_sample_type` | - | - |
 | Dispatched Specimen | Dispatched Material Type | `dWGS/dispatched_sample_state` | - | Not currently built into any FHIR resource |
 | Dispatched Specimen | Sample Volume (uL) | `dWGS/dispatched_sample_volume_ul` | `Specimen.collection.quantity` | Same FHIR target as the base's Specimen Volume (LN/3169-0) |
