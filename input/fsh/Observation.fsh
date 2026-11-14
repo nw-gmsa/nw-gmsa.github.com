@@ -17,13 +17,14 @@ Description:    """
 
 * identifier 1..* MS
 
-* performer only Reference(PractitionerRole)
+* performer only Reference(PractitionerRole or Organization)
 
 * status ^short = "Observation Status  (HL7 v2 OBX-11)"
 
 * subject only Reference(Patient)
 * subject.reference 1..1 MS
-* subject.identifier only NHSIdentifier
+* subject.identifier only NHSIdentifier or MedicalRecordNumber
+* subject.identifier ^comment = "SHALL be the NHS Number when the subject has one. A Medical Record Number is allowed only for a subject without an NHS Number, such as a fetus in a prenatal report (see [Patient - Fetus](Patient-Patient-FetusLondon.html))."
 
 * encounter 0..1 MS
 //* encounter only Reference(Encounter)
