@@ -2,7 +2,7 @@
 // from the fetal medicine unit at Manchester University NHS FT (R0A) to the North West GLH (699X0), the
 // sub-order (LAB-35) to North Thames GLH via GOMS, its order status (O51), the sub-order report (LAB-36)
 // and the Laboratory Report (LAB-3).
-// North Thames GLH is hosted by Great Ormond Street Hospital, so it is identified here by GOSH's ODS code (RP4).
+// North Thames GLH is identified by its ODS code (69A70).
 // Fictitious example: patients, identifiers, dates and results are illustrative only.
 
 // Patients
@@ -361,7 +361,7 @@ Usage: #example
 * performer[organization]
   * type = #Organization
   * identifier.system = $ods-code
-  * identifier.value = "RP4"
+  * identifier.value = "69A70"
   * display = "NORTH THAMES GLH"
 * specimen[+].reference = "urn:uuid:5bcb951e-a64c-461f-9334-8b9f932b1cbc"
 * specimen[+].reference = "urn:uuid:90bc6eee-c9dc-451a-96ba-7f77c16efd0c"
@@ -421,7 +421,7 @@ Usage: #example
 * sender.identifier.value = "699X0"
 * sender.display = "NORTH WEST GLH"
 * destination.receiver.identifier.system = $ods-code
-* destination.receiver.identifier.value = "RP4"
+* destination.receiver.identifier.value = "69A70"
 * destination.receiver.display = "NORTH THAMES GLH"
 * destination.endpoint = "https://fhir.nwgenomics.nhs.uk/Endpoint/GOMS"
 * source.endpoint = "https://fhir.nwgenomics.nhs.uk/Endpoint/RIE"
@@ -470,14 +470,14 @@ RuleSet: RPXSubOrderTask
 * requester.identifier.value = "699X0"
 * requester.display = "NORTH WEST GLH"
 * owner.identifier.system = $ods-code
-* owner.identifier.value = "RP4"
+* owner.identifier.value = "69A70"
 * owner.display = "NORTH THAMES GLH"
 
 RuleSet: RPXSubOrderStatusHeader(focus, date)
 * meta.lastUpdated = {date}
 * eventCoding = http://terminology.hl7.org/CodeSystem/v2-0003#O51
 * sender.identifier.system = $ods-code
-* sender.identifier.value = "RP4"
+* sender.identifier.value = "69A70"
 * sender.display = "NORTH THAMES GLH"
 * destination.receiver.identifier.system = $ods-code
 * destination.receiver.identifier.value = "699X0"
@@ -611,9 +611,9 @@ Usage: #example
 
 * identifier[ReportIdentifier]
   * value = "NT26-77812"
-  * system = "http://www.acme.org/diagnosticreport/identifiers/RP4"
+  * system = "http://www.acme.org/diagnosticreport/identifiers/69A70"
   * assigner.identifier.system = $ods-code
-  * assigner.identifier.value = "RP4"
+  * assigner.identifier.value = "69A70"
 * basedOn[OrderPlacerNumber]
   * type = "ServiceRequest"
   * identifier.type = $v2-0203#PLAC
@@ -632,7 +632,7 @@ Usage: #example
 * issued = "2026-09-26T14:00:00+00:00"
 * performer[organization]
   * identifier.system = $ods-code
-  * identifier.value = "RP4"
+  * identifier.value = "69A70"
   * type = #Organization
   * display = "NORTH THAMES GLH"
 * resultsInterpreter[author]
@@ -652,7 +652,7 @@ Usage: #example
 * meta.lastUpdated = "2026-09-26T14:00:00+00:00"
 * eventCoding = http://terminology.hl7.org/CodeSystem/v2-0003#R01
 * sender.identifier.system = $ods-code
-* sender.identifier.value = "RP4"
+* sender.identifier.value = "69A70"
 * sender.display = "NORTH THAMES GLH"
 * destination.receiver.identifier.system = $ods-code
 * destination.receiver.identifier.value = "699X0"

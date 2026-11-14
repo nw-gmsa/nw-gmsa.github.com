@@ -2,7 +2,7 @@
 // R67.1 Monogenic hearing loss from North Thames GLH (LAB-1), which sends a sub-order (LAB-35) to the North West
 // GLH (699X0) via GOMS. The North West GLH sends the order status (O51) and the sub-order report (LAB-36), and
 // North Thames GLH reports to GOSH (LAB-3).
-// North Thames GLH is hosted by Great Ormond Street Hospital, so both are identified here by GOSH's ODS code (RP4).
+// GOSH is identified by its ODS code (RP4) and North Thames GLH by its ODS code (69A70).
 // Fictitious example: patient, identifiers, dates and results are illustrative only.
 
 Instance: Patient-Camden
@@ -69,7 +69,7 @@ Usage: #example
 * performer[organization]
   * type = #Organization
   * identifier.system = $ods-code
-  * identifier.value = "RP4"
+  * identifier.value = "69A70"
   * display = "NORTH THAMES GLH"
 * specimen[+].reference = "urn:uuid:0a869ae7-44ee-4657-8494-bfe7297971ba"
 * reasonCode[+] = $GCC#R67 "Monogenic hearing loss"
@@ -106,7 +106,7 @@ Usage: #example
 * sender.identifier.value = "RP4"
 * sender.display = "GREAT ORMOND STREET HOSPITAL FOR CHILDREN NHS FOUNDATION TRUST"
 * destination.receiver.identifier.system = $ods-code
-* destination.receiver.identifier.value = "RP4"
+* destination.receiver.identifier.value = "69A70"
 * destination.receiver.display = "NORTH THAMES GLH"
 * destination.endpoint = "https://fhir.nwgenomics.nhs.uk/Endpoint/NorthThamesGLH"
 * source.endpoint = "https://fhir.nwgenomics.nhs.uk/Endpoint/GOSH"
@@ -139,7 +139,7 @@ Usage: #example
 * identifier[OrderPlacerNumber].system = "http://www.acme.org/servicerequest/NorthThamesGLH"
 * identifier[OrderPlacerNumber].value = "NT26-80455"
 * identifier[OrderPlacerNumber].assigner.identifier.system = $ods-code
-* identifier[OrderPlacerNumber].assigner.identifier.value = "RP4"
+* identifier[OrderPlacerNumber].assigner.identifier.value = "69A70"
 * basedOn[+]
   * reference = "urn:uuid:05d4f3bb-bf8c-4b5f-9508-0b2458d80582"
   * type = "ServiceRequest"
@@ -156,7 +156,7 @@ Usage: #example
 * requester
   * type = #Organization
   * identifier.system = $ods-code
-  * identifier.value = "RP4"
+  * identifier.value = "69A70"
   * display = "NORTH THAMES GLH"
 * insert CamdenSubject
 * performer[organization]
@@ -179,7 +179,7 @@ Usage: #example
   * system = "http://www.acme.org/specimen/NorthThamesGLH"
   * type = $v2-0203#PLAC
   * assigner.identifier.system = $ods-code
-  * assigner.identifier.value = "RP4"
+  * assigner.identifier.value = "69A70"
 * status = #available
 * insert CamdenSubject
 * type = $sct#258566005 "Deoxyribonucleic acid sample"
@@ -195,7 +195,7 @@ Usage: #example
 * meta.lastUpdated = "2026-09-16T09:00:00+00:00"
 * eventCoding = http://terminology.hl7.org/CodeSystem/v2-0003#O21
 * sender.identifier.system = $ods-code
-* sender.identifier.value = "RP4"
+* sender.identifier.value = "69A70"
 * sender.display = "NORTH THAMES GLH"
 * destination.receiver.identifier.system = $ods-code
 * destination.receiver.identifier.value = "699X0"
@@ -229,7 +229,7 @@ RuleSet: SPTSubOrderTask
 * basedOn.identifier.system = "http://www.acme.org/servicerequest/NorthThamesGLH"
 * basedOn.identifier.value = "NT26-80455"
 * basedOn.identifier.assigner.identifier.system = $ods-code
-* basedOn.identifier.assigner.identifier.value = "RP4"
+* basedOn.identifier.assigner.identifier.value = "69A70"
 * focus.reference = "urn:uuid:99bb76ca-edcb-44f4-95ff-b9b1c7b95780"
 * for.reference = "urn:uuid:74fe4bf0-26d8-4b8c-90eb-b6ef80d887e0"
 * for.display = "Oliver CAMDEN"
@@ -240,7 +240,7 @@ RuleSet: SPTSubOrderTask
 * code = http://hl7.org/fhir/CodeSystem/task-code#fulfill
 * authoredOn = "2026-09-16"
 * requester.identifier.system = $ods-code
-* requester.identifier.value = "RP4"
+* requester.identifier.value = "69A70"
 * requester.display = "NORTH THAMES GLH"
 * owner.identifier.system = $ods-code
 * owner.identifier.value = "699X0"
@@ -253,7 +253,7 @@ RuleSet: SPTSubOrderStatusHeader(focus, date)
 * sender.identifier.value = "699X0"
 * sender.display = "NORTH WEST GLH"
 * destination.receiver.identifier.system = $ods-code
-* destination.receiver.identifier.value = "RP4"
+* destination.receiver.identifier.value = "69A70"
 * destination.receiver.display = "NORTH THAMES GLH"
 * destination.endpoint = "https://fhir.nwgenomics.nhs.uk/Endpoint/GOMS"
 * source.endpoint = "https://fhir.nwgenomics.nhs.uk/Endpoint/RIE"
@@ -371,7 +371,7 @@ Usage: #example
   * identifier.system = "http://www.acme.org/servicerequest/NorthThamesGLH"
   * identifier.value = "NT26-80455"
   * identifier.assigner.identifier.system = $ods-code
-  * identifier.assigner.identifier.value = "RP4"
+  * identifier.assigner.identifier.value = "69A70"
   * reference = "urn:uuid:99bb76ca-edcb-44f4-95ff-b9b1c7b95780"
 * insert SPTReport
 * issued = "2026-10-19T14:00:00+00:00"
@@ -401,7 +401,7 @@ Usage: #example
 * sender.identifier.value = "699X0"
 * sender.display = "NORTH WEST GLH"
 * destination.receiver.identifier.system = $ods-code
-* destination.receiver.identifier.value = "RP4"
+* destination.receiver.identifier.value = "69A70"
 * destination.receiver.display = "NORTH THAMES GLH"
 * destination.endpoint = "https://fhir.nwgenomics.nhs.uk/Endpoint/GOMS"
 * source.endpoint = "https://fhir.nwgenomics.nhs.uk/Endpoint/iGene"
@@ -433,9 +433,9 @@ Usage: #example
 
 * identifier[ReportIdentifier]
   * value = "NT26-80455"
-  * system = "http://www.acme.org/diagnosticreport/identifiers/RP4"
+  * system = "http://www.acme.org/diagnosticreport/identifiers/69A70"
   * assigner.identifier.system = $ods-code
-  * assigner.identifier.value = "RP4"
+  * assigner.identifier.value = "69A70"
 * basedOn[OrderPlacerNumber]
   * type = "ServiceRequest"
   * identifier.type = $v2-0203#PLAC
@@ -448,7 +448,7 @@ Usage: #example
 * issued = "2026-10-21T10:00:00+00:00"
 * performer[organization]
   * identifier.system = $ods-code
-  * identifier.value = "RP4"
+  * identifier.value = "69A70"
   * type = #Organization
   * display = "NORTH THAMES GLH"
 * resultsInterpreter[author]
@@ -468,7 +468,7 @@ Usage: #example
 * meta.lastUpdated = "2026-10-21T10:00:00+00:00"
 * eventCoding = http://terminology.hl7.org/CodeSystem/v2-0003#R01
 * sender.identifier.system = $ods-code
-* sender.identifier.value = "RP4"
+* sender.identifier.value = "69A70"
 * sender.display = "NORTH THAMES GLH"
 * destination.receiver.identifier.system = $ods-code
 * destination.receiver.identifier.value = "RP4"
