@@ -58,10 +58,10 @@ Usage: #example
 * component[=].valueCodeableConcept = $ghgvs#"NM_007294.3(BRCA1):c.68_69del"
 
 * component[+].code = $loinc#48005-3 "Amino acid change (pHGVS)"
-* component[=].valueCodeableConcept = $ghgvs#"p.(Glu23ValfsTer17)"
+* component[=].valueCodeableConcept = $ghgvs#"NP_009225.1:p.(Glu23ValfsTer17)"
 
 * component[+].code = $loinc#81290-9 "Genomic DNA change (gHGVS)"
-* component[=].valueCodeableConcept = $ghgvs#"g.41276047_41276048del"
+* component[=].valueCodeableConcept = $ghgvs#"NC_000017.10:g.41276047_41276048del"
 
 * component[+].code = $loinc#53037-8 "Genetic variation clinical significance [Imp]"
 * component[=].valueCodeableConcept.text = "Pathogenic"

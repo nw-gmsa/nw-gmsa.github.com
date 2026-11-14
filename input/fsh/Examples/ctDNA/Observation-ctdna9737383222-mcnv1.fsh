@@ -49,7 +49,7 @@ Usage: #example
 * component[=].valueCodeableConcept = http://www.sequenceontology.org#SO:0001019 "copy_number_variation"
 
 * component[+].code = $loinc#81290-9 "Genomic DNA change (gHGVS)"
-* component[=].valueCodeableConcept = $ghgvs#"g.100652797_153792676del"
+* component[=].valueCodeableConcept = $ghgvs#"NC_000023.10:g.100652797_153792676del"
 
 * component[+].code = $loinc#48001-2 "Cytogenetic (chromosome) location"
 * component[=].valueCodeableConcept.text = "Xq22.1-q28"

@@ -47,7 +47,7 @@ Usage: #example
 * component[=].valueCodeableConcept = http://www.sequenceontology.org#SO:0000159 "deletion"
 
 * component[+].code = $loinc#81290-9 "Genomic DNA change (gHGVS)"
-* component[=].valueCodeableConcept = $ghgvs#"g.100652797_153792676del"
+* component[=].valueCodeableConcept = $ghgvs#"NC_000023.10:g.100652797_153792676del"
 
 * component[+].code = $loinc#53037-8 "Genetic variation clinical significance [Imp]"
 * component[=].valueCodeableConcept.text = "Pathogenic"

@@ -54,11 +54,8 @@ Usage: #example
 * component[+].code = $loinc#51958-7 "Transcript reference sequence [ID]"
 * component[=].valueCodeableConcept = $refseq#NM_000138.4
 
-* component[+].code = $loinc#48004-6 "DNA change (c.HGVS)"
-* component[=].valueCodeableConcept = $ghgvs#"NM_000138.4(FBN1):exon13_to_exon15del"
-
 * component[+].code = $loinc#81290-9 "Genomic DNA change (gHGVS)"
-* component[=].valueCodeableConcept = $ghgvs#"g.48797222_48802366del"
+* component[=].valueCodeableConcept = $ghgvs#"NC_000015.9:g.48797222_48802366del"
 
 * component[+].code = $loinc#53037-8 "Genetic variation clinical significance [Imp]"
 * component[=].valueCodeableConcept.text = "Pathogenic"

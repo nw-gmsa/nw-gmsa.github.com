@@ -60,7 +60,7 @@ Usage: #example
 * component[=].valueCodeableConcept = $ghgvs#NM_005228.5:c.2369C>T
 
 * component[+].code = $loinc#48005-3 "Amino acid change (pHGVS)"
-* component[=].valueCodeableConcept = $ghgvs#"p.(Thr790Met)"
+* component[=].valueCodeableConcept = $ghgvs#"NP_005219.2:p.(Thr790Met)"
 
 * component[+].code = $loinc#48019-4 "DNA change type"
 * component[=].valueCodeableConcept = http://www.sequenceontology.org#SO:1000002 "substitution"

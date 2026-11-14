@@ -128,7 +128,26 @@
                 "coding": [
                     {
                         "system": "http://varnomen.hgvs.org",
-                        "code": "BRCA1:c.3143delG p.(Gly1048ValfsTer14)"
+                        "code": "NM_007294.3:c.3143del"
+                    }
+                ]
+            }
+        },
+        {
+            "code": {
+                "coding": [
+                    {
+                        "system": "http://loinc.org",
+                        "code": "48005-3",
+                        "display": "Amino acid change"
+                    }
+                ]
+            },
+            "valueCodeableConcept": {
+                "coding": [
+                    {
+                        "system": "http://varnomen.hgvs.org",
+                        "code": "NP_009225.1:p.(Gly1048ValfsTer14)"
                     }
                 ]
             }
