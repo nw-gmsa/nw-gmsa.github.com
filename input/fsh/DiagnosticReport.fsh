@@ -167,7 +167,8 @@ Description:    """
 * specimen 0..* MS
 * specimen only Reference(Specimen)
 
-* result only Reference(Observation)
+// Genomic result profiles derive from HL7 Genomics Reporting and impose the NW Observation profile, so are listed explicitly
+* result only Reference(Observation or Variant or Genotype or Haplotype or DiagnosticImplication or TherapeuticImplication or MolecularConsequence or MolecularBiomarker or http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/sequence-phase-relationship)
 
 
 //* result ^slicing.discriminator.type = #profile
