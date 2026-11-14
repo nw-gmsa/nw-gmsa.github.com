@@ -71,10 +71,21 @@ Usage: #example
   * assigner.identifier.system = $ods-code
   * assigner.identifier.value = "RNN"
 * identifier[FillerSpecimenNumber]
-  * value = "S26-1A04"
+  * value = "D26-1B04"
   * type = $v2-0203#FILL
   * assigner.identifier.system = $ods-code
   * assigner.identifier.value = "699N0"
+* accessionIdentifier
+  * system = "https://genomicsengland.co.uk/healthcare/primary-sample-id"
+  * value = "S26-1A04"
+  * type = $v2-0203#ACSN
+  * assigner.identifier.system = $ods-code
+  * assigner.identifier.value = "699N0"
+* container[0].extension[device].valueReference.type = "Device"
+* container[0].extension[device].valueReference.display = "DNA tube (FluidX 2D barcode)"
+* container[0].identifier[0].system = "https://genomicsengland.co.uk/healthcare/lab-sample-id"
+* container[0].identifier[0].value = "4000000004"
+* container[0].identifier[0].type = $nwgmsa#ZCID
 
 * status = #available
 
@@ -87,4 +98,4 @@ Usage: #example
 * type = $sct#258580003 "Whole blood specimen"
 * type.text = "blood_unsorted_edta"
 * collection.collectedDateTime = "2026-08-18T00:00:00+00:00"
-* receivedTime = "2026-08-26T00:00:00+00:00"
+* receivedTime = "2026-08-20T00:00:00+00:00"

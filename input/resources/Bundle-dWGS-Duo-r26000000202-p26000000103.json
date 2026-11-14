@@ -7,9 +7,9 @@
     ]
   },
   "identifier": {
-    "value": "urn:uuid:eed1edf8-7236-41f8-b638-5bde255c4a6e"
+    "value": "urn:uuid:a34e4695-3b45-4fe4-902c-5537df0c796c"
   },
-  "timestamp": "2026-10-19T11:44:52+00:00",
+  "timestamp": "2026-11-09T12:08:47+00:00",
   "type": "message",
   "entry": [
     {
@@ -86,7 +86,7 @@
         ],
         "name": [
           {
-            "family": "Editestpatient",
+            "family": "EDITESTPATIENT",
             "given": [
               "Fourteen"
             ]
@@ -128,11 +128,11 @@
               "coding": [
                 {
                   "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
-                  "code": "FILL"
+                  "code": "STN"
                 }
               ]
             },
-            "value": "S26-1A03"
+            "value": "NEY GLH 2026-08-26"
           },
           {
             "assigner": {
@@ -145,13 +145,31 @@
               "coding": [
                 {
                   "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
-                  "code": "STN"
+                  "code": "FILL"
                 }
               ]
             },
-            "value": "NEY GLH 2026-08-26"
+            "value": "D26-1B03"
           }
         ],
+        "accessionIdentifier": {
+          "assigner": {
+            "identifier": {
+              "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+              "value": "699N0"
+            }
+          },
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                "code": "ACSN"
+              }
+            ]
+          },
+          "system": "https://genomicsengland.co.uk/healthcare/primary-sample-id",
+          "value": "S26-1A03"
+        },
         "type": {
           "coding": [
             {
@@ -202,6 +220,15 @@
         ],
         "container": [
           {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-Specimen.container.device",
+                "valueReference": {
+                  "type": "Device",
+                  "display": "DNA tube (FluidX 2D barcode)"
+                }
+              }
+            ],
             "identifier": [
               {
                 "type": {
@@ -221,24 +248,31 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:35c4c33f-6ff3-43fe-aa38-cafd2e506318",
+      "fullUrl": "urn:uuid:a2153a29-5ce6-40d3-8bb6-cda4a936ec6b",
       "resource": {
-        "resourceType": "Group",
-        "meta": {
-          "profile": [
-            "https://fhir.nwgenomics.nhs.uk/StructureDefinition/FamilyGeneticGroup"
+        "resourceType": "ServiceRequest",
+        "status": "active",
+        "intent": "original-order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "116148004"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "https://fhir.nhs.uk/CodeSystem/England-GenomicTestDirectory",
+              "code": "R59.1"
+            }
           ]
         },
         "identifier": [
           {
-            "type": {
-              "coding": [
-                {
-                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
-                  "code": "PGN"
-                }
-              ]
-            },
             "system": "https://genomicsengland.co.uk/healthcare/referral-id",
             "value": "r26000000202",
             "assigner": {
@@ -246,12 +280,82 @@
                 "system": "https://fhir.nhs.uk/Id/ods-organization-code",
                 "value": "8J834"
               }
+            },
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "FILL"
+                }
+              ]
             }
           }
         ],
-        "type": "person",
-        "actual": true,
+        "subject": {
+          "type": "Group",
+          "identifier": {
+            "system": "https://genomicsengland.co.uk/healthcare/referral-id",
+            "value": "r26000000202",
+            "assigner": {
+              "identifier": {
+                "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+                "value": "8J834"
+              }
+            },
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PGN"
+                }
+              ]
+            }
+          }
+        },
+        "requester": {
+          "type": "Organization",
+          "identifier": {
+            "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+            "value": "RTR"
+          }
+        },
+        "supportingInfo": [
+          {
+            "reference": "urn:uuid:fa3581f1-fb77-4729-9442-79f86ea86b1a",
+            "type": "Observation"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:fa3581f1-fb77-4729-9442-79f86ea86b1a",
+      "resource": {
+        "resourceType": "Observation",
+        "meta": {
+          "profile": [
+            "https://fhir.nwgenomics.nhs.uk/StructureDefinition/ObservationOrder"
+          ]
+        },
+        "identifier": [
+          {
+            "system": "urn:ietf:rfc:3986",
+            "value": "urn:uuid:0f3408d4-ea1a-4562-8cf3-55c3654b2a05"
+          }
+        ],
+        "status": "final",
         "code": {
+          "coding": [
+            {
+              "system": "https://fhir.nwgenomics.nhs.uk/CodeSystem/NWGMSA",
+              "code": "FamilyStructure",
+              "display": "Family Structure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:2d0e73ae-3838-4610-b178-7eff400bca39"
+        },
+        "valueCodeableConcept": {
           "coding": [
             {
               "system": "https://fhir.nwgenomics.nhs.uk/CodeSystem/NWGMSA",
@@ -259,58 +363,46 @@
               "display": "Duo"
             }
           ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:d9e75bd6-e107-4998-97b8-b0f537c653b1",
+      "resource": {
+        "resourceType": "Observation",
+        "meta": {
+          "profile": [
+            "https://fhir.nwgenomics.nhs.uk/StructureDefinition/ObservationOrder"
+          ]
         },
-        "quantity": 2,
-        "member": [
+        "identifier": [
           {
-            "extension": [
-              {
-                "url": "https://fhir.nwgenomics.nhs.uk/StructureDefinition/FamilyMemberRelationship",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
-                      "code": "ONESELF",
-                      "display": "self"
-                    }
-                  ]
-                }
-              }
-            ],
-            "entity": {
-              "type": "Patient",
-              "identifier": {
-                "system": "https://fhir.nhs.uk/Id/nhs-number",
-                "value": "9737873971"
-              },
-              "display": "p26000000102"
-            }
-          },
-          {
-            "extension": [
-              {
-                "url": "https://fhir.nwgenomics.nhs.uk/StructureDefinition/FamilyMemberRelationship",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
-                      "code": "FAMMEMB",
-                      "display": "family member"
-                    }
-                  ]
-                }
-              }
-            ],
-            "entity": {
-              "reference": "urn:uuid:2d0e73ae-3838-4610-b178-7eff400bca39",
-              "type": "Patient",
-              "identifier": {
-                "system": "https://fhir.nhs.uk/Id/nhs-number",
-                "value": "9999999603"
-              }
-            }
+            "system": "urn:ietf:rfc:3986",
+            "value": "urn:uuid:af5f5ad8-5b59-436c-a9b7-a59456867ff7"
           }
-        ]
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "https://fhir.nwgenomics.nhs.uk/CodeSystem/NWGMSA",
+              "code": "ParticipantType",
+              "display": "Participant Type"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:2d0e73ae-3838-4610-b178-7eff400bca39"
+        },
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://fhir.nwgenomics.nhs.uk/CodeSystem/NWGMSA",
+              "code": "WGSParticipantTypeFamilyMember",
+              "display": "Family Member"
+            }
+          ]
+        }
       }
     },
     {
@@ -359,14 +451,6 @@
           ]
         },
         "requisition": {
-          "type": {
-            "coding": [
-              {
-                "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
-                "code": "PGN"
-              }
-            ]
-          },
           "system": "https://genomicsengland.co.uk/healthcare/referral-id",
           "value": "r26000000202",
           "assigner": {
@@ -374,6 +458,14 @@
               "system": "https://fhir.nhs.uk/Id/ods-organization-code",
               "value": "8J834"
             }
+          },
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                "code": "PGN"
+              }
+            ]
           }
         },
         "identifier": [
@@ -395,6 +487,12 @@
             }
           }
         ],
+        "basedOn": [
+          {
+            "reference": "urn:uuid:a2153a29-5ce6-40d3-8bb6-cda4a936ec6b",
+            "type": "ServiceRequest"
+          }
+        ],
         "subject": {
           "reference": "urn:uuid:2d0e73ae-3838-4610-b178-7eff400bca39"
         },
@@ -410,8 +508,8 @@
         ],
         "supportingInfo": [
           {
-            "reference": "urn:uuid:35c4c33f-6ff3-43fe-aa38-cafd2e506318",
-            "type": "Group"
+            "reference": "urn:uuid:d9e75bd6-e107-4998-97b8-b0f537c653b1",
+            "type": "Observation"
           }
         ]
       }
