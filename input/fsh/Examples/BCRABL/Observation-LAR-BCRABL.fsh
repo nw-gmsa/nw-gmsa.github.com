@@ -1,7 +1,7 @@
 Instance: BCRABL
 InstanceOf: LaboratoryAnalyteResult
 Title: "Laboratory Analyte Result - BCRABL"
-Description: "TODO"
+Description: "BCR-ABL1 fusion transcript ratio (International Scale) laboratory analyte result, with the Cepheid assay results as components"
 
 * identifier[+].value = "679dd305-7ea2-481d-af8b-68957eac427c"
 

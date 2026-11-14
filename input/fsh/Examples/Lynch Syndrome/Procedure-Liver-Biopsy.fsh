@@ -1,7 +1,7 @@
 Instance: 13240a3b-d1db-4f1a-ad7d-b19f23967060
 InstanceOf: Procedure
 Title: "Procedure - Liver Biopsy"
-Description: "TODO"
+Description: "Liver biopsy for Ned LIVERPOOL, for a malignant neoplasm of the intestine, in the Lynch syndrome example"
 
 * identifier[+].value = "13240a3b-d1db-4f1a-ad7d-b19f23967060"
 

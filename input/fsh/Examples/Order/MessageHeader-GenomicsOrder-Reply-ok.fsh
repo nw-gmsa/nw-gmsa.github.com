@@ -1,7 +1,7 @@
 Instance: MessageHeaderGenomicOrderReplyOk
 InstanceOf: MessageHeader
 Title: "Message Header - Genomic Order Reply ok"
-Description: "TODO"
+Description: "Message header for the North West GLH's acknowledgement (`response.code` = `ok`) of the laboratory order (O21) from Manchester University NHS Foundation Trust"
 Usage: #example
 
 * meta.lastUpdated = "2025-01-29T10:40:26+00:00"

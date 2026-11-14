@@ -1,7 +1,7 @@
 Instance: variant-egfr
 InstanceOf: Variant
 Title: "Variant - ctDNA"
-Description: "TODO"
+Description: "EGFR sequence variant detected by digital PCR in the ctDNA test for Theon SHEFFIELD"
 
 * identifier[+].value = "00c22e97-a226-4845-b17a-e24ec1f4f77a"
 

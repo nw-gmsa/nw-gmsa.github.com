@@ -1,7 +1,7 @@
 Instance: MessageHeaderGenomicOrder
 InstanceOf: MessageHeader
 Title: "Message Header - Genomic Order"
-Description: "TODO"
+Description: "Message header for the laboratory order (O21) from Manchester University NHS Foundation Trust to the North West GLH"
 Usage: #example
 
 

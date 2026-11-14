@@ -1,7 +1,7 @@
 Instance: MessageHeaderR01ctDNA
 InstanceOf: MessageHeader
 Title: "Message Header - Genomic Order ctDNA R01"
-Description: "TODO"
+Description: "Message header for the ctDNA laboratory report (R01) from the North West GLH to NE&Y GMSA"
 Usage: #example
 
 

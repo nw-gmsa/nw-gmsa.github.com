@@ -1,7 +1,7 @@
 Instance: MessageHeaderGenomicReport
 InstanceOf: MessageHeader
 Title: "Message Header - Genomic Report"
-Description: "TODO"
+Description: "Message header for the laboratory report (R01) from the North West GLH to Alder Hey Children's NHS Foundation Trust, with the report as a PDF"
 Usage: #example
 
 * meta.lastUpdated = "2025-02-01T13:39:26+00:00"

@@ -1,7 +1,7 @@
 Instance: MessageHeaderO21ctDNA
 InstanceOf: MessageHeader
 Title: "Message Header - Genomic Order ctDNA O21"
-Description: "TODO"
+Description: "Message header for the ctDNA laboratory order (O21) from the North West GLH to NE&Y GMSA"
 Usage: #example
 
 

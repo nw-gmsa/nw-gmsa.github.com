@@ -1,7 +1,7 @@
 Instance: iGene
 InstanceOf: Endpoint
 Title: "Endpoint iGene"
-Description: "TODO"
+Description: "Example endpoint for iGene, the North West GLH Laboratory Information Management System (LIMS), receiving HL7 v2 over MLLP. The address is a placeholder."
 Usage: #example
 
 * status = http://hl7.org/fhir/endpoint-status#active

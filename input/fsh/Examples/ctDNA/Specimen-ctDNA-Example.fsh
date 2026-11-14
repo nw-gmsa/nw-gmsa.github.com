@@ -1,7 +1,7 @@
 Instance: Specimen-ctDNA
 InstanceOf: Specimen
 Title: "Specimen ctDNA Example"
-Description: "TODO"
+Description: "Blood specimen for ctDNA testing for Theon SHEFFIELD"
 
 * meta.versionId = "1.0"
 

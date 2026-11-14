@@ -1,7 +1,7 @@
 Instance: SpecimenExample
 InstanceOf: Specimen
 Title: "Specimen Example"
-Description: "TODO"
+Description: "Whole blood specimen for Octavia CHISLETT, collected at Manchester University NHS Foundation Trust and received by the North West GLH"
 
 * meta.versionId = "1.0"
 

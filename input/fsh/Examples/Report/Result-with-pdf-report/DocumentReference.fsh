@@ -1,7 +1,7 @@
 Instance: 94bf65ba-cd6c-4601-b339-6d547f424646
 InstanceOf: DocumentReference
 Title: "Document Reference Laboratory Report"
-Description: "TODO"
+Description: "The genetic report, as a PDF, from the North West GLH, related to its DiagnosticReport"
 
 * identifier[+].value = "94bf65ba-cd6c-4601-b339-6d547f424646"
 * identifier[=].system = "http://www.example.org/documentreference/identifier"

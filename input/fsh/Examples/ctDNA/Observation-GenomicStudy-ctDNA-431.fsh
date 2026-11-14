@@ -1,7 +1,7 @@
 Instance: GenomicStudy-ctDNA
 InstanceOf: GenomicStudyPanel
 Title: "Genomic Study Panel - ctDNA 431 Present"
-Description: "TODO"
+Description: "Genomic study for the ctDNA test for Theon SHEFFIELD where a target was detected at a level requiring clinical action (outcome 431)"
 
 * identifier[+].value = "a93777a8-63d1-49ae-91d8-dcb8779d72b2"
 

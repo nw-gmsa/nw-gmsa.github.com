@@ -1,7 +1,7 @@
 Instance: GenomicStudy-ctDNA-Failed
 InstanceOf: GenomicStudyPanel
 Title: "Genomic Study Panel - ctDNA 971 Failed"
-Description: "TODO"
+Description: "Genomic study for the ctDNA test for Theon SHEFFIELD where the test failed (outcome 971 FAILURE)"
 
 * identifier[+].value = "a93777a8-63d1-49ae-91d8-dcb8779d72b2"
 

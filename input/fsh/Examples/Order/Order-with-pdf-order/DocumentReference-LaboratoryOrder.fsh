@@ -1,7 +1,7 @@
 Instance: a293b4a6-e46b-4402-9b2b-d9517afc7137
 InstanceOf: DocumentReference
 Title: "Document Reference Laboratory Order"
-Description: "TODO"
+Description: "The laboratory order form, as a PDF, for the order from Manchester University NHS Foundation Trust"
 
 * identifier[+].value = "a293b4a6-e46b-4402-9b2b-d9517afc7137"
 * identifier[=].system = "http://www.acme.org/documentreference/identifier"

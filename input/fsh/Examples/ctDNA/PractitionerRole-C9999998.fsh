@@ -1,7 +1,7 @@
 Instance: 4446ab81-35ef-49cb-b2fe-1d6f1a0dcc02
 InstanceOf: PractitionerRole
 Title: "PractitionerRole C9999998 Example"
-Description: "TODO"
+Description: "Requesting clinician (GMC C9999998) at Sheffield Teaching Hospitals NHS Foundation Trust (RHQ) for the ctDNA example"
 
 * practitioner.identifier.system = "https://fhir.hl7.org.uk/Id/gmc-number"
 * practitioner.identifier.value = "C9999998"

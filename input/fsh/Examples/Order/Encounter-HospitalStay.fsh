@@ -1,7 +1,7 @@
 Instance: 984b8a89-4194-4eb4-a7ea-ca8049ebeea3
 InstanceOf: HospitalSpell
 Title: "Encounter 'episode/stay' Example"
-Description: "TODO"
+Description: "Outpatient encounter for Octavia CHISLETT at Manchester University NHS Foundation Trust in which the laboratory order was placed"
 
 * status = #finished
 

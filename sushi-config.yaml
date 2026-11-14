@@ -444,7 +444,7 @@ groups:
       - Patient/Patient-Birmingham
   -ex-example-wgs:
     name: "Example: Whole Genome Sequencing (WGS)"
-    description: "Whole Genome Sequencing closed loop referrals: R27.3 Paediatric disorders trio (Gilly Brough), ordered by the dWGS Trio sub-order dWGS-Trio-r26000000203-p26000000104 (see the dWGS examples), and R54.3 Hereditary ataxia with a result from another laboratory (Robert Blackburn), with its order (O21) message and FHIR Document report"
+    description: "Whole Genome Sequencing closed loop referrals: R27.3 Paediatric disorders trio (Gilly Brough), ordered by the dWGS Trio sub-order dWGS-Trio-r26000000203-p26000000104 (see the dWGS examples), with the referral (O21) and the RGL's report (R01) messages, and R54.3 Hereditary ataxia with a result from another laboratory (Robert Blackburn), with its order (O21) message and FHIR Document report"
     resources:
       - Bundle/FHIRDocumentGeneticReportBundle-WGS
       - Composition/Composition-GenomicsReport-WGS
@@ -460,6 +460,79 @@ groups:
       - PractitionerRole/PractitionerRole-Requester-Neurology-RM3
       - Patient/Patient-Brough
       - Patient/Patient-Blackburn
+      - Bundle/GenomicsOrderMessage-WGS-Referral
+      - MessageHeader/MessageHeader-O21-WGS-Referral
+      - Bundle/GenomicsReportMessage-WGS-Referral
+      - MessageHeader/MessageHeader-R01-WGS-Referral
+      - DiagnosticReport/DiagnosticReport-WGS-Referral
+  -ex-example-rapid-prenatal-exome:
+    name: "Example: Rapid Prenatal Exome Sequencing"
+    description: "Rapid prenatal exome sequencing (R21 Fetal anomalies with a likely genetic cause) for Fetus Wigan: the Laboratory Order (O21) from Manchester University NHS FT to the North West GLH, the sub-order (O21) to North Thames GLH via GOMS, its order status (O51), the sub-order report and Laboratory Report (R01) messages, and the resources they carry"
+    resources:
+      - Bundle/GenomicsOrderMessage-RPX
+      - Bundle/GenomicsReportMessage-RPX-FirstLine
+      - Bundle/GenomicsSubOrderMessage-RPX
+      - Bundle/GenomicOrderStatusMessage-RPX-Accepted
+      - Bundle/GenomicOrderStatusMessage-RPX-Declined
+      - Bundle/GenomicOrderStatusMessage-RPX-NotTested
+      - Bundle/GenomicsSubOrderReportMessage-RPX
+      - Bundle/GenomicsReportMessage-RPX
+      - MessageHeader/MessageHeader-RPX-Order
+      - MessageHeader/MessageHeader-RPX-FirstLineReport
+      - MessageHeader/MessageHeader-RPX-SubOrder
+      - MessageHeader/MessageHeader-RPX-SubOrder-Accepted
+      - MessageHeader/MessageHeader-RPX-SubOrder-Declined
+      - MessageHeader/MessageHeader-RPX-NotTested
+      - MessageHeader/MessageHeader-RPX-SubOrderReport
+      - MessageHeader/MessageHeader-RPX-Report
+      - Patient/Patient-Fetus-Wigan
+      - Patient/Patient-Mother-Wigan
+      - Patient/Patient-Father-Wigan
+      - RelatedPerson/RelatedPerson-Mother-Wigan
+      - PractitionerRole/PractitionerRole-Requester-FetalMedicine-R0A
+      - ServiceRequest/ServiceRequest-RPX-Order
+      - ServiceRequest/ServiceRequest-RPX-SubOrder
+      - Specimen/Specimen-RPX-Fetal
+      - Specimen/Specimen-RPX-Mother
+      - Specimen/Specimen-RPX-Father
+      - Specimen/Specimen-RPX-Fetal-DNA
+      - Specimen/Specimen-RPX-Mother-DNA
+      - Specimen/Specimen-RPX-Father-DNA
+      - Task/Task-RPX-SubOrder-Accepted
+      - Task/Task-RPX-SubOrder-Declined
+      - Task/Task-RPX-NotTested
+      - DiagnosticReport/DiagnosticReport-RPX-FirstLine
+      - DiagnosticReport/DiagnosticReport-RPX-SubOrder
+      - DiagnosticReport/DiagnosticReport-RPX-Report
+  -ex-example-specialist-test:
+    name: "Example: Specialist Test for Another GLH"
+    description: "Specialist test (R67.1 Monogenic hearing loss) for Oliver Camden: the Laboratory Order (O21) from GOSH to North Thames GLH, the sub-order (O21) to the North West GLH via GOMS, its order status (O51), the sub-order report and Laboratory Report (R01) messages, and the resources they carry"
+    resources:
+      - Bundle/GenomicsOrderMessage-SPT
+      - Bundle/GenomicsSubOrderMessage-SPT
+      - Bundle/GenomicOrderStatusMessage-SPT-Accepted
+      - Bundle/GenomicOrderStatusMessage-SPT-Declined
+      - Bundle/GenomicOrderStatusMessage-SPT-LaterDeclined
+      - Bundle/GenomicsSubOrderReportMessage-SPT
+      - Bundle/GenomicsReportMessage-SPT
+      - MessageHeader/MessageHeader-SPT-Order
+      - MessageHeader/MessageHeader-SPT-SubOrder
+      - MessageHeader/MessageHeader-SPT-SubOrder-Accepted
+      - MessageHeader/MessageHeader-SPT-SubOrder-Declined
+      - MessageHeader/MessageHeader-SPT-SubOrder-LaterDeclined
+      - MessageHeader/MessageHeader-SPT-SubOrderReport
+      - MessageHeader/MessageHeader-SPT-Report
+      - Patient/Patient-Camden
+      - PractitionerRole/PractitionerRole-Requester-Audiology-RP4
+      - ServiceRequest/ServiceRequest-SPT-Order
+      - ServiceRequest/ServiceRequest-SPT-SubOrder
+      - Specimen/Specimen-SPT-Blood
+      - Specimen/Specimen-SPT-DNA
+      - Task/Task-SPT-SubOrder-Accepted
+      - Task/Task-SPT-SubOrder-Declined
+      - Task/Task-SPT-SubOrder-LaterDeclined
+      - DiagnosticReport/DiagnosticReport-SPT-SubOrder
+      - DiagnosticReport/DiagnosticReport-SPT-Report
   -ex-example-pharmacogenomics:
     name: "Example: Pharmacogenomics"
     description: "Pharmacogenomics (R454.1 CYP2C19 before mavacamten) closed loop referral for Mace Northwich: the order (O21) message from Liverpool Heart and Chest and the FHIR Document report"

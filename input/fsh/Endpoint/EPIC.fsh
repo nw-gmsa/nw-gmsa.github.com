@@ -1,7 +1,7 @@
 Instance: EPIC
 InstanceOf: Endpoint
 Title: "Endpoint EPIC"
-Description: "TODO"
+Description: "Example endpoint for the Manchester University NHS Foundation Trust Epic EPR, receiving HL7 v2 over MLLP. The address is a placeholder."
 Usage: #example
 
 * status = http://hl7.org/fhir/endpoint-status#active

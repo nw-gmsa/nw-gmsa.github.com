@@ -1,7 +1,7 @@
 Instance: ServiceRequestGenomicsOrderAttachment
 InstanceOf: ServiceRequest
 Title: "ServiceRequest Attachment Example"
-Description: "TODO"
+Description: "Laboratory order for R240.1 for Octavia CHISLETT from Manchester University NHS Foundation Trust to the North West GLH, with the order form attached as a PDF"
 
 * meta.versionId = "1.0"
 

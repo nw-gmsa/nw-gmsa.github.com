@@ -18,27 +18,31 @@ Usage: #definition
 * insert ActorEntity(nwglh, "North West GLH", [[ [Subcontractor](ActorDefinition-Subcontractor.html). The national provider for the specialist test ]])
 
 * insert Instance_Empty(Order, Bundle, "Laboratory Order", [[ LAB-1 order to the requesting GLH, for example R67 monogenic hearing loss ]])
+* insert InstanceVersion(1, "HL7 FHIR Message O21", GenomicsOrderMessage-SPT, [[ Laboratory Order from GOSH for Oliver Camden ]])
 * insert Instance_Empty(SubOrder, Bundle, "Sub-order", [[ LAB-35 sub-order. `intent` = `filler-order` and `basedOn` the Laboratory Order. The requester is the requesting GLH and the performer the North West GLH ]])
+* insert InstanceVersion(1, "HL7 FHIR Message O21", GenomicsSubOrderMessage-SPT, [[ Sub-order to the North West GLH ]])
 * insert Instance_Empty(Accept, Bundle, "Sub-order accepted", [[ Order status: the North West GLH accepts the sub-order ]])
-* insert InstanceVersion(1, "Order Status - accepted", GenomicOrderStatusAcceptMessage, [[ The message shape for an accepted order ]])
+* insert InstanceVersion(1, "HL7 FHIR Message O51", GenomicOrderStatusMessage-SPT-Accepted, [[ The North West GLH accepts the sub-order ]])
 * insert Instance_Empty(Decline, Bundle, "Sub-order declined", [[ Order status: the North West GLH declines the sub-order, for example because it does not meet the eligibility criteria ]])
-* insert InstanceVersion(1, "Order Status - declined", GenomicOrderStatusDeclineMessage, [[ The message shape for a declined order ]])
+* insert InstanceVersion(1, "HL7 FHIR Message O51", GenomicOrderStatusMessage-SPT-Declined, [[ The North West GLH declines the sub-order ]])
 * insert Instance_Empty(LaterDecline, Bundle, "Sub-order declined after acceptance", [[ Order status: the sample turns out to be unsuitable after the sub-order was accepted ]])
-* insert InstanceVersion(1, "Order Status - declined after acceptance", GenomicOrderStatusLaterDeclineMessage, [[ The message shape for an order declined after acceptance ]])
+* insert InstanceVersion(1, "HL7 FHIR Message O51", GenomicOrderStatusMessage-SPT-LaterDeclined, [[ The North West GLH declines the sub-order after acceptance ]])
 * insert Instance_Empty(SubOrderReport, Bundle, "Sub-order Laboratory Report", [[ LAB-36 [Laboratory Report](StructureDefinition-LaboratoryReport.html) from the North West GLH, `basedOn` the sub-order ]])
+* insert InstanceVersion(1, "HL7 FHIR Message R01", GenomicsSubOrderReportMessage-SPT, [[ The North West GLH's report, based on the sub-order ]])
 * insert Instance_Empty(ReportDocument, Binary, "Laboratory Report document", [[ HL7 v2 `MDM^T02` with the Laboratory Report as a PDF, base64 encoded in OBX-5 (`ED`). A FHIR Document may replace the PDF later ]])
 * insert Instance_Empty(Report, Bundle, "Laboratory Report", [[ LAB-3 [Laboratory Report](StructureDefinition-LaboratoryReport.html) to the requesting clinician ]])
+* insert InstanceVersion(1, "HL7 FHIR Message R01", GenomicsReportMessage-SPT, [[ North Thames GLH's report, based on the Laboratory Order ]])
 
 * process[+]
   * title = "1. Laboratory Order (LAB-1)"
   * description = "GOSH orders the specialist test from its own GLH, North Thames."
-  * insert ProcessCreateEvent(1, "Send Laboratory Order", placer, reqglh, Order, , [[ ]])
+  * insert ProcessCreateEvent(1, "Send Laboratory Order", placer, reqglh, Order, 1, [[ ]])
 
 * process[+]
   * title = "2. Sub-order to the North West GLH (LAB-35)"
   * description = "The requesting GLH sends the sub-order through GOMS and the sample by sample transport."
-  * insert ProcessCreateEvent(2, "Send sub-order", reqglh, goms, SubOrder, , [[ ]])
-  * insert ProcessCreateEvent(3, "Route sub-order", goms, nwglh, SubOrder, , [[ ]])
+  * insert ProcessCreateEvent(2, "Send sub-order", reqglh, goms, SubOrder, 1, [[ ]])
+  * insert ProcessCreateEvent(3, "Route sub-order", goms, nwglh, SubOrder, 1, [[ ]])
 
 * process[+]
   * title = "3. Sub-order accepted"
@@ -55,13 +59,13 @@ Usage: #definition
 * process[+]
   * title = "4. Sub-order results (LAB-36)"
   * description = "The North West GLH tests and reports, and the report goes back to the requesting GLH through GOMS."
-  * insert ProcessCreateEvent(8, "Send sub-order Laboratory Report", nwglh, goms, SubOrderReport, , [[ ]])
-  * insert ProcessCreateEvent(9, "Route sub-order Laboratory Report", goms, reqglh, SubOrderReport, , [[ ]])
+  * insert ProcessCreateEvent(8, "Send sub-order Laboratory Report", nwglh, goms, SubOrderReport, 1, [[ ]])
+  * insert ProcessCreateEvent(9, "Route sub-order Laboratory Report", goms, reqglh, SubOrderReport, 1, [[ ]])
 
 * process[+]
   * title = "5. Laboratory Report (LAB-3)"
   * description = "The requesting GLH sends the result to the requesting clinician."
-  * insert ProcessCreateEvent(10, "Send Laboratory Report", reqglh, placer, Report, , [[ ]])
+  * insert ProcessCreateEvent(10, "Send Laboratory Report", reqglh, placer, Report, 1, [[ ]])
 
 * process[+]
   * title = "6. Send to the central repository"

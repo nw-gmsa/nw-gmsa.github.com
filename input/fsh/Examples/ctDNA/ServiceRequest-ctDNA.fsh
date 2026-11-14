@@ -1,7 +1,7 @@
 Instance: ServiceRequest-ctDNA
 InstanceOf: ServiceRequest
 Title: "ServiceRequest ctDNA Example"
-Description: "TODO"
+Description: "Laboratory order for M4.14 Non-Small Cell Lung Cancer ctDNA testing for Theon SHEFFIELD from Sheffield Teaching Hospitals NHS Foundation Trust"
 
 * meta.versionId = "1.0"
 

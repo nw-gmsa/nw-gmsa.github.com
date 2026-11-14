@@ -83,7 +83,8 @@ Description:    """
 * subject 1..1 MS
 * subject.identifier 1..1
 * subject only Reference(Patient)
-* subject.identifier only NHSIdentifier
+* subject.identifier only NHSIdentifier or MedicalRecordNumber
+* subject.identifier ^comment = "SHALL be the NHS Number when the subject has one. A Medical Record Number is allowed only for a subject without an NHS Number, such as a fetus in a prenatal report (see [Patient - Fetus](Patient-Patient-FetusLondon.html))."
 
 * effectiveDateTime 0..1 MS
 * effective[x] insert Obligation(#SHOULD:populate, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderFiller)

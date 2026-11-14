@@ -1,7 +1,7 @@
 Instance: MessageHeaderPatient
 InstanceOf: MessageHeader
 Title: "Message Header - Patient"
-Description: "TODO"
+Description: "Message header for a patient update (A31) from the North West GLH to Alder Hey Children's NHS Foundation Trust"
 Usage: #example
 
 * meta.lastUpdated = "2025-02-01T13:39:26+00:00"

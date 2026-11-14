@@ -1,7 +1,7 @@
 Instance: RIE
 InstanceOf: Endpoint
 Title: "Endpoint RIE"
-Description: "TODO"
+Description: "Example endpoint for the North West Regional Integration Engine (RIE), receiving FHIR Messages. The address is a placeholder."
 Usage: #example
 
 * status = http://hl7.org/fhir/endpoint-status#active

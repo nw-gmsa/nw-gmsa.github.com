@@ -1,7 +1,7 @@
 Instance: MessageHeaderGenomicOrderReplyFatalAcknowledge
 InstanceOf: MessageHeader
 Title: "Message Header - Genomic Order Reply fatal Acknowledgement"
-Description: "TODO"
+Description: "Message header for Manchester University NHS Foundation Trust's acknowledgement of the North West GLH's `fatal-error` reply to the laboratory order (O21)"
 Usage: #example
 
 * meta.lastUpdated = "2025-01-29T10:40:26+00:00"
