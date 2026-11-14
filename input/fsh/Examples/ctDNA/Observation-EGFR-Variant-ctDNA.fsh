@@ -10,7 +10,7 @@ Description: "EGFR sequence variant detected by digital PCR in the ctDNA test fo
 * effectiveDateTime = "2026-07-13T10:37:26+00:00"
 
 * category[geCategory] = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
-* category[laboratory] = http://terminology.hl7.org/CodeSystem/observation-category#laboratory
+* category[labCategory] = http://terminology.hl7.org/CodeSystem/observation-category#laboratory
 
 * code
   * coding[+]

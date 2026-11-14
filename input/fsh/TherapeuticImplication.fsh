@@ -1,5 +1,5 @@
 Profile:        TherapeuticImplication
-Parent:         GenomicObservation
+Parent:         http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/therapeutic-implication
 Id:             TherapeuticImplication
 Title:          "Therapeutic Implication (Observation)"
 Description:    """
@@ -10,4 +10,4 @@ Description:    """
 //* ^keyword[+] = #genomics "Genomics"
 //* ^keyword[+] = #diagnostics "Diagnostics"
 
-* code = http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs#therapeutic-implication
+* insert GenomicObservation

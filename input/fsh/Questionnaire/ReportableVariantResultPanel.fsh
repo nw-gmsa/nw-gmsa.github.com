@@ -10,7 +10,7 @@ are based on. LRI already defines this as a single panel covering both simple an
 structural variants; this Questionnaire follows that same single-panel structure
 rather than iGene's separate per-variant-type field sets, mapping each item to both
 its LRI `OBX` row and its corresponding component in the HL7 Genomics Reporting IG's
-[Variant](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-variant.html)
+[Variant](https://hl7.org/fhir/uv/genomics-reporting/STU3/StructureDefinition-variant.html)
 profile. See [OMICS DSS Result Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md) for the full
 LRI/FHIR/iGene three-way mapping table.
 

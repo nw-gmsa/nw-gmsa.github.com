@@ -22,7 +22,7 @@ Usage: #example
 * status = #preliminary
 
 * category[geCategory] = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
-* category[laboratory] = http://terminology.hl7.org/CodeSystem/observation-category#laboratory
+* category[labCategory] = http://terminology.hl7.org/CodeSystem/observation-category#laboratory
 
 * subject.reference = "urn:uuid:2160525b-0168-4f40-8ebf-9b053052a62c"
 * subject.display = "Theon SHEFFIELD"

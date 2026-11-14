@@ -1,5 +1,5 @@
 Profile:        Genotype
-Parent:         GenomicObservation
+Parent:         http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/genotype
 Id:             Genotype
 Title:          "Genotype (Observation)"
 Description:    """
@@ -10,4 +10,4 @@ Description:    """
 //* ^keyword[+] = #genomics "Genomics"
 //* ^keyword[+] = #diagnostics "Diagnostics"
 
-* code = $loinc#84413-4
+* insert GenomicObservation

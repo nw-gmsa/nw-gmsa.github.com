@@ -237,7 +237,7 @@ The `result` element (`DiagnosticReport.result`) is where the individual
 findings of a test live. This is specific to genomics and focused on the
 requirements of general clinicians, not genomic specialists, so this section
 will tend to be an extract of the wider [Genomics Reporting Implementation
-Guide](https://build.fhir.org/ig/HL7/genomics-reporting/general.html) rather
+Guide](https://hl7.org/fhir/uv/genomics-reporting/STU3/general.html) rather
 than a complete restatement of it. It divides into two parts:
 
 - **[Report Panels](#report-panels)** - the computable data models (FHIR
@@ -328,12 +328,12 @@ Panels](#report-panels) above:
 
 | Genomic Result | Code | Used In | Report Panel |
 |---|---|---|---|
-| [Genomic Study (Procedure)](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-genomic-study.html) - [description](https://build.fhir.org/ig/HL7/genomics-reporting/general.html#genomic-study) | - | [Examples](#examples) below (Lynch syndrome, cystic fibrosis carrier) | *(none yet)* |
-| [Genomic Study Analysis](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-genomic-study-analysis.html) (extension on Genomic Study) | LOINC `48002-0` "Genomic source class [Type]" | Not yet confirmed against a real example | *(none yet)* |
+| [Genomic Study (Procedure)](https://hl7.org/fhir/uv/genomics-reporting/STU3/StructureDefinition-genomic-study.html) - [description](https://hl7.org/fhir/uv/genomics-reporting/STU3/general.html#genomic-study) | - | [Examples](#examples) below (Lynch syndrome, cystic fibrosis carrier) | *(none yet)* |
+| [Genomic Study Analysis](https://hl7.org/fhir/uv/genomics-reporting/STU3/StructureDefinition-genomic-study-analysis.html) (extension on Genomic Study) | LOINC `48002-0` "Genomic source class [Type]" | Not yet confirmed against a real example | *(none yet)* |
 | [Laboratory Analyte Result (Observation)](StructureDefinition-LaboratoryAnalyteResult.html) | - | [BCR-ABL Monitoring](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/BCRABLMonitoring.md) | [BCR-ABL Monitoring Result Panel](Questionnaire-BCRABLResultPanel.html) |
 | [Reportable Variant (Observation)](StructureDefinition-Variant.html) | LOINC `48018-6` "Gene studied [ID]" (component) | [OMICS DSS Result Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md) | [Reportable Variant Result Panel](Questionnaire-ReportableVariantResultPanel.html) |
-| [Molecular Consequence (Observation)](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-molecular-consequence.html) | Sequence Ontology (`functional-effect`), e.g. `SO_0001786` loss_of_heterozygosity | [OMICS DSS Result Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md) - see [Outstanding Issues](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md#outstanding-issues) for why Loss of Heterozygosity is modelled this way | [Reportable Variant Result Panel](Questionnaire-ReportableVariantResultPanel.html) |
-| [Diagnostic Implication (Observation)](StructureDefinition-DiagnosticImplication.html) - [description](https://build.fhir.org/ig/HL7/genomics-reporting/general.html#genomic-implications) | - | [Examples](#examples) below (Lynch syndrome, cystic fibrosis carrier) | *(none yet)* |
+| [Molecular Consequence (Observation)](https://hl7.org/fhir/uv/genomics-reporting/STU3/StructureDefinition-molecular-consequence.html) | Sequence Ontology (`functional-effect`), e.g. `SO_0001786` loss_of_heterozygosity | [OMICS DSS Result Integration](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md) - see [Outstanding Issues](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/reportable-variants.md#outstanding-issues) for why Loss of Heterozygosity is modelled this way | [Reportable Variant Result Panel](Questionnaire-ReportableVariantResultPanel.html) |
+| [Diagnostic Implication (Observation)](StructureDefinition-DiagnosticImplication.html) - [description](https://hl7.org/fhir/uv/genomics-reporting/STU3/general.html#genomic-implications) | - | [Examples](#examples) below (Lynch syndrome, cystic fibrosis carrier) | *(none yet)* |
 | [Histocompatibility and Immunogenetic Reporting](https://hl7.org/fhir/uv/genomics-reporting/histocompatibility.html) | - | [Histocompatibility and Immunogenetics](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HistocompatibilityAndImmunogenetics.md) | [Chimerism Testing Result Panel](Questionnaire-ChimerismResultPanel.html) (candidate mapping by analogy, not confirmed - see the Questionnaire's own description) |
 | Cytogenetic Genomic Report *(this IG's own future/proposed model - no balloted HL7 profile exists yet)* | LOINC cytogenetics panels, e.g. `62389-2` (master panel), `62356-1` (ISCN), `62367-8` (FISH) | [Haemato-Oncology Diagnostic Pathway - Future genomic data model (proposed)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HaematoOncologyPathway.md#future-genomic-data-model-proposed) | *(none yet - proposed direction only)* |
 {:.grid}

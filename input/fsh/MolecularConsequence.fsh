@@ -1,5 +1,5 @@
 Profile:        MolecularConsequence
-Parent:         GenomicObservation
+Parent:         http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/molecular-consequence
 Id:             MolecularConsequence
 Title:          "Molecular Consequence (Observation)"
 Description:    """
@@ -8,7 +8,7 @@ Description:    """
 Communicates the calculated or observed effect of a DNA variant, generally on its
 downstream transcript/protein, or a broader functional effect such as loss of
 heterozygosity. Follows the HL7 Genomics Reporting IG's
-[Molecular Consequence](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-molecular-consequence.html)
+[Molecular Consequence](https://hl7.org/fhir/uv/genomics-reporting/STU3/StructureDefinition-molecular-consequence.html)
 profile: a separate `Observation` from the `Variant` it describes the consequence
 of, referenced via `derivedFrom` - not a component on the `Variant` itself.
 
@@ -20,14 +20,13 @@ the decision and the tradeoff against modelling LOH as a bare component/extensio
 
 //https://github.com/HL7/genomics-reporting/blob/master/input/fsh/CGImplications.fsh
 
-* code = http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs#molecular-consequence
+* insert GenomicObservation
 
 * derivedFrom 1..1 MS
-* derivedFrom only Reference(Variant)
 * derivedFrom ^short = "The Variant this molecular consequence is derived from"
+* derivedFrom[variant] 1..1 MS
+* derivedFrom[variant] only Reference(Variant)
 
-* component contains functionalEffect 0..1
-* component[functionalEffect] ^short = "Functional Effect"
-* component[functionalEffect] ^definition = "How the variant affects overall function, e.g. loss of function, gain of function, or loss of heterozygosity - a Sequence Ontology term under SO:0001536 (functional_effect_variant)."
-* component[functionalEffect].code = http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs#functional-effect
-* component[functionalEffect].code ^short = "functional-effect"
+// functional-effect is inherited from GR
+* component[functional-effect] ^short = "Functional Effect"
+* component[functional-effect] ^definition = "How the variant affects overall function, e.g. loss of function, gain of function, or loss of heterozygosity - a Sequence Ontology term under SO:0001536 (functional_effect_variant)."

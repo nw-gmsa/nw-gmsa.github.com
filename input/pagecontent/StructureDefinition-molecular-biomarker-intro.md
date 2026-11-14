@@ -4,4 +4,4 @@ This is currently being elaborated and subject to change.
 
 ### Reference
 
-- HL7 FHIR Genomic Reporting [Molecular Biomarker](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-molecular-biomarker.html)
+- HL7 FHIR Genomic Reporting [Molecular Biomarker](https://hl7.org/fhir/uv/genomics-reporting/STU3/StructureDefinition-molecular-biomarker.html)

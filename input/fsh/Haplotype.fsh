@@ -1,5 +1,5 @@
 Profile:        Haplotype
-Parent:         GenomicObservation
+Parent:         http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/haplotype
 Id:             Haplotype
 Title:          "Haplotype (Observation)"
 Description:    """
@@ -10,4 +10,4 @@ Description:    """
 //* ^keyword[+] = #genomics "Genomics"
 //* ^keyword[+] = #diagnostics "Diagnostics"
 
-* code = $loinc#84414-2
+* insert GenomicObservation

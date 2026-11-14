@@ -3,12 +3,12 @@ This is currently being elaborated and subject to change.
 </div>
 
 <div class="alert alert-info" role="alert">
-<b>HL7 FHIR Genomic Reporting:</b> <a href="https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-variant.html" _target="_blank">Variant</a>
+<b>HL7 FHIR Genomic Reporting:</b> <a href="https://hl7.org/fhir/uv/genomics-reporting/STU3/StructureDefinition-variant.html" _target="_blank">Variant</a><br/><b>HL7 Europe Laboratory Report:</b> also conforms to <a href="https://hl7.eu/fhir/laboratory/2.1.0/StructureDefinition-Observation-resultslab-eu-lab.html" _target="_blank">Observation Results: laboratory</a> (imposed profile)
 </div>
 
 ### Reference
 
-- HL7 FHIR Genomic Reporting [Variant](https://build.fhir.org/ig/HL7/genomics-reporting/StructureDefinition-variant.html)
+- HL7 FHIR Genomic Reporting [Variant](https://hl7.org/fhir/uv/genomics-reporting/STU3/StructureDefinition-variant.html)
 - HL7 v2 [Lab Result Interface (LRI)](https://confluence.hl7.org/download/attachments/25559919/2018%2004%2003%20-%20V2%20LRI%20-%20Ch.%205%20CG%20and%20Code%20System%20Tables.pdf?api=v2) Section 2 Discrete genetic variant panel
 - GA4GH [Genetic Variation Formats (VCF)](https://www.ga4gh.org/product/genetic-variation-formats-vcf/)
 - openEHR [Genomic variant result](https://ckm.openehr.org/ckm/archetypes/1013.1.3759)
@@ -95,7 +95,7 @@ The computational outputs are reviewed by Genomic Clinical Scientists or laborat
 | Genomic DNA change g.HGVS                     | 81290-9 | CodeableConcept                      |                                                                                                                                                            | 0..1        | 2a           | Observation.component[genomic-hgvs]                      | NC_000003.11:g.128625063C>T | &#x2713; |
 | Transcript reference sequence [Identifier]    | 51958-7 | CodeableConcept       |                                                                                                                                                            | 0..1        | 2a           | Observation.component[representative-transcript-ref-seq] | NM_014049.4                 | &#x2713; |
 | Genomic source class [Type]                   | 48002-0 | CodeableConcept       | [Genetic variant source](https://loinc.org/LL378-1)                                                                                                        | 0..1        | 2a           | Observation.component[genomic-source-class]              | Somatic                     | &#x2713; |
-| DNA change type                               | 48019-4 | CodeableConcept       | [LOINC DNA change type](https://loinc.org/48019-4) or [DNA Change Type](https://build.fhir.org/ig/HL7/genomics-reporting/ValueSet-dna-change-type-vs.html) | 0..1        | 2a           | Observation.component[coding-change-type]                | Substitution                | &#x2713; |
+| DNA change type                               | 48019-4 | CodeableConcept       | [LOINC DNA change type](https://loinc.org/48019-4) or [DNA Change Type](https://hl7.org/fhir/uv/genomics-reporting/STU3/ValueSet-dna-change-type-vs.html) | 0..1        | 2a           | Observation.component[coding-change-type]                | Substitution                | &#x2713; |
 | Allelic state                                 | 53034-5 | CodeableConcept       | [Genetic variant allelic state](https://loinc.org/LL381-5)                                                                                                 | 0..1        | 2a           | Observation.component[allelic-state]                     | Heterozygous                | &#x2713; |
 | Origin of germline genetic variant [Type]     | 94186-4 | CodeableConcept       | [Origin of Genetic Variance](https://loinc.org/LL5489-1)                                                                                                   | 0..1        | n/a          | Observation.component[variant-inheritance]               | Maternal                    | &#x2713; |
 | Genomic reference sequence [ID]               | 48013-7 | CodeableConcept       |                                                                                                                                                            | 0..1             | 2a           | Observation.component                                    |                             | &#x2713; |
