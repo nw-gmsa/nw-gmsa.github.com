@@ -444,7 +444,7 @@ groups:
       - Patient/Patient-Birmingham
   -ex-example-wgs:
     name: "Example: Whole Genome Sequencing (WGS)"
-    description: "Whole Genome Sequencing closed loop referrals: R27.3 Paediatric disorders trio (Gilly Brough), ordered by the dWGS Trio sub-order dWGS-Trio-r26000000203-p26000000104 (see the dWGS examples), with the referral (O21) and the RGL's report (R01) messages, and R54.3 Hereditary ataxia with a result from another laboratory (Robert Blackburn), with its order (O21) message and FHIR Document report"
+    description: "Whole Genome Sequencing closed loop referrals: R27.3 Paediatric disorders trio (Gilly Brough), ordered by the dWGS Trio sub-order dWGS-Trio-r26000000203-p26000000104 (see the dWGS examples), with the referral (O19) and the RGL's report (R01) messages, and R54.3 Hereditary ataxia with a result from another laboratory (Robert Blackburn), with its order (O21) message and FHIR Document report"
     resources:
       - Bundle/FHIRDocumentGeneticReportBundle-WGS
       - Composition/Composition-GenomicsReport-WGS
@@ -461,13 +461,13 @@ groups:
       - Patient/Patient-Brough
       - Patient/Patient-Blackburn
       - Bundle/GenomicsOrderMessage-WGS-Referral
-      - MessageHeader/MessageHeader-O21-WGS-Referral
+      - MessageHeader/MessageHeader-O19-WGS-Referral
       - Bundle/GenomicsReportMessage-WGS-Referral
       - MessageHeader/MessageHeader-R01-WGS-Referral
       - DiagnosticReport/DiagnosticReport-WGS-Referral
   -ex-example-rapid-prenatal-exome:
     name: "Example: Rapid Prenatal Exome Sequencing"
-    description: "Rapid prenatal exome sequencing (R21 Fetal anomalies with a likely genetic cause) for Fetus Wigan: the Laboratory Order (O21) from Manchester University NHS FT to the North West GLH, the sub-order (O21) to North Thames GLH via GOMS, its order status (O51), the sub-order report and Laboratory Report (R01) messages, and the resources they carry"
+    description: "Rapid prenatal exome sequencing (R21 Fetal anomalies with a likely genetic cause) for Fetus Wigan: the Laboratory Order (O21) from Manchester University NHS FT to the North West GLH, the sub-order (O21) to North Thames GLH via GOMS, its order status (O51), the sub-order report and Laboratory Report (R01) messages, the referral of the family to clinical genetics (O19), and the resources they carry"
     resources:
       - Bundle/GenomicsOrderMessage-RPX
       - Bundle/GenomicsReportMessage-RPX-FirstLine
@@ -477,6 +477,7 @@ groups:
       - Bundle/GenomicOrderStatusMessage-RPX-NotTested
       - Bundle/GenomicsSubOrderReportMessage-RPX
       - Bundle/GenomicsReportMessage-RPX
+      - Bundle/GenomicsReferralMessage-RPX
       - MessageHeader/MessageHeader-RPX-Order
       - MessageHeader/MessageHeader-RPX-FirstLineReport
       - MessageHeader/MessageHeader-RPX-SubOrder
@@ -485,6 +486,7 @@ groups:
       - MessageHeader/MessageHeader-RPX-NotTested
       - MessageHeader/MessageHeader-RPX-SubOrderReport
       - MessageHeader/MessageHeader-RPX-Report
+      - MessageHeader/MessageHeader-RPX-Referral
       - Patient/Patient-Fetus-Wigan
       - Patient/Patient-Mother-Wigan
       - Patient/Patient-Father-Wigan
@@ -492,12 +494,10 @@ groups:
       - PractitionerRole/PractitionerRole-Requester-FetalMedicine-R0A
       - ServiceRequest/ServiceRequest-RPX-Order
       - ServiceRequest/ServiceRequest-RPX-SubOrder
+      - ServiceRequest/ServiceRequest-RPX-Referral
+      - Group/Group-RPX-Family-Wigan
       - Specimen/Specimen-RPX-Fetal
-      - Specimen/Specimen-RPX-Mother
-      - Specimen/Specimen-RPX-Father
       - Specimen/Specimen-RPX-Fetal-DNA
-      - Specimen/Specimen-RPX-Mother-DNA
-      - Specimen/Specimen-RPX-Father-DNA
       - Task/Task-RPX-SubOrder-Accepted
       - Task/Task-RPX-SubOrder-Declined
       - Task/Task-RPX-NotTested

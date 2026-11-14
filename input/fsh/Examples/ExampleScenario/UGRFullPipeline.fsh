@@ -39,7 +39,7 @@ Usage: #definition
 * insert Instance_Empty(Request7, Binary, "Search FHIR Repository", [[ Retrieve the Laboratory Report by its identifier. Then retrieve the test results it links to with `GET [base]/DiagnosticReport?identifier=[system]|[value]&_include=DiagnosticReport:result` ]])
 * insert Instance_Empty(Reply7, Bundle, "Search results", [[ The Laboratory Report and the test results with their `Observation`s ]])
 
-* insert Instance_Empty(Request8, Bundle, "HL7 FHIR Document - Genomic Report", [[ The Laboratory Report merged with the test results: its `result` lists the test results `Observation`s ]])
+* insert Instance_Empty(Request8, Bundle, "HL7 FHIR Document - Genomic Report", [[ The Laboratory Report merged with the test results: its `result` lists the test results `Observation`s. The document includes every `Observation` from the R01 Test Results and Laboratory Report messages ]])
 * insert InstanceVersion(8, "HL7 FHIR Document", FHIRDocumentGeneticReportBundle-ctDNA-OmicsDSS, [[ Laboratory Report merged with the Test Results ]])
 
 * process[+]

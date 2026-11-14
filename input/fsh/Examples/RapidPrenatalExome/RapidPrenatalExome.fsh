@@ -1,7 +1,8 @@
 // FHIR Messages for the Rapid Prenatal Exome Sequencing ExampleScenario: the R21 Laboratory Order (LAB-1)
 // from the fetal medicine unit at Manchester University NHS FT (R0A) to the North West GLH (699X0), the
-// sub-order (LAB-35) to North Thames GLH via GOMS, its order status (O51), the sub-order report (LAB-36)
-// and the Laboratory Report (LAB-3).
+// sub-order (LAB-35) to North Thames GLH via GOMS, its order status (O51), the sub-order report (LAB-36),
+// the Laboratory Report (LAB-3), and the referral of the family to clinical genetics (O19).
+// The Laboratory Orders and Reports are for the fetus only; the parents appear only in the referral's family.
 // North Thames GLH is identified by its ODS code (69A70).
 // Fictitious example: patients, identifiers, dates and results are illustrative only.
 
@@ -27,7 +28,7 @@ Usage: #example
 Instance: Patient-Mother-Wigan
 InstanceOf: Patient
 Title: "Patient - Imogen Wigan (mother)"
-Description: "Fictitious example: the mother of the fetus, tested as part of the trio"
+Description: "Fictitious example: the mother of the fetus, a member of the family referred to clinical genetics"
 Usage: #example
 
 * active = true
@@ -44,7 +45,7 @@ Usage: #example
 Instance: Patient-Father-Wigan
 InstanceOf: Patient
 Title: "Patient - Daniel Wigan (father)"
-Description: "Fictitious example: the father of the fetus, tested as part of the trio"
+Description: "Fictitious example: the father of the fetus, a member of the family referred to clinical genetics"
 Usage: #example
 
 * active = true
@@ -92,18 +93,10 @@ Usage: #example
 
 // Laboratory Order (LAB-1)
 
-RuleSet: RPXSpecimen(subject, display, nhs)
-* status = #available
-* subject.reference = {subject}
-* subject.display = {display}
-* subject.identifier
-  * system = "https://fhir.nhs.uk/Id/nhs-number"
-  * value = {nhs}
-
 Instance: ServiceRequest-RPX-Order
 InstanceOf: ServiceRequest
 Title: "ServiceRequest - R21 Fetal anomalies with a likely genetic cause (Laboratory Order)"
-Description: "Fictitious example: the LAB-1 order from the fetal medicine unit to the North West GLH. The fetus is the subject; the parents' samples are sent with it for trio testing."
+Description: "Fictitious example: the LAB-1 order from the fetal medicine unit to the North West GLH. The fetus is the subject."
 Usage: #example
 
 * identifier[OrderPlacerNumber].type = $v2-0203#PLAC
@@ -130,10 +123,8 @@ Usage: #example
   * identifier.value = "699X0"
   * display = "NORTH WEST GLH"
 * specimen[+].reference = "urn:uuid:a633e6ef-1a20-488a-8c1f-8574343e4dce"
-* specimen[+].reference = "urn:uuid:0d4e7321-620c-4cdc-b490-6b24b4f622df"
-* specimen[+].reference = "urn:uuid:9889dd88-2770-412a-bc62-06ddb31ebd2d"
 * reasonCode[+] = $GCC#R21 "Fetal anomalies with a likely genetic cause"
-* note[+].text = "Short, bowed long bones and multiple fractures on the 20-week anomaly scan. Fetal medicine and clinical genetics MDT agree the case is eligible for rapid prenatal exome sequencing (R21.2) if QF-PCR (R21.1) and microarray (R21.3) are normal. Trio samples sent."
+* note[+].text = "Short, bowed long bones and multiple fractures on the 20-week anomaly scan. Fetal medicine and clinical genetics MDT agree the case is eligible for rapid prenatal exome sequencing (R21.2) if QF-PCR (R21.1) and microarray (R21.3) are normal. Amniotic fluid sample sent."
 
 Instance: Specimen-RPX-Fetal
 InstanceOf: Specimen
@@ -152,42 +143,6 @@ Usage: #example
 * subject.display = "Baby WIGAN"
 * type = $sct#119373006 "Amniotic fluid specimen"
 * collection.collectedDateTime = "2026-09-07T11:00:00+00:00"
-* receivedTime = "2026-09-07T15:30:00+00:00"
-
-Instance: Specimen-RPX-Mother
-InstanceOf: Specimen
-Title: "Specimen - peripheral blood (EDTA) (Imogen Wigan)"
-Description: "Fictitious example: the mother's blood sample for trio testing"
-Usage: #example
-
-* identifier[PlacerSpecimenNumber]
-  * value = "R0A26-0090412"
-  * system = "http://www.acme.org/specimen/R0A"
-  * type = $v2-0203#PLAC
-  * assigner.identifier.system = $ods-code
-  * assigner.identifier.value = "R0A"
-* insert RPXSpecimen("urn:uuid:379561af-adbb-4894-985f-6fbcc501804e", "Imogen WIGAN", "9737383400")
-* type = $sct#258580003 "Whole blood specimen"
-* type.text = "Peripheral blood (EDTA)"
-* collection.collectedDateTime = "2026-09-07T11:15:00+00:00"
-* receivedTime = "2026-09-07T15:30:00+00:00"
-
-Instance: Specimen-RPX-Father
-InstanceOf: Specimen
-Title: "Specimen - peripheral blood (EDTA) (Daniel Wigan)"
-Description: "Fictitious example: the father's blood sample for trio testing"
-Usage: #example
-
-* identifier[PlacerSpecimenNumber]
-  * value = "R0A26-0090413"
-  * system = "http://www.acme.org/specimen/R0A"
-  * type = $v2-0203#PLAC
-  * assigner.identifier.system = $ods-code
-  * assigner.identifier.value = "R0A"
-* insert RPXSpecimen("urn:uuid:62386423-16ab-4cf3-9a8f-bccc651d503c", "Daniel WIGAN", "9737383419")
-* type = $sct#258580003 "Whole blood specimen"
-* type.text = "Peripheral blood (EDTA)"
-* collection.collectedDateTime = "2026-09-07T11:20:00+00:00"
 * receivedTime = "2026-09-07T15:30:00+00:00"
 
 Instance: MessageHeader-RPX-Order
@@ -214,19 +169,15 @@ Usage: #example
 Instance: GenomicsOrderMessage-RPX
 InstanceOf: BundleMessage
 Title: "Bundle 'Message' - Laboratory Order R21 (O21), rapid prenatal exome"
-Description: "Fictitious example: the LAB-1 Laboratory Order for the [Rapid Prenatal Exome Sequencing](ExampleScenario-RapidPrenatalExomeSequencing.html) scenario. The fetus is the subject, the mother is linked to the fetus by a RelatedPerson, and the trio's samples are carried with the order."
+Description: "Fictitious example: the LAB-1 Laboratory Order for the [Rapid Prenatal Exome Sequencing](ExampleScenario-RapidPrenatalExomeSequencing.html) scenario. The fetus is the subject and the mother is linked to the fetus by a RelatedPerson. Only the fetus's sample is carried with the order."
 Usage: #example
 * insert MessageBundle("urn:uuid:a4703fa8-ed94-4fdc-a97d-aa7321175b75", "2026-09-07T12:00:00+00:00")
 * insert EntryDocument("urn:uuid:16055b1c-db32-41a0-b4aa-239c2863d5d3", MessageHeader-RPX-Order)
 * insert EntryDocument("urn:uuid:e322141b-af07-451d-92ab-74d192151818", Patient-Fetus-Wigan)
 * insert EntryDocument("urn:uuid:956ca674-005e-4459-81d8-6bd888729244", RelatedPerson-Mother-Wigan)
-* insert EntryDocument("urn:uuid:379561af-adbb-4894-985f-6fbcc501804e", Patient-Mother-Wigan)
-* insert EntryDocument("urn:uuid:62386423-16ab-4cf3-9a8f-bccc651d503c", Patient-Father-Wigan)
 * insert EntryDocument("urn:uuid:c8d8cbf0-8e46-429d-b100-44450cbef105", ServiceRequest-RPX-Order)
 * insert EntryDocument("urn:uuid:a363d816-72f1-416b-92d1-2dc74c00e1e8", PractitionerRole-Requester-FetalMedicine-R0A)
 * insert EntryDocument("urn:uuid:a633e6ef-1a20-488a-8c1f-8574343e4dce", Specimen-RPX-Fetal)
-* insert EntryDocument("urn:uuid:0d4e7321-620c-4cdc-b490-6b24b4f622df", Specimen-RPX-Mother)
-* insert EntryDocument("urn:uuid:9889dd88-2770-412a-bc62-06ddb31ebd2d", Specimen-RPX-Father)
 
 // Laboratory Report - first-line result (LAB-3), alternative
 
@@ -250,7 +201,6 @@ RuleSet: RPXBasedOnOrder
   * identifier.value = "1702114"
   * identifier.assigner.identifier.system = $ods-code
   * identifier.assigner.identifier.value = "R0A"
-  * reference = "urn:uuid:c8d8cbf0-8e46-429d-b100-44450cbef105"
 
 RuleSet: RPXReportFetus
 * status = #final
@@ -321,7 +271,6 @@ Usage: #example
 * insert EntryDocument("urn:uuid:8c1ec142-93a8-4980-b604-8ab5019efdb2", MessageHeader-RPX-FirstLineReport)
 * insert EntryDocument("urn:uuid:e322141b-af07-451d-92ab-74d192151818", Patient-Fetus-Wigan)
 * insert EntryDocument("urn:uuid:33106624-dfc8-400c-9cbe-d569823366fb", DiagnosticReport-RPX-FirstLine)
-* insert EntryDocument("urn:uuid:c8d8cbf0-8e46-429d-b100-44450cbef105", ServiceRequest-RPX-Order)
 * insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)
 
 // Sub-order (LAB-35)
@@ -329,7 +278,7 @@ Usage: #example
 Instance: ServiceRequest-RPX-SubOrder
 InstanceOf: ServiceRequest
 Title: "ServiceRequest - R21.2 rapid prenatal exome sequencing (sub-order to North Thames GLH)"
-Description: "Fictitious example: the LAB-35 sub-order from the North West GLH to North Thames GLH, with the trio's DNA. It is based on the Laboratory Order, and its requester and performer organisations differ."
+Description: "Fictitious example: the LAB-35 sub-order from the North West GLH to North Thames GLH, with the fetal DNA. It is based on the Laboratory Order, and its requester and performer organisations differ."
 Usage: #example
 
 * identifier[OrderPlacerNumber].type = $v2-0203#PLAC
@@ -338,7 +287,6 @@ Usage: #example
 * identifier[OrderPlacerNumber].assigner.identifier.system = $ods-code
 * identifier[OrderPlacerNumber].assigner.identifier.value = "699X0"
 * basedOn[+]
-  * reference = "urn:uuid:c8d8cbf0-8e46-429d-b100-44450cbef105"
   * type = "ServiceRequest"
   * identifier.type = $v2-0203#PLAC
   * identifier.system = "urn:oid:1.2.840.114350.1.13.0.1.7.2.798268"
@@ -364,10 +312,8 @@ Usage: #example
   * identifier.value = "69A70"
   * display = "NORTH THAMES GLH"
 * specimen[+].reference = "urn:uuid:5bcb951e-a64c-461f-9334-8b9f932b1cbc"
-* specimen[+].reference = "urn:uuid:90bc6eee-c9dc-451a-96ba-7f77c16efd0c"
-* specimen[+].reference = "urn:uuid:dfae9e30-5ca3-4c7d-a191-d2e3bed1efa2"
 * reasonCode[+] = $GCC#R21 "Fetal anomalies with a likely genetic cause"
-* note[+].text = "Short, bowed long bones and multiple fractures on the 20-week anomaly scan. QF-PCR (R21.1) and microarray (R21.3) normal. Trio DNA sent by sample transport."
+* note[+].text = "Short, bowed long bones and multiple fractures on the 20-week anomaly scan. QF-PCR (R21.1) and microarray (R21.3) normal. Fetal DNA sent by sample transport."
 
 RuleSet: RPXDNA(value, parent)
 * identifier[PlacerSpecimenNumber]
@@ -390,24 +336,6 @@ Usage: #example
 * status = #available
 * subject.reference = "urn:uuid:e322141b-af07-451d-92ab-74d192151818"
 * subject.display = "Baby WIGAN"
-
-Instance: Specimen-RPX-Mother-DNA
-InstanceOf: Specimen
-Title: "Specimen - DNA (Imogen Wigan)"
-Description: "Fictitious example: DNA extracted by the North West GLH from the mother's blood"
-Usage: #example
-
-* insert RPXDNA("G26-41180-D2", "urn:uuid:0d4e7321-620c-4cdc-b490-6b24b4f622df")
-* insert RPXSpecimen("urn:uuid:379561af-adbb-4894-985f-6fbcc501804e", "Imogen WIGAN", "9737383400")
-
-Instance: Specimen-RPX-Father-DNA
-InstanceOf: Specimen
-Title: "Specimen - DNA (Daniel Wigan)"
-Description: "Fictitious example: DNA extracted by the North West GLH from the father's blood"
-Usage: #example
-
-* insert RPXDNA("G26-41180-D3", "urn:uuid:9889dd88-2770-412a-bc62-06ddb31ebd2d")
-* insert RPXSpecimen("urn:uuid:62386423-16ab-4cf3-9a8f-bccc651d503c", "Daniel WIGAN", "9737383419")
 
 Instance: MessageHeader-RPX-SubOrder
 InstanceOf: MessageHeader
@@ -433,23 +361,15 @@ Usage: #example
 Instance: GenomicsSubOrderMessage-RPX
 InstanceOf: BundleMessage
 Title: "Bundle 'Message' - Sub-order R21.2 (O21), rapid prenatal exome"
-Description: "Fictitious example: the LAB-35 sub-order with the trio's DNA in the [Rapid Prenatal Exome Sequencing](ExampleScenario-RapidPrenatalExomeSequencing.html) scenario. `intent` = `filler-order` and `basedOn` the Laboratory Order; the Laboratory Order is carried so the testing GLH has the original order details."
+Description: "Fictitious example: the LAB-35 sub-order with the fetal DNA in the [Rapid Prenatal Exome Sequencing](ExampleScenario-RapidPrenatalExomeSequencing.html) scenario. `intent` = `filler-order` and `basedOn` the Laboratory Order, identified by its Order Placer Number; the Laboratory Order is not included."
 Usage: #example
 * insert MessageBundle("urn:uuid:ffdea2ea-45f1-4204-96b4-03a6d74e3404", "2026-09-11T09:00:00+00:00")
 * insert EntryDocument("urn:uuid:556a15b5-8d1d-47b3-9963-da6addd974c3", MessageHeader-RPX-SubOrder)
 * insert EntryDocument("urn:uuid:e322141b-af07-451d-92ab-74d192151818", Patient-Fetus-Wigan)
 * insert EntryDocument("urn:uuid:956ca674-005e-4459-81d8-6bd888729244", RelatedPerson-Mother-Wigan)
-* insert EntryDocument("urn:uuid:379561af-adbb-4894-985f-6fbcc501804e", Patient-Mother-Wigan)
-* insert EntryDocument("urn:uuid:62386423-16ab-4cf3-9a8f-bccc651d503c", Patient-Father-Wigan)
 * insert EntryDocument("urn:uuid:bc2ce852-cad4-4f35-aeac-c1c1021bf680", ServiceRequest-RPX-SubOrder)
-* insert EntryDocument("urn:uuid:c8d8cbf0-8e46-429d-b100-44450cbef105", ServiceRequest-RPX-Order)
-* insert EntryDocument("urn:uuid:a363d816-72f1-416b-92d1-2dc74c00e1e8", PractitionerRole-Requester-FetalMedicine-R0A)
 * insert EntryDocument("urn:uuid:5bcb951e-a64c-461f-9334-8b9f932b1cbc", Specimen-RPX-Fetal-DNA)
-* insert EntryDocument("urn:uuid:90bc6eee-c9dc-451a-96ba-7f77c16efd0c", Specimen-RPX-Mother-DNA)
-* insert EntryDocument("urn:uuid:dfae9e30-5ca3-4c7d-a191-d2e3bed1efa2", Specimen-RPX-Father-DNA)
 * insert EntryDocument("urn:uuid:a633e6ef-1a20-488a-8c1f-8574343e4dce", Specimen-RPX-Fetal)
-* insert EntryDocument("urn:uuid:0d4e7321-620c-4cdc-b490-6b24b4f622df", Specimen-RPX-Mother)
-* insert EntryDocument("urn:uuid:9889dd88-2770-412a-bc62-06ddb31ebd2d", Specimen-RPX-Father)
 
 // Sub-order status (O51)
 
@@ -626,8 +546,6 @@ Usage: #example
 * code.coding[+] = $GTD#R21.2
 * code.coding[+] = $sct#1054161000000101 "Genetic report"
 * specimen[+].reference = "urn:uuid:5bcb951e-a64c-461f-9334-8b9f932b1cbc"
-* specimen[+].reference = "urn:uuid:90bc6eee-c9dc-451a-96ba-7f77c16efd0c"
-* specimen[+].reference = "urn:uuid:dfae9e30-5ca3-4c7d-a191-d2e3bed1efa2"
 * effectiveDateTime = "2026-09-10T16:00:00+00:00"
 * issued = "2026-09-26T14:00:00+00:00"
 * performer[organization]
@@ -640,7 +558,7 @@ Usage: #example
   * identifier.system = "https://fhir.hl7.org.uk/Id/gmc-number"
   * identifier.value = "C7654321"
   * display = "FICTITIOUS, Priya"
-* conclusion = "Heterozygous de novo pathogenic variant in COL1A1 identified in the fetus, consistent with osteogenesis imperfecta and the scan findings. The variant was not detected in either parent."
+* conclusion = "Heterozygous pathogenic variant in COL1A1 identified in the fetus, consistent with osteogenesis imperfecta and the scan findings. Referral to clinical genetics is recommended for genetic counselling and parental testing."
 * conclusionCode[+] = $GTOC#311 "RESULT CONSISTENT WITH REFERRAL INDICATION"
 
 Instance: MessageHeader-RPX-SubOrderReport
@@ -674,11 +592,7 @@ Usage: #example
 * insert EntryDocument("urn:uuid:e322141b-af07-451d-92ab-74d192151818", Patient-Fetus-Wigan)
 * insert EntryDocument("urn:uuid:26c66a34-9028-4b14-866e-42d8284b17c4", DiagnosticReport-RPX-SubOrder)
 * insert EntryDocument("urn:uuid:bc2ce852-cad4-4f35-aeac-c1c1021bf680", ServiceRequest-RPX-SubOrder)
-* insert EntryDocument("urn:uuid:379561af-adbb-4894-985f-6fbcc501804e", Patient-Mother-Wigan)
-* insert EntryDocument("urn:uuid:62386423-16ab-4cf3-9a8f-bccc651d503c", Patient-Father-Wigan)
 * insert EntryDocument("urn:uuid:5bcb951e-a64c-461f-9334-8b9f932b1cbc", Specimen-RPX-Fetal-DNA)
-* insert EntryDocument("urn:uuid:90bc6eee-c9dc-451a-96ba-7f77c16efd0c", Specimen-RPX-Mother-DNA)
-* insert EntryDocument("urn:uuid:dfae9e30-5ca3-4c7d-a191-d2e3bed1efa2", Specimen-RPX-Father-DNA)
 
 // Laboratory Report (LAB-3)
 
@@ -706,7 +620,7 @@ Usage: #example
   * type = #Organization
   * display = "NORTH WEST GLH"
 * insert RPXInterpreterNW
-* conclusion = "QF-PCR (R21.1) and microarray (R21.3): normal. Rapid prenatal exome sequencing (R21.2), performed by North Thames GLH: heterozygous de novo pathogenic variant in COL1A1, consistent with osteogenesis imperfecta."
+* conclusion = "QF-PCR (R21.1) and microarray (R21.3): normal. Rapid prenatal exome sequencing (R21.2), performed by North Thames GLH: heterozygous pathogenic variant in COL1A1, consistent with osteogenesis imperfecta. Referral to clinical genetics is recommended for genetic counselling and parental testing."
 * conclusionCode[+] = $GTOC#311 "RESULT CONSISTENT WITH REFERRAL INDICATION"
 
 Instance: MessageHeader-RPX-Report
@@ -730,5 +644,112 @@ Usage: #example
 * insert EntryDocument("urn:uuid:5ffedde8-4c1f-4850-8248-b4f730db0a50", MessageHeader-RPX-Report)
 * insert EntryDocument("urn:uuid:e322141b-af07-451d-92ab-74d192151818", Patient-Fetus-Wigan)
 * insert EntryDocument("urn:uuid:0cd9fd4c-7934-4815-9573-e278229d3b9c", DiagnosticReport-RPX-Report)
-* insert EntryDocument("urn:uuid:c8d8cbf0-8e46-429d-b100-44450cbef105", ServiceRequest-RPX-Order)
 * insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)
+
+// Referral to clinical genetics (O19)
+
+Instance: Group-RPX-Family-Wigan
+InstanceOf: FamilyGeneticGroup
+Title: "Family Genetic Group - Wigan family (Trio)"
+Description: "Fictitious example: the Wigan family - the fetus (proband) and both parents - the subject of the referral to clinical genetics"
+Usage: #example
+
+* identifier[PedigreeNumber]
+  * type = $v2-0203#PGN
+  * system = "https://fhir.nhs.uk/Id/genomics-pedigree-number"
+  * value = "PED-2026-0117"
+  * assigner.identifier.system = $ods-code
+  * assigner.identifier.value = "R0A"
+* type = #person
+* actual = true
+* code = $nwgmsa#FamilyStructureTrio "Trio"
+* name = "Wigan family"
+* quantity = 3
+* member[+]
+  * entity.reference = "urn:uuid:e322141b-af07-451d-92ab-74d192151818"
+  * entity.display = "Baby WIGAN"
+  * extension[relationship].valueCodeableConcept = $v3-RoleCode#ONESELF "self"
+* member[+]
+  * entity.reference = "urn:uuid:379561af-adbb-4894-985f-6fbcc501804e"
+  * entity.display = "Imogen WIGAN"
+  * extension[relationship].valueCodeableConcept = $v3-RoleCode#MTH "mother"
+* member[+]
+  * entity.reference = "urn:uuid:62386423-16ab-4cf3-9a8f-bccc651d503c"
+  * entity.display = "Daniel WIGAN"
+  * extension[relationship].valueCodeableConcept = $v3-RoleCode#FTH "father"
+
+Instance: ServiceRequest-RPX-Referral
+InstanceOf: http://hl7.org/fhir/StructureDefinition/ServiceRequest
+Title: "ServiceRequest - Referral of the Wigan family to clinical genetics"
+Description: "Fictitious example: the fetal medicine unit refers the family to clinical genetics after rapid prenatal exome sequencing finds a pathogenic COL1A1 variant in the fetus. A clinical referral, not a laboratory order: the subject is the family."
+Usage: #example
+
+* identifier[+]
+  * type = $v2-0203#PLAC
+  * system = "urn:oid:1.2.840.114350.1.13.0.1.7.2.798268"
+  * value = "1702388"
+  * assigner.identifier.system = $ods-code
+  * assigner.identifier.value = "R0A"
+* status = #active
+* intent = #order
+* priority = #urgent
+* code = $sct#306119003 "Referral to clinical genetics service"
+* subject
+  * reference = "urn:uuid:bf896497-c4b0-494b-a2b6-896f444f7bcb"
+  * type = "Group"
+  * display = "Wigan family"
+* authoredOn = "2026-09-28"
+* requester
+  * type = "PractitionerRole"
+  * reference = "urn:uuid:a363d816-72f1-416b-92d1-2dc74c00e1e8"
+  * display = "FICTITIOUS, Ruth"
+* performer[+]
+  * type = "Organization"
+  * identifier.system = $ods-code
+  * identifier.value = "R0A"
+  * display = "MANCHESTER CENTRE FOR GENOMIC MEDICINE"
+* reasonCode[+].text = "Heterozygous pathogenic variant in COL1A1 in the fetus, consistent with osteogenesis imperfecta"
+* supportingInfo[+]
+  * type = "DiagnosticReport"
+  * identifier.system = "http://www.acme.org/diagnosticreport/identifiers"
+  * identifier.value = "G26-41180"
+  * identifier.assigner.identifier.system = $ods-code
+  * identifier.assigner.identifier.value = "699X0"
+  * display = "R21 Laboratory Report, Fetus Wigan"
+* note[+].text = "Rapid prenatal exome sequencing (R21.2): heterozygous pathogenic variant in COL1A1 in the fetus, consistent with osteogenesis imperfecta. Please see the family for genetic counselling and parental testing."
+
+Instance: MessageHeader-RPX-Referral
+InstanceOf: MessageHeader
+Title: "Message Header - Referral to clinical genetics (O19)"
+Description: "Fictitious example: referral from the fetal medicine unit (MANCHESTER UNIVERSITY NHS FOUNDATION TRUST) to the MANCHESTER CENTRE FOR GENOMIC MEDICINE, sent via NHS e-Referral Service (eRS) or a Genomics England Limited application"
+Usage: #example
+
+* meta.lastUpdated = "2026-09-28T14:00:00+00:00"
+* eventCoding = http://terminology.hl7.org/CodeSystem/v2-0003#O19
+* sender.identifier.system = $ods-code
+* sender.identifier.value = "R0A"
+* sender.display = "MANCHESTER UNIVERSITY NHS FOUNDATION TRUST"
+* destination.receiver.identifier.system = $ods-code
+* destination.receiver.identifier.value = "R0A"
+* destination.receiver.display = "MANCHESTER CENTRE FOR GENOMIC MEDICINE"
+* destination.endpoint = "https://fhir.nwgenomics.nhs.uk/Endpoint/eRS"
+* source.endpoint = "https://fhir.nwgenomics.nhs.uk/Endpoint/EPIC"
+* source.software = "EPIC"
+* focus[+]
+  * reference = "urn:uuid:36e24ddc-f64e-4bcf-8183-96f271488af8"
+  * type = #ServiceRequest
+* definition = "https://fhir.nwgenomics.nhs.uk/MessageDefinition/referral-order"
+
+Instance: GenomicsReferralMessage-RPX
+InstanceOf: BundleMessage
+Title: "Bundle 'Message' - Referral to clinical genetics (O19), rapid prenatal exome"
+Description: "Fictitious example: the referral of the family to clinical genetics in the [Rapid Prenatal Exome Sequencing](ExampleScenario-RapidPrenatalExomeSequencing.html) scenario. The subject is the family (a [Family Genetic Group](StructureDefinition-FamilyGeneticGroup.html)) and the Laboratory Report is referenced as supporting information."
+Usage: #example
+* insert MessageBundle("urn:uuid:98d2ed39-d05b-4e43-808e-f1dda6e134dc", "2026-09-28T14:00:00+00:00")
+* insert EntryDocument("urn:uuid:78460128-33dc-4e24-9a89-6d094f9a5401", MessageHeader-RPX-Referral)
+* insert EntryDocument("urn:uuid:36e24ddc-f64e-4bcf-8183-96f271488af8", ServiceRequest-RPX-Referral)
+* insert EntryDocument("urn:uuid:bf896497-c4b0-494b-a2b6-896f444f7bcb", Group-RPX-Family-Wigan)
+* insert EntryDocument("urn:uuid:e322141b-af07-451d-92ab-74d192151818", Patient-Fetus-Wigan)
+* insert EntryDocument("urn:uuid:379561af-adbb-4894-985f-6fbcc501804e", Patient-Mother-Wigan)
+* insert EntryDocument("urn:uuid:62386423-16ab-4cf3-9a8f-bccc651d503c", Patient-Father-Wigan)
+* insert EntryDocument("urn:uuid:a363d816-72f1-416b-92d1-2dc74c00e1e8", PractitionerRole-Requester-FetalMedicine-R0A)

@@ -2,11 +2,13 @@ Instance: RapidPrenatalExomeSequencing
 InstanceOf: ExampleScenario
 Title:       "Rapid Prenatal Exome Sequencing"
 Description: """
-Rapid prenatal exome sequencing for fetal anomalies with a likely genetic cause (clinical indication R21). Only two Genomic Laboratory Hubs (GLHs) in England are testing GLHs for this test. The other GLHs, including the North West, act as home GLHs: they do the first-line tests, prepare the trio's DNA and send a sub-order to a testing GLH.
+Rapid prenatal exome sequencing for fetal anomalies with a likely genetic cause (clinical indication R21). Only two Genomic Laboratory Hubs (GLHs) in England are testing GLHs for this test. The other GLHs, including the North West, act as home GLHs: they do the first-line tests, prepare the fetal DNA and send a sub-order to a testing GLH. The Laboratory Orders and Reports are for the fetus only.
 
 This is the one inter-GLH flow with published evidence. The time pressure is what makes it important: a pregnancy can't wait, and each hand-off adds days. The published turnaround from the sample arriving at the testing GLH is about 15 days, and about a quarter of referrals were not accepted by the testing GLH, so a declined sub-order is a realistic path too. Today the sub-order is probably made with forms and sample transport; the NHS England Genomic Order Management Service (GOMS) is shown here as the route for it.
 
 For testing, the testing GLH is assumed to be North Thames GLH (hosted by Great Ormond Street Hospital, GOSH). The North West GLH and North Thames GLH are both onboarded to GOMS for testing. Which testing GLH the North West GLH uses in live service is to be confirmed.
+
+When an abnormality is found, the fetal medicine unit may refer the family to clinical genetics, for genetic counselling and parental testing. This is a clinical referral (HL7 v2 `OMG^O19`), not a laboratory order, sent via the NHS e-Referral Service (eRS) or a Genomics England Limited application, and its subject is the family. See [Genetic Clinical Referral](StructureDefinition-GeneticClinicalReferral.html).
 """
 Usage: #definition
 
@@ -14,18 +16,20 @@ Usage: #definition
 * name = "RapidPrenatalExomeSequencing"
 
 * insert ActorEntity(fmu, "Fetal Medicine Unit - Manchester University NHS FT", [[ [Order Placer](ActorDefinition-OrderPlacer.html). The fetal medicine unit at St Mary's Hospital, Manchester University NHS Foundation Trust (R0A), that finds the fetal anomaly on scan. A multidisciplinary team of fetal medicine and clinical genetics agrees the case is eligible ]])
-* insert ActorEntity(homeglh, "Home GLH - North West", [[ [Order Filler](ActorDefinition-OrderFiller.html) of the Laboratory Order and [Requestor](ActorDefinition-Requestor.html) of the sub-order. Does the first-line tests and prepares the trio's DNA ]])
+* insert ActorEntity(homeglh, "Home GLH - North West", [[ [Order Filler](ActorDefinition-OrderFiller.html) of the Laboratory Order and [Requestor](ActorDefinition-Requestor.html) of the sub-order. Does the first-line tests and prepares the fetal DNA ]])
 * insert ActorEntity(goms, "Genomic Order Management Service", [[ NHS England GOMS. An [Intermediary](ActorDefinition-Intermediary.html) that routes the sub-order and its status and results between the GLHs ]])
 * insert ActorEntity(ugr, "Central Repository - UGR", [[ NHS England Unified Genomic Record. A central repository of genomic reports for each patient ]])
 * insert ActorEntity(testglh, "Testing GLH - North Thames", [[ [Subcontractor](ActorDefinition-Subcontractor.html). North Thames GLH, one of the two national testing GLHs for rapid prenatal exome sequencing. Sequences, interprets and reports ]])
+* insert ActorEntity(referral, "Referral service - eRS or Genomics England", [[ The NHS e-Referral Service (eRS) or a Genomics England Limited application, which carries the referral to clinical genetics ]])
+* insert ActorEntity(clingen, "Clinical Genetics - Manchester Centre for Genomic Medicine", [[ The clinical genetics service that receives the referral and sees the family ]])
 
-* insert Instance_Empty(Order, Bundle, "Laboratory Order", [[ LAB-1 order for R21. The fetus is the subject, with the mother linked to the fetus. Samples for the fetus and both parents are sent to the home GLH ]])
-* insert InstanceVersion(1, "HL7 FHIR Message O21", GenomicsOrderMessage-RPX, [[ Laboratory Order for Fetus Wigan, with the trio's samples ]])
-* insert Instance_Empty(FirstLine, Binary, "First-line tests", [[ QF-PCR aneuploidy screen (R21.1) and chromosomal microarray (R21.3), then cell culture where needed and DNA extraction for the trio. Internal to the home GLH ]])
+* insert Instance_Empty(Order, Bundle, "Laboratory Order", [[ LAB-1 order for R21. The fetus is the subject, with the mother linked to the fetus. Only the fetus's sample (amniotic fluid) is sent to the home GLH ]])
+* insert InstanceVersion(1, "HL7 FHIR Message O21", GenomicsOrderMessage-RPX, [[ Laboratory Order for Fetus Wigan, with the fetal sample ]])
+* insert Instance_Empty(FirstLine, Binary, "First-line tests", [[ QF-PCR aneuploidy screen (R21.1) and chromosomal microarray (R21.3), then cell culture where needed and DNA extraction for the fetus. Internal to the home GLH ]])
 * insert Instance_Empty(EarlyReport, Bundle, "Laboratory Report - first-line result", [[ LAB-3 report when QF-PCR or microarray finds the cause, so exome sequencing does not go ahead ]])
 * insert InstanceVersion(1, "HL7 FHIR Message R01", GenomicsReportMessage-RPX-FirstLine, [[ QF-PCR finds the cause ]])
-* insert Instance_Empty(SubOrder, Bundle, "Sub-order", [[ LAB-35 sub-order with the trio's DNA. `intent` = `filler-order` and `basedOn` the Laboratory Order. The requester (home GLH) and performer (testing GLH) organisations differ ]])
-* insert InstanceVersion(1, "HL7 FHIR Message O21", GenomicsSubOrderMessage-RPX, [[ Sub-order to North Thames GLH with the trio's DNA ]])
+* insert Instance_Empty(SubOrder, Bundle, "Sub-order", [[ LAB-35 sub-order with the fetal DNA. `intent` = `filler-order` and `basedOn` the Laboratory Order. The requester (home GLH) and performer (testing GLH) organisations differ ]])
+* insert InstanceVersion(1, "HL7 FHIR Message O21", GenomicsSubOrderMessage-RPX, [[ Sub-order to North Thames GLH with the fetal DNA ]])
 * insert Instance_Empty(Accept, Bundle, "Sub-order accepted", [[ Order status: the testing GLH accepts the sub-order. In FHIR a `Task` with `status` = `accepted`; in HL7 v2 OSU^O51 ]])
 * insert InstanceVersion(1, "HL7 FHIR Message O51", GenomicOrderStatusMessage-RPX-Accepted, [[ North Thames GLH accepts the sub-order ]])
 * insert Instance_Empty(Decline, Bundle, "Sub-order declined", [[ Order status: the testing GLH declines the sub-order, for example because it does not meet the eligibility criteria. In FHIR a `Task` with `status` = `rejected` and a `statusReason` ]])
@@ -37,6 +41,8 @@ Usage: #definition
 * insert Instance_Empty(ReportDocument, Binary, "Laboratory Report document", [[ HL7 v2 `MDM^T02` with the Laboratory Report as a PDF, base64 encoded in OBX-5 (`ED`). A FHIR Document may replace the PDF later ]])
 * insert Instance_Empty(Cancel, Bundle, "Order status - not tested", [[ The home GLH tells the requesting clinician the exome sequencing was not done ]])
 * insert InstanceVersion(1, "HL7 FHIR Message O51", GenomicOrderStatusMessage-RPX-NotTested, [[ Rapid prenatal exome sequencing not done ]])
+* insert Instance_Empty(Referral, Bundle, "Referral to clinical genetics", [[ Clinical referral (`OMG^O19`) of the family to clinical genetics. The subject is the family, a [Family Genetic Group](StructureDefinition-FamilyGeneticGroup.html) of the fetus and both parents, and the Laboratory Report is supporting information ]])
+* insert InstanceVersion(1, "HL7 FHIR Message O19", GenomicsReferralMessage-RPX, [[ Referral of the Wigan family to the Manchester Centre for Genomic Medicine ]])
 
 * process[+]
   * title = "1. Laboratory Order (LAB-1)"
@@ -45,7 +51,7 @@ Usage: #definition
 
 * process[+]
   * title = "2. First-line tests at the home GLH"
-  * description = "The home GLH does QF-PCR and chromosomal microarray first. Exome sequencing only goes ahead if both are negative. It does any cell culture and extracts DNA for the trio."
+  * description = "The home GLH does QF-PCR and chromosomal microarray first. Exome sequencing only goes ahead if both are negative. It does any cell culture and extracts the fetal DNA."
   * insert ProcessCreateEvent(2, "Perform first-line tests", homeglh, homeglh, FirstLine, , [[ Internal to the home GLH ]])
 
 * process[+]
@@ -55,7 +61,7 @@ Usage: #definition
 
 * process[+]
   * title = "3. Sub-order to the testing GLH (LAB-35)"
-  * description = "The home GLH sends the sub-order through GOMS and the trio's DNA by sample transport. The sub-order points back to the Laboratory Order, and its requester and performer organisations differ."
+  * description = "The home GLH sends the sub-order through GOMS and the fetal DNA by sample transport. The sub-order points back to the Laboratory Order, and its requester and performer organisations differ."
   * insert ProcessCreateEvent(4, "Send sub-order", homeglh, goms, SubOrder, 1, [[ ]])
   * insert ProcessCreateEvent(5, "Route sub-order", goms, testglh, SubOrder, 1, [[ ]])
 
@@ -87,3 +93,9 @@ Usage: #definition
   * title = "7. Send to the central repository"
   * description = "The home GLH's Laboratory Report is sent to the NHS England Unified Genomic Record (UGR) through the RIE."
   * insert ProcessCreateEvent(14, "Send Laboratory Report document", homeglh, ugr, ReportDocument, , [[ HL7 v2 `MDM^T02` with the report as a PDF ]])
+
+* process[+]
+  * title = "8. Referral to clinical genetics (O19)"
+  * description = "When the Laboratory Report shows an abnormality, the fetal medicine unit may refer the family to clinical genetics for genetic counselling and parental testing, via eRS or a Genomics England Limited application. The subject of the referral is the family."
+  * insert ProcessCreateEvent(15, "Send referral", fmu, referral, Referral, 1, [[ See [Genetic Clinical Referral](StructureDefinition-GeneticClinicalReferral.html) ]])
+  * insert ProcessCreateEvent(16, "Route referral", referral, clingen, Referral, 1, [[ ]])

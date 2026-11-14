@@ -1,21 +1,22 @@
 // FHIR Messages for the Whole Genome Sequencing ExampleScenario: the Laboratory Order (LAB-1) for the dWGS Trio
 // referral r26000000203 from North Cumbria Integrated Care NHS FT (RNN) to the Requesting Genomic Laboratory
 // (NE&Y Genomics, 699N0), and the RGL's Laboratory Report (LAB-3) back to the Trust.
-// In practice the referral is registered in Genomics England's TOMS, which is not FHIR; the O21 message
-// illustrates the content of the referral as it reaches the RGL.
+// In practice the referral is registered in Genomics England's TOMS, which is not FHIR; the O19 message
+// illustrates the content of the referral as it reaches the RGL. Its subject is the family.
+// Later orders and reports reference the referral by its NGIS referral_id and do not carry it.
 // The referral, family and family members are referenced by relative references, so their entries use RESTful fullUrls.
 // Fictitious example: identifiers, dates and results are illustrative only.
 
 // Laboratory Order (LAB-1)
 
-Instance: MessageHeader-O21-WGS-Referral
+Instance: MessageHeader-O19-WGS-Referral
 InstanceOf: MessageHeader
-Title: "Message Header - Laboratory Order R27.3 (O21), dWGS Trio referral r26000000203"
+Title: "Message Header - Laboratory Order R27.3 (O19), dWGS Trio referral r26000000203"
 Description: "Fictitious example: LAB-1 referral from NORTH CUMBRIA INTEGRATED CARE NHS FOUNDATION TRUST to the RGL, NE&Y GENOMICS"
 Usage: #example
 
 * meta.lastUpdated = "2026-08-10T10:00:00+00:00"
-* eventCoding = http://terminology.hl7.org/CodeSystem/v2-0003#O21
+* eventCoding = http://terminology.hl7.org/CodeSystem/v2-0003#O19
 * sender.identifier.system = $ods-code
 * sender.identifier.value = "RNN"
 * sender.display = "NORTH CUMBRIA INTEGRATED CARE NHS FOUNDATION TRUST"
@@ -31,11 +32,11 @@ Usage: #example
 
 Instance: GenomicsOrderMessage-WGS-Referral
 InstanceOf: BundleMessage
-Title: "Bundle 'Message' - Laboratory Order R27.3 (O21), dWGS Trio referral r26000000203"
-Description: "Fictitious example: the LAB-1 referral for the Trio family r26000000203 in the [Whole Genome Sequencing](ExampleScenario-WholeGenomeSequencing.html) scenario. The original order has the [Family Genetic Group](Group-FamilyGeneticGroup-dWGS-Trio-r26000000203.html) as its subject, with a FamilyMemberHistory for each family member's relationship to the Proband. Illustrates the CIP-API `REFERRAL`, `PEDIGREE` and `PEDIGREE_MEMBER`."
+Title: "Bundle 'Message' - Laboratory Order R27.3 (O19), dWGS Trio referral r26000000203"
+Description: "Fictitious example: the LAB-1 referral for the Trio family r26000000203 in the [Whole Genome Sequencing](ExampleScenario-WholeGenomeSequencing.html) scenario. The original order has the [Family Genetic Group](Group-FamilyGeneticGroup-dWGS-Trio-r26000000203.html) as its subject, with a FamilyMemberHistory for each family member's relationship to the Proband. Illustrates the CIP-API `REFERRAL`, `PEDIGREE` and `PEDIGREE_MEMBER`. Later sub-orders and reports reference the referral by its NGIS referral_id and do not include it."
 Usage: #example
 * insert MessageBundle("urn:uuid:12b7d4f6-088c-4c27-994b-a19901a9d6f3", "2026-08-10T10:00:00+00:00")
-* insert EntryDocument("urn:uuid:716c6790-993a-4f5d-89ed-1cbf106180a6", MessageHeader-O21-WGS-Referral)
+* insert EntryDocument("urn:uuid:716c6790-993a-4f5d-89ed-1cbf106180a6", MessageHeader-O19-WGS-Referral)
 * insert EntryDocument("https://fhir.nwgenomics.nhs.uk/ServiceRequest/ServiceRequest-dWGS-Trio-r26000000203-Referral", ServiceRequest-dWGS-Trio-r26000000203-Referral)
 * insert EntryDocument("https://fhir.nwgenomics.nhs.uk/Group/FamilyGeneticGroup-dWGS-Trio-r26000000203", FamilyGeneticGroup-dWGS-Trio-r26000000203)
 * insert EntryDocument("https://fhir.nwgenomics.nhs.uk/FamilyMemberHistory/FamilyMemberHistory-dWGS-Trio-r26000000203-p26000000105", FamilyMemberHistory-dWGS-Trio-r26000000203-p26000000105)
@@ -47,7 +48,7 @@ Usage: #example
 Instance: DiagnosticReport-WGS-Referral
 InstanceOf: LaboratoryReport
 Title: "Diagnostic Report - R27.3 Paediatric disorders (WGS), dWGS Trio referral r26000000203"
-Description: "Fictitious example: the RGL's LAB-3 report for the referral, based on the original order. Logically a report on the whole family; the Proband is the subject, as the DiagnosticReport profile only allows a Patient."
+Description: "Fictitious example: the RGL's LAB-3 report for the referral, based on the original order, which it identifies by the NGIS referral_id. Logically a report on the whole family; the Proband is the subject, as the DiagnosticReport profile only allows a Patient."
 Usage: #example
 
 * identifier[ReportIdentifier]
@@ -62,7 +63,6 @@ Usage: #example
   * identifier.value = "r26000000203"
   * identifier.assigner.identifier.system = $ods-code
   * identifier.assigner.identifier.value = "8J834"
-  * reference = "https://fhir.nwgenomics.nhs.uk/ServiceRequest/ServiceRequest-dWGS-Trio-r26000000203-Referral"
 * status = #final
 * category[Genetics] = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
 * code.coding[+] = $GTD#R27.3
@@ -111,11 +111,9 @@ Usage: #example
 Instance: GenomicsReportMessage-WGS-Referral
 InstanceOf: BundleMessage
 Title: "Bundle 'Message' - Laboratory Report R27.3 (R01), dWGS Trio referral r26000000203"
-Description: "Fictitious example: the RGL's LAB-3 Laboratory Report for the referral in the [Whole Genome Sequencing](ExampleScenario-WholeGenomeSequencing.html) scenario. See the [WGS FHIR Document](Bundle-FHIRDocumentGeneticReportBundle-WGS.html) for the report content with its variants."
+Description: "Fictitious example: the RGL's LAB-3 Laboratory Report for the referral in the [Whole Genome Sequencing](ExampleScenario-WholeGenomeSequencing.html) scenario. The report identifies the original order by its NGIS referral_id; the original order is not included. See the [WGS FHIR Document](Bundle-FHIRDocumentGeneticReportBundle-WGS.html) for the report content with its variants."
 Usage: #example
 * insert MessageBundle("urn:uuid:759b5ea3-98d0-4ec7-a954-59d00a1160f4", "2026-11-02T12:00:00+00:00")
 * insert EntryDocument("urn:uuid:f9153314-1f04-465e-b1a9-168b953e6e2f", MessageHeader-R01-WGS-Referral)
 * insert EntryDocument("https://fhir.nwgenomics.nhs.uk/Patient/Patient-Brough", Patient-Brough)
 * insert EntryDocument("urn:uuid:efc76d09-a4d9-46cb-8aa5-98748594ceae", DiagnosticReport-WGS-Referral)
-* insert EntryDocument("https://fhir.nwgenomics.nhs.uk/ServiceRequest/ServiceRequest-dWGS-Trio-r26000000203-Referral", ServiceRequest-dWGS-Trio-r26000000203-Referral)
-* insert EntryDocument("https://fhir.nwgenomics.nhs.uk/Group/FamilyGeneticGroup-dWGS-Trio-r26000000203", FamilyGeneticGroup-dWGS-Trio-r26000000203)

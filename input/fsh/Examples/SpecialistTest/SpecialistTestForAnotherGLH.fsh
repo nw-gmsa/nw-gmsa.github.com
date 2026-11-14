@@ -141,7 +141,6 @@ Usage: #example
 * identifier[OrderPlacerNumber].assigner.identifier.system = $ods-code
 * identifier[OrderPlacerNumber].assigner.identifier.value = "69A70"
 * basedOn[+]
-  * reference = "urn:uuid:05d4f3bb-bf8c-4b5f-9508-0b2458d80582"
   * type = "ServiceRequest"
   * identifier.type = $v2-0203#PLAC
   * identifier.system = "http://www.acme.org/servicerequest/RP4"
@@ -210,14 +209,12 @@ Usage: #example
 Instance: GenomicsSubOrderMessage-SPT
 InstanceOf: BundleMessage
 Title: "Bundle 'Message' - Sub-order R67.1 (O21), specialist test"
-Description: "Fictitious example: the LAB-35 sub-order from North Thames GLH to the North West GLH in the [Specialist Test for Another GLH](ExampleScenario-SpecialistTestForAnotherGLH.html) scenario. `intent` = `filler-order` and `basedOn` the Laboratory Order."
+Description: "Fictitious example: the LAB-35 sub-order from North Thames GLH to the North West GLH in the [Specialist Test for Another GLH](ExampleScenario-SpecialistTestForAnotherGLH.html) scenario. `intent` = `filler-order` and `basedOn` the Laboratory Order, identified by its Order Placer Number; the Laboratory Order is not included."
 Usage: #example
 * insert MessageBundle("urn:uuid:67770cf6-9e01-4afa-a5b2-ae63217e7e4a", "2026-09-16T09:00:00+00:00")
 * insert EntryDocument("urn:uuid:aa6f9fb4-6c45-4330-8edf-ef499d43a1f6", MessageHeader-SPT-SubOrder)
 * insert EntryDocument("urn:uuid:74fe4bf0-26d8-4b8c-90eb-b6ef80d887e0", Patient-Camden)
 * insert EntryDocument("urn:uuid:99bb76ca-edcb-44f4-95ff-b9b1c7b95780", ServiceRequest-SPT-SubOrder)
-* insert EntryDocument("urn:uuid:05d4f3bb-bf8c-4b5f-9508-0b2458d80582", ServiceRequest-SPT-Order)
-* insert EntryDocument("urn:uuid:3c1438f5-b280-4049-9764-340018769127", PractitionerRole-Requester-Audiology-RP4)
 * insert EntryDocument("urn:uuid:2b589e1b-b81f-48b5-b1a9-a4875b24c6b1", Specimen-SPT-DNA)
 * insert EntryDocument("urn:uuid:0a869ae7-44ee-4657-8494-bfe7297971ba", Specimen-SPT-Blood)
 
@@ -443,7 +440,6 @@ Usage: #example
   * identifier.value = "GOSH-5520917"
   * identifier.assigner.identifier.system = $ods-code
   * identifier.assigner.identifier.value = "RP4"
-  * reference = "urn:uuid:05d4f3bb-bf8c-4b5f-9508-0b2458d80582"
 * insert SPTReport
 * issued = "2026-10-21T10:00:00+00:00"
 * performer[organization]
@@ -489,5 +485,3 @@ Usage: #example
 * insert EntryDocument("urn:uuid:4ae66ef9-04bb-49c1-9d8c-6112f8e12115", MessageHeader-SPT-Report)
 * insert EntryDocument("urn:uuid:74fe4bf0-26d8-4b8c-90eb-b6ef80d887e0", Patient-Camden)
 * insert EntryDocument("urn:uuid:bf3c6351-d196-4a3c-b989-1b50aab6fe85", DiagnosticReport-SPT-Report)
-* insert EntryDocument("urn:uuid:05d4f3bb-bf8c-4b5f-9508-0b2458d80582", ServiceRequest-SPT-Order)
-* insert EntryDocument("urn:uuid:3c1438f5-b280-4049-9764-340018769127", PractitionerRole-Requester-Audiology-RP4)
