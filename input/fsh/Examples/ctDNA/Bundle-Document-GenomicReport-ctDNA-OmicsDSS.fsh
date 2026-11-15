@@ -1,4 +1,4 @@
-// UGR Full Pipeline scenario, steps 5 and 6 (Laboratory Report and FHIR Document). The resources are kept together in workflow order to demonstrate the scenario.
+// ctDNA scenario, steps 5 and 6 (Laboratory Report and FHIR Document). The resources are kept together in workflow order to demonstrate the scenario.
 // Step 5: iGene (Lab 1) writes the narrative Laboratory Report (LTW LAB-3) for ctDNA order T26-59XG.
 // Step 6: the RIE merges that report with the LAB-5 test results held in the FHIR Repository (adding their Observations to result)
 // and builds a FHIR Document for the UGR. The Test Results are also placed in the Results from other laboratories section.

@@ -793,7 +793,7 @@ Usage: #example
 Instance: ServiceRequest-RPX-Referral
 InstanceOf: http://hl7.org/fhir/StructureDefinition/ServiceRequest
 Title: "ServiceRequest - Referral of the Wigan family to clinical genetics"
-Description: "Fictitious example: the fetal medicine unit refers the family to clinical genetics after rapid prenatal exome sequencing finds a pathogenic COL1A1 variant in the fetus. A clinical referral, not a laboratory order: the subject is the family."
+Description: "Fictitious example: the fetal medicine unit refers the family to clinical genetics after rapid prenatal exome sequencing finds a pathogenic COL1A1 variant in the fetus. A clinical referral, not a laboratory order: the subject is the family, and the testing done is referenced as the Genomic Report document on the central registry."
 Usage: #example
 
 * identifier[+]
@@ -805,7 +805,7 @@ Usage: #example
 * status = #active
 * intent = #order
 * priority = #urgent
-* code = $sct#306119003 "Referral to clinical genetics service"
+* code = $sct#306119003 "Referral to genetics service"
 * subject
   * reference = "urn:uuid:bf896497-c4b0-494b-a2b6-896f444f7bcb"
   * type = "Group"
@@ -822,12 +822,9 @@ Usage: #example
   * display = "MANCHESTER CENTRE FOR GENOMIC MEDICINE"
 * reasonCode[+].text = "Heterozygous pathogenic variant in COL1A1 in the fetus, consistent with osteogenesis imperfecta"
 * supportingInfo[+]
-  * type = "DiagnosticReport"
-  * identifier.system = "http://www.acme.org/diagnosticreport/identifiers"
-  * identifier.value = "G26-41180"
-  * identifier.assigner.identifier.system = $ods-code
-  * identifier.assigner.identifier.value = "699X0"
-  * display = "R21 Laboratory Report, Fetus Wigan"
+  * type = "DocumentReference"
+  * reference = "urn:uuid:279b5e4d-ed85-4ce7-a1c2-99d23b90e12d"
+  * display = "R21 Genomic Report document (central registry), Fetus Wigan"
 * note[+].text = "Rapid prenatal exome sequencing (R21.2): heterozygous pathogenic variant in COL1A1 in the fetus, consistent with osteogenesis imperfecta. Please see the family for genetic counselling and parental testing."
 
 Instance: MessageHeader-RPX-Referral
@@ -855,7 +852,7 @@ Usage: #example
 Instance: GenomicsReferralMessage-RPX
 InstanceOf: BundleMessage
 Title: "Bundle 'Message' - Referral to clinical genetics (O19), rapid prenatal exome"
-Description: "Fictitious example: the referral of the family to clinical genetics in the [Rapid Prenatal Exome Sequencing](ExampleScenario-RapidPrenatalExomeSequencing.html) scenario. The subject is the family (a [Family Genetic Group](StructureDefinition-FamilyGeneticGroup.html)) and the Laboratory Report is referenced as supporting information."
+Description: "Fictitious example: the referral of the family to clinical genetics in the [Rapid Prenatal Exome Sequencing](ExampleScenario-RapidPrenatalExomeSequencing.html) scenario. The subject is the family (a [Family Genetic Group](StructureDefinition-FamilyGeneticGroup.html)) and the Genomic Report document for the testing done, held on the central registry, is referenced as supporting information."
 Usage: #example
 * insert MessageBundle("urn:uuid:98d2ed39-d05b-4e43-808e-f1dda6e134dc", "2026-09-28T14:00:00+00:00")
 * insert EntryDocument("urn:uuid:78460128-33dc-4e24-9a89-6d094f9a5401", MessageHeader-RPX-Referral)
@@ -865,3 +862,58 @@ Usage: #example
 * insert EntryDocument("urn:uuid:379561af-adbb-4894-985f-6fbcc501804e", Patient-Mother-Wigan)
 * insert EntryDocument("urn:uuid:62386423-16ab-4cf3-9a8f-bccc651d503c", Patient-Father-Wigan)
 * insert EntryDocument("urn:uuid:a363d816-72f1-416b-92d1-2dc74c00e1e8", PractitionerRole-Requester-FetalMedicine-R0A)
+* insert EntryDocument("urn:uuid:279b5e4d-ed85-4ce7-a1c2-99d23b90e12d", DocumentReference-RPX-Registry-GenomicReport)
+
+Instance: DocumentReference-RPX-Registry-GenomicReport
+InstanceOf: DocumentReference
+Title: "Document Reference - R21 Genomic Report document on the central registry, Fetus Wigan"
+Description: "Fictitious example: the Genomic Report document (FHIR Document) for the R21 testing, held on the central registry (UGR) and referenced from the referral to clinical genetics. Identified by the North West GLH's Report Identifier and the Laboratory Order's Order Placer Number."
+Usage: #example
+
+* identifier[+]
+  * type = $v2-0203#FILL
+  * system = "http://www.acme.org/diagnosticreport/identifiers"
+  * value = "G26-41180"
+  * assigner.identifier.system = $ods-code
+  * assigner.identifier.value = "699X0"
+* status = #current
+* date = "2026-09-28T09:30:00+00:00"
+* type = $sct#1054161000000101 "Genetic report"
+* author[+]
+  * type = "Organization"
+  * identifier.system = $ods-code
+  * identifier.value = "699X0"
+  * display = "NORTH WEST GLH"
+* custodian
+  * type = "Organization"
+  * identifier.system = $ods-code
+  * identifier.value = "X26"
+  * display = "NHS ENGLAND"
+* context.related[DiagnosticReport]
+  * type = "DiagnosticReport"
+  * identifier.type = $v2-0203#FILL
+  * identifier.system = "http://www.acme.org/diagnosticreport/identifiers"
+  * identifier.value = "G26-41180"
+  * identifier.assigner.identifier.system = $ods-code
+  * identifier.assigner.identifier.value = "699X0"
+* context.related[OrderPlacerNumber]
+  * type = "ServiceRequest"
+  * identifier.type = $v2-0203#PLAC
+  * identifier.system = "urn:oid:1.2.840.114350.1.13.0.1.7.2.798268"
+  * identifier.value = "1702114"
+  * identifier.assigner.identifier.system = $ods-code
+  * identifier.assigner.identifier.value = "R0A"
+* context.event[+] = $test-directory#R21.2
+* content[+]
+  * attachment.contentType = #application/fhir+json
+  * attachment.url = "https://ugr.example.nhs.uk/FHIR/R4/Bundle/G26-41180"
+  * attachment.title = "R21 Genomic Report - Baby WIGAN"
+// A fetus has no NHS Number: the Medical Record Number is carried as the source patient identifier
+* subject.reference = "urn:uuid:e322141b-af07-451d-92ab-74d192151818"
+* subject.display = "Baby WIGAN"
+* context.sourcePatientInfo.identifier
+  * type = $v2-0203#MR
+  * value = "R0A-F26-0042"
+  * system = "http://www.acme.org/mrn/R0A"
+  * assigner.identifier.system = $ods-code
+  * assigner.identifier.value = "R0A"

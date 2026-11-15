@@ -52,7 +52,6 @@ Usage: #example
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R210 Inherited MMR deficiency (Lynch syndrome). History of carcinoma.</p></div>"
   * entry[+].reference = "urn:uuid:c0627dab-6f98-4846-beba-d9412ed3a60e"
-  * entry[+].reference = "urn:uuid:d6c19529-a64e-476b-b896-303abec26a79"
 
 * section[+]
   * title = "Specimen"
@@ -115,6 +114,9 @@ Usage: #example
 * insert EntryDocument("urn:uuid:c0627dab-6f98-4846-beba-d9412ed3a60e", ServiceRequest-LynchSyndrome)
 * insert EntryDocument("urn:uuid:ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8", ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8)
 * insert EntryDocument("urn:uuid:635eaecb-a9c9-488e-978b-f63b12ce52b1", Specimen-LynchSyndrome)
+// Copy of the pathology report, from the order (ServiceRequest.supportingInfo)
+* insert EntryDocument("urn:uuid:5bbcf981-f3bc-4f17-ad6b-330ce6aedbf0", DocumentReference-LynchSyndrome-PathologyReport)
+* insert EntryDocument("urn:uuid:7ef49da9-f398-496a-befe-37ec391d9bf7", Binary-Sample)
 * insert EntryDocument("urn:uuid:c64139e7-f02d-409c-bf34-75e8bf23bc80", DiagnosticReportGenomicsReportLS)
 //  Performer
 * insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)
@@ -125,5 +127,3 @@ Usage: #example
 * insert EntryDocument("urn:uuid:9541381a-ba5f-4e4c-a748-507fd7f701f7", Observation-LynchSyndrome-MMR-IHC)
 // Procedure
 * insert EntryDocument("urn:uuid:f0036554-cd1a-463c-ac8a-d891ca409af9", f0036554-cd1a-463c-ac8a-d891ca409af9)
-// Condition
-* insert EntryDocument("urn:uuid:d6c19529-a64e-476b-b896-303abec26a79", d6c19529-a64e-476b-b896-303abec26a79)

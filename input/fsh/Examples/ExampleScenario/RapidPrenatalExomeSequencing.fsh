@@ -41,7 +41,7 @@ Usage: #definition
 * insert Instance_Empty(ReportDocument, Binary, "Laboratory Report document", [[ HL7 v2 `MDM^T02` with the Laboratory Report as a PDF, base64 encoded in OBX-5 (`ED`). A FHIR Document may replace the PDF later ]])
 * insert Instance_Empty(Cancel, Bundle, "Order status - not tested", [[ The home GLH tells the requesting clinician the exome sequencing was not done ]])
 * insert InstanceVersion(1, "HL7 FHIR Message O51", GenomicOrderStatusMessage-RPX-NotTested, [[ Rapid prenatal exome sequencing not done ]])
-* insert Instance_Empty(Referral, Bundle, "Referral to clinical genetics", [[ Clinical referral (`OMG^O19`) of the family to clinical genetics. The subject is the family, a [Family Genetic Group](StructureDefinition-FamilyGeneticGroup.html) of the fetus and both parents, and the Laboratory Report is supporting information ]])
+* insert Instance_Empty(Referral, Bundle, "Referral to clinical genetics", [[ Clinical referral (`OMG^O19`) of the family to clinical genetics. The subject is the family, a [Family Genetic Group](StructureDefinition-FamilyGeneticGroup.html) of the fetus and both parents. The testing done is referenced as supporting information: the Genomic Report document held on the central registry (a `DocumentReference`) ]])
 * insert InstanceVersion(1, "HL7 FHIR Message O19", GenomicsReferralMessage-RPX, [[ Referral of the Wigan family to the Manchester Centre for Genomic Medicine ]])
 
 * process[+]

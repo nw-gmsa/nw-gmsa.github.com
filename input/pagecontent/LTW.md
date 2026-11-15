@@ -535,7 +535,7 @@ An order from one LIMS to another is not automatically a work order. What decide
 
 A system that receives both kinds of order can find them with one search, e.g. `ServiceRequest?intent=filler-order,instance-order&performer:identifier=...`.
 
-Where the work order goes to another LIMS in the same laboratory, the ODS code cannot identify the receiving system, so `ServiceRequest.performer` references it as a [Laboratory Information System](StructureDefinition-LaboratoryInformationSystem.html) (`Device`), see [ServiceRequest - Performer](StructureDefinition-ServiceRequest.html#performer). The test results it returns (LAB-5) are `preliminary` and identify the producing system in `Observation.device`; see the [UGR Full Pipeline](ExampleScenario-UGRFullPipeline.html) scenario.
+Where the work order goes to another LIMS in the same laboratory, the ODS code cannot identify the receiving system, so `ServiceRequest.performer` references it as a [Laboratory Information System](StructureDefinition-LaboratoryInformationSystem.html) (`Device`), see [ServiceRequest - Performer](StructureDefinition-ServiceRequest.html#performer). The test results it returns (LAB-5) are `preliminary` and identify the producing system in `Observation.device`; see the [ctDNA](ExampleScenario-ctDNA.html) scenario.
 
 ##### LAB-4 Process Flow
 

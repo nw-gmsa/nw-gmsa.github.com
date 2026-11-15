@@ -1,6 +1,6 @@
-Instance: UGRFullPipeline
+Instance: ctDNA
 InstanceOf: ExampleScenario
-Title:       "UGR Full Pipeline"
+Title:       "ctDNA"
 Description: """
 A genomic test order is fulfilled by two laboratory systems in the same laboratory. The RIE routes the Laboratory Order to Lab 1 and stores a copy in the FHIR Repository. Lab 1 places a work order with Lab 2, and also sends it to the RIE, which stores it in the FHIR Repository. Lab 2 sends the sequencing data to Analytics Processing, which retrieves the work order from the FHIR Repository so the results can be linked to it. Lab 2 returns the test results to Lab 1, which writes the narrative Laboratory Report. The RIE combines that report with the test results into a FHIR Document for a central registry, such as the NHS England Unified Genomic Record (UGR).
 
@@ -9,7 +9,7 @@ There are two `DiagnosticReport`s: the test results from Lab 2 (LAB-5) and the n
 Usage: #definition
 
 * status = #draft
-* name = "UGRFullPipeline"
+* name = "ctDNA"
 
 * insert ActorEntity(placer, "Order Placer/Electronic Patient Record", [[ [Order Placer](ActorDefinition-OrderPlacer.html) ]])
 * insert ActorEntity(lab1, "Lab 1 - Order Filler LIMS", [[ [Order Filler](ActorDefinition-OrderFiller.html) that receives the Laboratory Order and writes the Laboratory Report ]])

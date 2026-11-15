@@ -1,12 +1,12 @@
 // Internal/logical example: the Analytics Processing request from DLIMS to OmicsDSS, internal to Lab 2 (both run by NW GLH, 699X0).
-// It is not exchanged: in the UGR Full Pipeline scenario Analytics Processing retrieves the iGene work order from the FHIR Repository instead.
+// It is not exchanged: in the ctDNA scenario Analytics Processing retrieves the iGene work order from the FHIR Repository instead.
 // Follows the iGene to DLIMS work order ServiceRequest-ctDNA-DLIMS-WorkOrder. Lab 2 returns the results to iGene (LAB-5).
 // Fictitious example: the work order identifier is illustrative only.
 
 Instance: ServiceRequest-ctDNA-OmicsDSS-WorkOrder
 InstanceOf: ServiceRequest
 Title: "ServiceRequest - Analytics Processing request from DLIMS to OmicsDSS (ctDNA, internal/logical)"
-Description: "Fictitious example, internal/logical only: DLIMS (Lab 2) asks OmicsDSS (Analytics Processing) to process the analysis requested in iGene work order D26-004512. It is internal to Lab 2 and not exchanged; in the UGR Full Pipeline scenario Analytics Processing retrieves the iGene work order from the FHIR Repository instead."
+Description: "Fictitious example, internal/logical only: DLIMS (Lab 2) asks OmicsDSS (Analytics Processing) to process the analysis requested in iGene work order D26-004512. It is internal to Lab 2 and not exchanged; in the ctDNA scenario Analytics Processing retrieves the iGene work order from the FHIR Repository instead."
 Usage: #example
 
 * identifier[OrderPlacerNumber].type = $v2-0203#PLAC

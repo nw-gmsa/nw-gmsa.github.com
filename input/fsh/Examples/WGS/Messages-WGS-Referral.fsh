@@ -33,15 +33,15 @@ Usage: #example
 Instance: GenomicsOrderMessage-WGS-Referral
 InstanceOf: BundleMessage
 Title: "Bundle 'Message' - Laboratory Order R27.3 (O19), dWGS Trio referral r26000000203"
-Description: "Fictitious example: the LAB-1 referral for the Trio family r26000000203 in the [Whole Genome Sequencing](ExampleScenario-WholeGenomeSequencing.html) scenario. The original order has the [Family Genetic Group](Group-FamilyGeneticGroup-dWGS-Trio-r26000000203.html) as its subject, with a FamilyMemberHistory for each family member's relationship to the Proband. Illustrates the CIP-API `REFERRAL`, `PEDIGREE` and `PEDIGREE_MEMBER`. Later sub-orders and reports reference the referral by its NGIS referral_id and do not include it."
+Description: "Fictitious example: the LAB-1 referral for the Trio family r26000000203 in the [Whole Genome Sequencing](ExampleScenario-WholeGenomeSequencing.html) scenario. The original order has the [Family Genetic Group](Group-FamilyGeneticGroup-dWGS-Trio-r26000000203.html) as its subject, and a `Patient` for each member of the family, referenced from `Group.member.entity`. Illustrates the CIP-API `REFERRAL`, `PEDIGREE` and `PEDIGREE_MEMBER`. Later sub-orders and reports reference the referral by its NGIS referral_id and do not include it."
 Usage: #example
 * insert MessageBundle("urn:uuid:12b7d4f6-088c-4c27-994b-a19901a9d6f3", "2026-08-10T10:00:00+00:00")
 * insert EntryDocument("urn:uuid:716c6790-993a-4f5d-89ed-1cbf106180a6", MessageHeader-O19-WGS-Referral)
 * insert EntryDocument("https://fhir.nwgenomics.nhs.uk/ServiceRequest/ServiceRequest-dWGS-Trio-r26000000203-Referral", ServiceRequest-dWGS-Trio-r26000000203-Referral)
 * insert EntryDocument("https://fhir.nwgenomics.nhs.uk/Group/FamilyGeneticGroup-dWGS-Trio-r26000000203", FamilyGeneticGroup-dWGS-Trio-r26000000203)
-* insert EntryDocument("https://fhir.nwgenomics.nhs.uk/FamilyMemberHistory/FamilyMemberHistory-dWGS-Trio-r26000000203-p26000000105", FamilyMemberHistory-dWGS-Trio-r26000000203-p26000000105)
-* insert EntryDocument("https://fhir.nwgenomics.nhs.uk/FamilyMemberHistory/FamilyMemberHistory-dWGS-Trio-r26000000203-p26000000106", FamilyMemberHistory-dWGS-Trio-r26000000203-p26000000106)
 * insert EntryDocument("https://fhir.nwgenomics.nhs.uk/Patient/Patient-Brough", Patient-Brough)
+* insert EntryDocument("https://fhir.nwgenomics.nhs.uk/Patient/Patient-Editestpatient-Thirteen", Patient-Editestpatient-Thirteen)
+* insert EntryDocument("https://fhir.nwgenomics.nhs.uk/Patient/Patient-Editestpatient-Six", Patient-Editestpatient-Six)
 
 // Laboratory Report (LAB-3)
 

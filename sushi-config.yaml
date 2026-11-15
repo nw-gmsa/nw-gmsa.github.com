@@ -460,6 +460,8 @@ groups:
       - PractitionerRole/PractitionerRole-Requester-Neurology-RM3
       - Patient/Patient-Brough
       - Patient/Patient-Blackburn
+      - Patient/Patient-Editestpatient-Thirteen
+      - Patient/Patient-Editestpatient-Six
       - Bundle/GenomicsOrderMessage-WGS-Referral
       - MessageHeader/MessageHeader-O19-WGS-Referral
       - Bundle/GenomicsReportMessage-WGS-Referral
@@ -499,6 +501,7 @@ groups:
       - ServiceRequest/ServiceRequest-RPX-SubOrder
       - ServiceRequest/ServiceRequest-RPX-Referral
       - Group/Group-RPX-Family-Wigan
+      - DocumentReference/DocumentReference-RPX-Registry-GenomicReport
       - Specimen/Specimen-RPX-Fetal
       - Specimen/Specimen-RPX-Fetal-DNA
       - Task/Task-RPX-SubOrder-Accepted
@@ -570,6 +573,13 @@ groups:
       - MessageHeader/MessageHeader-O21-LynchSyndrome
       - ServiceRequest/ServiceRequest-LynchSyndrome
       - Specimen/Specimen-LynchSyndrome
+      - DocumentReference/DocumentReference-LynchSyndrome-PathologyReport
+      - Bundle/GenomicsReferralMessage-LynchSyndrome
+      - MessageHeader/MessageHeader-LynchSyndrome-Referral
+      - ServiceRequest/ServiceRequest-LynchSyndrome-Referral
+      - Group/Group-LynchSyndrome-Family-Liverpool
+      - DocumentReference/DocumentReference-LynchSyndrome-Registry-GenomicReport
+      - Patient/Patient-Leeds
       - Bundle/GenomicsReportMessage-LynchSyndrome
       - MessageHeader/MessageHeader-R01-LynchSyndrome
       - DiagnosticReport/DiagnosticReport-LynchSyndrome-Report
@@ -626,7 +636,7 @@ groups:
       - Bundle/dWGS-Trio-r26000000203-p26000000106
   -ex-example-omics-dss:
     name: "Example: OMICS DSS Result Integration"
-    description: "NW-GMSA R01 Test Results message produced from a GA4GH VCF/Phenopacket by the 05 - Test Results notebook, and the work order (LAB-4) and Test Results (LAB-5) steps of the UGR Full Pipeline scenario"
+    description: "NW-GMSA R01 Test Results message produced from a GA4GH VCF/Phenopacket by the 05 - Test Results notebook, and the work order (LAB-4) and Test Results (LAB-5) steps of the ctDNA scenario"
     resources:
       - Bundle/ctdna9737383222-testresults
       - ServiceRequest/ServiceRequest-ctDNA-DLIMS-WorkOrder
