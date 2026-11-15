@@ -90,6 +90,10 @@ imaging finds and locates the abnormality, a biopsy takes a sample, histopatholo
 tests on the cancer cells, and genomic testing then looks for gene changes that guide treatment or show an inherited
 cause. The multidisciplinary team (MDT) brings the results together to agree the diagnosis and treatment plan.
 
+<div class="alert alert-info" role="alert">
+This section focuses on the pathway: the diagnostic services involved and the workflow between them. For cancer data models, see <a href="https://build.fhir.org/ig/HL7/fhir-mCODE-ig/">HL7 FHIR minimal Common Oncology Data Elements (mCODE)</a>, which is believed to have a similar data model to the NHS England National Disease Registration Service (NDRS) <a href="https://digital.nhs.uk/ndrs/data/data-sets/cosd">Cancer Outcomes and Services Data set (COSD)</a>, the national standard for collecting cancer data in the NHS.
+</div>
+
 ```mermaid
 graph TD;
 
