@@ -567,6 +567,35 @@ groups:
       - DocumentReference/DocumentReference-Pharmacogenomics-Report
       - PractitionerRole/PractitionerRole-Requester-Cardiology-RBQ
       - Patient/Patient-Northwich
+  -ex-example-haemato-oncology:
+    name: "Example: Suspected Blood Cancer - Haemato-Oncology Diagnostics"
+    description: "Suspected acute myeloid leukaemia for Hodor Tameside: the single order (O21), the cytogenetics and molecular genomic reflex sub-orders (O21) and their reports (R01), and the combined report (R01) - see the [Suspected Blood Cancer - Haemato-Oncology Diagnostics](ExampleScenario-HaematoOncologyDiagnostics.html) scenario"
+    resources:
+      - Bundle/GenomicsOrderMessage-HaematoOncology
+      - Bundle/GenomicsSubOrderMessage-HaematoOncology-Cytogenetics
+      - Bundle/GenomicsSubOrderReportMessage-HaematoOncology-Cytogenetics
+      - Bundle/GenomicsSubOrderMessage-HaematoOncology-Molecular
+      - Bundle/GenomicsSubOrderReportMessage-HaematoOncology-Molecular
+      - Bundle/GenomicsReportMessage-HaematoOncology
+      - MessageHeader/MessageHeader-O21-HaematoOncology
+      - MessageHeader/MessageHeader-O21-HaematoOncology-Cytogenetics
+      - MessageHeader/MessageHeader-R01-HaematoOncology-Cytogenetics
+      - MessageHeader/MessageHeader-O21-HaematoOncology-Molecular
+      - MessageHeader/MessageHeader-R01-HaematoOncology-Molecular
+      - MessageHeader/MessageHeader-R01-HaematoOncology
+      - Patient/Patient-Tameside
+      - PractitionerRole/PractitionerRole-Requester-Haematology-RMP
+      - Specimen/Specimen-HaematoOncology
+      - ServiceRequest/ServiceRequest-HaematoOncology
+      - ServiceRequest/ServiceRequest-HaematoOncology-Cytogenetics
+      - ServiceRequest/ServiceRequest-HaematoOncology-Molecular
+      - DiagnosticReport/DiagnosticReport-HaematoOncology-Cytogenetics
+      - DiagnosticReport/DiagnosticReport-HaematoOncology-Molecular
+      - DiagnosticReport/DiagnosticReport-HaematoOncology-Report
+      - Observation/Observation-HaematoOncology-Karyotype
+      - Observation/Variant-HaematoOncology-TP53
+      - Observation/DiagnosticImplication-HaematoOncology-TP53
+      - DocumentReference/DocumentReference-HaematoOncology-Report
   -ex-example-breast-cancer:
     name: "Example: Inherited Breast Cancer (BRCA)"
     description: "Inherited breast cancer (R208.1) for Margaery Congleton: the order (O21) and report (R01) messages, the FHIR Document report and the referral of the family to clinical genetics (O19) - see the [Inherited Breast Cancer (BRCA)](ExampleScenario-BreastCancer.html) scenario"

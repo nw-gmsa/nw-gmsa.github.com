@@ -87,21 +87,20 @@ graph
 
 In genomics the work order (LAB-4) often goes further than an analyser:
 
-- **Delegated to another LIMS** in the same laboratory, which does the analytical work on behalf of the Order Filler -
-  for example iGene placing a work order with DLIMS, or StarLIMS when it only performs the analytical work. The Order
-  Filler still validates the results, so this is a work order; if the other system validates and reports the result
-  itself, it is a sub-order (LAB-35) instead - see [Work Order or Sub-order?](LTW.html#work-order-or-sub-order).
-- **For analytic processing**, such as a bioinformatics pipeline or a variant interpretation service (for example
-  OmicsDSS), which turns the sequencing data into variants. The analytics system may retrieve the work order from the
-  FHIR Repository rather than receive it.
+- **Delegated to another LIMS** in the same laboratory, which does the analytical work on behalf of the Order Filler.
+  The Order Filler still validates the results, so this is a work order; if the other system validates and reports the
+  result itself, it is a sub-order (LAB-35) instead - see [Work Order or Sub-order?](LTW.html#work-order-or-sub-order).
+- **For analytic processing**, such as a bioinformatics pipeline or a variant interpretation service, which turns the
+  sequencing data into variants. The analytics system may retrieve the work order from the FHIR Repository rather than
+  receive it.
 
 The test results (LAB-5) come back along the same chain to the Order Filler, which validates them and writes the
 Laboratory Report.
 
 ```mermaid
 graph LR
-    OF["Order Filler<br/>for example iGene"] --> |"Work Order LAB-4"| L2["Another LIMS in the laboratory<br/>for example DLIMS"]
-    L2 --> |"Work Order LAB-4<br/>analytic processing"| AP["Analytics Processing<br/>for example OmicsDSS"]
+    OF["Order Filler"] --> |"Work Order LAB-4"| L2["Another LIMS<br/>in the laboratory"]
+    L2 --> |"Work Order LAB-4<br/>analytic processing"| AP["Analytics Processing"]
     AP --> |"Test Results LAB-5"| L2
     L2 --> |"Test Results LAB-5"| OF
 ```
@@ -161,7 +160,7 @@ graph TD;
 The first test depends on the cancer. Imaging comes first for many cancers, such as lung and breast cancer, while bowel,
 stomach and bladder cancers usually start with an endoscopy, where the biopsy is taken during the procedure. Prostate
 cancer usually starts with a blood test (PSA), and blood cancers such as leukaemia and lymphoma follow a different route,
-through blood tests, bone marrow and [haemato-oncology diagnostics](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HaematoOncologyPathway.md), which coordinate the specialist tests and any genomic testing. Most people with cancer also have scans after the
+through blood tests, bone marrow and [haemato-oncology diagnostics](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HaematoOncologyPathway.md), which coordinate the specialist tests and any genomic testing - see [Suspected Blood Cancer - Haemato-Oncology Diagnostics](ExampleScenario-HaematoOncologyDiagnostics.html). Most people with cancer also have scans after the
 diagnosis, to see whether it has spread.
 
 | Step | What happens | Standards and guides |
@@ -184,6 +183,9 @@ How the cancer scenarios below fit this pathway:
 - [Lung Cancer - Liquid Biopsy (ctDNA)](ExampleScenario-ctDNA.html) - for non-small cell lung cancer the gene changes are
   usually tested on the biopsy sample; here a blood sample (liquid biopsy) is tested instead. The
   [Somatic genomic report](Bundle-FHIRDocumentGeneticReportBundle-Somatic.html) example shows testing of the tumour sample.
+- [Suspected Blood Cancer - Haemato-Oncology Diagnostics](ExampleScenario-HaematoOncologyDiagnostics.html) - the blood
+  cancer route: a bone marrow sample goes to haemato-oncology diagnostics, which places reflex sub-orders for cytogenetics
+  and molecular genomic testing and writes one combined report.
 
 #### Letters and Reports to the Patient and GP
 
@@ -238,6 +240,7 @@ for the same variant).
 | [Suspected Lynch Syndrome - Clinical Workflow](ExampleScenario-ClinicalAndGenomicWorkflow.html) | The consultant's view of Lynch Syndrome: the Condition is recorded as suspected, the tests are requested, and the Condition is updated to confirmed when the test is positive | R210.2 | The Lynch Syndrome messages, and the Condition before and after |
 | [Inherited Breast Cancer (BRCA)](ExampleScenario-BreastCancer.html) | Triple-negative breast cancer at a young age. A blood test finds a pathogenic BRCA1 variant, and the family is referred so her sister can have predictive testing | R208.1 Inherited breast cancer and ovarian cancer | O21 order with the pathology report, R01 report, FHIR Document, O19 referral |
 | [Lung Cancer - Liquid Biopsy (ctDNA)](ExampleScenario-ctDNA.html) | A blood test (liquid biopsy) looks for gene changes in DNA from lung cancer cells, to help choose targeted treatment | M4.14 Non-small cell lung cancer, multi-target ctDNA panel | O21 order, work order (LAB-4), test results (LAB-5), R01 report, FHIR Document |
+| [Suspected Blood Cancer - Haemato-Oncology Diagnostics](ExampleScenario-HaematoOncologyDiagnostics.html) | Suspected acute myeloid leukaemia. Haemato-oncology diagnostics coordinates a karyotype and then, because of its findings, a molecular genomic test, and writes one combined report | M80.3 AML karyotype and M80.2 AML multi-target NGS panel | O21 order, reflex sub-orders (LAB-35) to cytogenetics and the GLH, their reports (LAB-36), combined R01 report |
 {:.grid}
 
 #### Rare and inherited disease, pregnancy and medicines
