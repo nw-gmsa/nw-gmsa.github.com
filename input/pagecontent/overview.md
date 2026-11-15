@@ -161,7 +161,7 @@ graph TD;
 The first test depends on the cancer. Imaging comes first for many cancers, such as lung and breast cancer, while bowel,
 stomach and bladder cancers usually start with an endoscopy, where the biopsy is taken during the procedure. Prostate
 cancer usually starts with a blood test (PSA), and blood cancers such as leukaemia and lymphoma follow a different route,
-through blood tests, bone marrow and haemato-oncology diagnostics. Most people with cancer also have scans after the
+through blood tests, bone marrow and [haemato-oncology diagnostics](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HaematoOncologyPathway.md), which coordinate the specialist tests and any genomic testing. Most people with cancer also have scans after the
 diagnosis, to see whether it has spread.
 
 | Step | What happens | Standards and guides |
