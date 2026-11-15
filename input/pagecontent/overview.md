@@ -83,6 +83,32 @@ graph
     DiagnosticEquipment --> |"Test Results (LAB-5)"| OrderFiller
 ```
 
+#### Genomics
+
+In genomics the work order (LAB-4) often goes further than an analyser:
+
+- **Delegated to another LIMS** in the same laboratory, which does the analytical work on behalf of the Order Filler -
+  for example iGene placing a work order with DLIMS, or StarLIMS when it only performs the analytical work. The Order
+  Filler still validates the results, so this is a work order; if the other system validates and reports the result
+  itself, it is a sub-order (LAB-35) instead - see [Work Order or Sub-order?](LTW.html#work-order-or-sub-order).
+- **For analytic processing**, such as a bioinformatics pipeline or a variant interpretation service (for example
+  OmicsDSS), which turns the sequencing data into variants. The analytics system may retrieve the work order from the
+  FHIR Repository rather than receive it.
+
+The test results (LAB-5) come back along the same chain to the Order Filler, which validates them and writes the
+Laboratory Report.
+
+```mermaid
+graph LR
+    OF["Order Filler<br/>for example iGene"] --> |"Work Order LAB-4"| L2["Another LIMS in the laboratory<br/>for example DLIMS"]
+    L2 --> |"Work Order LAB-4<br/>analytic processing"| AP["Analytics Processing<br/>for example OmicsDSS"]
+    AP --> |"Test Results LAB-5"| L2
+    L2 --> |"Test Results LAB-5"| OF
+```
+
+See [Lung Cancer - Liquid Biopsy (ctDNA)](ExampleScenario-ctDNA.html) for both, and
+[Work Order Management (LAB-4)](LTW.html#work-order-management-lab-4) for the details.
+
 ### Cancer Diagnostic Pathway
 
 Genomic testing is one of several diagnostic services in a cancer pathway. The diagnosis is usually built up step by step:
