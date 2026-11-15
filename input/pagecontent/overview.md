@@ -107,6 +107,7 @@ graph TD;
     R --> |Imaging report| M
     M["Multidisciplinary team (MDT)<br/>diagnosis and treatment plan"] --> T["Treatment<br/>for example targeted therapy"]
     M --> |"Referral O19"| CG["Clinical Genetics<br/>genetic counselling and predictive testing"]
+    M --> |"Clinic letters and<br/>discharge summaries"| L["Reports to the patient and GP"]
 
     click G StructureDefinition-ServiceRequest.html
 
@@ -123,6 +124,7 @@ graph TD;
     class G purple
     class M,T green
     class CG orange
+    class L pink
 ```
 
 | Step | What happens | Standards and guides |
@@ -132,6 +134,7 @@ graph TD;
 | Histopathology | The pathologist examines the sample to confirm the cancer and its type and grade, and does tests on the cancer cells, such as immunohistochemistry (IHC), microsatellite instability (MSI) or hormone receptor and HER2 tests | [IHE PaLM](https://profiles.ihe.net/PaLM/index.html): Anatomic Pathology Structured Report (APSR, trial implementation) for the histopathology report, and Anatomic Pathology Reporting to Public Health (ARPH, trial implementation). Cancer registration: NHS England [National Disease Registration Service (NDRS)](https://digital.nhs.uk/services/national-disease-registration-service). Pathology reports to cancer registries: [HL7 FHIR US Cancer Pathology Data Sharing](https://hl7.org/fhir/us/cancer-reporting/index.html). This guide: a copy of the pathology report is sent with the genomic order (`ServiceRequest.supportingInfo`); where histopathology itself asks for genomic testing on the tumour sample, see [Inter-Laboratory Workflow - Reflex Order](ILW.html#reflex-order) |
 | Genomic testing | The Genomic Laboratory Hub tests the tumour sample for gene changes (somatic testing), or a blood sample for an inherited variant (germline testing) or for DNA from the cancer cells (liquid biopsy) | This guide: the [Laboratory Testing Workflow](LTW.html) and [Inter-Laboratory Workflow](ILW.html), based on [IHE Pathology and Laboratory Medicine (PaLM)](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol1.pdf), with results based on [HL7 FHIR Genomics Reporting](https://hl7.org/fhir/uv/genomics-reporting/STU3/) and the report as a FHIR Document based on [HL7 Europe Laboratory Report](https://hl7.eu/fhir/laboratory/2.1.0/) for the central repository |
 | MDT and treatment | The MDT reviews the imaging, pathology and genomic reports and agrees the treatment plan | Cancer registration of diagnosis and treatment: [NDRS](https://digital.nhs.uk/services/national-disease-registration-service). Not covered by this guide: the reports are sent back to the requesting clinician |
+| Reports to the patient and GP | Clinic letters (usually after each appointment) and discharge summaries are sent to the patient and copied to the GP, so both are kept informed through the pathway - see [Letters and Reports to the Patient and GP](#letters-and-reports-to-the-patient-and-gp) | NHS England [Transfer of Care](https://digital.nhs.uk/services/interoperability-toolkit/developer-resources/transfer-of-care-apis) (FHIR messages for discharge summaries and outpatient letters) or Kettering XML, sent to the GP using [MESH](https://digital.nhs.uk/services/message-exchange-for-social-care-and-health-mesh). FHIR R4: [HL7 Europe Hospital Discharge Report](https://build.fhir.org/ig/hl7-eu/hdr/). IHE document sharing (MHD/XDS) - see [Sharing Laboratory Reports (Document)](HIE.html#sharing-laboratory-reports-document-iti-105-and-mdm_t02). Not covered by this guide |
 | Clinical genetics | If an inherited variant is found, the family is referred for genetic counselling, and relatives can have predictive testing for the same variant | This guide: the referral (O19) - see [Genetic Referrals](GeneticReferrals.html). Family history may be recorded in another system, such as [NDRS](https://digital.nhs.uk/services/national-disease-registration-service) |
 {:.grid}
 
@@ -162,9 +165,9 @@ sets out what secondary care is expected to do:
 
 In this guide the Laboratory Report (LAB-3) goes back to the requesting clinician (the Order Placer), who reviews and
 acts on the result. The GP is usually kept informed through the clinic letters and discharge summaries. These are
-clinical documents, shared using HL7 v2 `MDM^T02` or FHIR document sharing (see
-[Sharing Laboratory Reports (Document)](HIE.html#sharing-laboratory-reports-document-iti-105-and-mdm_t02)); they are not
-modelled in the example scenarios. HL7 v2 can also name other recipients of a copy of a laboratory report, such as the GP,
+clinical documents, sent to the GP using NHS England [Transfer of Care](https://digital.nhs.uk/services/interoperability-toolkit/developer-resources/transfer-of-care-apis) or Kettering XML over MESH, or shared using HL7 v2
+`MDM^T02` or FHIR document sharing (see [Sharing Laboratory Reports (Document)](HIE.html#sharing-laboratory-reports-document-iti-105-and-mdm_t02));
+see the Reports to the patient and GP step above. They are not modelled in the example scenarios. HL7 v2 can also name other recipients of a copy of a laboratory report, such as the GP,
 in OBR-28 Result Copies To; this is not currently profiled in this guide.
 
 ### Example Scenarios
