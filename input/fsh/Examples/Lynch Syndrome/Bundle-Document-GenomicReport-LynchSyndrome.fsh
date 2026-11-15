@@ -50,7 +50,7 @@ Usage: #example
   * title = "Referral"
   * code.coding[0] = $loinc#42349-1 "Reason for referral (narrative)"
   * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R210 Inherited MMR deficiency (Lynch syndrome). History of carcinoma.</p></div>"
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R210 Inherited MMR deficiency (Lynch syndrome). Bowel (colon) cancer.</p></div>"
   * entry[+].reference = "urn:uuid:c0627dab-6f98-4846-beba-d9412ed3a60e"
 
 * section[+]

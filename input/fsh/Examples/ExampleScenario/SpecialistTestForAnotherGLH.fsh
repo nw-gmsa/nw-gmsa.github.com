@@ -1,6 +1,6 @@
 Instance: SpecialistTestForAnotherGLH
 InstanceOf: ExampleScenario
-Title:       "Specialist Test for Another GLH"
+Title:       "Hearing Loss Test for Another Region (Specialist Test for Another GLH)"
 Description: """
 The reverse of [Rapid Prenatal Exome Sequencing](ExampleScenario-RapidPrenatalExomeSequencing.html): the North West GLH is the testing GLH. It is a designated national provider for some specialist tests, for example monogenic hearing loss (R67) and retinal disorders (R32), so another region's GLH may send it a sub-order for one of its own patients. For testing, the other region is North Thames: Great Ormond Street Hospital (GOSH) places the order with North Thames GLH, which sends a sub-order to the North West GLH. Both GLHs are onboarded to GOMS for testing.
 

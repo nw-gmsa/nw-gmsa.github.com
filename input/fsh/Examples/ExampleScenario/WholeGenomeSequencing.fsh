@@ -1,6 +1,6 @@
 Instance: WholeGenomeSequencing
 InstanceOf: ExampleScenario
-Title:       "Whole Genome Sequencing"
+    Title:       "Whole Genome Sequencing for a Rare Condition"
 Description: """
 Whole Genome Sequencing (WGS) for rare and inherited disease, from an enterprise view. Many of these interactions are national or internal to a laboratory and are not covered by this guide; the steps that are not covered say so.
 

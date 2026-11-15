@@ -1,7 +1,13 @@
 Instance: ctDNA
 InstanceOf: ExampleScenario
-Title:       "ctDNA"
+Title:       "Lung Cancer - Liquid Biopsy (ctDNA)"
 Description: """
+For non-small cell lung cancer, doctors usually arrange tests on the lung cancer cells for gene changes - also called molecular or biomarker testing. The results tell the cancer doctor whether targeted therapy or immunotherapy drugs are likely to work; EGFR is the most common gene change. The tests can also be done on a blood sample, called a liquid biopsy: doctors look for DNA from cancer cells in the blood, called circulating tumour DNA (ctDNA). See [Macmillan Cancer Support - Non-small cell lung cancer](https://www.macmillan.org.uk/cancer-information-and-support/lung-cancer/non-small-cell-lung-cancer) and [Personalised medicine](https://www.macmillan.org.uk/cancer-information-and-support/treatment/your-treatment-options/personalised-medicine).
+
+In this example Theon Sheffield has a ctDNA blood test (M4.14, a multi-target panel for non-small cell lung cancer), which finds the EGFR T790M gene change at a level requiring clinical action. This guide covers the genomic testing - the order, the test results, the Laboratory Report and the FHIR Document for the central repository; the treatment decision is not covered.
+
+The rest of this scenario shows how the test is done across systems.
+
 A genomic test order is fulfilled by two laboratory systems in the same laboratory. The RIE routes the Laboratory Order to Lab 1 and stores a copy in the FHIR Repository. Lab 1 places a work order with Lab 2, and also sends it to the RIE, which stores it in the FHIR Repository. Lab 2 sends the sequencing data to Analytics Processing, which retrieves the work order from the FHIR Repository so the results can be linked to it. Lab 2 returns the test results to Lab 1, which writes the narrative Laboratory Report. The RIE combines that report with the test results into a FHIR Document for a central registry, such as the NHS England Unified Genomic Record (UGR).
 
 There are two `DiagnosticReport`s: the test results from Lab 2 (LAB-5) and the narrative Laboratory Report from Lab 1 (LAB-3). The Laboratory Report links to the test results using the `supportingInfo` extension.

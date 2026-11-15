@@ -1,6 +1,6 @@
 Instance: RapidPrenatalExomeSequencing
 InstanceOf: ExampleScenario
-Title:       "Rapid Prenatal Exome Sequencing"
+Title:       "Rapid Genetic Testing in Pregnancy (Rapid Prenatal Exome Sequencing)"
 Description: """
 Rapid prenatal exome sequencing for fetal anomalies with a likely genetic cause (clinical indication R21). Only two Genomic Laboratory Hubs (GLHs) in England are testing GLHs for this test. The other GLHs, including the North West, act as home GLHs: they do the first-line tests, prepare the fetal DNA and send a sub-order to a testing GLH. The Laboratory Orders and Reports are for the fetus only.
 

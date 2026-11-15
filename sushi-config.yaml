@@ -88,6 +88,9 @@ pages:
   HowToEngineerInteroperability.md:
     title: "How To Engineer (scale and deliver) Interoperability"
     generation: markdown
+  ExampleScenarios.md:
+    title: "Example Scenarios"
+    generation: markdown
   LTW.md:
     title: Laboratory Testing Workflow (LTW)
     generation: markdown
@@ -315,6 +318,7 @@ menu:
   Home: index.html
   Analysis and Design (Volume 1) :
  ##   Design Overview: design.html
+    Example Scenarios: ExampleScenarios.html
     Laboratory Testing Workflow (LTW): LTW.html
     Inter-Laboratory Workflow (ILW): ILW.html
     Specimen Transportation and Management: SpecimenTransportationAndManagement.html
@@ -563,6 +567,31 @@ groups:
       - DocumentReference/DocumentReference-Pharmacogenomics-Report
       - PractitionerRole/PractitionerRole-Requester-Cardiology-RBQ
       - Patient/Patient-Northwich
+  -ex-example-breast-cancer:
+    name: "Example: Inherited Breast Cancer (BRCA)"
+    description: "Inherited breast cancer (R208.1) for Margaery Congleton: the order (O21) and report (R01) messages, the FHIR Document report and the referral of the family to clinical genetics (O19) - see the [Inherited Breast Cancer (BRCA)](ExampleScenario-BreastCancer.html) scenario"
+    resources:
+      - Bundle/GenomicsOrderMessage-BreastCancer
+      - Bundle/GenomicsReportMessage-BreastCancer
+      - Bundle/FHIRDocumentGeneticReportBundle-BreastCancer
+      - Bundle/GenomicsReferralMessage-BreastCancer
+      - MessageHeader/MessageHeader-O21-BreastCancer
+      - MessageHeader/MessageHeader-R01-BreastCancer
+      - MessageHeader/MessageHeader-BreastCancer-Referral
+      - Composition/Composition-GenomicsReport-BreastCancer
+      - Patient/Patient-Congleton
+      - Patient/Patient-Buxton
+      - PractitionerRole/PractitionerRole-Requester-Breast-RJN
+      - ServiceRequest/ServiceRequest-BreastCancer
+      - ServiceRequest/ServiceRequest-BreastCancer-Referral
+      - Specimen/Specimen-BreastCancer
+      - DiagnosticReport/DiagnosticReport-BreastCancer-Report
+      - Observation/Variant-BreastCancer-BRCA1
+      - Observation/DiagnosticImplication-BreastCancer-BRCA1
+      - DocumentReference/DocumentReference-BreastCancer-PathologyReport
+      - DocumentReference/DocumentReference-BreastCancer-Report
+      - DocumentReference/DocumentReference-BreastCancer-Registry-GenomicReport
+      - Group/Group-BreastCancer-Family-Congleton
   -ex-example-lynch-syndrome:
     name: "Example: Lynch Syndrome"
     description: "Germline (R210.2 Inherited MMR deficiency) closed loop referral for Ned Liverpool: the order (O21) and report (R01) messages and the FHIR Document report - see the [Lynch Syndrome](ExampleScenario-LynchSyndrome.html) scenario - with the tumour immunohistochemistry result from histopathology, and the resources they carry"
@@ -591,6 +620,7 @@ groups:
       - Procedure/f0036554-cd1a-463c-ac8a-d891ca409af9
       - Observation/4490c092-c78c-480a-8cb7-653b70113fd5
       - Procedure/13240a3b-d1db-4f1a-ad7d-b19f23967060
+      - Condition/Condition-LynchSyndrome-Provisional
       - Condition/c8f82825-e4cb-4e1f-b728-3fd2808e93db
       - Condition/d6c19529-a64e-476b-b896-303abec26a79
       - Patient/Patient-Liverpool

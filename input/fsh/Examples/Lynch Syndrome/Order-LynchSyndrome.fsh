@@ -44,7 +44,7 @@ Usage: #example
 * specimen[+].reference = "urn:uuid:635eaecb-a9c9-488e-978b-f63b12ce52b1"
 
 * reasonCode[+] = $GCC#R210 "Inherited MMR deficiency (Lynch syndrome)"
-* reasonCode[+] = $sct#109841003 "Liver cell carcinoma"
+* reasonCode[+] = $sct#363406005 "Malignant neoplasm of colon"
 
 // A copy of the pathology report (tumour MMR immunohistochemistry) as clinical context
 * supportingInfo[clinicalContext]
@@ -52,7 +52,7 @@ Usage: #example
   * type = "DocumentReference"
   * display = "Cellular pathology report - tumour MMR immunohistochemistry"
 
-* note[+].text = "History of carcinoma. Tumour MMR immunohistochemistry: loss of MLH1 and PMS2, no MLH1 promoter hypermethylation."
+* note[+].text = "Bowel (colon) cancer. Tumour MMR immunohistochemistry: loss of MLH1 and PMS2, no MLH1 promoter hypermethylation."
 
 
 Instance: Specimen-LynchSyndrome
@@ -153,12 +153,12 @@ Usage: #example
   * system = "https://fhir.nhs.uk/Id/nhs-number"
   * value = "9737383206"
 
-// Referral to clinical genetics (O19): cascade testing of the family
+// Referral to clinical genetics (O19): predictive testing of the family
 
 Instance: Group-LynchSyndrome-Family-Liverpool
 InstanceOf: FamilyGeneticGroup
 Title: "Family Genetic Group - Liverpool family (Duo)"
-Description: "Fictitious example: Ned Liverpool (proband) and his son Rob Leeds, the subject of the referral to clinical genetics for cascade testing"
+Description: "Fictitious example: Ned Liverpool (proband) and his son Rob Leeds, the subject of the referral to clinical genetics for predictive testing"
 Usage: #example
 
 * identifier[PedigreeNumber]
@@ -183,7 +183,7 @@ Usage: #example
 
 Instance: ServiceRequest-LynchSyndrome-Referral
 InstanceOf: http://hl7.org/fhir/StructureDefinition/ServiceRequest
-Title: "ServiceRequest - Referral of the Liverpool family to clinical genetics (cascade testing)"
+Title: "ServiceRequest - Referral of the Liverpool family to clinical genetics (predictive testing)"
 Description: "Fictitious example: after the Laboratory Report finds a pathogenic MLH1 variant, the requesting clinician refers the family to clinical genetics so other members can be tested. A clinical referral, not a laboratory order: the subject is the family, and the testing done is referenced as the Genomic Report document on the central registry."
 Usage: #example
 
@@ -216,7 +216,7 @@ Usage: #example
   * type = "DocumentReference"
   * reference = "urn:uuid:7163f6f6-24f3-47ee-bb9c-c88b7591e93a"
   * display = "R210.2 Genomic Report document (central registry), Ned Liverpool"
-* note[+].text = "Heterozygous pathogenic germline MLH1 variant (Lynch syndrome) found in Ned Liverpool. Please see the family for genetic counselling and cascade testing of relatives."
+* note[+].text = "Heterozygous pathogenic germline MLH1 variant (Lynch syndrome) found in Ned Liverpool. Please see the family for genetic counselling and predictive testing of relatives for the same variant."
 
 Instance: DocumentReference-LynchSyndrome-Registry-GenomicReport
 InstanceOf: DocumentReference
@@ -270,7 +270,7 @@ Usage: #example
 
 Instance: MessageHeader-LynchSyndrome-Referral
 InstanceOf: MessageHeader
-Title: "Message Header - Referral to clinical genetics (O19), Lynch syndrome cascade testing"
+Title: "Message Header - Referral to clinical genetics (O19), Lynch syndrome predictive testing"
 Description: "Fictitious example: referral from MANCHESTER UNIVERSITY NHS FOUNDATION TRUST to the MANCHESTER CENTRE FOR GENOMIC MEDICINE, sent via NHS e-Referral Service (eRS) or a Genomics England Limited application"
 Usage: #example
 
@@ -292,8 +292,8 @@ Usage: #example
 
 Instance: GenomicsReferralMessage-LynchSyndrome
 InstanceOf: BundleMessage
-Title: "Bundle 'Message' - Referral to clinical genetics (O19), Lynch syndrome cascade testing"
-Description: "Fictitious example: the referral of the family to clinical genetics for cascade testing in the [Lynch Syndrome](ExampleScenario-LynchSyndrome.html) scenario. The subject is the family (a [Family Genetic Group](StructureDefinition-FamilyGeneticGroup.html)) and the Genomic Report document for the testing done, held on the central registry, is referenced as supporting information."
+Title: "Bundle 'Message' - Referral to clinical genetics (O19), Lynch syndrome predictive testing"
+Description: "Fictitious example: the referral of the family to clinical genetics for predictive testing in the [Lynch Syndrome](ExampleScenario-LynchSyndrome.html) scenario. The subject is the family (a [Family Genetic Group](StructureDefinition-FamilyGeneticGroup.html)) and the Genomic Report document for the testing done, held on the central registry, is referenced as supporting information."
 Usage: #example
 * insert MessageBundle("urn:uuid:16e26d6b-ad58-4958-9ca2-23d3c601a4ce", "2023-09-15T11:00:00+00:00")
 * insert EntryDocument("urn:uuid:72b799d1-8f94-42fe-918b-f0c7e690b797", MessageHeader-LynchSyndrome-Referral)

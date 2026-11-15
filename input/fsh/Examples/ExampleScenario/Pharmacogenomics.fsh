@@ -1,6 +1,6 @@
 Instance: Pharmacogenomics
 InstanceOf: ExampleScenario
-Title:       "Pharmacogenomics"
+Title:       "Gene Test Before Starting a Medicine (Pharmacogenomics)"
 Description: """
 Pharmacogenomic testing before a medicine is started: CYP2C19 genotyping before mavacamten (clinical indication R454.1), as a closed-loop order and report between a Trust and the North West GLH, with the report then sent to a central repository as a FHIR Document.
 
