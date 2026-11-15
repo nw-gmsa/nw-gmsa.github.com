@@ -41,12 +41,12 @@ Usage: #example
 
 Instance: 41a20f74-643f-4073-968a-ee003160734f
 InstanceOf: Bundle
-Title:       "Bundle - Genomic Variant Gene =  NTHL1 QEDm"
+Title:       "Bundle - Genomic Variant Gene = MLH1 QEDm"
 Description: """
-Example search results for a Genomic Variant Gene = `NTHL1`
+Example search results for a Genomic Variant Gene = `MLH1`
 """
 Usage: #example
-* insert SearchBundle(1, [[https://example.nhs.uk/FHIR/R4/Observation?combo-code=http://loinc.org|48018-6&combo-value-concept=HGNC:8028]])
+* insert SearchBundle(1, [[https://example.nhs.uk/FHIR/R4/Observation?combo-code=http://loinc.org|48018-6&combo-value-concept=HGNC:7127]])
 * insert EntryMatch(Observation, 8385c2fd-313d-4fd5-b98e-d5ea4bae6f99)
 
 Instance: 92a0a6c6-404f-4347-8de4-fa1c457a037e

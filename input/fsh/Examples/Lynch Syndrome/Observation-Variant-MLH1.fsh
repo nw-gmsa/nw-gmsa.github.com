@@ -1,6 +1,6 @@
 Instance: 8385c2fd-313d-4fd5-b98e-d5ea4bae6f99
 InstanceOf: Variant
-Title: "Variant - NTHL1"
+Title: "Variant - MLH1"
 Description: "Based on HL7 LRI Example 3 (Ref 5.9.1.3)"
 
 * identifier[+].value = "8385c2fd-313d-4fd5-b98e-d5ea4bae6f99"
@@ -31,7 +31,7 @@ Description: "Based on HL7 LRI Example 3 (Ref 5.9.1.3)"
 * component[=].valueCodeableConcept = IGeneVariantCategory#SEQV "Sequence Variant"
 
 * component[+].code = $loinc#48018-6 "Gene studied [ID]"
-* component[=].valueCodeableConcept = $genenames#HGNC:89753 "NTHL1"
+* component[=].valueCodeableConcept = $genenames#HGNC:7127 "MLH1"
 
 * component[+].code = $loinc#51958-7 "Transcript reference sequence [ID]"
 * component[=].valueCodeableConcept = $refseq#NM_000249

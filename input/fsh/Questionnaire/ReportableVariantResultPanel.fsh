@@ -5,7 +5,7 @@ Description: """
 Result panel for a [Variant (Reportable Variant)](StructureDefinition-Variant.html)
 `Observation`, structured around the HL7 v2 [Lab Results Interface (LRI)](https://confluence.hl7.org/download/attachments/25559919/2018%2004%2003%20-%20V2%20LRI%20-%20Ch.%205%20CG%20and%20Code%20System%20Tables.pdf?api=v2)'s
 own **Discrete Variant Panel** (LOINC `81250-3`, LRI Chapter 5 Table 5-2, plus the
-Structural Variant Addenda in Table 5-3) - the same panel the NTHL1 and CFTR examples
+Structural Variant Addenda in Table 5-3) - the same panel the MLH1 and CFTR examples
 are based on. LRI already defines this as a single panel covering both simple and
 structural variants; this Questionnaire follows that same single-panel structure
 rather than iGene's separate per-variant-type field sets, mapping each item to both
@@ -15,7 +15,7 @@ profile. See [OMICS DSS Result Integration](https://github.com/nw-gmsa/nw-gmsa-u
 LRI/FHIR/iGene three-way mapping table.
 
 `item.definition`/`item.code` are cross-checked against this IG's current `Variant`
-examples: [Variant - NTHL1](Observation-8385c2fd-313d-4fd5-b98e-d5ea4bae6f99.html) and
+examples: [Variant - MLH1](Observation-8385c2fd-313d-4fd5-b98e-d5ea4bae6f99.html) and
 [Variant - CFTR](Observation-bca547c1-78a5-41be-8cfc-03c05805ac85.html) (both based on
 LRI examples), `Observation-EGFR-Variant-ctDNA`, `Observation-BRCA1`, and the four
 `Variant` Observations (a small variant, an intragenic CNV, a multi-gene CNV and a
@@ -115,7 +115,7 @@ Usage:  #definition
         LRI row B.3, OBX type CWE, R/O/C = C, [0..1]. FHIR Variant profile: this IG's
         own `gene-studied` addition (not one of the international profile's named
         slices). iGene: rolled into the free-text Description field (SEQV/ICNV) or the
-        Gene(s) field (LOH). Used by NTHL1, CFTR, EGFR-ctDNA, and the ctDNA Bundle's
+        Gene(s) field (LOH). Used by MLH1, CFTR, EGFR-ctDNA, and the ctDNA Bundle's
         small-variant and intragenic-CNV Observations.
         """
         * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
@@ -132,7 +132,7 @@ Usage:  #definition
         * text = """
         LRI row B.4, OBX type CWE, R/O/C = C, [0..1]. FHIR Variant profile slice:
         `representative-transcript-ref-seq`. iGene: rolled into the free-text
-        Description field (SEQV/ICNV). Used by NTHL1, CFTR and the ctDNA Bundle's
+        Description field (SEQV/ICNV). Used by MLH1, CFTR and the ctDNA Bundle's
         small-variant Observation.
         """
         * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
@@ -209,7 +209,7 @@ Usage:  #definition
         * text = """
         LRI row B.9, OBX type CWE, R/O/C = C, [0..1]. FHIR Variant profile slice:
         `genomic-ref-seq`. iGene: rolled into the free-text Genomic_coordinates field
-        (all four variant types). Used by NTHL1 and all four ctDNA Bundle
+        (all four variant types). Used by MLH1 and all four ctDNA Bundle
         Observations.
         """
         * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
@@ -227,7 +227,7 @@ Usage:  #definition
         LRI row B.10, OBX type CWE, R/O/C = C, [0..1]. FHIR Variant profile slice:
         `genomic-hgvs`. iGene: rolled into the free-text Genomic_coordinates field
         (all four variant types). Used by all four ctDNA Bundle Observations - not by
-        NTHL1/CFTR, where it is commented out pending a confirmed mapping.
+        MLH1/CFTR, where it is commented out pending a confirmed mapping.
         """
         * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
@@ -243,7 +243,7 @@ Usage:  #definition
         * text = """
         LRI row B.11, OBX type ST, R/O/C = C, [0..1]. FHIR Variant profile slice:
         `ref-allele`. Not a discrete iGene field - summarised within iGene's
-        Genomic_coordinates field. Used by NTHL1, CFTR and all four ctDNA Bundle
+        Genomic_coordinates field. Used by MLH1, CFTR and all four ctDNA Bundle
         Observations.
         """
         * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
@@ -279,7 +279,7 @@ Usage:  #definition
         `alt-allele`. Not a discrete iGene field - summarised within iGene's
         Genomic_coordinates field. Used by the ctDNA Bundle's intragenic-CNV,
         multi-gene-CNV and structural-variant Observations (as symbolic ALT alleles,
-        e.g. "<DEL>") - not by the small-variant Observation, NTHL1 or CFTR.
+        e.g. "<DEL>") - not by the small-variant Observation, MLH1 or CFTR.
         """
         * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
@@ -325,7 +325,7 @@ Usage:  #definition
         * text = """
         LRI row B.18, OBX type CNE, R/O/C = R (required when present), [0..*]. FHIR
         Variant profile slice: `genomic-source-class`. Not a discrete iGene field.
-        Used by NTHL1, CFTR, EGFR-ctDNA and the ctDNA Bundle's small-variant,
+        Used by MLH1, CFTR, EGFR-ctDNA and the ctDNA Bundle's small-variant,
         intragenic-CNV and multi-gene-CNV Observations (Germline or Somatic) - not
         by the structural-variant Observation.
         """
@@ -383,7 +383,7 @@ Usage:  #definition
         Heterozygosity" option). FHIR Variant profile slice: `allelic-state`. iGene:
         the Zygosity/Copy-number state field for all five variant types (iGene's LOH
         "State" field has no LOINC code and is a different concept - LRI has no LOH
-        answer here). Used by NTHL1, CFTR, BRCA1 and the ctDNA Bundle's small-variant
+        answer here). Used by MLH1, CFTR, BRCA1 and the ctDNA Bundle's small-variant
         Observation (Heterozygous).
         """
         * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help

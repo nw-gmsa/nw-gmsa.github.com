@@ -17,7 +17,7 @@ Usage: #definition
 * insert ActorEntity(epr, "Electronic Patient Record",   [[ [Provider Information Source](ActorDefinition-ProviderInformationSource.html) ]])
 
 * insert Instance_Empty(Request1,   Observation,   "Variant",  [[ TODO ]])
-* insert InstanceVersion(1, "Variant NTHL1", 8385c2fd-313d-4fd5-b98e-d5ea4bae6f99 ,[[ TODO ]] )
+* insert InstanceVersion(1, "Variant MLH1", 8385c2fd-313d-4fd5-b98e-d5ea4bae6f99 ,[[ TODO ]] )
 
 * insert Instance_Empty(Request2,   Observation,   "Diagnostic Implication",  [[ TODO ]])
 * insert InstanceVersion(2, "Diagnostic Implication Lynch syndrome", 6beb613f-d303-42af-b025-86e8e0872061 ,[[ TODO ]] )
@@ -35,7 +35,7 @@ Usage: #definition
   * title = "Create Diagnostic Testing Report"
   * description = "This step creates the [Genomics Test Report](StructureDefinition-DiagnosticReport.html)"
   * preConditions = "Genomic Testing has Completed"
-  * insert ProcessCreateEvent(1, "Variant NTHL1 is added to Genomic CDR", diagnostics, cdr, Request1 ,  , [[This step is performed by middleware - RIE]])
+  * insert ProcessCreateEvent(1, "Variant MLH1 is added to Genomic CDR", diagnostics, cdr, Request1 ,  , [[This step is performed by middleware - RIE]])
   * insert ProcessCreateEvent(2, "Diagnostic Implication Lynch Syndrome is added to Genomic CDR", diagnostics, cdr, Request2 ,  , [[This step is performed by middleware - RIE]])
 
 * process[+]

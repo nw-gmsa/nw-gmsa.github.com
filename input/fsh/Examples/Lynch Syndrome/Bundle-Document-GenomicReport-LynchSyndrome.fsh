@@ -77,7 +77,7 @@ Usage: #example
     * title = "Simple variants"
     * code = $loinc#81250-3
     * text.status = #generated
-    * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>NTHL1 germline heterozygous duplication.</p></div>"
+    * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>MLH1 germline heterozygous duplication.</p></div>"
     * entry[+].reference = "urn:uuid:8385c2fd-313d-4fd5-b98e-d5ea4bae6f99"
 
 * section[+]
