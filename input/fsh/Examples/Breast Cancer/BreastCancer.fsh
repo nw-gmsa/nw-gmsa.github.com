@@ -290,7 +290,7 @@ Title: "Document Reference - R208.1 Laboratory Report PDF, Margaery Congleton"
 Description: "Fictitious example: the North West GLH's LAB-3 report as a PDF, related to its DiagnosticReport and the Laboratory Order"
 Usage: #example
 
-* insert ReportPDFDocumentReference(70ce6e2f-6588-4469-aeaf-4a56c394f47e, 699X0, 2026-10-26T12:00:00+00:00, urn:uuid:8c0097b8-cc07-4f84-b8f3-63ed163207ce, http://www.acme.org/diagnosticreport/identifiers, G26-48213, http://www.acme.org/servicerequest/RJN, RJN-26-48213, RJN, urn:uuid:fc8c5611-f3bc-4d54-9645-c054fecede15, R208.1)
+* insert ReportPDFDocumentReferenceByIdentifier(70ce6e2f-6588-4469-aeaf-4a56c394f47e, 699X0, 2026-10-26T12:00:00+00:00, http://www.acme.org/diagnosticreport/identifiers, G26-48213, http://www.acme.org/servicerequest/RJN, RJN-26-48213, RJN, urn:uuid:fc8c5611-f3bc-4d54-9645-c054fecede15, R208.1)
 * insert CongletonSubject
 
 Instance: MessageHeader-R01-BreastCancer
@@ -575,3 +575,24 @@ Usage: #example
 * insert EntryDocument("urn:uuid:b74f7d63-fb4e-423f-831d-ab96431df5b6", Patient-Buxton)
 * insert EntryDocument("urn:uuid:92b2469f-10c0-4638-84d5-9c04b53be163", PractitionerRole-Requester-Breast-RJN)
 * insert EntryDocument("urn:uuid:27b414a2-b752-41c5-a8d0-86122c46cfb9", DocumentReference-BreastCancer-Registry-GenomicReport)
+
+// T02 FHIR Message (Document and Document Notification): the report PDF
+
+Instance: MessageHeader-T02-BreastCancer
+InstanceOf: MessageHeader
+Title: "Message Header - Document Notification (T02), R208.1 inherited breast cancer"
+Description: "Fictitious example: the report PDF from NORTH WEST GLH to NHS CHESHIRE AND MERSEYSIDE INTEGRATED CARE BOARD"
+Usage: #example
+
+* insert T02MessageHeader(2026-10-26T12:05:00+00:00, 699X0, NORTH WEST GLH, QYG, NHS CHESHIRE AND MERSEYSIDE INTEGRATED CARE BOARD, https://fhir.nwgenomics.nhs.uk/Endpoint/QYG, urn:uuid:70ce6e2f-6588-4469-aeaf-4a56c394f47e, urn:uuid:fc8c5611-f3bc-4d54-9645-c054fecede15)
+
+Instance: DocumentMessage-BreastCancer
+InstanceOf: BundleMessage
+Title: "Bundle 'Message' - Document Notification (T02), R208.1 inherited breast cancer"
+Description: "Fictitious example: the North West GLH's Laboratory Report PDF sent to the regional shared care record in the [Inherited Breast Cancer (BRCA)](ExampleScenario-BreastCancer.html) scenario, as a T02 FHIR Message - the FHIR equivalent of HL7 v2 `MDM^T02`. It carries the report PDF as a `DocumentReference` and `Binary`. See [Document and Document Notification](MessageDefinition-original-document.html)."
+Usage: #example
+* insert MessageBundle("urn:uuid:9167f601-9be1-494f-9330-813fe2ab5a3f", "2026-10-26T12:05:00+00:00")
+* insert EntryDocument("urn:uuid:e8291e4d-3de4-484e-b000-ccabdd9d6265", MessageHeader-T02-BreastCancer)
+* insert EntryDocument("urn:uuid:cc329921-f9c6-45b4-8bbe-782834e293b3", Patient-Congleton)
+* insert EntryDocument("urn:uuid:70ce6e2f-6588-4469-aeaf-4a56c394f47e", DocumentReference-BreastCancer-Report)
+* insert EntryDocument("urn:uuid:fc8c5611-f3bc-4d54-9645-c054fecede15", Binary-Sample)

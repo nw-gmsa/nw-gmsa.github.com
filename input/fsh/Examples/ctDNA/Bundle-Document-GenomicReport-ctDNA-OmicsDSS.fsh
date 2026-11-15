@@ -233,3 +233,61 @@ Usage: #example
 * insert EntryDocument("urn:uuid:38be35e1-1df1-40fb-a055-c012dada778f", DiagnosticReport-ctDNA-OmicsDSS-TestResults)
 * insert EntryDocument("urn:uuid:eb1f8ec5-f9ff-4472-97f9-77999460b8c8", variant-egfr-omicsdss)
 * insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)
+
+Instance: DocumentReference-ctDNA-Report
+InstanceOf: DocumentReference
+Title: "Document Reference - ctDNA Laboratory Report PDF, Theon Sheffield"
+Description: "Fictitious example: the narrative Laboratory Report for ctDNA order T26-59XG as a PDF, related to its DiagnosticReport by its Report Identifier and to the order by its Order Group Number"
+Usage: #example
+
+* identifier[+].value = "bdf9908e-ffac-4f39-a546-5aa527700b73"
+* identifier[=].system = "http://www.example.org/documentreference/identifier"
+* identifier[=].assigner.identifier.system = $ods-code
+* identifier[=].assigner.identifier.value = "699X0"
+* status = #current
+* date = "2026-07-08T09:30:00+00:00"
+* type = $sct#1054161000000101 "Genetic report"
+* context.related[DiagnosticReport]
+  * type = "DiagnosticReport"
+  * identifier.type = $v2-0203#FILL
+  * identifier.system = "https://fhir.nwgenomics.nhs.uk/iGene/ReportIdentifier"
+  * identifier.value = "T26-59XG"
+  * identifier.assigner.identifier.system = $ods-code
+  * identifier.assigner.identifier.value = "699X0"
+* context.related[OrderGroupNumber]
+  * type = "ServiceRequest"
+  * identifier.type = $v2-0203#PGN
+  * identifier.system = "https://fhir.nwgenomics.nhs.uk/iGene/ReferralIdentifier"
+  * identifier.value = "R26-15AY"
+  * identifier.assigner.identifier.system = $ods-code
+  * identifier.assigner.identifier.value = "699X0"
+* content[+]
+  * attachment.contentType = #application/pdf
+  * attachment.url = "urn:uuid:158c1e5d-591c-4bcc-97e2-c958aadd44ac"
+* context.event[+] = $test-directory#M4.14
+* subject.reference = "urn:uuid:2160525b-0168-4f40-8ebf-9b053052a62c"
+* subject.display = "Theon SHEFFIELD"
+* subject.identifier
+  * system = "https://fhir.nhs.uk/Id/nhs-number"
+  * value = "9737873858"
+
+// T02 FHIR Message (Document and Document Notification): the report PDF
+
+Instance: MessageHeader-T02-ctDNA
+InstanceOf: MessageHeader
+Title: "Message Header - Document Notification (T02), M4.14 ctDNA"
+Description: "Fictitious example: the report PDF from NORTH WEST GLH to NHS SOUTH YORKSHIRE INTEGRATED CARE BOARD"
+Usage: #example
+
+* insert T02MessageHeader(2026-07-08T09:35:00+00:00, 699X0, NORTH WEST GLH, QF7, NHS SOUTH YORKSHIRE INTEGRATED CARE BOARD, https://fhir.nwgenomics.nhs.uk/Endpoint/QF7, urn:uuid:bdf9908e-ffac-4f39-a546-5aa527700b73, urn:uuid:158c1e5d-591c-4bcc-97e2-c958aadd44ac)
+
+Instance: DocumentMessage-ctDNA
+InstanceOf: BundleMessage
+Title: "Bundle 'Message' - Document Notification (T02), M4.14 ctDNA"
+Description: "Fictitious example: the narrative Laboratory Report PDF sent to the regional shared care record by the RIE in the [Lung Cancer - Liquid Biopsy (ctDNA)](ExampleScenario-ctDNA.html) scenario, as a T02 FHIR Message - the FHIR equivalent of HL7 v2 `MDM^T02`. It carries the report PDF as a `DocumentReference` and `Binary`. See [Document and Document Notification](MessageDefinition-original-document.html)."
+Usage: #example
+* insert MessageBundle("urn:uuid:c43d474b-af21-4558-bdd7-f83c9b279651", "2026-07-08T09:35:00+00:00")
+* insert EntryDocument("urn:uuid:be80f4b5-4f83-4d0c-a4b1-1d9dd0ac9413", MessageHeader-T02-ctDNA)
+* insert EntryDocument("urn:uuid:2160525b-0168-4f40-8ebf-9b053052a62c", Patient-Sheffield)
+* insert EntryDocument("urn:uuid:bdf9908e-ffac-4f39-a546-5aa527700b73", DocumentReference-ctDNA-Report)
+* insert EntryDocument("urn:uuid:158c1e5d-591c-4bcc-97e2-c958aadd44ac", Binary-Sample)

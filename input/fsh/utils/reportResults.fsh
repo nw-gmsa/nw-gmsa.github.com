@@ -22,9 +22,10 @@ RuleSet: ReportPDF(binaryUrn, title, date)
   * title = "{title}"
   * creation = "{date}"
 
-// DocumentReference for the report PDF: related to the DiagnosticReport (by reference and Report Identifier)
-// and the order (Order Placer Number), as for IHE XDS referenceIdList
-RuleSet: ReportPDFDocumentReference(id, assigner, date, drUrn, reportSystem, reportValue, placerSystem, placerValue, placerAssigner, binaryUrn, event)
+// DocumentReference for the report PDF: related to the DiagnosticReport by its Report Identifier and to the order by its
+// Order Placer Number, as for IHE XDS referenceIdList. Identifier only (no reference), as the same DocumentReference is also
+// carried in messages that do not include the DiagnosticReport, such as the T02 FHIR Message
+RuleSet: ReportPDFDocumentReferenceByIdentifier(id, assigner, date, reportSystem, reportValue, placerSystem, placerValue, placerAssigner, binaryUrn, event)
 * identifier[+].value = "{id}"
 * identifier[=].system = "http://www.example.org/documentreference/identifier"
 * identifier[=].assigner.identifier.system = $ods-code
@@ -33,7 +34,6 @@ RuleSet: ReportPDFDocumentReference(id, assigner, date, drUrn, reportSystem, rep
 * date = "{date}"
 * type = $sct#1054161000000101 "Genetic report"
 * context.related[DiagnosticReport]
-  * reference = "{drUrn}"
   * type = "DiagnosticReport"
   * identifier.type = $v2-0203#FILL
   * identifier.system = "{reportSystem}"
@@ -51,3 +51,24 @@ RuleSet: ReportPDFDocumentReference(id, assigner, date, drUrn, reportSystem, rep
   * attachment.contentType = #application/pdf
   * attachment.url = "{binaryUrn}"
 * context.event[+] = $test-directory#{event}
+
+// MessageHeader for a T02 FHIR Message (Document and Document Notification): the report PDF as a DocumentReference and Binary
+RuleSet: T02MessageHeader(date, senderOds, senderName, receiverOds, receiverName, endpoint, docUrn, binaryUrn)
+* meta.lastUpdated = "{date}"
+* eventCoding = http://terminology.hl7.org/CodeSystem/v2-0003#T02
+* sender.identifier.system = $ods-code
+* sender.identifier.value = "{senderOds}"
+* sender.display = "{senderName}"
+* destination.receiver.identifier.system = $ods-code
+* destination.receiver.identifier.value = "{receiverOds}"
+* destination.receiver.display = "{receiverName}"
+* destination.endpoint = "{endpoint}"
+* source.endpoint = "https://fhir.nwgenomics.nhs.uk/Endpoint/RIE"
+* source.software = "RIE"
+* focus[+]
+  * reference = "{docUrn}"
+  * type = #DocumentReference
+* focus[+]
+  * reference = "{binaryUrn}"
+  * type = #Binary
+* definition = "https://fhir.nwgenomics.nhs.uk/MessageDefinition/original-document"

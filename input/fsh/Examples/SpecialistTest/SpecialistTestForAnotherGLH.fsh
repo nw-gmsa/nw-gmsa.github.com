@@ -553,7 +553,7 @@ Title: "Document Reference - R67.1 sub-order report PDF (North West GLH), Oliver
 Description: "Fictitious example: the North West GLH's LAB-36 report as a PDF, related to its DiagnosticReport and the sub-order"
 Usage: #example
 
-* insert ReportPDFDocumentReference(0ba15655-0de9-46c8-98a6-aaa78279b82b, 699X0, 2026-10-19T14:00:00+00:00, urn:uuid:25749dd1-3f8f-472a-a8e3-1ebcf0cd8a23, http://www.acme.org/diagnosticreport/identifiers, G26-43307, http://www.acme.org/servicerequest/NorthThamesGLH, NT26-80455, 69A70, urn:uuid:292b12e2-63bd-4868-9789-5fea45e101f6, R67.1)
+* insert ReportPDFDocumentReferenceByIdentifier(0ba15655-0de9-46c8-98a6-aaa78279b82b, 699X0, 2026-10-19T14:00:00+00:00, http://www.acme.org/diagnosticreport/identifiers, G26-43307, http://www.acme.org/servicerequest/NorthThamesGLH, NT26-80455, 69A70, urn:uuid:292b12e2-63bd-4868-9789-5fea45e101f6, R67.1)
 * insert CamdenSubject
 
 Instance: DocumentReference-SPT-Report
@@ -562,5 +562,26 @@ Title: "Document Reference - R67.1 Laboratory Report PDF (North Thames GLH), Oli
 Description: "Fictitious example: North Thames GLH's LAB-3 report as a PDF, related to its DiagnosticReport and the Laboratory Order"
 Usage: #example
 
-* insert ReportPDFDocumentReference(63f0bf07-b24c-4881-b56e-ab04bc535888, 69A70, 2026-10-21T10:00:00+00:00, urn:uuid:bf3c6351-d196-4a3c-b989-1b50aab6fe85, http://www.acme.org/diagnosticreport/identifiers/69A70, NT26-80455, http://www.acme.org/servicerequest/RP4, GOSH-5520917, RP4, urn:uuid:e1a556fb-ac0b-4138-b4f5-9adce3f0004e, R67.1)
+* insert ReportPDFDocumentReferenceByIdentifier(63f0bf07-b24c-4881-b56e-ab04bc535888, 69A70, 2026-10-21T10:00:00+00:00, http://www.acme.org/diagnosticreport/identifiers/69A70, NT26-80455, http://www.acme.org/servicerequest/RP4, GOSH-5520917, RP4, urn:uuid:e1a556fb-ac0b-4138-b4f5-9adce3f0004e, R67.1)
 * insert CamdenSubject
+
+// T02 FHIR Message (Document and Document Notification): the report PDF
+
+Instance: MessageHeader-T02-SPT
+InstanceOf: MessageHeader
+Title: "Message Header - Document Notification (T02), R67.1 monogenic hearing loss"
+Description: "Fictitious example: the report PDF from NORTH WEST GLH to NHS ENGLAND"
+Usage: #example
+
+* insert T02MessageHeader(2026-10-19T14:05:00+00:00, 699X0, NORTH WEST GLH, X26, NHS ENGLAND, https://fhir.nwgenomics.nhs.uk/Endpoint/UGR, urn:uuid:0ba15655-0de9-46c8-98a6-aaa78279b82b, urn:uuid:292b12e2-63bd-4868-9789-5fea45e101f6)
+
+Instance: DocumentMessage-SPT
+InstanceOf: BundleMessage
+Title: "Bundle 'Message' - Document Notification (T02), R67.1 monogenic hearing loss"
+Description: "Fictitious example: the North West GLH's Laboratory Report PDF sent to the central repository (UGR) in the [Hearing Loss Test for Another Region](ExampleScenario-SpecialistTestForAnotherGLH.html) scenario, as a T02 FHIR Message - the FHIR equivalent of HL7 v2 `MDM^T02`. It carries the report PDF as a `DocumentReference` and `Binary`. See [Document and Document Notification](MessageDefinition-original-document.html)."
+Usage: #example
+* insert MessageBundle("urn:uuid:58ec20bf-3d64-45c7-8866-a3aeeec5ba12", "2026-10-19T14:05:00+00:00")
+* insert EntryDocument("urn:uuid:c310babf-2302-4b3c-80ce-cc9c7020b08b", MessageHeader-T02-SPT)
+* insert EntryDocument("urn:uuid:74fe4bf0-26d8-4b8c-90eb-b6ef80d887e0", Patient-Camden)
+* insert EntryDocument("urn:uuid:0ba15655-0de9-46c8-98a6-aaa78279b82b", DocumentReference-SPT-SubOrderReport)
+* insert EntryDocument("urn:uuid:292b12e2-63bd-4868-9789-5fea45e101f6", Binary-Sample)

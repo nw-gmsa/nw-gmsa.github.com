@@ -38,7 +38,8 @@ Usage: #definition
 * insert InstanceVersion(1, "HL7 FHIR Message R01", GenomicsSubOrderReportMessage-RPX, [[ North Thames GLH's report, based on the sub-order ]])
 * insert Instance_Empty(Report, Bundle, "Laboratory Report", [[ LAB-3 [Laboratory Report](StructureDefinition-LaboratoryReport.html) to the requesting clinician, `basedOn` the Laboratory Order. It may include the testing GLH's report ]])
 * insert InstanceVersion(1, "HL7 FHIR Message R01", GenomicsReportMessage-RPX, [[ The North West GLH's report, based on the Laboratory Order ]])
-* insert Instance_Empty(ReportDocument, Binary, "Laboratory Report document", [[ HL7 v2 `MDM^T02` with the Laboratory Report as a PDF, base64 encoded in OBX-5 (`ED`). A FHIR Document may replace the PDF later ]])
+* insert Instance_Empty(ReportDocument, Bundle, "Laboratory Report document", [[ HL7 v2 `MDM^T02` with the Laboratory Report as a PDF, base64 encoded in OBX-5 (`ED`). A FHIR Document may replace the PDF later In FHIR this is a T02 FHIR Message ([Document and Document Notification](MessageDefinition-original-document.html)) carrying a `DocumentReference` and the PDF as a `Binary` - see the [example](Bundle-OriginalDocumentMessage.html). ]])
+* insert InstanceVersion(1, "HL7 FHIR Message T02", DocumentMessage-RPX, [[ Laboratory Report PDF for Fetus Wigan ]])
 * insert Instance_Empty(Cancel, Bundle, "Order status - not tested", [[ The home GLH tells the requesting clinician the exome sequencing was not done ]])
 * insert InstanceVersion(1, "HL7 FHIR Message O51", GenomicOrderStatusMessage-RPX-NotTested, [[ Rapid prenatal exome sequencing not done ]])
 * insert Instance_Empty(Referral, Bundle, "Referral to clinical genetics", [[ Clinical referral (`OMG^O19`) of the family to clinical genetics. The subject is the family, a [Family Genetic Group](StructureDefinition-FamilyGeneticGroup.html) of the fetus and both parents. The testing done is referenced as supporting information: the Genomic Report document held on the central registry (a `DocumentReference`) ]])
@@ -92,7 +93,7 @@ Usage: #definition
 * process[+]
   * title = "7. Send to the central repository"
   * description = "The home GLH's Laboratory Report is sent to the NHS England Unified Genomic Record (UGR) through the RIE."
-  * insert ProcessCreateEvent(14, "Send Laboratory Report document", homeglh, ugr, ReportDocument, , [[ HL7 v2 `MDM^T02` with the report as a PDF ]])
+  * insert ProcessCreateEvent(14, "Send Laboratory Report document", homeglh, ugr, ReportDocument, 1, [[ HL7 v2 `MDM^T02` with the report as a PDF ]])
 
 * process[+]
   * title = "8. Referral to clinical genetics (O19)"

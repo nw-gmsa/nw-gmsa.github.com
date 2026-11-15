@@ -60,7 +60,7 @@ Title: "Document Reference - R454.1 Laboratory Report PDF, Mace Northwich"
 Description: "Fictitious example: the North West GLH's LAB-3 report as a PDF, related to its DiagnosticReport and the Laboratory Order"
 Usage: #example
 
-* insert ReportPDFDocumentReference(8a595a14-5fa3-4051-832c-e5bf4d80373b, 699X0, 2026-11-02T15:45:00+00:00, urn:uuid:dac39d4d-1955-4ad5-96c1-e033b7801687, http://www.acme.org/diagnosticreport/identifiers, e9a1b7c4-pgx-r454, http://www.acme.org/servicerequest, 71388, 699X0, urn:uuid:f9d86d34-fb27-48a0-aea6-02cca332a64e, R454.1)
+* insert ReportPDFDocumentReferenceByIdentifier(8a595a14-5fa3-4051-832c-e5bf4d80373b, 699X0, 2026-11-02T15:45:00+00:00, http://www.acme.org/diagnosticreport/identifiers, e9a1b7c4-pgx-r454, http://www.acme.org/servicerequest, 71388, 699X0, urn:uuid:f9d86d34-fb27-48a0-aea6-02cca332a64e, R454.1)
 * subject.reference = "urn:uuid:50d6aefa-e2d2-439a-820f-cb495c72ae6a"
 * subject.display = "Mace NORTHWICH"
 * subject.identifier

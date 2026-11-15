@@ -24,6 +24,7 @@ Usage: #definition
 * insert ActorEntity(rie, "Regional Integration Engine", [[ [Intermediary](ActorDefinition-Intermediary.html) that routes messages and builds the FHIR Document ]])
 * insert ActorEntity(repo, "FHIR Repository", [[ [Resource Access Provider](ActorDefinition-ResourceAccessProvider.html) that stores the work order and copies of the messages the RIE routes ]])
 * insert ActorEntity(ugr, "Central Registry", [[ For example the NHS England Unified Genomic Record ]])
+* insert ActorEntity(scr, "Regional Shared Care Record", [[ The regional shared care record, for example the Greater Manchester Care Record (GMCR), which receives the report PDF and makes it available to other care settings, including the patient's GP. See [Regional Shared Care Records](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/RegionalSharedCareRecords.md) ]])
 
 * insert Instance_Empty(Request1, Bundle, "HL7 FHIR Message O21 - Laboratory Order", [[ LAB-1 Laboratory Order ]])
 * insert InstanceVersion(1, "HL7 FHIR Message O21", GenomicsOrderMessage-ctDNA, [[ ctDNA Laboratory Order for test M4.14 ]])
@@ -41,6 +42,8 @@ Usage: #definition
 
 * insert Instance_Empty(Request6, Bundle, "HL7 FHIR Message R01 - Laboratory Report", [[ LAB-3 narrative Laboratory Report. The `DiagnosticReport` is `final` and has no `result`. It links to the test results using the `supportingInfo` extension ]])
 * insert InstanceVersion(6, "HL7 FHIR Message R01 - Laboratory Report", ReportMessage-ctDNA-iGene-NarrativeReport, [[ Narrative Laboratory Report ]])
+* insert Instance_Empty(ReportDocument, Bundle, "Laboratory Report document", [[ HL7 v2 `MDM^T02` with the Laboratory Report as a PDF, base64 encoded in OBX-5 (`ED`), sent to the regional shared care record. See [Sharing Laboratory Reports (Document)](HIE.html#sharing-laboratory-reports-document-iti-105-and-mdm_t02) In FHIR this is a T02 FHIR Message ([Document and Document Notification](MessageDefinition-original-document.html)) carrying a `DocumentReference` and the PDF as a `Binary` - see the [example](Bundle-OriginalDocumentMessage.html). ]])
+* insert InstanceVersion(1, "HL7 FHIR Message T02", DocumentMessage-ctDNA, [[ Laboratory Report PDF for Theon Sheffield ]])
 
 * insert Instance_Empty(Request7, Binary, "Search FHIR Repository", [[ Retrieve the Laboratory Report by its identifier. Then retrieve the test results it links to with `GET [base]/DiagnosticReport?identifier=[system]|[value]&_include=DiagnosticReport:result` ]])
 * insert Instance_Empty(Reply7, Bundle, "Search results", [[ The Laboratory Report and the test results with their `Observation`s ]])
@@ -77,13 +80,14 @@ Usage: #definition
 
 * process[+]
   * title = "5. Laboratory Report (LAB-3)"
-  * description = "Lab 1 clinically validates the test results and writes the narrative Laboratory Report, which is sent to the Order Placer. The RIE also sends a copy to the FHIR Repository."
+  * description = "Lab 1 clinically validates the test results and writes the narrative Laboratory Report, which is sent to the Order Placer. The RIE also sends a copy to the FHIR Repository, and the report PDF to the regional shared care record as an HL7 v2 `MDM^T02`."
   * insert ProcessCreateEvent(12, "Send Laboratory Report R01", lab1, rie, Request6, , [[ ]])
   * insert ProcessCreateEvent(13, "Send Laboratory Report R01", rie, placer, Request6, , [[ See [Genomic Test Report Process](ExampleScenario-GenomicTestReportProcess.html) ]])
   * insert ProcessCreateEvent(14, "Send copy of Laboratory Report using $process-message", rie, repo, Request6, , [[ ]])
+  * insert ProcessCreateEvent(15, "Send Laboratory Report document", rie, scr, ReportDocument, 1, [[ HL7 v2 `MDM^T02` or a T02 FHIR Message with the report as a PDF, which the patient's GP can see in the shared care record ]])
 
 * process[+]
   * title = "6. FHIR Document to Central Registry"
   * description = "The RIE retrieves the Laboratory Report and the test results it links to from the FHIR Repository. It merges them by adding the test results Observations to the Laboratory Report result, builds a FHIR Document and sends it to the central registry."
-  * insert ProcessSearch(15, "Retrieve Laboratory Report and Test Results", rie, repo, Request7, Reply7, [[ ]])
-  * insert ProcessCreateEvent(16, "Send FHIR Document", rie, ugr, Request8, , [[ The Result summary section contains the merged Laboratory Report. The Results section contains the `Observation`s. The test results are also in the Results from other laboratories section ]])
+  * insert ProcessSearch(16, "Retrieve Laboratory Report and Test Results", rie, repo, Request7, Reply7, [[ ]])
+  * insert ProcessCreateEvent(17, "Send FHIR Document", rie, ugr, Request8, , [[ The Result summary section contains the merged Laboratory Report. The Results section contains the `Observation`s. The test results are also in the Results from other laboratories section ]])

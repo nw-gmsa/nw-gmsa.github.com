@@ -416,6 +416,9 @@ groups:
       - Composition/Composition-GenomicsReport-ctDNA
       - MessageHeader/MessageHeaderO21ctDNA
       - MessageHeader/MessageHeaderR01ctDNA
+      - Bundle/DocumentMessage-ctDNA
+      - MessageHeader/MessageHeader-T02-ctDNA
+      - DocumentReference/DocumentReference-ctDNA-Report
       - ServiceRequest/ServiceRequest-ctDNA
       - Specimen/Specimen-ctDNA
       - DiagnosticReport/DiagnosticReport-ctDNA
@@ -506,6 +509,8 @@ groups:
       - ServiceRequest/ServiceRequest-RPX-Referral
       - Group/Group-RPX-Family-Wigan
       - DocumentReference/DocumentReference-RPX-Registry-GenomicReport
+      - Bundle/DocumentMessage-RPX
+      - MessageHeader/MessageHeader-T02-RPX
       - Specimen/Specimen-RPX-Fetal
       - Specimen/Specimen-RPX-Fetal-DNA
       - Task/Task-RPX-SubOrder-Accepted
@@ -551,6 +556,8 @@ groups:
       - Observation/DiagnosticImplication-SPT-GJB2
       - DocumentReference/DocumentReference-SPT-SubOrderReport
       - DocumentReference/DocumentReference-SPT-Report
+      - Bundle/DocumentMessage-SPT
+      - MessageHeader/MessageHeader-T02-SPT
   -ex-example-pharmacogenomics:
     name: "Example: Pharmacogenomics"
     description: "Pharmacogenomics (R454.1 CYP2C19 before mavacamten) closed loop referral for Mace Northwich: the order (O21) and report (R01) messages and the FHIR Document report - see the [Pharmacogenomics](ExampleScenario-Pharmacogenomics.html) scenario"
@@ -596,6 +603,12 @@ groups:
       - Observation/Variant-HaematoOncology-TP53
       - Observation/DiagnosticImplication-HaematoOncology-TP53
       - DocumentReference/DocumentReference-HaematoOncology-Report
+      - DocumentReference/DocumentReference-HaematoOncology-Cytogenetics
+      - DocumentReference/DocumentReference-HaematoOncology-Molecular
+      - Bundle/DocumentMessage-HaematoOncology-Cytogenetics
+      - MessageHeader/MessageHeader-T02-HaematoOncology-Cytogenetics
+      - Bundle/DocumentMessage-HaematoOncology-Molecular
+      - MessageHeader/MessageHeader-T02-HaematoOncology-Molecular
   -ex-example-breast-cancer:
     name: "Example: Inherited Breast Cancer (BRCA)"
     description: "Inherited breast cancer (R208.1) for Margaery Congleton: the order (O21) and report (R01) messages, the FHIR Document report and the referral of the family to clinical genetics (O19) - see the [Inherited Breast Cancer (BRCA)](ExampleScenario-BreastCancer.html) scenario"
@@ -621,6 +634,8 @@ groups:
       - DocumentReference/DocumentReference-BreastCancer-Report
       - DocumentReference/DocumentReference-BreastCancer-Registry-GenomicReport
       - Group/Group-BreastCancer-Family-Congleton
+      - Bundle/DocumentMessage-BreastCancer
+      - MessageHeader/MessageHeader-T02-BreastCancer
   -ex-example-lynch-syndrome:
     name: "Example: Lynch Syndrome"
     description: "Germline (R210.2 Inherited MMR deficiency) closed loop referral for Ned Liverpool: the order (O21) and report (R01) messages and the FHIR Document report - see the [Lynch Syndrome](ExampleScenario-LynchSyndrome.html) scenario - with the tumour immunohistochemistry result from histopathology, and the resources they carry"
@@ -637,6 +652,8 @@ groups:
       - ServiceRequest/ServiceRequest-LynchSyndrome-Referral
       - Group/Group-LynchSyndrome-Family-Liverpool
       - DocumentReference/DocumentReference-LynchSyndrome-Registry-GenomicReport
+      - Bundle/DocumentMessage-LynchSyndrome
+      - MessageHeader/MessageHeader-T02-LynchSyndrome
       - Patient/Patient-Leeds
       - Bundle/GenomicsReportMessage-LynchSyndrome
       - MessageHeader/MessageHeader-R01-LynchSyndrome

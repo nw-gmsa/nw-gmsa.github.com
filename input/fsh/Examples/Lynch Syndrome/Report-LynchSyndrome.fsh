@@ -64,7 +64,7 @@ Title: "Document Reference - R210.2 Laboratory Report PDF, Ned Liverpool"
 Description: "Fictitious example: the North West GLH's LAB-3 report as a PDF, related to its DiagnosticReport and the Laboratory Order"
 Usage: #example
 
-* insert ReportPDFDocumentReference(2c63c3b1-caae-4b8d-835e-f75ccc46ad12, 699X0, 2023-09-12T10:00:00+00:00, urn:uuid:72f52594-d87e-4631-a208-838e720611a4, http://www.acme.org/diagnosticreport/identifiers, 98763a9b-98d4-4cfc-b760-1db086ec52a1, http://www.acme.org/servicerequest, 66717, 699X0, urn:uuid:1d9c307b-47f0-4e59-93a8-9d849086cdad, R210.2)
+* insert ReportPDFDocumentReferenceByIdentifier(2c63c3b1-caae-4b8d-835e-f75ccc46ad12, 699X0, 2023-09-12T10:00:00+00:00, http://www.acme.org/diagnosticreport/identifiers, 98763a9b-98d4-4cfc-b760-1db086ec52a1, http://www.acme.org/servicerequest, 66717, 699X0, urn:uuid:1d9c307b-47f0-4e59-93a8-9d849086cdad, R210.2)
 * subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
 * subject.display = "Ned LIVERPOOL"
 * subject.identifier
@@ -105,5 +105,26 @@ Usage: #example
 * insert EntryDocument("urn:uuid:0878c5de-c22f-4e31-841a-a82ad31c93aa", 0878c5de-c22f-4e31-841a-a82ad31c93aa)
 * insert EntryDocument("urn:uuid:8385c2fd-313d-4fd5-b98e-d5ea4bae6f99", 8385c2fd-313d-4fd5-b98e-d5ea4bae6f99)
 * insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)
+* insert EntryDocument("urn:uuid:2c63c3b1-caae-4b8d-835e-f75ccc46ad12", DocumentReference-LynchSyndrome-Report)
+* insert EntryDocument("urn:uuid:1d9c307b-47f0-4e59-93a8-9d849086cdad", Binary-Sample)
+
+// T02 FHIR Message (Document and Document Notification): the report PDF
+
+Instance: MessageHeader-T02-LynchSyndrome
+InstanceOf: MessageHeader
+Title: "Message Header - Document Notification (T02), R210.2 Lynch syndrome"
+Description: "Fictitious example: the report PDF from NORTH WEST GLH to NHS CHESHIRE AND MERSEYSIDE INTEGRATED CARE BOARD"
+Usage: #example
+
+* insert T02MessageHeader(2023-09-12T10:05:00+00:00, 699X0, NORTH WEST GLH, QYG, NHS CHESHIRE AND MERSEYSIDE INTEGRATED CARE BOARD, https://fhir.nwgenomics.nhs.uk/Endpoint/QYG, urn:uuid:2c63c3b1-caae-4b8d-835e-f75ccc46ad12, urn:uuid:1d9c307b-47f0-4e59-93a8-9d849086cdad)
+
+Instance: DocumentMessage-LynchSyndrome
+InstanceOf: BundleMessage
+Title: "Bundle 'Message' - Document Notification (T02), R210.2 Lynch syndrome"
+Description: "Fictitious example: the North West GLH's Laboratory Report PDF sent to the regional shared care record in the [Lynch Syndrome](ExampleScenario-LynchSyndrome.html) scenario, as a T02 FHIR Message - the FHIR equivalent of HL7 v2 `MDM^T02`. It carries the report PDF as a `DocumentReference` and `Binary`. See [Document and Document Notification](MessageDefinition-original-document.html)."
+Usage: #example
+* insert MessageBundle("urn:uuid:34995706-191c-4c35-a0d1-f8b482d37e21", "2023-09-12T10:05:00+00:00")
+* insert EntryDocument("urn:uuid:47b4ba02-932f-4fcf-8445-9866288bd57d", MessageHeader-T02-LynchSyndrome)
+* insert EntryDocument("urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd", Patient-Liverpool)
 * insert EntryDocument("urn:uuid:2c63c3b1-caae-4b8d-835e-f75ccc46ad12", DocumentReference-LynchSyndrome-Report)
 * insert EntryDocument("urn:uuid:1d9c307b-47f0-4e59-93a8-9d849086cdad", Binary-Sample)

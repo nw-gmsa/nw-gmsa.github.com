@@ -730,7 +730,7 @@ Title: "Document Reference - R21.2 sub-order report PDF (North Thames GLH), Fetu
 Description: "Fictitious example: North Thames GLH's LAB-36 report as a PDF, related to its DiagnosticReport and the sub-order"
 Usage: #example
 
-* insert ReportPDFDocumentReference(b8dbd628-25ab-423d-809a-5a1a83ca6b4b, 69A70, 2026-09-26T14:00:00+00:00, urn:uuid:26c66a34-9028-4b14-866e-42d8284b17c4, http://www.acme.org/diagnosticreport/identifiers/69A70, NT26-77812, https://fhir.nwgenomics.nhs.uk/iGene/OrderIdentifier, G26-41180, 699X0, urn:uuid:e9991788-9e6c-46e4-ab38-b1e4f57ad655, R21.2)
+* insert ReportPDFDocumentReferenceByIdentifier(b8dbd628-25ab-423d-809a-5a1a83ca6b4b, 69A70, 2026-09-26T14:00:00+00:00, http://www.acme.org/diagnosticreport/identifiers/69A70, NT26-77812, https://fhir.nwgenomics.nhs.uk/iGene/OrderIdentifier, G26-41180, 699X0, urn:uuid:e9991788-9e6c-46e4-ab38-b1e4f57ad655, R21.2)
 // A fetus has no NHS Number: the Medical Record Number is carried as the source patient identifier
 * subject.reference = "urn:uuid:e322141b-af07-451d-92ab-74d192151818"
 * subject.display = "Baby WIGAN"
@@ -747,7 +747,7 @@ Title: "Document Reference - R21 Laboratory Report PDF, Fetus Wigan"
 Description: "Fictitious example: the North West GLH's LAB-3 report as a PDF, related to its DiagnosticReport and the Laboratory Order"
 Usage: #example
 
-* insert ReportPDFDocumentReference(87733553-52c1-4662-b0d2-a9cf22573c98, 699X0, 2026-09-28T09:00:00+00:00, urn:uuid:0cd9fd4c-7934-4815-9573-e278229d3b9c, http://www.acme.org/diagnosticreport/identifiers, G26-41180, urn:oid:1.2.840.114350.1.13.0.1.7.2.798268, 1702114, R0A, urn:uuid:752fc3a3-8932-403e-a19a-84042080e0b0, R21.2)
+* insert ReportPDFDocumentReferenceByIdentifier(87733553-52c1-4662-b0d2-a9cf22573c98, 699X0, 2026-09-28T09:00:00+00:00, http://www.acme.org/diagnosticreport/identifiers, G26-41180, urn:oid:1.2.840.114350.1.13.0.1.7.2.798268, 1702114, R0A, urn:uuid:752fc3a3-8932-403e-a19a-84042080e0b0, R21.2)
 // A fetus has no NHS Number: the Medical Record Number is carried as the source patient identifier
 * subject.reference = "urn:uuid:e322141b-af07-451d-92ab-74d192151818"
 * subject.display = "Baby WIGAN"
@@ -917,3 +917,24 @@ Usage: #example
   * system = "http://www.acme.org/mrn/R0A"
   * assigner.identifier.system = $ods-code
   * assigner.identifier.value = "R0A"
+
+// T02 FHIR Message (Document and Document Notification): the report PDF
+
+Instance: MessageHeader-T02-RPX
+InstanceOf: MessageHeader
+Title: "Message Header - Document Notification (T02), R21 rapid prenatal exome sequencing"
+Description: "Fictitious example: the report PDF from NORTH WEST GLH to NHS ENGLAND"
+Usage: #example
+
+* insert T02MessageHeader(2026-09-28T09:30:00+00:00, 699X0, NORTH WEST GLH, X26, NHS ENGLAND, https://fhir.nwgenomics.nhs.uk/Endpoint/UGR, urn:uuid:87733553-52c1-4662-b0d2-a9cf22573c98, urn:uuid:752fc3a3-8932-403e-a19a-84042080e0b0)
+
+Instance: DocumentMessage-RPX
+InstanceOf: BundleMessage
+Title: "Bundle 'Message' - Document Notification (T02), R21 rapid prenatal exome sequencing"
+Description: "Fictitious example: the North West GLH's Laboratory Report PDF sent to the central repository (UGR) in the [Rapid Genetic Testing in Pregnancy](ExampleScenario-RapidPrenatalExomeSequencing.html) scenario, as a T02 FHIR Message - the FHIR equivalent of HL7 v2 `MDM^T02`. It carries the report PDF as a `DocumentReference` and `Binary`. See [Document and Document Notification](MessageDefinition-original-document.html)."
+Usage: #example
+* insert MessageBundle("urn:uuid:8e93a6b8-32e7-46ed-b50d-fcbddde48c74", "2026-09-28T09:30:00+00:00")
+* insert EntryDocument("urn:uuid:57806498-5e2c-4a02-903c-96cba6f0d016", MessageHeader-T02-RPX)
+* insert EntryDocument("urn:uuid:e322141b-af07-451d-92ab-74d192151818", Patient-Fetus-Wigan)
+* insert EntryDocument("urn:uuid:87733553-52c1-4662-b0d2-a9cf22573c98", DocumentReference-RPX-Report)
+* insert EntryDocument("urn:uuid:752fc3a3-8932-403e-a19a-84042080e0b0", Binary-Sample)

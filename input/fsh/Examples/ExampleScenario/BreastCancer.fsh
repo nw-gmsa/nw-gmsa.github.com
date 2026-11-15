@@ -16,6 +16,7 @@ Usage: #definition
 * insert ActorEntity(placer, "Order Placer - East Cheshire NHS Trust", [[ [Order Placer](ActorDefinition-OrderPlacer.html). The breast surgeon at East Cheshire NHS Trust (RJN) ]])
 * insert ActorEntity(glh, "Order Filler - North West GLH", [[ [Order Filler](ActorDefinition-OrderFiller.html). The North West GLH (699X0), which tests, interprets and reports ]])
 * insert ActorEntity(ugr, "Central Repository - UGR", [[ NHS England Unified Genomic Record. A central repository of genomic reports for each patient ]])
+* insert ActorEntity(scr, "Regional Shared Care Record", [[ The regional shared care record, for example the Greater Manchester Care Record (GMCR), which receives the report PDF and makes it available to other care settings, including the patient's GP. See [Regional Shared Care Records](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/RegionalSharedCareRecords.md) ]])
 * insert ActorEntity(referral, "Referral service - eRS or Genomics England", [[ The NHS e-Referral Service (eRS) or a Genomics England Limited application, which carries the referral to clinical genetics ]])
 * insert ActorEntity(clingen, "Clinical Genetics - Manchester Centre for Genomic Medicine", [[ The clinical genetics service (family cancer clinic) that receives the referral and sees the family ]])
 
@@ -23,6 +24,8 @@ Usage: #definition
 * insert InstanceVersion(1, "HL7 FHIR Message O21", GenomicsOrderMessage-BreastCancer, [[ Laboratory Order for Margaery Congleton ]])
 * insert Instance_Empty(Report, Bundle, "Laboratory Report", [[ LAB-3 [Laboratory Report](StructureDefinition-LaboratoryReport.html), `basedOn` the Laboratory Order by its Order Placer Number. Its results are the [Variant](StructureDefinition-Variant.html) and [Diagnostic Implication](StructureDefinition-DiagnosticImplication.html) `Observation`s, and the report is also a PDF (`presentedForm` and a `DocumentReference`) ]])
 * insert InstanceVersion(1, "HL7 FHIR Message R01", GenomicsReportMessage-BreastCancer, [[ Laboratory Report for Margaery Congleton ]])
+* insert Instance_Empty(ReportDocument, Bundle, "Laboratory Report document", [[ HL7 v2 `MDM^T02` with the Laboratory Report as a PDF, base64 encoded in OBX-5 (`ED`), sent to the regional shared care record. See [Sharing Laboratory Reports (Document)](HIE.html#sharing-laboratory-reports-document-iti-105-and-mdm_t02) In FHIR this is a T02 FHIR Message ([Document and Document Notification](MessageDefinition-original-document.html)) carrying a `DocumentReference` and the PDF as a `Binary` - see the [example](Bundle-OriginalDocumentMessage.html). ]])
+* insert InstanceVersion(1, "HL7 FHIR Message T02", DocumentMessage-BreastCancer, [[ Laboratory Report PDF for Margaery Congleton ]])
 * insert Instance_Empty(Document, Bundle, "Laboratory Report - FHIR Document", [[ The Laboratory Report as a [FHIR Document](StructureDefinition-Composition-GenomicReport.html). It includes every `Observation` from the R01 Laboratory Report, and the pathology report ]])
 * insert InstanceVersion(1, "HL7 FHIR Document", FHIRDocumentGeneticReportBundle-BreastCancer, [[ FHIR Document for Margaery Congleton ]])
 * insert Instance_Empty(Referral, Bundle, "Referral to clinical genetics", [[ Clinical referral (`OMG^O19`) of the family to clinical genetics, for genetic counselling and predictive testing. The subject is the family, a [Family Genetic Group](StructureDefinition-FamilyGeneticGroup.html) of Margaery Congleton and her sister, and the testing done is referenced as supporting information: the Genomic Report document held on the central registry (a `DocumentReference`) ]])
@@ -35,16 +38,17 @@ Usage: #definition
 
 * process[+]
   * title = "2. Laboratory Report (LAB-3)"
-  * description = "The North West GLH tests and interprets, and sends the Laboratory Report, with its results and the report PDF, to the requesting clinician."
+  * description = "The North West GLH tests and interprets, and sends the Laboratory Report, with its results and the report PDF, to the requesting clinician. The report PDF is also sent to the regional shared care record, where the patient's GP can see it."
   * insert ProcessCreateEvent(2, "Send Laboratory Report", glh, placer, Report, 1, [[ See [Genomic Test Report Process](ExampleScenario-GenomicTestReportProcess.html) ]])
+  * insert ProcessCreateEvent(3, "Send Laboratory Report document", glh, scr, ReportDocument, 1, [[ HL7 v2 `MDM^T02` or a T02 FHIR Message with the report as a PDF, which the patient's GP can see in the shared care record ]])
 
 * process[+]
   * title = "3. Send to the central repository"
   * description = "The Laboratory Report is sent to the central repository as a FHIR Document, through the RIE. The document includes every Observation from the R01 Laboratory Report."
-  * insert ProcessCreateEvent(3, "Send FHIR Document", glh, ugr, Document, 1, [[ ]])
+  * insert ProcessCreateEvent(4, "Send FHIR Document", glh, ugr, Document, 1, [[ ]])
 
 * process[+]
   * title = "4. Referral to clinical genetics (O19)"
   * description = "A pathogenic BRCA1 variant is found, so the breast surgeon refers the family to clinical genetics for genetic counselling and predictive testing of relatives for the same variant, via eRS or a Genomics England Limited application. The subject of the referral is the family."
-  * insert ProcessCreateEvent(4, "Send referral", placer, referral, Referral, 1, [[ See [Genetic Clinical Referral](StructureDefinition-GeneticClinicalReferral.html) ]])
-  * insert ProcessCreateEvent(5, "Route referral", referral, clingen, Referral, 1, [[ ]])
+  * insert ProcessCreateEvent(5, "Send referral", placer, referral, Referral, 1, [[ See [Genetic Clinical Referral](StructureDefinition-GeneticClinicalReferral.html) ]])
+  * insert ProcessCreateEvent(6, "Route referral", referral, clingen, Referral, 1, [[ ]])
