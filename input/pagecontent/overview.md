@@ -107,7 +107,11 @@ graph TD;
     R --> |Imaging report| M
     M["Multidisciplinary team (MDT)<br/>diagnosis and treatment plan"] --> T["Treatment<br/>for example targeted therapy"]
     M --> |"Referral O19"| CG["Clinical Genetics<br/>genetic counselling and predictive testing"]
-    M --> |"Clinic letters and<br/>discharge summaries"| L["Reports to the patient and GP"]
+    L["Reports to the patient and GP<br/>clinic letters and discharge summaries,<br/>at each stage"]
+    R -.-> |"Scan results,<br/>may show cancer"| L
+    P -.-> |"Diagnosis and<br/>details of the cancer"| L
+    G -.-> |"Gene changes or<br/>an inherited condition"| L
+    M -.-> |"Treatment plan"| L
 
     click G StructureDefinition-ServiceRequest.html
 
@@ -134,7 +138,7 @@ graph TD;
 | Histopathology | The pathologist examines the sample to confirm the cancer and its type and grade, and does tests on the cancer cells, such as immunohistochemistry (IHC), microsatellite instability (MSI) or hormone receptor and HER2 tests | [IHE PaLM](https://profiles.ihe.net/PaLM/index.html): Anatomic Pathology Structured Report (APSR, trial implementation) for the histopathology report, and Anatomic Pathology Reporting to Public Health (ARPH, trial implementation). Cancer registration: NHS England [National Disease Registration Service (NDRS)](https://digital.nhs.uk/services/national-disease-registration-service). Pathology reports to cancer registries: [HL7 FHIR US Cancer Pathology Data Sharing](https://hl7.org/fhir/us/cancer-reporting/index.html). This guide: a copy of the pathology report is sent with the genomic order (`ServiceRequest.supportingInfo`); where histopathology itself asks for genomic testing on the tumour sample, see [Inter-Laboratory Workflow - Reflex Order](ILW.html#reflex-order) |
 | Genomic testing | The Genomic Laboratory Hub tests the tumour sample for gene changes (somatic testing), or a blood sample for an inherited variant (germline testing) or for DNA from the cancer cells (liquid biopsy) | This guide: the [Laboratory Testing Workflow](LTW.html) and [Inter-Laboratory Workflow](ILW.html), based on [IHE Pathology and Laboratory Medicine (PaLM)](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol1.pdf), with results based on [HL7 FHIR Genomics Reporting](https://hl7.org/fhir/uv/genomics-reporting/STU3/) and the report as a FHIR Document based on [HL7 Europe Laboratory Report](https://hl7.eu/fhir/laboratory/2.1.0/) for the central repository |
 | MDT and treatment | The MDT reviews the imaging, pathology and genomic reports and agrees the treatment plan | Cancer registration of diagnosis and treatment: [NDRS](https://digital.nhs.uk/services/national-disease-registration-service). Not covered by this guide: the reports are sent back to the requesting clinician |
-| Reports to the patient and GP | Clinic letters (usually after each appointment) and discharge summaries are sent to the patient and copied to the GP, so both are kept informed through the pathway - see [Letters and Reports to the Patient and GP](#letters-and-reports-to-the-patient-and-gp) | NHS England [Transfer of Care](https://digital.nhs.uk/services/interoperability-toolkit/developer-resources/transfer-of-care-apis) (FHIR messages for discharge summaries and outpatient letters) or Kettering XML, sent to the GP using [MESH](https://digital.nhs.uk/services/message-exchange-for-social-care-and-health-mesh). FHIR R4: [HL7 Europe Hospital Discharge Report](https://build.fhir.org/ig/hl7-eu/hdr/). IHE document sharing (MHD/XDS) - see [Sharing Laboratory Reports (Document)](HIE.html#sharing-laboratory-reports-document-iti-105-and-mdm_t02). Not covered by this guide |
+| Reports to the patient and GP | Happens at several stages, not only at the end. Clinic letters (usually after each appointment) and discharge summaries are sent to the patient and copied to the GP: for example after the first scan (which may show cancer), when histopathology confirms the diagnosis and adds more details of the cancer, when genomic testing finds gene changes or confirms an inherited (genetic) condition, and when the MDT agrees the treatment plan - see [Letters and Reports to the Patient and GP](#letters-and-reports-to-the-patient-and-gp) | NHS England [Transfer of Care](https://digital.nhs.uk/services/interoperability-toolkit/developer-resources/transfer-of-care-apis) (FHIR messages for discharge summaries and outpatient letters) or Kettering XML, sent to the GP using [MESH](https://digital.nhs.uk/services/message-exchange-for-social-care-and-health-mesh). FHIR R4: [HL7 Europe Hospital Discharge Report](https://build.fhir.org/ig/hl7-eu/hdr/). IHE document sharing (MHD/XDS) - see [Sharing Laboratory Reports (Document)](HIE.html#sharing-laboratory-reports-document-iti-105-and-mdm_t02). Not covered by this guide |
 | Clinical genetics | If an inherited variant is found, the family is referred for genetic counselling, and relatives can have predictive testing for the same variant | This guide: the referral (O19) - see [Genetic Referrals](GeneticReferrals.html). Family history may be recorded in another system, such as [NDRS](https://digital.nhs.uk/services/national-disease-registration-service) |
 {:.grid}
 
@@ -150,7 +154,10 @@ How the cancer scenarios below fit this pathway:
 
 #### Letters and Reports to the Patient and GP
 
-Many letters and reports are produced along the pathway, and the patient and their GP are kept informed as it goes.
+Many letters and reports are produced along the pathway, and the patient and their GP are kept informed at each stage:
+for example after the first scan, which may show cancer; when histopathology confirms the diagnosis and adds more
+details of the cancer; when genomic testing finds gene changes or confirms an inherited (genetic) condition; and when
+the MDT agrees the treatment plan.
 The GIRFT guidance [Bridging the interface between primary and secondary care](https://gettingitrightfirsttime.co.uk/cross_cutting_theme/bridging-the-interface/)
 ([checklist](https://gettingitrightfirsttime.co.uk/wp-content/uploads/2025/08/Bridging-the-interface-checklist-July-2025.pdf))
 sets out what secondary care is expected to do:
