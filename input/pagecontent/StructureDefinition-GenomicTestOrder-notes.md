@@ -258,7 +258,7 @@ for how `ServiceRequest.requisition` ties a Filler Order back to the
 Original Order it descends from.
 
 In IHE Laboratory Testing Workflow, the Original Order is the key entity in
-[LAB-1](LTW.html#diagnostic-testing), and the Filler Order is the key entity
+[LAB-1](overview.html#diagnostic-testing), and the Filler Order is the key entity
 in [LAB-4](LTW.html#work-order-and-test-result-management-lab-4-and-lab-5) -
 both share the field-by-field mapping in [Diagnostic
 Workflow](#diagnostic-workflow) above.

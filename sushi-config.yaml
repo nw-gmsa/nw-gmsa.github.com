@@ -88,8 +88,8 @@ pages:
   HowToEngineerInteroperability.md:
     title: "How To Engineer (scale and deliver) Interoperability"
     generation: markdown
-  ExampleScenarios.md:
-    title: "Example Scenarios"
+  overview.md:
+    title: "Overview"
     generation: markdown
   LTW.md:
     title: Laboratory Testing Workflow (LTW)
@@ -318,7 +318,7 @@ menu:
   Home: index.html
   Analysis and Design (Volume 1) :
  ##   Design Overview: design.html
-    Example Scenarios: ExampleScenarios.html
+    Overview: overview.html
     Laboratory Testing Workflow (LTW): LTW.html
     Inter-Laboratory Workflow (ILW): ILW.html
     Specimen Transportation and Management: SpecimenTransportationAndManagement.html
