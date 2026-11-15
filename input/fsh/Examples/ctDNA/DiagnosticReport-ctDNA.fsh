@@ -18,7 +18,6 @@ Description: "Diagnostic Report ctDNA Example"
   * identifier.assigner.identifier.value = "699X0"
   * identifier.type = $v2-0203#FILL
   * type = "ServiceRequest"
-  * reference = "urn:uuid:6e26d6b3-490e-4348-9d6c-37281567d6ec"
 
 * status = #final
 // Hand-written narrative: a generated one links presentedForm.url, and urn: is not a valid hyperlink scheme

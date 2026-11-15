@@ -14,7 +14,6 @@ RuleSet: iGeneNarrativeReportContent
 
 * basedOn[OrderFillerNumber]
   * type = "ServiceRequest"
-  * reference = "urn:uuid:6e26d6b3-490e-4348-9d6c-37281567d6ec"
   * identifier.type = $v2-0203#FILL
   * identifier.value = "T26-59XG"
   * identifier.system = "https://fhir.nwgenomics.nhs.uk/iGene/ReportIdentifier"
@@ -125,7 +124,6 @@ Usage: #example
 * insert EntryDocument("urn:uuid:3409dfdb-6777-41ec-b2ff-0dd7b7e47f6f", MessageHeaderR01ctDNAiGeneNarrativeReport)
 * insert EntryDocument("urn:uuid:2160525b-0168-4f40-8ebf-9b053052a62c", Patient-Sheffield)
 * insert EntryDocument("urn:uuid:67159039-af7c-4243-84dc-22fd801a34d9", DiagnosticReport-ctDNA-iGene-NarrativeReport)
-* insert EntryDocument("urn:uuid:6e26d6b3-490e-4348-9d6c-37281567d6ec", ServiceRequest-ctDNA)
 * insert EntryDocument("urn:uuid:4446ab81-35ef-49cb-b2fe-1d6f1a0dcc02", 4446ab81-35ef-49cb-b2fe-1d6f1a0dcc02)
 * insert EntryDocument("urn:uuid:b930b4c4-327a-4728-8bb9-f90061914cc5", Specimen-ctDNA)
 
