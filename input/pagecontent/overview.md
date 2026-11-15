@@ -145,6 +145,28 @@ How the cancer scenarios below fit this pathway:
   usually tested on the biopsy sample; here a blood sample (liquid biopsy) is tested instead. The
   [Somatic genomic report](Bundle-FHIRDocumentGeneticReportBundle-Somatic.html) example shows testing of the tumour sample.
 
+#### Letters and Reports to the Patient and GP
+
+Many letters and reports are produced along the pathway, and the patient and their GP are kept informed as it goes.
+The GIRFT guidance [Bridging the interface between primary and secondary care](https://gettingitrightfirsttime.co.uk/cross_cutting_theme/bridging-the-interface/)
+([checklist](https://gettingitrightfirsttime.co.uk/wp-content/uploads/2025/08/Bridging-the-interface-checklist-July-2025.pdf))
+sets out what secondary care is expected to do:
+
+- **Tests** are "requested, reviewed, actioned and communicated to patient by secondary care". The team that orders a
+  test is responsible for its result.
+- **Clinic letters** are "sent to patients within 5 days (copying in GPs)", with clear accountability for the actions of
+  secondary care, the GP and the patient. A letter usually follows each appointment, for example the first assessment,
+  the results and the treatment plan.
+- **Referral triage:** if a referral is not needed, clear information is given to both the patient and the GP.
+- **Discharge summaries** are sent on the day of discharge.
+
+In this guide the Laboratory Report (LAB-3) goes back to the requesting clinician (the Order Placer), who reviews and
+acts on the result. The GP is usually kept informed through the clinic letters and discharge summaries. These are
+clinical documents, shared using HL7 v2 `MDM^T02` or FHIR document sharing (see
+[Sharing Laboratory Reports (Document)](HIE.html#sharing-laboratory-reports-document-iti-105-and-mdm_t02)); they are not
+modelled in the example scenarios. HL7 v2 can also name other recipients of a copy of a laboratory report, such as the GP,
+in OBR-28 Result Copies To; this is not currently profiled in this guide.
+
 ### Example Scenarios
 
 The example scenarios are worked examples of genomic testing pathways, from the order to the report and, where it applies, the
