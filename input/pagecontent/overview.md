@@ -86,7 +86,7 @@ graph
 ### Cancer Diagnostic Pathway
 
 Genomic testing is one of several diagnostic services in a cancer pathway. The diagnosis is usually built up step by step:
-imaging finds and locates the abnormality, a biopsy takes a sample, histopathology makes the diagnosis and does the first
+imaging or endoscopy finds the abnormality, a biopsy takes a sample, histopathology makes the diagnosis and does the first
 tests on the cancer cells, and genomic testing then looks for gene changes that guide treatment or show an inherited
 cause. The multidisciplinary team (MDT) brings the results together to agree the diagnosis and treatment plan.
 
@@ -98,17 +98,18 @@ This section focuses on the pathway: the diagnostic services involved and the wo
 graph TD;
 
     GP["Suspected cancer<br/>GP referral or screening"] --> R
-    R["Radiology<br/>imaging: CT, MRI, mammogram, ultrasound"] --> |Guides| B
+    R["Imaging or endoscopy<br/>CT, MRI, mammogram, ultrasound;<br/>or colonoscopy, endoscopy"] --> |"Guides or takes"| B
     B["Biopsy<br/>image-guided or endoscopic"] --> |Tissue specimen| P
     P["Histopathology<br/>diagnosis, tumour type and grade,<br/>tests on the cancer cells: IHC, MSI, receptors"] --> |"Tumour sample and order<br/>LAB-1 or LAB-35"| G
+    P --> |"Tests on the cancer cells<br/>suggest an inherited cause"| BL
     BL["Blood sample<br/>inherited variant or liquid biopsy"] --> |"Laboratory Order LAB-1"| G
     G["Genomic Diagnostic Testing<br/>Genomic Laboratory Hub"] --> |"Laboratory Report LAB-3 or LAB-36"| M
     P --> |Pathology report| M
-    R --> |Imaging report| M
+    R --> |"Imaging or endoscopy report"| M
     M["Multidisciplinary team (MDT)<br/>diagnosis and treatment plan"] --> T["Treatment<br/>for example targeted therapy"]
     M --> |"Referral O19"| CG["Clinical Genetics<br/>genetic counselling and predictive testing"]
     L["Reports to the patient and GP<br/>clinic letters and discharge summaries,<br/>at each stage"]
-    R -.-> |"Scan results,<br/>may show cancer"| L
+    R -.-> |"First results,<br/>may show cancer"| L
     P -.-> |"Diagnosis and<br/>details of the cancer"| L
     G -.-> |"Gene changes or<br/>an inherited condition"| L
     M -.-> |"Treatment plan"| L
@@ -131,9 +132,15 @@ graph TD;
     class L pink
 ```
 
+The first test depends on the cancer. Imaging comes first for many cancers, such as lung and breast cancer, while bowel,
+stomach and bladder cancers usually start with an endoscopy, where the biopsy is taken during the procedure. Prostate
+cancer usually starts with a blood test (PSA), and blood cancers such as leukaemia and lymphoma follow a different route,
+through blood tests, bone marrow and haemato-oncology diagnostics. Most people with cancer also have scans after the
+diagnosis, to see whether it has spread.
+
 | Step | What happens | Standards and guides |
 |------|--------------|----------------------|
-| Radiology | Imaging (for example CT, MRI, a mammogram or ultrasound) finds and locates the abnormality, and is often used to guide the biopsy | [IHE Radiology Technical Framework - Volume 1](https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Vol1.pdf), for example Scheduled Workflow for ordering and performing imaging and reporting. Not covered by this guide |
+| Imaging or endoscopy | Imaging (for example CT, MRI, a mammogram or ultrasound) or an endoscopy (for example a colonoscopy) finds the abnormality. Imaging is often used to guide the biopsy; during an endoscopy the biopsy is taken directly | Imaging: [IHE Radiology Technical Framework - Volume 1](https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Vol1.pdf), for example Scheduled Workflow for ordering and performing imaging and reporting. Endoscopy and imaging are not covered by this guide |
 | Biopsy | A sample of the abnormal area is taken, for example an image-guided core biopsy or a biopsy during an endoscopy or colonoscopy | [IHE Pathology and Laboratory Medicine (PaLM)](https://profiles.ihe.net/PaLM/index.html): Laboratory Specimen Barcode Labeling (LBL) for labelling the specimen, Specimen Event Tracking (SET, trial implementation) for tracking it, and Radiology Pathology Concordance (RPC, trial implementation) for comparing the imaging with the pathology result. This guide: [Collect Specimen - Biopsy Procedure](ExampleScenario-BiopsyProcedure.html) (background) and [Specimen Transportation and Management](SpecimenTransportationAndManagement.html) |
 | Histopathology | The pathologist examines the sample to confirm the cancer and its type and grade, and does tests on the cancer cells, such as immunohistochemistry (IHC), microsatellite instability (MSI) or hormone receptor and HER2 tests | [IHE PaLM](https://profiles.ihe.net/PaLM/index.html): Anatomic Pathology Structured Report (APSR, trial implementation) for the histopathology report, and Anatomic Pathology Reporting to Public Health (ARPH, trial implementation). Cancer registration: NHS England [National Disease Registration Service (NDRS)](https://digital.nhs.uk/services/national-disease-registration-service). Pathology reports to cancer registries: [HL7 FHIR US Cancer Pathology Data Sharing](https://hl7.org/fhir/us/cancer-reporting/index.html). This guide: a copy of the pathology report is sent with the genomic order (`ServiceRequest.supportingInfo`); where histopathology itself asks for genomic testing on the tumour sample, see [Inter-Laboratory Workflow - Reflex Order](ILW.html#reflex-order) |
 | Genomic testing | The Genomic Laboratory Hub tests the tumour sample for gene changes (somatic testing), or a blood sample for an inherited variant (germline testing) or for DNA from the cancer cells (liquid biopsy) | This guide: the [Laboratory Testing Workflow](LTW.html) and [Inter-Laboratory Workflow](ILW.html), based on [IHE Pathology and Laboratory Medicine (PaLM)](https://www.ihe.net/uploadedFiles/Documents/PaLM/IHE_PaLM_TF_Vol1.pdf), with results based on [HL7 FHIR Genomics Reporting](https://hl7.org/fhir/uv/genomics-reporting/STU3/) and the report as a FHIR Document based on [HL7 Europe Laboratory Report](https://hl7.eu/fhir/laboratory/2.1.0/) for the central repository |
