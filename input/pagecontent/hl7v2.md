@@ -35,6 +35,81 @@ be used instead of OML_O21 - it has the same segments, including SPM.
 | -- [SPM](#spm)            | 0..1        |                                                         |
 {:.grid}
 
+#### Examples
+
+Converted from the FHIR Messages in the Example Scenarios (see [Artifacts](artifacts.html)).
+
+##### Laboratory Order (LAB-1)
+
+[LAB-1](LTW.html#laboratory-order-lab-1): East Cheshire NHS Trust orders germline BRCA testing
+(R208.1) from the North West GLH, with the cellular pathology report attached - step 1 of
+[Hereditary Breast and Ovarian Cancer](ExampleScenario-BreastCancer.html).
+
+```
+MSH|^~\&|RJN|RJN|RIE|699X0|20261005103000+0000||OML^O21^OML_O21|urn:uuid:275b30d2-1af0-4b9a-9bb8-52caf89a7403|T|2.5.1|||AL
+PID|1||9737383281^^^NHS^NH~M482113^^^RJN^MR||CONGLETON^Margaery^^^^^L||19820211|F|||Town Hall^7 High Street^CONGLETON^^CW12 1BN
+ORC|NW|RJN-26-48213^RJN|||||||20261005|||C4567891^^Helen^^^FICTITIOUS,^^^GMC|||||||||EAST CHESHIRE NHS TRUST^^RJN^^^ODS
+OBR|1|RJN-26-48213^RJN||R208.1^^England-GenomicTestDirectory||20261005||||||||||C4567891^^Helen^^^FICTITIOUS,^^^GMC|||||||||||||||R208^Inherited breast cancer and ovarian cancer^GenomicClinicalIndication
+NTE|1||Triple-negative invasive breast cancer diagnosed at 44. No known family history. Genetic testing offered regardless of family history.
+OBX|1|ED|1054291000000102^Cellular pathology report^SNM3||^application^pdf^Base64^JVBERi0x...||||||F
+SPM|1|26GEN-RJN-008734&RJN||258580003^Whole blood specimen^SNM3|||||||||||||20261005100000+0000|20261006090000+0000||Y
+```
+
+> FHIR Message Example: [Bundle Message - Genomics Order - Breast Cancer](Bundle-GenomicsOrderMessage-BreastCancer.html)
+
+##### Work Order (LAB-4)
+
+[LAB-4](LTW.html#work-order-management-lab-4): iGene (the Order Filler) sends the ctDNA work order
+to DLIMS (the Automation Manager) in the same laboratory, so MSH-4 and MSH-6 are both `699X0` and
+MSH-3 / MSH-5 identify the systems. ORC-2 is the iGene report number, ORC-3 the DLIMS order number
+and ORC-4 the iGene referral - see [ctDNA](ExampleScenario-ctDNA.html) step 4.
+
+```
+MSH|^~\&|iGene|699X0|DLIMS|699X0|20260702090000+0000||OML^O21^OML_O21|urn:uuid:5e8c2b71-3f4a-4d69-a0b8-7c1d9e6f2a40|T|2.5.1|||AL
+PID|1||9737873858^^^NHS^NH~336292^^^699X0^PI||SHEFFIELD^Theon^^^^^L||19860912|M|||SPITAL STREET^^SHEFFIELD^^S3 9LB
+ORC|NW|T26-59XG^699X0|D26-004512^699X0|R26-15AY^699X0|||||20260702||||||||||||NW GLH^^699X0^^^ODS
+OBR|1|T26-59XG^699X0|D26-004512^699X0|M4.14^^England-GenomicTestDirectory||20260702|||||||||||||||||||||||||M4^^GenomicClinicalIndication
+SPM|1|^S26-1K1Q&699X0||119297000^Blood specimen^SNM3|||||||||||||20260629|20260630||Y
+```
+
+> FHIR Resource Example: [ServiceRequest - ctDNA DLIMS Work Order](ServiceRequest-ServiceRequest-ctDNA-DLIMS-WorkOrder.html)
+
+##### Sub-order (LAB-35)
+
+[LAB-35](ILW.html#sub-order-management-lab-35): the North Thames GLH sub-orders hearing loss
+testing (R67.1) from the North West GLH via the Genomic Order Management Service (GOMS). The
+first SPM is the DNA sent; the second is the original blood sample it was extracted from - step 2
+of [Specialist Test for another GLH](ExampleScenario-SpecialistTestForAnotherGLH.html).
+
+```
+MSH|^~\&|GOMS|69A70|RIE|699X0|20260916090000+0000||OML^O21^OML_O21|urn:uuid:67770cf6-9e01-4afa-a5b2-ae63217e7e4a|T|2.5.1|||AL
+PID|1||9737383427^^^NHS^NH||CAMDEN^Oliver^^^^^L||20250214|M
+ORC|NW|NT26-80455^69A70|||||||20260916||||||||||||NORTH THAMES GLH^^69A70^^^ODS
+OBR|1|NT26-80455^69A70||R67.1^^England-GenomicTestDirectory||20260916|||||||||||||||||||||||||R67^Monogenic hearing loss^GenomicClinicalIndication
+NTE|1||Bilateral moderate to severe sensorineural hearing loss identified on newborn hearing screening. No syndromic features. CMV negative. DNA sent by sample transport.
+SPM|1|NT26-80455-D1&69A70||258566005^Deoxyribonucleic acid sample^SNM3|||||||||||||20260915150000+0000|||Y
+SPM|2|RP426-0310558&RP4||258580003^Whole blood specimen^SNM3|||||||||||||20260914103000+0000|20260914160000+0000||Y
+```
+
+> FHIR Message Example: [Bundle Message - Genomics Sub-order - Specialist Test](Bundle-GenomicsSubOrderMessage-SPT.html)
+
+The North West GLH sub-orders prenatal exome sequencing (R21.2) for a fetus, identified by the
+hospital's fetal MRN, with the mother in NK1 - step 4 of [Rapid Prenatal Exome
+Sequencing](ExampleScenario-RapidPrenatalExomeSequencing.html).
+
+```
+MSH|^~\&|RIE|699X0|GOMS|69A70|20260911090000+0000||OML^O21^OML_O21|urn:uuid:ffdea2ea-45f1-4204-96b4-03a6d74e3404|T|2.5.1|||AL
+PID|1||R0A-F26-0042^^^R0A^MR||WIGAN^Baby^^^^^A||2027
+NK1|1|WIGAN^Imogen|MTH^mother^http://terminology.hl7.org/CodeSystem/v3-RoleCode||||||||||||F|19940312|||||||||||||||||9737383400^^^NHS^NH
+ORC|NW|G26-41180^699X0|||||||20260911||||||||||||NORTH WEST GLH^^699X0^^^ODS
+OBR|1|G26-41180^699X0||R21.2^^England-GenomicTestDirectory||20260911|||||||||||||||||||||||||R21^Fetal anomalies with a likely genetic cause^GenomicClinicalIndication
+NTE|1||Short, bowed long bones and multiple fractures on the 20-week anomaly scan. QF-PCR (R21.1) and microarray (R21.3) normal. Fetal DNA sent by sample transport.
+SPM|1|G26-41180-D1&699X0||258566005^Deoxyribonucleic acid sample^SNM3|||||||||||||20260910160000+0000|||Y
+SPM|2|R0A26-0090411&R0A||119373006^Amniotic fluid specimen^SNM3|||||||||||||20260907110000+0000|20260907153000+0000||Y
+```
+
+> FHIR Message Example: [Bundle Message - Genomics Sub-order - Rapid Prenatal Exome](Bundle-GenomicsSubOrderMessage-RPX.html)
+
 ### ORU_R01 Unsolicited transmission of an observation message
 
 #### References
@@ -65,6 +140,106 @@ be used instead of OML_O21 - it has the same segments, including SPM.
 | -- **OBSERVATION**    | 1..*        |                                                         |
 | -- [OBX](#obx)        | 1..*        |                                                         |
 {:.grid}
+
+#### Examples
+
+Converted from the FHIR Messages in the Example Scenarios (see [Artifacts](artifacts.html)).
+Report PDFs are shortened (`JVBERi0x...`).
+
+##### Laboratory Report (LAB-3)
+
+[LAB-3](LTW.html#laboratory-report-lab-3): the North West GLH reports a pathogenic BRCA1 variant
+to East Cheshire NHS Trust - the report PDF (OBX 1) followed by the variant and its clinical
+significance, grouped by OBX-4 sub-ID `2a` - step 2 of [Hereditary Breast and Ovarian
+Cancer](ExampleScenario-BreastCancer.html).
+
+```
+MSH|^~\&|RIE|699X0|RJN|RJN|20261026120000+0000||ORU^R01^ORU_R01|urn:uuid:004e4011-782b-499e-ae78-afb8294e26f1|T|2.5.1|||AL
+PID|1||9737383281^^^NHS^NH~M482113^^^RJN^MR||CONGLETON^Margaery^^^^^L||19820211|F|||Town Hall^7 High Street^CONGLETON^^CW12 1BN
+ORC|RE|RJN-26-48213^RJN
+OBR|1|RJN-26-48213^RJN||R208.1^^England-GenomicTestDirectory|||20261005100000+0000|||||||||||||||20261026120000+0000|||F|||||||C1234567&Ralph&FICTITIOUS,^^^^^^699X0&https://fhir.nhs.uk/Id/ods-organization-code&URI
+OBX|1|ED|1054161000000101^Genetic report^SNM3|1|^application^pdf^Base64^JVBERi0x...||||||F
+OBX|2|CWE|69548-6^Genetic variant assessment^LN|2a|LA9633-4^Present^LN||||||F|||20261026120000+0000
+OBX|3|CWE|83005-9^Variant category^LN|2a|SEQV^Sequence Variant^https://fhir.nwgenomics.nhs.uk/CodeSystem/IGeneVariantCategory||||||F|||20261026120000+0000
+OBX|4|CWE|48018-6^Gene studied [ID]^LN|2a|HGNC:1100^BRCA1^HGNC||||||F|||20261026120000+0000
+OBX|5|CWE|51958-7^Transcript reference sequence [ID]^LN|2a|NM_007294.3^^RefSeq-T||||||F|||20261026120000+0000
+OBX|6|CWE|48004-6^DNA change (c.HGVS)^LN|2a|NM_007294.3:c.68_69del^^HGVS.c||||||F|||20261026120000+0000
+OBX|7|CWE|48002-0^Genomic source class [Type]^LN|2a|LA6683-2^Germline^LN||||||F|||20261026120000+0000
+OBX|8|CWE|53034-5^Allelic state^LN|2a|LA6706-1^Heterozygous^LN||||||F|||20261026120000+0000
+OBX|9|CWE|53037-8^^LN|2a|LA6668-3^Pathogenic^LN||||||F|||20261026120000+0000
+OBX|10|CWE|81259-4^^LN|2a|718220008^Hereditary breast and ovarian cancer syndrome^SNM3||||||F|||20261026120000+0000
+OBX|11|ST|conclusion-string^^http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs|2a|Heterozygous pathogenic BRCA1 variant, consistent with hereditary breast and ovarian cancer.||||||F|||20261026120000+0000
+```
+
+> FHIR Message Example: [Bundle Message - Genomics Report - Breast Cancer](Bundle-GenomicsReportMessage-BreastCancer.html)
+
+##### Test Results (LAB-5)
+
+[LAB-5](LTW.html#test-results-management-lab-5): DLIMS (the Automation Manager) returns the ctDNA
+variant to iGene. These are preliminary results for the Order Filler to validate, so OBR-25 and
+OBX-11 are `P` and there is no report PDF - see [ctDNA](ExampleScenario-ctDNA.html) step 9.
+
+```
+MSH|^~\&|DLIMS|699X0|iGene|699X0|20260706112100+0000||ORU^R01^ORU_R01|urn:uuid:a064cfd3-9c89-4213-861b-3966cb2dc77a|T|2.5.1|||AL
+PID|1||9737873858^^^NHS^NH~336292^^^699X0^PI||SHEFFIELD^Theon^^^^^L||19860912|M|||SPITAL STREET^^SHEFFIELD^^S3 9LB
+ORC|RE|T26-59XG^699X0
+OBR|1|T26-59XG^699X0||M4.14^^England-GenomicTestDirectory|||20260706112000+0000||||||||||||||||||P|||||||^^^^^^699X0&https://fhir.nhs.uk/Id/ods-organization-code&URI
+OBX|1|CWE|69548-6^^LN|2a|LA9633-4^Present^LN||||||P|||20260706112000+0000
+OBX|2|CWE|83005-9^Variant category^LN|2a|SEQV^Sequence Variant^https://fhir.nwgenomics.nhs.uk/CodeSystem/IGeneVariantCategory||||||P|||20260706112000+0000
+OBX|3|CWE|48018-6^Gene studied [ID]^LN|2a|HGNC:3236^EGFR^HGNC||||||P|||20260706112000+0000
+OBX|4|CWE|48002-0^Genomic source class [Type]^LN|2a|LA6684-0^Somatic^LN||||||P|||20260706112000+0000
+OBX|5|CWE|51958-7^Transcript reference sequence [ID]^LN|2a|NM_005228.5^^RefSeq-T||||||P|||20260706112000+0000
+OBX|6|CWE|48004-6^DNA change (c.HGVS)^LN|2a|NM_005228.5:c.2369C>T^^HGVS.c||||||P|||20260706112000+0000
+OBX|7|CWE|48005-3^Amino acid change (pHGVS)^LN|2a|NP_005219.2:p.(Thr790Met)^^HGVS.p||||||P|||20260706112000+0000
+OBX|8|CWE|48019-4^DNA change type^LN|2a|SO:1000002^substitution^http://www.sequenceontology.org||||||P|||20260706112000+0000
+OBX|9|NM|81258-6^Sample variant allelic frequency [NFr]^LN|2a|.0042|decimal|||||P|||20260706112000+0000
+SPM|1|^S26-1K1Q&699X0||119297000^Blood specimen^SNM3|||||||||||||20260629|20260630||Y
+```
+
+> FHIR Message Example: [Bundle Message - Test Results - ctDNA (Omics DSS)](Bundle-TestResultsMessage-ctDNA-OmicsDSS.html)
+
+##### Sub-order Results (LAB-36)
+
+[LAB-36](ILW.html#sub-order-results-delivery-lab-36): the North West GLH returns its report on the
+hearing loss sub-order to the North Thames GLH via GOMS - step 8 of [Specialist Test for another
+GLH](ExampleScenario-SpecialistTestForAnotherGLH.html).
+
+```
+MSH|^~\&|iGene|699X0|GOMS|69A70|20261019140000+0000||ORU^R01^ORU_R01|urn:uuid:0c55edb0-0af3-4d88-8f09-f5b5ba429584|T|2.5.1|||AL
+PID|1||9737383427^^^NHS^NH||CAMDEN^Oliver^^^^^L||20250214|M
+ORC|RE|NT26-80455^69A70|||||||||||||||||||NORTH THAMES GLH^^69A70^^^ODS
+OBR|1|NT26-80455^69A70||R67.1^^England-GenomicTestDirectory|||20260915150000+0000|||||||||||||||20261019140000+0000|||F||||||R67^Monogenic hearing loss^GenomicClinicalIndication|C1234567&Ralph&FICTITIOUS,^^^^^^699X0&https://fhir.nhs.uk/Id/ods-organization-code&URI
+OBX|1|ED|1054161000000101^Genetic report^SNM3|1|^application^pdf^Base64^JVBERi0x...||||||F
+OBX|2|CWE|69548-6^Genetic variant assessment^LN|2a|LA9633-4^Present^LN||||||F|||20261019140000+0000
+OBX|3|CWE|83005-9^Variant category^LN|2a|SEQV^Sequence Variant^https://fhir.nwgenomics.nhs.uk/CodeSystem/IGeneVariantCategory||||||F|||20261019140000+0000
+OBX|4|CWE|48018-6^Gene studied [ID]^LN|2a|HGNC:4284^GJB2^HGNC||||||F|||20261019140000+0000
+OBX|5|CWE|51958-7^Transcript reference sequence [ID]^LN|2a|NM_004004.6^^RefSeq-T||||||F|||20261019140000+0000
+OBX|6|CWE|48004-6^DNA change (c.HGVS)^LN|2a|NM_004004.6:c.35del^^HGVS.c||||||F|||20261019140000+0000
+OBX|7|CWE|48002-0^Genomic source class [Type]^LN|2a|LA6683-2^Germline^LN||||||F|||20261019140000+0000
+OBX|8|CWE|53034-5^Allelic state^LN|2a|LA6705-3^Homozygous^LN||||||F|||20261019140000+0000
+OBX|9|CWE|53037-8^^LN|2a|LA6668-3^Pathogenic^LN||||||F|||20261019140000+0000
+OBX|10|CWE|81259-4^^LN|2a|^Autosomal recessive non-syndromic hearing loss (DFNB1)||||||F|||20261019140000+0000
+OBX|11|ST|conclusion-string^^http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs|2a|Homozygous pathogenic GJB2 variant, consistent with autosomal recessive non-syndromic hearing loss (DFNB1).||||||F|||20261019140000+0000
+SPM|1|NT26-80455-D1&69A70||258566005^Deoxyribonucleic acid sample^SNM3|||||||||||||20260915150000+0000|||Y
+SPM|2|RP426-0310558&RP4||258580003^Whole blood specimen^SNM3|||||||||||||20260914103000+0000|20260914160000+0000||Y
+```
+
+> FHIR Message Example: [Bundle Message - Genomics Sub-order Report - Specialist Test](Bundle-GenomicsSubOrderReportMessage-SPT.html)
+
+The cytogenetics laboratory returns its karyotype (an ISCN expression) on the haemato-oncology
+sub-order - step 3 of [Suspected Blood Cancer - Haemato-Oncology
+Diagnostics](ExampleScenario-HaematoOncologyDiagnostics.html).
+
+```
+MSH|^~\&|RIE|R0A|RIE|R0A|20261016120000+0000||ORU^R01^ORU_R01|urn:uuid:d576368f-989b-421c-985a-1686daa6fcd7|T|2.5.1|||AL
+PID|1||9737383397^^^NHS^NH||TAMESIDE^Hodor^^^^^L||19600727|M|||Stockport Road^^TAMESIDE^^OL7 0NS
+ORC|RE|HO26-11872-C^R0A
+OBR|1|HO26-11872-C^R0A||M80.3^^England-GenomicTestDirectory|||20261012100000+0000|||||||||||||||20261016120000+0000|||F|||||||C6789012&Clara&FICTITIOUS,^^^^^^R0A&https://fhir.nhs.uk/Id/ods-organization-code&URI
+OBX|1|ED|1054161000000101^Genetic report^SNM3|1|^application^pdf^Base64^JVBERi0x...||||||F
+OBX|2|ST|62356-1^Chromosome analysis result in ISCN expression^LN||47,XY,+8,del(7)(q22q36)[18]/46,XY[2]||||||F|||20261012100000+0000
+```
+
+> FHIR Message Example: [Bundle Message - Genomics Sub-order Report - Haemato-Oncology Cytogenetics](Bundle-GenomicsSubOrderReportMessage-HaematoOncology-Cytogenetics.html)
 
 <!--
 #### MASTER HL7 REPORTING PANEL
