@@ -325,7 +325,7 @@ inventing its own.
 | [MSH](#msh)   | 1..1        |                                                         |
 | EVN           | 1..1        |                                                         | 
 | [PID](#pid)   | 1..1        |                                                         |
-| [PV1](#pv1)   | 1..1        | PV1 should be populated if PV1-19 Visit Number is known |
+| [PV1](#pv1)   | 1..1        | PV1-19 Visit Number if known; with no encounter, `PV1\|1\|U` (patient class unknown) |
 | **ORDER**     | 0..*        |                                                         |
 | - [ORC](#orc) | 1..1        |                                                         |
 | - [OBR](#obr) | 1..1        |                                                         |
@@ -333,6 +333,58 @@ inventing its own.
 | **OBXNTE**    | 1..*        |                                                         |
 | - [OBX](#obx) | 1..1        |                                                         |
 {:.grid}
+
+#### Examples
+
+Converted from the FHIR Messages in the Example Scenarios (see [Artifacts](artifacts.html)).
+Report PDFs are shortened (`JVBERi0x...`). None of these reports has an encounter, so PV1 is
+`PV1|1|U`. There is no ORDER group: TXA-12 is the document's unique id, and TXA-17 `DO`
+(documented) its completion status.
+
+The North West GLH sends the Laboratory Report PDF to the regional Shared Care Record for
+Cheshire and Merseyside (`QYG`) - step 3 of [Hereditary Breast and Ovarian
+Cancer](ExampleScenario-BreastCancer.html).
+
+```
+MSH|^~\&|RIE|699X0|QYG|QYG|20261026120500+0000||MDM^T02^MDM_T02|urn:uuid:9167f601-9be1-494f-9330-813fe2ab5a3f|T|2.5.1|||AL
+EVN|T02|20261026120500+0000
+PID|1||9737383281^^^NHS^NH~M482113^^^RJN^MR||CONGLETON^Margaery^^^^^L||19820211|F|||Town Hall^7 High Street^CONGLETON^^CW12 1BN
+PV1|1|U
+TXA|1|1054161000000101^Genetic report^SNM3||20261026120000+0000||20261026120000+0000||||||70ce6e2f-6588-4469-aeaf-4a56c394f47e|||||DO
+OBX|1|ED|1054161000000101^Genetic report^SNM3||^application^pdf^Base64^JVBERi0x...||||||F
+```
+
+> FHIR Message Example: [Bundle Message - Document - Breast Cancer](Bundle-DocumentMessage-BreastCancer.html)
+
+The North West GLH sends its molecular genomic report to the Greater Manchester Care Record
+(`GMCR`, `QOP`) - step 7 of [Suspected Blood Cancer - Haemato-Oncology
+Diagnostics](ExampleScenario-HaematoOncologyDiagnostics.html).
+
+```
+MSH|^~\&|RIE|699X0|GMCR|QOP|20261023120500+0000||MDM^T02^MDM_T02|urn:uuid:e1e801e5-e62c-4342-ae7b-1d51cbc16290|T|2.5.1|||AL
+EVN|T02|20261023120500+0000
+PID|1||9737383397^^^NHS^NH||TAMESIDE^Hodor^^^^^L||19600727|M|||Stockport Road^^TAMESIDE^^OL7 0NS
+PV1|1|U
+TXA|1|1054161000000101^Genetic report^SNM3||20261023120000+0000||20261023120000+0000||||||b89807ea-8296-416e-bcab-77593fd26c7b|||||DO
+OBX|1|ED|1054161000000101^Genetic report^SNM3||^application^pdf^Base64^JVBERi0x...||||||F
+```
+
+> FHIR Message Example: [Bundle Message - Document - Haemato-Oncology Molecular](Bundle-DocumentMessage-HaematoOncology-Molecular.html)
+
+The North West GLH sends a fetal Laboratory Report to the central repository (`UGR`, NHS England
+`X26`). A fetus has no NHS Number, so PID-3 is the hospital's fetal MRN - step 14 of [Rapid
+Prenatal Exome Sequencing](ExampleScenario-RapidPrenatalExomeSequencing.html).
+
+```
+MSH|^~\&|RIE|699X0|UGR|X26|20260928093000+0000||MDM^T02^MDM_T02|urn:uuid:8e93a6b8-32e7-46ed-b50d-fcbddde48c74|T|2.5.1|||AL
+EVN|T02|20260928093000+0000
+PID|1||R0A-F26-0042^^^R0A^MR||WIGAN^Baby^^^^^A||2027
+PV1|1|U
+TXA|1|1054161000000101^Genetic report^SNM3||20260928090000+0000||20260928090000+0000||||||87733553-52c1-4662-b0d2-a9cf22573c98|||||DO
+OBX|1|ED|1054161000000101^Genetic report^SNM3||^application^pdf^Base64^JVBERi0x...||||||F
+```
+
+> FHIR Message Example: [Bundle Message - Document - Rapid Prenatal Exome](Bundle-DocumentMessage-RPX.html)
 
 ### OMG_O19 General Clinical Order
 
@@ -560,6 +612,9 @@ PID|1||633^^^R0A^MR~9449305552^^^^NH||CHISLETT^Octavia||20080920|F|||1 RAVENSFIE
 #### PV1 
 
 > The PV1 segment should represent the episode/stay/visit number, not a consultant episode. 
+
+Where a message requires PV1 but there is no encounter ([MDM_T02](#mdm_t02-original-document-notification-and-content)),
+send `PV1|1|U` (patient class unknown) with no other fields - the field rules below then don't apply.
 
 This is based on the definition of PV1 from [NHS England HL7 v2 ADT Message Specification](https://drive.google.com/drive/folders/1FRkyZvWpZB1nCKbvQbo-eW_q9VtlR3Ws)
 
