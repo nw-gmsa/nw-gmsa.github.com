@@ -271,6 +271,7 @@ Usage: #example
 * insert EntryDocument("urn:uuid:8c1ec142-93a8-4980-b604-8ab5019efdb2", MessageHeader-RPX-FirstLineReport)
 * insert EntryDocument("urn:uuid:e322141b-af07-451d-92ab-74d192151818", Patient-Fetus-Wigan)
 * insert EntryDocument("urn:uuid:33106624-dfc8-400c-9cbe-d569823366fb", DiagnosticReport-RPX-FirstLine)
+* insert EntryDocument("urn:uuid:a633e6ef-1a20-488a-8c1f-8574343e4dce", Specimen-RPX-Fetal)
 * insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)
 
 // Sub-order (LAB-35)
@@ -374,14 +375,17 @@ Usage: #example
 // Sub-order status (O51)
 
 RuleSet: RPXSubOrderTask
-* basedOn.reference = "urn:uuid:bc2ce852-cad4-4f35-aeac-c1c1021bf680"
+// The O51 carries only the Task, so the sub-order is identified, not referenced. The fetus has no NHS Number, so Task.for has only a display
 * basedOn.identifier.type = $v2-0203#PLAC
 * basedOn.identifier.system = "https://fhir.nwgenomics.nhs.uk/iGene/OrderIdentifier"
 * basedOn.identifier.value = "G26-41180"
 * basedOn.identifier.assigner.identifier.system = $ods-code
 * basedOn.identifier.assigner.identifier.value = "699X0"
-* focus.reference = "urn:uuid:bc2ce852-cad4-4f35-aeac-c1c1021bf680"
-* for.reference = "urn:uuid:e322141b-af07-451d-92ab-74d192151818"
+* focus.identifier.type = $v2-0203#PLAC
+* focus.identifier.system = "https://fhir.nwgenomics.nhs.uk/iGene/OrderIdentifier"
+* focus.identifier.value = "G26-41180"
+* focus.identifier.assigner.identifier.system = $ods-code
+* focus.identifier.assigner.identifier.value = "699X0"
 * for.display = "Baby WIGAN"
 * intent = #order
 * code = http://hl7.org/fhir/CodeSystem/task-code#fulfill
@@ -469,14 +473,17 @@ InstanceOf: Task
 Title: "Task - R21 Laboratory Order, rapid prenatal exome sequencing not done"
 Description: "Fictitious example: the North West GLH tells the fetal medicine unit that rapid prenatal exome sequencing was not done because the testing GLH declined the sub-order"
 Usage: #example
-* basedOn.reference = "urn:uuid:c8d8cbf0-8e46-429d-b100-44450cbef105"
+// The O51 carries only the Task, so the Laboratory Order is identified, not referenced. The fetus has no NHS Number, so Task.for has only a display
 * basedOn.identifier.type = $v2-0203#PLAC
 * basedOn.identifier.system = "urn:oid:1.2.840.114350.1.13.0.1.7.2.798268"
 * basedOn.identifier.value = "1702114"
 * basedOn.identifier.assigner.identifier.system = $ods-code
 * basedOn.identifier.assigner.identifier.value = "R0A"
-* focus.reference = "urn:uuid:c8d8cbf0-8e46-429d-b100-44450cbef105"
-* for.reference = "urn:uuid:e322141b-af07-451d-92ab-74d192151818"
+* focus.identifier.type = $v2-0203#PLAC
+* focus.identifier.system = "urn:oid:1.2.840.114350.1.13.0.1.7.2.798268"
+* focus.identifier.value = "1702114"
+* focus.identifier.assigner.identifier.system = $ods-code
+* focus.identifier.assigner.identifier.value = "R0A"
 * for.display = "Baby WIGAN"
 * intent = #order
 * code = http://hl7.org/fhir/CodeSystem/task-code#fulfill
@@ -600,6 +607,7 @@ Usage: #example
 * insert EntryDocument("urn:uuid:26c66a34-9028-4b14-866e-42d8284b17c4", DiagnosticReport-RPX-SubOrder)
 * insert EntryDocument("urn:uuid:bc2ce852-cad4-4f35-aeac-c1c1021bf680", ServiceRequest-RPX-SubOrder)
 * insert EntryDocument("urn:uuid:5bcb951e-a64c-461f-9334-8b9f932b1cbc", Specimen-RPX-Fetal-DNA)
+* insert EntryDocument("urn:uuid:a633e6ef-1a20-488a-8c1f-8574343e4dce", Specimen-RPX-Fetal)
 * insert EntryDocument("urn:uuid:eb11c7ed-8b8d-4062-8956-a8bb85c32523", Variant-RPX-COL1A1)
 * insert EntryDocument("urn:uuid:953e2395-e834-431e-8003-6230e647e148", DiagnosticImplication-RPX-COL1A1)
 * insert EntryDocument("urn:uuid:b8dbd628-25ab-423d-809a-5a1a83ca6b4b", DocumentReference-RPX-SubOrderReport)
@@ -662,6 +670,7 @@ Usage: #example
 * insert EntryDocument("urn:uuid:5ffedde8-4c1f-4850-8248-b4f730db0a50", MessageHeader-RPX-Report)
 * insert EntryDocument("urn:uuid:e322141b-af07-451d-92ab-74d192151818", Patient-Fetus-Wigan)
 * insert EntryDocument("urn:uuid:0cd9fd4c-7934-4815-9573-e278229d3b9c", DiagnosticReport-RPX-Report)
+* insert EntryDocument("urn:uuid:a633e6ef-1a20-488a-8c1f-8574343e4dce", Specimen-RPX-Fetal)
 * insert EntryDocument("urn:uuid:eb11c7ed-8b8d-4062-8956-a8bb85c32523", Variant-RPX-COL1A1)
 * insert EntryDocument("urn:uuid:953e2395-e834-431e-8003-6230e647e148", DiagnosticImplication-RPX-COL1A1)
 * insert EntryDocument("urn:uuid:87733553-52c1-4662-b0d2-a9cf22573c98", DocumentReference-RPX-Report)

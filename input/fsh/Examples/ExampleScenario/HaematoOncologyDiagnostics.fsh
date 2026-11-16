@@ -6,7 +6,7 @@ Blood cancers, such as leukaemia, follow a different diagnostic route from solid
 
 The referring clinician places one order. Haemato-oncology diagnostics then places reflex sub-orders (LAB-35) with the cytogenetics laboratory and with the Genomic Laboratory Hub, as described in [Inter-Laboratory Workflow - Reflex Order](ILW.html#reflex-order). The decision to place the molecular genomic sub-order is made by haemato-oncology diagnostics, not by the referring clinician. The order is coded with the karyotype test (M80.3), as the order must carry a National Genomic Test Directory code.
 
-In this example Hodor Tameside has suspected acute myeloid leukaemia (AML), and a bone marrow aspirate is sent. The karyotype shows trisomy 8 and a deletion of 7q, so a multi-target NGS panel (M80.2) is requested, with the cytogenetic report attached as a PDF, and it finds a pathogenic somatic TP53 variant. The two genetic reports carry their results as `Observation`s and are also PDFs. The combined report is a pathology report: it is based on the two genetic reports, which are included with it as PDFs. Each genetic report PDF is also sent to the regional shared care record (the Greater Manchester Care Record, GMCR) as an HL7 v2 `MDM^T02`, which is how the patient's GP sees it.
+In this example Hodor Tameside has suspected acute myeloid leukaemia (AML), and a bone marrow aspirate is sent. The karyotype shows trisomy 8 and a deletion of 7q, so a multi-target NGS panel (M80.2) is requested, with the cytogenetic report attached as a PDF, and it finds a pathogenic somatic TP53 variant. The two genetic reports carry their results as `Observation`s and are also PDFs. The combined report is a laboratory report: it is based on the two genetic reports, which are included with it as PDFs. Each genetic report PDF is also sent to the regional shared care record (the Greater Manchester Care Record, GMCR) as an HL7 v2 `MDM^T02`, which is how the patient's GP sees it.
 
 This is an illustrative future-state example. See [Haemato-Oncology Diagnostic Pathway](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HaematoOncologyPathway.md) for the use case, including which steps are electronic today.
 """
@@ -35,7 +35,7 @@ Usage: #definition
 * insert InstanceVersion(1, "HL7 FHIR Message R01", GenomicsSubOrderReportMessage-HaematoOncology-Molecular, [[ Molecular genomic report ]])
 * insert Instance_Empty(MolDocument, Bundle, "Molecular genomic report document", [[ HL7 v2 `MDM^T02` with the molecular genomic report as a PDF, base64 encoded in OBX-5 (`ED`). See [Sharing Laboratory Reports (Document)](HIE.html#sharing-laboratory-reports-document-iti-105-and-mdm_t02) In FHIR this is a T02 FHIR Message ([Document and Document Notification](MessageDefinition-original-document.html)) carrying a `DocumentReference` and the PDF as a `Binary` - see the [example](Bundle-OriginalDocumentMessage.html). ]])
 * insert InstanceVersion(1, "HL7 FHIR Message T02", DocumentMessage-HaematoOncology-Molecular, [[ Molecular genomic report PDF ]])
-* insert Instance_Empty(Report, Bundle, "Laboratory Report - combined", [[ LAB-3 combined pathology report ([Laboratory Report](StructureDefinition-LaboratoryReport.html)), `basedOn` the Laboratory Order by its Order Placer Number, with the report as a PDF. It is based on the cytogenetic and molecular genomic reports, linked by their Report Identifiers, which are included as PDFs ]])
+* insert Instance_Empty(Report, Bundle, "Laboratory Report - combined", [[ LAB-3 combined laboratory report ([Laboratory Report](StructureDefinition-LaboratoryReport.html)), `basedOn` the Laboratory Order by its Order Placer Number, with the report as a PDF. It is based on the cytogenetic and molecular genomic reports, linked by their Report Identifiers, which are included as PDFs ]])
 * insert InstanceVersion(1, "HL7 FHIR Message R01", GenomicsReportMessage-HaematoOncology, [[ Combined haemato-oncology report ]])
 
 * process[+]
@@ -59,5 +59,5 @@ Usage: #definition
 
 * process[+]
   * title = "4. Combined Laboratory Report (LAB-3)"
-  * description = "Haemato-oncology diagnostics brings the cytogenetic and molecular genomic results together into one pathology report to the requesting clinician, with the two genetic reports as PDFs. The haematology MDT then confirms the diagnosis and plans treatment (not covered by this guide)."
+  * description = "Haemato-oncology diagnostics brings the cytogenetic and molecular genomic results together into one laboratory report to the requesting clinician, with the two genetic reports as PDFs. The haematology MDT then confirms the diagnosis and plans treatment (not covered by this guide)."
   * insert ProcessCreateEvent(8, "Send combined Laboratory Report", hod, placer, Report, 1, [[ ]])

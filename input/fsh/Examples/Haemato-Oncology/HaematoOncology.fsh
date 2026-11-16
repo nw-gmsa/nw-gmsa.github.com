@@ -511,13 +511,13 @@ Usage: #example
 
 Instance: DiagnosticReport-HaematoOncology-Report
 InstanceOf: LaboratoryReport
-Title: "Diagnostic Report - suspected acute myeloid leukaemia, combined haemato-oncology pathology report, Hodor Tameside"
-Description: "Fictitious example: haemato-oncology diagnostics' combined LAB-3 pathology report to the requesting clinician, based on the Laboratory Order (identified by its Order Placer Number). It is based on the cytogenetic and molecular genomic reports (LAB-36), linked by their Report Identifiers using the supportingInfo extension, and both are included in the message as PDFs"
+Title: "Diagnostic Report - suspected acute myeloid leukaemia, combined haemato-oncology laboratory report, Hodor Tameside"
+Description: "Fictitious example: haemato-oncology diagnostics' combined LAB-3 laboratory report to the requesting clinician, based on the Laboratory Order (identified by its Order Placer Number). It is based on the cytogenetic and molecular genomic reports (LAB-36), linked by their Report Identifiers using the supportingInfo extension, and both are included in the message as PDFs"
 Usage: #example
 
 // Hand-written narrative: a generated one links presentedForm.url, and urn: is not a valid hyperlink scheme
 * text.status = #generated
-* text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Combined haemato-oncology pathology report for Hodor TAMESIDE. Acute myeloid leukaemia: abnormal karyotype with trisomy 8 and deletion of 7q (cytogenetic report CY26-04411), and a pathogenic somatic TP53 variant (molecular genomic report G26-50233).</p></div>"
+* text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Combined haemato-oncology laboratory report for Hodor TAMESIDE. Acute myeloid leukaemia: abnormal karyotype with trisomy 8 and deletion of 7q (cytogenetic report CY26-04411), and a pathogenic somatic TP53 variant (molecular genomic report G26-50233).</p></div>"
 // The cytogenetic and molecular genomic reports (LAB-36) this report is based on
 // (written with explicit urls: SUSHI cannot import the R5 extension's definition, which has no snapshot)
 * extension[+].url = "http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.supportingInfo"
@@ -562,12 +562,12 @@ Usage: #example
   * display = "FICTITIOUS, Owen"
 * conclusion = "Acute myeloid leukaemia. Abnormal karyotype with trisomy 8 and deletion of 7q, and a pathogenic somatic TP53 variant (adverse risk). See the attached cytogenetic and molecular genomic reports."
 * conclusionCode[+] = $GTOC#321 "VARIANT DETECTED"
-* insert ReportPDF(urn:uuid:9f5aeb0b-6098-4ace-83bd-933e85814e96, Haemato-oncology pathology report - Hodor TAMESIDE, 2026-10-24)
+* insert ReportPDF(urn:uuid:9f5aeb0b-6098-4ace-83bd-933e85814e96, Haemato-oncology laboratory report - Hodor TAMESIDE, 2026-10-24)
 
 Instance: DocumentReference-HaematoOncology-Report
 InstanceOf: DocumentReference
-Title: "Document Reference - combined haemato-oncology pathology report PDF, Hodor Tameside"
-Description: "Fictitious example: the combined LAB-3 pathology report as a PDF, related to its DiagnosticReport and the Laboratory Order"
+Title: "Document Reference - combined haemato-oncology laboratory report PDF, Hodor Tameside"
+Description: "Fictitious example: the combined LAB-3 laboratory report as a PDF, related to its DiagnosticReport and the Laboratory Order"
 Usage: #example
 
 * identifier[+].value = "e07c13d3-3697-413b-bf40-59642424cc7e"
@@ -576,7 +576,7 @@ Usage: #example
 * identifier[=].assigner.identifier.value = "R0A"
 * status = #current
 * date = "2026-10-24T10:00:00+00:00"
-* type = $sct#1054291000000102 "Cellular pathology report"
+* type = $sct#4241000179101 "Laboratory report"
 * context.related[DiagnosticReport]
   * reference = "urn:uuid:34b2be2b-55bd-42eb-a19e-faa62822e5e8"
   * type = "DiagnosticReport"
@@ -615,8 +615,8 @@ Usage: #example
 
 Instance: GenomicsReportMessage-HaematoOncology
 InstanceOf: BundleMessage
-Title: "Bundle 'Message' - Laboratory Report (R01), combined haemato-oncology pathology report"
-Description: "Fictitious example: the combined LAB-3 Laboratory Report in the [Suspected Blood Cancer - Haemato-Oncology Diagnostics](ExampleScenario-HaematoOncologyDiagnostics.html) scenario, a pathology report with the report as a PDF. The cytogenetic and molecular genomic reports are included as PDFs, and the report links to them by their Report Identifiers"
+Title: "Bundle 'Message' - Laboratory Report (R01), combined haemato-oncology laboratory report"
+Description: "Fictitious example: the combined LAB-3 Laboratory Report in the [Suspected Blood Cancer - Haemato-Oncology Diagnostics](ExampleScenario-HaematoOncologyDiagnostics.html) scenario, a laboratory report with the report as a PDF. The cytogenetic and molecular genomic reports are included as PDFs, and the report links to them by their Report Identifiers"
 Usage: #example
 * insert MessageBundle("urn:uuid:091dfc80-2031-4efd-b946-9f2abde7ac43", "2026-10-24T10:00:00+00:00")
 * insert EntryDocument("urn:uuid:e01fa368-f767-423f-b966-ec25a4830235", MessageHeader-R01-HaematoOncology)

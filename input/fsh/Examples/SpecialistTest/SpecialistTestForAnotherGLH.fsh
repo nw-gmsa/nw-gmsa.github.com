@@ -221,14 +221,17 @@ Usage: #example
 // Sub-order status (O51)
 
 RuleSet: SPTSubOrderTask
-* basedOn.reference = "urn:uuid:99bb76ca-edcb-44f4-95ff-b9b1c7b95780"
+// The O51 carries only the Task, so the sub-order and patient are identified, not referenced
 * basedOn.identifier.type = $v2-0203#PLAC
 * basedOn.identifier.system = "http://www.acme.org/servicerequest/NorthThamesGLH"
 * basedOn.identifier.value = "NT26-80455"
 * basedOn.identifier.assigner.identifier.system = $ods-code
 * basedOn.identifier.assigner.identifier.value = "69A70"
-* focus.reference = "urn:uuid:99bb76ca-edcb-44f4-95ff-b9b1c7b95780"
-* for.reference = "urn:uuid:74fe4bf0-26d8-4b8c-90eb-b6ef80d887e0"
+* focus.identifier.type = $v2-0203#PLAC
+* focus.identifier.system = "http://www.acme.org/servicerequest/NorthThamesGLH"
+* focus.identifier.value = "NT26-80455"
+* focus.identifier.assigner.identifier.system = $ods-code
+* focus.identifier.assigner.identifier.value = "69A70"
 * for.display = "Oliver CAMDEN"
 * for.identifier.type = $v2-0203#NH
 * for.identifier.system = $nhs-number
@@ -429,6 +432,7 @@ Usage: #example
 * insert EntryDocument("urn:uuid:292b12e2-63bd-4868-9789-5fea45e101f6", Binary-Sample)
 * insert EntryDocument("urn:uuid:99bb76ca-edcb-44f4-95ff-b9b1c7b95780", ServiceRequest-SPT-SubOrder)
 * insert EntryDocument("urn:uuid:2b589e1b-b81f-48b5-b1a9-a4875b24c6b1", Specimen-SPT-DNA)
+* insert EntryDocument("urn:uuid:0a869ae7-44ee-4657-8494-bfe7297971ba", Specimen-SPT-Blood)
 * insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)
 
 // Laboratory Report (LAB-3)
@@ -503,6 +507,8 @@ Usage: #example
 * insert EntryDocument("urn:uuid:4ae66ef9-04bb-49c1-9d8c-6112f8e12115", MessageHeader-SPT-Report)
 * insert EntryDocument("urn:uuid:74fe4bf0-26d8-4b8c-90eb-b6ef80d887e0", Patient-Camden)
 * insert EntryDocument("urn:uuid:bf3c6351-d196-4a3c-b989-1b50aab6fe85", DiagnosticReport-SPT-Report)
+* insert EntryDocument("urn:uuid:2b589e1b-b81f-48b5-b1a9-a4875b24c6b1", Specimen-SPT-DNA)
+* insert EntryDocument("urn:uuid:0a869ae7-44ee-4657-8494-bfe7297971ba", Specimen-SPT-Blood)
 * insert EntryDocument("urn:uuid:a542b8fd-caaa-4cb4-be09-5a26a8f7af9c", Variant-SPT-GJB2)
 * insert EntryDocument("urn:uuid:3abfc150-cd90-4164-b2e7-ed45d9e7d986", DiagnosticImplication-SPT-GJB2)
 * insert EntryDocument("urn:uuid:63f0bf07-b24c-4881-b56e-ab04bc535888", DocumentReference-SPT-Report)
