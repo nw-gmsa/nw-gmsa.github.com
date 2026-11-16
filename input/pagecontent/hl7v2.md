@@ -48,8 +48,8 @@ Converted from the FHIR Messages in the Example Scenarios (see [Artifacts](artif
 ```
 MSH|^~\&|RJN|RJN|RIE|699X0|20261005103000+0000||OML^O21^OML_O21|urn:uuid:275b30d2-1af0-4b9a-9bb8-52caf89a7403|T|2.5.1|||AL
 PID|1||9737383281^^^NHS^NH~M482113^^^RJN^MR||CONGLETON^Margaery^^^^^L||19820211|F|||Town Hall^7 High Street^CONGLETON^^CW12 1BN
-ORC|NW|RJN-26-48213^RJN|||||||20261005|||C4567891^^Helen^^^FICTITIOUS,^^^GMC|||||||||EAST CHESHIRE NHS TRUST^^RJN^^^ODS
-OBR|1|RJN-26-48213^RJN||R208.1^^England-GenomicTestDirectory||20261005||||||||||C4567891^^Helen^^^FICTITIOUS,^^^GMC|||||||||||||||R208^Inherited breast cancer and ovarian cancer^GenomicClinicalIndication
+ORC|NW|RJN-26-48213^RJN|||||||20261005|||C4567891^FICTITIOUS^Helen^^^^^^GMC|||||||||EAST CHESHIRE NHS TRUST^^RJN^^^ODS
+OBR|1|RJN-26-48213^RJN||R208.1^^England-GenomicTestDirectory||20261005||||||||||C4567891^FICTITIOUS^Helen^^^^^^GMC|||||||||||||||R208^Inherited breast cancer and ovarian cancer^GenomicClinicalIndication
 NTE|1||Triple-negative invasive breast cancer diagnosed at 44. No known family history. Genetic testing offered regardless of family history.
 OBX|1|ED|1054291000000102^Cellular pathology report^SNM3||^application^pdf^Base64^JVBERi0x...||||||F
 SPM|1|26GEN-RJN-008734&RJN||258580003^Whole blood specimen^SNM3|||||||||||||20261005100000+0000|20261006090000+0000||Y
@@ -157,7 +157,7 @@ Cancer](ExampleScenario-BreastCancer.html).
 MSH|^~\&|RIE|699X0|RJN|RJN|20261026120000+0000||ORU^R01^ORU_R01|urn:uuid:004e4011-782b-499e-ae78-afb8294e26f1|T|2.5.1|||AL
 PID|1||9737383281^^^NHS^NH~M482113^^^RJN^MR||CONGLETON^Margaery^^^^^L||19820211|F|||Town Hall^7 High Street^CONGLETON^^CW12 1BN
 ORC|RE|RJN-26-48213^RJN
-OBR|1|RJN-26-48213^RJN||R208.1^^England-GenomicTestDirectory|||20261005100000+0000|||||||||||||||20261026120000+0000|||F|||||||C1234567&Ralph&FICTITIOUS,^^^^^^699X0&https://fhir.nhs.uk/Id/ods-organization-code&URI
+OBR|1|RJN-26-48213^RJN||R208.1^^England-GenomicTestDirectory|||20261005100000+0000|||||||||||||||20261026120000+0000|||F|||||||C1234567&FICTITIOUS&Ralph^^^^^^699X0&https://fhir.nhs.uk/Id/ods-organization-code&URI
 OBX|1|ED|1054161000000101^Genetic report^SNM3|1|^application^pdf^Base64^JVBERi0x...||||||F
 OBX|2|CWE|69548-6^Genetic variant assessment^LN|2a|LA9633-4^Present^LN||||||F|||20261026120000+0000
 OBX|3|CWE|83005-9^Variant category^LN|2a|SEQV^Sequence Variant^https://fhir.nwgenomics.nhs.uk/CodeSystem/IGeneVariantCategory||||||F|||20261026120000+0000
@@ -208,7 +208,7 @@ GLH](ExampleScenario-SpecialistTestForAnotherGLH.html).
 MSH|^~\&|iGene|699X0|GOMS|69A70|20261019140000+0000||ORU^R01^ORU_R01|urn:uuid:0c55edb0-0af3-4d88-8f09-f5b5ba429584|T|2.5.1|||AL
 PID|1||9737383427^^^NHS^NH||CAMDEN^Oliver^^^^^L||20250214|M
 ORC|RE|NT26-80455^69A70|||||||||||||||||||NORTH THAMES GLH^^69A70^^^ODS
-OBR|1|NT26-80455^69A70||R67.1^^England-GenomicTestDirectory|||20260915150000+0000|||||||||||||||20261019140000+0000|||F||||||R67^Monogenic hearing loss^GenomicClinicalIndication|C1234567&Ralph&FICTITIOUS,^^^^^^699X0&https://fhir.nhs.uk/Id/ods-organization-code&URI
+OBR|1|NT26-80455^69A70||R67.1^^England-GenomicTestDirectory|||20260915150000+0000|||||||||||||||20261019140000+0000|||F||||||R67^Monogenic hearing loss^GenomicClinicalIndication|C1234567&FICTITIOUS&Ralph^^^^^^699X0&https://fhir.nhs.uk/Id/ods-organization-code&URI
 OBX|1|ED|1054161000000101^Genetic report^SNM3|1|^application^pdf^Base64^JVBERi0x...||||||F
 OBX|2|CWE|69548-6^Genetic variant assessment^LN|2a|LA9633-4^Present^LN||||||F|||20261019140000+0000
 OBX|3|CWE|83005-9^Variant category^LN|2a|SEQV^Sequence Variant^https://fhir.nwgenomics.nhs.uk/CodeSystem/IGeneVariantCategory||||||F|||20261019140000+0000
@@ -234,7 +234,7 @@ Diagnostics](ExampleScenario-HaematoOncologyDiagnostics.html).
 MSH|^~\&|RIE|R0A|RIE|R0A|20261016120000+0000||ORU^R01^ORU_R01|urn:uuid:d576368f-989b-421c-985a-1686daa6fcd7|T|2.5.1|||AL
 PID|1||9737383397^^^NHS^NH||TAMESIDE^Hodor^^^^^L||19600727|M|||Stockport Road^^TAMESIDE^^OL7 0NS
 ORC|RE|HO26-11872-C^R0A
-OBR|1|HO26-11872-C^R0A||M80.3^^England-GenomicTestDirectory|||20261012100000+0000|||||||||||||||20261016120000+0000|||F|||||||C6789012&Clara&FICTITIOUS,^^^^^^R0A&https://fhir.nhs.uk/Id/ods-organization-code&URI
+OBR|1|HO26-11872-C^R0A||M80.3^^England-GenomicTestDirectory|||20261012100000+0000|||||||||||||||20261016120000+0000|||F|||||||C6789012&FICTITIOUS&Clara^^^^^^R0A&https://fhir.nhs.uk/Id/ods-organization-code&URI
 OBX|1|ED|1054161000000101^Genetic report^SNM3|1|^application^pdf^Base64^JVBERi0x...||||||F
 OBX|2|ST|62356-1^Chromosome analysis result in ISCN expression^LN||47,XY,+8,del(7)(q22q36)[18]/46,XY[2]||||||F|||20261012100000+0000
 ```
@@ -441,7 +441,7 @@ interface in this guide today.
 | -- [OBX](#obx)            | 0..*        | Observations about the specimen                                                         |
 {:.grid}
 
-##### Example
+##### Examples
 
 A laboratory order sent as `OMG^O19` instead of OML_O21 - see [Referral Request
 [PCC-55]](PCC-55.html#examples). For a referral, OBR-4 is `306119003^^SCT` and there is
@@ -457,6 +457,43 @@ SPM|1|25GEN-029GN00001&R0A||258580003^Whole blood specimen^SNM3|||||||||||||2025
 ```
 
 > FHIR Message Example: [Bundle 'Message' - Genomics Order with Attachment](Bundle-GenomicsOrderMessageAttachment.html)
+
+A **referral** (IHE 360X): after a pathogenic BRCA1 variant is found, East Cheshire NHS Trust refers
+the family to clinical genetics (OBR-4 `306119003^^SCT`, OBR-31 the clinical indication). The
+proband is in PID and the at-risk relative (consultand) in NK1; OBX 1 is the referral question
+and OBX 2 points (`RP`) to the proband's report. There is no SPM - step 5 of [Hereditary Breast
+and Ovarian Cancer](ExampleScenario-BreastCancer.html).
+
+```
+MSH|^~\&|RJN|RJN|eRS|R0A|20261030110000+0000||OMG^O19^OMG_O19|urn:uuid:bfd06c25-451f-4619-bd8e-849ec115f2e5|T|2.5.1|||AL
+PID|1||9737383281^^^NHS^NH~M482113^^^RJN^MR||CONGLETON^Margaery^^^^^L||19820211|F|||Town Hall^7 High Street^CONGLETON^^CW12 1BN
+NK1|1|BUXTON^Lysa|SIS^Sister^HL70063||||||||||||F|19710101|||||||||||||||||9737383338^^^NHS^NH
+ORC|NW|RJN-REF-26-1188^RJN|||||||20261030|||C4567891^FICTITIOUS^Helen^^^^^^GMC|||||||||EAST CHESHIRE NHS TRUST^^RJN^^^ODS
+OBR|1|RJN-REF-26-1188^RJN||306119003^Referral to genetics service^SNM3||20261030||||||||||C4567891^FICTITIOUS^Helen^^^^^^GMC|||||||||||||||R208^Inherited breast cancer and ovarian cancer^GenomicClinicalIndication
+NTE|1||Heterozygous pathogenic BRCA1 variant found in Margaery Congleton. Please see the family for genetic counselling and predictive testing of relatives for the same variant.
+OBX|1|CWE|FamilyMemberRelationship^Relationship to proband^NWGMSA||ONESELF^self^v3-RoleCode||||||O
+OBX|2|RP|1054161000000101^Genetic report^SNM3||https://ugr.example.nhs.uk/FHIR/R4/Bundle/G26-48213||||||F
+```
+
+> FHIR Message Example: [Bundle Message - Genomics Referral - Breast Cancer](Bundle-GenomicsReferralMessage-BreastCancer.html)
+
+A referral for a fetus, identified by the hospital's fetal MRN, with both parents in NK1 for
+genetic counselling and parental testing - step 15 of [Rapid Prenatal Exome
+Sequencing](ExampleScenario-RapidPrenatalExomeSequencing.html).
+
+```
+MSH|^~\&|EPIC|R0A|eRS|R0A|20260928140000+0000||OMG^O19^OMG_O19|urn:uuid:98d2ed39-d05b-4e43-808e-f1dda6e134dc|T|2.5.1|||AL
+PID|1||R0A-F26-0042^^^R0A^MR||WIGAN^Baby^^^^^A||2027
+NK1|1|WIGAN^Imogen|MTH^Mother^HL70063||||||||||||F|19940312|||||||||||||||||9737383400^^^NHS^NH
+NK1|2|WIGAN^Daniel|FTH^Father^HL70063||||||||||||M|19921105|||||||||||||||||9737383419^^^NHS^NH
+ORC|NW|1702388^R0A|||||||20260928|||C5678234^FICTITIOUS^Ruth^^^^^^GMC|||||||||MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS
+OBR|1|1702388^R0A||306119003^Referral to genetics service^SNM3||20260928||||||||||C5678234^FICTITIOUS^Ruth^^^^^^GMC
+NTE|1||Rapid prenatal exome sequencing (R21.2): heterozygous pathogenic variant in COL1A1 in the fetus, consistent with osteogenesis imperfecta. Please see the family for genetic counselling and parental testing.
+OBX|1|CWE|FamilyMemberRelationship^Relationship to proband^NWGMSA||ONESELF^self^v3-RoleCode||||||O
+OBX|2|RP|1054161000000101^Genetic report^SNM3||https://ugr.example.nhs.uk/FHIR/R4/Bundle/G26-41180||||||F
+```
+
+> FHIR Message Example: [Bundle Message - Genomics Referral - Rapid Prenatal Exome](Bundle-GenomicsReferralMessage-RPX.html)
 
 ### OSU_O51 Order Status Update
 
