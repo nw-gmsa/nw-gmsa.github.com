@@ -550,7 +550,7 @@ Updates from GOMS via MNS](PCC-55.html#status-updates-from-goms-via-mns).
 | Cancel Confirmation [PCC-58] | `CR` | `CA` | `cancelled` | `cancelled` |
 {:.grid}
 
-##### Example
+##### Examples
 
 ```
 MSH|^~\&|RIE|699X0|EPIC|R0A|20250130093000+0000||OSU^O51^OSU_O51|GLH-MSG-250130001|P|2.8|||AL|NE
@@ -559,6 +559,41 @@ ORC|OK|1601737^R0A|R25012345^699X0||IP||||20250130093000+0000|||C3456789^Darwin^
 ```
 
 > FHIR Message Example: [Bundle Message - Order Status (O51), accepted](Bundle-GenomicOrderStatusAcceptMessage.html)
+
+Status updates on a sub-order through GOMS - steps 4, 6 and 7 of [Specialist Test for another
+GLH](ExampleScenario-SpecialistTestForAnotherGLH.html). The North West GLH (the testing GLH)
+sends them to the North Thames GLH (the requesting GLH): ORC-2 is the requester's order number,
+ORC-21 the requester, and for a decline ORC-16 the reason.
+
+The North West GLH accepts the sub-order:
+
+```
+MSH|^~\&|RIE|699X0|GOMS|69A70|20260917093000+0000||OSU^O51^OSU_O51|urn:uuid:08ac469d-af9d-42bf-bb73-a461e4689fbf|T|2.8|||AL
+PID|1||9737383427^^^NHS^NH||CAMDEN^Oliver
+ORC|OK|NT26-80455^69A70|||IP||||20260917093000+0000||||||||||||NORTH THAMES GLH^^69A70^^^ODS
+```
+
+> FHIR Message Example: [Bundle Message - Order Status (O51) - Specialist Test, accepted](Bundle-GenomicOrderStatusMessage-SPT-Accepted.html)
+
+Alternatively, it declines the sub-order on receipt, as it doesn't meet the eligibility criteria:
+
+```
+MSH|^~\&|RIE|699X0|GOMS|69A70|20260917093000+0000||OSU^O51^OSU_O51|urn:uuid:0bbb9491-0f66-4e91-9162-d093f5aa88dd|T|2.8|||AL
+PID|1||9737383427^^^NHS^NH||CAMDEN^Oliver
+ORC|UA|NT26-80455^69A70|||CA||||20260917093000+0000|||||||not-eligible^Does not meet the R67 eligibility criteria: congenital CMV has not been excluded. Please send the CMV result with a new order.^L|||||NORTH THAMES GLH^^69A70^^^ODS
+```
+
+> FHIR Message Example: [Bundle Message - Order Status (O51) - Specialist Test, declined](Bundle-GenomicOrderStatusMessage-SPT-Declined.html)
+
+Or, having accepted it, declines it later because the sample is unsuitable for testing:
+
+```
+MSH|^~\&|RIE|699X0|GOMS|69A70|20260921110000+0000||OSU^O51^OSU_O51|urn:uuid:8e7403a8-fdab-421a-9fcb-b5a41fee39c9|T|2.8|||AL
+PID|1||9737383427^^^NHS^NH||CAMDEN^Oliver
+ORC|UA|NT26-80455^69A70|||CA||||20260921110000+0000|||||||sample-unsuitable^DNA concentration too low for testing. Please send a new DNA sample with a new sub-order.^L|||||NORTH THAMES GLH^^69A70^^^ODS
+```
+
+> FHIR Message Example: [Bundle Message - Order Status (O51) - Specialist Test, declined later](Bundle-GenomicOrderStatusMessage-SPT-LaterDeclined.html)
 
 ### Segments
 
