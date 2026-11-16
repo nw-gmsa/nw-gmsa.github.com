@@ -182,7 +182,14 @@ Usage: #example
 * status = #available
 * insert CamdenSubject
 * type = $sct#258566005 "Deoxyribonucleic acid sample"
-* parent.reference = "urn:uuid:0a869ae7-44ee-4657-8494-bfe7297971ba"
+// The original blood sample is identified, not referenced, as only the DNA is sent with the sub-order
+* parent
+  * type = "Specimen"
+  * identifier.type = $v2-0203#PLAC
+  * identifier.system = "http://www.acme.org/specimen/RP4"
+  * identifier.value = "RP426-0310558"
+  * identifier.assigner.identifier.system = $ods-code
+  * identifier.assigner.identifier.value = "RP4"
 * collection.collectedDateTime = "2026-09-15T15:00:00+00:00"
 
 Instance: MessageHeader-SPT-SubOrder
@@ -216,7 +223,6 @@ Usage: #example
 * insert EntryDocument("urn:uuid:74fe4bf0-26d8-4b8c-90eb-b6ef80d887e0", Patient-Camden)
 * insert EntryDocument("urn:uuid:99bb76ca-edcb-44f4-95ff-b9b1c7b95780", ServiceRequest-SPT-SubOrder)
 * insert EntryDocument("urn:uuid:2b589e1b-b81f-48b5-b1a9-a4875b24c6b1", Specimen-SPT-DNA)
-* insert EntryDocument("urn:uuid:0a869ae7-44ee-4657-8494-bfe7297971ba", Specimen-SPT-Blood)
 
 // Sub-order status (O51)
 
@@ -351,8 +357,6 @@ RuleSet: SPTReport
 * code.coding[+] = $GTD#R67.1
 * code.coding[+] = $sct#1054161000000101 "Genetic report"
 * insert CamdenSubject
-* specimen[+].reference = "urn:uuid:2b589e1b-b81f-48b5-b1a9-a4875b24c6b1"
-* effectiveDateTime = "2026-09-15T15:00:00+00:00"
 
 Instance: DiagnosticReport-SPT-SubOrder
 InstanceOf: LaboratoryReport
@@ -374,6 +378,8 @@ Usage: #example
   * identifier.assigner.identifier.value = "69A70"
   * reference = "urn:uuid:99bb76ca-edcb-44f4-95ff-b9b1c7b95780"
 * insert SPTReport
+* specimen[+].reference = "urn:uuid:2b589e1b-b81f-48b5-b1a9-a4875b24c6b1"
+* effectiveDateTime = "2026-09-15T15:00:00+00:00"
 * issued = "2026-10-19T14:00:00+00:00"
 * performer[organization]
   * identifier.system = $ods-code
@@ -432,7 +438,6 @@ Usage: #example
 * insert EntryDocument("urn:uuid:292b12e2-63bd-4868-9789-5fea45e101f6", Binary-Sample)
 * insert EntryDocument("urn:uuid:99bb76ca-edcb-44f4-95ff-b9b1c7b95780", ServiceRequest-SPT-SubOrder)
 * insert EntryDocument("urn:uuid:2b589e1b-b81f-48b5-b1a9-a4875b24c6b1", Specimen-SPT-DNA)
-* insert EntryDocument("urn:uuid:0a869ae7-44ee-4657-8494-bfe7297971ba", Specimen-SPT-Blood)
 * insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)
 
 // Laboratory Report (LAB-3)
@@ -456,6 +461,8 @@ Usage: #example
   * identifier.assigner.identifier.system = $ods-code
   * identifier.assigner.identifier.value = "RP4"
 * insert SPTReport
+* specimen[+].reference = "urn:uuid:0a869ae7-44ee-4657-8494-bfe7297971ba"
+* effectiveDateTime = "2026-09-14T10:30:00+00:00"
 * issued = "2026-10-21T10:00:00+00:00"
 * performer[organization]
   * identifier.system = $ods-code
@@ -507,7 +514,6 @@ Usage: #example
 * insert EntryDocument("urn:uuid:4ae66ef9-04bb-49c1-9d8c-6112f8e12115", MessageHeader-SPT-Report)
 * insert EntryDocument("urn:uuid:74fe4bf0-26d8-4b8c-90eb-b6ef80d887e0", Patient-Camden)
 * insert EntryDocument("urn:uuid:bf3c6351-d196-4a3c-b989-1b50aab6fe85", DiagnosticReport-SPT-Report)
-* insert EntryDocument("urn:uuid:2b589e1b-b81f-48b5-b1a9-a4875b24c6b1", Specimen-SPT-DNA)
 * insert EntryDocument("urn:uuid:0a869ae7-44ee-4657-8494-bfe7297971ba", Specimen-SPT-Blood)
 * insert EntryDocument("urn:uuid:a542b8fd-caaa-4cb4-be09-5a26a8f7af9c", Variant-SPT-GJB2)
 * insert EntryDocument("urn:uuid:3abfc150-cd90-4164-b2e7-ed45d9e7d986", DiagnosticImplication-SPT-GJB2)

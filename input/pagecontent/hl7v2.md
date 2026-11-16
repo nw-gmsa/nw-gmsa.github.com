@@ -78,8 +78,8 @@ SPM|1|^S26-1K1Q&699X0||119297000^Blood specimen^SNM3|||||||||||||20260629|202606
 
 [LAB-35](ILW.html#sub-order-management-lab-35): the North Thames GLH sub-orders hearing loss
 testing (R67.1) from the North West GLH via the Genomic Order Management Service (GOMS). The
-first SPM is the DNA sent; the second is the original blood sample it was extracted from - step 2
-of [Specialist Test for another GLH](ExampleScenario-SpecialistTestForAnotherGLH.html).
+SPM is the DNA sent, the specimen to use for the test - not the original blood sample it was
+extracted from - step 2 of [Specialist Test for another GLH](ExampleScenario-SpecialistTestForAnotherGLH.html).
 
 ```
 MSH|^~\&|GOMS|69A70|RIE|699X0|20260916090000+0000||OML^O21^OML_O21|urn:uuid:67770cf6-9e01-4afa-a5b2-ae63217e7e4a|T|2.5.1|||AL
@@ -88,7 +88,6 @@ ORC|NW|NT26-80455^69A70|||||||20260916||||||||||||NORTH THAMES GLH^^69A70^^^ODS
 OBR|1|NT26-80455^69A70||R67.1^^England-GenomicTestDirectory||20260916|||||||||||||||||||||||||R67^Monogenic hearing loss^GenomicClinicalIndication
 NTE|1||Bilateral moderate to severe sensorineural hearing loss identified on newborn hearing screening. No syndromic features. CMV negative. DNA sent by sample transport.
 SPM|1|NT26-80455-D1&69A70||258566005^Deoxyribonucleic acid sample^SNM3|||||||||||||20260915150000+0000|||Y
-SPM|2|RP426-0310558&RP4||258580003^Whole blood specimen^SNM3|||||||||||||20260914103000+0000|20260914160000+0000||Y
 ```
 
 > FHIR Message Example: [Bundle Message - Genomics Sub-order - Specialist Test](Bundle-GenomicsSubOrderMessage-SPT.html)
@@ -105,7 +104,6 @@ ORC|NW|G26-41180^699X0|||||||20260911||||||||||||NORTH WEST GLH^^699X0^^^ODS
 OBR|1|G26-41180^699X0||R21.2^^England-GenomicTestDirectory||20260911|||||||||||||||||||||||||R21^Fetal anomalies with a likely genetic cause^GenomicClinicalIndication
 NTE|1||Short, bowed long bones and multiple fractures on the 20-week anomaly scan. QF-PCR (R21.1) and microarray (R21.3) normal. Fetal DNA sent by sample transport.
 SPM|1|G26-41180-D1&699X0||258566005^Deoxyribonucleic acid sample^SNM3|||||||||||||20260910160000+0000|||Y
-SPM|2|R0A26-0090411&R0A||119373006^Amniotic fluid specimen^SNM3|||||||||||||20260907110000+0000|20260907153000+0000||Y
 ```
 
 > FHIR Message Example: [Bundle Message - Genomics Sub-order - Rapid Prenatal Exome](Bundle-GenomicsSubOrderMessage-RPX.html)
@@ -221,7 +219,6 @@ OBX|9|CWE|53037-8^^LN|2a|LA6668-3^Pathogenic^LN||||||F|||20261019140000+0000
 OBX|10|CWE|81259-4^^LN|2a|^Autosomal recessive non-syndromic hearing loss (DFNB1)||||||F|||20261019140000+0000
 OBX|11|ST|conclusion-string^^http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs|2a|Homozygous pathogenic GJB2 variant, consistent with autosomal recessive non-syndromic hearing loss (DFNB1).||||||F|||20261019140000+0000
 SPM|1|NT26-80455-D1&69A70||258566005^Deoxyribonucleic acid sample^SNM3|||||||||||||20260915150000+0000|||Y
-SPM|2|RP426-0310558&RP4||258580003^Whole blood specimen^SNM3|||||||||||||20260914103000+0000|20260914160000+0000||Y
 ```
 
 > FHIR Message Example: [Bundle Message - Genomics Sub-order Report - Specialist Test](Bundle-GenomicsSubOrderReportMessage-SPT.html)

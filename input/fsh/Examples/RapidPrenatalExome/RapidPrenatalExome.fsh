@@ -316,7 +316,7 @@ Usage: #example
 * reasonCode[+] = $GCC#R21 "Fetal anomalies with a likely genetic cause"
 * note[+].text = "Short, bowed long bones and multiple fractures on the 20-week anomaly scan. QF-PCR (R21.1) and microarray (R21.3) normal. Fetal DNA sent by sample transport."
 
-RuleSet: RPXDNA(value, parent)
+RuleSet: RPXDNA(value)
 * identifier[PlacerSpecimenNumber]
   * value = {value}
   * system = "https://fhir.nwgenomics.nhs.uk/iGene/SpecimenIdentifier"
@@ -324,7 +324,14 @@ RuleSet: RPXDNA(value, parent)
   * assigner.identifier.system = $ods-code
   * assigner.identifier.value = "699X0"
 * type = $sct#258566005 "Deoxyribonucleic acid sample"
-* parent.reference = {parent}
+// The amniotic fluid is identified, not referenced, as only the DNA is sent with the sub-order
+* parent
+  * type = "Specimen"
+  * identifier.type = $v2-0203#PLAC
+  * identifier.system = "http://www.acme.org/specimen/R0A"
+  * identifier.value = "R0A26-0090411"
+  * identifier.assigner.identifier.system = $ods-code
+  * identifier.assigner.identifier.value = "R0A"
 * collection.collectedDateTime = "2026-09-10T16:00:00+00:00"
 
 Instance: Specimen-RPX-Fetal-DNA
@@ -333,7 +340,7 @@ Title: "Specimen - DNA (Fetus Wigan)"
 Description: "Fictitious example: DNA extracted by the North West GLH from the amniotic fluid"
 Usage: #example
 
-* insert RPXDNA("G26-41180-D1", "urn:uuid:a633e6ef-1a20-488a-8c1f-8574343e4dce")
+* insert RPXDNA("G26-41180-D1")
 * status = #available
 * subject.reference = "urn:uuid:e322141b-af07-451d-92ab-74d192151818"
 * subject.display = "Baby WIGAN"
@@ -370,7 +377,6 @@ Usage: #example
 * insert EntryDocument("urn:uuid:956ca674-005e-4459-81d8-6bd888729244", RelatedPerson-Mother-Wigan)
 * insert EntryDocument("urn:uuid:bc2ce852-cad4-4f35-aeac-c1c1021bf680", ServiceRequest-RPX-SubOrder)
 * insert EntryDocument("urn:uuid:5bcb951e-a64c-461f-9334-8b9f932b1cbc", Specimen-RPX-Fetal-DNA)
-* insert EntryDocument("urn:uuid:a633e6ef-1a20-488a-8c1f-8574343e4dce", Specimen-RPX-Fetal)
 
 // Sub-order status (O51)
 
@@ -607,7 +613,6 @@ Usage: #example
 * insert EntryDocument("urn:uuid:26c66a34-9028-4b14-866e-42d8284b17c4", DiagnosticReport-RPX-SubOrder)
 * insert EntryDocument("urn:uuid:bc2ce852-cad4-4f35-aeac-c1c1021bf680", ServiceRequest-RPX-SubOrder)
 * insert EntryDocument("urn:uuid:5bcb951e-a64c-461f-9334-8b9f932b1cbc", Specimen-RPX-Fetal-DNA)
-* insert EntryDocument("urn:uuid:a633e6ef-1a20-488a-8c1f-8574343e4dce", Specimen-RPX-Fetal)
 * insert EntryDocument("urn:uuid:eb11c7ed-8b8d-4062-8956-a8bb85c32523", Variant-RPX-COL1A1)
 * insert EntryDocument("urn:uuid:953e2395-e834-431e-8003-6230e647e148", DiagnosticImplication-RPX-COL1A1)
 * insert EntryDocument("urn:uuid:b8dbd628-25ab-423d-809a-5a1a83ca6b4b", DocumentReference-RPX-SubOrderReport)
