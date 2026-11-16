@@ -162,6 +162,8 @@ OBX|2|CWE|51967-8^Genetic disease assessed [ID]^LN|1|R208^Inherited breast cance
 ```
 
 > FHIR Message Example: [Bundle Message - Genomics Report - Breast Cancer](Bundle-GenomicsReportMessage-BreastCancer.html)
+>
+> The FHIR Message also carries the discrete variant results (Observations); these are not in the v2 example above, which shows the report as currently sent.
 
 ##### Test Results (LAB-5)
 
