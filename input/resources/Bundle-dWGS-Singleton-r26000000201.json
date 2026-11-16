@@ -445,6 +445,10 @@
         ],
         "supportingInfo": [
           {
+            "reference": "urn:uuid:38ee2741-4a42-4bab-901d-92d8b2971114",
+            "type": "Observation"
+          },
+          {
             "reference": "urn:uuid:c54ea40f-44cb-4352-a04f-d2f70fd8b568",
             "type": "Observation"
           }
