@@ -146,27 +146,19 @@ Report PDFs are shortened (`JVBERi0x...`).
 
 ##### Laboratory Report (LAB-3)
 
-[LAB-3](LTW.html#laboratory-report-lab-3): the North West GLH reports a pathogenic BRCA1 variant
-to East Cheshire NHS Trust - the report PDF (OBX 1) followed by the variant and its clinical
-significance, grouped by OBX-4 sub-ID `2a` - step 2 of [Hereditary Breast and Ovarian
-Cancer](ExampleScenario-BreastCancer.html).
+[LAB-3](LTW.html#laboratory-report-lab-3): the North West GLH reports to East Cheshire NHS Trust -
+step 2 of [Hereditary Breast and Ovarian Cancer](ExampleScenario-BreastCancer.html). As currently
+implemented, the report is the PDF (OBX 1, `51969-4^Genetic analysis report^LN`, the LRI code) and the
+clinical indication (OBX 2, `51967-8`, also in OBR-31); discrete variant results (as in the
+[LAB-36](#sub-order-results-lab-36) example below) are not yet sent to the requester.
 
 ```
 MSH|^~\&|RIE|699X0|RJN|RJN|20261026120000+0000||ORU^R01^ORU_R01|urn:uuid:004e4011-782b-499e-ae78-afb8294e26f1|T|2.5.1|||AL
 PID|1||9737383281^^^NHS^NH~M482113^^^RJN^MR||CONGLETON^Margaery^^^^^L||19820211|F|||Town Hall^7 High Street^CONGLETON^^CW12 1BN
 ORC|RE|RJN-26-48213^RJN
-OBR|1|RJN-26-48213^RJN||R208.1^^England-GenomicTestDirectory|||20261005100000+0000|||||||||||||||20261026120000+0000|||F|||||||C1234567&FICTITIOUS&Ralph^^^^^^699X0&https://fhir.nhs.uk/Id/ods-organization-code&URI
-OBX|1|ED|1054161000000101^Genetic report^SNM3|1|^application^pdf^Base64^JVBERi0x...||||||F
-OBX|2|CWE|69548-6^Genetic variant assessment^LN|2a|LA9633-4^Present^LN||||||F|||20261026120000+0000
-OBX|3|CWE|83005-9^Variant category^LN|2a|SEQV^Sequence Variant^https://fhir.nwgenomics.nhs.uk/CodeSystem/IGeneVariantCategory||||||F|||20261026120000+0000
-OBX|4|CWE|48018-6^Gene studied [ID]^LN|2a|HGNC:1100^BRCA1^HGNC||||||F|||20261026120000+0000
-OBX|5|CWE|51958-7^Transcript reference sequence [ID]^LN|2a|NM_007294.3^^RefSeq-T||||||F|||20261026120000+0000
-OBX|6|CWE|48004-6^DNA change (c.HGVS)^LN|2a|NM_007294.3:c.68_69del^^HGVS.c||||||F|||20261026120000+0000
-OBX|7|CWE|48002-0^Genomic source class [Type]^LN|2a|LA6683-2^Germline^LN||||||F|||20261026120000+0000
-OBX|8|CWE|53034-5^Allelic state^LN|2a|LA6706-1^Heterozygous^LN||||||F|||20261026120000+0000
-OBX|9|CWE|53037-8^^LN|2a|LA6668-3^Pathogenic^LN||||||F|||20261026120000+0000
-OBX|10|CWE|81259-4^^LN|2a|718220008^Hereditary breast and ovarian cancer syndrome^SNM3||||||F|||20261026120000+0000
-OBX|11|ST|conclusion-string^^http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs|2a|Heterozygous pathogenic BRCA1 variant, consistent with hereditary breast and ovarian cancer.||||||F|||20261026120000+0000
+OBR|1|RJN-26-48213^RJN||R208.1^^England-GenomicTestDirectory|||20261005100000+0000|||||||||||||||20261026120000+0000|||F||||||R208^Inherited breast cancer and ovarian cancer^GenomicClinicalIndication|C1234567&FICTITIOUS&Ralph^^^^^^699X0&https://fhir.nhs.uk/Id/ods-organization-code&URI
+OBX|1|ED|51969-4^Genetic analysis report^LN|1|^application^pdf^Base64^JVBERi0x...||||||F
+OBX|2|CWE|51967-8^Genetic disease assessed [ID]^LN|1|R208^Inherited breast cancer and ovarian cancer^GenomicClinicalIndication||||||F|||20261026120000+0000
 ```
 
 > FHIR Message Example: [Bundle Message - Genomics Report - Breast Cancer](Bundle-GenomicsReportMessage-BreastCancer.html)
@@ -207,7 +199,7 @@ MSH|^~\&|iGene|699X0|GOMS|69A70|20261019140000+0000||ORU^R01^ORU_R01|urn:uuid:0c
 PID|1||9737383427^^^NHS^NH||CAMDEN^Oliver^^^^^L||20250214|M
 ORC|RE|NT26-80455^69A70|||||||||||||||||||NORTH THAMES GLH^^69A70^^^ODS
 OBR|1|NT26-80455^69A70||R67.1^^England-GenomicTestDirectory|||20260915150000+0000|||||||||||||||20261019140000+0000|||F||||||R67^Monogenic hearing loss^GenomicClinicalIndication|C1234567&FICTITIOUS&Ralph^^^^^^699X0&https://fhir.nhs.uk/Id/ods-organization-code&URI
-OBX|1|ED|1054161000000101^Genetic report^SNM3|1|^application^pdf^Base64^JVBERi0x...||||||F
+OBX|1|ED|51969-4^Genetic analysis report^LN|1|^application^pdf^Base64^JVBERi0x...||||||F
 OBX|2|CWE|69548-6^Genetic variant assessment^LN|2a|LA9633-4^Present^LN||||||F|||20261019140000+0000
 OBX|3|CWE|83005-9^Variant category^LN|2a|SEQV^Sequence Variant^https://fhir.nwgenomics.nhs.uk/CodeSystem/IGeneVariantCategory||||||F|||20261019140000+0000
 OBX|4|CWE|48018-6^Gene studied [ID]^LN|2a|HGNC:4284^GJB2^HGNC||||||F|||20261019140000+0000
@@ -232,7 +224,7 @@ MSH|^~\&|RIE|R0A|RIE|R0A|20261016120000+0000||ORU^R01^ORU_R01|urn:uuid:d576368f-
 PID|1||9737383397^^^NHS^NH||TAMESIDE^Hodor^^^^^L||19600727|M|||Stockport Road^^TAMESIDE^^OL7 0NS
 ORC|RE|HO26-11872-C^R0A
 OBR|1|HO26-11872-C^R0A||M80.3^^England-GenomicTestDirectory|||20261012100000+0000|||||||||||||||20261016120000+0000|||F|||||||C6789012&FICTITIOUS&Clara^^^^^^R0A&https://fhir.nhs.uk/Id/ods-organization-code&URI
-OBX|1|ED|1054161000000101^Genetic report^SNM3|1|^application^pdf^Base64^JVBERi0x...||||||F
+OBX|1|ED|51969-4^Genetic analysis report^LN|1|^application^pdf^Base64^JVBERi0x...||||||F
 OBX|2|ST|62356-1^Chromosome analysis result in ISCN expression^LN||47,XY,+8,del(7)(q22q36)[18]/46,XY[2]||||||F|||20261012100000+0000
 ```
 
@@ -926,7 +918,7 @@ This is based on the definition of OBX from [Digital Health and Care Wales - HL7
 |-----------|------------------------------|-----------|-------------|----------------------------------------------------------|--------------------------------------|-------------|
 | OBX-1     | Set ID – OBX                 |           | R           |                                                          | 1                                    | Sequence number of this result line within the report (ubiquitous term: **Set ID**). |
 | OBX-2     | Value Type                   |        | R <span class="badge badge-danger">S</span>          |                                                          | ED                                   | The data type of the value that follows - `ED` for an embedded document (ubiquitous term: **Value Type**). |
-| OBX-3     | Observation Identifier       | [CE](#ce) | R <span class="badge badge-danger">S</span>          | [Document Entry Type](ValueSet-document-entry-type.html) | 1054161000000101^Genetic report^SNM3 | What kind of document this is, e.g. a genetics report (ubiquitous terms: **Document Type**, **Report Type**). |
+| OBX-3     | Observation Identifier       | [CE](#ce) | R <span class="badge badge-danger">S</span>          | [Document Entry Type](ValueSet-document-entry-type.html) | 1054161000000101^Genetic report^SNM3 | What kind of document this is, e.g. a genetics report (ubiquitous terms: **Document Type**, **Report Type**). In ORU_R01 (LAB-3, LAB-36) the report PDF currently uses the LRI code `51969-4^Genetic analysis report^LN`. |
 | OBX-5     | Observation Value            | [ED](#ed)        | R <span class="badge badge-danger">S</span>          |                                                          | MOL^IM^PDF^Base64^JVBERI0X...        | The embedded document itself, base64-encoded (ubiquitous terms: **Attachment**, **Report PDF**). |
 | OBX-11    | Observation Result Status    |           | R           |                                                          | F                                    | Whether this document is preliminary, final, corrected, etc. (ubiquitous term: **Result Status**). |
 | OBX-14    | Date/Time of the Observation |           | O - SHOULD  |                                                          | 20190514102417+0000                  | When this document was produced (ubiquitous term: **Observation Date/Time**). |
