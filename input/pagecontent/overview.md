@@ -259,6 +259,7 @@ for the same variant).
 | [Hearing Loss Test for Another Region](ExampleScenario-SpecialistTestForAnotherGLH.html) | Another region's GLH sends the North West GLH a sub-order for a specialist test it provides nationally | R67.1 Monogenic hearing loss | O21 order, sub-order (LAB-35) via GOMS, order status (O51), sub-order report (LAB-36), R01 report |
 | [Whole Genome Sequencing for a Rare Condition](ExampleScenario-WholeGenomeSequencing.html) | A child's referral is registered with Genomics England. Each family member is sequenced, and the requesting laboratory reports on the family | R27.3 Paediatric disorders | O19 family referral, sub-orders (LAB-35), R01 report |
 | [Gene Test Before Starting a Medicine](ExampleScenario-Pharmacogenomics.html) | A gene test before starting mavacamten shows how the patient processes the medicine | R454.1 CYP2C19 genotyping | O21 order, R01 report, FHIR Document |
+| [Chimerism Monitoring After a Stem Cell Transplant](ExampleScenario-ChimerismMonitoring.html) | After a stem cell transplant, a blood test measures how much of the patient's blood comes from the donor, to check the graft has taken | GT1368 Chimerism by STR Testing - Post Stem Cell Transplant (Histocompatibility and Immunogenetics) | O21 order, R01 report |
 {:.grid}
 
 #### Background

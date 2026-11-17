@@ -574,6 +574,25 @@ groups:
       - DocumentReference/DocumentReference-Pharmacogenomics-Report
       - PractitionerRole/PractitionerRole-Requester-Cardiology-RBQ
       - Patient/Patient-Northwich
+  -ex-example-chimerism:
+    name: "Example: Chimerism Monitoring"
+    description: "Chimerism monitoring after a stem cell transplant (GT1368) for Ned Liverpool: the order (O21) from The Clatterbridge Cancer Centre and the report (R01) from the Histocompatibility and Immunogenetics laboratory, converted from HL7 v2 - see the [Chimerism Monitoring After a Stem Cell Transplant](ExampleScenario-ChimerismMonitoring.html) scenario"
+    resources:
+      - Bundle/GenomicsOrderMessage-Chimerism
+      - MessageHeader/MessageHeader-O21-Chimerism
+      - ServiceRequest/ServiceRequest-Chimerism
+      - Specimen/Specimen-Chimerism-Order
+      - PractitionerRole/PractitionerRole-Requester-Haematology-REN
+      - Bundle/GenomicsReportMessage-Chimerism
+      - MessageHeader/MessageHeader-R01-Chimerism
+      - DiagnosticReport/DiagnosticReport-Chimerism-Report
+      - Observation/Observation-Chimerism-Recipient
+      - Observation/Observation-Chimerism-InformativeMarkers
+      - Observation/Observation-Chimerism-CellType
+      - Observation/Observation-Chimerism-TimePostTransplant
+      - Observation/Observation-Chimerism-TransplantDate
+      - Specimen/Specimen-Chimerism
+      - DocumentReference/DocumentReference-Chimerism-Report
   -ex-example-haemato-oncology:
     name: "Example: Suspected Blood Cancer - Haemato-Oncology Diagnostics"
     description: "Suspected acute myeloid leukaemia for Hodor Tameside: the single order (O21), the cytogenetics and molecular genomic reflex sub-orders (O21) and their reports (R01), and the combined report (R01) - see the [Suspected Blood Cancer - Haemato-Oncology Diagnostics](ExampleScenario-HaematoOncologyDiagnostics.html) scenario"
