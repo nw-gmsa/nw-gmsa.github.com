@@ -595,6 +595,19 @@ groups:
       - PractitionerRole/PractitionerRole-Interpreter-HI-R0A
       - Specimen/Specimen-Chimerism
       - DocumentReference/DocumentReference-Chimerism-Report
+  -ex-example-bcrabl:
+    name: "Example: BCR-ABL1 Monitoring"
+    description: "BCR-ABL1 monitoring (M84.2) for Sansa Manchester: the work order (LAB-4) from the LIMS to the PCR analyser and the test results (R32, LAB-5) converted from the analyser's HL7 v2 ORU^R32, plus standalone BCR-ABL1 Laboratory Analyte Result examples - see the [BCR-ABL1 Monitoring Results](ExampleScenario-BCRABLMonitoring.html) scenario"
+    resources:
+      - ServiceRequest/ServiceRequest-BCRABL-Cepheid-WorkOrder
+      - Specimen/Specimen-BCRABL
+      - Bundle/TestResultsMessage-BCRABL-Cepheid
+      - MessageHeader/MessageHeader-R32-BCRABL
+      - DiagnosticReport/DiagnosticReport-BCRABL-Cepheid-TestResults
+      - Observation/BCRABL
+      - Device/Cepheid
+      - Observation/BCRABL-Valid
+      - Observation/BCRABL-Invalid
   -ex-example-haemato-oncology:
     name: "Example: Suspected Blood Cancer - Haemato-Oncology Diagnostics"
     description: "Suspected acute myeloid leukaemia for Hodor Tameside: the single order (O21), the cytogenetics and molecular genomic reflex sub-orders (O21) and their reports (R01), and the combined report (R01) - see the [Suspected Blood Cancer - Haemato-Oncology Diagnostics](ExampleScenario-HaematoOncologyDiagnostics.html) scenario"
