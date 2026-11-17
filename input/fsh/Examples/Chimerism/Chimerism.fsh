@@ -23,7 +23,7 @@ RuleSet: ChimerismResult(id, loinc, loincDisplay, local)
 Instance: PractitionerRole-Requester-Haematology-REN
 InstanceOf: PractitionerRole
 Title: "PractitionerRole - haematologist (The Clatterbridge Cancer Centre)"
-Description: "Fictitious example: requesting clinician (HL7 v2 ORC-12/OBR-16), also given as the principal result interpreter (OBR-32) in the HL7 v2 report"
+Description: "Fictitious example: requesting clinician (HL7 v2 ORC-12/OBR-16)"
 Usage: #example
 
 * practitioner.identifier.system = "https://fhir.hl7.org.uk/Id/gmc-number"
@@ -32,6 +32,19 @@ Usage: #example
 * organization.identifier.system = $ods-code
 * organization.identifier.value = "REN"
 * organization.display = "THE CLATTERBRIDGE CANCER CENTRE NHS FOUNDATION TRUST"
+
+Instance: PractitionerRole-Interpreter-HI-R0A
+InstanceOf: PractitionerRole
+Title: "PractitionerRole - clinical scientist (Histocompatibility and Immunogenetics laboratory)"
+Description: "Fictitious example: the clinical scientist who authorised the chimerism report (HL7 v2 OBR-32 Principal Result Interpreter)"
+Usage: #example
+
+* practitioner.identifier.system = "https://fhir.hl7.org.uk/Id/hcpc-number"
+* practitioner.identifier.value = "CS90006"
+* practitioner.display = "FICTITIOUS, Iris"
+* organization.identifier.system = $ods-code
+* organization.identifier.value = "R0A"
+* organization.display = "MANCHESTER UNIVERSITY NHS FOUNDATION TRUST"
 
 // Laboratory Order (LAB-1)
 
@@ -183,6 +196,15 @@ Usage: #example
 * insert ChimerismResult(58e8efd4-49c3-4eba-a55b-381f98dbd5a3, 68445-6, Date transplant, DTP)
 * valueDateTime = "2024-01-10"
 
+Instance: Observation-Chimerism-DonorID
+InstanceOf: LaboratoryAnalyteResult
+Title: "Observation - donor identifier (chimerism), Ned Liverpool"
+Description: "Fictitious example: the stem cell donor's identifier (OBX 6)"
+Usage: #example
+
+* insert ChimerismResult(0e897244-1636-4eb5-b94a-0f19042499bf, 112446-0, Donor [Identifier] in Specimen from Donor, DID)
+* valueString = "6939 DKM0 0096 2141 100"
+
 Instance: DiagnosticReport-Chimerism-Report
 InstanceOf: LaboratoryReport
 Title: "Diagnostic Report - GT1368 Chimerism by STR Testing, Ned Liverpool"
@@ -217,23 +239,24 @@ Usage: #example
   * identifier.value = "R0A"
   * type = #Organization
   * display = "MANCHESTER UNIVERSITY NHS FOUNDATION TRUST"
-// HL7 v2 OBR-32 Principal Result Interpreter (the requesting clinician in the source message)
+// HL7 v2 OBR-32 Principal Result Interpreter
 * resultsInterpreter[+]
   * type = "PractitionerRole"
-  * reference = "urn:uuid:7dfc232c-0b01-46e6-834a-95a85b9090c9"
-  * identifier.system = "https://fhir.hl7.org.uk/Id/gmc-number"
-  * identifier.value = "C9000102"
-  * display = "FICTITIOUS, Bernard"
+  * reference = "urn:uuid:1aaad2ec-1779-453e-bfae-c0e6ea88fac4"
+  * identifier.system = "https://fhir.hl7.org.uk/Id/hcpc-number"
+  * identifier.value = "CS90006"
+  * display = "FICTITIOUS, Iris"
 * specimen[+].reference = "urn:uuid:9e62aa72-44d2-4f12-9520-675786ddd362"
 * result[+].reference = "urn:uuid:f347bd24-5317-426d-a7df-2745213ba695"
 * result[+].reference = "urn:uuid:72098b78-c517-459d-8282-415de55f5c4f"
 * result[+].reference = "urn:uuid:4b08bdbe-fccc-4014-ab3c-47d1dc9ecf8e"
 * result[+].reference = "urn:uuid:e8b9d493-059f-455e-9fcd-64f2d56dcd37"
 * result[+].reference = "urn:uuid:58e8efd4-49c3-4eba-a55b-381f98dbd5a3"
+* result[+].reference = "urn:uuid:0e897244-1636-4eb5-b94a-0f19042499bf"
 * conclusion = "Recipient-derived cells 0% (full donor chimerism)."
 * insert ReportPDF(urn:uuid:490dd702-7121-482d-ba0a-d5af6382f65a, GT1368 Chimerism Report - Ned LIVERPOOL, 2026-08-17)
 
-// The report PDF (HL7 v2 OBX 6, ED) - written out rather than ReportPDFDocumentReferenceByIdentifier, which is for
+// The report PDF (HL7 v2 OBX 7, ED) - written out rather than ReportPDFDocumentReferenceByIdentifier, which is for
 // Genomic Test Directory genetic reports
 Instance: DocumentReference-Chimerism-Report
 InstanceOf: DocumentReference
@@ -303,7 +326,8 @@ Usage: #example
 * insert EntryDocument("urn:uuid:4b08bdbe-fccc-4014-ab3c-47d1dc9ecf8e", Observation-Chimerism-CellType)
 * insert EntryDocument("urn:uuid:e8b9d493-059f-455e-9fcd-64f2d56dcd37", Observation-Chimerism-TimePostTransplant)
 * insert EntryDocument("urn:uuid:58e8efd4-49c3-4eba-a55b-381f98dbd5a3", Observation-Chimerism-TransplantDate)
+* insert EntryDocument("urn:uuid:0e897244-1636-4eb5-b94a-0f19042499bf", Observation-Chimerism-DonorID)
 * insert EntryDocument("urn:uuid:9e62aa72-44d2-4f12-9520-675786ddd362", Specimen-Chimerism)
-* insert EntryDocument("urn:uuid:7dfc232c-0b01-46e6-834a-95a85b9090c9", PractitionerRole-Requester-Haematology-REN)
+* insert EntryDocument("urn:uuid:1aaad2ec-1779-453e-bfae-c0e6ea88fac4", PractitionerRole-Interpreter-HI-R0A)
 * insert EntryDocument("urn:uuid:08b5e6e6-4edd-4443-8cdc-684bb2b12189", DocumentReference-Chimerism-Report)
 * insert EntryDocument("urn:uuid:490dd702-7121-482d-ba0a-d5af6382f65a", Binary-Sample)

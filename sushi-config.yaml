@@ -591,6 +591,8 @@ groups:
       - Observation/Observation-Chimerism-CellType
       - Observation/Observation-Chimerism-TimePostTransplant
       - Observation/Observation-Chimerism-TransplantDate
+      - Observation/Observation-Chimerism-DonorID
+      - PractitionerRole/PractitionerRole-Interpreter-HI-R0A
       - Specimen/Specimen-Chimerism
       - DocumentReference/DocumentReference-Chimerism-Report
   -ex-example-haemato-oncology:

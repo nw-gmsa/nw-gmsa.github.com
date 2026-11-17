@@ -18,7 +18,7 @@ Usage: #definition
 
 * insert Instance_Empty(Order, Bundle, "Laboratory Order", [[ LAB-1 order for GT1368 Chimerism by STR Testing - Post Stem Cell Transplant (LOINC 112449-4, without cell selection), on a peripheral blood sample ]])
 * insert InstanceVersion(1, "HL7 FHIR Message O21", GenomicsOrderMessage-Chimerism, [[ Laboratory Order for Ned Liverpool ]])
-* insert Instance_Empty(Report, Bundle, "Laboratory Report", [[ LAB-3 [Laboratory Report](StructureDefinition-LaboratoryReport.html), `basedOn` the Laboratory Order by its Order Placer Number. Its results are [Laboratory Analyte Result](StructureDefinition-LaboratoryAnalyteResult.html) `Observation`s - recipient-derived cells (%), informative STR markers, cell type, months since transplant and date of transplant - and the report is also a PDF (`presentedForm` and a `DocumentReference`) ]])
+* insert Instance_Empty(Report, Bundle, "Laboratory Report", [[ LAB-3 [Laboratory Report](StructureDefinition-LaboratoryReport.html), `basedOn` the Laboratory Order by its Order Placer Number. Its results are [Laboratory Analyte Result](StructureDefinition-LaboratoryAnalyteResult.html) `Observation`s - recipient-derived cells (%), informative STR markers, cell type, months since transplant, date of transplant and donor ID - and the report is also a PDF (`presentedForm` and a `DocumentReference`) ]])
 * insert InstanceVersion(1, "HL7 FHIR Message R01", GenomicsReportMessage-Chimerism, [[ Laboratory Report for Ned Liverpool ]])
 
 * process[+]
