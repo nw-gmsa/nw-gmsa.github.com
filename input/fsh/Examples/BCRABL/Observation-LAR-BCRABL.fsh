@@ -22,6 +22,13 @@ Description: "BCR-ABL1 fusion transcript ratio (International Scale) laboratory 
     * display = "t(9;22)(q34.1;q11)(ABL1,BCR) b2a2+b3a2 fusion transcript/control transcript (International Scale) [# Ratio] in Blood or Tissue by Molecular genetics method"
 
 
+// The Cepheid GeneXpert that produced the result, by identifier (see Device/Cepheid)
+* device
+  * type = "Device"
+  * identifier.system = "https://fhir.nwgenomics.nhs.uk/Id/laboratory-information-system"
+  * identifier.value = "Cepheid"
+  * display = "Cepheid GeneXpert"
+
 * referenceRange[+].text = "0.0030 to 55.00"
 
 * component[0].code = https://fhir.nwgenomics.nhs.uk/CodeSystem/Cepheid#BCR-ABL&

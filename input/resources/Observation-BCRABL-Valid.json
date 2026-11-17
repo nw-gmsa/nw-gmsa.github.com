@@ -144,10 +144,12 @@
     }
   ],
   "device": {
+    "type": "Device",
     "identifier": {
-      "system": "https://fhir.nwgenomics.nhs.uk/Identifier/Cepheid",
-      "value": "20901225~08699~114262192~604297~700039~WinDev2006Eval"
-    }
+      "system": "https://fhir.nwgenomics.nhs.uk/Id/laboratory-information-system",
+      "value": "Cepheid"
+    },
+    "display": "Cepheid GeneXpert"
   },
   "effectivePeriod": {
     "end": "2019-09-21T00:03:52+00:00",

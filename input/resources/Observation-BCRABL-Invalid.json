@@ -144,10 +144,12 @@
     "text": "POSITIVE [Above upper LoQ]"
   },
   "device": {
+    "type": "Device",
     "identifier": {
-      "system": "https://fhir.nwgenomics.nhs.uk/Identifier/Cepheid",
-      "value": "20901225~08699~114262193~613556~700039~WinDev2006Eval"
-    }
+      "system": "https://fhir.nwgenomics.nhs.uk/Id/laboratory-information-system",
+      "value": "Cepheid"
+    },
+    "display": "Cepheid GeneXpert"
   },
   "effectivePeriod": {
     "end": "2019-09-21T00:02:09+00:00",

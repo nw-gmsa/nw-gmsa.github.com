@@ -12,6 +12,7 @@ A laboratory can run more than one Laboratory Information Management System (LIM
 |---|---|---|---|
 | `DLIMS` | DLIMS | NW GLH (`699X0`) | [DLIMS](Device-DLIMS.html) |
 | `OmicsDSS` | Omics DSS | NW GLH (`699X0`) | [OmicsDSS](Device-OmicsDSS.html) |
+| `Cepheid` | Cepheid GeneXpert (analyser, referenced from `Observation.device`) | NW GLH (`699X0`) | [Cepheid](Device-Cepheid.html) |
 {:.grid}
 
 ### Querying
