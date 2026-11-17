@@ -11,6 +11,22 @@
   - HL7 Europe [Laboratory Report](https://build.fhir.org/ig/hl7-eu/laboratory/index.html) 
   - HL7 Europe [Imaging](https://build.fhir.org/ig/hl7-eu/imaging/index.html)
 
+### Report Categories
+
+HL7 Genomics Reporting groups genomic reports into categories by what the test looks at. Every
+category uses the same `genomic-report` DiagnosticReport. What differs is the results and
+implications the report carries. (The category is not the same thing as the
+[Report Types](ReportTypes.html), which are about how a report is structured and sent, as
+narrative or discrete results.)
+
+| Category | HL7 Genomics Reporting | What the report carries | Examples in this guide |
+|---|---|---|---|
+| Germline | [General Genomic Reporting](https://build.fhir.org/ig/HL7/genomics-reporting/general.html) and [Variant Reporting](https://build.fhir.org/ig/HL7/genomics-reporting/sequencing.html). This is the general case and has no page of its own. | Inherited variants (genomic source class germline) with their allelic state and clinical significance, and diagnostic implications | [Breast Cancer](ExampleScenario-BreastCancer.html), [Rapid Prenatal Exome Sequencing](ExampleScenario-RapidPrenatalExomeSequencing.html), [Whole Genome Sequencing](ExampleScenario-WholeGenomeSequencing.html) |
+| Somatic | [Somatic Reporting](https://build.fhir.org/ig/HL7/genomics-reporting/somatics.html) | Variants acquired in tumour or other non-germline tissue, molecular biomarkers (such as TMB and MSI), and diagnostic and therapeutic implications | [ctDNA](ExampleScenario-ctDNA.html), [Haemato-Oncology Diagnostics](ExampleScenario-HaematoOncologyDiagnostics.html) |
+| Pharmacogenomics | [Pharmacogenomic Reporting](https://build.fhir.org/ig/HL7/genomics-reporting/pharmacogenomics.html) | Genotypes as diplotypes (star alleles) made up of haplotypes, therapeutic implications for medications, and medication recommendations | [Pharmacogenomics](ExampleScenario-Pharmacogenomics.html) |
+| Histocompatibility and Immunogenetics | [Histocompatibility and Immunogenetic Reporting](https://build.fhir.org/ig/HL7/genomics-reporting/histocompatibility.html) | HLA typing for transplant donor and recipient matching: genotypes as GL Strings, with haplotypes for the individual alleles | None yet |
+{:.grid}
+
 ### Document Layout
 
 <div class="alert alert-warning" role="alert">
