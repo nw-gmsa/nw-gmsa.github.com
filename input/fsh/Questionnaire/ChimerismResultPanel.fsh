@@ -5,24 +5,31 @@ Description: """
 Result panel for STR-based chimerism testing (Clatterbridge post-transplant
 monitoring) - see [Histocompatibility and Immunogenetics - Chimerism Testing
 Result Panel (Future?)](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/HistocompatibilityAndImmunogenetics.md#chimerism-testing-result-panel-future)
-for the source data table this Questionnaire structures.
+for the source data table this Questionnaire structures, taken from the original iLab
+`ORU^R01` ([LUFT_ORU_For_Clatterbridge.txt](https://github.com/nw-gmsa/Testing/blob/main/Input/V2/R01/LUFT_ORU_For_Clatterbridge.txt)).
 
-The payload described there is currently unstructured `NTE`/`OBX` text, with no
-FHIR mapping yet - `item.definition` values here are the same candidate
-mappings recorded in that table's "FHIR Genomic Report Field" column, most
-inferred by analogy with [HL7's Genomics Reporting IG - Histocompatibility and
-Immunogenetic Reporting](http://hl7.org/fhir/uv/genomics-reporting/histocompatibility.html)
-(a dependency of this IG, though it profiles HLA allele genotyping, not STR
-chimerism) rather than confirmed against a real example, unlike
-[BCRABLResultPanel](Questionnaire-BCRABLResultPanel.html) which is inferred
-from real `Observation` examples. Several rows have no direct FHIR fit and are
-marked as such rather than forced onto one.
+A chimerism result is **not a Genomic Report** data type: it is a measurement (the
+percentage of donor or recipient cells) with QC values and transplant context, not a
+variant or genotype, so it follows the ordinary laboratory result pattern - a
+`DiagnosticReport` with `Observation` results (`valueQuantity` in `%`), like
+[BCRABLResultPanel](Questionnaire-BCRABLResultPanel.html). LOINC classes its chimerism
+panels as blood bank and cell markers, not molecular pathology.
+
+The panel code is LOINC `112460-1` (with cell selection - the example is a myeloid
+lineage result); whole blood chimerism uses `112449-4` "Chimerism post transplant panel
+without cell selection - Specimen". Items carry a LOINC code where a candidate was found,
+followed by the original local `IMM` code (the [Chimerism](CodeSystem-Chimerism.html)
+CodeSystem). The LOINC codes are **candidates**, found by searching LOINC 2.83; they have
+not been checked against the panels' member lists, and the LOINC result codes are
+*recipient*-derived %, while the example result is probably *donor* % - to confirm with
+the laboratory.
 """
 Usage:  #definition
 
 * title = "Chimerism Testing Result Panel"
 * status = #draft
 * url = "https://fhir.nwgenomics.nhs.uk/Questionnaire/ChimerismResultPanel"
+* code[+] = $loinc#112460-1 "Chimerism post transplant cell selection panel - Specimen"
 
 * extension[+]
   * url = "http://hl7.org/fhir/StructureDefinition/artifact-versionAlgorithm"
@@ -40,11 +47,11 @@ Usage:  #definition
     * type = #string
     * linkId = "Chimerism/TestMethod"
     * text = "Test Method"
-    * definition = "http://hl7.org/fhir/StructureDefinition/DiagnosticReport#DiagnosticReport.method"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.method"
     * item[+]
       * linkId = "Chimerism/TestMethod-designNote"
       * type = #display
-      * text = "e.g. \"Chimerism analysis by STR technique.\" No local code (NTE, unstructured) - candidate mapping only, DiagnosticReport.method is not otherwise used in this IG."
+      * text = "e.g. \"Chimerism analysis by STR technique.\" No local code (NTE, unstructured)."
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 // NTE - Device
@@ -53,11 +60,11 @@ Usage:  #definition
     * type = #string
     * linkId = "Chimerism/Device"
     * text = "Device"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Device#Device"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.device"
     * item[+]
       * linkId = "Chimerism/Device-designNote"
       * type = #display
-      * text = "e.g. \"Test performed using Promega GenePrint 24 kit.\" No local code (NTE, unstructured) - candidate mapping only, referenced from DiagnosticReport or Observation.device."
+      * text = "e.g. \"Test performed using Promega GenePrint 24 kit.\" No local code (NTE, unstructured) - a Device for the kit, referenced from Observation.device."
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
   * item[+]
@@ -71,9 +78,15 @@ Usage:  #definition
     * item[+]
       * type = #decimal
       * linkId = "Chimerism/AverageChimerism"
+      * code[+] = $loinc#103160-8 "Cells.CD33.recipient derived/Cells.CD33 in Blood --post bone marrow transplant"
       * code[+] = https://fhir.nwgenomics.nhs.uk/CodeSystem/Chimerism#STR
       * text = "Average % Chimerism"
       * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
+      * item[+]
+        * linkId = "Chimerism/AverageChimerism-designNote"
+        * type = #display
+        * text = "e.g. 100, in UCUM %. The LOINC code depends on the cell selection: 103160-8 CD33 (myeloid, the example), 103158-2 CD15 or 103156-6 CD3 for other lineages, or 104479-1 \"Cells.recipient derived/Cells in Blood or Tissue by Molecular genetics method --post stem cell transplant\" for whole blood (104480-9 for bone marrow). To confirm: these LOINC codes are recipient-derived %, the example is probably donor %."
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 // OBX|IM - Informative Markers
 
@@ -82,11 +95,11 @@ Usage:  #definition
       * linkId = "Chimerism/InformativeMarkers"
       * code[+] = https://fhir.nwgenomics.nhs.uk/CodeSystem/Chimerism#IM
       * text = "Informative Markers"
-      * definition = "http://hl7.org/fhir/StructureDefinition/MolecularSequence#MolecularSequence"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.note"
       * item[+]
         * linkId = "Chimerism/InformativeMarkers-designNote"
         * type = #display
-        * text = "e.g. \"D13S317 PENTA E CSF1PO PENTA D D21S11 D8S1179 D12S391\" - the STR loci examined. Candidate mapping: the same role a Haplotype Observation's MolecularSequence evidence plays for HLA alleles, but for STR loci."
+        * text = "e.g. \"D13S317 PENTA E CSF1PO PENTA D D21S11 D8S1179 D12S391\" - the STR loci that distinguish donor from recipient. No LOINC code found; a note, or an Observation.component per STR locus."
         * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 // OBX|RANGE - Range
@@ -97,6 +110,11 @@ Usage:  #definition
       * code[+] = https://fhir.nwgenomics.nhs.uk/CodeSystem/Chimerism#RANGE
       * text = "Range"
       * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.referenceRange"
+      * item[+]
+        * linkId = "Chimerism/Range-designNote"
+        * type = #display
+        * text = "e.g. \"NA\". Whether this is a reference range or a QC range (Observation.component) is to be confirmed with the laboratory."
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 // OBX|CV - CV
 
@@ -109,27 +127,7 @@ Usage:  #definition
       * item[+]
         * linkId = "Chimerism/CV-designNote"
         * type = #display
-        * text = "Coefficient of variation - a QC metric, not profiled by the Histocompatibility Reporting page."
-        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
-
-  * item[+]
-    * type = #group
-    * linkId = "Specimen"
-    * text = "Specimen"
-    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen"
-
-// NTE - Extraction Method
-
-    * item[+]
-      * type = #string
-      * linkId = "Chimerism/ExtractionMethod"
-      * code[+] = https://fhir.nwgenomics.nhs.uk/CodeSystem/Chimerism#EXT
-      * text = "Extraction Method"
-      * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.collection.method"
-      * item[+]
-        * linkId = "Chimerism/ExtractionMethod-designNote"
-        * type = #display
-        * text = "e.g. \"DNA extracted from peripheral blood leukocyte\" - the same field dWGS's dna_extraction_protocol uses, see dWGS field mapping."
+        * text = "Coefficient of variation - a QC metric. No LOINC code found."
         * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 // OBX|PURE - % Purity
@@ -139,10 +137,31 @@ Usage:  #definition
       * linkId = "Chimerism/Purity"
       * code[+] = https://fhir.nwgenomics.nhs.uk/CodeSystem/Chimerism#PURE
       * text = "% Purity"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueQuantity"
       * item[+]
         * linkId = "Chimerism/Purity-designNote"
         * type = #display
-        * text = "Specimen quality metric - not profiled by the Histocompatibility Reporting page. No definition mapping - low confidence, free text/number only."
+        * text = "e.g. 87, in UCUM % - the purity of the selected cells. No LOINC code found; an Observation.component, or a specimen quality Observation."
+        * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
+
+  * item[+]
+    * type = #group
+    * linkId = "Specimen"
+    * text = "Specimen"
+    * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen"
+
+// OBX|EXT - Extraction Method
+
+    * item[+]
+      * type = #string
+      * linkId = "Chimerism/ExtractionMethod"
+      * code[+] = https://fhir.nwgenomics.nhs.uk/CodeSystem/Chimerism#EXT
+      * text = "Extraction Method"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.processing.description"
+      * item[+]
+        * linkId = "Chimerism/ExtractionMethod-designNote"
+        * type = #display
+        * text = "e.g. \"DNA extracted from myeloid lineage\" - the cell selection and DNA extraction. The lineage is also in the result's LOINC code (e.g. CD33)."
         * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
   * item[+]
@@ -153,15 +172,16 @@ Usage:  #definition
 // OBX|POST - Time post transplant
 
     * item[+]
-      * type = #string
+      * type = #quantity
       * linkId = "Chimerism/TimePostTransplant"
+      * code[+] = $loinc#99782-5 "Months [Time] --post transplant"
       * code[+] = https://fhir.nwgenomics.nhs.uk/CodeSystem/Chimerism#POST
       * text = "Time Post Transplant"
-      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueString"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.valueQuantity"
       * item[+]
         * linkId = "Chimerism/TimePostTransplant-designNote"
         * type = #display
-        * text = "e.g. \"2YR 7 MONTHS\" - carried as an Observation referenced from ServiceRequest.supportingInfo, the same Ask at Order Entry pattern used elsewhere in this IG (dWGS's Family Structure/Participant Type)."
+        * text = "e.g. \"2YR 7 MONTHS\" = 31 mo - an Observation referenced from ServiceRequest.supportingInfo, the same Ask at Order Entry pattern used elsewhere in this IG."
         * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 // OBX|DTP - Date of transplant
@@ -175,7 +195,7 @@ Usage:  #definition
       * item[+]
         * linkId = "Chimerism/DateOfTransplant-designNote"
         * type = #display
-        * text = "The transplant event itself - outside the Histocompatibility Reporting page's scope, which starts from the genotyping result, not the clinical transplant history."
+        * text = "e.g. \"10.5.23\" (2023-05-10) - the transplant Procedure, referenced from ServiceRequest.supportingInfo."
         * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
 // OBX|DID - Donor ID
@@ -185,9 +205,9 @@ Usage:  #definition
       * linkId = "Chimerism/DonorID"
       * code[+] = https://fhir.nwgenomics.nhs.uk/CodeSystem/Chimerism#DID
       * text = "Donor ID"
-      * definition = "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.identifier"
+      * definition = "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier"
       * item[+]
         * linkId = "Chimerism/DonorID-designNote"
         * type = #display
-        * text = "e.g. \"6939 DKM0 0096 2141 100\" - the same identifier-on-Specimen pattern dWGS uses for its PLAC/FILL identifiers; could alternatively be a reference to the donor's own Patient resource."
+        * text = "e.g. \"6939 DKM0 0096 2141 100\" - the donor's identifier (a donor Patient), referenced from the transplant Procedure."
         * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
