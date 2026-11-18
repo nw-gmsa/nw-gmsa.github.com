@@ -6,7 +6,7 @@ Pharmacogenomic testing before a medicine is started: CYP2C19 genotyping before 
 
 Inside the North West GLH the test is carried out by a second laboratory system. The laboratory system that receives the Laboratory Order (Lab 1) places a sub-order (LAB-35) with the laboratory system that tests the sample (Lab 2), as described in [Inter-Laboratory Workflow - Sub-orders](ILW.html#sub-orders-lab-35-and-lab-36). Analytics Processing performs the analytic processing that generates the pharmacogenomic results, and Lab 2 returns them to Lab 1 in the sub-order report (LAB-36). Which system tests the sample is not visible to the requesting clinician, who receives the Laboratory Report from Lab 1.
 
-The sub-order report and the Laboratory Report carry the report as a PDF, not the discrete results. Before the FHIR Document is built, the RIE looks up the discrete results in the FHIR Repository and adds them to the Laboratory Report - see [Measurable Residual Disease (MRD) Monitoring](ExampleScenario-MRDMonitoring.html) for this enhancement; the FHIR Document then includes the genotype, haplotype, therapeutic implication and genomic study `Observation`s. Intended as an end-to-end test of the order, report and document.
+The sub-order report and the Laboratory Report carry the report as a PDF, not the discrete results. The Laboratory Report triggers the RIE to look up the discrete results in the FHIR Repository and add them to the Laboratory Report as an enhanced R01, as in [Measurable Residual Disease (MRD) Monitoring](ExampleScenario-MRDMonitoring.html). The enhanced R01 is used internally to create the FHIR Document, which adds the `Composition` and includes the genotype, haplotype, therapeutic implication and genomic study `Observation`s. Intended as an end-to-end test of the order, report and document.
 """
 Usage: #definition
 
@@ -17,6 +17,8 @@ Usage: #definition
 * insert ActorEntity(glh, "Lab 1 - Order Filler - North West GLH", [[ [Order Filler](ActorDefinition-OrderFiller.html). The North West GLH (699X0) laboratory system that receives the Laboratory Order, sub-orders the test to Lab 2 and reports ]])
 * insert ActorEntity(lab2, "Lab 2 - Sub-order Filler - North West GLH", [[ [Order Filler](ActorDefinition-OrderFiller.html) for the sub-order. A second North West GLH laboratory system that tests the sample and reports back to Lab 1 ]])
 * insert ActorEntity(analytics, "Analytics Processing", [[ [Genomic Analysis and Interpretation](ActorDefinition-GenomicAnalysisAndInterpretation.html) that processes the genotyping data into the pharmacogenomic results ]])
+* insert ActorEntity(rie, "Regional Integration Engine", [[ [Intermediary](ActorDefinition-Intermediary.html) that routes the Laboratory Report, enhances it with the discrete results and creates the FHIR Document ]])
+* insert ActorEntity(repo, "FHIR Repository", [[ [Resource Access Provider](ActorDefinition-ResourceAccessProvider.html) that holds the discrete results ]])
 * insert ActorEntity(ugr, "Central Repository - UGR", [[ NHS England Unified Genomic Record. A central repository of genomic reports for each patient ]])
 
 * insert Instance_Empty(Order, Bundle, "Laboratory Order", [[ LAB-1 order for R454.1 CYP2C19 genotyping before mavacamten, with the blood sample ]])
@@ -29,6 +31,10 @@ Usage: #definition
 * insert InstanceVersion(1, "HL7 FHIR Message R01", GenomicsSubOrderReportMessage-Pharmacogenomics, [[ Sub-order report for Mace Northwich ]])
 * insert Instance_Empty(Report, Bundle, "Laboratory Report", [[ LAB-3 [Laboratory Report](StructureDefinition-LaboratoryReport.html), `basedOn` the Laboratory Order by its Order Placer Number. It carries the report as a PDF (`presentedForm`, a `DocumentReference` and a `Binary`), not the discrete results ]])
 * insert InstanceVersion(1, "HL7 FHIR Message R01", GenomicsReportMessage-Pharmacogenomics, [[ Laboratory Report for Mace Northwich ]])
+* insert Instance_Empty(Search, Binary, "Search FHIR Repository", [[ Retrieve the discrete results for the Laboratory Report, which is based on the Laboratory Order: `GET [base]/Observation?based-on:identifier=http://www.acme.org/servicerequest|71388` ]])
+* insert Instance_Empty(SearchResults, Bundle, "Search results", [[ The genotype, haplotype, therapeutic implication and genomic study `Observation`s ]])
+* insert Instance_Empty(Enhanced, Bundle, "Laboratory Report - enhanced with discrete results", [[ The LAB-3 Laboratory Report with the discrete results from the FHIR Repository added to `DiagnosticReport.result` and to the message, alongside the report PDF. Used internally to create the FHIR Document ]])
+* insert InstanceVersion(1, "HL7 FHIR Message R01 - Enhanced Laboratory Report", GenomicsReportMessage-Pharmacogenomics-Enhanced, [[ Laboratory Report with discrete results for Mace Northwich ]])
 * insert Instance_Empty(Document, Bundle, "Laboratory Report - FHIR Document", [[ The Laboratory Report as a [FHIR Document](StructureDefinition-Composition-GenomicReport.html), following HL7 Genomics Reporting Pharmacogenomic Reporting. The Laboratory Report with its discrete results, looked up in the FHIR Repository: the [Genotype](StructureDefinition-Genotype.html), [Haplotype](StructureDefinition-Haplotype.html), [Therapeutic Implication](StructureDefinition-TherapeuticImplication.html) and [Genomic Study Panel](StructureDefinition-GenomicStudyPanel.html) `Observation`s ]])
 * insert InstanceVersion(1, "HL7 FHIR Document", FHIRDocumentGeneticReportBundle-Pharmacogenomics, [[ FHIR Document for Mace Northwich ]])
 
@@ -55,10 +61,13 @@ Usage: #definition
 
 * process[+]
   * title = "5. Laboratory Report (LAB-3)"
-  * description = "Lab 1 sends the Laboratory Report, with the report PDF, to the requesting clinician, who uses it to choose the mavacamten dosing."
-  * insert ProcessCreateEvent(6, "Send Laboratory Report", glh, placer, Report, 1, [[ See [Genomic Test Report Process](ExampleScenario-GenomicTestReportProcess.html) ]])
+  * description = "Lab 1 sends the Laboratory Report, with the report PDF, through the RIE to the requesting clinician, who uses it to choose the mavacamten dosing."
+  * insert ProcessCreateEvent(6, "Send Laboratory Report R01", glh, rie, Report, 1, [[ See [Genomic Test Report Process](ExampleScenario-GenomicTestReportProcess.html) ]])
+  * insert ProcessCreateEvent(7, "Send Laboratory Report R01", rie, placer, Report, 1, [[ ]])
 
 * process[+]
-  * title = "6. Send to the central repository"
-  * description = "The Laboratory Report is sent to the central repository as a FHIR Document, through the RIE. The R01 Laboratory Report triggers a lookup of its discrete results in the FHIR Repository, which are added to the Laboratory Report in the document."
-  * insert ProcessCreateEvent(7, "Send FHIR Document", glh, ugr, Document, 1, [[ ]])
+  * title = "6. Enhanced Laboratory Report and FHIR Document to the central repository"
+  * description = "The Laboratory Report triggers the RIE to look up its discrete results in the FHIR Repository. The RIE adds them to the Laboratory Report as an enhanced R01, used internally to create the FHIR Document (adding the Composition), and sends the FHIR Document to the central repository."
+  * insert ProcessSearch(8, "Retrieve discrete results", rie, repo, Search, SearchResults, [[ ]])
+  * insert ProcessCreateEvent(9, "Create enhanced Laboratory Report R01", rie, rie, Enhanced, 1, [[ Internal to the RIE: the R01 with the discrete results is used to create the FHIR Document ]])
+  * insert ProcessCreateEvent(10, "Send FHIR Document", rie, ugr, Document, 1, [[ The FHIR Document adds the `Composition` to the enhanced R01 content ]])

@@ -40,13 +40,16 @@ Usage: #definition
 * insert Instance_Empty(Request5, Bundle, "HL7 FHIR Message R01 - Test Results", [[ LAB-5 test results. The `DiagnosticReport` and `Observation`s are `preliminary` and `basedOn` the work order. `Observation.device` identifies Analytics Processing. The Patient and Specimen are not included: `subject` and `specimen` are identifier references (the Lab 1 patient identifier and specimen number) ]])
 * insert InstanceVersion(5, "HL7 FHIR Message R01 - Test Results", TestResultsMessage-ctDNA-OmicsDSS, [[ Test Results with one EGFR variant ]])
 
-* insert Instance_Empty(Request6, Bundle, "HL7 FHIR Message R01 - Laboratory Report", [[ LAB-3 narrative Laboratory Report. The `DiagnosticReport` is `final` and has no `result`. It links to the test results using the `supportingInfo` extension ]])
+* insert Instance_Empty(Request6, Bundle, "HL7 FHIR Message R01 - Laboratory Report", [[ LAB-3 narrative Laboratory Report. The `DiagnosticReport` is `final` and has no `result`; the report is a PDF (`presentedForm`, a `DocumentReference` and a `Binary`). It links to the test results using the `supportingInfo` extension ]])
 * insert InstanceVersion(6, "HL7 FHIR Message R01 - Laboratory Report", ReportMessage-ctDNA-iGene-NarrativeReport, [[ Narrative Laboratory Report ]])
 * insert Instance_Empty(ReportDocument, Bundle, "Laboratory Report document", [[ HL7 v2 `MDM^T02` with the Laboratory Report as a PDF, base64 encoded in OBX-5 (`ED`), sent to the regional shared care record. See [Sharing Laboratory Reports (Document)](HIE.html#sharing-laboratory-reports-document-iti-105-and-mdm_t02) In FHIR this is a T02 FHIR Message ([Document and Document Notification](MessageDefinition-original-document.html)) carrying a `DocumentReference` and the PDF as a `Binary` - see the [example](Bundle-OriginalDocumentMessage.html). ]])
 * insert InstanceVersion(1, "HL7 FHIR Message T02", DocumentMessage-ctDNA, [[ Laboratory Report PDF for Theon Sheffield ]])
 
 * insert Instance_Empty(Request7, Binary, "Search FHIR Repository", [[ Retrieve the Laboratory Report by its identifier. Then retrieve the test results it links to with `GET [base]/DiagnosticReport?identifier=[system]|[value]&_include=DiagnosticReport:result` ]])
 * insert Instance_Empty(Reply7, Bundle, "Search results", [[ The Laboratory Report and the test results with their `Observation`s ]])
+
+* insert Instance_Empty(Enhanced, Bundle, "HL7 FHIR Message R01 - Laboratory Report enhanced with the test results", [[ The Laboratory Report with the test results looked up in the FHIR Repository: its `result` lists the test results `Observation`s, and the message also carries the test results `DiagnosticReport` and the report PDF. Used internally before converting into the FHIR Document - see [Measurable Residual Disease (MRD) Monitoring](ExampleScenario-MRDMonitoring.html) ]])
+* insert InstanceVersion(1, "HL7 FHIR Message R01 - Enhanced Laboratory Report", ReportMessage-ctDNA-iGene-Enhanced, [[ Laboratory Report enhanced with the Test Results ]])
 
 * insert Instance_Empty(Request8, Bundle, "HL7 FHIR Document - Genomic Report", [[ The Laboratory Report merged with the test results: its `result` lists the test results `Observation`s. The document includes every `Observation` from the R01 Test Results and Laboratory Report messages ]])
 * insert InstanceVersion(8, "HL7 FHIR Document", FHIRDocumentGeneticReportBundle-ctDNA-OmicsDSS, [[ Laboratory Report merged with the Test Results ]])
@@ -87,7 +90,8 @@ Usage: #definition
   * insert ProcessCreateEvent(15, "Send Laboratory Report document", rie, scr, ReportDocument, 1, [[ HL7 v2 `MDM^T02` or a T02 FHIR Message with the report as a PDF, which the patient's GP can see in the shared care record ]])
 
 * process[+]
-  * title = "6. FHIR Document to Central Registry"
-  * description = "The RIE retrieves the Laboratory Report and the test results it links to from the FHIR Repository. It merges them by adding the test results Observations to the Laboratory Report result, builds a FHIR Document and sends it to the central registry."
+  * title = "6. Enhanced Laboratory Report and FHIR Document to Central Registry"
+  * description = "The Laboratory Report triggers the RIE to retrieve the test results it links to from the FHIR Repository. The RIE merges them by adding the test results Observations to the Laboratory Report result, as an enhanced R01 Laboratory Report used internally, converts that into a FHIR Document and sends it to the central registry."
   * insert ProcessSearch(16, "Retrieve Laboratory Report and Test Results", rie, repo, Request7, Reply7, [[ ]])
-  * insert ProcessCreateEvent(17, "Send FHIR Document", rie, ugr, Request8, , [[ The Result summary section contains the merged Laboratory Report. The Results section contains the `Observation`s. The test results are also in the Results from other laboratories section ]])
+  * insert ProcessCreateEvent(17, "Create enhanced Laboratory Report R01", rie, rie, Enhanced, 1, [[ Internal to the RIE: the R01 with the discrete results is the step before converting into the FHIR Document ]])
+  * insert ProcessCreateEvent(18, "Send FHIR Document", rie, ugr, Request8, , [[ The Result summary section contains the merged Laboratory Report. The Results section contains the `Observation`s. The test results are also in the Results from other laboratories section ]])

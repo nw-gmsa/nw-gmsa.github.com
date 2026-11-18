@@ -18,7 +18,7 @@ Usage: #definition
 * insert ActorEntity(rgl, "Requesting Genomic Laboratory - RGL", [[ [Order Filler](ActorDefinition-OrderFiller.html) of the Laboratory Order and [Requestor](ActorDefinition-Requestor.html) of the sub-orders ]])
 * insert ActorEntity(sgl, "Sequencing Genomic Laboratory - SGL", [[ [Subcontractor](ActorDefinition-Subcontractor.html) that sequences each participant. May be another GMS region's laboratory ]])
 * insert ActorEntity(sequencer, "Sequencer", [[ [Automation Manager](ActorDefinition-AutomationManager.html) within the SGL ]])
-* insert ActorEntity(rie, "Integration Engine", [[ [Intermediary](ActorDefinition-Intermediary.html) that retrieves each participant's results from the bioinformatics pipeline and assembles them into a FHIR Document ]])
+* insert ActorEntity(rie, "Integration Engine", [[ [Intermediary](ActorDefinition-Intermediary.html) that routes the Laboratory Report, retrieves each participant's results from the bioinformatics pipeline, adds them to the Laboratory Report as an enhanced R01 and converts it into a FHIR Document ]])
 * insert ActorEntity(registry, "Central Registry", [[ A central record of genomic results for each patient ]])
 
 * insert Instance_Empty(Request1, Bundle, "Laboratory Order - NGIS referral", [[ LAB-1 referral for the family, as `OMG^O19`. Illustrates the CIP-API `REFERRAL`. The original order [ServiceRequest](ServiceRequest-ServiceRequest-dWGS-Trio-r26000000203-Referral.html) (`intent` = `original-order`) has the family as its subject and the NGIS referral_id as its Order Filler Number. The clinical questions follow [GMS WGS Rare Disease](Questionnaire-GMSWGSRareDisease.html). Later sub-orders and reports identify it by the NGIS referral_id and do not include it ]])
@@ -41,7 +41,9 @@ Usage: #definition
 * insert Instance_Empty(Request7, Binary, "Sub-order results", [[ LAB-36 results for each participant, made available to the RGL in the Interpretation Portal and the CIP-API ]])
 * insert Instance_Empty(Query1, Binary, "Retrieve participant results", [[ Query the CIP-API for a participant's bioinformatics results by the NGIS referral_id and participant id. Not FHIR ]])
 * insert Instance_Empty(Reply1, Binary, "Participant results", [[ The bioinformatics pipeline results (variants) for the participant. Not FHIR ]])
-* insert Instance_Empty(Request8, Bundle, "Participant results for the Central Registry", [[ Each participant's results assembled as a FHIR Document: the participant's `Patient`, `Specimen` and sub-order, and a [Test Results](StructureDefinition-TestResults.html) `DiagnosticReport` with the variants as [Variant](StructureDefinition-Variant.html) `Observation`s identifying the bioinformatics pipeline in `Observation.device`. The discrete results are looked up in the FHIR Repository. See [ctDNA](ExampleScenario-ctDNA.html) for how a FHIR Document for a central registry is built ]])
+* insert Instance_Empty(Enhanced, Bundle, "Laboratory Report - enhanced with the participant results", [[ The LAB-3 Laboratory Report with the participant results (variants) from the bioinformatics pipeline added to `DiagnosticReport.result` and to the message, alongside the report PDF. Used internally before converting into the FHIR Document - see [Measurable Residual Disease (MRD) Monitoring](ExampleScenario-MRDMonitoring.html) ]])
+* insert InstanceVersion(1, "HL7 FHIR Message R01 - Enhanced Laboratory Report", GenomicsReportMessage-WGS-Referral-Enhanced, [[ The RGL's report enhanced with the Proband's results ]])
+* insert Instance_Empty(Request8, Bundle, "Participant results for the Central Registry", [[ Each participant's results assembled as a FHIR Document: the participant's `Patient`, `Specimen` and sub-order, and a [Test Results](StructureDefinition-TestResults.html) `DiagnosticReport` with the variants as [Variant](StructureDefinition-Variant.html) `Observation`s identifying the bioinformatics pipeline in `Observation.device`. Converted from the enhanced R01 Laboratory Report. See [ctDNA](ExampleScenario-ctDNA.html) for how a FHIR Document for a central registry is built ]])
 * insert Instance_Empty(Request9, Bundle, "Laboratory Report", [[ LAB-3 [Laboratory Report](StructureDefinition-LaboratoryReport.html) for the referral. Logically a report on the whole family with the family as its subject. It identifies the original order by the NGIS referral_id; the original order is not included. See the [WGS FHIR Document](Bundle-FHIRDocumentGeneticReportBundle-WGS.html) for an illustration of a WGS report ]])
 * insert InstanceVersion(9, "HL7 FHIR Message R01", GenomicsReportMessage-WGS-Referral, [[ The RGL's report for the Trio family r26000000203 ]])
 
@@ -70,12 +72,14 @@ Usage: #definition
   * insert ProcessCreateEvent(8, "Make results available", gel, rgl, Request7, , [[ Retrieved using the Interpretation Portal or the CIP-API by the NGIS referral_id and participant id ]])
 
 * process[+]
-  * title = "5. Participant Results to Central Registry"
-  * description = "Once each participant's LAB-36 results are available, the integration engine retrieves them from the bioinformatics pipeline, assembles them into a FHIR Document and sends it to the central registry. Which system does this is to be confirmed."
-  * insert ProcessSearch(9, "Retrieve participant results", rie, gel, Query1, Reply1, [[ From the CIP-API, once for each participant ]])
-  * insert ProcessCreateEvent(10, "Send FHIR Document", rie, registry, Request8, , [[ One FHIR Document for each participant ]])
+  * title = "5. Laboratory Report (LAB-3)"
+  * description = "The RGL interprets the results for the family and sends the Laboratory Report to the clinician through the integration engine. Logically this is one report on the whole family, with the family as its subject. The R01 carries the report as a PDF, not the discrete results; the report content is out of scope for this guide."
+  * insert ProcessCreateEvent(9, "Send Laboratory Report", rgl, rie, Request9, 9, [[ The report may instead be made available through GOMS ]])
+  * insert ProcessCreateEvent(10, "Send Laboratory Report", rie, placer, Request9, 9, [[ ]])
 
 * process[+]
-  * title = "6. Laboratory Report (LAB-3)"
-  * description = "The RGL interprets the results for the family and sends the Laboratory Report to the clinician. Logically this is one report on the whole family, with the family as its subject. The R01 message illustrates it; the report content is out of scope for this guide."
-  * insert ProcessCreateEvent(11, "Send Laboratory Report", rgl, placer, Request9, 9, [[ The report may instead be made available through GOMS ]])
+  * title = "6. Enhanced Laboratory Report and Participant Results to Central Registry"
+  * description = "The Laboratory Report triggers the integration engine to retrieve the participant results from the bioinformatics pipeline. It adds them to the Laboratory Report as an enhanced R01 used internally, converts that into a FHIR Document and sends it to the central registry. This is the same enhancement as in [Measurable Residual Disease (MRD) Monitoring](ExampleScenario-MRDMonitoring.html). Which system does this is to be confirmed."
+  * insert ProcessSearch(11, "Retrieve participant results", rie, gel, Query1, Reply1, [[ From the CIP-API, once for each participant ]])
+  * insert ProcessCreateEvent(12, "Create enhanced Laboratory Report R01", rie, rie, Enhanced, 1, [[ Internal to the integration engine: the R01 with the discrete results is the step before converting into the FHIR Document ]])
+  * insert ProcessCreateEvent(13, "Send FHIR Document", rie, registry, Request8, , [[ One FHIR Document for each participant ]])

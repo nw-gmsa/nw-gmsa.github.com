@@ -1,7 +1,8 @@
 // ctDNA scenario, steps 5 and 6 (Laboratory Report and FHIR Document). The resources are kept together in workflow order to demonstrate the scenario.
 // Step 5: iGene (Lab 1) writes the narrative Laboratory Report (LTW LAB-3) for ctDNA order T26-59XG.
-// Step 6: the RIE merges that report with the LAB-5 test results held in the FHIR Repository (adding their Observations to result)
-// and builds a FHIR Document for the UGR. The Test Results are also placed in the Results from other laboratories section.
+// Step 6: the LAB-3 report triggers the RIE to look up the LAB-5 test results held in the FHIR Repository. The RIE merges them
+// into the report (adding their Observations to result) as an enhanced R01 (ReportMessage-ctDNA-iGene-Enhanced), used
+// internally, and converts that into a FHIR Document for the UGR. The Test Results are also placed in the Results from other laboratories section.
 // Fictitious example: identifiers, dates and results are illustrative only.
 
 // Content shared by the LAB-3 report and the version the RIE merges into the FHIR Document
@@ -88,6 +89,52 @@ Usage: #example
 
 // Added by the RIE from the Test Results
 * result[+].reference = "urn:uuid:eb1f8ec5-f9ff-4472-97f9-77999460b8c8"
+* insert ReportPDF(urn:uuid:158c1e5d-591c-4bcc-97e2-c958aadd44ac, ctDNA Laboratory Report - Theon SHEFFIELD, 2026-07-08)
+
+
+Instance: MessageHeaderR01ctDNAiGeneEnhanced
+InstanceOf: MessageHeader
+Title: "Message Header - ctDNA Laboratory Report R01 enhanced with the Test Results (RIE)"
+Description: "Fictitious example: the LAB-3 Laboratory Report enhanced by the RIE with the discrete results from the FHIR Repository, used internally before it is converted into a FHIR Document"
+Usage: #example
+
+* meta.lastUpdated = "2026-07-08T09:40:00+00:00"
+
+* eventCoding = http://terminology.hl7.org/CodeSystem/v2-0003#R01
+
+* sender.identifier.system = $ods-code
+* sender.identifier.value = "699X0"
+
+* destination.receiver.identifier.system = $ods-code
+* destination.receiver.identifier.value = "699X0"
+* destination.name = "RIE"
+* destination.endpoint = "https://fhir.nwgenomics.nhs.uk/Endpoint/RIE"
+
+* source.name = "RIE"
+* source.software = "RIE"
+* source.endpoint = "https://fhir.nwgenomics.nhs.uk/Endpoint/RIE"
+
+* focus[+]
+  * reference = "urn:uuid:0b817ddc-0f04-41dc-ae66-e2eebb24037a"
+  * type = #DiagnosticReport
+
+
+Instance: ReportMessage-ctDNA-iGene-Enhanced
+InstanceOf: BundleMessage
+Title: "Bundle 'Message' - ctDNA Laboratory Report R01 enhanced with the Test Results (RIE, internal)"
+Description: "Fictitious example: the RIE looks up the OmicsDSS test results (LAB-5) in the FHIR Repository and adds them to iGene's narrative Laboratory Report (LAB-3): the report's `result` lists the test results' `Observation`s, and the `supportingInfo` extension resolves to the Test Results in the message. Used internally as the step before converting into the [FHIR Document](Bundle-FHIRDocumentGeneticReportBundle-ctDNA-OmicsDSS.html), as in [Measurable Residual Disease (MRD) Monitoring](ExampleScenario-MRDMonitoring.html)"
+Usage: #example
+* insert MessageBundle("urn:uuid:8de9e562-eb54-4cf6-8457-fef37505148a", "2026-07-08T09:40:00+00:00")
+* insert EntryDocument("urn:uuid:db0e49f5-409e-400c-8ee4-e0986f68a297", MessageHeaderR01ctDNAiGeneEnhanced)
+* insert EntryDocument("urn:uuid:2160525b-0168-4f40-8ebf-9b053052a62c", Patient-Sheffield)
+* insert EntryDocument("urn:uuid:0b817ddc-0f04-41dc-ae66-e2eebb24037a", DiagnosticReport-ctDNA-iGene-MergedReport)
+* insert EntryDocument("urn:uuid:38be35e1-1df1-40fb-a055-c012dada778f", DiagnosticReport-ctDNA-OmicsDSS-TestResults)
+* insert EntryDocument("urn:uuid:eb1f8ec5-f9ff-4472-97f9-77999460b8c8", variant-egfr-omicsdss)
+* insert EntryDocument("urn:uuid:4446ab81-35ef-49cb-b2fe-1d6f1a0dcc02", 4446ab81-35ef-49cb-b2fe-1d6f1a0dcc02)
+* insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)
+* insert EntryDocument("urn:uuid:b930b4c4-327a-4728-8bb9-f90061914cc5", Specimen-ctDNA)
+* insert EntryDocument("urn:uuid:bdf9908e-ffac-4f39-a546-5aa527700b73", DocumentReference-ctDNA-Report)
+* insert EntryDocument("urn:uuid:158c1e5d-591c-4bcc-97e2-c958aadd44ac", Binary-Sample)
 
 
 Instance: MessageHeaderR01ctDNAiGeneNarrativeReport
@@ -224,7 +271,7 @@ Usage: #example
 Instance: FHIRDocumentGeneticReportBundle-ctDNA-OmicsDSS
 InstanceOf: BundleDocument
 Title: "Bundle 'Document' - Genomics Report ctDNA UGR (OMICS DSS)"
-Description: "Fictitious example: FHIR Document created by the RIE from the FHIR Repository, combining iGene's narrative Laboratory Report (LAB-3) with the OmicsDSS test results (LAB-5), for the UGR"
+Description: "Fictitious example: FHIR Document converted by the RIE from the enhanced R01 (ReportMessage-ctDNA-iGene-Enhanced), combining iGene's narrative Laboratory Report (LAB-3) with the OmicsDSS test results (LAB-5), for the UGR"
 Usage: #example
 * insert DocumentBundle("a67b85b7-dea7-424b-9281-e002f78a5698", "2026-07-08T09:45:00+00:00")
 * insert EntryDocument("urn:uuid:b212d40d-70eb-4599-98a7-9a8533bc1271", Composition-GenomicsReport-ctDNA-OmicsDSS)
@@ -236,6 +283,7 @@ Usage: #example
 * insert EntryDocument("urn:uuid:38be35e1-1df1-40fb-a055-c012dada778f", DiagnosticReport-ctDNA-OmicsDSS-TestResults)
 * insert EntryDocument("urn:uuid:eb1f8ec5-f9ff-4472-97f9-77999460b8c8", variant-egfr-omicsdss)
 * insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)
+* insert EntryDocument("urn:uuid:158c1e5d-591c-4bcc-97e2-c958aadd44ac", Binary-Sample)
 
 Instance: DocumentReference-ctDNA-Report
 InstanceOf: DocumentReference

@@ -475,6 +475,9 @@ groups:
       - Bundle/GenomicsReportMessage-WGS-Referral
       - MessageHeader/MessageHeader-R01-WGS-Referral
       - DiagnosticReport/DiagnosticReport-WGS-Referral
+      - Bundle/GenomicsReportMessage-WGS-Referral-Enhanced
+      - MessageHeader/MessageHeader-R01-WGS-Referral-Enhanced
+      - DiagnosticReport/DiagnosticReport-WGS-Referral-Enhanced
       - Observation/Variant-WGS-Referral-MECP2
       - Observation/DiagnosticImplication-WGS-Referral-MECP2
       - DocumentReference/DocumentReference-WGS-Referral
@@ -573,6 +576,9 @@ groups:
       - MessageHeader/MessageHeader-R01-Pharmacogenomics
       - DiagnosticReport/DiagnosticReport-Pharmacogenomics-Report
       - DocumentReference/DocumentReference-Pharmacogenomics-Report
+      - Bundle/GenomicsReportMessage-Pharmacogenomics-Enhanced
+      - MessageHeader/MessageHeader-R01-Pharmacogenomics-Enhanced
+      - DiagnosticReport/DiagnosticReport-Pharmacogenomics-Report-Enhanced
       - PractitionerRole/PractitionerRole-Requester-Cardiology-RBQ
       - Patient/Patient-Northwich
       - Bundle/GenomicsSubOrderMessage-Pharmacogenomics
@@ -790,5 +796,7 @@ groups:
       - MessageHeader/MessageHeaderR01ctDNAiGeneNarrativeReport
       - DiagnosticReport/DiagnosticReport-ctDNA-iGene-NarrativeReport
       - DiagnosticReport/DiagnosticReport-ctDNA-iGene-MergedReport
+      - Bundle/ReportMessage-ctDNA-iGene-Enhanced
+      - MessageHeader/MessageHeaderR01ctDNAiGeneEnhanced
       - Bundle/FHIRDocumentGeneticReportBundle-ctDNA-OmicsDSS
       - Composition/Composition-GenomicsReport-ctDNA-OmicsDSS

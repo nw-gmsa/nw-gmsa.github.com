@@ -1,6 +1,7 @@
 // FHIR Messages for the Whole Genome Sequencing ExampleScenario: the Laboratory Order (LAB-1) for the dWGS Trio
 // referral r26000000203 from North Cumbria Integrated Care NHS FT (RNN) to the Requesting Genomic Laboratory
-// (NE&Y Genomics, 699N0), and the RGL's Laboratory Report (LAB-3) back to the Trust.
+// (NE&Y Genomics, 699N0), and the RGL's Laboratory Report (LAB-3) back to the Trust. The integration engine looks up the
+// participant results and adds them to the Laboratory Report as an enhanced R01, used internally before the FHIR Document.
 // In practice the referral is registered in Genomics England's TOMS, which is not FHIR; the O19 message
 // illustrates the content of the referral as it reaches the RGL. Its subject is the family.
 // Later orders and reports reference the referral by its NGIS referral_id and do not carry it.
@@ -45,12 +46,7 @@ Usage: #example
 
 // Laboratory Report (LAB-3)
 
-Instance: DiagnosticReport-WGS-Referral
-InstanceOf: LaboratoryReport
-Title: "Diagnostic Report - R27.3 Paediatric disorders (WGS), dWGS Trio referral r26000000203"
-Description: "Fictitious example: the RGL's LAB-3 report for the referral, based on the original order, which it identifies by the NGIS referral_id. Logically a report on the whole family; the Proband is the subject, as the DiagnosticReport profile only allows a Patient."
-Usage: #example
-
+RuleSet: WGSReferralReportContent
 * identifier[ReportIdentifier]
   * value = "NEY26-r26000000203"
   * system = "http://www.acme.org/diagnosticreport/identifiers/699N0"
@@ -92,6 +88,25 @@ Usage: #example
 * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R27.3 Paediatric disorders (trio whole genome sequencing) for Gilly BROUGH. Pathogenic de novo MECP2 variant NM_004992.4:c.763C&gt;T p.(Arg255Ter), consistent with the referral indication.</p></div>"
 * insert ReportPDF(urn:uuid:cf3bc470-4956-4fe7-989a-2fb876905021, R27.3 Laboratory Report - Gilly BROUGH, 2026-11-02)
 
+Instance: DiagnosticReport-WGS-Referral
+InstanceOf: LaboratoryReport
+Title: "Diagnostic Report - R27.3 Paediatric disorders (WGS), dWGS Trio referral r26000000203"
+Description: "Fictitious example: the RGL's LAB-3 report for the referral, based on the original order, which it identifies by the NGIS referral_id. Logically a report on the whole family; the Proband is the subject, as the DiagnosticReport profile only allows a Patient."
+Usage: #example
+
+* insert WGSReferralReportContent
+
+Instance: DiagnosticReport-WGS-Referral-Enhanced
+InstanceOf: LaboratoryReport
+Title: "Diagnostic Report - R27.3 Paediatric disorders (WGS), dWGS Trio referral r26000000203 (enhanced with discrete results)"
+Description: "Fictitious example: the RGL's Laboratory Report enhanced by the integration engine, with the Proband's participant results added as `result`"
+Usage: #example
+
+* insert WGSReferralReportContent
+// Added by the integration engine from the participant results
+* result[+].reference = "urn:uuid:59721fb3-b791-4ff8-8f8d-a9a44c602c05"
+* result[+].reference = "urn:uuid:c19d9c74-cfb6-428d-8ce8-7aca96b5f53b"
+
 Instance: MessageHeader-R01-WGS-Referral
 InstanceOf: MessageHeader
 Title: "Message Header - Laboratory Report R27.3 (R01), dWGS Trio referral r26000000203"
@@ -122,6 +137,44 @@ Usage: #example
 * insert EntryDocument("urn:uuid:f9153314-1f04-465e-b1a9-168b953e6e2f", MessageHeader-R01-WGS-Referral)
 * insert EntryDocument("https://fhir.nwgenomics.nhs.uk/Patient/Patient-Brough", Patient-Brough)
 * insert EntryDocument("urn:uuid:efc76d09-a4d9-46cb-8aa5-98748594ceae", DiagnosticReport-WGS-Referral)
+* insert EntryDocument("urn:uuid:0349b609-bc9c-40e2-8c34-ee322adceca8", DocumentReference-WGS-Referral)
+* insert EntryDocument("urn:uuid:cf3bc470-4956-4fe7-989a-2fb876905021", Binary-Sample)
+
+// Laboratory Report enhanced with the discrete results (internal to the integration engine)
+
+Instance: MessageHeader-R01-WGS-Referral-Enhanced
+InstanceOf: MessageHeader
+Title: "Message Header - Laboratory Report R27.3 (R01, enhanced with discrete results), dWGS Trio referral r26000000203"
+Description: "Fictitious example: the RGL's LAB-3 report enhanced by the integration engine with the participant results, used internally before it is converted into a FHIR Document"
+Usage: #example
+
+* meta.lastUpdated = "2026-11-02T12:05:00+00:00"
+* eventCoding = http://terminology.hl7.org/CodeSystem/v2-0003#R01
+* sender.identifier.system = $ods-code
+* sender.identifier.value = "699N0"
+* sender.display = "NE&Y GENOMICS"
+* destination.receiver.identifier.system = $ods-code
+* destination.receiver.identifier.value = "699X0"
+* destination.name = "RIE"
+* destination.endpoint = "https://fhir.nwgenomics.nhs.uk/Endpoint/RIE"
+* source.name = "RIE"
+* source.software = "RIE"
+* source.endpoint = "https://fhir.nwgenomics.nhs.uk/Endpoint/RIE"
+* focus[+]
+  * reference = "urn:uuid:efc76d09-a4d9-46cb-8aa5-98748594ceae"
+  * type = #DiagnosticReport
+
+Instance: GenomicsReportMessage-WGS-Referral-Enhanced
+InstanceOf: BundleMessage
+Title: "Bundle 'Message' - Laboratory Report R27.3 (R01, enhanced with discrete results), dWGS Trio referral r26000000203"
+Description: "Fictitious example: the RGL's LAB-3 Laboratory Report in the [Whole Genome Sequencing](ExampleScenario-WholeGenomeSequencing.html) scenario, enhanced by the integration engine: the Proband's participant results (the MECP2 variant and its diagnostic implication) are added to the report's `result` and to the message, alongside the report as a PDF. Used internally as the step before converting into a FHIR Document, as in [Measurable Residual Disease (MRD) Monitoring](ExampleScenario-MRDMonitoring.html)"
+Usage: #example
+* insert MessageBundle("urn:uuid:c6c20373-7ef6-4b70-851e-b8452dc8878d", "2026-11-02T12:05:00+00:00")
+* insert EntryDocument("urn:uuid:07cf5e87-ae26-45d7-b3b6-f61055e55d0f", MessageHeader-R01-WGS-Referral-Enhanced)
+* insert EntryDocument("https://fhir.nwgenomics.nhs.uk/Patient/Patient-Brough", Patient-Brough)
+* insert EntryDocument("urn:uuid:efc76d09-a4d9-46cb-8aa5-98748594ceae", DiagnosticReport-WGS-Referral-Enhanced)
+* insert EntryDocument("urn:uuid:59721fb3-b791-4ff8-8f8d-a9a44c602c05", Variant-WGS-Referral-MECP2)
+* insert EntryDocument("urn:uuid:c19d9c74-cfb6-428d-8ce8-7aca96b5f53b", DiagnosticImplication-WGS-Referral-MECP2)
 * insert EntryDocument("urn:uuid:0349b609-bc9c-40e2-8c34-ee322adceca8", DocumentReference-WGS-Referral)
 * insert EntryDocument("urn:uuid:cf3bc470-4956-4fe7-989a-2fb876905021", Binary-Sample)
 

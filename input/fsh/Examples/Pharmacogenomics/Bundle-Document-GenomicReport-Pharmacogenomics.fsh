@@ -247,7 +247,7 @@ Usage: #inline
 Instance: FHIRDocumentGeneticReportBundle-Pharmacogenomics
 InstanceOf: BundleDocument
 Title: "Bundle `Document` - Genomics Report Pharmacogenomics (CYP2C19 Mavacamten)"
-Description: "FHIR Document Genomics Report (Pharmacogenomics, R454.1 CYP2C19 for mavacamten) for Mace Northwich, following HL7 Genomics Reporting Pharmacogenomic Reporting. Results use the Pharmacogenomics and Haplotype definitions sub-sections; the therapeutic implication is in the Interpretation section."
+Description: "FHIR Document Genomics Report (Pharmacogenomics, R454.1 CYP2C19 for mavacamten) for Mace Northwich, following HL7 Genomics Reporting Pharmacogenomic Reporting. Results use the Pharmacogenomics and Haplotype definitions sub-sections; the therapeutic implication is in the Interpretation section. Created by the RIE from the enhanced R01 Laboratory Report (GenomicsReportMessage-Pharmacogenomics-Enhanced), adding the Composition."
 Usage: #example
 * insert DocumentBundle("8c2d4f6a-1e3b-4a5c-9d7e-0f1a2b3c4d5e", "2026-11-02T15:45:00+00:00")
 * insert EntryDocument("urn:uuid:5e71bb01-36a9-44b6-bc00-c9403a2c432c", Composition-GenomicsReport-Pharmacogenomics)
