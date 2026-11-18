@@ -275,7 +275,6 @@ Usage: #example
   * identifier.value = "C6789012"
   * display = "FICTITIOUS, Clara"
 * conclusion = "Abnormal karyotype with trisomy 8 and deletion of 7q, recognised findings in myeloid neoplasms."
-* result[+].reference = "urn:uuid:259bd44f-c536-40a0-a305-fe41b2020a9b"
 // Hand-written narrative: a generated one links presentedForm.url, and urn: is not a valid hyperlink scheme
 * text.status = #generated
 * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>M80.3 AML karyotype for Hodor TAMESIDE: 47,XY,+8,del(7)(q22q36)[18]/46,XY[2]. Abnormal karyotype with trisomy 8 and deletion of 7q, recognised findings in myeloid neoplasms.</p></div>"
@@ -314,13 +313,12 @@ Usage: #example
 Instance: GenomicsSubOrderReportMessage-HaematoOncology-Cytogenetics
 InstanceOf: BundleMessage
 Title: "Bundle 'Message' - Sub-order report M80.3 (R01), cytogenetics"
-Description: "Fictitious example: the cytogenetics laboratory's LAB-36 report in the [Suspected Blood Cancer - Haemato-Oncology Diagnostics](ExampleScenario-HaematoOncologyDiagnostics.html) scenario, with the karyotype as a coded Observation and the report as a PDF"
+Description: "Fictitious example: the cytogenetics laboratory's LAB-36 report in the [Suspected Blood Cancer - Haemato-Oncology Diagnostics](ExampleScenario-HaematoOncologyDiagnostics.html) scenario, with the report as a PDF (`DocumentReference` and `Binary`) and no discrete results"
 Usage: #example
 * insert MessageBundle("urn:uuid:d576368f-989b-421c-985a-1686daa6fcd7", "2026-10-16T12:00:00+00:00")
 * insert EntryDocument("urn:uuid:eeea45be-f775-45b8-944c-9ae35f4fa61c", MessageHeader-R01-HaematoOncology-Cytogenetics)
 * insert EntryDocument("urn:uuid:4fa015ae-f0c2-48fe-a494-644c501f8251", Patient-Tameside)
 * insert EntryDocument("urn:uuid:17c64a5f-b840-4802-af3c-9b03b3b438d2", DiagnosticReport-HaematoOncology-Cytogenetics)
-* insert EntryDocument("urn:uuid:259bd44f-c536-40a0-a305-fe41b2020a9b", Observation-HaematoOncology-Karyotype)
 * insert EntryDocument("urn:uuid:b816a8be-0cff-486e-abf6-f3a4632193ed", DocumentReference-HaematoOncology-Cytogenetics)
 * insert EntryDocument("urn:uuid:3f09fddb-1350-454f-9a36-c1883f631104", Binary-Sample)
 
@@ -455,8 +453,6 @@ Usage: #example
   * display = "FICTITIOUS, Ralph"
 * conclusion = "Pathogenic somatic TP53 variant NM_000546.6:c.817C>T p.(Arg273Cys), variant allele frequency 42%."
 * conclusionCode[+] = $GTOC#321 "VARIANT DETECTED"
-* result[+].reference = "urn:uuid:56e20f19-4d2f-41a7-99f4-cc377327a702"
-* result[+].reference = "urn:uuid:fcf068ca-7140-47cb-a6af-5d2a8be60d7a"
 // Hand-written narrative: a generated one links presentedForm.url, and urn: is not a valid hyperlink scheme
 * text.status = #generated
 * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>M80.2 AML multi-target NGS panel for Hodor TAMESIDE: pathogenic somatic TP53 variant NM_000546.6:c.817C&gt;T p.(Arg273Cys), variant allele frequency 42%.</p></div>"
@@ -495,14 +491,12 @@ Usage: #example
 Instance: GenomicsSubOrderReportMessage-HaematoOncology-Molecular
 InstanceOf: BundleMessage
 Title: "Bundle 'Message' - Sub-order report M80.2 (R01), molecular genomic"
-Description: "Fictitious example: the North West GLH's LAB-36 report in the [Suspected Blood Cancer - Haemato-Oncology Diagnostics](ExampleScenario-HaematoOncologyDiagnostics.html) scenario, with the variant and diagnostic implication as results and the report as a PDF"
+Description: "Fictitious example: the North West GLH's LAB-36 report in the [Suspected Blood Cancer - Haemato-Oncology Diagnostics](ExampleScenario-HaematoOncologyDiagnostics.html) scenario, with the report as a PDF (`DocumentReference` and `Binary`) and no discrete results"
 Usage: #example
 * insert MessageBundle("urn:uuid:1c88f6ad-21d9-48ca-b040-d32ec99922b3", "2026-10-23T12:00:00+00:00")
 * insert EntryDocument("urn:uuid:4afe5c64-3b1a-4cac-8863-3ad1afd3df7b", MessageHeader-R01-HaematoOncology-Molecular)
 * insert EntryDocument("urn:uuid:4fa015ae-f0c2-48fe-a494-644c501f8251", Patient-Tameside)
 * insert EntryDocument("urn:uuid:afe03b57-e640-4834-b7d1-3fd38c6183df", DiagnosticReport-HaematoOncology-Molecular)
-* insert EntryDocument("urn:uuid:56e20f19-4d2f-41a7-99f4-cc377327a702", Variant-HaematoOncology-TP53)
-* insert EntryDocument("urn:uuid:fcf068ca-7140-47cb-a6af-5d2a8be60d7a", DiagnosticImplication-HaematoOncology-TP53)
 * insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)
 * insert EntryDocument("urn:uuid:b89807ea-8296-416e-bcab-77593fd26c7b", DocumentReference-HaematoOncology-Molecular)
 * insert EntryDocument("urn:uuid:9c686183-067e-445f-9b47-ae3fc99cfe3e", Binary-Sample)

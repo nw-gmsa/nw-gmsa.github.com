@@ -90,8 +90,6 @@ Usage: #example
 // Hand-written narrative: a generated one links presentedForm.url, and urn: is not a valid hyperlink scheme
 * text.status = #generated
 * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R27.3 Paediatric disorders (trio whole genome sequencing) for Gilly BROUGH. Pathogenic de novo MECP2 variant NM_004992.4:c.763C&gt;T p.(Arg255Ter), consistent with the referral indication.</p></div>"
-* result[+].reference = "urn:uuid:59721fb3-b791-4ff8-8f8d-a9a44c602c05"
-* result[+].reference = "urn:uuid:c19d9c74-cfb6-428d-8ce8-7aca96b5f53b"
 * insert ReportPDF(urn:uuid:cf3bc470-4956-4fe7-989a-2fb876905021, R27.3 Laboratory Report - Gilly BROUGH, 2026-11-02)
 
 Instance: MessageHeader-R01-WGS-Referral
@@ -118,14 +116,12 @@ Usage: #example
 Instance: GenomicsReportMessage-WGS-Referral
 InstanceOf: BundleMessage
 Title: "Bundle 'Message' - Laboratory Report R27.3 (R01), dWGS Trio referral r26000000203"
-Description: "Fictitious example: the RGL's LAB-3 Laboratory Report for the referral in the [Whole Genome Sequencing](ExampleScenario-WholeGenomeSequencing.html) scenario. The report identifies the original order by its NGIS referral_id; the original order is not included. See the [WGS FHIR Document](Bundle-FHIRDocumentGeneticReportBundle-WGS.html) for the report content with its variants."
+Description: "Fictitious example: the RGL's LAB-3 Laboratory Report for the referral in the [Whole Genome Sequencing](ExampleScenario-WholeGenomeSequencing.html) scenario. The report identifies the original order by its NGIS referral_id; the original order is not included. It carries the report as a PDF (`DocumentReference` and `Binary`) and no discrete results. See the [WGS FHIR Document](Bundle-FHIRDocumentGeneticReportBundle-WGS.html) for the report content with its variants."
 Usage: #example
 * insert MessageBundle("urn:uuid:759b5ea3-98d0-4ec7-a954-59d00a1160f4", "2026-11-02T12:00:00+00:00")
 * insert EntryDocument("urn:uuid:f9153314-1f04-465e-b1a9-168b953e6e2f", MessageHeader-R01-WGS-Referral)
 * insert EntryDocument("https://fhir.nwgenomics.nhs.uk/Patient/Patient-Brough", Patient-Brough)
 * insert EntryDocument("urn:uuid:efc76d09-a4d9-46cb-8aa5-98748594ceae", DiagnosticReport-WGS-Referral)
-* insert EntryDocument("urn:uuid:59721fb3-b791-4ff8-8f8d-a9a44c602c05", Variant-WGS-Referral-MECP2)
-* insert EntryDocument("urn:uuid:c19d9c74-cfb6-428d-8ce8-7aca96b5f53b", DiagnosticImplication-WGS-Referral-MECP2)
 * insert EntryDocument("urn:uuid:0349b609-bc9c-40e2-8c34-ee322adceca8", DocumentReference-WGS-Referral)
 * insert EntryDocument("urn:uuid:cf3bc470-4956-4fe7-989a-2fb876905021", Binary-Sample)
 

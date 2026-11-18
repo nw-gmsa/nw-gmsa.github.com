@@ -27,11 +27,11 @@ Usage: #definition
 * insert InstanceVersion(1, "HL7 FHIR Message O51", GenomicOrderStatusMessage-SPT-Declined, [[ The North West GLH declines the sub-order ]])
 * insert Instance_Empty(LaterDecline, Bundle, "Sub-order declined after acceptance", [[ Order status: the sample turns out to be unsuitable after the sub-order was accepted ]])
 * insert InstanceVersion(1, "HL7 FHIR Message O51", GenomicOrderStatusMessage-SPT-LaterDeclined, [[ The North West GLH declines the sub-order after acceptance ]])
-* insert Instance_Empty(SubOrderReport, Bundle, "Sub-order Laboratory Report", [[ LAB-36 [Laboratory Report](StructureDefinition-LaboratoryReport.html) from the North West GLH, `basedOn` the sub-order ]])
+* insert Instance_Empty(SubOrderReport, Bundle, "Sub-order Laboratory Report", [[ LAB-36 [Laboratory Report](StructureDefinition-LaboratoryReport.html) from the North West GLH, `basedOn` the sub-order, with the report as a PDF (`presentedForm`, a `DocumentReference` and a `Binary`) and no discrete results ]])
 * insert InstanceVersion(1, "HL7 FHIR Message R01", GenomicsSubOrderReportMessage-SPT, [[ The North West GLH's report, based on the sub-order ]])
 * insert Instance_Empty(ReportDocument, Bundle, "Laboratory Report document", [[ HL7 v2 `MDM^T02` with the Laboratory Report as a PDF, base64 encoded in OBX-5 (`ED`). A FHIR Document may replace the PDF later In FHIR this is a T02 FHIR Message ([Document and Document Notification](MessageDefinition-original-document.html)) carrying a `DocumentReference` and the PDF as a `Binary` - see the [example](Bundle-OriginalDocumentMessage.html). ]])
 * insert InstanceVersion(1, "HL7 FHIR Message T02", DocumentMessage-SPT, [[ Laboratory Report PDF for Oliver Camden ]])
-* insert Instance_Empty(Report, Bundle, "Laboratory Report", [[ LAB-3 [Laboratory Report](StructureDefinition-LaboratoryReport.html) to the requesting clinician ]])
+* insert Instance_Empty(Report, Bundle, "Laboratory Report", [[ LAB-3 [Laboratory Report](StructureDefinition-LaboratoryReport.html) to the requesting clinician, with the report as a PDF (`presentedForm`, a `DocumentReference` and a `Binary`) and no discrete results ]])
 * insert InstanceVersion(1, "HL7 FHIR Message R01", GenomicsReportMessage-SPT, [[ North Thames GLH's report, based on the Laboratory Order ]])
 
 * process[+]

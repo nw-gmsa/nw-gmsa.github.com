@@ -230,7 +230,7 @@ test data for each step.
 #### Scope
 
 The scenarios cover **genomic diagnostic testing**: the genomic test order (HL7 FHIR Message O21), the Laboratory Report
-(R01) with its results and the report PDF, the FHIR Document sent to a central repository, and the referral of the family
+(R01) with the report PDF, the FHIR Document sent to a central repository, and the referral of the family
 to clinical genetics (O19). Other testing is mentioned where it is part of the pathway but is not modelled, for example
 tests on the cancer cells done by histopathology (immunohistochemistry, microsatellite instability, hormone receptors and
 HER2). A copy of the pathology report is sent with the order instead. Clinical decisions, such as the choice of treatment,
@@ -260,7 +260,7 @@ for the same variant).
 | [Whole Genome Sequencing for a Rare Condition](ExampleScenario-WholeGenomeSequencing.html) | A child's referral is registered with Genomics England. Each family member is sequenced, and the requesting laboratory reports on the family | R27.3 Paediatric disorders | O19 family referral, sub-orders (LAB-35), R01 report |
 | [Gene Test Before Starting a Medicine](ExampleScenario-Pharmacogenomics.html) | A gene test before starting mavacamten shows how the patient processes the medicine | R454.1 CYP2C19 genotyping | O21 order, sub-order (LAB-35) to a second laboratory system, analytics processing, sub-order report (LAB-36), R01 report, FHIR Document |
 | [Chimerism Monitoring After a Stem Cell Transplant](ExampleScenario-ChimerismMonitoring.html) | After a stem cell transplant, a blood test measures how much of the patient's blood comes from the donor, to check the graft has taken | GT1368 Chimerism by STR Testing - Post Stem Cell Transplant (Histocompatibility and Immunogenetics) | O21 order, R01 report |
-| [Measurable Residual Disease (MRD) Monitoring - BCR-ABL1](ExampleScenario-MRDMonitoring.html) | During treatment for chronic myeloid leukaemia, regular blood tests measure the BCR-ABL1 level to check the treatment is working and spot relapse early | M84.2 Chronic Myeloid Leukaemia, MRD BCR-ABL1 RT-qPCR | O21 order, work order (LAB-4), test results (R32, LAB-5), R01 report |
+| [Measurable Residual Disease (MRD) Monitoring - BCR-ABL1](ExampleScenario-MRDMonitoring.html) | During treatment for chronic myeloid leukaemia, regular blood tests measure the BCR-ABL1 level to check the treatment is working and spot relapse early | M84.2 Chronic Myeloid Leukaemia, MRD BCR-ABL1 RT-qPCR | O21 order, work order (LAB-4), test results (R32, LAB-5), R01 report, R01 report enhanced with the discrete results from the FHIR Repository |
 {:.grid}
 
 #### Background
@@ -283,7 +283,10 @@ The example messages follow the same rules in every scenario:
 - **The family is the subject of an O19 referral**, as a [Family Genetic Group](StructureDefinition-FamilyGeneticGroup.html)
   whose members are Patients. The referral references the testing done as the Genomic Report document on the central
   registry (a `DocumentReference`). See [Genetic Referrals](GeneticReferrals.html).
-- **Laboratory Reports carry their results** as `Observation`s ([Variant](StructureDefinition-Variant.html),
-  [Diagnostic Implication](StructureDefinition-DiagnosticImplication.html) and the other genomic result profiles), and the
-  report as a PDF (`DiagnosticReport.presentedForm` and a `DocumentReference`).
-- **A FHIR Document includes every `Observation`** from the scenario's R01 test results and Laboratory Report messages.
+- **Laboratory Reports (LAB-3) and sub-order reports (LAB-36) carry the report as a PDF**
+  (`DiagnosticReport.presentedForm`, a `DocumentReference` and a `Binary`), not the discrete results.
+- **The discrete results are looked up in the FHIR Repository.** The R01 Laboratory Report triggers a lookup of its
+  `Observation`s ([Variant](StructureDefinition-Variant.html), [Diagnostic Implication](StructureDefinition-DiagnosticImplication.html)
+  and the other result profiles), which are added to the Laboratory Report before a FHIR Document is built. The same lookup
+  can enhance the R01 itself, so an ORU^R01 can also carry the discrete results - see
+  [Measurable Residual Disease (MRD) Monitoring](ExampleScenario-MRDMonitoring.html).

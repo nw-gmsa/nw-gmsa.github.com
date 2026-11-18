@@ -86,7 +86,7 @@ Usage: #example
 Instance: Observation-BCRABL-Report
 InstanceOf: LaboratoryAnalyteResult
 Title: "Laboratory Analyte Result - BCRABL (Laboratory Report)"
-Description: "The BCR-ABL1 result after a clinical scientist has checked and authorised it, as the result of the LAB-3 Laboratory Report to Leeds Teaching Hospitals. Based on the Laboratory Order (identified by its Order Placer Number)"
+Description: "The BCR-ABL1 test result as added by the RIE to the enhanced LAB-3 Laboratory Report to Leeds Teaching Hospitals: looked up in the FHIR Repository, `final` as the Laboratory Report authorises it, and based on the Laboratory Order (identified by its Order Placer Number)"
 Usage: #example
 
 * identifier[+].value = "79d87e2a-9c77-4ab6-ae71-b92d3a962e22"

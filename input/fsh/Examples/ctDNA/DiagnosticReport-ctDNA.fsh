@@ -1,8 +1,4 @@
-Instance: DiagnosticReport-ctDNA
-InstanceOf: LaboratoryReport
-Title: "Diagnostic Report ctDNA Example"
-Description: "Diagnostic Report ctDNA Example"
-
+RuleSet: DiagnosticReportctDNAContent
 * meta.versionId = "1.0"
 
 * identifier[ReportIdentifier]
@@ -47,7 +43,6 @@ Description: "Diagnostic Report ctDNA Example"
 * resultsInterpreter[author]
   * display = "FICTITIOUS, Morgan"
 
-* result[+].reference = "urn:uuid:00c22e97-a226-4845-b17a-e24ec1f4f77a"
 
 * conclusionCode[+] = https://fhir.nwgenomics.nhs.uk/CodeSystem/GenomicTestOutcomeCode#431 "TARGET DETECTED AT A LEVEL REQUIRING CLINICAL ACTION"
 
@@ -56,3 +51,20 @@ Description: "Diagnostic Report ctDNA Example"
   * language = #en-GB
   * url = "urn:uuid:d6eeedd1-92d3-45b9-bf33-6401e804425f"
   * title = "ctDNA Genomic Report for Theon Sheffield"
+
+Instance: DiagnosticReport-ctDNA
+InstanceOf: LaboratoryReport
+Title: "Diagnostic Report ctDNA Example"
+Description: "Diagnostic Report ctDNA Example"
+
+* insert DiagnosticReportctDNAContent
+
+Instance: DiagnosticReport-ctDNA-Document
+InstanceOf: LaboratoryReport
+Title: "Diagnostic Report ctDNA Example (FHIR Document)"
+Description: "Fictitious example: the Laboratory Report as included in the FHIR Document, with the discrete results looked up in the FHIR Repository added as `result`"
+Usage: #example
+
+* insert DiagnosticReportctDNAContent
+* result[+].reference = "urn:uuid:00c22e97-a226-4845-b17a-e24ec1f4f77a"
+

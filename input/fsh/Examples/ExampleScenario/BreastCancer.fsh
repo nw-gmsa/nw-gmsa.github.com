@@ -6,7 +6,7 @@ BRCA1 and BRCA2 are genes everyone has. Changes (variants) in a BRCA gene can ca
 
 The person who has had cancer is tested first - **diagnostic testing**, the part this guide covers: the genomic test order (R208.1 Inherited breast cancer and ovarian cancer) and report between the Trust and the North West GLH. Other testing, such as the oestrogen receptor, progesterone receptor and HER2 tests on the cancer cells, is done by histopathology; here a copy of the pathology report is sent with the order. If a variant is found, relatives can be tested for the same variant (**predictive testing**) through a genetics clinic or family cancer clinic; each child of someone with a BRCA variant has a 1 in 2 chance of inheriting it.
 
-In this example Margaery Congleton has triple-negative breast cancer at 44, with no known family history. The Laboratory Report finds a pathogenic BRCA1 variant, carries its results as `Observation`s and the report as a PDF, and is sent to the central repository as a FHIR Document that includes every `Observation` from the Laboratory Report. The breast surgeon then refers the family to clinical genetics (`OMG^O19`) so her sister can have predictive testing. Intended as an end-to-end test of the order, report, document and referral.
+In this example Margaery Congleton has triple-negative breast cancer at 44, with no known family history. The Laboratory Report finds a pathogenic BRCA1 variant, carries the report as a PDF, and is sent to the central repository as a FHIR Document. Before the FHIR Document is built, the RIE looks up the discrete results in the FHIR Repository and adds them to the Laboratory Report - see [Measurable Residual Disease (MRD) Monitoring](ExampleScenario-MRDMonitoring.html) for this enhancement. The breast surgeon then refers the family to clinical genetics (`OMG^O19`) so her sister can have predictive testing. Intended as an end-to-end test of the order, report, document and referral.
 """
 Usage: #definition
 
@@ -22,11 +22,11 @@ Usage: #definition
 
 * insert Instance_Empty(Order, Bundle, "Laboratory Order", [[ LAB-1 order for R208.1 Inherited breast cancer and ovarian cancer (diagnostic testing), with the blood sample, the reasons (R208 and triple-negative breast cancer) and a copy of the pathology report as `ServiceRequest.supportingInfo` ]])
 * insert InstanceVersion(1, "HL7 FHIR Message O21", GenomicsOrderMessage-BreastCancer, [[ Laboratory Order for Margaery Congleton ]])
-* insert Instance_Empty(Report, Bundle, "Laboratory Report", [[ LAB-3 [Laboratory Report](StructureDefinition-LaboratoryReport.html), `basedOn` the Laboratory Order by its Order Placer Number. Its results are the [Variant](StructureDefinition-Variant.html) and [Diagnostic Implication](StructureDefinition-DiagnosticImplication.html) `Observation`s, and the report is also a PDF (`presentedForm` and a `DocumentReference`) ]])
+* insert Instance_Empty(Report, Bundle, "Laboratory Report", [[ LAB-3 [Laboratory Report](StructureDefinition-LaboratoryReport.html), `basedOn` the Laboratory Order by its Order Placer Number. It carries the report as a PDF (`presentedForm`, a `DocumentReference` and a `Binary`), not the discrete results ]])
 * insert InstanceVersion(1, "HL7 FHIR Message R01", GenomicsReportMessage-BreastCancer, [[ Laboratory Report for Margaery Congleton ]])
 * insert Instance_Empty(ReportDocument, Bundle, "Laboratory Report document", [[ HL7 v2 `MDM^T02` with the Laboratory Report as a PDF, base64 encoded in OBX-5 (`ED`), sent to the regional shared care record. See [Sharing Laboratory Reports (Document)](HIE.html#sharing-laboratory-reports-document-iti-105-and-mdm_t02) In FHIR this is a T02 FHIR Message ([Document and Document Notification](MessageDefinition-original-document.html)) carrying a `DocumentReference` and the PDF as a `Binary` - see the [example](Bundle-OriginalDocumentMessage.html). ]])
 * insert InstanceVersion(1, "HL7 FHIR Message T02", DocumentMessage-BreastCancer, [[ Laboratory Report PDF for Margaery Congleton ]])
-* insert Instance_Empty(Document, Bundle, "Laboratory Report - FHIR Document", [[ The Laboratory Report as a [FHIR Document](StructureDefinition-Composition-GenomicReport.html). It includes every `Observation` from the R01 Laboratory Report, and the pathology report ]])
+* insert Instance_Empty(Document, Bundle, "Laboratory Report - FHIR Document", [[ The Laboratory Report as a [FHIR Document](StructureDefinition-Composition-GenomicReport.html). The Laboratory Report with its discrete results, the [Variant](StructureDefinition-Variant.html) and [Diagnostic Implication](StructureDefinition-DiagnosticImplication.html) `Observation`s looked up in the FHIR Repository, and the pathology report ]])
 * insert InstanceVersion(1, "HL7 FHIR Document", FHIRDocumentGeneticReportBundle-BreastCancer, [[ FHIR Document for Margaery Congleton ]])
 * insert Instance_Empty(Referral, Bundle, "Referral to clinical genetics", [[ Clinical referral (`OMG^O19`) of the family to clinical genetics, for genetic counselling and predictive testing. The subject is the family, a [Family Genetic Group](StructureDefinition-FamilyGeneticGroup.html) of Margaery Congleton and her sister, and the testing done is referenced as supporting information: the Genomic Report document held on the central registry (a `DocumentReference`) ]])
 * insert InstanceVersion(1, "HL7 FHIR Message O19", GenomicsReferralMessage-BreastCancer, [[ Referral of the Congleton family to the Manchester Centre for Genomic Medicine ]])
@@ -38,13 +38,13 @@ Usage: #definition
 
 * process[+]
   * title = "2. Laboratory Report (LAB-3)"
-  * description = "The North West GLH tests and interprets, and sends the Laboratory Report, with its results and the report PDF, to the requesting clinician. The report PDF is also sent to the regional shared care record, where the patient's GP can see it."
+  * description = "The North West GLH tests and interprets, and sends the Laboratory Report, with the report PDF, to the requesting clinician. The report PDF is also sent to the regional shared care record, where the patient's GP can see it."
   * insert ProcessCreateEvent(2, "Send Laboratory Report", glh, placer, Report, 1, [[ See [Genomic Test Report Process](ExampleScenario-GenomicTestReportProcess.html) ]])
   * insert ProcessCreateEvent(3, "Send Laboratory Report document", glh, scr, ReportDocument, 1, [[ HL7 v2 `MDM^T02` or a T02 FHIR Message with the report as a PDF, which the patient's GP can see in the shared care record ]])
 
 * process[+]
   * title = "3. Send to the central repository"
-  * description = "The Laboratory Report is sent to the central repository as a FHIR Document, through the RIE. The document includes every Observation from the R01 Laboratory Report."
+  * description = "The Laboratory Report is sent to the central repository as a FHIR Document, through the RIE. The R01 Laboratory Report triggers a lookup of its discrete results in the FHIR Repository, which are added to the Laboratory Report in the document."
   * insert ProcessCreateEvent(4, "Send FHIR Document", glh, ugr, Document, 1, [[ ]])
 
 * process[+]

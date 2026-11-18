@@ -6,7 +6,7 @@
 Instance: DiagnosticReport-Pharmacogenomics-Report
 InstanceOf: LaboratoryReport
 Title: "Diagnostic Report - R454.1 CYP2C19 genotyping before mavacamten, Mace Northwich"
-Description: "Fictitious example: the North West GLH's LAB-3 report, based on the Laboratory Order (identified by its Order Placer Number), with the genotype, haplotype and therapeutic implication as results"
+Description: "Fictitious example: the North West GLH's LAB-3 report, based on the Laboratory Order (identified by its Order Placer Number), with the report as a PDF and no discrete results"
 Usage: #example
 
 // Hand-written narrative: a generated one links presentedForm.url, and urn: is not a valid hyperlink scheme
@@ -48,10 +48,6 @@ Usage: #example
   * display = "FICTITIOUS, Ralph"
 * conclusion = "CYP2C19 *2/*2 - poor metaboliser."
 * conclusionCode[+] = $GTOC#321 "VARIANT DETECTED"
-* result[+].reference = "urn:uuid:ed3eaf0e-7075-4902-bb52-c2967317264b"
-* result[+].reference = "urn:uuid:d5636dc9-38ab-4700-9512-21fb7f024dff"
-* result[+].reference = "urn:uuid:c645241f-8361-465c-83ab-f270a23fcfa1"
-* result[+].reference = "urn:uuid:2c43b15a-0b31-4c49-b087-88292f80abd2"
 * insert ReportPDF(urn:uuid:f9d86d34-fb27-48a0-aea6-02cca332a64e, R454.1 Laboratory Report - Mace NORTHWICH, 2026-11-02)
 
 Instance: DocumentReference-Pharmacogenomics-Report
@@ -91,16 +87,12 @@ Usage: #example
 Instance: GenomicsReportMessage-Pharmacogenomics
 InstanceOf: BundleMessage
 Title: "Bundle 'Message' - Laboratory Report R454.1 (R01), CYP2C19 genotyping before mavacamten"
-Description: "Fictitious example: the LAB-3 Laboratory Report in the [Pharmacogenomics](ExampleScenario-Pharmacogenomics.html) scenario, with the genotype, haplotype, therapeutic implication and genomic study results and the report as a PDF. The FHIR Document for the central repository includes all of these results."
+Description: "Fictitious example: the LAB-3 Laboratory Report in the [Pharmacogenomics](ExampleScenario-Pharmacogenomics.html) scenario, with the report as a PDF (`DocumentReference` and `Binary`) and no discrete results. The discrete results are looked up in the FHIR Repository and added when the FHIR Document is created."
 Usage: #example
 * insert MessageBundle("urn:uuid:17622acd-9f03-4fed-97de-9e819696bb54", "2026-11-02T15:45:00+00:00")
 * insert EntryDocument("urn:uuid:7af90dcd-fada-4c9c-ae2e-a025214d925f", MessageHeader-R01-Pharmacogenomics)
 * insert EntryDocument("urn:uuid:50d6aefa-e2d2-439a-820f-cb495c72ae6a", Patient-Northwich)
 * insert EntryDocument("urn:uuid:dac39d4d-1955-4ad5-96c1-e033b7801687", DiagnosticReport-Pharmacogenomics-Report)
-* insert EntryDocument("urn:uuid:ed3eaf0e-7075-4902-bb52-c2967317264b", Genotype-Pharmacogenomics-CYP2C19)
-* insert EntryDocument("urn:uuid:d5636dc9-38ab-4700-9512-21fb7f024dff", Haplotype-Pharmacogenomics-CYP2C19-2)
-* insert EntryDocument("urn:uuid:c645241f-8361-465c-83ab-f270a23fcfa1", TherapeuticImplication-Pharmacogenomics-Mavacamten)
-* insert EntryDocument("urn:uuid:2c43b15a-0b31-4c49-b087-88292f80abd2", GenomicStudyPanel-Pharmacogenomics)
 * insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)
 * insert EntryDocument("urn:uuid:8a595a14-5fa3-4051-832c-e5bf4d80373b", DocumentReference-Pharmacogenomics-Report)
 * insert EntryDocument("urn:uuid:f9d86d34-fb27-48a0-aea6-02cca332a64e", Binary-Sample)

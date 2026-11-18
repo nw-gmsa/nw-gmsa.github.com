@@ -98,7 +98,7 @@ Usage: #example
 // Reqyester PractitionerRole
 * insert EntryDocument("urn:uuid:4446ab81-35ef-49cb-b2fe-1d6f1a0dcc02", 4446ab81-35ef-49cb-b2fe-1d6f1a0dcc02)
 * insert EntryDocument("urn:uuid:b930b4c4-327a-4728-8bb9-f90061914cc5", Specimen-ctDNA)
-* insert EntryDocument("urn:uuid:0a6ad8ec-b069-4a65-8c65-c7569d8413e3", DiagnosticReport-ctDNA)
+* insert EntryDocument("urn:uuid:0a6ad8ec-b069-4a65-8c65-c7569d8413e3", DiagnosticReport-ctDNA-Document)
 * insert EntryDocument("urn:uuid:00c22e97-a226-4845-b17a-e24ec1f4f77a", variant-egfr)
 * insert EntryDocument("urn:uuid:e1e2150d-ba34-4247-83a2-5bc9ab93ba22", genomic-study-analysis-egfr-dpcr)
 //* insert EntryDocument("urn:uuid:f80f704c-b2b2-4912-ac6f-e62aaadd4ff0", GenomicStudy-ctDNA)

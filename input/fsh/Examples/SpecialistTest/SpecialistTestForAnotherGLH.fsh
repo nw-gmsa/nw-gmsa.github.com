@@ -398,8 +398,6 @@ Usage: #example
 // Hand-written narrative: a generated one links presentedForm.url, and urn: is not a valid hyperlink scheme
 * text.status = #generated
 * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R67.1 Monogenic hearing loss (North West GLH) for Oliver CAMDEN. Homozygous pathogenic GJB2 variant NM_004004.6:c.35del, consistent with autosomal recessive non-syndromic hearing loss (DFNB1).</p></div>"
-* result[+].reference = "urn:uuid:a542b8fd-caaa-4cb4-be09-5a26a8f7af9c"
-* result[+].reference = "urn:uuid:3abfc150-cd90-4164-b2e7-ed45d9e7d986"
 * insert ReportPDF(urn:uuid:292b12e2-63bd-4868-9789-5fea45e101f6, R67.1 sub-order report - Oliver CAMDEN, 2026-10-19)
 
 Instance: MessageHeader-SPT-SubOrderReport
@@ -426,14 +424,12 @@ Usage: #example
 Instance: GenomicsSubOrderReportMessage-SPT
 InstanceOf: BundleMessage
 Title: "Bundle 'Message' - Sub-order Laboratory Report R67.1 (R01), specialist test"
-Description: "Fictitious example: the LAB-36 report from the North West GLH to North Thames GLH, `basedOn` the sub-order, in the [Specialist Test for Another GLH](ExampleScenario-SpecialistTestForAnotherGLH.html) scenario"
+Description: "Fictitious example: the LAB-36 report from the North West GLH to North Thames GLH, `basedOn` the sub-order, with the report as a PDF (`DocumentReference` and `Binary`) and no discrete results, in the [Specialist Test for Another GLH](ExampleScenario-SpecialistTestForAnotherGLH.html) scenario"
 Usage: #example
 * insert MessageBundle("urn:uuid:0c55edb0-0af3-4d88-8f09-f5b5ba429584", "2026-10-19T14:00:00+00:00")
 * insert EntryDocument("urn:uuid:dee3deb9-5440-4799-97ae-4bc4a3c8c777", MessageHeader-SPT-SubOrderReport)
 * insert EntryDocument("urn:uuid:74fe4bf0-26d8-4b8c-90eb-b6ef80d887e0", Patient-Camden)
 * insert EntryDocument("urn:uuid:25749dd1-3f8f-472a-a8e3-1ebcf0cd8a23", DiagnosticReport-SPT-SubOrder)
-* insert EntryDocument("urn:uuid:a542b8fd-caaa-4cb4-be09-5a26a8f7af9c", Variant-SPT-GJB2)
-* insert EntryDocument("urn:uuid:3abfc150-cd90-4164-b2e7-ed45d9e7d986", DiagnosticImplication-SPT-GJB2)
 * insert EntryDocument("urn:uuid:0ba15655-0de9-46c8-98a6-aaa78279b82b", DocumentReference-SPT-SubOrderReport)
 * insert EntryDocument("urn:uuid:292b12e2-63bd-4868-9789-5fea45e101f6", Binary-Sample)
 * insert EntryDocument("urn:uuid:99bb76ca-edcb-44f4-95ff-b9b1c7b95780", ServiceRequest-SPT-SubOrder)
@@ -445,7 +441,7 @@ Usage: #example
 Instance: DiagnosticReport-SPT-Report
 InstanceOf: LaboratoryReport
 Title: "Diagnostic Report - R67.1 Monogenic hearing loss (North Thames GLH), Oliver Camden"
-Description: "Fictitious example: North Thames GLH's LAB-3 report to GOSH, based on the Laboratory Order and including the North West GLH's result"
+Description: "Fictitious example: North Thames GLH's LAB-3 report to GOSH, based on the Laboratory Order, with the report as a PDF and no discrete results"
 Usage: #example
 
 * identifier[ReportIdentifier]
@@ -480,8 +476,6 @@ Usage: #example
 // Hand-written narrative: a generated one links presentedForm.url, and urn: is not a valid hyperlink scheme
 * text.status = #generated
 * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R67.1 Monogenic hearing loss for Oliver CAMDEN, performed by the North West GLH: homozygous pathogenic GJB2 variant, consistent with autosomal recessive non-syndromic hearing loss (DFNB1).</p></div>"
-* result[+].reference = "urn:uuid:a542b8fd-caaa-4cb4-be09-5a26a8f7af9c"
-* result[+].reference = "urn:uuid:3abfc150-cd90-4164-b2e7-ed45d9e7d986"
 * insert ReportPDF(urn:uuid:e1a556fb-ac0b-4138-b4f5-9adce3f0004e, R67.1 Laboratory Report - Oliver CAMDEN, 2026-10-21)
 
 Instance: MessageHeader-SPT-Report
@@ -508,15 +502,13 @@ Usage: #example
 Instance: GenomicsReportMessage-SPT
 InstanceOf: BundleMessage
 Title: "Bundle 'Message' - Laboratory Report R67.1 (R01), specialist test"
-Description: "Fictitious example: the LAB-3 Laboratory Report from North Thames GLH to GOSH, `basedOn` the Laboratory Order, in the [Specialist Test for Another GLH](ExampleScenario-SpecialistTestForAnotherGLH.html) scenario. Internal to the North Thames region and shown for completeness."
+Description: "Fictitious example: the LAB-3 Laboratory Report from North Thames GLH to GOSH, `basedOn` the Laboratory Order, with the report as a PDF (`DocumentReference` and `Binary`) and no discrete results, in the [Specialist Test for Another GLH](ExampleScenario-SpecialistTestForAnotherGLH.html) scenario. Internal to the North Thames region and shown for completeness."
 Usage: #example
 * insert MessageBundle("urn:uuid:939cf2ca-7558-446d-9577-ac585d5f0f9f", "2026-10-21T10:00:00+00:00")
 * insert EntryDocument("urn:uuid:4ae66ef9-04bb-49c1-9d8c-6112f8e12115", MessageHeader-SPT-Report)
 * insert EntryDocument("urn:uuid:74fe4bf0-26d8-4b8c-90eb-b6ef80d887e0", Patient-Camden)
 * insert EntryDocument("urn:uuid:bf3c6351-d196-4a3c-b989-1b50aab6fe85", DiagnosticReport-SPT-Report)
 * insert EntryDocument("urn:uuid:0a869ae7-44ee-4657-8494-bfe7297971ba", Specimen-SPT-Blood)
-* insert EntryDocument("urn:uuid:a542b8fd-caaa-4cb4-be09-5a26a8f7af9c", Variant-SPT-GJB2)
-* insert EntryDocument("urn:uuid:3abfc150-cd90-4164-b2e7-ed45d9e7d986", DiagnosticImplication-SPT-GJB2)
 * insert EntryDocument("urn:uuid:63f0bf07-b24c-4881-b56e-ab04bc535888", DocumentReference-SPT-Report)
 * insert EntryDocument("urn:uuid:e1a556fb-ac0b-4138-b4f5-9adce3f0004e", Binary-Sample)
 

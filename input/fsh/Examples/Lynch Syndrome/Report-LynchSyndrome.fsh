@@ -6,7 +6,7 @@
 Instance: DiagnosticReport-LynchSyndrome-Report
 InstanceOf: LaboratoryReport
 Title: "Diagnostic Report - R210.2 Inherited MMR deficiency (Lynch syndrome), Ned Liverpool"
-Description: "Fictitious example: the North West GLH's LAB-3 report, based on the Laboratory Order (identified by its Order Placer Number), with the variant, diagnostic implication and genomic study as results"
+Description: "Fictitious example: the North West GLH's LAB-3 report, based on the Laboratory Order (identified by its Order Placer Number), with the report as a PDF and no discrete results"
 Usage: #example
 
 // Hand-written narrative: a generated one links presentedForm.url, and urn: is not a valid hyperlink scheme
@@ -53,9 +53,6 @@ Usage: #example
   * display = "FICTITIOUS, Ralph"
 * conclusion = "Heterozygous pathogenic germline variant detected, consistent with inherited MMR deficiency (Lynch syndrome)."
 * conclusionCode[+] = $GTOC#321 "VARIANT DETECTED"
-* result[+].reference = "urn:uuid:6beb613f-d303-42af-b025-86e8e0872061"
-* result[+].reference = "urn:uuid:0878c5de-c22f-4e31-841a-a82ad31c93aa"
-* result[+].reference = "urn:uuid:8385c2fd-313d-4fd5-b98e-d5ea4bae6f99"
 * insert ReportPDF(urn:uuid:1d9c307b-47f0-4e59-93a8-9d849086cdad, R210.2 Laboratory Report - Ned LIVERPOOL, 2023-09-12)
 
 Instance: DocumentReference-LynchSyndrome-Report
@@ -95,15 +92,12 @@ Usage: #example
 Instance: GenomicsReportMessage-LynchSyndrome
 InstanceOf: BundleMessage
 Title: "Bundle 'Message' - Laboratory Report R210.2 (R01), Inherited MMR deficiency (Lynch syndrome)"
-Description: "Fictitious example: the LAB-3 Laboratory Report in the [Lynch Syndrome](ExampleScenario-LynchSyndrome.html) scenario, with the variant, diagnostic implication and genomic study results and the report as a PDF. The FHIR Document for the central repository includes all of these results."
+Description: "Fictitious example: the LAB-3 Laboratory Report in the [Lynch Syndrome](ExampleScenario-LynchSyndrome.html) scenario, with the report as a PDF (`DocumentReference` and `Binary`) and no discrete results. The discrete results are looked up in the FHIR Repository and added when the FHIR Document is created."
 Usage: #example
 * insert MessageBundle("urn:uuid:7eb71d05-7be1-437f-8560-0a2246dc987e", "2023-09-12T10:00:00+00:00")
 * insert EntryDocument("urn:uuid:5e9d9b1a-f90a-4b17-abe8-a23be56201de", MessageHeader-R01-LynchSyndrome)
 * insert EntryDocument("urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd", Patient-Liverpool)
 * insert EntryDocument("urn:uuid:72f52594-d87e-4631-a208-838e720611a4", DiagnosticReport-LynchSyndrome-Report)
-* insert EntryDocument("urn:uuid:6beb613f-d303-42af-b025-86e8e0872061", 6beb613f-d303-42af-b025-86e8e0872061)
-* insert EntryDocument("urn:uuid:0878c5de-c22f-4e31-841a-a82ad31c93aa", 0878c5de-c22f-4e31-841a-a82ad31c93aa)
-* insert EntryDocument("urn:uuid:8385c2fd-313d-4fd5-b98e-d5ea4bae6f99", 8385c2fd-313d-4fd5-b98e-d5ea4bae6f99)
 * insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)
 * insert EntryDocument("urn:uuid:2c63c3b1-caae-4b8d-835e-f75ccc46ad12", DocumentReference-LynchSyndrome-Report)
 * insert EntryDocument("urn:uuid:1d9c307b-47f0-4e59-93a8-9d849086cdad", Binary-Sample)

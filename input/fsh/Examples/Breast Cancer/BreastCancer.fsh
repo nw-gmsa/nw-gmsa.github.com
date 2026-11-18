@@ -202,12 +202,7 @@ Usage: #example
 
 // Laboratory Report (LAB-3)
 
-Instance: DiagnosticReport-BreastCancer-Report
-InstanceOf: LaboratoryReport
-Title: "Diagnostic Report - R208.1 Inherited breast cancer and ovarian cancer, Margaery Congleton"
-Description: "Fictitious example: the North West GLH's LAB-3 report, based on the Laboratory Order (identified by its Order Placer Number), with the BRCA1 variant and its diagnostic implication as results"
-Usage: #example
-
+RuleSet: DiagnosticReportBreastCancerReportContent
 // Hand-written narrative: a generated one links presentedForm.url, and urn: is not a valid hyperlink scheme
 * text.status = #generated
 * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>R208.1 Inherited breast cancer and ovarian cancer, for Margaery CONGLETON. Heterozygous pathogenic BRCA1 variant NM_007294.3:c.68_69del, consistent with hereditary breast and ovarian cancer.</p></div>"
@@ -243,9 +238,25 @@ Usage: #example
   * display = "FICTITIOUS, Ralph"
 * conclusion = "Heterozygous pathogenic BRCA1 variant detected, consistent with hereditary breast and ovarian cancer. Predictive testing is available for relatives."
 * conclusionCode[+] = $GTOC#321 "VARIANT DETECTED"
+* insert ReportPDF(urn:uuid:fc8c5611-f3bc-4d54-9645-c054fecede15, R208.1 Laboratory Report - Margaery CONGLETON, 2026-10-26)
+
+Instance: DiagnosticReport-BreastCancer-Report
+InstanceOf: LaboratoryReport
+Title: "Diagnostic Report - R208.1 Inherited breast cancer and ovarian cancer, Margaery Congleton"
+Description: "Fictitious example: the North West GLH's LAB-3 report, based on the Laboratory Order (identified by its Order Placer Number), with the report as a PDF and no discrete results"
+Usage: #example
+
+* insert DiagnosticReportBreastCancerReportContent
+
+Instance: DiagnosticReport-BreastCancer-Report-Document
+InstanceOf: LaboratoryReport
+Title: "Diagnostic Report - R208.1 Inherited breast cancer and ovarian cancer, Margaery Congleton (FHIR Document)"
+Description: "Fictitious example: the Laboratory Report as included in the FHIR Document, with the discrete results looked up in the FHIR Repository added as `result`"
+Usage: #example
+
+* insert DiagnosticReportBreastCancerReportContent
 * result[+].reference = "urn:uuid:48d4cbac-aca4-4f75-921c-013da5174824"
 * result[+].reference = "urn:uuid:3802e85c-cb2e-415c-9e25-1b694d98c663"
-* insert ReportPDF(urn:uuid:fc8c5611-f3bc-4d54-9645-c054fecede15, R208.1 Laboratory Report - Margaery CONGLETON, 2026-10-26)
 
 Instance: Variant-BreastCancer-BRCA1
 InstanceOf: Variant
@@ -317,14 +328,12 @@ Usage: #example
 Instance: GenomicsReportMessage-BreastCancer
 InstanceOf: BundleMessage
 Title: "Bundle 'Message' - Laboratory Report R208.1 (R01), Inherited breast cancer and ovarian cancer"
-Description: "Fictitious example: the LAB-3 Laboratory Report in the [Inherited Breast Cancer (BRCA)](ExampleScenario-BreastCancer.html) scenario, with the variant and diagnostic implication results and the report as a PDF. The FHIR Document for the central repository includes all of these results."
+Description: "Fictitious example: the LAB-3 Laboratory Report in the [Inherited Breast Cancer (BRCA)](ExampleScenario-BreastCancer.html) scenario, with the report as a PDF (`DocumentReference` and `Binary`) and no discrete results. The discrete results are looked up in the FHIR Repository and added when the FHIR Document is created."
 Usage: #example
 * insert MessageBundle("urn:uuid:004e4011-782b-499e-ae78-afb8294e26f1", "2026-10-26T12:00:00+00:00")
 * insert EntryDocument("urn:uuid:167ffe0f-1704-4d40-88e9-7317ac0aa4e4", MessageHeader-R01-BreastCancer)
 * insert EntryDocument("urn:uuid:cc329921-f9c6-45b4-8bbe-782834e293b3", Patient-Congleton)
 * insert EntryDocument("urn:uuid:8c0097b8-cc07-4f84-b8f3-63ed163207ce", DiagnosticReport-BreastCancer-Report)
-* insert EntryDocument("urn:uuid:48d4cbac-aca4-4f75-921c-013da5174824", Variant-BreastCancer-BRCA1)
-* insert EntryDocument("urn:uuid:3802e85c-cb2e-415c-9e25-1b694d98c663", DiagnosticImplication-BreastCancer-BRCA1)
 * insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)
 * insert EntryDocument("urn:uuid:70ce6e2f-6588-4469-aeaf-4a56c394f47e", DocumentReference-BreastCancer-Report)
 * insert EntryDocument("urn:uuid:fc8c5611-f3bc-4d54-9645-c054fecede15", Binary-Sample)
@@ -413,7 +422,7 @@ Usage: #example
 Instance: FHIRDocumentGeneticReportBundle-BreastCancer
 InstanceOf: BundleDocument
 Title: "Bundle `Document` - Genomics Report Inherited breast cancer and ovarian cancer (BRCA)"
-Description: "Fictitious example: FHIR Document Genomics Report for Margaery Congleton in the [Inherited Breast Cancer (BRCA)](ExampleScenario-BreastCancer.html) scenario. It includes every Observation from the R01 Laboratory Report."
+Description: "Fictitious example: FHIR Document Genomics Report for Margaery Congleton in the [Inherited Breast Cancer (BRCA)](ExampleScenario-BreastCancer.html) scenario. Its discrete results are looked up in the FHIR Repository and added to the Laboratory Report."
 Usage: #example
 * insert DocumentBundle("bf096289-d7e1-4550-ab65-96f82c8bb4f6", "2026-10-26T12:00:00+00:00")
 * insert EntryDocument("urn:uuid:8c2bb51e-a410-442b-90dc-4fe99e886fdc", Composition-GenomicsReport-BreastCancer)
@@ -423,7 +432,7 @@ Usage: #example
 * insert EntryDocument("urn:uuid:fbcaee67-e412-4d89-ae54-5f38cba8fe30", Specimen-BreastCancer)
 * insert EntryDocument("urn:uuid:52d3d913-91ce-4bc0-94b3-150396bc42f0", DocumentReference-BreastCancer-PathologyReport)
 * insert EntryDocument("urn:uuid:db8d3ed1-449c-4cbd-b740-1d6469fea782", Binary-Sample)
-* insert EntryDocument("urn:uuid:8c0097b8-cc07-4f84-b8f3-63ed163207ce", DiagnosticReport-BreastCancer-Report)
+* insert EntryDocument("urn:uuid:8c0097b8-cc07-4f84-b8f3-63ed163207ce", DiagnosticReport-BreastCancer-Report-Document)
 * insert EntryDocument("urn:uuid:fc8c5611-f3bc-4d54-9645-c054fecede15", Binary-Sample)
 * insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)
 * insert EntryDocument("urn:uuid:48d4cbac-aca4-4f75-921c-013da5174824", Variant-BreastCancer-BRCA1)

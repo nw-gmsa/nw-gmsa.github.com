@@ -30,10 +30,10 @@ Usage: #definition
 * insert Instance_Empty(Request2, Bundle, "Sub-order - Proband", [[ LAB-35 sub-order for one participant (`intent` = `filler-order`). The NGIS referral_id is the Order Group Number (`requisition`), and `basedOn` identifies the original order by it; the original order is not included. Illustrates the CIP-API `REFERRAL_TEST` with its `Patient` and `Specimen` (`GERMLINE_SAMPLE`) ]])
 * insert InstanceVersion(2, "HL7 FHIR Message O21", dWGS-Trio-r26000000203-p26000000104, [[ Trio sub-order for the proband ]])
 
-* insert Instance_Empty(Request3, Bundle, "Sub-order - Family Member", [[ LAB-35 sub-order for a family member ]])
+* insert Instance_Empty(Request3, Bundle, "Sub-order - Family Member", [[ LAB-35 sub-order for a family member. This is a version of the NHS England dWGS digital manifest (CSV) specification converted to HL7 FHIR - see [dWGS Sub-Order Manifest](Questionnaire-dWGSSubOrder.html) for the manifest fields and their FHIR mappings ]])
 * insert InstanceVersion(3, "HL7 FHIR Message O21", dWGS-Trio-r26000000203-p26000000105, [[ Trio sub-order for the first family member ]])
 
-* insert Instance_Empty(Request4, Bundle, "Sub-order - Family Member", [[ LAB-35 sub-order for a family member ]])
+* insert Instance_Empty(Request4, Bundle, "Sub-order - Family Member", [[ LAB-35 sub-order for a family member. This is a version of the NHS England dWGS digital manifest (CSV) specification converted to HL7 FHIR - see [dWGS Sub-Order Manifest](Questionnaire-dWGSSubOrder.html) for the manifest fields and their FHIR mappings ]])
 * insert InstanceVersion(4, "HL7 FHIR Message O21", dWGS-Trio-r26000000203-p26000000106, [[ Trio sub-order for the second family member ]])
 
 * insert Instance_Empty(Request5, Binary, "Work Order", [[ LAB-4 work order to the sequencer. Internal to the SGL ]])
@@ -41,7 +41,7 @@ Usage: #definition
 * insert Instance_Empty(Request7, Binary, "Sub-order results", [[ LAB-36 results for each participant, made available to the RGL in the Interpretation Portal and the CIP-API ]])
 * insert Instance_Empty(Query1, Binary, "Retrieve participant results", [[ Query the CIP-API for a participant's bioinformatics results by the NGIS referral_id and participant id. Not FHIR ]])
 * insert Instance_Empty(Reply1, Binary, "Participant results", [[ The bioinformatics pipeline results (variants) for the participant. Not FHIR ]])
-* insert Instance_Empty(Request8, Bundle, "Participant results for the Central Registry", [[ Each participant's results assembled as a FHIR Document: the participant's `Patient`, `Specimen` and sub-order, and a [Test Results](StructureDefinition-TestResults.html) `DiagnosticReport` with the variants as [Variant](StructureDefinition-Variant.html) `Observation`s identifying the bioinformatics pipeline in `Observation.device`. The document includes every `Observation` from the participant's R01 test results and reports. See [ctDNA](ExampleScenario-ctDNA.html) for how a FHIR Document for a central registry is built ]])
+* insert Instance_Empty(Request8, Bundle, "Participant results for the Central Registry", [[ Each participant's results assembled as a FHIR Document: the participant's `Patient`, `Specimen` and sub-order, and a [Test Results](StructureDefinition-TestResults.html) `DiagnosticReport` with the variants as [Variant](StructureDefinition-Variant.html) `Observation`s identifying the bioinformatics pipeline in `Observation.device`. The discrete results are looked up in the FHIR Repository. See [ctDNA](ExampleScenario-ctDNA.html) for how a FHIR Document for a central registry is built ]])
 * insert Instance_Empty(Request9, Bundle, "Laboratory Report", [[ LAB-3 [Laboratory Report](StructureDefinition-LaboratoryReport.html) for the referral. Logically a report on the whole family with the family as its subject. It identifies the original order by the NGIS referral_id; the original order is not included. See the [WGS FHIR Document](Bundle-FHIRDocumentGeneticReportBundle-WGS.html) for an illustration of a WGS report ]])
 * insert InstanceVersion(9, "HL7 FHIR Message R01", GenomicsReportMessage-WGS-Referral, [[ The RGL's report for the Trio family r26000000203 ]])
 
@@ -55,8 +55,8 @@ Usage: #definition
   * title = "2. Sub-orders (LAB-35)"
   * description = "The RGL sub-contracts the sequencing to the SGL with one sub-order per participant, linked by the NGIS referral_id. The SGL is a laboratory accountable for its own sequencing results, so these are sub-orders and not work orders. Covered by this guide: see the sub-order examples."
   * insert ProcessCreateEvent(3, "Send sub-order - Proband", rgl, sgl, Request2, , [[ Sent with the sample and the digital manifest ]])
-  * insert ProcessCreateEvent(4, "Send sub-order - Family Member", rgl, sgl, Request3, , [[ ]])
-  * insert ProcessCreateEvent(5, "Send sub-order - Family Member", rgl, sgl, Request4, , [[ ]])
+  * insert ProcessCreateEvent(4, "Send sub-order - Family Member", rgl, sgl, Request3, , [[ This is a version of the NHS England dWGS digital manifest (CSV) specification converted to HL7 FHIR - see [dWGS Sub-Order Manifest](Questionnaire-dWGSSubOrder.html) for the manifest fields and their FHIR mappings ]])
+  * insert ProcessCreateEvent(5, "Send sub-order - Family Member", rgl, sgl, Request4, , [[ This is a version of the NHS England dWGS digital manifest (CSV) specification converted to HL7 FHIR - see [dWGS Sub-Order Manifest](Questionnaire-dWGSSubOrder.html) for the manifest fields and their FHIR mappings ]])
 
 * process[+]
   * title = "3. Sequencing (LAB-4 and LAB-5)"

@@ -68,11 +68,12 @@ RuleSet: SupportingInfoTestResults
 Instance: DiagnosticReport-ctDNA-iGene-NarrativeReport
 InstanceOf: LaboratoryReport
 Title: "Diagnostic Report - ctDNA narrative Laboratory Report (iGene, LAB-3)"
-Description: "Fictitious example: iGene's clinically validated narrative report for ctDNA order T26-59XG, as sent in LTW LAB-3. It has no results of its own; the test results it is based on are linked by identifier using the supportingInfo extension."
+Description: "Fictitious example: iGene's clinically validated narrative report for ctDNA order T26-59XG, as sent in LTW LAB-3, with the report as a PDF. It has no results of its own; the test results it is based on are linked by identifier using the supportingInfo extension."
 Usage: #example
 
 * insert iGeneNarrativeReportContent
 * insert SupportingInfoTestResults
+* insert ReportPDF(urn:uuid:158c1e5d-591c-4bcc-97e2-c958aadd44ac, ctDNA Laboratory Report - Theon SHEFFIELD, 2026-07-08)
 
 
 Instance: DiagnosticReport-ctDNA-iGene-MergedReport
@@ -118,7 +119,7 @@ Usage: #example
 Instance: ReportMessage-ctDNA-iGene-NarrativeReport
 InstanceOf: BundleMessage
 Title: "Bundle 'Message' - ctDNA iGene narrative Laboratory Report R01 (LAB-3)"
-Description: "Fictitious example: iGene sends its narrative Laboratory Report for ctDNA order T26-59XG to the Order Placer (LTW LAB-3). The RIE also sends a copy to the FHIR Repository using $process-message."
+Description: "Fictitious example: iGene sends its narrative Laboratory Report for ctDNA order T26-59XG to the Order Placer (LTW LAB-3), with the report as a PDF (`DocumentReference` and `Binary`). The RIE also sends a copy to the FHIR Repository using $process-message."
 Usage: #example
 * insert MessageBundle("urn:uuid:9ef2a202-3c7e-49ab-81ce-49f7d0203c72", "2026-07-08T09:31:00+00:00")
 * insert EntryDocument("urn:uuid:3409dfdb-6777-41ec-b2ff-0dd7b7e47f6f", MessageHeaderR01ctDNAiGeneNarrativeReport)
@@ -126,6 +127,8 @@ Usage: #example
 * insert EntryDocument("urn:uuid:67159039-af7c-4243-84dc-22fd801a34d9", DiagnosticReport-ctDNA-iGene-NarrativeReport)
 * insert EntryDocument("urn:uuid:4446ab81-35ef-49cb-b2fe-1d6f1a0dcc02", 4446ab81-35ef-49cb-b2fe-1d6f1a0dcc02)
 * insert EntryDocument("urn:uuid:b930b4c4-327a-4728-8bb9-f90061914cc5", Specimen-ctDNA)
+* insert EntryDocument("urn:uuid:bdf9908e-ffac-4f39-a546-5aa527700b73", DocumentReference-ctDNA-Report)
+* insert EntryDocument("urn:uuid:158c1e5d-591c-4bcc-97e2-c958aadd44ac", Binary-Sample)
 
 
 Instance: Composition-GenomicsReport-ctDNA-OmicsDSS

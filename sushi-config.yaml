@@ -422,6 +422,7 @@ groups:
       - ServiceRequest/ServiceRequest-ctDNA
       - Specimen/Specimen-ctDNA
       - DiagnosticReport/DiagnosticReport-ctDNA
+      - DiagnosticReport/DiagnosticReport-ctDNA-Document
       - DocumentReference/DocumentReference-ctDNA
       - Observation/variant-egfr
       - Procedure/genomic-study-analysis-egfr-dpcr
@@ -581,6 +582,7 @@ groups:
       - Bundle/GenomicsSubOrderReportMessage-Pharmacogenomics
       - MessageHeader/MessageHeader-R01-Pharmacogenomics-SubOrderReport
       - DiagnosticReport/DiagnosticReport-Pharmacogenomics-SubOrderReport
+      - DocumentReference/DocumentReference-Pharmacogenomics-SubOrderReport
   -ex-example-chimerism:
     name: "Example: Chimerism Monitoring"
     description: "Chimerism monitoring after a stem cell transplant (GT1368) for Ned Liverpool: the order (O21) from The Clatterbridge Cancer Centre and the report (R01) from the Histocompatibility and Immunogenetics laboratory, converted from HL7 v2 - see the [Chimerism Monitoring After a Stem Cell Transplant](ExampleScenario-ChimerismMonitoring.html) scenario"
@@ -604,7 +606,7 @@ groups:
       - DocumentReference/DocumentReference-Chimerism-Report
   -ex-example-bcrabl:
     name: "Example: Measurable Residual Disease (MRD) Monitoring - BCR-ABL1"
-    description: "MRD monitoring with BCR-ABL1 (M84.2) for Rob Leeds: the order (O21) from Leeds Teaching Hospitals, the work order (LAB-4) from the LIMS to the PCR analyser and the test results (R32, LAB-5) converted from the analyser's HL7 v2 ORU^R32, the report (R01) back to Leeds Teaching Hospitals, plus standalone BCR-ABL1 Laboratory Analyte Result examples - see the [Measurable Residual Disease (MRD) Monitoring - BCR-ABL1](ExampleScenario-MRDMonitoring.html) scenario"
+    description: "MRD monitoring with BCR-ABL1 (M84.2) for Rob Leeds: the order (O21) from Leeds Teaching Hospitals, the work order (LAB-4) from the LIMS to the PCR analyser and the test results (R32, LAB-5) converted from the analyser's HL7 v2 ORU^R32, the report (R01) back to Leeds Teaching Hospitals and the R01 enhanced with the discrete results from the FHIR Repository, plus standalone BCR-ABL1 Laboratory Analyte Result examples - see the [Measurable Residual Disease (MRD) Monitoring - BCR-ABL1](ExampleScenario-MRDMonitoring.html) scenario"
     resources:
       - Bundle/GenomicsOrderMessage-BCRABL
       - MessageHeader/MessageHeader-O21-BCRABL
@@ -616,6 +618,9 @@ groups:
       - DiagnosticReport/DiagnosticReport-BCRABL-Report
       - Observation/Observation-BCRABL-Report
       - DocumentReference/DocumentReference-BCRABL-Report
+      - Bundle/GenomicsReportMessage-BCRABL-Enhanced
+      - MessageHeader/MessageHeader-R01-BCRABL-Enhanced
+      - DiagnosticReport/DiagnosticReport-BCRABL-Report-Enhanced
       - ServiceRequest/ServiceRequest-BCRABL-Cepheid-WorkOrder
       - Specimen/Specimen-BCRABL
       - Bundle/TestResultsMessage-BCRABL-Cepheid
@@ -679,6 +684,7 @@ groups:
       - ServiceRequest/ServiceRequest-BreastCancer-Referral
       - Specimen/Specimen-BreastCancer
       - DiagnosticReport/DiagnosticReport-BreastCancer-Report
+      - DiagnosticReport/DiagnosticReport-BreastCancer-Report-Document
       - Observation/Variant-BreastCancer-BRCA1
       - Observation/DiagnosticImplication-BreastCancer-BRCA1
       - DocumentReference/DocumentReference-BreastCancer-PathologyReport
