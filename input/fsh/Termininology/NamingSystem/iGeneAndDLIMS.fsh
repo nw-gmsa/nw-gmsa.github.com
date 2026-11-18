@@ -29,6 +29,15 @@ Usage: #definition
 * description = "iGene referral number (e.g. `R26-15AY`), assigned by NW GLH (699X0). Used as the Placer Group Number (`ServiceRequest.requisition`)."
 
 
+Instance: iGene-PatientIdentifier
+InstanceOf: NamingSystem
+Title: "iGene Patient Identifier"
+Description: "iGene patient number (e.g. `336292`), assigned by NW GLH (699X0). Used as the Patient Identifier (`Patient.identifier`, type `PI`), and to identify the patient in `subject` identifier references when the Patient is not carried in a message, for example the test results (LTW LAB-5) returned to iGene."
+Usage: #definition
+* insert LIMSNamingSystem(IGenePatientIdentifier, https://fhir.nwgenomics.nhs.uk/iGene/PatientIdentifier, PI)
+* description = "iGene patient number (e.g. `336292`), assigned by NW GLH (699X0). Used as the Patient Identifier (`Patient.identifier`, type `PI`), and to identify the patient in `subject` identifier references when the Patient is not carried in a message, for example the test results (LTW LAB-5) returned to iGene."
+
+
 Instance: iGene-SpecimenIdentifier
 InstanceOf: NamingSystem
 Title: "iGene Specimen Identifier"

@@ -37,7 +37,7 @@ Usage: #definition
 * insert Instance_Empty(Request4, Binary, "Search for Work Order", [[ `GET [base]/ServiceRequest?identifier=[system]|[value]&intent=instance-order` ]])
 * insert Instance_Empty(Reply4, Bundle, "Search results", [[ The work order ]])
 
-* insert Instance_Empty(Request5, Bundle, "HL7 FHIR Message R01 - Test Results", [[ LAB-5 test results. The `DiagnosticReport` and `Observation`s are `preliminary` and `basedOn` the work order. `Observation.device` identifies Analytics Processing ]])
+* insert Instance_Empty(Request5, Bundle, "HL7 FHIR Message R01 - Test Results", [[ LAB-5 test results. The `DiagnosticReport` and `Observation`s are `preliminary` and `basedOn` the work order. `Observation.device` identifies Analytics Processing. The Patient and Specimen are not included: `subject` and `specimen` are identifier references (the Lab 1 patient identifier and specimen number) ]])
 * insert InstanceVersion(5, "HL7 FHIR Message R01 - Test Results", TestResultsMessage-ctDNA-OmicsDSS, [[ Test Results with one EGFR variant ]])
 
 * insert Instance_Empty(Request6, Bundle, "HL7 FHIR Message R01 - Laboratory Report", [[ LAB-3 narrative Laboratory Report. The `DiagnosticReport` is `final` and has no `result`. It links to the test results using the `supportingInfo` extension ]])

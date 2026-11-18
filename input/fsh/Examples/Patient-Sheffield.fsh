@@ -17,10 +17,11 @@ Usage: #example
 * identifier[1].assigner.identifier.system = $ods-code
 * identifier[1].assigner.identifier.value = "RHQ"
 
-* identifier[1].type = $v2-0203#PI
-* identifier[1].value = "336292"
-* identifier[1].assigner.identifier.system = $ods-code
-* identifier[1].assigner.identifier.value = "699X0"
+* identifier[2].type = $v2-0203#PI
+* identifier[2].system = "https://fhir.nwgenomics.nhs.uk/iGene/PatientIdentifier"
+* identifier[2].value = "336292"
+* identifier[2].assigner.identifier.system = $ods-code
+* identifier[2].assigner.identifier.value = "699X0"
 
 * name.use = #official
 * name.family = "SHEFFIELD"

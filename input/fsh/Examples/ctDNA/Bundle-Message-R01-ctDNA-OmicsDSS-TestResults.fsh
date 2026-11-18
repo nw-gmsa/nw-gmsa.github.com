@@ -1,5 +1,7 @@
 // OMICS DSS test results (LTW LAB-5) from DLIMS (Automation Manager, Lab 2) to iGene (Order Filler, Lab 1), both run by NW GLH (699X0).
 // Results for the iGene work order ServiceRequest-ctDNA-DLIMS-WorkOrder (T26-59XG), produced by OmicsDSS (Observation.device).
+// Patient and Specimen are not carried in the message: subject and specimen are identifier references using the iGene
+// patient identifier (PI 336292) and specimen number (S26-1K1Q).
 // The RIE routes the message to iGene and sends a copy to the FHIR Repository using $process-message.
 // Fictitious example: identifiers and variant values are illustrative only.
 
@@ -24,8 +26,13 @@ Usage: #example
 * category[geCategory] = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
 * category[labCategory] = http://terminology.hl7.org/CodeSystem/observation-category#laboratory
 
-* subject.reference = "urn:uuid:2160525b-0168-4f40-8ebf-9b053052a62c"
 * subject.display = "Theon SHEFFIELD"
+* subject.identifier
+  * type = $v2-0203#PI
+  * system = "https://fhir.nwgenomics.nhs.uk/iGene/PatientIdentifier"
+  * value = "336292"
+  * assigner.identifier.system = $ods-code
+  * assigner.identifier.value = "699X0"
 
 * effectiveDateTime = "2026-07-06T11:20:00+00:00"
 
@@ -38,7 +45,13 @@ Usage: #example
   * identifier.value = "OmicsDSS"
   * display = "Omics DSS"
 
-* specimen.reference = "urn:uuid:b930b4c4-327a-4728-8bb9-f90061914cc5"
+* specimen
+  * type = "Specimen"
+  * identifier.type = $v2-0203#FILL
+  * identifier.system = "https://fhir.nwgenomics.nhs.uk/iGene/SpecimenIdentifier"
+  * identifier.value = "S26-1K1Q"
+  * identifier.assigner.identifier.system = $ods-code
+  * identifier.assigner.identifier.value = "699X0"
 
 * valueCodeableConcept = $loinc#LA9633-4 "Present"
 
@@ -97,11 +110,13 @@ Usage: #example
 * code.coding[+] = $GTD#M4.14
 * code.coding[+] = $sct#1054161000000101 "Genetic report"
 
-* subject.reference = "urn:uuid:2160525b-0168-4f40-8ebf-9b053052a62c"
 * subject.display = "Theon SHEFFIELD"
 * subject.identifier
-  * system = "https://fhir.nhs.uk/Id/nhs-number"
-  * value = "9737873858"
+  * type = $v2-0203#PI
+  * system = "https://fhir.nwgenomics.nhs.uk/iGene/PatientIdentifier"
+  * value = "336292"
+  * assigner.identifier.system = $ods-code
+  * assigner.identifier.value = "699X0"
 
 * effectiveDateTime = "2026-07-06T11:20:00+00:00"
 
@@ -111,7 +126,13 @@ Usage: #example
   * type = #Organization
   * display = "NW GLH"
 
-* specimen[+].reference = "urn:uuid:b930b4c4-327a-4728-8bb9-f90061914cc5"
+* specimen[+]
+  * type = "Specimen"
+  * identifier.type = $v2-0203#FILL
+  * identifier.system = "https://fhir.nwgenomics.nhs.uk/iGene/SpecimenIdentifier"
+  * identifier.value = "S26-1K1Q"
+  * identifier.assigner.identifier.system = $ods-code
+  * identifier.assigner.identifier.value = "699X0"
 
 * result[+].reference = "urn:uuid:eb1f8ec5-f9ff-4472-97f9-77999460b8c8"
 
@@ -147,12 +168,10 @@ Usage: #example
 Instance: TestResultsMessage-ctDNA-OmicsDSS
 InstanceOf: BundleMessage
 Title: "Bundle 'Message' - ctDNA OmicsDSS Test Results R01 (LAB-5, DLIMS to iGene)"
-Description: "Fictitious example: DLIMS returns OmicsDSS test results to iGene for work order T26-59XG (LTW LAB-5)"
+Description: "Fictitious example: DLIMS returns OmicsDSS test results to iGene for work order T26-59XG (LTW LAB-5). The Patient and Specimen are not included: they are identified by the iGene patient identifier and specimen number"
 Usage: #example
 * insert MessageBundle("urn:uuid:a064cfd3-9c89-4213-861b-3966cb2dc77a", "2026-07-06T11:21:00+00:00")
 * insert EntryDocument("urn:uuid:06843352-994e-4cc0-91f7-4fcf550c37f5", MessageHeaderR01ctDNAOmicsDSS)
-* insert EntryDocument("urn:uuid:2160525b-0168-4f40-8ebf-9b053052a62c", Patient-Sheffield)
 * insert EntryDocument("urn:uuid:38be35e1-1df1-40fb-a055-c012dada778f", DiagnosticReport-ctDNA-OmicsDSS-TestResults)
 * insert EntryDocument("urn:uuid:eb1f8ec5-f9ff-4472-97f9-77999460b8c8", variant-egfr-omicsdss)
-* insert EntryDocument("urn:uuid:b930b4c4-327a-4728-8bb9-f90061914cc5", Specimen-ctDNA)
 * insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)

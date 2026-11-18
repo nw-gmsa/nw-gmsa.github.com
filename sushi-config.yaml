@@ -560,7 +560,7 @@ groups:
       - MessageHeader/MessageHeader-T02-SPT
   -ex-example-pharmacogenomics:
     name: "Example: Pharmacogenomics"
-    description: "Pharmacogenomics (R454.1 CYP2C19 before mavacamten) closed loop referral for Mace Northwich: the order (O21) and report (R01) messages and the FHIR Document report - see the [Pharmacogenomics](ExampleScenario-Pharmacogenomics.html) scenario"
+    description: "Pharmacogenomics (R454.1 CYP2C19 before mavacamten) closed loop referral for Mace Northwich: the order (O21), the sub-order (LAB-35) to the satellite LIMS and its report (LAB-36), the report (R01) messages and the FHIR Document report - see the [Pharmacogenomics](ExampleScenario-Pharmacogenomics.html) scenario"
     resources:
       - Bundle/GenomicsOrderMessage-Pharmacogenomics
       - Bundle/FHIRDocumentGeneticReportBundle-Pharmacogenomics
@@ -574,6 +574,13 @@ groups:
       - DocumentReference/DocumentReference-Pharmacogenomics-Report
       - PractitionerRole/PractitionerRole-Requester-Cardiology-RBQ
       - Patient/Patient-Northwich
+      - Bundle/GenomicsSubOrderMessage-Pharmacogenomics
+      - MessageHeader/MessageHeader-O21-Pharmacogenomics-SubOrder
+      - ServiceRequest/ServiceRequest-Pharmacogenomics-StarLIMS-SubOrder
+      - Device/StarLIMS
+      - Bundle/GenomicsSubOrderReportMessage-Pharmacogenomics
+      - MessageHeader/MessageHeader-R01-Pharmacogenomics-SubOrderReport
+      - DiagnosticReport/DiagnosticReport-Pharmacogenomics-SubOrderReport
   -ex-example-chimerism:
     name: "Example: Chimerism Monitoring"
     description: "Chimerism monitoring after a stem cell transplant (GT1368) for Ned Liverpool: the order (O21) from The Clatterbridge Cancer Centre and the report (R01) from the Histocompatibility and Immunogenetics laboratory, converted from HL7 v2 - see the [Chimerism Monitoring After a Stem Cell Transplant](ExampleScenario-ChimerismMonitoring.html) scenario"
@@ -596,9 +603,19 @@ groups:
       - Specimen/Specimen-Chimerism
       - DocumentReference/DocumentReference-Chimerism-Report
   -ex-example-bcrabl:
-    name: "Example: BCR-ABL1 Monitoring"
-    description: "BCR-ABL1 monitoring (M84.2) for Sansa Manchester: the work order (LAB-4) from the LIMS to the PCR analyser and the test results (R32, LAB-5) converted from the analyser's HL7 v2 ORU^R32, plus standalone BCR-ABL1 Laboratory Analyte Result examples - see the [BCR-ABL1 Monitoring Results](ExampleScenario-BCRABLMonitoring.html) scenario"
+    name: "Example: Measurable Residual Disease (MRD) Monitoring - BCR-ABL1"
+    description: "MRD monitoring with BCR-ABL1 (M84.2) for Rob Leeds: the order (O21) from Leeds Teaching Hospitals, the work order (LAB-4) from the LIMS to the PCR analyser and the test results (R32, LAB-5) converted from the analyser's HL7 v2 ORU^R32, the report (R01) back to Leeds Teaching Hospitals, plus standalone BCR-ABL1 Laboratory Analyte Result examples - see the [Measurable Residual Disease (MRD) Monitoring - BCR-ABL1](ExampleScenario-MRDMonitoring.html) scenario"
     resources:
+      - Bundle/GenomicsOrderMessage-BCRABL
+      - MessageHeader/MessageHeader-O21-BCRABL
+      - ServiceRequest/ServiceRequest-BCRABL
+      - Specimen/Specimen-BCRABL-Order
+      - PractitionerRole/PractitionerRole-Requester-Haematology-RR8
+      - Bundle/GenomicsReportMessage-BCRABL
+      - MessageHeader/MessageHeader-R01-BCRABL
+      - DiagnosticReport/DiagnosticReport-BCRABL-Report
+      - Observation/Observation-BCRABL-Report
+      - DocumentReference/DocumentReference-BCRABL-Report
       - ServiceRequest/ServiceRequest-BCRABL-Cepheid-WorkOrder
       - Specimen/Specimen-BCRABL
       - Bundle/TestResultsMessage-BCRABL-Cepheid

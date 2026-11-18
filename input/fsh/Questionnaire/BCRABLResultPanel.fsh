@@ -47,14 +47,15 @@ Usage:  #definition
   * item[+]
     * type = #string
     * linkId = "Cepheid/AssayCode"
-    * code[+] = https://fhir.nwgenomics.nhs.uk/CodeSystem/Cepheid#BCRABL
+    * code[+] = $loinc#69380-4
+    * code[+] = https://fhir.nwgenomics.nhs.uk/CodeSystem/Cepheid#BCR
     * text = "Analyte Code"
     * required = true
     * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.code"
     * item[+]
       * linkId = "Cepheid/AssayCode-designNote"
       * type = #display
-      * text = "Observation.code carries two codings: the Cepheid analyte code (e.g. BCRABL) and, per Observation-BCRABL-Valid, the specific Cepheid cartridge/assay code (e.g. Xpert-BCR-ABL-Ultra-G2)."
+      * text = "Observation.code carries two codings: LOINC 69380-4 (HL7 v2 OBX-3.1) and the Cepheid analyte code BCR (the OBX-3.4 alternate code)."
       * extension[itemControl].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#help
 
   * item[+]
@@ -160,6 +161,7 @@ Usage:  #definition
       * type = #string
       * linkId = "Cepheid/BCR-ABL"
       * code[+] = https://fhir.nwgenomics.nhs.uk/CodeSystem/Cepheid#"BCR-ABL&"
+      * code[+] = $loinc#42714-6
       * text = "BCR-ABL Analyte Result"
       * definition = "http://hl7.org/fhir/StructureDefinition/Observation#Observation.component.valueString"
 

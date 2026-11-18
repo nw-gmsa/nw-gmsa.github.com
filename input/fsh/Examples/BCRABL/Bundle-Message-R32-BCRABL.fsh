@@ -1,5 +1,5 @@
 // BCR-ABL1 test results (LTW LAB-5) from the Cepheid GeneXpert (Automation Manager) to iGene (Order Filler), both NW GLH (699X0).
-// Converted from the HL7 v2 ORU^R32 https://github.com/nw-gmsa/Testing/blob/main/Input/ASTM/R32/cepheid-1.txt
+// Converted from the HL7 v2 ORU^R32 https://github.com/nw-gmsa/Testing/blob/main/Input/Cepheid/R32/cepheid-1.txt
 // Results for the iGene work order ServiceRequest-BCRABL-Cepheid-WorkOrder (T26-61BC).
 // Fictitious example: identifiers are illustrative only.
 
@@ -26,14 +26,15 @@ Usage: #example
 * status = #preliminary
 * category[Genetics] = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
 
+// OBR-4 M84.2 (England-GenomicTestDirectory), with the Cepheid BCRABL alternate code
 * code.coding[+] = $GTD#M84.2
-* code.coding[+] = https://fhir.nwgenomics.nhs.uk/CodeSystem/Cepheid#BCR
+* code.coding[+] = https://fhir.nwgenomics.nhs.uk/CodeSystem/Cepheid#BCRABL
 
 * subject.reference = "urn:uuid:4a0d3d55-6a1b-4f8e-9c55-3f1f2b6c0a71"
-* subject.display = "Sansa MANCHESTER"
+* subject.display = "Rob LEEDS"
 * subject.identifier
   * system = "https://fhir.nhs.uk/Id/nhs-number"
-  * value = "9737383192"
+  * value = "9737383222"
 
 // TQ1-7 start / TQ1-8 end of the run
 * effectivePeriod.start = "2026-07-13T10:17:08+00:00"
@@ -87,7 +88,7 @@ Description: "Fictitious example: the Cepheid GeneXpert returns BCR-ABL1 test re
 Usage: #example
 * insert MessageBundle("urn:uuid:9c3e7a41-2b6d-4f85-a1c9-7e5d0b8f2c63", "2026-07-13T10:38:00+00:00")
 * insert EntryDocument("urn:uuid:3e8f1a2c-7b4d-4c96-8e5a-1d2f3b4c5d6e", MessageHeader-R32-BCRABL)
-* insert EntryDocument("urn:uuid:4a0d3d55-6a1b-4f8e-9c55-3f1f2b6c0a71", Patient-Manchester)
+* insert EntryDocument("urn:uuid:4a0d3d55-6a1b-4f8e-9c55-3f1f2b6c0a71", Patient-Leeds)
 * insert EntryDocument("urn:uuid:5d1c9b4e-8f2a-4e37-b0a6-2c7e9d3f4a18", DiagnosticReport-BCRABL-Cepheid-TestResults)
 * insert EntryDocument("urn:uuid:679dd305-7ea2-481d-af8b-68957eac427c", BCRABL)
 * insert EntryDocument("urn:uuid:0b6f3c7e-2d4a-4a63-9a8e-6c0f7d1e5b22", Specimen-BCRABL)
