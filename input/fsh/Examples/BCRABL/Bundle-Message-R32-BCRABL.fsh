@@ -3,6 +3,19 @@
 // Results for the iGene work order ServiceRequest-BCRABL-Cepheid-WorkOrder (T26-61BC).
 // Fictitious example: identifiers are illustrative only.
 
+Instance: PractitionerRole-Cepheid
+InstanceOf: PractitionerRole
+Title: "PractitionerRole - Cepheid GeneXpert (NW GLH)"
+Description: "Fictitious example: Cepheid GeneXpert, the system that produced the test results, as the performer of the test results `DiagnosticReport` and `Observation`s. R4 `performer` cannot reference a Device, so the system is a PractitionerRole of the NW GLH (699X0), identified by its laboratory information system identifier"
+Usage: #example
+
+* identifier[+]
+  * system = "https://fhir.nwgenomics.nhs.uk/Id/laboratory-information-system"
+  * value = "Cepheid"
+* organization.identifier.system = $ods-code
+* organization.identifier.value = "699X0"
+* organization.display = "NW GLH"
+
 Instance: DiagnosticReport-BCRABL-Cepheid-TestResults
 InstanceOf: TestResults
 Title: "Diagnostic Report - BCR-ABL1 Cepheid GeneXpert test results"
@@ -40,11 +53,13 @@ Usage: #example
 * effectivePeriod.start = "2026-07-13T10:17:08+00:00"
 * effectivePeriod.end = "2026-07-13T10:37:26+00:00"
 
-* performer[organization]
-  * identifier.system = $ods-code
-  * identifier.value = "699X0"
-  * type = #Organization
-  * display = "NW GLH"
+// The Cepheid GeneXpert, the system that produced the results, as a PractitionerRole of the NW GLH (R4 performer cannot be a Device)
+* performer[+]
+  * type = "PractitionerRole"
+  * reference = "urn:uuid:3c63bbde-8b3b-4867-ab6e-02d281c4f22d"
+  * identifier.system = "https://fhir.nwgenomics.nhs.uk/Id/laboratory-information-system"
+  * identifier.value = "Cepheid"
+  * display = "Cepheid GeneXpert"
 
 * specimen[+].reference = "urn:uuid:0b6f3c7e-2d4a-4a63-9a8e-6c0f7d1e5b22"
 
@@ -93,3 +108,4 @@ Usage: #example
 * insert EntryDocument("urn:uuid:679dd305-7ea2-481d-af8b-68957eac427c", BCRABL)
 * insert EntryDocument("urn:uuid:0b6f3c7e-2d4a-4a63-9a8e-6c0f7d1e5b22", Specimen-BCRABL)
 * insert EntryDocument("urn:uuid:7a2b4c6d-8e0f-4a1b-9c3d-5e7f9a1b3c5d", Device-Cepheid)
+* insert EntryDocument("urn:uuid:3c63bbde-8b3b-4867-ab6e-02d281c4f22d", PractitionerRole-Cepheid)

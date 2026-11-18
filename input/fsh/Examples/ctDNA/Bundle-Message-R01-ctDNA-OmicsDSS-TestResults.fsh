@@ -36,8 +36,13 @@ Usage: #example
 
 * effectiveDateTime = "2026-07-06T11:20:00+00:00"
 
-// The NW GLH scientist responsible for the analysis; the system that produced the result is in device
-* performer[+].reference = "urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c"
+// The system that produced the result: performer (as a PractitionerRole of the NW GLH) and device
+* performer[+]
+  * type = "PractitionerRole"
+  * reference = "urn:uuid:362377e5-ae0f-4b2f-b245-85eb323b6187"
+  * identifier.system = "https://fhir.nwgenomics.nhs.uk/Id/laboratory-information-system"
+  * identifier.value = "OmicsDSS"
+  * display = "Omics DSS"
 
 * device
   * type = "Device"
@@ -84,6 +89,19 @@ Usage: #example
 * component[=].valueQuantity.system = $ucum
 
 
+Instance: PractitionerRole-OmicsDSS
+InstanceOf: PractitionerRole
+Title: "PractitionerRole - Omics DSS (NW GLH)"
+Description: "Fictitious example: Omics DSS, the system that produced the test results, as the performer of the test results `DiagnosticReport` and `Observation`s. R4 `performer` cannot reference a Device, so the system is a PractitionerRole of the NW GLH (699X0), identified by its laboratory information system identifier"
+Usage: #example
+
+* identifier[+]
+  * system = "https://fhir.nwgenomics.nhs.uk/Id/laboratory-information-system"
+  * value = "OmicsDSS"
+* organization.identifier.system = $ods-code
+* organization.identifier.value = "699X0"
+* organization.display = "NW GLH"
+
 Instance: DiagnosticReport-ctDNA-OmicsDSS-TestResults
 InstanceOf: TestResults
 Title: "Diagnostic Report - ctDNA OmicsDSS test results"
@@ -120,11 +138,13 @@ Usage: #example
 
 * effectiveDateTime = "2026-07-06T11:20:00+00:00"
 
-* performer[organization]
-  * identifier.system = $ods-code
-  * identifier.value = "699X0"
-  * type = #Organization
-  * display = "NW GLH"
+// OmicsDSS, the system that produced the results, as a PractitionerRole of the NW GLH (R4 performer cannot be a Device)
+* performer[+]
+  * type = "PractitionerRole"
+  * reference = "urn:uuid:362377e5-ae0f-4b2f-b245-85eb323b6187"
+  * identifier.system = "https://fhir.nwgenomics.nhs.uk/Id/laboratory-information-system"
+  * identifier.value = "OmicsDSS"
+  * display = "Omics DSS"
 
 * specimen[+]
   * type = "Specimen"
@@ -174,4 +194,4 @@ Usage: #example
 * insert EntryDocument("urn:uuid:06843352-994e-4cc0-91f7-4fcf550c37f5", MessageHeaderR01ctDNAOmicsDSS)
 * insert EntryDocument("urn:uuid:38be35e1-1df1-40fb-a055-c012dada778f", DiagnosticReport-ctDNA-OmicsDSS-TestResults)
 * insert EntryDocument("urn:uuid:eb1f8ec5-f9ff-4472-97f9-77999460b8c8", variant-egfr-omicsdss)
-* insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)
+* insert EntryDocument("urn:uuid:362377e5-ae0f-4b2f-b245-85eb323b6187", PractitionerRole-OmicsDSS)

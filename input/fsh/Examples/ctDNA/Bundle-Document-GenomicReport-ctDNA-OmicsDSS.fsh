@@ -130,8 +130,8 @@ Usage: #example
 * insert EntryDocument("urn:uuid:0b817ddc-0f04-41dc-ae66-e2eebb24037a", DiagnosticReport-ctDNA-iGene-MergedReport)
 * insert EntryDocument("urn:uuid:38be35e1-1df1-40fb-a055-c012dada778f", DiagnosticReport-ctDNA-OmicsDSS-TestResults)
 * insert EntryDocument("urn:uuid:eb1f8ec5-f9ff-4472-97f9-77999460b8c8", variant-egfr-omicsdss)
+* insert EntryDocument("urn:uuid:362377e5-ae0f-4b2f-b245-85eb323b6187", PractitionerRole-OmicsDSS)
 * insert EntryDocument("urn:uuid:4446ab81-35ef-49cb-b2fe-1d6f1a0dcc02", 4446ab81-35ef-49cb-b2fe-1d6f1a0dcc02)
-* insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)
 * insert EntryDocument("urn:uuid:b930b4c4-327a-4728-8bb9-f90061914cc5", Specimen-ctDNA)
 * insert EntryDocument("urn:uuid:bdf9908e-ffac-4f39-a546-5aa527700b73", DocumentReference-ctDNA-Report)
 * insert EntryDocument("urn:uuid:158c1e5d-591c-4bcc-97e2-c958aadd44ac", Binary-Sample)
@@ -334,7 +334,7 @@ Usage: #example
 * insert EntryDocument("urn:uuid:0b817ddc-0f04-41dc-ae66-e2eebb24037a", DiagnosticReport-ctDNA-iGene-MergedReport)
 * insert EntryDocument("urn:uuid:38be35e1-1df1-40fb-a055-c012dada778f", DiagnosticReport-ctDNA-OmicsDSS-TestResults)
 * insert EntryDocument("urn:uuid:eb1f8ec5-f9ff-4472-97f9-77999460b8c8", variant-egfr-omicsdss)
-* insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)
+* insert EntryDocument("urn:uuid:362377e5-ae0f-4b2f-b245-85eb323b6187", PractitionerRole-OmicsDSS)
 * insert EntryDocument("urn:uuid:158c1e5d-591c-4bcc-97e2-c958aadd44ac", Binary-Sample)
 
 Instance: DocumentReference-ctDNA-Report

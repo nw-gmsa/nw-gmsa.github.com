@@ -80,6 +80,14 @@ Usage: #example
 // OBX-11 F, but a LAB-5 test result is preliminary until iGene (the Order Filler) validates it
 * status = #preliminary
 
+// The Cepheid GeneXpert, the system that produced the result, as a PractitionerRole of the NW GLH (see also device)
+* performer[+]
+  * type = "PractitionerRole"
+  * reference = "urn:uuid:3c63bbde-8b3b-4867-ab6e-02d281c4f22d"
+  * identifier.system = "https://fhir.nwgenomics.nhs.uk/Id/laboratory-information-system"
+  * identifier.value = "Cepheid"
+  * display = "Cepheid GeneXpert"
+
 * insert BCRABLCepheidResult
 
 

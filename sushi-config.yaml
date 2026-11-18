@@ -636,6 +636,7 @@ groups:
       - Bundle/TestResultsMessage-BCRABL-Cepheid
       - MessageHeader/MessageHeader-R32-BCRABL
       - DiagnosticReport/DiagnosticReport-BCRABL-Cepheid-TestResults
+      - PractitionerRole/PractitionerRole-Cepheid
       - Observation/BCRABL
       - Device/Cepheid
       - Observation/BCRABL-Valid
@@ -789,6 +790,7 @@ groups:
       - Bundle/TestResultsMessage-ctDNA-OmicsDSS
       - MessageHeader/MessageHeaderR01ctDNAOmicsDSS
       - DiagnosticReport/DiagnosticReport-ctDNA-OmicsDSS-TestResults
+      - PractitionerRole/PractitionerRole-OmicsDSS
       - Observation/variant-egfr-omicsdss
   -ex-example-ctdna-ugr:
     name: "Example: FHIR Document (incl. ctDNA NHS England Unified Genomic Record (UGR))"
