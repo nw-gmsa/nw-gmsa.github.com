@@ -1,7 +1,7 @@
 Instance: MessageHeaderO21ctDNA
 InstanceOf: MessageHeader
-Title: "Message Header - Genomic Order ctDNA O21"
-Description: "Message header for the ctDNA laboratory order (O21) from the North West GLH to NE&Y GMSA"
+Title: "Message Header - Genomic Order ctDNA O21 (LAB-2)"
+Description: "Message header for the copy of the ctDNA laboratory order (O21) with its Order Filler Numbers, from the North West GLH to NE&Y GMSA, the Order Placer Manager (LAB-2)"
 Usage: #example
 
 
@@ -26,8 +26,8 @@ Usage: #example
 
 Instance: GenomicsOrderMessage-ctDNA
 InstanceOf: BundleMessage
-Title:       "Bundle 'Message' - Genomics Order ctDNA O21"
-Description:  "Genomics Order ctDNA"
+Title:       "Bundle 'Message' - Genomics Order ctDNA O21 (LAB-2, copy to the Order Placer Manager)"
+Description:  "Fictitious example: Lab 1's copy of the ctDNA Laboratory Order with its Order Filler Number (T26-59XG) and Placer Group Number (R26-15AY), sent to NE&Y GMSA, the Order Placer Manager that monitors orders placed in its region (LAB-2) in the [ctDNA](ExampleScenario-ctDNA.html) scenario. The order as sent by the Order Placer (LAB-1) is [GenomicsOrderMessage-ctDNA-OrderPlacer](Bundle-GenomicsOrderMessage-ctDNA-OrderPlacer.html)"
 Usage: #example
 * insert MessageBundle("urn:uuid:1aa724a8-981e-488e-9e6b-7a73e7c3c07a", "2025-10-14T15:59:16+00:00")
 * insert EntryDocument("urn:uuid:72d8c754-ebd0-4e3c-b6e1-4d99cadb7f50", MessageHeaderO21ctDNA)

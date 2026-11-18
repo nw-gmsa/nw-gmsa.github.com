@@ -38,10 +38,10 @@ Green boxes are steps in the clinical pathway; blue boxes are NHS England servic
 | Scenario step | NHS England service | Relationship |
 |---------------|---------------------|--------------|
 | 1. Laboratory Order (LAB-1) - Send Laboratory Order O21 | GOMS | An alternative to the HL7 v2 and HL7 FHIR Messaging shown |
-| 3. Analytics Processing - Retrieve Work Order | UGD | Related: UGD adds GA4GH DRS references for the uploaded genomic data to the work order (`ServiceRequest`) |
-| 5. Laboratory Report (LAB-3) - Send Laboratory Report R01 | GOMS | An alternative to the HL7 v2 and HL7 FHIR Messaging shown |
-| 5. Laboratory Report (LAB-3) - Send Laboratory Report document to the Central Registry | UGR Phase 1 | The Laboratory Report as a PDF |
-| 6. Send FHIR Document to the Central Registry | UGR Phase 2 | The FHIR Document with the discrete results |
+| 4. Analytics Processing - Retrieve Work Order | UGD | Related: UGD adds GA4GH DRS references for the uploaded genomic data to the work order (`ServiceRequest`) |
+| 6. Laboratory Report (LAB-3) - Send Laboratory Report R01 | GOMS | An alternative to the HL7 v2 and HL7 FHIR Messaging shown |
+| 6. Laboratory Report (LAB-3) - Send Laboratory Report document to the Central Registry | UGR Phase 1 | The Laboratory Report as a PDF |
+| 7. Send FHIR Document to the Central Registry | UGR Phase 2 | The FHIR Document with the discrete results |
 {:.grid}
 
 Sending a report to the UGR is nearer IHE `ITI-105` (Simplified Publish) than `LAB-3`, as the UGR is a central repository - see [Sharing Laboratory Reports (Document)](HIE.html#sharing-laboratory-reports-document-iti-105-and-mdm_t02).

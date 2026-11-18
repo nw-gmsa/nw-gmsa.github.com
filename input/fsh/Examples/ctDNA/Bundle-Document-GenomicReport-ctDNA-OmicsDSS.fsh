@@ -178,6 +178,58 @@ Usage: #example
 * insert EntryDocument("urn:uuid:158c1e5d-591c-4bcc-97e2-c958aadd44ac", Binary-Sample)
 
 
+// Copy of the Laboratory Report to the Order Placer Manager (NE&Y GMSA), without the report (no PDF, DocumentReference or Binary)
+
+Instance: DiagnosticReport-ctDNA-iGene-NarrativeReport-OrderPlacerManager
+InstanceOf: LaboratoryReport
+Title: "Diagnostic Report - ctDNA Laboratory Report, copy for the Order Placer Manager (no report PDF)"
+Description: "Fictitious example: iGene's narrative Laboratory Report for ctDNA order T26-59XG as copied to the Order Placer Manager: the same report without the report PDF (`presentedForm`)"
+Usage: #example
+
+* insert iGeneNarrativeReportContent
+* insert SupportingInfoTestResults
+
+
+Instance: MessageHeaderR01ctDNAOrderPlacerManager
+InstanceOf: MessageHeader
+Title: "Message Header - ctDNA Laboratory Report R01, copy to the Order Placer Manager"
+Description: "Fictitious example: copy of the LAB-3 Laboratory Report message, without the report PDF, from the North West GLH to NE&Y GMSA, the Order Placer Manager"
+Usage: #example
+
+* meta.lastUpdated = "2026-07-08T09:32:00+00:00"
+
+* eventCoding = http://terminology.hl7.org/CodeSystem/v2-0003#R01
+
+* sender.identifier.system = $ods-code
+* sender.identifier.value = "699X0"
+
+* destination.receiver.identifier.system = $ods-code
+* destination.receiver.identifier.value = "699N0"
+* destination.receiver.display = "NEY GMSA"
+* destination.endpoint = "https://fhir.nwgenomics.nhs.uk/Endpoint/NEYAWSSQS"
+
+* source.name = "RIE"
+* source.software = "RIE"
+* source.endpoint = "https://fhir.nwgenomics.nhs.uk/Endpoint/RIE"
+
+* focus[+]
+  * reference = "urn:uuid:9aec457d-d16b-4a12-a773-5347c20f0db1"
+  * type = #DiagnosticReport
+
+
+Instance: ReportMessage-ctDNA-iGene-OrderPlacerManager
+InstanceOf: BundleMessage
+Title: "Bundle 'Message' - ctDNA Laboratory Report R01, copy to the Order Placer Manager (no report PDF)"
+Description: "Fictitious example: the RIE sends a copy of iGene's Laboratory Report for ctDNA order T26-59XG to NE&Y GMSA, the Order Placer Manager that monitors orders placed in its region, in the [ctDNA](ExampleScenario-ctDNA.html) scenario. The report PDF is removed: there is no `presentedForm`, `DocumentReference` or `Binary`."
+Usage: #example
+* insert MessageBundle("urn:uuid:42854213-807a-41fc-82be-d8950d576020", "2026-07-08T09:32:00+00:00")
+* insert EntryDocument("urn:uuid:8a62dcfb-6171-4b40-99b9-679c75404eef", MessageHeaderR01ctDNAOrderPlacerManager)
+* insert EntryDocument("urn:uuid:2160525b-0168-4f40-8ebf-9b053052a62c", Patient-Sheffield)
+* insert EntryDocument("urn:uuid:9aec457d-d16b-4a12-a773-5347c20f0db1", DiagnosticReport-ctDNA-iGene-NarrativeReport-OrderPlacerManager)
+* insert EntryDocument("urn:uuid:4446ab81-35ef-49cb-b2fe-1d6f1a0dcc02", 4446ab81-35ef-49cb-b2fe-1d6f1a0dcc02)
+* insert EntryDocument("urn:uuid:b930b4c4-327a-4728-8bb9-f90061914cc5", Specimen-ctDNA)
+
+
 Instance: Composition-GenomicsReport-ctDNA-OmicsDSS
 InstanceOf: CompositionGenomicReport
 Title: "Composition - Genomics Report ctDNA UGR (OMICS DSS)"

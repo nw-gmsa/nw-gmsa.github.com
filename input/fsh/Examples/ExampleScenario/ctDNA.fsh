@@ -12,6 +12,8 @@ A genomic test order is fulfilled by two laboratory systems in the same laborato
 
 There are two `DiagnosticReport`s: the test results from Lab 2 (LAB-5) and the narrative Laboratory Report from Lab 1 (LAB-3). The Laboratory Report links to the test results using the `supportingInfo` extension.
 
+The Order Placer is in another genomics region, whose Order Placer Manager monitors the orders placed in its region and delivered by the North West GLH. Lab 1 sends it a copy of the order with its Order Filler Numbers (LAB-2), and the RIE sends it a copy of the Laboratory Report without the report PDF.
+
 See the Introduction above for where the NHS England genomics services fit, and the steps they relate to.
 """
 Usage: #definition
@@ -20,6 +22,7 @@ Usage: #definition
 * name = "ctDNA"
 
 * insert ActorEntity(placer, "Order Placer/Electronic Patient Record", [[ [Order Placer](ActorDefinition-OrderPlacer.html) ]])
+* insert ActorEntity(opm, "Order Placer Manager", [[ An external genomics region (for example NE&Y GMSA) that monitors the orders placed in its region and delivered by the North West GLH. It receives a copy of the order with its Order Filler Numbers (LAB-2), and a copy of the Laboratory Report without the report PDF ]])
 * insert ActorEntity(lab1, "Lab 1 - Order Filler LIMS", [[ [Order Filler](ActorDefinition-OrderFiller.html) that receives the Laboratory Order and writes the Laboratory Report ]])
 * insert ActorEntity(lab2, "Lab 2 - Automation Manager LIMS", [[ [Automation Manager](ActorDefinition-AutomationManager.html) that performs the work order and sends the sequencing data to Analytics Processing ]])
 * insert ActorEntity(analytics, "Analytics Processing", [[ [Genomic Analysis and Interpretation](ActorDefinition-GenomicAnalysisAndInterpretation.html) that processes the sequencing data into variants ]])
@@ -29,7 +32,10 @@ Usage: #definition
 * insert ActorEntity(scr, "Regional Shared Care Record", [[ The regional shared care record, for example the Greater Manchester Care Record (GMCR), which receives the report PDF and makes it available to other care settings, including the patient's GP. See [Regional Shared Care Records](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/RegionalSharedCareRecords.md) ]])
 
 * insert Instance_Empty(Request1, Bundle, "HL7 FHIR Message O21 - Laboratory Order", [[ LAB-1 Laboratory Order ]])
-* insert InstanceVersion(1, "HL7 FHIR Message O21", GenomicsOrderMessage-ctDNA, [[ ctDNA Laboratory Order for test M4.14 ]])
+* insert InstanceVersion(1, "HL7 FHIR Message O21", GenomicsOrderMessage-ctDNA-OrderPlacer, [[ ctDNA Laboratory Order for test M4.14, with the Order Placer Number ]])
+
+* insert Instance_Empty(FillerOrder, Bundle, "HL7 FHIR Message O21 - Filler Order Management", [[ LAB-2 copy of the Laboratory Order with Lab 1's Order Filler Number and Placer Group Number ]])
+* insert InstanceVersion(1, "HL7 FHIR Message O21", GenomicsOrderMessage-ctDNA, [[ ctDNA Laboratory Order with the Order Filler Numbers ]])
 
 * insert Instance_Empty(Request2, ServiceRequest, "Work Order", [[ LAB-4 work order with `intent` = `instance-order`. `performer` is the Lab 2 system referenced by identifier ]])
 * insert InstanceVersion(2, "Work Order", ServiceRequest-ctDNA-DLIMS-WorkOrder, [[ Work order for the analysis ]])
@@ -44,6 +50,8 @@ Usage: #definition
 
 * insert Instance_Empty(Request6, Bundle, "HL7 FHIR Message R01 - Laboratory Report", [[ LAB-3 narrative Laboratory Report. The `DiagnosticReport` is `final` and has no `result`; the report is a PDF (`presentedForm`, a `DocumentReference` and a `Binary`). It links to the test results using the `supportingInfo` extension ]])
 * insert InstanceVersion(6, "HL7 FHIR Message R01 - Laboratory Report", ReportMessage-ctDNA-iGene-NarrativeReport, [[ Narrative Laboratory Report ]])
+* insert Instance_Empty(ReportCopy, Bundle, "HL7 FHIR Message R01 - Laboratory Report copy without the report", [[ Copy of the LAB-3 Laboratory Report for the Order Placer Manager, without the report PDF: no `presentedForm`, `DocumentReference` or `Binary` ]])
+* insert InstanceVersion(1, "HL7 FHIR Message R01", ReportMessage-ctDNA-iGene-OrderPlacerManager, [[ Laboratory Report copy for the Order Placer Manager ]])
 * insert Instance_Empty(ReportDocument, Bundle, "Laboratory Report document", [[ HL7 v2 `MDM^T02` with the Laboratory Report as a PDF, base64 encoded in OBX-5 (`ED`), sent to the regional shared care record and the central registry. See [Sharing Laboratory Reports (Document)](HIE.html#sharing-laboratory-reports-document-iti-105-and-mdm_t02) In FHIR this is a T02 FHIR Message ([Document and Document Notification](MessageDefinition-original-document.html)) carrying a `DocumentReference` and the PDF as a `Binary` - see the [example](Bundle-OriginalDocumentMessage.html). ]])
 * insert InstanceVersion(1, "HL7 FHIR Message T02", DocumentMessage-ctDNA, [[ Laboratory Report PDF for Theon Sheffield ]])
 
@@ -64,37 +72,44 @@ Usage: #definition
   * insert ProcessCreateEvent(3, "Send copy of Laboratory Order using $process-message", rie, repo, Request1, , [[ ]])
 
 * process[+]
-  * title = "2. Work Order (LAB-4)"
+  * title = "2. Filler Order Management (LAB-2)"
+  * description = "Lab 1 assigns its Order Filler Numbers and sends a copy of the order through the RIE to the Order Placer Manager. See [Filler Order Management (LAB-2)](LTW.html#filler-order-management-lab-2)."
+  * insert ProcessCreateEvent(4, "Send copy of Laboratory Order O21 - LAB-2", lab1, rie, FillerOrder, 1, [[ ]])
+  * insert ProcessCreateEvent(5, "Send copy of Laboratory Order O21 - LAB-2", rie, opm, FillerOrder, 1, [[ The order with the Order Filler Number and Placer Group Number ]])
+
+* process[+]
+  * title = "3. Work Order (LAB-4)"
   * description = "Lab 1 places a work order with Lab 2. The work order is also sent to the RIE, which stores it in the FHIR Repository."
-  * insert ProcessCreateEvent(4, "Send Work Order", lab1, lab2, Request2, , [[ Lab 2 can find its work orders by searching on `ServiceRequest.performer` with the `:identifier` modifier ]])
-  * insert ProcessCreateEvent(5, "Send Work Order", lab1, rie, Request2, , [[ ]])
-  * insert ProcessCreate(6, "Store Work Order", rie, repo, Request2, , [[ So Analytics Processing can retrieve it in step 3 ]])
+  * insert ProcessCreateEvent(6, "Send Work Order", lab1, lab2, Request2, , [[ Lab 2 can find its work orders by searching on `ServiceRequest.performer` with the `:identifier` modifier ]])
+  * insert ProcessCreateEvent(7, "Send Work Order", lab1, rie, Request2, , [[ ]])
+  * insert ProcessCreate(8, "Store Work Order", rie, repo, Request2, , [[ So Analytics Processing can retrieve it in process 4 ]])
 
 * process[+]
-  * title = "3. Analytics Processing"
+  * title = "4. Analytics Processing"
   * description = "Lab 2 sends the sequencing data to Analytics Processing, which retrieves the work order from the FHIR Repository so the results can be linked to it."
-  * insert ProcessCreateEvent(7, "Send sequencing data", lab2, analytics, Request3, , [[ Not exchanged using FHIR ]])
-  * insert ProcessSearch(8, "Retrieve Work Order", analytics, repo, Request4, Reply4, [[ Related to the NHS England [Upload Genomic Data API](https://digital.nhs.uk/developer/api-catalogue/upload-genomic-data), which adds GA4GH Data Repository Service (DRS) references for the uploaded genomic data to the work order ]])
+  * insert ProcessCreateEvent(9, "Send sequencing data", lab2, analytics, Request3, , [[ Not exchanged using FHIR ]])
+  * insert ProcessSearch(10, "Retrieve Work Order", analytics, repo, Request4, Reply4, [[ Related to the NHS England [Upload Genomic Data API](https://digital.nhs.uk/developer/api-catalogue/upload-genomic-data), which adds GA4GH Data Repository Service (DRS) references for the uploaded genomic data to the work order ]])
 
 * process[+]
-  * title = "4. Test Results (LAB-5)"
+  * title = "5. Test Results (LAB-5)"
   * description = "Lab 2 returns the test results to Lab 1. The RIE also sends a copy to the FHIR Repository."
-  * insert ProcessCreateEvent(9, "Send Test Results R01", lab2, rie, Request5, , [[ ]])
-  * insert ProcessCreateEvent(10, "Send Test Results R01", rie, lab1, Request5, , [[ ]])
-  * insert ProcessCreateEvent(11, "Send copy of Test Results using $process-message", rie, repo, Request5, , [[ The FHIR Repository stores the test results so they can be combined with the Laboratory Report in process 6 ]])
+  * insert ProcessCreateEvent(11, "Send Test Results R01", lab2, rie, Request5, , [[ ]])
+  * insert ProcessCreateEvent(12, "Send Test Results R01", rie, lab1, Request5, , [[ ]])
+  * insert ProcessCreateEvent(13, "Send copy of Test Results using $process-message", rie, repo, Request5, , [[ The FHIR Repository stores the test results so they can be combined with the Laboratory Report in process 7 ]])
 
 * process[+]
-  * title = "5. Laboratory Report (LAB-3)"
-  * description = "Lab 1 clinically validates the test results and writes the narrative Laboratory Report, which is sent to the Order Placer. The RIE also sends a copy to the FHIR Repository, and the report PDF to the regional shared care record and to the central registry as an HL7 v2 `MDM^T02`."
-  * insert ProcessCreateEvent(12, "Send Laboratory Report R01", lab1, rie, Request6, , [[ ]])
-  * insert ProcessCreateEvent(13, "Send Laboratory Report R01", rie, placer, Request6, , [[ See [Genomic Test Report Process](ExampleScenario-GenomicTestReportProcess.html). The NHS England [Genomic Order Management Service (FHIR) API](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) is an alternative to the HL7 v2/FHIR Messaging shown here ]])
-  * insert ProcessCreateEvent(14, "Send copy of Laboratory Report using $process-message", rie, repo, Request6, , [[ ]])
-  * insert ProcessCreateEvent(15, "Send Laboratory Report document", rie, scr, ReportDocument, 1, [[ HL7 v2 `MDM^T02` or a T02 FHIR Message with the report as a PDF, which the patient's GP can see in the shared care record ]])
-  * insert ProcessCreateEvent(16, "Send Laboratory Report document", rie, ugr, ReportDocument, 1, [[ HL7 v2 `MDM^T02` or a T02 FHIR Message with the report as a PDF. Relates to NHS England Unified Genomic Record (UGR) Phase 1 ]])
+  * title = "6. Laboratory Report (LAB-3)"
+  * description = "Lab 1 clinically validates the test results and writes the narrative Laboratory Report, which is sent to the Order Placer. The RIE also sends a copy to the FHIR Repository, and the report PDF to the regional shared care record and to the central registry as an HL7 v2 `MDM^T02`, and a copy without the report PDF to the Order Placer Manager."
+  * insert ProcessCreateEvent(14, "Send Laboratory Report R01", lab1, rie, Request6, , [[ ]])
+  * insert ProcessCreateEvent(15, "Send Laboratory Report R01", rie, placer, Request6, , [[ See [Genomic Test Report Process](ExampleScenario-GenomicTestReportProcess.html). The NHS England [Genomic Order Management Service (FHIR) API](https://digital.nhs.uk/developer/api-catalogue/genomic-order-management-service-fhir) is an alternative to the HL7 v2/FHIR Messaging shown here ]])
+  * insert ProcessCreateEvent(16, "Send copy of Laboratory Report R01 without the report", rie, opm, ReportCopy, 1, [[ Without the report PDF: no `presentedForm`, `DocumentReference` or `Binary` ]])
+  * insert ProcessCreateEvent(17, "Send copy of Laboratory Report using $process-message", rie, repo, Request6, , [[ ]])
+  * insert ProcessCreateEvent(18, "Send Laboratory Report document", rie, scr, ReportDocument, 1, [[ HL7 v2 `MDM^T02` or a T02 FHIR Message with the report as a PDF, which the patient's GP can see in the shared care record ]])
+  * insert ProcessCreateEvent(19, "Send Laboratory Report document", rie, ugr, ReportDocument, 1, [[ HL7 v2 `MDM^T02` or a T02 FHIR Message with the report as a PDF. Relates to NHS England Unified Genomic Record (UGR) Phase 1 ]])
 
 * process[+]
-  * title = "6. Enhanced Laboratory Report and FHIR Document to Central Registry"
+  * title = "7. Enhanced Laboratory Report and FHIR Document to Central Registry"
   * description = "The Laboratory Report triggers the RIE to retrieve the test results it links to from the FHIR Repository. The RIE merges them by adding the test results Observations to the Laboratory Report result, as an enhanced R01 Laboratory Report used internally, converts that into a FHIR Document and sends it to the central registry."
-  * insert ProcessSearch(17, "Retrieve Laboratory Report and Test Results", rie, repo, Request7, Reply7, [[ ]])
-  * insert ProcessCreateEvent(18, "Create enhanced Laboratory Report R01", rie, rie, Enhanced, 1, [[ Internal to the RIE: the R01 with the discrete results is the step before converting into the FHIR Document ]])
-  * insert ProcessCreateEvent(19, "Send FHIR Document", rie, ugr, Request8, , [[ Relates to NHS England Unified Genomic Record (UGR) Phase 2. The Result summary section contains the merged Laboratory Report. The Results section contains the `Observation`s. The test results are also in the Results from other laboratories section ]])
+  * insert ProcessSearch(20, "Retrieve Laboratory Report and Test Results", rie, repo, Request7, Reply7, [[ ]])
+  * insert ProcessCreateEvent(21, "Create enhanced Laboratory Report R01", rie, rie, Enhanced, 1, [[ Internal to the RIE: the R01 with the discrete results is the step before converting into the FHIR Document ]])
+  * insert ProcessCreateEvent(22, "Send FHIR Document", rie, ugr, Request8, , [[ Relates to NHS England Unified Genomic Record (UGR) Phase 2. The Result summary section contains the merged Laboratory Report. The Results section contains the `Observation`s. The test results are also in the Results from other laboratories section ]])

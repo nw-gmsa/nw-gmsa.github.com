@@ -411,6 +411,10 @@ groups:
     description: "ctDNA (M4.14 Non-Small Cell Lung Cancer) closed loop referral for Theon Sheffield: the order (O21) and report (R01) messages, the FHIR Document report, and the resources they carry"
     resources:
       - Bundle/GenomicsOrderMessage-ctDNA
+      - Bundle/GenomicsOrderMessage-ctDNA-OrderPlacer
+      - MessageHeader/MessageHeader-O21-ctDNA-OrderPlacer
+      - ServiceRequest/ServiceRequest-ctDNA-OrderPlacer
+      - Specimen/Specimen-ctDNA-Order
       - Bundle/GenomicsReportMessage-ctDNA
       - Bundle/FHIRDocumentGeneticReportBundle-ctDNA
       - Composition/Composition-GenomicsReport-ctDNA
@@ -797,6 +801,9 @@ groups:
       - DiagnosticReport/DiagnosticReport-ctDNA-iGene-NarrativeReport
       - DiagnosticReport/DiagnosticReport-ctDNA-iGene-MergedReport
       - Bundle/ReportMessage-ctDNA-iGene-Enhanced
+      - Bundle/ReportMessage-ctDNA-iGene-OrderPlacerManager
+      - MessageHeader/MessageHeaderR01ctDNAOrderPlacerManager
+      - DiagnosticReport/DiagnosticReport-ctDNA-iGene-NarrativeReport-OrderPlacerManager
       - MessageHeader/MessageHeaderR01ctDNAiGeneEnhanced
       - Bundle/FHIRDocumentGeneticReportBundle-ctDNA-OmicsDSS
       - Composition/Composition-GenomicsReport-ctDNA-OmicsDSS

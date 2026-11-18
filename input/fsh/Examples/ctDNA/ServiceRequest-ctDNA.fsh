@@ -1,9 +1,16 @@
 Instance: ServiceRequest-ctDNA
 InstanceOf: ServiceRequest
 Title: "ServiceRequest ctDNA Example"
-Description: "Laboratory order for M4.14 Non-Small Cell Lung Cancer ctDNA testing for Theon SHEFFIELD from Sheffield Teaching Hospitals NHS Foundation Trust"
+Description: "Laboratory order for M4.14 Non-Small Cell Lung Cancer ctDNA testing for Theon SHEFFIELD from Sheffield Teaching Hospitals NHS Foundation Trust, as held by Lab 1 with its Order Filler Number and Placer Group Number (LAB-2)"
 
 * meta.versionId = "1.0"
+
+// The Order Placer's number, from the Laboratory Order (LAB-1) GenomicsOrderMessage-ctDNA-OrderPlacer
+* identifier[OrderPlacerNumber].type = $v2-0203#PLAC
+* identifier[OrderPlacerNumber].value = "RHQ-26-07731"
+* identifier[OrderPlacerNumber].system = "http://www.acme.org/servicerequest/RHQ"
+* identifier[OrderPlacerNumber].assigner.identifier.system = $ods-code
+* identifier[OrderPlacerNumber].assigner.identifier.value = "RHQ"
 
 * identifier[OrderFillerNumber].type = $v2-0203#FILL
 * identifier[OrderFillerNumber].value = "T26-59XG"
