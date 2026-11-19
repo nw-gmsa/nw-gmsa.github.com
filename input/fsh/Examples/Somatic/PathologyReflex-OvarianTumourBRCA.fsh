@@ -1,7 +1,7 @@
 // FHIR Messages for the Pathology to Genomics Reflex - Ovarian Cancer Tumour BRCA ExampleScenario: the M2.1 genomic reflex
 // order (O21) from the Royal Blackburn Hospital laboratory (690D0) to the North West GLH (699X0), with the pathology results
-// as prior results, and the Genomic Report (R01) back to the laboratory. Converted from the HL7 v2 examples in the Testing
-// repo (Input/PathologyReflex/) and the use case
+// as prior results, and the Genomic Report (R01) back to the laboratory. Converted from the original HL7 v2 messages in the
+// Testing repo (Input/Scenarios/PathologyReflexTumourBRCA/V2/) and the use case
 // https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/PathologyToGenomicsReflex.md
 // Fictitious example: identifiers, dates and results are illustrative only.
 
@@ -447,7 +447,7 @@ Usage: #example
 Instance: Variant-PathologyReflex-BRCA1
 InstanceOf: Variant
 Title: "Variant - BRCA1 (tumour), Selyse Burnley"
-Description: "Fictitious example: the BRCA1 variant found in the tumour by the North West GLH. No genomic source class: a tumour test cannot tell whether the variant is somatic or germline"
+Description: "Fictitious example: the BRCA1 variant found in the tumour by the North West GLH. No genomic source class: a tumour test cannot tell whether the variant is somatic or germline. The amino acid change p.(Glu23ValfsTer17) in the HL7 v2 message is left out, as the terminology server cannot validate frameshift HGVS"
 Usage: #example
 
 * insert GenomicResultObservation(3c03d0e7-e594-472e-8a6b-220cbabcc667, 2026-11-20T12:00:00+00:00, 699X0, NORTH WEST GLH)
@@ -462,8 +462,6 @@ Usage: #example
 * component[=].valueCodeableConcept = $refseq#NM_007294.4
 * component[+].code = $loinc#48004-6 "DNA change (c.HGVS)"
 * component[=].valueCodeableConcept = $ghgvs#NM_007294.4:c.68_69del
-* component[+].code = $loinc#48005-3 "Amino acid change (pHGVS)"
-* component[=].valueCodeableConcept = $ghgvs#NP_009225.1:p.(Glu23ValfsTer17)
 * component[+].code = $loinc#81258-6 "Sample variant allelic frequency [NFr]"
 * component[=].valueQuantity = 0.58 '1' "relative frequency of a particular allele in the specimen"
 
