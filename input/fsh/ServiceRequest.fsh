@@ -178,7 +178,7 @@ Description:    """
 * reasonReference only Reference(Condition or Observation)
 
 * supportingInfo 0..*
-* supportingInfo only Reference(ObservationOrder or DocumentReference or FamilyGeneticGroup)
+* supportingInfo only Reference(ObservationOrder or DocumentReference or FamilyGeneticGroup or DiagnosticReport)
 
 * supportingInfo ^slicing.discriminator.type = #profile
 * supportingInfo ^slicing.discriminator.path = "$this.resolve()"
@@ -186,7 +186,7 @@ Description:    """
 * supportingInfo ^slicing.description = "Slice based on the coding.system"
 * supportingInfo ^slicing.ordered = false
 * supportingInfo contains
-  OrderEntryQuestions 0..* and clinicalContext 0..* and familyGeneticGroup 0..1
+  OrderEntryQuestions 0..* and clinicalContext 0..* and familyGeneticGroup 0..1 and priorResult 0..*
 
 * supportingInfo[OrderEntryQuestions] only Reference(ObservationOrder)
 
@@ -194,3 +194,6 @@ Description:    """
 
 * supportingInfo[familyGeneticGroup] only Reference(FamilyGeneticGroup)
 * supportingInfo[familyGeneticGroup] ^short = "The family tested together with the subject (e.g. dWGS Duo/Trio), identified by the same referral_id / Pedigree Number as ServiceRequest.requisition"
+
+* supportingInfo[priorResult] only Reference(DiagnosticReport)
+* supportingInfo[priorResult] ^short = "A prior result sent with the order, e.g. the pathology report and results for a genomic reflex order from pathology (HL7 v2 OML_O21 PRIOR_RESULT group)"
