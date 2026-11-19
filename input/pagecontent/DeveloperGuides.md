@@ -202,10 +202,7 @@ FHIR, a data contract is expressed as a **FHIR Profile** (a `StructureDefinition
 own profiles. A FHIR Profile is not just documentation: it can be used to
 **test** whether a given resource instance actually conforms, using [FHIR
 Validation](https://hl7.org/fhir/validation.html) (the same `$validate`
-operation and IG Publisher checks this IG's own examples are checked against)
-- see [How To Engineer (scale and deliver)
-Interoperability](HowToEngineerInteroperability.html) for why this IG builds
-profiles the way it does.
+operation and IG Publisher checks this IG's own examples are checked against).
 
 ### Introduction to FHIR
 

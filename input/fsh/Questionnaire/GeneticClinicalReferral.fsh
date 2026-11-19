@@ -15,9 +15,7 @@ service (see [Genetic Referrals](GeneticReferrals.html)), modelled on HL7 v2
 `OMG^O19` (IHE 360X referral order, for future use) - not a laboratory order. Where a data item is
 genuinely the same one [Genomic Test Order](StructureDefinition-GenomicTestOrder.html)
 already captures (e.g. patient demographics), this Questionnaire reuses the
-same item, per the "check for existing patterns" principle in [How To
-Engineer (scale and deliver)
-Interoperability](HowToEngineerInteroperability.html#check-for-existing-patterns-before-modelling-new-ones).
+same item rather than re-defining it.
 """
 Usage:  #definition
 

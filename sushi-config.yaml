@@ -85,9 +85,6 @@ pages:
   index.md:
     title: Home
     generation: markdown
-  HowToEngineerInteroperability.md:
-    title: "How To Engineer (scale and deliver) Interoperability"
-    generation: markdown
   overview.md:
     title: "Overview"
     generation: markdown
@@ -362,7 +359,6 @@ menu:
     HL7 v2.5.1: hl7v2.html
     IHE XDS.b/MHD: StructureDefinition-DocumentReference.html
   Development:
-    How To Engineer (scale and deliver) Interoperability: HowToEngineerInteroperability.html
     Environments and Testing: testing.html
     Support: support.html
     Architecture: architecture.html

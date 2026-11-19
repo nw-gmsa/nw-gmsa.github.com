@@ -30,9 +30,7 @@ Report](StructureDefinition-GenomicTestReport.html). Where a data item is
 genuinely the same one [Genomic Test
 Order](StructureDefinition-GenomicTestOrder.html) already captures (e.g.
 patient demographics, both populating HL7 v2 `PID`), this model reuses the
-same element rather than re-defining it, per the "check for existing
-patterns" principle in [How To Engineer (scale and deliver)
-Interoperability](HowToEngineerInteroperability.html#check-for-existing-patterns-before-modelling-new-ones).
+same element rather than re-defining it.
 
 It is not a FHIR profile and is not exchanged as is - see [From Logical Model
 to Implementation Model](#from-logical-model-to-implementation-model) below,

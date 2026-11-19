@@ -286,8 +286,7 @@ performers) - its `result` element deliberately doesn't model individual
 test findings inline. Instead, each individual result is carried under
 `DiagnosticReport.result` as a separate, panel-specific Questionnaire, one
 per kind of test - each documenting the discrete fields a particular result
-type needs (see [How To Engineer (scale and deliver)
-Interoperability](HowToEngineerInteroperability.html#documenting-the-data-model)).
+type needs.
 
 
 #### Report Panels
