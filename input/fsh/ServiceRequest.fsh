@@ -162,7 +162,8 @@ Description:    """
 
 * basedOn 0..* MS
 * basedOn ^short = "SHALL reference a parent request where this ServiceRequest is based on a previous request, e.g. in the case of reanalysis and cascade testing, or Germline Late tests in the Tumour First/Germline Late scenario"
-* basedOn only Reference(ServiceRequest)
+// The parent request need not be a genomic test, e.g. the original pathology order behind a genomic reflex order
+* basedOn only Reference(http://hl7.org/fhir/StructureDefinition/ServiceRequest)
 * basedOn.identifier only OrderPlacerNumber or OrderFillerNumber
 
 * priority from RequestPriority (required)

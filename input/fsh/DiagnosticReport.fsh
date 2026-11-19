@@ -33,7 +33,8 @@ Description:    """
 
 * basedOn 0..* MS
 * basedOn ^short = "The ServiceRequest this report is based on, identified by the Order Placer Number. Order Group Number or Order Filler Number only if the Order Placer Number is not known."
-* basedOn only Reference(ServiceRequest)
+// Any laboratory order, not only a genomic test, e.g. a pathology report sent as a prior result of a genomic reflex order
+* basedOn only Reference(http://hl7.org/fhir/StructureDefinition/ServiceRequest)
 * basedOn.type 1..1 MS
 * basedOn.type = "ServiceRequest"
 * basedOn.identifier 1..1 MS
@@ -51,7 +52,7 @@ Description:    """
   OrderFillerNumber 0..1
 
 * basedOn[OrderPlacerNumber] ^short = "Order Placer Number, assigned by the placer (ORC-2). Use this to identify the order"
-* basedOn[OrderPlacerNumber] only Reference(ServiceRequest)
+* basedOn[OrderPlacerNumber] only Reference(http://hl7.org/fhir/StructureDefinition/ServiceRequest)
 * basedOn[OrderPlacerNumber].identifier 1..1
 * basedOn[OrderPlacerNumber].identifier only OrderPlacerNumber
 * basedOn[OrderPlacerNumber] insert Obligation(#SHALL:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderFiller)
@@ -59,12 +60,12 @@ Description:    """
 * basedOn[OrderPlacerNumber] insert Obligation(#SHOULD:populate-if-known, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderPlacer)
 
 * basedOn[OrderGroupNumber] ^short = "Order Group Number (ORC-4). Only if the Order Placer Number is not known"
-* basedOn[OrderGroupNumber] only Reference(ServiceRequest)
+* basedOn[OrderGroupNumber] only Reference(http://hl7.org/fhir/StructureDefinition/ServiceRequest)
 * basedOn[OrderGroupNumber].identifier 1..1
 * basedOn[OrderGroupNumber].identifier only OrderGroupNumber
 
 * basedOn[OrderFillerNumber] ^short = "Order Filler Number, assigned by the filler (ORC-3). Only if the Order Placer Number is not known"
-* basedOn[OrderFillerNumber] only Reference(ServiceRequest)
+* basedOn[OrderFillerNumber] only Reference(http://hl7.org/fhir/StructureDefinition/ServiceRequest)
 * basedOn[OrderFillerNumber].identifier 1..1
 * basedOn[OrderFillerNumber].identifier only OrderFillerNumber
 

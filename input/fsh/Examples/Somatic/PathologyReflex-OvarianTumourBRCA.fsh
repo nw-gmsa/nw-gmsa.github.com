@@ -50,6 +50,7 @@ RuleSet: BurnleySubject
 // The original pathology order (HL7 v2 prior ORC-2 / OBR-2), placed by Lancashire Teaching Hospitals
 RuleSet: PathologyOrderBasedOn
 * basedOn[OrderPlacerNumber]
+  * reference = "urn:uuid:e318ee79-2a71-4c51-a087-52d4ca4d864c"
   * type = "ServiceRequest"
   * identifier.type = $v2-0203#PLAC
   * identifier.system = "http://www.acme.org/servicerequest/RXN"
@@ -97,6 +98,53 @@ Usage: #example
 * organization.identifier.value = "RXN"
 * organization.display = "LANCASHIRE TEACHING HOSPITALS NHS FOUNDATION TRUST"
 
+// The hospital spell at Lancashire Teaching Hospitals (HL7 v2 PV1). It has no discharge date (PV1-45) - the diagnostic
+// testing is done within it - so it is in progress
+Instance: Encounter-PathologyReflex-Spell
+InstanceOf: HospitalSpell
+Title: "Encounter - hospital spell SP2503130417, Selyse Burnley (Lancashire Teaching Hospitals)"
+Description: "Fictitious example: the inpatient spell at the Royal Preston Hospital (RXN02) in which the original pathology order and the genomic reflex order were placed (HL7 v2 PV1, PV1-19 Hospital Provider Spell Identifier). No discharge date (PV1-45), so the spell is in progress"
+Usage: #example
+
+* identifier[HospitalSpellIdentifier]
+  * type = $v2-0203#AN
+  * system = "http://www.acme.org/encounter/identifiers/RXN"
+  * value = "SP2503130417"
+  * assigner.identifier.system = $ods-code
+  * assigner.identifier.value = "RXN"
+* status = #in-progress
+* class = http://terminology.hl7.org/CodeSystem/v3-ActCode#IMP "inpatient encounter"
+// HL7 v2 PV1-10 Hospital Service: treatment function code
+* serviceType = urn:oid:2.16.840.1.113883.2.1.6.8#503 "Gynaecological Oncology"
+* insert BurnleySubject
+* period.start = "2025-03-13T09:00:00+00:00"
+* participant[admittingDoctor]
+  * type.coding = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ADM
+  * individual.identifier.system = "https://fhir.hl7.org.uk/Id/gmc-number"
+  * individual.identifier.value = "C5678901"
+  * individual.display = "FICTITIOUS, Priya"
+* participant[+]
+  * type.coding = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ATND
+  * individual.identifier.system = "https://fhir.hl7.org.uk/Id/gmc-number"
+  * individual.identifier.value = "C5678901"
+  * individual.display = "FICTITIOUS, Priya"
+* location[+]
+  * location.identifier.system = "https://fhir.nhs.uk/Id/ods-site-code"
+  * location.identifier.value = "RXN02"
+  * location.identifier.assigner.identifier.system = $ods-code
+  * location.identifier.assigner.identifier.value = "RXN"
+
+// The hospital spell (HL7 v2 PV1-19), on the orders and the reports
+RuleSet: PathologyReflexSpell
+* encounter
+  * reference = "urn:uuid:e73bc140-479e-46f9-afe8-8d8230fd7cc5"
+  * type = "Encounter"
+  * identifier.type = $v2-0203#AN
+  * identifier.system = "http://www.acme.org/encounter/identifiers/RXN"
+  * identifier.value = "SP2503130417"
+  * identifier.assigner.identifier.system = $ods-code
+  * identifier.assigner.identifier.value = "RXN"
+
 // Genomic Reflex Order (LAB-35)
 
 Instance: Specimen-PathologyReflex-BlockA3
@@ -133,6 +181,46 @@ Usage: #example
 * effectiveDateTime = "2026-11-03T14:30:00+00:00"
 * valueBoolean = true
 
+// The original pathology order (HL7 v2 prior-results ORC|RE / OBR), placed by Lancashire Teaching Hospitals and filled by the
+// Royal Blackburn Hospital laboratory. It is a histopathology order, not a genomic test, so it is on the EU Laboratory
+// ServiceRequest profile rather than this IG's (whose code is bound to the genomic test codes)
+Instance: ServiceRequest-PathologyReflex-OriginalOrder
+InstanceOf: http://hl7.eu/fhir/laboratory/StructureDefinition/ServiceRequest-eu-lab
+Title: "ServiceRequest - Histopathology, ovarian cancer resection (the original pathology order), Selyse Burnley"
+Description: "Fictitious example: the original pathology order the genomic reflex order is based on (HL7 v2 ORC-8 Parent), sent with its results as prior results. Completed (HL7 v2 ORC-5 CM) and filled by the Royal Blackburn Hospital laboratory (filler-order). It is not the order being asked for, so it isn't in MessageHeader.focus"
+Usage: #example
+
+* identifier[+]
+  * type = $v2-0203#PLAC
+  * system = "http://www.acme.org/servicerequest/RXN"
+  * value = "EPR-552871"
+  * assigner.identifier.system = $ods-code
+  * assigner.identifier.value = "RXN"
+* identifier[+]
+  * type = $v2-0203#FILL
+  * system = "http://www.acme.org/servicerequest/690D0"
+  * value = "H25-11823"
+  * assigner.identifier.system = $ods-code
+  * assigner.identifier.value = "690D0"
+* status = #completed
+* intent = #filler-order
+* category[+] = $sct#108252007 "Laboratory procedure"
+* code = http://www.acme.org/CodeSystem/690D0#HISTO "Histopathology"
+* insert BurnleySubject
+* insert PathologyReflexSpell
+* requester
+  * type = "PractitionerRole"
+  * reference = "urn:uuid:fa4d22b6-556d-40a8-9355-013d373bbabd"
+  * identifier.system = "https://fhir.hl7.org.uk/Id/gmc-number"
+  * identifier.value = "C5678901"
+  * display = "FICTITIOUS, Priya"
+* performer[+]
+  * type = "Organization"
+  * identifier.system = $ods-code
+  * identifier.value = "690D0"
+  * display = "ROYAL BLACKBURN HOSPITAL LABORATORY"
+* specimen[+].reference = "urn:uuid:664ff878-e6b4-4356-a14f-1f1cb054005d"
+
 // Prior result 1: the original histopathology report
 RuleSet: PathologyReportContent
 // Hand-written narrative: a generated one links presentedForm.url, and urn: is not a valid hyperlink scheme
@@ -149,6 +237,7 @@ RuleSet: PathologyReportContent
 * code.coding[+] = http://www.acme.org/CodeSystem/690D0#HISTO "Histopathology"
 * code.coding[+] = $sct#1054291000000102 "Cellular pathology report"
 * insert BurnleySubject
+* insert PathologyReflexSpell
 * effectiveDateTime = "2025-03-14T10:00:00+00:00"
 * issued = "2025-03-21T16:00:00+00:00"
 * performer[organization]
@@ -257,6 +346,7 @@ Usage: #example
 * category[+] = http://terminology.hl7.org/CodeSystem/v2-0074#SP "Surgical Pathology"
 * code = http://www.acme.org/CodeSystem/690D0#TMA "Tumour assessment for molecular testing"
 * insert BurnleySubject
+* insert PathologyReflexSpell
 * effectiveDateTime = "2025-03-14T10:00:00+00:00"
 * issued = "2026-11-02T11:00:00+00:00"
 * performer[organization]
@@ -292,6 +382,7 @@ RuleSet: PathologyReflexServiceRequestContent
 * identifier[OrderPlacerNumber].assigner.identifier.value = "690D0"
 // HL7 v2 ORC-8 Parent: the original pathology order
 * basedOn[+]
+  * reference = "urn:uuid:e318ee79-2a71-4c51-a087-52d4ca4d864c"
   * type = "ServiceRequest"
   * identifier.type = $v2-0203#PLAC
   * identifier.system = "http://www.acme.org/servicerequest/RXN"
@@ -309,6 +400,7 @@ RuleSet: PathologyReflexServiceRequestContent
   * identifier.system = $ods-code
   * identifier.value = "690D0"
 * insert BurnleySubject
+* insert PathologyReflexSpell
 * performer[+]
   * type = #Organization
   * identifier.system = $ods-code
@@ -388,6 +480,8 @@ Usage: #example
 * insert EntryDocument("urn:uuid:51c45c3b-8de0-4ae8-9d35-f6ecf94ad4da", DiagnosticReport-PathologyReflex-Histopathology-ReportOnly)
 * insert EntryDocument("urn:uuid:fa4d22b6-556d-40a8-9355-013d373bbabd", PractitionerRole-Requester-GynaeOncology-RXN)
 * insert EntryDocument("urn:uuid:052c40aa-02bc-4db7-a44d-524cb2757922", Binary-Sample)
+* insert EntryDocument("urn:uuid:e73bc140-479e-46f9-afe8-8d8230fd7cc5", Encounter-PathologyReflex-Spell)
+* insert EntryDocument("urn:uuid:e318ee79-2a71-4c51-a087-52d4ca4d864c", ServiceRequest-PathologyReflex-OriginalOrder)
 
 Instance: MessageHeader-O21-PathologyReflex
 InstanceOf: MessageHeader
@@ -421,6 +515,8 @@ Usage: #example
 * insert EntryDocument("urn:uuid:ab6755d1-f22f-4374-9f45-7213383ec08f", Observation-PathologyReflex-Behavior)
 * insert EntryDocument("urn:uuid:cbcc3ee3-b2b2-46d2-bcaa-d91919214847", DiagnosticReport-PathologyReflex-TumourAssessment)
 * insert EntryDocument("urn:uuid:598f53aa-0484-429e-9552-107d646fa7b1", Observation-PathologyReflex-TumourCellContent)
+* insert EntryDocument("urn:uuid:e73bc140-479e-46f9-afe8-8d8230fd7cc5", Encounter-PathologyReflex-Spell)
+* insert EntryDocument("urn:uuid:e318ee79-2a71-4c51-a087-52d4ca4d864c", ServiceRequest-PathologyReflex-OriginalOrder)
 
 // Genomic Report (LAB-36)
 
@@ -498,6 +594,7 @@ RuleSet: PathologyReflexReportContent
 * code.coding[+] = $GTD#M2.1
 * code.coding[+] = $sct#1054161000000101 "Genetic report"
 * insert BurnleySubject
+* insert PathologyReflexSpell
 * effectiveDateTime = "2025-03-14T10:00:00+00:00"
 * issued = "2026-11-20T12:00:00+00:00"
 * performer[organization]
@@ -580,6 +677,7 @@ Usage: #example
 * insert EntryDocument("urn:uuid:3a66a475-3b3c-41cd-bb0d-1d036d5abe5b", Specimen-PathologyReflex-Sections)
 * insert EntryDocument("urn:uuid:34d286e2-c09a-4ce9-b0fb-5105a4364a16", DocumentReference-PathologyReflex-Report)
 * insert EntryDocument("urn:uuid:9996b0aa-1ee8-4357-8c51-ecea3f36e7c9", Binary-Sample)
+* insert EntryDocument("urn:uuid:e73bc140-479e-46f9-afe8-8d8230fd7cc5", Encounter-PathologyReflex-Spell)
 
 Instance: MessageHeader-R01-PathologyReflex-Enhanced
 InstanceOf: MessageHeader
@@ -604,3 +702,4 @@ Usage: #example
 * insert EntryDocument("urn:uuid:2b47d865-d151-4dbe-bca2-821b13822071", DiagnosticImplication-PathologyReflex-BRCA1)
 * insert EntryDocument("urn:uuid:34d286e2-c09a-4ce9-b0fb-5105a4364a16", DocumentReference-PathologyReflex-Report)
 * insert EntryDocument("urn:uuid:9996b0aa-1ee8-4357-8c51-ecea3f36e7c9", Binary-Sample)
+* insert EntryDocument("urn:uuid:e73bc140-479e-46f9-afe8-8d8230fd7cc5", Encounter-PathologyReflex-Spell)
