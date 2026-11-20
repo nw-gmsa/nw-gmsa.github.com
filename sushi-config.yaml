@@ -348,6 +348,7 @@ menu:
     Report Types: ReportTypes.html
   ##  Overview - Data Contracts: data-intro.html
     Genomic Test Order: StructureDefinition-GenomicTestOrder.html
+    Primary Sample: StructureDefinition-PrimarySample.html
     Genomic Test Report: StructureDefinition-GenomicTestReport.html
     Genomic Test Report (Composition): StructureDefinition-Composition-GenomicReport.html
     Genetic Clinical Referral (Analysis Only): StructureDefinition-GeneticClinicalReferral.html
