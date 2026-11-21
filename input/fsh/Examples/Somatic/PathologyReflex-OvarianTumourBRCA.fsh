@@ -149,12 +149,12 @@ RuleSet: PathologyReflexSpell
 
 Instance: Specimen-PathologyReflex-BlockA3
 InstanceOf: Specimen
-Title: "Specimen - FFPE block A3, ovarian cancer resection (sections sent)"
-Description: "Fictitious example: the block the sections were cut from (HL7 v2 SPM). Tissue taken at surgery (SPM-7) from the ovary (SPM-8) in March 2025 (SPM-17)"
+Title: "Specimen - sections from FFPE block A3, ovarian cancer resection"
+Description: "Fictitious example: the sections sent (HL7 v2 SPM-2), cut from block A3 (parent, SPM-3), fixed in buffered formalin (SPM-6). Tissue taken at surgery (SPM-7) from the ovary (SPM-8) at Lancashire Teaching Hospitals (RXN, OBR-10) in March 2025 (SPM-17)"
 Usage: #example
 
 * identifier[PlacerSpecimenNumber]
-  * value = "H25-11823-A3"
+  * value = "H25-11823-A3-S1"
   * system = "http://www.acme.org/specimen/690D0"
   * type = $v2-0203#PLAC
   * assigner.identifier.system = $ods-code
@@ -162,11 +162,29 @@ Usage: #example
 * status = #available
 * insert BurnleySubject
 * type = $sct#441652008 "Formalin-fixed paraffin-embedded tissue specimen"
+* parent.identifier
+  * value = "H25-11823-A3"
+  * system = "http://www.acme.org/specimen/690D0"
+  * assigner.identifier.system = $ods-code
+  * assigner.identifier.value = "690D0"
+* collection.collector.identifier.assigner.identifier.system = $ods-code
+* collection.collector.identifier.assigner.identifier.value = "RXN"
+* collection.collector.display = "Lancashire Teaching Hospitals NHS Foundation Trust"
 * collection.collectedDateTime = "2025-03-14T10:00:00+00:00"
 * collection.method = $sct#65801008 "Excision"
 * collection.bodySite = $sct#15497006 "Ovarian structure"
+* contained[0] = Substance-PathologyReflex-Formalin
+* processing[0].additive = Reference(Substance-PathologyReflex-Formalin)
 * receivedTime = "2025-03-14T15:00:00+00:00"
 * note[+].text = "10 x 5 um sections and marked H&E guide slide from block A3."
+
+Instance: Substance-PathologyReflex-Formalin
+InstanceOf: http://hl7.eu/fhir/laboratory/StructureDefinition/Substance-additive-eu-lab
+Title: "Substance - buffered 10% formalin (fixative)"
+Description: "Fictitious example: the fixative of FFPE block A3 (HL7 v2 SPM-6)"
+Usage: #inline
+
+* code = http://terminology.hl7.org/CodeSystem/v2-0371#BF10 "Buffered 10% formalin"
 
 Instance: Observation-PathologyReflex-RelapsedDisease
 InstanceOf: ObservationOrder
@@ -527,7 +545,7 @@ Description: "Fictitious example: the sections and marked H&E guide slide from b
 Usage: #example
 
 * identifier[PlacerSpecimenNumber]
-  * value = "H25-11823-A3"
+  * value = "H25-11823-A3-S1"
   * system = "http://www.acme.org/specimen/690D0"
   * type = $v2-0203#PLAC
   * assigner.identifier.system = $ods-code
@@ -535,9 +553,19 @@ Usage: #example
 * status = #available
 * insert BurnleySubject
 * type = $sct#441652008 "Formalin-fixed paraffin-embedded tissue specimen"
+* parent.identifier
+  * value = "H25-11823-A3"
+  * system = "http://www.acme.org/specimen/690D0"
+  * assigner.identifier.system = $ods-code
+  * assigner.identifier.value = "690D0"
+* collection.collector.identifier.assigner.identifier.system = $ods-code
+* collection.collector.identifier.assigner.identifier.value = "RXN"
+* collection.collector.display = "Lancashire Teaching Hospitals NHS Foundation Trust"
 * collection.collectedDateTime = "2025-03-14T10:00:00+00:00"
 * collection.method = $sct#65801008 "Excision"
 * collection.bodySite = $sct#15497006 "Ovarian structure"
+* contained[0] = Substance-PathologyReflex-Formalin
+* processing[0].additive = Reference(Substance-PathologyReflex-Formalin)
 * receivedTime = "2026-11-05T09:00:00+00:00"
 
 Instance: Variant-PathologyReflex-BRCA1
