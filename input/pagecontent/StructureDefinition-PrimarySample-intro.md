@@ -182,122 +182,16 @@ other domains and are left out of this model.
 
 ### Example in HL7 v2
 
-How this model looks in an HL7 v2 `OML_O21` order: the Royal Blackburn Hospital laboratory
-(`690D0`) reflexes a tumour BRCA test (M2.1) to the North West GLH from an archived FFPE
-block - step 2 of [Pathology to Genomics Reflex - Ovarian Cancer Tumour
-BRCA](ExampleScenario-PathologyReflexTumourBRCA.html), also shown with the other
-[Sub-order (LAB-35)](hl7v2.html#sub-order-lab-35) examples. The PDF is shortened.
+Two examples of a pathology to genomics reflex, each an HL7 v2 `OML_O21` order carrying the
+**prior** pathology report, followed by that report in human readable form. The Specimen
+elements are in the genomic order's `SPM` (and `OBR-10`). The assessment and tumour elements
+are **prior results** of the pathology order, because they are pathology's findings, not
+statements made by genomics. The mocks are fictitious; the small grey labels show which model
+elements and HL7 v2 segments each part matches - a real report would not show them.
 
-```
-MSH|^~\&|LIMS|690D0|RIE|699X0|20261103143000+0000||OML^O21^OML_O21|urn:uuid:3f0c9e52-6b1d-4c1e-9a57-2d8f1b7e4a10|T|2.5.1|||AL
-PID|1||9737383389^^^NHS^NH~690D07418265^^^690D0^MR~RXN7316420^^^RXN^MR||BURNLEY^Selyse^^^^^L||19670918|F|||Manchester Road^^Burnley^Lancashire^BB11 9SA
-PV1|1|I|^^^RXN02^^^^^^^RXN||||C5678901^FICTITIOUS^Priya^^^Dr^^^GMC|||503^Gynaecological Oncology^2.16.840.1.113883.2.1.6.8|||||||C5678901^FICTITIOUS^Priya^^^Dr^^^GMC||SP2503130417^^^RXN^AN|||||||||||||||||||||||||20250313090000+0000
-ORC|NW|G26-04417-1^690D0||||||EPR-552871&RXN^H25-11823&690D0|20261103143000+0000|||C7890123^FICTITIOUS^Morgan^^^Dr^^^GMC|||||||||ROYAL BLACKBURN HOSPITAL LABORATORY^^690D0^^^ODS
-OBR|1|G26-04417-1^690D0||M2.1^Ovarian Carcinoma, Multi-target NGS panel - small variant (BRCA1, BRCA2, SMARCA4)^England-GenomicTestDirectory||20261103||||^^^^^^^^^^^^^RXN||||||C7890123^FICTITIOUS^Morgan^^^Dr^^^GMC|||||||||||||||M2^Ovarian Carcinoma^GenomicClinicalIndication
-NTE|1||Relapsed high-grade serous ovarian carcinoma, second line. Tumour BRCA for PARP inhibitor eligibility.
-OBX|1|CWE|RelapsedDiseaseConfirmation^Confirmation of relapsed high-grade disease, second line of treatment or beyond^NWGMSA||Y^Yes^HL70136||||||F
-SPM|1|H25-11823-A3-S1&690D0|H25-11823-A3&690D0|441652008^Formalin-fixed paraffin-embedded tissue specimen^SNM3||BF10^Buffered 10% formalin^HL70371|65801008^Excision^SNM3|15497006^Ovarian structure^SNM3||||||10 x 5 um sections and marked H&E guide slide from block A3|||20250314100000+0000|20250314150000+0000||Y
-PV1|1|I|^^^RXN02^^^^^^^RXN||||C5678901^FICTITIOUS^Priya^^^Dr^^^GMC|||503^Gynaecological Oncology^2.16.840.1.113883.2.1.6.8|||||||C5678901^FICTITIOUS^Priya^^^Dr^^^GMC||SP2503130417^^^RXN^AN|||||||||||||||||||||||||20250313090000+0000
-ORC|RE|EPR-552871^RXN|H25-11823^690D0||CM|||||||C5678901^FICTITIOUS^Priya^^^Dr^^^GMC|||||||||LANCASHIRE TEACHING HOSPITALS NHS FOUNDATION TRUST^^RXN^^^ODS
-OBR|1|EPR-552871^RXN|H25-11823^690D0|HISTO^Histopathology^690D0|||20250314100000+0000|||||||||C5678901^FICTITIOUS^Priya^^^Dr^^^GMC||||||20250321160000+0000|||F
-OBX|1|CWE|21855-2^Primary site Cancer^LN^pCR6410^Topography (SNOMED)^COSD||C56.9^Ovary^ICDO3^15497006^Ovarian structure^SNM3||||||F
-OBX|2|ED|1054291000000102^Cellular pathology report^SNM3||^application^pdf^Base64^JVBERi0x...||||||F
-OBR|2|EPR-552871^RXN|H25-11823^690D0|77753-2^Tumor morphology panel Cancer^LN|||20250314100000+0000|||||||||||||||20250321160000+0000|||F||||EPR-552871&RXN^H25-11823&690D0
-OBX|1|CWE|31205-8^Histology ICD-O-3 Cancer^LN^pCR6420^Morphology (SNOMED)^COSD||8461^High grade serous carcinoma^ICDO3^703563003^High grade serous carcinoma^SNM3||||||F
-OBX|2|CWE|31206-6^Behavior ICD-O-3 Cancer^LN||3^Malignant, primary site^ICDO3||||||F
-OBR|3|EPR-552871^RXN|H25-11823^690D0|TMA^Tumour assessment for molecular testing^690D0|||20250314100000+0000|||||||||||||||20261102110000+0000|||F
-NTE|1||Block A3 - tumour area ringed on H&E guide slide
-OBX|1|NM|TCC^Tumour cell content^690D0||60|%^percent^UCUM|||||F|||20261102110000+0000
-```
+#### Lynch Syndrome
 
-> FHIR Message Example: [Bundle Message - Genomics Order - Pathology Reflex](Bundle-GenomicsOrderMessage-PathologyReflex.html)
-
-The Specimen elements are in the genomic order's `SPM` (and `OBR-10`). The assessment and
-tumour elements are **prior results** of the pathology order, because they are pathology's
-findings, not statements made by genomics.
-
-| Element | MDS | HL7 v2 | In the example |
-|---|---|---|---|
-| identifier.value, identifier.assigner | PS-002, PS-003 | `SPM-2` | `H25-11823-A3-S1&690D0` - the sections sent, numbered by `690D0` |
-| parentIdentifier | PS-030 | `SPM-3` | `H25-11823-A3&690D0` - block A3 |
-| collector | PS-038 | `OBR-10` (`XCN.14` assigning facility) | `RXN` - Lancashire Teaching Hospitals, where the surgery was done |
-| collectedDate | PS-010 | `SPM-17` | 14 March 2025 |
-| type | PS-011, PS-012 | `SPM-4` | `441652008` Formalin-fixed paraffin-embedded tissue specimen |
-| condition | PS-012 | `SPM-24` | Not sent - FFPE is carried by the type |
-| additive, processing.fixative | PS-025, PS-031 | `SPM-6` | `BF10` Buffered 10% formalin |
-| collectionMethod | PS-029, PS-039 | `SPM-7` | `65801008` Excision |
-| bodySite | PS-019 | `SPM-8` | `15497006` Ovarian structure |
-| risk | PS-024 | `SPM-16` | Not sent - no known infection risk, and no "none" code |
-| assessment.tumourContentMarkedArea | PS-026 | Prior `OBR` 3, `OBX` 1 | `TCC` Tumour cell content, 60 % - the tumour area ringed on the H&E guide slide |
-| tumour.topography | PS-018 | Prior `OBR` 1, `OBX` 1 | LOINC `21855-2` Primary site: ICD-O-3 `C56.9`, SNOMED CT `15497006` |
-| tumour.morphology | PS-017 | Prior `OBR` 2, `OBX` 1-2 | LOINC `31205-8` Histology: ICD-O-3 `8461`, SNOMED CT `703563003` High grade serous carcinoma; `31206-6` Behaviour: malignant |
-| tumour.stage, tumour.grade, tumour.specimenNature | PS-036, PS-037, PS-035 | - | Not sent as discrete results (not required for M2.1); stage is in the PDF text |
-{:.grid}
-
-#### What the reader sees
-
-The histopathology report for H25-11823, shown the way a genomic scientist would read it.
-Nearly all of this logical model is already in the pathology report: the specimen, its
-collection and fixation, the tumour site and morphology, and the tumour assessment made when
-block A3 was selected for testing. The genomic order adds little more than the test requested
-and the identifier of the sections sent. The mock is fictitious. The small grey labels show
-which model elements and HL7 v2 segments each part matches - a real report would not show them.
-
-<div style="border:1px solid #bbb; box-shadow:0 2px 8px rgba(0,0,0,0.15); background:#fafafa; color:#222; max-width:820px; margin:16px auto; padding:28px 36px; font-family:Georgia,'Times New Roman',serif; font-size:14px; line-height:1.5;">
-
-<div style="display:flex; justify-content:space-between; align-items:flex-start; border-bottom:2px solid #333; padding-bottom:6px; margin-bottom:8px;">
-  <div><div style="font-size:20px; font-weight:bold;">Histopathology Report</div><div>Royal Blackburn Hospital Laboratory (690D0)</div></div>
-  <div style="text-align:right; font-size:13px;"><span style="font-size:12px; color:#c00; font-weight:bold; border:1px solid #c00; padding:2px 6px; font-family:Arial,sans-serif;">FICTITIOUS EXAMPLE</span><br/>Lab No: <b>H25-11823</b><br/>Final report, with supplementary report</div>
-</div>
-
-<div style="font-size:11px; color:#888; font-family:Arial,sans-serif;">PID &middot; PATIENT_VISIT_PRIOR (PV1) &middot; ORDER_PRIOR ORC, OBR 1</div>
-<table style="width:100%; font-size:13px; margin-bottom:8px; border:none;">
-<tr><td style="border:none; padding:1px 8px 1px 0;"><b>Patient</b></td><td style="border:none;">BURNLEY, Selyse (F)</td><td style="border:none;"><b>NHS No</b></td><td style="border:none;">973 738 3389</td></tr>
-<tr><td style="border:none; padding:1px 8px 1px 0;"><b>DOB</b></td><td style="border:none;">18-Sep-1967</td><td style="border:none;"><b>Hospital No</b></td><td style="border:none;">RXN7316420 (RXN), 690D07418265 (690D0)</td></tr>
-<tr><td style="border:none; padding:1px 8px 1px 0;"><b>Requested by</b></td><td style="border:none;">Dr Priya FICTITIOUS (GMC C5678901), Gynaecological Oncology, Lancashire Teaching Hospitals NHS Foundation Trust</td><td style="border:none;"><b>Order No</b></td><td style="border:none;">EPR-552871 (RXN)</td></tr>
-<tr><td style="border:none; padding:1px 8px 1px 0;"><b>Spell</b></td><td style="border:none;">SP2503130417, inpatient ward RXN02, admitted 13-Mar-2025</td><td style="border:none;"><b>Received</b></td><td style="border:none;">14-Mar-2025</td></tr>
-</table>
-
-<p style="margin:2px 0 6px;"><b>Clinical details.</b> Pelvic mass with omental disease and raised CA125. Primary debulking surgery.</p>
-
-<div style="font-size:11px; color:#888; font-family:Arial,sans-serif;">collectionMethod, bodySite, collector, collectedDate, additive / processing.fixative (PS-029, PS-019, PS-038, PS-010, PS-025) &middot; SPM-6, -7, -8, -17, OBR-10</div>
-<p style="margin:2px 0 6px;"><b>Specimen.</b> A: Total abdominal hysterectomy, bilateral salpingo-oophorectomy and omentectomy (excision), collected 14-Mar-2025 at Lancashire Teaching Hospitals (RXN). Fixed in buffered 10% formalin.</p>
-<p style="margin:2px 0 6px;"><b>Macroscopy.</b> The right ovary is replaced by a solid and cystic tumour, 85 mm in maximum dimension, with surface involvement. The left ovary, uterus and tubes are unremarkable to the eye. The omentum contains tumour deposits up to 30 mm. Blocks A1 to A3 right ovarian tumour, A4 left ovary, A5 uterus, A6 omentum.</p>
-<p style="margin:2px 0 6px;"><b>Microscopy.</b> The right ovarian tumour is a high-grade serous carcinoma, with marked nuclear pleomorphism and frequent mitoses. Omental deposits of carcinoma are present. The left ovary, uterus and fallopian tubes are not involved. Immunohistochemistry: WT1 positive; p53 aberrant (null pattern).</p>
-
-<div style="font-size:11px; color:#888; font-family:Arial,sans-serif;">tumour.topography, tumour.morphology (PS-018, PS-017) &middot; prior OBR 1 OBX 1, OBR 2 (LOINC 77753-2) OBX 1-2; stage, grade (PS-036, PS-037) are text only</div>
-<div style="border:1px solid #999; background:#fff; padding:6px 10px; margin:0 0 8px;"><b>Diagnosis.</b> Right ovary: high-grade serous carcinoma, with omental metastases. FIGO stage IIIC (pT3c).<br/>
-<span style="font-size:13px;">Primary site: Ovary (ICD-O-3 C56.9; SNOMED CT 15497006) &middot; Histology: High grade serous carcinoma (ICD-O-3 8461; SNOMED CT 703563003) &middot; Behaviour: Malignant, primary site</span></div>
-<p style="margin:2px 0 6px;"><b>Comment.</b> FFPE blocks A1 to A6 are retained in the laboratory archive.</p>
-<div style="border-top:1px solid #333; padding-top:4px; font-size:13px;">Reported by: Dr M FICTITIOUS, Consultant Histopathologist &nbsp;&middot;&nbsp; Authorised: 21-Mar-2025 16:00</div>
-
-<div style="font-size:11px; color:#888; margin-top:14px; font-family:Arial,sans-serif;">assessment.tumourContentMarkedArea (PS-026) &middot; prior OBR 3 (TMA), NTE, OBX 1; identifier, parentIdentifier, type (PS-002, PS-030, PS-011) &middot; SPM-2, -3, -4, -14</div>
-<div style="border-top:2px solid #333; padding-top:6px; margin-top:4px;">
-<div style="font-size:16px; font-weight:bold;">Supplementary report - Tumour assessment for molecular testing</div>
-<p style="margin:2px 0 6px;">Block <b>A3</b> (right ovarian tumour) selected for genomic test M2.1, tumour BRCA, requested from the North West GLH (order G26-04417-1). Tumour area ringed on the H&amp;E guide slide. Tumour cell content: <b>60 %</b>.</p>
-<p style="margin:2px 0 6px;">Sent: 10 x 5 &micro;m sections <b>H25-11823-A3-S1</b> and the marked H&amp;E guide slide from block <b>H25-11823-A3</b> - formalin-fixed paraffin-embedded tissue.</p>
-<div style="border-top:1px solid #333; padding-top:4px; font-size:13px;">Reported by: Dr Morgan FICTITIOUS (GMC C7890123), Consultant Histopathologist &nbsp;&middot;&nbsp; Authorised: 02-Nov-2026 11:00</div>
-</div>
-
-</div>
-
-**Reading the mock**
-
-- The **header** keeps the original pathology order's own identity: its numbers, the requesting
-  clinician and Trust (`RXN`) and the hospital spell. The genomic report can be sent back to
-  that clinician.
-- **Specimen** and **Diagnosis** are the original report from March 2025. The coded primary
-  site and histology are the discrete data genomics checks against the MDS (PS-017, PS-018);
-  stage and IHC are text only.
-- The **Supplementary report** (02-Nov-2026) was added when block A3 was selected for this
-  test. It gives the tumour assessment (PS-026) and describes the sections sent, which the
-  genomic order carries in `SPM`.
-- What the pathology report does not hold - the test requested (M2.1), the relapsed-disease
-  answer and the order's clinical note - comes from the genomic order itself.
-
-#### Colorectal example: Lynch syndrome triage
-
-The same model for a colonoscopy biopsy: the Manchester Royal Infirmary laboratory (`690S0`)
+How this model looks in an HL7 v2 `OML_O21` order for a colonoscopy biopsy: the Manchester Royal Infirmary laboratory (`690S0`)
 reflexes MLH1 promoter hypermethylation (M1.5) after mismatch repair (MMR) immunohistochemistry
 shows loss of MLH1 and PMS2 - step 2 of [Lynch Syndrome](ExampleScenario-LynchSyndrome.html).
 No clinician requests the test. The MMR immunohistochemistry is the trigger, sent as its own
@@ -306,10 +200,12 @@ prior result (`OBR` 3); it is not a Primary sample item. The PDF is shortened.
 ```
 MSH|^~\&|LIMS|690S0|RIE|699X0|20230821140000+0000||OML^O21^OML_O21|urn:uuid:952c8215-d682-4b79-a652-5e73ba1a7584|T|2.5.1|||AL
 PID|1||9737383206^^^NHS^NH~7742315^^^R0A^MR||LIVERPOOL^Ned^^^^^L||19420618|M|||20 Forthlin Road^^LIVERPOOL^^L18 9TN
+PV1|1|O|^^^R0A02^^^^^^^R0A||||C3456789^Darwin^Samuel^^^Dr^^^GMC|||301^Gastroenterology^2.16.840.1.113883.2.1.6.8|||||||C3456789^Darwin^Samuel^^^Dr^^^GMC||SP2308140915^^^R0A^AN|||||||||||||||||||||||||20230814080000+0000
 ORC|NW|G23-08317-1^690S0||||||1583320&R0A^H23-41022&690S0|20230821140000+0000|||C2468013^FICTITIOUS^Anika^^^Dr^^^GMC|||||||||MANCHESTER ROYAL INFIRMARY LABORATORY^^690S0^^^ODS
 OBR|1|G23-08317-1^690S0||M1.5^Colorectal Carcinoma, MLH1 promoter hypermethylation^England-GenomicTestDirectory||20230821||||^^^^^^^^^^^^^R0A||||||C2468013^FICTITIOUS^Anika^^^Dr^^^GMC|||||||||||||||M1^Colorectal Carcinoma^GenomicClinicalIndication
 NTE|1||Caecal adenocarcinoma. Loss of MLH1 and PMS2 on MMR immunohistochemistry. MLH1 promoter hypermethylation for Lynch syndrome triage.
 SPM|1|H23-41022-A1-S1&690S0|H23-41022-A1&690S0|441652008^Formalin-fixed paraffin-embedded tissue specimen^SNM3||BF10^Buffered 10% formalin^HL70371|86273004^Biopsy^SNM3|32713005^Caecum structure^SNM3||||||10 x 5 um sections and marked H&E guide slide from block A1|||20230814100000+0000|20230814150000+0000||Y
+PV1|1|O|^^^R0A02^^^^^^^R0A||||C3456789^Darwin^Samuel^^^Dr^^^GMC|||301^Gastroenterology^2.16.840.1.113883.2.1.6.8|||||||C3456789^Darwin^Samuel^^^Dr^^^GMC||SP2308140915^^^R0A^AN|||||||||||||||||||||||||20230814080000+0000
 ORC|RE|1583320^R0A|H23-41022^690S0||CM|||||||C3456789^Darwin^Samuel^^^Dr^^^GMC|||||||||MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS
 OBR|1|1583320^R0A|H23-41022^690S0|HISTO^Histopathology^690S0|||20230814100000+0000|||||||||C3456789^Darwin^Samuel^^^Dr^^^GMC||||||20230821090000+0000|||F
 OBX|1|CWE|21855-2^Primary site Cancer^LN^pCR6410^Topography (SNOMED)^COSD||C18.0^Cecum^ICDO3^32713005^Caecum structure^SNM3||||||F
@@ -346,23 +242,25 @@ OBX|1|NM|TCC^Tumour cell content^690S0||40|%^percent^UCUM|||||F|||20230821110000
 | tumour.stage, tumour.grade | PS-036, PS-037 | - | Not reported on a biopsy |
 {:.grid}
 
-The histopathology report for H23-41022, in the same form as the ovarian example. The second
-supplementary report is not part of the reflex order: it is issued to the clinician (`LAB-3`)
-once the genomic result is back - step 6 of the scenario.
+##### Lynch Syndrome in Human Readable format (PDF or FHIR Document)
+
+The histopathology report for H23-41022, sent as the prior result (`OBX` of type `ED`). Nearly
+all of this logical model is in it: the specimen, its collection and fixation, the tumour site
+and morphology, and the tumour assessment of block A1.
 
 <div style="border:1px solid #bbb; box-shadow:0 2px 8px rgba(0,0,0,0.15); background:#fafafa; color:#222; max-width:820px; margin:16px auto; padding:28px 36px; font-family:Georgia,'Times New Roman',serif; font-size:14px; line-height:1.5;">
 
 <div style="display:flex; justify-content:space-between; align-items:flex-start; border-bottom:2px solid #333; padding-bottom:6px; margin-bottom:8px;">
   <div><div style="font-size:20px; font-weight:bold;">Histopathology Report</div><div>Manchester Royal Infirmary Laboratory (690S0)</div></div>
-  <div style="text-align:right; font-size:13px;"><span style="font-size:12px; color:#c00; font-weight:bold; border:1px solid #c00; padding:2px 6px; font-family:Arial,sans-serif;">FICTITIOUS EXAMPLE</span><br/>Lab No: <b>H23-41022</b><br/>Final report, with supplementary reports</div>
+  <div style="text-align:right; font-size:13px;"><span style="font-size:12px; color:#c00; font-weight:bold; border:1px solid #c00; padding:2px 6px; font-family:Arial,sans-serif;">FICTITIOUS EXAMPLE</span><br/>Lab No: <b>H23-41022</b><br/>Report No: <b>H23-41022</b><br/>Final report, with supplementary report</div>
 </div>
 
-<div style="font-size:11px; color:#888; font-family:Arial,sans-serif;">PID &middot; ORDER_PRIOR ORC, OBR 1</div>
+<div style="font-size:11px; color:#888; font-family:Arial,sans-serif;">PID &middot; PATIENT_VISIT_PRIOR (PV1) &middot; ORDER_PRIOR ORC, OBR 1</div>
 <table style="width:100%; font-size:13px; margin-bottom:8px; border:none;">
 <tr><td style="border:none; padding:1px 8px 1px 0;"><b>Patient</b></td><td style="border:none;">LIVERPOOL, Ned (M)</td><td style="border:none;"><b>NHS No</b></td><td style="border:none;">973 738 3206</td></tr>
 <tr><td style="border:none; padding:1px 8px 1px 0;"><b>DOB</b></td><td style="border:none;">18-Jun-1942</td><td style="border:none;"><b>Hospital No</b></td><td style="border:none;">7742315 (R0A)</td></tr>
 <tr><td style="border:none; padding:1px 8px 1px 0;"><b>Requested by</b></td><td style="border:none;">Dr Samuel Darwin (GMC C3456789), Manchester University NHS Foundation Trust</td><td style="border:none;"><b>Order No</b></td><td style="border:none;">1583320 (R0A)</td></tr>
-<tr><td style="border:none; padding:1px 8px 1px 0;"></td><td style="border:none;"></td><td style="border:none;"><b>Received</b></td><td style="border:none;">14-Aug-2023</td></tr>
+<tr><td style="border:none; padding:1px 8px 1px 0;"><b>Hospital Spell</b></td><td style="border:none;">SP2308140915 (R0A), outpatient episode, Gastroenterology, from 14-Aug-2023</td><td style="border:none;"><b>Received</b></td><td style="border:none;">14-Aug-2023</td></tr>
 </table>
 
 <p style="margin:2px 0 6px;"><b>Clinical details.</b> Change in bowel habit. Colonoscopy: ulcerated mass in the caecum.</p>
@@ -381,29 +279,132 @@ once the genomic result is back - step 6 of the scenario.
 <div style="font-size:11px; color:#888; margin-top:14px; font-family:Arial,sans-serif;">assessment.tumourContentMarkedArea (PS-026) &middot; prior OBR 4 (TMA), NTE, OBX 1; identifier, parentIdentifier, type (PS-002, PS-030, PS-011) &middot; SPM-2, -3, -4, -14</div>
 <div style="border-top:2px solid #333; padding-top:6px; margin-top:4px;">
 <div style="font-size:16px; font-weight:bold;">Supplementary report - Tumour assessment for molecular testing</div>
+<div style="font-size:13px;">Report No: <b>H23-41022-TMA</b></div>
 <p style="margin:2px 0 6px;">Block <b>A1</b> selected for genomic test M1.5, MLH1 promoter hypermethylation, requested from the North West GLH (order G23-08317-1). Tumour area ringed on the H&amp;E guide slide. Tumour cell content: <b>40 %</b>.</p>
 <p style="margin:2px 0 6px;">Sent: 10 x 5 &micro;m sections <b>H23-41022-A1-S1</b> and the marked H&amp;E guide slide from block <b>H23-41022-A1</b> - formalin-fixed paraffin-embedded tissue.</p>
 <div style="border-top:1px solid #333; padding-top:4px; font-size:13px;">Reported by: Dr Anika FICTITIOUS (GMC C2468013), Consultant Histopathologist &nbsp;&middot;&nbsp; Authorised: 21-Aug-2023 11:00</div>
 </div>
 
-<div style="font-size:11px; color:#888; margin-top:14px; font-family:Arial,sans-serif;">Not in the reflex order - LAB-3 to the clinician after the LAB-36 genomic report (scenario step 6)</div>
-<div style="border-top:2px solid #333; padding-top:6px; margin-top:4px;">
-<div style="font-size:16px; font-weight:bold;">Supplementary report - Molecular result</div>
-<p style="margin:2px 0 6px;">MLH1 promoter hypermethylation: <b>not detected</b> (North West GLH, report T23-55120, 01-Sep-2023). The loss of MLH1 and PMS2 may be due to Lynch syndrome. Referral for germline testing (R210) is recommended.</p>
-<div style="border-top:1px solid #333; padding-top:4px; font-size:13px;">Reported by: Dr Anika FICTITIOUS (GMC C2468013), Consultant Histopathologist &nbsp;&middot;&nbsp; Authorised: 04-Sep-2023 10:00</div>
-</div>
 
 </div>
 
-**Reading the colorectal mock**
+**Reading the Lynch Syndrome mock**
 
-- Unlike the ovarian example, the reflex is made at diagnosis, so the original report and the
+- The reflex is made at diagnosis, so the original report and the
   tumour assessment are issued on the same day, from the same biopsy block.
 - The **MMR immunohistochemistry** is pathology's result and the reason for the order. Genomics
   needs it as discrete data, but it sits outside this logical model, with the pathology report.
-- The **molecular result** supplementary report shows the genomic result reaching the clinician
-  through pathology. The North West GLH also sends the clinician a copy of its own report
-  directly (an unsolicited `LAB-3`) - step 7 of the scenario.
+
+#### Ovarian Cancer Tumour BRCA
+
+The same model for an archived resection: the Royal Blackburn Hospital laboratory
+(`690D0`) reflexes a tumour BRCA test (M2.1) to the North West GLH from an archived FFPE
+block - step 2 of [Pathology to Genomics Reflex - Ovarian Cancer Tumour
+BRCA](ExampleScenario-PathologyReflexTumourBRCA.html), also shown with the other
+[Sub-order (LAB-35)](hl7v2.html#sub-order-lab-35) examples. The PDF is shortened.
+
+```
+MSH|^~\&|LIMS|690D0|RIE|699X0|20261103143000+0000||OML^O21^OML_O21|urn:uuid:3f0c9e52-6b1d-4c1e-9a57-2d8f1b7e4a10|T|2.5.1|||AL
+PID|1||9737383389^^^NHS^NH~690D07418265^^^690D0^MR~RXN7316420^^^RXN^MR||BURNLEY^Selyse^^^^^L||19670918|F|||Manchester Road^^Burnley^Lancashire^BB11 9SA
+PV1|1|I|^^^RXN02^^^^^^^RXN||||C5678901^FICTITIOUS^Priya^^^Dr^^^GMC|||503^Gynaecological Oncology^2.16.840.1.113883.2.1.6.8|||||||C5678901^FICTITIOUS^Priya^^^Dr^^^GMC||SP2503130417^^^RXN^AN|||||||||||||||||||||||||20250313090000+0000
+ORC|NW|G26-04417-1^690D0||||||EPR-552871&RXN^H25-11823&690D0|20261103143000+0000|||C7890123^FICTITIOUS^Morgan^^^Dr^^^GMC|||||||||ROYAL BLACKBURN HOSPITAL LABORATORY^^690D0^^^ODS
+OBR|1|G26-04417-1^690D0||M2.1^Ovarian Carcinoma, Multi-target NGS panel - small variant (BRCA1, BRCA2, SMARCA4)^England-GenomicTestDirectory||20261103||||^^^^^^^^^^^^^RXN||||||C7890123^FICTITIOUS^Morgan^^^Dr^^^GMC|||||||||||||||M2^Ovarian Carcinoma^GenomicClinicalIndication
+NTE|1||Relapsed high-grade serous ovarian carcinoma, second line. Tumour BRCA for PARP inhibitor eligibility.
+OBX|1|CWE|RelapsedDiseaseConfirmation^Confirmation of relapsed high-grade disease, second line of treatment or beyond^NWGMSA||Y^Yes^HL70136||||||F
+SPM|1|H25-11823-A3-S1&690D0|H25-11823-A3&690D0|441652008^Formalin-fixed paraffin-embedded tissue specimen^SNM3||BF10^Buffered 10% formalin^HL70371|65801008^Excision^SNM3|15497006^Ovarian structure^SNM3||||||10 x 5 um sections and marked H&E guide slide from block A3|||20250314100000+0000|20250314150000+0000||Y
+PV1|1|I|^^^RXN02^^^^^^^RXN||||C5678901^FICTITIOUS^Priya^^^Dr^^^GMC|||503^Gynaecological Oncology^2.16.840.1.113883.2.1.6.8|||||||C5678901^FICTITIOUS^Priya^^^Dr^^^GMC||SP2503130417^^^RXN^AN|||||||||||||||||||||||||20250313090000+0000
+ORC|RE|EPR-552871^RXN|H25-11823^690D0||CM|||||||C5678901^FICTITIOUS^Priya^^^Dr^^^GMC|||||||||LANCASHIRE TEACHING HOSPITALS NHS FOUNDATION TRUST^^RXN^^^ODS
+OBR|1|EPR-552871^RXN|H25-11823^690D0|HISTO^Histopathology^690D0|||20250314100000+0000|||||||||C5678901^FICTITIOUS^Priya^^^Dr^^^GMC||||||20250321160000+0000|||F
+OBX|1|CWE|21855-2^Primary site Cancer^LN^pCR6410^Topography (SNOMED)^COSD||C56.9^Ovary^ICDO3^15497006^Ovarian structure^SNM3||||||F
+OBX|2|ED|1054291000000102^Cellular pathology report^SNM3||^application^pdf^Base64^JVBERi0x...||||||F
+OBR|2|EPR-552871^RXN|H25-11823^690D0|77753-2^Tumor morphology panel Cancer^LN|||20250314100000+0000|||||||||||||||20250321160000+0000|||F||||EPR-552871&RXN^H25-11823&690D0
+OBX|1|CWE|31205-8^Histology ICD-O-3 Cancer^LN^pCR6420^Morphology (SNOMED)^COSD||8461^High grade serous carcinoma^ICDO3^703563003^High grade serous carcinoma^SNM3||||||F
+OBX|2|CWE|31206-6^Behavior ICD-O-3 Cancer^LN||3^Malignant, primary site^ICDO3||||||F
+OBR|3|EPR-552871^RXN|H25-11823^690D0|TMA^Tumour assessment for molecular testing^690D0|||20250314100000+0000|||||||||||||||20261102110000+0000|||F
+NTE|1||Block A3 - tumour area ringed on H&E guide slide
+OBX|1|NM|TCC^Tumour cell content^690D0||60|%^percent^UCUM|||||F|||20261102110000+0000
+```
+
+> FHIR Message Example: [Bundle Message - Genomics Order - Pathology Reflex](Bundle-GenomicsOrderMessage-PathologyReflex.html)
+
+| Element | MDS | HL7 v2 | In the example |
+|---|---|---|---|
+| identifier.value, identifier.assigner | PS-002, PS-003 | `SPM-2` | `H25-11823-A3-S1&690D0` - the sections sent, numbered by `690D0` |
+| parentIdentifier | PS-030 | `SPM-3` | `H25-11823-A3&690D0` - block A3 |
+| collector | PS-038 | `OBR-10` (`XCN.14` assigning facility) | `RXN` - Lancashire Teaching Hospitals, where the surgery was done |
+| collectedDate | PS-010 | `SPM-17` | 14 March 2025 |
+| type | PS-011, PS-012 | `SPM-4` | `441652008` Formalin-fixed paraffin-embedded tissue specimen |
+| condition | PS-012 | `SPM-24` | Not sent - FFPE is carried by the type |
+| additive, processing.fixative | PS-025, PS-031 | `SPM-6` | `BF10` Buffered 10% formalin |
+| collectionMethod | PS-029, PS-039 | `SPM-7` | `65801008` Excision |
+| bodySite | PS-019 | `SPM-8` | `15497006` Ovarian structure |
+| risk | PS-024 | `SPM-16` | Not sent - no known infection risk, and no "none" code |
+| assessment.tumourContentMarkedArea | PS-026 | Prior `OBR` 3, `OBX` 1 | `TCC` Tumour cell content, 60 % - the tumour area ringed on the H&E guide slide |
+| tumour.topography | PS-018 | Prior `OBR` 1, `OBX` 1 | LOINC `21855-2` Primary site: ICD-O-3 `C56.9`, SNOMED CT `15497006` |
+| tumour.morphology | PS-017 | Prior `OBR` 2, `OBX` 1-2 | LOINC `31205-8` Histology: ICD-O-3 `8461`, SNOMED CT `703563003` High grade serous carcinoma; `31206-6` Behaviour: malignant |
+| tumour.stage, tumour.grade, tumour.specimenNature | PS-036, PS-037, PS-035 | - | Not sent as discrete results (not required for M2.1); stage is in the PDF text |
+{:.grid}
+
+##### Ovarian Cancer in Human Readable format (PDF or FHIR Document)
+
+The histopathology report for H25-11823, shown the way a genomic scientist would read it.
+Nearly all of this logical model is already in the pathology report: the specimen, its
+collection and fixation, the tumour site and morphology, and the tumour assessment made when
+block A3 was selected for testing. The genomic order adds little more than the test requested
+and the identifier of the sections sent.
+
+<div style="border:1px solid #bbb; box-shadow:0 2px 8px rgba(0,0,0,0.15); background:#fafafa; color:#222; max-width:820px; margin:16px auto; padding:28px 36px; font-family:Georgia,'Times New Roman',serif; font-size:14px; line-height:1.5;">
+
+<div style="display:flex; justify-content:space-between; align-items:flex-start; border-bottom:2px solid #333; padding-bottom:6px; margin-bottom:8px;">
+  <div><div style="font-size:20px; font-weight:bold;">Histopathology Report</div><div>Royal Blackburn Hospital Laboratory (690D0)</div></div>
+  <div style="text-align:right; font-size:13px;"><span style="font-size:12px; color:#c00; font-weight:bold; border:1px solid #c00; padding:2px 6px; font-family:Arial,sans-serif;">FICTITIOUS EXAMPLE</span><br/>Lab No: <b>H25-11823</b><br/>Report No: <b>H25-11823</b><br/>Final report, with supplementary report</div>
+</div>
+
+<div style="font-size:11px; color:#888; font-family:Arial,sans-serif;">PID &middot; PATIENT_VISIT_PRIOR (PV1) &middot; ORDER_PRIOR ORC, OBR 1</div>
+<table style="width:100%; font-size:13px; margin-bottom:8px; border:none;">
+<tr><td style="border:none; padding:1px 8px 1px 0;"><b>Patient</b></td><td style="border:none;">BURNLEY, Selyse (F)</td><td style="border:none;"><b>NHS No</b></td><td style="border:none;">973 738 3389</td></tr>
+<tr><td style="border:none; padding:1px 8px 1px 0;"><b>DOB</b></td><td style="border:none;">18-Sep-1967</td><td style="border:none;"><b>Hospital No</b></td><td style="border:none;">RXN7316420 (RXN), 690D07418265 (690D0)</td></tr>
+<tr><td style="border:none; padding:1px 8px 1px 0;"><b>Requested by</b></td><td style="border:none;">Dr Priya FICTITIOUS (GMC C5678901), Gynaecological Oncology, Lancashire Teaching Hospitals NHS Foundation Trust</td><td style="border:none;"><b>Order No</b></td><td style="border:none;">EPR-552871 (RXN)</td></tr>
+<tr><td style="border:none; padding:1px 8px 1px 0;"><b>Hospital Spell</b></td><td style="border:none;">SP2503130417 (RXN), inpatient ward RXN02, admitted 13-Mar-2025</td><td style="border:none;"><b>Received</b></td><td style="border:none;">14-Mar-2025</td></tr>
+</table>
+
+<p style="margin:2px 0 6px;"><b>Clinical details.</b> Pelvic mass with omental disease and raised CA125. Primary debulking surgery.</p>
+
+<div style="font-size:11px; color:#888; font-family:Arial,sans-serif;">collectionMethod, bodySite, collector, collectedDate, additive / processing.fixative (PS-029, PS-019, PS-038, PS-010, PS-025) &middot; SPM-6, -7, -8, -17, OBR-10</div>
+<p style="margin:2px 0 6px;"><b>Specimen.</b> A: Total abdominal hysterectomy, bilateral salpingo-oophorectomy and omentectomy (excision), collected 14-Mar-2025 at Lancashire Teaching Hospitals (RXN). Fixed in buffered 10% formalin.</p>
+<p style="margin:2px 0 6px;"><b>Macroscopy.</b> The right ovary is replaced by a solid and cystic tumour, 85 mm in maximum dimension, with surface involvement. The left ovary, uterus and tubes are unremarkable to the eye. The omentum contains tumour deposits up to 30 mm. Blocks A1 to A3 right ovarian tumour, A4 left ovary, A5 uterus, A6 omentum.</p>
+<p style="margin:2px 0 6px;"><b>Microscopy.</b> The right ovarian tumour is a high-grade serous carcinoma, with marked nuclear pleomorphism and frequent mitoses. Omental deposits of carcinoma are present. The left ovary, uterus and fallopian tubes are not involved. Immunohistochemistry: WT1 positive; p53 aberrant (null pattern).</p>
+
+<div style="font-size:11px; color:#888; font-family:Arial,sans-serif;">tumour.topography, tumour.morphology (PS-018, PS-017) &middot; prior OBR 1 OBX 1, OBR 2 (LOINC 77753-2) OBX 1-2; stage, grade (PS-036, PS-037) are text only</div>
+<div style="border:1px solid #999; background:#fff; padding:6px 10px; margin:0 0 8px;"><b>Diagnosis.</b> Right ovary: high-grade serous carcinoma, with omental metastases. FIGO stage IIIC (pT3c).<br/>
+<span style="font-size:13px;">Primary site: Ovary (ICD-O-3 C56.9; SNOMED CT 15497006) &middot; Histology: High grade serous carcinoma (ICD-O-3 8461; SNOMED CT 703563003) &middot; Behaviour: Malignant, primary site</span></div>
+<p style="margin:2px 0 6px;"><b>Comment.</b> FFPE blocks A1 to A6 are retained in the laboratory archive.</p>
+<div style="border-top:1px solid #333; padding-top:4px; font-size:13px;">Reported by: Dr M FICTITIOUS, Consultant Histopathologist &nbsp;&middot;&nbsp; Authorised: 21-Mar-2025 16:00</div>
+
+<div style="font-size:11px; color:#888; margin-top:14px; font-family:Arial,sans-serif;">assessment.tumourContentMarkedArea (PS-026) &middot; prior OBR 3 (TMA), NTE, OBX 1; identifier, parentIdentifier, type (PS-002, PS-030, PS-011) &middot; SPM-2, -3, -4, -14</div>
+<div style="border-top:2px solid #333; padding-top:6px; margin-top:4px;">
+<div style="font-size:16px; font-weight:bold;">Supplementary report - Tumour assessment for molecular testing</div>
+<div style="font-size:13px;">Report No: <b>H25-11823-TMA</b></div>
+<p style="margin:2px 0 6px;">Block <b>A3</b> (right ovarian tumour) selected for genomic test M2.1, tumour BRCA, requested from the North West GLH (order G26-04417-1). Tumour area ringed on the H&amp;E guide slide. Tumour cell content: <b>60 %</b>.</p>
+<p style="margin:2px 0 6px;">Sent: 10 x 5 &micro;m sections <b>H25-11823-A3-S1</b> and the marked H&amp;E guide slide from block <b>H25-11823-A3</b> - formalin-fixed paraffin-embedded tissue.</p>
+<div style="border-top:1px solid #333; padding-top:4px; font-size:13px;">Reported by: Dr Morgan FICTITIOUS (GMC C7890123), Consultant Histopathologist &nbsp;&middot;&nbsp; Authorised: 02-Nov-2026 11:00</div>
+</div>
+
+</div>
+
+**Reading the Ovarian Cancer mock**
+
+- The **header** keeps the original pathology order's own identity: its numbers, the requesting
+  clinician and Trust (`RXN`) and the hospital spell. The genomic report can be sent back to
+  that clinician.
+- **Specimen** and **Diagnosis** are the original report from March 2025. The coded primary
+  site and histology are the discrete data genomics checks against the MDS (PS-017, PS-018);
+  stage and IHC are text only.
+- The **Supplementary report** (02-Nov-2026) was added when block A3 was selected for this
+  test. It gives the tumour assessment (PS-026) and describes the sections sent, which the
+  genomic order carries in `SPM`.
+- What the pathology report does not hold - the test requested (M2.1), the relapsed-disease
+  answer and the order's clinical note - comes from the genomic order itself.
 
 ### Open Issues
 

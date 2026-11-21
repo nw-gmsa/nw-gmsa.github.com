@@ -33,11 +33,13 @@ Usage: #example
 * subject.identifier
   * system = "https://fhir.nhs.uk/Id/nhs-number"
   * value = "9737383206"
+// The outpatient episode (hospital spell) the reflex and R210.2 orders were placed in - see Encounter-LynchReflex-Spell
 * encounter.identifier
-  * value = "66717"
-  * system = "http://www.acme.org/encounter/identifiers/RBS"
+  * type = $v2-0203#AN
+  * value = "SP2308140915"
+  * system = "http://www.acme.org/encounter/identifiers/R0A"
   * assigner.identifier.system = $ods-code
-  * assigner.identifier.value = "RBS"
+  * assigner.identifier.value = "R0A"
 * effectiveDateTime = "2023-09-07T11:45:41+00:00"
 * issued = "2023-09-12T10:00:00+00:00"
 * performer[organization]

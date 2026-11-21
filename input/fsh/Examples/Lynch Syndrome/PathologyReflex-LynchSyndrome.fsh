@@ -106,6 +106,54 @@ Usage: #inline
 
 // The original pathology order (HL7 v2 prior-results ORC|RE / OBR), placed by Manchester University NHS Foundation Trust and
 // filled by the Manchester Royal Infirmary laboratory
+// The hospital spell at Manchester University NHS Foundation Trust (HL7 v2 PV1): the outpatient episode the colonoscopy and
+// the diagnostic testing are done within, not the individual visit. It has no discharge date (PV1-45), so it is in progress
+Instance: Encounter-LynchReflex-Spell
+InstanceOf: HospitalSpell
+Title: "Encounter - hospital spell SP2308140915, Ned Liverpool (Manchester University NHS Foundation Trust)"
+Description: "Fictitious example: the outpatient episode at Manchester University NHS Foundation Trust in which the original pathology order was placed (HL7 v2 PV1, PV1-19 Hospital Provider Spell Identifier). It covers the outpatient episode, not the colonoscopy visit. No discharge date (PV1-45), so the spell is in progress"
+Usage: #example
+
+* identifier[HospitalSpellIdentifier]
+  * type = $v2-0203#AN
+  * system = "http://www.acme.org/encounter/identifiers/R0A"
+  * value = "SP2308140915"
+  * assigner.identifier.system = $ods-code
+  * assigner.identifier.value = "R0A"
+* status = #in-progress
+* class = http://terminology.hl7.org/CodeSystem/v3-ActCode#AMB "ambulatory"
+// HL7 v2 PV1-2 O (outpatient)
+// HL7 v2 PV1-10 Hospital Service: treatment function code
+* serviceType = urn:oid:2.16.840.1.113883.2.1.6.8#301 "Gastroenterology"
+* insert LiverpoolSubject
+* period.start = "2023-08-14T08:00:00+00:00"
+* participant[admittingDoctor]
+  * type.coding = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ADM
+  * individual.identifier.system = "https://fhir.hl7.org.uk/Id/gmc-number"
+  * individual.identifier.value = "C3456789"
+  * individual.display = "Darwin, Samuel"
+* participant[+]
+  * type.coding = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ATND
+  * individual.identifier.system = "https://fhir.hl7.org.uk/Id/gmc-number"
+  * individual.identifier.value = "C3456789"
+  * individual.display = "Darwin, Samuel"
+* location[+]
+  * location.identifier.system = "https://fhir.nhs.uk/Id/ods-site-code"
+  * location.identifier.value = "R0A02"
+  * location.identifier.assigner.identifier.system = $ods-code
+  * location.identifier.assigner.identifier.value = "R0A"
+
+// The hospital spell (HL7 v2 PV1-19), on the orders and the pathology reports
+RuleSet: LynchReflexSpell
+* encounter
+  * reference = "urn:uuid:b39fa232-e0b8-4589-b12c-fd038d0d0b7f"
+  * type = "Encounter"
+  * identifier.type = $v2-0203#AN
+  * identifier.system = "http://www.acme.org/encounter/identifiers/R0A"
+  * identifier.value = "SP2308140915"
+  * identifier.assigner.identifier.system = $ods-code
+  * identifier.assigner.identifier.value = "R0A"
+
 Instance: ServiceRequest-LynchReflex-OriginalOrder
 InstanceOf: http://hl7.eu/fhir/laboratory/StructureDefinition/ServiceRequest-eu-lab
 Title: "ServiceRequest - Histopathology, colonoscopy biopsy (the original pathology order), Ned Liverpool"
@@ -129,6 +177,7 @@ Usage: #example
 * category[+] = $sct#108252007 "Laboratory procedure"
 * code = http://www.acme.org/CodeSystem/690S0#HISTO "Histopathology"
 * insert LiverpoolSubject
+* insert LynchReflexSpell
 * requester
   * type = "PractitionerRole"
   * reference = "urn:uuid:ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8"
@@ -163,6 +212,7 @@ Usage: #example
 * code.coding[+] = http://www.acme.org/CodeSystem/690S0#HISTO "Histopathology"
 * code.coding[+] = $sct#1054291000000102 "Cellular pathology report"
 * insert LiverpoolSubject
+* insert LynchReflexSpell
 * effectiveDateTime = "2023-08-14T10:00:00+00:00"
 * issued = "2023-08-21T09:00:00+00:00"
 * insert LynchPathologyPerformer
@@ -310,6 +360,7 @@ Usage: #example
 * category[+] = http://terminology.hl7.org/CodeSystem/v2-0074#SP "Surgical Pathology"
 * code = http://www.acme.org/CodeSystem/690S0#TMA "Tumour assessment for molecular testing"
 * insert LiverpoolSubject
+* insert LynchReflexSpell
 * effectiveDateTime = "2023-08-14T10:00:00+00:00"
 * issued = "2023-08-21T11:00:00+00:00"
 * insert LynchPathologyPerformer
@@ -357,6 +408,7 @@ Usage: #example
   * identifier.system = $ods-code
   * identifier.value = "690S0"
 * insert LiverpoolSubject
+* insert LynchReflexSpell
 * performer[+]
   * type = #Organization
   * identifier.system = $ods-code
@@ -421,6 +473,7 @@ Usage: #example
 * insert EntryDocument("urn:uuid:65258e46-4688-47b3-990b-9a62a577cf3c", DiagnosticReport-LynchReflex-TumourAssessment)
 * insert EntryDocument("urn:uuid:bf5ddd8f-6f3c-4fd9-bcf2-3c6dc8efb169", Observation-LynchReflex-TumourCellContent)
 * insert EntryDocument("urn:uuid:a65a592a-2096-46a5-921d-5051b73aac06", ServiceRequest-LynchReflex-OriginalOrder)
+* insert EntryDocument("urn:uuid:b39fa232-e0b8-4589-b12c-fd038d0d0b7f", Encounter-LynchReflex-Spell)
 
 // Genomic Report (LAB-36)
 
@@ -565,6 +618,7 @@ Usage: #example
 * code.coding[+] = http://www.acme.org/CodeSystem/690S0#HISTO "Histopathology"
 * code.coding[+] = $sct#1054291000000102 "Cellular pathology report"
 * insert LiverpoolSubject
+* insert LynchReflexSpell
 * effectiveDateTime = "2023-08-14T10:00:00+00:00"
 * issued = "2023-09-04T10:00:00+00:00"
 * insert LynchPathologyPerformer
@@ -613,4 +667,112 @@ Usage: #example
 * insert EntryDocument("urn:uuid:5fcc10f6-959c-41ba-a415-7d203873b220", Specimen-LynchReflex-Sections)
 * insert EntryDocument("urn:uuid:b190a6a4-54b0-4214-8567-650b633ddd50", Observation-LynchReflex-MLH1Methylation)
 * insert EntryDocument("urn:uuid:00ae12e6-6e5a-4fb1-af19-aec069eadc40", DocumentReference-LynchReflex-Report)
+* insert EntryDocument("urn:uuid:a7b81627-49c6-4675-b0d0-dbcf34f3b37a", Binary-Sample)
+
+// The Genomic Report sent by the North West GLH to the regional shared care record (T02, the report PDF) and to the
+// central repository (FHIR Document), as for the germline Laboratory Report
+
+Instance: MessageHeader-T02-LynchReflex
+InstanceOf: MessageHeader
+Title: "Message Header - Document Notification (T02), M1.5 MLH1 promoter hypermethylation"
+Description: "Fictitious example: the M1.5 Genomic Report PDF from NORTH WEST GLH to NHS CHESHIRE AND MERSEYSIDE INTEGRATED CARE BOARD"
+Usage: #example
+
+* insert T02MessageHeader(2023-09-01T12:05:00+00:00, 699X0, NORTH WEST GLH, QYG, NHS CHESHIRE AND MERSEYSIDE INTEGRATED CARE BOARD, https://fhir.nwgenomics.nhs.uk/Endpoint/QYG, urn:uuid:00ae12e6-6e5a-4fb1-af19-aec069eadc40, urn:uuid:a7b81627-49c6-4675-b0d0-dbcf34f3b37a)
+
+Instance: DocumentMessage-LynchReflex
+InstanceOf: BundleMessage
+Title: "Bundle 'Message' - Document Notification (T02), M1.5 MLH1 promoter hypermethylation"
+Description: "Fictitious example: the North West GLH's M1.5 Genomic Report PDF sent to the regional shared care record in the [Lynch Syndrome](ExampleScenario-LynchSyndrome.html) scenario, as a T02 FHIR Message - the FHIR equivalent of HL7 v2 `MDM^T02`. See [Document and Document Notification](MessageDefinition-original-document.html)."
+Usage: #example
+* insert MessageBundle("urn:uuid:d7fe885c-db02-418b-8a41-d979049d67b3", "2023-09-01T12:05:00+00:00")
+* insert EntryDocument("urn:uuid:c3b1767c-30de-4811-a98b-28c0f19d4b76", MessageHeader-T02-LynchReflex)
+* insert EntryDocument("urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd", Patient-Liverpool)
+* insert EntryDocument("urn:uuid:00ae12e6-6e5a-4fb1-af19-aec069eadc40", DocumentReference-LynchReflex-Report)
+* insert EntryDocument("urn:uuid:a7b81627-49c6-4675-b0d0-dbcf34f3b37a", Binary-Sample)
+
+Instance: Composition-GenomicsReport-LynchReflex
+InstanceOf: CompositionGenomicReport
+Title: "Composition - Genomics Report M1.5 MLH1 promoter hypermethylation"
+Description: "Fictitious example: the North West GLH's M1.5 Genomic Report as a FHIR Document, for the central repository"
+Usage: #example
+
+* extension[diagnosticReport].valueReference.reference = "urn:uuid:b02025df-4e49-41ef-8c7c-4432f12cb090"
+* identifier
+  * value = "T23-55120"
+  * system = "http://www.acme.org/diagnosticreport/identifiers"
+  * assigner.identifier.system = $ods-code
+  * assigner.identifier.value = "699X0"
+* category[+] = http://terminology.hl7.org/CodeSystem/v2-0074#GE "Genetics"
+* status = #final
+* type.coding[+] = $GTD#M1.5
+* type.coding[+] = $sct#1054161000000101 "Genetic report"
+* date = "2023-09-01T12:00:00+00:00"
+* author.identifier.system = $ods-code
+* author.identifier.value = "699X0"
+* author.display = "NORTH WEST GLH"
+* attester[+].mode = #legal
+* attester[=].time = "2023-09-01T12:00:00+00:00"
+* attester[=].party.reference = "urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c"
+* attester[=].party.identifier.system = "https://fhir.hl7.org.uk/Id/gmc-number"
+* attester[=].party.identifier.value = "C1234567"
+* attester[=].party.display = "FICTITIOUS, Ralph"
+* title = "Genomic Report - M1.5 Colorectal Carcinoma, MLH1 promoter hypermethylation"
+* subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
+* subject.display = "Ned LIVERPOOL"
+* subject.identifier
+  * system = "https://fhir.nhs.uk/Id/nhs-number"
+  * value = "9737383206"
+
+// Sections in reading order - see Composition-GenomicsReport-LynchSyndrome
+* section[+]
+  * title = "Referral"
+  * code.coding[0] = $loinc#42349-1 "Reason for referral (narrative)"
+  * text.status = #generated
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>M1.5 Colorectal Carcinoma, MLH1 promoter hypermethylation. Reflex from the Manchester Royal Infirmary laboratory (order G23-08317-1).</p></div>"
+* section[+]
+  * title = "Specimen"
+  * code.coding[0] = $sct#123038009 "Specimen"
+  * text.status = #generated
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>FFPE sections H23-41022-A1-S1 from block A1, caecal biopsy collected 14-Aug-2023. Received 23-Aug-2023.</p></div>"
+  * entry[+].reference = "urn:uuid:5fcc10f6-959c-41ba-a415-7d203873b220"
+* section[+]
+  * title = "Result summary"
+  * code.coding[0] = $loinc#51968-6 "Discrete variation analysis overall interpretation"
+  * text.status = #generated
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>MLH1 promoter hypermethylation: not detected.</p></div>"
+  * entry[+].reference = "urn:uuid:b02025df-4e49-41ef-8c7c-4432f12cb090"
+* section[+]
+  * title = "Results"
+  * code.coding[0] = $loinc#69548-6 "Genetic variant assessment"
+  * text.status = #generated
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>MLH1 promoter hypermethylation not detected. No variants are reported by this test.</p></div>"
+* section[+]
+  * title = "Results from other laboratories"
+  * code.coding[0] = GenomicReportSection#other-laboratory-results
+  * text.status = #generated
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Tumour mismatch repair immunohistochemistry (Manchester Royal Infirmary laboratory, H23-41022): loss of MLH1 and PMS2 expression; MSH2 and MSH6 retained.</p></div>"
+* section[+]
+  * title = "Interpretation"
+  * code.coding[0] = GenomicReportSection#interpretation
+  * text.status = #generated
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>The loss of MLH1 and PMS2 is not explained by MLH1 promoter hypermethylation, and may be due to Lynch syndrome. Germline testing (R210) is recommended.</p></div>"
+* section[+]
+  * title = "Methodology and limitations"
+  * code.coding[0] = GenomicReportSection#methodology
+  * text.status = #generated
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>M1.5 MLH1 promoter hypermethylation on DNA extracted from the marked tumour area of block A1 (tumour cell content 40%).</p></div>"
+
+Instance: FHIRDocument-GenomicReport-LynchReflex
+InstanceOf: BundleDocument
+Title: "Bundle `Document` - Genomics Report M1.5 MLH1 promoter hypermethylation"
+Description: "Fictitious example: the North West GLH's M1.5 Genomic Report for Ned Liverpool as a FHIR Document, sent to the central repository in the [Lynch Syndrome](ExampleScenario-LynchSyndrome.html) scenario"
+Usage: #example
+* insert DocumentBundle("31f5ed1c-e22b-45df-b4ec-235127e764f2", "2023-09-01T12:05:00+00:00")
+* insert EntryDocument("urn:uuid:e5a283f9-e380-4c9d-b446-db3218a8dc12", Composition-GenomicsReport-LynchReflex)
+* insert EntryDocument("urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd", Patient-Liverpool)
+* insert EntryDocument("urn:uuid:b02025df-4e49-41ef-8c7c-4432f12cb090", DiagnosticReport-LynchReflex-Report)
+* insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)
+* insert EntryDocument("urn:uuid:5fcc10f6-959c-41ba-a415-7d203873b220", Specimen-LynchReflex-Sections)
+* insert EntryDocument("urn:uuid:b190a6a4-54b0-4214-8567-650b633ddd50", Observation-LynchReflex-MLH1Methylation)
 * insert EntryDocument("urn:uuid:a7b81627-49c6-4675-b0d0-dbcf34f3b37a", Binary-Sample)

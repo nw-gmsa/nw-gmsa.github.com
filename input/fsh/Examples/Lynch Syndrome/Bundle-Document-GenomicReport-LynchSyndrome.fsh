@@ -37,11 +37,13 @@ Usage: #example
 * subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
 * subject.display = "Ned LIVERPOOL"
 
+// The outpatient episode (hospital spell) the reflex and R210.2 orders were placed in - see Encounter-LynchReflex-Spell
 * encounter.identifier
-  * value = "66717"
-  * system = "http://www.acme.org/encounter/identifiers/RBS"
+  * type = $v2-0203#AN
+  * value = "SP2308140915"
+  * system = "http://www.acme.org/encounter/identifiers/R0A"
   * assigner.identifier.system = $ods-code
-  * assigner.identifier.value = "RBS"
+  * assigner.identifier.value = "R0A"
 
 // Sections in reading order. SUSHI pre-fills the profile's required section slices at the first
 // positions, so each section sets code.coding[0] (replacing the pre-filled code) rather than
@@ -112,6 +114,7 @@ Usage: #example
 * insert EntryDocument("urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd", Patient-Liverpool)
 // Order (also in the order message GenomicsOrderMessage-LynchSyndrome): ServiceRequest, requester and Specimen
 * insert EntryDocument("urn:uuid:c0627dab-6f98-4846-beba-d9412ed3a60e", ServiceRequest-LynchSyndrome)
+* insert EntryDocument("urn:uuid:b39fa232-e0b8-4589-b12c-fd038d0d0b7f", Encounter-LynchReflex-Spell)
 * insert EntryDocument("urn:uuid:ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8", ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8)
 * insert EntryDocument("urn:uuid:635eaecb-a9c9-488e-978b-f63b12ce52b1", Specimen-LynchSyndrome)
 // Copy of the pathology report, from the order (ServiceRequest.supportingInfo)

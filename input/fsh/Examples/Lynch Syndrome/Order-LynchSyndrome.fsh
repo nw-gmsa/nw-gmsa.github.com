@@ -31,6 +31,8 @@ Usage: #example
 
 * subject.reference = "urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd"
 * subject.display = "Ned LIVERPOOL"
+// The outpatient episode (hospital spell, HL7 v2 PV1-19) the order is placed in
+* insert LynchReflexSpell
 * subject.identifier
   * system = "https://fhir.nhs.uk/Id/nhs-number"
   * value = "9737383206"
@@ -117,6 +119,7 @@ Usage: #example
 * insert EntryDocument("urn:uuid:1b13c2ee-b8af-4bbd-81ed-2bd69cff0f0d", MessageHeader-O21-LynchSyndrome)
 * insert EntryDocument("urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd", Patient-Liverpool)
 * insert EntryDocument("urn:uuid:c0627dab-6f98-4846-beba-d9412ed3a60e", ServiceRequest-LynchSyndrome)
+* insert EntryDocument("urn:uuid:b39fa232-e0b8-4589-b12c-fd038d0d0b7f", Encounter-LynchReflex-Spell)
 // Requester PractitionerRole
 * insert EntryDocument("urn:uuid:ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8", ee9b8fcc-c233-43e1-b7fb-b58ce4cf1db8)
 * insert EntryDocument("urn:uuid:635eaecb-a9c9-488e-978b-f63b12ce52b1", Specimen-LynchSyndrome)

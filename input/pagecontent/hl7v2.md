@@ -153,10 +153,12 @@ alternate code. This is the original HL7 v2 message, which the FHIR Message is c
 ```
 MSH|^~\&|LIMS|690S0|RIE|699X0|20230821140000+0000||OML^O21^OML_O21|urn:uuid:952c8215-d682-4b79-a652-5e73ba1a7584|T|2.5.1|||AL
 PID|1||9737383206^^^NHS^NH~7742315^^^R0A^MR||LIVERPOOL^Ned^^^^^L||19420618|M|||20 Forthlin Road^^LIVERPOOL^^L18 9TN
+PV1|1|O|^^^R0A02^^^^^^^R0A||||C3456789^Darwin^Samuel^^^Dr^^^GMC|||301^Gastroenterology^2.16.840.1.113883.2.1.6.8|||||||C3456789^Darwin^Samuel^^^Dr^^^GMC||SP2308140915^^^R0A^AN|||||||||||||||||||||||||20230814080000+0000
 ORC|NW|G23-08317-1^690S0||||||1583320&R0A^H23-41022&690S0|20230821140000+0000|||C2468013^FICTITIOUS^Anika^^^Dr^^^GMC|||||||||MANCHESTER ROYAL INFIRMARY LABORATORY^^690S0^^^ODS
 OBR|1|G23-08317-1^690S0||M1.5^Colorectal Carcinoma, MLH1 promoter hypermethylation^England-GenomicTestDirectory||20230821||||^^^^^^^^^^^^^R0A||||||C2468013^FICTITIOUS^Anika^^^Dr^^^GMC|||||||||||||||M1^Colorectal Carcinoma^GenomicClinicalIndication
 NTE|1||Caecal adenocarcinoma. Loss of MLH1 and PMS2 on MMR immunohistochemistry. MLH1 promoter hypermethylation for Lynch syndrome triage.
 SPM|1|H23-41022-A1-S1&690S0|H23-41022-A1&690S0|441652008^Formalin-fixed paraffin-embedded tissue specimen^SNM3||BF10^Buffered 10% formalin^HL70371|86273004^Biopsy^SNM3|32713005^Caecum structure^SNM3||||||10 x 5 um sections and marked H&E guide slide from block A1|||20230814100000+0000|20230814150000+0000||Y
+PV1|1|O|^^^R0A02^^^^^^^R0A||||C3456789^Darwin^Samuel^^^Dr^^^GMC|||301^Gastroenterology^2.16.840.1.113883.2.1.6.8|||||||C3456789^Darwin^Samuel^^^Dr^^^GMC||SP2308140915^^^R0A^AN|||||||||||||||||||||||||20230814080000+0000
 ORC|RE|1583320^R0A|H23-41022^690S0||CM|||||||C3456789^Darwin^Samuel^^^Dr^^^GMC|||||||||MANCHESTER UNIVERSITY NHS FOUNDATION TRUST^^R0A^^^ODS
 OBR|1|1583320^R0A|H23-41022^690S0|HISTO^Histopathology^690S0|||20230814100000+0000|||||||||C3456789^Darwin^Samuel^^^Dr^^^GMC||||||20230821090000+0000|||F
 OBX|1|CWE|21855-2^Primary site Cancer^LN^pCR6410^Topography (SNOMED)^COSD||C18.0^Cecum^ICDO3^32713005^Caecum structure^SNM3||||||F
