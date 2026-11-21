@@ -22,6 +22,11 @@ Usage: #example
 * identifier[2].assigner.identifier.system = $ods-code
 * identifier[2].assigner.identifier.value = "REN"
 
+* identifier[3].type = $v2-0203#MR
+* identifier[3].value = "7742315"
+* identifier[3].assigner.identifier.system = $ods-code
+* identifier[3].assigner.identifier.value = "R0A"
+
 
 * name.use = #official
 * name.family = "LIVERPOOL"

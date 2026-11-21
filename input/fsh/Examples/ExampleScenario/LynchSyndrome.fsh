@@ -4,9 +4,9 @@ Title:       "Lynch Syndrome"
 Description: """
 Lynch syndrome (LS) is a condition that runs in families and increases the risk of some cancers, mainly bowel (colon and rectal), womb (endometrial) and ovarian cancer. It is caused by an inherited variant in the MLH1, MSH2, MSH6 or PMS2 gene (less often EPCAM).
 
-As [Macmillan Cancer Support describes](https://www.macmillan.org.uk/cancer-information-and-support/worried-about-cancer/causes-and-risk-factors/lynch-syndrome-ls), when someone is diagnosed with bowel or womb cancer, tests are first done on a sample of the cancer cells - immunohistochemistry (IHC) or microsatellite instability (MSI) testing. If these suggest the cancer may be linked to an inherited gene variant, a blood sample is tested for the gene variants that cause Lynch syndrome. This is **diagnostic testing**, and it is the part this guide covers: the genomic test order and report between the Trust and the North West GLH. The tests on the cancer cells are done by histopathology; here a copy of the pathology report is sent with the order. If a variant is found, other members of the family may be offered a genetic test for the same variant (**predictive testing**), through a genetics clinic.
+As [Macmillan Cancer Support describes](https://www.macmillan.org.uk/cancer-information-and-support/worried-about-cancer/causes-and-risk-factors/lynch-syndrome-ls), when someone is diagnosed with bowel or womb cancer, tests are first done on a sample of the cancer cells - immunohistochemistry (IHC) or microsatellite instability (MSI) testing. If these suggest the cancer may be linked to an inherited gene variant, a blood sample is tested for the gene variants that cause Lynch syndrome. This is **diagnostic testing**, and it is the part this guide covers. It starts in pathology: when the tumour IHC shows loss of MLH1, the pathology laboratory reflexes a test for **MLH1 promoter hypermethylation** to the North West GLH, which tells a change found only in the tumour from a possible inherited cause - see [Pathology to Genomics Reflex](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/PathologyToGenomicsReflex.md). If it is not found, the clinician orders germline testing between the Trust and the North West GLH, with a copy of the pathology report. If a variant is found, other members of the family may be offered a genetic test for the same variant (**predictive testing**), through a genetics clinic.
 
-In this example Ned Liverpool has bowel (colon) cancer, and tumour IHC shows loss of MLH1 and PMS2. The Laboratory Report carries the report as a PDF, and is sent to the central repository as a FHIR Document with the discrete results (the variant, its diagnostic implication and the genomic study). Before the FHIR Document is built, the RIE looks up the discrete results in the FHIR Repository and adds them to the Laboratory Report - see [Measurable Residual Disease (MRD) Monitoring](ExampleScenario-MRDMonitoring.html) for this enhancement. Finally the Order Placer refers the family to clinical genetics (`OMG^O19`) for genetic counselling and predictive testing. Intended as an end-to-end test of the order, report, document and referral. See [Suspected Lynch Syndrome - Clinical Workflow](ExampleScenario-ClinicalAndGenomicWorkflow.html) for the clinician's view.
+In this example a colonoscopy biopsy shows that Ned Liverpool has bowel (caecal) cancer, and tumour IHC shows loss of MLH1 and PMS2. The Manchester Royal Infirmary laboratory (690S0) orders M1.5 MLH1 promoter hypermethylation from the North West GLH as a reflex order (LAB-35), sending the pathology report, its discrete results and its tumour assessment of the block as prior results. Hypermethylation is not found (LAB-36), so the clinician orders R210.2 germline testing. The reflex order and report are converted from the original HL7 v2 OML^O21 and ORU^R01 messages in the [Testing](https://github.com/nw-gmsa/Testing/tree/main/Input/Scenarios/LynchSyndrome) repository, which are linked from each step. The germline Laboratory Report carries the report as a PDF, and is sent to the central repository as a FHIR Document with the discrete results (the variant, its diagnostic implication and the genomic study). Before the FHIR Document is built, the RIE looks up the discrete results in the FHIR Repository and adds them to the Laboratory Report - see [Measurable Residual Disease (MRD) Monitoring](ExampleScenario-MRDMonitoring.html) for this enhancement. Finally the Order Placer refers the family to clinical genetics (`OMG^O19`) for genetic counselling and predictive testing. Intended as an end-to-end test of the order, report, document and referral. See [Suspected Lynch Syndrome - Clinical Workflow](ExampleScenario-ClinicalAndGenomicWorkflow.html) for the clinician's view.
 """
 Usage: #definition
 
@@ -14,12 +14,18 @@ Usage: #definition
 * name = "LynchSyndrome"
 
 * insert ActorEntity(placer, "Order Placer - Manchester University NHS FT", [[ [Order Placer](ActorDefinition-OrderPlacer.html). The requesting clinician at Manchester University NHS Foundation Trust (R0A) ]])
+* insert ActorEntity(pathology, "Order Filler and Requestor - Manchester Royal Infirmary laboratory", [[ [Order Filler](ActorDefinition-OrderFiller.html) for the pathology order and [Requestor](ActorDefinition-Requestor.html) for the genomic reflex order. The pathology laboratory (690S0) and its LIMS ]])
+* insert ActorEntity(rie, "Regional Integration Engine", [[ [Intermediary](ActorDefinition-Intermediary.html) that routes the messages ]])
 * insert ActorEntity(glh, "Order Filler - North West GLH", [[ [Order Filler](ActorDefinition-OrderFiller.html). The North West GLH (699X0), which tests, interprets and reports ]])
 * insert ActorEntity(ugr, "Central Repository - UGR", [[ NHS England Unified Genomic Record. A central repository of genomic reports for each patient ]])
 * insert ActorEntity(scr, "Regional Shared Care Record", [[ The regional shared care record, for example the Greater Manchester Care Record (GMCR), which receives the report PDF and makes it available to other care settings, including the patient's GP. See [Regional Shared Care Records](https://github.com/nw-gmsa/nw-gmsa-use-cases/blob/main/RegionalSharedCareRecords.md) ]])
 * insert ActorEntity(referral, "Referral service - eRS or Genomics England", [[ The NHS e-Referral Service (eRS) or a Genomics England Limited application, which carries the referral to clinical genetics ]])
 * insert ActorEntity(clingen, "Clinical Genetics - Manchester Centre for Genomic Medicine", [[ The clinical genetics service that receives the referral and sees the family ]])
 
+* insert Instance_Empty(ReflexOrder, Bundle, "Genomic Reflex Order", [[ LAB-35 order for M1.5 Colorectal Carcinoma, MLH1 promoter hypermethylation, from the pathology laboratory, with the original pathology report (PDF, primary site, the LOINC 77753-2 Tumor morphology panel and the MMR immunohistochemistry) and the tumour assessment of block A1 as prior results ]])
+* insert InstanceVersion(1, "HL7 FHIR Message O21", GenomicsOrderMessage-LynchReflex, [[ Genomic Reflex Order for Ned Liverpool ]])
+* insert Instance_Empty(ReflexReport, Bundle, "Genomic Report - reflex", [[ LAB-36 [Laboratory Report](StructureDefinition-LaboratoryReport.html) for the reflex order: the report as a PDF, with MLH1 promoter hypermethylation not detected as a discrete result ]])
+* insert InstanceVersion(1, "HL7 FHIR Message R01", GenomicsReportMessage-LynchReflex, [[ Genomic Report (MLH1 promoter hypermethylation) for Ned Liverpool ]])
 * insert Instance_Empty(Order, Bundle, "Laboratory Order", [[ LAB-1 order for R210.2 Inherited MMR deficiency (Lynch syndrome), for diagnostic testing, with the blood sample, the reason (bowel cancer), and a copy of the pathology report (tumour IHC) as `ServiceRequest.supportingInfo` ]])
 * insert InstanceVersion(1, "HL7 FHIR Message O21", GenomicsOrderMessage-LynchSyndrome, [[ Laboratory Order for Ned Liverpool ]])
 * insert Instance_Empty(Report, Bundle, "Laboratory Report", [[ LAB-3 [Laboratory Report](StructureDefinition-LaboratoryReport.html), `basedOn` the Laboratory Order by its Order Placer Number. It carries the report as a PDF (`presentedForm`, a `DocumentReference` and a `Binary`), not the discrete results ]])
@@ -32,23 +38,31 @@ Usage: #definition
 * insert InstanceVersion(1, "HL7 FHIR Message O19", GenomicsReferralMessage-LynchSyndrome, [[ Referral of the Liverpool family to the Manchester Centre for Genomic Medicine ]])
 
 * process[+]
-  * title = "1. Laboratory Order (LAB-1)"
-  * description = "Tumour IHC suggests the bowel cancer may be linked to an inherited gene variant, so the clinician orders R210.2 diagnostic testing on a blood sample. The order goes to the North West GLH through the RIE."
-  * insert ProcessCreateEvent(1, "Send Laboratory Order", placer, glh, Order, 1, [[ See [Genomic Test Order Process](ExampleScenario-GenomicTestOrderProcess.html) ]])
+  * title = "1. Pathology to Genomics Reflex (LAB-35, LAB-36)"
+  * description = "Histopathology reports adenocarcinoma on the colonoscopy biopsy, and MMR immunohistochemistry shows loss of MLH1 and PMS2. The pathologist selects block A1, estimates its tumour cell content, and orders MLH1 promoter hypermethylation from the North West GLH as a reflex order - no clinician request is needed. The North West GLH reports that hypermethylation is not found, so Lynch syndrome is still possible."
+  * insert ProcessCreateEvent(1, "Send Genomic Reflex Order O21", pathology, rie, ReflexOrder, 1, [[ The original pathology report is a prior result, keeping the original order and the clinician and Trust that placed it. HL7 v2: [OML^O21](https://github.com/nw-gmsa/Testing/blob/main/Input/Scenarios/LynchSyndrome/V2/O21/01-690S0-OML_O21.txt) ]])
+  * insert ProcessCreateEvent(2, "Send Genomic Reflex Order O21", rie, glh, ReflexOrder, 1, [[ ]])
+  * insert ProcessCreateEvent(3, "Send Genomic Report R01", glh, rie, ReflexReport, 1, [[ HL7 v2: [ORU^R01](https://github.com/nw-gmsa/Testing/blob/main/Input/Scenarios/LynchSyndrome/V2/R01/03-699X0-ORU_R01.txt) ]])
+  * insert ProcessCreateEvent(4, "Send Genomic Report R01", rie, pathology, ReflexReport, 1, [[ The report reaches the clinician through pathology (LAB-3) ]])
 
 * process[+]
-  * title = "2. Laboratory Report (LAB-3)"
+  * title = "2. Laboratory Order (LAB-1)"
+  * description = "Tumour IHC suggests the bowel cancer may be linked to an inherited gene variant, and MLH1 promoter hypermethylation was not found, so the clinician orders R210.2 diagnostic testing on a blood sample. The order goes to the North West GLH through the RIE."
+  * insert ProcessCreateEvent(5, "Send Laboratory Order", placer, glh, Order, 1, [[ See [Genomic Test Order Process](ExampleScenario-GenomicTestOrderProcess.html) ]])
+
+* process[+]
+  * title = "3. Laboratory Report (LAB-3)"
   * description = "The North West GLH tests and interprets, and sends the Laboratory Report, with the report PDF, to the requesting clinician. The report PDF is also sent to the regional shared care record, where the patient's GP can see it."
-  * insert ProcessCreateEvent(2, "Send Laboratory Report", glh, placer, Report, 1, [[ See [Genomic Test Report Process](ExampleScenario-GenomicTestReportProcess.html) ]])
-  * insert ProcessCreateEvent(3, "Send Laboratory Report document", glh, scr, ReportDocument, 1, [[ HL7 v2 `MDM^T02` or a T02 FHIR Message with the report as a PDF, which the patient's GP can see in the shared care record ]])
+  * insert ProcessCreateEvent(6, "Send Laboratory Report", glh, placer, Report, 1, [[ See [Genomic Test Report Process](ExampleScenario-GenomicTestReportProcess.html) ]])
+  * insert ProcessCreateEvent(7, "Send Laboratory Report document", glh, scr, ReportDocument, 1, [[ HL7 v2 `MDM^T02` or a T02 FHIR Message with the report as a PDF, which the patient's GP can see in the shared care record ]])
 
 * process[+]
-  * title = "3. Send to the central repository"
+  * title = "4. Send to the central repository"
   * description = "The Laboratory Report is sent to the central repository as a FHIR Document, through the RIE. The R01 Laboratory Report triggers a lookup of its discrete results in the FHIR Repository, which are added to the Laboratory Report in the document."
-  * insert ProcessCreateEvent(4, "Send FHIR Document", glh, ugr, Document, 1, [[ ]])
+  * insert ProcessCreateEvent(8, "Send FHIR Document", glh, ugr, Document, 1, [[ ]])
 
 * process[+]
-  * title = "4. Referral to clinical genetics (O19)"
+  * title = "5. Referral to clinical genetics (O19)"
   * description = "The Laboratory Report shows a pathogenic germline variant, so the Order Placer refers the family to clinical genetics for genetic counselling and predictive testing of other members of the family for the same variant, via eRS or a Genomics England Limited application. The subject of the referral is the family."
-  * insert ProcessCreateEvent(5, "Send referral", placer, referral, Referral, 1, [[ See [Genetic Clinical Referral](StructureDefinition-GeneticClinicalReferral.html) ]])
-  * insert ProcessCreateEvent(6, "Route referral", referral, clingen, Referral, 1, [[ ]])
+  * insert ProcessCreateEvent(9, "Send referral", placer, referral, Referral, 1, [[ See [Genetic Clinical Referral](StructureDefinition-GeneticClinicalReferral.html) ]])
+  * insert ProcessCreateEvent(10, "Route referral", referral, clingen, Referral, 1, [[ ]])

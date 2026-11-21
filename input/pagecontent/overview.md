@@ -177,7 +177,8 @@ diagnosis, to see whether it has spread.
 How the cancer scenarios below fit this pathway:
 
 - [Lynch Syndrome](ExampleScenario-LynchSyndrome.html) - a colonoscopy biopsy confirms bowel cancer, and histopathology's
-  IHC on the cancer cells suggests an inherited cause, so a blood sample is sent for germline testing.
+  IHC on the cancer cells suggests an inherited cause. Pathology reflexes MLH1 promoter hypermethylation to the GLH, and
+  when it is not found a blood sample is sent for germline testing.
 - [Inherited Breast Cancer (BRCA)](ExampleScenario-BreastCancer.html) - imaging and an image-guided core biopsy confirm
   breast cancer, and histopathology's receptor tests show it is triple negative, so a blood sample is sent for germline testing.
 - [Lung Cancer - Liquid Biopsy (ctDNA)](ExampleScenario-ctDNA.html) - for non-small cell lung cancer the gene changes are
@@ -244,7 +245,7 @@ for the same variant).
 
 | Scenario | What happens | Genomic test | Messages and documents |
 |----------|--------------|--------------|------------------------|
-| [Lynch Syndrome](ExampleScenario-LynchSyndrome.html) | Bowel cancer, and tests on the cancer cells suggest an inherited cause. A blood test finds a pathogenic MLH1 variant, and the family is referred for predictive testing | R210.2 Inherited MMR deficiency (Lynch syndrome) | O21 order with the pathology report, R01 report, FHIR Document, O19 referral |
+| [Lynch Syndrome](ExampleScenario-LynchSyndrome.html) | Bowel cancer, and tests on the cancer cells suggest an inherited cause. Pathology reflexes MLH1 promoter hypermethylation, which is not found. A blood test then finds a pathogenic MLH1 variant, and the family is referred for predictive testing | M1.5 Colorectal Carcinoma, MLH1 promoter hypermethylation; R210.2 Inherited MMR deficiency (Lynch syndrome) | O21 reflex order (LAB-35) with the pathology results as prior results, R01 reflex report (LAB-36), O21 order with the pathology report, R01 report, FHIR Document, O19 referral |
 | [Suspected Lynch Syndrome - Clinical Workflow](ExampleScenario-ClinicalAndGenomicWorkflow.html) | The consultant's view of Lynch Syndrome: the Condition is recorded as suspected, the tests are requested, and the Condition is updated to confirmed when the test is positive | R210.2 | The Lynch Syndrome messages, and the Condition before and after |
 | [Inherited Breast Cancer (BRCA)](ExampleScenario-BreastCancer.html) | Triple-negative breast cancer at a young age. A blood test finds a pathogenic BRCA1 variant, and the family is referred so her sister can have predictive testing | R208.1 Inherited breast cancer and ovarian cancer | O21 order with the pathology report, R01 report, FHIR Document, O19 referral |
 | [Lung Cancer - Liquid Biopsy (ctDNA)](ExampleScenario-ctDNA.html) | A blood test (liquid biopsy) looks for gene changes in DNA from lung cancer cells, to help choose targeted treatment | M4.14 Non-small cell lung cancer, multi-target ctDNA panel | O21 order, copy of the order with filler numbers (LAB-2) and of the report without the PDF to the Order Placer Manager, work order (LAB-4), test results (LAB-5), R01 report, R01 report enhanced with the test results, FHIR Document |
