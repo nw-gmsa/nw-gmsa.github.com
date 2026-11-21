@@ -145,7 +145,7 @@ OBX|1|NM|TCC^Tumour cell content^690D0||60|%^percent^UCUM|||||F|||20261102110000
 
 The Manchester Royal Infirmary laboratory (`690S0`) reflexes MLH1 promoter hypermethylation (M1.5)
 to the North West GLH after mismatch repair (MMR) immunohistochemistry on a colonoscopy biopsy shows
-loss of MLH1 and PMS2 - step 1 of [Lynch Syndrome](ExampleScenario-LynchSyndrome.html). No
+loss of MLH1 and PMS2 - step 2 of [Lynch Syndrome](ExampleScenario-LynchSyndrome.html). No
 clinician requests the test: the pathology result triggers it. The MMR immunohistochemistry is sent
 as its own prior result, one OBX per protein, coded with LOINC and the COSD Pathology item as the
 alternate code. This is the original HL7 v2 message, which the FHIR Message is converted from.

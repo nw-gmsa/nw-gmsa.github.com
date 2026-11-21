@@ -542,3 +542,75 @@ Usage: #example
 * insert EntryDocument("urn:uuid:b190a6a4-54b0-4214-8567-650b633ddd50", Observation-LynchReflex-MLH1Methylation)
 * insert EntryDocument("urn:uuid:00ae12e6-6e5a-4fb1-af19-aec069eadc40", DocumentReference-LynchReflex-Report)
 * insert EntryDocument("urn:uuid:a7b81627-49c6-4675-b0d0-dbcf34f3b37a", Binary-Sample)
+
+// Pathology Report (LAB-3): the pathology laboratory's supplementary report to the Order Placer, after the reflex result
+
+Instance: DiagnosticReport-LynchReflex-Histopathology-Supplementary
+InstanceOf: LaboratoryReport
+Title: "Diagnostic Report - Histopathology, colonoscopy biopsy, Ned Liverpool (supplementary, with the MLH1 promoter hypermethylation result)"
+Description: "Fictitious example: the Manchester Royal Infirmary laboratory's report to the Order Placer (LAB-3), issued again as a supplementary report (status appended) once the genomic reflex result is back, so the MLH1 promoter hypermethylation result is in its narrative and results. The same report identifier as the original pathology report sent as a prior result"
+Usage: #example
+
+// Hand-written narrative: a generated one links presentedForm.url, and urn: is not a valid hyperlink scheme
+* text.status = #generated
+* text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Histopathology, colonoscopy biopsy of the caecum, for Ned LIVERPOOL. Adenocarcinoma. Loss of nuclear expression of MLH1 and PMS2; MSH2 and MSH6 retained.</p><p>Supplementary report: MLH1 promoter hypermethylation not detected (North West GLH, T23-55120). The loss of MLH1 and PMS2 may be due to Lynch syndrome; referral for germline testing (R210) is recommended.</p></div>"
+* identifier[ReportIdentifier]
+  * value = "H23-41022"
+  * system = "http://www.acme.org/diagnosticreport/identifiers/690S0"
+  * assigner.identifier.system = $ods-code
+  * assigner.identifier.value = "690S0"
+* insert LynchPathologyOrderBasedOn
+* status = #appended
+* category[+] = http://terminology.hl7.org/CodeSystem/v2-0074#SP "Surgical Pathology"
+* code.coding[+] = http://www.acme.org/CodeSystem/690S0#HISTO "Histopathology"
+* code.coding[+] = $sct#1054291000000102 "Cellular pathology report"
+* insert LiverpoolSubject
+* effectiveDateTime = "2023-08-14T10:00:00+00:00"
+* issued = "2023-09-04T10:00:00+00:00"
+* insert LynchPathologyPerformer
+* specimen[+].reference = "urn:uuid:44b9319c-0a3a-4782-8a55-013968cfad1f"
+* result[+].reference = "urn:uuid:2fa5cc1a-7a1e-4c99-ad10-50845819be31"
+* result[+].reference = "urn:uuid:6572babb-2723-46d3-a65b-eaf63efcb04d"
+* result[+].reference = "urn:uuid:e4421bf6-020a-4700-80ab-a961e97d5ef0"
+* result[+].reference = "urn:uuid:b190a6a4-54b0-4214-8567-650b633ddd50"
+* conclusion = "Caecum, biopsy: adenocarcinoma. Mismatch repair deficient - loss of MLH1 and PMS2. MLH1 promoter hypermethylation not detected (North West GLH): Lynch syndrome is possible, and referral for germline testing (R210) is recommended."
+* insert ReportPDF(urn:uuid:9972805f-fc50-4bcc-bbb7-9cff736eb295, Supplementary cellular pathology report - Ned LIVERPOOL, 2023-09-04)
+
+// Copy of the Genomic Report sent by the North West GLH directly to the original Order Placer (an unsolicited LAB-3): the
+// report is based on the reflex order, whose Order Placer Number was assigned by the pathology laboratory, not by R0A
+
+Instance: MessageHeader-R01-LynchReflex-Copy
+InstanceOf: MessageHeader
+Title: "Message Header - Genomic Report M1.5 (R01), copy to the original Order Placer"
+Description: "Fictitious example: copy of the LAB-36 report from NORTH WEST GLH to MANCHESTER UNIVERSITY NHS FOUNDATION TRUST - an unsolicited LAB-3, as R0A did not place the reflex order"
+Usage: #example
+
+* meta.lastUpdated = "2023-09-01T12:00:00+00:00"
+* eventCoding = http://terminology.hl7.org/CodeSystem/v2-0003#R01
+* sender.identifier.system = $ods-code
+* sender.identifier.value = "699X0"
+* sender.display = "NORTH WEST GLH"
+* destination.receiver.identifier.system = $ods-code
+* destination.receiver.identifier.value = "R0A"
+* destination.receiver.display = "MANCHESTER UNIVERSITY NHS FOUNDATION TRUST"
+* destination.endpoint = "https://fhir.nwgenomics.nhs.uk/Endpoint/R0A"
+* source.endpoint = "https://fhir.nwgenomics.nhs.uk/Endpoint/RIE"
+* source.software = "iGene"
+* focus[+]
+  * reference = "urn:uuid:b02025df-4e49-41ef-8c7c-4432f12cb090"
+  * type = #DiagnosticReport
+
+Instance: GenomicsReportMessage-LynchReflex-Copy
+InstanceOf: BundleMessage
+Title: "Bundle 'Message' - Genomic Report M1.5 (R01), copy to the original Order Placer"
+Description: "Fictitious example: in the [Lynch Syndrome](ExampleScenario-LynchSyndrome.html) scenario, the North West GLH sends a copy of its LAB-36 report directly to Manchester University NHS Foundation Trust, the original Order Placer. It is unsolicited for R0A: the report is based on the pathology laboratory's reflex order, so R0A matches it by the patient and the pathology order (ORC-8 / basedOn of the reflex order), not by its own Order Placer Number"
+Usage: #example
+* insert MessageBundle("urn:uuid:58212176-b04c-4dcd-9969-8e058584ee77", "2023-09-01T12:00:00+00:00")
+* insert EntryDocument("urn:uuid:e6f84ed3-4d46-49f3-91f8-33cc28f5ef3a", MessageHeader-R01-LynchReflex-Copy)
+* insert EntryDocument("urn:uuid:d6faafcf-db64-4c11-9da8-25f36774c1bd", Patient-Liverpool)
+* insert EntryDocument("urn:uuid:b02025df-4e49-41ef-8c7c-4432f12cb090", DiagnosticReport-LynchReflex-Report)
+* insert EntryDocument("urn:uuid:59577028-8fcc-4554-8b43-988561d41d9c", 59577028-8fcc-4554-8b43-988561d41d9c)
+* insert EntryDocument("urn:uuid:5fcc10f6-959c-41ba-a415-7d203873b220", Specimen-LynchReflex-Sections)
+* insert EntryDocument("urn:uuid:b190a6a4-54b0-4214-8567-650b633ddd50", Observation-LynchReflex-MLH1Methylation)
+* insert EntryDocument("urn:uuid:00ae12e6-6e5a-4fb1-af19-aec069eadc40", DocumentReference-LynchReflex-Report)
+* insert EntryDocument("urn:uuid:a7b81627-49c6-4675-b0d0-dbcf34f3b37a", Binary-Sample)
