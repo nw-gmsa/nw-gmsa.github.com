@@ -1,0 +1,128 @@
+{
+  "resourceType": "Observation",
+  "basedOn": [
+    {
+      "type": "ServiceRequest",
+      "identifier": {
+        "assigner": {
+          "identifier": {
+            "system": "https://fhir.nhs.uk/Id/ods-organization-code",
+            "value": "RM3"
+          }
+        },
+        "type": {
+          "coding": [
+            {
+              "code": "PLAC",
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+            }
+          ]
+        },
+        "value": "1037019086"
+      }
+    }
+  ],
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory"
+        }
+      ]
+    },
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "GE"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "69548-6"
+      }
+    ]
+  },
+  "subject": {
+    "type": "Patient",
+    "identifier": {
+      "system": "https://fhir.nwgenomics.nhs.uk/iGene/PatientIdentifier",
+      "value": "200048"
+    }
+  },
+  "effectiveDateTime": "2026-11-24T15:10:10.391645+00:00",
+  "performer": [
+    {
+      "type": "PractitionerRole",
+      "identifier": {
+        "system": "https://fhir.nwgenomics.nhs.uk/Id/laboratory-information-system",
+        "value": "OmicsDSS"
+      }
+    }
+  ],
+  "specimen": {
+    "type": "Specimen",
+    "identifier": {
+      "system": "https://fhir.nwgenomics.nhs.uk/iGene/SpecimenIdentifier",
+      "value": "S26-2G39"
+    }
+  },
+  "component": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "83005-9"
+          }
+        ]
+      },
+      "valueCodeableConcept": {
+        "text": "SNPs"
+      }
+    },
+    {
+      "code": {
+        "text": "Description"
+      },
+      "valueString": "MSH2 c.212-4del -"
+    },
+    {
+      "code": {
+        "text": "State"
+      },
+      "valueString": "10.72"
+    },
+    {
+      "code": {
+        "text": "Genomic coordinates"
+      },
+      "valueString": "2:47408384"
+    },
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "53037-8"
+          }
+        ]
+      },
+      "valueCodeableConcept": {
+        "text": "Oncogenic"
+      }
+    },
+    {
+      "code": {
+        "text": "Evidence"
+      },
+      "valueString": "PS1"
+    }
+  ]
+}

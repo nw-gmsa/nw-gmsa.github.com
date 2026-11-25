@@ -84,8 +84,8 @@ Description:    """
 * subject 1..1 MS
 * subject.identifier 1..1
 * subject only Reference(Patient)
-* subject.identifier only NHSIdentifier or MedicalRecordNumber
-* subject.identifier ^comment = "SHALL be the NHS Number when the subject has one. A Medical Record Number is allowed only for a subject without an NHS Number, such as a fetus in a prenatal report (see [Patient - Fetus](Patient-Patient-FetusLondon.html))."
+* subject.identifier only NHSIdentifier or MedicalRecordNumber or PatientIdentifier
+* subject.identifier ^comment = "SHOULD be the NHS Number when the subject has one and it is known to the sender. Otherwise a Medical Record Number, or a Patient Identifier such as the iGene patient number (type `PI`, assigned by NW GLH `699X0`, see [iGene Patient Identifier](NamingSystem-iGene-PatientIdentifier.html)). A subject without an NHS Number includes a fetus in a prenatal report (see [Patient - Fetus](Patient-Patient-FetusLondon.html))."
 
 * effectiveDateTime 0..1 MS
 * effective[x] insert Obligation(#SHOULD:populate, https://fhir.nwgenomics.nhs.uk/ActorDefinition/OrderFiller)

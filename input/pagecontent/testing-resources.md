@@ -38,7 +38,7 @@ graph LR
 1. **International profile**: validate the resource against the profile this IG builds on. These rules are the smallest set and the best documented.
 2. **NW-GMSA profile**: validate against this IG's profile. It inherits stage 1 and adds local NW requirements. It also imposes the [HL7 Europe Laboratory Report](https://hl7.eu/fhir/laboratory/2.1.0/) Observation profile.
 3. **Coded values**: a resource can pass with free text (`CodeableConcept.text`, `valueString`), but receiving systems cannot act on text. Replace it with codes.
-4. **Bundle**: once each resource passes, put the resources in the Bundle and [validate the Bundle](#validating-a-bundle). The remaining errors will mostly be about references and Bundle structure.
+4. **Bundle**: once each resource passes, put the resources in the Bundle and [validate the Bundle](#validating-a-bundle). The remaining errors will mostly be about references and Bundle structure. Validation of a document Bundle is likely to be required for conformance with the NHS England Unified Genomic Record (UGR).
 
 At each stage, repeat the same loop: run the validator, read the issues in the `OperationOutcome`, change the resource, and run it again. Fix **errors** first. Warnings and information messages often go away once the errors are fixed.
 
@@ -148,7 +148,8 @@ java -jar validator_cli.jar observation.json -version 4.0.1 -ig package.tgz -pro
 | error | `Observation` | Observation.method: minimum required = 1, but only found 0 (from https://fhir.nwgenomics.nhs.uk/StructureDefinition/Variant\|2.3.0) |
 | error | `Observation` | Observation.identifier: minimum required = 1, but only found 0 (from https://fhir.nwgenomics.nhs.uk/StructureDefinition/Observation\|2.3.0) |
 | error | `Observation.subject` | Observation.subject.reference: minimum required = 1, but only found 0 (from https://fhir.nwgenomics.nhs.uk/StructureDefinition/Observation\|2.3.0) |
-| error | `Observation.subject.identifier` | Unable to find a match for the specified profile among choices: https://fhir.nwgenomics.nhs.uk/StructureDefinition/MedicalRecordNumber, https://fhir.nwgenomics.nhs.uk/StructureDefinition/NHSIdentifier |
+| error | `Observation.subject.identifier` | Unable to find a match for the specified profile among choices: https://fhir.nwgenomics.nhs.uk/StructureDefinition/MedicalRecordNumber, https://fhir.nwgenomics.nhs.uk/StructureDefinition/NHSIdentifier, https://fhir.nwgenomics.nhs.uk/StructureDefinition/PatientIdentifier |
+| error | `Observation.subject.identifier` | Identifier.assigner: minimum required = 1, but only found 0 (from https://fhir.nwgenomics.nhs.uk/StructureDefinition/PatientIdentifier\|2.3.0) (validating against https://fhir.nwgenomics.nhs.uk/StructureDefinition/PatientIdentifier\|2.3.0 [PatientIdentifier]) |
 | error | `Observation.subject.identifier.system` | The System URI could not be determined for the code 'https://fhir.nwgenomics.nhs.uk/iGene/PatientIdentifier' in the ValueSet 'https://fhir.nwgenomics.nhs.uk/ValueSet/UKNationalHealthIdentifiers\|2.3.0' (validating against https://fhir.nwgenomics.nhs.uk/StructureDefinition/NHSIdentifier\|2.3.0 [NHSIdentifier]) |
 | error | `Observation.subject.identifier.system` | The value provided ('https://fhir.nwgenomics.nhs.uk/iGene/PatientIdentifier') was not found in the value set 'UK National Health Identifiers' (https://fhir.nwgenomics.nhs.uk/ValueSet/UKNationalHealthIdentifiers\|2.3.0), and a code is required from this value set  (error message = The System URI could not be determined for the code 'https://fhir.nwgenomics.nhs.uk/iGene/PatientIdentifier' in the ValueSet 'https://fhir.nwgenomics.nhs.uk/ValueSet/UKNationalHealthIdentifiers\|2.3.0'; The provided code '#https://fhir.nwgenomics.nhs.uk/iGene/PatientIdentifier' was not found in the value set 'https://fhir.nwgenomics.nhs.uk/ValueSet/UKNationalHealthIdentifiers\|2.3.0') (validating against https://fhir.nwgenomics.nhs.uk/StructureDefinition/NHSIdentifier\|2.3.0 [NHSIdentifier]) |
 | error | `Observation.subject.identifier` | Identifier.assigner: minimum required = 1, but only found 0 (from https://fhir.nwgenomics.nhs.uk/StructureDefinition/MedicalRecordNumber\|2.3.0) (validating against https://fhir.nwgenomics.nhs.uk/StructureDefinition/MedicalRecordNumber\|2.3.0 [MedicalRecordNumber]) |
@@ -157,7 +158,7 @@ java -jar validator_cli.jar observation.json -version 4.0.1 -ig package.tgz -pro
 | information | `Observation.component[1] to [5]` | This element does not match any known slice defined in the profile https://fhir.nwgenomics.nhs.uk/StructureDefinition/Variant\|2.3.0 (this may not be a problem, but you should check that it's not intended to match a slice) |
 {:.grid}
 
-The NW profile reports errors that the international profile didn't. The four `subject.identifier` errors come from one problem. The NW profile only accepts an NHS Number ([NHS Identifier](StructureDefinition-NHSIdentifier.html)) or a [Medical Record Number](StructureDefinition-MedicalRecordNumber.html). The validator tries both, and reports why each one failed: the `system` is not an NHS Number system, and an MRN needs an `assigner`.
+The NW profile reports errors that the international profile didn't. The five `subject.identifier` errors come from one problem. The NW profile only accepts an NHS Number ([NHS Identifier](StructureDefinition-NHSIdentifier.html)), a [Medical Record Number](StructureDefinition-MedicalRecordNumber.html) or a [Patient Identifier](StructureDefinition-PatientIdentifier.html). The validator tries each, and reports why each one failed: the `system` is not an NHS Number system, and both a Medical Record Number and a Patient Identifier need an `assigner`. The validator doesn't report the missing `type`, but without it a receiver can't tell which kind of identifier this is. The iGene patient number is a Patient Identifier (type `PI`) assigned by NW GLH (`699X0`), see [iGene Patient Identifier](NamingSystem-iGene-PatientIdentifier.html).
 
 There is also a new warning: the NW profile binds the variant category (`83005-9`) to [iGene Variant Category](ValueSet-IGeneVariantCategoryVS.html), and `"text": "SNPs"` has no code. This is fixed in Stage 3.
 
@@ -168,8 +169,8 @@ There is also a new warning: the NW profile binds the variant category (`83005-9
 | `identifier` | 1..1 | NW Observation | Added the identifier the laboratory system uses for this result |
 | `method` | 1..1 | NW Variant | Added SNOMED CT `264896000` *Nucleic acid analysis*, with `method.text` giving the technique |
 | `subject.reference` | 1..1 | NW Observation | An identifier on its own is not enough. Added a `reference` to the Patient (a `urn:uuid:` within a Bundle, or the Patient's URL on a FHIR server) |
-| `subject.identifier` | NHS Number or Medical Record Number | NW Observation | Added `type` = `MR` and an `assigner` ODS code, making it a Medical Record Number. Include the NHS Number where it is known |
-| `performer` | NW PractitionerRole or Organization | NW Observation | Not reported, because the validator cannot check the type of an identifier-only reference. But `OmicsDSS` is a software system, not a performer, so it was replaced with the performing laboratory, as an Organization identified by its ODS code |
+| `subject.identifier` | NHS Number, Medical Record Number or Patient Identifier | NW Observation | Added `type` = `PI` and an `assigner` of `699X0` (NW GLH), making the iGene patient number a Patient Identifier. Use the NHS Number instead where it is known |
+| `performer` | NW PractitionerRole or Organization | NW Observation | Not reported, because the validator cannot check the type of an identifier-only reference. But `OmicsDSS` is a software system, not a performer, so it was replaced with the performing laboratory, NW GLH, as an Organization identified by its ODS code `699X0` |
 {:.grid}
 
 ```json
@@ -178,15 +179,15 @@ There is also a new warning: the NW profile binds the variant category (`83005-9
   "reference": "urn:uuid:5b3a8c1e-0d7f-4c55-9b9e-2f8a6d1c4e70",
   "type": "Patient",
   "identifier": {
-    "type": { "coding": [ { "system": "http://terminology.hl7.org/CodeSystem/v2-0203", "code": "MR" } ] },
+    "type": { "coding": [ { "system": "http://terminology.hl7.org/CodeSystem/v2-0203", "code": "PI" } ] },
     "system": "https://fhir.nwgenomics.nhs.uk/iGene/PatientIdentifier",
     "value": "200048",
-    "assigner": { "identifier": { "system": "https://fhir.nhs.uk/Id/ods-organization-code", "value": "R0A" } }
+    "assigner": { "identifier": { "system": "https://fhir.nhs.uk/Id/ods-organization-code", "value": "699X0" } }
   }
 },
 "performer": [ {
   "type": "Organization",
-  "identifier": { "system": "https://fhir.nhs.uk/Id/ods-organization-code", "value": "R0A" }
+  "identifier": { "system": "https://fhir.nhs.uk/Id/ods-organization-code", "value": "699X0" }
 } ],
 "method": {
   "coding": [ { "system": "http://snomed.info/sct", "code": "264896000", "display": "Nucleic acid analysis" } ],
@@ -253,16 +254,16 @@ The corrected Variant is shown below. The patient, laboratory and transcript det
     "reference": "urn:uuid:5b3a8c1e-0d7f-4c55-9b9e-2f8a6d1c4e70",
     "type": "Patient",
     "identifier": {
-      "type": { "coding": [ { "system": "http://terminology.hl7.org/CodeSystem/v2-0203", "code": "MR" } ] },
+      "type": { "coding": [ { "system": "http://terminology.hl7.org/CodeSystem/v2-0203", "code": "PI" } ] },
       "system": "https://fhir.nwgenomics.nhs.uk/iGene/PatientIdentifier",
       "value": "200048",
-      "assigner": { "identifier": { "system": "https://fhir.nhs.uk/Id/ods-organization-code", "value": "R0A" } }
+      "assigner": { "identifier": { "system": "https://fhir.nhs.uk/Id/ods-organization-code", "value": "699X0" } }
     }
   },
   "effectiveDateTime": "2026-11-24T15:10:10+00:00",
   "performer": [ {
     "type": "Organization",
-    "identifier": { "system": "https://fhir.nhs.uk/Id/ods-organization-code", "value": "R0A" }
+    "identifier": { "system": "https://fhir.nhs.uk/Id/ods-organization-code", "value": "699X0" }
   } ],
   "specimen": {
     "type": "Specimen",
