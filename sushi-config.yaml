@@ -136,6 +136,9 @@ pages:
   testing.md:
     title: Testing
     generation: markdown
+  testing-resources.md:
+    title: FHIR Validation
+    generation: markdown
   support.md:
     title: Support
     generation: markdown
@@ -361,6 +364,7 @@ menu:
     IHE XDS.b/MHD: StructureDefinition-DocumentReference.html
   Development:
     Environments and Testing: testing.html
+    FHIR Validation: testing-resources.html
     Support: support.html
     Architecture: architecture.html
     Enterprise Integration Patterns (EIP): exchange.html
