@@ -113,7 +113,7 @@ Description:    """
 * code.coding ^slicing.description = "Slice based on the system"
 * code.coding ^slicing.ordered = false
 * code.coding contains
-   ProcedureCodeGenomicTestDirectory 0..1 MS and ProcedureCodeDigitalGenomicTestServices 0..1 MS and UKCoreReportCode 1..1 MS
+   ProcedureCodeGenomicTestDirectory 0..1 MS and ProcedureCodeDigitalGenomicTestServices 0..1 MS and UKCoreReportCode 0..1 MS
 
 * code.coding[ProcedureCodeGenomicTestDirectory] ^short = "Procedure code - Genomic Test Directory"
 * code.coding[ProcedureCodeGenomicTestDirectory] ^comment = "Present for tests in the National Genomic Test Directory. Tests outside it, such as Histocompatibility and Immunogenetics, use a Digital Genomic Test Services code instead."
