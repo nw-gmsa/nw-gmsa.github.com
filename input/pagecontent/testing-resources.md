@@ -4,7 +4,7 @@ For background, see [FHIR Validation](https://hl7.org/fhir/R4/validation.html) i
 
 See [Using the FHIR Validator](https://confluence.hl7.org/display/FHIR/Using+the+FHIR+Validator). You need Java 17 or later and [validator_cli.jar](https://github.com/hapifhir/org.hl7.fhir.core/releases/latest/download/validator_cli.jar).
 
-To validate against this Implementation Guide, download it as a package ([package.tgz](package.tgz)) and pass it with `-ig package.tgz`. The validator loads the packages this IG depends on (HL7 Genomics Reporting, HL7 Europe Laboratory, UK Core, etc.) automatically.
+To validate against this Implementation Guide, download it as a package ([package.tgz](https://nw-gmsa.github.io/package.tgz)) and pass it with `-ig package.tgz`. Note that the package is at the root of the site, `https://nw-gmsa.github.io/package.tgz`, not under `/en/`. The validator loads the packages this IG depends on (HL7 Genomics Reporting, HL7 Europe Laboratory, UK Core, etc.) automatically.
 
 Every command follows the same pattern: the resource file, the FHIR version, the package(s) holding the profile, and the `-profile` to check against.
 
@@ -14,7 +14,8 @@ java -jar validator_cli.jar <resource.json> -version 4.0.1 -ig <package> -profil
 
 - `-output results.json` writes the results as a FHIR `OperationOutcome`. Each `issue` has a `severity` (error, warning or information), an `expression` (where in the resource the problem is), and a message. This is easier to work through than the console output.
 - `-tx n/a` turns off the terminology server. Validation is faster, but codes are not checked against LOINC, HGNC, SNOMED CT, etc. Leave it out (the default is `tx.fhir.org`) once the structure is right, so that your codes are checked too.
-- The NHS England Ontology Service cannot be used as the terminology server (`-tx`) because of its API security requirements. This IG is configured to use the UK edition of SNOMED CT (83821000000107).
+- `-sct uk` checks SNOMED CT codes against the UK edition. Add it whenever the terminology server is on (i.e. without `-tx n/a`). The validator does not take the SNOMED CT edition from this IG, so without it codes are checked against the International edition, and UK-only concepts are reported as unknown.
+- The NHS England Ontology Service cannot be used as the terminology server (`-tx`) because of its API security requirements. This IG is built against the UK Edition of SNOMED CT (`83821000000107`). The validator's `-sct uk` option, and validator.fhir.org's `UK - 999000041000000102`, select the UK edition by its clinical extension module (`999000041000000102`); both are the UK edition.
 
 #### Using a web browser
 
@@ -311,10 +312,10 @@ Chromosome, position, coordinate system and genome build are left out because th
 
 ##### Run 5
 
-This time leave out `-tx n/a`, so that the LOINC, HGNC and SNOMED CT codes are checked against the terminology server:
+This time leave out `-tx n/a`, so that the LOINC, HGNC and SNOMED CT codes are checked against the terminology server, and add `-sct uk` so that SNOMED CT codes are checked against the UK edition:
 
 ```
-java -jar validator_cli.jar observation.json -version 4.0.1 -ig package.tgz -profile https://fhir.nwgenomics.nhs.uk/StructureDefinition/Variant -output results.json
+java -jar validator_cli.jar observation.json -version 4.0.1 -ig package.tgz -profile https://fhir.nwgenomics.nhs.uk/StructureDefinition/Variant -sct uk -output results.json
 ```
 
 | Severity | Location | Message |
@@ -384,6 +385,16 @@ java -jar validator_cli.jar bundle.json -version 4.0.1 -ig package.tgz -bundle S
 
 #### unsolicited-observation R01
 
+A report sent by the laboratory to the requester has been clinically validated, so check it against [Laboratory Report](StructureDefinition-LaboratoryReport.html):
+
 ```
-java -jar validator_cli.jar bundle.json -version 4.0.1 -ig package.tgz -bundle DiagnosticReport:0 https://fhir.nwgenomics.nhs.uk/StructureDefinition/DiagnosticReport -tx n/a
+java -jar validator_cli.jar bundle.json -version 4.0.1 -ig package.tgz -bundle DiagnosticReport:0 https://fhir.nwgenomics.nhs.uk/StructureDefinition/LaboratoryReport -tx n/a
 ```
+
+For results that have not been clinically validated (from an Automation Manager to the Order Filler), use [Test Results](StructureDefinition-TestResults.html) instead:
+
+```
+java -jar validator_cli.jar bundle.json -version 4.0.1 -ig package.tgz -bundle DiagnosticReport:0 https://fhir.nwgenomics.nhs.uk/StructureDefinition/TestResults -tx n/a
+```
+
+Both are based on the core [DiagnosticReport](StructureDefinition-DiagnosticReport.html) profile, so they include its rules as well.
