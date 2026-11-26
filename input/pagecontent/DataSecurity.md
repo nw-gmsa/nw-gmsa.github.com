@@ -1,3 +1,20 @@
+Genomic test results are used to make decisions about a patient's diagnosis
+and treatment, and they contain some of the most sensitive personal data the
+NHS holds. Data moving between systems therefore has to be **right**
+(correctly coded, complete and structured, so that it can't be misread) and
+**protected** (handled lawfully and kept confidential). In the NHS these
+concerns fall into three related layers, each with its own owner. This
+implementation guide covers the first layer, and supports the other two.
+
+#### How the three layers fit together
+
+| Layer | Owner | Core focus | How this guide relates |
+|-------|-------|------------|-----------------------|
+| **1. Data Integrity & Standards** (this guide) | Integration / Architecture | **Semantic quality:** making sure messages have the right codes, mandatory fields and structure in every format. | Defines the technical rules as FHIR profiles, value sets and identifiers, checked by automated [FHIR Validation](#fhir-validation). |
+| **2. Clinical Safety** (DCB0160) | Clinical Safety Officer (CSO) | **Patient harm:** preventing clinical risk caused by corrupted, missing or misinterpreted data. | The FHIR Validator is a clinical risk mitigation. It stops malformed or uncoded results reaching clinical systems, where they could lead to misdiagnosis. |
+| **3. Information Governance** (DSPT / DPIA / UK GDPR) | IG Team / Data Protection Officer (DPO) | **Confidentiality and lawfulness:** protecting patient privacy, the lawful basis for processing, and secure data storage. | The [Data security considerations](#data-security-considerations) below answer IG and DPIA questions directly, for example validating locally on the server, not sending patient-identifiable data to public endpoints such as tx.fhir.org, and securing temporary files. |
+{:.grid}
+
 This page describes how this guide is used to keep genomic data **correct,
 consistent and usable** as it moves between systems - data security in the
 sense of data quality and integrity - and how that operational data relates
