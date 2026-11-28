@@ -38,5 +38,6 @@ Description: "The laboratory order form, as a PDF, for the order from Manchester
 * subject.identifier
   * system = $nhs-number
   * value = "9449305552"
-
+* custodian.identifier.system = $ods-code
+* custodian.identifier.value = "R0A"
 

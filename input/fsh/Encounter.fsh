@@ -49,3 +49,10 @@ Description:    """
 
 * serviceProvider 0..1
 * serviceProvider.identifier only OrganisationCode
+
+* obeys nw-encounter-id-1
+
+Invariant: nw-encounter-id-1
+Description: "An Encounter SHALL have exactly one Visit Number (VN) or Hospital Provider Spell Identifier (AN) - HL7 v2 PV1-19"
+Expression: "identifier.where(type.coding.code = 'VN' or type.coding.code = 'AN').count() = 1"
+Severity: #error

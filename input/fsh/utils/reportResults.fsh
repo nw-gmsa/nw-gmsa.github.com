@@ -51,6 +51,10 @@ RuleSet: ReportPDFDocumentReferenceByIdentifier(id, assigner, date, reportSystem
   * attachment.contentType = #application/pdf
   * attachment.url = "{binaryUrn}"
 * context.event[+] = $test-directory#{event}
+* author[+].identifier.system = $ods-code
+* author[=].identifier.value = "{assigner}"
+* custodian.identifier.system = $ods-code
+* custodian.identifier.value = "{assigner}"
 
 // MessageHeader for a T02 FHIR Message (Document and Document Notification): the report PDF as a DocumentReference and Binary
 RuleSet: T02MessageHeader(date, senderOds, senderName, receiverOds, receiverName, endpoint, docUrn, binaryUrn)

@@ -585,6 +585,10 @@ Usage: #example
   * attachment.contentType = #application/pdf
   * attachment.url = "urn:uuid:9f5aeb0b-6098-4ace-83bd-933e85814e96"
 * insert TamesideSubject
+* author[+].identifier.system = $ods-code
+* author[=].identifier.value = "R0A"
+* custodian.identifier.system = $ods-code
+* custodian.identifier.value = "R0A"
 
 Instance: MessageHeader-R01-HaematoOncology
 InstanceOf: MessageHeader

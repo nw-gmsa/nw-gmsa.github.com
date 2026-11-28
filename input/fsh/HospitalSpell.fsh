@@ -10,7 +10,7 @@ Description:    """
 //* ^keyword[+] = #pam "Patient Administration"
 
 * identifier contains
-  HospitalSpellIdentifier 0..1 MS
+  HospitalSpellIdentifier 1..1 MS
 
 * identifier[HospitalSpellIdentifier] only HospitalProviderSpellIdentifier
 * identifier[HospitalSpellIdentifier] ^short = "Identifier assigned by the Order Placer"

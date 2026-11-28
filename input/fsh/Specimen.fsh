@@ -13,7 +13,7 @@ Description:    """
 //* ^keyword[+] = #diagnostics "Diagnostics"
 //* ^keyword[+] = #genomics "Genomics"
 
-* identifier 0..* MS
+* identifier 1..* MS
 //* identifier only CorrelationIdentifier
 
 
@@ -61,7 +61,7 @@ Description:    """
 //* collection.bodySite from SpecimenBodySite (preferred)
 * collection.quantity MS
 
-* type MS
+* type 1..1 MS
 * type from SpecimenType (required)
 
 * collection.collector 0..1 MS

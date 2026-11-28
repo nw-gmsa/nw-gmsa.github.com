@@ -22,7 +22,7 @@ Description:    """
 * identifier ^slicing.description = "Slice based on the type"
 * identifier ^slicing.ordered = false
 * identifier contains
-  ReportIdentifier 0..1 MS
+  ReportIdentifier 1..1 MS
 
 
 * identifier[ReportIdentifier] only ReportIdentifier

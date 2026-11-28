@@ -7,3 +7,4 @@ Description:    "The order number assigned by the Order Filler (HL7 v2 ORC-3 / O
 * type = $v2-0203#FILL
 * value 1..1
 * assigner 1..1
+* type 1..1

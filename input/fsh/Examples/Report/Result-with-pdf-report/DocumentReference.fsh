@@ -62,5 +62,8 @@ Description: "The genetic report, as a PDF, from the North West GLH, related to 
 * context.sourcePatientInfo.identifier.system = "http://www.acme.org/patient/identifier"
 * context.sourcePatientInfo.identifier.assigner.identifier.system = $ods-code
 * context.sourcePatientInfo.identifier.assigner.identifier.value = "R0A"
-
+* author[+].identifier.system = $ods-code
+* author[=].identifier.value = "699X0"
+* custodian.identifier.system = $ods-code
+* custodian.identifier.value = "699X0"
 

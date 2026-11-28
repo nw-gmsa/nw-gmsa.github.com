@@ -7,3 +7,4 @@ Title:          "Report Identifier"
 * type = $v2-0203#FILL
 * value 1..1
 * assigner 1..1
+* type 1..1

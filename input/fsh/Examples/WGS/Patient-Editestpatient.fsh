@@ -22,6 +22,7 @@ Usage: #example
 * name.given = "Thirteen"
 
 * birthDate = "1960-01-01"
+* gender = #unknown
 
 Instance: Patient-Editestpatient-Six
 InstanceOf: Patient
@@ -47,3 +48,4 @@ Usage: #example
 * name.given = "Six"
 
 * birthDate = "1988-01-14"
+* gender = #unknown

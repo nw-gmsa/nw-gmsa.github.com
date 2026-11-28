@@ -7,3 +7,4 @@ Description:    "The order number assigned by the Order Placer (HL7 v2 ORC-2 / O
 * type = $v2-0203#PLAC
 * value 1..1
 * assigner 1..1
+* type 1..1

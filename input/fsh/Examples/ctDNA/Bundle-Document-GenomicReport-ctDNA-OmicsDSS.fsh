@@ -375,6 +375,10 @@ Usage: #example
   * value = "9737873858"
 
 // T02 FHIR Message (Document and Document Notification): the report PDF
+* author[+].identifier.system = $ods-code
+* author[=].identifier.value = "699X0"
+* custodian.identifier.system = $ods-code
+* custodian.identifier.value = "699X0"
 
 Instance: MessageHeader-T02-ctDNA
 InstanceOf: MessageHeader

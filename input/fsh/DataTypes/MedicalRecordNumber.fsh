@@ -16,3 +16,9 @@ Title:          "Medical Record Number"
 * assigner.identifier.value ^example.label = "Manchester University NHS Foundation Trust"
 
 
+* obeys nw-mrn-1
+
+Invariant: nw-mrn-1
+Description: "The MRN SHOULD be assigned by the NHS Trust, i.e. the assigner SHOULD be the trust's 3 character ODS code, not a site code"
+Expression: "assigner.identifier.value.matches('^[A-Z0-9]{3}$')"
+Severity: #warning

@@ -5,3 +5,4 @@ Title:          "Order Group Number"
 
 * type = $v2-0203#PGN
 * value 1..1
+* type 1..1

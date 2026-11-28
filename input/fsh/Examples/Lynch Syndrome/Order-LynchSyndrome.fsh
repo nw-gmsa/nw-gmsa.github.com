@@ -157,6 +157,8 @@ Usage: #example
   * value = "9737383206"
 
 // Referral to clinical genetics (O19): predictive testing of the family
+* custodian.identifier.system = $ods-code
+* custodian.identifier.value = "R0A"
 
 Instance: Group-LynchSyndrome-Family-Liverpool
 InstanceOf: FamilyGeneticGroup

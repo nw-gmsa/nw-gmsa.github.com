@@ -265,3 +265,8 @@ Usage: #example
 * subject.identifier
   * system = "https://fhir.nhs.uk/Id/nhs-number"
   * value = "9737383362"
+* author[+].identifier.system = $ods-code
+* author[=].identifier.value = "699N0"
+* custodian.identifier.system = $ods-code
+* custodian.identifier.value = "699N0"
+

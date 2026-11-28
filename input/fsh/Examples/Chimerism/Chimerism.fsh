@@ -51,8 +51,15 @@ Usage: #example
 Instance: Specimen-Chimerism-Order
 InstanceOf: Specimen
 Title: "Specimen - peripheral blood for chimerism testing (as ordered)"
-Description: "Fictitious example: the blood sample as sent with the order (HL7 v2 SPM). No specimen identifier is assigned by the Order Placer"
+Description: "Fictitious example: the blood sample as sent with the order (HL7 v2 SPM), with the Order Placer's specimen identifier (SPM-2.1)"
 Usage: #example
+
+* identifier[PlacerSpecimenNumber]
+  * value = "CB-260817-01-S1"
+  * system = "http://www.acme.org/specimen/REN"
+  * type = $v2-0203#PLAC
+  * assigner.identifier.system = $ods-code
+  * assigner.identifier.value = "REN"
 
 * status = #available
 * insert LiverpoolSubject
@@ -290,6 +297,10 @@ Usage: #example
   * attachment.contentType = #application/pdf
   * attachment.url = "urn:uuid:490dd702-7121-482d-ba0a-d5af6382f65a"
 * context.event[+] = $DGTS#GT1368 "Chimerism by STR Testing - Post Stem Cell Transplant"
+* author[+].identifier.system = $ods-code
+* author[=].identifier.value = "R0A"
+* custodian.identifier.system = $ods-code
+* custodian.identifier.value = "R0A"
 
 Instance: MessageHeader-R01-Chimerism
 InstanceOf: MessageHeader

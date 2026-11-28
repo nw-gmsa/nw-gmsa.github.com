@@ -168,6 +168,8 @@ Description:    """
 
 * priority from RequestPriority (required)
 
+* intent from ServiceRequestIntent (required)
+
 * note
 
 * specimen 0..* MS
@@ -198,3 +200,15 @@ Description:    """
 
 * supportingInfo[priorResult] only Reference(DiagnosticReport)
 * supportingInfo[priorResult] ^short = "A prior result sent with the order, e.g. the pathology report and results for a genomic reflex order from pathology (HL7 v2 OML_O21 PRIOR_RESULT group)"
+
+* obeys nw-sr-placer-1 and nw-sr-specimen-subject-1
+
+Invariant: nw-sr-placer-1
+Description: "An order from the Order Placer (intent order, original-order or reflex-order) SHALL have an Order Placer Number (HL7 v2 ORC-2). Sub-orders and work orders may use the placer specimen identifier instead"
+Expression: "(intent = 'order' or intent = 'original-order' or intent = 'reflex-order') implies identifier.where(type.coding.code = 'PLAC').exists()"
+Severity: #error
+
+Invariant: nw-sr-specimen-subject-1
+Description: "A Specimen for this order SHOULD have the same subject as the order. Exception: prenatal testing, where a maternal specimen is used for a fetal order"
+Expression: "specimen.resolve().all(subject.reference.empty() or %resource.subject.reference.empty() or subject.reference = %resource.subject.reference)"
+Severity: #warning

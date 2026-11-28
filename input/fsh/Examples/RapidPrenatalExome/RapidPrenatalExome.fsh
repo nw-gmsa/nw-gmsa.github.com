@@ -24,6 +24,7 @@ Usage: #example
 * name.family = "WIGAN"
 * name.given = "Baby"
 * birthDate = "2027"
+* gender = #unknown
 
 Instance: Patient-Mother-Wigan
 InstanceOf: Patient

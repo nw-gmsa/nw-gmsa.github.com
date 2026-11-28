@@ -53,5 +53,6 @@ Description: "The ctDNA genetic report, as a PDF, from the North West GLH, relat
 * context.sourcePatientInfo.identifier.value = "RXR3302855"
 * context.sourcePatientInfo.identifier.assigner.identifier.system = $ods-code
 * context.sourcePatientInfo.identifier.assigner.identifier.value = "RHQ"
-
+* author[+].identifier.system = $ods-code
+* author[=].identifier.value = "699X0"
 

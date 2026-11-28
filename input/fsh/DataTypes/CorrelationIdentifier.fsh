@@ -20,3 +20,4 @@ Core Data Contract for FHIR Identifier, v2 CX and EI
 * assigner.identifier.system = $ods-code
 * assigner.identifier.value ^example.valueString = "R0A"
 * assigner.identifier.value ^example.label = "Manchester University NHS Foundation Trust"
+* assigner.identifier obeys nw-ods-code-1

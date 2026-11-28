@@ -91,6 +91,8 @@ Description:    """
 * author only Reference(Organization or Practitioner or PractitionerRole)
 * author.identifier only PractitionerIdentifier or OrganisationCode
 
+* author 1..* MS
+* custodian 1..1 MS
 * custodian only Reference(Organization)
 * custodian.identifier only OrganisationCode
 

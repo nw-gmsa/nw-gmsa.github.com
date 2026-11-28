@@ -108,6 +108,8 @@ Usage: #example
   * attachment.url = "urn:uuid:db8d3ed1-449c-4cbd-b740-1d6469fea782"
   * attachment.title = "Cellular pathology report - Margaery CONGLETON"
 * insert CongletonSubject
+* custodian.identifier.system = $ods-code
+* custodian.identifier.value = "RJN"
 
 Instance: Specimen-BreastCancer
 InstanceOf: Specimen

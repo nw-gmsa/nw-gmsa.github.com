@@ -29,7 +29,7 @@ Description: """
 
 * identifier contains
   MedicalRecordNumber 0..* MS
-  and nhsNumber 0..* MS
+  and nhsNumber 0..1 MS
   and PatientIdentifier 0..*
 // and GS1GSRN 0..1
 
@@ -50,10 +50,17 @@ Description: """
 * address.postalCode 1..1
 
 * name 1..* MS
-* gender 0..1 MS
-* birthDate MS
+* gender 1..1 MS
+* birthDate 1..1 MS
 
 * name.family
 * name.given
 * deceasedDateTime
 
+
+* obeys nw-patient-mrn-1
+
+Invariant: nw-patient-mrn-1
+Description: "A Patient SHALL NOT have more than one current Medical Record Number from the same assigner and system (a duplicate record). Previous MRNs are marked use = old"
+Expression: "identifier.where(type.coding.code = 'MR' and (use.empty() or use != 'old')).select(assigner.identifier.value & '|' & system).isDistinct()"
+Severity: #error
